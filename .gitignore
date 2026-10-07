@@ -20,8 +20,7 @@ evaluation/evidence/
 docs/evaluations/**/*.mp4
 docs/evaluations/**/*.webm
 
-# Large or redistribution-restricted corpus copies inside eval evidence.
-# Fixture SHA-256 values live in manifest.json / loop.json.
+# Scratch corpus copies under evaluation runs (canonical bytes live in fixtures/corpus/).
 docs/evaluations/**/evidence/sources/
 
 # Large regenerated scene dumps (import/compile/diagnostic IR)

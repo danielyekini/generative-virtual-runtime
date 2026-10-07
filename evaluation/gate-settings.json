@@ -1,0 +1,41 @@
+{
+  "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+  "numberTolerance": 0.001,
+  "colorTolerance": "1/255",
+  "pixel": {
+    "metric": "euclidean-rgb",
+    "inspectionThreshold": 24,
+    "role": "inspection",
+    "notes": [
+      "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+      "This alone is not a complete PASS rule for the declared profile."
+    ]
+  },
+  "visualCertification": {
+    "status": "VISUAL_UNVERIFIED",
+    "requiredForProfilePass": [
+      "Documented aggregate fractionBeyond (or equivalent) acceptance bound for the declared observation window",
+      "Documented local-region / material-content review rule (missing subject, wrong paint, large pose drift cannot pass on low aggregate alone)",
+      "Alpha / background compositing rules (declared backgrounds #101014 Lottie, #000000 SVG)",
+      "Operator approval of the above bounds"
+    ],
+    "whileUnverified": [
+      "Continue diagnose/implement against inspection metrics and human strip review",
+      "Report VISUAL_UNVERIFIED; do not claim profile visual PASS",
+      "Do not widen inspectionThreshold or invent aggregate bounds after seeing diffs"
+    ]
+  },
+  "reference": {
+    "lottieWeb": "5.13.0",
+    "seek": "goToAndStop(frame, true)",
+    "devicePixelRatio": 1,
+    "lottieBackground": "#101014",
+    "svgBackground": "#000000",
+    "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+  },
+  "corpus": {
+    "root": "fixtures/corpus",
+    "checksums": "fixtures/corpus/SHA256SUMS",
+    "readme": "fixtures/corpus/README.md"
+  }
+}

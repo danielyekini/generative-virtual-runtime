@@ -62,7 +62,7 @@ npx tsx evaluation/harness/run-pipeline.ts
 npx tsx evaluation/harness/drive-browser.ts
 ```
 
-Discover prerequisites and paths from the repository. Do not assume a macOS Chrome path is available elsewhere. Missing reference/browser infrastructure is BLOCKED or NOT_RUN, never PASS. Scratch evaluation/evidence is not a historical record.
+Discover prerequisites and paths from the repository. Corpus: `fixtures/corpus/` (+ `SHA256SUMS`). Gate settings: `evaluation/gate-settings.json`. Browser: `GVR_CHROME` / `CHROME_PATH` or `evaluation/harness/chrome.ts` — do not assume a macOS Chrome path. Missing corpus or reference/browser infrastructure is BLOCKED or NOT_RUN, never PASS. Scratch `evaluation/evidence/` is not a historical record.
 
 ## Diagnose through three routes
 

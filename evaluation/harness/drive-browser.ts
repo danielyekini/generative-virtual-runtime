@@ -12,6 +12,7 @@ import { createRequire } from "node:module";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { setTimeout as delay } from "node:timers/promises";
+import { chromeVersion, resolveChromeBinary } from "./chrome";
 import { classifyCapture } from "./render-status";
 
 const require = createRequire(resolve(dirname(fileURLToPath(import.meta.url)), "../package.json"));
@@ -19,7 +20,6 @@ const { PNG } = require("pngjs") as typeof import("pngjs");
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const evidence = resolve(repo, "evaluation/evidence");
-const chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const pageUrl = "http://127.0.0.1:5199/";
 
 interface Job {
@@ -148,6 +148,8 @@ async function waitForChrome(port: number): Promise<string> {
 }
 
 async function main(): Promise<void> {
+  const chromePath = resolveChromeBinary();
+  console.log(`Using browser: ${chromePath} (${chromeVersion(chromePath)})`);
   const jobs = (JSON.parse(readFileSync(resolve(evidence, "render-jobs.json"), "utf8")) as { jobs: Job[] }).jobs;
   const vite = spawn("npx", ["vite", "--config", "evaluation/harness/vite.config.ts"], { cwd: repo, stdio: ["ignore", "pipe", "pipe"] });
   let viteLog = "";

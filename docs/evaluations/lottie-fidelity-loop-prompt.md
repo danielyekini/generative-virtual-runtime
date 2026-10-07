@@ -61,8 +61,8 @@ LOT-03 stays quarantined while its source is over the production 512 KiB ceiling
    - If there is no commit and no snapshot, stop; do not run the corpus unpinned.
    - Current MotionScript and Scene IR versions and wire strings from `releases.json`.
    - Package versions of `@gvr/schema`, `@gvr/compiler`, `@gvr/runtime`, `@gvr/canvas-renderer`, `@gvr/motionscript-emitter`, `@gvr/format-lottie`, `@gvr/format-import-core`.
-4. Pin the corpus. Sources are the files copied by `evaluation/harness/run-pipeline.ts`. For each fixture record id, path, byte length, and SHA-256. Do not edit the source bytes.
-5. Pin the reference player: lottie-web 5.13.0, `goToAndStop(frame, true)`, DPR 1, Chrome at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Pin comparison tolerances: number `0.001`, color `1/255`, and the pixel tolerance already used by the harness. Copy those numbers into `loop.json`. Do not invent a looser number.
+4. Pin the corpus. Sources are under `fixtures/corpus/` (see `fixtures/corpus/README.md` and `SHA256SUMS`). `run-pipeline.ts` reads those paths. For each fixture record id, repo-relative path, byte length, and SHA-256. Verify checksums. Do not edit the source bytes. Missing corpus is BLOCKED, not a conversion pass.
+5. Pin the reference player: lottie-web 5.13.0, `goToAndStop(frame, true)`, DPR 1, browser from `evaluation/harness/chrome.ts` (`GVR_CHROME` / `CHROME_PATH` or discovered Chrome/Chromium). Record the resolved binary and `--version`. Pin comparison tolerances from `evaluation/gate-settings.json` (number `0.001`, color `1/255`, pixel inspection `24`). Copy those numbers into `loop.json`. Do not invent a looser number. Visual certification stays `VISUAL_UNVERIFIED` until aggregate/local-region rules are operator-approved.
 6. Run, from the repository root:
 
 ```bash

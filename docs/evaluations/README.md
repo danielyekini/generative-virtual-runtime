@@ -23,14 +23,24 @@ Manifest / results / evidence for the newest run live under `2026-10-07T220358Z/
 
 `evaluation/evidence/` is scratch space for the harness. Copy a finished run into a new `docs/evaluations/<run-id>/` directory. Do not point the index at the scratch directory.
 
+## Agent prerequisites (local and cloud)
+
+Before a fidelity Baseline:
+
+1. **Corpus** — `fixtures/corpus/` (LOT-00…07, SVG-01…02). Verify `shasum -a 256 -c fixtures/corpus/SHA256SUMS`. Do not use macOS Downloads paths.
+2. **Gate settings** — copy numbers from [`evaluation/gate-settings.json`](../evaluation/gate-settings.json) into `loop.json`. Visual certification remains `VISUAL_UNVERIFIED` until aggregate/local-region rules are operator-approved; keep diagnosing against the inspection threshold.
+3. **Browser** — Chrome or Chromium via `evaluation/harness/chrome.ts`. Set `GVR_CHROME` (or `CHROME_PATH`) when discovery fails (typical on Linux cloud images). Record the resolved binary and version in `environment.json`.
+4. **Commands** (repo root): `npx tsx evaluation/harness/run-pipeline.ts`, then `npx tsx evaluation/harness/drive-browser.ts` (after `cd evaluation && npm install` once for harness deps if needed).
+
 ## What belongs in Git
 
 | Commit to Git | Store outside Git |
 | --- | --- |
-| Reports and stop/continuation records | Full frame captures and videos |
-| Manifests, source hashes and implementation pins | Large image-diff collections |
-| Machine-readable results and gate settings | Dependencies, caches and build outputs |
-| Harness code and small regression fixtures | Large source snapshots |
-| A few representative failure images (`evidence/failure-samples/`) | Large or redistribution-restricted assets |
+| Reports and stop/continuation records | Full frame captures and videos (optional locally under `evidence/captures/`) |
+| Manifests, source hashes and implementation pins | Dependencies, caches and build outputs |
+| Machine-readable results and gate settings (`evaluation/gate-settings.json`) | Large source snapshots (`working-tree.patch`, full trees) |
+| Harness code and small regression fixtures | Scratch `evaluation/evidence/` |
+| Canonical fidelity corpus (`fixtures/corpus/`) | |
+| Representative failure images (`evidence/failure-samples/`) | |
 
-Full captures may remain on disk under `evidence/captures/` for local debugging; `.gitignore` keeps them out of the repository. Corpus bytes are pinned by SHA-256 in each run’s `manifest.json` / `loop.json`, not by re-storing large `evidence/sources/` copies.
+Private-repo policy: the fidelity corpus is committed under `fixtures/corpus/` so every agent checkout can run the pipeline. Scratch copies under `docs/evaluations/*/evidence/sources/` and `evaluation/evidence/` remain gitignored.

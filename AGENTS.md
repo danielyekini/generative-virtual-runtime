@@ -38,4 +38,6 @@ Historical runs under `docs/evaluations/` are immutable. A new run gets a new di
 
 Every new run pins the implementation to `git rev-parse HEAD` when the tree is clean, or to a complete source snapshot when it is not. Follow `docs/evaluations/lottie-fidelity-loop-prompt.md` Stage 1. The pin file `docs/evaluations/implementation-pin.json` names the commit or snapshot the next Baseline must start from.
 
+Fidelity corpus bytes live in `fixtures/corpus/` (private-repo policy; verify `SHA256SUMS`). Gate numbers live in `evaluation/gate-settings.json`. Browser binary via `GVR_CHROME` / `CHROME_PATH` or `evaluation/harness/chrome.ts`. Do not depend on macOS Downloads paths.
+
 Do not widen a tolerance to make a comparison pass. An import status of `exact` is not a visual pass until the browser capture against lottie-web is recorded for that fixture.
