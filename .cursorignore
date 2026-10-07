@@ -1,8 +1,6 @@
-# Keep bulky local evaluation media out of Cursor indexing / SCM noise.
-docs/evaluations/**/evidence/captures/
-docs/evaluations/**/evidence/sources/
-docs/evaluations/**/evidence/failure-samples/
+# Keep scratch and dependency trees out of Cursor indexing.
 evaluation/evidence/
+docs/evaluations/**/evidence/sources/
 **/node_modules/
 **/dist/
 *.zip

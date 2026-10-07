@@ -16,13 +16,7 @@ evaluation.zip
 # Harness scratch (not a historical evaluation record)
 evaluation/evidence/
 
-# Full frame captures, videos, image-diff collections, and failure samples.
-# Keep them on disk under evidence/captures/ or evidence/failure-samples/; do not commit PNGs.
-docs/evaluations/**/evidence/captures/
-docs/evaluations/**/*.png
-docs/evaluations/**/*.jpg
-docs/evaluations/**/*.jpeg
-docs/evaluations/**/*.webp
+# Videos stay outside Git. PNG evidence under docs/evaluations/*/evidence/ is committed.
 docs/evaluations/**/*.mp4
 docs/evaluations/**/*.webm
 
