@@ -2,12 +2,13 @@
 
 An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
 
-The newest run is [2026-10-07T220358Z](2026-10-07T220358Z/report.md).
+The newest run is [2026-10-07T230859Z](2026-10-07T230859Z/report.md).
 
-Next Baseline must pin the implementation from [implementation-pin.json](implementation-pin.json) (dirty snapshot under `2026-10-07T220358Z/source-snapshot/` for spatial-Z arc-length + stroke caps + first-key base + AE-near easing, or a later clean commit that includes them). Compare with `2026-10-07T220358Z`. Next cause unless overridden: `visual.midCycle.confetti.q50` (LOT-01 Celebrations).
+Next Baseline reads [implementation-pin.json](implementation-pin.json): main `8b052901d4a9399104be6d1376dc7468197f97ab` plus this run’s final snapshot. Shape-group animation improved Wave; remaining visual findings and gate calibration are open.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
+| [2026-10-07T230859Z](2026-10-07T230859Z/report.md) | 2026-10-07T23:15:23.757523+00:00 | MotionScript / Scene IR 0.5.0 | Wave full-window inspection improved; 174 tests + typecheck PASS; VISUAL_UNVERIFIED |
 | [2026-10-07T220358Z](2026-10-07T220358Z/report.md) | 2026-10-07T22:03:58Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | spatial-Z arc-length + stroke caps + first-key base; LOT-01 start/q25/q50 improved (beyond 0.0038→0.0005 / 0.0061→0.0031 / 0.0056→0.0046); VISUAL_UNVERIFIED gate; stop budget-exhausted |
 | [2026-10-07T215328Z](2026-10-07T215328Z/report.md) | 2026-10-07T21:53:28Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | AE-near easing diagonal fix; LOT-01 q25/q50 improved (beyond 0.0076→0.0061 / 0.0070→0.0056); q25 pose near-matched; VISUAL_UNVERIFIED gate; stop budget-exhausted |
 | [2026-10-07T213004Z](2026-10-07T213004Z/report.md) | 2026-10-07T21:30:04Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | animatedTrim 0.5.0; LOT-01 trim stroke fixed (q75 beyond 0.004→0.0003); mid-cycle confetti residual remains; VISUAL_UNVERIFIED gate; stop budget-exhausted |

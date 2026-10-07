@@ -1,31 +1,52 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-07T22:07:09Z",
-  "afterRun": "2026-10-07T220358Z",
-  "comparedWithForNextBaseline": "2026-10-07T220358Z",
+  "pinnedAt": "2026-10-07T23:15:23.757523+00:00",
+  "afterRun": "2026-10-07T230859Z",
+  "comparedWithForNextBaseline": "2026-10-07T230859Z",
   "git": {
-    "head": "f9ec51e02d10786210f13285b983ef6db8290b53",
+    "head": "8b052901d4a9399104be6d1376dc7468197f97ab",
     "short": "f9ec51e",
     "subject": "Point the evaluation pin at the clean animated-trim commit.",
     "treeCleanAtPin": false,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Dirty tree: spatial tangent Z arc-length, stroke caps/joins, first-key position base, AE-near easing diagonal fix on top of animatedTrim 0.5.0."
+    "note": "Fetched main plus easing preservation, shape-group animation and reference-control fixes; use final snapshot."
   },
   "snapshot": {
     "requiredWhenDirty": true,
-    "path": "docs/evaluations/2026-10-07T220358Z/source-snapshot/",
-    "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree. Do not commit working-tree.patch or full tree copies."
+    "path": "docs/evaluations/2026-10-07T230859Z/source-snapshot/",
+    "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree. Do not commit working-tree.patch or full tree copies.",
+    "finalArchive": "final-source.tar",
+    "manifest": "final-files.json"
   },
   "languages": {
-    "motionscript": { "current": "0.5.0", "wireVersion": "0.2" },
-    "sceneIr": { "current": "0.5.0", "wireVersion": "0.2" }
+    "motionscript": {
+      "current": "0.5.0",
+      "wireVersion": "0.2"
+    },
+    "sceneIr": {
+      "current": "0.5.0",
+      "wireVersion": "0.2"
+    }
   },
   "nextCause": {
-    "id": "visual.midCycle.confetti.q50",
-    "fixtures": ["LOT-01"],
-    "attemptsSoFar": 0,
-    "note": "After spatial-Z + stroke + first-key + AE-easing: start/q25 near-matched; q50 beyond 0.00456 with ~3–6px centroid drift. Alternates: LOT-07, LOT-06, compositing.matte, visual gate calibration."
+    "id": "visual.wave.residualPaintAndGeometry",
+    "fixtures": [
+      "LOT-07"
+    ],
+    "attempts": 0,
+    "confirmed": "Source layers 1/2 have solid+gradient strokes; layer 3 has two gradient strokes. Parser retains one stroke on the path.",
+    "suspected": "Additional residual geometry/timing differences; not yet isolated against lottie-web evaluated state.",
+    "followedBy": [
+      "LOT-06 pose/detail discrepancy",
+      "LOT-01 midcycle confetti"
+    ]
   },
-  "exactFixturesAtPin": ["LOT-00", "LOT-01", "LOT-06", "LOT-07"],
-  "visualNote": "Import exact is not visual pass. LOT-00 confirmed. LOT-01 improved (start/q25 strong; q50 residual). LOT-06/07 not visual passes. Absolute PASS is VISUAL_UNVERIFIED."
+  "exactFixturesAtPin": [
+    "LOT-00",
+    "LOT-01",
+    "LOT-06",
+    "LOT-07"
+  ],
+  "visualNote": "Wave 150/150 diagnostic frames captured; substantial residuals; VISUAL_UNVERIFIED. Other supported fixtures sampled.",
+  "attemptHistoryRun": "docs/evaluations/2026-10-07T230859Z/loop.json"
 }

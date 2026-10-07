@@ -138,17 +138,18 @@ function paintItems(items: LottieShapeItem[], fill?: SolidPaint, stroke?: Stroke
 }
 
 function parseShapeTransform(entry: Record<string, unknown>): LottieShapeTransform {
-  const anchor = readVec2Property(entry.a, DEFAULT_V).kind === "static" ? readVec2Property(entry.a, DEFAULT_V) : { kind: "static", value: DEFAULT_V };
+  const anchor = readVec2Property(entry.a, DEFAULT_V);
   const position = readVec2Property(entry.p, DEFAULT_V);
   const scalePercent = readVec2Property(entry.s, { x: 100, y: 100 });
   const rotation = readScalarProperty(entry.r, 0);
   const opacity = readScalarProperty(entry.o, 100);
-  const anchorValue = anchor.kind === "static" ? anchor.value : DEFAULT_V;
-  const positionValue = position.kind === "static" ? position.value : DEFAULT_V;
-  const scaleValue = scalePercent.kind === "static" ? scalePercent.value : { x: 100, y: 100 };
-  const rotationValue = rotation.kind === "static" ? rotation.value : 0;
-  const opacityValue = opacity.kind === "static" ? opacity.value : 100;
+  const anchorValue = anchor.kind === "static" ? anchor.value : anchor.keyframes[0]?.value ?? DEFAULT_V;
+  const positionValue = position.kind === "static" ? position.value : position.keyframes[0]?.value ?? DEFAULT_V;
+  const scaleValue = scalePercent.kind === "static" ? scalePercent.value : scalePercent.keyframes[0]?.value ?? { x: 100, y: 100 };
+  const rotationValue = rotation.kind === "static" ? rotation.value : rotation.keyframes[0]?.value ?? 0;
+  const opacityValue = opacity.kind === "static" ? opacity.value : opacity.keyframes[0]?.value ?? 100;
   return {
+    animation: { anchor, position, scale: scalePercent, rotation, opacity },
     anchor: anchorValue,
     position: positionValue,
     scale: { x: scaleValue.x / 100, y: scaleValue.y / 100 },
@@ -176,7 +177,7 @@ function parseRectangle(entry: Record<string, unknown>): LottieShapeItem {
   return {
     kind: "rectangle",
     name: stringOrUndefined(entry.nm),
-    position: position.kind === "static" ? position.value : DEFAULT_V,
+    position: position.kind === "static" ? position.value : position.keyframes[0]?.value ?? DEFAULT_V,
     size: size.kind === "static" ? size.value : { x: 100, y: 100 },
     cornerRadius: corner,
   };
@@ -331,7 +332,7 @@ function parseGradientStroke(entry: Record<string, unknown>): GradientStrokePain
   return {
     ...gradient,
     width: resolved,
-    opacity: (opacity.kind === "static" ? opacity.value : 100) / 100,
+    opacity: (opacity.kind === "static" ? opacity.value : opacity.keyframes[0]?.value ?? 100) / 100,
     cap: lineCap(entry.lc),
     join: lineJoin(entry.lj),
     miterLimit: Math.max(1, miter.kind === "static" ? miter.value : 4),

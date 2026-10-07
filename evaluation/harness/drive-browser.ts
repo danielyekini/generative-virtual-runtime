@@ -176,10 +176,12 @@ async function main(): Promise<void> {
     ],
     { stdio: "ignore" },
   );
+  let browserSocket: WebSocket | undefined;
   try {
     await waitForHttp(pageUrl);
     const socketUrl = await waitForChrome(9333);
     const socket = new WebSocket(socketUrl);
+    browserSocket = socket;
     await new Promise<void>((resolve, reject) => {
       socket.addEventListener("open", () => resolve());
       socket.addEventListener("error", () => reject(new Error("Chrome socket failed")));
@@ -196,6 +198,8 @@ async function main(): Promise<void> {
     const userAgent = await evaluate<string>(cdp, sessionId, "navigator.userAgent");
     const lottieControl = await evaluate<{ start: string | null; mid: string | null; note: string }>(cdp, sessionId, "window.runLottieControl()");
     const lottieDiff = lottieControl.start && lottieControl.mid ? compare(pngFromDataUrl(lottieControl.start), pngFromDataUrl(lottieControl.mid)) : null;
+    if (lottieControl.start) writeFileSync(resolve(evidence, "captures/control-lottie-start.png"), PNG.sync.write(pngFromDataUrl(lottieControl.start)));
+    if (lottieControl.mid) writeFileSync(resolve(evidence, "captures/control-lottie-mid.png"), PNG.sync.write(pngFromDataUrl(lottieControl.mid)));
     const svgStartBox = await evaluate<{ x: number; y: number; width: number; height: number }>(cdp, sessionId, "window.runSvgControl()");
     const svgStart = await screenshot(cdp, sessionId, svgStartBox);
     const svgEndBox = await evaluate<{ x: number; y: number; width: number; height: number }>(cdp, sessionId, "window.seekSvgControl(2)");
@@ -305,6 +309,7 @@ async function main(): Promise<void> {
     writeFileSync(resolve(evidence, "render-results.json"), JSON.stringify({ controls, fixtures: rendered, viteLogTail: viteLog.slice(-2000) }, null, 2));
     console.log("wrote render-results.json");
   } finally {
+    browserSocket?.close();
     stop(chrome);
     stop(vite);
   }

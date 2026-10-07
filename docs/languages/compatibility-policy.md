@@ -2,7 +2,7 @@
 
 This file is the rule for versions, the capability registry, and evaluation runs. It does not grant support that `packages/schema/capabilities/registry.json` does not record.
 
-The languages are not frozen at 0.1 or 0.2. The aim is a Scene IR and a MotionScript expressive enough to render modern animation sources. An `unsupported` or `untested` registry row is a gap to close, not a decision to leave the construct out. New nodes, paints, tracks, operators, and render scopes are added with the normal version, registry, and test update. Loops and function declarations are the exception: they change the execution model and need a design decision before implementation.
+The strategy is reliable fidelity within a declared, useful source profile, followed by selective expansion. An unsupported or untested source construct is a candidate for expansion when it benefits that profile, not an obligation to implement every feature of every source format. Correct supported semantics and verify their fidelity before adding coverage. New nodes, paints, tracks, operators and render scopes use the normal version, registry and test process. Changes to the execution model, such as loops or function declarations, require a design decision.
 
 ## Authority
 
@@ -89,6 +89,6 @@ Success for a declared profile requires all of the following:
 
 “Every frame exact” means that fidelity was checked in a pinned environment against a documented tolerance. Pixel identity across different rasterisers is not the requirement.
 
-Stop after three implementation attempts for one root cause, or when the run budget is spent. Escalate sooner when the reference player is unreliable, or when two attempts in a row do not improve the measurement. Also escalate when the missing piece is a new execution model, such as loops or function declarations. Do not escalate because a construct was outside an older profile: extend Scene IR and MotionScript, then lower it. Write a blocker with the evidence and the decision required. Do not widen a tolerance to make the loop pass.
+Stop after three implementation attempts for one root cause, or when the run budget is spent. Escalate sooner when the reference player is unreliable, or when two attempts in a row do not improve the measurement. Also escalate when the missing piece is a new execution model, such as loops or function declarations. Select extensions by usefulness to the declared profile; an older profile does not impose a language ceiling. Write a blocker with the evidence and the decision required. Do not widen a tolerance to make the loop pass.
 
 The index of runs is `docs/evaluations/README.md`. The newest link is the latest measurement, not the specification.

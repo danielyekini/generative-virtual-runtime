@@ -156,6 +156,7 @@ export type LottieShapeItem =
   | { kind: "unsupported"; feature: string; message: string };
 
 export interface LottieShapeTransform {
+  animation?: LottieTransform;
   anchor: Vec2;
   position: Vec2;
   scale: Vec2;

@@ -310,7 +310,7 @@ async function runLottieControl(): Promise<{ start: string | null; mid: string |
         st: 0,
         ks: {
           a: { a: 0, k: [0, 0] },
-          p: { a: 1, k: [{ t: 0, s: [10, 50] }, { t: 30, s: [80, 50] }] },
+          p: { a: 1, k: [{ t: 0, s: [10, 50], o: { x: .333, y: .333 }, i: { x: .667, y: .667 } }, { t: 30, s: [80, 50] }] },
           s: { a: 0, k: [100, 100] },
           r: { a: 0, k: 0 },
           o: { a: 0, k: 100 },

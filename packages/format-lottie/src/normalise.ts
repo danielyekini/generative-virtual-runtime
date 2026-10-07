@@ -435,6 +435,7 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       visible: true,
       kind: "group",
     });
+    if (tr.animation) addTransformTracks(ctx, groupId.id, tr.animation);
     let childOrder = 0;
     for (const child of item.items) {
       lowerShapeItem(ctx, groupId.id, child, zIndex + childOrder + 1, childOrder);

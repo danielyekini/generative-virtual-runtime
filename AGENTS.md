@@ -11,11 +11,9 @@ Also read, in this order:
 
 ## Aim
 
-Scene IR and MotionScript grow until GVR can render modern animation languages, including current Lottie and SVG. There is no V1 ceiling and no closed feature list. Path morph, mattes, masks, animated paint, repeaters, merge paths, skew, auto-orient, and text animators are ordinary capability additions.
+Build reliable fidelity within a declared, useful source profile, then expand selectively. Correct discrepancies in already-supported semantics before adding coverage. There is no fixed language ceiling, but source-format features are added when they benefit the accepted corpus or an explicit authoring goal.
 
-Add the language capability, the registry row, the tests, and the version note, then lower the importer. Do not stop because a construct was unsupported in 0.1 or 0.2, and do not ask for design approval before that work.
-
-Stop and report only when the construct needs a new execution model. Loops and function declarations are that class. A new node, paint, track, operator, or render scope is not.
+Capability additions update the language contract, registry, tests and version note before adapter lowering. A new execution model, such as loops or function declarations, requires a design decision. Routine capability work uses the existing release process; missing original sources or an uncalibrated visual gate remain evidence blockers.
 
 ## Authority
 

@@ -172,6 +172,50 @@ describe("lottie adapter", () => {
     expect(result.scene!.requiredCapabilities).toContain("easing.cubicBezier");
   });
 
+  it("preserves source cubic handles through import and shuffled round-trip seeks", () => {
+    const imported = load("easing_preservation");
+    expect(imported.fidelity.overall).toBe("exact");
+    const controls = [[.167, .172, .833, .829], [.7, .2, .01, .02], [.99, .98, .2, .8], [.1, .9, .42, .2], [.42, 0, .58, 1], [.2, -.5, .8, 1.5]];
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    const runtimes = [new AnimationRuntime(imported.scene!), new AnimationRuntime(compiled.scene!)];
+    const component = (u: number, a: number, b: number) => 3 * (1-u)**2 * u * a + 3 * (1-u) * u**2 * b + u**3;
+    controls.forEach(([x1, y1, x2, y2], index) => {
+      const nodeId = `layer_${index + 1}`;
+      const track = imported.scene!.timeline.tracks.find(t => t.kind === "keyframe" && t.target.kind === "node" && t.target.nodeId === nodeId && t.target.channel === "transform.position.x");
+      expect(track?.kind === "keyframe" && track.keyframes[0]?.easing).toEqual({ type: "cubic", x1, y1, x2, y2 });
+      for (const progress of [.75, 0, .25, 1, .5, .001, .999]) {
+        // Independent bisection of the source parametric curve, not named easing.
+        let lo = 0, hi = 1;
+        for (let i = 0; i < 60; i++) {
+          const mid = (lo + hi) / 2;
+          if (component(mid, x1!, x2!) < progress) lo = mid; else hi = mid;
+        }
+        const expected = 40 + 320 * component((lo + hi) / 2, y1!, y2!);
+        for (const runtime of runtimes) expect(Math.abs(origin(runtime, progress * 2000, `${nodeId}.group0.ellipseNode`)!.x - expected)).toBeLessThan(.001);
+      }
+    });
+  });
+
+  it("preserves animated shape-group transforms and opacity", () => {
+    const imported = load("animated_group_transform");
+    expect(imported.fidelity.overall).toBe("exact");
+    expect(verifyRoundTrip(imported.scene!).ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      const runtime = new AnimationRuntime(scene);
+      for (const t of [1000, 0, 2000, 500]) {
+        const f = t / 2000, angle = Math.PI * f, scale = 2 - f;
+        const item = runtime.evaluate(t).drawItems.find(i => i.nodeId === "layer_1.Moving.ellipseNode")!;
+        const point = transformPoint(item.logicalMatrix, 0, 0);
+        expect(point.x).toBeCloseTo(10 + 20*f + 15*scale*Math.cos(angle), 3);
+        expect(point.y).toBeCloseTo(15*scale*Math.sin(angle), 3);
+        expect(item.opacity).toBeCloseTo(1-f, 3);
+      }
+    }
+  });
+
   it("imports animated trim as trim.start/end tracks", () => {
     const result = load("animated_trim");
     expect(result.ok, result.diagnostics.map((item) => `${item.feature}:${item.message}`).join("\n")).toBe(true);
