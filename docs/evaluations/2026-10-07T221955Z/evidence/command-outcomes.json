@@ -1,0 +1,10 @@
+{
+  "pipeline": {
+    "command": "npx tsx evaluation/harness/run-pipeline.ts",
+    "exitCode": 0
+  },
+  "browser": {
+    "command": "npx tsx evaluation/harness/drive-browser.ts",
+    "exitCode": 1
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "runId": "2026-10-07T221955Z",
+  "stoppedAt": "2026-10-07T22:22:46.295321+00:00",
+  "status": "design-escalation",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "implementCyclesUsed": 0,
+  "reason": "Required visual gate calibration is absent; corpus bytes are missing and the browser command is not portable. No justified implementation or fidelity certification is possible.",
+  "nextAction": {
+    "prerequisites": [
+      "Provide original LOT-00 through LOT-07 files matching baseline hashes.",
+      "Supply/approve fixed aggregate/local-region thresholds, alpha/background rules and material-content review criteria.",
+      "Make browser executable configurable and pin/validate the Linux reference environment."
+    ],
+    "afterPrerequisites": {
+      "id": "visual.midCycle.confetti.q50",
+      "fixtures": [
+        "LOT-01"
+      ],
+      "attemptsSoFar": 0,
+      "note": "After spatial-Z + stroke + first-key + AE-easing: start/q25 near-matched; q50 beyond 0.00456 with ~3\u20136px centroid drift. Alternates: LOT-07, LOT-06, compositing.matte, visual gate calibration."
+    }
+  },
+  "implementation": {
+    "gitHead": "f609273cea310b64733a535642e9e7f17d22a88a",
+    "executionRelevantChanges": false,
+    "initialSnapshot": "source-snapshot/initial-source.tar",
+    "finalSnapshot": "source-snapshot/final-source.tar"
+  }
+}

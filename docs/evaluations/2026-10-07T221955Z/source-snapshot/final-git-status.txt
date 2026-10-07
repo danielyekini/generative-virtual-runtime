@@ -1,0 +1,21 @@
+ M docs/evaluations/README.md
+ M docs/evaluations/implementation-pin.json
+?? docs/evaluations/2026-10-07T221955Z/baseline.json
+?? docs/evaluations/2026-10-07T221955Z/evidence/check-outcomes.json
+?? docs/evaluations/2026-10-07T221955Z/evidence/command-outcomes.json
+?? docs/evaluations/2026-10-07T221955Z/evidence/pipeline-environment.json
+?? docs/evaluations/2026-10-07T221955Z/evidence/pipeline-manifest.json
+?? docs/evaluations/2026-10-07T221955Z/evidence/pipeline-render-jobs.json
+?? docs/evaluations/2026-10-07T221955Z/evidence/pipeline-results.json
+?? docs/evaluations/2026-10-07T221955Z/loop.json
+?? docs/evaluations/2026-10-07T221955Z/manifest.json
+?? docs/evaluations/2026-10-07T221955Z/report.md
+?? docs/evaluations/2026-10-07T221955Z/results.json
+?? docs/evaluations/2026-10-07T221955Z/source-snapshot/archives.json
+?? docs/evaluations/2026-10-07T221955Z/source-snapshot/final-files.json
+?? docs/evaluations/2026-10-07T221955Z/source-snapshot/final-git-status.txt
+?? docs/evaluations/2026-10-07T221955Z/source-snapshot/final-source.tar
+?? docs/evaluations/2026-10-07T221955Z/source-snapshot/final-working-tree.patch
+?? docs/evaluations/2026-10-07T221955Z/source-snapshot/initial-source.tar
+?? docs/evaluations/2026-10-07T221955Z/source-snapshot/initial-working-tree.patch
+?? docs/evaluations/2026-10-07T221955Z/stop.json
