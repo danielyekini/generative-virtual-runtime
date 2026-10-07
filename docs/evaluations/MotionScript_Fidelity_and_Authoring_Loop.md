@@ -12,7 +12,7 @@ Before editing implementation, read:
 4. docs/languages/compatibility-policy.md.
 5. packages/schema/capabilities/registry.json.
 6. docs/evaluations/README.md and implementation-pin.json.
-7. The newest run's report, stop record and relevant evidence.
+7. The newest run's report, stop and record relevant evidence.
 
 Read the relevant contracts again after a language change. Published specifications and the registry define promised support; an evaluation describes one implementation revision. Historical reports do not override current specifications. Resolve contradictions explicitly rather than silently choosing a convenient document.
 
@@ -51,7 +51,7 @@ Stop early when architecture decisions, insufficient reference evidence or requi
 
 ## Baseline and reproducibility
 
-Create docs/evaluations/<UTC-run-id>/ with a unique YYYY-MM-DDTHHMMSSZ identifier. Pin the latest prior run dynamically from the evaluation index and implementation pin. Check the expected ancestor relationship when applicable, but do not mistake ancestry for identical implementation.
+Create docs/evaluations// with a unique YYYY-MM-DDTHHMMSSZ identifier. Pin the latest prior run dynamically from the evaluation index and implementation pin. Check the expected ancestor relationship when applicable, but do not mistake ancestry for identical implementation.
 
 Record HEAD, status, package/language/wire versions, registry hash, harness/dependency settings, source fixture paths/hashes and reference environment. For a dirty tree, save actual changed/untracked source bytes and hashes, a patch including deletions and a manifest against HEAD. Include all execution-relevant application, package, harness, configuration, lockfile and contract changes, not just packages. With no commit, save a complete reproducible source snapshot excluding credentials and disposable dependencies. Hashes alone are not a snapshot. Capture initial and final implementations separately so results identify the code actually tested.
 
