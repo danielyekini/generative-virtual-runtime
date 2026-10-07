@@ -1,0 +1,121 @@
+{
+  "gitHead": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
+  "files": {
+    "docs/languages/compatibility-policy.md": {
+      "sha256": "9cc75fb7b36cc11967de75444994a4dd5b666d0bbf60b929fca1b1d2a9366dac",
+      "bytes": 8041
+    },
+    "docs/languages/motionscript/versions/pending.md": {
+      "sha256": "790a7bb5d32b11ca312e7276f9db5d9f04aa09d59b2e25713dfc22c8f7444df1",
+      "bytes": 673
+    },
+    "docs/languages/scene-ir/versions/pending.md": {
+      "sha256": "2aa45769e54b9868748b7ea3ab75bae20c1cf77e523a2ba4eb03e4ba12a142e0",
+      "bytes": 689
+    },
+    "packages/compiler/src/ast.ts": {
+      "sha256": "230531437ddbd44891574d28bab5691b3964f9ac0b29883a7499f336250d6216",
+      "bytes": 4417
+    },
+    "packages/compiler/src/compile.ts": {
+      "sha256": "d8af679086a2885e7d35eb01b434eaacd90d0c8b9f2fd1e82128e23a401e84a6",
+      "bytes": 41799
+    },
+    "packages/compiler/src/compiler.test.ts": {
+      "sha256": "1853a9bd9773881b5bc4a1c840190b736218ea9c590f6e8709e1b50be4d2a819",
+      "bytes": 14120
+    },
+    "packages/compiler/src/parse.ts": {
+      "sha256": "d37529847bca923c4d37684267df658660cb282cd6710462da9c2ff89d1891ce",
+      "bytes": 39541
+    },
+    "packages/format-lottie/src/lottie.test.ts": {
+      "sha256": "08edc3964f6756cdbb1a319203462a8a3aca472947a215833b3a3f4080f0b620",
+      "bytes": 16790
+    },
+    "packages/format-lottie/src/model.ts": {
+      "sha256": "81a082ce95aaf64c26c1641cb3183ca500e9c8af6ebd23204c4ed478016d04cb",
+      "bytes": 3991
+    },
+    "packages/format-lottie/src/normalise.ts": {
+      "sha256": "2337c2b377059cf74c3389d63e06e10930f6ed8c4a17c1c7cc90faa2fb7d856f",
+      "bytes": 41457
+    },
+    "packages/format-lottie/src/parse-shapes.ts": {
+      "sha256": "37db6fa21c5b19a6aec8fcac8ef0725b8b9d48a1d341e387e12848d30ae3c2ab",
+      "bytes": 12252
+    },
+    "packages/format-lottie/src/property.ts": {
+      "sha256": "89b27d9f961eee12eb11507e60b5e6400f5503e4129cf7acfeae8cf1fd95e7db",
+      "bytes": 7105
+    },
+    "packages/motionscript-emitter/src/emit.test.ts": {
+      "sha256": "365eceb1c457a9ae7b3338a4b84d70b0bc0f2e66661851c94bea94a394095225",
+      "bytes": 9931
+    },
+    "packages/motionscript-emitter/src/emit.ts": {
+      "sha256": "35a8014f47e20217fab716137300f420e76e034b67a667a4ab0e5345032c3e2e",
+      "bytes": 15216
+    },
+    "packages/runtime/src/runtime.test.ts": {
+      "sha256": "9790ee6e6155f91d77e1b4df66caa2c643d5cba23c32587b7af141171af63838",
+      "bytes": 26321
+    },
+    "packages/runtime/src/sample.ts": {
+      "sha256": "c3a8812830a899b43dd0b0cca11df737a30fa450683d6c4840bdb9fa600e4e40",
+      "bytes": 13765
+    },
+    "packages/schema/capabilities/registry.json": {
+      "sha256": "b66cf5e8a85e4984d78c2acc39e6bb79ad75e210c7070e7d34a1b0707bc68621",
+      "bytes": 35576
+    },
+    "packages/schema/capabilities/releases.json": {
+      "sha256": "1ad51acc5251a6754136ae65a6bdb9ab73ee0210ebda4cde75d22050e8d9efbd",
+      "bytes": 2512
+    },
+    "packages/schema/src/capabilities.ts": {
+      "sha256": "efc79aad9e19244a7f738912ae21f11d8f68b81aeb16eaffc133be7bed0e2f94",
+      "bytes": 755
+    },
+    "packages/schema/src/grammar.ts": {
+      "sha256": "1d6ecbc52b9452b12fcc7738699f76ca2bbd846a6827aa1d6bce82b788fd6d7d",
+      "bytes": 12635
+    },
+    "packages/schema/src/index.ts": {
+      "sha256": "5dc7126e1915a9e75e372a81e04c6e815277343fc557574b3630d32e2aee7b82",
+      "bytes": 479
+    },
+    "packages/schema/src/registry.ts": {
+      "sha256": "301a691b91ac134e7a0c46d84e72f19a6a4ce0b6ba38ce7b90c99b91ff2cefc8",
+      "bytes": 8376
+    },
+    "packages/schema/src/types.ts": {
+      "sha256": "de5578aa11e0757a2757c6498d0dfd982b37f13510fea6aeb907291d9106f9ae",
+      "bytes": 14951
+    },
+    "packages/schema/src/validate.ts": {
+      "sha256": "362687f11b526e9523e1b12892fc23851219252df04432927f4c2bd81e01657e",
+      "bytes": 75775
+    },
+    "docs/languages/motionscript/versions/0.3.0.md": {
+      "sha256": "c40af4ed224d93d36b595da831648f5d547de8592ed5e207cbcc5314fa08e127",
+      "bytes": 1143
+    },
+    "docs/languages/scene-ir/versions/0.3.0.md": {
+      "sha256": "e575f855a052c5d5a6603a5d8aa875fe3129b977d72c504670b28e6f9b1ac9cb",
+      "bytes": 1115
+    },
+    "fixtures/import/lottie/animated_path_morph.json": {
+      "sha256": "eb3cfc83701fff3a55ed621984f8cec042feaedf8118765b2ab8236480bc3a68",
+      "bytes": 7728
+    },
+    "packages/schema/src/path-morph.test.ts": {
+      "sha256": "6429e2d6b622058acc00248c51091a1f0dbd399732a0f354e3bee7fa019167c8",
+      "bytes": 3380
+    },
+    "packages/schema/src/path-morph.ts": {
+      "sha256": "bc344ec02f17fe9af8381d455943dd1fb0caca26eff354ff02208fd557153c0e",
+      "bytes": 2043
+    }
+  }
+}

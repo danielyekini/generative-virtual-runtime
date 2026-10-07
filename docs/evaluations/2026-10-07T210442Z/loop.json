@@ -1,0 +1,163 @@
+{
+  "runId": "2026-10-07T210442Z",
+  "startedAt": "2026-10-07T21:04:42Z",
+  "stage": "implement",
+  "comparedWith": "2026-10-07T194646Z",
+  "operatorOverride": {
+    "namedCauses": [
+      {
+        "id": "paint.gradientStroke",
+        "fixtures": [
+          "LOT-07"
+        ],
+        "note": "Wave import-exact but filled blobs instead of stroke rings"
+      },
+      {
+        "id": "visual.fitBackground",
+        "fixtures": [
+          "LOT-06"
+        ],
+        "note": "Punches large background/fit mismatch"
+      },
+      {
+        "id": "visual.midCycle",
+        "fixtures": [
+          "LOT-01"
+        ],
+        "note": "Celebrations mid-cycle visual discrepancy"
+      }
+    ],
+    "overridesPinNextCause": "compositing.matte"
+  },
+  "profile": "every Lottie construct in the corpus representable with nodes, paints, tracks, operators, timing scopes, and render scopes",
+  "budgets": {
+    "maxAttemptsPerCause": 3,
+    "maxImplementCycles": 8,
+    "implementCyclesUsed": 1,
+    "unchangedMeasurementStop": 2,
+    "wallTimeBudgetMinutes": 60
+  },
+  "implementation": {
+    "gitHead": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
+    "gitShort": "71f6e95",
+    "gitSubject": "Allow evaluation pins to match ancestor commits.",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T210442Z/source-snapshot/",
+    "pinAncestorCheck": {
+      "pin": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
+      "isAncestorOfHead": true
+    }
+  },
+  "languages": {
+    "motionscript": {
+      "current": "0.4.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    },
+    "sceneIr": {
+      "current": "0.4.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    }
+  },
+  "packages": {
+    "@gvr/schema": "0.1.0",
+    "@gvr/compiler": "0.1.0",
+    "@gvr/runtime": "0.1.0",
+    "@gvr/canvas-renderer": "0.1.0",
+    "@gvr/motionscript-emitter": "0.1.0",
+    "@gvr/format-lottie": "0.1.0",
+    "@gvr/format-import-core": "0.1.0"
+  },
+  "referencePlayer": {
+    "lottieWeb": "5.13.0",
+    "seek": "goToAndStop(frame, true)",
+    "dpr": 1,
+    "background": "#101014",
+    "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "chromeVersion": "Google Chrome 154.0.8037.98"
+  },
+  "tolerances": {
+    "number": 0.001,
+    "color": 0.00392156862745098,
+    "colorNote": "1/255",
+    "pixel": {
+      "euclideanRgbBeyond": 24,
+      "note": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule."
+    }
+  },
+  "corpus": [
+    {
+      "id": "LOT-00",
+      "path": "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "bytes": 41712,
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9"
+    },
+    {
+      "id": "LOT-01",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+      "fileName": "Celebrations Begin.json",
+      "bytes": 139337,
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d"
+    },
+    {
+      "id": "LOT-02",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
+      "fileName": "Hover Button.json",
+      "bytes": 127633,
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e"
+    },
+    {
+      "id": "LOT-03",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
+      "fileName": "lottie_ex1.json",
+      "bytes": 877884,
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "quarantine": "Production 512 KiB ceiling. Diagnostic parse is not a pass."
+    },
+    {
+      "id": "LOT-04",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+      "fileName": "lottie_ex2.json",
+      "bytes": 512240,
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601"
+    },
+    {
+      "id": "LOT-05",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
+      "fileName": "lottie_simple_ex1.json",
+      "bytes": 191525,
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2"
+    },
+    {
+      "id": "LOT-06",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+      "fileName": "Punches.json",
+      "bytes": 112565,
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1"
+    },
+    {
+      "id": "LOT-07",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+      "fileName": "Wave Animation.json",
+      "bytes": 31682,
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e"
+    }
+  ],
+  "causes": [
+    {
+      "id": "paint.gradientStroke",
+      "phase": "B",
+      "fixtures": [
+        "LOT-07"
+      ],
+      "attempts": 1,
+      "hypothesis": "Lottie gs is lowered as fill gradient; rings become filled blobs. Need paint.gradientStroke 0.4.0 and correct stroke lowering.",
+      "ownerBoundary": "schema+compiler+emitter+format-lottie+renderer(already paints stroke gradients)",
+      "expectedResult": "LOT-07 paths that use gs have stroke with gradient color and no erroneous fill; visual fractionBeyond drops materially",
+      "status": "attempting"
+    }
+  ],
+  "observationWindow": "sampled harness frames start/q25/q50/q75/near_end; full-window gate deferred until sampled visual agrees"
+}

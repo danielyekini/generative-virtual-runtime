@@ -1,0 +1,90 @@
+ M README.md
+ M docs/evaluations/README.md
+ M docs/evaluations/implementation-pin.json
+ M docs/languages/compatibility-policy.md
+ M docs/languages/motionscript/versions/pending.md
+ M docs/languages/scene-ir/versions/pending.md
+ D evaluation.zip
+ M evaluation/evidence/captures/LOT-06/near_end-diff.png
+ M evaluation/evidence/captures/LOT-06/near_end-native.png
+ M evaluation/evidence/captures/LOT-06/near_end-strip.png
+ M evaluation/evidence/captures/LOT-06/q25-diff.png
+ M evaluation/evidence/captures/LOT-06/q25-native.png
+ M evaluation/evidence/captures/LOT-06/q25-strip.png
+ M evaluation/evidence/captures/LOT-06/q50-diff.png
+ M evaluation/evidence/captures/LOT-06/q50-native.png
+ M evaluation/evidence/captures/LOT-06/q50-strip.png
+ M evaluation/evidence/captures/LOT-06/q75-diff.png
+ M evaluation/evidence/captures/LOT-06/q75-native.png
+ M evaluation/evidence/captures/LOT-06/q75-strip.png
+ M evaluation/evidence/captures/LOT-06/start-diff.png
+ M evaluation/evidence/captures/LOT-06/start-native.png
+ M evaluation/evidence/captures/LOT-06/start-strip.png
+ M evaluation/evidence/captures/LOT-07/near_end-diff.png
+ M evaluation/evidence/captures/LOT-07/near_end-native.png
+ M evaluation/evidence/captures/LOT-07/near_end-strip.png
+ M evaluation/evidence/captures/LOT-07/q25-diff.png
+ M evaluation/evidence/captures/LOT-07/q25-native.png
+ M evaluation/evidence/captures/LOT-07/q25-strip.png
+ M evaluation/evidence/captures/LOT-07/q50-diff.png
+ M evaluation/evidence/captures/LOT-07/q50-native.png
+ M evaluation/evidence/captures/LOT-07/q50-strip.png
+ M evaluation/evidence/captures/LOT-07/q75-diff.png
+ M evaluation/evidence/captures/LOT-07/q75-native.png
+ M evaluation/evidence/captures/LOT-07/q75-strip.png
+ M evaluation/evidence/captures/LOT-07/start-diff.png
+ M evaluation/evidence/captures/LOT-07/start-native.png
+ M evaluation/evidence/captures/LOT-07/start-strip.png
+ M evaluation/evidence/environment.json
+ M evaluation/evidence/fixtures/LOT-00/result.json
+ M evaluation/evidence/fixtures/LOT-01/result.json
+ M evaluation/evidence/fixtures/LOT-02/result.json
+ M evaluation/evidence/fixtures/LOT-03/result.json
+ M evaluation/evidence/fixtures/LOT-04/result.json
+ M evaluation/evidence/fixtures/LOT-05/result.json
+ M evaluation/evidence/fixtures/LOT-06/compiled-scene.json
+ M evaluation/evidence/fixtures/LOT-06/generated.motion
+ M evaluation/evidence/fixtures/LOT-06/import-diagnostics.json
+ M evaluation/evidence/fixtures/LOT-06/import-report.txt
+ M evaluation/evidence/fixtures/LOT-06/imported-scene.json
+ M evaluation/evidence/fixtures/LOT-06/result.json
+ M evaluation/evidence/fixtures/LOT-07/compiled-scene.json
+ M evaluation/evidence/fixtures/LOT-07/generated.motion
+ M evaluation/evidence/fixtures/LOT-07/import-diagnostics.json
+ M evaluation/evidence/fixtures/LOT-07/import-report.txt
+ M evaluation/evidence/fixtures/LOT-07/imported-scene.json
+ M evaluation/evidence/fixtures/LOT-07/result.json
+ M evaluation/evidence/fixtures/SVG-01/result.json
+ M evaluation/evidence/fixtures/SVG-02/result.json
+ M evaluation/evidence/render-results.json
+ M evaluation/evidence/results.json
+ M formats/lottie/unsupported.md
+ M packages/compiler/src/ast.ts
+ M packages/compiler/src/compile.ts
+ M packages/compiler/src/compiler.test.ts
+ M packages/compiler/src/parse.ts
+ M packages/format-lottie/src/lottie.test.ts
+ M packages/format-lottie/src/model.ts
+ M packages/format-lottie/src/normalise.ts
+ M packages/format-lottie/src/parse-shapes.ts
+ M packages/format-lottie/src/property.ts
+ M packages/motionscript-emitter/src/emit.test.ts
+ M packages/motionscript-emitter/src/emit.ts
+ M packages/runtime/src/runtime.test.ts
+ M packages/runtime/src/sample.ts
+ M packages/schema/capabilities/registry.json
+ M packages/schema/capabilities/releases.json
+ M packages/schema/src/capabilities.ts
+ M packages/schema/src/grammar.ts
+ M packages/schema/src/index.ts
+ M packages/schema/src/registry.ts
+ M packages/schema/src/types.ts
+ M packages/schema/src/validate.ts
+?? docs/evaluations/2026-10-07T194646Z.zip
+?? docs/evaluations/2026-10-07T194646Z/
+?? docs/evaluations/MotionScript_Fidelity_and_Authoring_Loop.md
+?? docs/languages/motionscript/versions/0.3.0.md
+?? docs/languages/scene-ir/versions/0.3.0.md
+?? fixtures/import/lottie/animated_path_morph.json
+?? packages/schema/src/path-morph.test.ts
+?? packages/schema/src/path-morph.ts

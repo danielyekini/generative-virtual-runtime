@@ -1,30 +1,30 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-07T20:03:46Z",
+  "pinnedAt": "2026-10-07T21:09:50Z",
   "afterRun": "2026-10-07T194646Z",
   "comparedWithForNextBaseline": "2026-10-07T194646Z",
   "git": {
-    "head": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
-    "short": "71f6e95",
-    "subject": "Allow evaluation pins to match ancestor commits.",
-    "treeCleanAtPin": false,
+    "head": "904bc7864efbf21f85524f82b07f1fa94e486801",
+    "short": "904bc78",
+    "subject": "Keep evaluation records in Git and drop bulky outside-Git artifacts.",
+    "treeCleanAtPin": true,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Tree was dirty when this run stopped. Next Baseline must use source-snapshot/ (or a later clean commit that includes the pathMorph 0.3.0 work)."
+    "note": "Clean commit includes pathMorph 0.3.0 and gradientStroke 0.4.0. Historical run 2026-10-07T194646Z still records its dirty-tree snapshot under source-snapshot/."
   },
   "snapshot": {
     "requiredWhenDirty": true,
-    "path": "docs/evaluations/2026-10-07T194646Z/source-snapshot/",
-    "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree."
+    "path": null,
+    "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree. Do not commit working-tree.patch or full tree copies."
   },
   "languages": {
-    "motionscript": { "current": "0.3.0", "wireVersion": "0.2" },
-    "sceneIr": { "current": "0.3.0", "wireVersion": "0.2" }
+    "motionscript": { "current": "0.4.0", "wireVersion": "0.2" },
+    "sceneIr": { "current": "0.4.0", "wireVersion": "0.2" }
   },
   "nextCause": {
     "id": "compositing.matte",
     "fixtures": ["LOT-02", "LOT-05"],
-    "versionDecision": "New contract (not in published 0.3.0). Publish a new language version entry (expected 0.4.0) per docs/languages/compatibility-policy.md. Wire may stay \"0.2\" only if that version file says so and requiredCapabilities gates the feature; otherwise wire \"0.3\". Not a package-only bump."
+    "versionDecision": "New contract (not in published 0.4.0). Publish a new language version entry (expected 0.5.0) per docs/languages/compatibility-policy.md. Wire may stay \"0.2\" only if that version file says so and requiredCapabilities gates the feature; otherwise wire \"0.3\". Not a package-only bump."
   },
   "exactFixturesAtPin": ["LOT-00", "LOT-01", "LOT-06", "LOT-07"],
-  "visualNote": "Import exact is not visual pass. LOT-00 visual confirmed; LOT-01/LOT-06/LOT-07 mid-window not visual passes. See 2026-10-07T194646Z/report.md."
+  "visualNote": "Import exact is not visual pass. LOT-00 visual confirmed in 2026-10-07T194646Z; LOT-01/LOT-06/LOT-07 mid-window not visual passes. Gradient stroke landed after that run — re-baseline visual for LOT-07."
 }
