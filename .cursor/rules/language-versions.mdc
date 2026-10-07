@@ -13,4 +13,8 @@ Before changing `packages/schema`, `packages/compiler`, `packages/runtime`, `pac
 
 Published version files are immutable. Support claims change only together with the registry, tests, and the pending or new version entry. Evaluation reports describe one revision; they are not the specification.
 
+Wire strings (`0.1`, `0.2`) are coarse family ids. Consumers distinguish additive schema features with the fuller language release id in `releases.json` and with `requiredCapabilities` / `requires`. Completing a capability already published is a package bump only. A pending construct such as `geometry.pathMorph` needs a new version entry. Details: `docs/languages/compatibility-policy.md`.
+
+Evaluation Baselines pin `git rev-parse HEAD` (clean tree) or a complete source snapshot. See `docs/evaluations/implementation-pin.json` and `docs/evaluations/lottie-fidelity-loop-prompt.md`.
+
 There is no V1 feature ceiling. Add Scene IR and MotionScript capabilities needed to render modern Lottie and SVG. Path morph, mattes, animated paint, and repeater/merge are in that set. Stop for a design decision only for a new execution model, such as loops or function declarations.

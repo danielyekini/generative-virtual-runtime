@@ -29,10 +29,13 @@ The grammar and schema decide syntax. The registry decides what support is claim
 - Below 1.0, a minor bump is the breaking boundary. Patches are compatible. Do not silently reinterpret older programs.
 - `exact`, `approximate`, and `unsupported` each need a stated scope and a passing conformance test. `exact` is that scope only.
 - Drafts and prereleases do not become the current release. The current pointer must stay equal to the greatest released version, compared numerically (`0.10.0` is newer than `0.9.0`).
-- Package `version` fields are not language versions. The wire strings remain `0.1` and `0.2` until a version file says otherwise.
+- Package `version` fields are not language versions. The wire strings remain the coarse family ids (`0.1`, `0.2`, …) until a version file says otherwise. Additive features inside a wire family are distinguished by the fuller language release id and by `requiredCapabilities` / `requires`. See `docs/languages/compatibility-policy.md`.
+- Completing a capability already named in a published version file is a package + registry update. A construct only in `pending.md` (for example `geometry.pathMorph`) needs a new version entry before it is claimed.
 
 ## Evaluations
 
 Historical runs under `docs/evaluations/` are immutable. A new run gets a new directory and is linked from `docs/evaluations/README.md`. Do not overwrite `2026-10-07-baseline` or treat it as the current specification.
 
-Do not widen a tolerance to make a comparison pass.
+Every new run pins the implementation to `git rev-parse HEAD` when the tree is clean, or to a complete source snapshot when it is not. Follow `docs/evaluations/lottie-fidelity-loop-prompt.md` Stage 1. The pin file `docs/evaluations/implementation-pin.json` names the commit or snapshot the next Baseline must start from.
+
+Do not widen a tolerance to make a comparison pass. An import status of `exact` is not a visual pass until the browser capture against lottie-web is recorded for that fixture.

@@ -17,6 +17,27 @@ The languages are not frozen at 0.1 or 0.2. The aim is a Scene IR and a MotionSc
 
 MotionScript and Scene IR are versioned independently. Release ids are numeric semantic versions (`0.2.0`). Wire strings inside documents stay the short forms the validators already accept (`0.1`, `0.2`). Package `version` fields are package releases and are not language releases.
 
+## Wire string, language release, and capabilities
+
+The wire string (`irVersion` / MotionScript `version`) is a coarse family id. It does not list every additive feature. Consumers distinguish schema additions with two other fields:
+
+| Signal | Role |
+| --- | --- |
+| Language release id (`releases.json` → `0.2.0`, `0.3.0`, …) | Fuller schema version. Named in an immutable version file. Says which capabilities and sampling rules that release introduced. |
+| `requiredCapabilities` on the scene / `requires` in MotionScript | Per-document feature gate. A consumer accepts the wire family, then rejects the document unless every listed capability is enabled in that package build. |
+| Package `version` | Which code build is running. Independent of language release ids. |
+
+Rules:
+
+1. Completing an implementation already named in a **published** version file (catch-up for a stated capability) does not require a new language release. Bump package versions, registry support claims, and tests only. Wire and language `current` stay put.
+2. Introducing a representation that a published version file does **not** name (new track value type, node field, operator, or sampling rule) requires a new version entry written from `pending.md`. Do not silently extend `0.2.0.md`.
+3. While the wire family remains `"0.2"`, a new language release may keep `wireVersion: "0.2"` and rely on `requiredCapabilities` so older package builds reject unknown capability tokens, and newer builds that enable the capability accept the scene. If a change cannot be gated that way (for example a 0.1-era reader must hard-reject the document shape), the version file sets a new wire string (`"0.3"`).
+4. Below `1.0`, a minor language bump is the breaking boundary. Prefer a minor (`0.3.0`) when the new contract is breaking for consumers that do not understand the capability; a patch (`0.2.1`) only when the published 0.2 contract already implied the feature and the change is a compatible completion or fix.
+
+### Decision for `geometry.pathMorph`
+
+Path morph is listed in `pending.md`, not in MotionScript / Scene IR `0.2.0`. Landing it is a **new contract**, not a 0.2 catch-up. Publish a new version entry (expected `0.3.0`) with registry rows and conformance tests. Keep wire `"0.2"` only if that version file says so and scenes gate with `requiredCapabilities: ["geometry.pathMorph"]`; otherwise set wire `"0.3"`. Do not treat package-only bumps as sufficient.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.
@@ -39,7 +60,7 @@ A 0.1 consumer accepts wire `0.1` and rejects wire `0.2` before playback. A 0.2 
 
 ## Evaluation loop
 
-Each run is a new directory `docs/evaluations/<run-id>/` with `report.md`, `manifest.json`, and `results.json`. The run pins source hashes, the implementation revision, language and IR versions, the reference player, and the comparison settings. It does not edit an older run.
+Each run is a new directory `docs/evaluations/<run-id>/` with `report.md`, `manifest.json`, and `results.json`. The run pins source hashes, the implementation revision (`git` SHA when clean, otherwise a complete source snapshot), language and IR versions, the reference player, and the comparison settings. It does not edit an older run. The next Baseline reads `docs/evaluations/implementation-pin.json`.
 
 | Stage | Required action |
 | --- | --- |

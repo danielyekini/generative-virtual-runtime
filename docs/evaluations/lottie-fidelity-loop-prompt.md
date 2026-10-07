@@ -15,7 +15,9 @@ Do not edit `docs/evaluations/2026-10-07-baseline/` or any older run. Do not com
 
 Published version files are immutable. Record in-progress language work in `docs/languages/motionscript/versions/pending.md` and `docs/languages/scene-ir/versions/pending.md`. An importer-only correction does not bump MotionScript or Scene IR. A new node, paint, track, operator, or render scope does. Below 1.0, a minor bump is the breaking boundary. A 0.1 reader still rejects a newer wire version. A newer reader loads older scenes only through the documented migration. Older programs keep their old sampling rules.
 
-Package `version` fields stay independent of language versions. Wire strings change only when a version file says so.
+Package `version` fields stay independent of language versions. Wire strings are coarse family ids (`0.1`, `0.2`). Consumers distinguish additive schema features with the fuller language release id and with `requiredCapabilities` / `requires`. Completing a capability already named in a published version file is a package + registry update only. A construct that lives only in `pending.md` needs a new version entry. Details: `docs/languages/compatibility-policy.md`.
+
+`geometry.pathMorph` is **not** in published 0.2.0. Landing it publishes a new language version (expected `0.3.0`), not a silent 0.2 catch-up.
 
 ## Declared profile
 
@@ -50,14 +52,18 @@ LOT-03 stays quarantined while its source is over the production 512 KiB ceiling
 
 ## Stage 1 — Baseline
 
-1. Create `docs/evaluations/<run-id>/loop.json` for this invocation. `run-id` is the UTC timestamp `YYYY-MM-DDTHHMMSSZ`. Do not reuse an existing directory.
-2. Pin the implementation:
-   - `git rev-parse HEAD` and `git status --short`. If there is no commit, write that.
+1. Read `docs/evaluations/implementation-pin.json`. That file names the commit or snapshot the previous run left for you, the newest run id to compare with, and the next cause unless the operator overrides it.
+2. Create `docs/evaluations/<run-id>/loop.json` for this invocation. `run-id` is the UTC timestamp `YYYY-MM-DDTHHMMSSZ`. Do not reuse an existing directory.
+3. Pin the implementation (required — do not leave this null when a commit exists):
+   - Run `git rev-parse HEAD` and `git status --short`.
+   - If the working tree is **clean**, pin `gitHead` to that SHA and copy `git log -1 --format=%s` into the manifest. Refuse to start if `HEAD` does not equal `implementation-pin.json`’s `git.head` unless the operator named a different revision.
+   - If the working tree is **dirty**, do **not** claim the commit alone. Write `docs/evaluations/<run-id>/source-snapshot/` with: the short status, `git rev-parse HEAD` (if any), and SHA-256 of every file under `packages/`, `fixtures/import/`, `evaluation/harness/`, and `docs/languages/` that differs from HEAD or is untracked and included. Set `manifest.implementation.snapshot` to that directory.
+   - If there is no commit and no snapshot, stop; do not run the corpus unpinned.
    - Current MotionScript and Scene IR versions and wire strings from `releases.json`.
    - Package versions of `@gvr/schema`, `@gvr/compiler`, `@gvr/runtime`, `@gvr/canvas-renderer`, `@gvr/motionscript-emitter`, `@gvr/format-lottie`, `@gvr/format-import-core`.
-3. Pin the corpus. Sources are the files copied by `evaluation/harness/run-pipeline.ts`. For each fixture record id, path, byte length, and SHA-256. Do not edit the source bytes.
-4. Pin the reference player: lottie-web 5.13.0, `goToAndStop(frame, true)`, DPR 1, Chrome at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Pin comparison tolerances: number `0.001`, color `1/255`, and the pixel tolerance already used by the harness. Copy those numbers into `loop.json`. Do not invent a looser number.
-5. Run, from the repository root:
+4. Pin the corpus. Sources are the files copied by `evaluation/harness/run-pipeline.ts`. For each fixture record id, path, byte length, and SHA-256. Do not edit the source bytes.
+5. Pin the reference player: lottie-web 5.13.0, `goToAndStop(frame, true)`, DPR 1, Chrome at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`. Pin comparison tolerances: number `0.001`, color `1/255`, and the pixel tolerance already used by the harness. Copy those numbers into `loop.json`. Do not invent a looser number.
+6. Run, from the repository root:
 
 ```bash
 npx tsx evaluation/harness/run-pipeline.ts
@@ -65,7 +71,7 @@ npx tsx evaluation/harness/run-pipeline.ts
 
 Scratch output lands in `evaluation/evidence/`. That directory is not the historical record.
 
-6. Write `docs/evaluations/<run-id>/manifest.json` with the pins above, the fixture hashes, and `"comparedWith": "2026-10-07-baseline"`.
+7. Write `docs/evaluations/<run-id>/manifest.json` with the pins above, the fixture hashes, and `"comparedWith"` set to the newest prior run id from `docs/evaluations/README.md` (today: `2026-10-07T183125Z`, not the historical `2026-10-07-baseline` unless that is still newest).
 
 ## Stage 2 — Diagnose
 
@@ -130,9 +136,10 @@ npx tsx evaluation/harness/drive-browser.ts
    - `evaluation/evidence/` → `docs/evaluations/<run-id>/evidence/`
    - `evaluation/evidence/results.json` → `docs/evaluations/<run-id>/results.json`
 
-2. Write `docs/evaluations/<run-id>/report.md`. Include the pins, the cause attempted, attempt count, before-and-after counts against `2026-10-07-baseline`, and the fixtures that are now exact. State that the report describes this revision only.
-3. Add a row to `docs/evaluations/README.md` pointing at this run as the newest measurement. Do not rewrite older rows.
-4. If the declared profile is not yet a pass, return to Diagnose and choose the next cause. Keep the same `loop.json`.
+2. Write `docs/evaluations/<run-id>/report.md`. Include the pins, the cause attempted, attempt count, before-and-after counts against the run named in `comparedWith`, and the fixtures that are now import-exact. State that the report describes this revision only.
+3. For every fixture that is import-`exact` after this run, write a **Visual fidelity confirmation** section quoting per-sample `meanDistance` and `fractionBeyond` from `evidence/render-results.json`. Say explicitly whether the sampled window is visually agreed or not. Import exact alone is not a visual pass.
+4. Add a row to `docs/evaluations/README.md` pointing at this run as the newest measurement. Do not rewrite older rows.
+5. If the declared profile is not yet a pass, return to Diagnose and choose the next cause. Keep the same `loop.json`.
 
 ## Stage 6 — Stop
 
@@ -141,5 +148,7 @@ Write `docs/evaluations/<run-id>/stop.json` and a short section at the top of `r
 - `success` — every in-scope fixture meets the success list. Quote the counts and the sample times.
 - `blocker` — three attempts produced no improvement, the reference player is unreliable, or a budget was spent. Include the cause, the attempts, the last counts, and the evidence paths.
 - `design-escalation` — the next cause is loops or function declarations. Include the fixture ids and the language feature required. Do not implement it.
+
+Update `docs/evaluations/implementation-pin.json` to this run’s final `git rev-parse HEAD` (clean tree) or to the run’s `source-snapshot/` path (dirty tree), set `comparedWithForNextBaseline` to this `run-id`, and record `nextCause` from the stop note.
 
 End the invocation after Stop. The next invocation starts at Baseline, compares with the newest run, and does not reopen a cause already marked blocker or design-escalation unless the operator names it.

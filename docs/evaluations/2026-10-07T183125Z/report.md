@@ -61,12 +61,42 @@ Clamp root tracks to `[0, durationMs]` with remapped keys; skip zero-length visi
 
 Counts are `exact/approximated/dropped/unsupported`. Baseline was Motionscript/Scene IR 0.1; this run is on 0.2 wire with additional importer work beyond this loop’s three causes.
 
-## Fixtures now exact
+## Fixtures now exact (import)
 
-- **LOT-00** — production exact; pipeline PASS through runtime; browser strips low error.
+- **LOT-00** — production exact; pipeline PASS through runtime.
 - **LOT-01** — production exact; pipeline PASS through runtime (new this run).
 
 LOT-03 remains quarantined over the 512 KiB ceiling.
+
+Import `exact` is not a visual pass by itself. Visual numbers below are from `evidence/render-results.json` (lottie-web 5.13.0, DPR 1, Euclidean RGB beyond 24).
+
+## Visual fidelity confirmation
+
+Browser capture ran. Reference and native statuses were PASS for both exact fixtures. Route was production compiled scenes.
+
+### LOT-00 (confirmed improved vs baseline)
+
+| Sample | meanDistance | fractionBeyond | Baseline fractionBeyond (same harness) |
+| --- | --- | --- | --- |
+| start | 1.093 | 0.000102 | 0.000102 |
+| q25 | 1.078 | 0.000065 | **0.131** |
+| q50 | 1.073 | 0.000143 | 0.000143 |
+| q75 | 1.074 | 0.000116 | **0.144** |
+| near_end | 1.080 | 0.000201 | 0.010 |
+
+Quarter-cycle pan mismatch from the baseline report is gone. LOT-00 visual agreement is confirmed for this revision inside the inspection threshold across the sampled window.
+
+### LOT-01 (import exact; visual not a pass)
+
+| Sample | meanDistance | fractionBeyond |
+| --- | --- | --- |
+| start | 0.840 | 0.00375 |
+| q25 | 7.025 | **0.03295** |
+| q50 | 4.764 | **0.02163** |
+| q75 | 1.218 | 0.00580 |
+| near_end | 0.000 | 0.00000 |
+
+LOT-01 now draws against a working reference (baseline had no production scene). Mid-cycle pixel error remains material. Do **not** treat LOT-01 as visually exact for the declared profile.
 
 ## Tests
 
@@ -74,4 +104,4 @@ LOT-03 remains quarantined over the 512 KiB ceiling.
 
 ## Continuation
 
-Next invocation: new Baseline, compare with `2026-10-07T183125Z`, start cause `geometry.pathMorph` for LOT-06/LOT-07 unless the operator names another. Do not reopen completed causes above unless named.
+Next invocation: new Baseline pinned per `docs/evaluations/implementation-pin.json` (git `4e4af51` or a dirty-tree snapshot), compare with `2026-10-07T183125Z`, start cause `geometry.pathMorph` for LOT-06/LOT-07 unless the operator names another. Path morph is a new language version entry, not a package-only bump. Do not reopen completed causes above unless named.

@@ -1,0 +1,28 @@
+{
+  "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
+  "pinnedAt": "2026-10-07T19:40:00Z",
+  "afterRun": "2026-10-07T183125Z",
+  "comparedWithForNextBaseline": "2026-10-07T183125Z",
+  "git": {
+    "head": "4e4af51fffe00f900e7257f5677acf9be4b780d6",
+    "short": "4e4af51",
+    "subject": "Document implemented MotionScript and Scene IR 0.2 capabilities in the root README.",
+    "treeCleanAtPin": false,
+    "note": "Fidelity code and run artifacts are in 4e4af51. Policy/prompt/pin updates after that leave the tree dirty. Before the next Baseline: either commit those docs and re-pin HEAD, or write a source-snapshot/ for the dirty tree. Do not start an unpinned corpus run."
+  },
+  "snapshot": {
+    "requiredWhenDirty": true,
+    "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree."
+  },
+  "languages": {
+    "motionscript": { "current": "0.2.0", "wireVersion": "0.2" },
+    "sceneIr": { "current": "0.2.0", "wireVersion": "0.2" }
+  },
+  "nextCause": {
+    "id": "geometry.pathMorph",
+    "fixtures": ["LOT-06", "LOT-07"],
+    "versionDecision": "New contract (not in published 0.2.0). Publish a new language version entry (expected 0.3.0) per docs/languages/compatibility-policy.md. Wire may stay \"0.2\" only if that version file says so and requiredCapabilities gates the feature; otherwise wire \"0.3\". Not a package-only bump."
+  },
+  "exactFixturesAtPin": ["LOT-00", "LOT-01"],
+  "visualNote": "Import exact is not visual pass. LOT-00 visual confirmed; LOT-01 mid-cycle not a visual pass. See 2026-10-07T183125Z/report.md."
+}

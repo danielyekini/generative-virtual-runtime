@@ -533,7 +533,10 @@
       "id": "geometry.pathMorph",
       "summary": "Animated path vertices with a shared command topology.",
       "targets": [],
-      "restrictions": ["Not representable. Matching topology is diagnosed and not sampled."],
+      "restrictions": [
+        "Not representable yet. Matching topology is diagnosed and not sampled.",
+        "Not part of published MotionScript/Scene IR 0.2.0. Landing requires a new language version entry (expected 0.3.0), not a package-only bump. See docs/languages/compatibility-policy.md."
+      ],
       "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
       "conformanceTests": [],
       "adapters": {

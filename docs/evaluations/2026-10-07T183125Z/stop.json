@@ -24,5 +24,11 @@
   "maxImplementCycles": 8,
   "exactFixturesNow": ["LOT-00", "LOT-01"],
   "evidence": "evidence/",
-  "comparedWith": "2026-10-07-baseline"
+  "comparedWith": "2026-10-07-baseline",
+  "implementationPinForNext": "docs/evaluations/implementation-pin.json",
+  "versionDecisionForNextCause": "geometry.pathMorph is not in published 0.2.0; publish a new language version entry (expected 0.3.0). Wire stays 0.2 only if that version file says so and requiredCapabilities gates the feature. See docs/languages/compatibility-policy.md.",
+  "visualFidelity": {
+    "LOT-00": "confirmed — quarter-cycle baseline mismatch cleared; all samples fractionBeyond <= 0.000201",
+    "LOT-01": "import exact only — mid-cycle fractionBeyond up to 0.033; not a visual pass"
+  }
 }
