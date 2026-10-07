@@ -1,0 +1,3 @@
+STATUS	failed
+COUNTS	exact	0	approximated	0	dropped	0	unsupported	1
+IMPORT_LIMIT	fatal	unsupported	1:1	Source exceeds the import size limit.

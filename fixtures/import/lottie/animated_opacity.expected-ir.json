@@ -1,0 +1,164 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "lottie",
+  "viewport": {
+    "width": 200,
+    "height": 200,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_1",
+      "name": "layer_1",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 100,
+          "y": 100
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.group0",
+      "name": "group0",
+      "parentId": "layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.group0.ellipseNode",
+      "name": "ellipseNode",
+      "parentId": "layer_1.group0",
+      "zIndex": 2,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 80,
+        "y": 80
+      },
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 2000,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 2000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": "linear"
+          },
+          {
+            "offset": 0.5,
+            "value": 1,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": 1
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "id": "step1",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1",
+          "channel": "visible"
+        },
+        "timeMs": 2000,
+        "value": false
+      }
+    ]
+  }
+}

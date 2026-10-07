@@ -1,0 +1,392 @@
+{
+  "runId": "2026-10-07T183125Z",
+  "startedAt": "2026-10-07T18:31:25Z",
+  "stage": "stop",
+  "comparedWith": "2026-10-07-baseline",
+  "profile": "every Lottie construct in the corpus representable with nodes, paints, tracks, operators, timing scopes, and render scopes",
+  "budgets": {
+    "maxAttemptsPerCause": 3,
+    "maxImplementCycles": 8,
+    "implementCyclesUsed": 5,
+    "unchangedMeasurementStop": 2
+  },
+  "implementation": {
+    "gitHead": null,
+    "note": "No commits on main. git rev-parse HEAD failed with ambiguous argument HEAD.",
+    "gitStatusShort": "untracked working tree (no commits yet)"
+  },
+  "languages": {
+    "motionscript": {
+      "current": "0.2.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    },
+    "sceneIr": {
+      "current": "0.2.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    }
+  },
+  "packages": {
+    "@gvr/schema": "0.1.0",
+    "@gvr/compiler": "0.1.0",
+    "@gvr/runtime": "0.1.0",
+    "@gvr/canvas-renderer": "0.1.0",
+    "@gvr/motionscript-emitter": "0.1.0",
+    "@gvr/format-lottie": "0.1.0",
+    "@gvr/format-import-core": "0.1.0"
+  },
+  "referencePlayer": {
+    "lottieWeb": "5.13.0",
+    "seek": "goToAndStop(frame, true)",
+    "dpr": 1,
+    "background": "#101014",
+    "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "chromeVersion": "Google Chrome 154.0.8037.98"
+  },
+  "tolerances": {
+    "number": 0.001,
+    "color": 0.00392156862745098,
+    "colorNote": "1/255",
+    "pixel": {
+      "euclideanRgbBeyond": 24,
+      "note": "Euclidean RGB distance > 24 counts as a differing pixel. Inspection threshold from drive-browser.ts; not a pass-widening rule."
+    }
+  },
+  "corpus": [
+    {
+      "id": "LOT-00",
+      "path": "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "bytes": 41712,
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9"
+    },
+    {
+      "id": "LOT-01",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+      "fileName": "Celebrations Begin.json",
+      "bytes": 139337,
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d"
+    },
+    {
+      "id": "LOT-02",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
+      "fileName": "Hover Button.json",
+      "bytes": 127633,
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e"
+    },
+    {
+      "id": "LOT-03",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
+      "fileName": "lottie_ex1.json",
+      "bytes": 877884,
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "quarantine": "Production 512 KiB ceiling. Diagnostic parse is not a pass."
+    },
+    {
+      "id": "LOT-04",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+      "fileName": "lottie_ex2.json",
+      "bytes": 512240,
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601"
+    },
+    {
+      "id": "LOT-05",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
+      "fileName": "lottie_simple_ex1.json",
+      "bytes": 191525,
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2"
+    },
+    {
+      "id": "LOT-06",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+      "fileName": "Punches.json",
+      "bytes": 112565,
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1"
+    },
+    {
+      "id": "LOT-07",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+      "fileName": "Wave Animation.json",
+      "bytes": 31682,
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e"
+    },
+    {
+      "id": "SVG-01",
+      "path": "/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg",
+      "fileName": "Celebrations Begin.svg",
+      "bytes": 183327,
+      "sha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d"
+    },
+    {
+      "id": "SVG-02",
+      "path": "/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg",
+      "fileName": "Jumping Jack.svg",
+      "bytes": 270580,
+      "sha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18"
+    }
+  ],
+  "cause": {
+    "id": "track.startOutsideDuration",
+    "summary": "Imported tracks can start before scene time 0 or extend past durationMs, so validation rejects the scene (LOT-01, LOT-05)",
+    "attempts": 2,
+    "fixtures": [
+      "LOT-01",
+      "LOT-05"
+    ],
+    "scope": "Clamp root timeline tracks to [0, durationMs] and remap keyframe offsets so in-window samples stay exact. Does not invent motion outside the composition window.",
+    "category": "validation-failure",
+    "ranking": {
+      "fixtureCount": 2,
+      "unplayable": true
+    },
+    "status": "improved",
+    "after": {
+      "LOT-01": {
+        "overall": "exact",
+        "exact": 194,
+        "unsupported": 0,
+        "scene": true
+      },
+      "LOT-05": {
+        "overall": "partial",
+        "exact": 25,
+        "unsupported": 12,
+        "scene": true,
+        "note": "Mattes remain unsupported"
+      }
+    }
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "cause": "effect.gaussianBlur.static",
+      "attempt": 1,
+      "startedAt": "2026-10-07T18:45:00Z"
+    },
+    {
+      "cycle": 2,
+      "cause": "effect.gaussianBlur.static",
+      "attempt": 2,
+      "startedAt": "2026-10-07T19:05:00Z",
+      "note": "LOT-04 Repeat Edge named as a single space; treat blank ty7 as ignorable."
+    },
+    {
+      "cycle": 3,
+      "cause": "stroke.width.nonPositive",
+      "attempt": 1,
+      "startedAt": "2026-10-07T19:15:00Z"
+    },
+    {
+      "cycle": 4,
+      "cause": "track.startOutsideDuration",
+      "attempt": 1
+    },
+    {
+      "cycle": 5,
+      "cause": "track.startOutsideDuration",
+      "attempt": 2,
+      "note": "LOT-05 scene ok; LOT-01 now fails on duplicate visible steps at same timeMs"
+    }
+  ],
+  "blockedCauses": [],
+  "designEscalations": [],
+  "diagnosis": {
+    "ranked": [
+      {
+        "id": "geometry.pathMorph",
+        "fixtures": [
+          "LOT-06",
+          "LOT-07"
+        ],
+        "occurrences": 29,
+        "unplayable": false
+      },
+      {
+        "id": "effect.gaussianBlur.static",
+        "fixtures": [
+          "LOT-02",
+          "LOT-04"
+        ],
+        "occurrences": 27,
+        "unplayable": false
+      },
+      {
+        "id": "compositing.matte",
+        "fixtures": [
+          "LOT-02",
+          "LOT-05"
+        ],
+        "occurrences": 21,
+        "unplayable": false,
+        "note": "LOT-05 scene discarded by INVALID_TIMING track start"
+      },
+      {
+        "id": "stroke.width.nonPositive",
+        "fixtures": [
+          "LOT-01"
+        ],
+        "occurrences": 1,
+        "unplayable": true
+      },
+      {
+        "id": "track.startOutsideDuration",
+        "fixtures": [
+          "LOT-05"
+        ],
+        "occurrences": 1,
+        "unplayable": true
+      },
+      {
+        "id": "size.ceiling.512KiB",
+        "fixtures": [
+          "LOT-03"
+        ],
+        "occurrences": 1,
+        "unplayable": true,
+        "quarantine": true
+      }
+    ],
+    "exactFixtures": [
+      "LOT-00"
+    ],
+    "chosen": "effect.gaussianBlur.static"
+  },
+  "completedCauses": [
+    {
+      "id": "effect.gaussianBlur.static",
+      "summary": "Lottie Gaussian Blur (effect ty 29) with static Blurriness is inventoried and not lowered onto GroupCompositing.effect blur",
+      "attempts": 2,
+      "fixtures": [
+        "LOT-02",
+        "LOT-04"
+      ],
+      "scope": "Static Gaussian Blur only. Animated Blurriness stays unsupported. Repeat Edge and Blur Dimensions other than both-axes are out of scope.",
+      "category": "unsupported",
+      "ranking": {
+        "fixtureCount": 2,
+        "occurrences": 27,
+        "unplayable": false,
+        "note": "Tied with path morph and matte on fixture count. Blur uses existing effects.blur (0.2); path morph and matte need new language. LOT-05 failure attributed to track start outside duration, not matte alone."
+      },
+      "status": "improved",
+      "after": {
+        "LOT-02": {
+          "exact": 51,
+          "unsupported": 9,
+          "effectExact": 5,
+          "effectUnsupported": 0
+        },
+        "LOT-04": {
+          "exact": 88,
+          "unsupported": 17,
+          "effectExact": 5,
+          "effectUnsupported": 17
+        },
+        "note": "Static Gaussian Blur cleared on both fixtures. LOT-04 residual is animated Blurriness (separate cause)."
+      }
+    },
+    {
+      "id": "stroke.width.nonPositive",
+      "summary": "Imported strokes with width 0 fail Scene IR validation (Stroke width must be positive), discarding an otherwise exact LOT-01 scene",
+      "attempts": 1,
+      "fixtures": [
+        "LOT-01"
+      ],
+      "scope": "Omit stroke when Lottie static stroke width is <= 0. Do not invent a positive width.",
+      "category": "validation-failure",
+      "ranking": {
+        "fixtureCount": 1,
+        "unplayable": true
+      },
+      "status": "improved",
+      "after": {
+        "LOT-01": {
+          "note": "Stroke width IR error cleared. Scene still discarded by track start/duration INVALID_TIMING."
+        },
+        "fixture": "zero_stroke_width exact"
+      }
+    },
+    {
+      "id": "track.startOutsideDuration",
+      "summary": "Imported tracks can start before scene time 0 or extend past durationMs, so validation rejects the scene (LOT-01, LOT-05)",
+      "attempts": 2,
+      "fixtures": [
+        "LOT-01",
+        "LOT-05"
+      ],
+      "scope": "Clamp root timeline tracks to [0, durationMs] and remap keyframe offsets so in-window samples stay exact. Does not invent motion outside the composition window.",
+      "category": "validation-failure",
+      "ranking": {
+        "fixtureCount": 2,
+        "unplayable": true
+      },
+      "status": "improved",
+      "after": {
+        "LOT-01": {
+          "overall": "exact",
+          "exact": 194,
+          "unsupported": 0,
+          "scene": true
+        },
+        "LOT-05": {
+          "overall": "partial",
+          "exact": 25,
+          "unsupported": 12,
+          "scene": true,
+          "note": "Mattes remain unsupported"
+        }
+      }
+    }
+  ],
+  "nextCause": {
+    "id": "geometry.pathMorph",
+    "summary": "Animated path (sh a=1) with matching vertex topology is not sampled; importer also mis-detects Lottie keyframe s[] arrays as topology mismatch",
+    "attempts": 0,
+    "fixtures": [
+      "LOT-06",
+      "LOT-07"
+    ],
+    "scope": "Closed paths whose keyframes share vertex count and command topology. Linear lerp of vertex and tangent components. Hold and cubic segment easing on the morph track.",
+    "category": "unsupported",
+    "ranking": {
+      "fixtureCount": 2,
+      "occurrences": 29,
+      "unplayable": false
+    }
+  },
+  "stop": {
+    "status": "blocker",
+    "reason": "Profile not yet a pass. Five implement cycles used. Next cause geometry.pathMorph needs a Scene IR / MotionScript path track valueType (pending language bump) and remaining cycles in this invocation are insufficient to land it with registry, conformance, and 0.1 migration safety.",
+    "completedCauses": [
+      "effect.gaussianBlur.static",
+      "stroke.width.nonPositive",
+      "track.startOutsideDuration"
+    ],
+    "nextCause": {
+      "id": "geometry.pathMorph",
+      "fixtures": [
+        "LOT-06",
+        "LOT-07"
+      ],
+      "attempts": 0,
+      "notes": [
+        "pathTopologyMatches currently reads frame.s.v but Lottie stores path keys as frame.s[0].v, so matching topologies are mis-labelled as mismatch.",
+        "After that fix, matching topologies still need geometry.pathMorph sampling."
+      ]
+    },
+    "alsoQueued": [
+      "compositing.matte (LOT-02, LOT-05)",
+      "effect.gaussianBlur.animated (LOT-04 residual 17)",
+      "size.ceiling.512KiB (LOT-03 quarantined; policy change only)"
+    ],
+    "implementCyclesUsed": 5,
+    "maxImplementCycles": 8,
+    "exactFixturesNow": [
+      "LOT-00",
+      "LOT-01"
+    ],
+    "evidence": "evidence/",
+    "comparedWith": "2026-10-07-baseline"
+  }
+}

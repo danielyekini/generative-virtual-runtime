@@ -1,0 +1,31 @@
+{
+  "runId": "2026-10-07-baseline",
+  "status": "historical",
+  "capturedAt": "2026-10-07T14:29:58.967Z",
+  "supersededBy": null,
+  "implementation": {
+    "gitHead": null,
+    "note": "No commits on main at capture. git rev-parse HEAD failed.",
+    "node": "v24.10.0",
+    "npm": "11.6.0",
+    "platform": "darwin arm64",
+    "chrome": "Google Chrome 154.0.8037.98",
+    "lottieWeb": "5.13.0"
+  },
+  "languages": {
+    "motionscript": "0.1.0",
+    "sceneIr": "0.1.0",
+    "wire": { "motionscript": "0.1", "sceneIr": "0.1" }
+  },
+  "packages": {
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0"
+  },
+  "referencePlayer": "lottie-web 5.13.0 goToAndStop(frame, true) at DPR 1. SVG reference uses SVGSVGElement.setCurrentTime.",
+  "comparison": "Quarter-frame strips against the reference player. Tolerances and per-fixture notes are in report.md. This manifest does not describe the current registry.",
+  "evidence": "evidence/",
+  "results": "results.json",
+  "outcomes": { "PASS": 0, "PARTIAL": 6, "FAIL": 4, "BLOCKED": 0 }
+}

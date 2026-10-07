@@ -1,0 +1,445 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "too-deep",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 4000,
+    "tracks": [],
+    "steps": []
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "name": "n0",
+      "parentId": null,
+      "space": "world",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1",
+      "name": "n1",
+      "parentId": "n0",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2",
+      "name": "n2",
+      "parentId": "n0.n1",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3",
+      "name": "n3",
+      "parentId": "n0.n1.n2",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4",
+      "name": "n4",
+      "parentId": "n0.n1.n2.n3",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5",
+      "name": "n5",
+      "parentId": "n0.n1.n2.n3.n4",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6",
+      "name": "n6",
+      "parentId": "n0.n1.n2.n3.n4.n5",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7",
+      "name": "n7",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8",
+      "name": "n8",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9",
+      "name": "n9",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10",
+      "name": "n10",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11",
+      "name": "n11",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12",
+      "name": "n12",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12.n13",
+      "name": "n13",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12.n13.n14",
+      "name": "n14",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12.n13",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12.n13.n14.n15",
+      "name": "n15",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12.n13.n14",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12.n13.n14.n15.n16",
+      "name": "n16",
+      "parentId": "n0.n1.n2.n3.n4.n5.n6.n7.n8.n9.n10.n11.n12.n13.n14.n15",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    }
+  ]
+}

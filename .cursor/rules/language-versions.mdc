@@ -1,0 +1,16 @@
+---
+description: Read the release manifest and version specs before changing language, schema, or importer support.
+alwaysApply: true
+---
+
+# Versioned support claims
+
+Before changing `packages/schema`, `packages/compiler`, `packages/runtime`, `packages/canvas-renderer`, `packages/motionscript-emitter`, `packages/format-lottie`, `packages/format-svg`, `packages/format-import-core`, `packages/round-trip`, or `docs/languages`:
+
+1. Read `packages/schema/capabilities/releases.json`.
+2. Read the current MotionScript and Scene IR version files it names.
+3. Read `docs/languages/compatibility-policy.md` and the root `AGENTS.md`.
+
+Published version files are immutable. Support claims change only together with the registry, tests, and the pending or new version entry. Evaluation reports describe one revision; they are not the specification.
+
+There is no V1 feature ceiling. Add Scene IR and MotionScript capabilities needed to render modern Lottie and SVG. Path morph, mattes, animated paint, and repeater/merge are in that set. Stop for a design decision only for a new execution model, such as loops or function declarations.

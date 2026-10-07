@@ -1,0 +1,144 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "z-order",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 4000,
+    "tracks": [],
+    "steps": []
+  },
+  "nodes": [
+    {
+      "id": "red",
+      "name": "red",
+      "parentId": null,
+      "space": "world",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 200,
+          "y": 200
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "rectangle",
+      "size": {
+        "x": 180,
+        "y": 180
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.9372549019607843,
+        "g": 0.26666666666666666,
+        "b": 0.26666666666666666,
+        "a": 1
+      }
+    },
+    {
+      "id": "blue",
+      "name": "blue",
+      "parentId": null,
+      "space": "world",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 280,
+          "y": 260
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "rectangle",
+      "size": {
+        "x": 180,
+        "y": 180
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.23137254901960785,
+        "g": 0.5098039215686274,
+        "b": 0.9647058823529412,
+        "a": 1
+      }
+    },
+    {
+      "id": "green",
+      "name": "green",
+      "parentId": null,
+      "space": "world",
+      "zIndex": 2,
+      "transform": {
+        "position": {
+          "x": 360,
+          "y": 320
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "rectangle",
+      "size": {
+        "x": 180,
+        "y": 180
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.13333333333333333,
+        "g": 0.7725490196078432,
+        "b": 0.3686274509803922,
+        "a": 1
+      }
+    }
+  ]
+}

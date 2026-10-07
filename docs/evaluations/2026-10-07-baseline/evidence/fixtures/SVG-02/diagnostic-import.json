@@ -1,0 +1,58 @@
+{
+  "note": "Not the production importSource route. Used only because production returned no Scene IR, so later stages could be inspected. Outcomes from this object are not a native pass.",
+  "fidelity": "partial",
+  "diagnostics": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "animateTransform",
+      "severity": "error",
+      "message": "<animateTransform> is outside the SVG subset.",
+      "count": 46
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "image",
+      "severity": "error",
+      "message": "<image> is outside the SVG subset.",
+      "count": 2
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "viewBox",
+      "severity": "info",
+      "message": "viewBox is the Scene IR viewport, with minX/minY translated to the origin.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_DROPPED",
+      "feature": "defs",
+      "severity": "warning",
+      "message": "<defs> has no painted result.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "rect",
+      "severity": "error",
+      "message": "<rect> could not be converted.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "static-duration",
+      "severity": "info",
+      "message": "Static SVG uses a 1000ms duration so the runtime can seek it.",
+      "count": 1
+    }
+  ],
+  "sceneProduced": true,
+  "validation": {
+    "ok": false,
+    "diagnostics": [
+      {
+        "code": "RESOURCE_LIMIT",
+        "message": "Hierarchy depth 20 exceeds 16."
+      }
+    ]
+  }
+}

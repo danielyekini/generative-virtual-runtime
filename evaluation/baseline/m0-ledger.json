@@ -1,0 +1,43 @@
+{
+  "milestone": "M0",
+  "recordedAt": "2026-10-07",
+  "snapshot": {
+    "commit": null,
+    "note": "The repository has no commits. This ledger is the source snapshot. Production outcomes in docs/evaluations/2026-10-07-baseline/evidence/outcomes.json stay the baseline and are not relabeled."
+  },
+  "versions": {
+    "sceneIr": "0.1",
+    "motionScript": "0.1",
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0"
+  },
+  "fixtureCount": 10,
+  "fixtures": ["LOT-00", "LOT-01", "LOT-02", "LOT-03", "LOT-04", "LOT-05", "LOT-06", "LOT-07", "SVG-01", "SVG-02"],
+  "productionOutcomes": {
+    "PASS": 0,
+    "PARTIAL": 6,
+    "FAIL": 4,
+    "BLOCKED": 0
+  },
+  "reconciled": {
+    "LOT-00": {
+      "production": "PARTIAL",
+      "manualGate": { "picture": 4, "motion": 4 },
+      "harness": "Pixel difference at 25% and 75%. Endpoints and midpoint match.",
+      "reading": "The manual 4/4 score does not cancel the quarter-frame mismatch. The baseline outcome stays PARTIAL. Cubic easing that would remove the mismatch belongs to M2."
+    },
+    "LOT-03": {
+      "production": "FAIL",
+      "referenceOracle": "UNVERIFIED",
+      "reading": "lottie-web threw, and render-results.json records referenceStatus PASS with that exception in the log while outcomes.json records reference FAIL. Neither is a visual oracle. Diagnostic continuation is not a native pass."
+    }
+  },
+  "rules": {
+    "counts": "COUNTS conversion records import decisions, not visual fidelity.",
+    "diagnostics": "Repeated messages group for display. Every source location remains on a LOC line.",
+    "attribution": "attemptedFixtureId and displayedSceneId are independent. A failed import keeps a previous scene and still shows the failure.",
+    "diagnosticRenders": "sceneKind diagnostic_not_production uses executionRoute diagnostic-continuation and nativeStatus DIAGNOSTIC."
+  }
+}

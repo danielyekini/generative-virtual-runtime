@@ -1,0 +1,16 @@
+{
+  "overall": "exact",
+  "ok": true,
+  "diagnostics": [
+    {
+      "feature": "rectangle",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    },
+    {
+      "feature": "frame-timing",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    }
+  ]
+}

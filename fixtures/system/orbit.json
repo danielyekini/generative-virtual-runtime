@@ -1,0 +1,153 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "orbit",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.0784313725490196,
+    "b": 0.10980392156862745,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "wheel",
+      "name": "wheel",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 640,
+          "y": 360
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "wheel.sun",
+      "name": "sun",
+      "parentId": "wheel",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "circle",
+      "radius": 40,
+      "fill": {
+        "type": "solid",
+        "r": 0.9607843137254902,
+        "g": 0.6196078431372549,
+        "b": 0.043137254901960784,
+        "a": 1
+      }
+    },
+    {
+      "id": "wheel.planet",
+      "name": "planet",
+      "parentId": "wheel",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 210,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "circle",
+      "radius": 18,
+      "fill": {
+        "type": "solid",
+        "r": 0.2196078431372549,
+        "g": 0.7411764705882353,
+        "b": 0.9725490196078431,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 4000,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "wheel",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 4000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": 6.283185307179586
+          }
+        ]
+      }
+    ],
+    "steps": []
+  }
+}

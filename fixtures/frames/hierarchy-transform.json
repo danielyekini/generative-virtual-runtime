@@ -1,0 +1,209 @@
+{
+  "sceneTimeMs": 0,
+  "revision": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "drawItems": [
+    {
+      "nodeId": "neighbor",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 120,
+          "y": 70
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.984313725490196,
+          "g": 0.5725490196078431,
+          "b": 0.23529411764705882,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        80,
+        80,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "pivoted",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 160,
+          "y": 100
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.23137254901960785,
+          "g": 0.5098039215686274,
+          "b": 0.9647058823529412,
+          "a": 1
+        },
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.9372549019607843,
+            "g": 0.9647058823529412,
+            "b": 1,
+            "a": 1
+          },
+          "width": 4,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1.2124355652982142,
+        0.6999999999999998,
+        0,
+        -0.3499999999999999,
+        0.6062177826491071,
+        0,
+        560.5051547761428,
+        273.6891108675446,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "expected",
+      "geometry": {
+        "kind": "polygon",
+        "points": [
+          {
+            "x": 560.5051547761428,
+            "y": 273.6891108675446
+          },
+          {
+            "x": 754.494845223857,
+            "y": 385.6891108675446
+          },
+          {
+            "x": 719.494845223857,
+            "y": 446.3108891324553
+          },
+          {
+            "x": 525.5051547761428,
+            "y": 334.3108891324553
+          }
+        ]
+      },
+      "appearance": {
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.9411764705882353,
+            "g": 0.6705882352941176,
+            "b": 0.9882352941176471,
+            "a": 1
+          },
+          "width": 3,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "pivot",
+      "geometry": {
+        "kind": "circle",
+        "radius": 7
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.9803921568627451,
+          "g": 0.8,
+          "b": 0.08235294117647059,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        640,
+        360,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "viewport-edge",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 1280,
+          "y": 720
+        }
+      },
+      "appearance": {
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.5254901960784314,
+            "g": 0.9372549019607843,
+            "b": 0.6745098039215687,
+            "a": 1
+          },
+          "width": 4,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "opacity": 1
+    }
+  ]
+}

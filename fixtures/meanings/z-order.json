@@ -1,0 +1,9 @@
+{
+  "fixture": "ir/valid/z-order.json",
+  "drawableOrder": [
+    "red",
+    "blue",
+    "green"
+  ],
+  "note": "Lower sibling zIndex is drawn first and therefore sits underneath."
+}

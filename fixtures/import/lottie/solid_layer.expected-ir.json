@@ -1,0 +1,107 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "lottie",
+  "viewport": {
+    "width": 320,
+    "height": 240,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_1",
+      "name": "layer_1",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 160,
+          "y": 120
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.solid",
+      "name": "solid",
+      "parentId": "layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": -160,
+          "y": -120
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "rectangle",
+      "size": {
+        "x": 320,
+        "y": 240
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.95,
+        "g": 0.45,
+        "b": 0.1,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 160,
+        "y": 120
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 1000,
+    "tracks": [],
+    "steps": [
+      {
+        "id": "step1",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1",
+          "channel": "visible"
+        },
+        "timeMs": 1000,
+        "value": false
+      }
+    ]
+  }
+}

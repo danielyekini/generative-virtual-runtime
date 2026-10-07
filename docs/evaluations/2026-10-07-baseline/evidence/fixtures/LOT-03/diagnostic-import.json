@@ -1,0 +1,81 @@
+{
+  "note": "Not the production importSource route. Used only because production returned no Scene IR, so later stages could be inspected. Outcomes from this object are not a native pass.",
+  "fidelity": "partial",
+  "diagnostics": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "layer",
+      "severity": "error",
+      "message": "Layer type 0 is outside the v0.1 subset.",
+      "count": 7
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_8.RectShape2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_9.EllipseShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_10.EllipseShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_11.EllipseShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_12.EllipseShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_13.EllipseShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_14.EllipseShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_15.EllipseShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–427 at 60fps to 7116.666666666666ms.",
+      "count": 1
+    }
+  ],
+  "sceneProduced": true,
+  "validation": {
+    "ok": true,
+    "diagnostics": []
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "fixture": "ir/valid/ear-pivot.json",
+  "ellipse": "centered on the ear's local origin; size is the full width and height",
+  "pivot": {
+    "x": 0,
+    "y": 30
+  },
+  "pivotMeaning": "bottom of the ellipse, the attachment point, in the ear's local geometry",
+  "rotation": "pi/4 radians, clockwise",
+  "parentAttachment": {
+    "x": 55,
+    "y": -75
+  },
+  "worldAttachment": {
+    "x": 235,
+    "y": 425
+  },
+  "parentCenter": {
+    "x": 76.2132034356,
+    "y": -96.2132034356
+  },
+  "note": "The attachment point does not move when the ear rotates. The visual centre does."
+}

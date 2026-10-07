@@ -1,0 +1,659 @@
+{
+  "capabilities": [
+    {
+      "id": "scene.camera",
+      "summary": "A 2D camera maps a world point through position, clockwise rotation, and zoom.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["Zoom is finite and greater than 0. The only fit is contain."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/schema/src/contract.test.ts#maps the specification camera example to (1040, 360)",
+        "packages/runtime/src/runtime.test.ts#maps the specification camera point and leaves screen space alone"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Lottie camera layers are not covered by a conformance test." },
+        "svg": { "status": "not-applicable", "scope": "SVG has no camera." }
+      }
+    },
+    {
+      "id": "scene.contain",
+      "summary": "The logical viewport is letterboxed and never stretched.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["contain is the only fit."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/schema/src/contract.test.ts#letterboxes instead of stretching",
+        "packages/canvas-renderer/src/renderer.test.ts#letterboxes the logical viewport and clears the bars"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Imported viewports are not asserted against contain letterboxing." },
+        "svg": { "status": "untested", "scope": "preserveAspectRatio none is a separate SVG case and is not this claim." }
+      }
+    },
+    {
+      "id": "geometry.primitives",
+      "summary": "Rectangle, circle, ellipse, line, and polygon use the 0.1 local geometry rules.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["Rectangle origin is the top-left. Ellipse and circle are centred."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#lowers a header, a constant, every primitive, and a nested group",
+        "packages/canvas-renderer/src/renderer.test.ts#starts rectangles at the local top-left and centres ellipses"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "Static shape fixtures whose geometry is a centred rect or ellipse, including rectangle centre mapped to the IR top-left.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#maps Lottie rectangle centre to Scene IR top-left"
+          ]
+        },
+        "svg": {
+          "status": "exact",
+          "scope": "Static rect, circle, ellipse, line, and polygon elements in the static primitives fixture.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#imports static primitives into validated Scene IR"
+          ]
+        }
+      }
+    },
+    {
+      "id": "geometry.path",
+      "summary": "Absolute move, line, quadratic, cubic, and close commands.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["Commands are absolute. The first command is move."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "untested" },
+      "conformanceTests": [
+        "packages/runtime/src/streaming.test.ts#keeps the sample on the quadratic the path draws"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Static path lowering has no conformance test that pins commands." },
+        "svg": {
+          "status": "approximate",
+          "scope": "Elliptical arc commands are lowered to cubics. The cubic is not claimed identical to the SVG arc.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#lowers arcs to cubics and round-trips the static scene"
+          ]
+        }
+      }
+    },
+    {
+      "id": "text.basic",
+      "summary": "One line of text with a builtin font, alignment, and baseline.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["One line. No tspan, textPath, or text animators. Glyph advance depends on the font."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#lowers a header, a constant, every primitive, and a nested group",
+        "packages/canvas-renderer/src/renderer.test.ts#draws text from its anchor with the requested alignment"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "A text layer with document text can be lowered, but no conformance test pins the string." },
+        "svg": {
+          "status": "approximate",
+          "scope": "A single text element's string is kept. Font metrics are not claimed to match the reference.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#marks simple text as approximated and keeps the string"
+          ]
+        }
+      }
+    },
+    {
+      "id": "easing.named",
+      "summary": "linear, easeIn, easeOut, and easeInOut.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["These four names are the whole 0.1 easing set."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/schema/src/contract.test.ts#matches the four V1 curves at one half",
+        "packages/runtime/src/runtime.test.ts#matches the four curves at a quarter and a half"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Named Bodymovin shortcuts are stored as these names, without a dedicated curve assertion." },
+        "svg": { "status": "untested", "scope": "SVG calcMode and keySplines are not mapped onto named easing." }
+      }
+    },
+    {
+      "id": "animation.tracks",
+      "summary": "Keyframe tracks sample between boundaries and hold the end fill.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["Overlapping writers of one channel are rejected. Samples do not replace the authored base."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#hits every keyframe boundary and the segment midpoints"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "Scalar and split position tracks on a layer transform, in milliseconds from the composition in-point.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#animates position in milliseconds"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SMIL and CSS coverage is recorded on svg.smilTimeBased and svg.cssKeyframes." }
+      }
+    },
+    {
+      "id": "animation.steps",
+      "summary": "A step sets node visibility at a time.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["V1 steps write only node visibility. A child step cannot reveal a hidden ancestor."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#hides a subtree with a step and does not let a child step reveal it"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "In and out points become visibility steps, without a conformance assertion of the step times." },
+        "svg": { "status": "not-applicable", "scope": "The SVG subset does not lower visibility steps." }
+      }
+    },
+    {
+      "id": "animation.expressions",
+      "summary": "A bounded expression track samples after its start.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["Depth and operation budgets apply. An expression is not evaluated before the track starts."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#does not evaluate an expression before its track starts"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Lottie expressions are not imported. No conformance test pins that diagnostic." },
+        "svg": { "status": "unsupported", "scope": "Scripts and event handlers produce no scene.", "conformanceTests": ["packages/format-svg/src/svg.test.ts#rejects scripts and event handlers with no scene"] }
+      }
+    },
+    {
+      "id": "hierarchy.opacity",
+      "summary": "Drawn opacity is the product of the node and its ancestors.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["runtime", "renderer"],
+      "restrictions": ["A zero product still emits the drawable. inheritOpacity false is transform.parent, not this rule."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#multiplies ancestor opacity and still emits a zero-alpha drawable",
+        "packages/canvas-renderer/src/renderer.test.ts#paints in array order and uses each item's own opacity"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Layer opacity tracks are lowered, without a product assertion across ancestors." },
+        "svg": { "status": "untested", "scope": "Element opacity is lowered. Group isolation is compositing.isolatedOpacity." }
+      }
+    },
+    {
+      "id": "scene.migration",
+      "summary": "A 0.2 consumer loads a 0.1 scene without changing its samples.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["runtime"],
+      "restrictions": ["Migration adds an identity root scope and empty 0.2 collections. It does not invent isolation or additive tracks."],
+      "support": { "compiler": "not-applicable", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#keeps migrated 0.1 samples identical, including shuffled seeks"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Migration is a reader of existing IR, not an import." },
+        "svg": { "status": "not-applicable", "scope": "Migration is a reader of existing IR, not an import." }
+      }
+    },
+    {
+      "id": "timing.localScopes",
+      "summary": "A timing scope shifts and stretches local track time.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["Stretch is finite and non-zero. Local time is (parent - offsetMs) / stretch."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles compositions, instances, scopes, and cubic easing",
+        "packages/runtime/src/runtime.test.ts#applies cubic overshoot, hold, per-component easing, scopes, and composition order"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "A precomp layer records a timing scope and bakes its start offset into child track times once.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SVG time is baked into root tracks. Local scopes are not asserted." }
+      }
+    },
+    {
+      "id": "easing.cubicBezier",
+      "summary": "Cubic easing solves x for progress, then returns y. Y may leave 0..1.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["X controls must lie in [0, 1]."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/schema/src/capability-02.test.ts#solves cubic y after x and keeps hold on the segment start",
+        "packages/compiler/src/compiler.test.ts#compiles compositions, instances, scopes, and cubic easing",
+        "packages/runtime/src/runtime.test.ts#applies cubic overshoot, hold, per-component easing, scopes, and composition order"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "Bodymovin handles whose x components lie in [0, 1], including easing_bezier.json. Handles outside that interval are stored as easeInOut and are outside this exact claim.",
+          "conformanceTests": [
+            "packages/format-lottie/src/dataset.test.ts#repeats hashes and never labels a known loss as exact"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SVG keySplines are not stored as cubic easing." }
+      }
+    },
+    {
+      "id": "easing.hold",
+      "summary": "Hold easing stays on the segment start until the next key.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["Hold is a key easing, not a baked pair of micro-keys."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/schema/src/capability-02.test.ts#solves cubic y after x and keeps hold on the segment start",
+        "packages/runtime/src/runtime.test.ts#applies cubic overshoot, hold, per-component easing, scopes, and composition order"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "A hold keyframe keeps the start value until the next key time, as in hold_keyframe.json.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#holds flat segments before the next key time"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SVG discrete calcMode is not asserted as hold." }
+      }
+    },
+    {
+      "id": "composition.definitions",
+      "summary": "A composition definition and an instance record. Instances are not drawn a second time.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["The instance is validated. Pixels come from scene nodes, not from a second draw of the instance."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles compositions, instances, scopes, and cubic easing"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "A precomp asset is expanded into scene nodes. The composition node list is empty. The instance is a record.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering"
+          ]
+        },
+        "svg": { "status": "not-applicable", "scope": "SVG symbols and use are not this composition model." }
+      }
+    },
+    {
+      "id": "geometry.operators",
+      "summary": "A node can store a trim operator and a round operator.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler"],
+      "restrictions": ["The conformance test checks that the operator list is stored. It does not sample a trimmed outline."],
+      "support": { "compiler": "supported", "runtime": "untested", "renderer": "untested" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles compositions, instances, scopes, and cubic easing"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Static trim can be stored. No conformance test pins the operator values." },
+        "svg": { "status": "not-applicable", "scope": "The SVG subset does not emit geometry operators." }
+      }
+    },
+    {
+      "id": "geometry.trimPath",
+      "summary": "Trim operators apply when a path is resolved.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["runtime"],
+      "restrictions": ["Animated trim is outside this claim until a test samples more than the first value."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Static tm is stored and applied in the resolver, without a conformance test." },
+        "svg": { "status": "not-applicable", "scope": "SVG stroke dash is not trim." }
+      }
+    },
+    {
+      "id": "geometry.roundedRect",
+      "summary": "A rectangle may carry a corner radius.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "renderer"],
+      "restrictions": ["Animated radius is outside this claim."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Static rc.r can be stored. No conformance test pins the radius." },
+        "svg": { "status": "untested", "scope": "SVG rx and ry are not asserted." }
+      }
+    },
+    {
+      "id": "geometry.spatialCurve",
+      "summary": "A vec2 position key may carry spatial in and out tangents, sampled with the eased progress.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["Tangents are offsets from the key value. This is not a substitute for path morph."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "not-applicable" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "Spatial tangents on one position track are lowered and marked exact, as in inventory_gaps layer_2. The curve shape is not sampled by that test.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering"
+          ]
+        },
+        "svg": { "status": "not-applicable", "scope": "SVG has no Bodymovin spatial tangents." }
+      }
+    },
+    {
+      "id": "paint.linearGradient",
+      "summary": "A fill may be a linear gradient with colour stops.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "renderer"],
+      "restrictions": ["Stops are solid colours. Gradient opacity is not replaced by node opacity. Stroke gradients are paint.gradientStroke."],
+      "support": { "compiler": "untested", "runtime": "not-applicable", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Static gf fills can be lowered. No conformance test pins the stops." },
+        "svg": { "status": "untested", "scope": "SVG gradient paints are not imported. No fixture test pins that diagnostic." }
+      }
+    },
+    {
+      "id": "paint.radialGradient",
+      "summary": "A fill may be a radial gradient with colour stops.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "renderer"],
+      "restrictions": ["Same stop rules as paint.linearGradient. Stroke gradients are out of scope."],
+      "support": { "compiler": "untested", "runtime": "not-applicable", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Static radial fills can be lowered. No conformance test pins the stops." },
+        "svg": { "status": "untested", "scope": "SVG gradient paints are not imported. No fixture test pins that diagnostic." }
+      }
+    },
+    {
+      "id": "resources.image",
+      "summary": "An image node draws a declared image resource when that resource is ready.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["compiler", "renderer"],
+      "restrictions": ["Pending or failed readiness fails before playback. The renderer draws only a loaded image."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Image layers can become image nodes. No conformance test pins the href." },
+        "svg": { "status": "untested", "scope": "SVG image elements are not asserted." }
+      }
+    },
+    {
+      "id": "svg.smilTimeBased",
+      "summary": "SMIL animate and animateTransform become tracks.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["runtime"],
+      "restrictions": ["The exact claim is a definite opacity animation. Indefinite repeat is one cycle and is not part of that claim."],
+      "support": { "compiler": "not-applicable", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/format-svg/src/svg.test.ts#imports time-based SMIL opacity and embedded CSS keyframes"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Lottie is not SMIL." },
+        "svg": {
+          "status": "exact",
+          "scope": "smil_opacity.svg: rect opacity from 0 to 1 over 2 seconds, about 0.5 at 1 second. Rotate and translate parsing is outside this assertion.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#imports time-based SMIL opacity and embedded CSS keyframes"
+          ]
+        }
+      }
+    },
+    {
+      "id": "svg.cssKeyframes",
+      "summary": "An embedded opacity @keyframes rule plus an element animation duration becomes a track.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["runtime"],
+      "restrictions": ["Only opacity from/to or 0%/100% inside @keyframes, with a matching #id animation duration. Other CSS is not applied."],
+      "support": { "compiler": "not-applicable", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/format-svg/src/svg.test.ts#imports time-based SMIL opacity and embedded CSS keyframes"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Lottie is not CSS." },
+        "svg": {
+          "status": "exact",
+          "scope": "css_fade.svg: opacity from 0 to 1, sampled at 0 as opacity 0, and the scene requires svg.cssKeyframes.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#imports time-based SMIL opacity and embedded CSS keyframes"
+          ]
+        }
+      }
+    },
+    {
+      "id": "compositing.isolatedOpacity",
+      "summary": "A group can isolate opacity in its own render scope.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["renderer"],
+      "restrictions": ["The SVG test checks the isolated flag. It does not compare composited pixels."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Blend modes set isolation. No test pins the flag." },
+        "svg": {
+          "status": "exact",
+          "scope": "A group with opacity below 1 sets compositing.isolated. Pixel coverage of the overlap is outside this claim.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#isolates overlapping group opacity"
+          ]
+        }
+      }
+    },
+    {
+      "id": "compositing.blend",
+      "summary": "An isolated group may use source-over, multiply, screen, or overlay.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["renderer"],
+      "restrictions": ["Only those four blends."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "bm 1, 2, and 3 can be stored. No conformance test pins the blend." },
+        "svg": { "status": "untested", "scope": "SVG mix-blend-mode is not asserted." }
+      }
+    },
+    {
+      "id": "effects.blur",
+      "summary": "A render scope can carry a blur effect.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["renderer"],
+      "restrictions": [
+        "Radius is CSS blur() pixels. Animated blur radii are not a track channel.",
+        "Lottie mapping uses blurriness * 0.3 to match lottie-web 5.13.0 SVGGaussianBlurEffect."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/format-lottie/src/lottie.test.ts#lowers static Gaussian Blur onto an isolated blur effect",
+        "packages/canvas-renderer/src/renderer.test.ts#applies blur filter on an isolated render scope"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "One static Gaussian Blur (ty 29) with static Blurriness and Blur Dimensions = both axes. Radius is blurriness * 0.3. Blank-named ty 7 Repeat Edge is accepted. Animated Blurriness, other dimensions, empty effect payloads, and mixed effect stacks stay unsupported.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#lowers static Gaussian Blur onto an isolated blur effect",
+            "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SVG filters are not imported. No fixture test pins that diagnostic." }
+      }
+    },
+    {
+      "id": "effects.shadow",
+      "summary": "A render scope can carry a shadow effect.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["renderer"],
+      "restrictions": ["No importer maps a drop shadow into this effect."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Lottie drop shadows are not mapped. No conformance test pins that diagnostic." },
+        "svg": { "status": "untested", "scope": "SVG drop-shadow filters are not covered by a fixture." }
+      }
+    },
+    {
+      "id": "render.tree",
+      "summary": "The default tree is a non-isolated root of draw-item leaves. Compositing groups nest.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["runtime"],
+      "restrictions": ["The conformance sample is the flat migrated tree. Nested scopes are not part of that assertion."],
+      "support": { "compiler": "not-applicable", "runtime": "supported", "renderer": "untested" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#keeps migrated 0.1 samples identical, including shuffled seeks"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Imported scenes are not asserted as render trees." },
+        "svg": { "status": "untested", "scope": "Isolated groups are compositing.isolatedOpacity." }
+      }
+    },
+    {
+      "id": "transform.parent",
+      "summary": "transformParentId selects the transform chain. inheritOpacity false skips one opacity ancestor.",
+      "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+      "targets": ["runtime"],
+      "restrictions": ["Omitted transformParentId means the chain is parentId. inheritOpacity false skips exactly one ancestor."],
+      "support": { "compiler": "untested", "runtime": "untested", "renderer": "not-applicable" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "A resolved Lottie parent sets transformParentId. Tests assert parentId, not that field." },
+        "svg": { "status": "not-applicable", "scope": "SVG parents are containment parents." }
+      }
+    },
+    {
+      "id": "geometry.pathMorph",
+      "summary": "Animated path vertices with a shared command topology.",
+      "targets": [],
+      "restrictions": ["Not representable. Matching topology is diagnosed and not sampled."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Animated sh is rejected by the parser. No conformance test pins that diagnostic." },
+        "svg": { "status": "untested", "scope": "SMIL path animation is not covered." }
+      }
+    },
+    {
+      "id": "paint.gradientStroke",
+      "summary": "A stroke painted with a gradient.",
+      "targets": [],
+      "restrictions": ["Fill gradients do not imply stroke gradients."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "gs strokes are not lowered. No conformance test pins that diagnostic." },
+        "svg": { "status": "untested", "scope": "SVG gradient strokes are not covered." }
+      }
+    },
+    {
+      "id": "compositing.matte",
+      "summary": "A track matte would clip one layer by another.",
+      "targets": [],
+      "restrictions": ["Mattes are withheld so the content is not drawn unmasked. That is not a matte."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": {
+          "status": "unsupported",
+          "scope": "A non-zero tt is reported and the matted content is withheld.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SVG masks are not covered." }
+      }
+    },
+    {
+      "id": "compositing.mask",
+      "summary": "A layer mask would clip geometry to a path.",
+      "targets": [],
+      "restrictions": ["No clip path is applied."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": {
+          "status": "unsupported",
+          "scope": "masksProperties are reported and not applied.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#reports skew and masks without silent loss"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SVG clipPath is not covered." }
+      }
+    },
+    {
+      "id": "transform.skew",
+      "summary": "A skew component on the local transform.",
+      "targets": [],
+      "restrictions": ["The transform is position, pivot, rotation, and scale."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": {
+          "status": "unsupported",
+          "scope": "Non-zero ks.sk or ks.sa is reported and not represented.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#reports skew and masks without silent loss"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "skewX and skewY are outside the subset and have no fixture test." }
+      }
+    },
+    {
+      "id": "transform.autoOrient",
+      "summary": "Rotation follows the position tangent.",
+      "targets": [],
+      "restrictions": ["Auto-orient is not a rotation track."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "ks.ao is reported. No conformance test pins that diagnostic." },
+        "svg": { "status": "not-applicable", "scope": "SVG has no auto-orient flag." }
+      }
+    },
+    {
+      "id": "geometry.repeater",
+      "summary": "A repeater copies geometry with a transform per copy.",
+      "targets": [],
+      "restrictions": ["Not representable."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Repeaters are not lowered and have no fixture test." },
+        "svg": { "status": "not-applicable", "scope": "SVG has no Lottie repeater." }
+      }
+    },
+    {
+      "id": "geometry.mergePaths",
+      "summary": "Boolean merge of paths.",
+      "targets": [],
+      "restrictions": ["Not representable."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Merge paths are not lowered and have no fixture test." },
+        "svg": { "status": "not-applicable", "scope": "SVG has no Lottie merge path." }
+      }
+    },
+    {
+      "id": "text.animators",
+      "summary": "Per-character or range text animation.",
+      "targets": [],
+      "restrictions": ["text.basic is one line. Animators are not that capability."],
+      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
+      "conformanceTests": [],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Text animators are not lowered and have no fixture test." },
+        "svg": { "status": "untested", "scope": "tspan and textPath are rejected without a dedicated conformance test." }
+      }
+    }
+  ]
+}

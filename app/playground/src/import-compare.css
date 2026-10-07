@@ -1,0 +1,133 @@
+#result {
+  margin: 4px 12px 8px;
+  min-height: 1.4em;
+}
+
+#result.exact { color: #d9f99d; }
+#result.degraded,
+#result.partial { color: #fde68a; }
+#result.failed { color: #fecaca; }
+
+#compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+#compare > section {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+#compare header h2 {
+  margin: 0;
+  font-size: 14px;
+}
+
+#compare header p {
+  margin: 2px 0 6px;
+  color: #a1a1aa;
+  font-size: 12px;
+}
+
+.pane-stage {
+  position: relative;
+  flex: 1;
+  min-height: 180px;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  background: #3f3f46;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+#ir-view,
+#ms-view {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.pane-empty {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  text-align: center;
+  color: #a1a1aa;
+  background: #09090b;
+  font-size: 13px;
+}
+
+.pane-empty[hidden] {
+  display: none !important;
+}
+
+#scrub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  background: #111113;
+}
+
+#scrub input[type="range"] {
+  flex: 1;
+  min-width: 120px;
+}
+
+#clock-label,
+#sync-label {
+  font-variant-numeric: tabular-nums;
+  color: #a1a1aa;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+#diagnostics {
+  display: flex;
+  flex-direction: column;
+  max-height: 18vh;
+  min-height: 0;
+  flex: 0 0 auto;
+  padding: 0 12px 8px;
+}
+
+#diagnostics header h2 {
+  margin: 0;
+  font-size: 14px;
+}
+
+#diagnostics header p {
+  margin: 2px 0 6px;
+  color: #a1a1aa;
+  font-size: 12px;
+}
+
+#diag {
+  flex: 1;
+  min-height: 72px;
+  margin: 0;
+  overflow: auto;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  background: #09090b;
+  color: #e7e7ea;
+  font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+  white-space: pre;
+  padding: 8px;
+}
+
+@media (max-width: 640px) {
+  #compare { grid-template-columns: 1fr; }
+}

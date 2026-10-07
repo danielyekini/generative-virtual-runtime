@@ -1,0 +1,21 @@
+{
+  "overall": "partial",
+  "ok": true,
+  "diagnostics": [
+    {
+      "feature": "skew",
+      "level": "unsupported",
+      "code": "IMPORT_UNSUPPORTED"
+    },
+    {
+      "feature": "rectangle",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    },
+    {
+      "feature": "frame-timing",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    }
+  ]
+}

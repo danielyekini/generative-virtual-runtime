@@ -1,0 +1,8 @@
+{
+  "format": "fixture",
+  "name": "mesh",
+  "durationFrames": 30,
+  "nodes": [
+    { "name": "hero", "kind": "mesh3d" }
+  ]
+}

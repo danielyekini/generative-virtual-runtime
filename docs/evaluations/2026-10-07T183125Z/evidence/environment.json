@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-07T19:11:02.615Z",
+  "repository": "/Users/daniel.yekini/Projects/generative-visual-runtime",
+  "gitHead": "Command failed: git rev-parse HEAD",
+  "gitStatus": "## No commits yet on main\n?? .cursor/\n?? .gitignore\n?? AGENTS.md\n?? README.md\n?? app/\n?? docs/\n?? evaluation.zip\n?? evaluation/\n?? fixtures/\n?? formats/\n?? package-lock.json\n?? package.json\n?? packages/\n?? tsconfig.json\n?? vitest.config.ts",
+  "gitLog": "Command failed: git log -1 --oneline",
+  "node": "v24.10.0",
+  "platform": "darwin arm64",
+  "npm": "11.6.0",
+  "chrome": "Google Chrome 154.0.8037.98",
+  "lottieWeb": "5.13.0",
+  "versions": {
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0",
+    "ir": "0.1",
+    "dsl": "0.1",
+    "svgStaticDurationMs": 1000
+  },
+  "commands": [
+    "npx tsx evaluation/harness/run-pipeline.ts",
+    "npx tsx evaluation/harness/drive-browser.ts",
+    "node evaluation/harness/write-report.mjs"
+  ]
+}

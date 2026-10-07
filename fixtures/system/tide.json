@@ -1,0 +1,338 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "tide",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.08627450980392157,
+    "g": 0.0784313725490196,
+    "b": 0.06274509803921569,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "barA",
+      "name": "barA",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 470,
+          "y": 270
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "rectangle",
+      "size": {
+        "x": 80,
+        "y": 180
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.6392156862745098,
+        "g": 0.9019607843137255,
+        "b": 0.20784313725490197,
+        "a": 1
+      }
+    },
+    {
+      "id": "barB",
+      "name": "barB",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 600,
+          "y": 270
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "rectangle",
+      "size": {
+        "x": 80,
+        "y": 180
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.2196078431372549,
+        "g": 0.7411764705882353,
+        "b": 0.9725490196078431,
+        "a": 1
+      }
+    },
+    {
+      "id": "barC",
+      "name": "barC",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 730,
+          "y": 270
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "rectangle",
+      "size": {
+        "x": 80,
+        "y": 180
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.9607843137254902,
+        "g": 0.6196078431372549,
+        "b": 0.043137254901960784,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 4000,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "expression",
+        "target": {
+          "kind": "node",
+          "nodeId": "barA",
+          "channel": "transform.position.y"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 4000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "source": "270 + sin(local_t * PI / 2) * 80",
+        "ast": {
+          "type": "binary",
+          "op": "+",
+          "left": {
+            "type": "number",
+            "value": 270
+          },
+          "right": {
+            "type": "binary",
+            "op": "*",
+            "left": {
+              "type": "call",
+              "callee": "sin",
+              "args": [
+                {
+                  "type": "binary",
+                  "op": "/",
+                  "left": {
+                    "type": "binary",
+                    "op": "*",
+                    "left": {
+                      "type": "ref",
+                      "name": "local_t"
+                    },
+                    "right": {
+                      "type": "ref",
+                      "name": "PI"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                }
+              ]
+            },
+            "right": {
+              "type": "number",
+              "value": 80
+            }
+          }
+        }
+      },
+      {
+        "id": "track2",
+        "kind": "expression",
+        "target": {
+          "kind": "node",
+          "nodeId": "barB",
+          "channel": "transform.position.y"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 4000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "source": "270 + sin(local_t * PI / 2 + 2.094395) * 80",
+        "ast": {
+          "type": "binary",
+          "op": "+",
+          "left": {
+            "type": "number",
+            "value": 270
+          },
+          "right": {
+            "type": "binary",
+            "op": "*",
+            "left": {
+              "type": "call",
+              "callee": "sin",
+              "args": [
+                {
+                  "type": "binary",
+                  "op": "+",
+                  "left": {
+                    "type": "binary",
+                    "op": "/",
+                    "left": {
+                      "type": "binary",
+                      "op": "*",
+                      "left": {
+                        "type": "ref",
+                        "name": "local_t"
+                      },
+                      "right": {
+                        "type": "ref",
+                        "name": "PI"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2.094395
+                  }
+                }
+              ]
+            },
+            "right": {
+              "type": "number",
+              "value": 80
+            }
+          }
+        }
+      },
+      {
+        "id": "track3",
+        "kind": "expression",
+        "target": {
+          "kind": "node",
+          "nodeId": "barC",
+          "channel": "transform.position.y"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 4000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "source": "270 + sin(local_t * PI / 2 + 4.18879) * 80",
+        "ast": {
+          "type": "binary",
+          "op": "+",
+          "left": {
+            "type": "number",
+            "value": 270
+          },
+          "right": {
+            "type": "binary",
+            "op": "*",
+            "left": {
+              "type": "call",
+              "callee": "sin",
+              "args": [
+                {
+                  "type": "binary",
+                  "op": "+",
+                  "left": {
+                    "type": "binary",
+                    "op": "/",
+                    "left": {
+                      "type": "binary",
+                      "op": "*",
+                      "left": {
+                        "type": "ref",
+                        "name": "local_t"
+                      },
+                      "right": {
+                        "type": "ref",
+                        "name": "PI"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 4.18879
+                  }
+                }
+              ]
+            },
+            "right": {
+              "type": "number",
+              "value": 80
+            }
+          }
+        }
+      }
+    ],
+    "steps": []
+  }
+}

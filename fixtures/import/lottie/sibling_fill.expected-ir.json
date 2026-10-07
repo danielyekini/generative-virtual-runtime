@@ -1,0 +1,107 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "SiblingFill",
+  "viewport": {
+    "width": 200,
+    "height": 200,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_1",
+      "name": "layer_1",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.Circle",
+      "name": "Circle",
+      "parentId": "layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 100,
+          "y": 100
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 60,
+        "y": 60
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.2,
+        "g": 0.7,
+        "b": 0.9,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 1000,
+    "tracks": [],
+    "steps": [
+      {
+        "id": "step1",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1",
+          "channel": "visible"
+        },
+        "timeMs": 1000,
+        "value": false
+      }
+    ]
+  }
+}

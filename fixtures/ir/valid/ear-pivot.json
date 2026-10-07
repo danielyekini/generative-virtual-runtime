@@ -1,0 +1,96 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "ear-pivot",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 4000,
+    "tracks": [],
+    "steps": []
+  },
+  "nodes": [
+    {
+      "id": "bunny",
+      "name": "bunny",
+      "parentId": null,
+      "space": "world",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 180,
+          "y": 500
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "bunny.ear",
+      "name": "ear",
+      "parentId": "bunny",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 55,
+          "y": -105
+        },
+        "pivot": {
+          "x": 0,
+          "y": 30
+        },
+        "rotation": 0.7853981633974483,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 18,
+        "y": 60
+      },
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,347 @@
+{
+  "sceneTimeMs": 0,
+  "revision": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "drawItems": [
+    {
+      "nodeId": "evenodd",
+      "geometry": {
+        "kind": "path",
+        "fillRule": "evenodd",
+        "commands": [
+          {
+            "cmd": "M",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "cmd": "L",
+            "x": 220,
+            "y": 0
+          },
+          {
+            "cmd": "L",
+            "x": 220,
+            "y": 160
+          },
+          {
+            "cmd": "L",
+            "x": 0,
+            "y": 160
+          },
+          {
+            "cmd": "Z"
+          },
+          {
+            "cmd": "M",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "cmd": "L",
+            "x": 170,
+            "y": 40
+          },
+          {
+            "cmd": "L",
+            "x": 170,
+            "y": 120
+          },
+          {
+            "cmd": "L",
+            "x": 50,
+            "y": 120
+          },
+          {
+            "cmd": "Z"
+          }
+        ]
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.7529411764705882,
+          "g": 0.5176470588235295,
+          "b": 0.9882352941176471,
+          "a": 1
+        },
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.9803921568627451,
+            "g": 0.9607843137254902,
+            "b": 1,
+            "a": 1
+          },
+          "width": 3,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        120,
+        140,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "nonzero",
+      "geometry": {
+        "kind": "path",
+        "fillRule": "nonzero",
+        "commands": [
+          {
+            "cmd": "M",
+            "x": 0,
+            "y": 0
+          },
+          {
+            "cmd": "L",
+            "x": 220,
+            "y": 0
+          },
+          {
+            "cmd": "L",
+            "x": 220,
+            "y": 160
+          },
+          {
+            "cmd": "L",
+            "x": 0,
+            "y": 160
+          },
+          {
+            "cmd": "Z"
+          },
+          {
+            "cmd": "M",
+            "x": 50,
+            "y": 40
+          },
+          {
+            "cmd": "L",
+            "x": 170,
+            "y": 40
+          },
+          {
+            "cmd": "L",
+            "x": 170,
+            "y": 120
+          },
+          {
+            "cmd": "L",
+            "x": 50,
+            "y": 120
+          },
+          {
+            "cmd": "Z"
+          }
+        ]
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.7529411764705882,
+          "g": 0.5176470588235295,
+          "b": 0.9882352941176471,
+          "a": 1
+        },
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.9803921568627451,
+            "g": 0.9607843137254902,
+            "b": 1,
+            "a": 1
+          },
+          "width": 3,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        480,
+        140,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "cubic",
+      "geometry": {
+        "kind": "path",
+        "fillRule": "nonzero",
+        "commands": [
+          {
+            "cmd": "M",
+            "x": 0,
+            "y": 80
+          },
+          {
+            "cmd": "C",
+            "c1x": 80,
+            "c1y": -40,
+            "c2x": 160,
+            "c2y": 200,
+            "x": 240,
+            "y": 80
+          },
+          {
+            "cmd": "C",
+            "c1x": 320,
+            "c1y": -40,
+            "c2x": 400,
+            "c2y": 200,
+            "x": 480,
+            "y": 80
+          }
+        ]
+      },
+      "appearance": {
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.2196078431372549,
+            "g": 0.7411764705882353,
+            "b": 0.9725490196078431,
+            "a": 1
+          },
+          "width": 6,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        120,
+        460,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "quadratic",
+      "geometry": {
+        "kind": "path",
+        "fillRule": "nonzero",
+        "commands": [
+          {
+            "cmd": "M",
+            "x": 0,
+            "y": 80
+          },
+          {
+            "cmd": "Q",
+            "cx": 80,
+            "cy": 0,
+            "x": 160,
+            "y": 80
+          },
+          {
+            "cmd": "Q",
+            "cx": 240,
+            "cy": 160,
+            "x": 320,
+            "y": 80
+          }
+        ]
+      },
+      "appearance": {
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.9764705882352941,
+            "g": 0.6588235294117647,
+            "b": 0.8313725490196079,
+            "a": 1
+          },
+          "width": 6,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        720,
+        460,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "viewport-edge",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 1280,
+          "y": 720
+        }
+      },
+      "appearance": {
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.5254901960784314,
+            "g": 0.9372549019607843,
+            "b": 0.6745098039215687,
+            "a": 1
+          },
+          "width": 4,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "opacity": 1
+    }
+  ]
+}

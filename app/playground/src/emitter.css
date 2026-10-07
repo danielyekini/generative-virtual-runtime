@@ -1,0 +1,130 @@
+#flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 0;
+  padding: 10px 12px 0;
+  list-style: none;
+}
+
+#flow li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 132px;
+  padding: 6px 10px;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  background: #111113;
+  color: #a1a1aa;
+}
+
+#flow li b {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #27272a;
+  font-size: 12px;
+}
+
+#flow li span {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #e7e7ea;
+}
+
+#flow li small {
+  color: #a1a1aa;
+  font-size: 11px;
+}
+
+#flow li.is-done {
+  border-color: #3f6212;
+  background: #14532d22;
+}
+
+#flow li.is-done b {
+  background: #365314;
+  color: #ecfccb;
+}
+
+#flow li.is-live {
+  border-color: #84cc16;
+  box-shadow: inset 0 0 0 1px #84cc16;
+}
+
+#flow li.is-failed {
+  border-color: #b91c1c;
+  background: #450a0a44;
+}
+
+#flow li.is-failed b { background: #7f1d1d; }
+
+#flow li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #71717a;
+}
+
+#result {
+  margin: 8px 12px 0;
+  color: #d4d4d8;
+}
+
+#result.is-bad { color: #fecaca; }
+
+#panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 8px 12px 0;
+  min-height: 0;
+}
+
+#panes section {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 220px;
+  max-height: 34vh;
+}
+
+#panes header h2 {
+  margin: 0;
+  font-size: 13px;
+}
+
+#panes header p {
+  margin: 2px 0 6px;
+  color: #a1a1aa;
+  font-size: 12px;
+}
+
+#source,
+#ir {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  overflow: auto;
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  background: #111113;
+  color: #e7e7ea;
+  font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+  padding: 8px;
+  white-space: pre;
+}
+
+#source { resize: none; }
+
+@media (max-width: 800px) {
+  #panes { grid-template-columns: 1fr; }
+  #panes section { max-height: 28vh; }
+}

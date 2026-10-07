@@ -1,0 +1,351 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "pulse",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.0784313725490196,
+    "g": 0.08627450980392157,
+    "b": 0.10980392156862745,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "mark",
+      "name": "mark",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 640,
+          "y": 360
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "mark.hub",
+      "name": "hub",
+      "parentId": "mark",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "circle",
+      "radius": 18,
+      "fill": {
+        "type": "solid",
+        "r": 0.9725490196078431,
+        "g": 0.9803921568627451,
+        "b": 0.9882352941176471,
+        "a": 1
+      }
+    },
+    {
+      "id": "mark.a",
+      "name": "a",
+      "parentId": "mark",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "circle",
+      "radius": 26,
+      "fill": {
+        "type": "solid",
+        "r": 0.6392156862745098,
+        "g": 0.9019607843137255,
+        "b": 0.20784313725490197,
+        "a": 1
+      }
+    },
+    {
+      "id": "mark.b",
+      "name": "b",
+      "parentId": "mark",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 95,
+          "y": 55
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "circle",
+      "radius": 26,
+      "fill": {
+        "type": "solid",
+        "r": 0.2196078431372549,
+        "g": 0.7411764705882353,
+        "b": 0.9725490196078431,
+        "a": 1
+      }
+    },
+    {
+      "id": "mark.c",
+      "name": "c",
+      "parentId": "mark",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": -95,
+          "y": 55
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "circle",
+      "radius": 26,
+      "fill": {
+        "type": "solid",
+        "r": 0.9607843137254902,
+        "g": 0.6196078431372549,
+        "b": 0.043137254901960784,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 3000,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "mark",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 3000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": 6.283185307179586
+          }
+        ]
+      },
+      {
+        "id": "track2",
+        "kind": "expression",
+        "target": {
+          "kind": "node",
+          "nodeId": "mark",
+          "channel": "transform.scale.x"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 3000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "source": "1 + 0.06 * sin(local_t * 2 * PI / 3)",
+        "ast": {
+          "type": "binary",
+          "op": "+",
+          "left": {
+            "type": "number",
+            "value": 1
+          },
+          "right": {
+            "type": "binary",
+            "op": "*",
+            "left": {
+              "type": "number",
+              "value": 0.06
+            },
+            "right": {
+              "type": "call",
+              "callee": "sin",
+              "args": [
+                {
+                  "type": "binary",
+                  "op": "/",
+                  "left": {
+                    "type": "binary",
+                    "op": "*",
+                    "left": {
+                      "type": "binary",
+                      "op": "*",
+                      "left": {
+                        "type": "ref",
+                        "name": "local_t"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 2
+                      }
+                    },
+                    "right": {
+                      "type": "ref",
+                      "name": "PI"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 3
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "track3",
+        "kind": "expression",
+        "target": {
+          "kind": "node",
+          "nodeId": "mark",
+          "channel": "transform.scale.y"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 3000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "source": "1 + 0.06 * sin(local_t * 2 * PI / 3)",
+        "ast": {
+          "type": "binary",
+          "op": "+",
+          "left": {
+            "type": "number",
+            "value": 1
+          },
+          "right": {
+            "type": "binary",
+            "op": "*",
+            "left": {
+              "type": "number",
+              "value": 0.06
+            },
+            "right": {
+              "type": "call",
+              "callee": "sin",
+              "args": [
+                {
+                  "type": "binary",
+                  "op": "/",
+                  "left": {
+                    "type": "binary",
+                    "op": "*",
+                    "left": {
+                      "type": "binary",
+                      "op": "*",
+                      "left": {
+                        "type": "ref",
+                        "name": "local_t"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 2
+                      }
+                    },
+                    "right": {
+                      "type": "ref",
+                      "name": "PI"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 3
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "steps": []
+  }
+}

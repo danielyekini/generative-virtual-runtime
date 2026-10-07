@@ -1,0 +1,17 @@
+{
+  "fixture": "ir/valid/circle.json",
+  "center": "local origin",
+  "parentCenter": {
+    "x": 400,
+    "y": 300
+  },
+  "parentTop": {
+    "x": 400,
+    "y": 260
+  },
+  "parentRight": {
+    "x": 440,
+    "y": 300
+  },
+  "note": "Top is smaller y because y increases downward."
+}

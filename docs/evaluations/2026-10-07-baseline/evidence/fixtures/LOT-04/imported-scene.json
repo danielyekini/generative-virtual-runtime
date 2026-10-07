@@ -1,0 +1,307 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "MainScene",
+  "viewport": {
+    "width": 500,
+    "height": 888.89,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_2",
+      "name": "layer_2",
+      "parentId": null,
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": -123.48106138619505,
+          "y": 293.16165182688263
+        },
+        "pivot": {
+          "x": 207,
+          "y": 149
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1.8234961349387924,
+          "y": 1.8234961349387924
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Group1",
+      "name": "Group1",
+      "parentId": "layer_2",
+      "zIndex": 11,
+      "transform": {
+        "position": {
+          "x": 207,
+          "y": 149
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Group1.Group1",
+      "name": "Group1",
+      "parentId": "layer_2.Group1",
+      "zIndex": 12,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Group1.Group1.Path2",
+      "name": "Path2",
+      "parentId": "layer_2.Group1.Group1",
+      "zIndex": 13,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -10,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -10,
+          "c1y": 5.523,
+          "c2x": -5.522,
+          "c2y": 10,
+          "x": 0,
+          "y": 10
+        },
+        {
+          "cmd": "C",
+          "c1x": 5.523,
+          "c1y": 10,
+          "c2x": 10,
+          "c2y": 5.523,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 10,
+          "c1y": -5.523,
+          "c2x": 5.523,
+          "c2y": -10,
+          "x": 0,
+          "y": -10
+        },
+        {
+          "cmd": "C",
+          "c1x": -5.522,
+          "c1y": -10,
+          "c2x": -10,
+          "c2y": -5.523,
+          "x": -10,
+          "y": 0
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero"
+    },
+    {
+      "id": "layer_3",
+      "name": "layer_3",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 294.44499999999994
+        },
+        "pivot": {
+          "x": 250,
+          "y": 150
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 3.089775395824784
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_3.Group1",
+      "name": "Group1",
+      "parentId": "layer_3",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 250,
+          "y": 150
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_3.Group1.Path1",
+      "name": "Path1",
+      "parentId": "layer_3.Group1",
+      "zIndex": 2,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -250,
+          "y": 150
+        },
+        {
+          "cmd": "C",
+          "c1x": -250,
+          "c1y": 150,
+          "c2x": 250,
+          "c2y": 150,
+          "x": 250,
+          "y": 150
+        },
+        {
+          "cmd": "C",
+          "c1x": 250,
+          "c1y": 150,
+          "c2x": 250,
+          "c2y": -150,
+          "x": 250,
+          "y": -150
+        },
+        {
+          "cmd": "C",
+          "c1x": 250,
+          "c1y": -150,
+          "c2x": -250,
+          "c2y": -150,
+          "x": -250,
+          "y": -150
+        },
+        {
+          "cmd": "C",
+          "c1x": -250,
+          "c1y": -150,
+          "c2x": -250,
+          "c2y": 150,
+          "x": -250,
+          "y": 150
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 250,
+        "y": 444.445
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 11250,
+    "tracks": [],
+    "steps": []
+  }
+}

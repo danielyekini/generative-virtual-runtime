@@ -1,0 +1,5 @@
+STATUS	partial
+COUNTS	exact	2	approximated	0	dropped	0	unsupported	1
+IMPORT_UNSUPPORTED	error	unsupported	layer_1	Layer type 0 is outside the v0.1 subset.
+IMPORT_EXACT	info	exact	layer_2.RectShape1	Imported rectangle layer_2.RectShape1.
+IMPORT_EXACT	info	exact		Converted composition frames 0–241 at 60fps to 4016.6666666666665ms.

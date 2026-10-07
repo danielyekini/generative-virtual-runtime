@@ -1,0 +1,23 @@
+{
+  "format": "fixture",
+  "name": "eased-dot",
+  "fps": 30,
+  "durationFrames": 60,
+  "background": "#101014",
+  "nodes": [
+    {
+      "name": "dot",
+      "kind": "circle",
+      "radius": 24,
+      "position": [80, 200],
+      "fill": "#f472b6",
+      "motion": {
+        "property": "position.x",
+        "frames": [
+          { "frame": 0, "value": 80, "ease": "cubic" },
+          { "frame": 45, "value": 900 }
+        ]
+      }
+    }
+  ]
+}

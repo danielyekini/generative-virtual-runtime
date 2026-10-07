@@ -1,0 +1,21 @@
+{
+  "overall": "partial",
+  "ok": true,
+  "diagnostics": [
+    {
+      "feature": "mask",
+      "level": "unsupported",
+      "code": "IMPORT_UNSUPPORTED"
+    },
+    {
+      "feature": "ellipse",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    },
+    {
+      "feature": "frame-timing",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    }
+  ]
+}

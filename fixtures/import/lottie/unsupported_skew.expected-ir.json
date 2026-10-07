@@ -1,0 +1,131 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "lottie",
+  "viewport": {
+    "width": 200,
+    "height": 200,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_1",
+      "name": "layer_1",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 100,
+          "y": 100
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.group0",
+      "name": "group0",
+      "parentId": "layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.group0.rectangleNode",
+      "name": "rectangleNode",
+      "parentId": "layer_1.group0",
+      "zIndex": 2,
+      "transform": {
+        "position": {
+          "x": -40,
+          "y": -40
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "rectangle",
+      "size": {
+        "x": 40,
+        "y": 40
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.2,
+        "g": 0.2,
+        "b": 0.2,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 1000,
+    "tracks": [],
+    "steps": [
+      {
+        "id": "step1",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1",
+          "channel": "visible"
+        },
+        "timeMs": 1000,
+        "value": false
+      }
+    ]
+  }
+}

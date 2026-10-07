@@ -1,0 +1,28 @@
+{
+  "status": "blocker",
+  "reason": "Profile not yet a pass. Five implement cycles used. Next cause geometry.pathMorph needs a Scene IR / MotionScript path track valueType (pending language bump) and remaining cycles in this invocation are insufficient to land it with registry, conformance, and 0.1 migration safety.",
+  "completedCauses": [
+    "effect.gaussianBlur.static",
+    "stroke.width.nonPositive",
+    "track.startOutsideDuration"
+  ],
+  "nextCause": {
+    "id": "geometry.pathMorph",
+    "fixtures": ["LOT-06", "LOT-07"],
+    "attempts": 0,
+    "notes": [
+      "pathTopologyMatches currently reads frame.s.v but Lottie stores path keys as frame.s[0].v, so matching topologies are mis-labelled as mismatch.",
+      "After that fix, matching topologies still need geometry.pathMorph sampling."
+    ]
+  },
+  "alsoQueued": [
+    "compositing.matte (LOT-02, LOT-05)",
+    "effect.gaussianBlur.animated (LOT-04 residual 17)",
+    "size.ceiling.512KiB (LOT-03 quarantined; policy change only)"
+  ],
+  "implementCyclesUsed": 5,
+  "maxImplementCycles": 8,
+  "exactFixturesNow": ["LOT-00", "LOT-01"],
+  "evidence": "evidence/",
+  "comparedWith": "2026-10-07-baseline"
+}

@@ -1,0 +1,11 @@
+{
+  "overall": "failed",
+  "ok": false,
+  "diagnostics": [
+    {
+      "feature": "source",
+      "level": "unsupported",
+      "code": "IMPORT_MALFORMED"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "fixture": "ir/valid/camera-mapping.json",
+  "formula": "p_logical = T(viewportCentre) * S(zoom) * R(-rotation) * T(-camera.position) * p_world",
+  "worldPoint": {
+    "x": 700,
+    "y": 300
+  },
+  "logicalPoint": {
+    "x": 1040,
+    "y": 360
+  }
+}

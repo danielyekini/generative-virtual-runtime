@@ -1,0 +1,305 @@
+scene "Radio_02" {
+  version "0.1";
+  viewport (400, 400);
+  background #101014;
+  duration 5s;
+};
+camera main {
+  position (200, 200);
+  zoom 1;
+  rotation 0deg;
+};
+group layer_1 {
+  position (200, 200);
+  rotation 25deg;
+  zIndex 50;
+  group Shape_5 {
+    position (2.141, 0.523);
+    zIndex 51;
+  };
+};
+group layer_2 {
+  position (200, 200);
+  rotation -25deg;
+  opacity 0.75;
+  zIndex 40;
+  group Shape_55 {
+    position (2.141, 0.523);
+    zIndex 41;
+  };
+};
+group layer_3 {
+  position (200, 200);
+  opacity 0.75;
+  zIndex 30;
+  group Shape_6 {
+    position (2.141, 0.523);
+    zIndex 31;
+  };
+};
+group layer_4 {
+  position (200, 200);
+  rotation -25deg;
+  opacity 0.75;
+  zIndex 20;
+  group Shape1 {
+    position (2.141, 0.523);
+    zIndex 21;
+  };
+  group Group1 {
+    zIndex 22;
+  };
+};
+group layer_5 {
+  position (200, 200);
+  opacity 0.75;
+  zIndex 10;
+  group Shape_1 {
+    position (2.141, 0.523);
+    zIndex 11;
+  };
+};
+group layer_6 {
+  position (29.5, 18.5);
+  pivot (170.5, 181.5);
+  scale (1.05, 1.05);
+  group Group1 {
+    position (331.25, 270.25);
+    zIndex 1;
+    path Path1 {
+      zIndex 2;
+      fill #b5029d;
+      move (0, -2);
+      cubic (1.104, -2) (2, -1.104) (2, 0);
+      cubic (2, 1.104) (1.104, 2) (0, 2);
+      cubic (-1.104, 2) (-2, 1.104) (-2, 0);
+      cubic (-2, -1.104) (-1.104, -2) (0, -2);
+      close;
+    };
+  };
+  group Group2 {
+    position (55.75, 143.75);
+    zIndex 2;
+    path Path1 {
+      zIndex 3;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group3 {
+    position (101.75, 2.75);
+    zIndex 3;
+    path Path1 {
+      zIndex 4;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group4 {
+    position (72.75, 68.75);
+    zIndex 4;
+    path Path1 {
+      zIndex 5;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group5 {
+    position (165.75, 33.75);
+    zIndex 5;
+    path Path1 {
+      zIndex 6;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group6 {
+    position (282.75, 42.75);
+    zIndex 6;
+    path Path1 {
+      zIndex 7;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group7 {
+    position (295.75, 99.75);
+    zIndex 7;
+    path Path1 {
+      zIndex 8;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group8 {
+    position (337.75, 162.75);
+    zIndex 8;
+    path Path1 {
+      zIndex 9;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group9 {
+    position (306.75, 223.75);
+    zIndex 9;
+    path Path1 {
+      zIndex 10;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group10 {
+    position (204.75, 359.75);
+    zIndex 10;
+    path Path1 {
+      zIndex 11;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group11 {
+    position (245.75, 320.75);
+    zIndex 11;
+    path Path1 {
+      zIndex 12;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group12 {
+    position (155.75, 326.75);
+    zIndex 12;
+    path Path1 {
+      zIndex 13;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group13 {
+    position (102.75, 283.75);
+    zIndex 13;
+    path Path1 {
+      zIndex 14;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group14 {
+    position (41.75, 254.75);
+    zIndex 14;
+    path Path1 {
+      zIndex 15;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group15 {
+    position (2.75, 223.75);
+    zIndex 15;
+    path Path1 {
+      zIndex 16;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group16 {
+    position (13.75, 162.75);
+    zIndex 16;
+    path Path1 {
+      zIndex 17;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+  group Group17 {
+    position (2.75, 90.75);
+    zIndex 17;
+    path Path1 {
+      zIndex 18;
+      fill #b5029d;
+      move (0, -2.5);
+      cubic (1.381, -2.5) (2.5, -1.381) (2.5, 0);
+      cubic (2.5, 1.381) (1.381, 2.5) (0, 2.5);
+      cubic (-1.381, 2.5) (-2.5, 1.381) (-2.5, 0);
+      cubic (-2.5, -1.381) (-1.381, -2.5) (0, -2.5);
+      close;
+    };
+  };
+};
+complete;

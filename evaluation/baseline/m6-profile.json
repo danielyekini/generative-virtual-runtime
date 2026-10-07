@@ -1,0 +1,54 @@
+{
+  "profile": "motionscript-capability-0.2",
+  "packageVersion": "0.1.0",
+  "irVersions": ["0.1", "0.2"],
+  "claimsAllFixturesPass": false,
+  "lot03": {
+    "status": "quarantined",
+    "reason": "Production import stops at the 512 KiB source ceiling before parse. Diagnostic continuation is not a native pass."
+  },
+  "importCeilings": {
+    "defaultMaxSourceBytes": 524288,
+    "adapterMaxNodes": 2000,
+    "adapterMaxDepth": 64,
+    "candidateSourceBytes": 5242880,
+    "candidateStatus": "proposed-not-default"
+  },
+  "tolerances": {
+    "number": 0.001,
+    "color": 0.00392156862745098
+  },
+  "enabledCapabilities": [
+    "timing.localScopes",
+    "easing.cubicBezier",
+    "easing.hold",
+    "composition.definitions",
+    "geometry.operators",
+    "geometry.roundedRect",
+    "geometry.spatialCurve",
+    "geometry.trimPath",
+    "render.tree",
+    "transform.parent",
+    "paint.linearGradient",
+    "paint.radialGradient",
+    "text.basic",
+    "resources.image",
+    "svg.smilTimeBased",
+    "svg.cssKeyframes",
+    "compositing.isolatedOpacity",
+    "compositing.blend",
+    "effects.blur",
+    "effects.shadow"
+  ],
+  "semanticSamples": [
+    "Cubic easing is solved on x before y, including overshoot.",
+    "Spatial tangents are a vec2 cubic sampled with the eased progress.",
+    "Hold stays on the segment start until the next key.",
+    "Isolated group opacity is carried by the render scope.",
+    "A missing matte withholds the matted layer."
+  ],
+  "performance": {
+    "method": "Unit tests sample short 0.2 scenes. This profile does not claim a frame budget.",
+    "budgetClaim": false
+  }
+}

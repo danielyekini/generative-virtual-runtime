@@ -1,0 +1,15 @@
+{
+  "fixture": "ir/valid/minimal.json",
+  "localOrigin": "top-left, minimum x and minimum y",
+  "size": "full width and full height",
+  "pivot": "local (0, 0), which is that top-left corner",
+  "parentTopLeft": {
+    "x": 100,
+    "y": 50
+  },
+  "parentBottomRight": {
+    "x": 300,
+    "y": 130
+  },
+  "positiveAngle": "clockwise radians"
+}

@@ -1,0 +1,79 @@
+STATUS	partial
+COUNTS	exact	14	approximated	39	dropped	0	unsupported	24
+IMPORT_APPROXIMATED	warning	approximated	layer_4	Bezier easing on layer_4.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4	Bezier easing on layer_4.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4	Bezier easing on layer_4.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3	Bezier easing on layer_4.layer_3.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3	Bezier easing on layer_4.layer_3.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3	Bezier easing on layer_4.layer_3.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.layer_3.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3.layer_2	Bezier easing on layer_4.layer_3.layer_2.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3.layer_2	Bezier easing on layer_4.layer_3.layer_2.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3.layer_2	Bezier easing on layer_4.layer_3.layer_2.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.layer_3.layer_2.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3.layer_2.layer_1	Bezier easing on layer_4.layer_3.layer_2.layer_1.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3.layer_2.layer_1	Bezier easing on layer_4.layer_3.layer_2.layer_1.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_4.layer_3.layer_2.layer_1	Bezier easing on layer_4.layer_3.layer_2.layer_1.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.layer_3.layer_2.layer_1.Group1.Group4	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.layer_3.layer_2.layer_1.Group1.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.layer_3.layer_2.layer_1.Group1.Group2	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.layer_3.layer_2.layer_1.Group1.Group3	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.layer_3.layer_2.layer_1.Group2	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_5	Bezier easing on layer_5.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_5	Bezier easing on layer_5.transform.position.y was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_5.Group1.Group1.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_5.Group1.Group1.Group2	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_17	Bezier easing on layer_17.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_17	Bezier easing on layer_17.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_17	Bezier easing on layer_17.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_17.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_EXACT	info	exact	layer_17.layer_18.Group1.Path1	Imported path layer_17.layer_18.Group1.Path1.
+IMPORT_APPROXIMATED	warning	approximated	layer_17.layer_18.layer_19	Bezier easing on layer_17.layer_18.layer_19.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_17.layer_18.layer_19	Bezier easing on layer_17.layer_18.layer_19.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_17.layer_18.layer_19	Bezier easing on layer_17.layer_18.layer_19.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_17.layer_18.layer_19.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_17.layer_18.layer_19.layer_6	Bezier easing on layer_17.layer_18.layer_19.layer_6.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_17.layer_18.layer_19.layer_6	Bezier easing on layer_17.layer_18.layer_19.layer_6.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_17.layer_18.layer_19.layer_6	Bezier easing on layer_17.layer_18.layer_19.layer_6.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_17.layer_18.layer_19.layer_6.Group1.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_EXACT	info	exact	layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path2	Imported path layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path2.
+IMPORT_UNSUPPORTED	error	unsupported	layer_17.layer_18.layer_19.layer_6.Group1.Group2	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_17.layer_18.layer_19.layer_6.Group2	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_7	Bezier easing on layer_7.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_7	Bezier easing on layer_7.transform.position.y was mapped to Scene IR easing names.
+IMPORT_EXACT	info	exact	layer_7.Group1.Path1	Imported path layer_7.Group1.Path1.
+IMPORT_APPROXIMATED	warning	approximated	layer_8	Bezier easing on layer_8.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_8	Bezier easing on layer_8.transform.position.y was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_8.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_9.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_10	Bezier easing on layer_10.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_10	Bezier easing on layer_10.transform.position.y was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_10.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_11.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_12	Bezier easing on layer_12.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_12	Bezier easing on layer_12.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_12	Bezier easing on layer_12.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_12.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_13	Bezier easing on layer_13.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_13	Bezier easing on layer_13.transform.position.y was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_13	Bezier easing on layer_13.transform.rotation was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_13.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_14.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_15	Bezier easing on layer_15.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_15	Bezier easing on layer_15.transform.position.y was mapped to Scene IR easing names.
+IMPORT_UNSUPPORTED	error	unsupported	layer_15.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_APPROXIMATED	warning	approximated	layer_20	Bezier easing on layer_20.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_20	Bezier easing on layer_20.transform.position.y was mapped to Scene IR easing names.
+IMPORT_EXACT	info	exact	layer_20.Group1.Path1	Imported path layer_20.Group1.Path1.
+IMPORT_UNSUPPORTED	error	unsupported	layer_20.layer_16.Group1	Animated path geometry is outside the v0.1 subset.
+IMPORT_EXACT	info	exact	layer_21.Group1.Group1.Path1	Imported path layer_21.Group1.Group1.Path1.
+IMPORT_EXACT	info	exact	layer_21.Group1.Group2.Path1	Imported path layer_21.Group1.Group2.Path1.
+IMPORT_EXACT	info	exact	layer_21.Group1.Group3.Path1	Imported path layer_21.Group1.Group3.Path1.
+IMPORT_EXACT	info	exact	layer_21.Group2.Path1	Imported path layer_21.Group2.Path1.
+IMPORT_EXACT	info	exact	layer_22.Group1.Group1.Path1	Imported path layer_22.Group1.Group1.Path1.
+IMPORT_EXACT	info	exact	layer_22.Group1.Group2.Path1	Imported path layer_22.Group1.Group2.Path1.
+IMPORT_EXACT	info	exact	layer_22.Group1.Group3.Path1	Imported path layer_22.Group1.Group3.Path1.
+IMPORT_EXACT	info	exact	layer_22.Group2.Path1	Imported path layer_22.Group2.Path1.
+IMPORT_EXACT	info	exact	layer_22.Group3.Path1	Imported path layer_22.Group3.Path1.
+IMPORT_EXACT	info	exact		Converted composition frames 0–24 at 25fps to 960ms.

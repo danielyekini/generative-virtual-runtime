@@ -1,0 +1,9 @@
+#scrub {
+  display: flex;
+  padding: 8px 12px 0;
+}
+
+#time {
+  flex: 1;
+  accent-color: #84cc16;
+}

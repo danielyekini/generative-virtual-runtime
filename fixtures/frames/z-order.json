@@ -1,0 +1,148 @@
+{
+  "sceneTimeMs": 0,
+  "revision": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "drawItems": [
+    {
+      "nodeId": "red",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 180,
+          "y": 180
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.9372549019607843,
+          "g": 0.26666666666666666,
+          "b": 0.26666666666666666,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        200,
+        200,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "blue",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 180,
+          "y": 180
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.23137254901960785,
+          "g": 0.5098039215686274,
+          "b": 0.9647058823529412,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        240,
+        240,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "green",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 180,
+          "y": 180
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.13333333333333333,
+          "g": 0.7725490196078432,
+          "b": 0.3686274509803922,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        280,
+        280,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "viewport-edge",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 1280,
+          "y": 720
+        }
+      },
+      "appearance": {
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.5254901960784314,
+            "g": 0.9372549019607843,
+            "b": 0.6745098039215687,
+            "a": 1
+          },
+          "width": 4,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "opacity": 1
+    }
+  ]
+}

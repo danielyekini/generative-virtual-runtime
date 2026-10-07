@@ -1,0 +1,74 @@
+{
+  "ordering": "numeric-semver",
+  "belowOneBreakingBoundary": "minor",
+  "languages": {
+    "motionscript": {
+      "current": "0.2.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    },
+    "scene-ir": {
+      "current": "0.2.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    }
+  },
+  "versions": [
+    {
+      "language": "motionscript",
+      "version": "0.1.0",
+      "status": "released",
+      "wireVersion": "0.1",
+      "file": "docs/languages/motionscript/versions/0.1.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.2.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.2.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "pending",
+      "status": "draft",
+      "file": "docs/languages/motionscript/versions/pending.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.1.0",
+      "status": "released",
+      "wireVersion": "0.1",
+      "file": "docs/languages/scene-ir/versions/0.1.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.2.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.2.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "pending",
+      "status": "draft",
+      "file": "docs/languages/scene-ir/versions/pending.md"
+    }
+  ],
+  "combinations": [
+    {
+      "motionscript": "0.1.0",
+      "sceneIr": "0.1.0",
+      "compiler": "0.1.0",
+      "runtime": "0.1.0",
+      "readers": "A 0.1 consumer accepts wire 0.1 only."
+    },
+    {
+      "motionscript": "0.2.0",
+      "sceneIr": "0.2.0",
+      "compiler": "0.1.0",
+      "runtime": "0.1.0",
+      "readers": "A 0.2 consumer migrates wire 0.1. A 0.1 consumer rejects wire 0.2. There is no lossless down-conversion."
+    }
+  ]
+}

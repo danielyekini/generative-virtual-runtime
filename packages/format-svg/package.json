@@ -1,0 +1,17 @@
+{
+  "name": "@gvr/format-svg",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@gvr/format-import-core": "*",
+    "@gvr/schema": "*"
+  },
+  "devDependencies": {
+    "@gvr/round-trip": "*",
+    "@gvr/runtime": "*"
+  }
+}

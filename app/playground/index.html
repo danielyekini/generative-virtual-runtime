@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GVR Studio</title>
+    <link rel="stylesheet" href="/src/playground.css" />
+    <link rel="stylesheet" href="/src/studio.css" />
+  </head>
+  <body data-surface="studio">
+    <header>
+      <a class="mark" href="#studio">GVR</a>
+      <span id="product-title">Studio</span>
+      <div id="controls" hidden></div>
+      <button id="cancel" type="button" hidden>Cancel</button>
+      <button id="mode-switch" type="button">Stage</button>
+    </header>
+    <div id="workspace">
+      <aside id="tools">
+        <section class="tool-section" id="tool-scripts">
+          <h2>Test scripts</h2>
+          <label class="stack">
+            Preset
+            <select id="test-scripts" aria-label="Test scripts"></select>
+          </label>
+          <p id="test-caption" class="tool-note"></p>
+          <button id="compile" type="button">Compile</button>
+        </section>
+        <section class="tool-section" id="tool-canvas">
+          <h2>Canvas</h2>
+          <div id="picture" class="group" role="group" aria-label="Picture">
+            <button type="button" data-picture="compiled" aria-pressed="true">Compiled</button>
+            <button type="button" data-picture="roundtrip" aria-pressed="false">Round-trip</button>
+            <button type="button" data-picture="both" aria-pressed="false">Both</button>
+          </div>
+          <label class="stack">
+            Window
+            <select id="canvas-size" aria-label="Window size"></select>
+          </label>
+          <label class="stack">
+            DPR
+            <select id="canvas-dpr" aria-label="Device pixel ratio">
+              <option value="device">Device</option>
+              <option value="1">1×</option>
+              <option value="2">2×</option>
+            </select>
+          </label>
+        </section>
+        <section class="tool-section" id="tool-stream">
+          <h2>Stream</h2>
+          <label class="check">
+            <input id="stream-toggle" type="checkbox" />
+            Stream playback
+          </label>
+          <div id="stream-config" hidden>
+            <label class="stack">
+              Feed
+              <select id="stream-source" aria-label="Stream source">
+                <option value="preset">Test script</option>
+                <option value="editor">Editor</option>
+              </select>
+            </label>
+            <label class="stack">
+              Script
+              <select id="stream-preset" aria-label="Stream test script"></select>
+            </label>
+            <div class="group">
+              <button id="stream-run" type="button">Run</button>
+              <button id="stream-pop" type="button">Pop out</button>
+            </div>
+          </div>
+        </section>
+        <section class="tool-section" id="tool-import">
+          <h2>Import</h2>
+          <label class="stack">
+            Simulation
+            <select id="import-presets" aria-label="Import presets"></select>
+          </label>
+          <div class="group">
+            <button id="import-open" type="button">Open</button>
+            <button id="import-play" type="button">Play</button>
+            <button id="import-split" type="button" aria-pressed="false">Split</button>
+          </div>
+        </section>
+        <section class="tool-section" id="tool-batch">
+          <h2>Batch</h2>
+          <p class="tool-note">Folder conversion is not connected yet.</p>
+        </section>
+      </aside>
+      <div id="stage">
+        <div id="single">
+          <canvas id="view"></canvas>
+        </div>
+        <div id="split" hidden>
+          <section class="split-pane">
+            <header>
+              <h2 id="pane-a-title">Imported Scene IR</h2>
+              <p id="pane-a-note"></p>
+            </header>
+            <div id="pane-a" class="pane-stage">
+              <canvas id="view-a" aria-label="Imported Scene IR"></canvas>
+              <p id="empty-a" class="pane-empty" hidden></p>
+            </div>
+          </section>
+          <section class="split-pane">
+            <header>
+              <h2 id="pane-b-title">MotionScript round-trip</h2>
+              <p id="pane-b-note"></p>
+            </header>
+            <div id="pane-b" class="pane-stage">
+              <canvas id="view-b" aria-label="MotionScript round-trip"></canvas>
+              <p id="empty-b" class="pane-empty" hidden></p>
+            </div>
+          </section>
+        </div>
+        <div id="present" hidden>
+          <canvas id="view-generated"></canvas>
+          <canvas id="view-system"></canvas>
+          <div id="prompt">
+            <form id="prompt-form">
+              <label for="prompt-text">Describe a scene</label>
+              <div class="prompt-row">
+                <input id="prompt-text" type="text" autocomplete="off" value="A blue ball bouncing across the floor" />
+                <button type="submit">Generate</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="transport" hidden>
+          <span id="clock-label">0:00.000</span>
+          <button id="frame-back" type="button" aria-label="Previous frame">−1f</button>
+          <button id="step-back" type="button" aria-label="Previous key time">‹ key</button>
+          <button id="play" type="button">Play</button>
+          <button id="pause" type="button">Pause</button>
+          <input id="time" type="range" min="0" max="1000" step="1" value="0" aria-label="Scene time" />
+          <button id="step-fwd" type="button" aria-label="Next key time">key ›</button>
+          <button id="frame-fwd" type="button" aria-label="Next frame">+1f</button>
+          <label class="modes">
+            Speed
+            <select id="speed" aria-label="Playback speed">
+              <option value="0.25">0.25×</option>
+              <option value="0.5">0.5×</option>
+              <option value="1" selected>1×</option>
+              <option value="2">2×</option>
+            </select>
+          </label>
+          <span id="sync-label" hidden>Sync: ON</span>
+        </div>
+      </div>
+      <aside id="dock" class="is-docked">
+        <div id="dock-resize" aria-hidden="true"></div>
+        <div id="dock-bar">
+          <button id="dock-min" type="button" aria-label="Minimise" aria-expanded="true">−</button>
+          <div id="dock-tabs" class="dock-tabs" role="tablist" aria-label="Inspector">
+            <button id="tab-source" type="button" role="tab" aria-selected="true">Source</button>
+            <button id="tab-report" type="button" role="tab" aria-selected="false">Report</button>
+            <button id="tab-scene" type="button" role="tab" aria-selected="false">Scene</button>
+            <button id="tab-script" type="button" role="tab" aria-selected="false">Script</button>
+            <button id="tab-frames" type="button" role="tab" aria-selected="false">Frames</button>
+            <button id="tab-session" type="button" role="tab" aria-selected="false">Session</button>
+          </div>
+          <button id="tab-more" type="button" aria-label="More tabs" hidden>»</button>
+          <button id="dock-extract" type="button" aria-label="Extract inspector">↗</button>
+          <div id="tab-menu" hidden></div>
+        </div>
+        <div id="dock-body">
+          <div id="panel-source" role="tabpanel">
+            <label class="source-format">
+              Format
+              <select id="source-format" aria-label="Format"></select>
+            </label>
+            <p id="source-note" class="panel-note"></p>
+            <div id="source-tools" class="group"></div>
+            <textarea id="source" spellcheck="false" aria-label="Source"></textarea>
+            <div id="stream-view" hidden>
+              <pre id="incoming" aria-label="Incoming source"><span id="fed"></span><span id="rest"></span></pre>
+              <pre id="stream-diagnostics"></pre>
+            </div>
+          </div>
+          <div id="panel-report" role="tabpanel" hidden>
+            <p id="report-note" class="panel-note"></p>
+            <ol id="flow"></ol>
+            <p id="result"></p>
+            <pre id="report"></pre>
+          </div>
+          <div id="panel-scene" role="tabpanel" hidden>
+            <p id="scene-note" class="panel-note"></p>
+            <pre id="scene"></pre>
+          </div>
+          <div id="panel-script" role="tabpanel" hidden>
+            <p id="script-note" class="panel-note"></p>
+            <pre id="script"></pre>
+          </div>
+          <div id="panel-frames" role="tabpanel" hidden>
+            <p id="frames-note" class="panel-note"></p>
+            <pre id="frames"></pre>
+          </div>
+          <div id="panel-session" role="tabpanel" hidden>
+            <p id="session-note" class="panel-note"></p>
+            <pre id="session"></pre>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <footer id="status"></footer>
+    <input id="file" type="file" hidden aria-label="Open a source file" />
+    <div id="popout" class="float-window" hidden>
+      <div id="pop-bar">
+        <span id="pop-title">MotionScript</span>
+        <button id="pop-min" type="button" aria-label="Minimise">−</button>
+        <button id="pop-dock" type="button">Dock</button>
+      </div>
+      <div id="pop-body">
+        <pre id="pop-incoming" aria-label="Incoming source"><span id="pop-fed"></span><span id="pop-rest"></span></pre>
+        <pre id="pop-diagnostics"></pre>
+      </div>
+    </div>
+    <script type="module" src="/src/studio.ts"></script>
+  </body>
+</html>

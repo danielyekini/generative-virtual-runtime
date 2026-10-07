@@ -1,0 +1,26 @@
+{
+  "overall": "degraded",
+  "ok": true,
+  "diagnostics": [
+    {
+      "feature": "easing",
+      "level": "approximated",
+      "code": "IMPORT_APPROXIMATED"
+    },
+    {
+      "feature": "easing",
+      "level": "approximated",
+      "code": "IMPORT_APPROXIMATED"
+    },
+    {
+      "feature": "ellipse",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    },
+    {
+      "feature": "frame-timing",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    }
+  ]
+}

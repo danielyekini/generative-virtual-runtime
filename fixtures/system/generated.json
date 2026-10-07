@@ -1,0 +1,208 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "bouncing-ball",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "ground",
+      "name": "ground",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "line",
+      "from": {
+        "x": 80,
+        "y": 560
+      },
+      "to": {
+        "x": 1200,
+        "y": 560
+      },
+      "stroke": {
+        "color": {
+          "type": "solid",
+          "r": 0.2,
+          "g": 0.2549019607843137,
+          "b": 0.3333333333333333,
+          "a": 1
+        },
+        "width": 4,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "ball",
+      "name": "ball",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 140,
+          "y": 524
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "circle",
+      "radius": 36,
+      "fill": {
+        "type": "solid",
+        "r": 0.2196078431372549,
+        "g": 0.7411764705882353,
+        "b": 0.9725490196078431,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 4000,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "ball",
+          "channel": "transform.position.x"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 4000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 140,
+            "easing": "easeInOut"
+          },
+          {
+            "offset": 1,
+            "value": 1100
+          }
+        ]
+      },
+      {
+        "id": "track2",
+        "kind": "expression",
+        "target": {
+          "kind": "node",
+          "nodeId": "ball",
+          "channel": "transform.position.y"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 4000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "source": "524 - abs(sin(local_t * 3 * PI)) * 160",
+        "ast": {
+          "type": "binary",
+          "op": "-",
+          "left": {
+            "type": "number",
+            "value": 524
+          },
+          "right": {
+            "type": "binary",
+            "op": "*",
+            "left": {
+              "type": "call",
+              "callee": "abs",
+              "args": [
+                {
+                  "type": "call",
+                  "callee": "sin",
+                  "args": [
+                    {
+                      "type": "binary",
+                      "op": "*",
+                      "left": {
+                        "type": "binary",
+                        "op": "*",
+                        "left": {
+                          "type": "ref",
+                          "name": "local_t"
+                        },
+                        "right": {
+                          "type": "number",
+                          "value": 3
+                        }
+                      },
+                      "right": {
+                        "type": "ref",
+                        "name": "PI"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "right": {
+              "type": "number",
+              "value": 160
+            }
+          }
+        }
+      }
+    ],
+    "steps": []
+  }
+}

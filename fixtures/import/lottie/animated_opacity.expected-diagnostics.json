@@ -1,0 +1,21 @@
+{
+  "overall": "exact",
+  "ok": true,
+  "diagnostics": [
+    {
+      "feature": "opacity",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    },
+    {
+      "feature": "ellipse",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    },
+    {
+      "feature": "frame-timing",
+      "level": "exact",
+      "code": "IMPORT_EXACT"
+    }
+  ]
+}

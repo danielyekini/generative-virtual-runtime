@@ -1,0 +1,55 @@
+STATUS	failed
+COUNTS	exact	2	approximated	0	dropped	1	unsupported	50
+IMPORT_EXACT	info	exact		viewBox is the Scene IR viewport, with minX/minY translated to the origin.
+IMPORT_DROPPED	warning	dropped		<defs> has no painted result.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<rect> could not be converted.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<image> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<image> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_UNSUPPORTED	error	unsupported		<animateTransform> is outside the SVG subset.
+IMPORT_EXACT	info	exact		Static SVG uses a 1000ms duration so the runtime can seek it.
+IMPORT_INVALID_IR	fatal	unsupported		Hierarchy depth 20 exceeds 16.

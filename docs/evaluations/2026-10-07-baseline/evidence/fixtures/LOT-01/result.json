@@ -1,0 +1,195 @@
+{
+  "id": "LOT-01",
+  "role": "pack",
+  "format": "lottie",
+  "fileName": "Celebrations Begin.json",
+  "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+  "sourceBytes": 139337,
+  "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+  "inventory": {
+    "topLevelKeys": [
+      "v",
+      "fr",
+      "ip",
+      "op",
+      "w",
+      "h",
+      "nm",
+      "ddd",
+      "assets",
+      "layers",
+      "markers"
+    ],
+    "markers": [],
+    "fonts": [],
+    "chars": 0,
+    "rootLayerTypes": {
+      "precomp": 1
+    },
+    "assetLayerTypes": {
+      "shape": 96,
+      "null": 3,
+      "solid": 1
+    },
+    "shapeTypes": {
+      "gr": 96,
+      "sh": 25,
+      "st": 96,
+      "tr": 96,
+      "tm": 1,
+      "fl": 83,
+      "rc": 71
+    },
+    "masks": 0,
+    "mattes": 0,
+    "effects": 0,
+    "blendModes": 0,
+    "skew": 0,
+    "autoOrient": 0,
+    "spatialTangents": 133,
+    "textLayers": 0,
+    "hiddenLayers": 0,
+    "parenting": 79,
+    "ddd": 0,
+    "animatedProperties": 96,
+    "expressions": 0,
+    "holdKeyframes": 0,
+    "easingHandles": 134,
+    "roundedRects": 0,
+    "animatedRoundedRects": 0,
+    "images": [],
+    "precompAssets": [
+      {
+        "id": "comp_0",
+        "layers": 100
+      }
+    ],
+    "missingAssets": [],
+    "examples": [
+      {
+        "feature": "tm",
+        "path": "$.assets[0].layers[0].shapes[1]"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.assets[0].layers[2].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.assets[0].layers[3].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.assets[0].layers[4].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.assets[0].layers[7].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.assets[0].layers[8].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.assets[0].layers[9].ks.p"
+      }
+    ],
+    "name": "Comp 1",
+    "version": "5.9.2",
+    "frameRate": 30,
+    "inFrame": 0,
+    "outFrame": 121,
+    "width": 400,
+    "height": 400,
+    "durationMs": 4033.333333333333
+  },
+  "timingsMs": {
+    "import": 0.9520420000000058,
+    "emit": 0,
+    "compile": 0
+  },
+  "complexity": null,
+  "production": {
+    "ok": false,
+    "fidelity": "failed",
+    "counts": {
+      "exact": 0,
+      "approximated": 0,
+      "dropped": 0,
+      "unsupported": 2
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "feature": "layer",
+        "severity": "fatal",
+        "message": "Layer type 0 is outside the v0.1 subset.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "feature": "scene",
+        "severity": "fatal",
+        "message": "No supported layers were found.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": null,
+  "motionScript": null,
+  "compile": null,
+  "runtime": {
+    "kind": "none",
+    "samples": []
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "JSON object, 139337 bytes"
+    },
+    {
+      "name": "import",
+      "status": "FAIL",
+      "detail": "fidelity failed; exact 0; approximated 0; dropped 0; unsupported 2; scene no"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "NOT_REACHED",
+      "detail": "Production import produced no scene."
+    },
+    {
+      "name": "compile",
+      "status": "NOT_REACHED",
+      "detail": "No MotionScript from the production scene."
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "NOT_REACHED",
+      "detail": "Compile did not run."
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "FAIL",
+      "detail": "No accepted Scene IR from importSource."
+    },
+    {
+      "name": "runtime",
+      "status": "NOT_REACHED",
+      "detail": "No accepted scene to evaluate."
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": "import",
+  "evidence": {
+    "importReport": "fixtures/LOT-01/import-report.txt",
+    "importedScene": null,
+    "compiledScene": null,
+    "motion": null
+  }
+}

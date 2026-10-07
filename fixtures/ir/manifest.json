@@ -1,0 +1,125 @@
+{
+  "cases": [
+    {
+      "file": "valid/minimal.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/circle.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/ear-pivot.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/camera-mapping.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/z-order.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/subtree-order.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/primitives.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/bunny.json",
+      "expect": "pass"
+    },
+    {
+      "file": "valid/frame-rectangle.json",
+      "expect": "pass",
+      "validator": "frame"
+    },
+    {
+      "file": "invalid/bad-enum.json",
+      "expect": "fail",
+      "codes": [
+        "INVALID_ENUM"
+      ]
+    },
+    {
+      "file": "invalid/duplicate-id.json",
+      "expect": "fail",
+      "codes": [
+        "DUPLICATE_ID"
+      ]
+    },
+    {
+      "file": "invalid/invalid-opacity.json",
+      "expect": "fail",
+      "codes": [
+        "INVALID_OPACITY"
+      ]
+    },
+    {
+      "file": "invalid/negative-zoom.json",
+      "expect": "fail",
+      "codes": [
+        "INVALID_ZOOM"
+      ]
+    },
+    {
+      "file": "invalid/malformed-path.json",
+      "expect": "fail",
+      "codes": [
+        "MALFORMED_PATH"
+      ]
+    },
+    {
+      "file": "invalid/invalid-parent.json",
+      "expect": "fail",
+      "codes": [
+        "INVALID_PARENT"
+      ]
+    },
+    {
+      "file": "invalid/unsupported-property.json",
+      "expect": "fail",
+      "codes": [
+        "UNSUPPORTED_PROPERTY"
+      ]
+    },
+    {
+      "file": "invalid/invalid-track-target.json",
+      "expect": "fail",
+      "codes": [
+        "INVALID_TRACK_TARGET"
+      ]
+    },
+    {
+      "file": "invalid/duration-limit.json",
+      "expect": "fail",
+      "codes": [
+        "RESOURCE_LIMIT"
+      ]
+    },
+    {
+      "file": "invalid/depth-limit.json",
+      "expect": "fail",
+      "codes": [
+        "RESOURCE_LIMIT"
+      ]
+    },
+    {
+      "file": "invalid/expression-depth.json",
+      "expect": "fail",
+      "codes": [
+        "RESOURCE_LIMIT"
+      ]
+    },
+    {
+      "file": "invalid/overlapping-writers.json",
+      "expect": "fail",
+      "codes": [
+        "OVERLAPPING_WRITERS"
+      ]
+    }
+  ]
+}

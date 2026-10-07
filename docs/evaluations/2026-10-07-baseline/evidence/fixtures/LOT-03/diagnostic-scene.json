@@ -1,0 +1,622 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "MainScene",
+  "viewport": {
+    "width": 1080,
+    "height": 689,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_8",
+      "name": "layer_8",
+      "parentId": null,
+      "zIndex": 80,
+      "transform": {
+        "position": {
+          "x": 538.863,
+          "y": 345.304
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_8.RectShape2",
+      "name": "RectShape2",
+      "parentId": "layer_8",
+      "zIndex": 81,
+      "transform": {
+        "position": {
+          "x": -557.1855,
+          "y": -356.5985
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "rectangle",
+      "size": {
+        "x": 1114.371,
+        "y": 713.197
+      },
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_9",
+      "name": "layer_9",
+      "parentId": null,
+      "zIndex": 70,
+      "transform": {
+        "position": {
+          "x": 540,
+          "y": 209.667
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 0.88,
+          "y": 0.88
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_9.EllipseShape1",
+      "name": "EllipseShape1",
+      "parentId": "layer_9",
+      "zIndex": 71,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 126.197,
+        "y": 128.325
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.698,
+        "g": 0.7137,
+        "b": 0.7176,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_10",
+      "name": "layer_10",
+      "parentId": null,
+      "zIndex": 60,
+      "transform": {
+        "position": {
+          "x": 672.953,
+          "y": 262.67
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 0.88,
+          "y": 0.88
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_10.EllipseShape1",
+      "name": "EllipseShape1",
+      "parentId": "layer_10",
+      "zIndex": 61,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 126.197,
+        "y": 128.325
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.698,
+        "g": 0.7137,
+        "b": 0.7176,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_11",
+      "name": "layer_11",
+      "parentId": null,
+      "zIndex": 50,
+      "transform": {
+        "position": {
+          "x": 708.288,
+          "y": 374.985
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 0.88,
+          "y": 0.88
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_11.EllipseShape1",
+      "name": "EllipseShape1",
+      "parentId": "layer_11",
+      "zIndex": 51,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 126.197,
+        "y": 128.325
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.698,
+        "g": 0.7137,
+        "b": 0.7176,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_12",
+      "name": "layer_12",
+      "parentId": null,
+      "zIndex": 40,
+      "transform": {
+        "position": {
+          "x": 667.905,
+          "y": 486.038
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 0.88,
+          "y": 0.88
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_12.EllipseShape1",
+      "name": "EllipseShape1",
+      "parentId": "layer_12",
+      "zIndex": 41,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 126.197,
+        "y": 128.325
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.698,
+        "g": 0.7137,
+        "b": 0.7176,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_13",
+      "name": "layer_13",
+      "parentId": null,
+      "zIndex": 30,
+      "transform": {
+        "position": {
+          "x": 414.249,
+          "y": 480.991
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 0.88,
+          "y": 0.88
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_13.EllipseShape1",
+      "name": "EllipseShape1",
+      "parentId": "layer_13",
+      "zIndex": 31,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 126.197,
+        "y": 128.325
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.698,
+        "g": 0.7137,
+        "b": 0.7176,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_14",
+      "name": "layer_14",
+      "parentId": null,
+      "zIndex": 20,
+      "transform": {
+        "position": {
+          "x": 370.08,
+          "y": 373.723
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 0.88,
+          "y": 0.88
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_14.EllipseShape1",
+      "name": "EllipseShape1",
+      "parentId": "layer_14",
+      "zIndex": 21,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 126.197,
+        "y": 128.325
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.698,
+        "g": 0.7137,
+        "b": 0.7176,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_15",
+      "name": "layer_15",
+      "parentId": null,
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": 415.511,
+          "y": 267.718
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 0.88,
+          "y": 0.88
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_15.EllipseShape1",
+      "name": "EllipseShape1",
+      "parentId": "layer_15",
+      "zIndex": 11,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 126.197,
+        "y": 128.325
+      },
+      "fill": {
+        "type": "solid",
+        "r": 0.698,
+        "g": 0.7137,
+        "b": 0.7176,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_16",
+      "name": "layer_16",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 540,
+          "y": 344.5
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 540,
+        "y": 344.5
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 7116.666666666666,
+    "tracks": [],
+    "steps": [
+      {
+        "id": "step1",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_8",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      },
+      {
+        "id": "step2",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_9",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      },
+      {
+        "id": "step3",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_10",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      },
+      {
+        "id": "step4",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_11",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      },
+      {
+        "id": "step5",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_12",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      },
+      {
+        "id": "step6",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_13",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      },
+      {
+        "id": "step7",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_14",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      },
+      {
+        "id": "step8",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_15",
+          "channel": "visible"
+        },
+        "timeMs": 7116.666666666666,
+        "value": false
+      }
+    ]
+  }
+}

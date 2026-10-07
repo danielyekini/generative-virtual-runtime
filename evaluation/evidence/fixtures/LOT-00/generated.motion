@@ -1,0 +1,476 @@
+scene "MotionScriptV1CompatiblePanningLandscape" {
+  version "0.2";
+  viewport (1280, 720);
+  background #101014;
+  duration 8s;
+  requires "easing.cubicBezier";
+  requires "transform.parent";
+};
+camera main {
+  position (640, 360);
+  zoom 1;
+  rotation 0deg;
+};
+group layer_100 {
+  zIndex 280;
+  group layer_1 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 280;
+    ellipse Tree1CanopyEllipse {
+      position (120, 430);
+      zIndex 281;
+      size (120, 145);
+      fill #1f6133;
+    };
+  };
+  group layer_2 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 270;
+    rectangle Tree1TrunkRect {
+      position (106, 442.5);
+      zIndex 271;
+      size (28, 125);
+      fill #61381f;
+    };
+  };
+  group layer_3 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 260;
+    ellipse Tree2CanopyEllipse {
+      position (460, 476.2);
+      zIndex 261;
+      size (98.4, 118.9);
+      fill #1f6133;
+    };
+  };
+  group layer_4 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 250;
+    rectangle Tree2TrunkRect {
+      position (448.52, 486.45);
+      zIndex 251;
+      size (22.96, 102.5);
+      fill #61381f;
+    };
+  };
+  group layer_5 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 240;
+    ellipse Tree3CanopyEllipse {
+      position (820, 404.2);
+      zIndex 241;
+      size (134.4, 162.4);
+      fill #1f6133;
+    };
+  };
+  group layer_6 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 230;
+    rectangle Tree3TrunkRect {
+      position (804.32, 418.2);
+      zIndex 231;
+      size (31.36, 140);
+      fill #61381f;
+    };
+  };
+  group layer_7 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 220;
+    ellipse Tree4CanopyEllipse {
+      position (1180, 459);
+      zIndex 221;
+      size (108, 130.5);
+      fill #1f6133;
+    };
+  };
+  group layer_8 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 210;
+    rectangle Tree4TrunkRect {
+      position (1167.4, 470.25);
+      zIndex 211;
+      size (25.2, 112.5);
+      fill #61381f;
+    };
+  };
+  group layer_9 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 200;
+    ellipse Tree5CanopyEllipse {
+      position (1510, 393.8);
+      zIndex 201;
+      size (141.6, 171.1);
+      fill #1f6133;
+    };
+  };
+  group layer_10 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 190;
+    rectangle Tree5TrunkRect {
+      position (1493.48, 408.55);
+      zIndex 191;
+      size (33.04, 147.5);
+      fill #61381f;
+    };
+  };
+  group layer_11 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 180;
+    ellipse Tree6CanopyEllipse {
+      position (1830, 467.6);
+      zIndex 181;
+      size (103.2, 124.7);
+      fill #1f6133;
+    };
+  };
+  group layer_12 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 170;
+    rectangle Tree6TrunkRect {
+      position (1817.96, 478.35);
+      zIndex 171;
+      size (24.08, 107.5);
+      fill #61381f;
+    };
+  };
+  group layer_13 {
+    inheritOpacity false;
+    transformParent layer_100;
+    zIndex 160;
+    rectangle ForegroundGroundRect {
+      position (0, 610);
+      zIndex 161;
+      size (1920, 110);
+      fill #307a38;
+    };
+  };
+};
+group layer_200 {
+  zIndex 150;
+  group layer_14 {
+    inheritOpacity false;
+    transformParent layer_200;
+    zIndex 150;
+    ellipse MidHill1Ellipse {
+      position (260, 615);
+      zIndex 151;
+      size (850, 360);
+      fill #529e57;
+    };
+  };
+  group layer_15 {
+    inheritOpacity false;
+    transformParent layer_200;
+    zIndex 140;
+    ellipse MidHill2Ellipse {
+      position (900, 600);
+      zIndex 141;
+      size (1100, 390);
+      fill #47914f;
+    };
+  };
+  group layer_16 {
+    inheritOpacity false;
+    transformParent layer_200;
+    zIndex 130;
+    ellipse MidHill3Ellipse {
+      position (1630, 620);
+      zIndex 131;
+      size (1050, 350);
+      fill #57a65c;
+    };
+  };
+};
+group layer_300 {
+  zIndex 120;
+  group layer_17 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 120;
+    ellipse Cloud1Ellipse {
+      position (260, 165);
+      zIndex 121;
+      size (180, 62);
+      fill #f5faff;
+    };
+  };
+  group layer_18 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 110;
+    ellipse Cloud2Ellipse {
+      position (760, 115);
+      zIndex 111;
+      size (220, 72);
+      fill #f5faff;
+    };
+  };
+  group layer_19 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 100;
+    ellipse Cloud3Ellipse {
+      position (1320, 190);
+      zIndex 101;
+      size (190, 62);
+      fill #f5faff;
+    };
+  };
+  group layer_20 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 90;
+    ellipse Cloud4Ellipse {
+      position (1750, 120);
+      zIndex 91;
+      size (210, 68);
+      fill #f5faff;
+    };
+  };
+  group layer_21 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 80;
+    path Mountain1Path {
+      zIndex 81;
+      fill #5c7394;
+      move (-180, 560);
+      cubic (-180, 560) (160, 250) (160, 250);
+      cubic (160, 250) (500, 560) (500, 560);
+      cubic (500, 560) (-180, 560) (-180, 560);
+      close;
+    };
+  };
+  group layer_22 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 70;
+    path Mountain2Path {
+      zIndex 71;
+      fill #5c7394;
+      move (260, 560);
+      cubic (260, 560) (650, 195) (650, 195);
+      cubic (650, 195) (1020, 560) (1020, 560);
+      cubic (1020, 560) (260, 560) (260, 560);
+      close;
+    };
+  };
+  group layer_23 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 60;
+    path Mountain3Path {
+      zIndex 61;
+      fill #5c7394;
+      move (800, 560);
+      cubic (800, 560) (1190, 270) (1190, 270);
+      cubic (1190, 270) (1540, 560) (1540, 560);
+      cubic (1540, 560) (800, 560) (800, 560);
+      close;
+    };
+  };
+  group layer_24 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 50;
+    path Mountain4Path {
+      zIndex 51;
+      fill #5c7394;
+      move (1320, 560);
+      cubic (1320, 560) (1690, 220) (1690, 220);
+      cubic (1690, 220) (2080, 560) (2080, 560);
+      cubic (2080, 560) (1320, 560) (1320, 560);
+      close;
+    };
+  };
+  group layer_25 {
+    inheritOpacity false;
+    transformParent layer_300;
+    zIndex 40;
+    ellipse SunEllipse {
+      position (1080, 135);
+      zIndex 41;
+      size (105, 105);
+      fill #ffc740;
+    };
+  };
+};
+group layer_26 {
+  zIndex 30;
+  rectangle SkyRect {
+    zIndex 31;
+    size (1280, 720);
+    fill #b3dbf5;
+  };
+};
+animate layer_100.position.x {
+  from 0;
+  to -640;
+  start 0s;
+  duration 8s;
+  ease cubic(0, 0, 1, 1);
+};
+animate layer_100.position.y {
+  from 0;
+  to 0;
+  start 0s;
+  duration 8s;
+  ease cubic(0, 0, 1, 1);
+};
+animate layer_200.position.x {
+  from 0;
+  to -360;
+  start 0s;
+  duration 8s;
+  ease cubic(0, 0, 1, 1);
+};
+animate layer_200.position.y {
+  from 0;
+  to 0;
+  start 0s;
+  duration 8s;
+  ease cubic(0, 0, 1, 1);
+};
+animate layer_300.position.x {
+  from 0;
+  to -180;
+  start 0s;
+  duration 8s;
+  ease cubic(0, 0, 1, 1);
+};
+animate layer_300.position.y {
+  from 0;
+  to 0;
+  start 0s;
+  duration 8s;
+  ease cubic(0, 0, 1, 1);
+};
+step layer_100.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_1.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_2.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_3.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_4.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_5.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_6.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_7.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_8.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_9.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_10.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_11.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_12.visible {
+  at 8s;
+  value false;
+};
+step layer_100.layer_13.visible {
+  at 8s;
+  value false;
+};
+step layer_200.visible {
+  at 8s;
+  value false;
+};
+step layer_200.layer_14.visible {
+  at 8s;
+  value false;
+};
+step layer_200.layer_15.visible {
+  at 8s;
+  value false;
+};
+step layer_200.layer_16.visible {
+  at 8s;
+  value false;
+};
+step layer_300.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_17.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_18.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_19.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_20.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_21.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_22.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_23.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_24.visible {
+  at 8s;
+  value false;
+};
+step layer_300.layer_25.visible {
+  at 8s;
+  value false;
+};
+step layer_26.visible {
+  at 8s;
+  value false;
+};
+complete;

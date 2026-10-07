@@ -1,0 +1,25 @@
+scene "MainScene" {
+  version "0.1";
+  viewport (1080, 1080);
+  background #101014;
+  duration 4016.66667ms;
+};
+camera main {
+  position (540, 540);
+  zoom 1;
+  rotation 0deg;
+};
+group layer_2 {
+  position (521.782196, 540);
+  rectangle RectShape1 {
+    position (-324.469869, -172.64573252);
+    zIndex 1;
+    size (648.939738, 345.291465);
+    fill #ffffff;
+  };
+};
+step layer_2.visible {
+  at 4016.66667ms;
+  value false;
+};
+complete;

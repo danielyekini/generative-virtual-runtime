@@ -1,0 +1,23 @@
+{
+  "name": "@gvr/playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@gvr/canvas-renderer": "*",
+    "@gvr/compiler": "*",
+    "@gvr/format-import-core": "*",
+    "@gvr/format-lottie": "*",
+    "@gvr/format-svg": "*",
+    "@gvr/motionscript-emitter": "*",
+    "@gvr/runtime": "*",
+    "@gvr/schema": "*",
+    "lottie-web": "^5.13.0"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

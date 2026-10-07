@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "fidelity": "partial",
+  "counts": {
+    "exact": 2,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 1
+  },
+  "groups": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "layer",
+      "severity": "error",
+      "message": "Layer type 0 is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.RectShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–241 at 60fps to 4016.6666666666665ms.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 191525,
+    "name": "Main Scene"
+  }
+}

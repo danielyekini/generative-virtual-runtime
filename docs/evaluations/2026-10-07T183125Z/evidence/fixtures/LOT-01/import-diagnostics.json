@@ -1,0 +1,718 @@
+{
+  "ok": true,
+  "fidelity": "exact",
+  "counts": {
+    "exact": 194,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 0
+  },
+  "groups": [
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_1.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_2.layer_3.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_2.layer_3.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_2.layer_4.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_2.layer_4.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_2.layer_5.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_2.layer_5.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_8.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_8.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_9.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_9.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_10.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_10.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_11.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_11.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_12.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_12.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_13.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_13.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_14.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_14.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_15.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_15.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_16.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_16.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_17.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_17.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_18.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_18.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_19.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_19.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_20.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_20.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_21.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_21.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_22.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_22.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_23.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_23.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_24.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_24.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_25.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_25.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_26.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_26.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_27.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_27.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_28.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_28.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_29.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_29.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_30.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_30.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_31.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_31.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_32.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_32.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_33.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_33.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_34.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_34.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_35.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_35.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_36.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_36.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_37.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_37.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_38.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_38.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_7.layer_39.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.layer_39.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_40.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_6.layer_40.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_41.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_41.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_42.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_42.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_43.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_6.layer_43.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_44.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_44.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_45.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_45.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_46.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_46.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_47.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_47.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_48.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_6.layer_48.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_49.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_49.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_50.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_50.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_51.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_6.layer_51.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_52.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_52.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_53.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_6.layer_53.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "spatial-tangent",
+      "severity": "info",
+      "message": "Spatial curve on layer_1.layer_6.layer_54.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 139337,
+    "name": "Comp 1"
+  }
+}

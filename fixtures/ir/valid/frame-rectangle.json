@@ -1,0 +1,49 @@
+{
+  "sceneTimeMs": 0,
+  "revision": 0,
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "drawItems": [
+    {
+      "nodeId": "box",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 200,
+          "y": 80
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.8862745098039215,
+          "g": 0.23921568627450981,
+          "b": 0.23921568627450981,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        100,
+        50,
+        1
+      ],
+      "opacity": 1
+    }
+  ]
+}

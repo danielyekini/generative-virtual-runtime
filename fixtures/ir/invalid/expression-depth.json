@@ -1,0 +1,350 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "example",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 640,
+        "y": 360
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 2000,
+    "steps": [],
+    "tracks": [
+      {
+        "id": "expr",
+        "kind": "expression",
+        "target": {
+          "kind": "node",
+          "nodeId": "box",
+          "channel": "transform.position.x"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 1000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "source": "1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1",
+        "ast": {
+          "type": "binary",
+          "op": "+",
+          "left": {
+            "type": "binary",
+            "op": "+",
+            "left": {
+              "type": "binary",
+              "op": "+",
+              "left": {
+                "type": "binary",
+                "op": "+",
+                "left": {
+                  "type": "binary",
+                  "op": "+",
+                  "left": {
+                    "type": "binary",
+                    "op": "+",
+                    "left": {
+                      "type": "binary",
+                      "op": "+",
+                      "left": {
+                        "type": "binary",
+                        "op": "+",
+                        "left": {
+                          "type": "binary",
+                          "op": "+",
+                          "left": {
+                            "type": "binary",
+                            "op": "+",
+                            "left": {
+                              "type": "binary",
+                              "op": "+",
+                              "left": {
+                                "type": "binary",
+                                "op": "+",
+                                "left": {
+                                  "type": "binary",
+                                  "op": "+",
+                                  "left": {
+                                    "type": "binary",
+                                    "op": "+",
+                                    "left": {
+                                      "type": "binary",
+                                      "op": "+",
+                                      "left": {
+                                        "type": "binary",
+                                        "op": "+",
+                                        "left": {
+                                          "type": "binary",
+                                          "op": "+",
+                                          "left": {
+                                            "type": "binary",
+                                            "op": "+",
+                                            "left": {
+                                              "type": "binary",
+                                              "op": "+",
+                                              "left": {
+                                                "type": "binary",
+                                                "op": "+",
+                                                "left": {
+                                                  "type": "binary",
+                                                  "op": "+",
+                                                  "left": {
+                                                    "type": "binary",
+                                                    "op": "+",
+                                                    "left": {
+                                                      "type": "binary",
+                                                      "op": "+",
+                                                      "left": {
+                                                        "type": "binary",
+                                                        "op": "+",
+                                                        "left": {
+                                                          "type": "binary",
+                                                          "op": "+",
+                                                          "left": {
+                                                            "type": "binary",
+                                                            "op": "+",
+                                                            "left": {
+                                                              "type": "binary",
+                                                              "op": "+",
+                                                              "left": {
+                                                                "type": "binary",
+                                                                "op": "+",
+                                                                "left": {
+                                                                  "type": "binary",
+                                                                  "op": "+",
+                                                                  "left": {
+                                                                    "type": "binary",
+                                                                    "op": "+",
+                                                                    "left": {
+                                                                      "type": "binary",
+                                                                      "op": "+",
+                                                                      "left": {
+                                                                        "type": "binary",
+                                                                        "op": "+",
+                                                                        "left": {
+                                                                          "type": "number",
+                                                                          "value": 1
+                                                                        },
+                                                                        "right": {
+                                                                          "type": "number",
+                                                                          "value": 1
+                                                                        }
+                                                                      },
+                                                                      "right": {
+                                                                        "type": "number",
+                                                                        "value": 1
+                                                                      }
+                                                                    },
+                                                                    "right": {
+                                                                      "type": "number",
+                                                                      "value": 1
+                                                                    }
+                                                                  },
+                                                                  "right": {
+                                                                    "type": "number",
+                                                                    "value": 1
+                                                                  }
+                                                                },
+                                                                "right": {
+                                                                  "type": "number",
+                                                                  "value": 1
+                                                                }
+                                                              },
+                                                              "right": {
+                                                                "type": "number",
+                                                                "value": 1
+                                                              }
+                                                            },
+                                                            "right": {
+                                                              "type": "number",
+                                                              "value": 1
+                                                            }
+                                                          },
+                                                          "right": {
+                                                            "type": "number",
+                                                            "value": 1
+                                                          }
+                                                        },
+                                                        "right": {
+                                                          "type": "number",
+                                                          "value": 1
+                                                        }
+                                                      },
+                                                      "right": {
+                                                        "type": "number",
+                                                        "value": 1
+                                                      }
+                                                    },
+                                                    "right": {
+                                                      "type": "number",
+                                                      "value": 1
+                                                    }
+                                                  },
+                                                  "right": {
+                                                    "type": "number",
+                                                    "value": 1
+                                                  }
+                                                },
+                                                "right": {
+                                                  "type": "number",
+                                                  "value": 1
+                                                }
+                                              },
+                                              "right": {
+                                                "type": "number",
+                                                "value": 1
+                                              }
+                                            },
+                                            "right": {
+                                              "type": "number",
+                                              "value": 1
+                                            }
+                                          },
+                                          "right": {
+                                            "type": "number",
+                                            "value": 1
+                                          }
+                                        },
+                                        "right": {
+                                          "type": "number",
+                                          "value": 1
+                                        }
+                                      },
+                                      "right": {
+                                        "type": "number",
+                                        "value": 1
+                                      }
+                                    },
+                                    "right": {
+                                      "type": "number",
+                                      "value": 1
+                                    }
+                                  },
+                                  "right": {
+                                    "type": "number",
+                                    "value": 1
+                                  }
+                                },
+                                "right": {
+                                  "type": "number",
+                                  "value": 1
+                                }
+                              },
+                              "right": {
+                                "type": "number",
+                                "value": 1
+                              }
+                            },
+                            "right": {
+                              "type": "number",
+                              "value": 1
+                            }
+                          },
+                          "right": {
+                            "type": "number",
+                            "value": 1
+                          }
+                        },
+                        "right": {
+                          "type": "number",
+                          "value": 1
+                        }
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 1
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 1
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "right": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "right": {
+              "type": "number",
+              "value": 1
+            }
+          },
+          "right": {
+            "type": "number",
+            "value": 1
+          }
+        }
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "box",
+      "name": "box",
+      "parentId": null,
+      "space": "world",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "rectangle",
+      "size": {
+        "x": 200,
+        "y": 80
+      },
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      }
+    }
+  ]
+}

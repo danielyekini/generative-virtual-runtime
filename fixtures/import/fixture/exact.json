@@ -1,0 +1,30 @@
+{
+  "format": "fixture",
+  "name": "exact-circle",
+  "fps": 30,
+  "durationFrames": 60,
+  "background": "#101014",
+  "nodes": [
+    {
+      "name": "dot",
+      "kind": "circle",
+      "radius": 20,
+      "position": [100, 180],
+      "fill": "#38bdf8",
+      "motion": {
+        "property": "position.x",
+        "frames": [
+          { "frame": 0, "value": 100 },
+          { "frame": 30, "value": 400 }
+        ]
+      }
+    },
+    {
+      "name": "box",
+      "kind": "rectangle",
+      "size": [40, 30],
+      "position": [400, 220],
+      "fill": "#a3e635"
+    }
+  ]
+}

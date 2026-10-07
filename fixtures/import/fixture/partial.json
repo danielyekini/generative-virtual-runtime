@@ -1,0 +1,16 @@
+{
+  "format": "fixture",
+  "name": "soft-dot",
+  "fps": 30,
+  "durationFrames": 30,
+  "nodes": [
+    {
+      "name": "dot",
+      "kind": "circle",
+      "radius": 28,
+      "position": [220, 200],
+      "fill": "#fbbf24",
+      "blur": 4
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "irVersion": "0.1",
+  "sceneId": "ParentLater",
+  "viewport": {
+    "width": 300,
+    "height": 200,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_10",
+      "name": "layer_10",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_10.layer_2",
+      "name": "layer_2",
+      "parentId": "layer_10",
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": 40,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_10.layer_2.Dot",
+      "name": "Dot",
+      "parentId": "layer_10.layer_2",
+      "zIndex": 11,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "ellipse",
+      "size": {
+        "x": 30,
+        "y": 30
+      },
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 0.4,
+        "b": 0.2,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 150,
+        "y": 100
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 2000,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_10",
+          "channel": "transform.position.x"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 2000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 80,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": 220
+          }
+        ]
+      },
+      {
+        "id": "track2",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_10",
+          "channel": "transform.position.y"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 2000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 100,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": 100
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "id": "step1",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_10",
+          "channel": "visible"
+        },
+        "timeMs": 2000,
+        "value": false
+      },
+      {
+        "id": "step2",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_10.layer_2",
+          "channel": "visible"
+        },
+        "timeMs": 2000,
+        "value": false
+      }
+    ]
+  }
+}

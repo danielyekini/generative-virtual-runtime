@@ -1,0 +1,256 @@
+{
+  "sceneTimeMs": 0,
+  "revision": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "drawItems": [
+    {
+      "nodeId": "solid",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 220,
+          "y": 180
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.8862745098039215,
+          "g": 0.23921568627450981,
+          "b": 0.23921568627450981,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        120,
+        220,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "half",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 220,
+          "y": 180
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.8862745098039215,
+          "g": 0.23921568627450981,
+          "b": 0.23921568627450981,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        420,
+        220,
+        1
+      ],
+      "opacity": 0.5
+    },
+    {
+      "nodeId": "quarter",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 220,
+          "y": 180
+        }
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.8862745098039215,
+          "g": 0.23921568627450981,
+          "b": 0.23921568627450981,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        720,
+        220,
+        1
+      ],
+      "opacity": 0.25
+    },
+    {
+      "nodeId": "solid-label",
+      "geometry": {
+        "kind": "text",
+        "content": "1",
+        "font": {
+          "family": "sans",
+          "size": 36,
+          "weight": 700,
+          "style": "normal"
+        },
+        "align": "left",
+        "baseline": "alphabetic"
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.9725490196078431,
+          "g": 0.9803921568627451,
+          "b": 0.9882352941176471,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        200,
+        460,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "half-label",
+      "geometry": {
+        "kind": "text",
+        "content": "0.5",
+        "font": {
+          "family": "sans",
+          "size": 36,
+          "weight": 700,
+          "style": "normal"
+        },
+        "align": "left",
+        "baseline": "alphabetic"
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.9725490196078431,
+          "g": 0.9803921568627451,
+          "b": 0.9882352941176471,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        500,
+        460,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "quarter-label",
+      "geometry": {
+        "kind": "text",
+        "content": "0.25",
+        "font": {
+          "family": "sans",
+          "size": 36,
+          "weight": 700,
+          "style": "normal"
+        },
+        "align": "left",
+        "baseline": "alphabetic"
+      },
+      "appearance": {
+        "fill": {
+          "type": "solid",
+          "r": 0.9725490196078431,
+          "g": 0.9803921568627451,
+          "b": 0.9882352941176471,
+          "a": 1
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        790,
+        460,
+        1
+      ],
+      "opacity": 1
+    },
+    {
+      "nodeId": "viewport-edge",
+      "geometry": {
+        "kind": "rectangle",
+        "size": {
+          "x": 1280,
+          "y": 720
+        }
+      },
+      "appearance": {
+        "stroke": {
+          "color": {
+            "type": "solid",
+            "r": 0.5254901960784314,
+            "g": 0.9372549019607843,
+            "b": 0.6745098039215687,
+            "a": 1
+          },
+          "width": 4,
+          "cap": "butt",
+          "join": "miter",
+          "miterLimit": 4
+        }
+      },
+      "logicalMatrix": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "opacity": 1
+    }
+  ]
+}

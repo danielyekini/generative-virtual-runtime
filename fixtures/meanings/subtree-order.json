@@ -1,0 +1,8 @@
+{
+  "fixture": "ir/valid/subtree-order.json",
+  "drawableOrder": [
+    "back.mark",
+    "mid"
+  ],
+  "note": "back.mark has zIndex 50, but zIndex only sorts siblings. The mark stays inside back, and back is behind mid."
+}
