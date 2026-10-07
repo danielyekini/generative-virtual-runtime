@@ -1,14 +1,15 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-07T19:42:00Z",
+  "pinnedAt": "2026-10-07T19:43:00Z",
   "afterRun": "2026-10-07T183125Z",
   "comparedWithForNextBaseline": "2026-10-07T183125Z",
   "git": {
-    "head": "874e4042be8e698920eca7e086c9d0b00e442a7a",
-    "short": "874e404",
-    "subject": "Pin evaluation baselines and clarify path-morph versioning.",
+    "head": "920f1e29684861e1d1c085ec083ccbeb4a1e8867",
+    "short": "920f1e2",
+    "subject": "Point the evaluation implementation pin at the baseline-pin commit.",
     "treeCleanAtPin": true,
-    "note": "Working tree was clean at pin time after the baseline-pin / versioning commit. Stage 1 must re-check git status --short; if dirty, create a source snapshot instead of claiming this commit alone."
+    "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
+    "note": "Pin marks the minimum revision that includes baseline-pin / versioning policy. Later clean descendant commits on main are acceptable."
   },
   "snapshot": {
     "requiredWhenDirty": true,

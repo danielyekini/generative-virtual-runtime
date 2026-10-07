@@ -56,7 +56,7 @@ LOT-03 stays quarantined while its source is over the production 512 KiB ceiling
 2. Create `docs/evaluations/<run-id>/loop.json` for this invocation. `run-id` is the UTC timestamp `YYYY-MM-DDTHHMMSSZ`. Do not reuse an existing directory.
 3. Pin the implementation (required — do not leave this null when a commit exists):
    - Run `git rev-parse HEAD` and `git status --short`.
-   - If the working tree is **clean**, pin `gitHead` to that SHA and copy `git log -1 --format=%s` into the manifest. Refuse to start if `HEAD` does not equal `implementation-pin.json`’s `git.head` unless the operator named a different revision.
+   - If the working tree is **clean**, pin `gitHead` to that SHA and copy `git log -1 --format=%s` into the manifest. Require `git.head` from `implementation-pin.json` to equal `HEAD` or to be an ancestor of `HEAD` (`git merge-base --is-ancestor <pin> HEAD`). Refuse to start if the pin is missing or not an ancestor, unless the operator named a different revision.
    - If the working tree is **dirty**, do **not** claim the commit alone. Write `docs/evaluations/<run-id>/source-snapshot/` with: the short status, `git rev-parse HEAD` (if any), and SHA-256 of every file under `packages/`, `fixtures/import/`, `evaluation/harness/`, and `docs/languages/` that differs from HEAD or is untracked and included. Set `manifest.implementation.snapshot` to that directory.
    - If there is no commit and no snapshot, stop; do not run the corpus unpinned.
    - Current MotionScript and Scene IR versions and wire strings from `releases.json`.
