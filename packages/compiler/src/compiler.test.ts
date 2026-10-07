@@ -323,6 +323,40 @@ complete;
   });
 });
 
+describe("geometry.animatedTrim", () => {
+  it("compiles animated trim channels with geometry.animatedTrim", () => {
+    const compiled = compileMotionScript(`scene "trim" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+  requires "geometry.trimPath";
+  requires "geometry.animatedTrim";
+};
+path strokePath {
+  stroke #ff4040 width 2;
+  move (0, 0);
+  line (100, 0);
+};
+operators strokePath { trim 0, 0, 0; };
+keyframes strokePath.trim.end {
+  start 0ms;
+  duration 1000ms;
+  0% 0;
+  100% 1;
+};
+complete;
+`);
+    expect(compiled.ok, compiled.diagnostics.map((item) => item.message).join("\n")).toBe(true);
+    expect(compiled.scene?.requiredCapabilities).toContain("geometry.animatedTrim");
+    const track = compiled.scene?.timeline.tracks.find(
+      (item) => item.kind === "keyframe" && item.target.kind === "node" && item.target.channel === "trim.end",
+    );
+    expect(track).toBeTruthy();
+    expect(compiled.scene && validateSceneIR(compiled.scene).ok).toBe(true);
+  });
+});
+
 describe("paint.gradientStroke", () => {
   it("compiles gradient stroke with paint.gradientStroke", () => {
     const compiled = compileMotionScript(`scene "ring" {

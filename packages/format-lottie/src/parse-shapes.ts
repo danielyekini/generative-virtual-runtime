@@ -346,16 +346,31 @@ function lineJoin(value: unknown): "miter" | "round" | "bevel" {
   return "miter";
 }
 
-function parseTrim(entry: Record<string, unknown>): { start: number; end: number; offset: number } | undefined {
+function parseTrim(
+  entry: Record<string, unknown>,
+): NonNullable<Extract<LottieShapeItem, { kind: "path" }>["trim"]> | undefined {
   const start = readScalarProperty(entry.s, 0);
   const end = readScalarProperty(entry.e, 100);
   const offset = readScalarProperty(entry.o, 0);
   const unit = (value: ReturnType<typeof readScalarProperty>, fallback: number) =>
     (value.kind === "static" ? value.value : value.keyframes[0]?.value ?? fallback) / 100;
-  return { start: unit(start, 0), end: unit(end, 100), offset: unit(offset, 0) };
+  const animated =
+    start.kind === "animated" || end.kind === "animated" || offset.kind === "animated"
+      ? {
+          ...(start.kind === "animated" ? { start } : {}),
+          ...(end.kind === "animated" ? { end } : {}),
+          ...(offset.kind === "animated" ? { offset } : {}),
+        }
+      : undefined;
+  return {
+    start: unit(start, 0),
+    end: unit(end, 100),
+    offset: unit(offset, 0),
+    ...(animated ? { animated } : {}),
+  };
 }
 
-function applyTrim(items: LottieShapeItem[], trim: { start: number; end: number; offset: number }): void {
+function applyTrim(items: LottieShapeItem[], trim: NonNullable<Extract<LottieShapeItem, { kind: "path" }>["trim"]>): void {
   for (const item of items) {
     if (item.kind === "path" && !item.trim) item.trim = trim;
     if (item.kind === "group") applyTrim(item.items, trim);

@@ -50,6 +50,9 @@ const NODE_CHANNELS = new Set([
   "opacity",
   "visible",
   "commands",
+  "trim.start",
+  "trim.end",
+  "trim.offset",
 ]);
 const CAMERA_CHANNELS = new Set(["position", "position.x", "position.y", "zoom", "rotation"]);
 const OPS = new Set([

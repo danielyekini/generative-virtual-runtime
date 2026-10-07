@@ -9,6 +9,7 @@ export const CAPABILITIES = [
   "geometry.roundedRect",
   "geometry.spatialCurve",
   "geometry.trimPath",
+  "geometry.animatedTrim",
   "paint.linearGradient",
   "paint.radialGradient",
   "paint.gradientStroke",

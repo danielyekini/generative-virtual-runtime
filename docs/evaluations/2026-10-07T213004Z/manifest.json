@@ -1,0 +1,44 @@
+{
+  "runId": "2026-10-07T213004Z",
+  "comparedWith": "2026-10-07T211534Z",
+  "implementation": {
+    "gitHead": "441e2048e79ca94e668beec6e8e9c69cf4ed0b3a",
+    "gitShort": "441e204",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T213004Z/source-snapshot/",
+    "pinAncestor": "441e2048e79ca94e668beec6e8e9c69cf4ed0b3a is ancestor of HEAD"
+  },
+  "languages": {
+    "motionscript": "0.5.0",
+    "sceneIr": "0.5.0",
+    "wireVersion": "0.2"
+  },
+  "reference": {
+    "lottieWeb": "5.13.0",
+    "chrome": "Google Chrome 154.0.8037.98",
+    "dpr": 1,
+    "background": "#101014"
+  },
+  "harness": {
+    "pipeline": "npx tsx evaluation/harness/run-pipeline.ts",
+    "browser": "npx tsx evaluation/harness/drive-browser.ts"
+  },
+  "outcomes": {
+    "conversionStatus": {
+      "LOT-00": "exact",
+      "LOT-01": "exact",
+      "LOT-06": "exact",
+      "LOT-07": "exact"
+    },
+    "visualStatus": {
+      "LOT-00": "confirmed-inspection",
+      "LOT-01": "improved-not-pass",
+      "LOT-06": "not-pass",
+      "LOT-07": "not-pass"
+    },
+    "coverageStatus": "sampled",
+    "visualGate": "VISUAL_UNVERIFIED",
+    "fidelityPassed": false,
+    "authoringPassed": "not-evaluated"
+  }
+}

@@ -856,6 +856,15 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
     if ("spatial" in frame && frame.spatial) ensureCapability(session, "geometry.spatialCurve");
   }
   if (valueType === "path") ensureCapability(session, "geometry.pathMorph");
+  if (
+    resolved.target.kind === "node" &&
+    (resolved.target.channel === "trim.start" ||
+      resolved.target.channel === "trim.end" ||
+      resolved.target.channel === "trim.offset")
+  ) {
+    ensureCapability(session, "geometry.trimPath");
+    ensureCapability(session, "geometry.animatedTrim");
+  }
   if (unit.timingScopeId) ensureCapability(session, "timing.localScopes");
   return {
     id,

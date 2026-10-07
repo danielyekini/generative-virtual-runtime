@@ -14,4 +14,6 @@ Not yet in a published Scene IR version:
 - geometry.mergePaths
 - text.animators
 
+`geometry.animatedTrim` landed in Scene IR 0.5.0.
+
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.

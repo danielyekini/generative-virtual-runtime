@@ -803,3 +803,144 @@ describe("geometry.pathMorph", () => {
     expect(sampled(1000)?.[2]).toEqual({ cmd: "Z" });
   });
 });
+
+describe("geometry.trimPath", () => {
+  it("applies static trim operators when resolving paths", () => {
+    const scene: SceneIR = {
+      irVersion: "0.2",
+      sceneId: "trim-static",
+      viewport: { width: 200, height: 200, fit: "contain" },
+      background: { type: "solid", r: 0, g: 0, b: 0, a: 1 },
+      resources: [],
+      cameras: [{ id: "main", position: { x: 100, y: 100 }, zoom: 1, rotation: 0 }],
+      initialCameraId: "main",
+      nodes: [
+        {
+          id: "strokePath",
+          name: "strokePath",
+          parentId: null,
+          zIndex: 0,
+          space: "world",
+          transform: { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
+          opacity: 1,
+          visible: true,
+          kind: "path",
+          commands: [
+            { cmd: "M", x: 0, y: 0 },
+            { cmd: "L", x: 100, y: 0 },
+          ],
+          fillRule: "nonzero",
+          stroke: {
+            color: { type: "solid", r: 1, g: 0, b: 0, a: 1 },
+            width: 2,
+            cap: "butt",
+            join: "miter",
+            miterLimit: 4,
+          },
+        },
+      ],
+      timeline: { durationMs: 1000, tracks: [], steps: [] },
+      compositions: [],
+      instances: [],
+      timingScopes: [{ id: "root", parentId: null, offsetMs: 0, stretch: 1 }],
+      requiredCapabilities: ["geometry.trimPath"],
+      geometryOperators: [{ nodeId: "strokePath", operators: [{ op: "trim", start: 0, end: 0, offset: 0 }] }],
+    };
+    expect(validateSceneIR(scene).ok).toBe(true);
+    const empty = new AnimationRuntime(scene).evaluate(0).drawItems.find((item) => item.nodeId === "strokePath");
+    expect(empty?.geometry.kind).toBe("path");
+    if (empty?.geometry.kind === "path") expect(empty.geometry.commands.length).toBe(0);
+
+    scene.geometryOperators = [{ nodeId: "strokePath", operators: [{ op: "trim", start: 0, end: 0.5, offset: 0 }] }];
+    const half = new AnimationRuntime(scene).evaluate(0).drawItems.find((item) => item.nodeId === "strokePath");
+    expect(half?.geometry.kind).toBe("path");
+    if (half?.geometry.kind === "path") {
+      expect(half.geometry.commands.length).toBeGreaterThanOrEqual(2);
+      const last = half.geometry.commands[half.geometry.commands.length - 1];
+      expect(last && "x" in last ? last.x : undefined).toBeCloseTo(50, 0);
+    }
+  });
+});
+
+describe("geometry.animatedTrim", () => {
+  it("samples animated trim tracks over the composition", () => {
+    const fill = { before: "none" as const, after: "forwards" as const };
+    const scene: SceneIR = {
+      irVersion: "0.2",
+      sceneId: "trim-animated",
+      viewport: { width: 200, height: 200, fit: "contain" },
+      background: { type: "solid", r: 0, g: 0, b: 0, a: 1 },
+      resources: [],
+      cameras: [{ id: "main", position: { x: 100, y: 100 }, zoom: 1, rotation: 0 }],
+      initialCameraId: "main",
+      nodes: [
+        {
+          id: "strokePath",
+          name: "strokePath",
+          parentId: null,
+          zIndex: 0,
+          space: "world",
+          transform: { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
+          opacity: 1,
+          visible: true,
+          kind: "path",
+          commands: [
+            { cmd: "M", x: 0, y: 0 },
+            { cmd: "L", x: 100, y: 0 },
+          ],
+          fillRule: "nonzero",
+          stroke: {
+            color: { type: "solid", r: 1, g: 0, b: 0, a: 1 },
+            width: 2,
+            cap: "butt",
+            join: "miter",
+            miterLimit: 4,
+          },
+        },
+      ],
+      timeline: {
+        durationMs: 1000,
+        tracks: [
+          {
+            id: "trimEnd",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "strokePath", channel: "trim.end" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 0, easing: "linear" },
+              { offset: 1, value: 1 },
+            ],
+          },
+        ],
+        steps: [],
+      },
+      compositions: [],
+      instances: [],
+      timingScopes: [{ id: "root", parentId: null, offsetMs: 0, stretch: 1 }],
+      requiredCapabilities: ["geometry.trimPath", "geometry.animatedTrim"],
+      geometryOperators: [{ nodeId: "strokePath", operators: [{ op: "trim", start: 0, end: 0, offset: 0 }] }],
+    };
+    expect(validateSceneIR(scene).ok).toBe(true);
+    const runtime = new AnimationRuntime(scene);
+    const at = (ms: number) => runtime.evaluate(ms).drawItems.find((item) => item.nodeId === "strokePath");
+    const startGeom = at(0)?.geometry;
+    expect(startGeom?.kind).toBe("path");
+    if (startGeom?.kind === "path") expect(startGeom.commands.length).toBe(0);
+    const mid = at(500);
+    expect(mid?.geometry.kind).toBe("path");
+    if (mid?.geometry.kind === "path") {
+      expect(mid.geometry.commands.length).toBeGreaterThanOrEqual(2);
+      const last = mid.geometry.commands[mid.geometry.commands.length - 1];
+      expect(last && "x" in last ? last.x : undefined).toBeCloseTo(50, 0);
+    }
+    const end = at(1000);
+    expect(end?.geometry.kind).toBe("path");
+    if (end?.geometry.kind === "path") {
+      const last = end.geometry.commands[end.geometry.commands.length - 1];
+      expect(last && "x" in last ? last.x : undefined).toBeCloseTo(100, 0);
+    }
+  });
+});

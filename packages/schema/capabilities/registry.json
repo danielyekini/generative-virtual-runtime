@@ -309,11 +309,47 @@
       "summary": "Trim operators apply when a path is resolved.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["runtime"],
-      "restrictions": ["Animated trim is outside this claim until a test samples more than the first value."],
-      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
-      "conformanceTests": [],
+      "restrictions": [
+        "Static start/end/offset on geometryOperators. Animated trim.start/end/offset tracks require geometry.animatedTrim (0.5.0)."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#applies static trim operators when resolving paths"
+      ],
       "adapters": {
-        "lottie": { "status": "untested", "scope": "Static tm is stored and applied in the resolver, without a conformance test." },
+        "lottie": {
+          "status": "exact",
+          "scope": "Static tm lowers to a trim operator and is applied when the path is resolved.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks"
+          ]
+        },
+        "svg": { "status": "not-applicable", "scope": "SVG stroke dash is not trim." }
+      }
+    },
+    {
+      "id": "geometry.animatedTrim",
+      "summary": "Keyframe tracks may drive trim.start, trim.end, and trim.offset on a path node.",
+      "introducedIn": { "motionscript": "0.5.0", "sceneIr": "0.5.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Values are normalised path fractions in [0, 1] for start/end. Offset wraps.",
+        "Requires a trim operator (or track-only override) on the same node for the window to apply."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#samples animated trim tracks over the composition",
+        "packages/compiler/src/compiler.test.ts#compiles animated trim channels with geometry.animatedTrim",
+        "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "Animated tm s/e/o lower to trim.start/end/offset tracks (0–1). Simultaneously mode only; individual trim mode is outside this claim.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks"
+          ]
+        },
         "svg": { "status": "not-applicable", "scope": "SVG stroke dash is not trim." }
       }
     },

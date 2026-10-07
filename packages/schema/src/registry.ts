@@ -96,6 +96,24 @@ export const NODE_CHANNELS: Record<NodeAnimChannel, ChannelSpec> = {
     /** Path tracks are sampled as whole values, not scalar writers. */
     scalars: [],
   },
+  "trim.start": {
+    dslPath: "trim.start",
+    type: "number",
+    animation: "track",
+    scalars: ["trim.start"],
+  },
+  "trim.end": {
+    dslPath: "trim.end",
+    type: "number",
+    animation: "track",
+    scalars: ["trim.end"],
+  },
+  "trim.offset": {
+    dslPath: "trim.offset",
+    type: "number",
+    animation: "track",
+    scalars: ["trim.offset"],
+  },
 };
 
 export const CAMERA_CHANNELS: Record<CameraAnimChannel, ChannelSpec> = {
@@ -249,6 +267,8 @@ export function isValidSample(type: PropertyType, channel: string, value: unknow
   if (typeof value !== "number" || !Number.isFinite(value)) return false;
   if (channel === "opacity" || channel.endsWith("opacity")) return value >= 0 && value <= 1;
   if (channel === "zoom" || channel.endsWith(".zoom")) return value > 0;
+  if (channel === "trim.start" || channel === "trim.end") return value >= 0 && value <= 1;
+  if (channel === "trim.offset") return Number.isFinite(value);
   return true;
 }
 

@@ -511,8 +511,21 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       ...(stroke ? { stroke } : {}),
     });
     if (item.trim) {
-      ctx.operators.push({ nodeId: nodeId.id, operators: [{ op: "trim", start: item.trim.start, end: item.trim.end, offset: item.trim.offset }] });
+      ctx.operators.push({
+        nodeId: nodeId.id,
+        operators: [{ op: "trim", start: item.trim.start, end: item.trim.end, offset: item.trim.offset }],
+      });
       ctx.capabilities.push("geometry.trimPath");
+      if (item.trim.animated) {
+        addTrimTracks(ctx, nodeId.id, item.trim);
+      } else {
+        ctx.notes.push({
+          feature: "tm",
+          level: "exact",
+          message: `Static trim on ${nodeId.id}.`,
+          target: nodeId.id,
+        });
+      }
     }
     if (item.morph && item.morph.length >= 2) {
       addPathMorphTrack(ctx, nodeId.id, item);
@@ -740,10 +753,30 @@ function addScaledVec2Tracks(
   );
 }
 
+function addTrimTracks(
+  ctx: LowerContext,
+  nodeId: string,
+  trim: NonNullable<Extract<LottieShapeItem, { kind: "path" }>["trim"]>,
+): void {
+  const animated = trim.animated;
+  if (!animated) return;
+  const toUnit = (value: number) => value / 100;
+  if (animated.start) addScalarTrack(ctx, nodeId, "trim.start", animated.start, toUnit, "tm");
+  if (animated.end) addScalarTrack(ctx, nodeId, "trim.end", animated.end, toUnit, "tm");
+  if (animated.offset) addScalarTrack(ctx, nodeId, "trim.offset", animated.offset, toUnit, "tm");
+  ctx.capabilities.push("geometry.animatedTrim");
+  ctx.notes.push({
+    feature: "tm",
+    level: "exact",
+    message: `Animated trim on ${nodeId}.`,
+    target: nodeId,
+  });
+}
+
 function addScalarTrack(
   ctx: LowerContext,
   nodeId: string,
-  channel: "transform.rotation" | "opacity",
+  channel: "transform.rotation" | "opacity" | "trim.start" | "trim.end" | "trim.offset",
   animated: AnimatedScalar,
   map: (value: number) => number,
   feature: string,

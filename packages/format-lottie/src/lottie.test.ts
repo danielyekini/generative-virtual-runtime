@@ -126,6 +126,32 @@ describe("lottie adapter", () => {
     expect(origin(runtime, 1500, dot)?.x).toBeCloseTo(150, 3);
   });
 
+  it("imports animated trim as trim.start/end tracks", () => {
+    const result = load("animated_trim");
+    expect(result.ok, result.diagnostics.map((item) => `${item.feature}:${item.message}`).join("\n")).toBe(true);
+    expect(result.scene?.requiredCapabilities).toContain("geometry.animatedTrim");
+    expect(result.scene?.geometryOperators?.some((entry) => entry.operators.some((op) => op.op === "trim"))).toBe(true);
+    const endTrack = result.scene?.timeline.tracks.find(
+      (track) => track.kind === "keyframe" && track.target.kind === "node" && track.target.channel === "trim.end",
+    );
+    expect(endTrack?.kind).toBe("keyframe");
+    if (endTrack?.kind === "keyframe") {
+      expect(endTrack.keyframes[0]?.value).toBeCloseTo(0, 5);
+      expect(endTrack.keyframes.at(-1)?.value).toBeCloseTo(1, 5);
+    }
+    expect(result.diagnostics.some((item) => item.feature === "tm" && item.fidelity === "exact")).toBe(true);
+    const validated = validateSceneIR(result.scene);
+    expect(validated.ok, validated.ok ? "" : JSON.stringify(validated)).toBe(true);
+    const runtime = new AnimationRuntime(result.scene!);
+    const pathId = result.scene!.geometryOperators![0]!.nodeId;
+    const commandsAt = (ms: number) => {
+      const item = runtime.evaluate(ms).drawItems.find((draw) => draw.nodeId === pathId);
+      return item?.geometry.kind === "path" ? item.geometry.commands : undefined;
+    };
+    expect(commandsAt(0)?.length ?? 0).toBe(0);
+    expect((commandsAt(1000)?.length ?? 0) > 0).toBe(true);
+  });
+
   it("inventories omitted constructs before lowering", () => {
     const result = load("inventory_gaps");
     expect(result.ok).toBe(true);

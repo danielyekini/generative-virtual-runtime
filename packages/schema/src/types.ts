@@ -348,7 +348,10 @@ export type NodeAnimChannel =
   | "transform.pivot.y"
   | "opacity"
   | "visible"
-  | "commands";
+  | "commands"
+  | "trim.start"
+  | "trim.end"
+  | "trim.offset";
 
 export type CameraAnimChannel =
   | "position"

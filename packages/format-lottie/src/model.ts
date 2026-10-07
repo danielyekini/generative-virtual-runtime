@@ -118,7 +118,17 @@ export type LottieShapeItem =
       gradient?: GradientPaint;
       /** From Lottie `gs` only. */
       gradientStroke?: GradientStrokePaint;
-      trim?: { start: number; end: number; offset: number };
+      trim?: {
+        start: number;
+        end: number;
+        offset: number;
+        /** Present when Lottie `tm` start/end/offset is animated. Values are 0–100 percents. */
+        animated?: {
+          start?: AnimatedScalar;
+          end?: AnimatedScalar;
+          offset?: AnimatedScalar;
+        };
+      };
     }
   | {
       kind: "ellipse";

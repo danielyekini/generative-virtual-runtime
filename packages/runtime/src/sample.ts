@@ -29,7 +29,12 @@ interface NodePose {
   opacity: number;
   visible: boolean;
   commands?: PathCommand[];
+  trimStart?: number;
+  trimEnd?: number;
+  trimOffset?: number;
 }
+
+export type TrimOverride = { start: number; end: number; offset: number };
 
 interface CameraPose {
   position: Vec2;
@@ -41,6 +46,8 @@ export interface SampledScene {
   nodes: NodeDefinition[];
   camera: Camera2DDefinition;
   diagnostics: Diagnostic[];
+  /** Sampled trim.start/end/offset tracks, merged over static geometryOperators. */
+  trimOverrides: Record<string, TrimOverride>;
 }
 
 interface Writer {
@@ -128,10 +135,32 @@ export function sampleScene(
     if (pose) pose.visible = value;
   }
 
+  const trimOverrides: Record<string, TrimOverride> = {};
+  for (const list of scene.geometryOperators ?? []) {
+    const trim = list.operators.find((op) => op.op === "trim");
+    if (!trim || trim.op !== "trim") continue;
+    const pose = nodePoses.get(list.nodeId);
+    trimOverrides[list.nodeId] = {
+      start: pose?.trimStart ?? trim.start,
+      end: pose?.trimEnd ?? trim.end,
+      offset: pose?.trimOffset ?? trim.offset,
+    };
+  }
+  for (const [nodeId, pose] of nodePoses) {
+    if (pose.trimStart === undefined && pose.trimEnd === undefined && pose.trimOffset === undefined) continue;
+    const base = trimOverrides[nodeId] ?? { start: 0, end: 1, offset: 0 };
+    trimOverrides[nodeId] = {
+      start: pose.trimStart ?? base.start,
+      end: pose.trimEnd ?? base.end,
+      offset: pose.trimOffset ?? base.offset,
+    };
+  }
+
   return {
     nodes: scene.nodes.map((node) => applyNodePose(node, nodePoses.get(node.id) ?? nodePose(node))),
     camera: { ...cameraSource, ...cameraPose, position: { ...cameraPose.position } },
     diagnostics,
+    trimOverrides,
   };
 }
 
@@ -378,6 +407,15 @@ function writeNode(pose: NodePose, channel: string, value: number): void {
       break;
     case "opacity":
       pose.opacity = value;
+      break;
+    case "trim.start":
+      pose.trimStart = value;
+      break;
+    case "trim.end":
+      pose.trimEnd = value;
+      break;
+    case "trim.offset":
+      pose.trimOffset = value;
       break;
     default:
       break;

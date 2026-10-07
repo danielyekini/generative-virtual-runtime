@@ -24,7 +24,7 @@ export function buildResolvedFrame(
   const drawItems = [];
   for (const node of drawableOrder(sampled.nodes)) {
     if (subtreeHidden(sampled.nodes, node.id)) continue;
-    const geometry = geometryOf(scene, node);
+    const geometry = geometryOf(scene, node, sampled.trimOverrides);
     if (!geometry) continue;
     drawItems.push({
       nodeId: node.id,
@@ -120,7 +120,11 @@ function appearanceOf(node: NodeDefinition): ResolvedAppearance {
   return appearance;
 }
 
-function geometryOf(scene: SceneIR, node: NodeDefinition): ResolvedGeometry | undefined {
+function geometryOf(
+  scene: SceneIR,
+  node: NodeDefinition,
+  overrides?: SampledScene["trimOverrides"],
+): ResolvedGeometry | undefined {
   switch (node.kind) {
     case "group":
       return undefined;
@@ -148,7 +152,7 @@ function geometryOf(scene: SceneIR, node: NodeDefinition): ResolvedGeometry | un
     case "polygon":
       return { kind: "polygon", points: node.points };
     case "path":
-      return { kind: "path", commands: trimmed(scene, node.id, node.commands), fillRule: node.fillRule };
+      return { kind: "path", commands: trimmed(scene, node.id, node.commands, overrides), fillRule: node.fillRule };
     case "text":
       return {
         kind: "text",
@@ -160,11 +164,21 @@ function geometryOf(scene: SceneIR, node: NodeDefinition): ResolvedGeometry | un
   }
 }
 
-function trimmed(scene: SceneIR, nodeId: string, commands: readonly { cmd: string }[]): ReturnType<typeof trimCommands> {
+function trimmed(
+  scene: SceneIR,
+  nodeId: string,
+  commands: readonly { cmd: string }[],
+  overrides?: SampledScene["trimOverrides"],
+): ReturnType<typeof trimCommands> {
   const list = scene.geometryOperators?.find((entry) => entry.nodeId === nodeId);
-  if (!list) return [...commands] as ReturnType<typeof trimCommands>;
+  const override = overrides?.[nodeId];
+  if (!list && !override) return [...commands] as ReturnType<typeof trimCommands>;
   let current = [...commands] as ReturnType<typeof trimCommands>;
-  for (const op of list.operators) {
+  if (override) {
+    current = trimCommands(current, override.start, override.end, override.offset);
+    return current;
+  }
+  for (const op of list!.operators) {
     if (op.op === "trim") current = trimCommands(current, op.start, op.end, op.offset);
   }
   return current;

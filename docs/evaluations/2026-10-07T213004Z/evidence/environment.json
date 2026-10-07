@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-07T21:44:27.433Z",
+  "repository": "/Users/daniel.yekini/Projects/generative-visual-runtime",
+  "gitHead": "2388869dc0c0d1311d79cd7a4d807d81c2e7e6ab",
+  "gitStatus": "## main...origin/main\n M docs/languages/compatibility-policy.md\n M docs/languages/motionscript/versions/pending.md\n M docs/languages/scene-ir/versions/pending.md\n M packages/compiler/src/compile.ts\n M packages/compiler/src/compiler.test.ts\n M packages/format-lottie/src/lottie.test.ts\n M packages/format-lottie/src/model.ts\n M packages/format-lottie/src/normalise.ts\n M packages/format-lottie/src/parse-shapes.ts\n M packages/format-lottie/src/property.ts\n M packages/runtime/src/frame.ts\n M packages/runtime/src/runtime.test.ts\n M packages/runtime/src/sample.ts\n M packages/schema/capabilities/registry.json\n M packages/schema/capabilities/releases.json\n M packages/schema/src/capabilities.ts\n M packages/schema/src/registry.ts\n M packages/schema/src/trim.ts\n M packages/schema/src/types.ts\n M packages/schema/src/validate.ts\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-strip.png\n?? docs/languages/motionscript/versions/0.5.0.md\n?? docs/languages/scene-ir/versions/0.5.0.md\n?? fixtures/import/lottie/animated_trim.json",
+  "gitLog": "2388869 Sample spatial curves by arc length and record the mid-cycle evaluation.",
+  "node": "v24.10.0",
+  "platform": "darwin arm64",
+  "npm": "11.6.0",
+  "chrome": "Google Chrome 154.0.8037.98",
+  "lottieWeb": "5.13.0",
+  "versions": {
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0",
+    "ir": "0.1",
+    "dsl": "0.1",
+    "svgStaticDurationMs": 1000
+  },
+  "commands": [
+    "npx tsx evaluation/harness/run-pipeline.ts",
+    "npx tsx evaluation/harness/drive-browser.ts",
+    "node evaluation/harness/write-report.mjs"
+  ]
+}

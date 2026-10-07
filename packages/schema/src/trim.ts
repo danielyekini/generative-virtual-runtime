@@ -17,15 +17,40 @@ export function trimCommands(commands: readonly PathCommand[], start: number, en
   const window = trimWindow(start, end, offset);
   const from = window.start * total;
   const to = window.end * total;
-  if (to <= from) return [];
-  const kept = samples.filter((_, index) => {
+  if (to <= from + 1e-9) return [];
+  const kept: Vec2[] = [];
+  const startPoint = pointAtLength(samples, lengths, from);
+  const endPoint = pointAtLength(samples, lengths, to);
+  if (!startPoint || !endPoint) return [];
+  kept.push(startPoint);
+  for (let index = 0; index < samples.length; index += 1) {
     const at = lengths[index] ?? 0;
-    return at >= from - 1e-6 && at <= to + 1e-6;
-  });
-  if (kept.length < 2) return [];
+    if (at > from + 1e-6 && at < to - 1e-6) kept.push(samples[index]!);
+  }
+  kept.push(endPoint);
   const [first, ...rest] = kept;
-  if (!first) return [];
+  if (!first || rest.length === 0) return [];
   return [{ cmd: "M", x: first.x, y: first.y }, ...rest.map((point) => ({ cmd: "L" as const, x: point.x, y: point.y }))];
+}
+
+function pointAtLength(samples: readonly Vec2[], lengths: readonly number[], target: number): Vec2 | undefined {
+  if (target <= 0) return samples[0] ? { ...samples[0] } : undefined;
+  const total = lengths[lengths.length - 1] ?? 0;
+  if (target >= total) {
+    const last = samples[samples.length - 1];
+    return last ? { ...last } : undefined;
+  }
+  for (let index = 0; index < samples.length - 1; index += 1) {
+    const lo = lengths[index] ?? 0;
+    const hi = lengths[index + 1] ?? 0;
+    if (target < lo - 1e-9 || target > hi + 1e-9) continue;
+    if (Math.abs(hi - lo) < 1e-9) return { ...samples[index]! };
+    const t = (target - lo) / (hi - lo);
+    const a = samples[index]!;
+    const b = samples[index + 1]!;
+    return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
+  }
+  return undefined;
 }
 
 function trimWindow(start: number, end: number, offset: number): { start: number; end: number } {

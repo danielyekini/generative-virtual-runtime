@@ -13,20 +13,25 @@ export function readScalarProperty(raw: unknown, defaultValue: number): Animated
   const prop = readProperty(raw);
   if (!prop) return { kind: "static", value: defaultValue };
   if (prop.kind === "static") {
-    const value = typeof prop.value === "number" ? prop.value : defaultValue;
-    return { kind: "static", value };
+    return { kind: "static", value: scalarNumber(prop.value, defaultValue) };
   }
   const keyframes: LottieScalarKeyframe[] = [];
   for (const frame of prop.keyframes) {
-    const value = typeof frame.value === "number" ? frame.value : defaultValue;
     keyframes.push({
       frame: frame.frame,
-      value,
+      value: scalarNumber(frame.value, defaultValue),
       hold: frame.hold,
       easing: frame.easing,
     });
   }
   return { kind: "animated", keyframes };
+}
+
+/** Lottie 1D key values are often a one-element array (`s: [0]`). */
+function scalarNumber(value: unknown, defaultValue: number): number {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (Array.isArray(value) && typeof value[0] === "number" && Number.isFinite(value[0])) return value[0];
+  return defaultValue;
 }
 
 /**
