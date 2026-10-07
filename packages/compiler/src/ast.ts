@@ -5,7 +5,10 @@ export interface Vec {
   y: number;
 }
 
-export type AnimLiteral = { kind: "number"; value: number } | { kind: "vec2"; value: Vec };
+export type AnimLiteral =
+  | { kind: "number"; value: number }
+  | { kind: "vec2"; value: Vec }
+  | { kind: "path"; value: PathCommand[] };
 
 export type EaseAst =
   | "linear"

@@ -1,5 +1,13 @@
 import { cubicControlsMonotonic, type Vec2 } from "@gvr/schema";
-import type { AnimatedScalar, AnimatedVec2, LottieEasing, LottieScalarKeyframe, LottieVec2Keyframe } from "./model";
+import type {
+  AnimatedScalar,
+  AnimatedVec2,
+  LottieEasing,
+  LottiePathKeyframe,
+  LottieScalarKeyframe,
+  LottieVec2Keyframe,
+  PathPoint,
+} from "./model";
 
 export function readScalarProperty(raw: unknown, defaultValue: number): AnimatedScalar {
   const prop = readProperty(raw);
@@ -19,6 +27,36 @@ export function readScalarProperty(raw: unknown, defaultValue: number): Animated
     });
   }
   return { kind: "animated", keyframes };
+}
+
+/**
+ * Animated Lottie path (`sh.ks` with a=1). Keys store path data at `s[0]` (or rarely `s` object).
+ * Returns undefined when fewer than two samples share vertex count and closed flag.
+ */
+export function readPathMorphKeyframes(raw: unknown): LottiePathKeyframe[] | undefined {
+  if (!Array.isArray(raw) || raw.length < 2) return undefined;
+  const keyframes: LottiePathKeyframe[] = [];
+  for (const item of raw) {
+    if (!isRecord(item) || typeof item.t !== "number") continue;
+    const path = unwrapPathData(item.s);
+    if (!path) continue;
+    const points = pathPointsFromRecord(path);
+    if (!points) continue;
+    keyframes.push({
+      frame: item.t,
+      commands: points.commands,
+      closed: points.closed,
+      hold: item.h === 1,
+      easing: easingFromHandles(item.i, item.o),
+    });
+  }
+  keyframes.sort((left, right) => left.frame - right.frame);
+  if (keyframes.length < 2) return undefined;
+  const first = keyframes[0]!;
+  const same = keyframes.every(
+    (frame) => frame.commands.length === first.commands.length && frame.closed === first.closed,
+  );
+  return same ? keyframes : undefined;
 }
 
 export function readVec2Property(raw: unknown, defaultValue: Vec2): AnimatedVec2 {
@@ -113,6 +151,39 @@ function vec2FromUnknown(value: unknown, fallback: Vec2): Vec2 {
 
 function num(value: unknown, fallback: number): number {
   return typeof value === "number" && Number.isFinite(value) ? value : fallback;
+}
+
+function unwrapPathData(raw: unknown): Record<string, unknown> | undefined {
+  if (Array.isArray(raw) && raw.length > 0 && isRecord(raw[0])) return raw[0];
+  if (isRecord(raw) && Array.isArray(raw.v)) return raw;
+  return undefined;
+}
+
+function pathPointsFromRecord(path: Record<string, unknown>): { commands: PathPoint[]; closed: boolean } | undefined {
+  if (!Array.isArray(path.v)) return undefined;
+  const vertices = path.v as unknown[];
+  const ins = (path.i as unknown[]) ?? [];
+  const outs = (path.o as unknown[]) ?? [];
+  const points: PathPoint[] = [];
+  for (let index = 0; index < vertices.length; index += 1) {
+    const vertex = vecFromArray(vertices[index]);
+    if (!vertex) continue;
+    points.push({
+      vertex,
+      inTangent: vecFromArray(ins[index]) ?? { x: 0, y: 0 },
+      outTangent: vecFromArray(outs[index]) ?? { x: 0, y: 0 },
+    });
+  }
+  if (points.length === 0) return undefined;
+  return { commands: points, closed: path.c === true };
+}
+
+function vecFromArray(value: unknown): Vec2 | undefined {
+  if (!Array.isArray(value) || value.length < 2) return undefined;
+  const x = value[0];
+  const y = value[1];
+  if (typeof x !== "number" || typeof y !== "number" || !Number.isFinite(x) || !Number.isFinite(y)) return undefined;
+  return { x, y };
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

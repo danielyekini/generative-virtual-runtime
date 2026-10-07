@@ -212,6 +212,7 @@ function isFromTo(track: KeyframeTrack): boolean {
     from.offset === 0 &&
     to.offset === 1 &&
     to.easing === undefined &&
+    track.valueType !== "path" &&
     !track.keyframes.some((frame) => frame.spatial)
   );
 }
@@ -221,8 +222,14 @@ function formatTarget(track: TrackDefinition): string {
   return `${track.target.nodeId}.${NODE_CHANNELS[track.target.channel].dslPath}`;
 }
 
-function formatAnim(value: number | Vec2, valueType: "number" | "vec2" | "angle"): string {
-  if (typeof value !== "number") return formatVec(value);
+function formatAnim(
+  value: number | Vec2 | PathCommand[],
+  valueType: "number" | "vec2" | "angle" | "path",
+): string {
+  if (valueType === "path" && Array.isArray(value)) {
+    return `path { ${value.map((command) => formatCommand(command)).join(" ")} }`;
+  }
+  if (typeof value !== "number") return formatVec(value as Vec2);
   return valueType === "angle" ? formatAngle(value) : formatNumber(value);
 }
 

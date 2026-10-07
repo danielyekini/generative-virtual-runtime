@@ -11,6 +11,7 @@ export const CAPABILITIES = [
   "geometry.trimPath",
   "paint.linearGradient",
   "paint.radialGradient",
+  "paint.gradientStroke",
   "text.basic",
   "resources.image",
   "svg.smilTimeBased",
@@ -19,6 +20,7 @@ export const CAPABILITIES = [
   "compositing.blend",
   "effects.blur",
   "effects.shadow",
+  "geometry.pathMorph",
 ] as const;
 
 export type CapabilityName = (typeof CAPABILITIES)[number];

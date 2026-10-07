@@ -1,6 +1,42 @@
+# Dependencies, caches, build outputs
 node_modules/
 dist/
 *.tsbuildinfo
 .DS_Store
 coverage/
 .vite/
+*.log
+.turbo/
+.cache/
+
+# Archives / bulk transfer bundles
+*.zip
+evaluation.zip
+
+# Harness scratch (not a historical evaluation record)
+evaluation/evidence/
+
+# Full frame captures, videos, and large image-diff collections.
+# Keep a few representative failure images under evidence/failure-samples/.
+docs/evaluations/**/evidence/captures/
+docs/evaluations/**/evidence/**/*-diff.png
+docs/evaluations/**/evidence/**/*-native.png
+docs/evaluations/**/evidence/**/*-reference.png
+docs/evaluations/**/evidence/**/*-strip.png
+!docs/evaluations/**/evidence/failure-samples/
+!docs/evaluations/**/evidence/failure-samples/**
+
+# Large or redistribution-restricted corpus copies inside eval evidence.
+# Fixture SHA-256 values live in manifest.json / loop.json.
+docs/evaluations/**/evidence/sources/
+
+# Large regenerated scene dumps (import/compile/diagnostic IR)
+docs/evaluations/**/evidence/fixtures/**/compiled-scene.json
+docs/evaluations/**/evidence/fixtures/**/imported-scene.json
+docs/evaluations/**/evidence/fixtures/**/diagnostic-scene.json
+docs/evaluations/**/evidence/fixtures/**/generated.motion
+
+# Large source snapshots (full tree / patches). Keep hash manifests only.
+docs/evaluations/**/source-snapshot/working-tree.patch
+docs/evaluations/**/source-snapshot/tree/
+docs/evaluations/**/source-snapshot/files/

@@ -672,3 +672,81 @@ describe("capability profile 0.2", () => {
     expect(origin(new AnimationRuntime(ordered).evaluate(500), "box").x).toBeCloseTo(5, 6);
   });
 });
+
+describe("geometry.pathMorph", () => {
+  it("samples path morph tracks at boundaries and midpoints", () => {
+    const from = [
+      { cmd: "M" as const, x: 0, y: 0 },
+      { cmd: "C" as const, c1x: 10, c1y: 0, c2x: 10, c2y: 0, x: 10, y: 0 },
+      { cmd: "Z" as const },
+    ];
+    const to = [
+      { cmd: "M" as const, x: 0, y: 0 },
+      { cmd: "C" as const, c1x: 30, c1y: 0, c2x: 30, c2y: 0, x: 30, y: 0 },
+      { cmd: "Z" as const },
+    ];
+    const scene: SceneIR = {
+      irVersion: "0.2",
+      sceneId: "morph",
+      viewport: { width: 100, height: 100, fit: "contain" },
+      background: { type: "solid", r: 0, g: 0, b: 0, a: 1 },
+      resources: [],
+      cameras: [{ id: "main", position: { x: 50, y: 50 }, zoom: 1, rotation: 0 }],
+      initialCameraId: "main",
+      nodes: [
+        {
+          id: "blob",
+          name: "blob",
+          parentId: null,
+          space: "world",
+          kind: "path",
+          zIndex: 0,
+          transform: {
+            position: { x: 0, y: 0 },
+            pivot: { x: 0, y: 0 },
+            rotation: 0,
+            scale: { x: 1, y: 1 },
+          },
+          opacity: 1,
+          visible: true,
+          commands: from,
+          fillRule: "nonzero",
+          fill: { type: "solid", r: 1, g: 0, b: 0, a: 1 },
+        },
+      ],
+      timeline: {
+        durationMs: 1000,
+        tracks: [
+          {
+            id: "morph",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "blob", channel: "commands" },
+            valueType: "path",
+            startMs: 0,
+            durationMs: 1000,
+            fill: { before: "none", after: "forwards" },
+            keyframes: [
+              { offset: 0, value: from, easing: "linear" },
+              { offset: 1, value: to },
+            ],
+          },
+        ],
+        steps: [],
+      },
+      compositions: [],
+      instances: [],
+      timingScopes: [{ id: "root", parentId: null, offsetMs: 0, stretch: 1 }],
+      requiredCapabilities: ["geometry.pathMorph"],
+      geometryOperators: [],
+    };
+    expect(validateSceneIR(scene).ok).toBe(true);
+    const sampled = (ms: number) => {
+      const node = sampleScene(scene, ms).nodes.find((entry) => entry.id === "blob");
+      return node && node.kind === "path" ? node.commands : undefined;
+    };
+    expect(sampled(0)?.[1]).toMatchObject({ cmd: "C", x: 10 });
+    expect(sampled(500)?.[1]).toMatchObject({ cmd: "C", x: 20, c1x: 20 });
+    expect(sampled(1000)?.[1]).toMatchObject({ cmd: "C", x: 30 });
+    expect(sampled(1000)?.[2]).toEqual({ cmd: "Z" });
+  });
+});

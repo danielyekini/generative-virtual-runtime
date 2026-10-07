@@ -532,27 +532,53 @@
     {
       "id": "geometry.pathMorph",
       "summary": "Animated path vertices with a shared command topology.",
-      "targets": [],
+      "introducedIn": { "motionscript": "0.3.0", "sceneIr": "0.3.0" },
+      "targets": ["compiler", "runtime", "renderer"],
       "restrictions": [
-        "Not representable yet. Matching topology is diagnosed and not sampled.",
-        "Not part of published MotionScript/Scene IR 0.2.0. Landing requires a new language version entry (expected 0.3.0), not a package-only bump. See docs/languages/compatibility-policy.md."
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing geometry.pathMorph.",
+        "Exact only when every keyframe shares the same PathCommand cmd sequence. Topology changes are unsupported.",
+        "Spatial tangents are not used on path tracks. Morph is applied before geometry operators such as trim."
       ],
-      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
-      "conformanceTests": [],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/schema/src/path-morph.test.ts#lerps matching cubic topology at midpoints",
+        "packages/runtime/src/runtime.test.ts#samples path morph tracks at boundaries and midpoints",
+        "packages/compiler/src/compiler.test.ts#compiles path command tracks with geometry.pathMorph"
+      ],
       "adapters": {
-        "lottie": { "status": "untested", "scope": "Animated sh is rejected by the parser. No conformance test pins that diagnostic." },
+        "lottie": {
+          "status": "exact",
+          "scope": "Matching-topology animated sh (shared vertex count and closed flag across keys, including s[0] path samples) lowered to path.commands tracks.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#imports matching-topology animated path morph exactly"
+          ]
+        },
         "svg": { "status": "untested", "scope": "SMIL path animation is not covered." }
       }
     },
     {
       "id": "paint.gradientStroke",
-      "summary": "A stroke painted with a gradient.",
-      "targets": [],
-      "restrictions": ["Fill gradients do not imply stroke gradients."],
-      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
-      "conformanceTests": [],
+      "summary": "A stroke painted with a linear or radial gradient.",
+      "introducedIn": { "motionscript": "0.4.0", "sceneIr": "0.4.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing paint.gradientStroke.",
+        "Fill gradients (paint.linearGradient / paint.radialGradient) do not imply stroke gradients.",
+        "Exact for static gs colour stops and width. Animated gradient stops are unsupported."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles gradient stroke with paint.gradientStroke",
+        "packages/format-lottie/src/lottie.test.ts#imports static gradient stroke as stroke paint not fill"
+      ],
       "adapters": {
-        "lottie": { "status": "untested", "scope": "gs strokes are not lowered. No conformance test pins that diagnostic." },
+        "lottie": {
+          "status": "exact",
+          "scope": "Static gs strokes lower to stroke.color gradients with width/cap/join. Sibling solid st is dropped when gs is present. gf remains fill-only.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#imports static gradient stroke as stroke paint not fill"
+          ]
+        },
         "svg": { "status": "untested", "scope": "SVG gradient strokes are not covered." }
       }
     },

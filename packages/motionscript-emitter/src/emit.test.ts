@@ -185,6 +185,8 @@ function sameTrack(left: TrackDefinition, right: TrackDefinition): string {
       if (!near(a.offset, b.offset) || (a.easing ?? "linear") !== (b.easing ?? "linear")) return `keyframe ${id}`;
       if (typeof a.value === "number" || typeof b.value === "number") {
         if (typeof a.value !== "number" || typeof b.value !== "number" || !near(a.value, b.value)) return `keyframe value ${id}`;
+      } else if (Array.isArray(a.value) || Array.isArray(b.value)) {
+        if (JSON.stringify(a.value) !== JSON.stringify(b.value)) return `keyframe path ${id}`;
       } else if (!sameVec(a.value, b.value)) return `keyframe vec ${id}`;
     }
   }

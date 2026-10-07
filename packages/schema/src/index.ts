@@ -9,6 +9,7 @@ export * from "./lex";
 export * from "./limits";
 export * from "./math";
 export * from "./migrate";
+export * from "./path-morph";
 export * from "./registry";
 export * from "./spatial";
 export * from "./trim";

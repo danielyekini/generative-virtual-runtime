@@ -298,6 +298,73 @@ describe("lottie adapter", () => {
     expect(framesToMs(30, 30)).toBe(1000);
   });
 
+  it("imports static gradient stroke as stroke paint not fill", () => {
+    const result = load("gradient_stroke_ring");
+    expect(result.ok).toBe(true);
+    expect(result.fidelity.overall).toBe("exact");
+    expect(result.fidelity.unsupported).toHaveLength(0);
+    expect(result.scene!.requiredCapabilities).toContain("paint.gradientStroke");
+    expect(result.scene!.requiredCapabilities).not.toContain("paint.linearGradient");
+    const path = result.scene!.nodes.find((node) => node.kind === "path");
+    expect(path?.kind).toBe("path");
+    if (path?.kind !== "path") throw new Error("missing path");
+    expect(path.fill).toBeUndefined();
+    expect(path.stroke).toBeDefined();
+    expect(path.stroke!.width).toBeCloseTo(3, 5);
+    expect(path.stroke!.color.type).toBe("linear");
+    if (path.stroke!.color.type === "linear") {
+      expect(path.stroke!.color.stops.length).toBeGreaterThanOrEqual(2);
+    }
+    const validated = validateSceneIR(result.scene);
+    expect(validated.ok).toBe(true);
+    const roundTrip = verifyRoundTrip(result.scene!);
+    expect(roundTrip.ok, formatRoundTripReport(roundTrip)).toBe(true);
+    const runtime = new AnimationRuntime(result.scene!);
+    const item = runtime.evaluate(0).drawItems.find((draw) => draw.nodeId === path.id);
+    expect(item?.appearance.fill).toBeUndefined();
+    expect(item?.appearance.stroke?.color.type).toBe("linear");
+  });
+
+  it("imports matching-topology animated path morph exactly", () => {
+    const result = load("animated_path_morph");
+    expect(result.ok).toBe(true);
+    expect(result.fidelity.overall).toBe("exact");
+    expect(result.fidelity.unsupported).toHaveLength(0);
+    expect(result.scene!.requiredCapabilities).toContain("geometry.pathMorph");
+    const pathNode = result.scene!.nodes.find((node) => node.kind === "path");
+    expect(pathNode?.kind).toBe("path");
+    const track = result.scene!.timeline.tracks.find(
+      (entry) => entry.kind === "keyframe" && entry.valueType === "path" && entry.target.kind === "node" && entry.target.channel === "commands",
+    );
+    expect(track?.kind).toBe("keyframe");
+    if (track?.kind !== "keyframe" || pathNode?.kind !== "path") throw new Error("missing morph track");
+    const runtime = new AnimationRuntime(result.scene!);
+    const duration = result.scene!.timeline.durationMs;
+    const commandsAt = (timeMs: number) => {
+      const node = runtime.evaluate(timeMs).drawItems.find((draw) => draw.nodeId === pathNode.id);
+      return node?.geometry.kind === "path" ? node.geometry.commands : undefined;
+    };
+    const start = commandsAt(0);
+    const mid = commandsAt(duration / 2);
+    const nearEnd = commandsAt(Math.max(0, duration - 1 / 30));
+    expect(start?.[0]).toMatchObject({ cmd: "M" });
+    expect(nearEnd?.[0]).toMatchObject({ cmd: "M" });
+    expect(mid?.length).toBe(start?.length);
+    expect(mid?.[1]).toMatchObject({ cmd: "C" });
+    // Fixture keys: small → wide at mid → small. Mid must differ from the ends.
+    if (start?.[1]?.cmd === "C" && mid?.[1]?.cmd === "C" && nearEnd?.[1]?.cmd === "C") {
+      expect(Math.abs(mid[1].x - start[1].x)).toBeGreaterThan(1);
+      expect(mid[1].x).toBeCloseTo(40, 3);
+      expect(start[1].x).toBeCloseTo(nearEnd[1].x, 1);
+    }
+    const quarter = commandsAt(duration / 4);
+    if (start?.[1]?.cmd === "C" && quarter?.[1]?.cmd === "C" && mid?.[1]?.cmd === "C") {
+      expect(quarter[1].x).toBeCloseTo((start[1].x + mid[1].x) / 2, 2);
+    }
+    const roundTrip = verifyRoundTrip(result.scene!);
+    expect(roundTrip.ok, formatRoundTripReport(roundTrip)).toBe(true);
+  });
+
   it("loads every golden fixture file", () => {
     const files = readdirSync(fixtureDir).filter((name) => name.endsWith(".json") && !name.includes("expected"));
     expect(files.length).toBeGreaterThanOrEqual(13);

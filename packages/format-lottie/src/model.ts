@@ -95,6 +95,14 @@ export interface LottieVec2Keyframe {
   spatial?: { out: Vec2; in: Vec2 };
 }
 
+export interface LottiePathKeyframe {
+  frame: number;
+  commands: PathPoint[];
+  closed: boolean;
+  hold: boolean;
+  easing: LottieEasing;
+}
+
 export type LottieShapeItem =
   | { kind: "group"; name?: string; items: LottieShapeItem[]; transform: LottieShapeTransform }
   | {
@@ -102,13 +110,37 @@ export type LottieShapeItem =
       name?: string;
       closed: boolean;
       commands: PathPoint[];
+      /** Present when Lottie `sh` is animated with matching topology across keys. */
+      morph?: LottiePathKeyframe[];
+      fill?: SolidPaint;
+      stroke?: StrokePaint;
+      /** From Lottie `gf` only. */
+      gradient?: GradientPaint;
+      /** From Lottie `gs` only. */
+      gradientStroke?: GradientStrokePaint;
+      trim?: { start: number; end: number; offset: number };
+    }
+  | {
+      kind: "ellipse";
+      name?: string;
+      center: Vec2;
+      size: Vec2;
       fill?: SolidPaint;
       stroke?: StrokePaint;
       gradient?: GradientPaint;
-      trim?: { start: number; end: number; offset: number };
+      gradientStroke?: GradientStrokePaint;
     }
-  | { kind: "ellipse"; name?: string; center: Vec2; size: Vec2; fill?: SolidPaint; stroke?: StrokePaint; gradient?: GradientPaint }
-  | { kind: "rectangle"; name?: string; position: Vec2; size: Vec2; cornerRadius: number; fill?: SolidPaint; stroke?: StrokePaint; gradient?: GradientPaint }
+  | {
+      kind: "rectangle";
+      name?: string;
+      position: Vec2;
+      size: Vec2;
+      cornerRadius: number;
+      fill?: SolidPaint;
+      stroke?: StrokePaint;
+      gradient?: GradientPaint;
+      gradientStroke?: GradientStrokePaint;
+    }
   | { kind: "unsupported"; feature: string; message: string };
 
 export interface LottieShapeTransform {
@@ -126,6 +158,15 @@ export interface GradientPaint {
   x2: number;
   y2: number;
   stops: { offset: number; color: [number, number, number] }[];
+}
+
+/** Lottie `gs` — gradient colour on a stroke, with width and line style. */
+export interface GradientStrokePaint extends GradientPaint {
+  width: number;
+  opacity: number;
+  cap: "butt" | "round" | "square";
+  join: "miter" | "round" | "bevel";
+  miterLimit: number;
 }
 
 export interface SolidPaint {

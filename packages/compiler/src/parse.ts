@@ -1,4 +1,13 @@
-import { diagnostic, lex, type Diagnostic, type Paint, type SourceSpan, type Stroke, type Token } from "@gvr/schema";
+import {
+  diagnostic,
+  lex,
+  type Diagnostic,
+  type Paint,
+  type PathCommand,
+  type SourceSpan,
+  type Stroke,
+  type Token,
+} from "@gvr/schema";
 import type {
   AnimLiteral,
   AnimateAst,
@@ -439,9 +448,15 @@ function parseStops(parser: Parser, node: NodeAst): Extract<Paint, { type: "line
 }
 
 function parseStroke(parser: Parser, node: NodeAst): Stroke | undefined {
-  const color = eat(parser, "color");
-  if (!color?.colorValue) {
-    note(node, parser, "stroke needs a colour.");
+  let paint: Paint | undefined;
+  if (peek(parser)?.type === "keyword" && (peek(parser)?.lexeme === "linear" || peek(parser)?.lexeme === "radial")) {
+    paint = parseGradient(parser, node);
+  } else {
+    const color = eat(parser, "color");
+    if (color?.colorValue) paint = color.colorValue;
+  }
+  if (!paint) {
+    note(node, parser, "stroke needs a colour or gradient.");
     return undefined;
   }
   let width = 1;
@@ -468,7 +483,7 @@ function parseStroke(parser: Parser, node: NodeAst): Stroke | undefined {
     if (value === undefined) note(node, parser, "miterLimit needs a number.");
     else miterLimit = value;
   }
-  return { color: color.colorValue, width, cap, join, miterLimit };
+  return { color: paint, width, cap, join, miterLimit };
 }
 
 function parsePointList(parser: Parser): Vec[] {
@@ -716,6 +731,18 @@ function eatPathSegment(parser: Parser): Token | undefined {
 }
 
 function parseAnimValue(parser: Parser): AnimLiteral | undefined {
+  if (at(parser, "keyword", "path") && parser.tokens[parser.index + 1]?.type === "lbrace") {
+    eat(parser, "keyword", "path");
+    eat(parser, "lbrace");
+    const commands: PathCommand[] = [];
+    while (!done(parser) && !at(parser, "rbrace")) {
+      const command = parsePathCommand(parser);
+      if (!command) break;
+      commands.push(command);
+    }
+    eat(parser, "rbrace");
+    return commands.length > 0 ? { kind: "path", value: commands } : undefined;
+  }
   if (at(parser, "lparen")) {
     const vec = parseVec(parser);
     return vec ? { kind: "vec2", value: vec } : undefined;

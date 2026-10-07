@@ -647,6 +647,7 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
     if (prop.fill && prop.fill.type !== "solid") {
       ensureCapability(session, prop.fill.type === "linear" ? "paint.linearGradient" : "paint.radialGradient");
     }
+    ensureStrokePaintCapability(session, prop.stroke);
   } else if (ast.shape === "circle") {
     if (prop.radius === undefined) {
       session.diagnostics.push(problem("MISSING_REQUIRED", `${ast.name} needs a radius.`, ast.span));
@@ -660,6 +661,10 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
       ...(prop.fill ? { fill: prop.fill } : {}),
       ...(prop.stroke ? { stroke: prop.stroke } : {}),
     };
+    if (prop.fill && prop.fill.type !== "solid") {
+      ensureCapability(session, prop.fill.type === "linear" ? "paint.linearGradient" : "paint.radialGradient");
+    }
+    ensureStrokePaintCapability(session, prop.stroke);
   } else if (ast.shape === "line") {
     if (!prop.from || !prop.to || !prop.stroke) {
       session.diagnostics.push(problem("MISSING_REQUIRED", `${ast.name} needs from, to, and a stroke.`, ast.span));
@@ -673,6 +678,7 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
       to: prop.to,
       stroke: prop.stroke,
     };
+    ensureStrokePaintCapability(session, prop.stroke);
   } else if (ast.shape === "polygon") {
     if (ast.points.length < 3) {
       session.diagnostics.push(problem("INVALID_GEOMETRY", `${ast.name} needs at least three points.`, ast.span));
@@ -686,6 +692,10 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
       ...(prop.fill ? { fill: prop.fill } : {}),
       ...(prop.stroke ? { stroke: prop.stroke } : {}),
     };
+    if (prop.fill && prop.fill.type !== "solid") {
+      ensureCapability(session, prop.fill.type === "linear" ? "paint.linearGradient" : "paint.radialGradient");
+    }
+    ensureStrokePaintCapability(session, prop.stroke);
   } else if (ast.shape === "path") {
     if (ast.commands.length === 0) {
       session.diagnostics.push(problem("MALFORMED_PATH", `${ast.name} needs a path command.`, ast.span));
@@ -700,6 +710,10 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
       ...(prop.fill ? { fill: prop.fill } : {}),
       ...(prop.stroke ? { stroke: prop.stroke } : {}),
     };
+    if (prop.fill && prop.fill.type !== "solid") {
+      ensureCapability(session, prop.fill.type === "linear" ? "paint.linearGradient" : "paint.radialGradient");
+    }
+    ensureStrokePaintCapability(session, prop.stroke);
   } else if (ast.shape === "image") {
     if (!prop.href || !prop.size) {
       session.diagnostics.push(problem("MISSING_REQUIRED", `${ast.name} needs href and size.`, ast.span));
@@ -738,6 +752,7 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
       fill: prop.fill,
       ...(prop.stroke ? { stroke: prop.stroke } : {}),
     };
+    ensureStrokePaintCapability(session, prop.stroke);
   }
   const nodes = [node];
   for (const child of ast.children) {
@@ -828,11 +843,19 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
     session.diagnostics.push(problem("MISSING_REQUIRED", `${unit.target} needs from and to, or an expression.`, unit.span));
     return undefined;
   }
-  const valueType = resolved.type === "vec2" ? "vec2" : resolved.type === "angle" ? "angle" : "number";
+  const valueType =
+    resolved.type === "vec2"
+      ? "vec2"
+      : resolved.type === "angle"
+        ? "angle"
+        : resolved.type === "path"
+          ? "path"
+          : "number";
   for (const frame of frames) {
     noteEase(session, frame.easing);
     if ("spatial" in frame && frame.spatial) ensureCapability(session, "geometry.spatialCurve");
   }
+  if (valueType === "path") ensureCapability(session, "geometry.pathMorph");
   if (unit.timingScopeId) ensureCapability(session, "timing.localScopes");
   return {
     id,
@@ -852,7 +875,7 @@ function animateFrames(
   from: AnimLiteral | undefined,
   to: AnimLiteral | undefined,
   ease: EaseAst | undefined,
-): { offset: number; value: number | Vec2; easing?: SegmentEasing }[] | undefined {
+): { offset: number; value: number | Vec2 | PathCommand[]; easing?: SegmentEasing }[] | undefined {
   if (!from || !to || from.kind !== to.kind) return undefined;
   return [
     { offset: 0, value: literalValue(from), ...(ease ? { easing: ease } : { easing: "linear" as const }) },
@@ -860,8 +883,8 @@ function animateFrames(
   ];
 }
 
-function literalValue(value: AnimLiteral): number | Vec2 {
-  return value.kind === "number" ? value.value : value.value;
+function literalValue(value: AnimLiteral): number | Vec2 | PathCommand[] {
+  return value.value;
 }
 
 function ensureFont(session: Session, family: string): void {
@@ -1142,6 +1165,11 @@ function hasSpatial(unit: Extract<UnitAst, { kind: "animate" | "keyframes" }>): 
 function noteEase(session: Session, ease: SegmentEasing | undefined): void {
   if (!ease || typeof ease === "string") return;
   ensureCapability(session, ease.type === "hold" ? "easing.hold" : "easing.cubicBezier");
+}
+
+function ensureStrokePaintCapability(session: Session, stroke: Stroke | undefined): void {
+  if (!stroke || stroke.color.type === "solid") return;
+  ensureCapability(session, "paint.gradientStroke");
 }
 
 function ensureCapability(session: Session, name: string): void {

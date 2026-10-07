@@ -36,7 +36,11 @@ Rules:
 
 ### Decision for `geometry.pathMorph`
 
-Path morph is listed in `pending.md`, not in MotionScript / Scene IR `0.2.0`. Landing it is a **new contract**, not a 0.2 catch-up. Publish a new version entry (expected `0.3.0`) with registry rows and conformance tests. Keep wire `"0.2"` only if that version file says so and scenes gate with `requiredCapabilities: ["geometry.pathMorph"]`; otherwise set wire `"0.3"`. Do not treat package-only bumps as sufficient.
+Landed in MotionScript / Scene IR **0.3.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `geometry.pathMorph`. That release is the contract; do not treat package-only bumps as sufficient for similar pending constructs.
+
+### Decision for `paint.gradientStroke`
+
+Landed in MotionScript / Scene IR **0.4.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `paint.gradientStroke`. Fill gradients do not imply stroke gradients.
 
 ## Ordering and the current pointer
 

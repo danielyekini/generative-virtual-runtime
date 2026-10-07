@@ -89,6 +89,13 @@ export const NODE_CHANNELS: Record<NodeAnimChannel, ChannelSpec> = {
     animation: "step",
     scalars: ["visible"],
   },
+  commands: {
+    dslPath: "commands",
+    type: "path",
+    animation: "track",
+    /** Path tracks are sampled as whole values, not scalar writers. */
+    scalars: [],
+  },
 };
 
 export const CAMERA_CHANNELS: Record<CameraAnimChannel, ChannelSpec> = {
@@ -234,6 +241,7 @@ export function scalarWriters(target: PropertyTarget): string[] {
 /** Keyframe and base-value constraint. Expression samples use the same rule at runtime. */
 export function isValidSample(type: PropertyType, channel: string, value: unknown): boolean {
   if (type === "boolean") return typeof value === "boolean";
+  if (type === "path") return isPathSample(value);
   if (type === "vec2") {
     if (!isVec(value)) return false;
     return Number.isFinite(value.x) && Number.isFinite(value.y);
@@ -242,6 +250,32 @@ export function isValidSample(type: PropertyType, channel: string, value: unknow
   if (channel === "opacity" || channel.endsWith("opacity")) return value >= 0 && value <= 1;
   if (channel === "zoom" || channel.endsWith(".zoom")) return value > 0;
   return true;
+}
+
+function isPathSample(value: unknown): boolean {
+  if (!Array.isArray(value) || value.length === 0) return false;
+  const first = value[0];
+  if (!isRecord(first) || first.cmd !== "M") return false;
+  return value.every((entry) => {
+    if (!isRecord(entry) || typeof entry.cmd !== "string") return false;
+    if (entry.cmd === "Z") return true;
+    if (entry.cmd === "M" || entry.cmd === "L") {
+      return Number.isFinite(entry.x) && Number.isFinite(entry.y);
+    }
+    if (entry.cmd === "Q") {
+      return [entry.cx, entry.cy, entry.x, entry.y].every((n) => typeof n === "number" && Number.isFinite(n));
+    }
+    if (entry.cmd === "C") {
+      return [entry.c1x, entry.c1y, entry.c2x, entry.c2y, entry.x, entry.y].every(
+        (n) => typeof n === "number" && Number.isFinite(n),
+      );
+    }
+    return false;
+  });
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function isVec(value: unknown): value is { x: number; y: number } {

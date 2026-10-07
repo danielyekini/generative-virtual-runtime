@@ -347,7 +347,8 @@ export type NodeAnimChannel =
   | "transform.pivot.x"
   | "transform.pivot.y"
   | "opacity"
-  | "visible";
+  | "visible"
+  | "commands";
 
 export type CameraAnimChannel =
   | "position"
@@ -360,7 +361,7 @@ export type PropertyTarget =
   | { kind: "node"; nodeId: string; channel: NodeAnimChannel }
   | { kind: "camera"; cameraId: string; channel: CameraAnimChannel };
 
-export type PropertyType = "number" | "vec2" | "angle" | "boolean";
+export type PropertyType = "number" | "vec2" | "angle" | "boolean" | "path";
 
 /**
  * Before the track starts, the sampled value is the authored base.
@@ -375,7 +376,8 @@ export interface TrackFill {
 export interface Keyframe {
   /** Normalized time in [0, 1], unique and strictly increasing. 0 and 1 are required. */
   offset: number;
-  value: number | Vec2;
+  /** number / vec2 / angle samples, or a PathCommand[] when valueType is path. */
+  value: number | Vec2 | PathCommand[];
   /**
    * Easing of the segment that begins at this keyframe.
    * Omitted means linear. Forbidden on the last keyframe.
@@ -394,7 +396,7 @@ export interface KeyframeTrack {
   id: string;
   kind: "keyframe";
   target: PropertyTarget;
-  valueType: "number" | "vec2" | "angle";
+  valueType: "number" | "vec2" | "angle" | "path";
   startMs: number;
   /** Must be > 0. Zero-duration changes are steps, not tracks. */
   durationMs: number;

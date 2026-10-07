@@ -3,12 +3,12 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.2.0",
+      "current": "0.4.0",
       "wireVersion": "0.2",
       "packageVersion": "0.1.0"
     },
     "scene-ir": {
-      "current": "0.2.0",
+      "current": "0.4.0",
       "wireVersion": "0.2",
       "packageVersion": "0.1.0"
     }
@@ -27,6 +27,20 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.2.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.3.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.3.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.4.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.4.0.md"
     },
     {
       "language": "motionscript",
@@ -50,6 +64,20 @@
     },
     {
       "language": "scene-ir",
+      "version": "0.3.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.3.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.4.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.4.0.md"
+    },
+    {
+      "language": "scene-ir",
       "version": "pending",
       "status": "draft",
       "file": "docs/languages/scene-ir/versions/pending.md"
@@ -69,6 +97,20 @@
       "compiler": "0.1.0",
       "runtime": "0.1.0",
       "readers": "A 0.2 consumer migrates wire 0.1. A 0.1 consumer rejects wire 0.2. There is no lossless down-conversion."
+    },
+    {
+      "motionscript": "0.3.0",
+      "sceneIr": "0.3.0",
+      "compiler": "0.1.0",
+      "runtime": "0.1.0",
+      "readers": "Wire stays 0.2. geometry.pathMorph is gated by requiredCapabilities / requires. Packages without the capability reject those documents."
+    },
+    {
+      "motionscript": "0.4.0",
+      "sceneIr": "0.4.0",
+      "compiler": "0.1.0",
+      "runtime": "0.1.0",
+      "readers": "Wire stays 0.2. paint.gradientStroke is gated by requiredCapabilities / requires. Packages without the capability reject those documents."
     }
   ]
 }

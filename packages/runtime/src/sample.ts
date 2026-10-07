@@ -6,6 +6,7 @@ import {
   isValidSample,
   cubicPoint,
   lerp,
+  lerpPathCommands,
   lerpVec2,
   localTimeMs,
   scalarWriters,
@@ -13,6 +14,7 @@ import {
   type Diagnostic,
   type KeyframeTrack,
   type NodeDefinition,
+  type PathCommand,
   type SceneIR,
   type TrackDefinition,
   type Transform,
@@ -26,6 +28,7 @@ interface NodePose {
   scale: Vec2;
   opacity: number;
   visible: boolean;
+  commands?: PathCommand[];
 }
 
 interface CameraPose {
@@ -71,7 +74,15 @@ export function sampleScene(
   };
 
   const byScalar = new Map<string, Writer[]>();
+  const byPath = new Map<string, Writer[]>();
   scene.timeline.tracks.forEach((track, index) => {
+    if (track.kind === "keyframe" && track.valueType === "path" && track.target.kind === "node") {
+      const key = `node:${track.target.nodeId}:commands`;
+      const list = byPath.get(key) ?? [];
+      list.push({ track, index });
+      byPath.set(key, list);
+      return;
+    }
     for (const scalar of scalarWriters(track.target)) {
       const list = byScalar.get(scalar) ?? [];
       list.push({ track, index });
@@ -79,7 +90,7 @@ export function sampleScene(
     }
   });
 
-  const cache = new Map<string, number | Vec2 | undefined>();
+  const cache = new Map<string, number | Vec2 | PathCommand[] | undefined>();
   for (const [scalar, writers] of byScalar) {
     const selected = selectWriter(scene, writers, sceneTimeMs, options?.excludeStartsAtMs);
     if (!selected) continue;
@@ -89,8 +100,19 @@ export function sampleScene(
       value = sampleTrack(scene, selected.track, selected.mode, sceneTimeMs, diagnostics);
       cache.set(cacheKey, value);
     }
-    if (value === undefined) continue;
+    if (value === undefined || Array.isArray(value)) continue;
     writeScalar(scalar, component(value, scalar), nodePoses, cameraPose);
+  }
+
+  for (const [key, writers] of byPath) {
+    const selected = selectWriter(scene, writers, sceneTimeMs, options?.excludeStartsAtMs);
+    if (!selected || selected.track.kind !== "keyframe") continue;
+    const value = samplePathTrack(scene, selected.track, selected.mode, sceneTimeMs, diagnostics);
+    if (value === undefined) continue;
+    const nodeId = /^node:(.+):commands$/.exec(key)?.[1];
+    if (!nodeId) continue;
+    const pose = nodePoses.get(nodeId);
+    if (pose) pose.commands = value;
   }
 
   const steps = [...scene.timeline.steps].sort((a, b) => a.timeMs - b.timeMs);
@@ -131,6 +153,15 @@ function applyNodePose(node: NodeDefinition, pose: NodePose): NodeDefinition {
     rotation: pose.rotation,
     scale: { ...pose.scale },
   };
+  if (node.kind === "path" && pose.commands) {
+    return {
+      ...node,
+      transform,
+      opacity: pose.opacity,
+      visible: pose.visible,
+      commands: pose.commands.map((command) => ({ ...command })),
+    };
+  }
   return { ...node, transform, opacity: pose.opacity, visible: pose.visible };
 }
 
@@ -202,12 +233,36 @@ function sampleTrack(
   return value;
 }
 
+function samplePathTrack(
+  scene: SceneIR,
+  track: KeyframeTrack,
+  mode: "active" | "hold",
+  sceneTimeMs: number,
+  diagnostics: Diagnostic[],
+): PathCommand[] | undefined {
+  const local = trackLocalTime(scene, track, sceneTimeMs);
+  if (local === undefined) return undefined;
+  const progress = mode === "hold" ? 1 : (local - track.startMs) / track.durationMs;
+  const value = samplePathKeyframes(track, progress);
+  if (value === undefined) {
+    diagnostics.push(degraded(track, sceneTimeMs, "path morph topology mismatch"));
+    return undefined;
+  }
+  if (!isValidSample("path", "commands", value)) {
+    diagnostics.push(degraded(track, sceneTimeMs, "value is outside the channel domain"));
+    return undefined;
+  }
+  return value;
+}
+
 function sampleKeyframes(track: KeyframeTrack, progress: number): number | Vec2 | undefined {
   const keys = track.keyframes;
   const first = keys[0];
   const last = keys[keys.length - 1];
   if (!first || !last) return undefined;
-  if (progress >= 1) return last.value;
+  if (progress >= 1) {
+    return typeof last.value === "number" || (!Array.isArray(last.value) && "x" in last.value) ? last.value : undefined;
+  }
   let segment = 0;
   for (let index = 0; index < keys.length - 1; index += 1) {
     const next = keys[index + 1];
@@ -219,6 +274,7 @@ function sampleKeyframes(track: KeyframeTrack, progress: number): number | Vec2 
   const from = keys[segment];
   const to = keys[segment + 1] ?? last;
   if (!from) return undefined;
+  if (Array.isArray(from.value) || Array.isArray(to.value)) return undefined;
   const span = to.offset - from.offset;
   const local = span === 0 ? 0 : (progress - from.offset) / span;
   const eased = applySegmentEasing(from.easing ?? "linear", local);
@@ -230,6 +286,29 @@ function sampleKeyframes(track: KeyframeTrack, progress: number): number | Vec2 
     return cubicPoint(eased, from.value, c1, c2, to.value);
   }
   return lerpVec2(from.value, to.value, eased);
+}
+
+function samplePathKeyframes(track: KeyframeTrack, progress: number): PathCommand[] | undefined {
+  const keys = track.keyframes;
+  const first = keys[0];
+  const last = keys[keys.length - 1];
+  if (!first || !last || !Array.isArray(first.value) || !Array.isArray(last.value)) return undefined;
+  if (progress >= 1) return last.value.map((command) => ({ ...command }));
+  let segment = 0;
+  for (let index = 0; index < keys.length - 1; index += 1) {
+    const next = keys[index + 1];
+    if (next && progress < next.offset) {
+      segment = index;
+      break;
+    }
+  }
+  const from = keys[segment];
+  const to = keys[segment + 1] ?? last;
+  if (!from || !Array.isArray(from.value) || !Array.isArray(to.value)) return undefined;
+  const span = to.offset - from.offset;
+  const local = span === 0 ? 0 : (progress - from.offset) / span;
+  const eased = applySegmentEasing(from.easing ?? "linear", local);
+  return lerpPathCommands(from.value, to.value, eased);
 }
 
 function sampleExpression(

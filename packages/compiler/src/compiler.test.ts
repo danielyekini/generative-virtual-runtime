@@ -323,6 +323,83 @@ complete;
   });
 });
 
+describe("paint.gradientStroke", () => {
+  it("compiles gradient stroke with paint.gradientStroke", () => {
+    const compiled = compileMotionScript(`scene "ring" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+  requires "paint.gradientStroke";
+};
+path ring {
+  stroke linear (0, 0) (100, 0) 0 #ff00aa 1 #5500ff width 3 cap round;
+  move (10, 10);
+  cubic (40, 0) (40, 40) (10, 40);
+  close;
+};
+complete;
+`);
+    expect(compiled.ok, compiled.diagnostics.map((item) => item.message).join("\n")).toBe(true);
+    expect(compiled.scene?.requiredCapabilities).toContain("paint.gradientStroke");
+    const path = compiled.scene?.nodes.find((node) => node.kind === "path");
+    expect(path?.kind).toBe("path");
+    if (path?.kind === "path") {
+      expect(path.fill).toBeUndefined();
+      expect(path.stroke?.color.type).toBe("linear");
+      expect(path.stroke?.width).toBeCloseTo(3, 5);
+      expect(path.stroke?.cap).toBe("round");
+    }
+    expect(compiled.scene && validateSceneIR(compiled.scene).ok).toBe(true);
+  });
+});
+
+describe("geometry.pathMorph", () => {
+  it("compiles path command tracks with geometry.pathMorph", () => {
+    const compiled = compileMotionScript(`scene "morph" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+  requires "geometry.pathMorph";
+};
+path blob {
+  fill #ff0000;
+  move (0, 0);
+  cubic (10, 0) (10, 0) (10, 0);
+  close;
+};
+keyframes blob.commands {
+  duration 1s;
+  0% path { move (0, 0); cubic (10, 0) (10, 0) (10, 0); close; };
+  100% path { move (0, 0); cubic (30, 0) (30, 0) (30, 0); close; };
+};
+complete;
+`);
+    expect(compiled.ok, compiled.diagnostics.map((item) => item.message).join("\n")).toBe(true);
+    expect(compiled.scene?.requiredCapabilities).toContain("geometry.pathMorph");
+    const track = compiled.scene?.timeline.tracks[0];
+    expect(track).toMatchObject({
+      kind: "keyframe",
+      valueType: "path",
+      target: { kind: "node", nodeId: "blob", channel: "commands" },
+    });
+    if (track?.kind === "keyframe") {
+      expect(track.keyframes[0]?.value).toEqual([
+        { cmd: "M", x: 0, y: 0 },
+        { cmd: "C", c1x: 10, c1y: 0, c2x: 10, c2y: 0, x: 10, y: 0 },
+        { cmd: "Z" },
+      ]);
+      expect(track.keyframes[1]?.value).toEqual([
+        { cmd: "M", x: 0, y: 0 },
+        { cmd: "C", c1x: 30, c1y: 0, c2x: 30, c2y: 0, x: 30, y: 0 },
+        { cmd: "Z" },
+      ]);
+    }
+    expect(compiled.scene && validateSceneIR(compiled.scene).ok).toBe(true);
+  });
+});
+
 describe("visual programs", () => {
   it("compiles the five hand-written animations", () => {
     for (const name of ["ball.ms", "caption.ms", "nested.ms", "diagram.ms", "camera.ms"]) {

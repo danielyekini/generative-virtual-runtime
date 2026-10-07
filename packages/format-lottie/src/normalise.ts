@@ -1,20 +1,21 @@
-import type {
-  CompositionDefinition,
-  CompositionInstance,
-  GeometryOperatorList,
-  Keyframe,
-  KeyframeTrack,
-  NodeAnimChannel,
-  NodeDefinition,
-  Paint,
-  PathCommand,
-  ResourceDefinition,
-  SceneIR,
-  SegmentEasing,
-  SolidColor,
-  StepDefinition,
-  TimingScope,
-  Vec2,
+import {
+  lerpPathCommands,
+  type CompositionDefinition,
+  type CompositionInstance,
+  type GeometryOperatorList,
+  type Keyframe,
+  type KeyframeTrack,
+  type NodeAnimChannel,
+  type NodeDefinition,
+  type Paint,
+  type PathCommand,
+  type ResourceDefinition,
+  type SceneIR,
+  type SegmentEasing,
+  type SolidColor,
+  type StepDefinition,
+  type TimingScope,
+  type Vec2,
 } from "@gvr/schema";
 import {
   allocateId,
@@ -439,6 +440,8 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
   }
   const nodeId = allocateId(parentId, item.name ?? item.kind, ctx.usedIds);
   if (item.kind === "ellipse") {
+    const fill = shapeFill(ctx, item);
+    const stroke = shapeStroke(ctx, item, nodeId.id);
     ctx.nodes.push({
       id: nodeId.id,
       name: nodeId.name,
@@ -449,8 +452,8 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       visible: true,
       kind: "ellipse",
       size: { x: item.size.x, y: item.size.y },
-      ...(shapeFill(ctx, item) ? { fill: shapeFill(ctx, item) } : {}),
-      ...(item.stroke ? { stroke: strokePaint(item.stroke) } : {}),
+      ...(fill ? { fill } : {}),
+      ...(stroke ? { stroke } : {}),
     });
     ctx.notes.push({ feature: "ellipse", level: "exact", message: `Imported ellipse ${nodeId.id}.`, target: nodeId.id });
     return;
@@ -461,6 +464,8 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       x: item.position.x - item.size.x / 2,
       y: item.position.y - item.size.y / 2,
     };
+    const fill = shapeFill(ctx, item);
+    const stroke = shapeStroke(ctx, item, nodeId.id);
     ctx.nodes.push({
       id: nodeId.id,
       name: nodeId.name,
@@ -472,8 +477,8 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       kind: "rectangle",
       size: { x: item.size.x, y: item.size.y },
       ...(item.cornerRadius > 0 ? { cornerRadius: item.cornerRadius } : {}),
-      ...(shapeFill(ctx, item) ? { fill: shapeFill(ctx, item) } : {}),
-      ...(item.stroke ? { stroke: strokePaint(item.stroke) } : {}),
+      ...(fill ? { fill } : {}),
+      ...(stroke ? { stroke } : {}),
     });
     if (item.cornerRadius > 0) ctx.capabilities.push("geometry.roundedRect");
     ctx.notes.push({ feature: "rectangle", level: "exact", message: `Imported rectangle ${nodeId.id}.`, target: nodeId.id });
@@ -485,6 +490,8 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       ctx.notes.push({ feature: "path", level: "unsupported", message: "Path could not be lowered.", target: nodeId.id });
       return;
     }
+    const fill = shapeFill(ctx, item);
+    const stroke = shapeStroke(ctx, item, nodeId.id);
     ctx.nodes.push({
       id: nodeId.id,
       name: nodeId.name,
@@ -496,15 +503,92 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       kind: "path",
       commands,
       fillRule: "nonzero",
-      ...(shapeFill(ctx, item) ? { fill: shapeFill(ctx, item)! } : {}),
-      ...(item.stroke ? { stroke: strokePaint(item.stroke) } : {}),
+      ...(fill ? { fill } : {}),
+      ...(stroke ? { stroke } : {}),
     });
     if (item.trim) {
       ctx.operators.push({ nodeId: nodeId.id, operators: [{ op: "trim", start: item.trim.start, end: item.trim.end, offset: item.trim.offset }] });
       ctx.capabilities.push("geometry.trimPath");
     }
-    ctx.notes.push({ feature: "path", level: "exact", message: `Imported path ${nodeId.id}.`, target: nodeId.id });
+    if (item.morph && item.morph.length >= 2) {
+      addPathMorphTrack(ctx, nodeId.id, item);
+    } else {
+      ctx.notes.push({ feature: "path", level: "exact", message: `Imported path ${nodeId.id}.`, target: nodeId.id });
+    }
   }
+}
+
+function addPathMorphTrack(
+  ctx: LowerContext,
+  nodeId: string,
+  item: Extract<LottieShapeItem, { kind: "path" }>,
+): void {
+  const morph = item.morph;
+  if (!morph || morph.length < 2) return;
+  const { document } = ctx;
+  const samples = morph.map((frame) => ({
+    frame: frame.frame,
+    value: pathCommandsFromPoints(frame.commands, frame.closed),
+    hold: frame.hold,
+    easing: frame.easing,
+  }));
+  if (samples.some((sample) => sample.value.length === 0)) {
+    ctx.notes.push({
+      feature: "sh.animated",
+      level: "unsupported",
+      message: "Animated path could not be converted to Scene IR commands.",
+      target: nodeId,
+    });
+    return;
+  }
+  const times = samples.map((sample) => framesToMs(sample.frame - document.inFrame, document.frameRate) + ctx.timeOffsetMs);
+  const start = times[0] ?? 0;
+  const end = times[times.length - 1] ?? start;
+  const duration = end - start;
+  if (!(duration > 0)) {
+    ctx.notes.push({ feature: "path", level: "exact", message: `Imported path ${nodeId}.`, target: nodeId });
+    return;
+  }
+  let approximated = false;
+  const keyframes: Keyframe[] = samples.map((sample, index) => {
+    const offset = ((times[index] ?? start) - start) / duration;
+    const easing = mapEasing(sample);
+    if (sample.easing === "bezier-approx" && !sample.hold) approximated = true;
+    if (typeof easing === "object") ctx.capabilities.push(easing.type === "hold" ? "easing.hold" : "easing.cubicBezier");
+    if (index === samples.length - 1) return { offset, value: sample.value };
+    return { offset, value: sample.value, easing };
+  });
+  const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs);
+  if (!clamped) {
+    ctx.notes.push({ feature: "path", level: "exact", message: `Imported path ${nodeId}.`, target: nodeId });
+    return;
+  }
+  ctx.capabilities.push("geometry.pathMorph");
+  ctx.trackSerial += 1;
+  ctx.tracks.push({
+    id: `track${ctx.trackSerial}`,
+    kind: "keyframe",
+    target: { kind: "node", nodeId, channel: "commands" },
+    valueType: "path",
+    startMs: clamped.startMs,
+    durationMs: clamped.durationMs,
+    fill: { before: "none", after: "forwards" },
+    keyframes: clamped.keyframes,
+  });
+  if (approximated) {
+    ctx.notes.push({
+      feature: "easing",
+      level: "approximated",
+      message: `Bezier easing on ${nodeId}.commands was mapped to Scene IR easing names.`,
+      target: nodeId,
+    });
+  }
+  ctx.notes.push({
+    feature: "path-morph",
+    level: approximated ? "approximated" : "exact",
+    message: `Imported animated path morph on ${nodeId}.commands.`,
+    target: nodeId,
+  });
 }
 
 function shapeTransform(tr: LottieShapeTransform) {
@@ -768,7 +852,12 @@ function clampTrackToScene(
   return { startMs: lo, durationMs: span, keyframes: dedupeKeyframeOffsets(samples) };
 }
 
-function sampleTrackValue(startMs: number, durationMs: number, keyframes: Keyframe[], timeMs: number): number | Vec2 {
+function sampleTrackValue(
+  startMs: number,
+  durationMs: number,
+  keyframes: Keyframe[],
+  timeMs: number,
+): number | Vec2 | PathCommand[] {
   const first = keyframes[0];
   const last = keyframes[keyframes.length - 1];
   if (!first || !last) return 0;
@@ -790,6 +879,11 @@ function sampleTrackValue(startMs: number, durationMs: number, keyframes: Keyfra
   const span = to.offset - from.offset;
   const local = span === 0 ? 0 : (progress - from.offset) / span;
   if (from.easing && typeof from.easing === "object" && from.easing.type === "hold") return from.value;
+  if (Array.isArray(from.value) || Array.isArray(to.value)) {
+    if (!Array.isArray(from.value)) return from.value;
+    if (!Array.isArray(to.value)) return from.value;
+    return lerpPathCommands(from.value, to.value, local) ?? from.value;
+  }
   if (typeof from.value === "number" && typeof to.value === "number") return from.value + (to.value - from.value) * local;
   if (typeof from.value === "number" || typeof to.value === "number") return from.value;
   return {
@@ -868,7 +962,13 @@ function mapEasing(sample: { hold: boolean; easing: LottieEasing }): SegmentEasi
 }
 
 function pathCommands(item: Extract<LottieShapeItem, { kind: "path" }>): PathCommand[] {
-  const points = item.commands;
+  return pathCommandsFromPoints(item.commands, item.closed);
+}
+
+function pathCommandsFromPoints(
+  points: { vertex: Vec2; inTangent: Vec2; outTangent: Vec2 }[],
+  closed: boolean,
+): PathCommand[] {
   if (points.length === 0) return [];
   const commands: PathCommand[] = [];
   const first = points[0]!.vertex;
@@ -880,7 +980,7 @@ function pathCommands(item: Extract<LottieShapeItem, { kind: "path" }>): PathCom
     const c2 = { x: curr.vertex.x + curr.inTangent.x, y: curr.vertex.y + curr.inTangent.y };
     commands.push({ cmd: "C", c1x: c1.x, c1y: c1.y, c2x: c2.x, c2y: c2.y, x: curr.vertex.x, y: curr.vertex.y });
   }
-  if (item.closed && points.length > 1) {
+  if (closed && points.length > 1) {
     const prev = points[points.length - 1]!;
     const curr = points[0]!;
     const c1 = { x: prev.vertex.x + prev.outTangent.x, y: prev.vertex.y + prev.outTangent.y };
@@ -910,19 +1010,49 @@ function finish(document: LottieDocument, context: ImportContext, notes: Fidelit
 function shapeFill(ctx: LowerContext, item: Extract<LottieShapeItem, { kind: "ellipse" | "rectangle" | "path" }>): Paint | undefined {
   if (item.gradient) {
     ctx.capabilities.push(item.gradient.type === "linear" ? "paint.linearGradient" : "paint.radialGradient");
-    const stops = item.gradient.stops.map((stop) => ({ offset: stop.offset, color: rgba(stop.color, 1) }));
-    if (item.gradient.type === "radial") {
-      return {
-        type: "radial",
-        cx: item.gradient.x1,
-        cy: item.gradient.y1,
-        r: Math.max(1, Math.hypot(item.gradient.x2 - item.gradient.x1, item.gradient.y2 - item.gradient.y1)),
-        stops,
-      };
-    }
-    return { type: "linear", x1: item.gradient.x1, y1: item.gradient.y1, x2: item.gradient.x2, y2: item.gradient.y2, stops };
+    return gradientToPaint(item.gradient, 1);
   }
   return item.fill ? rgba(item.fill.color, item.fill.opacity) : undefined;
+}
+
+function shapeStroke(
+  ctx: LowerContext,
+  item: Extract<LottieShapeItem, { kind: "ellipse" | "rectangle" | "path" }>,
+  target: string,
+) {
+  // Gradient stroke wins over a sibling solid stroke (Bodymovin often emits both).
+  if (item.gradientStroke) {
+    ctx.capabilities.push("paint.gradientStroke");
+    ctx.notes.push({
+      feature: "gs",
+      level: "exact",
+      message: `Imported gradient stroke on ${target}.`,
+      target,
+    });
+    return {
+      color: gradientToPaint(item.gradientStroke, item.gradientStroke.opacity),
+      width: item.gradientStroke.width,
+      cap: item.gradientStroke.cap,
+      join: item.gradientStroke.join,
+      miterLimit: item.gradientStroke.miterLimit,
+    };
+  }
+  if (item.stroke) return strokePaint(item.stroke);
+  return undefined;
+}
+
+function gradientToPaint(gradient: { type: "linear" | "radial"; x1: number; y1: number; x2: number; y2: number; stops: { offset: number; color: [number, number, number] }[] }, alpha: number): Paint {
+  const stops = gradient.stops.map((stop) => ({ offset: stop.offset, color: rgba(stop.color, alpha) }));
+  if (gradient.type === "radial") {
+    return {
+      type: "radial",
+      cx: gradient.x1,
+      cy: gradient.y1,
+      r: Math.max(1, Math.hypot(gradient.x2 - gradient.x1, gradient.y2 - gradient.y1)),
+      stops,
+    };
+  }
+  return { type: "linear", x1: gradient.x1, y1: gradient.y1, x2: gradient.x2, y2: gradient.y2, stops };
 }
 
 function rgba(rgb: [number, number, number], alpha: number): SolidColor {

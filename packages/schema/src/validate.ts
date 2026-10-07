@@ -10,6 +10,7 @@ import { expressionComplexity, exprsEqual, parseExpression } from "./expr";
 import { nodeDepth } from "./graph";
 import { resolveLimits, type ResourceLimits } from "./limits";
 import { channelSpec, isValidSample, scalarWriters } from "./registry";
+import { pathsShareTopology } from "./spatial";
 import { rootTimeMs } from "./timing";
 import {
   IR_VERSION,
@@ -48,6 +49,7 @@ const NODE_CHANNELS = new Set([
   "transform.pivot.y",
   "opacity",
   "visible",
+  "commands",
 ]);
 const CAMERA_CHANNELS = new Set(["position", "position.x", "position.y", "zoom", "rotation"]);
 const OPS = new Set([
@@ -417,7 +419,7 @@ function readKeyframes(
     }
     rejectUnknown(frame, v02 ? ["offset", "value", "easing", "spatial"] : ["offset", "value", "easing"], framePath, diags);
     if (frame.spatial !== undefined) {
-      if (channel !== "transform.position" && channel !== "position") {
+      if (type === "path" || (channel !== "transform.position" && channel !== "position")) {
         diags.add("UNSUPPORTED_PROPERTY", `${framePath}.spatial`, "Spatial tangents belong on a vec2 position channel.");
       }
       if (!isRecord(frame.spatial)) diags.add("INVALID_TYPE", `${framePath}.spatial`, "spatial must be an object.");
@@ -455,10 +457,30 @@ function readKeyframes(
     }
     if (!sampleOk(type, channel, frame.value)) {
       diags.add("INVALID_TRACK_VALUE", `${framePath}.value`, "Keyframe value does not match the target type.");
+    } else if (type === "path" && Array.isArray(frame.value)) {
+      readPath(frame.value, `${framePath}.value`, diags);
     }
   });
   if (!sawStart || !sawEnd) {
     diags.add("INVALID_KEYFRAMES", path, "Keyframe offsets must include both 0 and 1.");
+  }
+  if (type === "path") {
+    const paths = value
+      .map((frame) => (isRecord(frame) && Array.isArray(frame.value) ? frame.value : undefined))
+      .filter((entry): entry is unknown[] => Array.isArray(entry));
+    const first = paths[0];
+    if (first) {
+      for (let index = 1; index < paths.length; index += 1) {
+        const next = paths[index];
+        if (!next || !pathsShareTopology(first as never, next as never)) {
+          diags.add(
+            "INVALID_KEYFRAMES",
+            `${path}[${index}].value`,
+            "Path morph keyframes must share the same command topology.",
+          );
+        }
+      }
+    }
   }
 }
 
@@ -576,7 +598,14 @@ function checkOverlap(tracks: TrackDefinition[], scopes: TimingScope[], diags: D
       ? rootSpan(scopes, track.timingScopeId, track.startMs, track.durationMs)
       : { start: track.startMs, end: track.startMs + track.durationMs };
     if (!span) return;
-    for (const scalar of scalarWriters(track.target)) {
+    const scalars = scalarWriters(track.target);
+    const keys =
+      scalars.length > 0
+        ? scalars
+        : track.target.kind === "node" && track.target.channel === "commands"
+          ? [`node:${track.target.nodeId}:commands`]
+          : [];
+    for (const scalar of keys) {
       const list = writers.get(scalar) ?? [];
       list.push({
         start: span.start,
@@ -1409,8 +1438,8 @@ function readFinite(value: unknown, path: string, diags: Diags): number | undefi
 }
 
 function sampleOk(type: string, channel: string, value: unknown): boolean {
-  if (type !== "number" && type !== "vec2" && type !== "angle" && type !== "boolean") return false;
-  return isValidSample(type, channel, value);
+  if (type !== "number" && type !== "vec2" && type !== "angle" && type !== "boolean" && type !== "path") return false;
+  return isValidSample(type as "number" | "vec2" | "angle" | "boolean" | "path", channel, value);
 }
 
 function readCompositions(

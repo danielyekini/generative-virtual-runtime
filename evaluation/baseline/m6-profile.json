@@ -31,6 +31,8 @@
     "transform.parent",
     "paint.linearGradient",
     "paint.radialGradient",
+    "paint.gradientStroke",
+    "geometry.pathMorph",
     "text.basic",
     "resources.image",
     "svg.smilTimeBased",

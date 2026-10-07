@@ -48,8 +48,9 @@ Parented layers: child `transform.*` remain **parent-local**; hierarchy via `par
 | `gr` | Shape group | `group` node | preserve order; `tr` → group transform | exact |
 | `fl` | Solid fill | `fill` SolidColor | RGBA from `c` + `o` | exact (static) |
 | `st` | Stroke | `stroke` | width, color, opacity | exact (static) |
-| Gradient fills | — | — | not lowered | unsupported |
-| Animated `c` / path | — | — | not lowered | unsupported |
+| `gf` | Gradient fill | `fill` linear/radial | static stops; requires `paint.linearGradient` / `paint.radialGradient` | exact (static) |
+| `gs` | Gradient stroke | `stroke` with gradient colour | static stops + width/cap/join; requires `paint.gradientStroke`; sibling `st` dropped when `gs` present | exact (static) |
+| Animated `c` / gradient stops | — | — | not lowered | unsupported |
 
 ## Animation tracks
 

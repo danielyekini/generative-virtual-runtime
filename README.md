@@ -2,7 +2,7 @@
 
 GVR is a portable animation stack: author in **MotionScript**, validate and sample **Scene IR**, then draw with a canvas renderer. Lottie and SVG importers lower into the same IR. A MotionScript emitter and round-trip verifier close the loop.
 
-Current languages are **MotionScript 0.2.0** and **Scene IR 0.2.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
+Current languages are **MotionScript 0.4.0** and **Scene IR 0.4.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
 
 **Support authority** is [`packages/schema/capabilities/registry.json`](packages/schema/capabilities/registry.json). Design notes such as [`packages/schema/CONTRACT.md`](packages/schema/CONTRACT.md) do not override it. Evaluation runs under [`docs/evaluations/`](docs/evaluations/README.md) measure one revision; they are not the specification.
 
@@ -22,7 +22,7 @@ Studio: `http://localhost:5173`.
 
 ## What is implemented
 
-Thirty capabilities are in the published languages. Seventeen have supported coverage on every applicable target (compiler, runtime, renderer). Thirteen more are in the schema and partially wired; their registry rows are `untested` until conformance pins them. Nine further ids are pending language work (unsupported everywhere).
+Thirty-two capabilities are in the published languages. Nineteen have supported coverage on every applicable target (compiler, runtime, renderer). Thirteen more are in the schema and partially wired; their registry rows are `untested` until conformance pins them. Seven further ids are pending language work (unsupported everywhere).
 
 ### Scene and camera (0.1)
 
@@ -76,7 +76,7 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
 
 **Lottie** (`@gvr/format-lottie`, docs under `formats/lottie/`, goldens in `fixtures/import/lottie/`):
 
-- Exact (scoped): primitives, transform tracks, cubic/hold easing, spatial curves, timing scopes, composition/precomp expansion, static Gaussian blur.
+- Exact (scoped): primitives, transform tracks, cubic/hold easing, spatial curves, timing scopes, composition/precomp expansion, static Gaussian blur, matching-topology path morph, static gradient strokes.
 - Reported unsupported (not silently dropped): mattes, masks, skew.
 - Many other constructs lower or diagnose but remain `untested` until a conformance fixture pins them.
 
@@ -92,7 +92,7 @@ Round-trip (`@gvr/round-trip`): import → emit MotionScript → compile → sam
 
 These ids are listed in `docs/languages/*/versions/pending.md` and are **unsupported** in compiler, runtime, and renderer until a version lands them:
 
-`geometry.pathMorph`, `paint.gradientStroke`, `compositing.matte`, `compositing.mask`, `transform.skew`, `transform.autoOrient`, `geometry.repeater`, `geometry.mergePaths`, `text.animators`.
+`compositing.matte`, `compositing.mask`, `transform.skew`, `transform.autoOrient`, `geometry.repeater`, `geometry.mergePaths`, `text.animators`.
 
 The project aim is to grow Scene IR and MotionScript until modern Lottie and SVG can render. Those pending rows are gaps to close, not a closed V1 ceiling. Loops and function declarations are the only class that needs a design decision before implementation.
 

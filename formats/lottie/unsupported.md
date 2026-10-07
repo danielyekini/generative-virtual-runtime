@@ -16,9 +16,9 @@ These produce `IMPORT_UNSUPPORTED` (or block the scene when policy requires):
 | `ks.sk` / `ks.sa` (skew) | Scene IR transform has no skew |
 | `ao` auto-orient | Not representable on the transform |
 | Animated fill/stroke colour | No colour tracks |
-| Animated path morph | Rejected unless command topology matches, and matching topology is still not sampled |
+| Animated path morph with topology change | Matching topology lowers via `geometry.pathMorph`; differing vertex counts remain unsupported |
 | Repeaters / merge paths | Not lowered |
-| Gradient strokes | Fill gradients lower; stroke gradients do not |
+| Animated gradient stops | Static `gf` / `gs` lower; animated colour stops do not |
 | Elliptical arc shortcuts in paths | Only if path cannot be lowered to supported commands |
 
 When unsupported features appear but a partial scene is still produced, overall fidelity is **partial**.

@@ -1,0 +1,615 @@
+{
+  "id": "LOT-04",
+  "role": "pack",
+  "format": "lottie",
+  "fileName": "lottie_ex2.json",
+  "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+  "sourceBytes": 512240,
+  "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+  "inventory": {
+    "topLevelKeys": [
+      "nm",
+      "ddd",
+      "h",
+      "w",
+      "meta",
+      "layers",
+      "v",
+      "fr",
+      "op",
+      "ip",
+      "fonts",
+      "chars",
+      "assets",
+      "slots"
+    ],
+    "markers": [],
+    "fonts": [
+      "Inter Tight",
+      "InterTight-Medium"
+    ],
+    "chars": 23,
+    "rootLayerTypes": {
+      "precomp": 1,
+      "shape": 2
+    },
+    "assetLayerTypes": {
+      "null": 1,
+      "precomp": 26,
+      "text": 13
+    },
+    "shapeTypes": {
+      "gr": 3,
+      "sh": 2,
+      "tr": 3,
+      "gf": 1,
+      "fl": 1
+    },
+    "masks": 0,
+    "mattes": 0,
+    "effects": 22,
+    "blendModes": 0,
+    "skew": 0,
+    "autoOrient": 0,
+    "spatialTangents": 0,
+    "textLayers": 13,
+    "hiddenLayers": 0,
+    "parenting": 26,
+    "ddd": 0,
+    "animatedProperties": 27,
+    "expressions": 0,
+    "holdKeyframes": 0,
+    "easingHandles": 363,
+    "roundedRects": 0,
+    "animatedRoundedRects": 0,
+    "images": [],
+    "precompAssets": [
+      {
+        "id": "2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d",
+        "layers": 27
+      },
+      {
+        "id": "3_1_fb1bd2a1-c6e6-4692-973c-3b7e599e1893_f4f4b94b-1333-44fc-9090-e591b212d28a_c956a65a-56fb-4812-be57-7853697392f6_faaff553-ece8-49cf-a63a-aeea1b97a3ba",
+        "layers": 1
+      },
+      {
+        "id": "8_20a068bd-1627-45d1-9fc1-6c0dd1edb071_b8bb3f38-71d7-45ae-9514-748895d30e77_53691f11-1982-4128-abeb-496536b15029_57fffcad-16fd-4b71-8db4-ebb5bab1259b",
+        "layers": 1
+      },
+      {
+        "id": "9_05dccb6e-a756-4d59-a31b-3886ed787fdb_508afacf-a4f5-4781-9201-7f7de8e816b6_e31e82c3-9243-4114-a5d6-dc5b505a4d2e_08f9da21-67c4-443a-90ae-014596343022",
+        "layers": 1
+      },
+      {
+        "id": "10_c22c32e7-7d8e-4718-9424-49d4db3bc1fd_3c76b710-dc20-4026-aa67-6803d0cc7570_cb558703-2130-416c-a41b-3330a6df72a9_6e6e6bc1-18c5-41da-999e-05de02a03b5f",
+        "layers": 1
+      },
+      {
+        "id": "11_dd0a4b42-c486-48b8-bd1d-dadb6e5dedbd_6a2a01da-2b48-4444-acf1-23ffe3733ac1_db01c5f9-e9fa-43be-b211-118e1ccb862a_2d214dd2-0db3-4e15-a399-981b11e5f05e",
+        "layers": 1
+      },
+      {
+        "id": "12_1dc8739e-e317-43d9-bf86-a7dc1caae315_4f4ebd26-30d3-4b14-89ff-29abaa79d9d2_8d382218-647b-439a-b933-2e1c513838d5_3df2de07-59f0-4c3f-ac24-4a57b4e366a0",
+        "layers": 1
+      },
+      {
+        "id": "13_c4759f01-4a38-4bdb-9dba-a2043fdbf0de_dc57c493-adf6-4e9c-94c9-5e68f8859a42_5acd88ea-6848-4011-b9ea-0c72d7e6dc6f_9bb4b6f4-0d05-428e-b0e7-7ee3c8b17ec0",
+        "layers": 1
+      },
+      {
+        "id": "14_435fd567-ec85-4551-9688-448d95e580d7_0d101e0e-c401-4030-9c95-0d1cdcb7962b_dc1f6768-3c21-4f5f-a2e0-8ae0b1a70844_f80446e6-9871-4c04-bb26-5b0517977c0f",
+        "layers": 1
+      },
+      {
+        "id": "15_0227a47c-0b38-44ae-b9f5-bf4a5a410ee7_c15c4cc8-ef22-421e-bc6a-b680785bcff6_47ccf672-9f88-4402-b92f-72ced0651797_da4ca336-ba2d-49e7-bcbc-5495df457173",
+        "layers": 1
+      },
+      {
+        "id": "16_9e52ff08-3487-46a5-8fb2-a58337812916_45403d48-4374-4641-bd3e-3e58d624ff21_9b7b4928-d4a9-4737-89d5-4489af549f74_918dc700-22db-439f-9cf2-eae42f34f3b6",
+        "layers": 1
+      },
+      {
+        "id": "17_9123cdf0-9e2f-439f-ac7d-cd0f59dc8e52_031009a1-b201-49de-86b2-f88eb547c6aa_0d26a2c7-afd7-4db2-83a2-6d2a151b5aef_f9719b26-ca9a-47d9-8438-a1f0eb73c0eb",
+        "layers": 1
+      },
+      {
+        "id": "18_479f7889-3321-4302-a753-a739c6f46a30_049ff83d-5392-4dae-91cf-80eed1bb5414_7d0ebefb-becc-4c32-ba67-4b4097141b4d_092b060b-2e1f-4c8b-b17d-2d35b15a5f90",
+        "layers": 1
+      },
+      {
+        "id": "19_a1a568cc-a22f-44fd-bfb5-546d3e9046a8_b8694f5b-733a-42c0-afc2-7b57af8d1226_826bbc6b-4d28-4c89-8dfb-88211e82fbb3_e0ffd248-c593-417c-b579-a24f0214944d",
+        "layers": 1
+      }
+    ],
+    "missingAssets": [],
+    "examples": [
+      {
+        "feature": "gradient",
+        "path": "$.layers[1].shapes[0].it[1]"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[0].layers[1].ef"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[0].layers[2].ef"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[0].layers[3].ef"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[0].layers[4].ef"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[0].layers[5].ef"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[0].layers[6].ef"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[1].layers[0]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[2].layers[0]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[3].layers[0]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[4].layers[0]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[5].layers[0]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[6].layers[0]"
+      }
+    ],
+    "name": "Main Scene",
+    "version": "5.7.0",
+    "frameRate": 60,
+    "inFrame": 0,
+    "outFrame": 675,
+    "width": 500,
+    "height": 888.89,
+    "durationMs": 11250
+  },
+  "timingsMs": {
+    "import": 3.4827080000000024,
+    "emit": 1.5866249999999127,
+    "compile": 54.21804199999997
+  },
+  "complexity": {
+    "nodes": 87,
+    "tracks": 27,
+    "steps": 13,
+    "geometryItems": 12,
+    "depth": 5,
+    "durationMs": 11250,
+    "viewport": {
+      "width": 500,
+      "height": 888.89,
+      "fit": "contain"
+    },
+    "background": {
+      "type": "solid",
+      "r": 0.06274509803921569,
+      "g": 0.06274509803921569,
+      "b": 0.0784313725490196,
+      "a": 1
+    }
+  },
+  "production": {
+    "ok": true,
+    "fidelity": "partial",
+    "counts": {
+      "exact": 88,
+      "approximated": 0,
+      "dropped": 0,
+      "unsupported": 17
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "feature": "effect",
+        "severity": "error",
+        "message": "Effect stack (Gaussian Blur) was inventoried and not lowered.",
+        "count": 17
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 3_1_fb1bd2a1-c6e6-4692-973c-3b7e599e1893_f4f4b94b-1333-44fc-9090-e591b212d28a_c956a65a-56fb-4812-be57-7853697392f6_faaff553-ece8-49cf-a63a-aeea1b97a3ba.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 8_20a068bd-1627-45d1-9fc1-6c0dd1edb071_b8bb3f38-71d7-45ae-9514-748895d30e77_53691f11-1982-4128-abeb-496536b15029_57fffcad-16fd-4b71-8db4-ebb5bab1259b.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 9_05dccb6e-a756-4d59-a31b-3886ed787fdb_508afacf-a4f5-4781-9201-7f7de8e816b6_e31e82c3-9243-4114-a5d6-dc5b505a4d2e_08f9da21-67c4-443a-90ae-014596343022.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 10_c22c32e7-7d8e-4718-9424-49d4db3bc1fd_3c76b710-dc20-4026-aa67-6803d0cc7570_cb558703-2130-416c-a41b-3330a6df72a9_6e6e6bc1-18c5-41da-999e-05de02a03b5f.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 11_dd0a4b42-c486-48b8-bd1d-dadb6e5dedbd_6a2a01da-2b48-4444-acf1-23ffe3733ac1_db01c5f9-e9fa-43be-b211-118e1ccb862a_2d214dd2-0db3-4e15-a399-981b11e5f05e.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 12_1dc8739e-e317-43d9-bf86-a7dc1caae315_4f4ebd26-30d3-4b14-89ff-29abaa79d9d2_8d382218-647b-439a-b933-2e1c513838d5_3df2de07-59f0-4c3f-ac24-4a57b4e366a0.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 13_c4759f01-4a38-4bdb-9dba-a2043fdbf0de_dc57c493-adf6-4e9c-94c9-5e68f8859a42_5acd88ea-6848-4011-b9ea-0c72d7e6dc6f_9bb4b6f4-0d05-428e-b0e7-7ee3c8b17ec0.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 14_435fd567-ec85-4551-9688-448d95e580d7_0d101e0e-c401-4030-9c95-0d1cdcb7962b_dc1f6768-3c21-4f5f-a2e0-8ae0b1a70844_f80446e6-9871-4c04-bb26-5b0517977c0f.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 15_0227a47c-0b38-44ae-b9f5-bf4a5a410ee7_c15c4cc8-ef22-421e-bc6a-b680785bcff6_47ccf672-9f88-4402-b92f-72ced0651797_da4ca336-ba2d-49e7-bcbc-5495df457173.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 16_9e52ff08-3487-46a5-8fb2-a58337812916_45403d48-4374-4641-bd3e-3e58d624ff21_9b7b4928-d4a9-4737-89d5-4489af549f74_918dc700-22db-439f-9cf2-eae42f34f3b6.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 17_9123cdf0-9e2f-439f-ac7d-cd0f59dc8e52_031009a1-b201-49de-86b2-f88eb547c6aa_0d26a2c7-afd7-4db2-83a2-6d2a151b5aef_f9719b26-ca9a-47d9-8438-a1f0eb73c0eb.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 18_479f7889-3321-4302-a753-a739c6f46a30_049ff83d-5392-4dae-91cf-80eed1bb5414_7d0ebefb-becc-4c32-ba67-4b4097141b4d_092b060b-2e1f-4c8b-b17d-2d35b15a5f90.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "precomp",
+        "severity": "info",
+        "message": "Expanded precomp 19_a1a568cc-a22f-44fd-bfb5-546d3e9046a8_b8694f5b-733a-42c0-afc2-7b57af8d1226_826bbc6b-4d28-4c89-8dfb-88211e82fbb3_e0ffd248-c593-417c-b579-a24f0214944d.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "effect",
+        "severity": "info",
+        "message": "Imported static Gaussian Blur on layer_1.layer_1.layer_2.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_2.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_2.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_3.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_3.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_4.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_4.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_5.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_5.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_6.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_6.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_7.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_7.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_8.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_8.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_9.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_9.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_10.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_10.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_11.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_11.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_12.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_12.layer_1.textNode.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "opacity",
+        "severity": "info",
+        "message": "Imported motion on layer_1.layer_1.layer_13.opacity.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "text",
+        "severity": "info",
+        "message": "Imported text layer_1.layer_1.layer_13.layer_1.textNode.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": null,
+  "motionScript": {
+    "chars": 38853,
+    "bytes": 38853,
+    "path": "fixtures/LOT-04/generated.motion"
+  },
+  "compile": {
+    "ok": true,
+    "diagnostics": 0,
+    "scene": true
+  },
+  "runtime": {
+    "kind": "compiled",
+    "samples": [
+      {
+        "id": "start",
+        "requestedMs": 0,
+        "evaluatedMs": 0,
+        "clampedToDuration": false,
+        "drawItems": 28,
+        "diagnostics": 0,
+        "ms": 1.2519159999999374
+      },
+      {
+        "id": "q25",
+        "requestedMs": 2812.5,
+        "evaluatedMs": 2812.5,
+        "clampedToDuration": false,
+        "drawItems": 25,
+        "diagnostics": 0,
+        "ms": 1.162958000000117
+      },
+      {
+        "id": "q50",
+        "requestedMs": 5625,
+        "evaluatedMs": 5625,
+        "clampedToDuration": false,
+        "drawItems": 22,
+        "diagnostics": 0,
+        "ms": 1.0592090000000098
+      },
+      {
+        "id": "q75",
+        "requestedMs": 8437.5,
+        "evaluatedMs": 8437.5,
+        "clampedToDuration": false,
+        "drawItems": 18,
+        "diagnostics": 0,
+        "ms": 0.9272499999999582
+      },
+      {
+        "id": "near_end",
+        "requestedMs": 11193.75,
+        "evaluatedMs": 11193.75,
+        "clampedToDuration": false,
+        "drawItems": 15,
+        "diagnostics": 0,
+        "ms": 0.8547089999999571
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "JSON object, 512240 bytes"
+    },
+    {
+      "name": "import",
+      "status": "PARTIAL",
+      "detail": "fidelity partial; exact 88; approximated 0; dropped 0; unsupported 17; scene yes"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "PASS",
+      "detail": "38853 chars in 1.6 ms"
+    },
+    {
+      "name": "compile",
+      "status": "PASS",
+      "detail": "ok true; diagnostics 0; 54.2 ms"
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "PASS",
+      "detail": "compileMotionScript accepted the scene"
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "PASS",
+      "detail": "importSource returns a scene only after validateSceneIR succeeds"
+    },
+    {
+      "name": "runtime",
+      "status": "PASS",
+      "detail": "compiled scene; 5 samples; draw items 28,25,22,18,15"
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": null,
+  "evidence": {
+    "importReport": "fixtures/LOT-04/import-report.txt",
+    "importedScene": "fixtures/LOT-04/imported-scene.json",
+    "compiledScene": "fixtures/LOT-04/compiled-scene.json",
+    "motion": "fixtures/LOT-04/generated.motion"
+  }
+}

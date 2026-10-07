@@ -65,9 +65,13 @@ commonProperty = "position" , vec2 , ";"
                | "visible" , boolean , ";"
                | "zIndex" , signedInteger , ";"
                | "space" , ( "world" | "screen" ) , ";" ;
-styleProperty  = "fill" , color , ";"
+styleProperty  = "fill" , paint , ";"
                | "stroke" , strokeValue , ";" ;
-strokeValue    = color , [ "width" , signedNumber ] , [ "cap" , cap ] ,
+paint          = color | gradientPaint ;
+gradientPaint  = "linear" , vec2 , vec2 , { stop }
+               | "radial" , vec2 , signedNumber , { stop } ;
+stop           = signedNumber , color ;
+strokeValue    = paint , [ "width" , signedNumber ] , [ "cap" , cap ] ,
                  [ "join" , join ] , [ "miterLimit" , signedNumber ] ;
 cap            = "butt" | "round" | "square" ;
 join           = "miter" | "round" | "bevel" ;
@@ -123,7 +127,8 @@ keyframeValue  = percentage , animValue , [ "ease" , easing ] , ";" ;
 percentage     = number , "%" ;
 fillMode       = "none" | "forwards" ;
 easing         = segmentEase ;
-animValue      = signedNumber | vec2 ;
+animValue      = signedNumber | vec2 | pathLiteral ;
+pathLiteral    = "path" , "{" , { pathCommand } , "}" ;
 step           = "step" , target , "{" , "at" , duration , ";" , "value" , boolean , ";" , "}" , ";" ;
 seal           = "seal" , duration , ";" ;
 complete       = "complete" , ";" ;

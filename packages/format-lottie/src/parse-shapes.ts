@@ -1,5 +1,13 @@
-import type { GradientPaint, PathPoint, LottieShapeItem, LottieShapeTransform, SolidPaint, StrokePaint } from "./model";
-import { readScalarProperty, readVec2Property } from "./property";
+import type {
+  GradientPaint,
+  GradientStrokePaint,
+  PathPoint,
+  LottieShapeItem,
+  LottieShapeTransform,
+  SolidPaint,
+  StrokePaint,
+} from "./model";
+import { readPathMorphKeyframes, readScalarProperty, readVec2Property } from "./property";
 
 const DEFAULT_V = { x: 0, y: 0 };
 
@@ -7,13 +15,15 @@ const DEFAULT_V = { x: 0, y: 0 };
  * Bodymovin often places geometry and `fl`/`st` as siblings under `shapes`
  * or under a group `it` list. Paint applies to preceding unpainted geometry
  * in that list (same rule as nested groups).
+ * `gf` is fill-only; `gs` is stroke-only — they must not be swapped.
  */
 export function parseShapeItems(raw: unknown): LottieShapeItem[] {
   if (!Array.isArray(raw)) return [];
   const items: LottieShapeItem[] = [];
   let fill: SolidPaint | undefined;
   let stroke: StrokePaint | undefined;
-  let gradient: GradientPaint | undefined;
+  let gradientFill: GradientPaint | undefined;
+  let gradientStroke: GradientStrokePaint | undefined;
   for (const entry of raw) {
     if (!isRecord(entry) || typeof entry.ty !== "string") continue;
     if (entry.ty === "fl") {
@@ -24,8 +34,12 @@ export function parseShapeItems(raw: unknown): LottieShapeItem[] {
       stroke = parseStroke(entry) ?? stroke;
       continue;
     }
-    if (entry.ty === "gf" || entry.ty === "gs") {
-      gradient = parseGradient(entry) ?? gradient;
+    if (entry.ty === "gf") {
+      gradientFill = parseGradient(entry) ?? gradientFill;
+      continue;
+    }
+    if (entry.ty === "gs") {
+      gradientStroke = parseGradientStroke(entry) ?? gradientStroke;
       continue;
     }
     if (entry.ty === "tm") {
@@ -37,7 +51,7 @@ export function parseShapeItems(raw: unknown): LottieShapeItem[] {
     const parsed = parseShapeItem(entry);
     if (parsed) items.push(parsed);
   }
-  return applyGradient(paintItems(items, fill, stroke), gradient);
+  return applyPaintLayers(paintItems(items, fill, stroke), gradientFill, gradientStroke);
 }
 
 function parseShapeItem(entry: Record<string, unknown>): LottieShapeItem | undefined {
@@ -70,7 +84,8 @@ function parseGroup(entry: Record<string, unknown>): LottieShapeItem {
   const items: LottieShapeItem[] = [];
   let fill: SolidPaint | undefined;
   let stroke: StrokePaint | undefined;
-  let gradient: GradientPaint | undefined;
+  let gradientFill: GradientPaint | undefined;
+  let gradientStroke: GradientStrokePaint | undefined;
   for (const child of nested) {
     if (!isRecord(child) || typeof child.ty !== "string") continue;
     if (child.ty === "tr") {
@@ -85,8 +100,12 @@ function parseGroup(entry: Record<string, unknown>): LottieShapeItem {
       stroke = parseStroke(child);
       continue;
     }
-    if (child.ty === "gf" || child.ty === "gs") {
-      gradient = parseGradient(child) ?? gradient;
+    if (child.ty === "gf") {
+      gradientFill = parseGradient(child) ?? gradientFill;
+      continue;
+    }
+    if (child.ty === "gs") {
+      gradientStroke = parseGradientStroke(child) ?? gradientStroke;
       continue;
     }
     if (child.ty === "tm") {
@@ -97,7 +116,7 @@ function parseGroup(entry: Record<string, unknown>): LottieShapeItem {
     const shape = parseShapeItem(child);
     if (shape) items.push(shape);
   }
-  const painted = applyGradient(paintItems(items, fill, stroke), gradient);
+  const painted = applyPaintLayers(paintItems(items, fill, stroke), gradientFill, gradientStroke);
   return { kind: "group", name: stringOrUndefined(entry.nm), items: painted, transform };
 }
 
@@ -169,19 +188,38 @@ function parsePath(entry: Record<string, unknown>): LottieShapeItem {
     return { kind: "unsupported", feature: "sh.path", message: "Path shape did not contain static path data." };
   }
   if (ks.a === 1) {
-    const same = pathTopologyMatches(ks.k);
+    const morph = readPathMorphKeyframes(ks.k);
+    if (!morph || morph.length < 2) {
+      return {
+        kind: "unsupported",
+        feature: "sh.animated",
+        message: "Animated path command topology does not match, so it was not resampled.",
+      };
+    }
+    const first = morph[0]!;
     return {
-      kind: "unsupported",
-      feature: "sh.animated",
-      message: same
-        ? "Animated path shares command topology but path morph is not sampled."
-        : "Animated path command topology does not match, so it was not resampled.",
+      kind: "path",
+      name: stringOrUndefined(entry.nm),
+      closed: first.closed,
+      commands: first.commands,
+      morph,
     };
   }
-  const path = ks.k;
-  if (!isRecord(path) || !Array.isArray(path.v)) {
+  const points = pathPointsFromData(ks.k);
+  if (!points) {
     return { kind: "unsupported", feature: "sh.path", message: "Path shape did not contain static path data." };
   }
+  return {
+    kind: "path",
+    name: stringOrUndefined(entry.nm),
+    closed: points.closed,
+    commands: points.commands,
+  };
+}
+
+export function pathPointsFromData(raw: unknown): { commands: PathPoint[]; closed: boolean } | undefined {
+  const path = unwrapPathData(raw);
+  if (!path || !Array.isArray(path.v)) return undefined;
   const vertices = path.v as unknown[];
   const ins = (path.i as unknown[]) ?? [];
   const outs = (path.o as unknown[]) ?? [];
@@ -195,12 +233,15 @@ function parsePath(entry: Record<string, unknown>): LottieShapeItem {
       outTangent: vecFromArray(outs[index]) ?? { x: 0, y: 0 },
     });
   }
-  return {
-    kind: "path",
-    name: stringOrUndefined(entry.nm),
-    closed: path.c === true,
-    commands: points,
-  };
+  if (points.length === 0) return undefined;
+  return { commands: points, closed: path.c === true };
+}
+
+/** Lottie stores animated path samples as `s[0]` and static path as `k` object. */
+function unwrapPathData(raw: unknown): Record<string, unknown> | undefined {
+  if (Array.isArray(raw) && raw.length > 0 && isRecord(raw[0])) return raw[0];
+  if (isRecord(raw)) return raw;
+  return undefined;
 }
 
 function parseFill(entry: Record<string, unknown>): SolidPaint | undefined {
@@ -274,6 +315,37 @@ function parseGradient(entry: Record<string, unknown>): GradientPaint | undefine
   return { type: entry.t === 2 ? "radial" : "linear", x1: from.x, y1: from.y, x2: to.x, y2: to.y, stops };
 }
 
+function parseGradientStroke(entry: Record<string, unknown>): GradientStrokePaint | undefined {
+  const gradient = parseGradient(entry);
+  if (!gradient) return undefined;
+  const width = readScalarProperty(entry.w, 1);
+  const resolved = width.kind === "static" ? width.value : 1;
+  // Scene IR requires stroke width > 0.
+  if (!(resolved > 0)) return undefined;
+  const opacity = readScalarProperty(entry.o, 100);
+  const miter = readScalarProperty(entry.ml, 4);
+  return {
+    ...gradient,
+    width: resolved,
+    opacity: (opacity.kind === "static" ? opacity.value : 100) / 100,
+    cap: lineCap(entry.lc),
+    join: lineJoin(entry.lj),
+    miterLimit: Math.max(1, miter.kind === "static" ? miter.value : 4),
+  };
+}
+
+function lineCap(value: unknown): "butt" | "round" | "square" {
+  if (value === 2) return "round";
+  if (value === 3) return "square";
+  return "butt";
+}
+
+function lineJoin(value: unknown): "miter" | "round" | "bevel" {
+  if (value === 2) return "round";
+  if (value === 3) return "bevel";
+  return "miter";
+}
+
 function parseTrim(entry: Record<string, unknown>): { start: number; end: number; offset: number } | undefined {
   const start = readScalarProperty(entry.s, 0);
   const end = readScalarProperty(entry.e, 100);
@@ -290,25 +362,25 @@ function applyTrim(items: LottieShapeItem[], trim: { start: number; end: number;
   }
 }
 
-function applyGradient(items: LottieShapeItem[], gradient: GradientPaint | undefined): LottieShapeItem[] {
-  if (!gradient) return items;
+function applyPaintLayers(
+  items: LottieShapeItem[],
+  gradientFill: GradientPaint | undefined,
+  gradientStroke: GradientStrokePaint | undefined,
+): LottieShapeItem[] {
+  if (!gradientFill && !gradientStroke) return items;
   return items.map((item) => {
     if (item.kind === "ellipse" || item.kind === "rectangle" || item.kind === "path") {
-      return item.gradient ? item : { ...item, gradient };
+      return {
+        ...item,
+        ...(gradientFill && !item.gradient ? { gradient: gradientFill } : {}),
+        ...(gradientStroke && !item.gradientStroke ? { gradientStroke } : {}),
+      };
     }
-    if (item.kind === "group") return { ...item, items: applyGradient(item.items, gradient) };
+    if (item.kind === "group") {
+      return { ...item, items: applyPaintLayers(item.items, gradientFill, gradientStroke) };
+    }
     return item;
   });
-}
-
-function pathTopologyMatches(value: unknown): boolean {
-  if (!Array.isArray(value) || value.length < 2) return false;
-  const counts = value.map((frame) => {
-    if (!isRecord(frame) || !isRecord(frame.s) || !Array.isArray(frame.s.v)) return -1;
-    return frame.s.v.length;
-  });
-  const first = counts[0];
-  return typeof first === "number" && first > 0 && counts.every((count) => count === first);
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
