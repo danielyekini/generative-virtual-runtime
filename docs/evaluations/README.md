@@ -4,7 +4,7 @@ An evaluation run records what one implementation revision reproduced. It is not
 
 The newest run is [2026-10-07T183125Z](2026-10-07T183125Z/report.md).
 
-Next Baseline must pin the implementation from [implementation-pin.json](implementation-pin.json). Code tip is `4e4af51`; the tree may be dirty with policy/prompt updates — commit those or write a `source-snapshot/` before running. Compare with `2026-10-07T183125Z`. Next cause unless overridden: `geometry.pathMorph` (new language version entry — see compatibility policy).
+Next Baseline must pin the implementation from [implementation-pin.json](implementation-pin.json) (`gitHead` `874e404` while the tree stays clean, or a full source snapshot if dirty). Compare with `2026-10-07T183125Z`. Next cause unless overridden: `geometry.pathMorph` (new language version entry — see compatibility policy).
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
