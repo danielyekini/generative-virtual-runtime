@@ -4,7 +4,7 @@ An evaluation run records what one implementation revision reproduced. It is not
 
 The newest run is [2026-10-07T213004Z](2026-10-07T213004Z/report.md).
 
-Next Baseline must pin the implementation from [implementation-pin.json](implementation-pin.json) (dirty snapshot under `2026-10-07T213004Z/source-snapshot/` for animated trim 0.5.0 + prior arc-length spatial fix, or a later clean commit that includes both). Compare with `2026-10-07T213004Z`. Next cause unless overridden: `visual.midCycle.confetti` (LOT-01 Celebrations).
+Next Baseline must pin the implementation from [implementation-pin.json](implementation-pin.json) (clean commit with animated trim 0.5.0). Compare with `2026-10-07T213004Z`. Next cause unless overridden: `visual.midCycle.confetti` (LOT-01 Celebrations).
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |

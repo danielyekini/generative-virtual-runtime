@@ -1,15 +1,15 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-07T21:52:00Z",
+  "pinnedAt": "2026-10-07T21:54:52Z",
   "afterRun": "2026-10-07T213004Z",
   "comparedWithForNextBaseline": "2026-10-07T213004Z",
   "git": {
-    "head": "0b02caa0e53628a4479aed3996dfbba28f1ab493",
-    "short": "0b02caa",
+    "head": "12190eb727f8ef9c48d5e82dca5d8ef4dfce349c",
+    "short": "12190eb",
     "subject": "Publish animated trim (0.5.0) and record the LOT-01 residual evaluation.",
     "treeCleanAtPin": true,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Clean commit includes geometry.animatedTrim 0.5.0 and the prior arc-length spatialCurve fix. Run 2026-10-07T213004Z was measured on dirty tree; this pin is the committed equivalent."
+    "note": "Clean commit includes geometry.animatedTrim 0.5.0 and the prior arc-length spatialCurve fix."
   },
   "snapshot": {
     "requiredWhenDirty": true,
