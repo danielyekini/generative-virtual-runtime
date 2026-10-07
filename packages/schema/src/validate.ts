@@ -428,8 +428,8 @@ function readKeyframes(
       if (!isRecord(frame.spatial)) diags.add("INVALID_TYPE", `${framePath}.spatial`, "spatial must be an object.");
       else {
         rejectUnknown(frame.spatial, ["out", "in"], `${framePath}.spatial`, diags);
-        readVec(frame.spatial.out, `${framePath}.spatial.out`, diags);
-        readVec(frame.spatial.in, `${framePath}.spatial.in`, diags);
+        readSpatialTangent(frame.spatial.out, `${framePath}.spatial.out`, diags);
+        readSpatialTangent(frame.spatial.in, `${framePath}.spatial.in`, diags);
       }
     }
     const offset = readFinite(frame.offset, `${framePath}.offset`, diags);
@@ -1183,6 +1183,18 @@ function readVec(value: unknown, path: string, diags: Diags): Vec2 | undefined {
   const y = readFinite(value.y, `${path}.y`, diags);
   if (x === undefined || y === undefined) return undefined;
   return { x, y };
+}
+
+/** Spatial tangents may carry optional Z for AE/lottie-web arc-length only. */
+function readSpatialTangent(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "Expected a spatial tangent { x, y, z? }.");
+    return;
+  }
+  rejectUnknown(value, ["x", "y", "z"], path, diags);
+  readFinite(value.x, `${path}.x`, diags);
+  readFinite(value.y, `${path}.y`, diags);
+  if (value.z !== undefined) readFinite(value.z, `${path}.z`, diags);
 }
 
 function readExpr(value: unknown, path: string, diags: Diags): Expr | undefined {

@@ -368,24 +368,27 @@
     },
     {
       "id": "geometry.spatialCurve",
-      "summary": "A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic (After Effects / lottie-web), not by the raw bezier parameter.",
+      "summary": "A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic (After Effects / lottie-web), not by the raw bezier parameter. Optional tangent Z participates in length only and is not drawn.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["compiler", "runtime"],
       "restrictions": [
         "Tangents are offsets from the key value. This is not a substitute for path morph.",
-        "Arc-length sampling uses a fixed polyline approximation (150 segments), matching lottie-web's defaultCurveSegments."
+        "Arc-length sampling uses a fixed polyline approximation (150 segments), matching lottie-web's defaultCurveSegments.",
+        "When tangent Z is present, chord length is measured in XYZ (lottie-web buildBezierData); only XY is returned."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
         "packages/schema/src/spatial.test.ts#samples spatial cubics by arc length",
+        "packages/schema/src/spatial.test.ts#includes Z in arc length like lottie-web when tangents carry depth",
         "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
       ],
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Spatial tangents on position tracks are lowered; runtime samples them by arc length.",
+          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering",
+            "packages/format-lottie/src/lottie.test.ts#preserves spatial tangent Z for arc-length sampling",
             "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
           ]
         },

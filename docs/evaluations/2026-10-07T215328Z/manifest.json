@@ -1,0 +1,45 @@
+{
+  "runId": "2026-10-07T215328Z",
+  "comparedWith": "2026-10-07T213004Z",
+  "implementation": {
+    "gitHead": "f9ec51e02d10786210f13285b983ef6db8290b53",
+    "gitShort": "f9ec51e",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T215328Z/source-snapshot/",
+    "pinAncestor": "12190eb727f8ef9c48d5e82dca5d8ef4dfce349c is ancestor of HEAD",
+    "finalCode": "HEAD f9ec51e + dirty AE-near easing diagonal fix (hashed in source-snapshot/files.json)"
+  },
+  "languages": {
+    "motionscript": "0.5.0",
+    "sceneIr": "0.5.0",
+    "wireVersion": "0.2"
+  },
+  "reference": {
+    "lottieWeb": "5.13.0",
+    "chrome": "Google Chrome 154.0.8037.98",
+    "dpr": 1,
+    "background": "#101014"
+  },
+  "harness": {
+    "pipeline": "npx tsx evaluation/harness/run-pipeline.ts",
+    "browser": "npx tsx evaluation/harness/drive-browser.ts"
+  },
+  "outcomes": {
+    "conversionStatus": {
+      "LOT-00": "exact",
+      "LOT-01": "exact",
+      "LOT-06": "exact",
+      "LOT-07": "exact"
+    },
+    "visualStatus": {
+      "LOT-00": "confirmed-inspection",
+      "LOT-01": "improved-not-pass",
+      "LOT-06": "not-pass",
+      "LOT-07": "not-pass"
+    },
+    "coverageStatus": "sampled",
+    "visualGate": "VISUAL_UNVERIFIED",
+    "fidelityPassed": false,
+    "authoringPassed": "not-evaluated"
+  }
+}

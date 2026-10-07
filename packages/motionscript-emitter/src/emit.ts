@@ -191,7 +191,9 @@ function emitTrack(track: TrackDefinition): string[] {
   }
   const frames = track.keyframes.map((frame, index) => {
     const ease = index === track.keyframes.length - 1 ? "" : ` ease ${formatEase(frame.easing)}`;
-    const spatial = frame.spatial ? ` spatial ${formatVec(frame.spatial.out)} ${formatVec(frame.spatial.in)}` : "";
+    const spatial = frame.spatial
+      ? ` spatial ${formatSpatial(frame.spatial.out)} ${formatSpatial(frame.spatial.in)}`
+      : "";
     return `  ${formatPercent(frame.offset)} ${formatAnim(frame.value, track.valueType)}${ease}${spatial};`;
   });
   return [`keyframes ${target} {`, ...timing, ...frames, "};"];
@@ -294,6 +296,11 @@ function formatPercent(offset: number): string {
 
 function formatVec(value: Vec2): string {
   return `(${formatNumber(value.x)}, ${formatNumber(value.y)})`;
+}
+
+function formatSpatial(value: { x: number; y: number; z?: number }): string {
+  if (value.z === undefined || Math.abs(value.z) < 1e-12) return formatVec(value);
+  return `(${formatNumber(value.x)}, ${formatNumber(value.y)}, ${formatNumber(value.z)})`;
 }
 
 function formatNumber(value: number): string {

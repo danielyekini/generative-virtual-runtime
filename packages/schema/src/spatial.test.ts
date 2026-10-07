@@ -18,4 +18,18 @@ describe("spatialCubicPoint", () => {
     const late = spatialCubicPoint(0.75, p0, c1, c2, p3);
     expect(early.y).toBeGreaterThan(late.y);
   });
+
+  it("includes Z in arc length like lottie-web when tangents carry depth", () => {
+    const p0 = { x: 0, y: 0 };
+    const p3 = { x: 100, y: 0 };
+    // Flat XY cubic with asymmetric Z depth on the out handle (lottie-web style).
+    const c1 = { x: 33, y: 0 };
+    const c2 = { x: 66, y: 0 };
+    const flat = spatialCubicPoint(0.5, p0, c1, c2, p3);
+    const withZ = spatialCubicPoint(0.5, p0, c1, c2, p3, undefined, { c1z: 500, c2z: 0 });
+    expect(Math.hypot(withZ.x - flat.x, withZ.y - flat.y)).toBeGreaterThan(1);
+    expect(withZ.x).toBeLessThan(flat.x);
+    expect(spatialCubicPoint(0, p0, c1, c2, p3, undefined, { c1z: 500 })).toEqual(p0);
+    expect(spatialCubicPoint(1, p0, c1, c2, p3, undefined, { c1z: 500 })).toEqual(p3);
+  });
 });

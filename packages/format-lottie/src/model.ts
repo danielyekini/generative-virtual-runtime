@@ -92,8 +92,10 @@ export interface LottieVec2Keyframe {
   value: Vec2;
   hold: boolean;
   easing: LottieEasing;
-  spatial?: { out: Vec2; in: Vec2 };
+  spatial?: { out: SpatialTangent; in: SpatialTangent };
 }
+
+export type SpatialTangent = { x: number; y: number; z?: number };
 
 export interface LottiePathKeyframe {
   frame: number;
@@ -188,6 +190,9 @@ export interface StrokePaint {
   color: [number, number, number];
   opacity: number;
   width: number;
+  cap: "butt" | "round" | "square";
+  join: "miter" | "round" | "bevel";
+  miterLimit: number;
 }
 
 export interface PathPoint {

@@ -1100,14 +1100,17 @@ function strokePaint(stroke: StrokePaint) {
   return {
     color: rgba(stroke.color, stroke.opacity),
     width: stroke.width,
-    cap: "butt" as const,
-    join: "miter" as const,
-    miterLimit: 4,
+    cap: stroke.cap,
+    join: stroke.join,
+    miterLimit: stroke.miterLimit,
   };
 }
 
 function vec2Static(value: AnimatedVec2, fallback: Vec2): Vec2 {
-  return value.kind === "static" ? value.value : fallback;
+  if (value.kind === "static") return value.value;
+  // Seed the authored base from the first key so fill.before:"none" holds the
+  // composition start pose instead of −anchor / fallback.
+  return value.keyframes[0]?.value ?? fallback;
 }
 
 function scalarStatic(value: AnimatedScalar, fallback: number): number {

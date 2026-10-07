@@ -262,10 +262,14 @@ function parseStroke(entry: Record<string, unknown>): StrokePaint | undefined {
   const resolved = width.kind === "static" ? width.value : 1;
   // Scene IR requires stroke width > 0. A zero-width Lottie stroke is fill-only paint.
   if (!(resolved > 0)) return undefined;
+  const miter = readScalarProperty(entry.ml, 4);
   return {
     color,
     opacity: opacity.kind === "static" ? opacity.value / 100 : 1,
     width: resolved,
+    cap: lineCap(entry.lc),
+    join: lineJoin(entry.lj),
+    miterLimit: Math.max(1, miter.kind === "static" ? miter.value : 4),
   };
 }
 

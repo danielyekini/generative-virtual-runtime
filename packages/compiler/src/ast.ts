@@ -3,6 +3,8 @@ import type { Diagnostic, Paint, PathCommand, SolidColor, SourceSpan, Stroke } f
 export interface Vec {
   x: number;
   y: number;
+  /** Optional Z on spatial tangents only (arc-length). */
+  z?: number;
 }
 
 export type AnimLiteral =

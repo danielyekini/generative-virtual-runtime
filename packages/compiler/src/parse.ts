@@ -654,10 +654,10 @@ function parseKeyframes(parser: Parser): KeyframeAst {
       ease = parseEasing(parser);
       if (!ease) note(node, parser, "Unknown easing.");
     }
-    let spatial: { out: { x: number; y: number }; in: { x: number; y: number } } | undefined;
+    let spatial: { out: Vec; in: Vec } | undefined;
     if (eat(parser, "keyword", "spatial")) {
-      const out = parseVec(parser);
-      const incoming = parseVec(parser);
+      const out = parseSpatialVec(parser);
+      const incoming = parseSpatialVec(parser);
       if (!out || !incoming) note(node, parser, "spatial needs two vectors.");
       else spatial = { out, in: incoming };
     }
@@ -898,6 +898,28 @@ function parseVec(parser: Parser): Vec | undefined {
   const vec = parseVecBody(parser);
   if (!eat(parser, "rparen")) fail(parser, "Expected ')'.");
   return vec;
+}
+
+/** Spatial tangents may include an optional Z: `(x, y)` or `(x, y, z)`. */
+function parseSpatialVec(parser: Parser): Vec | undefined {
+  if (!eat(parser, "lparen")) return undefined;
+  const x = parseSignedNumber(parser);
+  if (!eat(parser, "comma")) return undefined;
+  const y = parseSignedNumber(parser);
+  if (x === undefined || y === undefined) {
+    fail(parser, "Expected ')'.");
+    return undefined;
+  }
+  let z: number | undefined;
+  if (eat(parser, "comma")) {
+    z = parseSignedNumber(parser);
+    if (z === undefined) {
+      fail(parser, "spatial Z needs a number.");
+      return undefined;
+    }
+  }
+  if (!eat(parser, "rparen")) fail(parser, "Expected ')'.");
+  return z === undefined || Math.abs(z) < 1e-12 ? { x, y } : { x, y, z };
 }
 
 function parseVecBody(parser: Parser): Vec | undefined {

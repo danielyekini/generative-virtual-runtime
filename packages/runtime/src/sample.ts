@@ -312,7 +312,10 @@ function sampleKeyframes(track: KeyframeTrack, progress: number): number | Vec2 
   if (from.spatial) {
     const c1 = { x: from.value.x + from.spatial.out.x, y: from.value.y + from.spatial.out.y };
     const c2 = { x: to.value.x + from.spatial.in.x, y: to.value.y + from.spatial.in.y };
-    return spatialCubicPoint(eased, from.value, c1, c2, to.value);
+    return spatialCubicPoint(eased, from.value, c1, c2, to.value, undefined, {
+      c1z: from.spatial.out.z ?? 0,
+      c2z: from.spatial.in.z ?? 0,
+    });
   }
   return lerpVec2(from.value, to.value, eased);
 }

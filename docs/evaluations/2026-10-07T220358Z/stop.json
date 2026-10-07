@@ -1,0 +1,49 @@
+{
+  "runId": "2026-10-07T220358Z",
+  "stoppedAt": "2026-10-07T22:07:09Z",
+  "status": "budget-exhausted",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "visualGate": "VISUAL_UNVERIFIED",
+  "reason": "Phase A: spatialCurve now samples arc length in XYZ when tangent Z is present (lottie-web parity); solid stroke caps/joins lowered; animated position base seeded from first key. Combined with prior AE-near easing fix. LOT-01 start beyond 0.00375→0.00048, q25 0.00614→0.00309, q50 0.00561→0.00456. q50 centroid residual remains. VISUAL_UNVERIFIED. npm test 172 + typecheck passed. One implement cycle this invocation.",
+  "implementCyclesUsed": 1,
+  "causes": [
+    {
+      "id": "visual.midCycle.confetti.spatialZ",
+      "attempts": 1,
+      "outcome": "improved",
+      "fixtures": ["LOT-01"],
+      "rootCause": "2D-only spatial arc-length ignored Z on Lottie to/ti; stroke caps discarded; pre-key base −anchor",
+      "measurement": {
+        "before": {
+          "start": { "fractionBeyond": 0.00375 },
+          "q25": { "fractionBeyond": 0.00614 },
+          "q50": { "fractionBeyond": 0.00561 }
+        },
+        "after": {
+          "start": { "fractionBeyond": 0.00048, "centroidDeltaPx": [0.03, 0.03] },
+          "q25": { "fractionBeyond": 0.00309, "centroidDeltaPx": [-0.34, 0.36] },
+          "q50": { "fractionBeyond": 0.00456, "centroidDeltaPx": [-2.3, -5.9] }
+        }
+      }
+    }
+  ],
+  "nextAction": {
+    "cause": "visual.midCycle.confetti.q50",
+    "fixtures": ["LOT-01"],
+    "alternate": "LOT-07 mid-window, LOT-06 pose, compositing.matte, or visual gate calibration",
+    "evidenceNeeded": "q50 still ~3–6px centroid drift after Z length; classify remaining cause"
+  },
+  "implementation": {
+    "gitHead": "f9ec51e02d10786210f13285b983ef6db8290b53",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T220358Z/source-snapshot/",
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wireVersion": "0.2"
+    },
+    "languageBump": "none — completing published geometry.spatialCurve (+ importer stroke/base fixes)"
+  },
+  "diagnosisSource": "explore agent 958973f8-9dd5-45e6-872c-9da0aca76c0f"
+}

@@ -110,7 +110,7 @@ function readProperty(raw: unknown):
   return { kind: "animated", keyframes };
 }
 
-function spatialFrom(outgoing: unknown, incoming: unknown): { out: Vec2; in: Vec2 } | undefined {
+function spatialFrom(outgoing: unknown, incoming: unknown): { out: Vec2 & { z?: number }; in: Vec2 & { z?: number } } | undefined {
   const out = tangent(outgoing);
   const inn = tangent(incoming);
   if (!out && !inn) return undefined;
@@ -118,13 +118,18 @@ function spatialFrom(outgoing: unknown, incoming: unknown): { out: Vec2; in: Vec
   return { out: out ?? { x: 0, y: 0 }, in: inn ?? { x: 0, y: 0 } };
 }
 
-function tangent(value: unknown): Vec2 | undefined {
+function tangent(value: unknown): (Vec2 & { z?: number }) | undefined {
   if (!Array.isArray(value) || value.length < 2) return undefined;
-  return { x: num(value[0], 0), y: num(value[1], 0) };
+  const point: Vec2 & { z?: number } = { x: num(value[0], 0), y: num(value[1], 0) };
+  if (value.length >= 3) {
+    const z = num(value[2], 0);
+    if (Math.abs(z) >= 1e-6) point.z = z;
+  }
+  return point;
 }
 
-function idle(value: Vec2 | undefined): boolean {
-  return !value || (Math.abs(value.x) < 1e-6 && Math.abs(value.y) < 1e-6);
+function idle(value: (Vec2 & { z?: number }) | undefined): boolean {
+  return !value || (Math.abs(value.x) < 1e-6 && Math.abs(value.y) < 1e-6 && Math.abs(value.z ?? 0) < 1e-6);
 }
 
 function easingFromHandles(input: unknown, output: unknown): LottieEasing {
@@ -133,10 +138,9 @@ function easingFromHandles(input: unknown, output: unknown): LottieEasing {
   const iy = num(Array.isArray(input.y) ? input.y[0] : input.y, 0.333);
   const ox = num(Array.isArray(output.x) ? output.x[0] : output.x, 0.667);
   const oy = num(Array.isArray(output.y) ? output.y[0] : output.y, 0.667);
-  if (Math.abs(ix - 0.333) < 0.05 && Math.abs(iy - 0.333) < 0.05 && Math.abs(ox - 0.667) < 0.05 && Math.abs(oy - 0.667) < 0.05) {
-    return "linear";
-  }
-  if (Math.abs(ix - 0.833) < 0.05 && Math.abs(iy - 0.833) < 0.05 && Math.abs(ox - 0.167) < 0.05 && Math.abs(oy - 0.167) < 0.05) {
+  // Linear only when both handles sit on y = x. AE often uses 0.167/0.833 on that
+  // diagonal; proximity to those values alone must not collapse mild easings.
+  if (Math.abs(ox - oy) < 0.01 && Math.abs(ix - iy) < 0.01) {
     return "linear";
   }
   if (Math.abs(ix) < 0.05 && Math.abs(iy) < 0.05) return "easeIn";

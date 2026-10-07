@@ -386,8 +386,18 @@ export interface Keyframe {
    * Omitted means linear. Forbidden on the last keyframe.
    */
   easing?: SegmentEasing;
-  /** Spatial out/in tangents for a vec2 segment. Offsets are relative to the key's value. */
-  spatial?: { out: Vec2; in: Vec2 };
+  /**
+   * Spatial out/in tangents for a vec2 segment. Offsets are relative to the key's value.
+   * Optional `z` participates in arc-length only (After Effects / lottie-web); it is not drawn.
+   */
+  spatial?: { out: SpatialTangent; in: SpatialTangent };
+}
+
+/** XY offset from the key value; optional Z for 3D arc-length sampling. */
+export interface SpatialTangent {
+  x: number;
+  y: number;
+  z?: number;
 }
 
 export interface TrackComposition {

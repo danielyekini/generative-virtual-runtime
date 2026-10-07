@@ -1,0 +1,63 @@
+{
+  "runId": "2026-10-07T220358Z",
+  "startedAt": "2026-10-07T22:03:58Z",
+  "stoppedAt": "2026-10-07T22:07:09Z",
+  "stage": "stop",
+  "comparedWith": "2026-10-07T215328Z",
+  "profile": "every Lottie construct in the corpus representable with nodes, paints, tracks, operators, timing scopes, and render scopes",
+  "budgets": {
+    "maxAttemptsPerCause": 3,
+    "maxImplementCycles": 8,
+    "implementCyclesUsed": 1,
+    "unchangedMeasurementStop": 2,
+    "wallTimeBudgetMinutes": 60
+  },
+  "implementation": {
+    "gitHead": "f9ec51e02d10786210f13285b983ef6db8290b53",
+    "gitShort": "f9ec51e",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T220358Z/source-snapshot/",
+    "finalCode": "HEAD f9ec51e + dirty spatial-Z + stroke caps + first-key base + AE-near easing"
+  },
+  "languages": {
+    "motionscript": { "current": "0.5.0", "wireVersion": "0.2", "packageVersion": "0.1.0" },
+    "sceneIr": { "current": "0.5.0", "wireVersion": "0.2", "packageVersion": "0.1.0" }
+  },
+  "referencePlayer": {
+    "lottieWeb": "5.13.0",
+    "seek": "goToAndStop(frame, true)",
+    "dpr": 1,
+    "background": "#101014",
+    "chromeVersion": "Google Chrome 154.0.8037.98"
+  },
+  "tolerances": {
+    "number": 0.001,
+    "color": 0.00392156862745098,
+    "pixel": { "euclideanRgbBeyond": 24, "note": "inspection only" }
+  },
+  "causes": [
+    {
+      "id": "visual.midCycle.confetti.spatialZ",
+      "phase": "A",
+      "fixtures": ["LOT-01"],
+      "attempts": 1,
+      "hypothesis": "lottie-web 3D spatial length vs GVR 2D; stroke caps; first-key base",
+      "ownerBoundary": "schema+runtime+format-lottie+compiler+emitter",
+      "status": "improved",
+      "measurements": {
+        "beforeFractionBeyondStart": 0.00375,
+        "afterFractionBeyondStart": 0.00048,
+        "beforeFractionBeyondQ25": 0.00614,
+        "afterFractionBeyondQ25": 0.00309,
+        "beforeFractionBeyondQ50": 0.00561,
+        "afterFractionBeyondQ50": 0.00456
+      }
+    }
+  ],
+  "observationWindow": "sampled start/q25/q50/q75/near_end",
+  "visualGate": "VISUAL_UNVERIFIED",
+  "carriedFromPriorRun": {
+    "runId": "2026-10-07T215328Z",
+    "aeNearEasingFix": true
+  }
+}

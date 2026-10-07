@@ -126,6 +126,52 @@ describe("lottie adapter", () => {
     expect(origin(runtime, 1500, dot)?.x).toBeCloseTo(150, 3);
   });
 
+  it("preserves spatial tangent Z for arc-length sampling", () => {
+    const result = load("spatial_tangent_z");
+    expect(result.ok).toBe(true);
+    const track = result.scene!.timeline.tracks.find(
+      (item) => item.kind === "keyframe" && item.target.kind === "node" && item.target.channel === "transform.position",
+    );
+    expect(track?.kind).toBe("keyframe");
+    if (track?.kind === "keyframe") {
+      expect(track.keyframes[0]?.spatial?.out).toMatchObject({ x: 50, y: 0, z: 400 });
+      expect(track.keyframes[0]?.spatial?.in).toMatchObject({ x: -50, y: 0, z: -400 });
+    }
+    const validated = validateSceneIR(result.scene);
+    expect(validated.ok, validated.ok ? "" : JSON.stringify(validated)).toBe(true);
+    const mid = origin(new AnimationRuntime(result.scene!), 1000, "layer_1");
+    // 3D arc-length mid differs from the 2D-only chord mid on this handle layout.
+    expect(mid?.x).not.toBeCloseTo(200, 0);
+  });
+
+  it("imports solid stroke line caps and joins", () => {
+    const result = load("stroke_round_cap");
+    expect(result.ok).toBe(true);
+    const path = result.scene!.nodes.find((node) => node.kind === "path");
+    expect(path && "stroke" in path && path.stroke?.cap).toBe("round");
+    expect(path && "stroke" in path && path.stroke?.join).toBe("round");
+  });
+
+  it("keeps mild AE-near easings as cubics; true diagonal stays linear", () => {
+    const result = load("easing_ae_near_linear");
+    expect(result.ok).toBe(true);
+    const tracks = result.scene!.timeline.tracks.filter(
+      (track) => track.kind === "keyframe" && track.target.kind === "node" && track.target.channel === "transform.position",
+    );
+    expect(tracks.length).toBe(2);
+    const mild = tracks.find((track) => track.kind === "keyframe" && track.keyframes[0]?.easing && typeof track.keyframes[0].easing === "object");
+    const linear = tracks.find((track) => track.kind === "keyframe" && track.keyframes[0]?.easing === "linear");
+    expect(mild?.kind).toBe("keyframe");
+    if (mild?.kind === "keyframe") {
+      expect(mild.keyframes[0]?.easing).toEqual({ type: "cubic", x1: 0.167, y1: 0.118, x2: 0.833, y2: 0.877 });
+    }
+    expect(linear?.kind).toBe("keyframe");
+    if (linear?.kind === "keyframe") {
+      expect(linear.keyframes[0]?.easing).toBe("linear");
+    }
+    expect(result.scene!.requiredCapabilities).toContain("easing.cubicBezier");
+  });
+
   it("imports animated trim as trim.start/end tracks", () => {
     const result = load("animated_trim");
     expect(result.ok, result.diagnostics.map((item) => `${item.feature}:${item.message}`).join("\n")).toBe(true);
