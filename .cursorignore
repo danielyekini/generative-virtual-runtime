@@ -1,0 +1,8 @@
+# Keep bulky local evaluation media out of Cursor indexing / SCM noise.
+docs/evaluations/**/evidence/captures/
+docs/evaluations/**/evidence/sources/
+docs/evaluations/**/evidence/failure-samples/
+evaluation/evidence/
+**/node_modules/
+**/dist/
+*.zip

@@ -16,15 +16,15 @@ evaluation.zip
 # Harness scratch (not a historical evaluation record)
 evaluation/evidence/
 
-# Full frame captures, videos, and large image-diff collections.
-# Keep a few representative failure images under evidence/failure-samples/.
+# Full frame captures, videos, image-diff collections, and failure samples.
+# Keep them on disk under evidence/captures/ or evidence/failure-samples/; do not commit PNGs.
 docs/evaluations/**/evidence/captures/
-docs/evaluations/**/evidence/**/*-diff.png
-docs/evaluations/**/evidence/**/*-native.png
-docs/evaluations/**/evidence/**/*-reference.png
-docs/evaluations/**/evidence/**/*-strip.png
-!docs/evaluations/**/evidence/failure-samples/
-!docs/evaluations/**/evidence/failure-samples/**
+docs/evaluations/**/*.png
+docs/evaluations/**/*.jpg
+docs/evaluations/**/*.jpeg
+docs/evaluations/**/*.webp
+docs/evaluations/**/*.mp4
+docs/evaluations/**/*.webm
 
 # Large or redistribution-restricted corpus copies inside eval evidence.
 # Fixture SHA-256 values live in manifest.json / loop.json.
