@@ -4,7 +4,7 @@ An evaluation run records what one implementation revision reproduced. It is not
 
 The newest run is [2026-10-07T230859Z](2026-10-07T230859Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json): main `8b052901d4a9399104be6d1376dc7468197f97ab` plus this run’s final snapshot. Shape-group animation improved Wave; remaining visual findings and gate calibration are open.
+Next Baseline reads [implementation-pin.json](implementation-pin.json): tested implementation commit `d492dcbc50d55cad22b8c3a43b9f5cbcfd783a81`. Execution-relevant source hashes are retained in the run’s final manifest; bulk captures and archives stay local. Shape-group animation improved Wave; remaining visual findings and gate calibration are open.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |

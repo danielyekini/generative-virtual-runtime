@@ -4,17 +4,17 @@
   "afterRun": "2026-10-07T230859Z",
   "comparedWithForNextBaseline": "2026-10-07T230859Z",
   "git": {
-    "head": "8b052901d4a9399104be6d1376dc7468197f97ab",
-    "short": "f9ec51e",
-    "subject": "Point the evaluation pin at the clean animated-trim commit.",
-    "treeCleanAtPin": false,
+    "head": "d492dcbc50d55cad22b8c3a43b9f5cbcfd783a81",
+    "short": "d492dcb",
+    "subject": "Preserve Lottie easing and shape-group animation with visual evidence",
+    "treeCleanAtPin": true,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Fetched main plus easing preservation, shape-group animation and reference-control fixes; use final snapshot."
+    "note": "Execution-relevant tested sources are committed here. Local bulk capture/archive files are untracked evidence, not implementation changes."
   },
   "snapshot": {
     "requiredWhenDirty": true,
     "path": "docs/evaluations/2026-10-07T230859Z/source-snapshot/",
-    "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree. Do not commit working-tree.patch or full tree copies.",
+    "how": "Prefer this committed implementation. Verify execution-relevant hashes against final-files.json; README and implementation-pin are continuation metadata. Archives and full capture sets remain local and are not needed to check out the committed source.",
     "finalArchive": "final-source.tar",
     "manifest": "final-files.json"
   },
