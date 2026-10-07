@@ -2,24 +2,24 @@
   "runId": "2026-10-07T210442Z",
   "comparedWith": "2026-10-07T194646Z",
   "implementation": {
-    "gitHead": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
-    "gitShort": "71f6e95",
-    "gitSubject": "Allow evaluation pins to match ancestor commits.",
+    "gitHead": "797a4301656d3382296f208823cf2acf18bcb48f",
+    "gitShort": "797a430",
+    "gitSubject": "Point the evaluation pin at the cleaned commit and keep incomplete-run hashes.",
     "treeClean": false,
     "snapshot": "docs/evaluations/2026-10-07T210442Z/source-snapshot/",
     "pinAncestorCheck": {
-      "pin": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
+      "pin": "904bc7864efbf21f85524f82b07f1fa94e486801",
       "isAncestorOfHead": true
     }
   },
   "languages": {
     "motionscript": {
-      "current": "0.3.0",
+      "current": "0.4.0",
       "wireVersion": "0.2",
       "packageVersion": "0.1.0"
     },
     "sceneIr": {
-      "current": "0.3.0",
+      "current": "0.4.0",
       "wireVersion": "0.2",
       "packageVersion": "0.1.0"
     }
@@ -109,5 +109,6 @@
       "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e"
     }
   ],
-  "registryHash": "b66cf5e8a85e4984d78c2acc39e6bb79ad75e210c7070e7d34a1b0707bc68621"
+  "registryHash": "5d455d3d907c171138895c79ca8acdab0d62befc20be96a09fde49a748c69137",
+  "finalGitHead": "797a4301656d3382296f208823cf2acf18bcb48f"
 }

@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-07T21:11:44.810Z",
+  "repository": "/Users/daniel.yekini/Projects/generative-visual-runtime",
+  "gitHead": "797a4301656d3382296f208823cf2acf18bcb48f",
+  "gitStatus": "## main...origin/main\n M fixtures/import/lottie/solid_layer.expected-ir.json\n M packages/format-lottie/src/lottie.test.ts\n M packages/format-lottie/src/normalise.ts\n?? docs/evaluations/2026-10-07T210442Z/evidence/\n?? docs/evaluations/2026-10-07T210442Z/render-results.json\n?? docs/evaluations/2026-10-07T210442Z/results.json",
+  "gitLog": "797a430 Point the evaluation pin at the cleaned commit and keep incomplete-run hashes.",
+  "node": "v24.10.0",
+  "platform": "darwin arm64",
+  "npm": "11.6.0",
+  "chrome": "Google Chrome 154.0.8037.98",
+  "lottieWeb": "5.13.0",
+  "versions": {
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0",
+    "ir": "0.1",
+    "dsl": "0.1",
+    "svgStaticDurationMs": 1000
+  },
+  "commands": [
+    "npx tsx evaluation/harness/run-pipeline.ts",
+    "npx tsx evaluation/harness/drive-browser.ts",
+    "node evaluation/harness/write-report.mjs"
+  ]
+}

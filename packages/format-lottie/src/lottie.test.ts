@@ -170,6 +170,25 @@ describe("lottie adapter", () => {
     expect(mid!.x).toBeLessThan(end!.x);
   });
 
+  it("places solid layers over composition bounds not centred at origin", () => {
+    const result = load("solid_layer");
+    expect(result.ok).toBe(true);
+    const solid = result.scene!.nodes.find((node) => node.id === "layer_1.solid");
+    expect(solid?.kind).toBe("rectangle");
+    if (solid?.kind !== "rectangle") throw new Error("missing solid");
+    expect(solid.transform.position).toEqual({ x: 0, y: 0 });
+    expect(solid.size).toEqual({ x: 320, y: 240 });
+    const runtime = new AnimationRuntime(result.scene!);
+    const item = runtime.evaluate(0).drawItems.find((draw) => draw.nodeId === solid.id);
+    expect(item).toBeDefined();
+    const topLeft = transformPoint(item!.logicalMatrix, 0, 0);
+    const bottomRight = transformPoint(item!.logicalMatrix, solid.size.x, solid.size.y);
+    expect(topLeft.x).toBeCloseTo(0, 3);
+    expect(topLeft.y).toBeCloseTo(0, 3);
+    expect(bottomRight.x).toBeCloseTo(320, 3);
+    expect(bottomRight.y).toBeCloseTo(240, 3);
+  });
+
   it("omits non-positive stroke width so validation accepts fill-only shapes", () => {
     const result = load("zero_stroke_width");
     expect(result.ok).toBe(true);

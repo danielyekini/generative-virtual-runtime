@@ -47,8 +47,8 @@
       "zIndex": 1,
       "transform": {
         "position": {
-          "x": -160,
-          "y": -120
+          "x": 0,
+          "y": 0
         },
         "pivot": {
           "x": 0,

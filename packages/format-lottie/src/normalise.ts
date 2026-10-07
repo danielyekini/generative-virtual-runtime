@@ -390,12 +390,16 @@ function lowerSolid(ctx: LowerContext, parentId: string, layer: LottieLayer, zIn
   const height = layer.solidHeight ?? 0;
   const color = layer.solidColor ?? [0, 0, 0];
   const rect = allocateId(parentId, "solid", ctx.usedIds);
+  // Lottie solids occupy layer-local [0, sw] × [0, sh]. The layer group already
+  // carries position = p − a and pivot = a, so a centred (−sw/2, −sh/2) offset
+  // would shift the fill by half the solid and leave the composition background
+  // showing (LOT-06 White Solid).
   ctx.nodes.push({
     id: rect.id,
     name: rect.name,
     parentId,
     zIndex: zIndex + 1,
-    transform: { position: { x: -width / 2, y: -height / 2 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
+    transform: { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
     opacity: 1,
     visible: true,
     kind: "rectangle",

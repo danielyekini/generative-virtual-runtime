@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-10-07T211534Z",
+  "files": [
+    {
+      "path": "fixtures/import/lottie/solid_layer.expected-ir.json",
+      "status": "M",
+      "bytes": 1838,
+      "sha256": "5332dba9f121f7f38bdc39fd9e693eded8cc77273606a830a398d950482ff828"
+    },
+    {
+      "path": "packages/format-lottie/src/lottie.test.ts",
+      "status": "M",
+      "bytes": 19166,
+      "sha256": "432f743506142a301e356a66595b1914e14ece504a45dac942140c049d0851e5"
+    },
+    {
+      "path": "packages/format-lottie/src/normalise.ts",
+      "status": "M",
+      "bytes": 42757,
+      "sha256": "8349d0912c647cfe31e8b2d6787ad16b567cab10e2407830399545d7a8a54e8f"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "runId": "2026-10-07T210442Z",
   "startedAt": "2026-10-07T21:04:42Z",
-  "stage": "implement",
+  "stage": "stop",
   "comparedWith": "2026-10-07T194646Z",
   "operatorOverride": {
     "namedCauses": [
@@ -33,18 +33,18 @@
   "budgets": {
     "maxAttemptsPerCause": 3,
     "maxImplementCycles": 8,
-    "implementCyclesUsed": 1,
+    "implementCyclesUsed": 2,
     "unchangedMeasurementStop": 2,
     "wallTimeBudgetMinutes": 60
   },
   "implementation": {
-    "gitHead": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
-    "gitShort": "71f6e95",
-    "gitSubject": "Allow evaluation pins to match ancestor commits.",
+    "gitHead": "797a4301656d3382296f208823cf2acf18bcb48f",
+    "gitShort": "797a430",
+    "gitSubject": "Point the evaluation pin at the cleaned commit and keep incomplete-run hashes.",
     "treeClean": false,
     "snapshot": "docs/evaluations/2026-10-07T210442Z/source-snapshot/",
     "pinAncestorCheck": {
-      "pin": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
+      "pin": "904bc7864efbf21f85524f82b07f1fa94e486801",
       "isAncestorOfHead": true
     }
   },
@@ -153,10 +153,40 @@
         "LOT-07"
       ],
       "attempts": 1,
-      "hypothesis": "Lottie gs is lowered as fill gradient; rings become filled blobs. Need paint.gradientStroke 0.4.0 and correct stroke lowering.",
-      "ownerBoundary": "schema+compiler+emitter+format-lottie+renderer(already paints stroke gradients)",
-      "expectedResult": "LOT-07 paths that use gs have stroke with gradient color and no erroneous fill; visual fractionBeyond drops materially",
-      "status": "attempting"
+      "hypothesis": "Lottie gs lowered as fill gradient",
+      "ownerBoundary": "schema+compiler+emitter+format-lottie",
+      "expectedResult": "stroke rings not filled blobs",
+      "status": "improved",
+      "measurements": {
+        "beforeFractionBeyondQ50": 0.55139,
+        "afterFractionBeyondQ50": 0.14551
+      }
+    },
+    {
+      "id": "lottie.solidPlacement",
+      "phase": "A",
+      "fixtures": [
+        "LOT-06"
+      ],
+      "attempts": 1,
+      "hypothesis": "Solid rect offset -sw/2 under cancelled pivot",
+      "ownerBoundary": "format-lottie",
+      "expectedResult": "full-frame #f5f5f5 background",
+      "status": "improved",
+      "measurements": {
+        "beforeFractionBeyondQ50": 0.68549,
+        "afterFractionBeyondQ50": 0.0296
+      }
+    },
+    {
+      "id": "visual.midCycle",
+      "phase": "A",
+      "fixtures": [
+        "LOT-01"
+      ],
+      "attempts": 0,
+      "hypothesis": "Celebrations mid-cycle confetti mismatch",
+      "status": "deferred"
     }
   ],
   "observationWindow": "sampled harness frames start/q25/q50/q75/near_end; full-window gate deferred until sampled visual agrees"
