@@ -1,15 +1,14 @@
- M docs/evaluations/2026-10-07T210442Z/loop.json
- M docs/evaluations/2026-10-07T210442Z/manifest.json
- M docs/evaluations/2026-10-07T210442Z/source-snapshot/files.json
- M docs/evaluations/2026-10-07T210442Z/source-snapshot/git-head.txt
- M docs/evaluations/2026-10-07T210442Z/source-snapshot/git-status-short.txt
- M docs/evaluations/implementation-pin.json
- M fixtures/import/lottie/solid_layer.expected-ir.json
- M packages/format-lottie/src/lottie.test.ts
- M packages/format-lottie/src/normalise.ts
-?? docs/evaluations/2026-10-07T210442Z/evidence/
-?? docs/evaluations/2026-10-07T210442Z/render-results.json
-?? docs/evaluations/2026-10-07T210442Z/report.md
-?? docs/evaluations/2026-10-07T210442Z/results.json
-?? docs/evaluations/2026-10-07T210442Z/stop.json
-?? docs/evaluations/2026-10-07T211534Z/
+ M docs/evaluations/2026-10-07T211534Z/source-snapshot/files.json
+ M docs/evaluations/2026-10-07T211534Z/source-snapshot/git-head.txt
+ M docs/evaluations/2026-10-07T211534Z/source-snapshot/git-short.txt
+ M docs/evaluations/2026-10-07T211534Z/source-snapshot/git-status-short.txt
+ M docs/evaluations/2026-10-07T211534Z/source-snapshot/git-subject.txt
+ M packages/runtime/src/runtime.test.ts
+ M packages/runtime/src/sample.ts
+ M packages/schema/capabilities/registry.json
+ M packages/schema/src/spatial.ts
+?? docs/evaluations/2026-10-07T211534Z/evidence/
+?? docs/evaluations/2026-10-07T211534Z/loop.json
+?? docs/evaluations/2026-10-07T211534Z/render-results.json
+?? docs/evaluations/2026-10-07T211534Z/results.json
+?? packages/schema/src/spatial.test.ts

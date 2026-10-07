@@ -332,18 +332,25 @@
     },
     {
       "id": "geometry.spatialCurve",
-      "summary": "A vec2 position key may carry spatial in and out tangents, sampled with the eased progress.",
+      "summary": "A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic (After Effects / lottie-web), not by the raw bezier parameter.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["compiler", "runtime"],
-      "restrictions": ["Tangents are offsets from the key value. This is not a substitute for path morph."],
-      "support": { "compiler": "untested", "runtime": "untested", "renderer": "not-applicable" },
-      "conformanceTests": [],
+      "restrictions": [
+        "Tangents are offsets from the key value. This is not a substitute for path morph.",
+        "Arc-length sampling uses a fixed polyline approximation (150 segments), matching lottie-web's defaultCurveSegments."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/schema/src/spatial.test.ts#samples spatial cubics by arc length",
+        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
+      ],
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Spatial tangents on one position track are lowered and marked exact, as in inventory_gaps layer_2. The curve shape is not sampled by that test.",
+          "scope": "Spatial tangents on position tracks are lowered; runtime samples them by arc length.",
           "conformanceTests": [
-            "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering"
+            "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering",
+            "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
           ]
         },
         "svg": { "status": "not-applicable", "scope": "SVG has no Bodymovin spatial tangents." }

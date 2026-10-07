@@ -4,12 +4,12 @@ import {
   diagnostic,
   evaluateExpression,
   isValidSample,
-  cubicPoint,
   lerp,
   lerpPathCommands,
   lerpVec2,
   localTimeMs,
   scalarWriters,
+  spatialCubicPoint,
   type Camera2DDefinition,
   type Diagnostic,
   type KeyframeTrack,
@@ -283,7 +283,7 @@ function sampleKeyframes(track: KeyframeTrack, progress: number): number | Vec2 
   if (from.spatial) {
     const c1 = { x: from.value.x + from.spatial.out.x, y: from.value.y + from.spatial.out.y };
     const c2 = { x: to.value.x + from.spatial.in.x, y: to.value.y + from.spatial.in.y };
-    return cubicPoint(eased, from.value, c1, c2, to.value);
+    return spatialCubicPoint(eased, from.value, c1, c2, to.value);
   }
   return lerpVec2(from.value, to.value, eased);
 }

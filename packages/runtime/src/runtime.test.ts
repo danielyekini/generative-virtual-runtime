@@ -673,6 +673,59 @@ describe("capability profile 0.2", () => {
   });
 });
 
+describe("geometry.spatialCurve", () => {
+  it("samples spatial position keys by arc length", () => {
+    const fill = { before: "none" as const, after: "forwards" as const };
+    const scene: SceneIR = {
+      irVersion: "0.2",
+      sceneId: "spatial",
+      viewport: { width: 200, height: 200, fit: "contain" },
+      background: { type: "solid", r: 0, g: 0, b: 0, a: 1 },
+      resources: [],
+      cameras: [{ id: "main", position: { x: 100, y: 100 }, zoom: 1, rotation: 0 }],
+      initialCameraId: "main",
+      nodes: [box(0, 0)],
+      timeline: {
+        durationMs: 1000,
+        tracks: [
+          {
+            id: "pos",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "box", channel: "transform.position" },
+            valueType: "vec2",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              {
+                offset: 0,
+                value: { x: 0, y: 0 },
+                easing: "linear",
+                spatial: { out: { x: 0, y: 200 }, in: { x: 0, y: 0 } },
+              },
+              { offset: 1, value: { x: 100, y: 0 } },
+            ],
+          },
+        ],
+        steps: [],
+      },
+      compositions: [],
+      instances: [],
+      timingScopes: [{ id: "root", parentId: null, offsetMs: 0, stretch: 1 }],
+      requiredCapabilities: ["geometry.spatialCurve"],
+      geometryOperators: [],
+    };
+    expect(validateSceneIR(scene).ok).toBe(true);
+    const mid = origin(new AnimationRuntime(scene).evaluate(500), "box");
+    // Arc-length mid ≠ bezier-parameter mid for this asymmetric handle layout.
+    expect(mid.x).toBeCloseTo(35.5, 0);
+    expect(mid.y).toBeCloseTo(86.2, 0);
+    expect(Math.hypot(mid.x - 50, mid.y - 75)).toBeGreaterThan(10);
+    expect(origin(new AnimationRuntime(scene).evaluate(0), "box")).toMatchObject({ x: 0, y: 0 });
+    expect(origin(new AnimationRuntime(scene).evaluate(1000), "box")).toMatchObject({ x: 100, y: 0 });
+  });
+});
+
 describe("geometry.pathMorph", () => {
   it("samples path morph tracks at boundaries and midpoints", () => {
     const from = [

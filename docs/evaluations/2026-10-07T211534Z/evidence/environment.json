@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-07T21:23:16.624Z",
+  "repository": "/Users/daniel.yekini/Projects/generative-visual-runtime",
+  "gitHead": "441e2048e79ca94e668beec6e8e9c69cf4ed0b3a",
+  "gitStatus": "## main...origin/main\n M docs/evaluations/2026-10-07T211534Z/source-snapshot/files.json\n M docs/evaluations/2026-10-07T211534Z/source-snapshot/git-status-short.txt\n M packages/runtime/src/runtime.test.ts\n M packages/runtime/src/sample.ts\n M packages/schema/capabilities/registry.json\n M packages/schema/src/spatial.ts\n?? docs/evaluations/2026-10-07T211534Z/loop.json\n?? packages/schema/src/spatial.test.ts",
+  "gitLog": "441e204 Record gradient-stroke evaluation run and solid-layer placement fix.",
+  "node": "v24.10.0",
+  "platform": "darwin arm64",
+  "npm": "11.6.0",
+  "chrome": "Google Chrome 154.0.8037.98",
+  "lottieWeb": "5.13.0",
+  "versions": {
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0",
+    "ir": "0.1",
+    "dsl": "0.1",
+    "svgStaticDurationMs": 1000
+  },
+  "commands": [
+    "npx tsx evaluation/harness/run-pipeline.ts",
+    "npx tsx evaluation/harness/drive-browser.ts",
+    "node evaluation/harness/write-report.mjs"
+  ]
+}

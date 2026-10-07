@@ -1,23 +1,35 @@
 {
-  "generatedAt": "2026-10-07T211534Z",
+  "generatedAt": "2026-10-07T212515Z",
   "files": [
     {
-      "path": "fixtures/import/lottie/solid_layer.expected-ir.json",
+      "path": "packages/runtime/src/runtime.test.ts",
       "status": "M",
-      "bytes": 1838,
-      "sha256": "5332dba9f121f7f38bdc39fd9e693eded8cc77273606a830a398d950482ff828"
+      "bytes": 28307,
+      "sha256": "9a1230ae203113e944c8fffbd6621d0b3fe380c7cd5ac698d5906745673b5980"
     },
     {
-      "path": "packages/format-lottie/src/lottie.test.ts",
+      "path": "packages/runtime/src/sample.ts",
       "status": "M",
-      "bytes": 19166,
-      "sha256": "432f743506142a301e356a66595b1914e14ece504a45dac942140c049d0851e5"
+      "bytes": 13779,
+      "sha256": "373e007fbedddd121bfd6a26f2fd927051774842dfc835791275d5ac9552fd88"
     },
     {
-      "path": "packages/format-lottie/src/normalise.ts",
+      "path": "packages/schema/capabilities/registry.json",
       "status": "M",
-      "bytes": 42757,
-      "sha256": "8349d0912c647cfe31e8b2d6787ad16b567cab10e2407830399545d7a8a54e8f"
+      "bytes": 36888,
+      "sha256": "7302413d1f23b6dc5c23ce686f82f9c4acfa413b03dbc34db01de391fb65e6bd"
+    },
+    {
+      "path": "packages/schema/src/spatial.ts",
+      "status": "M",
+      "bytes": 2629,
+      "sha256": "cff87d9e2c5d07c3fcbc106938521799acc579671f9113fbc68549efb45340b3"
+    },
+    {
+      "path": "packages/schema/src/spatial.test.ts",
+      "status": "??",
+      "bytes": 1017,
+      "sha256": "80a21a5457c9d92e09fa941bc5befe855c0e828a15335f867ed8a06b5f2a4c99"
     }
   ]
 }

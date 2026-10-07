@@ -1,1 +1,1 @@
-Stop tracking evaluation PNGs entirely.
+Record gradient-stroke evaluation run and solid-layer placement fix.

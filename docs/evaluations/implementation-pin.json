@@ -1,19 +1,19 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-07T21:15:00Z",
-  "afterRun": "2026-10-07T210442Z",
-  "comparedWithForNextBaseline": "2026-10-07T210442Z",
+  "pinnedAt": "2026-10-07T21:25:15Z",
+  "afterRun": "2026-10-07T211534Z",
+  "comparedWithForNextBaseline": "2026-10-07T211534Z",
   "git": {
-    "head": "797a4301656d3382296f208823cf2acf18bcb48f",
-    "short": "797a430",
-    "subject": "Point the evaluation pin at the cleaned commit and keep incomplete-run hashes.",
+    "head": "441e2048e79ca94e668beec6e8e9c69cf4ed0b3a",
+    "short": "441e204",
+    "subject": "Record gradient-stroke evaluation run and solid-layer placement fix.",
     "treeCleanAtPin": false,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Dirty tree includes lottie solid placement fix (LOT-06 background). Languages 0.4.0 (gradientStroke) are in ancestor 904bc78."
+    "note": "Dirty tree includes arc-length spatialCurve sampling fix (LOT-01 mid-cycle). Languages 0.4.0 (gradientStroke) and solid placement are in HEAD 441e204."
   },
   "snapshot": {
     "requiredWhenDirty": true,
-    "path": "docs/evaluations/2026-10-07T210442Z/source-snapshot/",
+    "path": "docs/evaluations/2026-10-07T211534Z/source-snapshot/",
     "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree. Do not commit working-tree.patch or full tree copies."
   },
   "languages": {
@@ -27,17 +27,11 @@
     }
   },
   "nextCause": {
-    "id": "visual.midCycle",
-    "fixtures": [
-      "LOT-01"
-    ],
-    "note": "Celebrations mid-cycle visual discrepancy (operator-named). Alternates: residual LOT-06 pose, LOT-07 morph window, or compositing.matte (0.5.0) for LOT-02/LOT-05."
+    "id": "visual.midCycle.residual",
+    "fixtures": ["LOT-01"],
+    "attemptsSoFar": 1,
+    "note": "Celebrations mid-cycle improved (arc-length) but residual ~1% fractionBeyond remains. Alternates: LOT-07 morph window, LOT-06 pose, compositing.matte (0.5.0), or visual gate calibration."
   },
-  "exactFixturesAtPin": [
-    "LOT-00",
-    "LOT-01",
-    "LOT-06",
-    "LOT-07"
-  ],
-  "visualNote": "Import exact is not visual pass. LOT-00 confirmed. LOT-06 background fixed but pose residual. LOT-07 stroke rings restored but mid-window residual. LOT-01 mid-cycle not a pass."
+  "exactFixturesAtPin": ["LOT-00", "LOT-01", "LOT-06", "LOT-07"],
+  "visualNote": "Import exact is not visual pass. LOT-00 confirmed. LOT-01 mid-cycle improved (q25 beyond 0.033→0.011) but not a pass. LOT-06/07 residuals unchanged. Absolute visual PASS is VISUAL_UNVERIFIED without aggregate thresholds."
 }
