@@ -1,0 +1,17 @@
+{
+  "purpose": "Publication packaging after explicit user instruction to push work and main; original run records remain unchanged.",
+  "captureResults": {
+    "originalPath": "evidence/final/render-results.json",
+    "originalSha256": "bbe4e50392883a987199d83646f9d4123fda9cd8b9712b8abef5d8171f93c18f",
+    "publishedPath": "evidence/final/render-results.json.gz",
+    "publishedSha256": "050ae78983ec11e2d59d62bd5c21e7280a9eadc54e2e515649caac8c887681ce",
+    "encoding": "gzip; lossless original JSON bytes"
+  },
+  "localOnly": [
+    "bulk captures in evidence/**/captures/",
+    "source snapshot archives",
+    "work scratch"
+  ],
+  "implementation": "All implementation source fixes are included in the publication commit. The run pin remains the historical base plus hashed dirty snapshot; execution code can also be recovered from this publication commit.",
+  "certification": "No status change, canonical promotion, or claim of durable full-frame evidence."
+}

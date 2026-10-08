@@ -1,0 +1,5950 @@
+{
+  "irVersion": "0.2",
+  "sceneId": "Radio_02",
+  "viewport": {
+    "width": 400,
+    "height": 400,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [],
+  "nodes": [
+    {
+      "id": "layer_1",
+      "name": "layer_1",
+      "parentId": null,
+      "zIndex": 50,
+      "transform": {
+        "position": {
+          "x": 200,
+          "y": 200
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0.4363323129985824,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.Shape_5",
+      "name": "Shape_5",
+      "parentId": "layer_1",
+      "zIndex": 51,
+      "transform": {
+        "position": {
+          "x": 2.141,
+          "y": 0.523
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.Shape_5.Path1_strokes",
+      "name": "Path1_strokes",
+      "parentId": "layer_1.Shape_5",
+      "zIndex": 52,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.Shape_5.Path1_strokes.pass_1",
+      "name": "pass_1",
+      "parentId": "layer_1.Shape_5.Path1_strokes",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "C",
+          "c1x": -180.08399999999997,
+          "c1y": 66.483,
+          "c2x": -0.472999999999999,
+          "c2y": 230.243,
+          "x": 74.992,
+          "y": 189.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 142.99200000000002,
+          "c1y": 151.953,
+          "c2x": 169.86,
+          "c2y": 63.476,
+          "x": 156.479,
+          "y": -8.047
+        },
+        {
+          "cmd": "C",
+          "c1x": 143.098,
+          "c1y": -79.57,
+          "c2x": 69.85900000000001,
+          "c2y": -164.523,
+          "x": -15.008,
+          "y": -168.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -99.875,
+          "c1y": -171.977,
+          "c2x": -182.141,
+          "c2y": -98.523,
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "linear",
+          "x1": -177,
+          "y1": -11,
+          "x2": 182,
+          "y2": 12,
+          "stops": [
+            {
+              "offset": 0,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.244,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.488,
+              "color": {
+                "type": "solid",
+                "r": 0.71,
+                "g": 0.008,
+                "b": 0.616,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.744,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 1,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            }
+          ]
+        },
+        "width": 3,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_1.Shape_5.Path1_strokes.pass_2",
+      "name": "pass_2",
+      "parentId": "layer_1.Shape_5.Path1_strokes",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "C",
+          "c1x": -180.08399999999997,
+          "c1y": 66.483,
+          "c2x": -0.472999999999999,
+          "c2y": 230.243,
+          "x": 74.992,
+          "y": 189.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 142.99200000000002,
+          "c1y": 151.953,
+          "c2x": 169.86,
+          "c2y": 63.476,
+          "x": 156.479,
+          "y": -8.047
+        },
+        {
+          "cmd": "C",
+          "c1x": 143.098,
+          "c1y": -79.57,
+          "c2x": 69.85900000000001,
+          "c2y": -164.523,
+          "x": -15.008,
+          "y": -168.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -99.875,
+          "c1y": -171.977,
+          "c2x": -182.141,
+          "c2y": -98.523,
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "solid",
+          "r": 0,
+          "g": 0.403921574354,
+          "b": 0.509803950787,
+          "a": 0.25
+        },
+        "width": 3,
+        "cap": "round",
+        "join": "round",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_2",
+      "name": "layer_2",
+      "parentId": null,
+      "zIndex": 40,
+      "transform": {
+        "position": {
+          "x": 200,
+          "y": 200
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": -0.4363323129985824,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 0.75,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Shape_55",
+      "name": "Shape_55",
+      "parentId": "layer_2",
+      "zIndex": 41,
+      "transform": {
+        "position": {
+          "x": 2.141,
+          "y": 0.523
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Shape_55.Path1_strokes",
+      "name": "Path1_strokes",
+      "parentId": "layer_2.Shape_55",
+      "zIndex": 42,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Shape_55.Path1_strokes.pass_1",
+      "name": "pass_1",
+      "parentId": "layer_2.Shape_55.Path1_strokes",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "C",
+          "c1x": -163.118,
+          "c1y": 129.953,
+          "c2x": -14.473000000000006,
+          "c2y": 218.243,
+          "x": 60.992,
+          "y": 177.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 128.992,
+          "c1y": 139.953,
+          "c2x": 154.99300000000002,
+          "c2y": 93.953,
+          "x": 170.479,
+          "y": 35.953
+        },
+        {
+          "cmd": "C",
+          "c1x": 185.965,
+          "c1y": -22.046999999999997,
+          "c2x": 125.83099999999999,
+          "c2y": -148.744,
+          "x": 52.992,
+          "y": -160.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -47.008,
+          "c1y": -176.047,
+          "c2x": -175.00799999999998,
+          "c2y": -78.047,
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "linear",
+          "x1": -177,
+          "y1": -11,
+          "x2": 182,
+          "y2": 12,
+          "stops": [
+            {
+              "offset": 0,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.244,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.488,
+              "color": {
+                "type": "solid",
+                "r": 0.71,
+                "g": 0.008,
+                "b": 0.616,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.744,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 1,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            }
+          ]
+        },
+        "width": 3,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_2.Shape_55.Path1_strokes.pass_2",
+      "name": "pass_2",
+      "parentId": "layer_2.Shape_55.Path1_strokes",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "C",
+          "c1x": -163.118,
+          "c1y": 129.953,
+          "c2x": -14.473000000000006,
+          "c2y": 218.243,
+          "x": 60.992,
+          "y": 177.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 128.992,
+          "c1y": 139.953,
+          "c2x": 154.99300000000002,
+          "c2y": 93.953,
+          "x": 170.479,
+          "y": 35.953
+        },
+        {
+          "cmd": "C",
+          "c1x": 185.965,
+          "c1y": -22.046999999999997,
+          "c2x": 125.83099999999999,
+          "c2y": -148.744,
+          "x": 52.992,
+          "y": -160.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -47.008,
+          "c1y": -176.047,
+          "c2x": -175.00799999999998,
+          "c2y": -78.047,
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "solid",
+          "r": 0,
+          "g": 0.403921574354,
+          "b": 0.509803950787,
+          "a": 0.25
+        },
+        "width": 3,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_3",
+      "name": "layer_3",
+      "parentId": null,
+      "zIndex": 30,
+      "transform": {
+        "position": {
+          "x": 200,
+          "y": 200
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 0.75,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_3.Shape_6",
+      "name": "Shape_6",
+      "parentId": "layer_3",
+      "zIndex": 31,
+      "transform": {
+        "position": {
+          "x": 2.141,
+          "y": 0.523
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_3.Shape_6.Path1_strokes",
+      "name": "Path1_strokes",
+      "parentId": "layer_3.Shape_6",
+      "zIndex": 32,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_3.Shape_6.Path1_strokes.pass_1",
+      "name": "pass_1",
+      "parentId": "layer_3.Shape_6.Path1_strokes",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "C",
+          "c1x": -180.08399999999997,
+          "c1y": 66.483,
+          "c2x": -0.472999999999999,
+          "c2y": 230.243,
+          "x": 74.992,
+          "y": 189.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 142.99200000000002,
+          "c1y": 151.953,
+          "c2x": 169.86,
+          "c2y": 63.476,
+          "x": 156.479,
+          "y": -8.047
+        },
+        {
+          "cmd": "C",
+          "c1x": 143.098,
+          "c1y": -79.57,
+          "c2x": 69.85900000000001,
+          "c2y": -164.523,
+          "x": -15.008,
+          "y": -168.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -99.875,
+          "c1y": -171.977,
+          "c2x": -182.141,
+          "c2y": -98.523,
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "linear",
+          "x1": -177,
+          "y1": -11,
+          "x2": 182,
+          "y2": 12,
+          "stops": [
+            {
+              "offset": 0,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.244,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.488,
+              "color": {
+                "type": "solid",
+                "r": 0.71,
+                "g": 0.008,
+                "b": 0.616,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.744,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 1,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            }
+          ]
+        },
+        "width": 3,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_3.Shape_6.Path1_strokes.pass_2",
+      "name": "pass_2",
+      "parentId": "layer_3.Shape_6.Path1_strokes",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "C",
+          "c1x": -180.08399999999997,
+          "c1y": 66.483,
+          "c2x": -0.472999999999999,
+          "c2y": 230.243,
+          "x": 74.992,
+          "y": 189.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 142.99200000000002,
+          "c1y": 151.953,
+          "c2x": 169.86,
+          "c2y": 63.476,
+          "x": 156.479,
+          "y": -8.047
+        },
+        {
+          "cmd": "C",
+          "c1x": 143.098,
+          "c1y": -79.57,
+          "c2x": 69.85900000000001,
+          "c2y": -164.523,
+          "x": -15.008,
+          "y": -168.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -99.875,
+          "c1y": -171.977,
+          "c2x": -182.141,
+          "c2y": -98.523,
+          "x": -181.063,
+          "y": -12.047
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "linear",
+          "x1": 0,
+          "y1": 0,
+          "x2": 100,
+          "y2": 0,
+          "stops": [
+            {
+              "offset": 0,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.244,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.488,
+              "color": {
+                "type": "solid",
+                "r": 0.71,
+                "g": 0.008,
+                "b": 0.616,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.744,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 1,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            }
+          ]
+        },
+        "width": 3,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_4",
+      "name": "layer_4",
+      "parentId": null,
+      "zIndex": 20,
+      "transform": {
+        "position": {
+          "x": 200,
+          "y": 200
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": -0.4363323129985824,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 0.75,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_4.Shape1",
+      "name": "Shape1",
+      "parentId": "layer_4",
+      "zIndex": 21,
+      "transform": {
+        "position": {
+          "x": 2.141,
+          "y": 0.523
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_4.Shape1.Path1",
+      "name": "Path1",
+      "parentId": "layer_4.Shape1",
+      "zIndex": 22,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "C",
+          "c1x": -163.118,
+          "c1y": 129.953,
+          "c2x": -14.473000000000006,
+          "c2y": 218.243,
+          "x": 60.992,
+          "y": 177.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 128.992,
+          "c1y": 139.953,
+          "c2x": 154.99300000000002,
+          "c2y": 93.953,
+          "x": 170.479,
+          "y": 35.953
+        },
+        {
+          "cmd": "C",
+          "c1x": 185.965,
+          "c1y": -22.046999999999997,
+          "c2x": 125.83099999999999,
+          "c2y": -148.744,
+          "x": 52.992,
+          "y": -160.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -47.008,
+          "c1y": -176.047,
+          "c2x": -175.00799999999998,
+          "c2y": -78.047,
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "solid",
+          "r": 0,
+          "g": 0.403921574354,
+          "b": 0.509803950787,
+          "a": 0.25
+        },
+        "width": 3,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_4.Group1",
+      "name": "Group1",
+      "parentId": "layer_4",
+      "zIndex": 22,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_5",
+      "name": "layer_5",
+      "parentId": null,
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": 200,
+          "y": 200
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 0.75,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_5.Shape_1",
+      "name": "Shape_1",
+      "parentId": "layer_5",
+      "zIndex": 11,
+      "transform": {
+        "position": {
+          "x": 2.141,
+          "y": 0.523
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_5.Shape_1.Path1",
+      "name": "Path1",
+      "parentId": "layer_5.Shape_1",
+      "zIndex": 12,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "C",
+          "c1x": -163.118,
+          "c1y": 129.953,
+          "c2x": -14.473000000000006,
+          "c2y": 218.243,
+          "x": 60.992,
+          "y": 177.061
+        },
+        {
+          "cmd": "C",
+          "c1x": 128.992,
+          "c1y": 139.953,
+          "c2x": 154.99300000000002,
+          "c2y": 93.953,
+          "x": 170.479,
+          "y": 35.953
+        },
+        {
+          "cmd": "C",
+          "c1x": 185.965,
+          "c1y": -22.046999999999997,
+          "c2x": 125.83099999999999,
+          "c2y": -148.744,
+          "x": 52.992,
+          "y": -160.25
+        },
+        {
+          "cmd": "C",
+          "c1x": -47.008,
+          "c1y": -176.047,
+          "c2x": -175.00799999999998,
+          "c2y": -78.047,
+          "x": -169.063,
+          "y": 25.953
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "stroke": {
+        "color": {
+          "type": "linear",
+          "x1": -177,
+          "y1": -11,
+          "x2": 182,
+          "y2": 12,
+          "stops": [
+            {
+              "offset": 0,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.244,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.488,
+              "color": {
+                "type": "solid",
+                "r": 0.71,
+                "g": 0.008,
+                "b": 0.616,
+                "a": 1
+              }
+            },
+            {
+              "offset": 0.744,
+              "color": {
+                "type": "solid",
+                "r": 0.741,
+                "g": 0.073,
+                "b": 0.5,
+                "a": 1
+              }
+            },
+            {
+              "offset": 1,
+              "color": {
+                "type": "solid",
+                "r": 0.773,
+                "g": 0.137,
+                "b": 0.384,
+                "a": 1
+              }
+            }
+          ]
+        },
+        "width": 3,
+        "cap": "butt",
+        "join": "miter",
+        "miterLimit": 4
+      }
+    },
+    {
+      "id": "layer_6",
+      "name": "layer_6",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 29.5,
+          "y": 18.5
+        },
+        "pivot": {
+          "x": 170.5,
+          "y": 181.5
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1.05,
+          "y": 1.05
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group1",
+      "name": "Group1",
+      "parentId": "layer_6",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 331.25,
+          "y": 270.25
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group1.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group1",
+      "zIndex": 2,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.104,
+          "c1y": -2,
+          "c2x": 2,
+          "c2y": -1.104,
+          "x": 2,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2,
+          "c1y": 1.104,
+          "c2x": 1.104,
+          "c2y": 2,
+          "x": 0,
+          "y": 2
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.104,
+          "c1y": 2,
+          "c2x": -2,
+          "c2y": 1.104,
+          "x": -2,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2,
+          "c1y": -1.104,
+          "c2x": -1.104,
+          "c2y": -2,
+          "x": 0,
+          "y": -2
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group2",
+      "name": "Group2",
+      "parentId": "layer_6",
+      "zIndex": 2,
+      "transform": {
+        "position": {
+          "x": 55.75,
+          "y": 143.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group2.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group2",
+      "zIndex": 3,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group3",
+      "name": "Group3",
+      "parentId": "layer_6",
+      "zIndex": 3,
+      "transform": {
+        "position": {
+          "x": 101.75,
+          "y": 2.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group3.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group3",
+      "zIndex": 4,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group4",
+      "name": "Group4",
+      "parentId": "layer_6",
+      "zIndex": 4,
+      "transform": {
+        "position": {
+          "x": 72.75,
+          "y": 68.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group4.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group4",
+      "zIndex": 5,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group5",
+      "name": "Group5",
+      "parentId": "layer_6",
+      "zIndex": 5,
+      "transform": {
+        "position": {
+          "x": 165.75,
+          "y": 33.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group5.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group5",
+      "zIndex": 6,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group6",
+      "name": "Group6",
+      "parentId": "layer_6",
+      "zIndex": 6,
+      "transform": {
+        "position": {
+          "x": 282.75,
+          "y": 42.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group6.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group6",
+      "zIndex": 7,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group7",
+      "name": "Group7",
+      "parentId": "layer_6",
+      "zIndex": 7,
+      "transform": {
+        "position": {
+          "x": 295.75,
+          "y": 99.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group7.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group7",
+      "zIndex": 8,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group8",
+      "name": "Group8",
+      "parentId": "layer_6",
+      "zIndex": 8,
+      "transform": {
+        "position": {
+          "x": 337.75,
+          "y": 162.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group8.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group8",
+      "zIndex": 9,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group9",
+      "name": "Group9",
+      "parentId": "layer_6",
+      "zIndex": 9,
+      "transform": {
+        "position": {
+          "x": 306.75,
+          "y": 223.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group9.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group9",
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group10",
+      "name": "Group10",
+      "parentId": "layer_6",
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": 204.75,
+          "y": 359.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group10.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group10",
+      "zIndex": 11,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group11",
+      "name": "Group11",
+      "parentId": "layer_6",
+      "zIndex": 11,
+      "transform": {
+        "position": {
+          "x": 245.75,
+          "y": 320.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group11.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group11",
+      "zIndex": 12,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group12",
+      "name": "Group12",
+      "parentId": "layer_6",
+      "zIndex": 12,
+      "transform": {
+        "position": {
+          "x": 155.75,
+          "y": 326.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group12.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group12",
+      "zIndex": 13,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group13",
+      "name": "Group13",
+      "parentId": "layer_6",
+      "zIndex": 13,
+      "transform": {
+        "position": {
+          "x": 102.75,
+          "y": 283.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group13.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group13",
+      "zIndex": 14,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group14",
+      "name": "Group14",
+      "parentId": "layer_6",
+      "zIndex": 14,
+      "transform": {
+        "position": {
+          "x": 41.75,
+          "y": 254.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group14.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group14",
+      "zIndex": 15,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group15",
+      "name": "Group15",
+      "parentId": "layer_6",
+      "zIndex": 15,
+      "transform": {
+        "position": {
+          "x": 2.75,
+          "y": 223.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group15.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group15",
+      "zIndex": 16,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group16",
+      "name": "Group16",
+      "parentId": "layer_6",
+      "zIndex": 16,
+      "transform": {
+        "position": {
+          "x": 13.75,
+          "y": 162.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group16.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group16",
+      "zIndex": 17,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_6.Group17",
+      "name": "Group17",
+      "parentId": "layer_6",
+      "zIndex": 17,
+      "transform": {
+        "position": {
+          "x": 2.75,
+          "y": 90.75
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_6.Group17.Path1",
+      "name": "Path1",
+      "parentId": "layer_6.Group17",
+      "zIndex": 18,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": 1.381,
+          "c1y": -2.5,
+          "c2x": 2.5,
+          "c2y": -1.381,
+          "x": 2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 2.5,
+          "c1y": 1.381,
+          "c2x": 1.381,
+          "c2y": 2.5,
+          "x": 0,
+          "y": 2.5
+        },
+        {
+          "cmd": "C",
+          "c1x": -1.381,
+          "c1y": 2.5,
+          "c2x": -2.5,
+          "c2y": 1.381,
+          "x": -2.5,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -2.5,
+          "c1y": -1.381,
+          "c2x": -1.381,
+          "c2y": -2.5,
+          "x": 0,
+          "y": -2.5
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0.709803921569,
+        "g": 0.007843137255,
+        "b": 0.61568627451,
+        "a": 1
+      }
+    }
+  ],
+  "requiredCapabilities": [
+    "paint.gradientStroke",
+    "easing.cubicBezier",
+    "geometry.pathMorph"
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 200,
+        "y": 200
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 5000,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.Shape_5",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": 6.283185307179586
+          }
+        ]
+      },
+      {
+        "id": "track2",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.Shape_5.Path1_strokes.pass_1",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -107.24000000000001,
+                "c1y": 121.801,
+                "c2x": -29.859,
+                "c2y": 196.52300000000002,
+                "x": 54.992,
+                "y": 151.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 134.271,
+                "c1y": 108.58500000000001,
+                "c2x": 134.14000000000001,
+                "c2y": 112.524,
+                "x": 152.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 170.697,
+                "c1y": -48.095,
+                "c2x": 76.522,
+                "c2y": -148.819,
+                "x": -1.008,
+                "y": -172.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -77.86,
+                "c1y": -195.477,
+                "c2x": -141.859,
+                "c2y": -101.477,
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track3",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.Shape_5.Path1_strokes.pass_2",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -107.24000000000001,
+                "c1y": 121.801,
+                "c2x": -29.859,
+                "c2y": 196.52300000000002,
+                "x": 54.992,
+                "y": 151.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 134.271,
+                "c1y": 108.58500000000001,
+                "c2x": 134.14000000000001,
+                "c2y": 112.524,
+                "x": 152.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 170.697,
+                "c1y": -48.095,
+                "c2x": 76.522,
+                "c2y": -148.819,
+                "x": -1.008,
+                "y": -172.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -77.86,
+                "c1y": -195.477,
+                "c2x": -141.859,
+                "c2y": -101.477,
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track4",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_2.Shape_55",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": -6.283185307179586
+          }
+        ]
+      },
+      {
+        "id": "track5",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_2.Shape_55.Path1_strokes.pass_1",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 4987.760416666666,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "C",
+                "c1x": -162.91352191911687,
+                "c1y": 129.9717886636238,
+                "c2x": -14.606717864345617,
+                "c2y": 218.0392933871139,
+                "x": 60.884580405477124,
+                "y": 176.79733372253477
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.91887166967413,
+                "c1y": 139.6282998620104,
+                "c2x": 154.96930421399006,
+                "c2y": 94.04367678590384,
+                "x": 170.46922969960727,
+                "y": 35.93346916463221
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.9685741428723,
+                "c1y": -22.174184799915082,
+                "c2x": 125.76601602802249,
+                "c2y": -148.64671202632417,
+                "x": 52.90411124084492,
+                "y": -160.21093832926442
+              },
+              {
+                "cmd": "C",
+                "c1x": -46.98286381488165,
+                "c1y": -176.0442168559601,
+                "c2x": -174.9145010083855,
+                "c2y": -78.10280936206347,
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5012269618336553,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -121.23999999999998,
+                "c1y": 133.801,
+                "c2x": -41.859,
+                "c2y": 176.52300000000002,
+                "x": 38.992,
+                "y": 123.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 114.01499999999999,
+                "c1y": 73.453,
+                "c2x": 150.14000000000001,
+                "c2y": 112.524,
+                "x": 168.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 186.697,
+                "c1y": -48.095,
+                "c2x": 112.52199999999999,
+                "c2y": -128.819,
+                "x": 34.992,
+                "y": -152.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -41.86000000000001,
+                "c1y": -175.477,
+                "c2x": -155.85899999999998,
+                "c2y": -89.477,
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -163.118,
+                "c1y": 129.953,
+                "c2x": -14.473000000000006,
+                "c2y": 218.243,
+                "x": 60.992,
+                "y": 177.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.992,
+                "c1y": 139.953,
+                "c2x": 154.99300000000002,
+                "c2y": 93.953,
+                "x": 170.479,
+                "y": 35.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.965,
+                "c1y": -22.046999999999997,
+                "c2x": 125.83099999999999,
+                "c2y": -148.744,
+                "x": 52.992,
+                "y": -160.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -47.008,
+                "c1y": -176.047,
+                "c2x": -175.00799999999998,
+                "c2y": -78.047,
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track6",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_2.Shape_55.Path1_strokes.pass_2",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 4987.760416666666,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "C",
+                "c1x": -162.91352191911687,
+                "c1y": 129.9717886636238,
+                "c2x": -14.606717864345617,
+                "c2y": 218.0392933871139,
+                "x": 60.884580405477124,
+                "y": 176.79733372253477
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.91887166967413,
+                "c1y": 139.6282998620104,
+                "c2x": 154.96930421399006,
+                "c2y": 94.04367678590384,
+                "x": 170.46922969960727,
+                "y": 35.93346916463221
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.9685741428723,
+                "c1y": -22.174184799915082,
+                "c2x": 125.76601602802249,
+                "c2y": -148.64671202632417,
+                "x": 52.90411124084492,
+                "y": -160.21093832926442
+              },
+              {
+                "cmd": "C",
+                "c1x": -46.98286381488165,
+                "c1y": -176.0442168559601,
+                "c2x": -174.9145010083855,
+                "c2y": -78.10280936206347,
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5012269618336553,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -121.23999999999998,
+                "c1y": 133.801,
+                "c2x": -41.859,
+                "c2y": 176.52300000000002,
+                "x": 38.992,
+                "y": 123.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 114.01499999999999,
+                "c1y": 73.453,
+                "c2x": 150.14000000000001,
+                "c2y": 112.524,
+                "x": 168.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 186.697,
+                "c1y": -48.095,
+                "c2x": 112.52199999999999,
+                "c2y": -128.819,
+                "x": 34.992,
+                "y": -152.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -41.86000000000001,
+                "c1y": -175.477,
+                "c2x": -155.85899999999998,
+                "c2y": -89.477,
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -163.118,
+                "c1y": 129.953,
+                "c2x": -14.473000000000006,
+                "c2y": 218.243,
+                "x": 60.992,
+                "y": 177.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.992,
+                "c1y": 139.953,
+                "c2x": 154.99300000000002,
+                "c2y": 93.953,
+                "x": 170.479,
+                "y": 35.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.965,
+                "c1y": -22.046999999999997,
+                "c2x": 125.83099999999999,
+                "c2y": -148.744,
+                "x": 52.992,
+                "y": -160.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -47.008,
+                "c1y": -176.047,
+                "c2x": -175.00799999999998,
+                "c2y": -78.047,
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track7",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_3.Shape_6",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": -6.283185307179586
+          }
+        ]
+      },
+      {
+        "id": "track8",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_3.Shape_6.Path1_strokes.pass_1",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -107.24000000000001,
+                "c1y": 121.801,
+                "c2x": -29.859,
+                "c2y": 196.52300000000002,
+                "x": 54.992,
+                "y": 151.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 134.271,
+                "c1y": 108.58500000000001,
+                "c2x": 134.14000000000001,
+                "c2y": 112.524,
+                "x": 152.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 170.697,
+                "c1y": -48.095,
+                "c2x": 76.522,
+                "c2y": -148.819,
+                "x": -1.008,
+                "y": -172.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -77.86,
+                "c1y": -195.477,
+                "c2x": -141.859,
+                "c2y": -101.477,
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track9",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_3.Shape_6.Path1_strokes.pass_2",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -107.24000000000001,
+                "c1y": 121.801,
+                "c2x": -29.859,
+                "c2y": 196.52300000000002,
+                "x": 54.992,
+                "y": 151.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 134.271,
+                "c1y": 108.58500000000001,
+                "c2x": 134.14000000000001,
+                "c2y": 112.524,
+                "x": 152.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 170.697,
+                "c1y": -48.095,
+                "c2x": 76.522,
+                "c2y": -148.819,
+                "x": -1.008,
+                "y": -172.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -77.86,
+                "c1y": -195.477,
+                "c2x": -141.859,
+                "c2y": -101.477,
+                "x": -127.063,
+                "y": -6.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "C",
+                "c1x": -180.08399999999997,
+                "c1y": 66.483,
+                "c2x": -0.472999999999999,
+                "c2y": 230.243,
+                "x": 74.992,
+                "y": 189.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 142.99200000000002,
+                "c1y": 151.953,
+                "c2x": 169.86,
+                "c2y": 63.476,
+                "x": 156.479,
+                "y": -8.047
+              },
+              {
+                "cmd": "C",
+                "c1x": 143.098,
+                "c1y": -79.57,
+                "c2x": 69.85900000000001,
+                "c2y": -164.523,
+                "x": -15.008,
+                "y": -168.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -99.875,
+                "c1y": -171.977,
+                "c2x": -182.141,
+                "c2y": -98.523,
+                "x": -181.063,
+                "y": -12.047
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track10",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_4.Shape1",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": -6.283185307179586
+          }
+        ]
+      },
+      {
+        "id": "track11",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_4.Shape1.Path1",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 4987.760416666666,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "C",
+                "c1x": -162.91352191911687,
+                "c1y": 129.9717886636238,
+                "c2x": -14.606717864345617,
+                "c2y": 218.0392933871139,
+                "x": 60.884580405477124,
+                "y": 176.79733372253477
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.91887166967413,
+                "c1y": 139.6282998620104,
+                "c2x": 154.96930421399006,
+                "c2y": 94.04367678590384,
+                "x": 170.46922969960727,
+                "y": 35.93346916463221
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.9685741428723,
+                "c1y": -22.174184799915082,
+                "c2x": 125.76601602802249,
+                "c2y": -148.64671202632417,
+                "x": 52.90411124084492,
+                "y": -160.21093832926442
+              },
+              {
+                "cmd": "C",
+                "c1x": -46.98286381488165,
+                "c1y": -176.0442168559601,
+                "c2x": -174.9145010083855,
+                "c2y": -78.10280936206347,
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5012269618336553,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -121.23999999999998,
+                "c1y": 133.801,
+                "c2x": -41.859,
+                "c2y": 176.52300000000002,
+                "x": 38.992,
+                "y": 123.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 114.01499999999999,
+                "c1y": 73.453,
+                "c2x": 150.14000000000001,
+                "c2y": 112.524,
+                "x": 168.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 186.697,
+                "c1y": -48.095,
+                "c2x": 112.52199999999999,
+                "c2y": -128.819,
+                "x": 34.992,
+                "y": -152.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -41.86000000000001,
+                "c1y": -175.477,
+                "c2x": -155.85899999999998,
+                "c2y": -89.477,
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -163.118,
+                "c1y": 129.953,
+                "c2x": -14.473000000000006,
+                "c2y": 218.243,
+                "x": 60.992,
+                "y": 177.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.992,
+                "c1y": 139.953,
+                "c2x": 154.99300000000002,
+                "c2y": 93.953,
+                "x": 170.479,
+                "y": 35.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.965,
+                "c1y": -22.046999999999997,
+                "c2x": 125.83099999999999,
+                "c2y": -148.744,
+                "x": 52.992,
+                "y": -160.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -47.008,
+                "c1y": -176.047,
+                "c2x": -175.00799999999998,
+                "c2y": -78.047,
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track12",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_5.Shape_1",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 5000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": "linear"
+          },
+          {
+            "offset": 1,
+            "value": 6.283185307179586
+          }
+        ]
+      },
+      {
+        "id": "track13",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_5.Shape_1.Path1",
+          "channel": "commands"
+        },
+        "valueType": "path",
+        "startMs": 0,
+        "durationMs": 4987.760416666666,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "C",
+                "c1x": -162.91352191911687,
+                "c1y": 129.9717886636238,
+                "c2x": -14.606717864345617,
+                "c2y": 218.0392933871139,
+                "x": 60.884580405477124,
+                "y": 176.79733372253477
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.91887166967413,
+                "c1y": 139.6282998620104,
+                "c2x": 154.96930421399006,
+                "c2y": 94.04367678590384,
+                "x": 170.46922969960727,
+                "y": 35.93346916463221
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.9685741428723,
+                "c1y": -22.174184799915082,
+                "c2x": 125.76601602802249,
+                "c2y": -148.64671202632417,
+                "x": 52.90411124084492,
+                "y": -160.21093832926442
+              },
+              {
+                "cmd": "C",
+                "c1x": -46.98286381488165,
+                "c1y": -176.0442168559601,
+                "c2x": -174.9145010083855,
+                "c2y": -78.10280936206347,
+                "x": -168.9262841524254,
+                "y": 25.855345823161024
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5012269618336553,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -121.23999999999998,
+                "c1y": 133.801,
+                "c2x": -41.859,
+                "c2y": 176.52300000000002,
+                "x": 38.992,
+                "y": 123.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 114.01499999999999,
+                "c1y": 73.453,
+                "c2x": 150.14000000000001,
+                "c2y": 112.524,
+                "x": 168.478,
+                "y": 31.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 186.697,
+                "c1y": -48.095,
+                "c2x": 112.52199999999999,
+                "c2y": -128.819,
+                "x": 34.992,
+                "y": -152.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -41.86000000000001,
+                "c1y": -175.477,
+                "c2x": -155.85899999999998,
+                "c2y": -89.477,
+                "x": -141.063,
+                "y": 5.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ],
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": [
+              {
+                "cmd": "M",
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "C",
+                "c1x": -163.118,
+                "c1y": 129.953,
+                "c2x": -14.473000000000006,
+                "c2y": 218.243,
+                "x": 60.992,
+                "y": 177.061
+              },
+              {
+                "cmd": "C",
+                "c1x": 128.992,
+                "c1y": 139.953,
+                "c2x": 154.99300000000002,
+                "c2y": 93.953,
+                "x": 170.479,
+                "y": 35.953
+              },
+              {
+                "cmd": "C",
+                "c1x": 185.965,
+                "c1y": -22.046999999999997,
+                "c2x": 125.83099999999999,
+                "c2y": -148.744,
+                "x": 52.992,
+                "y": -160.25
+              },
+              {
+                "cmd": "C",
+                "c1x": -47.008,
+                "c1y": -176.047,
+                "c2x": -175.00799999999998,
+                "c2y": -78.047,
+                "x": -169.063,
+                "y": 25.953
+              },
+              {
+                "cmd": "Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "track14",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group1",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 4966.666666666667,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12080536912751677,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3087248322147651,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5369127516778522,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7583892617449663,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track15",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group2",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 300,
+        "durationMs": 4500,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.13333333333333333,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.34074074074074073,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5925925925925927,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.837037037037037,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track16",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group3",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 166.66666666666666,
+        "durationMs": 4833.333333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12413793103448278,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3172413793103449,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5517241379310346,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7793103448275862,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.058823529411764275
+          }
+        ]
+      },
+      {
+        "id": "track17",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group4",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 1000,
+        "durationMs": 4000,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.15,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.38333333333333325,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6666666666666666,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9416666666666668,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.923
+          }
+        ]
+      },
+      {
+        "id": "track18",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group5",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 66.66666666666667,
+        "durationMs": 4933.333333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12162162162162163,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.31081081081081074,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5405405405405407,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7635135135135136,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.8541666666666666
+          }
+        ]
+      },
+      {
+        "id": "track19",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group6",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 166.66666666666666,
+        "durationMs": 4833.333333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12413793103448278,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3172413793103448,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5517241379310346,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7793103448275862,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.11111111111111138
+          }
+        ]
+      },
+      {
+        "id": "track20",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group7",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 466.6666666666667,
+        "durationMs": 4533.333333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1323529411764706,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3382352941176471,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5882352941176472,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9191176470588237,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.5600000000000004
+          }
+        ]
+      },
+      {
+        "id": "track21",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group8",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 100,
+        "durationMs": 4900,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12244897959183673,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2653061224489796,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.31292517006802717,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3877551020408163,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5442176870748299,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5782312925170068,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7687074829931972,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8095238095238094,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track22",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group9",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 300,
+        "durationMs": 4700,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1276595744680851,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.326241134751773,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5673758865248226,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.801418439716312,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.3170731707317075
+          }
+        ]
+      },
+      {
+        "id": "track23",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group10",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 1233.3333333333335,
+        "durationMs": 3766.6666666666665,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.15929203539823003,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.407079646017699,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7079646017699115,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 1
+          }
+        ]
+      },
+      {
+        "id": "track24",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group11",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 2366.6666666666665,
+        "durationMs": 2633.3333333333335,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.22784810126582294,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7594936708860758,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.5128205128205126
+          }
+        ]
+      },
+      {
+        "id": "track25",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group12",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 800,
+        "durationMs": 4200,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.14285714285714285,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3650793650793651,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.634920634920635,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8968253968253966,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.6388888888888884
+          }
+        ]
+      },
+      {
+        "id": "track26",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group13",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 166.66666666666666,
+        "durationMs": 4833.333333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12413793103448278,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3172413793103448,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5517241379310346,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7793103448275862,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.11111111111111138
+          }
+        ]
+      },
+      {
+        "id": "track27",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group14",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 400,
+        "durationMs": 4600,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.13043478260869565,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3333333333333333,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5797101449275363,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9057971014492753,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.5517241379310338
+          }
+        ]
+      },
+      {
+        "id": "track28",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group15",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 33.333333333333336,
+        "durationMs": 4966.666666666667,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12080536912751674,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3087248322147651,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5369127516778522,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7583892617449663,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track29",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group16",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 233.33333333333334,
+        "durationMs": 4766.666666666667,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12587412587412586,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.32167832167832167,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5594405594405594,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7902097902097901,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.5522388059701491
+          }
+        ]
+      },
+      {
+        "id": "track30",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_6.Group17",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 1300,
+        "durationMs": 3700,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.16216216216216217,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.41441441441441446,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7207207207207208,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.9117647058823526
+          }
+        ]
+      }
+    ],
+    "steps": []
+  }
+}

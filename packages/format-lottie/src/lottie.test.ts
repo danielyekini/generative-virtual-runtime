@@ -6,7 +6,7 @@ import { importSource } from "@gvr/format-import-core";
 import { emitMotionScript } from "@gvr/motionscript-emitter";
 import { formatRoundTripReport, verifyRoundTrip } from "@gvr/round-trip";
 import { AnimationRuntime } from "@gvr/runtime";
-import { transformPoint, validateSceneIR } from "@gvr/schema";
+import { applySegmentEasing, transformPoint, validateSceneIR } from "@gvr/schema";
 import { describe, expect, it } from "vitest";
 import { lottieAdapter } from "./adapter";
 import { framesToMs } from "@gvr/format-import-core";
@@ -71,6 +71,37 @@ describe("lottie adapter", () => {
       expect(circle.fill.g).toBeCloseTo(0.7, 4);
       expect(circle.fill.b).toBeCloseTo(0.9, 4);
     }
+  });
+
+  it("paints nested shape groups in reverse source order through round trip", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "sibling_fill.json"), "utf8"));
+    const shape = (name: string, color: number[]) => ({ ty: "gr", nm: name, it: [
+      { ty: "rc", nm: "Box", p: { a: 0, k: [20, 20] }, s: { a: 0, k: [40, 40] }, r: { a: 0, k: 0 } },
+      { ty: "fl", c: { a: 0, k: color }, o: { a: 0, k: 100 } },
+    ] });
+    source.layers[0].shapes = [{ ty: "gr", nm: "Outer", it: [shape("Face", [1, 0, 0, 1]), shape("Hair", [0, 0, 1, 1])] }];
+    const imported = importSource(lottieAdapter, JSON.stringify(source), { sourceName: "nested-paint-order.json" });
+    expect(imported.ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      const items = new AnimationRuntime(scene).evaluate(0).drawItems;
+      expect(items.map(item => item.nodeId)).toEqual(["layer_1.Outer.Hair.Box", "layer_1.Outer.Face.Box"]);
+      expect(items[0]!.appearance.fill).toMatchObject({ type: "solid", b: 1 });
+      expect(items[1]!.appearance.fill).toMatchObject({ type: "solid", r: 1 });
+    }
+  });
+
+  it("reports omitted animated fill colour instead of claiming exact conversion", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "sibling_fill.json"), "utf8"));
+    const fill = source.layers[0].shapes.find((shape: { ty: string }) => shape.ty === "fl");
+    fill.c = { a: 1, k: [{ t: 0, s: [1, 0, 0, 1] }, { t: 30, s: [0, 0, 1, 1] }] };
+    source.layers[0].shapes = [{ ty: "gr", nm: "Nested", it: source.layers[0].shapes }];
+    const result = importSource(lottieAdapter, JSON.stringify(source), { sourceName: "animated-fill.json" });
+    expect(result.ok).toBe(true);
+    expect(result.fidelity.overall).toBe("partial");
+    expect(result.diagnostics).toEqual(expect.arrayContaining([expect.objectContaining({ feature: "animated-fill-color", fidelity: "unsupported" })]));
+    expect(result.fidelity.unsupported.some(item => item.target?.endsWith(".c"))).toBe(true);
   });
 
   it("parents children when the parent layer is listed later in the JSON", () => {
@@ -284,6 +315,31 @@ describe("lottie adapter", () => {
     expect(end?.x).toBeCloseTo(200 / 3, 1);
     expect(mid!.x).toBeGreaterThan(start!.x);
     expect(mid!.x).toBeLessThan(end!.x);
+  });
+
+  it("preserves clipped cubic position and morph through shuffled round-trip seeks", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "track_outside_duration.json"), "utf8"));
+    const easing = { type: "cubic" as const, x1: .333, y1: 0, x2: .667, y2: 1 };
+    const handles = { i: { x: .667, y: 1 }, o: { x: .333, y: 0 } };
+    Object.assign(source.layers[0].ks.p.k[0], handles);
+    const path = (x: number) => ({ v: [[x, 0], [x + 10, 0]], i: [[0, 0], [0, 0]], o: [[0, 0], [0, 0]], c: false });
+    source.layers[0].shapes[0] = { ty: "sh", nm: "Morph", ks: { a: 1, k: [
+      { t: 0, s: [path(0)], ...handles }, { t: 30, s: [path(100)] },
+    ] } };
+    const imported = importSource(lottieAdapter, JSON.stringify(source), { sourceName: "clipped-cubic.json" });
+    expect(imported.ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      expect(validateSceneIR(scene).ok).toBe(true);
+      const runtime = new AnimationRuntime(scene);
+      for (const time of [1000, 0, 500, 125, 875, 250, 750, 0]) {
+        const item = runtime.evaluate(time).drawItems.find(item => item.geometry.kind === "path")!;
+        const expected = 100 * applySegmentEasing(easing, (time + 1000) / 3000);
+        expect(transformPoint(item.logicalMatrix, 0, 0).x).toBeCloseTo(expected, 4);
+        if (item.geometry.kind === "path") expect((item.geometry.commands[0] as { x: number }).x).toBeCloseTo(expected, 4);
+      }
+    }
   });
 
   it("places solid layers over composition bounds not centred at origin", () => {
@@ -508,7 +564,8 @@ describe("lottie adapter", () => {
     expect(result.ok).toBe(true);
     const paths = result.scene!.nodes.filter(node => node.kind === "path");
     expect(paths).toHaveLength(3);
-    expect(paths.map(path => path.stroke?.width)).toEqual([4, 10, 4]);
+    expect(paths.filter(path => path.id.includes("Later")).map(path => path.stroke?.width)).toEqual([4]);
+    expect(paths.filter(path => !path.id.includes("Later")).map(path => path.stroke?.width)).toEqual([4, 10]);
   });
 
   it("retains two gradient strokes instead of overwriting the first", () => {

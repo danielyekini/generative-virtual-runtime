@@ -1,0 +1,14 @@
+{
+  "path": "tree/final-source.tar.gz",
+  "sha256": "e214dbd62ddd7e645b720a41d39e7b953335c4cc5bdbaa1124cbf5b994ed5ff5",
+  "files": 1713,
+  "exclusions": [
+    "credentials",
+    "disposable dependencies/build/caches",
+    "work scratch",
+    "evaluation/evidence scratch",
+    "current run to avoid recursion",
+    "recursive bulk source archives"
+  ],
+  "trackedDeleted": []
+}

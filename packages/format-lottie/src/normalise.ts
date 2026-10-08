@@ -38,6 +38,7 @@ import type {
   StrokePaint,
 } from "./model";
 import { LOTTIE_ADAPTER_VERSION } from "./model";
+import { clipKeyframes } from "./clip-keyframes";
 
 interface LowerContext {
   document: LottieDocument;
@@ -411,7 +412,10 @@ function lowerSolid(ctx: LowerContext, parentId: string, layer: LottieLayer, zIn
 
 function lowerShapes(ctx: LowerContext, parentId: string, shapes: LottieShapeItem[], zIndex: number): void {
   let order = 0;
-  for (const item of shapes) {
+  // lottie-web collects styles by walking source shape lists backward. A
+  // geometry group's slot follows that paint order, independently of its
+  // transform ancestry. Per-geometry stroke passes already reverse their styles.
+  for (const item of [...shapes].reverse()) {
     lowerShapeItem(ctx, parentId, item, zIndex + order + 1, order);
     order += 1;
   }
@@ -437,7 +441,7 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
     });
     if (tr.animation) addTransformTracks(ctx, groupId.id, tr.animation);
     let childOrder = 0;
-    for (const child of item.items) {
+    for (const child of [...item.items].reverse()) {
       lowerShapeItem(ctx, groupId.id, child, zIndex + childOrder + 1, childOrder);
       childOrder += 1;
     }
@@ -884,6 +888,11 @@ function clampTrackToScene(
   if (!(hi > lo) || !(sceneDurationMs > 0)) return undefined;
   if (Math.abs(lo - startMs) < 1e-9 && Math.abs(hi - endMs) < 1e-9) {
     return { startMs, durationMs, keyframes };
+  }
+
+  if (!keyframes.some(key => key.spatial)) {
+    const clipped = clipKeyframes(startMs, durationMs, keyframes, sceneDurationMs);
+    return clipped ? { ...clipped, keyframes: dedupeKeyframeOffsets(clipped.keyframes) } : undefined;
   }
 
   const span = hi - lo;

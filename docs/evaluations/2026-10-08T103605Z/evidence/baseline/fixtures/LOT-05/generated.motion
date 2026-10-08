@@ -1,0 +1,424 @@
+scene "MainScene" {
+  version "0.2";
+  viewport (1080, 1080);
+  background #101014;
+  duration 4016.6666666666665ms;
+  requires "easing.cubicBezier";
+  requires "text.basic";
+  requires "paint.radialGradient";
+  requires "composition.definitions";
+  requires "timing.localScopes";
+};
+timing pre1 {
+  offset 0s;
+  stretch 1;
+};
+composition comp_1_b5ecb9f2c646427eb2f578b5e5fc1843_e1a8e115295d4b29a956cd76d94085fc_a396d872917c4cf4b58dd3ec7f1d3528_3d3fc3d72daf413c90361daf216a30ee_b3b1b0de23a34bd292b17ade8497a042 {
+};
+instance inst1 of comp_1_b5ecb9f2c646427eb2f578b5e5fc1843_e1a8e115295d4b29a956cd76d94085fc_a396d872917c4cf4b58dd3ec7f1d3528_3d3fc3d72daf413c90361daf216a30ee_b3b1b0de23a34bd292b17ade8497a042 {
+  start 0s;
+  end 4016.6666666666665ms;
+  timing pre1;
+};
+camera main {
+  position (540, 540);
+  zoom 1;
+  rotation 0deg;
+};
+group layer_1 {
+  position (-345, -296);
+  pivot (345, 296);
+  scale (2.1, 2.1);
+  zIndex 10;
+  group layer_1 {
+    position (345, 296);
+    visible false;
+    zIndex 140;
+    group Group1 {
+      zIndex 141;
+      path Path1 {
+        zIndex 142;
+        stroke #000000 width 4;
+        move (-49, 0.5);
+        cubic (-49, 0.5) (-70, 14.789) (-70, 14.789);
+        cubic (-70, 14.789) (-70, -13.789) (-70, -13.789);
+        cubic (-70, -13.789) (-49, 0.5) (-49, 0.5);
+        close;
+      };
+    };
+  };
+  group layer_2 {
+    position (374.813627, 314.54907);
+    pivot (1.6750106, -12.94999883);
+    visible false;
+    zIndex 130;
+    text textNode {
+      zIndex 131;
+      content "Play";
+      fontFamily "Haskoy Regular";
+      fontSize 50;
+      fill #000000;
+    };
+  };
+  group layer_3 {
+    position (373.521532, 313.674996);
+    pivot (0.750050314, -17.67500222);
+    visible false;
+    zIndex 120;
+    text textNode {
+      zIndex 121;
+      content "Pause";
+      fontFamily "Haskoy Regular";
+      fontSize 50;
+      fill #000000;
+    };
+  };
+  group layer_4 {
+    position (345, 296);
+    visible false;
+    zIndex 110;
+    group Group1 {
+      zIndex 111;
+      path Path1 {
+        zIndex 112;
+        stroke #000000 width 5 cap square;
+        move (-70.09, -13);
+        cubic (-70.09, -13) (-69.91, 15) (-69.91, 15);
+      };
+    };
+    group Group2 {
+      zIndex 112;
+      path Path1 {
+        zIndex 113;
+        stroke #000000 width 5 cap square;
+        move (-83.365, -13);
+        cubic (-83.365, -13) (-83.365, 15) (-83.365, 15);
+      };
+    };
+  };
+  group layer_5 {
+    position (345, 296);
+    zIndex 100;
+    group Group1 {
+      zIndex 101;
+      path Path1 {
+        zIndex 102;
+        stroke #000000 width 4;
+        move (-49, 0.5);
+        cubic (-49, 0.5) (-70, 14.789) (-70, 14.789);
+        cubic (-70, 14.789) (-70, -13.789) (-70, -13.789);
+        cubic (-70, -13.789) (-49, 0.5) (-49, 0.5);
+        close;
+      };
+    };
+  };
+  group layer_6 {
+    position (374.813627, 314.549067);
+    pivot (1.6749918118, -12.95001291);
+    zIndex 90;
+    text textNode {
+      zIndex 91;
+      content "Play";
+      fontFamily "Haskoy Regular";
+      fontSize 50;
+      fill #000000;
+    };
+  };
+  group layer_7 {
+    position (345, 296);
+    opacity 0.4;
+    zIndex 80;
+    group Group1 {
+      zIndex 81;
+      path Path1 {
+        zIndex 82;
+        fill #e7edf5;
+        move (-76, -67);
+        cubic (-76, -67) (77, -67) (77, -67);
+        cubic (114.003, -67) (144, -37.003) (144, 0);
+        cubic (144, 0) (144, 0) (144, 0);
+        cubic (144, 37.003) (114.003, 67) (77, 67);
+        cubic (77, 67) (-76, 67) (-76, 67);
+        cubic (-113.003, 67) (-143, 37.003) (-143, 0);
+        cubic (-143, 0) (-143, 0) (-143, 0);
+        cubic (-143, -37.003) (-113.003, -67) (-76, -67);
+        close;
+      };
+    };
+  };
+  group layer_8 {
+    position (345, 296);
+    zIndex 70;
+    group Group1 {
+      zIndex 71;
+      path Path1 {
+        zIndex 72;
+        fill #e7edf5;
+        move (-76, -67);
+        cubic (-76, -67) (77, -67) (77, -67);
+        cubic (114.003, -67) (144, -37.003) (144, 0);
+        cubic (144, 0) (144, 0) (144, 0);
+        cubic (144, 37.003) (114.003, 67) (77, 67);
+        cubic (77, 67) (-76, 67) (-76, 67);
+        cubic (-113.003, 67) (-143, 37.003) (-143, 0);
+        cubic (-143, 0) (-143, 0) (-143, 0);
+        cubic (-143, -37.003) (-113.003, -67) (-76, -67);
+        close;
+      };
+    };
+  };
+  group layer_9 {
+    position (40.781, 153.781);
+    pivot (137.904, 24.904);
+    scale (1.2, 1.2);
+    opacity 0.14;
+    zIndex 60;
+  };
+  group layer_10 {
+    position (40.781, 153.781);
+    pivot (137.904, 24.904);
+    scale (1.11, 1.11);
+    zIndex 50;
+    group Ellipse1 {
+      position (137.904, 24.904);
+      zIndex 51;
+      ellipse EllipsePath1 {
+        zIndex 52;
+        size (297.809, 297.809);
+        fill radial (4.654, -3.859) 106.417301 0 #126dff 0.5 #126dff 1 #126dff;
+      };
+    };
+  };
+  group layer_11 {
+    position (345, 296);
+    zIndex 40;
+  };
+  group layer_12 {
+    position (345, 296);
+    zIndex 30;
+    group Group1 {
+      zIndex 31;
+      path Path1 {
+        zIndex 32;
+        fill #e7edf5;
+        move (-76, -67);
+        cubic (-76, -67) (77, -67) (77, -67);
+        cubic (114.003, -67) (144, -37.003) (144, 0);
+        cubic (144, 0) (144, 0) (144, 0);
+        cubic (144, 37.003) (114.003, 67) (77, 67);
+        cubic (77, 67) (-76, 67) (-76, 67);
+        cubic (-113.003, 67) (-143, 37.003) (-143, 0);
+        cubic (-143, 0) (-143, 0) (-143, 0);
+        cubic (-143, -37.003) (-113.003, -67) (-76, -67);
+        close;
+      };
+    };
+  };
+  group layer_13 {
+    position (40.781, 153.781);
+    pivot (137.904, 24.904);
+    scale (1.2, 1.2);
+    opacity 0.14;
+    zIndex 20;
+  };
+  group layer_14 {
+    position (40.781, 153.781);
+    pivot (137.904, 24.904);
+    scale (1.11, 1.11);
+    zIndex 10;
+    group Ellipse1 {
+      position (137.904, 24.904);
+      zIndex 11;
+      ellipse EllipsePath1 {
+        zIndex 12;
+        size (297.809, 297.809);
+        fill radial (4.654, -3.859) 106.417301 0 #126dff 0.5 #126dff 1 #126dff;
+      };
+    };
+  };
+  group layer_15 {
+    position (345, 296);
+  };
+};
+group layer_2 {
+  position (521.782196, 540);
+  rectangle RectShape1 {
+    position (-324.469869, -172.64573252);
+    zIndex 1;
+    size (648.939738, 345.291465);
+    fill #ffffff;
+  };
+};
+keyframes layer_1.scale.x {
+  start 916.6666666666666ms;
+  duration 2083.3333333333335ms;
+  0% 2.1 ease cubic(0.333, 0, 0, 1);
+  8% 1.8 ease cubic(0.219, 0, 0.335, 1);
+  32% 2.1 ease linear;
+  68% 2.1 ease cubic(0.333, 0, 0, 1);
+  76% 1.8 ease cubic(0.219, 0, 0.335, 1);
+  100% 2.1;
+};
+keyframes layer_1.scale.y {
+  start 916.6666666666666ms;
+  duration 2083.3333333333335ms;
+  0% 2.1 ease cubic(0.333, 0, 0, 1);
+  8% 1.8 ease cubic(0.219, 0, 0.335, 1);
+  32% 2.1 ease linear;
+  68% 2.1 ease cubic(0.333, 0, 0, 1);
+  76% 1.8 ease cubic(0.219, 0, 0.335, 1);
+  100% 2.1;
+};
+keyframes layer_1.layer_9.position.x {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 372.781 ease linear;
+  24.89626556% 59.781 ease linear;
+  49.79253112% 40.781 ease linear;
+  74.68879668% 371.281 ease linear;
+  100% 372.781;
+};
+keyframes layer_1.layer_9.position.y {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 387.781 ease linear;
+  24.89626556% 377.781 ease linear;
+  49.79253112% 153.781 ease linear;
+  74.68879668% 145.281 ease linear;
+  100% 387.781;
+};
+keyframes layer_1.layer_10.position.x {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 372.781 ease linear;
+  24.89626556% 59.781 ease linear;
+  49.79253112% 40.781 ease linear;
+  74.68879668% 371.281 ease linear;
+  100% 372.781;
+};
+keyframes layer_1.layer_10.position.y {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 387.781 ease linear;
+  24.89626556% 377.781 ease linear;
+  49.79253112% 153.781 ease linear;
+  74.68879668% 145.281 ease linear;
+  100% 387.781;
+};
+keyframes layer_1.layer_13.position.x {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 40.781 ease linear;
+  24.4813278% 371.281 ease linear;
+  49.79253112% 372.781 ease linear;
+  74.68879668% 59.781 ease linear;
+  99.58506224% 40.781 ease linear;
+  100% 46.28933333;
+};
+keyframes layer_1.layer_13.position.y {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 153.781 ease linear;
+  24.4813278% 145.281 ease linear;
+  49.79253112% 387.781 ease linear;
+  74.68879668% 377.781 ease linear;
+  99.58506224% 153.781 ease linear;
+  100% 153.63933333;
+};
+keyframes layer_1.layer_14.position.x {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 40.781 ease linear;
+  24.4813278% 371.281 ease linear;
+  49.79253112% 372.781 ease linear;
+  74.68879668% 59.781 ease linear;
+  99.58506224% 40.781 ease linear;
+  100% 46.28933333;
+};
+keyframes layer_1.layer_14.position.y {
+  start 0s;
+  duration 4016.6666666666665ms;
+  0% 153.781 ease linear;
+  24.4813278% 145.281 ease linear;
+  49.79253112% 387.781 ease linear;
+  74.68879668% 377.781 ease linear;
+  99.58506224% 153.781 ease linear;
+  100% 153.63933333;
+};
+step layer_1.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_1.visible {
+  at 2400ms;
+  value true;
+};
+step layer_1.layer_2.visible {
+  at 2400ms;
+  value true;
+};
+step layer_1.layer_3.visible {
+  at 983.3333333333333ms;
+  value true;
+};
+step layer_1.layer_3.visible {
+  at 2400ms;
+  value false;
+};
+step layer_1.layer_4.visible {
+  at 983.3333333333333ms;
+  value true;
+};
+step layer_1.layer_4.visible {
+  at 2400ms;
+  value false;
+};
+step layer_1.layer_5.visible {
+  at 983.3333333333333ms;
+  value false;
+};
+step layer_1.layer_6.visible {
+  at 983.3333333333333ms;
+  value false;
+};
+step layer_1.layer_7.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_8.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_9.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_10.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_11.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_12.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_13.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_14.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_1.layer_15.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+step layer_2.visible {
+  at 4016.6666666666665ms;
+  value false;
+};
+complete;

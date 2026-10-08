@@ -1,0 +1,464 @@
+{
+  "id": "LOT-00",
+  "role": "baseline",
+  "format": "lottie",
+  "fileName": "panning_landscape_motionscript_v1_compatible.json",
+  "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+  "sourceBytes": 41712,
+  "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+  "provenance": {
+    "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+    "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+    "programPath": "fixtures/LOT-00/generated.motion",
+    "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+    "importedSceneSha256": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd",
+    "compiledSceneSha256": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d",
+    "revisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "lineageStatus": "UNREGISTERED_SCRATCH",
+    "verificationStatus": "UNVERIFIED",
+    "evidenceAssociation": {
+      "stage": "generation",
+      "resultPath": "fixtures/LOT-00/result.json",
+      "implementationEnvironmentPath": "environment.json",
+      "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+      "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+    }
+  },
+  "inventory": {
+    "topLevelKeys": [
+      "v",
+      "fr",
+      "ip",
+      "op",
+      "w",
+      "h",
+      "nm",
+      "ddd",
+      "layers"
+    ],
+    "markers": [],
+    "fonts": [],
+    "chars": 0,
+    "rootLayerTypes": {
+      "shape": 26,
+      "null": 3
+    },
+    "assetLayerTypes": {},
+    "shapeTypes": {
+      "el": 14,
+      "fl": 26,
+      "rc": 8,
+      "sh": 4
+    },
+    "masks": 0,
+    "mattes": 0,
+    "effects": 0,
+    "blendModes": 0,
+    "skew": 0,
+    "autoOrient": 0,
+    "spatialTangents": 0,
+    "textLayers": 0,
+    "hiddenLayers": 0,
+    "parenting": 25,
+    "ddd": 0,
+    "animatedProperties": 3,
+    "expressions": 0,
+    "holdKeyframes": 0,
+    "easingHandles": 3,
+    "roundedRects": 0,
+    "animatedRoundedRects": 0,
+    "images": [],
+    "precompAssets": [],
+    "missingAssets": [],
+    "examples": [],
+    "name": "MotionScript V1 Compatible Panning Landscape",
+    "version": "5.7.0",
+    "frameRate": 30,
+    "inFrame": 0,
+    "outFrame": 240,
+    "width": 1280,
+    "height": 720,
+    "durationMs": 8000
+  },
+  "timingsMs": {
+    "import": 10.767286000000013,
+    "emit": 3.44764600000002,
+    "compile": 44.299441
+  },
+  "complexity": {
+    "nodes": 55,
+    "tracks": 6,
+    "steps": 29,
+    "geometryItems": 20,
+    "depth": 3,
+    "durationMs": 8000,
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "fit": "contain"
+    },
+    "background": {
+      "type": "solid",
+      "r": 0.06274509803921569,
+      "g": 0.06274509803921569,
+      "b": 0.0784313725490196,
+      "a": 1
+    }
+  },
+  "production": {
+    "ok": true,
+    "fidelity": "exact",
+    "counts": {
+      "exact": 33,
+      "approximated": 0,
+      "dropped": 0,
+      "unsupported": 0
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_100.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_100.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_100.layer_1.Tree1CanopyEllipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_100.layer_2.Tree1TrunkRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_100.layer_3.Tree2CanopyEllipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_100.layer_4.Tree2TrunkRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_100.layer_5.Tree3CanopyEllipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_100.layer_6.Tree3TrunkRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_100.layer_7.Tree4CanopyEllipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_100.layer_8.Tree4TrunkRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_100.layer_9.Tree5CanopyEllipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_100.layer_10.Tree5TrunkRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_100.layer_11.Tree6CanopyEllipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_100.layer_12.Tree6TrunkRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_100.layer_13.ForegroundGroundRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_200.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_200.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_200.layer_14.MidHill1Ellipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_200.layer_15.MidHill2Ellipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_200.layer_16.MidHill3Ellipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_300.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_300.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_300.layer_17.Cloud1Ellipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_300.layer_18.Cloud2Ellipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_300.layer_19.Cloud3Ellipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_300.layer_20.Cloud4Ellipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_300.layer_21.Mountain1Path.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_300.layer_22.Mountain2Path.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_300.layer_23.Mountain3Path.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_300.layer_24.Mountain4Path.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "ellipse",
+        "severity": "info",
+        "message": "Imported ellipse layer_300.layer_25.SunEllipse.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rectangle",
+        "severity": "info",
+        "message": "Imported rectangle layer_26.SkyRect.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "frame-timing",
+        "severity": "info",
+        "message": "Converted composition frames 0–240 at 30fps to 8000ms.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": null,
+  "motionScript": {
+    "chars": 8880,
+    "bytes": 8880,
+    "path": "fixtures/LOT-00/generated.motion",
+    "sha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd"
+  },
+  "compile": {
+    "ok": true,
+    "diagnostics": 0,
+    "scene": true
+  },
+  "runtime": {
+    "kind": "compiled",
+    "samples": [
+      {
+        "id": "start",
+        "requestedMs": 0,
+        "evaluatedMs": 0,
+        "clampedToDuration": false,
+        "drawItems": 26,
+        "diagnostics": 0,
+        "ms": 3.397490000000005
+      },
+      {
+        "id": "q25",
+        "requestedMs": 2000,
+        "evaluatedMs": 2000,
+        "clampedToDuration": false,
+        "drawItems": 26,
+        "diagnostics": 0,
+        "ms": 1.3740969999999493
+      },
+      {
+        "id": "q50",
+        "requestedMs": 4000,
+        "evaluatedMs": 4000,
+        "clampedToDuration": false,
+        "drawItems": 26,
+        "diagnostics": 0,
+        "ms": 1.1676259999999843
+      },
+      {
+        "id": "q75",
+        "requestedMs": 6000,
+        "evaluatedMs": 6000,
+        "clampedToDuration": false,
+        "drawItems": 26,
+        "diagnostics": 0,
+        "ms": 1.7607780000000162
+      },
+      {
+        "id": "near_end",
+        "requestedMs": 7960,
+        "evaluatedMs": 7960,
+        "clampedToDuration": false,
+        "drawItems": 26,
+        "diagnostics": 0,
+        "ms": 1.1130440000000021
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "JSON object, 41712 bytes"
+    },
+    {
+      "name": "import",
+      "status": "PASS",
+      "detail": "fidelity exact; exact 33; approximated 0; dropped 0; unsupported 0; scene yes"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "PASS",
+      "detail": "8880 chars in 3.4 ms"
+    },
+    {
+      "name": "compile",
+      "status": "PASS",
+      "detail": "ok true; diagnostics 0; 44.3 ms"
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "PASS",
+      "detail": "compileMotionScript accepted the scene"
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "PASS",
+      "detail": "importSource returns a scene only after validateSceneIR succeeds"
+    },
+    {
+      "name": "runtime",
+      "status": "PASS",
+      "detail": "compiled scene; 5 samples; draw items 26,26,26,26,26"
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": null,
+  "evidence": {
+    "importReport": "fixtures/LOT-00/import-report.txt",
+    "importedScene": "fixtures/LOT-00/imported-scene.json",
+    "compiledScene": "fixtures/LOT-00/compiled-scene.json",
+    "motion": "fixtures/LOT-00/generated.motion"
+  }
+}

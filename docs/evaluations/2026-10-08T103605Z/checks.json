@@ -1,0 +1,46 @@
+{
+  "tests": {
+    "status": "PASS",
+    "tests": 191,
+    "files": 25,
+    "log": "evidence/checks/tests-final.log"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "command": "npm run typecheck",
+    "log": "evidence/checks/typecheck-final.log"
+  },
+  "registry": {
+    "status": "PASS",
+    "tests": 3,
+    "log": "evidence/checks/registry-final.log"
+  },
+  "harnessTypecheck": {
+    "status": "PASS",
+    "command": "npx tsc --noEmit --strict --target es2022 --module esnext --moduleResolution bundler --skipLibCheck --types node evaluation/harness/*.ts",
+    "log": "evidence/checks/harness-strict-final.log"
+  },
+  "roundTrip": {
+    "status": "PASS_NON_QUARANTINED",
+    "log": "evidence/checks/roundtrip-attempt2.log",
+    "association": "Final generation source/program/IR hashes identical to captured/round-tripped inputs; audit changes diagnostics only."
+  },
+  "budget": {
+    "status": "FAIL_OVERRUN",
+    "deadline": "2026-10-08T11:36:05.039498+00:00",
+    "recordedAt": "2026-10-08T12:17:22.256060+00:00"
+  },
+  "durablePublication": {
+    "status": "NOT_RUN",
+    "note": "No commits, pushes, canonical promotions or publication in this run."
+  },
+  "corpusChecksums": {
+    "status": "PASS",
+    "command": "sha256sum -c SHA256SUMS (cwd fixtures/corpus)",
+    "sources": 10
+  },
+  "diffCheck": {
+    "status": "PASS",
+    "command": "git diff --check"
+  }
+}

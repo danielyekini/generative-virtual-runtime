@@ -2,12 +2,13 @@
 
 An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
 
-The newest run is [2026-10-08T090908Z](2026-10-08T090908Z/report.md).
+The newest run is [2026-10-08T103605Z](2026-10-08T103605Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final tested snapshot in `2026-10-08T090908Z`. Wave has all ordered stroke passes; gradient coordinate mismatch remains. LOT-00 qualifies locally as r000001; publication evidence remains pending.
+Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T103605Z`. Continue with animated solid fill design (phase B, 0/3 attempts); preserve all retained cause budgets. Corpus remains FAIL. No new canonical sample promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
+| [2026-10-08T103605Z](2026-10-08T103605Z/report.md) | 2026-10-08T12:17:22.256060+00:00 | MotionScript / Scene IR 0.5.0 | 191 tests + typechecks PASS; clipping and shape order corrected; animated fill loss explicit; corpus FAIL; full native capture with reference blockers; budget overrun |
 | [2026-10-08T090908Z](2026-10-08T090908Z/report.md) | 2026-10-08T10:05:25.725844+00:00 | MotionScript / Scene IR 0.5.0 | 184 tests + typechecks PASS; Wave stroke loss corrected, gradient residual FAIL; LOT-00 local quality PASS/r000001; budget-exhausted |
 | [2026-10-08T012312Z](2026-10-08T012312Z/report.md) | 2026-10-08T07:15:47.602552+00:00 | MotionScript / Scene IR 0.5.0 | 181 tests + typechecks PASS; Wave timing fixed; corpus visual FAIL; budget-exhausted |
 | [2026-10-08T010229Z](2026-10-08T010229Z/report.md) | 2026-10-08T01:06:59.053118+00:00 | MotionScript / Scene IR 0.5.0 | Baseline; 174 tests + typecheck PASS; Wave round-trip FAIL; VISUAL_UNVERIFIED; design-escalation |
@@ -24,7 +25,7 @@ Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned t
 
 `2026-10-07-baseline` is historical. Do not edit it. Do not use it as `comparedWith` once a newer run exists.
 
-Manifest / results / evidence for the newest run live under `2026-10-08T090908Z/`.
+Manifest / results / evidence for the newest run live under `2026-10-08T103605Z/`.
 
 `evaluation/evidence/` is scratch space for the harness. Copy a finished run into a new `docs/evaluations/<run-id>/` directory. Do not point the index at the scratch directory.
 

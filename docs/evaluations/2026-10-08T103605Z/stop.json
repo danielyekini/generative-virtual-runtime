@@ -1,0 +1,34 @@
+{
+  "runId": "2026-10-08T103605Z",
+  "status": "budget-exhausted",
+  "stoppedAt": "2026-10-08T12:17:22.256060+00:00",
+  "reason": "Full browser capture exceeded 60-minute wall-time. No more implementation; remaining known losses and reference/material-review blockers retained.",
+  "elapsedMinutes": 101.2869427,
+  "budgetOverrun": true,
+  "nextCause": {
+    "id": "paint.animatedSolidFill",
+    "phase": "B",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "affectedFixtures": [
+      "LOT-06"
+    ],
+    "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
+    "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
+  },
+  "implementation": {
+    "head": "a72beab23bbd74c114cf931d0fc42eb385e8e4bf",
+    "finalSnapshot": "source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "source-snapshot/final-files.json",
+    "uncommitted": true
+  },
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL",
+  "coverageStatus": "FULL_NATIVE_CAPTURE_NON_QUARANTINED; TRUSTWORTHY_COMPARISON_BLOCKED_LOT05; LOT03_NATIVE_QUARANTINED",
+  "sampleHandoff": {
+    "status": "NOT_RUN",
+    "note": "Prior LOT-00 r000001 preserved; current generated scratch programs remain unregistered, no historical quality/pointer changes."
+  }
+}
