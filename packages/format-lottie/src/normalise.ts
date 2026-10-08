@@ -702,7 +702,7 @@ function addSpatialPositionTrack(
   const end = times[times.length - 1] ?? start;
   const duration = end - start;
   if (!(duration > 0)) return;
-  const keyframes = animated.keyframes.map((sample, index) => {
+  const keyframes: Keyframe[] = animated.keyframes.map((sample, index) => {
     const offset = ((times[index] ?? start) - start) / duration;
     const value = { x: sample.value.x - anchorVec.x, y: sample.value.y - anchorVec.y };
     if (index === animated.keyframes.length - 1) return { offset, value };
