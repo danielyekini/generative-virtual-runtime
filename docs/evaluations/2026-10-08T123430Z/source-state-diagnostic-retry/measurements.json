@@ -1,0 +1,170 @@
+[
+  {
+    "layer": 2,
+    "sourceFrame": 0,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 0.2595221156924481,
+        "coordinateCount": 26,
+        "status": "FAIL"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.7322634221272892e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.7276993844461686e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  },
+  {
+    "layer": 2,
+    "sourceFrame": 2,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 0.20442101204787377,
+        "coordinateCount": 26,
+        "status": "FAIL"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.5557106223695882e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.5562551482162235e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  },
+  {
+    "layer": 2,
+    "sourceFrame": 15,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 0.038985054734325786,
+        "coordinateCount": 26,
+        "status": "FAIL"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.2515504295151914e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.2515166531557043e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  },
+  {
+    "layer": 2,
+    "sourceFrame": 75,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 1.0952952948173333e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.0952952948173333e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.0952952948173333e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  },
+  {
+    "layer": 5,
+    "sourceFrame": 0,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 0.31995257939581734,
+        "coordinateCount": 26,
+        "status": "FAIL"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.3642921885548276e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.3642187468576594e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  },
+  {
+    "layer": 5,
+    "sourceFrame": 2,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 0.2746041220996176,
+        "coordinateCount": 26,
+        "status": "FAIL"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.3484653834439086e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.3481874191256793e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  },
+  {
+    "layer": 5,
+    "sourceFrame": 15,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 0.03729213583142155,
+        "coordinateCount": 26,
+        "status": "FAIL"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.2039682346198788e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.2040259974810397e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  },
+  {
+    "layer": 5,
+    "sourceFrame": 75,
+    "routes": {
+      "baseline": {
+        "maxCoordinateDelta": 1.0009765674112714e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "imported": {
+        "maxCoordinateDelta": 1.0009765674112714e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      },
+      "compiled": {
+        "maxCoordinateDelta": 1.0009765674112714e-05,
+        "coordinateCount": 26,
+        "status": "PASS"
+      }
+    }
+  }
+]

@@ -1,4 +1,5 @@
 import {
+  applySegmentEasing,
   lerpPathCommands,
   type CompositionDefinition,
   type CompositionInstance,
@@ -598,7 +599,7 @@ function addPathMorphTrack(
     if (index === samples.length - 1) return { offset, value: sample.value };
     return { offset, value: sample.value, easing };
   });
-  const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs);
+  const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs, ctx.notes, nodeId);
   if (!clamped) {
     ctx.notes.push({ feature: "path", level: "exact", message: `Imported path ${nodeId}.`, target: nodeId });
     return;
@@ -706,7 +707,7 @@ function addSpatialPositionTrack(
     if (typeof easing === "object") ctx.capabilities.push(easing.type === "hold" ? "easing.hold" : "easing.cubicBezier");
     return { offset, value, easing, ...(sample.spatial ? { spatial: sample.spatial } : {}) };
   });
-  const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs);
+  const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs, ctx.notes, nodeId);
   if (!clamped) return;
   ctx.trackSerial += 1;
   ctx.tracks.push({
@@ -853,7 +854,7 @@ function addScalarChannelTrack(
     ctx.notes.push({ feature, level: "exact", message: `Imported motion on ${nodeId}.${channel}.`, target: nodeId });
   }
 
-  const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs);
+  const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs, ctx.notes, nodeId);
   if (!clamped) return;
   ctx.trackSerial += 1;
   ctx.tracks.push({
@@ -877,6 +878,8 @@ function clampTrackToScene(
   durationMs: number,
   keyframes: Keyframe[],
   sceneDurationMs: number,
+  notes: FidelityItem[],
+  target: string,
 ): { startMs: number; durationMs: number; keyframes: Keyframe[] } | undefined {
   const endMs = startMs + durationMs;
   const lo = Math.max(0, startMs);
@@ -886,10 +889,13 @@ function clampTrackToScene(
     return { startMs, durationMs, keyframes };
   }
 
+  const spatial = keyframes.some(key => key.spatial !== undefined);
+  if (spatial) notes.push({ feature: "spatial-window-clipping", level: "approximated", target,
+    message: "Composition-window clipping retains legacy spatial geometry; an exact spatial subcurve is not lowered." });
   const span = hi - lo;
   const samples: Keyframe[] = [];
-  const startValue = sampleTrackValue(startMs, durationMs, keyframes, lo);
-  const startEasing = easingCrossing(startMs, durationMs, keyframes, lo);
+  const startValue = sampleTrackValue(startMs, durationMs, keyframes, lo, !spatial);
+  const startEasing = spatial ? easingCrossing(startMs, durationMs, keyframes, lo) : clippedEasing(startMs, durationMs, keyframes, lo, Math.min(hi, nextKeyTime(startMs, durationMs, keyframes, lo)), notes, target);
   samples.push({
     offset: 0,
     value: startValue,
@@ -903,12 +909,12 @@ function clampTrackToScene(
     samples.push({
       offset: (time - lo) / span,
       value: key.value,
-      ...(key.easing ? { easing: key.easing } : {}),
+      ...(key.easing ? { easing: spatial ? key.easing : clippedEasing(startMs, durationMs, keyframes, time, Math.min(hi, nextKeyTime(startMs, durationMs, keyframes, time)), notes, target) } : {}),
       ...(key.spatial ? { spatial: key.spatial } : {}),
     });
   }
 
-  samples.push({ offset: 1, value: sampleTrackValue(startMs, durationMs, keyframes, hi) });
+  samples.push({ offset: 1, value: sampleTrackValue(startMs, durationMs, keyframes, hi, !spatial) });
   return { startMs: lo, durationMs: span, keyframes: dedupeKeyframeOffsets(samples) };
 }
 
@@ -917,6 +923,7 @@ function sampleTrackValue(
   durationMs: number,
   keyframes: Keyframe[],
   timeMs: number,
+  preserveEasing = true,
 ): number | Vec2 | PathCommand[] {
   const first = keyframes[0];
   const last = keyframes[keyframes.length - 1];
@@ -937,7 +944,8 @@ function sampleTrackValue(
   const from = keyframes[segment] ?? first;
   const to = keyframes[segment + 1] ?? last;
   const span = to.offset - from.offset;
-  const local = span === 0 ? 0 : (progress - from.offset) / span;
+  const progressInSegment = span === 0 ? 0 : (progress - from.offset) / span;
+  const local = preserveEasing ? applySegmentEasing(from.easing, progressInSegment) : progressInSegment;
   if (from.easing && typeof from.easing === "object" && from.easing.type === "hold") return from.value;
   if (Array.isArray(from.value) || Array.isArray(to.value)) {
     if (!Array.isArray(from.value)) return from.value;
@@ -952,16 +960,56 @@ function sampleTrackValue(
   };
 }
 
-function easingCrossing(startMs: number, durationMs: number, keyframes: Keyframe[], timeMs: number): SegmentEasing | undefined {
-  if (!(durationMs > 0)) return undefined;
+function easingCrossing(startMs: number, durationMs: number, keys: Keyframe[], timeMs: number): SegmentEasing | undefined {
   const progress = (timeMs - startMs) / durationMs;
-  for (let index = 0; index < keyframes.length - 1; index += 1) {
-    const from = keyframes[index];
-    const to = keyframes[index + 1];
-    if (!from || !to) continue;
-    if (progress >= from.offset - 1e-12 && progress < to.offset - 1e-12) return from.easing;
+  return keys.find((key, i) => keys[i + 1] && progress >= key.offset - 1e-12 && progress < keys[i + 1]!.offset - 1e-12)?.easing;
+}
+
+function nextKeyTime(startMs: number, durationMs: number, keys: Keyframe[], timeMs: number): number {
+  return keys.map(key => startMs + key.offset * durationMs).find(time => time > timeMs + 1e-9) ?? startMs + durationMs;
+}
+
+/** Preserve the original cubic's time/value curve when either end is clipped. */
+function clippedEasing(startMs: number, durationMs: number, keys: Keyframe[], loMs: number, hiMs: number, notes: FidelityItem[], target: string): SegmentEasing | undefined {
+  const progress = (loMs - startMs) / durationMs;
+  const index = keys.findIndex((key, i) => keys[i + 1] && progress >= key.offset - 1e-12 && progress < keys[i + 1]!.offset - 1e-12);
+  if (index < 0) return undefined;
+  const from = keys[index]!, to = keys[index + 1]!;
+  const easing = from.easing;
+  if (!easing || typeof easing === "string" || easing.type === "hold") return easing;
+  const segmentStart = startMs + from.offset * durationMs;
+  const segmentDuration = (to.offset - from.offset) * durationMs;
+  const lo = Math.max(0, (loMs - segmentStart) / segmentDuration);
+  const hi = Math.min(1, (hiMs - segmentStart) / segmentDuration);
+  if (lo <= 1e-12 && hi >= 1 - 1e-12) return easing;
+  type Point = { x: number; y: number };
+  const mix = (a: Point, b: Point, t: number): Point => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+  const split = (p: Point[], t: number): [Point[], Point[]] => {
+    const a = mix(p[0]!, p[1]!, t), b = mix(p[1]!, p[2]!, t), c = mix(p[2]!, p[3]!, t);
+    const d = mix(a, b, t), e = mix(b, c, t), f = mix(d, e, t);
+    return [[p[0]!, a, d, f], [f, e, c, p[3]!]];
+  };
+  const curve: Point[] = [{ x: 0, y: 0 }, { x: easing.x1, y: easing.y1 }, { x: easing.x2, y: easing.y2 }, { x: 1, y: 1 }];
+  const solve = (x: number): number => {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    let a = 0, b = 1;
+    for (let i = 0; i < 52; i++) { const t = (a + b) / 2; if (split(curve, t)[0][3]!.x < x) a = t; else b = t; }
+    return (a + b) / 2;
+  };
+  const t0 = solve(lo), t1 = solve(hi);
+  const left = split(curve, t1)[0];
+  const clipped = split(left, t0 / t1)[1];
+  const first = clipped[0]!, last = clipped[3]!;
+  const dx = last.x - first.x, dy = last.y - first.y;
+  if (Math.abs(dy) < 1e-12) {
+    notes.push({ feature: "clipped-cubic", level: "approximated", target,
+      message: "A clipped cubic interval with equal easing endpoint values cannot retain its interior excursion in one segment." });
+    return easing;
   }
-  return undefined;
+  const normal = (p: Point) => ({ x: Math.max(0, Math.min(1, (p.x - first.x) / dx)), y: (p.y - first.y) / dy });
+  const c1 = normal(clipped[1]!), c2 = normal(clipped[2]!);
+  return { type: "cubic", x1: c1.x, y1: c1.y, x2: c2.x, y2: c2.y };
 }
 
 function spatialCrossing(

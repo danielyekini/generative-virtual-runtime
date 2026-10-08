@@ -6,7 +6,7 @@ import { importSource } from "@gvr/format-import-core";
 import { emitMotionScript } from "@gvr/motionscript-emitter";
 import { formatRoundTripReport, verifyRoundTrip } from "@gvr/round-trip";
 import { AnimationRuntime } from "@gvr/runtime";
-import { transformPoint, validateSceneIR } from "@gvr/schema";
+import { applySegmentEasing, transformPoint, validateSceneIR } from "@gvr/schema";
 import { describe, expect, it } from "vitest";
 import { lottieAdapter } from "./adapter";
 import { framesToMs } from "@gvr/format-import-core";
@@ -284,6 +284,47 @@ describe("lottie adapter", () => {
     expect(end?.x).toBeCloseTo(200 / 3, 1);
     expect(mid!.x).toBeGreaterThan(start!.x);
     expect(mid!.x).toBeLessThan(end!.x);
+  });
+
+  it("preserves cubic scalar and morph curves when both composition boundaries clip keys", () => {
+    const result = load("clipped_cubic_morph");
+    expect(result.fidelity.overall).toBe("exact");
+    expect(validateSceneIR(result.scene).ok).toBe(true);
+    const emitted = compileMotionScript(emitMotionScript(result.scene!));
+    expect(emitted.ok).toBe(true);
+    const direct = new AnimationRuntime(result.scene!);
+    const compiled = new AnimationRuntime(emitted.scene!);
+    const curve = { type: "cubic" as const, x1: 0.333, y1: 0, x2: 0.667, y2: 1 };
+    // Independent source-time oracle: do not compare two identically clipped routes alone.
+    for (const frame of [10, 11, 20, 29.5, 30, 40, 49.5, 50, 20, 10]) {
+      const u = applySegmentEasing(curve, (frame < 30 ? frame : frame - 30) / 30);
+      const expectedPosition = frame < 30 ? 100 * u : 100 * (1 - u);
+      const expectedMorphX = frame < 30 ? -20 - 20 * u : -40 + 20 * u;
+      const timeMs = (frame - 10) * 1000 / 30;
+      for (const runtime of [direct, compiled]) {
+        const draw = runtime.evaluate(timeMs).drawItems[0]!;
+        expect(draw.logicalMatrix[6], `position at source frame ${frame}`).toBeCloseTo(expectedPosition, 3);
+        expect(draw.geometry.kind).toBe("path");
+        if (draw.geometry.kind === "path") {
+          const first = draw.geometry.commands[0]!;
+          expect(first.cmd).toBe("M");
+          if (first.cmd === "M") expect(first.x, `morph at source frame ${frame}`).toBeCloseTo(expectedMorphX, 3);
+        }
+      }
+    }
+  });
+
+  it("reports clipped spatial geometry as approximate", () => {
+    const raw = JSON.parse(readFileSync(join(fixtureDir, "track_outside_duration.json"), "utf8"));
+    const keys = raw.layers[0].ks.p.k;
+    keys[0].to = [20, 80, 0];
+    keys[0].ti = [-20, -40, 0];
+    const result = importSource(lottieAdapter, JSON.stringify(raw));
+    expect(result.ok).toBe(true);
+    expect(result.fidelity.overall).toBe("degraded");
+    expect(result.diagnostics.some(item => item.feature === "spatial-window-clipping" && item.fidelity === "approximated")).toBe(true);
+    expect(validateSceneIR(result.scene).ok).toBe(true);
+    expect(verifyRoundTrip(result.scene!).ok).toBe(true);
   });
 
   it("places solid layers over composition bounds not centred at origin", () => {

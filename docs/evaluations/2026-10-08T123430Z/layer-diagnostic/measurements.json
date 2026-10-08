@@ -1,0 +1,338 @@
+[
+  {
+    "layer": 1,
+    "index": 0,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "1-0-reference.png",
+    "native": "1-0-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.01985251892176115
+  },
+  {
+    "layer": 1,
+    "index": 2,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "1-2-reference.png",
+    "native": "1-2-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.019643410905611773
+  },
+  {
+    "layer": 1,
+    "index": 15,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "1-15-reference.png",
+    "native": "1-15-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.020251947180626215
+  },
+  {
+    "layer": 1,
+    "index": 75,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "1-75-reference.png",
+    "native": "1-75-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.01934306403651487
+  },
+  {
+    "layer": 2,
+    "index": 0,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "2-0-reference.png",
+    "native": "2-0-native.png",
+    "fractionBeyond": 0.0022625,
+    "meanDistance": 0.33314674747640693
+  },
+  {
+    "layer": 2,
+    "index": 2,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "2-2-reference.png",
+    "native": "2-2-native.png",
+    "fractionBeyond": 0.003825,
+    "meanDistance": 0.3761487638303287
+  },
+  {
+    "layer": 2,
+    "index": 15,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "2-15-reference.png",
+    "native": "2-15-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.22004755258545988
+  },
+  {
+    "layer": 2,
+    "index": 75,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "2-75-reference.png",
+    "native": "2-75-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.19531003600531135
+  },
+  {
+    "layer": 3,
+    "index": 0,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "3-0-reference.png",
+    "native": "3-0-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.021061311100643562
+  },
+  {
+    "layer": 3,
+    "index": 2,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "3-2-reference.png",
+    "native": "3-2-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.020879550793311604
+  },
+  {
+    "layer": 3,
+    "index": 15,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "3-15-reference.png",
+    "native": "3-15-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.02043640783814104
+  },
+  {
+    "layer": 3,
+    "index": 75,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "3-75-reference.png",
+    "native": "3-75-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.018988167066543896
+  },
+  {
+    "layer": 4,
+    "index": 0,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "4-0-reference.png",
+    "native": "4-0-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.209895847469386
+  },
+  {
+    "layer": 4,
+    "index": 2,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "4-2-reference.png",
+    "native": "4-2-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.212015276277147
+  },
+  {
+    "layer": 4,
+    "index": 15,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "4-15-reference.png",
+    "native": "4-15-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.19665343002418825
+  },
+  {
+    "layer": 4,
+    "index": 75,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "4-75-reference.png",
+    "native": "4-75-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.17751383591947775
+  },
+  {
+    "layer": 5,
+    "index": 0,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "5-0-reference.png",
+    "native": "5-0-native.png",
+    "fractionBeyond": 0.0035125,
+    "meanDistance": 0.23098665942708266
+  },
+  {
+    "layer": 5,
+    "index": 2,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "5-2-reference.png",
+    "native": "5-2-native.png",
+    "fractionBeyond": 0.0025875,
+    "meanDistance": 0.1886637111727267
+  },
+  {
+    "layer": 5,
+    "index": 15,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "5-15-reference.png",
+    "native": "5-15-native.png",
+    "fractionBeyond": 0.00004375,
+    "meanDistance": 0.0342092627697675
+  },
+  {
+    "layer": 5,
+    "index": 75,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "5-75-reference.png",
+    "native": "5-75-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.01715949837200236
+  },
+  {
+    "layer": 6,
+    "index": 0,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "6-0-reference.png",
+    "native": "6-0-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0
+  },
+  {
+    "layer": 6,
+    "index": 2,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "6-2-reference.png",
+    "native": "6-2-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0
+  },
+  {
+    "layer": 6,
+    "index": 15,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "6-15-reference.png",
+    "native": "6-15-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0
+  },
+  {
+    "layer": 6,
+    "index": 75,
+    "prepared": {
+      "ok": true,
+      "notes": [],
+      "reference": "canvas",
+      "native": true
+    },
+    "reference": "6-75-reference.png",
+    "native": "6-75-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0
+  }
+]

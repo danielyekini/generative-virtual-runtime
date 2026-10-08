@@ -1,20 +1,20 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-08T10:05:25.725844+00:00",
-  "afterRun": "2026-10-08T090908Z",
-  "comparedWithForNextBaseline": "2026-10-08T090908Z",
+  "pinnedAt": "2026-10-08T13:33:46.603914+00:00",
+  "afterRun": "2026-10-08T123430Z",
+  "comparedWithForNextBaseline": "2026-10-08T123430Z",
   "git": {
-    "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
-    "short": "11d783e",
+    "head": "4dee21f0f93888da2308c78df95e6020d3af0168",
+    "short": "4dee21f",
     "subject": "Define visual acceptance policy and verify fidelity harness and timing fixes",
     "treeCleanAtPin": false,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Execution source correction tested with complete affected native windows and regression checks; working tree changes retained without commit/push. Use final snapshot for exact code bytes."
+    "note": "Final tested dirty source snapshot required; no commit/push"
   },
   "snapshot": {
     "requiredWhenDirty": true,
-    "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/",
-    "finalArchive": "tree/final-source.tar.gz",
+    "path": "docs/evaluations/2026-10-08T123430Z/source-snapshot",
+    "finalArchive": "final-source.tar.gz",
     "manifest": "final-files.json",
     "how": "Full source bytes excluding credentials, disposable dependencies and recursive snapshots. Archive contents are hashed by final-files.json."
   },
@@ -29,36 +29,92 @@
     }
   },
   "nextCause": {
-    "id": "visual.wave.gradientCoordinateSpace",
-    "phase": "A",
+    "id": "verification.fullCorpusNativeCoverage",
+    "phase": "C",
     "attempts": 0,
     "remainingAttempts": 3,
-    "linkedFinding": "visual.wave.residualPaintAndGeometry",
-    "expectedEvidence": "Use confirmed real createLinearGradient endpoint/context-matrix and caching observations to isolate remaining early-frame paint residuals. Compare evaluated source/direct/compiled matrices/paints; assess narrow existing-language lowering first. Reverify original full windows before any language representation decision. Do not repurpose or reset retained stroke attempts."
+    "expectedEvidence": "Finish unchanged full-render-jobs.json on final pinned bytes, reference repeats and material review for every fixture; retain LOT-03 quarantine. Then isolate LOT-06 Punches source-state geometry/matrices before implementing an unconfirmed stacking theory."
   },
   "exactFixturesAtPin": [
     "LOT-00",
-    "LOT-01",
-    "LOT-06"
+    "LOT-06",
+    "LOT-07"
   ],
-  "visualNote": "Corpus FAIL; Wave ordered strokes verified, independent gradient-coordinate residual; LOT-00 local quality PASS/r000001, durable publication pending",
-  "attemptHistoryRun": "docs/evaluations/2026-10-08T090908Z/loop.json",
-  "commitReproduction": "Start with git.head, then restore source-snapshot/tree/final-source.tar.gz and verify final-files.json. The base commit alone does not contain the tested stroke correction.",
+  "visualNote": "Wave full-window PASS; corpus FAIL and incomplete budget",
+  "attemptHistoryRun": "docs/evaluations/2026-10-08T123430Z/loop.json",
+  "commitReproduction": "Restore final archive over git.head and verify final-files.json; linked immutable run evidence is separate.",
   "retainedCauses": [
+    {
+      "id": "visual.wave.gradientCoordinateSpace",
+      "phase": "A",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "linkedFinding": "visual.wave.residualPaintAndGeometry",
+      "expectedEvidence": "Use confirmed real createLinearGradient endpoint/context-matrix and caching observations to isolate remaining early-frame paint residuals. Compare evaluated source/direct/compiled matrices/paints; assess narrow existing-language lowering first. Reverify original full windows before any language representation decision. Do not repurpose or reset retained stroke attempts.",
+      "status": "prior gradient attribution not reproduced; retain as investigated finding",
+      "measurements": {
+        "creationMatrixControl": "native pixels identical at nine seeks",
+        "fixedLayerEndpointControl": "worse at frame 30: hot fraction 0.0002 to 0.029675",
+        "evidence": [
+          "gradient-diagnostic/records.json",
+          "gradient-diagnostic/measurements.json",
+          "gradient-endpoint-diagnostic/records.json",
+          "gradient-endpoint-diagnostic/measurements.json"
+        ]
+      }
+    },
     {
       "id": "visual.wave.multipleStrokeLoss",
       "attempts": 2,
       "remainingAttempts": 1,
       "status": "ordered stroke correction measured; fixture not yet fidelity-certified"
+    },
+    {
+      "id": "visual.wave.clippedCubicMorph",
+      "phase": "A",
+      "attempts": 2,
+      "remainingAttempts": 1,
+      "status": "target correction verified; corpus Phase C incomplete",
+      "affectedFixtures": [
+        "LOT-07",
+        "LOT-01"
+      ],
+      "owner": "format-lottie composition-window track clipping",
+      "hypothesis": "negative-start morph is linearly sampled at the new start and reuses the unsplit cubic easing; layer isolation localizes residual to layers 2 and 5 with frame -0.368 keys",
+      "expectedResult": "in-window values and cubic subsegments match original unbounded source; full native windows and regressions",
+      "before": {
+        "frame2HotFraction": 0.005275,
+        "layer2Frame2": 0.003825,
+        "layer5Frame0": 0.0035125
+      },
+      "evidence": [
+        "layer-diagnostic/records.json",
+        "layer-diagnostic/measurements.json"
+      ],
+      "regressionEvidence": "before-after-program-identity.json: LOT-01 scalar clips change; LOT-03 diagnostic-only change remains quarantined; all other scene/program bytes identical",
+      "attemptHistory": [
+        {
+          "attempt": 1,
+          "phaseC": "185 tests + targeted conformance + semantic routes PASS; Wave complete original windows captured; source audit found shared clip helper modifies spatial control curves without a spatial subcurve lowering",
+          "snapshot": "attempt-1-implementation.tar.gz",
+          "evidence": "attempt-1/evidence/"
+        },
+        {
+          "attempt": 2,
+          "status": "186 tests/typechecks and 7 nonquarantined semantic routes PASS; Wave full windows numeric PASS; corpus incomplete",
+          "hypothesis": "retain legacy spatial lowering and report its approximation; scalar/morph cubic slicing remains corrected",
+          "expectedResult": "Wave improvement preserved; no spatial geometry drift from initial implementation; source loss not mislabeled exact"
+        }
+      ]
     }
   ],
   "productionExactLabelsAtPin": [
     "LOT-00",
-    "LOT-01",
     "LOT-06",
     "LOT-07"
   ],
   "knownSourceLossOverrides": {
-    "LOT-07": "Gradient creation coordinates/caching mismatch; exact import label does not establish source fidelity"
+    "LOT-01": "Clipped spatial geometry approximate",
+    "LOT-06": "Pose/detail source fidelity residual"
   }
 }

@@ -1,0 +1,108 @@
+STATUS	exact
+COUNTS	conversion	exact	53	approximated	0	dropped	0	unsupported	0
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_1.Shape_5.transform.rotation.
+LOC	layer_1.Shape_5
+GROUP	IMPORT_EXACT	info	exact	1	Imported gradient stroke on layer_1.Shape_5.Path1_strokes.pass_1.
+LOC	layer_1.Shape_5.Path1_strokes.pass_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_1.Shape_5.Path1_strokes.pass_1.commands.
+LOC	layer_1.Shape_5.Path1_strokes.pass_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_1.Shape_5.Path1_strokes.pass_2.commands.
+LOC	layer_1.Shape_5.Path1_strokes.pass_2
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_2.Shape_55.transform.rotation.
+LOC	layer_2.Shape_55
+GROUP	IMPORT_EXACT	info	exact	1	Imported gradient stroke on layer_2.Shape_55.Path1_strokes.pass_1.
+LOC	layer_2.Shape_55.Path1_strokes.pass_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_2.Shape_55.Path1_strokes.pass_1.commands.
+LOC	layer_2.Shape_55.Path1_strokes.pass_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_2.Shape_55.Path1_strokes.pass_2.commands.
+LOC	layer_2.Shape_55.Path1_strokes.pass_2
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_3.Shape_6.transform.rotation.
+LOC	layer_3.Shape_6
+GROUP	IMPORT_EXACT	info	exact	1	Imported gradient stroke on layer_3.Shape_6.Path1_strokes.pass_1.
+LOC	layer_3.Shape_6.Path1_strokes.pass_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_3.Shape_6.Path1_strokes.pass_1.commands.
+LOC	layer_3.Shape_6.Path1_strokes.pass_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported gradient stroke on layer_3.Shape_6.Path1_strokes.pass_2.
+LOC	layer_3.Shape_6.Path1_strokes.pass_2
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_3.Shape_6.Path1_strokes.pass_2.commands.
+LOC	layer_3.Shape_6.Path1_strokes.pass_2
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_4.Shape1.transform.rotation.
+LOC	layer_4.Shape1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_4.Shape1.Path1.commands.
+LOC	layer_4.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_5.Shape_1.transform.rotation.
+LOC	layer_5.Shape_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported gradient stroke on layer_5.Shape_1.Path1.
+LOC	layer_5.Shape_1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_5.Shape_1.Path1.commands.
+LOC	layer_5.Shape_1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group1.opacity.
+LOC	layer_6.Group1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group1.Path1.
+LOC	layer_6.Group1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group2.opacity.
+LOC	layer_6.Group2
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group2.Path1.
+LOC	layer_6.Group2.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group3.opacity.
+LOC	layer_6.Group3
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group3.Path1.
+LOC	layer_6.Group3.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group4.opacity.
+LOC	layer_6.Group4
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group4.Path1.
+LOC	layer_6.Group4.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group5.opacity.
+LOC	layer_6.Group5
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group5.Path1.
+LOC	layer_6.Group5.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group6.opacity.
+LOC	layer_6.Group6
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group6.Path1.
+LOC	layer_6.Group6.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group7.opacity.
+LOC	layer_6.Group7
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group7.Path1.
+LOC	layer_6.Group7.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group8.opacity.
+LOC	layer_6.Group8
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group8.Path1.
+LOC	layer_6.Group8.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group9.opacity.
+LOC	layer_6.Group9
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group9.Path1.
+LOC	layer_6.Group9.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group10.opacity.
+LOC	layer_6.Group10
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group10.Path1.
+LOC	layer_6.Group10.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group11.opacity.
+LOC	layer_6.Group11
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group11.Path1.
+LOC	layer_6.Group11.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group12.opacity.
+LOC	layer_6.Group12
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group12.Path1.
+LOC	layer_6.Group12.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group13.opacity.
+LOC	layer_6.Group13
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group13.Path1.
+LOC	layer_6.Group13.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group14.opacity.
+LOC	layer_6.Group14
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group14.Path1.
+LOC	layer_6.Group14.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group15.opacity.
+LOC	layer_6.Group15
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group15.Path1.
+LOC	layer_6.Group15.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group16.opacity.
+LOC	layer_6.Group16
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group16.Path1.
+LOC	layer_6.Group16.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.Group17.opacity.
+LOC	layer_6.Group17
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group17.Path1.
+LOC	layer_6.Group17.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Converted composition frames 0–150 at 30fps to 5000ms.
+LOC	

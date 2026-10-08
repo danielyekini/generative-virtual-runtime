@@ -1,0 +1,125 @@
+{
+  "method": "Counterfactual diagnostic only: keep transformParentId, flatten source layer structural parents and restore original global source stacking scores. Native production importer is unchanged. No fidelity pass or registered program.",
+  "samples": [
+    {
+      "mode": "baseline",
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "baseline-0-reference.png",
+      "native": "baseline-0-native.png"
+    },
+    {
+      "mode": "baseline",
+      "index": 1,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "baseline-1-reference.png",
+      "native": "baseline-1-native.png"
+    },
+    {
+      "mode": "baseline",
+      "index": 6,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "baseline-6-reference.png",
+      "native": "baseline-6-native.png"
+    },
+    {
+      "mode": "baseline",
+      "index": 12,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "baseline-12-reference.png",
+      "native": "baseline-12-native.png"
+    },
+    {
+      "mode": "baseline",
+      "index": 23,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "baseline-23-reference.png",
+      "native": "baseline-23-native.png"
+    },
+    {
+      "mode": "flat",
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "flat-0-reference.png",
+      "native": "flat-0-native.png"
+    },
+    {
+      "mode": "flat",
+      "index": 1,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "flat-1-reference.png",
+      "native": "flat-1-native.png"
+    },
+    {
+      "mode": "flat",
+      "index": 6,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "flat-6-reference.png",
+      "native": "flat-6-native.png"
+    },
+    {
+      "mode": "flat",
+      "index": 12,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "flat-12-reference.png",
+      "native": "flat-12-native.png"
+    },
+    {
+      "mode": "flat",
+      "index": 23,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "flat-23-reference.png",
+      "native": "flat-23-native.png"
+    }
+  ]
+}
