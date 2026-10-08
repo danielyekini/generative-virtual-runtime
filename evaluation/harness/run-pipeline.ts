@@ -69,7 +69,7 @@ const LAYER_TY: Record<number, string> = {
   13: "camera",
 };
 
-function sha256(text: string): string {
+function sha256(text: string | Buffer): string {
   return createHash("sha256").update(text).digest("hex");
 }
 
@@ -612,8 +612,9 @@ async function main(): Promise<void> {
     },
     commands: [
       "npx tsx evaluation/harness/run-pipeline.ts",
+      "npx tsx evaluation/harness/check-round-trip.ts",
+      "npx tsx evaluation/harness/prepare-fidelity.ts --full",
       "npx tsx evaluation/harness/drive-browser.ts",
-      "node evaluation/harness/write-report.mjs",
     ],
   };
   writeJson(resolve(evidence, "environment.json"), environment);
@@ -888,6 +889,27 @@ function evaluateFixture(fixture: Fixture) {
 
   const blocking = stages.find((item) => item.status === "FAIL" || item.status === "BLOCKED");
   const sourcePathRel = relative(repo, fixture.sourcePath);
+  // Byte identity is not quality certification or a reserved canonical revision.
+  const provenance = {
+    sourcePath: sourcePathRel,
+    sourceSha256: source ? sha256(readFileSync(fixture.sourcePath)) : null,
+    programPath: script ? `fixtures/${fixture.id}/generated.motion` : null,
+    programSha256: script ? sha256(script) : null,
+    importedSceneSha256: productionScene ? sha256(readFileSync(resolve(dir, "imported-scene.json"))) : null,
+    compiledSceneSha256: compiled?.scene ? sha256(readFileSync(resolve(dir, "compiled-scene.json"))) : null,
+    revisionId: null,
+    parentRevisionId: null,
+    parentProgramSha256: null,
+    lineageStatus: "UNREGISTERED_SCRATCH",
+    verificationStatus: "UNVERIFIED",
+    evidenceAssociation: {
+      stage: "generation",
+      resultPath: `fixtures/${fixture.id}/result.json`,
+      implementationEnvironmentPath: "environment.json",
+      implementationEnvironmentSha256: sha256(readFileSync(resolve(evidence, "environment.json"))),
+      note: "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it.",
+    },
+  };
   const publicResult = {
     id: fixture.id,
     role: fixture.role,
@@ -896,6 +918,7 @@ function evaluateFixture(fixture: Fixture) {
     sourcePath: sourcePathRel,
     sourceBytes,
     sha256: source ? sha256(source) : "",
+    provenance,
     inventory: fixture.format === "lottie" ? lottie : svg,
     timingsMs: { import: importMs, emit: emitMs, compile: compileMs },
     complexity: sceneForRender ? complexity(sceneForRender) : diagnosticScene ? { ...complexity(diagnosticScene), diagnostic: true } : null,
@@ -918,7 +941,7 @@ function evaluateFixture(fixture: Fixture) {
         ? { error: diagnosticError }
         : null,
     motionScript: script
-      ? { chars: script.length, bytes: Buffer.byteLength(script), path: `fixtures/${fixture.id}/generated.motion` }
+      ? { chars: script.length, bytes: Buffer.byteLength(script), path: `fixtures/${fixture.id}/generated.motion`, sha256: provenance.programSha256 }
       : null,
     compile: compiled
       ? { ok: compiled.ok, diagnostics: compiled.diagnostics.length, scene: Boolean(compiled.scene) }
@@ -946,6 +969,7 @@ function evaluateFixture(fixture: Fixture) {
       evidenceSource: source ? `sources/${fixture.id}.${fixture.format === "lottie" ? "json" : "svg"}` : null,
       bytes: sourceBytes,
       sha256: publicResult.sha256,
+      provenance,
       width: lottie?.width ?? svgViewSize(svg).width,
       height: lottie?.height ?? svgViewSize(svg).height,
       durationMs: lottie?.durationMs ?? (svg?.observationWindowSec ? svg.observationWindowSec * 1000 : null),

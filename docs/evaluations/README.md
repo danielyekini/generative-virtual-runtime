@@ -49,3 +49,9 @@ For both native routes, run `npx tsx evaluation/harness/check-round-trip.ts` aft
 | Representative failure images (`evidence/failure-samples/`) | |
 
 Private-repo policy: the fidelity corpus is committed under `fixtures/corpus/` so every agent checkout can run the pipeline. Scratch copies under `docs/evaluations/*/evidence/sources/` and `evaluation/evidence/` remain gitignored.
+
+## Workflow and program handoff
+
+Use [the single fidelity prompt](lottie-fidelity-loop-prompt.md) and [report template](templates/fidelity-report.md). [Authoring workflow 1.1](../workflows/authoring-loop.md) has its own [index/continuation](../authoring/README.md) and [corpus registry](../../evaluation/authoring/README.md). A sample with actual per-sample verification/provenance may enter refinement independently of corpus fidelity completion. Every changed imported candidate is re-verified; shared defects return as fidelity findings with preserved attempt history. Follow the [immutable program rules](../authoring/sample-registry-spec.md), retaining generated originals and exact hash-associated evidence.
+
+New fidelity reports omit authoringPassed. Historical results, statuses, snapshots and run links are preserved. The legacy Word generator `evaluation/harness/write-report.mjs` contains fixed baseline judgements/narrative; use it only to reproduce that historical report, never for a new certification. New runs use the live report template with current evidence and policy. Program/source hash metadata in the pipeline identifies bytes without assigning canonical revisions or verification.

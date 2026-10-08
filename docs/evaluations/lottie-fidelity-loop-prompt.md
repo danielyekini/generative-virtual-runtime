@@ -1,23 +1,36 @@
 # Lottie fidelity loop
 
-You are working in the generative-visual-runtime repository. Repeat the loop below until the declared Lottie profile passes, or until you must stop with a blocker or a design escalation. MotionScript remains the authoritative language. Lottie is an importer into Scene IR. A construct Lottie can express is added to Scene IR and MotionScript, then lowered. There is no V1 ceiling.
+Work in the generative-visual-runtime repository. Establish trustworthy source conversion, semantic round trip and visual quality for the declared animation test set; expand useful missing capabilities within that profile. MotionScript is the authoring language and Scene IR is the executable representation. Importing another format does not require reproducing its entire language. Do not execute this workflow merely because you are editing this prompt.
 
-Read before the first edit, and again after any language change:
+## Read first and preserve authority
 
-1. `AGENTS.md`
-2. `packages/schema/capabilities/releases.json`
-3. The current MotionScript and Scene IR version files named there
-4. `docs/languages/compatibility-policy.md`
-5. `packages/schema/capabilities/registry.json`
-6. `docs/evaluations/README.md`
+Before editing implementation, read:
 
-Do not edit `docs/evaluations/2026-10-07-baseline/` or any older run. Do not commit or push unless the operator asked. Do not widen numeric, color, or pixel tolerances to obtain a pass. Do not claim a fixture passed when production `importSource` rejected it.
+1. Root and applicable package AGENTS.md files.
+2. packages/schema/capabilities/releases.json.
+3. Current MotionScript and Scene IR version files named by the release manifest.
+4. docs/languages/compatibility-policy.md.
+5. packages/schema/capabilities/registry.json.
+6. docs/evaluations/README.md and implementation-pin.json.
+7. The newest run's report, stop and record relevant evidence.
 
-Published version files are immutable. Record in-progress language work in `docs/languages/motionscript/versions/pending.md` and `docs/languages/scene-ir/versions/pending.md`. An importer-only correction does not bump MotionScript or Scene IR. A new node, paint, track, operator, or render scope does. Below 1.0, a minor bump is the breaking boundary. A 0.1 reader still rejects a newer wire version. A newer reader loads older scenes only through the documented migration. Older programs keep their old sampling rules.
+Read the relevant contracts again after a language change. Published specifications and the registry define promised support; an evaluation describes one implementation revision. Historical reports do not override current specifications. Resolve contradictions explicitly rather than silently choosing a convenient document.
 
-Package `version` fields stay independent of language versions. Wire strings are coarse family ids (`0.1`, `0.2`). Consumers distinguish additive schema features with the fuller language release id and with `requiredCapabilities` / `requires`. Completing a capability already named in a published version file is a package + registry update only. A construct that lives only in `pending.md` needs a new version entry. Details: `docs/languages/compatibility-policy.md`.
+Do not modify historical runs, original fixture bytes or unrelated user changes. Do not commit or push unless instructed. Preserve older language semantics through the documented reader/migration path. Keep package release versions independent of language versions, but update changed package release records according to repository policy.
 
-`geometry.pathMorph` is **not** in published 0.2.0. Landing it publishes a new language version (expected `0.3.0`), not a silent 0.2 catch-up.
+Published version entries are immutable. Record unfinished contract changes in the appropriate pending files. An importer or renderer correction implementing a published contract does not itself require a language bump. A new syntax, schema or semantic contract does require a version decision and release entry. Below 1.0 use the repository's documented minor breaking boundary. Publish only when authorised by the task or release policy; otherwise test the candidate with explicit pending-version metadata, without claiming it is released. Never infer current versions or next capabilities from dates hard-coded in this prompt.
+
+A coarse wire family may remain unchanged only when documented and all readers reject unsupported required capabilities. Record full release IDs, wire IDs and requiredCapabilities/requires. Registry entries identify scope, restrictions, introduction versions, compiler/runtime/renderer support, adapter mappings and conformance tests. Mark only verified variations exact; distinguish untested from unsupported.
+
+## Fidelity scheduling
+
+A. Correct visual discrepancies in already-supported features.
+B. Expand geometry, paint, timing or rendering coverage required by the declared test set.
+C. Verify native fidelity and regression safety, returning to A for mismatches or B for missing capabilities.
+
+Phase C is mandatory after every implementation attempt. Fidelity failure returns to A even if overall rendering improved. Default priority is a reproducible mismatch in an already-supported capability before adding a new capability. Within that class prioritise material content loss, then blocked fixtures and affected coverage. An operator-named cause can override priority, but cannot bypass verification.
+
+Authoring runs use the separate [workflow 1.1](../workflows/authoring-loop.md). A verified sample can enter local refinement immediately; whole-corpus fidelity success is not an entry requirement. Fidelity-generated programs may be registered only with actual per-sample source/direct/compiled verification and provenance under the [immutable program/storage rules](../authoring/sample-registry-spec.md). Refined outputs remain distinct. An authoring-discovered shared defect becomes a fidelity finding with explicit handoff, separate run identity and retained attempts; it does not silently change workflows or reset budgets.
 
 ## Declared profile
 
@@ -27,128 +40,107 @@ In scope, and not a design stop: path morph, mattes, masks, animated paint, grad
 
 Out of scope until a person decides: loops and function declarations. Those change the execution model. Stop and write a design escalation. Do not invent a silent approximation of them.
 
-## Budgets
+LOT-03 remains quarantined above the production 512 KiB source ceiling; a diagnostic parse is not a pass. Raising a source ceiling requires a separate recorded policy cycle. Preserve the accepted LOT-00…07/SVG-01…02 source inventory, with SVG excluded from Lottie certification unless separately declared and pinned. Do not narrow source scope or infer capabilities from this list; current support is determined by releases/registry/tests.
 
-- At most three implementation attempts for one root cause.
-- At most eight implement cycles in one invocation.
-- If two attempts in a row do not change the corpus counts or the visual diff for that cause, stop that cause.
-- If the reference player fails to draw the source, stop that fixture and record the reference as unreliable.
+## Declare scope and budgets
 
-When a budget is hit, write the continuation note described under Stop and end the invocation.
+At Baseline record the fixture set, format profiles, required capabilities, exclusions, existing quarantines, comparison settings, observation window, invocation time budget and authorised work mode. Do not broaden the corpus or quietly exclude a failing fixture to obtain success. The original Lottie profile remains the starting test set unless the operator changes it. Include SVG only if declared; use its own pinned browser reference and timing controls.
 
-## Success
+Consider path morph, gradients/strokes, images, precompositions, spatial curves, trim, masks, mattes and other useful capabilities when actually required by an accepted example. New execution models, general functions/loops, interactions, scripts, 3D support, unsupported effect families or major renderer redesign can require design escalation. No feature is automatically worth implementing merely because a source format supports it.
 
-The profile passes only when all of these are true for every in-scope corpus fixture:
+Bounds:
 
-- Production import returns a scene. Status is `exact`. Counts of unsupported, dropped, and approximated are zero for in-scope semantics.
-- Emit, then compile, then evaluate, matches the imported scene at time 0, at each key boundary, at each segment midpoint, and at the duration.
-- Number error is at most `0.001`. Color error is at most `1/255`.
-- Against lottie-web 5.13.0, `goToAndStop(frame, true)`, DPR 1, background `#101014`, the finite frame window agrees inside the documented pixel tolerance. “Every frame exact” means that checked fidelity, not identical pixels across rasterisers.
-- `npm test` and `npm run typecheck` pass.
-- No earlier exact fixture regresses.
-- `packages/schema/src/registry.test.ts` passes.
+- At most three implementation attempts per root cause, carrying unresolved attempt history across invocations for the same implementation lineage. A new invocation is not an automatic reset.
+- At most eight implementation cycles per fidelity invocation.
+- Set a finite wall-time budget before implementation; use 60 minutes if the operator and repository do not specify one. Finish evidence/stop recording when the budget expires.
+- Two consecutive attempts without meaningful improvement in the cause's relevant semantic or visual measurements stop that cause. Diagnostic counts alone are not progress for a visual mismatch.
+- An unreliable reference quarantines the affected comparison with a reason; it cannot count as passed. Continue independent valid fixtures when possible.
 
-LOT-03 stays quarantined while its source is over the production 512 KiB ceiling. A diagnostic parse above that ceiling is not a pass. Raising the ceiling is a recorded policy change in the registry and the compatibility policy, done in its own cycle, not a quiet edit during a feature cycle.
+Stop early when architecture decisions, insufficient reference evidence or requirements outside the profile prevent a justified implementation. Preserve a last verified state; never widen tolerances to obtain success.
 
-## Stage 1 — Baseline
+## Stage 1 — Baseline and reproducibility
 
-1. Read `docs/evaluations/implementation-pin.json`. That file names the commit or snapshot the previous run left for you, the newest run id to compare with, and the next cause unless the operator overrides it.
-2. Create `docs/evaluations/<run-id>/loop.json` for this invocation. `run-id` is the UTC timestamp `YYYY-MM-DDTHHMMSSZ`. Do not reuse an existing directory.
-3. Pin the implementation (required — do not leave this null when a commit exists):
-   - Run `git rev-parse HEAD` and `git status --short`.
-   - If the working tree is **clean**, pin `gitHead` to that SHA and copy `git log -1 --format=%s` into the manifest. Require `git.head` from `implementation-pin.json` to equal `HEAD` or to be an ancestor of `HEAD` (`git merge-base --is-ancestor <pin> HEAD`). Refuse to start if the pin is missing or not an ancestor, unless the operator named a different revision.
-   - If the working tree is **dirty**, do **not** claim the commit alone. Write `docs/evaluations/<run-id>/source-snapshot/` with: the short status, `git rev-parse HEAD` (if any), and SHA-256 of every file under `packages/`, `fixtures/import/`, `evaluation/harness/`, and `docs/languages/` that differs from HEAD or is untracked and included. Set `manifest.implementation.snapshot` to that directory.
-   - If there is no commit and no snapshot, stop; do not run the corpus unpinned.
-   - Current MotionScript and Scene IR versions and wire strings from `releases.json`.
-   - Package versions of `@gvr/schema`, `@gvr/compiler`, `@gvr/runtime`, `@gvr/canvas-renderer`, `@gvr/motionscript-emitter`, `@gvr/format-lottie`, `@gvr/format-import-core`.
-4. Pin the corpus. Sources are under `fixtures/corpus/` (see `fixtures/corpus/README.md` and `SHA256SUMS`). `run-pipeline.ts` reads those paths. For each fixture record id, repo-relative path, byte length, and SHA-256. Verify checksums. Do not edit the source bytes. Missing corpus is BLOCKED, not a conversion pass.
-5. Pin the reference player: lottie-web 5.13.0, `goToAndStop(frame, true)`, DPR 1, browser from `evaluation/harness/chrome.ts` (`GVR_CHROME` / `CHROME_PATH` or discovered Chrome/Chromium). Record the resolved binary and `--version`. Pin comparison tolerances from `evaluation/gate-settings.json` (number `0.001`, color `1/255`, pixel inspection `24`). Copy those numbers into `loop.json`. Do not invent a looser number. Visual certification stays `VISUAL_UNVERIFIED` until aggregate/local-region rules are operator-approved.
-6. Run, from the repository root:
+Create `docs/evaluations/<run-id>/` with a unique YYYY-MM-DDTHHMMSSZ identifier. Read `docs/evaluations/implementation-pin.json` and [the evaluation index](README.md). Pin the latest prior run dynamically from those authorities; retain `nextCause`, remaining attempts and linked findings unless the operator overrides them. Require the pin commit to equal HEAD or be an ancestor (`git merge-base --is-ancestor <pin> HEAD`); a missing/divergent pin blocks the run unless an operator selects another revision. Ancestry alone does not establish identical implementation.
+
+Record HEAD, status, package/language/wire versions, registry hash, harness/dependency settings, source fixture paths/hashes and reference environment. For a dirty tree, save actual changed/untracked source bytes and hashes, a patch including deletions and a manifest against HEAD. Include all execution-relevant application, package, harness, configuration, lockfile and contract changes, not just packages. With no commit, save a complete reproducible source snapshot excluding credentials and disposable dependencies. Hashes alone are not a snapshot. Capture initial and final implementations separately so results identify the code actually tested.
+
+Use the current full-window/native-route preparation commands from [the evaluation index](README.md):
 
 ```bash
 npx tsx evaluation/harness/run-pipeline.ts
-```
-
-Scratch output lands in `evaluation/evidence/`. That directory is not the historical record.
-
-7. Write `docs/evaluations/<run-id>/manifest.json` with the pins above, the fixture hashes, and `"comparedWith"` set to the newest prior run id from `docs/evaluations/README.md` (today: `2026-10-07T183125Z`, not the historical `2026-10-07-baseline` unless that is still newest).
-
-## Stage 2 — Diagnose
-
-1. Read `evaluation/evidence/results.json` and each fixture import report. Group diagnostics by root cause, not by fixture. A root cause is one missing representation: for example “animated path morph”, “track matte”, “gradient stroke”, “track start outside duration”.
-2. Separate:
-   - `unsupported` and `dropped` semantics
-   - `approximate` semantics
-   - validation failures that discard the scene (`IMPORT_INVALID_IR`, size ceiling, node or depth ceiling)
-   - visual mismatches where the report is already `exact`
-   - empty `tracks` and `steps`, which leave Play disabled even when a still draws
-3. Rank causes by how many fixtures they block, then by whether they leave the scene unplayable or invalid.
-4. Choose one cause. Write it into `loop.json` with `attempts: 0` and the fixture ids it affects.
-5. If that cause is loops or function declarations, skip Implement and go to Stop with a design escalation.
-6. If the reference frames for every affected fixture are empty because lottie-web threw, go to Stop for that cause with `reference: unreliable`.
-
-## Stage 3 — Implement
-
-One cause only. Increment `attempts` before editing.
-
-1. Add the smallest Scene IR and MotionScript representation that makes the cause exact for its stated scope. Scope is the variation present in the affected fixtures, written in the registry. It is not a claim about every Lottie variation.
-2. Implement it through schema, compiler, runtime, canvas renderer, and emitter, then lower it in `@gvr/format-lottie`.
-3. In the same change:
-   - Add or update the capability in `packages/schema/capabilities/registry.json` with id, introduction version, targets, restrictions, compiler/runtime/renderer support, Lottie and SVG mappings, and conformance test ids.
-   - Mark Lottie `exact` only for the stated scope, and only with a test that fails if the behaviour regresses. Leave other variations `untested` or `unsupported` with their own scope.
-   - If syntax or sampling changed, record the ids in both `pending.md` files. Do not edit `0.1.0.md` or `0.2.0.md`. Do not move `releases.json` current pointers unless you are publishing a release the operator asked for.
-   - If the change is importer-only, leave the language versions untouched and still update the Lottie mapping and its test.
-4. Add a conformance test named in the registry. Assert samples at boundaries and midpoints, not only that a diagnostic string disappeared.
-5. Keep 0.1 scenes on the migration path. Do not change their samples.
-
-Do not start a second cause in this attempt.
-
-## Stage 4 — Verify
-
-1. Run the new test, then:
-
-```bash
-npm test
-npm run typecheck
-```
-
-2. Re-import each affected fixture through production `importSource` with the default limits. Record status, counts, whether a scene exists, track count, and round-trip sample errors.
-3. Re-import one previously `exact` fixture that this change could touch. A new unsupported or a sample drift is a regression. Revert the attempt’s behaviour and count it as a failed attempt.
-4. If tests fail or the cause’s counts did not improve, return to Implement if attempts are below three. If the measurement is unchanged from the previous attempt, stop the cause.
-5. Corpus gate, from the repository root:
-
-```bash
-npx tsx evaluation/harness/run-pipeline.ts
-```
-
-Confirm the affected fixtures improved and no previously exact fixture moved to partial, failed, or a larger visual diff. Then run the browser capture when the machine has Chrome:
-
-```bash
+npx tsx evaluation/harness/check-round-trip.ts
+npx tsx evaluation/harness/prepare-fidelity.ts --full
 npx tsx evaluation/harness/drive-browser.ts
 ```
 
-`drive-browser.ts` uses Vite on `127.0.0.1:5199` and Chrome remote debugging on port 9333. If Chrome or the reference player cannot start, record the visual stage as not run. Do not treat that as a pass.
+Discover prerequisites and paths from the repository. Corpus: `fixtures/corpus/` (+ `SHA256SUMS`). Gate settings: `evaluation/gate-settings.json`. Browser: `GVR_CHROME` / `CHROME_PATH` or `evaluation/harness/chrome.ts` — do not assume a macOS Chrome path. Missing corpus or reference/browser infrastructure is BLOCKED or NOT_RUN, never PASS. Scratch `evaluation/evidence/` is not a historical record.
 
-## Stage 5 — Re-evaluate
+## Diagnose through three routes
 
-1. Copy the scratch tree into the run directory:
+For each affected fixture compare:
 
-   - `evaluation/evidence/` → `docs/evaluations/<run-id>/evidence/`
-   - `evaluation/evidence/results.json` → `docs/evaluations/<run-id>/results.json`
+1. Source rendered by the pinned reference player.
+2. Imported Scene IR evaluated/rendered directly.
+3. Imported IR emitted as MotionScript, compiled, evaluated and rendered.
 
-2. Write `docs/evaluations/<run-id>/report.md`. Include the pins, the cause attempted, attempt count, before-and-after counts against the run named in `comparedWith`, and the fixtures that are now import-exact. State that the report describes this revision only.
-3. For every fixture that is import-`exact` after this run, write a **Visual fidelity confirmation** section quoting per-sample `meanDistance` and `fractionBeyond` from `evidence/render-results.json`. Say explicitly whether the sampled window is visually agreed or not. Import exact alone is not a visual pass.
-4. Add a row to `docs/evaluations/README.md` pointing at this run as the newest measurement. Do not rewrite older rows.
-5. If the declared profile is not yet a pass, return to Diagnose and choose the next cause. Keep the same `loop.json`.
+Differences between 2 and 3 identify round-trip loss. Agreement between 2 and 3 with disagreement from 1 points toward source interpretation, runtime evaluation or rendering. Check sampled geometry, matrices, paint, visibility and timing before blaming rasterisation. Keep suspected versus confirmed causes separate.
 
-## Stage 6 — Stop
+Validate the comparison environment first: viewport, fit/letterboxing, backgrounds, alpha, DPR, timestamps, composition start frame, subframe setting, fonts, assets and effect settings. A harness mismatch is not a language capability gap. Never align away meaningful errors by warping or shifting frames after capture.
 
-Write `docs/evaluations/<run-id>/stop.json` and a short section at the top of `report.md` with one of:
+Record source locations and classify missing/approximate semantics, validation/budget failures, silent omissions, runtime/rendering faults, round-trip drift and reference faults. Empty motion tracks are legitimate for a static source, but suspicious when the source is animated. Create minimal reproductions separately from original sources.
 
-- `success` — every in-scope fixture meets the success list. Quote the counts and the sample times.
-- `blocker` — three attempts produced no improvement, the reference player is unreliable, or a budget was spent. Include the cause, the attempts, the last counts, and the evidence paths.
-- `design-escalation` — the next cause is loops or function declarations. Include the fixture ids and the language feature required. Do not implement it.
+For every cause, record phase, affected fixtures, hypothesis, owner boundary, expected result, measurements and attempt count in loop.json. Completed capability work does not prohibit reopening a newly observed correctness issue; link the new finding to the original work. Do not repeatedly retry an exhausted blocker without operator direction or materially new evidence.
 
-Update `docs/evaluations/implementation-pin.json` to this run’s final `git rev-parse HEAD` (clean tree) or to the run’s `source-snapshot/` path (dirty tree), set `comparedWithForNextBaseline` to this `run-id`, and record `nextCause` from the stop note.
+## Implement one cause
 
-End the invocation after Stop. The next invocation starts at Baseline, compares with the newest run, and does not reopen a cause already marked blocker or design-escalation unless the operator names it.
+Increment the attempt before editing. In phase A correct semantics in the narrowest responsible component; do not add new syntax to hide an implementation bug. In phase B first explain why the capability benefits the accepted corpus or authoring goal, then implement the smallest coherent shared representation.
+
+Follow the required vertical slice: schema/property registry, compiler, runtime, renderer and emitter where affected, then adapter lowering. Preserve source operation ordering, local timing and deterministic seek. Do not indiscriminately route every change through every package.
+
+Update registry, conformance tests, package changelog/version records and pending or authorised published language entries in the same change. Source-format exactness requires source/reference evidence for its declared scope. Test emitted and compiled equivalence separately. Older-program behaviour must remain documented and tested.
+
+Do not rasterise an unsupported source into an image/video and call it native language support. Explicit asset fallback is a different profile and cannot satisfy native geometry/authoring gates. Source-budget changes belong in their own measured policy cycle. Existing quarantines remain explicit; source size rejection is not proof of malformed source.
+
+## Verification and fidelity gate
+
+Run the targeted conformance tests, registry validation, npm test and npm run typecheck using the repository's prescribed environment. Run affected fixtures and relevant regressions; run the full corpus gate before declaring a cause resolved. Track previous conversion successes and previous visual successes independently.
+
+Compare route 2 and route 3 at key boundaries, segment midpoints, start/end and shuffled seek times. Apply pinned numeric and colour tolerances, initially 0.001 and 1/255 if confirmed by current policy. Include structural geometry, scope and matrix checks where scalar samples alone are insufficient.
+
+Capture source/native frames for every scheduled frame in the declared finite window at the pinned frame rate, plus boundary/subframe samples where relevant. For infinite sources, declare a bounded window and tested cycles. Use matched timestamps and resource-ready captures; elapsed wall-clock screenshots are not reliable timeline evidence.
+
+Read [visual-acceptance-policy.md](visual-acceptance-policy.md) and `evaluation/gate-settings.json`, currently a DEFINED policy. Freeze the actual settings before editing; policy definition is not output certification. Pixel Euclidean RGB threshold 24 is an inspection threshold; apply the full pinned aggregate/local-region/alpha rules, material review and reference controls. Missing review or coverage remains VISUAL_UNVERIFIED; missing/undefined policy blocks certification. Do not invent thresholds after seeing results. Check alpha directly or composite on declared backgrounds. Small whole-frame error can hide a completely missing small object.
+
+Use sampled comparisons for rapid iteration; full-window capture is the final fidelity gate. Label coverage sampled or full-window, and give captured/expected frame counts and times. Literal cross-rasteriser pixel identity is not required. Material discrepancies cannot pass merely because their aggregate metric is low. Do not report missing captures as zero error.
+
+Success for the accepted native test set requires:
+
+- Production import accepts every non-quarantined in-scope fixture with no known unsupported, dropped or approximate semantics.
+- Direct IR and MotionScript round trip agree under the declared semantic tolerances.
+- Reference/native visual and motion agreement passes the fixed gate over the declared full frame window.
+- Relevant tests/typecheck/registry checks pass; no previous accepted fixture regresses.
+- Performance/resource budgets pass where specified.
+
+Maintain independent conversionStatus, roundTripStatus, visualStatus and coverageStatus. Import exact means no known conversion loss, not verified frame fidelity. Reference playback success means the reference drew a scene, not that native output matched it.
+
+If a regression occurs, revert only this attempt's changes or correct it within remaining attempts. Preserve unrelated changes. If reverting cannot be done safely, stop and document the unverified tree.
+
+## Evidence and stop
+
+Preserve before/after evidence per cycle under the unique run directory; never overwrite the only evidence of an earlier attempt. Finalise runs immutably. Write report.md, manifest.json, loop.json, machine-readable outcomes and stop.json. Report cause-level progress, original comparison baseline, final code identity, measurements, frame coverage, limitations and independent conversion/round-trip/visual/coverage outcomes.
+
+Update the evaluation index and implementation-pin.json to the final tested commit/snapshot with next phase/cause and remaining attempt history. Never leave a next pin pointing at the initial snapshot after code changed.
+
+Stop statuses:
+
+- success: declared source-conversion, semantic round-trip and full-window visual gates passed, with regression/resource checks.
+- budget-exhausted: invocation time/cycle bound reached; continuation allowed with retained cause history.
+- blocker: exhausted cause, unavailable execution/reference infrastructure or unresolved correctness problem.
+- design-escalation: a contract, architecture, scope or acceptance decision is required.
+
+Record fidelityPassed and independent conversionStatus, roundTripStatus, visualStatus and coverageStatus. New fidelity records omit the obsolete authoringPassed field; historical records may retain it and remain readable. Authoring results live only in their separate run index. Identify the next action and evidence needed. A pass applies only to the declared test set, version and frame window; it is not universal PAL compatibility.
+## Program evidence and report contract
+
+Use the [fidelity report template](templates/fidelity-report.md). Record exact source/program SHA-256, genuine revision/parent lineage (null for unregistered scratch programs), implementation/policy pins and immutable evidence associations per route and observation window. Hashes identify bytes; they do not certify quality. Canonical faithful/authored/experimental storage and registry pointers follow the linked sample registry specification. Register only qualified inputs; never migrate or mark generated programs verified from import `exact` alone. Keep original source/snapshot/report bytes immutable.
+
+Integration rationale (documentation installation): fidelity-only A/B/C scheduling and complete dirty snapshots were retained from the former combined prompt; authoring moved to workflow 1.1. Dynamic release/pin authorities and current full-window preparation replace stale dated instructions. No source scope, quarantine, acceptance value or attempt history is changed.

@@ -1,5 +1,6 @@
 /**
- * Builds the Word report from evidence already produced by the harness.
+ * Legacy baseline Word report: fixed historical judgements/narrative.
+ * New fidelity runs use docs/evaluations/templates/fidelity-report.md.
  *   node evaluation/harness/write-report.mjs
  */
 import { createRequire } from "node:module";
@@ -121,6 +122,15 @@ const outcomes = {
   fixtures: manifest.fixtures.map((fixture) => ({
     id: fixture.id,
     ...judged[fixture.id],
+    provenance: byId[fixture.id].provenance ?? {
+      sourceSha256: fixture.sha256 ?? null,
+      programSha256: byId[fixture.id].motionScript?.sha256 ?? null,
+      revisionId: null,
+      parentRevisionId: null,
+      parentProgramSha256: null,
+      evidenceAssociation: null,
+      status: "NOT_RECORDED",
+    },
     productionFidelity: byId[fixture.id].production?.fidelity ?? null,
     earliestBlockingStage: byId[fixture.id].earliestBlockingStage,
   })),
@@ -517,6 +527,11 @@ children.push(bullet("The Lottie time-control micro-fixture did not change pixel
 children.push(bullet("This pack does not contain a mask, a skew, an expression, a blend mode, a Lottie image layer, a CSS animation, or a script. Those rows stay untested."));
 children.push(bullet("There is no commit SHA. Repeating the run after any edit to packages/ needs a new capture."));
 
+children.push(h1("Program provenance"));
+children.push(text("This legacy report carries fixed baseline judgements. New fidelity certifications use the live Markdown template; missing historical lineage or evidence associations remain NOT_RECORDED."));
+for (const fixture of outcomes.fixtures) {
+  children.push(text(`${fixture.id}: ${JSON.stringify(fixture.provenance)}`));
+}
 children.push(h1("Evidence index"));
 children.push(bullet("evidence/manifest.json — fixture ids, sizes, hashes, source paths."));
 children.push(bullet("evidence/results.json — per-stage production results, inventories, timings."));

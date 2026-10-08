@@ -65,7 +65,9 @@ semantic round-trip agreement, full-window visual rules on both native routes,
 complete material review, trustworthy reference controls, regression safety and
 specified resource budgets. Capture execution PASS is only evidence that a route
 drew. Sampled numeric success is not full-window success. Keep conversionStatus,
-roundTripStatus, visualStatus, coverageStatus and authoringStatus independent.
+roundTripStatus, visualStatus and coverageStatus independent. Authoring uses its
+[separate workflow](../workflows/authoring-loop.md) and run records; it is not a
+fidelity completion condition. Historical combined statuses remain unchanged.
 LOT-03's existing source-budget quarantine and SVG exclusion remain unchanged.
 
 `evaluation/harness/visual-gate.ts` evaluates the numeric frame/window rules.
