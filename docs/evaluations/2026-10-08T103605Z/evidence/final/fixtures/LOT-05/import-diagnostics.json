@@ -1,0 +1,214 @@
+{
+  "ok": true,
+  "fidelity": "partial",
+  "counts": {
+    "exact": 25,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 12
+  },
+  "groups": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "matte",
+      "severity": "error",
+      "message": "Matte source layer was inventoried and not lowered.",
+      "count": 4
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "matte",
+      "severity": "error",
+      "message": "Track matte type 1 was inventoried and not lowered.",
+      "count": 4
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "matte",
+      "severity": "error",
+      "message": "Track matte content is withheld so it is not drawn unmasked.",
+      "count": 4
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_1.transform.scale.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_1.transform.scale.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_1.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "text",
+      "severity": "info",
+      "message": "Imported text layer_1.layer_2.textNode.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "text",
+      "severity": "info",
+      "message": "Imported text layer_1.layer_3.textNode.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_4.Group2.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_4.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_5.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "text",
+      "severity": "info",
+      "message": "Imported text layer_1.layer_6.textNode.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_8.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_9.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_9.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_10.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_10.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_1.layer_10.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_12.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_13.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_13.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_14.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_14.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_1.layer_14.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "precomp",
+      "severity": "info",
+      "message": "Expanded precomp comp_1_b5ecb9f2-c646-427e-b2f5-78b5e5fc1843_e1a8e115-295d-4b29-a956-cd76d94085fc_a396d872-917c-4cf4-b58d-d3ec7f1d3528_3d3fc3d7-2daf-413c-9036-1daf216a30ee_b3b1b0de-23a3-4bd2-92b1-7ade8497a042.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.RectShape1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–241 at 60fps to 4016.6666666666665ms.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 191525,
+    "name": "Main Scene"
+  }
+}

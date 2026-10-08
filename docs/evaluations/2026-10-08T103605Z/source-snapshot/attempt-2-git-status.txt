@@ -1,0 +1,11 @@
+ M package-lock.json
+ M packages/format-lottie/CHANGELOG.md
+ M packages/format-lottie/package.json
+ M packages/format-lottie/src/lottie.test.ts
+ M packages/format-lottie/src/model.ts
+ M packages/format-lottie/src/normalise.ts
+ M packages/schema/capabilities/registry.json
+?? docs/evaluations/2026-10-08T103605Z/
+?? packages/format-lottie/src/clip-keyframes.test.ts
+?? packages/format-lottie/src/clip-keyframes.ts
+?? work/

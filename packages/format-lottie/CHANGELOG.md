@@ -2,7 +2,13 @@
 
 ## 0.1.3
 
-Preserve source cubic values and renormalised Bezier subsegments when scalar or matching-topology morph tracks cross composition boundaries. This fixes the early Wave shape residual caused by linear boundary sampling and unsplit easing. Degenerate equal-easing-endpoint intervals remain explicitly approximate. Clipped spatial paths retain their existing geometry and now report an approximation until exact spatial subcurves are implemented. No MotionScript, Scene IR, wire or sampling-contract change. Controlled gradient experiments in evaluation 2026-10-08T123430Z did not corroborate the earlier creation-coordinate attribution.
+Clipped spatial geometry now explicitly reports its existing approximation; additional two-boundary scalar/morph conformance verifies both native routes.
+
+Inventory animated solid fill colours recursively, including precomp shape trees, before lowering. Missing animated paints now report partial conversion rather than an exact label. The animated paint capability remains unimplemented.
+
+Paint source shape groups in reverse list order, including nested groups, while preserving already ordered stroke passes. This restores covered face/shoe detail in LOT-06; independent arm geometry remains under investigation.
+
+Preserve source easing when clipping non-spatial scalar, vector and path-morph tracks to the composition window. Sample cut boundaries with the original easing and restrict cubic handles with de Casteljau subdivision; retain hold jumps and overshoot excursions. Existing spatial clipping is outside this correction. No language or wire change: MotionScript and Scene IR remain 0.5.0.
 
 ## 0.1.2
 

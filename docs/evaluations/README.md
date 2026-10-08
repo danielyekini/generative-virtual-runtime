@@ -4,15 +4,17 @@ An evaluation run records what one implementation revision reproduced. It is not
 
 The newest run is [2026-10-08T123430Z](2026-10-08T123430Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final tested dirty snapshot in `2026-10-08T123430Z`. Complete corpus Phase C first. Wave full-window PASS; corpus FAIL/incomplete. Retained cause attempts are in loop.json.
+Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T103605Z`. Continue with animated solid fill design (phase B, 0/3 attempts); preserve all retained cause budgets. Corpus remains FAIL. No new canonical sample promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
 | [2026-10-08T123430Z](2026-10-08T123430Z/report.md) | 2026-10-08T13:33:46.603914+00:00 | MotionScript / Scene IR 0.5.0 | 186 tests + typechecks PASS; clipped cubic morph fixed; Wave full-window PASS; corpus FAIL/incomplete; budget-exhausted |
+| [2026-10-08T103605Z](2026-10-08T103605Z/report.md) | 2026-10-08T12:17:22.256060+00:00 | MotionScript / Scene IR 0.5.0 | 191 tests + typechecks PASS; clipping and shape order corrected; animated fill loss explicit; corpus FAIL; full native capture with reference blockers; budget overrun |
 | [2026-10-08T090908Z](2026-10-08T090908Z/report.md) | 2026-10-08T10:05:25.725844+00:00 | MotionScript / Scene IR 0.5.0 | 184 tests + typechecks PASS; Wave stroke loss corrected, gradient residual FAIL; LOT-00 local quality PASS/r000001; budget-exhausted |
 | [2026-10-08T012312Z](2026-10-08T012312Z/report.md) | 2026-10-08T07:15:47.602552+00:00 | MotionScript / Scene IR 0.5.0 | 181 tests + typechecks PASS; Wave timing fixed; corpus visual FAIL; budget-exhausted |
 | [2026-10-08T010229Z](2026-10-08T010229Z/report.md) | 2026-10-08T01:06:59.053118+00:00 | MotionScript / Scene IR 0.5.0 | Baseline; 174 tests + typecheck PASS; Wave round-trip FAIL; VISUAL_UNVERIFIED; design-escalation |
 | [2026-10-07T230859Z](2026-10-07T230859Z/report.md) | 2026-10-07T23:15:23.757523+00:00 | MotionScript / Scene IR 0.5.0 | Wave full-window inspection improved; 174 tests + typecheck PASS; VISUAL_UNVERIFIED |
+| [2026-10-07T221955Z](2026-10-07T221955Z/report.md) | 2026-10-07T22:19:55.750446+00:00 | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | 172 tests + typecheck + registry passed; corpus BLOCKED (0/8 sources); VISUAL_UNVERIFIED; 0/2104 frames; design-escalation |
 | [2026-10-07T220358Z](2026-10-07T220358Z/report.md) | 2026-10-07T22:03:58Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | spatial-Z arc-length + stroke caps + first-key base; LOT-01 start/q25/q50 improved (beyond 0.0038→0.0005 / 0.0061→0.0031 / 0.0056→0.0046); VISUAL_UNVERIFIED gate; stop budget-exhausted |
 | [2026-10-07T215328Z](2026-10-07T215328Z/report.md) | 2026-10-07T21:53:28Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | AE-near easing diagonal fix; LOT-01 q25/q50 improved (beyond 0.0076→0.0061 / 0.0070→0.0056); q25 pose near-matched; VISUAL_UNVERIFIED gate; stop budget-exhausted |
 | [2026-10-07T213004Z](2026-10-07T213004Z/report.md) | 2026-10-07T21:30:04Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | animatedTrim 0.5.0; LOT-01 trim stroke fixed (q75 beyond 0.004→0.0003); mid-cycle confetti residual remains; VISUAL_UNVERIFIED gate; stop budget-exhausted |
@@ -24,7 +26,7 @@ Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned t
 
 `2026-10-07-baseline` is historical. Do not edit it. Do not use it as `comparedWith` once a newer run exists.
 
-Manifest / results / evidence for the newest run live under `2026-10-08T123430Z/`.
+Manifest / results / evidence for the newest run live under `2026-10-08T103605Z/`.
 
 `evaluation/evidence/` is scratch space for the harness. Copy a finished run into a new `docs/evaluations/<run-id>/` directory. Do not point the index at the scratch directory.
 
@@ -57,3 +59,5 @@ Private-repo policy: the fidelity corpus is committed under `fixtures/corpus/` s
 Use [the single fidelity prompt](lottie-fidelity-loop-prompt.md) and [report template](templates/fidelity-report.md). [Authoring workflow 1.1](../workflows/authoring-loop.md) has its own [index/continuation](../authoring/README.md) and [corpus registry](../../evaluation/authoring/README.md). A sample with actual per-sample verification/provenance may enter refinement independently of corpus fidelity completion. Every changed imported candidate is re-verified; shared defects return as fidelity findings with preserved attempt history. Follow the [immutable program rules](../authoring/sample-registry-spec.md), retaining generated originals and exact hash-associated evidence.
 
 New fidelity reports omit authoringPassed. Historical results, statuses, snapshots and run links are preserved. The legacy Word generator `evaluation/harness/write-report.mjs` contains fixed baseline judgements/narrative; use it only to reproduce that historical report, never for a new certification. New runs use the live report template with current evidence and policy. Program/source hash metadata in the pipeline identifies bytes without assigning canonical revisions or verification.
+
+Integration of remote a850d65 preserves its animated-fill diagnostics and shape paint-order correction. The merged implementation requires fresh full-corpus verification; prior run visual results apply to their original recorded snapshots. See integration-push.json.

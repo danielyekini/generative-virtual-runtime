@@ -85,6 +85,21 @@ function collectLayer(findings: InventoryFinding[], layer: Record<string, unknow
     });
   }
   if (ty === 1) collectSolidColor(findings, layer.sc, target);
+  collectAnimatedFill(findings, layer.shapes, `${target}.shapes`);
+}
+
+/** A rejected animated colour must not disappear behind an exact import label. */
+function collectAnimatedFill(findings: InventoryFinding[], shapes: unknown, target: string): void {
+  if (!Array.isArray(shapes)) return;
+  shapes.forEach((shape, index) => {
+    if (!isRecord(shape)) return;
+    const location = `${target}[${index}]`;
+    if (shape.ty === "gr") collectAnimatedFill(findings, shape.it, `${location}.it`);
+    if (shape.ty === "fl" && isRecord(shape.c) && shape.c.a === 1) {
+      findings.push({ feature: "animated-fill-color", target: `${location}.c`,
+        message: "Animated solid fill colour is not represented by the current language channels; its paint is not lowered." });
+    }
+  });
 }
 
 function collectSolidColor(findings: InventoryFinding[], sc: unknown, target: string): void {

@@ -46,9 +46,10 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Static shape fixtures whose geometry is a centred rect or ellipse, including rectangle centre mapped to the IR top-left.",
+          "scope": "Static shape fixtures whose geometry is a centred rect or ellipse, including rectangle centre mapped to the IR top-left. Nested shape groups retain reverse source-list paint order; per-geometry stroke passes retain their existing style order.",
           "conformanceTests": [
-            "packages/format-lottie/src/lottie.test.ts#maps Lottie rectangle centre to Scene IR top-left"
+            "packages/format-lottie/src/lottie.test.ts#maps Lottie rectangle centre to Scene IR top-left",
+            "packages/format-lottie/src/lottie.test.ts#paints nested shape groups in reverse source order through round trip"
           ]
         },
         "svg": {
@@ -133,10 +134,11 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Scalar and split position tracks on layer and shape-group transforms, in milliseconds from composition in-point; group position, scale, rotation and opacity retain animation. Animated anchors remain unsupported.",
+          "scope": "Scalar and split position tracks on layer and shape-group transforms, in milliseconds from composition in-point; group position, scale, rotation and opacity retain animation. Animated anchors remain unsupported. Animated solid fill colour is unsupported and inventoried before lowering; current native channels do not represent it.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#animates position in milliseconds",
-            "packages/format-lottie/src/lottie.test.ts#preserves animated shape-group transforms and opacity"
+            "packages/format-lottie/src/lottie.test.ts#preserves animated shape-group transforms and opacity",
+            "packages/format-lottie/src/lottie.test.ts#reports omitted animated fill colour instead of claiming exact conversion"
           ]
         },
         "svg": { "status": "untested", "scope": "SMIL and CSS coverage is recorded on svg.smilTimeBased and svg.cssKeyframes." }
@@ -240,10 +242,11 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Single shared Bodymovin cubic handles with x components in [0, 1] are preserved, including near-diagonal, formerly shortcut-matched and overshooting curves. Exact diagonal handles may use linear. Per-component handle arrays are outside this claim. Out-of-range x controls carry an approximation diagnostic and use easeInOut. Composition-window clipping samples original cubic values and renormalises retained Bezier subsegments; verified for nondegenerate scalar and matching-topology morph intervals. Degenerate equal-easing-endpoint intervals carry an approximation diagnostic.",
+          "scope": "Single shared Bodymovin cubic handles with x components in [0, 1] are preserved, including near-diagonal, formerly shortcut-matched and overshooting curves. Exact diagonal handles may use linear. Per-component handle arrays are outside this claim. Out-of-range x controls carry an approximation diagnostic and use easeInOut. Composition-window clipping preserves non-spatial scalar/vector/morph cubic values and restricted easing. Clipped spatial curves are outside this verified scope.",
           "conformanceTests": [
             "packages/format-lottie/src/dataset.test.ts#repeats hashes and never labels a known loss as exact",
             "packages/format-lottie/src/lottie.test.ts#preserves source cubic handles through import and shuffled round-trip seeks",
+            "packages/format-lottie/src/lottie.test.ts#preserves clipped cubic position and morph through shuffled round-trip seeks",
             "packages/format-lottie/src/lottie.test.ts#preserves cubic scalar and morph curves when both composition boundaries clip keys"
           ]
         },
@@ -384,12 +387,13 @@
       "conformanceTests": [
         "packages/schema/src/spatial.test.ts#samples spatial cubics by arc length",
         "packages/schema/src/spatial.test.ts#includes Z in arc length like lottie-web when tangents carry depth",
-        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
+        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length",
+            "packages/format-lottie/src/lottie.test.ts#reports clipped spatial geometry as approximate"
       ],
       "adapters": {
         "lottie": {
-          "status": "approximate",
-          "scope": "Unclipped spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present. Composition-window clipping retains legacy spatial geometry and is explicitly approximate until exact spatial subcurves are lowered.",
+          "status": "exact",
+          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present. Composition-window clipping retains approximate legacy geometry and explicitly reports spatial-window-clipping.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering",
             "packages/format-lottie/src/lottie.test.ts#preserves spatial tangent Z for arc-length sampling",
@@ -599,9 +603,10 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Matching-topology animated sh (shared vertex count and closed flag across keys, including s[0] path samples) lowered to path.commands tracks. Composition-window clipping samples original cubic values and renormalises retained Bezier subsegments; verified for nondegenerate scalar and matching-topology morph intervals. Degenerate equal-easing-endpoint intervals carry an approximation diagnostic.",
+          "scope": "Matching-topology animated sh (shared vertex count and closed flag across keys, including s[0] path samples) lowered to path.commands tracks. Composition-window clipping preserves non-spatial scalar/vector/morph cubic values and restricted easing. Clipped spatial curves are outside this verified scope.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#imports matching-topology animated path morph exactly",
+            "packages/format-lottie/src/lottie.test.ts#preserves clipped cubic position and morph through shuffled round-trip seeks",
             "packages/format-lottie/src/lottie.test.ts#preserves cubic scalar and morph curves when both composition boundaries clip keys"
           ]
         },
@@ -626,7 +631,7 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Static gs strokes lower to native stroke.color gradients with width/cap/join. Every sibling st/gs is retained as a separate pass in reverse source-list painting order on preceding geometry; matching morph, trim and inherited group transforms are preserved. Multiple-stroke conformance covers one path per group. The historical Wave gradient creation-matrix attribution was not reproduced by controlled pixel comparisons in 2026-10-08T123430Z; full source/reference fidelity remains subject to the visual gate. gf remains fill-only.",
+          "scope": "Static gs strokes lower to native stroke.color gradients with width/cap/join. Every sibling st/gs is retained as a separate pass in reverse source-list painting order on preceding geometry; matching morph, trim and inherited group transforms are preserved. Multiple-stroke conformance covers one path per group. Cross-geometry interleaved styles remain outside the certified multiple-stroke scope. Full fixture visual fidelity requires a separate source/direct/compiled gate. gf remains fill-only.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#imports static gradient stroke as stroke paint not fill",
             "packages/format-lottie/src/lottie.test.ts#preserves ordered stroke passes with shared morph trim and transforms"

@@ -1,0 +1,44 @@
+{
+  "recordedAt": "2026-10-08T12:19:11.535782+00:00",
+  "reviewer": "agent visual inspection",
+  "fixtures": [
+    {
+      "id": "LOT-07",
+      "status": "PASS",
+      "coverage": "All 155 reference/native pairs reviewed in attempt-1 full-window sheets and representative full-resolution images; final images decoded-pixel identical for every reference/native pair. Both final native routes identical.",
+      "identityProof": "material-review-identity.json",
+      "evidence": [
+        "evidence/material-review/LOT-07-all-frames-0.png",
+        "evidence/material-review/LOT-07-all-frames-1.png",
+        "evidence/material-review/LOT-07-all-frames-2.png",
+        "evidence/material-review/LOT-07-all-frames-3.png",
+        "evidence/material-review/LOT-07-all-frames-4.png"
+      ]
+    },
+    {
+      "id": "LOT-00",
+      "status": "PASS",
+      "coverage": "All 243 paired frames across seven final contact sheets, start/end/subframes and full worst-frame strip inspected. No material discrepancy observed; minor edge rasterization residual below fixed numeric/local/alpha gates. Both native routes decoded-pixel identical.",
+      "evidence": [
+        "evidence/material-review/LOT-00-final-0.png",
+        "evidence/material-review/LOT-00-final-1.png",
+        "evidence/material-review/LOT-00-final-2.png",
+        "evidence/material-review/LOT-00-final-3.png",
+        "evidence/material-review/LOT-00-final-4.png",
+        "evidence/material-review/LOT-00-final-5.png",
+        "evidence/material-review/LOT-00-final-6.png",
+        "evidence/failure-samples/LOT-00-worst-strip.png"
+      ]
+    },
+    {
+      "id": "LOT-06",
+      "status": "FAIL",
+      "coverage": "All 27 pairs in final contact sheet and full worst-frame strip reviewed. Missing upper arm/back arm fill contributions remain visible. Both native routes identical.",
+      "evidence": [
+        "evidence/material-review/LOT-06-final-0.png",
+        "evidence/failure-samples/LOT-06-worst-strip.png"
+      ]
+    }
+  ],
+  "otherFixtures": "NOT_RUN material review; numeric failures remain failures, LOT05 unreliable reference BLOCKED, LOT03 quarantine. No certification inferred."
+}

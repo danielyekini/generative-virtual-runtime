@@ -1,0 +1,1555 @@
+{
+  "runId": "2026-10-07T221955Z",
+  "startedAt": "2026-10-07T22:19:55.750446+00:00",
+  "comparedWith": "2026-10-07T220358Z",
+  "head": "f609273cea310b64733a535642e9e7f17d22a88a",
+  "initialTreeClean": true,
+  "invocationTimeBudgetMinutes": 60,
+  "maxImplementationCycles": 8,
+  "maxAttemptsPerCause": 3,
+  "workMode": "native Lottie fidelity then authoring only after fidelity gate",
+  "profile": "original Lottie corpus LOT-00 through LOT-07",
+  "excludedFormats": [
+    "svg"
+  ],
+  "quarantines": [
+    {
+      "fixture": "LOT-03",
+      "reason": "Production 512 KiB ceiling; prior reference exception/empty frames; diagnostic parse is not a pass.",
+      "inheritedFrom": "2026-10-07T215328Z/loop.json and baseline report",
+      "notNewExclusion": true
+    }
+  ],
+  "observationWindow": "one composition cycle at source frame rate, plus boundary/subframe samples",
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "role": "baseline",
+      "format": "lottie",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
+      "evidenceSource": "sources/LOT-00.json",
+      "bytes": 41712,
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+      "width": 1280,
+      "height": 720,
+      "durationMs": 8000,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 240,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 240,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": null,
+      "priorInventory": {
+        "topLevelKeys": [
+          "v",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "layers"
+        ],
+        "markers": [],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "shape": 26,
+          "null": 3
+        },
+        "assetLayerTypes": {},
+        "shapeTypes": {
+          "el": 14,
+          "fl": 26,
+          "rc": 8,
+          "sh": 4
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 25,
+        "ddd": 0,
+        "animatedProperties": 3,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 3,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [],
+        "missingAssets": [],
+        "examples": [],
+        "name": "MotionScript V1 Compatible Panning Landscape",
+        "version": "5.7.0",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 240,
+        "width": 1280,
+        "height": 720,
+        "durationMs": 8000
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "exact"
+    },
+    {
+      "id": "LOT-01",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Celebrations Begin.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+      "evidenceSource": "sources/LOT-01.json",
+      "bytes": 139337,
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+      "width": 400,
+      "height": 400,
+      "durationMs": 4033.333333333333,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 121,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 121,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": null,
+      "priorInventory": {
+        "topLevelKeys": [
+          "v",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "assets",
+          "layers",
+          "markers"
+        ],
+        "markers": [],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "precomp": 1
+        },
+        "assetLayerTypes": {
+          "shape": 96,
+          "null": 3,
+          "solid": 1
+        },
+        "shapeTypes": {
+          "gr": 96,
+          "sh": 25,
+          "st": 96,
+          "tr": 96,
+          "tm": 1,
+          "fl": 83,
+          "rc": 71
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 133,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 79,
+        "ddd": 0,
+        "animatedProperties": 96,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 134,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "comp_0",
+            "layers": 100
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "tm",
+            "path": "$.assets[0].layers[0].shapes[1]"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[2].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[4].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[7].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[8].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[9].ks.p"
+          }
+        ],
+        "name": "Comp 1",
+        "version": "5.9.2",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 121,
+        "width": 400,
+        "height": 400,
+        "durationMs": 4033.333333333333
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "exact"
+    },
+    {
+      "id": "LOT-02",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Hover Button.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
+      "evidenceSource": "sources/LOT-02.json",
+      "bytes": 127633,
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+      "width": 1920,
+      "height": 1080,
+      "durationMs": 7533.333333333333,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 226,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 226,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": null,
+      "priorInventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "chars",
+          "assets",
+          "slots"
+        ],
+        "markers": [],
+        "fonts": [
+          "Host Grotesk",
+          "HostGrotesk-Bold"
+        ],
+        "chars": 10,
+        "rootLayerTypes": {
+          "text": 1,
+          "shape": 19,
+          "precomp": 1
+        },
+        "assetLayerTypes": {
+          "shape": 1,
+          "text": 1
+        },
+        "shapeTypes": {
+          "gr": 23,
+          "sh": 5,
+          "st": 4,
+          "tr": 23,
+          "tm": 4,
+          "el": 8,
+          "fl": 16,
+          "rc": 10,
+          "gf": 2,
+          "gs": 1
+        },
+        "masks": 0,
+        "mattes": 3,
+        "effects": 5,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 47,
+        "textLayers": 2,
+        "hiddenLayers": 0,
+        "parenting": 12,
+        "ddd": 0,
+        "animatedProperties": 15,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 59,
+        "roundedRects": 9,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "comp_0_5f05577e-a470-4015-b9ac-8bcc9073c734",
+            "layers": 2
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "text-layer",
+            "path": "$.layers[0]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[1].shapes[1]"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[4].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[4].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[4].ks.p"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[8].ef"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[8].shapes[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[9].shapes[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.layers[10].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[10].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[11].shapes[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.layers[12].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[12].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.layers[14].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[14].ef"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[16].shapes[0].it[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[18].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[19].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[20].ef"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[1]"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 226,
+        "width": 1920,
+        "height": 1080,
+        "durationMs": 7533.333333333333
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "partial"
+    },
+    {
+      "id": "LOT-03",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
+      "evidenceSource": "sources/LOT-03.json",
+      "bytes": 877884,
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "width": 1080,
+      "height": 689,
+      "durationMs": 7116.666666666666,
+      "frameRate": 60,
+      "sourceAvailable": false,
+      "scheduledFrames": 427,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 427,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": {
+        "fixture": "LOT-03",
+        "reason": "Production 512 KiB ceiling; prior reference exception/empty frames; diagnostic parse is not a pass.",
+        "inheritedFrom": "2026-10-07T215328Z/loop.json and baseline report",
+        "notNewExclusion": true
+      },
+      "priorInventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "assets",
+          "slots",
+          "markers"
+        ],
+        "markers": [
+          "Comment",
+          "Object",
+          "Frame",
+          "Move",
+          "Pen",
+          "Text",
+          "Action",
+          "Idle"
+        ],
+        "fonts": [
+          "Inter",
+          "Inter Regular"
+        ],
+        "chars": 0,
+        "rootLayerTypes": {
+          "precomp": 7,
+          "shape": 8,
+          "solid": 1
+        },
+        "assetLayerTypes": {
+          "shape": 168,
+          "precomp": 7,
+          "text": 7
+        },
+        "shapeTypes": {
+          "rc": 64,
+          "fl": 141,
+          "el": 49,
+          "gr": 168,
+          "sh": 157,
+          "mm": 42,
+          "tr": 168,
+          "st": 77,
+          "gf": 7,
+          "gs": 7,
+          "tm": 7
+        },
+        "masks": 0,
+        "mattes": 18,
+        "effects": 14,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 7,
+        "hiddenLayers": 7,
+        "parenting": 62,
+        "ddd": 0,
+        "animatedProperties": 56,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 806,
+        "roundedRects": 63,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "1_a5967794-43e2-4c90-9a79-8826454e1ffa_03741665-aea9-43ab-9e5c-0fcfcbcf19e5_f2506e68-c75f-412f-b51d-ad8d047dc282",
+            "layers": 22
+          },
+          {
+            "id": "2_b865fdf4-d5ab-4627-9e33-ef9999c49dc9_141b3ba0-9ba4-41ed-b7c7-de567012b47c_008c7713-2134-42bd-a222-ed1be898c001",
+            "layers": 4
+          },
+          {
+            "id": "3_3d627ace-e6bb-49d8-a14d-4a1e19c6503b_14cd365f-ca0f-4039-861d-6a744b4eab9a_a7ccba1d-fd97-4e7a-8ef3-31aa5afc74be",
+            "layers": 22
+          },
+          {
+            "id": "4_42f1dbb0-907e-4322-b3cf-3b191b3151c2_37feb155-9c08-4ae2-92c9-28b0bb8a896e_310215ef-8093-43bc-8f19-034e0c05bcb4",
+            "layers": 4
+          },
+          {
+            "id": "5_25009ace-ed5b-4cf5-bd97-9d5cbb0df208_4b2793a8-13a9-4ea5-891b-b0fa97186a72_94292ade-04e5-48b2-afc9-1dded9a5fead",
+            "layers": 22
+          },
+          {
+            "id": "6_5fb44a8f-9146-46b7-8839-7f9d562472ef_d5e9f81c-1367-401f-9dca-a16275f88ff0_de2a21bd-0dbf-451c-b7ff-e099da4c3400",
+            "layers": 4
+          },
+          {
+            "id": "7_70ba6da1-47a0-4590-a16d-cc1ed95eb12c_e5b1e444-3e73-4322-a23c-5013c0946cd2_20b0f0f3-0e36-4682-a3d1-71b53fb476be",
+            "layers": 22
+          },
+          {
+            "id": "8_bb3a4af6-5d3f-40af-a841-246f73e22926_5ef320d9-ae53-4af9-b8eb-2c8eedaafdaa_82bd8703-f05a-4279-89d6-8e1ea12e439b",
+            "layers": 4
+          },
+          {
+            "id": "9_8409119d-cd8a-4514-bdc8-1436437b9e18_d04085d0-b11d-45de-88fc-cb6901cca9b7_23a10df5-c8dd-4020-b7f4-c5c529c02a79",
+            "layers": 22
+          },
+          {
+            "id": "10_7f07de5d-729f-4e09-a8d7-918c90a36d05_4df069e2-43e8-4d51-b1e9-7cd3e149a5b9_871a8ccb-4209-4f5f-97a1-fc8d4043de62",
+            "layers": 4
+          },
+          {
+            "id": "11_169c87be-c4f0-437e-bf02-5dd264cfcecc_de78854f-3f2a-401c-ad9b-916ab1c78a43_8a086c25-0f9b-48a5-9612-da8d586030b8",
+            "layers": 22
+          },
+          {
+            "id": "12_f906003f-8746-4a37-9d28-75eba34222b3_caad884b-014d-4063-927a-b38c260e4516_aeb7d184-1cee-4863-b733-0166ade5db93",
+            "layers": 4
+          },
+          {
+            "id": "13_be4612e9-32ba-4d4d-ad70-df74dbc4b6e6_a6264503-0405-4e16-b8e4-9361dc2bc4c4_602cf019-b34a-4fbe-a8c9-aed6a96a0246",
+            "layers": 22
+          },
+          {
+            "id": "14_ec04e82c-4e8c-4e0a-97e1-6cab65960b35_0191e134-164c-44f7-9949-54d0bc3774fb_9ef2a0e9-8a71-4899-ae0c-e1860c05183f",
+            "layers": 4
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[0].shapes[0].it[2]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[5].shapes[0].it[3]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[7].shapes[0].it[2]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[9].shapes[0].it[6]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[11].shapes[0].it[4]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[13].shapes[0].it[2]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[17].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[17].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[20].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[20].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[21].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[21].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[0].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[1].layers[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[1].layers[3].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[2].layers[17].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[2].layers[17].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[2].layers[20].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[2].layers[20].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[2].layers[21].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[2].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[3].layers[0]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[3].layers[3].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[4].layers[17].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[4].layers[17].ef"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[4].layers[20].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[4].layers[21].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[4].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[5].layers[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[5].layers[3].ef"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[6].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[7].layers[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[8].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[9].layers[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[10].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[11].layers[0]"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 60,
+        "inFrame": 0,
+        "outFrame": 427,
+        "width": 1080,
+        "height": 689,
+        "durationMs": 7116.666666666666
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "failed"
+    },
+    {
+      "id": "LOT-04",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex2.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+      "evidenceSource": "sources/LOT-04.json",
+      "bytes": 512240,
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+      "width": 500,
+      "height": 888.89,
+      "durationMs": 11250,
+      "frameRate": 60,
+      "sourceAvailable": false,
+      "scheduledFrames": 675,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 675,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": null,
+      "priorInventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "chars",
+          "assets",
+          "slots"
+        ],
+        "markers": [],
+        "fonts": [
+          "Inter Tight",
+          "InterTight-Medium"
+        ],
+        "chars": 23,
+        "rootLayerTypes": {
+          "precomp": 1,
+          "shape": 2
+        },
+        "assetLayerTypes": {
+          "null": 1,
+          "precomp": 26,
+          "text": 13
+        },
+        "shapeTypes": {
+          "gr": 3,
+          "sh": 2,
+          "tr": 3,
+          "gf": 1,
+          "fl": 1
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 22,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 13,
+        "hiddenLayers": 0,
+        "parenting": 26,
+        "ddd": 0,
+        "animatedProperties": 27,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 363,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d",
+            "layers": 27
+          },
+          {
+            "id": "3_1_fb1bd2a1-c6e6-4692-973c-3b7e599e1893_f4f4b94b-1333-44fc-9090-e591b212d28a_c956a65a-56fb-4812-be57-7853697392f6_faaff553-ece8-49cf-a63a-aeea1b97a3ba",
+            "layers": 1
+          },
+          {
+            "id": "8_20a068bd-1627-45d1-9fc1-6c0dd1edb071_b8bb3f38-71d7-45ae-9514-748895d30e77_53691f11-1982-4128-abeb-496536b15029_57fffcad-16fd-4b71-8db4-ebb5bab1259b",
+            "layers": 1
+          },
+          {
+            "id": "9_05dccb6e-a756-4d59-a31b-3886ed787fdb_508afacf-a4f5-4781-9201-7f7de8e816b6_e31e82c3-9243-4114-a5d6-dc5b505a4d2e_08f9da21-67c4-443a-90ae-014596343022",
+            "layers": 1
+          },
+          {
+            "id": "10_c22c32e7-7d8e-4718-9424-49d4db3bc1fd_3c76b710-dc20-4026-aa67-6803d0cc7570_cb558703-2130-416c-a41b-3330a6df72a9_6e6e6bc1-18c5-41da-999e-05de02a03b5f",
+            "layers": 1
+          },
+          {
+            "id": "11_dd0a4b42-c486-48b8-bd1d-dadb6e5dedbd_6a2a01da-2b48-4444-acf1-23ffe3733ac1_db01c5f9-e9fa-43be-b211-118e1ccb862a_2d214dd2-0db3-4e15-a399-981b11e5f05e",
+            "layers": 1
+          },
+          {
+            "id": "12_1dc8739e-e317-43d9-bf86-a7dc1caae315_4f4ebd26-30d3-4b14-89ff-29abaa79d9d2_8d382218-647b-439a-b933-2e1c513838d5_3df2de07-59f0-4c3f-ac24-4a57b4e366a0",
+            "layers": 1
+          },
+          {
+            "id": "13_c4759f01-4a38-4bdb-9dba-a2043fdbf0de_dc57c493-adf6-4e9c-94c9-5e68f8859a42_5acd88ea-6848-4011-b9ea-0c72d7e6dc6f_9bb4b6f4-0d05-428e-b0e7-7ee3c8b17ec0",
+            "layers": 1
+          },
+          {
+            "id": "14_435fd567-ec85-4551-9688-448d95e580d7_0d101e0e-c401-4030-9c95-0d1cdcb7962b_dc1f6768-3c21-4f5f-a2e0-8ae0b1a70844_f80446e6-9871-4c04-bb26-5b0517977c0f",
+            "layers": 1
+          },
+          {
+            "id": "15_0227a47c-0b38-44ae-b9f5-bf4a5a410ee7_c15c4cc8-ef22-421e-bc6a-b680785bcff6_47ccf672-9f88-4402-b92f-72ced0651797_da4ca336-ba2d-49e7-bcbc-5495df457173",
+            "layers": 1
+          },
+          {
+            "id": "16_9e52ff08-3487-46a5-8fb2-a58337812916_45403d48-4374-4641-bd3e-3e58d624ff21_9b7b4928-d4a9-4737-89d5-4489af549f74_918dc700-22db-439f-9cf2-eae42f34f3b6",
+            "layers": 1
+          },
+          {
+            "id": "17_9123cdf0-9e2f-439f-ac7d-cd0f59dc8e52_031009a1-b201-49de-86b2-f88eb547c6aa_0d26a2c7-afd7-4db2-83a2-6d2a151b5aef_f9719b26-ca9a-47d9-8438-a1f0eb73c0eb",
+            "layers": 1
+          },
+          {
+            "id": "18_479f7889-3321-4302-a753-a739c6f46a30_049ff83d-5392-4dae-91cf-80eed1bb5414_7d0ebefb-becc-4c32-ba67-4b4097141b4d_092b060b-2e1f-4c8b-b17d-2d35b15a5f90",
+            "layers": 1
+          },
+          {
+            "id": "19_a1a568cc-a22f-44fd-bfb5-546d3e9046a8_b8694f5b-733a-42c0-afc2-7b57af8d1226_826bbc6b-4d28-4c89-8dfb-88211e82fbb3_e0ffd248-c593-417c-b579-a24f0214944d",
+            "layers": 1
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "gradient",
+            "path": "$.layers[1].shapes[0].it[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[1].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[2].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[3].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[4].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[5].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[6].ef"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[1].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[2].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[3].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[4].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[5].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[6].layers[0]"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 60,
+        "inFrame": 0,
+        "outFrame": 675,
+        "width": 500,
+        "height": 888.89,
+        "durationMs": 11250
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "partial"
+    },
+    {
+      "id": "LOT-05",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_simple_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
+      "evidenceSource": "sources/LOT-05.json",
+      "bytes": 191525,
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+      "width": 1080,
+      "height": 1080,
+      "durationMs": 4016.6666666666665,
+      "frameRate": 60,
+      "sourceAvailable": false,
+      "scheduledFrames": 241,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 241,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": null,
+      "priorInventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "assets",
+          "slots",
+          "markers"
+        ],
+        "markers": [
+          "Click play to pause",
+          "Play idle",
+          "Pause Idle",
+          "Click pause to play",
+          "Play idle 2"
+        ],
+        "fonts": [
+          "Haskoy",
+          "Haskoy Regular"
+        ],
+        "chars": 0,
+        "rootLayerTypes": {
+          "precomp": 1,
+          "shape": 1
+        },
+        "assetLayerTypes": {
+          "shape": 12,
+          "text": 3
+        },
+        "shapeTypes": {
+          "rc": 1,
+          "fl": 4,
+          "gr": 13,
+          "sh": 9,
+          "st": 6,
+          "tr": 13,
+          "el": 4,
+          "gf": 4
+        },
+        "masks": 0,
+        "mattes": 4,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 3,
+        "hiddenLayers": 0,
+        "parenting": 0,
+        "ddd": 0,
+        "animatedProperties": 5,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 37,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "comp_1_b5ecb9f2-c646-427e-b2f5-78b5e5fc1843_e1a8e115-295d-4b29-a956-cd76d94085fc_a396d872-917c-4cf4-b58d-d3ec7f1d3528_3d3fc3d7-2daf-413c-9036-1daf216a30ee_b3b1b0de-23a3-4bd2-92b1-7ade8497a042",
+            "layers": 15
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[2]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[5]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[8].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[8].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[9].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[10].tt"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[12].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[12].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[13].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[14].tt"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 60,
+        "inFrame": 0,
+        "outFrame": 241,
+        "width": 1080,
+        "height": 1080,
+        "durationMs": 4016.6666666666665
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "partial"
+    },
+    {
+      "id": "LOT-06",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Punches.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+      "evidenceSource": "sources/LOT-06.json",
+      "bytes": 112565,
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+      "width": 720,
+      "height": 720,
+      "durationMs": 960,
+      "frameRate": 25,
+      "sourceAvailable": false,
+      "scheduledFrames": 24,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 24,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": null,
+      "priorInventory": {
+        "topLevelKeys": [
+          "v",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "assets",
+          "layers",
+          "markers"
+        ],
+        "markers": [
+          "1"
+        ],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "shape": 22,
+          "solid": 1
+        },
+        "assetLayerTypes": {},
+        "shapeTypes": {
+          "gr": 43,
+          "sh": 37,
+          "fl": 37,
+          "tr": 43
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 47,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 7,
+        "ddd": 0,
+        "animatedProperties": 56,
+        "expressions": 0,
+        "holdKeyframes": 2,
+        "easingHandles": 214,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[0].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[0].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[0].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[1].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[1].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[1].ks.p"
+          }
+        ],
+        "name": "punches",
+        "version": "5.7.12",
+        "frameRate": 25,
+        "inFrame": 0,
+        "outFrame": 24,
+        "width": 720,
+        "height": 720,
+        "durationMs": 960
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "exact"
+    },
+    {
+      "id": "LOT-07",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Wave Animation.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+      "evidenceSource": "sources/LOT-07.json",
+      "bytes": 31682,
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+      "width": 400,
+      "height": 400,
+      "durationMs": 5000,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 150,
+      "capturedFrames": 0,
+      "conversionStatus": "BLOCKED",
+      "roundTripStatus": "NOT_RUN",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "NOT_RUN",
+      "expectedFrames": 150,
+      "reason": "Original source bytes unavailable in this machine; no substitutions used.",
+      "inheritedQuarantine": null,
+      "priorInventory": {
+        "topLevelKeys": [
+          "v",
+          "meta",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "assets",
+          "layers",
+          "markers"
+        ],
+        "markers": [],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "shape": 6
+        },
+        "assetLayerTypes": {},
+        "shapeTypes": {
+          "gr": 23,
+          "sh": 22,
+          "st": 3,
+          "gs": 6,
+          "tr": 23,
+          "fl": 17
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 0,
+        "ddd": 0,
+        "animatedProperties": 27,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 106,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "gradient",
+            "path": "$.layers[0].shapes[0].it[2]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[1].shapes[0].it[2]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[2].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[2].shapes[0].it[2]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[3].shapes[1].it[0]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[4].shapes[0].it[1]"
+          }
+        ],
+        "name": "Radio_02",
+        "version": "4.8.0",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 150,
+        "width": 400,
+        "height": 400,
+        "durationMs": 5000
+      },
+      "requiredCapabilities": "Not freshly determinable without accepted source/IR; prior feature inventory retained, no unsupported requirements waived.",
+      "priorConversionStatus": "exact"
+    }
+  ],
+  "languages": {
+    "motionscript": {
+      "current": "0.5.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    },
+    "scene-ir": {
+      "current": "0.5.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    }
+  },
+  "registrySha256": "e144e06199790c213a9eec8b1c143849c65911651e93b3279891b607cc99944b",
+  "priorSnapshotComparison": {
+    "packages/schema/src/types.ts": {
+      "expected": "8817e5e6e97b833915b71e6ca66c14feea93962daefc4865c7dbd368dd8c389b",
+      "actual": "8817e5e6e97b833915b71e6ca66c14feea93962daefc4865c7dbd368dd8c389b",
+      "matches": true
+    },
+    "packages/schema/src/spatial.ts": {
+      "expected": "f4866e9465f687371d5c97dce6fa11098b5c0b09c3cca517c18ea9feef725565",
+      "actual": "f4866e9465f687371d5c97dce6fa11098b5c0b09c3cca517c18ea9feef725565",
+      "matches": true
+    },
+    "packages/schema/src/spatial.test.ts": {
+      "expected": "3c5b68554e9f28dbb8462b014dc99d2fa2a5a4c059aabaa5309047421afa76df",
+      "actual": "3c5b68554e9f28dbb8462b014dc99d2fa2a5a4c059aabaa5309047421afa76df",
+      "matches": true
+    },
+    "packages/schema/src/validate.ts": {
+      "expected": "01712f78a07c34ad7cc9757d2ece70b022b8d238d639862a46e8007167256cf9",
+      "actual": "01712f78a07c34ad7cc9757d2ece70b022b8d238d639862a46e8007167256cf9",
+      "matches": true
+    },
+    "packages/schema/capabilities/registry.json": {
+      "expected": "e144e06199790c213a9eec8b1c143849c65911651e93b3279891b607cc99944b",
+      "actual": "e144e06199790c213a9eec8b1c143849c65911651e93b3279891b607cc99944b",
+      "matches": true
+    },
+    "packages/runtime/src/sample.ts": {
+      "expected": "cf24a40f13643e4200651717aee874f815426d3ed59dc29b4435c93691067a55",
+      "actual": "cf24a40f13643e4200651717aee874f815426d3ed59dc29b4435c93691067a55",
+      "matches": true
+    },
+    "packages/format-lottie/src/property.ts": {
+      "expected": "36cd15271c4a4904073143d0066040a2e9d0a58c75c80bb312f26d50c884732a",
+      "actual": "36cd15271c4a4904073143d0066040a2e9d0a58c75c80bb312f26d50c884732a",
+      "matches": true
+    },
+    "packages/format-lottie/src/model.ts": {
+      "expected": "166e40cd196e9d52a168bd16f32f899f574611a474f81b0cbc6b10dab669d20d",
+      "actual": "166e40cd196e9d52a168bd16f32f899f574611a474f81b0cbc6b10dab669d20d",
+      "matches": true
+    },
+    "packages/format-lottie/src/parse-shapes.ts": {
+      "expected": "3f28af18915e59b2cc051a1f5951623c0610a7b8047a5f40498082e5b4434385",
+      "actual": "3f28af18915e59b2cc051a1f5951623c0610a7b8047a5f40498082e5b4434385",
+      "matches": true
+    },
+    "packages/format-lottie/src/normalise.ts": {
+      "expected": "0c490cb4a51c5be5d348b7fbe150fca2b577bb484e80ba1640b2e31bfa8088b6",
+      "actual": "0c490cb4a51c5be5d348b7fbe150fca2b577bb484e80ba1640b2e31bfa8088b6",
+      "matches": true
+    },
+    "packages/format-lottie/src/lottie.test.ts": {
+      "expected": "4e79703ae0ba351bd347802c3acf1103d71d63bf7edc32c98aca3b823f8e8904",
+      "actual": "4e79703ae0ba351bd347802c3acf1103d71d63bf7edc32c98aca3b823f8e8904",
+      "matches": true
+    },
+    "packages/compiler/src/ast.ts": {
+      "expected": "9a45e1f7490331e26c806aadfe3d2ea78040c9f0d15b67a10439689c6d7819be",
+      "actual": "9a45e1f7490331e26c806aadfe3d2ea78040c9f0d15b67a10439689c6d7819be",
+      "matches": true
+    },
+    "packages/compiler/src/parse.ts": {
+      "expected": "2ee253df22ec1303d47fa99deca3eb2d54bee2d92ab6dd5a3f80b19ddb4c0ee0",
+      "actual": "2ee253df22ec1303d47fa99deca3eb2d54bee2d92ab6dd5a3f80b19ddb4c0ee0",
+      "matches": true
+    },
+    "packages/motionscript-emitter/src/emit.ts": {
+      "expected": "357703bbdf04dc9c5dd674058fe682c44902ecea14c4377c3a7249ea1611f29c",
+      "actual": "357703bbdf04dc9c5dd674058fe682c44902ecea14c4377c3a7249ea1611f29c",
+      "matches": true
+    },
+    "fixtures/import/lottie/easing_ae_near_linear.json": {
+      "expected": "c6bf499dfd7b494c7cba3650cc28e2b58c47dff841489e8c4dcb515db384c1b5",
+      "actual": "c6bf499dfd7b494c7cba3650cc28e2b58c47dff841489e8c4dcb515db384c1b5",
+      "matches": true
+    },
+    "fixtures/import/lottie/spatial_tangent_z.json": {
+      "expected": "b22e53ba37be9696b045ec648e85cde225bf315ccccfbc0113495984640b6b04",
+      "actual": "b22e53ba37be9696b045ec648e85cde225bf315ccccfbc0113495984640b6b04",
+      "matches": true
+    },
+    "fixtures/import/lottie/stroke_round_cap.json": {
+      "expected": "76edf9b610570f68cd179ed597e3aa0f5200a827046ef70ecc7c1e9f9c25a3ae",
+      "actual": "76edf9b610570f68cd179ed597e3aa0f5200a827046ef70ecc7c1e9f9c25a3ae",
+      "matches": true
+    }
+  },
+  "ancestorCheck": 0,
+  "numericTolerance": 0.001,
+  "colorTolerance": 0.00392156862745098,
+  "visualGate": {
+    "status": "VISUAL_UNVERIFIED",
+    "rgbInspectionThreshold": 24,
+    "aggregateThreshold": null,
+    "localRegionThreshold": null,
+    "alphaAcceptanceRule": null,
+    "materialContentReviewRule": null
+  },
+  "reference": {
+    "lottieWeb": "5.13.0",
+    "availableBrowser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "priorBrowser": "Chrome 154.0.8037.98",
+    "harnessBrowserPath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "dpr": 1,
+    "background": "#101014",
+    "seek": "goToAndStop(frame, true)",
+    "subframe": "not independently validated this run",
+    "fontsAssetsEffects": "not independently validated this run"
+  },
+  "priorPin": {
+    "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
+    "pinnedAt": "2026-10-07T22:07:09Z",
+    "afterRun": "2026-10-07T220358Z",
+    "comparedWithForNextBaseline": "2026-10-07T220358Z",
+    "git": {
+      "head": "f9ec51e02d10786210f13285b983ef6db8290b53",
+      "short": "f9ec51e",
+      "subject": "Point the evaluation pin at the clean animated-trim commit.",
+      "treeCleanAtPin": false,
+      "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
+      "note": "Dirty tree: spatial tangent Z arc-length, stroke caps/joins, first-key position base, AE-near easing diagonal fix on top of animatedTrim 0.5.0."
+    },
+    "snapshot": {
+      "requiredWhenDirty": true,
+      "path": "docs/evaluations/2026-10-07T220358Z/source-snapshot/",
+      "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree. Do not commit working-tree.patch or full tree copies."
+    },
+    "languages": {
+      "motionscript": {
+        "current": "0.5.0",
+        "wireVersion": "0.2"
+      },
+      "sceneIr": {
+        "current": "0.5.0",
+        "wireVersion": "0.2"
+      }
+    },
+    "nextCause": {
+      "id": "visual.midCycle.confetti.q50",
+      "fixtures": [
+        "LOT-01"
+      ],
+      "attemptsSoFar": 0,
+      "note": "After spatial-Z + stroke + first-key + AE-easing: start/q25 near-matched; q50 beyond 0.00456 with ~3\u20136px centroid drift. Alternates: LOT-07, LOT-06, compositing.matte, visual gate calibration."
+    },
+    "exactFixturesAtPin": [
+      "LOT-00",
+      "LOT-01",
+      "LOT-06",
+      "LOT-07"
+    ],
+    "visualNote": "Import exact is not visual pass. LOT-00 confirmed. LOT-01 improved (start/q25 strong; q50 residual). LOT-06/07 not visual passes. Absolute PASS is VISUAL_UNVERIFIED."
+  },
+  "operatorFollowup": {
+    "instruction": "Check the previous run before that",
+    "reviewed": [
+      "2026-10-07T215328Z/report.md",
+      "2026-10-07T215328Z/manifest.json",
+      "2026-10-07T215328Z/stop.json",
+      "2026-10-07T215328Z/loop.json",
+      "2026-10-07T213004Z/report.md",
+      "2026-10-07-baseline/report.md#visual-quality-gate"
+    ],
+    "finding": "Preceding run explicitly says inspection only; no aggregate acceptance rule. Baseline manual scores do not establish aggregate/local-region/full-window acceptance criteria."
+  },
+  "stoppedAt": "2026-10-07T22:22:46.295321+00:00",
+  "checks": {
+    "registry": {
+      "command": "npx vitest run packages/schema/src/registry.test.ts",
+      "exitCode": 0
+    },
+    "tests": {
+      "command": "npm test",
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    }
+  },
+  "commands": {
+    "pipeline": {
+      "command": "npx tsx evaluation/harness/run-pipeline.ts",
+      "exitCode": 0
+    },
+    "browser": {
+      "command": "npx tsx evaluation/harness/drive-browser.ts",
+      "exitCode": 1
+    }
+  },
+  "packages": {
+    "/workspace/generative-visual-runtime/packages/canvas-renderer/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/compiler/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/format-import-core/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/format-lottie/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/format-svg/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/motionscript-emitter/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/round-trip/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/runtime/package.json": "0.1.0",
+    "/workspace/generative-visual-runtime/packages/schema/package.json": "0.1.0"
+  },
+  "implementation": {
+    "gitHead": "f609273cea310b64733a535642e9e7f17d22a88a",
+    "executionRelevantChanges": false,
+    "initialSnapshot": "source-snapshot/initial-source.tar",
+    "finalSnapshot": "source-snapshot/final-source.tar"
+  },
+  "outcomes": {
+    "fidelityPassed": false,
+    "authoringPassed": "not-evaluated",
+    "visualStatus": "VISUAL_UNVERIFIED",
+    "coverageStatus": "NOT_RUN"
+  },
+  "snapshotNote": "Complete source archives are retained on disk and ignored by Git. Initial archive is HEAD; final archive includes actual tracked/untracked run and continuation bytes, excluding disposable dependencies and snapshot archives."
+}

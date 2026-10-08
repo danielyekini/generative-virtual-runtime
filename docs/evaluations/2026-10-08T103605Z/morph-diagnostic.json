@@ -1,0 +1,482 @@
+[
+  {
+    "layer": "waves_6",
+    "node": "layer_1.Shape_5.Path1_strokes.pass_1",
+    "frame": 0,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -181.063,
+      "y": -12.047
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -181.063,
+      "y": -12.047
+    }
+  },
+  {
+    "layer": "waves_6",
+    "node": "layer_1.Shape_5.Path1_strokes.pass_1",
+    "frame": 2,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -180.94964109819057,
+      "y": -12.034404566465621
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -180.94964109819057,
+      "y": -12.034404566465621
+    }
+  },
+  {
+    "layer": "waves_6",
+    "node": "layer_1.Shape_5.Path1_strokes.pass_1",
+    "frame": 10,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -178.43582547984923,
+      "y": -11.755091719983248
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -178.43582547984923,
+      "y": -11.755091719983248
+    }
+  },
+  {
+    "layer": "waves_6",
+    "node": "layer_1.Shape_5.Path1_strokes.pass_1",
+    "frame": 30,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -162.05126908699688,
+      "y": -9.934585454110765
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -162.05126908699688,
+      "y": -9.934585454110765
+    }
+  },
+  {
+    "layer": "waves_6",
+    "node": "layer_1.Shape_5.Path1_strokes.pass_1",
+    "frame": 75,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -127.063,
+      "y": -6.047
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -127.063,
+      "y": -6.047
+    }
+  },
+  {
+    "layer": "waves_6",
+    "node": "layer_1.Shape_5.Path1_strokes.pass_1",
+    "frame": 149,
+    "maxCoordinateDifference": 2.842170943040401e-14,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -181.03440134485498,
+      "y": -12.043822371650556
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -181.03440134485498,
+      "y": -12.043822371650556
+    }
+  },
+  {
+    "layer": "waves_8",
+    "node": "layer_2.Shape_55.Path1_strokes.pass_1",
+    "frame": 0,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -169.06099995455097,
+      "y": 25.95157139610783
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -169.06099995455097,
+      "y": 25.95157139610783
+    }
+  },
+  {
+    "layer": "waves_8",
+    "node": "layer_2.Shape_55.Path1_strokes.pass_1",
+    "frame": 2,
+    "maxCoordinateDifference": 8.270717444247566e-12,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -168.9816691005789,
+      "y": 25.8949065004135
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -168.9816691005824,
+      "y": 25.89490650041599
+    }
+  },
+  {
+    "layer": "waves_8",
+    "node": "layer_2.Shape_55.Path1_strokes.pass_1",
+    "frame": 10,
+    "maxCoordinateDifference": 7.207745511550456e-11,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -167.6174424859789,
+      "y": 24.920458918556363
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -167.61744248600925,
+      "y": 24.920458918578035
+    }
+  },
+  {
+    "layer": "waves_8",
+    "node": "layer_2.Shape_55.Path1_strokes.pass_1",
+    "frame": 30,
+    "maxCoordinateDifference": 1.4509282664221246e-11,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -159.08684781689036,
+      "y": 18.82717701206455
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -159.08684781689647,
+      "y": 18.827177012068912
+    }
+  },
+  {
+    "layer": "waves_8",
+    "node": "layer_2.Shape_55.Path1_strokes.pass_1",
+    "frame": 75,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -141.063,
+      "y": 5.953
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -141.063,
+      "y": 5.953
+    }
+  },
+  {
+    "layer": "waves_8",
+    "node": "layer_2.Shape_55.Path1_strokes.pass_1",
+    "frame": 149,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -169.05698338141872,
+      "y": 25.948702415299085
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -169.05698338141872,
+      "y": 25.948702415299085
+    }
+  },
+  {
+    "layer": "waves__9",
+    "node": "layer_3.Shape_6.Path1_strokes.pass_1",
+    "frame": 0,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -181.063,
+      "y": -12.047
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -181.063,
+      "y": -12.047
+    }
+  },
+  {
+    "layer": "waves__9",
+    "node": "layer_3.Shape_6.Path1_strokes.pass_1",
+    "frame": 2,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -180.94964109819057,
+      "y": -12.034404566465621
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -180.94964109819057,
+      "y": -12.034404566465621
+    }
+  },
+  {
+    "layer": "waves__9",
+    "node": "layer_3.Shape_6.Path1_strokes.pass_1",
+    "frame": 10,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -178.43582547984923,
+      "y": -11.755091719983248
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -178.43582547984923,
+      "y": -11.755091719983248
+    }
+  },
+  {
+    "layer": "waves__9",
+    "node": "layer_3.Shape_6.Path1_strokes.pass_1",
+    "frame": 30,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -162.05126908699688,
+      "y": -9.934585454110765
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -162.05126908699688,
+      "y": -9.934585454110765
+    }
+  },
+  {
+    "layer": "waves__9",
+    "node": "layer_3.Shape_6.Path1_strokes.pass_1",
+    "frame": 75,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -127.063,
+      "y": -6.047
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -127.063,
+      "y": -6.047
+    }
+  },
+  {
+    "layer": "waves__9",
+    "node": "layer_3.Shape_6.Path1_strokes.pass_1",
+    "frame": 149,
+    "maxCoordinateDifference": 2.842170943040401e-14,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -181.03440134485498,
+      "y": -12.043822371650556
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -181.03440134485498,
+      "y": -12.043822371650556
+    }
+  },
+  {
+    "layer": "wave_4",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 0,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -169.06099995455097,
+      "y": 25.95157139610783
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -169.06099995455097,
+      "y": 25.95157139610783
+    }
+  },
+  {
+    "layer": "wave_4",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 2,
+    "maxCoordinateDifference": 8.270717444247566e-12,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -168.9816691005789,
+      "y": 25.8949065004135
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -168.9816691005824,
+      "y": 25.89490650041599
+    }
+  },
+  {
+    "layer": "wave_4",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 10,
+    "maxCoordinateDifference": 7.207745511550456e-11,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -167.6174424859789,
+      "y": 24.920458918556363
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -167.61744248600925,
+      "y": 24.920458918578035
+    }
+  },
+  {
+    "layer": "wave_4",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 30,
+    "maxCoordinateDifference": 1.4509282664221246e-11,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -159.08684781689036,
+      "y": 18.82717701206455
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -159.08684781689647,
+      "y": 18.827177012068912
+    }
+  },
+  {
+    "layer": "wave_4",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 75,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -141.063,
+      "y": 5.953
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -141.063,
+      "y": 5.953
+    }
+  },
+  {
+    "layer": "wave_4",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 149,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -169.05698338141872,
+      "y": 25.948702415299085
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -169.05698338141872,
+      "y": 25.948702415299085
+    }
+  },
+  {
+    "layer": "waves_33",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 0,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -169.06099995455097,
+      "y": 25.95157139610783
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -169.06099995455097,
+      "y": 25.95157139610783
+    }
+  },
+  {
+    "layer": "waves_33",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 2,
+    "maxCoordinateDifference": 8.270717444247566e-12,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -168.9816691005789,
+      "y": 25.8949065004135
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -168.9816691005824,
+      "y": 25.89490650041599
+    }
+  },
+  {
+    "layer": "waves_33",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 10,
+    "maxCoordinateDifference": 7.207745511550456e-11,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -167.6174424859789,
+      "y": 24.920458918556363
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -167.61744248600925,
+      "y": 24.920458918578035
+    }
+  },
+  {
+    "layer": "waves_33",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 30,
+    "maxCoordinateDifference": 1.4509282664221246e-11,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -159.08684781689036,
+      "y": 18.82717701206455
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -159.08684781689647,
+      "y": 18.827177012068912
+    }
+  },
+  {
+    "layer": "waves_33",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 75,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -141.063,
+      "y": 5.953
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -141.063,
+      "y": 5.953
+    }
+  },
+  {
+    "layer": "waves_33",
+    "node": "layer_5.Shape_1.Path1",
+    "frame": 149,
+    "maxCoordinateDifference": 0,
+    "expectedFirst": {
+      "cmd": "M",
+      "x": -169.05698338141872,
+      "y": 25.948702415299085
+    },
+    "actualFirst": {
+      "cmd": "M",
+      "x": -169.05698338141872,
+      "y": 25.948702415299085
+    }
+  }
+]

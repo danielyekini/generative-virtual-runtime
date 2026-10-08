@@ -1,0 +1,754 @@
+{
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "role": "baseline",
+      "format": "lottie",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.003459000000020751,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-01",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Celebrations Begin.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.000711000000023887,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-02",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Hover Button.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.12068899999997029,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Hover Button.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Hover Button.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-03",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.0005079999999679785,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-04",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex2.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.015758000000005268,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-05",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_simple_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.0007599999999001739,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-06",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Punches.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.0006620000000339132,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Punches.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Punches.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-07",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Wave Animation.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.0029909999999517822,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Wave Animation.json'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/lottie/Wave Animation.json'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "SVG-01",
+      "role": "pack",
+      "format": "svg",
+      "fileName": "Celebrations Begin.svg",
+      "sourcePath": "/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.0006240000000161672,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "SVG-02",
+      "role": "pack",
+      "format": "svg",
+      "fileName": "Jumping Jack.svg",
+      "sourcePath": "/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg",
+      "sourceBytes": 0,
+      "sha256": "",
+      "timingsMs": {
+        "import": 0.0008960000000115542,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": null,
+      "production": {
+        "ok": false,
+        "error": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg'"
+      },
+      "diagnostic": null,
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "FAIL",
+          "detail": "ENOENT: no such file or directory, open '/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg'"
+        },
+        {
+          "name": "import",
+          "status": "NOT_REACHED",
+          "detail": "Source parse failed."
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "NOT_REACHED",
+          "detail": "Import did not return a result."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "source_parse",
+      "evidence": {
+        "importReport": null,
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    }
+  ]
+}

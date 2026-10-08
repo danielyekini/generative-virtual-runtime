@@ -1,0 +1,81 @@
+{
+  "ok": false,
+  "fidelity": "failed",
+  "counts": {
+    "exact": 48,
+    "approximated": 63,
+    "dropped": 1,
+    "unsupported": 4
+  },
+  "groups": [
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "smil",
+      "severity": "warning",
+      "message": "Indefinite repeat is previewed for one cycle.",
+      "count": 63
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "smil",
+      "severity": "info",
+      "message": "Time-based transform.position.x on i41.",
+      "count": 26
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "smil",
+      "severity": "info",
+      "message": "Time-based transform.rotation on i41.",
+      "count": 20
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "image",
+      "severity": "error",
+      "message": "<image> is outside the SVG subset.",
+      "count": 2
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "viewBox",
+      "severity": "info",
+      "message": "viewBox is the Scene IR viewport, with minX/minY translated to the origin.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_DROPPED",
+      "feature": "defs",
+      "severity": "warning",
+      "message": "<defs> has no painted result.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "rect",
+      "severity": "error",
+      "message": "<rect> could not be converted.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "svg-motion",
+      "severity": "info",
+      "message": "SVG motion uses a 1000ms preview duration.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_INVALID_IR",
+      "feature": "source",
+      "severity": "fatal",
+      "message": "svg2 overlaps svg1 on node:i41:transform.position.x.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "svg",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 270580,
+    "name": "Jumping Jack.svg"
+  }
+}
