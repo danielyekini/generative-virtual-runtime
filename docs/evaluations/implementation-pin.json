@@ -4,12 +4,12 @@
   "afterRun": "2026-10-08T012312Z",
   "comparedWithForNextBaseline": "2026-10-08T012312Z",
   "git": {
-    "head": "65c04025082f8f88ae6e7af7f39427c585064745",
-    "short": "65c0402",
-    "subject": "Add remaining failure-sample strips for the 213004Z evaluation run.",
+    "head": "8418cffd2caf9094782c364e3cb1ebc87df871f5",
+    "short": "8418cff",
+    "subject": "Define visual acceptance policy and verify fidelity harness and timing fixes",
     "treeCleanAtPin": false,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Final tested source snapshot; implementation committed after verification. Bulk local evidence is not execution-source dirt."
+    "note": "Execution sources verified identical to emitter-verified checkpoint and committed at this revision. Only continuation metadata changes afterward. Untracked bulk evidence remains local; final source archive remains available for snapshot reproduction."
   },
   "snapshot": {
     "requiredWhenDirty": true,
@@ -43,5 +43,6 @@
     "LOT-07"
   ],
   "visualNote": "Gate defined; corpus FAIL. Full numeric LOT-00 unreviewed; Wave timing fixed, paint loss retained.",
-  "attemptHistoryRun": "docs/evaluations/2026-10-08T012312Z/loop.json"
+  "attemptHistoryRun": "docs/evaluations/2026-10-08T012312Z/loop.json",
+  "commitReproduction": "Clone git.head for complete execution-relevant source bytes; final snapshot hashes and archived before/after evidence retain dirty-tree provenance."
 }
