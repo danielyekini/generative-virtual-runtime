@@ -460,6 +460,68 @@ describe("lottie adapter", () => {
     expect(item?.appearance.stroke?.color.type).toBe("linear");
   });
 
+  it("preserves ordered stroke passes with shared morph trim and transforms", () => {
+    const result = load("multiple_stroke_morph_trim");
+    expect(result.ok).toBe(true);
+    expect(result.fidelity.overall).toBe("exact");
+    const paths = result.scene!.nodes.filter(node => node.kind === "path");
+    expect(paths).toHaveLength(2);
+    expect(paths[0]!.parentId).toBe(paths[1]!.parentId);
+    expect(paths[0]!.stroke?.color.type).toBe("linear");
+    expect(paths[1]!.stroke?.color).toMatchObject({ type: "solid", r: 1, g: 0, b: 0, a: 0.6 });
+    expect(paths.map(path => path.stroke?.width)).toEqual([4, 10]);
+    const compiled = compileMotionScript(emitMotionScript(result.scene!));
+    expect(compiled.ok).toBe(true);
+    const direct = new AnimationRuntime(result.scene!);
+    const emitted = new AnimationRuntime(compiled.scene!);
+    for (const time of [0, 1000, 500, 1999, 250, 0]) {
+      const sample = direct.evaluate(time);
+      const draws = sample.drawItems.filter(draw => paths.some(path => path.id === draw.nodeId));
+      expect(draws).toHaveLength(2);
+      expect(draws.map(draw => draw.nodeId)).toEqual(paths.map(path => path.id));
+      expect(draws[0]!.geometry).toEqual(draws[1]!.geometry);
+      expect(draws[0]!.logicalMatrix).toEqual(draws[1]!.logicalMatrix);
+      expect(transformPoint(draws[0]!.logicalMatrix, 0, 0)).toEqual({ x: 107, y: 111 });
+      expect(draws[0]!.logicalMatrix[0]).toBeCloseTo(Math.cos(25 * Math.PI / 180) * 1.2, 5);
+      const compare = (a: unknown, b: unknown, color = false): void => {
+        if (typeof a === "number" && typeof b === "number") {
+          expect(Math.abs(a - b)).toBeLessThanOrEqual(color ? 1 / 255 : 0.001);
+        } else if (a && b && typeof a === "object" && typeof b === "object") {
+          expect(Object.keys(a)).toEqual(Object.keys(b));
+          const isColor = "r" in a && "g" in a && "b" in a && "a" in a;
+          for (const key of Object.keys(a)) compare((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key], isColor);
+        } else expect(a).toEqual(b);
+      };
+      compare(sample, emitted.evaluate(time));
+      if (time === 0 && draws[0]!.geometry.kind === "path") expect(draws[0]!.geometry.commands).toHaveLength(0);
+      if (time === 1000 && draws[0]!.geometry.kind === "path") expect(draws[0]!.geometry.commands.length).toBeGreaterThan(0);
+    }
+    const roundTrip = verifyRoundTrip(result.scene!);
+    expect(roundTrip.ok, formatRoundTripReport(roundTrip)).toBe(true);
+  });
+
+  it("keeps stroke scope on preceding geometry", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "multiple_stroke_morph_trim.json"), "utf8"));
+    const items = source.layers[0].shapes[0].it;
+    items.splice(2, 0, { ...structuredClone(items[0]), nm: "Later path" });
+    const result = importSource(lottieAdapter, JSON.stringify(source));
+    expect(result.ok).toBe(true);
+    const paths = result.scene!.nodes.filter(node => node.kind === "path");
+    expect(paths).toHaveLength(3);
+    expect(paths.map(path => path.stroke?.width)).toEqual([4, 10, 4]);
+  });
+
+  it("retains two gradient strokes instead of overwriting the first", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "multiple_stroke_morph_trim.json"), "utf8"));
+    const items = source.layers[0].shapes[0].it;
+    items[1] = { ...structuredClone(items[2]), w: { a: 0, k: 8 } };
+    const result = importSource(lottieAdapter, JSON.stringify(source));
+    expect(result.ok).toBe(true);
+    const paths = result.scene!.nodes.filter(node => node.kind === "path");
+    expect(paths.map(path => path.stroke?.width)).toEqual([4, 8]);
+    expect(paths.map(path => path.stroke?.color.type)).toEqual(["linear", "linear"]);
+  });
+
   it("imports matching-topology animated path morph exactly", () => {
     const result = load("animated_path_morph");
     expect(result.ok).toBe(true);

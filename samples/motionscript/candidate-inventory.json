@@ -1,0 +1,222 @@
+{
+  "schemaRevision": "1.0",
+  "purpose": "Installation inventory only. Originals retained; no program migration or quality certification. Missing source association must be resolved reproducibly before registration.",
+  "candidateScope": "Existing Git-tracked .ms and .motion files. Ignored scratch/bulk files are not durable migration candidates.",
+  "candidates": [
+    {
+      "path": "docs/evaluations/2026-10-07-baseline/evidence/fixtures/LOT-03/diagnostic.motion",
+      "bytes": 2157,
+      "programSha256": "b96e155b6e675d1436a20afc920b1a83fc6589227cdd421d93ae631b7196d03f",
+      "origin": "historical-generated-evidence",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+      "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "sourceAssociation": "HISTORICAL_MANIFEST_AND_CURRENT_CORPUS_HASH_MATCH_ONLY",
+      "sourceManifestPath": "docs/evaluations/2026-10-07-baseline/manifest.json",
+      "recordedHistoricalSourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json"
+    },
+    {
+      "path": "docs/evaluations/2026-10-07-baseline/evidence/fixtures/SVG-01/diagnostic.motion",
+      "bytes": 60617,
+      "programSha256": "fd1cf2207995953e10357612275f2d249e9f1255ea8f0f612bfd86e9b60e6919",
+      "origin": "historical-generated-evidence",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": "fixtures/corpus/svg/SVG-01.svg",
+      "sourceSha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d",
+      "sourceAssociation": "HISTORICAL_MANIFEST_AND_CURRENT_CORPUS_HASH_MATCH_ONLY",
+      "sourceManifestPath": "docs/evaluations/2026-10-07-baseline/manifest.json",
+      "recordedHistoricalSourcePath": "/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg"
+    },
+    {
+      "path": "docs/evaluations/2026-10-07-baseline/evidence/fixtures/SVG-02/diagnostic.motion",
+      "bytes": 42893,
+      "programSha256": "6971143c10ca1fff676aaaf60212c8b0d3e8e5a2bdffc7805ca52b5b036c7467",
+      "origin": "historical-generated-evidence",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+      "sourceSha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+      "sourceAssociation": "HISTORICAL_MANIFEST_AND_CURRENT_CORPUS_HASH_MATCH_ONLY",
+      "sourceManifestPath": "docs/evaluations/2026-10-07-baseline/manifest.json",
+      "recordedHistoricalSourcePath": "/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg"
+    },
+    {
+      "path": "fixtures/motionscript/ball.ms",
+      "bytes": 562,
+      "programSha256": "6c0edb30c88a41184429953a66557cfdab0158025a4d37dea96e085cb5d8f22c",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/bunny.ms",
+      "bytes": 870,
+      "programSha256": "38462c9cbc6b654a9e84ea86fd5d8de764510b1b0c45bd04c89f42b0dd76a985",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/camera.ms",
+      "bytes": 730,
+      "programSha256": "65f1c234ab4d389add4648a61e510d25d4cb3766d1aa6a7d86cb10616a37edf6",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/caption.ms",
+      "bytes": 489,
+      "programSha256": "6f1a93bd48e4a9f2041ad0d6ef523056207e073ca35946b8b9ad185f1003ef31",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/diagram.ms",
+      "bytes": 1528,
+      "programSha256": "65b1e715f81c83c90c4111716bc0212ff710cdcc95231282497919f6ad111620",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/frames/camera-mapping.ms",
+      "bytes": 499,
+      "programSha256": "c8dd0d53f977eb7321f43b73b44554a9789fdf157f232c4f84e47bf24f1bff61",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/frames/hierarchy-transform.ms",
+      "bytes": 499,
+      "programSha256": "b285fcaa83af2c722c736cfa1e654eb43bba23619b9fdc695cbc358c7dfda9df",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/frames/opacity.ms",
+      "bytes": 851,
+      "programSha256": "cedcd8cda6398537c85efe8c953ea7c29de1cb16a7efbe6658219a7b62fb3448",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/frames/path-stress.ms",
+      "bytes": 1014,
+      "programSha256": "b23c1078b36c87359ae567ac0c5c838cbb676b134950ec8c17a337ea07935ee3",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/frames/primitive-gallery.ms",
+      "bytes": 1056,
+      "programSha256": "5cde7247fa8699dab7f3c2b0d1253721f39f4fea54f923ccbac1ebcec3dfb9b3",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/frames/text.ms",
+      "bytes": 1248,
+      "programSha256": "58f1299fb3e919b370000e47d008773a48dcfbe88250bbd452ecc97a1faf087d",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/frames/z-order.ms",
+      "bytes": 446,
+      "programSha256": "c60d48a9ed35fd8bdbd8d79424bcc52ce02da4b5c3cd270dfeeb49a79d476381",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/motionscript/nested.ms",
+      "bytes": 527,
+      "programSha256": "344b6f153d468da2039b6a16b51ba0b8785895a815b6e64a8038f85146523192",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/system/orbit.ms",
+      "bytes": 391,
+      "programSha256": "ef562501f1820d9ca1d552e1f61e99cdcb7f2b22fc3642df6f2522236107352b",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/system/pulse.ms",
+      "bytes": 694,
+      "programSha256": "7b00e85f20217091385b8a6066a187979906cad3964c77ee6c59205029c2d624",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    },
+    {
+      "path": "fixtures/system/tide.ms",
+      "bytes": 704,
+      "programSha256": "bba4533f175f35d876e276d6f10df32d65e103e44dea71fa421e6a0ba5474f95",
+      "origin": "native-fixture",
+      "verificationState": "NOT_REVIEWED",
+      "canonicalRevisionId": null,
+      "sourcePath": null,
+      "sourceSha256": null,
+      "sourceAssociation": "NOT_RECORDED"
+    }
+  ]
+}

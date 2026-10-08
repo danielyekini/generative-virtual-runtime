@@ -3,7 +3,7 @@ import type { SegmentEasing, Vec2 } from "@gvr/schema";
 export type LottieEasing = SegmentEasing | "bezier-approx";
 import type { InventoryFinding } from "./inventory";
 
-export const LOTTIE_ADAPTER_VERSION = "0.1.0";
+export const LOTTIE_ADAPTER_VERSION = "0.1.2";
 
 export interface LottieDocument {
   frameRate: number;
@@ -116,6 +116,7 @@ export type LottieShapeItem =
       morph?: LottiePathKeyframe[];
       fill?: SolidPaint;
       stroke?: StrokePaint;
+      strokePasses?: (StrokePaint | GradientStrokePaint)[];
       /** From Lottie `gf` only. */
       gradient?: GradientPaint;
       /** From Lottie `gs` only. */
@@ -139,6 +140,7 @@ export type LottieShapeItem =
       size: Vec2;
       fill?: SolidPaint;
       stroke?: StrokePaint;
+      strokePasses?: (StrokePaint | GradientStrokePaint)[];
       gradient?: GradientPaint;
       gradientStroke?: GradientStrokePaint;
     }
@@ -150,6 +152,7 @@ export type LottieShapeItem =
       cornerRadius: number;
       fill?: SolidPaint;
       stroke?: StrokePaint;
+      strokePasses?: (StrokePaint | GradientStrokePaint)[];
       gradient?: GradientPaint;
       gradientStroke?: GradientStrokePaint;
     }

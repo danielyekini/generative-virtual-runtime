@@ -1,0 +1,3633 @@
+{
+  "fidelity": {
+    "overall": "exact",
+    "exact": [
+      {
+        "feature": "rotation",
+        "level": "exact",
+        "message": "Imported motion on layer_1.Shape_5.transform.rotation.",
+        "target": "layer_1.Shape_5"
+      },
+      {
+        "feature": "gs",
+        "level": "exact",
+        "message": "Imported gradient stroke on layer_1.Shape_5.Path1_strokes.pass_1.",
+        "target": "layer_1.Shape_5.Path1_strokes.pass_1"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_1.Shape_5.Path1_strokes.pass_1.commands.",
+        "target": "layer_1.Shape_5.Path1_strokes.pass_1"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_1.Shape_5.Path1_strokes.pass_2.commands.",
+        "target": "layer_1.Shape_5.Path1_strokes.pass_2"
+      },
+      {
+        "feature": "rotation",
+        "level": "exact",
+        "message": "Imported motion on layer_2.Shape_55.transform.rotation.",
+        "target": "layer_2.Shape_55"
+      },
+      {
+        "feature": "gs",
+        "level": "exact",
+        "message": "Imported gradient stroke on layer_2.Shape_55.Path1_strokes.pass_1.",
+        "target": "layer_2.Shape_55.Path1_strokes.pass_1"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_2.Shape_55.Path1_strokes.pass_1.commands.",
+        "target": "layer_2.Shape_55.Path1_strokes.pass_1"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_2.Shape_55.Path1_strokes.pass_2.commands.",
+        "target": "layer_2.Shape_55.Path1_strokes.pass_2"
+      },
+      {
+        "feature": "rotation",
+        "level": "exact",
+        "message": "Imported motion on layer_3.Shape_6.transform.rotation.",
+        "target": "layer_3.Shape_6"
+      },
+      {
+        "feature": "gs",
+        "level": "exact",
+        "message": "Imported gradient stroke on layer_3.Shape_6.Path1_strokes.pass_1.",
+        "target": "layer_3.Shape_6.Path1_strokes.pass_1"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_3.Shape_6.Path1_strokes.pass_1.commands.",
+        "target": "layer_3.Shape_6.Path1_strokes.pass_1"
+      },
+      {
+        "feature": "gs",
+        "level": "exact",
+        "message": "Imported gradient stroke on layer_3.Shape_6.Path1_strokes.pass_2.",
+        "target": "layer_3.Shape_6.Path1_strokes.pass_2"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_3.Shape_6.Path1_strokes.pass_2.commands.",
+        "target": "layer_3.Shape_6.Path1_strokes.pass_2"
+      },
+      {
+        "feature": "rotation",
+        "level": "exact",
+        "message": "Imported motion on layer_4.Shape1.transform.rotation.",
+        "target": "layer_4.Shape1"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_4.Shape1.Path1.commands.",
+        "target": "layer_4.Shape1.Path1"
+      },
+      {
+        "feature": "rotation",
+        "level": "exact",
+        "message": "Imported motion on layer_5.Shape_1.transform.rotation.",
+        "target": "layer_5.Shape_1"
+      },
+      {
+        "feature": "gs",
+        "level": "exact",
+        "message": "Imported gradient stroke on layer_5.Shape_1.Path1.",
+        "target": "layer_5.Shape_1.Path1"
+      },
+      {
+        "feature": "path-morph",
+        "level": "exact",
+        "message": "Imported animated path morph on layer_5.Shape_1.Path1.commands.",
+        "target": "layer_5.Shape_1.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group1.opacity.",
+        "target": "layer_6.Group1"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group1.Path1.",
+        "target": "layer_6.Group1.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group2.opacity.",
+        "target": "layer_6.Group2"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group2.Path1.",
+        "target": "layer_6.Group2.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group3.opacity.",
+        "target": "layer_6.Group3"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group3.Path1.",
+        "target": "layer_6.Group3.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group4.opacity.",
+        "target": "layer_6.Group4"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group4.Path1.",
+        "target": "layer_6.Group4.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group5.opacity.",
+        "target": "layer_6.Group5"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group5.Path1.",
+        "target": "layer_6.Group5.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group6.opacity.",
+        "target": "layer_6.Group6"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group6.Path1.",
+        "target": "layer_6.Group6.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group7.opacity.",
+        "target": "layer_6.Group7"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group7.Path1.",
+        "target": "layer_6.Group7.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group8.opacity.",
+        "target": "layer_6.Group8"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group8.Path1.",
+        "target": "layer_6.Group8.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group9.opacity.",
+        "target": "layer_6.Group9"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group9.Path1.",
+        "target": "layer_6.Group9.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group10.opacity.",
+        "target": "layer_6.Group10"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group10.Path1.",
+        "target": "layer_6.Group10.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group11.opacity.",
+        "target": "layer_6.Group11"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group11.Path1.",
+        "target": "layer_6.Group11.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group12.opacity.",
+        "target": "layer_6.Group12"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group12.Path1.",
+        "target": "layer_6.Group12.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group13.opacity.",
+        "target": "layer_6.Group13"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group13.Path1.",
+        "target": "layer_6.Group13.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group14.opacity.",
+        "target": "layer_6.Group14"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group14.Path1.",
+        "target": "layer_6.Group14.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group15.opacity.",
+        "target": "layer_6.Group15"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group15.Path1.",
+        "target": "layer_6.Group15.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group16.opacity.",
+        "target": "layer_6.Group16"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group16.Path1.",
+        "target": "layer_6.Group16.Path1"
+      },
+      {
+        "feature": "opacity",
+        "level": "exact",
+        "message": "Imported motion on layer_6.Group17.opacity.",
+        "target": "layer_6.Group17"
+      },
+      {
+        "feature": "path",
+        "level": "exact",
+        "message": "Imported path layer_6.Group17.Path1.",
+        "target": "layer_6.Group17.Path1"
+      },
+      {
+        "feature": "frame-timing",
+        "level": "exact",
+        "message": "Converted composition frames 0–150 at 30fps to 5000ms."
+      }
+    ],
+    "approximated": [],
+    "dropped": [],
+    "unsupported": []
+  },
+  "rows": [
+    {
+      "ms": 0,
+      "before": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            -0.42261826174069944,
+            0,
+            0.42261826174069944,
+            0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            -0.42261826174069944,
+            0,
+            0.42261826174069944,
+            0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            0.42261826174069944,
+            0,
+            -0.42261826174069944,
+            0.9063077870366499,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            -0.42261826174069944,
+            0,
+            0.42261826174069944,
+            0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": 0,
+              "y1": 0,
+              "x2": 100,
+              "y2": 0,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            -0.42261826174069944,
+            0,
+            0.42261826174069944,
+            0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            -0.42261826174069944,
+            0,
+            0.42261826174069944,
+            0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            0.42261826174069944,
+            0,
+            -0.42261826174069944,
+            0.9063077870366499,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "round",
+            "join": "round",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9063077870366499,
+            0.42261826174069944,
+            0,
+            -0.42261826174069944,
+            0.9063077870366499,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "ms": 1250,
+      "before": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            6.123233995736766e-17,
+            1,
+            0,
+            -1,
+            6.123233995736766e-17,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            -0.9063077870366499,
+            0,
+            0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            6.123233995736766e-17,
+            -1,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            -0.9063077870366499,
+            0,
+            0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            0.9063077870366499,
+            0,
+            -0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            6.123233995736766e-17,
+            1,
+            0,
+            -1,
+            6.123233995736766e-17,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            -0.9063077870366499,
+            0,
+            0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            6.123233995736766e-17,
+            -1,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": 0,
+              "y1": 0,
+              "x2": 100,
+              "y2": 0,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            6.123233995736766e-17,
+            -1,
+            0,
+            1,
+            6.123233995736766e-17,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            -0.9063077870366499,
+            0,
+            0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            -0.9063077870366499,
+            0,
+            0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            0.9063077870366499,
+            0,
+            -0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "round",
+            "join": "round",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.4226182617406994,
+            0.9063077870366499,
+            0,
+            -0.9063077870366499,
+            -0.4226182617406994,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "ms": 2500,
+      "before": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -1,
+            1.2246467991473532e-16,
+            0,
+            -1.2246467991473532e-16,
+            -1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            0.42261826174069933,
+            0,
+            -0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -1,
+            -1.2246467991473532e-16,
+            0,
+            1.2246467991473532e-16,
+            -1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            0.42261826174069933,
+            0,
+            -0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            -0.42261826174069933,
+            0,
+            0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -1,
+            1.2246467991473532e-16,
+            0,
+            -1.2246467991473532e-16,
+            -1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            0.42261826174069933,
+            0,
+            -0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -1,
+            -1.2246467991473532e-16,
+            0,
+            1.2246467991473532e-16,
+            -1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": 0,
+              "y1": 0,
+              "x2": 100,
+              "y2": 0,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -1,
+            -1.2246467991473532e-16,
+            0,
+            1.2246467991473532e-16,
+            -1,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            0.42261826174069933,
+            0,
+            -0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            0.42261826174069933,
+            0,
+            -0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            -0.42261826174069933,
+            0,
+            0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "round",
+            "join": "round",
+            "miterLimit": 4
+          },
+          "matrix": [
+            -0.9063077870366499,
+            -0.42261826174069933,
+            0,
+            0.42261826174069933,
+            -0.9063077870366499,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "ms": 4999,
+      "before": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9999992104317518,
+            -0.0012566367307028474,
+            0,
+            0.0012566367307028474,
+            0.9999992104317518,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            -0.4214790284002266,
+            0,
+            0.4214790284002266,
+            0.9068381490755674,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9999992104317518,
+            0.0012566367307028474,
+            0,
+            -0.0012566367307028474,
+            0.9999992104317518,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            -0.4214790284002266,
+            0,
+            0.4214790284002266,
+            0.9068381490755674,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            0.4214790284002266,
+            0,
+            -0.4214790284002266,
+            0.9068381490755674,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "layer_5.Shape_1.Path1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9999992104317518,
+            -0.0012566367307028474,
+            0,
+            0.0012566367307028474,
+            0.9999992104317518,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_4.Shape1.Path1",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            -0.4214790284002266,
+            0,
+            0.4214790284002266,
+            0.9068381490755674,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9999992104317518,
+            0.0012566367307028474,
+            0,
+            -0.0012566367307028474,
+            0.9999992104317518,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_3.Shape_6.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": 0,
+              "y1": 0,
+              "x2": 100,
+              "y2": 0,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9999992104317518,
+            0.0012566367307028474,
+            0,
+            -0.0012566367307028474,
+            0.9999992104317518,
+            0,
+            202.141,
+            200.523,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            -0.4214790284002266,
+            0,
+            0.4214790284002266,
+            0.9068381490755674,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_2.Shape_55.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            -0.4214790284002266,
+            0,
+            0.4214790284002266,
+            0.9068381490755674,
+            0,
+            202.16143432293586,
+            199.56917327423332,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_1",
+          "stroke": {
+            "color": {
+              "type": "linear",
+              "x1": -177,
+              "y1": -11,
+              "x2": 182,
+              "y2": 12,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.244,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.488,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.71,
+                    "g": 0.008,
+                    "b": 0.616,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 0.744,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.741,
+                    "g": 0.073,
+                    "b": 0.5,
+                    "a": 1
+                  }
+                },
+                {
+                  "offset": 1,
+                  "color": {
+                    "type": "solid",
+                    "r": 0.773,
+                    "g": 0.137,
+                    "b": 0.384,
+                    "a": 1
+                  }
+                }
+              ]
+            },
+            "width": 3,
+            "cap": "butt",
+            "join": "miter",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            0.4214790284002266,
+            0,
+            -0.4214790284002266,
+            0.9068381490755674,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        },
+        {
+          "id": "layer_1.Shape_5.Path1_strokes.pass_2",
+          "stroke": {
+            "color": {
+              "type": "solid",
+              "r": 0,
+              "g": 0.403921574354,
+              "b": 0.509803950787,
+              "a": 0.25
+            },
+            "width": 3,
+            "cap": "round",
+            "join": "round",
+            "miterLimit": 4
+          },
+          "matrix": [
+            0.9068381490755674,
+            0.4214790284002266,
+            0,
+            -0.4214790284002266,
+            0.9068381490755674,
+            0,
+            201.71937562115508,
+            201.378824671007,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

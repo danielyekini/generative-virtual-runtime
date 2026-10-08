@@ -443,6 +443,28 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
     }
     return;
   }
+  if (item.strokePasses?.length) {
+    const passes = [...item.strokePasses].reverse();
+    const withoutPasses = { ...item, strokePasses: undefined, stroke: undefined, gradientStroke: undefined };
+    const withStroke = (pass: (typeof passes)[number]) => "stops" in pass
+      ? { ...withoutPasses, gradientStroke: pass }
+      : { ...withoutPasses, stroke: pass };
+    if (passes.length === 1) {
+      lowerShapeItem(ctx, parentId, withStroke(passes[0]!), zIndex, order);
+    } else {
+      // One parent keeps the ordered passes contiguous among sibling geometry.
+      // Every pass is lowered normally, retaining morph, trim and local geometry.
+      const groupId = allocateId(parentId, `${item.name ?? item.kind}_strokes`, ctx.usedIds);
+      ctx.nodes.push({ id: groupId.id, name: groupId.name, parentId, zIndex,
+        transform: { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
+        opacity: 1, visible: true, kind: "group" });
+      passes.forEach((pass, index) => lowerShapeItem(ctx, groupId.id, {
+        ...withStroke(pass), name: `pass_${index + 1}`,
+        ...(index > 0 ? { fill: undefined, gradient: undefined } : {}),
+      }, index, index));
+    }
+    return;
+  }
   const nodeId = allocateId(parentId, item.name ?? item.kind, ctx.usedIds);
   if (item.kind === "ellipse") {
     const fill = shapeFill(ctx, item);
@@ -1058,7 +1080,7 @@ function shapeStroke(
   item: Extract<LottieShapeItem, { kind: "ellipse" | "rectangle" | "path" }>,
   target: string,
 ) {
-  // Gradient stroke wins over a sibling solid stroke (Bodymovin often emits both).
+  // Each source stroke reaches this function as a separate native pass.
   if (item.gradientStroke) {
     ctx.capabilities.push("paint.gradientStroke");
     ctx.notes.push({

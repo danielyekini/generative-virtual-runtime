@@ -623,9 +623,10 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Static gs strokes lower to stroke.color gradients with width/cap/join. Sibling solid st is dropped when gs is present. gf remains fill-only.",
+          "scope": "Static gs strokes lower to native stroke.color gradients with width/cap/join. Every sibling st/gs is retained as a separate pass in reverse source-list painting order on preceding geometry; matching morph, trim and inherited group transforms are preserved. Multiple-stroke conformance covers one path per group. Wave instrumentation confirms a transformed-group gradient coordinate-space mismatch; exact source/reference fidelity for that variation is not claimed. gf remains fill-only.",
           "conformanceTests": [
-            "packages/format-lottie/src/lottie.test.ts#imports static gradient stroke as stroke paint not fill"
+            "packages/format-lottie/src/lottie.test.ts#imports static gradient stroke as stroke paint not fill",
+            "packages/format-lottie/src/lottie.test.ts#preserves ordered stroke passes with shared morph trim and transforms"
           ]
         },
         "svg": { "status": "untested", "scope": "SVG gradient strokes are not covered." }
