@@ -712,6 +712,10 @@ function addSpatialPositionTrack(
   });
   const clamped = clampTrackToScene(start, duration, keyframes, ctx.sceneDurationMs);
   if (!clamped) return;
+  if (keyframes.some(key => key.spatial) && (start < 0 || end > ctx.sceneDurationMs)) {
+    ctx.notes.push({ feature: "spatial-window-clipping", level: "approximated", target: nodeId,
+      message: "Composition-window clipping retains legacy spatial geometry; an exact spatial subcurve is not lowered." });
+  }
   ctx.trackSerial += 1;
   ctx.tracks.push({
     id: `track${ctx.trackSerial}`,
@@ -895,8 +899,6 @@ function clampTrackToScene(
     return clipped ? { ...clipped, keyframes: dedupeKeyframeOffsets(clipped.keyframes) } : undefined;
   }
 
-  notes.push({ feature: "spatial-window-clipping", level: "approximated", target,
-    message: "Composition-window clipping retains legacy spatial geometry; an exact spatial subcurve is not lowered." });
 
   const span = hi - lo;
   const samples: Keyframe[] = [];
