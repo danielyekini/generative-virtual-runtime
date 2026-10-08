@@ -4,9 +4,9 @@
   "afterRun": "2026-10-08T123430Z",
   "comparedWithForNextBaseline": "2026-10-08T123430Z",
   "git": {
-    "head": "682a1c8fcda20d5f24f62d664d10de30d80efa1a",
-    "short": "682a1c8",
-    "subject": "Report clipped spatial approximation from importer context",
+    "head": "cfb6d2749435f3cb0381480b96458044775b1164",
+    "short": "cfb6d27",
+    "subject": "Type spatial keyframe union for approximation diagnostics",
     "treeCleanAtPin": true,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
     "note": "Committed merged execution source. Prior evaluations certify only their recorded snapshots; merged visual verification required."
