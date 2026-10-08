@@ -1,0 +1,1559 @@
+{
+  "method": "Decoded RGBA equality at every matched timestamp, separately prepared source players and native routes. Independent unmodified full-source reference diagnostic repeated frame 0 after shuffled seeks.",
+  "scheduled": 150,
+  "extras": 5,
+  "pairs": [
+    {
+      "sample": "frame_00000",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00000",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00001",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00001",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00002",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00002",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00003",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00003",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00004",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00004",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00005",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00005",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00006",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00006",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00007",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00007",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00008",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00008",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00009",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00009",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00010",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00010",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00011",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00011",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00012",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00012",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00013",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00013",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00014",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00014",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00015",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00015",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00016",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00016",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00017",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00017",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00018",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00018",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00019",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00019",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00020",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00020",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00021",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00021",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00022",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00022",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00023",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00023",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00024",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00024",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00025",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00025",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00026",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00026",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00027",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00027",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00028",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00028",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00029",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00029",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00030",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00030",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00031",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00031",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00032",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00032",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00033",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00033",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00034",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00034",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00035",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00035",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00036",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00036",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00037",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00037",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00038",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00038",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00039",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00039",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00040",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00040",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00041",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00041",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00042",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00042",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00043",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00043",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00044",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00044",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00045",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00045",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00046",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00046",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00047",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00047",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00048",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00048",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00049",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00049",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00050",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00050",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00051",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00051",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00052",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00052",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00053",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00053",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00054",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00054",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00055",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00055",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00056",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00056",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00057",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00057",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00058",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00058",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00059",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00059",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00060",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00060",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00061",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00061",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00062",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00062",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00063",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00063",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00064",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00064",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00065",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00065",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00066",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00066",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00067",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00067",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00068",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00068",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00069",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00069",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00070",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00070",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00071",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00071",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00072",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00072",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00073",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00073",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00074",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00074",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00075",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00075",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00076",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00076",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00077",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00077",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00078",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00078",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00079",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00079",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00080",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00080",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00081",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00081",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00082",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00082",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00083",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00083",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00084",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00084",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00085",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00085",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00086",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00086",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00087",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00087",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00088",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00088",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00089",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00089",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00090",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00090",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00091",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00091",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00092",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00092",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00093",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00093",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00094",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00094",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00095",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00095",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00096",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00096",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00097",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00097",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00098",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00098",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00099",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00099",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00100",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00100",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00101",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00101",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00102",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00102",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00103",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00103",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00104",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00104",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00105",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00105",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00106",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00106",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00107",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00107",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00108",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00108",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00109",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00109",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00110",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00110",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00111",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00111",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00112",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00112",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00113",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00113",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00114",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00114",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00115",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00115",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00116",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00116",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00117",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00117",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00118",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00118",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00119",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00119",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00120",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00120",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00121",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00121",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00122",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00122",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00123",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00123",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00124",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00124",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00125",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00125",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00126",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00126",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00127",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00127",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00128",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00128",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00129",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00129",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00130",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00130",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00131",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00131",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00132",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00132",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00133",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00133",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00134",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00134",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00135",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00135",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00136",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00136",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00137",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00137",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00138",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00138",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00139",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00139",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00140",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00140",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00141",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00141",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00142",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00142",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00143",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00143",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00144",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00144",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00145",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00145",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00146",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00146",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00147",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00147",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00148",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00148",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "frame_00149",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "frame_00149",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "q25",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "q25",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "q75",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "q75",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "near_end",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "near_end",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "subframe_0",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "subframe_0",
+      "kind": "native",
+      "identical": true
+    },
+    {
+      "sample": "subframe_1",
+      "kind": "reference",
+      "identical": true
+    },
+    {
+      "sample": "subframe_1",
+      "kind": "native",
+      "identical": true
+    }
+  ],
+  "allPairsIdentical": true,
+  "independentFrameZeroRepeatIdentical": true
+}

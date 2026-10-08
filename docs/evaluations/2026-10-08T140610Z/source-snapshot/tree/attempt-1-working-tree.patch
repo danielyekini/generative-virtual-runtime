@@ -1,0 +1,94 @@
+diff --git a/package-lock.json b/package-lock.json
+index aa169cc..81b221b 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -2672,7 +2672,7 @@
+     },
+     "packages/format-lottie": {
+       "name": "@gvr/format-lottie",
+-      "version": "0.1.3",
++      "version": "0.1.4",
+       "dependencies": {
+         "@gvr/format-import-core": "*",
+         "@gvr/schema": "*"
+diff --git a/packages/format-lottie/CHANGELOG.md b/packages/format-lottie/CHANGELOG.md
+index 59428d3..7b5446d 100644
+--- a/packages/format-lottie/CHANGELOG.md
++++ b/packages/format-lottie/CHANGELOG.md
+@@ -1,5 +1,9 @@
+ # @gvr/format-lottie
+ 
++## 0.1.4
++
++Preserve clipped spatial motion with existing vec2 keyframes and restricted temporal easing over the original arc-length polyline. Covered temporal curves are monotonic with cubic Y controls in [0,1]; holds and named easing retain their existing meanings. No language or wire change. Non-monotonic spatial clipping remains outside this correction.
++
+ ## 0.1.3
+ 
+ Inventory animated solid fill colours recursively, including precomp shape trees, before lowering. Missing animated paints now report partial conversion rather than an exact label. The animated paint capability remains unimplemented.
+diff --git a/packages/format-lottie/package.json b/packages/format-lottie/package.json
+index 99c00eb..f1e1066 100644
+--- a/packages/format-lottie/package.json
++++ b/packages/format-lottie/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/format-lottie",
+-  "version": "0.1.3",
++  "version": "0.1.4",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/format-lottie/src/model.ts b/packages/format-lottie/src/model.ts
+index 5ef4499..6e048a3 100644
+--- a/packages/format-lottie/src/model.ts
++++ b/packages/format-lottie/src/model.ts
+@@ -3,7 +3,7 @@ import type { SegmentEasing, Vec2 } from "@gvr/schema";
+ export type LottieEasing = SegmentEasing | "bezier-approx";
+ import type { InventoryFinding } from "./inventory";
+ 
+-export const LOTTIE_ADAPTER_VERSION = "0.1.3";
++export const LOTTIE_ADAPTER_VERSION = "0.1.4";
+ 
+ export interface LottieDocument {
+   frameRate: number;
+diff --git a/packages/format-lottie/src/normalise.ts b/packages/format-lottie/src/normalise.ts
+index 781459a..6438043 100644
+--- a/packages/format-lottie/src/normalise.ts
++++ b/packages/format-lottie/src/normalise.ts
+@@ -39,6 +39,7 @@ import type {
+ } from "./model";
+ import { LOTTIE_ADAPTER_VERSION } from "./model";
+ import { clipKeyframes } from "./clip-keyframes";
++import { clipSpatialKeyframes } from "./clip-spatial-keyframes";
+ 
+ interface LowerContext {
+   document: LottieDocument;
+@@ -895,6 +896,9 @@ function clampTrackToScene(
+     return clipped ? { ...clipped, keyframes: dedupeKeyframeOffsets(clipped.keyframes) } : undefined;
+   }
+ 
++  const spatialClip = clipSpatialKeyframes(startMs, durationMs, keyframes, sceneDurationMs);
++  if (spatialClip) return { ...spatialClip, keyframes: dedupeKeyframeOffsets(spatialClip.keyframes) };
++
+   const span = hi - lo;
+   const samples: Keyframe[] = [];
+   const startValue = sampleTrackValue(startMs, durationMs, keyframes, lo);
+diff --git a/packages/schema/capabilities/registry.json b/packages/schema/capabilities/registry.json
+index 391722f..2f262fc 100644
+--- a/packages/schema/capabilities/registry.json
++++ b/packages/schema/capabilities/registry.json
+@@ -386,12 +386,13 @@
+       "conformanceTests": [
+         "packages/schema/src/spatial.test.ts#samples spatial cubics by arc length",
+         "packages/schema/src/spatial.test.ts#includes Z in arc length like lottie-web when tangents carry depth",
+-        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
++        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length",
++        "packages/format-lottie/src/clip-spatial-keyframes.test.ts#preserves uncut arc-length motion through both cuts and shuffled seeks"
+       ],
+       "adapters": {
+         "lottie": {
+           "status": "exact",
+-          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present.",
++          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present. Composition-window cuts with monotonic temporal curves (cubic Y controls in [0,1], named easing or holds) preserve the original arc-length polyline using existing vec2 keys; non-monotonic spatial cuts are outside the verified clipping scope.",
+           "conformanceTests": [
+             "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering",
+             "packages/format-lottie/src/lottie.test.ts#preserves spatial tangent Z for arc-length sampling",

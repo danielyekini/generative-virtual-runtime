@@ -6,6 +6,8 @@ Preserve clipped spatial motion with existing vec2 keyframes and restricted temp
 
 ## 0.1.3
 
+Clipped spatial geometry now explicitly reports its existing approximation; additional two-boundary scalar/morph conformance verifies both native routes.
+
 Inventory animated solid fill colours recursively, including precomp shape trees, before lowering. Missing animated paints now report partial conversion rather than an exact label. The animated paint capability remains unimplemented.
 
 Paint source shape groups in reverse list order, including nested groups, while preserving already ordered stroke passes. This restores covered face/shoe detail in LOT-06; independent arm geometry remains under investigation.

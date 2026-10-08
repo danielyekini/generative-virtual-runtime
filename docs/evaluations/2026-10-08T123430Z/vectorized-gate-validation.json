@@ -1,0 +1,9 @@
+{
+  "policyHash": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+  "oracle": "Unmodified evaluation/harness/visual-gate.ts; baseline-live/capture-summary.json",
+  "decodedFrameComparisons": 310,
+  "allNumericFieldsIdentical": true,
+  "failedRegionMembershipIdentical": true,
+  "ordering": "Region arrays normalized by x/y solely for equivalence comparison; no acceptance values altered",
+  "purpose": "Fast independent post-capture coverage recomputation; no production harness or threshold changed"
+}

@@ -1,0 +1,5537 @@
+{
+  "method": "Recompute from actual decoded PNGs. Missing captures omitted and counted explicitly; reference/material status must be supplied separately, never inferred.",
+  "fixtures": [
+    {
+      "id": "LOT-07-imported",
+      "referenceCount": 155,
+      "nativeCount": 155,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": true,
+        "complete": true,
+        "meanFractionBeyond": 0,
+        "capturedScheduled": 150,
+        "expectedScheduled": 150,
+        "capturedExtra": 5,
+        "expectedExtra": 5,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00001",
+          "label": "source frame 1",
+          "sourceTimeMs": 33.333333333333336,
+          "lottieFrame": 1,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00002",
+          "label": "source frame 2",
+          "sourceTimeMs": 66.66666666666667,
+          "lottieFrame": 2,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00003",
+          "label": "source frame 3",
+          "sourceTimeMs": 100,
+          "lottieFrame": 3,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00004",
+          "label": "source frame 4",
+          "sourceTimeMs": 133.33333333333334,
+          "lottieFrame": 4,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        }
+      ],
+      "frames": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00001",
+          "label": "source frame 1",
+          "sourceTimeMs": 33.333333333333336,
+          "lottieFrame": 1,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00002",
+          "label": "source frame 2",
+          "sourceTimeMs": 66.66666666666667,
+          "lottieFrame": 2,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00003",
+          "label": "source frame 3",
+          "sourceTimeMs": 100,
+          "lottieFrame": 3,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00004",
+          "label": "source frame 4",
+          "sourceTimeMs": 133.33333333333334,
+          "lottieFrame": 4,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00005",
+          "label": "source frame 5",
+          "sourceTimeMs": 166.66666666666666,
+          "lottieFrame": 5,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00006",
+          "label": "source frame 6",
+          "sourceTimeMs": 200,
+          "lottieFrame": 6,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00007",
+          "label": "source frame 7",
+          "sourceTimeMs": 233.33333333333334,
+          "lottieFrame": 7,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00008",
+          "label": "source frame 8",
+          "sourceTimeMs": 266.6666666666667,
+          "lottieFrame": 8,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00009",
+          "label": "source frame 9",
+          "sourceTimeMs": 300,
+          "lottieFrame": 9,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00010",
+          "label": "source frame 10",
+          "sourceTimeMs": 333.3333333333333,
+          "lottieFrame": 10,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00011",
+          "label": "source frame 11",
+          "sourceTimeMs": 366.6666666666667,
+          "lottieFrame": 11,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00012",
+          "label": "source frame 12",
+          "sourceTimeMs": 400,
+          "lottieFrame": 12,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00013",
+          "label": "source frame 13",
+          "sourceTimeMs": 433.3333333333333,
+          "lottieFrame": 13,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00014",
+          "label": "source frame 14",
+          "sourceTimeMs": 466.6666666666667,
+          "lottieFrame": 14,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00015",
+          "label": "source frame 15",
+          "sourceTimeMs": 500,
+          "lottieFrame": 15,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00016",
+          "label": "source frame 16",
+          "sourceTimeMs": 533.3333333333334,
+          "lottieFrame": 16,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00017",
+          "label": "source frame 17",
+          "sourceTimeMs": 566.6666666666666,
+          "lottieFrame": 17,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00018",
+          "label": "source frame 18",
+          "sourceTimeMs": 600,
+          "lottieFrame": 18,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00019",
+          "label": "source frame 19",
+          "sourceTimeMs": 633.3333333333334,
+          "lottieFrame": 19,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00020",
+          "label": "source frame 20",
+          "sourceTimeMs": 666.6666666666666,
+          "lottieFrame": 20,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00021",
+          "label": "source frame 21",
+          "sourceTimeMs": 700,
+          "lottieFrame": 21,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00022",
+          "label": "source frame 22",
+          "sourceTimeMs": 733.3333333333334,
+          "lottieFrame": 22,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00023",
+          "label": "source frame 23",
+          "sourceTimeMs": 766.6666666666666,
+          "lottieFrame": 23,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00024",
+          "label": "source frame 24",
+          "sourceTimeMs": 800,
+          "lottieFrame": 24,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00025",
+          "label": "source frame 25",
+          "sourceTimeMs": 833.3333333333334,
+          "lottieFrame": 25,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00026",
+          "label": "source frame 26",
+          "sourceTimeMs": 866.6666666666666,
+          "lottieFrame": 26,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00027",
+          "label": "source frame 27",
+          "sourceTimeMs": 900,
+          "lottieFrame": 27,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00028",
+          "label": "source frame 28",
+          "sourceTimeMs": 933.3333333333334,
+          "lottieFrame": 28,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00029",
+          "label": "source frame 29",
+          "sourceTimeMs": 966.6666666666666,
+          "lottieFrame": 29,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00030",
+          "label": "source frame 30",
+          "sourceTimeMs": 1000,
+          "lottieFrame": 30,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00031",
+          "label": "source frame 31",
+          "sourceTimeMs": 1033.3333333333333,
+          "lottieFrame": 31,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00032",
+          "label": "source frame 32",
+          "sourceTimeMs": 1066.6666666666667,
+          "lottieFrame": 32,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00033",
+          "label": "source frame 33",
+          "sourceTimeMs": 1100,
+          "lottieFrame": 33,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00034",
+          "label": "source frame 34",
+          "sourceTimeMs": 1133.3333333333333,
+          "lottieFrame": 34,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00035",
+          "label": "source frame 35",
+          "sourceTimeMs": 1166.6666666666667,
+          "lottieFrame": 35,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00036",
+          "label": "source frame 36",
+          "sourceTimeMs": 1200,
+          "lottieFrame": 36,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00037",
+          "label": "source frame 37",
+          "sourceTimeMs": 1233.3333333333333,
+          "lottieFrame": 37,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00038",
+          "label": "source frame 38",
+          "sourceTimeMs": 1266.6666666666667,
+          "lottieFrame": 38,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00039",
+          "label": "source frame 39",
+          "sourceTimeMs": 1300,
+          "lottieFrame": 39,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00040",
+          "label": "source frame 40",
+          "sourceTimeMs": 1333.3333333333333,
+          "lottieFrame": 40,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00041",
+          "label": "source frame 41",
+          "sourceTimeMs": 1366.6666666666667,
+          "lottieFrame": 41,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00042",
+          "label": "source frame 42",
+          "sourceTimeMs": 1400,
+          "lottieFrame": 42,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00043",
+          "label": "source frame 43",
+          "sourceTimeMs": 1433.3333333333333,
+          "lottieFrame": 43,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00044",
+          "label": "source frame 44",
+          "sourceTimeMs": 1466.6666666666667,
+          "lottieFrame": 44,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00045",
+          "label": "source frame 45",
+          "sourceTimeMs": 1500,
+          "lottieFrame": 45,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00046",
+          "label": "source frame 46",
+          "sourceTimeMs": 1533.3333333333333,
+          "lottieFrame": 46,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00047",
+          "label": "source frame 47",
+          "sourceTimeMs": 1566.6666666666667,
+          "lottieFrame": 47,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00048",
+          "label": "source frame 48",
+          "sourceTimeMs": 1600,
+          "lottieFrame": 48,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00049",
+          "label": "source frame 49",
+          "sourceTimeMs": 1633.3333333333333,
+          "lottieFrame": 49,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00050",
+          "label": "source frame 50",
+          "sourceTimeMs": 1666.6666666666667,
+          "lottieFrame": 50,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00051",
+          "label": "source frame 51",
+          "sourceTimeMs": 1700,
+          "lottieFrame": 51,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00052",
+          "label": "source frame 52",
+          "sourceTimeMs": 1733.3333333333333,
+          "lottieFrame": 52,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00053",
+          "label": "source frame 53",
+          "sourceTimeMs": 1766.6666666666667,
+          "lottieFrame": 53,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00054",
+          "label": "source frame 54",
+          "sourceTimeMs": 1800,
+          "lottieFrame": 54,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00055",
+          "label": "source frame 55",
+          "sourceTimeMs": 1833.3333333333333,
+          "lottieFrame": 55,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00056",
+          "label": "source frame 56",
+          "sourceTimeMs": 1866.6666666666667,
+          "lottieFrame": 56,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00057",
+          "label": "source frame 57",
+          "sourceTimeMs": 1900,
+          "lottieFrame": 57,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00058",
+          "label": "source frame 58",
+          "sourceTimeMs": 1933.3333333333333,
+          "lottieFrame": 58,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00059",
+          "label": "source frame 59",
+          "sourceTimeMs": 1966.6666666666667,
+          "lottieFrame": 59,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00060",
+          "label": "source frame 60",
+          "sourceTimeMs": 2000,
+          "lottieFrame": 60,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00061",
+          "label": "source frame 61",
+          "sourceTimeMs": 2033.3333333333333,
+          "lottieFrame": 61,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00062",
+          "label": "source frame 62",
+          "sourceTimeMs": 2066.6666666666665,
+          "lottieFrame": 62,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00063",
+          "label": "source frame 63",
+          "sourceTimeMs": 2100,
+          "lottieFrame": 63,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00064",
+          "label": "source frame 64",
+          "sourceTimeMs": 2133.3333333333335,
+          "lottieFrame": 64,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00065",
+          "label": "source frame 65",
+          "sourceTimeMs": 2166.6666666666665,
+          "lottieFrame": 65,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00066",
+          "label": "source frame 66",
+          "sourceTimeMs": 2200,
+          "lottieFrame": 66,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00067",
+          "label": "source frame 67",
+          "sourceTimeMs": 2233.3333333333335,
+          "lottieFrame": 67,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00068",
+          "label": "source frame 68",
+          "sourceTimeMs": 2266.6666666666665,
+          "lottieFrame": 68,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00069",
+          "label": "source frame 69",
+          "sourceTimeMs": 2300,
+          "lottieFrame": 69,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00070",
+          "label": "source frame 70",
+          "sourceTimeMs": 2333.3333333333335,
+          "lottieFrame": 70,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00071",
+          "label": "source frame 71",
+          "sourceTimeMs": 2366.6666666666665,
+          "lottieFrame": 71,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00072",
+          "label": "source frame 72",
+          "sourceTimeMs": 2400,
+          "lottieFrame": 72,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00073",
+          "label": "source frame 73",
+          "sourceTimeMs": 2433.3333333333335,
+          "lottieFrame": 73,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00074",
+          "label": "source frame 74",
+          "sourceTimeMs": 2466.6666666666665,
+          "lottieFrame": 74,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00075",
+          "label": "source frame 75",
+          "sourceTimeMs": 2500,
+          "lottieFrame": 75,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00076",
+          "label": "source frame 76",
+          "sourceTimeMs": 2533.3333333333335,
+          "lottieFrame": 76,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00077",
+          "label": "source frame 77",
+          "sourceTimeMs": 2566.6666666666665,
+          "lottieFrame": 77,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00078",
+          "label": "source frame 78",
+          "sourceTimeMs": 2600,
+          "lottieFrame": 78,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00079",
+          "label": "source frame 79",
+          "sourceTimeMs": 2633.3333333333335,
+          "lottieFrame": 79,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00080",
+          "label": "source frame 80",
+          "sourceTimeMs": 2666.6666666666665,
+          "lottieFrame": 80,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00081",
+          "label": "source frame 81",
+          "sourceTimeMs": 2700,
+          "lottieFrame": 81,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00082",
+          "label": "source frame 82",
+          "sourceTimeMs": 2733.3333333333335,
+          "lottieFrame": 82,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00083",
+          "label": "source frame 83",
+          "sourceTimeMs": 2766.6666666666665,
+          "lottieFrame": 83,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00084",
+          "label": "source frame 84",
+          "sourceTimeMs": 2800,
+          "lottieFrame": 84,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00085",
+          "label": "source frame 85",
+          "sourceTimeMs": 2833.3333333333335,
+          "lottieFrame": 85,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00086",
+          "label": "source frame 86",
+          "sourceTimeMs": 2866.6666666666665,
+          "lottieFrame": 86,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00087",
+          "label": "source frame 87",
+          "sourceTimeMs": 2900,
+          "lottieFrame": 87,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00088",
+          "label": "source frame 88",
+          "sourceTimeMs": 2933.3333333333335,
+          "lottieFrame": 88,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00089",
+          "label": "source frame 89",
+          "sourceTimeMs": 2966.6666666666665,
+          "lottieFrame": 89,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00090",
+          "label": "source frame 90",
+          "sourceTimeMs": 3000,
+          "lottieFrame": 90,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00091",
+          "label": "source frame 91",
+          "sourceTimeMs": 3033.3333333333335,
+          "lottieFrame": 91,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00092",
+          "label": "source frame 92",
+          "sourceTimeMs": 3066.6666666666665,
+          "lottieFrame": 92,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00093",
+          "label": "source frame 93",
+          "sourceTimeMs": 3100,
+          "lottieFrame": 93,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00094",
+          "label": "source frame 94",
+          "sourceTimeMs": 3133.3333333333335,
+          "lottieFrame": 94,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00095",
+          "label": "source frame 95",
+          "sourceTimeMs": 3166.6666666666665,
+          "lottieFrame": 95,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00096",
+          "label": "source frame 96",
+          "sourceTimeMs": 3200,
+          "lottieFrame": 96,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00097",
+          "label": "source frame 97",
+          "sourceTimeMs": 3233.3333333333335,
+          "lottieFrame": 97,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00098",
+          "label": "source frame 98",
+          "sourceTimeMs": 3266.6666666666665,
+          "lottieFrame": 98,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00099",
+          "label": "source frame 99",
+          "sourceTimeMs": 3300,
+          "lottieFrame": 99,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00100",
+          "label": "source frame 100",
+          "sourceTimeMs": 3333.3333333333335,
+          "lottieFrame": 100,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00101",
+          "label": "source frame 101",
+          "sourceTimeMs": 3366.6666666666665,
+          "lottieFrame": 101,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00102",
+          "label": "source frame 102",
+          "sourceTimeMs": 3400,
+          "lottieFrame": 102,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00103",
+          "label": "source frame 103",
+          "sourceTimeMs": 3433.3333333333335,
+          "lottieFrame": 103,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00104",
+          "label": "source frame 104",
+          "sourceTimeMs": 3466.6666666666665,
+          "lottieFrame": 104,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00105",
+          "label": "source frame 105",
+          "sourceTimeMs": 3500,
+          "lottieFrame": 105,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00106",
+          "label": "source frame 106",
+          "sourceTimeMs": 3533.3333333333335,
+          "lottieFrame": 106,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00107",
+          "label": "source frame 107",
+          "sourceTimeMs": 3566.6666666666665,
+          "lottieFrame": 107,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00108",
+          "label": "source frame 108",
+          "sourceTimeMs": 3600,
+          "lottieFrame": 108,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00109",
+          "label": "source frame 109",
+          "sourceTimeMs": 3633.3333333333335,
+          "lottieFrame": 109,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00110",
+          "label": "source frame 110",
+          "sourceTimeMs": 3666.6666666666665,
+          "lottieFrame": 110,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00111",
+          "label": "source frame 111",
+          "sourceTimeMs": 3700,
+          "lottieFrame": 111,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00112",
+          "label": "source frame 112",
+          "sourceTimeMs": 3733.3333333333335,
+          "lottieFrame": 112,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00113",
+          "label": "source frame 113",
+          "sourceTimeMs": 3766.6666666666665,
+          "lottieFrame": 113,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00114",
+          "label": "source frame 114",
+          "sourceTimeMs": 3800,
+          "lottieFrame": 114,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00115",
+          "label": "source frame 115",
+          "sourceTimeMs": 3833.3333333333335,
+          "lottieFrame": 115,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00116",
+          "label": "source frame 116",
+          "sourceTimeMs": 3866.6666666666665,
+          "lottieFrame": 116,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00117",
+          "label": "source frame 117",
+          "sourceTimeMs": 3900,
+          "lottieFrame": 117,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00118",
+          "label": "source frame 118",
+          "sourceTimeMs": 3933.3333333333335,
+          "lottieFrame": 118,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00119",
+          "label": "source frame 119",
+          "sourceTimeMs": 3966.6666666666665,
+          "lottieFrame": 119,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00120",
+          "label": "source frame 120",
+          "sourceTimeMs": 4000,
+          "lottieFrame": 120,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00121",
+          "label": "source frame 121",
+          "sourceTimeMs": 4033.3333333333335,
+          "lottieFrame": 121,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00122",
+          "label": "source frame 122",
+          "sourceTimeMs": 4066.6666666666665,
+          "lottieFrame": 122,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00123",
+          "label": "source frame 123",
+          "sourceTimeMs": 4100,
+          "lottieFrame": 123,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00124",
+          "label": "source frame 124",
+          "sourceTimeMs": 4133.333333333333,
+          "lottieFrame": 124,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00125",
+          "label": "source frame 125",
+          "sourceTimeMs": 4166.666666666667,
+          "lottieFrame": 125,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00126",
+          "label": "source frame 126",
+          "sourceTimeMs": 4200,
+          "lottieFrame": 126,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00127",
+          "label": "source frame 127",
+          "sourceTimeMs": 4233.333333333333,
+          "lottieFrame": 127,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00128",
+          "label": "source frame 128",
+          "sourceTimeMs": 4266.666666666667,
+          "lottieFrame": 128,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00129",
+          "label": "source frame 129",
+          "sourceTimeMs": 4300,
+          "lottieFrame": 129,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00130",
+          "label": "source frame 130",
+          "sourceTimeMs": 4333.333333333333,
+          "lottieFrame": 130,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00131",
+          "label": "source frame 131",
+          "sourceTimeMs": 4366.666666666667,
+          "lottieFrame": 131,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00132",
+          "label": "source frame 132",
+          "sourceTimeMs": 4400,
+          "lottieFrame": 132,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00133",
+          "label": "source frame 133",
+          "sourceTimeMs": 4433.333333333333,
+          "lottieFrame": 133,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00134",
+          "label": "source frame 134",
+          "sourceTimeMs": 4466.666666666667,
+          "lottieFrame": 134,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00135",
+          "label": "source frame 135",
+          "sourceTimeMs": 4500,
+          "lottieFrame": 135,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00136",
+          "label": "source frame 136",
+          "sourceTimeMs": 4533.333333333333,
+          "lottieFrame": 136,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00137",
+          "label": "source frame 137",
+          "sourceTimeMs": 4566.666666666667,
+          "lottieFrame": 137,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00138",
+          "label": "source frame 138",
+          "sourceTimeMs": 4600,
+          "lottieFrame": 138,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00139",
+          "label": "source frame 139",
+          "sourceTimeMs": 4633.333333333333,
+          "lottieFrame": 139,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00140",
+          "label": "source frame 140",
+          "sourceTimeMs": 4666.666666666667,
+          "lottieFrame": 140,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00141",
+          "label": "source frame 141",
+          "sourceTimeMs": 4700,
+          "lottieFrame": 141,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00142",
+          "label": "source frame 142",
+          "sourceTimeMs": 4733.333333333333,
+          "lottieFrame": 142,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00143",
+          "label": "source frame 143",
+          "sourceTimeMs": 4766.666666666667,
+          "lottieFrame": 143,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00144",
+          "label": "source frame 144",
+          "sourceTimeMs": 4800,
+          "lottieFrame": 144,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00145",
+          "label": "source frame 145",
+          "sourceTimeMs": 4833.333333333333,
+          "lottieFrame": 145,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00146",
+          "label": "source frame 146",
+          "sourceTimeMs": 4866.666666666667,
+          "lottieFrame": 146,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00147",
+          "label": "source frame 147",
+          "sourceTimeMs": 4900,
+          "lottieFrame": 147,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00148",
+          "label": "source frame 148",
+          "sourceTimeMs": 4933.333333333333,
+          "lottieFrame": 148,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00149",
+          "label": "source frame 149",
+          "sourceTimeMs": 4966.666666666667,
+          "lottieFrame": 149,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1250,
+          "lottieFrame": 37.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 3750,
+          "lottieFrame": 112.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 4975,
+          "lottieFrame": 149.25,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "subframe_0",
+          "label": "boundary subframe 0.5",
+          "sourceTimeMs": 16.666666666666668,
+          "lottieFrame": 0.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 149.5",
+          "sourceTimeMs": 4983.333333333333,
+          "lottieFrame": 149.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-07-compiled",
+      "referenceCount": 155,
+      "nativeCount": 155,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": true,
+        "complete": true,
+        "meanFractionBeyond": 0,
+        "capturedScheduled": 150,
+        "expectedScheduled": 150,
+        "capturedExtra": 5,
+        "expectedExtra": 5,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00001",
+          "label": "source frame 1",
+          "sourceTimeMs": 33.333333333333336,
+          "lottieFrame": 1,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00002",
+          "label": "source frame 2",
+          "sourceTimeMs": 66.66666666666667,
+          "lottieFrame": 2,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00003",
+          "label": "source frame 3",
+          "sourceTimeMs": 100,
+          "lottieFrame": 3,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00004",
+          "label": "source frame 4",
+          "sourceTimeMs": 133.33333333333334,
+          "lottieFrame": 4,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        }
+      ],
+      "frames": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00001",
+          "label": "source frame 1",
+          "sourceTimeMs": 33.333333333333336,
+          "lottieFrame": 1,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00002",
+          "label": "source frame 2",
+          "sourceTimeMs": 66.66666666666667,
+          "lottieFrame": 2,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00003",
+          "label": "source frame 3",
+          "sourceTimeMs": 100,
+          "lottieFrame": 3,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00004",
+          "label": "source frame 4",
+          "sourceTimeMs": 133.33333333333334,
+          "lottieFrame": 4,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00005",
+          "label": "source frame 5",
+          "sourceTimeMs": 166.66666666666666,
+          "lottieFrame": 5,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00006",
+          "label": "source frame 6",
+          "sourceTimeMs": 200,
+          "lottieFrame": 6,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00007",
+          "label": "source frame 7",
+          "sourceTimeMs": 233.33333333333334,
+          "lottieFrame": 7,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00008",
+          "label": "source frame 8",
+          "sourceTimeMs": 266.6666666666667,
+          "lottieFrame": 8,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00009",
+          "label": "source frame 9",
+          "sourceTimeMs": 300,
+          "lottieFrame": 9,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00010",
+          "label": "source frame 10",
+          "sourceTimeMs": 333.3333333333333,
+          "lottieFrame": 10,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00011",
+          "label": "source frame 11",
+          "sourceTimeMs": 366.6666666666667,
+          "lottieFrame": 11,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00012",
+          "label": "source frame 12",
+          "sourceTimeMs": 400,
+          "lottieFrame": 12,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00013",
+          "label": "source frame 13",
+          "sourceTimeMs": 433.3333333333333,
+          "lottieFrame": 13,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00014",
+          "label": "source frame 14",
+          "sourceTimeMs": 466.6666666666667,
+          "lottieFrame": 14,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00015",
+          "label": "source frame 15",
+          "sourceTimeMs": 500,
+          "lottieFrame": 15,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00016",
+          "label": "source frame 16",
+          "sourceTimeMs": 533.3333333333334,
+          "lottieFrame": 16,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00017",
+          "label": "source frame 17",
+          "sourceTimeMs": 566.6666666666666,
+          "lottieFrame": 17,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00018",
+          "label": "source frame 18",
+          "sourceTimeMs": 600,
+          "lottieFrame": 18,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00019",
+          "label": "source frame 19",
+          "sourceTimeMs": 633.3333333333334,
+          "lottieFrame": 19,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00020",
+          "label": "source frame 20",
+          "sourceTimeMs": 666.6666666666666,
+          "lottieFrame": 20,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00021",
+          "label": "source frame 21",
+          "sourceTimeMs": 700,
+          "lottieFrame": 21,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00022",
+          "label": "source frame 22",
+          "sourceTimeMs": 733.3333333333334,
+          "lottieFrame": 22,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00023",
+          "label": "source frame 23",
+          "sourceTimeMs": 766.6666666666666,
+          "lottieFrame": 23,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00024",
+          "label": "source frame 24",
+          "sourceTimeMs": 800,
+          "lottieFrame": 24,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00025",
+          "label": "source frame 25",
+          "sourceTimeMs": 833.3333333333334,
+          "lottieFrame": 25,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00026",
+          "label": "source frame 26",
+          "sourceTimeMs": 866.6666666666666,
+          "lottieFrame": 26,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00027",
+          "label": "source frame 27",
+          "sourceTimeMs": 900,
+          "lottieFrame": 27,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00028",
+          "label": "source frame 28",
+          "sourceTimeMs": 933.3333333333334,
+          "lottieFrame": 28,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00029",
+          "label": "source frame 29",
+          "sourceTimeMs": 966.6666666666666,
+          "lottieFrame": 29,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00030",
+          "label": "source frame 30",
+          "sourceTimeMs": 1000,
+          "lottieFrame": 30,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00031",
+          "label": "source frame 31",
+          "sourceTimeMs": 1033.3333333333333,
+          "lottieFrame": 31,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00032",
+          "label": "source frame 32",
+          "sourceTimeMs": 1066.6666666666667,
+          "lottieFrame": 32,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00033",
+          "label": "source frame 33",
+          "sourceTimeMs": 1100,
+          "lottieFrame": 33,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00034",
+          "label": "source frame 34",
+          "sourceTimeMs": 1133.3333333333333,
+          "lottieFrame": 34,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00035",
+          "label": "source frame 35",
+          "sourceTimeMs": 1166.6666666666667,
+          "lottieFrame": 35,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00036",
+          "label": "source frame 36",
+          "sourceTimeMs": 1200,
+          "lottieFrame": 36,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00037",
+          "label": "source frame 37",
+          "sourceTimeMs": 1233.3333333333333,
+          "lottieFrame": 37,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00038",
+          "label": "source frame 38",
+          "sourceTimeMs": 1266.6666666666667,
+          "lottieFrame": 38,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00039",
+          "label": "source frame 39",
+          "sourceTimeMs": 1300,
+          "lottieFrame": 39,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00040",
+          "label": "source frame 40",
+          "sourceTimeMs": 1333.3333333333333,
+          "lottieFrame": 40,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00041",
+          "label": "source frame 41",
+          "sourceTimeMs": 1366.6666666666667,
+          "lottieFrame": 41,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00042",
+          "label": "source frame 42",
+          "sourceTimeMs": 1400,
+          "lottieFrame": 42,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00043",
+          "label": "source frame 43",
+          "sourceTimeMs": 1433.3333333333333,
+          "lottieFrame": 43,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00044",
+          "label": "source frame 44",
+          "sourceTimeMs": 1466.6666666666667,
+          "lottieFrame": 44,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00045",
+          "label": "source frame 45",
+          "sourceTimeMs": 1500,
+          "lottieFrame": 45,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00046",
+          "label": "source frame 46",
+          "sourceTimeMs": 1533.3333333333333,
+          "lottieFrame": 46,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00047",
+          "label": "source frame 47",
+          "sourceTimeMs": 1566.6666666666667,
+          "lottieFrame": 47,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00048",
+          "label": "source frame 48",
+          "sourceTimeMs": 1600,
+          "lottieFrame": 48,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00049",
+          "label": "source frame 49",
+          "sourceTimeMs": 1633.3333333333333,
+          "lottieFrame": 49,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00050",
+          "label": "source frame 50",
+          "sourceTimeMs": 1666.6666666666667,
+          "lottieFrame": 50,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00051",
+          "label": "source frame 51",
+          "sourceTimeMs": 1700,
+          "lottieFrame": 51,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00052",
+          "label": "source frame 52",
+          "sourceTimeMs": 1733.3333333333333,
+          "lottieFrame": 52,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00053",
+          "label": "source frame 53",
+          "sourceTimeMs": 1766.6666666666667,
+          "lottieFrame": 53,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00054",
+          "label": "source frame 54",
+          "sourceTimeMs": 1800,
+          "lottieFrame": 54,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00055",
+          "label": "source frame 55",
+          "sourceTimeMs": 1833.3333333333333,
+          "lottieFrame": 55,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00056",
+          "label": "source frame 56",
+          "sourceTimeMs": 1866.6666666666667,
+          "lottieFrame": 56,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00057",
+          "label": "source frame 57",
+          "sourceTimeMs": 1900,
+          "lottieFrame": 57,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00058",
+          "label": "source frame 58",
+          "sourceTimeMs": 1933.3333333333333,
+          "lottieFrame": 58,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00059",
+          "label": "source frame 59",
+          "sourceTimeMs": 1966.6666666666667,
+          "lottieFrame": 59,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00060",
+          "label": "source frame 60",
+          "sourceTimeMs": 2000,
+          "lottieFrame": 60,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00061",
+          "label": "source frame 61",
+          "sourceTimeMs": 2033.3333333333333,
+          "lottieFrame": 61,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00062",
+          "label": "source frame 62",
+          "sourceTimeMs": 2066.6666666666665,
+          "lottieFrame": 62,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00063",
+          "label": "source frame 63",
+          "sourceTimeMs": 2100,
+          "lottieFrame": 63,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00064",
+          "label": "source frame 64",
+          "sourceTimeMs": 2133.3333333333335,
+          "lottieFrame": 64,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00065",
+          "label": "source frame 65",
+          "sourceTimeMs": 2166.6666666666665,
+          "lottieFrame": 65,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00066",
+          "label": "source frame 66",
+          "sourceTimeMs": 2200,
+          "lottieFrame": 66,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00067",
+          "label": "source frame 67",
+          "sourceTimeMs": 2233.3333333333335,
+          "lottieFrame": 67,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00068",
+          "label": "source frame 68",
+          "sourceTimeMs": 2266.6666666666665,
+          "lottieFrame": 68,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00069",
+          "label": "source frame 69",
+          "sourceTimeMs": 2300,
+          "lottieFrame": 69,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00070",
+          "label": "source frame 70",
+          "sourceTimeMs": 2333.3333333333335,
+          "lottieFrame": 70,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00071",
+          "label": "source frame 71",
+          "sourceTimeMs": 2366.6666666666665,
+          "lottieFrame": 71,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00072",
+          "label": "source frame 72",
+          "sourceTimeMs": 2400,
+          "lottieFrame": 72,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00073",
+          "label": "source frame 73",
+          "sourceTimeMs": 2433.3333333333335,
+          "lottieFrame": 73,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00074",
+          "label": "source frame 74",
+          "sourceTimeMs": 2466.6666666666665,
+          "lottieFrame": 74,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00075",
+          "label": "source frame 75",
+          "sourceTimeMs": 2500,
+          "lottieFrame": 75,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00076",
+          "label": "source frame 76",
+          "sourceTimeMs": 2533.3333333333335,
+          "lottieFrame": 76,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00077",
+          "label": "source frame 77",
+          "sourceTimeMs": 2566.6666666666665,
+          "lottieFrame": 77,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00078",
+          "label": "source frame 78",
+          "sourceTimeMs": 2600,
+          "lottieFrame": 78,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00079",
+          "label": "source frame 79",
+          "sourceTimeMs": 2633.3333333333335,
+          "lottieFrame": 79,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00080",
+          "label": "source frame 80",
+          "sourceTimeMs": 2666.6666666666665,
+          "lottieFrame": 80,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00081",
+          "label": "source frame 81",
+          "sourceTimeMs": 2700,
+          "lottieFrame": 81,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00082",
+          "label": "source frame 82",
+          "sourceTimeMs": 2733.3333333333335,
+          "lottieFrame": 82,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00083",
+          "label": "source frame 83",
+          "sourceTimeMs": 2766.6666666666665,
+          "lottieFrame": 83,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00084",
+          "label": "source frame 84",
+          "sourceTimeMs": 2800,
+          "lottieFrame": 84,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00085",
+          "label": "source frame 85",
+          "sourceTimeMs": 2833.3333333333335,
+          "lottieFrame": 85,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00086",
+          "label": "source frame 86",
+          "sourceTimeMs": 2866.6666666666665,
+          "lottieFrame": 86,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00087",
+          "label": "source frame 87",
+          "sourceTimeMs": 2900,
+          "lottieFrame": 87,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00088",
+          "label": "source frame 88",
+          "sourceTimeMs": 2933.3333333333335,
+          "lottieFrame": 88,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00089",
+          "label": "source frame 89",
+          "sourceTimeMs": 2966.6666666666665,
+          "lottieFrame": 89,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00090",
+          "label": "source frame 90",
+          "sourceTimeMs": 3000,
+          "lottieFrame": 90,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00091",
+          "label": "source frame 91",
+          "sourceTimeMs": 3033.3333333333335,
+          "lottieFrame": 91,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00092",
+          "label": "source frame 92",
+          "sourceTimeMs": 3066.6666666666665,
+          "lottieFrame": 92,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00093",
+          "label": "source frame 93",
+          "sourceTimeMs": 3100,
+          "lottieFrame": 93,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00094",
+          "label": "source frame 94",
+          "sourceTimeMs": 3133.3333333333335,
+          "lottieFrame": 94,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00095",
+          "label": "source frame 95",
+          "sourceTimeMs": 3166.6666666666665,
+          "lottieFrame": 95,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00096",
+          "label": "source frame 96",
+          "sourceTimeMs": 3200,
+          "lottieFrame": 96,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00097",
+          "label": "source frame 97",
+          "sourceTimeMs": 3233.3333333333335,
+          "lottieFrame": 97,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00098",
+          "label": "source frame 98",
+          "sourceTimeMs": 3266.6666666666665,
+          "lottieFrame": 98,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00099",
+          "label": "source frame 99",
+          "sourceTimeMs": 3300,
+          "lottieFrame": 99,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00100",
+          "label": "source frame 100",
+          "sourceTimeMs": 3333.3333333333335,
+          "lottieFrame": 100,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00101",
+          "label": "source frame 101",
+          "sourceTimeMs": 3366.6666666666665,
+          "lottieFrame": 101,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00102",
+          "label": "source frame 102",
+          "sourceTimeMs": 3400,
+          "lottieFrame": 102,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00103",
+          "label": "source frame 103",
+          "sourceTimeMs": 3433.3333333333335,
+          "lottieFrame": 103,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00104",
+          "label": "source frame 104",
+          "sourceTimeMs": 3466.6666666666665,
+          "lottieFrame": 104,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00105",
+          "label": "source frame 105",
+          "sourceTimeMs": 3500,
+          "lottieFrame": 105,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00106",
+          "label": "source frame 106",
+          "sourceTimeMs": 3533.3333333333335,
+          "lottieFrame": 106,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00107",
+          "label": "source frame 107",
+          "sourceTimeMs": 3566.6666666666665,
+          "lottieFrame": 107,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00108",
+          "label": "source frame 108",
+          "sourceTimeMs": 3600,
+          "lottieFrame": 108,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00109",
+          "label": "source frame 109",
+          "sourceTimeMs": 3633.3333333333335,
+          "lottieFrame": 109,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00110",
+          "label": "source frame 110",
+          "sourceTimeMs": 3666.6666666666665,
+          "lottieFrame": 110,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00111",
+          "label": "source frame 111",
+          "sourceTimeMs": 3700,
+          "lottieFrame": 111,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00112",
+          "label": "source frame 112",
+          "sourceTimeMs": 3733.3333333333335,
+          "lottieFrame": 112,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00113",
+          "label": "source frame 113",
+          "sourceTimeMs": 3766.6666666666665,
+          "lottieFrame": 113,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00114",
+          "label": "source frame 114",
+          "sourceTimeMs": 3800,
+          "lottieFrame": 114,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00115",
+          "label": "source frame 115",
+          "sourceTimeMs": 3833.3333333333335,
+          "lottieFrame": 115,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00116",
+          "label": "source frame 116",
+          "sourceTimeMs": 3866.6666666666665,
+          "lottieFrame": 116,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00117",
+          "label": "source frame 117",
+          "sourceTimeMs": 3900,
+          "lottieFrame": 117,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00118",
+          "label": "source frame 118",
+          "sourceTimeMs": 3933.3333333333335,
+          "lottieFrame": 118,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00119",
+          "label": "source frame 119",
+          "sourceTimeMs": 3966.6666666666665,
+          "lottieFrame": 119,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00120",
+          "label": "source frame 120",
+          "sourceTimeMs": 4000,
+          "lottieFrame": 120,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00121",
+          "label": "source frame 121",
+          "sourceTimeMs": 4033.3333333333335,
+          "lottieFrame": 121,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00122",
+          "label": "source frame 122",
+          "sourceTimeMs": 4066.6666666666665,
+          "lottieFrame": 122,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00123",
+          "label": "source frame 123",
+          "sourceTimeMs": 4100,
+          "lottieFrame": 123,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00124",
+          "label": "source frame 124",
+          "sourceTimeMs": 4133.333333333333,
+          "lottieFrame": 124,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00125",
+          "label": "source frame 125",
+          "sourceTimeMs": 4166.666666666667,
+          "lottieFrame": 125,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00126",
+          "label": "source frame 126",
+          "sourceTimeMs": 4200,
+          "lottieFrame": 126,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00127",
+          "label": "source frame 127",
+          "sourceTimeMs": 4233.333333333333,
+          "lottieFrame": 127,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00128",
+          "label": "source frame 128",
+          "sourceTimeMs": 4266.666666666667,
+          "lottieFrame": 128,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00129",
+          "label": "source frame 129",
+          "sourceTimeMs": 4300,
+          "lottieFrame": 129,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00130",
+          "label": "source frame 130",
+          "sourceTimeMs": 4333.333333333333,
+          "lottieFrame": 130,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00131",
+          "label": "source frame 131",
+          "sourceTimeMs": 4366.666666666667,
+          "lottieFrame": 131,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00132",
+          "label": "source frame 132",
+          "sourceTimeMs": 4400,
+          "lottieFrame": 132,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00133",
+          "label": "source frame 133",
+          "sourceTimeMs": 4433.333333333333,
+          "lottieFrame": 133,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00134",
+          "label": "source frame 134",
+          "sourceTimeMs": 4466.666666666667,
+          "lottieFrame": 134,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00135",
+          "label": "source frame 135",
+          "sourceTimeMs": 4500,
+          "lottieFrame": 135,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00136",
+          "label": "source frame 136",
+          "sourceTimeMs": 4533.333333333333,
+          "lottieFrame": 136,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00137",
+          "label": "source frame 137",
+          "sourceTimeMs": 4566.666666666667,
+          "lottieFrame": 137,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00138",
+          "label": "source frame 138",
+          "sourceTimeMs": 4600,
+          "lottieFrame": 138,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00139",
+          "label": "source frame 139",
+          "sourceTimeMs": 4633.333333333333,
+          "lottieFrame": 139,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00140",
+          "label": "source frame 140",
+          "sourceTimeMs": 4666.666666666667,
+          "lottieFrame": 140,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00141",
+          "label": "source frame 141",
+          "sourceTimeMs": 4700,
+          "lottieFrame": 141,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00142",
+          "label": "source frame 142",
+          "sourceTimeMs": 4733.333333333333,
+          "lottieFrame": 142,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00143",
+          "label": "source frame 143",
+          "sourceTimeMs": 4766.666666666667,
+          "lottieFrame": 143,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00144",
+          "label": "source frame 144",
+          "sourceTimeMs": 4800,
+          "lottieFrame": 144,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00145",
+          "label": "source frame 145",
+          "sourceTimeMs": 4833.333333333333,
+          "lottieFrame": 145,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00146",
+          "label": "source frame 146",
+          "sourceTimeMs": 4866.666666666667,
+          "lottieFrame": 146,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00147",
+          "label": "source frame 147",
+          "sourceTimeMs": 4900,
+          "lottieFrame": 147,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00148",
+          "label": "source frame 148",
+          "sourceTimeMs": 4933.333333333333,
+          "lottieFrame": 148,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00149",
+          "label": "source frame 149",
+          "sourceTimeMs": 4966.666666666667,
+          "lottieFrame": 149,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1250,
+          "lottieFrame": 37.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 3750,
+          "lottieFrame": 112.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 4975,
+          "lottieFrame": 149.25,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "subframe_0",
+          "label": "boundary subframe 0.5",
+          "sourceTimeMs": 16.666666666666668,
+          "lottieFrame": 0.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 149.5",
+          "sourceTimeMs": 4983.333333333333,
+          "lottieFrame": 149.5,
+          "scheduled": false,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0,
+            "maxLocalFractionBeyond": 0,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-00-imported",
+      "referenceCount": 24,
+      "nativeCount": 24,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": 0.00009964554398148148,
+        "capturedScheduled": 24,
+        "expectedScheduled": 240,
+        "capturedExtra": 0,
+        "expectedExtra": 3,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [
+        {
+          "id": "frame_00015",
+          "label": "source frame 15",
+          "sourceTimeMs": 500,
+          "lottieFrame": 15,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00012261284722222223,
+            "maxLocalFractionBeyond": 0.0302734375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00011",
+          "label": "source frame 11",
+          "sourceTimeMs": 366.6666666666667,
+          "lottieFrame": 11,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00012152777777777777,
+            "maxLocalFractionBeyond": 0.0244140625,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00020",
+          "label": "source frame 20",
+          "sourceTimeMs": 666.6666666666666,
+          "lottieFrame": 20,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.0001171875,
+            "maxLocalFractionBeyond": 0.0244140625,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00023",
+          "label": "source frame 23",
+          "sourceTimeMs": 766.6666666666666,
+          "lottieFrame": 23,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.0001171875,
+            "maxLocalFractionBeyond": 0.0234375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00008",
+          "label": "source frame 8",
+          "sourceTimeMs": 266.6666666666667,
+          "lottieFrame": 8,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.0001150173611111111,
+            "maxLocalFractionBeyond": 0.0302734375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        }
+      ],
+      "frames": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010199652777777778,
+            "maxLocalFractionBeyond": 0.02734375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00001",
+          "label": "source frame 1",
+          "sourceTimeMs": 33.333333333333336,
+          "lottieFrame": 1,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00006510416666666667,
+            "maxLocalFractionBeyond": 0.013671875,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00002",
+          "label": "source frame 2",
+          "sourceTimeMs": 66.66666666666667,
+          "lottieFrame": 2,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00006618923611111112,
+            "maxLocalFractionBeyond": 0.01171875,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00003",
+          "label": "source frame 3",
+          "sourceTimeMs": 100,
+          "lottieFrame": 3,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00006618923611111112,
+            "maxLocalFractionBeyond": 0.0126953125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00004",
+          "label": "source frame 4",
+          "sourceTimeMs": 133.33333333333334,
+          "lottieFrame": 4,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00007486979166666666,
+            "maxLocalFractionBeyond": 0.0126953125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00005",
+          "label": "source frame 5",
+          "sourceTimeMs": 166.66666666666666,
+          "lottieFrame": 5,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00008355034722222222,
+            "maxLocalFractionBeyond": 0.0126953125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00006",
+          "label": "source frame 6",
+          "sourceTimeMs": 200,
+          "lottieFrame": 6,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00009114583333333334,
+            "maxLocalFractionBeyond": 0.0263671875,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00007",
+          "label": "source frame 7",
+          "sourceTimeMs": 233.33333333333334,
+          "lottieFrame": 7,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010199652777777778,
+            "maxLocalFractionBeyond": 0.0283203125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00008",
+          "label": "source frame 8",
+          "sourceTimeMs": 266.6666666666667,
+          "lottieFrame": 8,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.0001150173611111111,
+            "maxLocalFractionBeyond": 0.0302734375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00009",
+          "label": "source frame 9",
+          "sourceTimeMs": 300,
+          "lottieFrame": 9,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010633680555555555,
+            "maxLocalFractionBeyond": 0.03125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00010",
+          "label": "source frame 10",
+          "sourceTimeMs": 333.3333333333333,
+          "lottieFrame": 10,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010959201388888889,
+            "maxLocalFractionBeyond": 0.0224609375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00011",
+          "label": "source frame 11",
+          "sourceTimeMs": 366.6666666666667,
+          "lottieFrame": 11,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00012152777777777777,
+            "maxLocalFractionBeyond": 0.0244140625,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00012",
+          "label": "source frame 12",
+          "sourceTimeMs": 400,
+          "lottieFrame": 12,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010633680555555555,
+            "maxLocalFractionBeyond": 0.0263671875,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00013",
+          "label": "source frame 13",
+          "sourceTimeMs": 433.3333333333333,
+          "lottieFrame": 13,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010959201388888889,
+            "maxLocalFractionBeyond": 0.0283203125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00014",
+          "label": "source frame 14",
+          "sourceTimeMs": 466.6666666666667,
+          "lottieFrame": 14,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00011284722222222222,
+            "maxLocalFractionBeyond": 0.03125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00015",
+          "label": "source frame 15",
+          "sourceTimeMs": 500,
+          "lottieFrame": 15,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00012261284722222223,
+            "maxLocalFractionBeyond": 0.0302734375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00016",
+          "label": "source frame 16",
+          "sourceTimeMs": 533.3333333333334,
+          "lottieFrame": 16,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010525173611111111,
+            "maxLocalFractionBeyond": 0.025390625,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00017",
+          "label": "source frame 17",
+          "sourceTimeMs": 566.6666666666666,
+          "lottieFrame": 17,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.0000998263888888889,
+            "maxLocalFractionBeyond": 0.02734375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00018",
+          "label": "source frame 18",
+          "sourceTimeMs": 600,
+          "lottieFrame": 18,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.000087890625,
+            "maxLocalFractionBeyond": 0.0185546875,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00019",
+          "label": "source frame 19",
+          "sourceTimeMs": 633.3333333333334,
+          "lottieFrame": 19,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00010416666666666667,
+            "maxLocalFractionBeyond": 0.0224609375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00020",
+          "label": "source frame 20",
+          "sourceTimeMs": 666.6666666666666,
+          "lottieFrame": 20,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.0001171875,
+            "maxLocalFractionBeyond": 0.0244140625,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00021",
+          "label": "source frame 21",
+          "sourceTimeMs": 700,
+          "lottieFrame": 21,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00011393229166666667,
+            "maxLocalFractionBeyond": 0.02734375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00022",
+          "label": "source frame 22",
+          "sourceTimeMs": 733.3333333333334,
+          "lottieFrame": 22,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.00009114583333333334,
+            "maxLocalFractionBeyond": 0.01953125,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        },
+        {
+          "id": "frame_00023",
+          "label": "source frame 23",
+          "sourceTimeMs": 766.6666666666666,
+          "lottieFrame": 23,
+          "scheduled": true,
+          "visualGate": {
+            "comparable": true,
+            "passed": true,
+            "fractionBeyond": 0.0001171875,
+            "maxLocalFractionBeyond": 0.0234375,
+            "alphaFailures": 0,
+            "failedRegions": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-00-compiled",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 240,
+        "capturedExtra": 0,
+        "expectedExtra": 3,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-06-imported",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 24,
+        "capturedExtra": 0,
+        "expectedExtra": 3,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-06-compiled",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 24,
+        "capturedExtra": 0,
+        "expectedExtra": 3,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-01-imported",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 121,
+        "capturedExtra": 0,
+        "expectedExtra": 6,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-01-compiled",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 121,
+        "capturedExtra": 0,
+        "expectedExtra": 6,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-02-imported",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 226,
+        "capturedExtra": 0,
+        "expectedExtra": 5,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-02-compiled",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 226,
+        "capturedExtra": 0,
+        "expectedExtra": 5,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-03-reference",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 427,
+        "capturedExtra": 0,
+        "expectedExtra": 6,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-04-imported",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 675,
+        "capturedExtra": 0,
+        "expectedExtra": 6,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-04-compiled",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 675,
+        "capturedExtra": 0,
+        "expectedExtra": 6,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-05-imported",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 241,
+        "capturedExtra": 0,
+        "expectedExtra": 6,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    },
+    {
+      "id": "LOT-05-compiled",
+      "referenceCount": 0,
+      "nativeCount": 0,
+      "window": {
+        "status": "BLOCKED",
+        "numericPass": false,
+        "complete": false,
+        "meanFractionBeyond": null,
+        "capturedScheduled": 0,
+        "expectedScheduled": 241,
+        "capturedExtra": 0,
+        "expectedExtra": 6,
+        "materialReview": "NOT_RUN"
+      },
+      "numericFailureCount": 0,
+      "worst": [],
+      "frames": []
+    }
+  ]
+}

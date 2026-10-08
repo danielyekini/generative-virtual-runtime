@@ -1,0 +1,1 @@
+Uncertified tail retained after a stop-script PID-header parsing error. Wave captures completed before regeneration and their authoritative baseline lives in baseline-live/. Later captures are not associated with a single implementation. They are NOT_RUN for certification. No mixed evidence is counted as a pass.

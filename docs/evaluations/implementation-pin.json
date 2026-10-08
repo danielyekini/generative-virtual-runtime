@@ -41,7 +41,6 @@
   },
   "exactFixturesAtPin": [
     "LOT-00",
-    "LOT-01",
     "LOT-07"
   ],
   "visualNote": "LOT01 spatial cuts improved and semantic gate PASS, visual local FAIL. LOT00/07 reviewed native/reference bytes unchanged. Whole corpus FAIL; see current results for full-window coverage/reference readiness.",
@@ -99,7 +98,6 @@
   ],
   "productionExactLabelsAtPin": [
     "LOT-00",
-    "LOT-01",
     "LOT-07"
   ],
   "knownSourceLossOverrides": {

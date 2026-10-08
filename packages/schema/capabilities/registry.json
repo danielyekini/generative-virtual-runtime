@@ -246,7 +246,8 @@
           "conformanceTests": [
             "packages/format-lottie/src/dataset.test.ts#repeats hashes and never labels a known loss as exact",
             "packages/format-lottie/src/lottie.test.ts#preserves source cubic handles through import and shuffled round-trip seeks",
-            "packages/format-lottie/src/lottie.test.ts#preserves clipped cubic position and morph through shuffled round-trip seeks"
+            "packages/format-lottie/src/lottie.test.ts#preserves clipped cubic position and morph through shuffled round-trip seeks",
+            "packages/format-lottie/src/lottie.test.ts#preserves cubic scalar and morph curves when both composition boundaries clip keys"
           ]
         },
         "svg": { "status": "untested", "scope": "SVG keySplines are not stored as cubic easing." }
@@ -392,11 +393,12 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present. Composition-window cuts with monotonic temporal curves (cubic Y controls in [0,1], named easing or holds) preserve the original arc-length polyline using existing vec2 keys; non-monotonic spatial cuts are outside the verified clipping scope.",
+          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present. Composition-window cuts with monotonic temporal curves (cubic Y controls in [0,1], named easing or holds) preserve the original arc-length polyline using existing vec2 keys; Non-monotonic spatial cuts retain legacy geometry and explicitly report spatial-window-clipping approximation.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering",
             "packages/format-lottie/src/lottie.test.ts#preserves spatial tangent Z for arc-length sampling",
-            "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
+            "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length",
+            "packages/format-lottie/src/lottie.test.ts#reports non-monotonic clipped spatial geometry as approximate"
           ]
         },
         "svg": { "status": "not-applicable", "scope": "SVG has no Bodymovin spatial tangents." }
@@ -604,7 +606,8 @@
           "scope": "Matching-topology animated sh (shared vertex count and closed flag across keys, including s[0] path samples) lowered to path.commands tracks. Composition-window clipping preserves non-spatial scalar/vector/morph cubic values and restricted easing. Clipped spatial curves are outside this verified scope.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#imports matching-topology animated path morph exactly",
-            "packages/format-lottie/src/lottie.test.ts#preserves clipped cubic position and morph through shuffled round-trip seeks"
+            "packages/format-lottie/src/lottie.test.ts#preserves clipped cubic position and morph through shuffled round-trip seeks",
+            "packages/format-lottie/src/lottie.test.ts#preserves cubic scalar and morph curves when both composition boundaries clip keys"
           ]
         },
         "svg": { "status": "untested", "scope": "SMIL path animation is not covered." }

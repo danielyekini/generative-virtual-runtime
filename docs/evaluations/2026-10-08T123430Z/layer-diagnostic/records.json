@@ -1,0 +1,293 @@
+{
+  "samples": [
+    {
+      "layer": 1,
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "1-0-reference.png",
+      "native": "1-0-native.png"
+    },
+    {
+      "layer": 1,
+      "index": 2,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "1-2-reference.png",
+      "native": "1-2-native.png"
+    },
+    {
+      "layer": 1,
+      "index": 15,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "1-15-reference.png",
+      "native": "1-15-native.png"
+    },
+    {
+      "layer": 1,
+      "index": 75,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "1-75-reference.png",
+      "native": "1-75-native.png"
+    },
+    {
+      "layer": 2,
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "2-0-reference.png",
+      "native": "2-0-native.png"
+    },
+    {
+      "layer": 2,
+      "index": 2,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "2-2-reference.png",
+      "native": "2-2-native.png"
+    },
+    {
+      "layer": 2,
+      "index": 15,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "2-15-reference.png",
+      "native": "2-15-native.png"
+    },
+    {
+      "layer": 2,
+      "index": 75,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "2-75-reference.png",
+      "native": "2-75-native.png"
+    },
+    {
+      "layer": 3,
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "3-0-reference.png",
+      "native": "3-0-native.png"
+    },
+    {
+      "layer": 3,
+      "index": 2,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "3-2-reference.png",
+      "native": "3-2-native.png"
+    },
+    {
+      "layer": 3,
+      "index": 15,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "3-15-reference.png",
+      "native": "3-15-native.png"
+    },
+    {
+      "layer": 3,
+      "index": 75,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "3-75-reference.png",
+      "native": "3-75-native.png"
+    },
+    {
+      "layer": 4,
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "4-0-reference.png",
+      "native": "4-0-native.png"
+    },
+    {
+      "layer": 4,
+      "index": 2,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "4-2-reference.png",
+      "native": "4-2-native.png"
+    },
+    {
+      "layer": 4,
+      "index": 15,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "4-15-reference.png",
+      "native": "4-15-native.png"
+    },
+    {
+      "layer": 4,
+      "index": 75,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "4-75-reference.png",
+      "native": "4-75-native.png"
+    },
+    {
+      "layer": 5,
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "5-0-reference.png",
+      "native": "5-0-native.png"
+    },
+    {
+      "layer": 5,
+      "index": 2,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "5-2-reference.png",
+      "native": "5-2-native.png"
+    },
+    {
+      "layer": 5,
+      "index": 15,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "5-15-reference.png",
+      "native": "5-15-native.png"
+    },
+    {
+      "layer": 5,
+      "index": 75,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "5-75-reference.png",
+      "native": "5-75-native.png"
+    },
+    {
+      "layer": 6,
+      "index": 0,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "6-0-reference.png",
+      "native": "6-0-native.png"
+    },
+    {
+      "layer": 6,
+      "index": 2,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "6-2-reference.png",
+      "native": "6-2-native.png"
+    },
+    {
+      "layer": 6,
+      "index": 15,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "6-15-reference.png",
+      "native": "6-15-native.png"
+    },
+    {
+      "layer": 6,
+      "index": 75,
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "reference": "6-75-reference.png",
+      "native": "6-75-native.png"
+    }
+  ],
+  "method": "Diagnostic minimal reproductions: one original layer, same source data and corresponding native nodes; original fixture bytes untouched"
+}

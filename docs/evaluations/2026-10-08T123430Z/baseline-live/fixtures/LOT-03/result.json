@@ -1,0 +1,448 @@
+{
+  "id": "LOT-03",
+  "role": "pack",
+  "format": "lottie",
+  "fileName": "lottie_ex1.json",
+  "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+  "sourceBytes": 877884,
+  "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+  "provenance": {
+    "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+    "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+    "programPath": null,
+    "programSha256": null,
+    "importedSceneSha256": null,
+    "compiledSceneSha256": null,
+    "revisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "lineageStatus": "UNREGISTERED_SCRATCH",
+    "verificationStatus": "UNVERIFIED",
+    "evidenceAssociation": {
+      "stage": "generation",
+      "resultPath": "fixtures/LOT-03/result.json",
+      "implementationEnvironmentPath": "environment.json",
+      "implementationEnvironmentSha256": "a476d1b7093c704ccd74210d28b5470f70c92a519b518fce664b360f3248232f",
+      "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+    }
+  },
+  "inventory": {
+    "topLevelKeys": [
+      "nm",
+      "ddd",
+      "h",
+      "w",
+      "meta",
+      "layers",
+      "v",
+      "fr",
+      "op",
+      "ip",
+      "fonts",
+      "assets",
+      "slots",
+      "markers"
+    ],
+    "markers": [
+      "Comment",
+      "Object",
+      "Frame",
+      "Move",
+      "Pen",
+      "Text",
+      "Action",
+      "Idle"
+    ],
+    "fonts": [
+      "Inter",
+      "Inter Regular"
+    ],
+    "chars": 0,
+    "rootLayerTypes": {
+      "precomp": 7,
+      "shape": 8,
+      "solid": 1
+    },
+    "assetLayerTypes": {
+      "shape": 168,
+      "precomp": 7,
+      "text": 7
+    },
+    "shapeTypes": {
+      "rc": 64,
+      "fl": 141,
+      "el": 49,
+      "gr": 168,
+      "sh": 157,
+      "mm": 42,
+      "tr": 168,
+      "st": 77,
+      "gf": 7,
+      "gs": 7,
+      "tm": 7
+    },
+    "masks": 0,
+    "mattes": 18,
+    "effects": 14,
+    "blendModes": 0,
+    "skew": 0,
+    "autoOrient": 0,
+    "spatialTangents": 0,
+    "textLayers": 7,
+    "hiddenLayers": 7,
+    "parenting": 62,
+    "ddd": 0,
+    "animatedProperties": 56,
+    "expressions": 0,
+    "holdKeyframes": 0,
+    "easingHandles": 806,
+    "roundedRects": 63,
+    "animatedRoundedRects": 0,
+    "images": [],
+    "precompAssets": [
+      {
+        "id": "1_a5967794-43e2-4c90-9a79-8826454e1ffa_03741665-aea9-43ab-9e5c-0fcfcbcf19e5_f2506e68-c75f-412f-b51d-ad8d047dc282",
+        "layers": 22
+      },
+      {
+        "id": "2_b865fdf4-d5ab-4627-9e33-ef9999c49dc9_141b3ba0-9ba4-41ed-b7c7-de567012b47c_008c7713-2134-42bd-a222-ed1be898c001",
+        "layers": 4
+      },
+      {
+        "id": "3_3d627ace-e6bb-49d8-a14d-4a1e19c6503b_14cd365f-ca0f-4039-861d-6a744b4eab9a_a7ccba1d-fd97-4e7a-8ef3-31aa5afc74be",
+        "layers": 22
+      },
+      {
+        "id": "4_42f1dbb0-907e-4322-b3cf-3b191b3151c2_37feb155-9c08-4ae2-92c9-28b0bb8a896e_310215ef-8093-43bc-8f19-034e0c05bcb4",
+        "layers": 4
+      },
+      {
+        "id": "5_25009ace-ed5b-4cf5-bd97-9d5cbb0df208_4b2793a8-13a9-4ea5-891b-b0fa97186a72_94292ade-04e5-48b2-afc9-1dded9a5fead",
+        "layers": 22
+      },
+      {
+        "id": "6_5fb44a8f-9146-46b7-8839-7f9d562472ef_d5e9f81c-1367-401f-9dca-a16275f88ff0_de2a21bd-0dbf-451c-b7ff-e099da4c3400",
+        "layers": 4
+      },
+      {
+        "id": "7_70ba6da1-47a0-4590-a16d-cc1ed95eb12c_e5b1e444-3e73-4322-a23c-5013c0946cd2_20b0f0f3-0e36-4682-a3d1-71b53fb476be",
+        "layers": 22
+      },
+      {
+        "id": "8_bb3a4af6-5d3f-40af-a841-246f73e22926_5ef320d9-ae53-4af9-b8eb-2c8eedaafdaa_82bd8703-f05a-4279-89d6-8e1ea12e439b",
+        "layers": 4
+      },
+      {
+        "id": "9_8409119d-cd8a-4514-bdc8-1436437b9e18_d04085d0-b11d-45de-88fc-cb6901cca9b7_23a10df5-c8dd-4020-b7f4-c5c529c02a79",
+        "layers": 22
+      },
+      {
+        "id": "10_7f07de5d-729f-4e09-a8d7-918c90a36d05_4df069e2-43e8-4d51-b1e9-7cd3e149a5b9_871a8ccb-4209-4f5f-97a1-fc8d4043de62",
+        "layers": 4
+      },
+      {
+        "id": "11_169c87be-c4f0-437e-bf02-5dd264cfcecc_de78854f-3f2a-401c-ad9b-916ab1c78a43_8a086c25-0f9b-48a5-9612-da8d586030b8",
+        "layers": 22
+      },
+      {
+        "id": "12_f906003f-8746-4a37-9d28-75eba34222b3_caad884b-014d-4063-927a-b38c260e4516_aeb7d184-1cee-4863-b733-0166ade5db93",
+        "layers": 4
+      },
+      {
+        "id": "13_be4612e9-32ba-4d4d-ad70-df74dbc4b6e6_a6264503-0405-4e16-b8e4-9361dc2bc4c4_602cf019-b34a-4fbe-a8c9-aed6a96a0246",
+        "layers": 22
+      },
+      {
+        "id": "14_ec04e82c-4e8c-4e0a-97e1-6cab65960b35_0191e134-164c-44f7-9949-54d0bc3774fb_9ef2a0e9-8a71-4899-ae0c-e1860c05183f",
+        "layers": 4
+      }
+    ],
+    "missingAssets": [],
+    "examples": [
+      {
+        "feature": "mm",
+        "path": "$.assets[0].layers[0].shapes[0].it[2]"
+      },
+      {
+        "feature": "mm",
+        "path": "$.assets[0].layers[5].shapes[0].it[3]"
+      },
+      {
+        "feature": "mm",
+        "path": "$.assets[0].layers[7].shapes[0].it[2]"
+      },
+      {
+        "feature": "mm",
+        "path": "$.assets[0].layers[9].shapes[0].it[6]"
+      },
+      {
+        "feature": "mm",
+        "path": "$.assets[0].layers[11].shapes[0].it[4]"
+      },
+      {
+        "feature": "mm",
+        "path": "$.assets[0].layers[13].shapes[0].it[2]"
+      },
+      {
+        "feature": "matte",
+        "path": "$.assets[0].layers[17].tt"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[0].layers[17].ef"
+      },
+      {
+        "feature": "matte",
+        "path": "$.assets[0].layers[20].tt"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.assets[0].layers[20].shapes[0].it[1]"
+      },
+      {
+        "feature": "matte",
+        "path": "$.assets[0].layers[21].tt"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.assets[0].layers[21].shapes[0].it[1]"
+      },
+      {
+        "feature": "tm",
+        "path": "$.assets[0].layers[21].shapes[1]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[1].layers[1]"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[1].layers[3].ef"
+      },
+      {
+        "feature": "matte",
+        "path": "$.assets[2].layers[17].tt"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[2].layers[17].ef"
+      },
+      {
+        "feature": "matte",
+        "path": "$.assets[2].layers[20].tt"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.assets[2].layers[20].shapes[0].it[1]"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.assets[2].layers[21].shapes[0].it[1]"
+      },
+      {
+        "feature": "tm",
+        "path": "$.assets[2].layers[21].shapes[1]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[3].layers[0]"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[3].layers[3].ef"
+      },
+      {
+        "feature": "matte",
+        "path": "$.assets[4].layers[17].tt"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[4].layers[17].ef"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.assets[4].layers[20].shapes[0].it[1]"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.assets[4].layers[21].shapes[0].it[1]"
+      },
+      {
+        "feature": "tm",
+        "path": "$.assets[4].layers[21].shapes[1]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[5].layers[1]"
+      },
+      {
+        "feature": "effect",
+        "path": "$.assets[5].layers[3].ef"
+      },
+      {
+        "feature": "tm",
+        "path": "$.assets[6].layers[21].shapes[1]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[7].layers[1]"
+      },
+      {
+        "feature": "tm",
+        "path": "$.assets[8].layers[21].shapes[1]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[9].layers[1]"
+      },
+      {
+        "feature": "tm",
+        "path": "$.assets[10].layers[21].shapes[1]"
+      },
+      {
+        "feature": "text-layer",
+        "path": "$.assets[11].layers[0]"
+      }
+    ],
+    "name": "Main Scene",
+    "version": "5.7.0",
+    "frameRate": 60,
+    "inFrame": 0,
+    "outFrame": 427,
+    "width": 1080,
+    "height": 689,
+    "durationMs": 7116.666666666666
+  },
+  "timingsMs": {
+    "import": 2.60978399999658,
+    "emit": 0,
+    "compile": 0
+  },
+  "complexity": {
+    "nodes": 620,
+    "tracks": 56,
+    "steps": 105,
+    "geometryItems": 2528,
+    "depth": 5,
+    "durationMs": 7116.666666666666,
+    "viewport": {
+      "width": 1080,
+      "height": 689,
+      "fit": "contain"
+    },
+    "background": {
+      "type": "solid",
+      "r": 0.06274509803921569,
+      "g": 0.06274509803921569,
+      "b": 0.0784313725490196,
+      "a": 1
+    },
+    "diagnostic": true
+  },
+  "production": {
+    "ok": false,
+    "fidelity": "failed",
+    "counts": {
+      "exact": 0,
+      "approximated": 0,
+      "dropped": 0,
+      "unsupported": 1
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_LIMIT",
+        "feature": "source",
+        "severity": "fatal",
+        "message": "Source exceeds the import size limit.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": {
+    "fidelity": "partial",
+    "complexity": {
+      "nodes": 620,
+      "tracks": 56,
+      "steps": 105,
+      "geometryItems": 2528,
+      "depth": 5,
+      "durationMs": 7116.666666666666,
+      "viewport": {
+        "width": 1080,
+        "height": 689,
+        "fit": "contain"
+      },
+      "background": {
+        "type": "solid",
+        "r": 0.06274509803921569,
+        "g": 0.06274509803921569,
+        "b": 0.0784313725490196,
+        "a": 1
+      }
+    },
+    "validation": {
+      "ok": false,
+      "diagnostics": [
+        {
+          "code": "RESOURCE_LIMIT",
+          "message": "Node count 620 exceeds 500."
+        }
+      ]
+    }
+  },
+  "motionScript": null,
+  "compile": null,
+  "runtime": {
+    "kind": "none",
+    "samples": []
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "JSON object, 877884 bytes"
+    },
+    {
+      "name": "import",
+      "status": "FAIL",
+      "detail": "fidelity failed; exact 0; approximated 0; dropped 0; unsupported 1; scene no"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "NOT_REACHED",
+      "detail": "Production import produced no scene."
+    },
+    {
+      "name": "compile",
+      "status": "NOT_REACHED",
+      "detail": "No MotionScript from the production scene."
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "NOT_REACHED",
+      "detail": "Compile did not run."
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "FAIL",
+      "detail": "No accepted Scene IR from importSource."
+    },
+    {
+      "name": "runtime",
+      "status": "NOT_REACHED",
+      "detail": "No accepted scene to evaluate."
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": "import",
+  "evidence": {
+    "importReport": "fixtures/LOT-03/import-report.txt",
+    "importedScene": null,
+    "compiledScene": null,
+    "motion": null
+  }
+}

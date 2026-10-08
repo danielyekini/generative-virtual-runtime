@@ -1,0 +1,7 @@
+{
+  "baseHead": "4dee21f0f93888da2308c78df95e6020d3af0168",
+  "completeSourceBytes": true,
+  "files": 1721,
+  "archiveSha256": "d2e0f87deab7f6b06a92212a2842da906e73ea94b6cc2b95b411d677fac50888",
+  "exclusions": "Dependencies, credentials, disposable evidence/captures and this run directory. Immutable run directory retained separately."
+}

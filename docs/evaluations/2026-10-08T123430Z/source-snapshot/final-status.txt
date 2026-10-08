@@ -1,0 +1,12 @@
+ M docs/evaluations/README.md
+ M docs/evaluations/implementation-pin.json
+ M package-lock.json
+ M packages/format-lottie/CHANGELOG.md
+ M packages/format-lottie/package.json
+ M packages/format-lottie/src/lottie.test.ts
+ M packages/format-lottie/src/model.ts
+ M packages/format-lottie/src/normalise.ts
+ M packages/schema/capabilities/registry.json
+?? docs/evaluations/2026-10-08T123430Z/
+?? fixtures/import/lottie/clipped_cubic_morph.json
+?? work/

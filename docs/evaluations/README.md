@@ -4,11 +4,12 @@ An evaluation run records what one implementation revision reproduced. It is not
 
 The newest run is [2026-10-08T140610Z](2026-10-08T140610Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T140610Z`. Continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
+Next Baseline reads [implementation-pin.json](implementation-pin.json). The merged committed implementation requires fresh visual verification; historical results apply to their recorded source snapshots. Continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
 | [2026-10-08T140610Z](2026-10-08T140610Z/report.md) | 2026-10-08T15:08:19.064275+00:00 | MotionScript / Scene IR 0.5.0 | 194 tests + typechecks PASS; spatial cuts corrected; LOT01 local visual FAIL; phase A paint order next; budget-exhausted |
+| [2026-10-08T123430Z](2026-10-08T123430Z/report.md) | 2026-10-08T13:33:46.603914+00:00 | MotionScript / Scene IR 0.5.0 | 186 tests + typechecks PASS; clipped cubic morph fixed; Wave full-window PASS; corpus FAIL/incomplete; budget-exhausted |
 | [2026-10-08T103605Z](2026-10-08T103605Z/report.md) | 2026-10-08T12:17:22.256060+00:00 | MotionScript / Scene IR 0.5.0 | 191 tests + typechecks PASS; clipping and shape order corrected; animated fill loss explicit; corpus FAIL; full native capture with reference blockers; budget overrun |
 | [2026-10-08T090908Z](2026-10-08T090908Z/report.md) | 2026-10-08T10:05:25.725844+00:00 | MotionScript / Scene IR 0.5.0 | 184 tests + typechecks PASS; Wave stroke loss corrected, gradient residual FAIL; LOT-00 local quality PASS/r000001; budget-exhausted |
 | [2026-10-08T012312Z](2026-10-08T012312Z/report.md) | 2026-10-08T07:15:47.602552+00:00 | MotionScript / Scene IR 0.5.0 | 181 tests + typechecks PASS; Wave timing fixed; corpus visual FAIL; budget-exhausted |
@@ -59,3 +60,5 @@ Private-repo policy: the fidelity corpus is committed under `fixtures/corpus/` s
 Use [the single fidelity prompt](lottie-fidelity-loop-prompt.md) and [report template](templates/fidelity-report.md). [Authoring workflow 1.1](../workflows/authoring-loop.md) has its own [index/continuation](../authoring/README.md) and [corpus registry](../../evaluation/authoring/README.md). A sample with actual per-sample verification/provenance may enter refinement independently of corpus fidelity completion. Every changed imported candidate is re-verified; shared defects return as fidelity findings with preserved attempt history. Follow the [immutable program rules](../authoring/sample-registry-spec.md), retaining generated originals and exact hash-associated evidence.
 
 New fidelity reports omit authoringPassed. Historical results, statuses, snapshots and run links are preserved. The legacy Word generator `evaluation/harness/write-report.mjs` contains fixed baseline judgements/narrative; use it only to reproduce that historical report, never for a new certification. New runs use the live report template with current evidence and policy. Program/source hash metadata in the pipeline identifies bytes without assigning canonical revisions or verification.
+
+Integration of remote a850d65 preserves its animated-fill diagnostics and shape paint-order correction. The merged implementation requires fresh full-corpus verification; prior run visual results apply to their original recorded snapshots. See integration-push.json.
