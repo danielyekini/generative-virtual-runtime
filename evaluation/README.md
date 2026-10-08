@@ -2,22 +2,29 @@
 
 This directory is the harness. It does not change the packages under `packages/`.
 
-The historical capture is [docs/evaluations/2026-10-07-baseline](../docs/evaluations/2026-10-07-baseline/report.md). That run is immutable. The index of runs is [docs/evaluations/README.md](../docs/evaluations/README.md). `evaluation/evidence/` is scratch for the next harness run; copy a finished run to a new `docs/evaluations/<run-id>/` directory instead of editing the baseline.
+The index of runs is [docs/evaluations/README.md](../docs/evaluations/README.md). `evaluation/evidence/` is scratch for the next harness run; copy a finished run to a new `docs/evaluations/<run-id>/` directory instead of editing older runs.
+
+## Corpus and gate
+
+- Canonical sources: [`fixtures/corpus/`](../fixtures/corpus/) (committed). Verify with `shasum -a 256 -c fixtures/corpus/SHA256SUMS`.
+- Gate settings: [`gate-settings.json`](gate-settings.json). Copy into each run’s `loop.json`; do not invent looser tolerances after seeing diffs.
 
 ## Reproduce
 
 From the repository root:
 
 ```bash
+shasum -a 256 -c fixtures/corpus/SHA256SUMS
 npx tsx evaluation/harness/run-pipeline.ts
-npx tsx evaluation/harness/continue-diagnostic.ts
+npx tsx evaluation/harness/check-round-trip.ts
+npx tsx evaluation/harness/prepare-fidelity.ts --full
 npx tsx evaluation/harness/drive-browser.ts
-cd evaluation && npm install
-node evaluation/harness/write-report.mjs
 ```
 
-`drive-browser.ts` starts Vite on `127.0.0.1:5199` and headless Google Chrome with remote debugging on port 9333. It expects Chrome at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome` and `lottie-web` 5.13.0, which the playground already depends on.
+`drive-browser.ts` starts Vite on `127.0.0.1:5199` and a headless Chromium-based browser with remote debugging on port 9333. Browser resolution: set `GVR_CHROME` or `CHROME_PATH`, otherwise `evaluation/harness/chrome.ts` searches macOS Chrome and common Linux Chromium paths. Pin `lottie-web` 5.13.0 (playground dependency).
 
-The baseline report, captures, scenes, and logs are under `docs/evaluations/2026-10-07-baseline/`. Paths inside that report are relative to the run directory. The harness still writes a fresh scratch tree at `evaluation/evidence/` when you reproduce a run.
+Scratch output lands under `evaluation/evidence/`. Historical reports live under `docs/evaluations/<run-id>/`.
 
-Inputs for the baseline were copied from the Downloads paths in `docs/evaluations/2026-10-07-baseline/evidence/manifest.json` into that run's `evidence/sources/` without modification.
+Install harness dependencies once with `npm install --prefix evaluation` before browser capture. Follow [current evaluation prerequisites](../docs/evaluations/README.md) and [the single fidelity prompt](../docs/evaluations/lottie-fidelity-loop-prompt.md). Default sampled jobs cannot certify full windows.
+
+The pipeline records source/program/scene hashes and null lineage for unregistered scratch programs; these are byte identities, not verification. New reports use the [live fidelity template](../docs/evaluations/templates/fidelity-report.md) and associate exact revision hashes with immutable evidence. `write-report.mjs` is a legacy baseline Word generator with fixed judgements; use it only for historical reproduction. Historical fields remain readable and missing provenance stays NOT_RECORDED. Separate [authoring runs](../docs/authoring/README.md) use the [program revision/storage rules](../docs/authoring/sample-registry-spec.md).

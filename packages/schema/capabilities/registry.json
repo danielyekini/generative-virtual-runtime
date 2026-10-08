@@ -127,14 +127,16 @@
       "restrictions": ["Overlapping writers of one channel are rejected. Samples do not replace the authored base."],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
-        "packages/runtime/src/runtime.test.ts#hits every keyframe boundary and the segment midpoints"
+        "packages/runtime/src/runtime.test.ts#hits every keyframe boundary and the segment midpoints",
+        "packages/motionscript-emitter/src/emit.test.ts#preserves fractional timing at the scene boundary"
       ],
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Scalar and split position tracks on a layer transform, in milliseconds from the composition in-point.",
+          "scope": "Scalar and split position tracks on layer and shape-group transforms, in milliseconds from composition in-point; group position, scale, rotation and opacity retain animation. Animated anchors remain unsupported.",
           "conformanceTests": [
-            "packages/format-lottie/src/lottie.test.ts#animates position in milliseconds"
+            "packages/format-lottie/src/lottie.test.ts#animates position in milliseconds",
+            "packages/format-lottie/src/lottie.test.ts#preserves animated shape-group transforms and opacity"
           ]
         },
         "svg": { "status": "untested", "scope": "SMIL and CSS coverage is recorded on svg.smilTimeBased and svg.cssKeyframes." }
@@ -238,9 +240,10 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Bodymovin handles whose x components lie in [0, 1], including easing_bezier.json. Handles outside that interval are stored as easeInOut and are outside this exact claim.",
+          "scope": "Single shared Bodymovin cubic handles with x components in [0, 1] are preserved, including near-diagonal, formerly shortcut-matched and overshooting curves. Exact diagonal handles may use linear. Per-component handle arrays are outside this claim. Out-of-range x controls carry an approximation diagnostic and use easeInOut.",
           "conformanceTests": [
-            "packages/format-lottie/src/dataset.test.ts#repeats hashes and never labels a known loss as exact"
+            "packages/format-lottie/src/dataset.test.ts#repeats hashes and never labels a known loss as exact",
+            "packages/format-lottie/src/lottie.test.ts#preserves source cubic handles through import and shuffled round-trip seeks"
           ]
         },
         "svg": { "status": "untested", "scope": "SVG keySplines are not stored as cubic easing." }
@@ -620,9 +623,10 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Static gs strokes lower to stroke.color gradients with width/cap/join. Sibling solid st is dropped when gs is present. gf remains fill-only.",
+          "scope": "Static gs strokes lower to native stroke.color gradients with width/cap/join. Every sibling st/gs is retained as a separate pass in reverse source-list painting order on preceding geometry; matching morph, trim and inherited group transforms are preserved. Multiple-stroke conformance covers one path per group. Wave instrumentation confirms a transformed-group gradient coordinate-space mismatch; exact source/reference fidelity for that variation is not claimed. gf remains fill-only.",
           "conformanceTests": [
-            "packages/format-lottie/src/lottie.test.ts#imports static gradient stroke as stroke paint not fill"
+            "packages/format-lottie/src/lottie.test.ts#imports static gradient stroke as stroke paint not fill",
+            "packages/format-lottie/src/lottie.test.ts#preserves ordered stroke passes with shared morph trim and transforms"
           ]
         },
         "svg": { "status": "untested", "scope": "SVG gradient strokes are not covered." }

@@ -1,20 +1,22 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-07T22:22:46.295321+00:00",
-  "afterRun": "2026-10-07T221955Z",
-  "comparedWithForNextBaseline": "2026-10-07T221955Z",
+  "pinnedAt": "2026-10-08T10:05:25.725844+00:00",
+  "afterRun": "2026-10-08T090908Z",
+  "comparedWithForNextBaseline": "2026-10-08T090908Z",
   "git": {
-    "head": "f609273cea310b64733a535642e9e7f17d22a88a",
+    "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+    "short": "11d783e",
+    "subject": "Define visual acceptance policy and verify fidelity harness and timing fixes",
     "treeCleanAtPin": false,
-    "note": "Application implementation is clean HEAD; only new evaluation records and continuation pointers differ. All 17 latest-prior snapshot hashes match HEAD.",
-    "matchRule": "Require this HEAD or descendant, then compare execution-relevant hashes; ancestry alone does not prove identity."
+    "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
+    "note": "Execution source correction tested with complete affected native windows and regression checks; working tree changes retained without commit/push. Use final snapshot for exact code bytes."
   },
   "snapshot": {
     "requiredWhenDirty": true,
-    "path": "docs/evaluations/2026-10-07T221955Z/source-snapshot/",
-    "initialArchive": "initial-source.tar",
-    "finalArchive": "final-source.tar",
-    "manifest": "final-files.json"
+    "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/",
+    "finalArchive": "tree/final-source.tar.gz",
+    "manifest": "final-files.json",
+    "how": "Full source bytes excluding credentials, disposable dependencies and recursive snapshots. Archive contents are hashed by final-files.json."
   },
   "languages": {
     "motionscript": {
@@ -27,24 +29,36 @@
     }
   },
   "nextCause": {
-    "id": "visual.midCycle.confetti.q50",
-    "fixtures": [
-      "LOT-01"
-    ],
-    "attemptsSoFar": 0,
-    "note": "After spatial-Z + stroke + first-key + AE-easing: start/q25 near-matched; q50 beyond 0.00456 with ~3\u20136px centroid drift. Alternates: LOT-07, LOT-06, compositing.matte, visual gate calibration."
+    "id": "visual.wave.gradientCoordinateSpace",
+    "phase": "A",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "linkedFinding": "visual.wave.residualPaintAndGeometry",
+    "expectedEvidence": "Use confirmed real createLinearGradient endpoint/context-matrix and caching observations to isolate remaining early-frame paint residuals. Compare evaluated source/direct/compiled matrices/paints; assess narrow existing-language lowering first. Reverify original full windows before any language representation decision. Do not repurpose or reset retained stroke attempts."
   },
   "exactFixturesAtPin": [
+    "LOT-00",
+    "LOT-01",
+    "LOT-06"
+  ],
+  "visualNote": "Corpus FAIL; Wave ordered strokes verified, independent gradient-coordinate residual; LOT-00 local quality PASS/r000001, durable publication pending",
+  "attemptHistoryRun": "docs/evaluations/2026-10-08T090908Z/loop.json",
+  "commitReproduction": "Start with git.head, then restore source-snapshot/tree/final-source.tar.gz and verify final-files.json. The base commit alone does not contain the tested stroke correction.",
+  "retainedCauses": [
+    {
+      "id": "visual.wave.multipleStrokeLoss",
+      "attempts": 2,
+      "remainingAttempts": 1,
+      "status": "ordered stroke correction measured; fixture not yet fidelity-certified"
+    }
+  ],
+  "productionExactLabelsAtPin": [
     "LOT-00",
     "LOT-01",
     "LOT-06",
     "LOT-07"
   ],
-  "visualNote": "Current corpus unavailable; no fresh fidelity/round-trip measurements. Gate VISUAL_UNVERIFIED; authoring not evaluated.",
-  "remainingPrerequisites": [
-    "Provide original LOT-00 through LOT-07 files matching baseline hashes.",
-    "Supply/approve fixed aggregate/local-region thresholds, alpha/background rules and material-content review criteria.",
-    "Make browser executable configurable and pin/validate the Linux reference environment."
-  ],
-  "attemptHistoryRun": "docs/evaluations/2026-10-07T221955Z/loop.json"
+  "knownSourceLossOverrides": {
+    "LOT-07": "Gradient creation coordinates/caching mismatch; exact import label does not establish source fidelity"
+  }
 }

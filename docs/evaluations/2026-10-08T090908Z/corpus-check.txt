@@ -1,0 +1,10 @@
+lottie/LOT-00.json: OK
+lottie/LOT-01.json: OK
+lottie/LOT-02.json: OK
+lottie/LOT-03.json: OK
+lottie/LOT-04.json: OK
+lottie/LOT-05.json: OK
+lottie/LOT-06.json: OK
+lottie/LOT-07.json: OK
+svg/SVG-01.svg: OK
+svg/SVG-02.svg: OK

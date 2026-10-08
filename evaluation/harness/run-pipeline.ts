@@ -7,19 +7,21 @@
  */
 import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compileMotionScript } from "@gvr/compiler";
 import { importSource, IMPORT_VERSION, formatImportReport } from "@gvr/format-import-core";
-import { lottieAdapter, LOTTIE_ADAPTER_VERSION } from "@gvr/format-lottie";
-import { svgAdapter, SVG_ADAPTER_VERSION, SVG_STATIC_DURATION_MS } from "@gvr/format-svg";
+import { lottieAdapter, LOTTIE_ADAPTER_VERSION, type LottieDocument } from "@gvr/format-lottie";
+import { svgAdapter, SVG_ADAPTER_VERSION, SVG_STATIC_DURATION_MS, type SvgDocument } from "@gvr/format-svg";
 import { emitMotionScript, EMITTER_VERSION } from "@gvr/motionscript-emitter";
 import { AnimationRuntime } from "@gvr/runtime";
 import { DSL_VERSION, IR_VERSION, validateSceneIR, type SceneIR } from "@gvr/schema";
+import { chromeVersion, resolveChromeBinary } from "./chrome";
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const evidence = resolve(repo, "evaluation/evidence");
+const corpusRoot = resolve(repo, "fixtures/corpus");
 const LOTTIE_BG = "#101014";
 const SVG_BG = "#000000";
 
@@ -31,77 +33,29 @@ interface Fixture {
   fileName: string;
 }
 
+function corpusFile(format: "lottie" | "svg", id: string, originalName: string): Fixture {
+  const ext = format === "lottie" ? "json" : "svg";
+  const sourcePath = resolve(corpusRoot, format, `${id}.${ext}`);
+  return {
+    id,
+    role: id === "LOT-00" ? "baseline" : "pack",
+    format,
+    sourcePath,
+    fileName: originalName,
+  };
+}
+
 const FIXTURES: Fixture[] = [
-  {
-    id: "LOT-00",
-    role: "baseline",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
-    fileName: "panning_landscape_motionscript_v1_compatible.json",
-  },
-  {
-    id: "LOT-01",
-    role: "pack",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
-    fileName: "Celebrations Begin.json",
-  },
-  {
-    id: "LOT-02",
-    role: "pack",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
-    fileName: "Hover Button.json",
-  },
-  {
-    id: "LOT-03",
-    role: "pack",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
-    fileName: "lottie_ex1.json",
-  },
-  {
-    id: "LOT-04",
-    role: "pack",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
-    fileName: "lottie_ex2.json",
-  },
-  {
-    id: "LOT-05",
-    role: "pack",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
-    fileName: "lottie_simple_ex1.json",
-  },
-  {
-    id: "LOT-06",
-    role: "pack",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/lottie/Punches.json",
-    fileName: "Punches.json",
-  },
-  {
-    id: "LOT-07",
-    role: "pack",
-    format: "lottie",
-    sourcePath: "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
-    fileName: "Wave Animation.json",
-  },
-  {
-    id: "SVG-01",
-    role: "pack",
-    format: "svg",
-    sourcePath: "/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg",
-    fileName: "Celebrations Begin.svg",
-  },
-  {
-    id: "SVG-02",
-    role: "pack",
-    format: "svg",
-    sourcePath: "/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg",
-    fileName: "Jumping Jack.svg",
-  },
+  corpusFile("lottie", "LOT-00", "panning_landscape_motionscript_v1_compatible.json"),
+  corpusFile("lottie", "LOT-01", "Celebrations Begin.json"),
+  corpusFile("lottie", "LOT-02", "Hover Button.json"),
+  corpusFile("lottie", "LOT-03", "lottie_ex1.json"),
+  corpusFile("lottie", "LOT-04", "lottie_ex2.json"),
+  corpusFile("lottie", "LOT-05", "lottie_simple_ex1.json"),
+  corpusFile("lottie", "LOT-06", "Punches.json"),
+  corpusFile("lottie", "LOT-07", "Wave Animation.json"),
+  corpusFile("svg", "SVG-01", "Celebrations Begin.svg"),
+  corpusFile("svg", "SVG-02", "Jumping Jack.svg"),
 ];
 
 const LAYER_TY: Record<number, string> = {
@@ -115,7 +69,7 @@ const LAYER_TY: Record<number, string> = {
   13: "camera",
 };
 
-function sha256(text: string): string {
+function sha256(text: string | Buffer): string {
   return createHash("sha256").update(text).digest("hex");
 }
 
@@ -618,6 +572,21 @@ function stage(name: string, status: string, detail: string) {
 
 async function main(): Promise<void> {
   mkdirSync(evidence, { recursive: true });
+  const missing = FIXTURES.filter((fixture) => !existsSync(fixture.sourcePath)).map((fixture) => fixture.sourcePath);
+  if (missing.length > 0) {
+    throw new Error(
+      `Fidelity corpus missing under fixtures/corpus (${missing.length} file(s)). Run: shasum -a 256 -c fixtures/corpus/SHA256SUMS\n${missing.join("\n")}`,
+    );
+  }
+  let chromeBinary = "";
+  let chrome = "";
+  try {
+    chromeBinary = resolveChromeBinary();
+    chrome = chromeVersion(chromeBinary);
+  } catch (error) {
+    chrome = error instanceof Error ? error.message : String(error);
+  }
+  const gateSettings = JSON.parse(readFileSync(resolve(repo, "evaluation/gate-settings.json"), "utf8")) as Record<string, unknown>;
   const environment = {
     capturedAt: new Date().toISOString(),
     repository: repo,
@@ -627,21 +596,25 @@ async function main(): Promise<void> {
     node: process.version,
     platform: `${process.platform} ${process.arch}`,
     npm: tryGit("npm -v"),
-    chrome: tryGit('"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --version'),
+    chromeBinary: chromeBinary || null,
+    chrome,
+    gateSettings,
+    languages: JSON.parse(readFileSync(resolve(repo,"packages/schema/capabilities/releases.json"),"utf8")).languages,
     lottieWeb: JSON.parse(readFileSync(resolve(repo, "node_modules/lottie-web/package.json"), "utf8")).version,
     versions: {
       importCore: IMPORT_VERSION,
       lottieAdapter: LOTTIE_ADAPTER_VERSION,
       svgAdapter: SVG_ADAPTER_VERSION,
       emitter: EMITTER_VERSION,
-      ir: IR_VERSION,
-      dsl: DSL_VERSION,
+      legacyIrDefault: IR_VERSION,
+      legacyDslDefault: DSL_VERSION,
       svgStaticDurationMs: SVG_STATIC_DURATION_MS,
     },
     commands: [
       "npx tsx evaluation/harness/run-pipeline.ts",
+      "npx tsx evaluation/harness/check-round-trip.ts",
+      "npx tsx evaluation/harness/prepare-fidelity.ts --full",
       "npx tsx evaluation/harness/drive-browser.ts",
-      "node evaluation/harness/write-report.mjs",
     ],
   };
   writeJson(resolve(evidence, "environment.json"), environment);
@@ -660,15 +633,13 @@ async function main(): Promise<void> {
   }
 
   writeJson(resolve(evidence, "manifest.json"), {
-    packRoots: [
-      "/Users/daniel.yekini/Downloads/lottie",
-      "/Users/daniel.yekini/Downloads/svg",
-      "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
-    ],
+    packRoots: [relative(repo, resolve(corpusRoot, "lottie")), relative(repo, resolve(corpusRoot, "svg"))],
+    corpusRoot: relative(repo, corpusRoot),
+    checksums: "fixtures/corpus/SHA256SUMS",
     archives: [],
     svgFilesDiscovered: 2,
     lottieFilesDiscovered: 8,
-    note: "The lottie directory contained seven JSON files and no SVG or archives. The svg directory contained two SVG files and no archives. The panning landscape file was supplied separately as the baseline.",
+    note: "Canonical corpus lives under fixtures/corpus/ (committed). Scratch copies are written to evaluation/evidence/sources/.",
     fixtures: manifest,
   });
   writeJson(resolve(evidence, "render-jobs.json"), { jobs });
@@ -748,7 +719,11 @@ function evaluateFixture(fixture: Fixture) {
       if (!parsed.ok) {
         diagnosticError = parsed.diagnostics.map((item) => `${item.code}: ${item.message}`).join(" | ");
       } else {
-        const normalised = adapter.normalise(parsed.value, { sourceName: fixture.fileName, sourceText: source, maxSourceBytes: Number.MAX_SAFE_INTEGER });
+        // Keep the adapter/parsed-value correlation explicit for the union of formats.
+        const context = { sourceName: fixture.fileName, sourceText: source, maxSourceBytes: Number.MAX_SAFE_INTEGER };
+        const normalised = fixture.format === "lottie"
+          ? lottieAdapter.normalise(parsed.value as LottieDocument, context)
+          : svgAdapter.normalise(parsed.value as SvgDocument, context);
         diagnosticScene = normalised.scene;
         diagnosticFidelity = normalised.fidelity.overall;
         writeJson(resolve(dir, "diagnostic-import.json"), {
@@ -913,14 +888,37 @@ function evaluateFixture(fixture: Fixture) {
     : null;
 
   const blocking = stages.find((item) => item.status === "FAIL" || item.status === "BLOCKED");
+  const sourcePathRel = relative(repo, fixture.sourcePath);
+  // Byte identity is not quality certification or a reserved canonical revision.
+  const provenance = {
+    sourcePath: sourcePathRel,
+    sourceSha256: source ? sha256(readFileSync(fixture.sourcePath)) : null,
+    programPath: script ? `fixtures/${fixture.id}/generated.motion` : null,
+    programSha256: script ? sha256(script) : null,
+    importedSceneSha256: productionScene ? sha256(readFileSync(resolve(dir, "imported-scene.json"))) : null,
+    compiledSceneSha256: compiled?.scene ? sha256(readFileSync(resolve(dir, "compiled-scene.json"))) : null,
+    revisionId: null,
+    parentRevisionId: null,
+    parentProgramSha256: null,
+    lineageStatus: "UNREGISTERED_SCRATCH",
+    verificationStatus: "UNVERIFIED",
+    evidenceAssociation: {
+      stage: "generation",
+      resultPath: `fixtures/${fixture.id}/result.json`,
+      implementationEnvironmentPath: "environment.json",
+      implementationEnvironmentSha256: sha256(readFileSync(resolve(evidence, "environment.json"))),
+      note: "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it.",
+    },
+  };
   const publicResult = {
     id: fixture.id,
     role: fixture.role,
     format: fixture.format,
     fileName: fixture.fileName,
-    sourcePath: fixture.sourcePath,
+    sourcePath: sourcePathRel,
     sourceBytes,
     sha256: source ? sha256(source) : "",
+    provenance,
     inventory: fixture.format === "lottie" ? lottie : svg,
     timingsMs: { import: importMs, emit: emitMs, compile: compileMs },
     complexity: sceneForRender ? complexity(sceneForRender) : diagnosticScene ? { ...complexity(diagnosticScene), diagnostic: true } : null,
@@ -943,7 +941,7 @@ function evaluateFixture(fixture: Fixture) {
         ? { error: diagnosticError }
         : null,
     motionScript: script
-      ? { chars: script.length, bytes: Buffer.byteLength(script), path: `fixtures/${fixture.id}/generated.motion` }
+      ? { chars: script.length, bytes: Buffer.byteLength(script), path: `fixtures/${fixture.id}/generated.motion`, sha256: provenance.programSha256 }
       : null,
     compile: compiled
       ? { ok: compiled.ok, diagnostics: compiled.diagnostics.length, scene: Boolean(compiled.scene) }
@@ -967,10 +965,11 @@ function evaluateFixture(fixture: Fixture) {
       role: fixture.role,
       format: fixture.format,
       fileName: fixture.fileName,
-      sourcePath: fixture.sourcePath,
+      sourcePath: sourcePathRel,
       evidenceSource: source ? `sources/${fixture.id}.${fixture.format === "lottie" ? "json" : "svg"}` : null,
       bytes: sourceBytes,
       sha256: publicResult.sha256,
+      provenance,
       width: lottie?.width ?? svgViewSize(svg).width,
       height: lottie?.height ?? svgViewSize(svg).height,
       durationMs: lottie?.durationMs ?? (svg?.observationWindowSec ? svg.observationWindowSec * 1000 : null),

@@ -1,0 +1,42 @@
+[
+  {
+    "fixture": "LOT-00",
+    "routes": [
+      {
+        "route": "LOT-00-imported",
+        "capturedScheduled": 240,
+        "capturedExtra": 3,
+        "nativeRoutePixelBytesIdentical": true,
+        "baselinePixelBytesIdentical": true
+      },
+      {
+        "route": "LOT-00-compiled",
+        "capturedScheduled": 240,
+        "capturedExtra": 3,
+        "nativeRoutePixelBytesIdentical": true,
+        "baselinePixelBytesIdentical": true
+      }
+    ],
+    "status": "PASS"
+  },
+  {
+    "fixture": "LOT-07",
+    "routes": [
+      {
+        "route": "LOT-07-imported",
+        "capturedScheduled": 150,
+        "capturedExtra": 5,
+        "nativeRoutePixelBytesIdentical": true,
+        "baselinePixelBytesIdentical": false
+      },
+      {
+        "route": "LOT-07-compiled",
+        "capturedScheduled": 150,
+        "capturedExtra": 5,
+        "nativeRoutePixelBytesIdentical": true,
+        "baselinePixelBytesIdentical": false
+      }
+    ],
+    "status": "PASS"
+  }
+]

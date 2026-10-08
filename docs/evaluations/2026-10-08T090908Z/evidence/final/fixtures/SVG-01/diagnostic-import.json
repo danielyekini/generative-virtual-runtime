@@ -1,0 +1,141 @@
+{
+  "note": "Not the production importSource route. Used only because production returned no Scene IR, so later stages could be inspected. Outcomes from this object are not a native pass.",
+  "fidelity": "partial",
+  "diagnostics": [
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "smil",
+      "severity": "warning",
+      "message": "Indefinite repeat is previewed for one cycle.",
+      "count": 169
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "smil",
+      "severity": "info",
+      "message": "Time-based transform.position.x on i104.",
+      "count": 68
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "animateMotion",
+      "severity": "error",
+      "message": "<animateMotion> is outside the SVG subset.",
+      "count": 27
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "group-opacity",
+      "severity": "info",
+      "message": "Group opacity is an isolated render scope.",
+      "count": 3
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "viewBox",
+      "severity": "info",
+      "message": "viewBox is the Scene IR viewport, with minX/minY translated to the origin.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_DROPPED",
+      "feature": "defs",
+      "severity": "warning",
+      "message": "<defs> has no painted result.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "svg-motion",
+      "severity": "info",
+      "message": "SVG motion uses a 4033.0000000000005ms preview duration.",
+      "count": 1
+    }
+  ],
+  "sceneProduced": true,
+  "validation": {
+    "ok": false,
+    "diagnostics": [
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg2 overlaps svg1 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg3 overlaps svg2 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg4 overlaps svg3 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg5 overlaps svg4 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg6 overlaps svg5 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg7 overlaps svg6 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg8 overlaps svg7 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg9 overlaps svg8 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg10 overlaps svg9 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg11 overlaps svg10 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg12 overlaps svg11 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg13 overlaps svg12 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg14 overlaps svg13 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg15 overlaps svg14 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg16 overlaps svg15 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg17 overlaps svg16 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg18 overlaps svg17 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg19 overlaps svg18 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg20 overlaps svg19 on node:i104:transform.position.x."
+      },
+      {
+        "code": "OVERLAPPING_WRITERS",
+        "message": "svg21 overlaps svg20 on node:i104:transform.position.x."
+      }
+    ]
+  }
+}

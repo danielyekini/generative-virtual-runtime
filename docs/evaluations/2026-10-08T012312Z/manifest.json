@@ -1,0 +1,169 @@
+{
+  "runId": "2026-10-08T012312Z",
+  "startedAt": "2026-10-08T01:23:12.047269+00:00",
+  "stoppedAt": "2026-10-08T07:15:47.602552+00:00",
+  "comparedWith": "2026-10-08T010229Z",
+  "implementation": {
+    "head": "65c04025082f8f88ae6e7af7f39427c585064745",
+    "finalSnapshot": "source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "source-snapshot/final-files.json",
+    "browserTestedSnapshot": "source-snapshot/tree/emitter-verified-source.tar.gz",
+    "unverifiedAttemptReverted": true
+  },
+  "packageVersions": {
+    "packages/canvas-renderer": "0.1.0",
+    "packages/compiler": "0.1.0",
+    "packages/format-import-core": "0.1.0",
+    "packages/format-lottie": "0.1.1",
+    "packages/format-svg": "0.1.0",
+    "packages/motionscript-emitter": "0.1.1",
+    "packages/round-trip": "0.1.0",
+    "packages/runtime": "0.1.0",
+    "packages/schema": "0.1.0"
+  },
+  "languages": {
+    "motionscript": {
+      "current": "0.5.0",
+      "wireVersion": "0.2"
+    },
+    "sceneIr": {
+      "current": "0.5.0",
+      "wireVersion": "0.2"
+    }
+  },
+  "registrySha256": "6ffe899ff012af8e8f4360d5b316a5b99cf77d4d7ee6b74aed46b6389da6697e",
+  "gateSettings": {
+    "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+    "numberTolerance": 0.001,
+    "colorTolerance": "1/255",
+    "pixel": {
+      "metric": "euclidean-rgb",
+      "inspectionThreshold": 24,
+      "role": "inspection",
+      "notes": [
+        "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+        "This alone is not a complete PASS rule for the declared profile."
+      ]
+    },
+    "visualCertification": {
+      "status": "DEFINED",
+      "policyVersion": "1.0",
+      "authority": "Operator delegated gate definition in chat on 2026-10-08; these rules are frozen before new implementation attempts. Approval is of the policy, not existing output.",
+      "document": "docs/evaluations/visual-acceptance-policy.md",
+      "aggregate": {
+        "maxFrameFractionBeyond": 0.005,
+        "maxWindowMeanFractionBeyond": 0.002,
+        "weighting": "Arithmetic mean of equally weighted scheduled full-window frames; extra boundary/subframe samples must pass per-frame rules but do not change the window mean."
+      },
+      "localRegions": {
+        "tileSizePx": 32,
+        "gridOffsetsPx": [
+          0,
+          16
+        ],
+        "maxForegroundFractionBeyond": 0.1,
+        "minForegroundDenominatorPx": 64,
+        "foregroundThreshold": 24,
+        "backgroundRgb": [
+          16,
+          16,
+          20
+        ],
+        "definition": "For each tile on both grids, hot pixels / max(64, pixels whose reference OR native RGB differs from the declared background by more than 24). Count all hot pixels, including unexpected background content."
+      },
+      "materialReview": {
+        "required": true,
+        "reject": [
+          "Missing or extra subject/detail, stroke/fill, clipping or mask contribution",
+          "Wrong paint, geometry, stacking or scope semantics",
+          "Visible pose displacement, timing/visibility error or animated flicker"
+        ],
+        "reviewCoverage": "Review every automatic failure and start, end, key boundaries, segment midpoints, worst frames and a full-window contact sheet/sequence for each fixture and both native routes. Unreviewed fixtures remain VISUAL_UNVERIFIED.",
+        "independentOfMetrics": true
+      },
+      "alpha": {
+        "profile": "opaque-composite",
+        "background": "#101014",
+        "requiredByte": 255,
+        "rule": "Both reference and native PNGs must be opaque after compositing onto the declared background. No standalone transparent-alpha fidelity is claimed; such a profile needs separate rules."
+      },
+      "coverage": {
+        "required": "full-window",
+        "requireBothNativeRoutes": true,
+        "requireMatchedTimestamps": true,
+        "missingCapture": "NOT_RUN or BLOCKED, never zero error or PASS",
+        "numericRoutes": {
+          "numberTolerance": 0.001,
+          "colorTolerance": "1/255"
+        }
+      },
+      "referenceControls": {
+        "requireTimeControlWorks": true,
+        "requireNoReferenceErrors": true,
+        "requireRepeatCaptureIdentity": true,
+        "environment": "Matched viewport, fit, DPR 1, explicitly pinned subframe mode and fonts/assets/effect profile. Incomplete readiness or unreliable control quarantines comparison."
+      },
+      "passRule": "All conversion, round-trip, full-window aggregate/local/alpha, reference-control, material-review and regression/resource gates must pass. No implicit PASS from capture execution labels."
+    },
+    "reference": {
+      "lottieWeb": "5.13.0",
+      "seek": "goToAndStop(frame, true)",
+      "devicePixelRatio": 1,
+      "lottieBackground": "#101014",
+      "svgBackground": "#000000",
+      "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+    },
+    "corpus": {
+      "root": "fixtures/corpus",
+      "checksums": "fixtures/corpus/SHA256SUMS",
+      "readme": "fixtures/corpus/README.md"
+    }
+  },
+  "profile": {
+    "acceptedFixtures": [
+      "LOT-00",
+      "LOT-01",
+      "LOT-02",
+      "LOT-03",
+      "LOT-04",
+      "LOT-05",
+      "LOT-06",
+      "LOT-07"
+    ],
+    "exclusions": [
+      "SVG-01",
+      "SVG-02"
+    ],
+    "quarantines": [
+      {
+        "id": "LOT-03",
+        "reason": "Inherited production 512 KiB source-size ceiling; not malformed-source evidence"
+      }
+    ],
+    "observationWindow": "Finite [ip,op) at source fr; full windows on LOT-00/01/06/07, explicit sampled diagnostics on other fixtures",
+    "workMode": "Native fidelity before authoring; operator delegated gate definition"
+  },
+  "budgets": {
+    "wallTimeBudgetMinutes": 60,
+    "maxImplementCycles": 8,
+    "maxAttemptsPerCause": 3
+  },
+  "implementCyclesUsed": 4,
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "verification": {
+    "tests": 181,
+    "repositoryTypecheck": "PASS",
+    "strictHarnessTypecheck": "PASS",
+    "corpusChecksums": "10/10 PASS",
+    "semanticBothRoutes": "7 non-quarantined fixtures PASS; LOT-03 QUARANTINED"
+  },
+  "limitations": [
+    "Full visual windows only LOT-00/01/06/07; other conversions remain partial or quarantined. No full corpus PASS.",
+    "Raster schedule includes selected subframes, not every IR boundary/midpoint. Semantic checks include these.",
+    "Material review incomplete except known Wave failure. LOT-00 numeric pass remains VISUAL_UNVERIFIED.",
+    "LOT-05 repeated reference image differs: comparison BLOCKED; cause unisolated. LOT-03 inherited size quarantine remains.",
+    "No independent measured performance acceptance bounds; no performance certification.",
+    "Wall budget overrun discovered on resumption; no further implementation attempted; finalisation only."
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "runId": "2026-10-08T010229Z",
+  "startedAt": "2026-10-08T01:02:29.896931+00:00",
+  "comparedWith": "2026-10-07T230859Z",
+  "stage": "stop",
+  "budgets": {
+    "wallTimeBudgetMinutes": 60,
+    "maxImplementCycles": 8,
+    "maxAttemptsPerCause": 3
+  },
+  "implementCyclesUsed": 0,
+  "gateSettings": {
+    "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+    "numberTolerance": 0.001,
+    "colorTolerance": "1/255",
+    "pixel": {
+      "metric": "euclidean-rgb",
+      "inspectionThreshold": 24,
+      "role": "inspection",
+      "notes": [
+        "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+        "This alone is not a complete PASS rule for the declared profile."
+      ]
+    },
+    "visualCertification": {
+      "status": "VISUAL_UNVERIFIED",
+      "requiredForProfilePass": [
+        "Documented aggregate fractionBeyond (or equivalent) acceptance bound for the declared observation window",
+        "Documented local-region / material-content review rule (missing subject, wrong paint, large pose drift cannot pass on low aggregate alone)",
+        "Alpha / background compositing rules (declared backgrounds #101014 Lottie, #000000 SVG)",
+        "Operator approval of the above bounds"
+      ],
+      "whileUnverified": [
+        "Continue diagnose/implement against inspection metrics and human strip review",
+        "Report VISUAL_UNVERIFIED; do not claim profile visual PASS",
+        "Do not widen inspectionThreshold or invent aggregate bounds after seeing diffs"
+      ]
+    },
+    "reference": {
+      "lottieWeb": "5.13.0",
+      "seek": "goToAndStop(frame, true)",
+      "devicePixelRatio": 1,
+      "lottieBackground": "#101014",
+      "svgBackground": "#000000",
+      "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+    },
+    "corpus": {
+      "root": "fixtures/corpus",
+      "checksums": "fixtures/corpus/SHA256SUMS",
+      "readme": "fixtures/corpus/README.md"
+    }
+  },
+  "profile": {
+    "acceptedFixtures": [
+      "LOT-00",
+      "LOT-01",
+      "LOT-02",
+      "LOT-03",
+      "LOT-04",
+      "LOT-05",
+      "LOT-06",
+      "LOT-07"
+    ],
+    "exclusions": [
+      "SVG-01",
+      "SVG-02"
+    ],
+    "quarantines": [
+      {
+        "id": "LOT-03",
+        "reason": "Inherited production 512 KiB source-size ceiling; not malformed-source evidence"
+      }
+    ],
+    "observationWindow": "Each finite Lottie composition: [ip,op) at source fr, one cycle; boundary/subframe checks required for final gate. Baseline harness sampled only.",
+    "workMode": "Native fidelity then authoring; stop for uncalibrated visual gate as requested"
+  },
+  "causes": [
+    {
+      "id": "gate.visualCalibration",
+      "phase": "Baseline",
+      "attempts": 0,
+      "status": "design-escalation",
+      "ownerBoundary": "evaluation acceptance policy",
+      "hypothesis": "No approved aggregate/local-region acceptance rules",
+      "expectedResult": "Operator-approved fixed gate before implementation",
+      "fixtures": [
+        "LOT-00",
+        "LOT-01",
+        "LOT-02",
+        "LOT-03",
+        "LOT-04",
+        "LOT-05",
+        "LOT-06",
+        "LOT-07"
+      ]
+    },
+    {
+      "id": "roundTrip.wave.emissionTiming",
+      "phase": "Baseline",
+      "fixtures": [
+        "LOT-07"
+      ],
+      "attempts": 0,
+      "status": "open; no implementation attempted",
+      "ownerBoundary": "motionscript-emitter / compiler validation",
+      "hypothesis": "Decimal formatting pushes end-at-duration tracks past the scene boundary",
+      "confirmedEvidence": "Generated Group10 opacity start 1233.333333ms + duration 3766.66667ms = 5000.000003ms > 5000ms. Compiler returns three INVALID_TIMING diagnostics at tracks[19]/[23]; generated compiled scene omits rejected units.",
+      "expectedResult": "Emitted program validates and preserves direct-IR timings at fixed tolerances",
+      "measurements": {
+        "compileOk": false,
+        "diagnostics": 3
+      }
+    }
+  ],
+  "carriedAttemptHistory": {
+    "runId": "2026-10-07T230859Z",
+    "comparedWith": "2026-10-07T220358Z",
+    "continuedLocalRun": "2026-10-07T224852Z",
+    "startedAt": "2026-10-07T23:08:59.702301+00:00",
+    "budgets": {
+      "wallTimeBudgetMinutes": 60,
+      "maxImplementCycles": 8,
+      "maxAttemptsPerCause": 3
+    },
+    "gateSettings": {
+      "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+      "numberTolerance": 0.001,
+      "colorTolerance": "1/255",
+      "pixel": {
+        "metric": "euclidean-rgb",
+        "inspectionThreshold": 24,
+        "role": "inspection",
+        "notes": [
+          "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+          "This alone is not a complete PASS rule for the declared profile."
+        ]
+      },
+      "visualCertification": {
+        "status": "VISUAL_UNVERIFIED",
+        "requiredForProfilePass": [
+          "Documented aggregate fractionBeyond (or equivalent) acceptance bound for the declared observation window",
+          "Documented local-region / material-content review rule (missing subject, wrong paint, large pose drift cannot pass on low aggregate alone)",
+          "Alpha / background compositing rules (declared backgrounds #101014 Lottie, #000000 SVG)",
+          "Operator approval of the above bounds"
+        ],
+        "whileUnverified": [
+          "Continue diagnose/implement against inspection metrics and human strip review",
+          "Report VISUAL_UNVERIFIED; do not claim profile visual PASS",
+          "Do not widen inspectionThreshold or invent aggregate bounds after seeing diffs"
+        ]
+      },
+      "reference": {
+        "lottieWeb": "5.13.0",
+        "seek": "goToAndStop(frame, true)",
+        "devicePixelRatio": 1,
+        "lottieBackground": "#101014",
+        "svgBackground": "#000000",
+        "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+      },
+      "corpus": {
+        "root": "fixtures/corpus",
+        "checksums": "fixtures/corpus/SHA256SUMS",
+        "readme": "fixtures/corpus/README.md"
+      }
+    },
+    "profile": "LOT-00 through LOT-07; LOT-03 inherited quarantine; SVG excluded",
+    "causes": [
+      {
+        "id": "reference.syntheticControl",
+        "phase": "Baseline",
+        "attempts": 1,
+        "status": "control verified",
+        "hypothesis": "Synthetic animated position lacks temporal cubic handles needed by lottie-web",
+        "ownerBoundary": "evaluation harness",
+        "measurementBefore": {
+          "timeControlWorks": false,
+          "fractionBeyond": 0
+        },
+        "measurementAfter": {
+          "timeControlWorks": true,
+          "fractionBeyond": 0.08
+        }
+      },
+      {
+        "id": "lottie.shapeGroup.animationDropped",
+        "phase": "A",
+        "attempts": 1,
+        "status": "improved; not visually certified",
+        "fixtures": [
+          "LOT-07",
+          "LOT-06",
+          "LOT-01"
+        ],
+        "hypothesis": "Shape-group parse/lowering keeps static defaults instead of animation tracks",
+        "ownerBoundary": "format-lottie",
+        "confirmedEvidence": "Wave layer_1.Shape_5 has no rotation track at frame 75; matrix retains layer 25deg rather than layer+group 205deg",
+        "expectedResult": "Existing transform and opacity tracks retained; Wave ring pose improves",
+        "measurements": {
+          "worstBefore": {
+            "frame": "frame_0016",
+            "fractionBeyond": 0.15135625
+          },
+          "worstAfter": {
+            "frame": "frame_0002",
+            "fractionBeyond": 0.06108125
+          },
+          "q50Before": 0.145475,
+          "q50After": 0.0516125,
+          "routeImageComparison": {
+            "pairs": 155,
+            "identicalNativePNGs": 155,
+            "identicalReferencePNGs": 155
+          }
+        }
+      }
+    ],
+    "stoppedAt": "2026-10-07T23:15:23.757523+00:00",
+    "stage": "stop",
+    "fidelityPassed": false,
+    "authoringPassed": "not-evaluated",
+    "implementCyclesUsed": 2,
+    "carriedAttemptHistory": "Local run 2026-10-07T224852Z easing handle preservation attempt 1; prior main lineage histories under 2026-10-07T220358Z and earlier remain unchanged.",
+    "nextCause": {
+      "id": "visual.wave.residualPaintAndGeometry",
+      "fixtures": [
+        "LOT-07"
+      ],
+      "attempts": 0,
+      "confirmed": "Source layers 1/2 have solid+gradient strokes; layer 3 has two gradient strokes. Parser retains one stroke on the path.",
+      "suspected": "Additional residual geometry/timing differences; not yet isolated against lottie-web evaluated state.",
+      "followedBy": [
+        "LOT-06 pose/detail discrepancy",
+        "LOT-01 midcycle confetti"
+      ]
+    }
+  },
+  "nextCause": {
+    "id": "visual.wave.residualPaintAndGeometry",
+    "fixtures": [
+      "LOT-07"
+    ],
+    "attempts": 0,
+    "confirmed": "Source layers 1/2 have solid+gradient strokes; layer 3 has two gradient strokes. Parser retains one stroke on the path.",
+    "suspected": "Additional residual geometry/timing differences; not yet isolated against lottie-web evaluated state.",
+    "followedBy": [
+      "LOT-06 pose/detail discrepancy",
+      "LOT-01 midcycle confetti"
+    ]
+  },
+  "stoppedAt": "2026-10-08T01:06:59.053118+00:00",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated"
+}

@@ -172,6 +172,50 @@ describe("lottie adapter", () => {
     expect(result.scene!.requiredCapabilities).toContain("easing.cubicBezier");
   });
 
+  it("preserves source cubic handles through import and shuffled round-trip seeks", () => {
+    const imported = load("easing_preservation");
+    expect(imported.fidelity.overall).toBe("exact");
+    const controls = [[.167, .172, .833, .829], [.7, .2, .01, .02], [.99, .98, .2, .8], [.1, .9, .42, .2], [.42, 0, .58, 1], [.2, -.5, .8, 1.5]];
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    const runtimes = [new AnimationRuntime(imported.scene!), new AnimationRuntime(compiled.scene!)];
+    const component = (u: number, a: number, b: number) => 3 * (1-u)**2 * u * a + 3 * (1-u) * u**2 * b + u**3;
+    controls.forEach(([x1, y1, x2, y2], index) => {
+      const nodeId = `layer_${index + 1}`;
+      const track = imported.scene!.timeline.tracks.find(t => t.kind === "keyframe" && t.target.kind === "node" && t.target.nodeId === nodeId && t.target.channel === "transform.position.x");
+      expect(track?.kind === "keyframe" && track.keyframes[0]?.easing).toEqual({ type: "cubic", x1, y1, x2, y2 });
+      for (const progress of [.75, 0, .25, 1, .5, .001, .999]) {
+        // Independent bisection of the source parametric curve, not named easing.
+        let lo = 0, hi = 1;
+        for (let i = 0; i < 60; i++) {
+          const mid = (lo + hi) / 2;
+          if (component(mid, x1!, x2!) < progress) lo = mid; else hi = mid;
+        }
+        const expected = 40 + 320 * component((lo + hi) / 2, y1!, y2!);
+        for (const runtime of runtimes) expect(Math.abs(origin(runtime, progress * 2000, `${nodeId}.group0.ellipseNode`)!.x - expected)).toBeLessThan(.001);
+      }
+    });
+  });
+
+  it("preserves animated shape-group transforms and opacity", () => {
+    const imported = load("animated_group_transform");
+    expect(imported.fidelity.overall).toBe("exact");
+    expect(verifyRoundTrip(imported.scene!).ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      const runtime = new AnimationRuntime(scene);
+      for (const t of [1000, 0, 2000, 500]) {
+        const f = t / 2000, angle = Math.PI * f, scale = 2 - f;
+        const item = runtime.evaluate(t).drawItems.find(i => i.nodeId === "layer_1.Moving.ellipseNode")!;
+        const point = transformPoint(item.logicalMatrix, 0, 0);
+        expect(point.x).toBeCloseTo(10 + 20*f + 15*scale*Math.cos(angle), 3);
+        expect(point.y).toBeCloseTo(15*scale*Math.sin(angle), 3);
+        expect(item.opacity).toBeCloseTo(1-f, 3);
+      }
+    }
+  });
+
   it("imports animated trim as trim.start/end tracks", () => {
     const result = load("animated_trim");
     expect(result.ok, result.diagnostics.map((item) => `${item.feature}:${item.message}`).join("\n")).toBe(true);
@@ -414,6 +458,68 @@ describe("lottie adapter", () => {
     const item = runtime.evaluate(0).drawItems.find((draw) => draw.nodeId === path.id);
     expect(item?.appearance.fill).toBeUndefined();
     expect(item?.appearance.stroke?.color.type).toBe("linear");
+  });
+
+  it("preserves ordered stroke passes with shared morph trim and transforms", () => {
+    const result = load("multiple_stroke_morph_trim");
+    expect(result.ok).toBe(true);
+    expect(result.fidelity.overall).toBe("exact");
+    const paths = result.scene!.nodes.filter(node => node.kind === "path");
+    expect(paths).toHaveLength(2);
+    expect(paths[0]!.parentId).toBe(paths[1]!.parentId);
+    expect(paths[0]!.stroke?.color.type).toBe("linear");
+    expect(paths[1]!.stroke?.color).toMatchObject({ type: "solid", r: 1, g: 0, b: 0, a: 0.6 });
+    expect(paths.map(path => path.stroke?.width)).toEqual([4, 10]);
+    const compiled = compileMotionScript(emitMotionScript(result.scene!));
+    expect(compiled.ok).toBe(true);
+    const direct = new AnimationRuntime(result.scene!);
+    const emitted = new AnimationRuntime(compiled.scene!);
+    for (const time of [0, 1000, 500, 1999, 250, 0]) {
+      const sample = direct.evaluate(time);
+      const draws = sample.drawItems.filter(draw => paths.some(path => path.id === draw.nodeId));
+      expect(draws).toHaveLength(2);
+      expect(draws.map(draw => draw.nodeId)).toEqual(paths.map(path => path.id));
+      expect(draws[0]!.geometry).toEqual(draws[1]!.geometry);
+      expect(draws[0]!.logicalMatrix).toEqual(draws[1]!.logicalMatrix);
+      expect(transformPoint(draws[0]!.logicalMatrix, 0, 0)).toEqual({ x: 107, y: 111 });
+      expect(draws[0]!.logicalMatrix[0]).toBeCloseTo(Math.cos(25 * Math.PI / 180) * 1.2, 5);
+      const compare = (a: unknown, b: unknown, color = false): void => {
+        if (typeof a === "number" && typeof b === "number") {
+          expect(Math.abs(a - b)).toBeLessThanOrEqual(color ? 1 / 255 : 0.001);
+        } else if (a && b && typeof a === "object" && typeof b === "object") {
+          expect(Object.keys(a)).toEqual(Object.keys(b));
+          const isColor = "r" in a && "g" in a && "b" in a && "a" in a;
+          for (const key of Object.keys(a)) compare((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key], isColor);
+        } else expect(a).toEqual(b);
+      };
+      compare(sample, emitted.evaluate(time));
+      if (time === 0 && draws[0]!.geometry.kind === "path") expect(draws[0]!.geometry.commands).toHaveLength(0);
+      if (time === 1000 && draws[0]!.geometry.kind === "path") expect(draws[0]!.geometry.commands.length).toBeGreaterThan(0);
+    }
+    const roundTrip = verifyRoundTrip(result.scene!);
+    expect(roundTrip.ok, formatRoundTripReport(roundTrip)).toBe(true);
+  });
+
+  it("keeps stroke scope on preceding geometry", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "multiple_stroke_morph_trim.json"), "utf8"));
+    const items = source.layers[0].shapes[0].it;
+    items.splice(2, 0, { ...structuredClone(items[0]), nm: "Later path" });
+    const result = importSource(lottieAdapter, JSON.stringify(source));
+    expect(result.ok).toBe(true);
+    const paths = result.scene!.nodes.filter(node => node.kind === "path");
+    expect(paths).toHaveLength(3);
+    expect(paths.map(path => path.stroke?.width)).toEqual([4, 10, 4]);
+  });
+
+  it("retains two gradient strokes instead of overwriting the first", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "multiple_stroke_morph_trim.json"), "utf8"));
+    const items = source.layers[0].shapes[0].it;
+    items[1] = { ...structuredClone(items[2]), w: { a: 0, k: 8 } };
+    const result = importSource(lottieAdapter, JSON.stringify(source));
+    expect(result.ok).toBe(true);
+    const paths = result.scene!.nodes.filter(node => node.kind === "path");
+    expect(paths.map(path => path.stroke?.width)).toEqual([4, 8]);
+    expect(paths.map(path => path.stroke?.color.type)).toEqual(["linear", "linear"]);
   });
 
   it("imports matching-topology animated path morph exactly", () => {

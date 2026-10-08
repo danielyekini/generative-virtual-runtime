@@ -138,14 +138,12 @@ function easingFromHandles(input: unknown, output: unknown): LottieEasing {
   const iy = num(Array.isArray(input.y) ? input.y[0] : input.y, 0.333);
   const ox = num(Array.isArray(output.x) ? output.x[0] : output.x, 0.667);
   const oy = num(Array.isArray(output.y) ? output.y[0] : output.y, 0.667);
-  // Linear only when both handles sit on y = x. AE often uses 0.167/0.833 on that
-  // diagonal; proximity to those values alone must not collapse mild easings.
-  if (Math.abs(ox - oy) < 0.01 && Math.abs(ix - iy) < 0.01) {
+  // Only an exact diagonal is mathematically linear. Named easeIn/easeOut/
+  // easeInOut use polynomial curves, so proximity to CSS cubic handles cannot
+  // establish equivalence. Preserve every other representable source cubic.
+  if (ox === oy && ix === iy && ox >= 0 && ox <= 1 && ix >= 0 && ix <= 1) {
     return "linear";
   }
-  if (Math.abs(ix) < 0.05 && Math.abs(iy) < 0.05) return "easeIn";
-  if (Math.abs(ox - 1) < 0.05 && Math.abs(oy - 1) < 0.05) return "easeOut";
-  if (Math.abs(ix - 0.42) < 0.08 && Math.abs(oy - 0.58) < 0.08) return "easeInOut";
   const cubic = { type: "cubic" as const, x1: ox, y1: oy, x2: ix, y2: iy };
   if (cubicControlsMonotonic(cubic)) return cubic;
   return "bezier-approx";

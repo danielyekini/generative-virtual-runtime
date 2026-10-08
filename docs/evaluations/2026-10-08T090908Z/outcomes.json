@@ -1,0 +1,252 @@
+{
+  "runId": "2026-10-08T090908Z",
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL",
+  "coverageStatus": "INCOMPLETE_BUDGET",
+  "fixtures": [
+    {
+      "fixtureId": "LOT-00",
+      "conversionStatus": "PASS",
+      "roundTripStatus": "PASS",
+      "visualStatus": "PASS",
+      "coverageStatus": "FULL_WINDOW",
+      "routes": [
+        {
+          "id": "LOT-00-imported",
+          "numericPass": true,
+          "meanFractionBeyond": 0.00012606698495370365,
+          "capturedScheduled": 240,
+          "expectedScheduled": 240,
+          "capturedExtra": 3,
+          "expectedExtra": 3,
+          "referenceStatus": "PASS"
+        },
+        {
+          "id": "LOT-00-compiled",
+          "numericPass": true,
+          "meanFractionBeyond": 0.00012606698495370365,
+          "capturedScheduled": 240,
+          "expectedScheduled": 240,
+          "capturedExtra": 3,
+          "expectedExtra": 3,
+          "referenceStatus": "PASS"
+        }
+      ]
+    },
+    {
+      "fixtureId": "LOT-01",
+      "conversionStatus": "PASS",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL",
+      "coverageStatus": "FULL_WINDOW",
+      "routes": [
+        {
+          "id": "LOT-01-imported",
+          "numericPass": false,
+          "meanFractionBeyond": 0.002259710743801654,
+          "capturedScheduled": 121,
+          "expectedScheduled": 121,
+          "capturedExtra": 6,
+          "expectedExtra": 6,
+          "referenceStatus": "PASS"
+        },
+        {
+          "id": "LOT-01-compiled",
+          "numericPass": false,
+          "meanFractionBeyond": 0.002259710743801654,
+          "capturedScheduled": 121,
+          "expectedScheduled": 121,
+          "capturedExtra": 6,
+          "expectedExtra": 6,
+          "referenceStatus": "PASS"
+        }
+      ]
+    },
+    {
+      "fixtureId": "LOT-02",
+      "conversionStatus": "PARTIAL",
+      "roundTripStatus": "PASS",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "FULL_WINDOW",
+      "routes": [
+        {
+          "id": "LOT-02-imported",
+          "numericPass": false,
+          "meanFractionBeyond": 0.29639115718548564,
+          "capturedScheduled": 226,
+          "expectedScheduled": 226,
+          "capturedExtra": 5,
+          "expectedExtra": 5,
+          "referenceStatus": "FINAL_CONTROLS_NOT_RECORDED"
+        },
+        {
+          "id": "LOT-02-compiled",
+          "numericPass": false,
+          "meanFractionBeyond": 0.29639115718548564,
+          "capturedScheduled": 226,
+          "expectedScheduled": 226,
+          "capturedExtra": 5,
+          "expectedExtra": 5,
+          "referenceStatus": "FINAL_CONTROLS_NOT_RECORDED"
+        }
+      ]
+    },
+    {
+      "fixtureId": "LOT-03",
+      "conversionStatus": "QUARANTINED",
+      "roundTripStatus": "QUARANTINED",
+      "visualStatus": "BLOCKED",
+      "coverageStatus": "QUARANTINED_REFERENCE_ONLY",
+      "routes": [
+        {
+          "id": "LOT-03-reference",
+          "numericPass": false,
+          "meanFractionBeyond": null,
+          "capturedScheduled": 0,
+          "expectedScheduled": 427,
+          "capturedExtra": 0,
+          "expectedExtra": 6,
+          "referenceStatus": "QUARANTINED"
+        }
+      ]
+    },
+    {
+      "fixtureId": "LOT-04",
+      "conversionStatus": "PARTIAL",
+      "roundTripStatus": "PASS",
+      "visualStatus": "VISUAL_UNVERIFIED",
+      "coverageStatus": "INCOMPLETE",
+      "routes": [
+        {
+          "id": "LOT-04-imported",
+          "numericPass": false,
+          "meanFractionBeyond": 0.08141035703870346,
+          "capturedScheduled": 675,
+          "expectedScheduled": 675,
+          "capturedExtra": 6,
+          "expectedExtra": 6,
+          "referenceStatus": "FINAL_CONTROLS_NOT_RECORDED"
+        },
+        {
+          "id": "LOT-04-compiled",
+          "numericPass": false,
+          "meanFractionBeyond": 0.08136037513383111,
+          "capturedScheduled": 664,
+          "expectedScheduled": 675,
+          "capturedExtra": 0,
+          "expectedExtra": 6,
+          "referenceStatus": "FINAL_CONTROLS_NOT_RECORDED"
+        }
+      ]
+    },
+    {
+      "fixtureId": "LOT-05",
+      "conversionStatus": "PARTIAL",
+      "roundTripStatus": "PASS",
+      "visualStatus": "BLOCKED",
+      "coverageStatus": "INCOMPLETE",
+      "routes": [
+        {
+          "id": "LOT-05-imported",
+          "numericPass": false,
+          "meanFractionBeyond": null,
+          "capturedScheduled": 0,
+          "expectedScheduled": 241,
+          "capturedExtra": 0,
+          "expectedExtra": 6,
+          "referenceStatus": "FINAL_CONTROLS_NOT_RECORDED"
+        },
+        {
+          "id": "LOT-05-compiled",
+          "numericPass": false,
+          "meanFractionBeyond": null,
+          "capturedScheduled": 0,
+          "expectedScheduled": 241,
+          "capturedExtra": 0,
+          "expectedExtra": 6,
+          "referenceStatus": "FINAL_CONTROLS_NOT_RECORDED"
+        }
+      ]
+    },
+    {
+      "fixtureId": "LOT-06",
+      "conversionStatus": "PASS",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL",
+      "coverageStatus": "FULL_WINDOW",
+      "routes": [
+        {
+          "id": "LOT-06-imported",
+          "numericPass": false,
+          "meanFractionBeyond": 0.019119325488683125,
+          "capturedScheduled": 24,
+          "expectedScheduled": 24,
+          "capturedExtra": 3,
+          "expectedExtra": 3,
+          "referenceStatus": "PASS"
+        },
+        {
+          "id": "LOT-06-compiled",
+          "numericPass": false,
+          "meanFractionBeyond": 0.019119325488683125,
+          "capturedScheduled": 24,
+          "expectedScheduled": 24,
+          "capturedExtra": 3,
+          "expectedExtra": 3,
+          "referenceStatus": "PASS"
+        }
+      ]
+    },
+    {
+      "fixtureId": "LOT-07",
+      "conversionStatus": "KNOWN_LOSS_GRADIENT_COORDINATE_SPACE",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL",
+      "coverageStatus": "FULL_WINDOW",
+      "routes": [
+        {
+          "id": "LOT-07-imported",
+          "numericPass": false,
+          "meanFractionBeyond": 0.00038395833333333305,
+          "capturedScheduled": 150,
+          "expectedScheduled": 150,
+          "capturedExtra": 5,
+          "expectedExtra": 5,
+          "referenceStatus": "PASS"
+        },
+        {
+          "id": "LOT-07-compiled",
+          "numericPass": false,
+          "meanFractionBeyond": 0.00038395833333333305,
+          "capturedScheduled": 150,
+          "expectedScheduled": 150,
+          "capturedExtra": 5,
+          "expectedExtra": 5,
+          "referenceStatus": "PASS"
+        }
+      ]
+    }
+  ],
+  "regressionStatus": "PASS: all other fixture IR/program bytes unchanged, original accepted fixture captures preserved, repository checks pass",
+  "performanceStatus": "NOT_RUN; no new performance claim",
+  "materialReviews": {
+    "LOT-00": "lot00-qualification.json",
+    "LOT-07": "wave-material-review.json"
+  },
+  "checks": {
+    "tests": 184,
+    "typecheck": "PASS",
+    "strictHarnessTypecheck": "PASS",
+    "registryConformance": "PASS",
+    "registryIntegrity": "PASS",
+    "corpusHashes": "PASS"
+  },
+  "faithfulInputHandoff": {
+    "sampleId": "LOT-00",
+    "revisionId": "r000001",
+    "quality": "PASS",
+    "publicationEligibility": "PENDING_DURABLE_EVIDENCE"
+  }
+}

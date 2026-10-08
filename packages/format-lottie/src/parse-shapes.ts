@@ -21,9 +21,7 @@ export function parseShapeItems(raw: unknown): LottieShapeItem[] {
   if (!Array.isArray(raw)) return [];
   const items: LottieShapeItem[] = [];
   let fill: SolidPaint | undefined;
-  let stroke: StrokePaint | undefined;
   let gradientFill: GradientPaint | undefined;
-  let gradientStroke: GradientStrokePaint | undefined;
   for (const entry of raw) {
     if (!isRecord(entry) || typeof entry.ty !== "string") continue;
     if (entry.ty === "fl") {
@@ -31,7 +29,8 @@ export function parseShapeItems(raw: unknown): LottieShapeItem[] {
       continue;
     }
     if (entry.ty === "st") {
-      stroke = parseStroke(entry) ?? stroke;
+      const stroke = parseStroke(entry);
+      if (stroke) applyStroke(items, stroke);
       continue;
     }
     if (entry.ty === "gf") {
@@ -39,7 +38,8 @@ export function parseShapeItems(raw: unknown): LottieShapeItem[] {
       continue;
     }
     if (entry.ty === "gs") {
-      gradientStroke = parseGradientStroke(entry) ?? gradientStroke;
+      const stroke = parseGradientStroke(entry);
+      if (stroke) applyStroke(items, stroke);
       continue;
     }
     if (entry.ty === "tm") {
@@ -51,7 +51,7 @@ export function parseShapeItems(raw: unknown): LottieShapeItem[] {
     const parsed = parseShapeItem(entry);
     if (parsed) items.push(parsed);
   }
-  return applyPaintLayers(paintItems(items, fill, stroke), gradientFill, gradientStroke);
+  return applyPaintLayers(paintItems(items, fill), gradientFill, undefined);
 }
 
 function parseShapeItem(entry: Record<string, unknown>): LottieShapeItem | undefined {
@@ -83,9 +83,7 @@ function parseGroup(entry: Record<string, unknown>): LottieShapeItem {
   };
   const items: LottieShapeItem[] = [];
   let fill: SolidPaint | undefined;
-  let stroke: StrokePaint | undefined;
   let gradientFill: GradientPaint | undefined;
-  let gradientStroke: GradientStrokePaint | undefined;
   for (const child of nested) {
     if (!isRecord(child) || typeof child.ty !== "string") continue;
     if (child.ty === "tr") {
@@ -97,7 +95,8 @@ function parseGroup(entry: Record<string, unknown>): LottieShapeItem {
       continue;
     }
     if (child.ty === "st") {
-      stroke = parseStroke(child);
+      const stroke = parseStroke(child);
+      if (stroke) applyStroke(items, stroke);
       continue;
     }
     if (child.ty === "gf") {
@@ -105,7 +104,8 @@ function parseGroup(entry: Record<string, unknown>): LottieShapeItem {
       continue;
     }
     if (child.ty === "gs") {
-      gradientStroke = parseGradientStroke(child) ?? gradientStroke;
+      const stroke = parseGradientStroke(child);
+      if (stroke) applyStroke(items, stroke);
       continue;
     }
     if (child.ty === "tm") {
@@ -116,8 +116,20 @@ function parseGroup(entry: Record<string, unknown>): LottieShapeItem {
     const shape = parseShapeItem(child);
     if (shape) items.push(shape);
   }
-  const painted = applyPaintLayers(paintItems(items, fill, stroke), gradientFill, gradientStroke);
+  const painted = applyPaintLayers(paintItems(items, fill), gradientFill, undefined);
   return { kind: "group", name: stringOrUndefined(entry.nm), items: painted, transform };
+}
+
+/** A style affects preceding geometry, including nested groups, in its own list.
+ * Retain source order here; lottie-web draws styles in reverse list order.
+ */
+function applyStroke(items: LottieShapeItem[], stroke: StrokePaint | GradientStrokePaint): void {
+  for (const item of items) {
+    if (item.kind === "group") applyStroke(item.items, stroke);
+    else if (item.kind === "path" || item.kind === "ellipse" || item.kind === "rectangle") {
+      (item.strokePasses ??= []).push(stroke);
+    }
+  }
 }
 
 function paintItems(items: LottieShapeItem[], fill?: SolidPaint, stroke?: StrokePaint): LottieShapeItem[] {
@@ -138,17 +150,18 @@ function paintItems(items: LottieShapeItem[], fill?: SolidPaint, stroke?: Stroke
 }
 
 function parseShapeTransform(entry: Record<string, unknown>): LottieShapeTransform {
-  const anchor = readVec2Property(entry.a, DEFAULT_V).kind === "static" ? readVec2Property(entry.a, DEFAULT_V) : { kind: "static", value: DEFAULT_V };
+  const anchor = readVec2Property(entry.a, DEFAULT_V);
   const position = readVec2Property(entry.p, DEFAULT_V);
   const scalePercent = readVec2Property(entry.s, { x: 100, y: 100 });
   const rotation = readScalarProperty(entry.r, 0);
   const opacity = readScalarProperty(entry.o, 100);
-  const anchorValue = anchor.kind === "static" ? anchor.value : DEFAULT_V;
-  const positionValue = position.kind === "static" ? position.value : DEFAULT_V;
-  const scaleValue = scalePercent.kind === "static" ? scalePercent.value : { x: 100, y: 100 };
-  const rotationValue = rotation.kind === "static" ? rotation.value : 0;
-  const opacityValue = opacity.kind === "static" ? opacity.value : 100;
+  const anchorValue = anchor.kind === "static" ? anchor.value : anchor.keyframes[0]?.value ?? DEFAULT_V;
+  const positionValue = position.kind === "static" ? position.value : position.keyframes[0]?.value ?? DEFAULT_V;
+  const scaleValue = scalePercent.kind === "static" ? scalePercent.value : scalePercent.keyframes[0]?.value ?? { x: 100, y: 100 };
+  const rotationValue = rotation.kind === "static" ? rotation.value : rotation.keyframes[0]?.value ?? 0;
+  const opacityValue = opacity.kind === "static" ? opacity.value : opacity.keyframes[0]?.value ?? 100;
   return {
+    animation: { anchor, position, scale: scalePercent, rotation, opacity },
     anchor: anchorValue,
     position: positionValue,
     scale: { x: scaleValue.x / 100, y: scaleValue.y / 100 },
@@ -176,7 +189,7 @@ function parseRectangle(entry: Record<string, unknown>): LottieShapeItem {
   return {
     kind: "rectangle",
     name: stringOrUndefined(entry.nm),
-    position: position.kind === "static" ? position.value : DEFAULT_V,
+    position: position.kind === "static" ? position.value : position.keyframes[0]?.value ?? DEFAULT_V,
     size: size.kind === "static" ? size.value : { x: 100, y: 100 },
     cornerRadius: corner,
   };
@@ -331,7 +344,7 @@ function parseGradientStroke(entry: Record<string, unknown>): GradientStrokePain
   return {
     ...gradient,
     width: resolved,
-    opacity: (opacity.kind === "static" ? opacity.value : 100) / 100,
+    opacity: (opacity.kind === "static" ? opacity.value : opacity.keyframes[0]?.value ?? 100) / 100,
     cap: lineCap(entry.lc),
     join: lineJoin(entry.lj),
     miterLimit: Math.max(1, miter.kind === "static" ? miter.value : 4),

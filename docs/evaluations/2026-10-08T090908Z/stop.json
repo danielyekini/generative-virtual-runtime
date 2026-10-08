@@ -1,0 +1,36 @@
+{
+  "runId": "2026-10-08T090908Z",
+  "status": "budget-exhausted",
+  "stoppedAt": "2026-10-08T10:05:25.725844+00:00",
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL",
+  "coverageStatus": "INCOMPLETE_BUDGET",
+  "reason": "Remaining full-corpus capture exceeds reserved wall-time; preserve complete target evidence and incomplete independent fixture counts within 60-minute budget",
+  "nextCause": {
+    "id": "visual.wave.gradientCoordinateSpace",
+    "phase": "A",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "linkedFinding": "visual.wave.residualPaintAndGeometry",
+    "expectedEvidence": "Use confirmed real createLinearGradient endpoint/context-matrix and caching observations to isolate remaining early-frame paint residuals. Compare evaluated source/direct/compiled matrices/paints; assess narrow existing-language lowering first. Reverify original full windows before any language representation decision. Do not repurpose or reset retained stroke attempts."
+  },
+  "retainedStrokeAttempts": {
+    "attempts": 2,
+    "remainingAttempts": 1
+  },
+  "implementation": {
+    "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+    "finalSnapshot": "source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "source-snapshot/final-files.json",
+    "testedAttemptSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "uncommitted": true
+  },
+  "sampleHandoff": {
+    "sampleId": "LOT-00",
+    "revisionId": "r000001",
+    "quality": "PASS",
+    "publicationEligibility": "PENDING_DURABLE_EVIDENCE"
+  }
+}

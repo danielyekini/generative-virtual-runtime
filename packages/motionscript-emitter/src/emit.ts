@@ -270,9 +270,11 @@ function formatColor(color: SolidColor): string {
 }
 
 function formatDuration(ms: number): string {
-  if (near(ms, Math.round(ms)) && Math.round(ms) % 1000 === 0) return `${Math.round(ms) / 1000}s`;
-  if (near(ms, Math.round(ms))) return `${Math.round(ms)}ms`;
-  return `${formatNumber(ms)}ms`;
+  // Timing validation depends on sums of independently authored values. Relative
+  // pretty-print rounding can turn an exact scene-end into an invalid overrun.
+  // The shortest JS decimal preserves the original double through the reader.
+  if (Number.isInteger(ms) && ms % 1000 === 0) return `${ms / 1000}s`;
+  return `${Object.is(ms, -0) ? "0" : String(ms)}ms`;
 }
 
 function formatAngle(radians: number): string {
