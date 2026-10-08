@@ -1,0 +1,22 @@
+{
+  "request": "Publish retained changes to remote main",
+  "testedExecutionCommit": "eaf464865850cf56d3d2eabb3c3e1b0454baffbe",
+  "remoteBase": "dd17ce70a913b74cb4f546772c9f967024eb6c3d",
+  "verification": {
+    "tests": {
+      "passed": 196,
+      "failed": 0,
+      "files": 26
+    },
+    "typecheck": "PASS full package chain",
+    "visualStatus": "VISUAL_UNVERIFIED for merged source",
+    "testsLogSha256": "06fb783ad886560b5376f8ce3637fe41e59469ed0f6565942cfeef021fa6eb71",
+    "typecheckLogSha256": "97c6809d6e5fd5dbdacd00d0960346de24eae4500dfa614851ce9c62bc4a21de"
+  },
+  "evidenceStorage": {
+    "sourceArchives": "Historical source-snapshot/tree archives committed",
+    "renderResults": "2026-10-08T140610Z/evidence/final/render-results.json.gz decompresses to the original evidence-files.json SHA256 association",
+    "bulkCaptures": "Full regenerated capture trees remain local; review sheets, diagnostics, measurements and byte-hash manifests committed"
+  },
+  "history": "Both independent run directories preserved verbatim. Integration does not retroactively certify merged visual output."
+}

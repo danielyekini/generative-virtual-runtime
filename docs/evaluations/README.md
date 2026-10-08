@@ -4,7 +4,7 @@ An evaluation run records what one implementation revision reproduced. It is not
 
 The newest run is [2026-10-08T140610Z](2026-10-08T140610Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json). The merged committed implementation requires fresh visual verification; historical results apply to their recorded source snapshots. Continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
+Next Baseline reads [implementation-pin.json](implementation-pin.json). The merged committed implementation requires fresh visual verification; historical results apply to their recorded source snapshots. Complete merged full-corpus verification, then continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
@@ -27,7 +27,7 @@ Next Baseline reads [implementation-pin.json](implementation-pin.json). The merg
 
 `2026-10-07-baseline` is historical. Do not edit it. Do not use it as `comparedWith` once a newer run exists.
 
-Manifest / results / evidence for the newest run live under `2026-10-08T103605Z/`.
+Manifest / results / evidence for the newest run live under `2026-10-08T140610Z/`.
 
 `evaluation/evidence/` is scratch space for the harness. Copy a finished run into a new `docs/evaluations/<run-id>/` directory. Do not point the index at the scratch directory.
 
