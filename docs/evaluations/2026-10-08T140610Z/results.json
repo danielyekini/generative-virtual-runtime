@@ -1,0 +1,559 @@
+{
+  "runId": "2026-10-08T140610Z",
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL",
+  "coverageStatus": "FULL_NATIVE_CAPTURE_NON_QUARANTINED; LOT03_NATIVE_QUARANTINED; LOT05_REFERENCE_BLOCKED",
+  "fullCorpusDriverCompleted": true,
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "visualStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-00-imported",
+          "sceneKind": "imported",
+          "visualStatus": "PASS",
+          "materialReview": "PASS_REUSED_IDENTICAL_REVIEWED_PIXELS",
+          "referenceVerified": true,
+          "independentReferenceVerification": "PASS",
+          "numericPass": true,
+          "complete": true,
+          "capturedScheduledComparisons": 240,
+          "expectedScheduledComparisons": 240,
+          "capturedExtraComparisons": 3,
+          "expectedExtraComparisons": 3,
+          "meanHotFraction": 0.00012606698495370365,
+          "worstHotFraction": 0.00022569444444444443,
+          "worstLocalRatio": 0.03125
+        },
+        {
+          "id": "LOT-00-compiled",
+          "sceneKind": "compiled",
+          "visualStatus": "PASS",
+          "materialReview": "PASS_REUSED_IDENTICAL_REVIEWED_PIXELS",
+          "referenceVerified": true,
+          "independentReferenceVerification": "PASS",
+          "numericPass": true,
+          "complete": true,
+          "capturedScheduledComparisons": 240,
+          "expectedScheduledComparisons": 240,
+          "capturedExtraComparisons": 3,
+          "expectedExtraComparisons": 3,
+          "meanHotFraction": 0.00012606698495370365,
+          "worstHotFraction": 0.00022569444444444443,
+          "worstLocalRatio": 0.03125
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+        "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+        "programPath": "fixtures/LOT-00/generated.motion",
+        "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+        "importedSceneSha256": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd",
+        "compiledSceneSha256": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-00/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    },
+    {
+      "id": "LOT-01",
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL",
+      "routes": [
+        {
+          "id": "LOT-01-imported",
+          "sceneKind": "imported",
+          "visualStatus": "FAIL",
+          "materialReview": "FAIL_STACKING_REVIEWED_FULL_SEQUENCE",
+          "referenceVerified": true,
+          "independentReferenceVerification": "PASS",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 121,
+          "expectedScheduledComparisons": 121,
+          "capturedExtraComparisons": 6,
+          "expectedExtraComparisons": 6,
+          "meanHotFraction": 0.0006219008264462804,
+          "worstHotFraction": 0.0034,
+          "worstLocalRatio": 0.38144329896907214
+        },
+        {
+          "id": "LOT-01-compiled",
+          "sceneKind": "compiled",
+          "visualStatus": "FAIL",
+          "materialReview": "FAIL_STACKING_REVIEWED_FULL_SEQUENCE",
+          "referenceVerified": true,
+          "independentReferenceVerification": "PASS",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 121,
+          "expectedScheduledComparisons": 121,
+          "capturedExtraComparisons": 6,
+          "expectedExtraComparisons": 6,
+          "meanHotFraction": 0.0006219008264462804,
+          "worstHotFraction": 0.0034,
+          "worstLocalRatio": 0.38144329896907214
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+        "sourceSha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+        "programPath": "fixtures/LOT-01/generated.motion",
+        "programSha256": "2a211d012ef9b5d81e944c0b7fd8f6496c0e6fc5d08857177734f141b7a1a5fb",
+        "importedSceneSha256": "79cdd7fe1d5680e45352138c91bb57af7de39ac236b00e3c035659603ffa60bc",
+        "compiledSceneSha256": "328c11465ad8db72c0856d968f0337357257d5064d533db452090508b81bba18",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-01/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    },
+    {
+      "id": "LOT-02",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL",
+      "routes": [
+        {
+          "id": "LOT-02-imported",
+          "sceneKind": "imported",
+          "visualStatus": "FAIL",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": true,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 226,
+          "expectedScheduledComparisons": 226,
+          "capturedExtraComparisons": 5,
+          "expectedExtraComparisons": 5,
+          "meanHotFraction": 0.29639115718548564,
+          "worstHotFraction": 0.3265137924382716,
+          "worstLocalRatio": 7.71875
+        },
+        {
+          "id": "LOT-02-compiled",
+          "sceneKind": "compiled",
+          "visualStatus": "FAIL",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": true,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 226,
+          "expectedScheduledComparisons": 226,
+          "capturedExtraComparisons": 5,
+          "expectedExtraComparisons": 5,
+          "meanHotFraction": 0.29639115718548564,
+          "worstHotFraction": 0.3265137924382716,
+          "worstLocalRatio": 7.71875
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+        "sourceSha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+        "programPath": "fixtures/LOT-02/generated.motion",
+        "programSha256": "2360bd2951015f3bdd00b4b6532143602bf73631fd43e09c516e9825a6770b7a",
+        "importedSceneSha256": "0fed7ab48343d37582d3da618225a3ed7111f5c148a1ac805d151a834c81b686",
+        "compiledSceneSha256": "a153a7b2e72675cb97a3b8d65a4cb08f48080de068f62ef8962e26f3f17ea41b",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-02/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    },
+    {
+      "id": "LOT-03",
+      "conversionStatus": "FAILED_QUARANTINED",
+      "roundTripStatus": "QUARANTINED",
+      "visualStatus": "QUARANTINED",
+      "routes": [
+        {
+          "id": "LOT-03-reference",
+          "sceneKind": "none",
+          "visualStatus": "QUARANTINED",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": false,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": false,
+          "capturedScheduledComparisons": 0,
+          "expectedScheduledComparisons": 427,
+          "capturedExtraComparisons": 0,
+          "expectedExtraComparisons": 6,
+          "meanHotFraction": null,
+          "worstHotFraction": null,
+          "worstLocalRatio": null
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+        "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+        "programPath": null,
+        "programSha256": null,
+        "importedSceneSha256": null,
+        "compiledSceneSha256": null,
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-03/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    },
+    {
+      "id": "LOT-04",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL",
+      "routes": [
+        {
+          "id": "LOT-04-imported",
+          "sceneKind": "imported",
+          "visualStatus": "FAIL",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": true,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 675,
+          "expectedScheduledComparisons": 675,
+          "capturedExtraComparisons": 6,
+          "expectedExtraComparisons": 6,
+          "meanHotFraction": 0.08141035703870346,
+          "worstHotFraction": 0.08442744656917885,
+          "worstLocalRatio": 0.591796875
+        },
+        {
+          "id": "LOT-04-compiled",
+          "sceneKind": "compiled",
+          "visualStatus": "FAIL",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": true,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 675,
+          "expectedScheduledComparisons": 675,
+          "capturedExtraComparisons": 6,
+          "expectedExtraComparisons": 6,
+          "meanHotFraction": 0.08141035703870346,
+          "worstHotFraction": 0.08442744656917885,
+          "worstLocalRatio": 0.591796875
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+        "sourceSha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+        "programPath": "fixtures/LOT-04/generated.motion",
+        "programSha256": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31",
+        "importedSceneSha256": "7460ecc821d0e6d1088254c1719b1115ac78f940657e06eafc513985e86a477c",
+        "compiledSceneSha256": "db4367d5ff9c56225bfaa8dc8b8d514e94b72210aa27f8a1c38b482f9806ec9f",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-04/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    },
+    {
+      "id": "LOT-05",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "BLOCKED_REFERENCE",
+      "routes": [
+        {
+          "id": "LOT-05-imported",
+          "sceneKind": "imported",
+          "visualStatus": "BLOCKED_REFERENCE",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": false,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 241,
+          "expectedScheduledComparisons": 241,
+          "capturedExtraComparisons": 6,
+          "expectedExtraComparisons": 6,
+          "meanHotFraction": 0.2549125372106392,
+          "worstHotFraction": 0.3661556927297668,
+          "worstLocalRatio": 1
+        },
+        {
+          "id": "LOT-05-compiled",
+          "sceneKind": "compiled",
+          "visualStatus": "BLOCKED_REFERENCE",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": false,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 241,
+          "expectedScheduledComparisons": 241,
+          "capturedExtraComparisons": 6,
+          "expectedExtraComparisons": 6,
+          "meanHotFraction": 0.2549125372106392,
+          "worstHotFraction": 0.3661556927297668,
+          "worstLocalRatio": 1
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+        "sourceSha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+        "programPath": "fixtures/LOT-05/generated.motion",
+        "programSha256": "49c7bfcaac1390b0f12299f2da26ee20ef310b9651522f25ac0801ba1be83f97",
+        "importedSceneSha256": "4e12d4da5f22c84dc427f1e85a6153bea24d6135ae2842284a574abf5cc182fe",
+        "compiledSceneSha256": "f5b8c815021d9d7d7537946c58423909159519ada62ca6502d2701466c3dd894",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-05/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    },
+    {
+      "id": "LOT-06",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL",
+      "routes": [
+        {
+          "id": "LOT-06-imported",
+          "sceneKind": "imported",
+          "visualStatus": "FAIL",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": true,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 24,
+          "expectedScheduledComparisons": 24,
+          "capturedExtraComparisons": 3,
+          "expectedExtraComparisons": 3,
+          "meanHotFraction": 0.012602076903292183,
+          "worstHotFraction": 0.013962191358024692,
+          "worstLocalRatio": 0.998046875
+        },
+        {
+          "id": "LOT-06-compiled",
+          "sceneKind": "compiled",
+          "visualStatus": "FAIL",
+          "materialReview": "NOT_RUN",
+          "referenceVerified": true,
+          "independentReferenceVerification": "NOT_RUN",
+          "numericPass": false,
+          "complete": true,
+          "capturedScheduledComparisons": 24,
+          "expectedScheduledComparisons": 24,
+          "capturedExtraComparisons": 3,
+          "expectedExtraComparisons": 3,
+          "meanHotFraction": 0.012602076903292183,
+          "worstHotFraction": 0.013962191358024692,
+          "worstLocalRatio": 0.998046875
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+        "sourceSha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+        "programPath": "fixtures/LOT-06/generated.motion",
+        "programSha256": "98a170c91a5822ec18f0ba55e42538d81145bedd6a06a8b6b8bdf80b1c0abf14",
+        "importedSceneSha256": "47f061756bb9950ab49951405db196f24c6873491de48768297fce31813838f6",
+        "compiledSceneSha256": "db00cab3229588224b2127a9b01ca772209cab57b1bcaaa30548ffa84883cb21",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-06/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    },
+    {
+      "id": "LOT-07",
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "visualStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-07-imported",
+          "sceneKind": "imported",
+          "visualStatus": "PASS",
+          "materialReview": "PASS_REUSED_IDENTICAL_REVIEWED_PIXELS",
+          "referenceVerified": true,
+          "independentReferenceVerification": "PASS",
+          "numericPass": true,
+          "complete": true,
+          "capturedScheduledComparisons": 150,
+          "expectedScheduledComparisons": 150,
+          "capturedExtraComparisons": 5,
+          "expectedExtraComparisons": 5,
+          "meanHotFraction": 0,
+          "worstHotFraction": 0,
+          "worstLocalRatio": 0
+        },
+        {
+          "id": "LOT-07-compiled",
+          "sceneKind": "compiled",
+          "visualStatus": "PASS",
+          "materialReview": "PASS_REUSED_IDENTICAL_REVIEWED_PIXELS",
+          "referenceVerified": true,
+          "independentReferenceVerification": "PASS",
+          "numericPass": true,
+          "complete": true,
+          "capturedScheduledComparisons": 150,
+          "expectedScheduledComparisons": 150,
+          "capturedExtraComparisons": 5,
+          "expectedExtraComparisons": 5,
+          "meanHotFraction": 0,
+          "worstHotFraction": 0,
+          "worstLocalRatio": 0
+        }
+      ],
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+        "sourceSha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+        "programPath": "fixtures/LOT-07/generated.motion",
+        "programSha256": "8a35e17170c0c33da0f7261462f536ee0654ac6a165c1266dc1a24cf84059745",
+        "importedSceneSha256": "905ced10428d291f4362de4aa991a1f30f3bbc7c11b122ccf316f9428e364ae0",
+        "compiledSceneSha256": "aa0e2b9f6116d08ed690ba2ff491ad2b7b18df04689493216c65e01d63cae602",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-07/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "semanticEvidence": "evidence/final/round-trip-results.json",
+      "visualEvidence": "evidence/final/render-results.json",
+      "lineage": {
+        "revision": null,
+        "parent": null,
+        "status": "UNREGISTERED_SCRATCH"
+      }
+    }
+  ],
+  "checks": {
+    "tests": "194 PASS",
+    "typecheck": "PASS",
+    "registry": "PASS",
+    "corpusChecksums": "ALL_TEN_PASS",
+    "sourceCeilingBytes": 524288,
+    "LOT01EmittedProgramBytes": 260644
+  },
+  "materialReview": {
+    "LOT00_LOT07": "Every current reference/native PNG on both routes matches the prior immutable reviewed PNG hash. New complete source recapture/repeat controls PASS. Review carried only with exact byte association.",
+    "LOT01": "All eleven full-window contact sheets inspected; direct/compiled native PNGs byte-identical 127/127. Wrong early overlap paint ordering confirmed by source-order counterfactual; contour residual remains.",
+    "otherFixtures": "NOT_RUN; no material PASS inferred."
+  }
+}

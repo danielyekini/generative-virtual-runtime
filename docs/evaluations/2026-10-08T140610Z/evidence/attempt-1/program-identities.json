@@ -1,0 +1,424 @@
+[
+  {
+    "id": "LOT-00",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+    "sourceBytes": 41712,
+    "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [
+      {
+        "path": "evaluation/evidence/fixtures/LOT-00/compiled-scene.json",
+        "bytes": 45701,
+        "sha256": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-00/generated.motion",
+        "bytes": 8880,
+        "sha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-00/imported-scene.json",
+        "bytes": 44716,
+        "sha256": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd"
+      }
+    ],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+      "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+      "programPath": "fixtures/LOT-00/generated.motion",
+      "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+      "importedSceneSha256": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd",
+      "compiledSceneSha256": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d",
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-00/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "LOT-01",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+    "sourceBytes": 139337,
+    "sourceSha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [
+      {
+        "path": "evaluation/evidence/fixtures/LOT-01/compiled-scene.json",
+        "bytes": 962182,
+        "sha256": "328c11465ad8db72c0856d968f0337357257d5064d533db452090508b81bba18"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-01/generated.motion",
+        "bytes": 260644,
+        "sha256": "2a211d012ef9b5d81e944c0b7fd8f6496c0e6fc5d08857177734f141b7a1a5fb"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-01/imported-scene.json",
+        "bytes": 1040125,
+        "sha256": "79cdd7fe1d5680e45352138c91bb57af7de39ac236b00e3c035659603ffa60bc"
+      }
+    ],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+      "sourceSha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+      "programPath": "fixtures/LOT-01/generated.motion",
+      "programSha256": "2a211d012ef9b5d81e944c0b7fd8f6496c0e6fc5d08857177734f141b7a1a5fb",
+      "importedSceneSha256": "79cdd7fe1d5680e45352138c91bb57af7de39ac236b00e3c035659603ffa60bc",
+      "compiledSceneSha256": "328c11465ad8db72c0856d968f0337357257d5064d533db452090508b81bba18",
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-01/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "LOT-02",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+    "sourceBytes": 127633,
+    "sourceSha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [
+      {
+        "path": "evaluation/evidence/fixtures/LOT-02/compiled-scene.json",
+        "bytes": 97138,
+        "sha256": "a153a7b2e72675cb97a3b8d65a4cb08f48080de068f62ef8962e26f3f17ea41b"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-02/generated.motion",
+        "bytes": 21927,
+        "sha256": "2360bd2951015f3bdd00b4b6532143602bf73631fd43e09c516e9825a6770b7a"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-02/imported-scene.json",
+        "bytes": 98525,
+        "sha256": "0fed7ab48343d37582d3da618225a3ed7111f5c148a1ac805d151a834c81b686"
+      }
+    ],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+      "sourceSha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+      "programPath": "fixtures/LOT-02/generated.motion",
+      "programSha256": "2360bd2951015f3bdd00b4b6532143602bf73631fd43e09c516e9825a6770b7a",
+      "importedSceneSha256": "0fed7ab48343d37582d3da618225a3ed7111f5c148a1ac805d151a834c81b686",
+      "compiledSceneSha256": "a153a7b2e72675cb97a3b8d65a4cb08f48080de068f62ef8962e26f3f17ea41b",
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-02/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "LOT-03",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+    "sourceBytes": 877884,
+    "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+      "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "programPath": null,
+      "programSha256": null,
+      "importedSceneSha256": null,
+      "compiledSceneSha256": null,
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-03/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "LOT-04",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+    "sourceBytes": 512240,
+    "sourceSha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [
+      {
+        "path": "evaluation/evidence/fixtures/LOT-04/compiled-scene.json",
+        "bytes": 184239,
+        "sha256": "db4367d5ff9c56225bfaa8dc8b8d514e94b72210aa27f8a1c38b482f9806ec9f"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-04/generated.motion",
+        "bytes": 39802,
+        "sha256": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-04/imported-scene.json",
+        "bytes": 190895,
+        "sha256": "7460ecc821d0e6d1088254c1719b1115ac78f940657e06eafc513985e86a477c"
+      }
+    ],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+      "sourceSha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+      "programPath": "fixtures/LOT-04/generated.motion",
+      "programSha256": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31",
+      "importedSceneSha256": "7460ecc821d0e6d1088254c1719b1115ac78f940657e06eafc513985e86a477c",
+      "compiledSceneSha256": "db4367d5ff9c56225bfaa8dc8b8d514e94b72210aa27f8a1c38b482f9806ec9f",
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-04/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "LOT-05",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+    "sourceBytes": 191525,
+    "sourceSha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [
+      {
+        "path": "evaluation/evidence/fixtures/LOT-05/compiled-scene.json",
+        "bytes": 46801,
+        "sha256": "f5b8c815021d9d7d7537946c58423909159519ada62ca6502d2701466c3dd894"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-05/generated.motion",
+        "bytes": 10247,
+        "sha256": "49c7bfcaac1390b0f12299f2da26ee20ef310b9651522f25ac0801ba1be83f97"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-05/imported-scene.json",
+        "bytes": 47519,
+        "sha256": "4e12d4da5f22c84dc427f1e85a6153bea24d6135ae2842284a574abf5cc182fe"
+      }
+    ],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+      "sourceSha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+      "programPath": "fixtures/LOT-05/generated.motion",
+      "programSha256": "49c7bfcaac1390b0f12299f2da26ee20ef310b9651522f25ac0801ba1be83f97",
+      "importedSceneSha256": "4e12d4da5f22c84dc427f1e85a6153bea24d6135ae2842284a574abf5cc182fe",
+      "compiledSceneSha256": "f5b8c815021d9d7d7537946c58423909159519ada62ca6502d2701466c3dd894",
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-05/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "LOT-06",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+    "sourceBytes": 112565,
+    "sourceSha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [
+      {
+        "path": "evaluation/evidence/fixtures/LOT-06/compiled-scene.json",
+        "bytes": 538921,
+        "sha256": "db00cab3229588224b2127a9b01ca772209cab57b1bcaaa30548ffa84883cb21"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-06/generated.motion",
+        "bytes": 128500,
+        "sha256": "98a170c91a5822ec18f0ba55e42538d81145bedd6a06a8b6b8bdf80b1c0abf14"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-06/imported-scene.json",
+        "bytes": 558176,
+        "sha256": "47f061756bb9950ab49951405db196f24c6873491de48768297fce31813838f6"
+      }
+    ],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+      "sourceSha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+      "programPath": "fixtures/LOT-06/generated.motion",
+      "programSha256": "98a170c91a5822ec18f0ba55e42538d81145bedd6a06a8b6b8bdf80b1c0abf14",
+      "importedSceneSha256": "47f061756bb9950ab49951405db196f24c6873491de48768297fce31813838f6",
+      "compiledSceneSha256": "db00cab3229588224b2127a9b01ca772209cab57b1bcaaa30548ffa84883cb21",
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-06/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "LOT-07",
+    "format": "lottie",
+    "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+    "sourceBytes": 31682,
+    "sourceSha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [
+      {
+        "path": "evaluation/evidence/fixtures/LOT-07/compiled-scene.json",
+        "bytes": 130956,
+        "sha256": "aa0e2b9f6116d08ed690ba2ff491ad2b7b18df04689493216c65e01d63cae602"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-07/generated.motion",
+        "bytes": 26726,
+        "sha256": "8a35e17170c0c33da0f7261462f536ee0654ac6a165c1266dc1a24cf84059745"
+      },
+      {
+        "path": "evaluation/evidence/fixtures/LOT-07/imported-scene.json",
+        "bytes": 132501,
+        "sha256": "905ced10428d291f4362de4aa991a1f30f3bbc7c11b122ccf316f9428e364ae0"
+      }
+    ],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+      "sourceSha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+      "programPath": "fixtures/LOT-07/generated.motion",
+      "programSha256": "8a35e17170c0c33da0f7261462f536ee0654ac6a165c1266dc1a24cf84059745",
+      "importedSceneSha256": "905ced10428d291f4362de4aa991a1f30f3bbc7c11b122ccf316f9428e364ae0",
+      "compiledSceneSha256": "aa0e2b9f6116d08ed690ba2ff491ad2b7b18df04689493216c65e01d63cae602",
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/LOT-07/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "SVG-01",
+    "format": "svg",
+    "sourcePath": "fixtures/corpus/svg/SVG-01.svg",
+    "sourceBytes": 183327,
+    "sourceSha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/svg/SVG-01.svg",
+      "sourceSha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d",
+      "programPath": null,
+      "programSha256": null,
+      "importedSceneSha256": null,
+      "compiledSceneSha256": null,
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/SVG-01/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  },
+  {
+    "id": "SVG-02",
+    "format": "svg",
+    "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+    "sourceBytes": 270580,
+    "sourceSha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+    "revision": null,
+    "parentRevision": null,
+    "canonicalStatus": "UNREGISTERED_SCRATCH",
+    "artifacts": [],
+    "provenance": {
+      "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+      "sourceSha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+      "programPath": null,
+      "programSha256": null,
+      "importedSceneSha256": null,
+      "compiledSceneSha256": null,
+      "revisionId": null,
+      "parentRevisionId": null,
+      "parentProgramSha256": null,
+      "lineageStatus": "UNREGISTERED_SCRATCH",
+      "verificationStatus": "UNVERIFIED",
+      "evidenceAssociation": {
+        "stage": "generation",
+        "resultPath": "fixtures/SVG-02/result.json",
+        "implementationEnvironmentPath": "environment.json",
+        "implementationEnvironmentSha256": "2f4376852a054395b45260c189b0c27528b95a7dcf3fb6096cc5fa9322ee9bc3",
+        "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+      }
+    }
+  }
+]

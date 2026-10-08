@@ -1,0 +1,14 @@
+{
+  "archive": "tree/attempt-1-source.tar.gz",
+  "sha256": "6de223c8192136d726a6076cb4ce59ba6f1fd9d871e1518ad252774bc1920e89",
+  "files": 1448,
+  "createdAt": "2026-10-08T14:19:20.441980+00:00",
+  "exclusions": [
+    "credentials",
+    "disposable dependencies/builds",
+    "capture evidence (retained separately)",
+    "historical and current recursive snapshots",
+    "current reporting directory"
+  ],
+  "initialNote": null
+}

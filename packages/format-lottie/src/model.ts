@@ -3,7 +3,7 @@ import type { SegmentEasing, Vec2 } from "@gvr/schema";
 export type LottieEasing = SegmentEasing | "bezier-approx";
 import type { InventoryFinding } from "./inventory";
 
-export const LOTTIE_ADAPTER_VERSION = "0.1.3";
+export const LOTTIE_ADAPTER_VERSION = "0.1.4";
 
 export interface LottieDocument {
   frameRate: number;

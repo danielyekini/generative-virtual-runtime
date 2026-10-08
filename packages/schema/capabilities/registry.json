@@ -386,12 +386,13 @@
       "conformanceTests": [
         "packages/schema/src/spatial.test.ts#samples spatial cubics by arc length",
         "packages/schema/src/spatial.test.ts#includes Z in arc length like lottie-web when tangents carry depth",
-        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
+        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length",
+        "packages/format-lottie/src/clip-spatial-keyframes.test.ts#preserves uncut arc-length motion through both cuts and shuffled seeks"
       ],
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present.",
+          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present. Composition-window cuts with monotonic temporal curves (cubic Y controls in [0,1], named easing or holds) preserve the original arc-length polyline using existing vec2 keys; non-monotonic spatial cuts are outside the verified clipping scope.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering",
             "packages/format-lottie/src/lottie.test.ts#preserves spatial tangent Z for arc-length sampling",

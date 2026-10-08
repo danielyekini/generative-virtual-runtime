@@ -1,0 +1,86 @@
+[
+  {
+    "path": "evaluation/evidence/fixtures/LOT-00/compiled-scene.json",
+    "sha256": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-00/generated.motion",
+    "sha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-00/imported-scene.json",
+    "sha256": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-01/compiled-scene.json",
+    "sha256": "328c11465ad8db72c0856d968f0337357257d5064d533db452090508b81bba18"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-01/generated.motion",
+    "sha256": "2a211d012ef9b5d81e944c0b7fd8f6496c0e6fc5d08857177734f141b7a1a5fb"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-01/imported-scene.json",
+    "sha256": "79cdd7fe1d5680e45352138c91bb57af7de39ac236b00e3c035659603ffa60bc"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-02/compiled-scene.json",
+    "sha256": "a153a7b2e72675cb97a3b8d65a4cb08f48080de068f62ef8962e26f3f17ea41b"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-02/generated.motion",
+    "sha256": "2360bd2951015f3bdd00b4b6532143602bf73631fd43e09c516e9825a6770b7a"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-02/imported-scene.json",
+    "sha256": "0fed7ab48343d37582d3da618225a3ed7111f5c148a1ac805d151a834c81b686"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-04/compiled-scene.json",
+    "sha256": "db4367d5ff9c56225bfaa8dc8b8d514e94b72210aa27f8a1c38b482f9806ec9f"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-04/generated.motion",
+    "sha256": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-04/imported-scene.json",
+    "sha256": "7460ecc821d0e6d1088254c1719b1115ac78f940657e06eafc513985e86a477c"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-05/compiled-scene.json",
+    "sha256": "f5b8c815021d9d7d7537946c58423909159519ada62ca6502d2701466c3dd894"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-05/generated.motion",
+    "sha256": "49c7bfcaac1390b0f12299f2da26ee20ef310b9651522f25ac0801ba1be83f97"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-05/imported-scene.json",
+    "sha256": "4e12d4da5f22c84dc427f1e85a6153bea24d6135ae2842284a574abf5cc182fe"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-06/compiled-scene.json",
+    "sha256": "db00cab3229588224b2127a9b01ca772209cab57b1bcaaa30548ffa84883cb21"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-06/generated.motion",
+    "sha256": "98a170c91a5822ec18f0ba55e42538d81145bedd6a06a8b6b8bdf80b1c0abf14"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-06/imported-scene.json",
+    "sha256": "47f061756bb9950ab49951405db196f24c6873491de48768297fce31813838f6"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-07/compiled-scene.json",
+    "sha256": "aa0e2b9f6116d08ed690ba2ff491ad2b7b18df04689493216c65e01d63cae602"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-07/generated.motion",
+    "sha256": "8a35e17170c0c33da0f7261462f536ee0654ac6a165c1266dc1a24cf84059745"
+  },
+  {
+    "path": "evaluation/evidence/fixtures/LOT-07/imported-scene.json",
+    "sha256": "905ced10428d291f4362de4aa991a1f30f3bbc7c11b122ccf316f9428e364ae0"
+  }
+]

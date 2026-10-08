@@ -1,0 +1,5300 @@
+{
+  "profile": "Same pinned Chromium151/lottie-web5.13.0 canvas, DPR1, matched timestamps/subframe, opaque #101014. Every source frame independently recaptured and decoded pixels checked against the retained primary capture. First frame repeated after the complete window.",
+  "output": [
+    {
+      "fixture": "LOT-00",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "motionControlWorks": true,
+      "repeatIdentical": true,
+      "frames": [
+        {
+          "id": "frame_00000",
+          "timeMs": 0,
+          "seek": {
+            "ok": true,
+            "ms": 33.3000000002794,
+            "note": "lottie frame 0"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00001",
+          "timeMs": 33.333333333333336,
+          "seek": {
+            "ok": true,
+            "ms": 42.299999999813735,
+            "note": "lottie frame 1"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00002",
+          "timeMs": 66.66666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 18.90000000037253,
+            "note": "lottie frame 2"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00003",
+          "timeMs": 100,
+          "seek": {
+            "ok": true,
+            "ms": 59.39999999990687,
+            "note": "lottie frame 3"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00004",
+          "timeMs": 133.33333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 40,
+            "note": "lottie frame 4"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00005",
+          "timeMs": 166.66666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 4.2000000001862645,
+            "note": "lottie frame 5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00006",
+          "timeMs": 200,
+          "seek": {
+            "ok": true,
+            "ms": 24.399999999906868,
+            "note": "lottie frame 6"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00007",
+          "timeMs": 233.33333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 28.40000000037253,
+            "note": "lottie frame 7"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00008",
+          "timeMs": 266.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.399999999906868,
+            "note": "lottie frame 8"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00009",
+          "timeMs": 300,
+          "seek": {
+            "ok": true,
+            "ms": 5.7999999998137355,
+            "note": "lottie frame 9"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00010",
+          "timeMs": 333.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 41.60000000009313,
+            "note": "lottie frame 10"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00011",
+          "timeMs": 366.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 7.899999999906868,
+            "note": "lottie frame 11"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00012",
+          "timeMs": 400,
+          "seek": {
+            "ok": true,
+            "ms": 12.5,
+            "note": "lottie frame 12"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00013",
+          "timeMs": 433.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 12.899999999906868,
+            "note": "lottie frame 13"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00014",
+          "timeMs": 466.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 4.199999999720603,
+            "note": "lottie frame 14"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00015",
+          "timeMs": 500,
+          "seek": {
+            "ok": true,
+            "ms": 11.700000000186265,
+            "note": "lottie frame 15"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00016",
+          "timeMs": 533.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 7.100000000093132,
+            "note": "lottie frame 16"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00017",
+          "timeMs": 566.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 14.399999999906868,
+            "note": "lottie frame 17"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00018",
+          "timeMs": 600,
+          "seek": {
+            "ok": true,
+            "ms": 3.8000000002793968,
+            "note": "lottie frame 18"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00019",
+          "timeMs": 633.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 13.899999999906868,
+            "note": "lottie frame 19"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00020",
+          "timeMs": 666.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 21.40000000037253,
+            "note": "lottie frame 20"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00021",
+          "timeMs": 700,
+          "seek": {
+            "ok": true,
+            "ms": 16.299999999813735,
+            "note": "lottie frame 21"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00022",
+          "timeMs": 733.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 7.300000000279397,
+            "note": "lottie frame 22"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00023",
+          "timeMs": 766.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 8.299999999813735,
+            "note": "lottie frame 23"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00024",
+          "timeMs": 800,
+          "seek": {
+            "ok": true,
+            "ms": 4.399999999906868,
+            "note": "lottie frame 24"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00025",
+          "timeMs": 833.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 6.2999999998137355,
+            "note": "lottie frame 25"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00026",
+          "timeMs": 866.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 20.200000000186265,
+            "note": "lottie frame 26"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00027",
+          "timeMs": 900,
+          "seek": {
+            "ok": true,
+            "ms": 18.90000000037253,
+            "note": "lottie frame 27"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00028",
+          "timeMs": 933.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 14.600000000093132,
+            "note": "lottie frame 28"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00029",
+          "timeMs": 966.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 13.5,
+            "note": "lottie frame 29"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00030",
+          "timeMs": 1000,
+          "seek": {
+            "ok": true,
+            "ms": 6.099999999627471,
+            "note": "lottie frame 30"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00031",
+          "timeMs": 1033.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 4.2000000001862645,
+            "note": "lottie frame 31"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00032",
+          "timeMs": 1066.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 4.5,
+            "note": "lottie frame 32"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00033",
+          "timeMs": 1100,
+          "seek": {
+            "ok": true,
+            "ms": 8.800000000279397,
+            "note": "lottie frame 33"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00034",
+          "timeMs": 1133.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 12.299999999813735,
+            "note": "lottie frame 34"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00035",
+          "timeMs": 1166.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 6.7999999998137355,
+            "note": "lottie frame 35"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00036",
+          "timeMs": 1200,
+          "seek": {
+            "ok": true,
+            "ms": 26,
+            "note": "lottie frame 36"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00037",
+          "timeMs": 1233.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 3.5,
+            "note": "lottie frame 37"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00038",
+          "timeMs": 1266.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.5,
+            "note": "lottie frame 38"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00039",
+          "timeMs": 1300,
+          "seek": {
+            "ok": true,
+            "ms": 8.300000000279397,
+            "note": "lottie frame 39"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00040",
+          "timeMs": 1333.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 9.700000000186265,
+            "note": "lottie frame 40"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00041",
+          "timeMs": 1366.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8.399999999906868,
+            "note": "lottie frame 41"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00042",
+          "timeMs": 1400,
+          "seek": {
+            "ok": true,
+            "ms": 4.600000000093132,
+            "note": "lottie frame 42"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00043",
+          "timeMs": 1433.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 9.600000000093132,
+            "note": "lottie frame 43"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00044",
+          "timeMs": 1466.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 4.399999999906868,
+            "note": "lottie frame 44"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00045",
+          "timeMs": 1500,
+          "seek": {
+            "ok": true,
+            "ms": 6.600000000093132,
+            "note": "lottie frame 45"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00046",
+          "timeMs": 1533.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 17.09999999962747,
+            "note": "lottie frame 46"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00047",
+          "timeMs": 1566.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.199999999720603,
+            "note": "lottie frame 47"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00048",
+          "timeMs": 1600,
+          "seek": {
+            "ok": true,
+            "ms": 10.100000000093132,
+            "note": "lottie frame 48"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00049",
+          "timeMs": 1633.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 16.40000000037253,
+            "note": "lottie frame 49"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00050",
+          "timeMs": 1666.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 4.7999999998137355,
+            "note": "lottie frame 50"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00051",
+          "timeMs": 1700,
+          "seek": {
+            "ok": true,
+            "ms": 10.299999999813735,
+            "note": "lottie frame 51"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00052",
+          "timeMs": 1733.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 13,
+            "note": "lottie frame 52"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00053",
+          "timeMs": 1766.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 7.800000000279397,
+            "note": "lottie frame 53"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00054",
+          "timeMs": 1800,
+          "seek": {
+            "ok": true,
+            "ms": 15.800000000279397,
+            "note": "lottie frame 54"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00055",
+          "timeMs": 1833.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 4.100000000093132,
+            "note": "lottie frame 55"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00056",
+          "timeMs": 1866.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8,
+            "note": "lottie frame 56"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00057",
+          "timeMs": 1900,
+          "seek": {
+            "ok": true,
+            "ms": 6.2999999998137355,
+            "note": "lottie frame 57"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00058",
+          "timeMs": 1933.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 10.300000000279397,
+            "note": "lottie frame 58"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00059",
+          "timeMs": 1966.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.200000000186265,
+            "note": "lottie frame 59"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00060",
+          "timeMs": 2000,
+          "seek": {
+            "ok": true,
+            "ms": 8.699999999720603,
+            "note": "lottie frame 60"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00061",
+          "timeMs": 2033.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 11.699999999720603,
+            "note": "lottie frame 61"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00062",
+          "timeMs": 2066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 7.2000000001862645,
+            "note": "lottie frame 62"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00063",
+          "timeMs": 2100,
+          "seek": {
+            "ok": true,
+            "ms": 22.300000000279397,
+            "note": "lottie frame 63"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00064",
+          "timeMs": 2133.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 4.199999999720603,
+            "note": "lottie frame 64"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00065",
+          "timeMs": 2166.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 17.600000000093132,
+            "note": "lottie frame 65"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00066",
+          "timeMs": 2200,
+          "seek": {
+            "ok": true,
+            "ms": 6.399999999906868,
+            "note": "lottie frame 66"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00067",
+          "timeMs": 2233.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 36.90000000037253,
+            "note": "lottie frame 67"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00068",
+          "timeMs": 2266.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 7.7999999998137355,
+            "note": "lottie frame 68"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00069",
+          "timeMs": 2300,
+          "seek": {
+            "ok": true,
+            "ms": 7.199999999720603,
+            "note": "lottie frame 69"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00070",
+          "timeMs": 2333.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 11.600000000093132,
+            "note": "lottie frame 70"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00071",
+          "timeMs": 2366.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 8.5,
+            "note": "lottie frame 71"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00072",
+          "timeMs": 2400,
+          "seek": {
+            "ok": true,
+            "ms": 11.5,
+            "note": "lottie frame 72"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00073",
+          "timeMs": 2433.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 12.100000000093132,
+            "note": "lottie frame 73"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00074",
+          "timeMs": 2466.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 8.399999999906868,
+            "note": "lottie frame 74"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00075",
+          "timeMs": 2500,
+          "seek": {
+            "ok": true,
+            "ms": 5,
+            "note": "lottie frame 75"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00076",
+          "timeMs": 2533.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 8.600000000093132,
+            "note": "lottie frame 76"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00077",
+          "timeMs": 2566.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 7.100000000093132,
+            "note": "lottie frame 77"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00078",
+          "timeMs": 2600,
+          "seek": {
+            "ok": true,
+            "ms": 16.600000000093132,
+            "note": "lottie frame 78"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00079",
+          "timeMs": 2633.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 23.700000000186265,
+            "note": "lottie frame 79"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00080",
+          "timeMs": 2666.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 7.699999999720603,
+            "note": "lottie frame 80"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00081",
+          "timeMs": 2700,
+          "seek": {
+            "ok": true,
+            "ms": 6.400000000372529,
+            "note": "lottie frame 81"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00082",
+          "timeMs": 2733.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 246.8000000002794,
+            "note": "lottie frame 82"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00083",
+          "timeMs": 2766.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 16.600000000093132,
+            "note": "lottie frame 83"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00084",
+          "timeMs": 2800,
+          "seek": {
+            "ok": true,
+            "ms": 46.1999999997206,
+            "note": "lottie frame 84"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00085",
+          "timeMs": 2833.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 40.39999999990687,
+            "note": "lottie frame 85"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00086",
+          "timeMs": 2866.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 42.799999999813735,
+            "note": "lottie frame 86"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00087",
+          "timeMs": 2900,
+          "seek": {
+            "ok": true,
+            "ms": 19.5,
+            "note": "lottie frame 87"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00088",
+          "timeMs": 2933.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 12.5,
+            "note": "lottie frame 88"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00089",
+          "timeMs": 2966.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 30.600000000093132,
+            "note": "lottie frame 89"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00090",
+          "timeMs": 3000,
+          "seek": {
+            "ok": true,
+            "ms": 10,
+            "note": "lottie frame 90"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00091",
+          "timeMs": 3033.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 6.7999999998137355,
+            "note": "lottie frame 91"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00092",
+          "timeMs": 3066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 16.100000000093132,
+            "note": "lottie frame 92"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00093",
+          "timeMs": 3100,
+          "seek": {
+            "ok": true,
+            "ms": 12.199999999720603,
+            "note": "lottie frame 93"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00094",
+          "timeMs": 3133.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 21.100000000093132,
+            "note": "lottie frame 94"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00095",
+          "timeMs": 3166.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 16.799999999813735,
+            "note": "lottie frame 95"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00096",
+          "timeMs": 3200,
+          "seek": {
+            "ok": true,
+            "ms": 41,
+            "note": "lottie frame 96"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00097",
+          "timeMs": 3233.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 2.8999999999068677,
+            "note": "lottie frame 97"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00098",
+          "timeMs": 3266.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 14.5,
+            "note": "lottie frame 98"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00099",
+          "timeMs": 3300,
+          "seek": {
+            "ok": true,
+            "ms": 4.300000000279397,
+            "note": "lottie frame 99"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00100",
+          "timeMs": 3333.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 8.100000000093132,
+            "note": "lottie frame 100"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00101",
+          "timeMs": 3366.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 14.700000000186265,
+            "note": "lottie frame 101"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00102",
+          "timeMs": 3400,
+          "seek": {
+            "ok": true,
+            "ms": 4.099999999627471,
+            "note": "lottie frame 102"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00103",
+          "timeMs": 3433.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 13.299999999813735,
+            "note": "lottie frame 103"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00104",
+          "timeMs": 3466.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 16.299999999813735,
+            "note": "lottie frame 104"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00105",
+          "timeMs": 3500,
+          "seek": {
+            "ok": true,
+            "ms": 30.899999999906868,
+            "note": "lottie frame 105"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00106",
+          "timeMs": 3533.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 11.600000000093132,
+            "note": "lottie frame 106"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00107",
+          "timeMs": 3566.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 6.300000000279397,
+            "note": "lottie frame 107"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00108",
+          "timeMs": 3600,
+          "seek": {
+            "ok": true,
+            "ms": 10.799999999813735,
+            "note": "lottie frame 108"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00109",
+          "timeMs": 3633.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 5.5,
+            "note": "lottie frame 109"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00110",
+          "timeMs": 3666.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 15.300000000279397,
+            "note": "lottie frame 110"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00111",
+          "timeMs": 3700,
+          "seek": {
+            "ok": true,
+            "ms": 4.2999999998137355,
+            "note": "lottie frame 111"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00112",
+          "timeMs": 3733.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 17.200000000186265,
+            "note": "lottie frame 112"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00113",
+          "timeMs": 3766.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 15.599999999627471,
+            "note": "lottie frame 113"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00114",
+          "timeMs": 3800,
+          "seek": {
+            "ok": true,
+            "ms": 2.8000000002793968,
+            "note": "lottie frame 114"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00115",
+          "timeMs": 3833.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 9.5,
+            "note": "lottie frame 115"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00116",
+          "timeMs": 3866.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 8.899999999906868,
+            "note": "lottie frame 116"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00117",
+          "timeMs": 3900,
+          "seek": {
+            "ok": true,
+            "ms": 44.60000000009313,
+            "note": "lottie frame 117"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00118",
+          "timeMs": 3933.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 2.6999999997206032,
+            "note": "lottie frame 118"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00119",
+          "timeMs": 3966.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 10.100000000093132,
+            "note": "lottie frame 119"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00120",
+          "timeMs": 4000,
+          "seek": {
+            "ok": true,
+            "ms": 13.199999999720603,
+            "note": "lottie frame 120"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00121",
+          "timeMs": 4033.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 129.60000000009313,
+            "note": "lottie frame 121"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00122",
+          "timeMs": 4066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 23.299999999813735,
+            "note": "lottie frame 122"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00123",
+          "timeMs": 4100,
+          "seek": {
+            "ok": true,
+            "ms": 29.699999999720603,
+            "note": "lottie frame 123"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00124",
+          "timeMs": 4133.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 3.2000000001862645,
+            "note": "lottie frame 124"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00125",
+          "timeMs": 4166.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 11.200000000186265,
+            "note": "lottie frame 125"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00126",
+          "timeMs": 4200,
+          "seek": {
+            "ok": true,
+            "ms": 13.200000000186265,
+            "note": "lottie frame 126"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00127",
+          "timeMs": 4233.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 8.199999999720603,
+            "note": "lottie frame 127"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00128",
+          "timeMs": 4266.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 7,
+            "note": "lottie frame 128"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00129",
+          "timeMs": 4300,
+          "seek": {
+            "ok": true,
+            "ms": 10.799999999813735,
+            "note": "lottie frame 129"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00130",
+          "timeMs": 4333.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 9.799999999813735,
+            "note": "lottie frame 130"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00131",
+          "timeMs": 4366.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.899999999906868,
+            "note": "lottie frame 131"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00132",
+          "timeMs": 4400,
+          "seek": {
+            "ok": true,
+            "ms": 15.600000000093132,
+            "note": "lottie frame 132"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00133",
+          "timeMs": 4433.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 26.399999999906868,
+            "note": "lottie frame 133"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00134",
+          "timeMs": 4466.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 32.60000000009313,
+            "note": "lottie frame 134"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00135",
+          "timeMs": 4500,
+          "seek": {
+            "ok": true,
+            "ms": 14.700000000186265,
+            "note": "lottie frame 135"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00136",
+          "timeMs": 4533.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 7.600000000093132,
+            "note": "lottie frame 136"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00137",
+          "timeMs": 4566.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 3.7000000001862645,
+            "note": "lottie frame 137"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00138",
+          "timeMs": 4600,
+          "seek": {
+            "ok": true,
+            "ms": 7.7999999998137355,
+            "note": "lottie frame 138"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00139",
+          "timeMs": 4633.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 13,
+            "note": "lottie frame 139"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00140",
+          "timeMs": 4666.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.399999999906868,
+            "note": "lottie frame 140"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00141",
+          "timeMs": 4700,
+          "seek": {
+            "ok": true,
+            "ms": 10.5,
+            "note": "lottie frame 141"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00142",
+          "timeMs": 4733.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 15.5,
+            "note": "lottie frame 142"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00143",
+          "timeMs": 4766.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 16.5,
+            "note": "lottie frame 143"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00144",
+          "timeMs": 4800,
+          "seek": {
+            "ok": true,
+            "ms": 11.899999999906868,
+            "note": "lottie frame 144"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00145",
+          "timeMs": 4833.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 11.100000000093132,
+            "note": "lottie frame 145"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00146",
+          "timeMs": 4866.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 7.800000000279397,
+            "note": "lottie frame 146"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00147",
+          "timeMs": 4900,
+          "seek": {
+            "ok": true,
+            "ms": 11.800000000279397,
+            "note": "lottie frame 147"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00148",
+          "timeMs": 4933.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 9,
+            "note": "lottie frame 148"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00149",
+          "timeMs": 4966.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 3.2000000001862645,
+            "note": "lottie frame 149"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00150",
+          "timeMs": 5000,
+          "seek": {
+            "ok": true,
+            "ms": 14.299999999813735,
+            "note": "lottie frame 150"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00151",
+          "timeMs": 5033.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 15.399999999906868,
+            "note": "lottie frame 151"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00152",
+          "timeMs": 5066.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 11.5,
+            "note": "lottie frame 152"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00153",
+          "timeMs": 5100,
+          "seek": {
+            "ok": true,
+            "ms": 19.800000000279397,
+            "note": "lottie frame 153"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00154",
+          "timeMs": 5133.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 12.200000000186265,
+            "note": "lottie frame 154"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00155",
+          "timeMs": 5166.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 19.899999999906868,
+            "note": "lottie frame 155"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00156",
+          "timeMs": 5200,
+          "seek": {
+            "ok": true,
+            "ms": 15.900000000372529,
+            "note": "lottie frame 156"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00157",
+          "timeMs": 5233.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 15.600000000093132,
+            "note": "lottie frame 157"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00158",
+          "timeMs": 5266.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 5.5,
+            "note": "lottie frame 158"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00159",
+          "timeMs": 5300,
+          "seek": {
+            "ok": true,
+            "ms": 9.800000000279397,
+            "note": "lottie frame 159"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00160",
+          "timeMs": 5333.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 7,
+            "note": "lottie frame 160"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00161",
+          "timeMs": 5366.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 9.899999999906868,
+            "note": "lottie frame 161"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00162",
+          "timeMs": 5400,
+          "seek": {
+            "ok": true,
+            "ms": 18.300000000279397,
+            "note": "lottie frame 162"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00163",
+          "timeMs": 5433.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 3.6000000000931323,
+            "note": "lottie frame 163"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00164",
+          "timeMs": 5466.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.400000000372529,
+            "note": "lottie frame 164"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00165",
+          "timeMs": 5500,
+          "seek": {
+            "ok": true,
+            "ms": 4.300000000279397,
+            "note": "lottie frame 165"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00166",
+          "timeMs": 5533.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 17.800000000279397,
+            "note": "lottie frame 166"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00167",
+          "timeMs": 5566.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 71.70000000018626,
+            "note": "lottie frame 167"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00168",
+          "timeMs": 5600,
+          "seek": {
+            "ok": true,
+            "ms": 8.100000000093132,
+            "note": "lottie frame 168"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00169",
+          "timeMs": 5633.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 49.3000000002794,
+            "note": "lottie frame 169"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00170",
+          "timeMs": 5666.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 7.600000000093132,
+            "note": "lottie frame 170"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00171",
+          "timeMs": 5700,
+          "seek": {
+            "ok": true,
+            "ms": 10.100000000093132,
+            "note": "lottie frame 171"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00172",
+          "timeMs": 5733.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 14.199999999720603,
+            "note": "lottie frame 172"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00173",
+          "timeMs": 5766.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 9.700000000186265,
+            "note": "lottie frame 173"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00174",
+          "timeMs": 5800,
+          "seek": {
+            "ok": true,
+            "ms": 76.5,
+            "note": "lottie frame 174"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00175",
+          "timeMs": 5833.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 7.199999999720603,
+            "note": "lottie frame 175"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00176",
+          "timeMs": 5866.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 5,
+            "note": "lottie frame 176"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00177",
+          "timeMs": 5900,
+          "seek": {
+            "ok": true,
+            "ms": 15.200000000186265,
+            "note": "lottie frame 177"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00178",
+          "timeMs": 5933.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 22.300000000279397,
+            "note": "lottie frame 178"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00179",
+          "timeMs": 5966.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.100000000093132,
+            "note": "lottie frame 179"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00180",
+          "timeMs": 6000,
+          "seek": {
+            "ok": true,
+            "ms": 12,
+            "note": "lottie frame 180"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00181",
+          "timeMs": 6033.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 18.700000000186265,
+            "note": "lottie frame 181"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00182",
+          "timeMs": 6066.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8.5,
+            "note": "lottie frame 182"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00183",
+          "timeMs": 6100,
+          "seek": {
+            "ok": true,
+            "ms": 8.799999999813735,
+            "note": "lottie frame 183"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00184",
+          "timeMs": 6133.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 15,
+            "note": "lottie frame 184"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00185",
+          "timeMs": 6166.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8.600000000093132,
+            "note": "lottie frame 185"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00186",
+          "timeMs": 6200,
+          "seek": {
+            "ok": true,
+            "ms": 11,
+            "note": "lottie frame 186"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00187",
+          "timeMs": 6233.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 9.799999999813735,
+            "note": "lottie frame 187"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00188",
+          "timeMs": 6266.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.900000000372529,
+            "note": "lottie frame 188"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00189",
+          "timeMs": 6300,
+          "seek": {
+            "ok": true,
+            "ms": 138,
+            "note": "lottie frame 189"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00190",
+          "timeMs": 6333.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 14.800000000279397,
+            "note": "lottie frame 190"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00191",
+          "timeMs": 6366.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17,
+            "note": "lottie frame 191"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00192",
+          "timeMs": 6400,
+          "seek": {
+            "ok": true,
+            "ms": 103,
+            "note": "lottie frame 192"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00193",
+          "timeMs": 6433.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 42.299999999813735,
+            "note": "lottie frame 193"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00194",
+          "timeMs": 6466.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 61.200000000186265,
+            "note": "lottie frame 194"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00195",
+          "timeMs": 6500,
+          "seek": {
+            "ok": true,
+            "ms": 39.60000000009313,
+            "note": "lottie frame 195"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00196",
+          "timeMs": 6533.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 6,
+            "note": "lottie frame 196"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00197",
+          "timeMs": 6566.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.40000000037253,
+            "note": "lottie frame 197"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00198",
+          "timeMs": 6600,
+          "seek": {
+            "ok": true,
+            "ms": 12,
+            "note": "lottie frame 198"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00199",
+          "timeMs": 6633.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 8.600000000093132,
+            "note": "lottie frame 199"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00200",
+          "timeMs": 6666.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 9,
+            "note": "lottie frame 200"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00201",
+          "timeMs": 6700,
+          "seek": {
+            "ok": true,
+            "ms": 23.90000000037253,
+            "note": "lottie frame 201"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00202",
+          "timeMs": 6733.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 9.5,
+            "note": "lottie frame 202"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00203",
+          "timeMs": 6766.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.200000000186265,
+            "note": "lottie frame 203"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00204",
+          "timeMs": 6800,
+          "seek": {
+            "ok": true,
+            "ms": 16.699999999720603,
+            "note": "lottie frame 204"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00205",
+          "timeMs": 6833.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 10.5,
+            "note": "lottie frame 205"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00206",
+          "timeMs": 6866.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 11.199999999720603,
+            "note": "lottie frame 206"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00207",
+          "timeMs": 6900,
+          "seek": {
+            "ok": true,
+            "ms": 11.5,
+            "note": "lottie frame 207"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00208",
+          "timeMs": 6933.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 42.10000000009313,
+            "note": "lottie frame 208"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00209",
+          "timeMs": 6966.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 5.399999999906868,
+            "note": "lottie frame 209"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00210",
+          "timeMs": 7000,
+          "seek": {
+            "ok": true,
+            "ms": 4.2999999998137355,
+            "note": "lottie frame 210"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00211",
+          "timeMs": 7033.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 10.699999999720603,
+            "note": "lottie frame 211"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00212",
+          "timeMs": 7066.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 14.800000000279397,
+            "note": "lottie frame 212"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00213",
+          "timeMs": 7100,
+          "seek": {
+            "ok": true,
+            "ms": 15.200000000186265,
+            "note": "lottie frame 213"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00214",
+          "timeMs": 7133.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 12.600000000093132,
+            "note": "lottie frame 214"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00215",
+          "timeMs": 7166.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 14.600000000093132,
+            "note": "lottie frame 215"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00216",
+          "timeMs": 7200,
+          "seek": {
+            "ok": true,
+            "ms": 12.100000000093132,
+            "note": "lottie frame 216"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00217",
+          "timeMs": 7233.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 10.299999999813735,
+            "note": "lottie frame 217"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00218",
+          "timeMs": 7266.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 2.6000000000931323,
+            "note": "lottie frame 218"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00219",
+          "timeMs": 7300,
+          "seek": {
+            "ok": true,
+            "ms": 37.10000000009313,
+            "note": "lottie frame 219"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00220",
+          "timeMs": 7333.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 5.600000000093132,
+            "note": "lottie frame 220"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00221",
+          "timeMs": 7366.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 16.399999999906868,
+            "note": "lottie frame 221"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00222",
+          "timeMs": 7400,
+          "seek": {
+            "ok": true,
+            "ms": 13.199999999720603,
+            "note": "lottie frame 222"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00223",
+          "timeMs": 7433.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 14.5,
+            "note": "lottie frame 223"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00224",
+          "timeMs": 7466.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 4.7999999998137355,
+            "note": "lottie frame 224"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00225",
+          "timeMs": 7500,
+          "seek": {
+            "ok": true,
+            "ms": 10.299999999813735,
+            "note": "lottie frame 225"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00226",
+          "timeMs": 7533.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 4.599999999627471,
+            "note": "lottie frame 226"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00227",
+          "timeMs": 7566.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 6.5,
+            "note": "lottie frame 227"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00228",
+          "timeMs": 7600,
+          "seek": {
+            "ok": true,
+            "ms": 4.399999999906868,
+            "note": "lottie frame 228"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00229",
+          "timeMs": 7633.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 7.899999999906868,
+            "note": "lottie frame 229"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00230",
+          "timeMs": 7666.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 10.600000000093132,
+            "note": "lottie frame 230"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00231",
+          "timeMs": 7700,
+          "seek": {
+            "ok": true,
+            "ms": 6.699999999720603,
+            "note": "lottie frame 231"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00232",
+          "timeMs": 7733.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 16.699999999720603,
+            "note": "lottie frame 232"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00233",
+          "timeMs": 7766.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8.100000000093132,
+            "note": "lottie frame 233"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00234",
+          "timeMs": 7800,
+          "seek": {
+            "ok": true,
+            "ms": 7.100000000093132,
+            "note": "lottie frame 234"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00235",
+          "timeMs": 7833.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 14.300000000279397,
+            "note": "lottie frame 235"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00236",
+          "timeMs": 7866.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.100000000093132,
+            "note": "lottie frame 236"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00237",
+          "timeMs": 7900,
+          "seek": {
+            "ok": true,
+            "ms": 13.900000000372529,
+            "note": "lottie frame 237"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00238",
+          "timeMs": 7933.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 5.600000000093132,
+            "note": "lottie frame 238"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00239",
+          "timeMs": 7966.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 13.100000000093132,
+            "note": "lottie frame 239"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "near_end",
+          "timeMs": 7960,
+          "seek": {
+            "ok": true,
+            "ms": 48.5,
+            "note": "lottie frame 238.8"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "subframe_0",
+          "timeMs": 16.666666666666668,
+          "seek": {
+            "ok": true,
+            "ms": 11.100000000093132,
+            "note": "lottie frame 0.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "subframe_1",
+          "timeMs": 7983.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 17,
+            "note": "lottie frame 239.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        }
+      ],
+      "logs": [],
+      "status": "PASS"
+    },
+    {
+      "fixture": "LOT-01",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "motionControlWorks": true,
+      "repeatIdentical": true,
+      "frames": [
+        {
+          "id": "frame_00000",
+          "timeMs": 0,
+          "seek": {
+            "ok": true,
+            "ms": 15.200000000186265,
+            "note": "lottie frame 0"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00001",
+          "timeMs": 33.333333333333336,
+          "seek": {
+            "ok": true,
+            "ms": 20.399999999906868,
+            "note": "lottie frame 1"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00002",
+          "timeMs": 66.66666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 30,
+            "note": "lottie frame 2"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00003",
+          "timeMs": 100,
+          "seek": {
+            "ok": true,
+            "ms": 81.5,
+            "note": "lottie frame 3"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00004",
+          "timeMs": 133.33333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 11.199999999720603,
+            "note": "lottie frame 4"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00005",
+          "timeMs": 166.66666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 9.899999999906868,
+            "note": "lottie frame 5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00006",
+          "timeMs": 200,
+          "seek": {
+            "ok": true,
+            "ms": 32.799999999813735,
+            "note": "lottie frame 6"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00007",
+          "timeMs": 233.33333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 4.399999999906868,
+            "note": "lottie frame 7"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00008",
+          "timeMs": 266.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 18.399999999906868,
+            "note": "lottie frame 8"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00009",
+          "timeMs": 300,
+          "seek": {
+            "ok": true,
+            "ms": 12,
+            "note": "lottie frame 9"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00010",
+          "timeMs": 333.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 25.600000000093132,
+            "note": "lottie frame 10"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00011",
+          "timeMs": 366.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.299999999813735,
+            "note": "lottie frame 11"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00012",
+          "timeMs": 400,
+          "seek": {
+            "ok": true,
+            "ms": 11.800000000279397,
+            "note": "lottie frame 12"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00013",
+          "timeMs": 433.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 20.800000000279397,
+            "note": "lottie frame 13"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00014",
+          "timeMs": 466.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 16.399999999906868,
+            "note": "lottie frame 14"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00015",
+          "timeMs": 500,
+          "seek": {
+            "ok": true,
+            "ms": 19.700000000186265,
+            "note": "lottie frame 15"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00016",
+          "timeMs": 533.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 20.699999999720603,
+            "note": "lottie frame 16"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00017",
+          "timeMs": 566.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 10.399999999906868,
+            "note": "lottie frame 17"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00018",
+          "timeMs": 600,
+          "seek": {
+            "ok": true,
+            "ms": 25.299999999813735,
+            "note": "lottie frame 18"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00019",
+          "timeMs": 633.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 39.200000000186265,
+            "note": "lottie frame 19"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00020",
+          "timeMs": 666.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 18.699999999720603,
+            "note": "lottie frame 20"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00021",
+          "timeMs": 700,
+          "seek": {
+            "ok": true,
+            "ms": 8.400000000372529,
+            "note": "lottie frame 21"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00022",
+          "timeMs": 733.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 11.600000000093132,
+            "note": "lottie frame 22"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00023",
+          "timeMs": 766.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 14.299999999813735,
+            "note": "lottie frame 23"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00024",
+          "timeMs": 800,
+          "seek": {
+            "ok": true,
+            "ms": 16.90000000037253,
+            "note": "lottie frame 24"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00025",
+          "timeMs": 833.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 21.700000000186265,
+            "note": "lottie frame 25"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00026",
+          "timeMs": 866.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 7.5,
+            "note": "lottie frame 26"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00027",
+          "timeMs": 900,
+          "seek": {
+            "ok": true,
+            "ms": 13.200000000186265,
+            "note": "lottie frame 27"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00028",
+          "timeMs": 933.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 12,
+            "note": "lottie frame 28"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00029",
+          "timeMs": 966.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 45.799999999813735,
+            "note": "lottie frame 29"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00030",
+          "timeMs": 1000,
+          "seek": {
+            "ok": true,
+            "ms": 22.899999999906868,
+            "note": "lottie frame 30"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00031",
+          "timeMs": 1033.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 16.699999999720603,
+            "note": "lottie frame 31"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00032",
+          "timeMs": 1066.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8.299999999813735,
+            "note": "lottie frame 32"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00033",
+          "timeMs": 1100,
+          "seek": {
+            "ok": true,
+            "ms": 23.200000000186265,
+            "note": "lottie frame 33"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00034",
+          "timeMs": 1133.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 136.89999999990687,
+            "note": "lottie frame 34"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00035",
+          "timeMs": 1166.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 23.5,
+            "note": "lottie frame 35"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00036",
+          "timeMs": 1200,
+          "seek": {
+            "ok": true,
+            "ms": 22.59999999962747,
+            "note": "lottie frame 36"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00037",
+          "timeMs": 1233.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 19.199999999720603,
+            "note": "lottie frame 37"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00038",
+          "timeMs": 1266.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 5.5,
+            "note": "lottie frame 38"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00039",
+          "timeMs": 1300,
+          "seek": {
+            "ok": true,
+            "ms": 16.300000000279397,
+            "note": "lottie frame 39"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00040",
+          "timeMs": 1333.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 22.100000000093132,
+            "note": "lottie frame 40"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00041",
+          "timeMs": 1366.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 25.100000000093132,
+            "note": "lottie frame 41"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00042",
+          "timeMs": 1400,
+          "seek": {
+            "ok": true,
+            "ms": 23.799999999813735,
+            "note": "lottie frame 42"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00043",
+          "timeMs": 1433.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 15.699999999720603,
+            "note": "lottie frame 43"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00044",
+          "timeMs": 1466.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 42.40000000037253,
+            "note": "lottie frame 44"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00045",
+          "timeMs": 1500,
+          "seek": {
+            "ok": true,
+            "ms": 15.5,
+            "note": "lottie frame 45"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00046",
+          "timeMs": 1533.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 14.899999999906868,
+            "note": "lottie frame 46"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00047",
+          "timeMs": 1566.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 3.8999999999068677,
+            "note": "lottie frame 47"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00048",
+          "timeMs": 1600,
+          "seek": {
+            "ok": true,
+            "ms": 16.200000000186265,
+            "note": "lottie frame 48"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00049",
+          "timeMs": 1633.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 23,
+            "note": "lottie frame 49"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00050",
+          "timeMs": 1666.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 2.7999999998137355,
+            "note": "lottie frame 50"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00051",
+          "timeMs": 1700,
+          "seek": {
+            "ok": true,
+            "ms": 17.09999999962747,
+            "note": "lottie frame 51"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00052",
+          "timeMs": 1733.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 11.800000000279397,
+            "note": "lottie frame 52"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00053",
+          "timeMs": 1766.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 21.799999999813735,
+            "note": "lottie frame 53"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00054",
+          "timeMs": 1800,
+          "seek": {
+            "ok": true,
+            "ms": 14,
+            "note": "lottie frame 54"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00055",
+          "timeMs": 1833.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 11.5,
+            "note": "lottie frame 55"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00056",
+          "timeMs": 1866.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 15.799999999813735,
+            "note": "lottie frame 56"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00057",
+          "timeMs": 1900,
+          "seek": {
+            "ok": true,
+            "ms": 11.300000000279397,
+            "note": "lottie frame 57"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00058",
+          "timeMs": 1933.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 12.5,
+            "note": "lottie frame 58"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00059",
+          "timeMs": 1966.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 20.100000000093132,
+            "note": "lottie frame 59"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00060",
+          "timeMs": 2000,
+          "seek": {
+            "ok": true,
+            "ms": 9.600000000093132,
+            "note": "lottie frame 60"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00061",
+          "timeMs": 2033.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 16,
+            "note": "lottie frame 61"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00062",
+          "timeMs": 2066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 22.300000000279397,
+            "note": "lottie frame 62"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00063",
+          "timeMs": 2100,
+          "seek": {
+            "ok": true,
+            "ms": 15.5,
+            "note": "lottie frame 63"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00064",
+          "timeMs": 2133.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 21.5,
+            "note": "lottie frame 64"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00065",
+          "timeMs": 2166.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 9.600000000093132,
+            "note": "lottie frame 65"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00066",
+          "timeMs": 2200,
+          "seek": {
+            "ok": true,
+            "ms": 16.899999999906868,
+            "note": "lottie frame 66"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00067",
+          "timeMs": 2233.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 19.100000000093132,
+            "note": "lottie frame 67"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00068",
+          "timeMs": 2266.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 33.5,
+            "note": "lottie frame 68"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00069",
+          "timeMs": 2300,
+          "seek": {
+            "ok": true,
+            "ms": 15.899999999906868,
+            "note": "lottie frame 69"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00070",
+          "timeMs": 2333.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 23.5,
+            "note": "lottie frame 70"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00071",
+          "timeMs": 2366.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 7.900000000372529,
+            "note": "lottie frame 71"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00072",
+          "timeMs": 2400,
+          "seek": {
+            "ok": true,
+            "ms": 13.600000000093132,
+            "note": "lottie frame 72"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00073",
+          "timeMs": 2433.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 17.699999999720603,
+            "note": "lottie frame 73"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00074",
+          "timeMs": 2466.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 15.399999999906868,
+            "note": "lottie frame 74"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00075",
+          "timeMs": 2500,
+          "seek": {
+            "ok": true,
+            "ms": 28.399999999906868,
+            "note": "lottie frame 75"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00076",
+          "timeMs": 2533.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 8.399999999906868,
+            "note": "lottie frame 76"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00077",
+          "timeMs": 2566.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 4.699999999720603,
+            "note": "lottie frame 77"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00078",
+          "timeMs": 2600,
+          "seek": {
+            "ok": true,
+            "ms": 28.59999999962747,
+            "note": "lottie frame 78"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00079",
+          "timeMs": 2633.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 3.6000000000931323,
+            "note": "lottie frame 79"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00080",
+          "timeMs": 2666.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 14.300000000279397,
+            "note": "lottie frame 80"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00081",
+          "timeMs": 2700,
+          "seek": {
+            "ok": true,
+            "ms": 21.40000000037253,
+            "note": "lottie frame 81"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00082",
+          "timeMs": 2733.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 4.5,
+            "note": "lottie frame 82"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00083",
+          "timeMs": 2766.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 18.100000000093132,
+            "note": "lottie frame 83"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00084",
+          "timeMs": 2800,
+          "seek": {
+            "ok": true,
+            "ms": 9.100000000093132,
+            "note": "lottie frame 84"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00085",
+          "timeMs": 2833.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 14.099999999627471,
+            "note": "lottie frame 85"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00086",
+          "timeMs": 2866.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 8.700000000186265,
+            "note": "lottie frame 86"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00087",
+          "timeMs": 2900,
+          "seek": {
+            "ok": true,
+            "ms": 4.899999999906868,
+            "note": "lottie frame 87"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00088",
+          "timeMs": 2933.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 14.699999999720603,
+            "note": "lottie frame 88"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00089",
+          "timeMs": 2966.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 16.800000000279397,
+            "note": "lottie frame 89"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00090",
+          "timeMs": 3000,
+          "seek": {
+            "ok": true,
+            "ms": 17.199999999720603,
+            "note": "lottie frame 90"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00091",
+          "timeMs": 3033.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 15.799999999813735,
+            "note": "lottie frame 91"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00092",
+          "timeMs": 3066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 18.200000000186265,
+            "note": "lottie frame 92"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00093",
+          "timeMs": 3100,
+          "seek": {
+            "ok": true,
+            "ms": 12.200000000186265,
+            "note": "lottie frame 93"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00094",
+          "timeMs": 3133.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 13.699999999720603,
+            "note": "lottie frame 94"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00095",
+          "timeMs": 3166.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 17.300000000279397,
+            "note": "lottie frame 95"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00096",
+          "timeMs": 3200,
+          "seek": {
+            "ok": true,
+            "ms": 4.100000000093132,
+            "note": "lottie frame 96"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00097",
+          "timeMs": 3233.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 11.699999999720603,
+            "note": "lottie frame 97"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00098",
+          "timeMs": 3266.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 17.699999999720603,
+            "note": "lottie frame 98"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00099",
+          "timeMs": 3300,
+          "seek": {
+            "ok": true,
+            "ms": 1.900000000372529,
+            "note": "lottie frame 99"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00100",
+          "timeMs": 3333.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 15.399999999906868,
+            "note": "lottie frame 100"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00101",
+          "timeMs": 3366.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 9.5,
+            "note": "lottie frame 101"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00102",
+          "timeMs": 3400,
+          "seek": {
+            "ok": true,
+            "ms": 17.799999999813735,
+            "note": "lottie frame 102"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00103",
+          "timeMs": 3433.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 13.699999999720603,
+            "note": "lottie frame 103"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00104",
+          "timeMs": 3466.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 17.700000000186265,
+            "note": "lottie frame 104"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00105",
+          "timeMs": 3500,
+          "seek": {
+            "ok": true,
+            "ms": 19,
+            "note": "lottie frame 105"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00106",
+          "timeMs": 3533.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 22.699999999720603,
+            "note": "lottie frame 106"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00107",
+          "timeMs": 3566.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 29,
+            "note": "lottie frame 107"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00108",
+          "timeMs": 3600,
+          "seek": {
+            "ok": true,
+            "ms": 22.899999999906868,
+            "note": "lottie frame 108"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00109",
+          "timeMs": 3633.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 18,
+            "note": "lottie frame 109"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00110",
+          "timeMs": 3666.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 5.7999999998137355,
+            "note": "lottie frame 110"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00111",
+          "timeMs": 3700,
+          "seek": {
+            "ok": true,
+            "ms": 17.399999999906868,
+            "note": "lottie frame 111"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00112",
+          "timeMs": 3733.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 32.39999999990687,
+            "note": "lottie frame 112"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00113",
+          "timeMs": 3766.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 15.100000000093132,
+            "note": "lottie frame 113"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00114",
+          "timeMs": 3800,
+          "seek": {
+            "ok": true,
+            "ms": 24.800000000279397,
+            "note": "lottie frame 114"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00115",
+          "timeMs": 3833.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 20.600000000093132,
+            "note": "lottie frame 115"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00116",
+          "timeMs": 3866.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 23.59999999962747,
+            "note": "lottie frame 116"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00117",
+          "timeMs": 3900,
+          "seek": {
+            "ok": true,
+            "ms": 23.399999999906868,
+            "note": "lottie frame 117"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00118",
+          "timeMs": 3933.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 22.100000000093132,
+            "note": "lottie frame 118"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00119",
+          "timeMs": 3966.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 24.600000000093132,
+            "note": "lottie frame 119"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00120",
+          "timeMs": 4000,
+          "seek": {
+            "ok": true,
+            "ms": 23.899999999906868,
+            "note": "lottie frame 120"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "q25",
+          "timeMs": 1008.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 23.5,
+            "note": "lottie frame 30.25"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "q50",
+          "timeMs": 2016.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 23.40000000037253,
+            "note": "lottie frame 60.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "q75",
+          "timeMs": 3025,
+          "seek": {
+            "ok": true,
+            "ms": 2.599999999627471,
+            "note": "lottie frame 90.75"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "near_end",
+          "timeMs": 4013.1666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 22.399999999906868,
+            "note": "lottie frame 120.395"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "subframe_0",
+          "timeMs": 16.666666666666668,
+          "seek": {
+            "ok": true,
+            "ms": 11.900000000372529,
+            "note": "lottie frame 0.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "subframe_1",
+          "timeMs": 4016.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 6.899999999906868,
+            "note": "lottie frame 120.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        }
+      ],
+      "logs": [],
+      "status": "PASS"
+    },
+    {
+      "fixture": "LOT-07",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "motionControlWorks": true,
+      "repeatIdentical": true,
+      "frames": [
+        {
+          "id": "frame_00000",
+          "timeMs": 0,
+          "seek": {
+            "ok": true,
+            "ms": 24.299999999813735,
+            "note": "lottie frame 0"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00001",
+          "timeMs": 33.333333333333336,
+          "seek": {
+            "ok": true,
+            "ms": 6.5,
+            "note": "lottie frame 1"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00002",
+          "timeMs": 66.66666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8.5,
+            "note": "lottie frame 2"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00003",
+          "timeMs": 100,
+          "seek": {
+            "ok": true,
+            "ms": 21.399999999906868,
+            "note": "lottie frame 3"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00004",
+          "timeMs": 133.33333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 16.09999999962747,
+            "note": "lottie frame 4"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00005",
+          "timeMs": 166.66666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 18.300000000279397,
+            "note": "lottie frame 5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00006",
+          "timeMs": 200,
+          "seek": {
+            "ok": true,
+            "ms": 3.8999999999068677,
+            "note": "lottie frame 6"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00007",
+          "timeMs": 233.33333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 33.10000000009313,
+            "note": "lottie frame 7"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00008",
+          "timeMs": 266.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 5.7999999998137355,
+            "note": "lottie frame 8"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00009",
+          "timeMs": 300,
+          "seek": {
+            "ok": true,
+            "ms": 10.200000000186265,
+            "note": "lottie frame 9"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00010",
+          "timeMs": 333.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 26.899999999906868,
+            "note": "lottie frame 10"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00011",
+          "timeMs": 366.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 3.3000000002793968,
+            "note": "lottie frame 11"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00012",
+          "timeMs": 400,
+          "seek": {
+            "ok": true,
+            "ms": 13.899999999906868,
+            "note": "lottie frame 12"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00013",
+          "timeMs": 433.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 13.199999999720603,
+            "note": "lottie frame 13"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00014",
+          "timeMs": 466.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 18.299999999813735,
+            "note": "lottie frame 14"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00015",
+          "timeMs": 500,
+          "seek": {
+            "ok": true,
+            "ms": 6.7000000001862645,
+            "note": "lottie frame 15"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00016",
+          "timeMs": 533.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 11.699999999720603,
+            "note": "lottie frame 16"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00017",
+          "timeMs": 566.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 25.899999999906868,
+            "note": "lottie frame 17"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00018",
+          "timeMs": 600,
+          "seek": {
+            "ok": true,
+            "ms": 9.5,
+            "note": "lottie frame 18"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00019",
+          "timeMs": 633.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 23.600000000093132,
+            "note": "lottie frame 19"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00020",
+          "timeMs": 666.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 7.400000000372529,
+            "note": "lottie frame 20"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00021",
+          "timeMs": 700,
+          "seek": {
+            "ok": true,
+            "ms": 17.799999999813735,
+            "note": "lottie frame 21"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00022",
+          "timeMs": 733.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 2.3000000002793968,
+            "note": "lottie frame 22"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00023",
+          "timeMs": 766.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 16.700000000186265,
+            "note": "lottie frame 23"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00024",
+          "timeMs": 800,
+          "seek": {
+            "ok": true,
+            "ms": 8.299999999813735,
+            "note": "lottie frame 24"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00025",
+          "timeMs": 833.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 3.599999999627471,
+            "note": "lottie frame 25"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00026",
+          "timeMs": 866.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 5.600000000093132,
+            "note": "lottie frame 26"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00027",
+          "timeMs": 900,
+          "seek": {
+            "ok": true,
+            "ms": 31.100000000093132,
+            "note": "lottie frame 27"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00028",
+          "timeMs": 933.3333333333334,
+          "seek": {
+            "ok": true,
+            "ms": 18,
+            "note": "lottie frame 28"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00029",
+          "timeMs": 966.6666666666666,
+          "seek": {
+            "ok": true,
+            "ms": 13.299999999813735,
+            "note": "lottie frame 29"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00030",
+          "timeMs": 1000,
+          "seek": {
+            "ok": true,
+            "ms": 20.800000000279397,
+            "note": "lottie frame 30"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00031",
+          "timeMs": 1033.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 28.5,
+            "note": "lottie frame 31"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00032",
+          "timeMs": 1066.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 7,
+            "note": "lottie frame 32"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00033",
+          "timeMs": 1100,
+          "seek": {
+            "ok": true,
+            "ms": 21.700000000186265,
+            "note": "lottie frame 33"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00034",
+          "timeMs": 1133.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 3.1999999997206032,
+            "note": "lottie frame 34"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00035",
+          "timeMs": 1166.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 27.700000000186265,
+            "note": "lottie frame 35"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00036",
+          "timeMs": 1200,
+          "seek": {
+            "ok": true,
+            "ms": 40.10000000009313,
+            "note": "lottie frame 36"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00037",
+          "timeMs": 1233.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 21.399999999906868,
+            "note": "lottie frame 37"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00038",
+          "timeMs": 1266.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.100000000093132,
+            "note": "lottie frame 38"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00039",
+          "timeMs": 1300,
+          "seek": {
+            "ok": true,
+            "ms": 13.199999999720603,
+            "note": "lottie frame 39"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00040",
+          "timeMs": 1333.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 6.800000000279397,
+            "note": "lottie frame 40"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00041",
+          "timeMs": 1366.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 13.800000000279397,
+            "note": "lottie frame 41"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00042",
+          "timeMs": 1400,
+          "seek": {
+            "ok": true,
+            "ms": 9.399999999906868,
+            "note": "lottie frame 42"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00043",
+          "timeMs": 1433.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 10.200000000186265,
+            "note": "lottie frame 43"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00044",
+          "timeMs": 1466.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 37.10000000009313,
+            "note": "lottie frame 44"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00045",
+          "timeMs": 1500,
+          "seek": {
+            "ok": true,
+            "ms": 9.799999999813735,
+            "note": "lottie frame 45"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00046",
+          "timeMs": 1533.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 6.100000000093132,
+            "note": "lottie frame 46"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00047",
+          "timeMs": 1566.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 6,
+            "note": "lottie frame 47"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00048",
+          "timeMs": 1600,
+          "seek": {
+            "ok": true,
+            "ms": 9,
+            "note": "lottie frame 48"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00049",
+          "timeMs": 1633.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 16.299999999813735,
+            "note": "lottie frame 49"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00050",
+          "timeMs": 1666.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 28.199999999720603,
+            "note": "lottie frame 50"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00051",
+          "timeMs": 1700,
+          "seek": {
+            "ok": true,
+            "ms": 4.899999999906868,
+            "note": "lottie frame 51"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00052",
+          "timeMs": 1733.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 8.299999999813735,
+            "note": "lottie frame 52"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00053",
+          "timeMs": 1766.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 13.900000000372529,
+            "note": "lottie frame 53"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00054",
+          "timeMs": 1800,
+          "seek": {
+            "ok": true,
+            "ms": 13.799999999813735,
+            "note": "lottie frame 54"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00055",
+          "timeMs": 1833.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 4.399999999906868,
+            "note": "lottie frame 55"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00056",
+          "timeMs": 1866.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 32.3000000002794,
+            "note": "lottie frame 56"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00057",
+          "timeMs": 1900,
+          "seek": {
+            "ok": true,
+            "ms": 18.199999999720603,
+            "note": "lottie frame 57"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00058",
+          "timeMs": 1933.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 3.3999999999068677,
+            "note": "lottie frame 58"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00059",
+          "timeMs": 1966.6666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 16.800000000279397,
+            "note": "lottie frame 59"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00060",
+          "timeMs": 2000,
+          "seek": {
+            "ok": true,
+            "ms": 18.299999999813735,
+            "note": "lottie frame 60"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00061",
+          "timeMs": 2033.3333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 9.600000000093132,
+            "note": "lottie frame 61"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00062",
+          "timeMs": 2066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 14.5,
+            "note": "lottie frame 62"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00063",
+          "timeMs": 2100,
+          "seek": {
+            "ok": true,
+            "ms": 18.299999999813735,
+            "note": "lottie frame 63"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00064",
+          "timeMs": 2133.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 14.399999999906868,
+            "note": "lottie frame 64"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00065",
+          "timeMs": 2166.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 19.199999999720603,
+            "note": "lottie frame 65"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00066",
+          "timeMs": 2200,
+          "seek": {
+            "ok": true,
+            "ms": 9.799999999813735,
+            "note": "lottie frame 66"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00067",
+          "timeMs": 2233.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 12.5,
+            "note": "lottie frame 67"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00068",
+          "timeMs": 2266.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 13.099999999627471,
+            "note": "lottie frame 68"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00069",
+          "timeMs": 2300,
+          "seek": {
+            "ok": true,
+            "ms": 11.399999999906868,
+            "note": "lottie frame 69"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00070",
+          "timeMs": 2333.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 6.300000000279397,
+            "note": "lottie frame 70"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00071",
+          "timeMs": 2366.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 2.900000000372529,
+            "note": "lottie frame 71"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00072",
+          "timeMs": 2400,
+          "seek": {
+            "ok": true,
+            "ms": 14.399999999906868,
+            "note": "lottie frame 72"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00073",
+          "timeMs": 2433.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 2.7000000001862645,
+            "note": "lottie frame 73"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00074",
+          "timeMs": 2466.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 32.60000000009313,
+            "note": "lottie frame 74"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00075",
+          "timeMs": 2500,
+          "seek": {
+            "ok": true,
+            "ms": 25,
+            "note": "lottie frame 75"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00076",
+          "timeMs": 2533.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 12.100000000093132,
+            "note": "lottie frame 76"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00077",
+          "timeMs": 2566.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 6.900000000372529,
+            "note": "lottie frame 77"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00078",
+          "timeMs": 2600,
+          "seek": {
+            "ok": true,
+            "ms": 32.09999999962747,
+            "note": "lottie frame 78"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00079",
+          "timeMs": 2633.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 8.099999999627471,
+            "note": "lottie frame 79"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00080",
+          "timeMs": 2666.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 30.700000000186265,
+            "note": "lottie frame 80"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00081",
+          "timeMs": 2700,
+          "seek": {
+            "ok": true,
+            "ms": 11.899999999906868,
+            "note": "lottie frame 81"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00082",
+          "timeMs": 2733.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 12.700000000186265,
+            "note": "lottie frame 82"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00083",
+          "timeMs": 2766.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 20.799999999813735,
+            "note": "lottie frame 83"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00084",
+          "timeMs": 2800,
+          "seek": {
+            "ok": true,
+            "ms": 7.899999999906868,
+            "note": "lottie frame 84"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00085",
+          "timeMs": 2833.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 35.1999999997206,
+            "note": "lottie frame 85"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00086",
+          "timeMs": 2866.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 3.8999999999068677,
+            "note": "lottie frame 86"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00087",
+          "timeMs": 2900,
+          "seek": {
+            "ok": true,
+            "ms": 16.699999999720603,
+            "note": "lottie frame 87"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00088",
+          "timeMs": 2933.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 6,
+            "note": "lottie frame 88"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00089",
+          "timeMs": 2966.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 9.299999999813735,
+            "note": "lottie frame 89"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00090",
+          "timeMs": 3000,
+          "seek": {
+            "ok": true,
+            "ms": 7.899999999906868,
+            "note": "lottie frame 90"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00091",
+          "timeMs": 3033.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 28.799999999813735,
+            "note": "lottie frame 91"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00092",
+          "timeMs": 3066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 17.200000000186265,
+            "note": "lottie frame 92"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00093",
+          "timeMs": 3100,
+          "seek": {
+            "ok": true,
+            "ms": 6.2000000001862645,
+            "note": "lottie frame 93"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00094",
+          "timeMs": 3133.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 10.300000000279397,
+            "note": "lottie frame 94"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00095",
+          "timeMs": 3166.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 3.5,
+            "note": "lottie frame 95"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00096",
+          "timeMs": 3200,
+          "seek": {
+            "ok": true,
+            "ms": 6.7999999998137355,
+            "note": "lottie frame 96"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00097",
+          "timeMs": 3233.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 17.799999999813735,
+            "note": "lottie frame 97"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00098",
+          "timeMs": 3266.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 17,
+            "note": "lottie frame 98"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00099",
+          "timeMs": 3300,
+          "seek": {
+            "ok": true,
+            "ms": 27,
+            "note": "lottie frame 99"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00100",
+          "timeMs": 3333.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 11.699999999720603,
+            "note": "lottie frame 100"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00101",
+          "timeMs": 3366.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 12,
+            "note": "lottie frame 101"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00102",
+          "timeMs": 3400,
+          "seek": {
+            "ok": true,
+            "ms": 31.200000000186265,
+            "note": "lottie frame 102"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00103",
+          "timeMs": 3433.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 10.5,
+            "note": "lottie frame 103"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00104",
+          "timeMs": 3466.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 43.3000000002794,
+            "note": "lottie frame 104"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00105",
+          "timeMs": 3500,
+          "seek": {
+            "ok": true,
+            "ms": 8.599999999627471,
+            "note": "lottie frame 105"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00106",
+          "timeMs": 3533.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 16.40000000037253,
+            "note": "lottie frame 106"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00107",
+          "timeMs": 3566.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 31.899999999906868,
+            "note": "lottie frame 107"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00108",
+          "timeMs": 3600,
+          "seek": {
+            "ok": true,
+            "ms": 21.300000000279397,
+            "note": "lottie frame 108"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00109",
+          "timeMs": 3633.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 8.399999999906868,
+            "note": "lottie frame 109"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00110",
+          "timeMs": 3666.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 18.199999999720603,
+            "note": "lottie frame 110"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00111",
+          "timeMs": 3700,
+          "seek": {
+            "ok": true,
+            "ms": 14.099999999627471,
+            "note": "lottie frame 111"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00112",
+          "timeMs": 3733.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 13.800000000279397,
+            "note": "lottie frame 112"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00113",
+          "timeMs": 3766.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 20.600000000093132,
+            "note": "lottie frame 113"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00114",
+          "timeMs": 3800,
+          "seek": {
+            "ok": true,
+            "ms": 2.2999999998137355,
+            "note": "lottie frame 114"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00115",
+          "timeMs": 3833.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 17.800000000279397,
+            "note": "lottie frame 115"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00116",
+          "timeMs": 3866.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 15.200000000186265,
+            "note": "lottie frame 116"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00117",
+          "timeMs": 3900,
+          "seek": {
+            "ok": true,
+            "ms": 3.7000000001862645,
+            "note": "lottie frame 117"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00118",
+          "timeMs": 3933.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 3.1000000000931323,
+            "note": "lottie frame 118"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00119",
+          "timeMs": 3966.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 3.900000000372529,
+            "note": "lottie frame 119"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00120",
+          "timeMs": 4000,
+          "seek": {
+            "ok": true,
+            "ms": 7.199999999720603,
+            "note": "lottie frame 120"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00121",
+          "timeMs": 4033.3333333333335,
+          "seek": {
+            "ok": true,
+            "ms": 64.09999999962747,
+            "note": "lottie frame 121"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00122",
+          "timeMs": 4066.6666666666665,
+          "seek": {
+            "ok": true,
+            "ms": 5.399999999906868,
+            "note": "lottie frame 122"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00123",
+          "timeMs": 4100,
+          "seek": {
+            "ok": true,
+            "ms": 26.399999999906868,
+            "note": "lottie frame 123"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00124",
+          "timeMs": 4133.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 8.399999999906868,
+            "note": "lottie frame 124"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00125",
+          "timeMs": 4166.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.40000000037253,
+            "note": "lottie frame 125"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00126",
+          "timeMs": 4200,
+          "seek": {
+            "ok": true,
+            "ms": 7.699999999720603,
+            "note": "lottie frame 126"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00127",
+          "timeMs": 4233.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 4.5,
+            "note": "lottie frame 127"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00128",
+          "timeMs": 4266.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 33.60000000009313,
+            "note": "lottie frame 128"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00129",
+          "timeMs": 4300,
+          "seek": {
+            "ok": true,
+            "ms": 29,
+            "note": "lottie frame 129"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00130",
+          "timeMs": 4333.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 45.6999999997206,
+            "note": "lottie frame 130"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00131",
+          "timeMs": 4366.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 41.59999999962747,
+            "note": "lottie frame 131"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00132",
+          "timeMs": 4400,
+          "seek": {
+            "ok": true,
+            "ms": 24.799999999813735,
+            "note": "lottie frame 132"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00133",
+          "timeMs": 4433.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 19.399999999906868,
+            "note": "lottie frame 133"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00134",
+          "timeMs": 4466.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 11.799999999813735,
+            "note": "lottie frame 134"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00135",
+          "timeMs": 4500,
+          "seek": {
+            "ok": true,
+            "ms": 8.799999999813735,
+            "note": "lottie frame 135"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00136",
+          "timeMs": 4533.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 8,
+            "note": "lottie frame 136"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00137",
+          "timeMs": 4566.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 31.899999999906868,
+            "note": "lottie frame 137"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00138",
+          "timeMs": 4600,
+          "seek": {
+            "ok": true,
+            "ms": 10.300000000279397,
+            "note": "lottie frame 138"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00139",
+          "timeMs": 4633.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 38.5,
+            "note": "lottie frame 139"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00140",
+          "timeMs": 4666.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 25.200000000186265,
+            "note": "lottie frame 140"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00141",
+          "timeMs": 4700,
+          "seek": {
+            "ok": true,
+            "ms": 30.200000000186265,
+            "note": "lottie frame 141"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00142",
+          "timeMs": 4733.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 23.899999999906868,
+            "note": "lottie frame 142"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00143",
+          "timeMs": 4766.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 3.8000000002793968,
+            "note": "lottie frame 143"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00144",
+          "timeMs": 4800,
+          "seek": {
+            "ok": true,
+            "ms": 16,
+            "note": "lottie frame 144"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00145",
+          "timeMs": 4833.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 28,
+            "note": "lottie frame 145"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00146",
+          "timeMs": 4866.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 8.5,
+            "note": "lottie frame 146"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00147",
+          "timeMs": 4900,
+          "seek": {
+            "ok": true,
+            "ms": 15.199999999720603,
+            "note": "lottie frame 147"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00148",
+          "timeMs": 4933.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 19.800000000279397,
+            "note": "lottie frame 148"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "frame_00149",
+          "timeMs": 4966.666666666667,
+          "seek": {
+            "ok": true,
+            "ms": 17.200000000186265,
+            "note": "lottie frame 149"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "q25",
+          "timeMs": 1250,
+          "seek": {
+            "ok": true,
+            "ms": 15.799999999813735,
+            "note": "lottie frame 37.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "q75",
+          "timeMs": 3750,
+          "seek": {
+            "ok": true,
+            "ms": 30.300000000279397,
+            "note": "lottie frame 112.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "near_end",
+          "timeMs": 4975,
+          "seek": {
+            "ok": true,
+            "ms": 30.200000000186265,
+            "note": "lottie frame 149.25"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "subframe_0",
+          "timeMs": 16.666666666666668,
+          "seek": {
+            "ok": true,
+            "ms": 17.799999999813735,
+            "note": "lottie frame 0.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        },
+        {
+          "id": "subframe_1",
+          "timeMs": 4983.333333333333,
+          "seek": {
+            "ok": true,
+            "ms": 5.300000000279397,
+            "note": "lottie frame 149.5"
+          },
+          "sameAsPrimarySourceCapture": true
+        }
+      ],
+      "logs": [],
+      "status": "PASS"
+    }
+  ]
+}

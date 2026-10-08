@@ -39,6 +39,7 @@ import type {
 } from "./model";
 import { LOTTIE_ADAPTER_VERSION } from "./model";
 import { clipKeyframes } from "./clip-keyframes";
+import { clipSpatialKeyframes } from "./clip-spatial-keyframes";
 
 interface LowerContext {
   document: LottieDocument;
@@ -894,6 +895,9 @@ function clampTrackToScene(
     const clipped = clipKeyframes(startMs, durationMs, keyframes, sceneDurationMs);
     return clipped ? { ...clipped, keyframes: dedupeKeyframeOffsets(clipped.keyframes) } : undefined;
   }
+
+  const spatialClip = clipSpatialKeyframes(startMs, durationMs, keyframes, sceneDurationMs);
+  if (spatialClip) return { ...spatialClip, keyframes: dedupeKeyframeOffsets(spatialClip.keyframes) };
 
   const span = hi - lo;
   const samples: Keyframe[] = [];

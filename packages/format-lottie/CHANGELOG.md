@@ -1,5 +1,9 @@
 # @gvr/format-lottie
 
+## 0.1.4
+
+Preserve clipped spatial motion with existing vec2 keyframes and restricted temporal easing over the original arc-length polyline. Covered temporal curves are monotonic with cubic Y controls in [0,1]; holds and named easing retain their existing meanings. No language or wire change. Non-monotonic spatial clipping remains outside this correction.
+
 ## 0.1.3
 
 Inventory animated solid fill colours recursively, including precomp shape trees, before lowering. Missing animated paints now report partial conversion rather than an exact label. The animated paint capability remains unimplemented.

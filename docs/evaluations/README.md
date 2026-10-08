@@ -2,12 +2,13 @@
 
 An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
 
-The newest run is [2026-10-08T103605Z](2026-10-08T103605Z/report.md).
+The newest run is [2026-10-08T140610Z](2026-10-08T140610Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T103605Z`. Continue with animated solid fill design (phase B, 0/3 attempts); preserve all retained cause budgets. Corpus remains FAIL. No new canonical sample promotion.
+Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T140610Z`. Continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
+| [2026-10-08T140610Z](2026-10-08T140610Z/report.md) | 2026-10-08T15:08:19.064275+00:00 | MotionScript / Scene IR 0.5.0 | 194 tests + typechecks PASS; spatial cuts corrected; LOT01 local visual FAIL; phase A paint order next; budget-exhausted |
 | [2026-10-08T103605Z](2026-10-08T103605Z/report.md) | 2026-10-08T12:17:22.256060+00:00 | MotionScript / Scene IR 0.5.0 | 191 tests + typechecks PASS; clipping and shape order corrected; animated fill loss explicit; corpus FAIL; full native capture with reference blockers; budget overrun |
 | [2026-10-08T090908Z](2026-10-08T090908Z/report.md) | 2026-10-08T10:05:25.725844+00:00 | MotionScript / Scene IR 0.5.0 | 184 tests + typechecks PASS; Wave stroke loss corrected, gradient residual FAIL; LOT-00 local quality PASS/r000001; budget-exhausted |
 | [2026-10-08T012312Z](2026-10-08T012312Z/report.md) | 2026-10-08T07:15:47.602552+00:00 | MotionScript / Scene IR 0.5.0 | 181 tests + typechecks PASS; Wave timing fixed; corpus visual FAIL; budget-exhausted |
