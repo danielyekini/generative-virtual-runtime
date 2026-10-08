@@ -12,8 +12,8 @@ import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compileMotionScript } from "@gvr/compiler";
 import { importSource, IMPORT_VERSION, formatImportReport } from "@gvr/format-import-core";
-import { lottieAdapter, LOTTIE_ADAPTER_VERSION } from "@gvr/format-lottie";
-import { svgAdapter, SVG_ADAPTER_VERSION, SVG_STATIC_DURATION_MS } from "@gvr/format-svg";
+import { lottieAdapter, LOTTIE_ADAPTER_VERSION, type LottieDocument } from "@gvr/format-lottie";
+import { svgAdapter, SVG_ADAPTER_VERSION, SVG_STATIC_DURATION_MS, type SvgDocument } from "@gvr/format-svg";
 import { emitMotionScript, EMITTER_VERSION } from "@gvr/motionscript-emitter";
 import { AnimationRuntime } from "@gvr/runtime";
 import { DSL_VERSION, IR_VERSION, validateSceneIR, type SceneIR } from "@gvr/schema";
@@ -599,14 +599,15 @@ async function main(): Promise<void> {
     chromeBinary: chromeBinary || null,
     chrome,
     gateSettings,
+    languages: JSON.parse(readFileSync(resolve(repo,"packages/schema/capabilities/releases.json"),"utf8")).languages,
     lottieWeb: JSON.parse(readFileSync(resolve(repo, "node_modules/lottie-web/package.json"), "utf8")).version,
     versions: {
       importCore: IMPORT_VERSION,
       lottieAdapter: LOTTIE_ADAPTER_VERSION,
       svgAdapter: SVG_ADAPTER_VERSION,
       emitter: EMITTER_VERSION,
-      ir: IR_VERSION,
-      dsl: DSL_VERSION,
+      legacyIrDefault: IR_VERSION,
+      legacyDslDefault: DSL_VERSION,
       svgStaticDurationMs: SVG_STATIC_DURATION_MS,
     },
     commands: [
@@ -717,7 +718,11 @@ function evaluateFixture(fixture: Fixture) {
       if (!parsed.ok) {
         diagnosticError = parsed.diagnostics.map((item) => `${item.code}: ${item.message}`).join(" | ");
       } else {
-        const normalised = adapter.normalise(parsed.value, { sourceName: fixture.fileName, sourceText: source, maxSourceBytes: Number.MAX_SAFE_INTEGER });
+        // Keep the adapter/parsed-value correlation explicit for the union of formats.
+        const context = { sourceName: fixture.fileName, sourceText: source, maxSourceBytes: Number.MAX_SAFE_INTEGER };
+        const normalised = fixture.format === "lottie"
+          ? lottieAdapter.normalise(parsed.value as LottieDocument, context)
+          : svgAdapter.normalise(parsed.value as SvgDocument, context);
         diagnosticScene = normalised.scene;
         diagnosticFidelity = normalised.fidelity.overall;
         writeJson(resolve(dir, "diagnostic-import.json"), {

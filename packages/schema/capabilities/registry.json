@@ -127,7 +127,8 @@
       "restrictions": ["Overlapping writers of one channel are rejected. Samples do not replace the authored base."],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
-        "packages/runtime/src/runtime.test.ts#hits every keyframe boundary and the segment midpoints"
+        "packages/runtime/src/runtime.test.ts#hits every keyframe boundary and the segment midpoints",
+        "packages/motionscript-emitter/src/emit.test.ts#preserves fractional timing at the scene boundary"
       ],
       "adapters": {
         "lottie": {

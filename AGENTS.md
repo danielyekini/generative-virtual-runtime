@@ -38,4 +38,6 @@ Every new run pins the implementation to `git rev-parse HEAD` when the tree is c
 
 Fidelity corpus bytes live in `fixtures/corpus/` (private-repo policy; verify `SHA256SUMS`). Gate numbers live in `evaluation/gate-settings.json`. Browser binary via `GVR_CHROME` / `CHROME_PATH` or `evaluation/harness/chrome.ts`. Do not depend on macOS Downloads paths.
 
+Read `docs/evaluations/visual-acceptance-policy.md` and freeze the current gate settings in the run before implementation. The operator has delegated defining policy 1.0; this does not certify existing output. Numeric frame/window/local rules, material review, reference controls, alpha, both native routes and complete frame coverage are all required. Future policy revisions never retroactively change historical run outcomes.
+
 Do not widen a tolerance to make a comparison pass. An import status of `exact` is not a visual pass until the browser capture against lottie-web is recorded for that fixture.

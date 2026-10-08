@@ -6,7 +6,7 @@
  *   npx tsx evaluation/harness/drive-browser.ts
  */
 import { spawn, type ChildProcess } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { createRequire } from "node:module";
 import { dirname, resolve } from "node:path";
@@ -14,43 +14,29 @@ import { fileURLToPath } from "node:url";
 import { setTimeout as delay } from "node:timers/promises";
 import { chromeVersion, resolveChromeBinary } from "./chrome";
 import { classifyCapture } from "./render-status";
+import { checkVisualFrame, checkVisualWindow, type FrameGate } from "./visual-gate";
+import { Cdp } from "./cdp";
 
 const require = createRequire(resolve(dirname(fileURLToPath(import.meta.url)), "../package.json"));
-const { PNG } = require("pngjs") as typeof import("pngjs");
+type PNG = { width: number; height: number; data: Buffer };
+const { PNG } = require("pngjs") as { PNG: {
+  new (size: { width: number; height: number }): PNG;
+  sync: { read(bytes: Buffer): PNG; write(raster: PNG): Buffer };
+} };
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const evidence = resolve(repo, "evaluation/evidence");
 const pageUrl = "http://127.0.0.1:5199/";
+const gateSettings = JSON.parse(readFileSync(resolve(repo, "evaluation/gate-settings.json"), "utf8"));
 
 interface Job {
   id: string;
   format: string;
-  samples: { id: string; label: string }[];
+  samples: { id: string; label: string; scheduled?: boolean; sourceTimeMs?: number; lottieFrame?: number }[];
   sceneKind: string;
   cssWidth: number;
   cssHeight: number;
-}
-
-class Cdp {
-  private id = 0;
-  private pending = new Map<number, { resolve: (value: unknown) => void; reject: (error: Error) => void }>();
-  constructor(private socket: WebSocket) {
-    socket.addEventListener("message", (event) => {
-      const message = JSON.parse(String(event.data)) as { id?: number; result?: unknown; error?: { message: string } };
-      if (!message.id || !this.pending.has(message.id)) return;
-      const waiter = this.pending.get(message.id)!;
-      this.pending.delete(message.id);
-      if (message.error) waiter.reject(new Error(message.error.message));
-      else waiter.resolve(message.result);
-    });
-  }
-  send(method: string, params: Record<string, unknown> = {}, sessionId?: string): Promise<any> {
-    const id = ++this.id;
-    return new Promise((resolve, reject) => {
-      this.pending.set(id, { resolve, reject });
-      this.socket.send(JSON.stringify({ id, method, params, sessionId }));
-    });
-  }
+  fullWindow?: boolean;
 }
 
 function pngFromDataUrl(value: string): PNG {
@@ -73,7 +59,7 @@ function compare(reference: PNG, native: PNG): { comparable: boolean; width: num
     const db = Math.abs(reference.data[offset + 2] - native.data[offset + 2]);
     const distance = Math.hypot(dr, dg, db);
     sum += distance;
-    const hot = distance > 24;
+    const hot = distance > gateSettings.pixel.inspectionThreshold;
     if (hot) beyond += 1;
     if (hot) {
       diff.data[offset] = 255;
@@ -151,7 +137,7 @@ async function main(): Promise<void> {
   const chromePath = resolveChromeBinary();
   console.log(`Using browser: ${chromePath} (${chromeVersion(chromePath)})`);
   const jobs = (JSON.parse(readFileSync(resolve(evidence, "render-jobs.json"), "utf8")) as { jobs: Job[] }).jobs;
-  const vite = spawn("npx", ["vite", "--config", "evaluation/harness/vite.config.ts"], { cwd: repo, stdio: ["ignore", "pipe", "pipe"] });
+  const vite = spawn("npx", ["vite", "--config", "evaluation/harness/vite.config.ts"], { cwd: repo, stdio: ["ignore", "pipe", "pipe"], detached: process.platform !== "win32" });
   let viteLog = "";
   vite.stdout?.on("data", (chunk) => {
     viteLog += chunk.toString();
@@ -159,8 +145,7 @@ async function main(): Promise<void> {
   vite.stderr?.on("data", (chunk) => {
     viteLog += chunk.toString();
   });
-  const userData = resolve(tmpdir(), "gvr-eval-chrome");
-  mkdirSync(userData, { recursive: true });
+  const userData = mkdtempSync(resolve(tmpdir(), "gvr-eval-chrome-"));
   const chrome = spawn(
     chromePath,
     [
@@ -174,8 +159,11 @@ async function main(): Promise<void> {
       "--window-size=2400,1600",
       "about:blank",
     ],
-    { stdio: "ignore" },
+    { stdio: ["ignore", "pipe", "pipe"], detached: process.platform !== "win32" },
   );
+  let chromeLog = "";
+  chrome.stdout?.on("data", chunk => { chromeLog += chunk.toString(); });
+  chrome.stderr?.on("data", chunk => { chromeLog += chunk.toString(); });
   let browserSocket: WebSocket | undefined;
   try {
     await waitForHttp(pageUrl);
@@ -235,7 +223,7 @@ async function main(): Promise<void> {
       const frames = [];
       for (let index = 0; index < job.samples.length; index += 1) {
         const sample = job.samples[index];
-        const frame: Record<string, unknown> = { id: sample.id, label: sample.label };
+        const frame: Record<string, unknown> = { id: sample.id, label: sample.label, scheduled: sample.scheduled ?? false, sourceTimeMs: sample.sourceTimeMs, lottieFrame: sample.lottieFrame };
         try {
           const sought = await evaluate<{ ok: boolean; ms: number; note: string }>(cdp, sessionId, `window.seek("reference", ${index})`);
           frame.referenceSeek = sought;
@@ -260,6 +248,7 @@ async function main(): Promise<void> {
               writeFileSync(resolve(fixtureDir, `${sample.id}-native.png`), PNG.sync.write(native));
               frame.native = { width: native.width, height: native.height, path: `captures/${job.id}/${sample.id}-native.png`, sceneKind: job.sceneKind };
               if (reference) {
+                frame.visualGate = checkVisualFrame(reference, native, gateSettings.visualCertification, gateSettings.pixel.inspectionThreshold);
                 const metrics = compare(reference, native);
                 if (metrics.diff) writeFileSync(resolve(fixtureDir, `${sample.id}-diff.png`), PNG.sync.write(metrics.diff));
                 writeFileSync(resolve(fixtureDir, `${sample.id}-strip.png`), PNG.sync.write(strip(reference, native, metrics.diff ?? null)));
@@ -267,7 +256,7 @@ async function main(): Promise<void> {
                   comparable: metrics.comparable,
                   meanDistance: metrics.meanDistance,
                   fractionBeyond: metrics.fractionBeyond,
-                  threshold: "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+                  threshold: `Euclidean RGB distance > ${gateSettings.pixel.inspectionThreshold}; aggregate/local/alpha acceptance is recorded separately in visualGate.`,
                   diffPath: metrics.diff ? `captures/${job.id}/${sample.id}-diff.png` : null,
                   stripPath: `captures/${job.id}/${sample.id}-strip.png`,
                 };
@@ -282,7 +271,19 @@ async function main(): Promise<void> {
           frame.error = error instanceof Error ? error.message : String(error);
         }
         frames.push(frame);
+        if (index % 10 === 0) writeFileSync(resolve(fixtureDir,"partial-results.json"),JSON.stringify({status:"NOT_RUN",job,frames},null,2));
         console.log(`  ${sample.id}`, frame.error ?? frame.diff ?? frame.reference ?? "no reference");
+      }
+      // Deterministic same-time reference repeat, after traversing the window.
+      let referenceRepeatIdentical = false;
+      if (job.format === "lottie" && frames[0]?.reference) {
+        await evaluate(cdp, sessionId, 'window.seek("reference", 0)');
+        const repeated = await evaluate<string | null>(cdp, sessionId, "window.referencePNG()");
+        const first = PNG.sync.read(readFileSync(resolve(fixtureDir, `${job.samples[0]!.id}-reference.png`)));
+        if (repeated) {
+          const repeatedPng = pngFromDataUrl(repeated);
+          referenceRepeatIdentical = first.width === repeatedPng.width && first.height === repeatedPng.height && first.data.equals(repeatedPng.data);
+        }
       }
       const logs = await evaluate<string[]>(cdp, sessionId, "window.logs()");
       writeFileSync(resolve(fixtureDir, "browser-log.txt"), logs.join("\n"));
@@ -294,6 +295,14 @@ async function main(): Promise<void> {
         nativeFrames: nativeFrames.length,
         nativePrepared: prepared.native,
       });
+      const scheduled = frames.filter(frame => frame.scheduled && frame.visualGate).map(frame => frame.visualGate as FrameGate);
+      const extra = frames.filter(frame => !frame.scheduled && frame.visualGate).map(frame => frame.visualGate as FrameGate);
+      const visualWindow = checkVisualWindow({ scheduled, extra,
+        expectedScheduled: job.samples.filter(sample => sample.scheduled).length,
+        expectedExtra: job.samples.filter(sample => !sample.scheduled).length,
+        fullWindow: job.fullWindow === true, materialReview: "NOT_RUN",
+        referenceVerified: classified.referenceStatus === "PASS" && controls.lottieControl.timeControlWorks && referenceRepeatIdentical && prepared.notes.length === 0,
+      }, gateSettings.visualCertification);
       rendered.push({
         id: job.id,
         sceneKind: job.sceneKind,
@@ -303,12 +312,15 @@ async function main(): Promise<void> {
         nativeStatus: classified.nativeStatus,
         logs: logs.slice(0, 40),
         frames,
+        referenceRepeatIdentical,
+        visualWindow,
       });
     }
     mkdirSync(resolve(evidence, "captures"), { recursive: true });
-    writeFileSync(resolve(evidence, "render-results.json"), JSON.stringify({ controls, fixtures: rendered, viteLogTail: viteLog.slice(-2000) }, null, 2));
+    writeFileSync(resolve(evidence, "render-results.json"), JSON.stringify({ controls, gateSettings, fixtures: rendered, viteLogTail: viteLog.slice(-2000) }, null, 2));
     console.log("wrote render-results.json");
   } finally {
+    writeFileSync(resolve(evidence,"chrome-log.txt"),chromeLog);
     browserSocket?.close();
     stop(chrome);
     stop(vite);
@@ -341,7 +353,11 @@ async function waitUntil(check: () => Promise<boolean>, label: string): Promise<
 }
 
 function stop(child: ChildProcess): void {
-  if (!child.killed) child.kill("SIGTERM");
+  if (child.killed) return;
+  if (process.platform !== "win32" && child.pid) {
+    try { process.kill(-child.pid,"SIGTERM"); return; } catch { /* Already exited. */ }
+  }
+  child.kill("SIGTERM");
 }
 
 mkdirSync(resolve(evidence, "captures"), { recursive: true });

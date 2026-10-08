@@ -1,0 +1,58 @@
+{
+  "runId": "2026-10-08T010229Z",
+  "status": "design-escalation",
+  "stoppedAt": "2026-10-08T01:06:59.053118+00:00",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "reason": "Aggregate/local-region visual acceptance bounds and approval are absent. User explicitly requires stop for gate calibration.",
+  "implementation": {
+    "head": "65c04025082f8f88ae6e7af7f39427c585064745",
+    "ancestorPin": "d492dcbc50d55cad22b8c3a43b9f5cbcfd783a81",
+    "ancestorVerified": true,
+    "initialTreeClean": true,
+    "finalTreeClean": false,
+    "initialSnapshot": "source-snapshot/tree/initial-source.tar.gz",
+    "finalSnapshot": "source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "source-snapshot/final-files.json",
+    "executionSourcesChanged": false
+  },
+  "implementCyclesUsed": 0,
+  "nextAction": "Calibrate and approve fixed aggregate, local-region/material-content and alpha/background rules using repeat-reference and predeclared acceptable rasterisation controls; then fix existing supported round-trip timing and Wave paint loss before expansion.",
+  "nextCause": {
+    "id": "gate.visualCalibration",
+    "attempts": 0,
+    "followedBy": [
+      {
+        "id": "roundTrip.wave.emissionTiming",
+        "phase": "Baseline",
+        "fixtures": [
+          "LOT-07"
+        ],
+        "attempts": 0,
+        "status": "open; no implementation attempted",
+        "ownerBoundary": "motionscript-emitter / compiler validation",
+        "hypothesis": "Decimal formatting pushes end-at-duration tracks past the scene boundary",
+        "confirmedEvidence": "Generated Group10 opacity start 1233.333333ms + duration 3766.66667ms = 5000.000003ms > 5000ms. Compiler returns three INVALID_TIMING diagnostics at tracks[19]/[23]; generated compiled scene omits rejected units.",
+        "expectedResult": "Emitted program validates and preserves direct-IR timings at fixed tolerances",
+        "measurements": {
+          "compileOk": false,
+          "diagnostics": 3
+        }
+      },
+      {
+        "id": "visual.wave.residualPaintAndGeometry",
+        "fixtures": [
+          "LOT-07"
+        ],
+        "attempts": 0,
+        "confirmed": "Source layers 1/2 have solid+gradient strokes; layer 3 has two gradient strokes. Parser retains one stroke on the path.",
+        "suspected": "Additional residual geometry/timing differences; not yet isolated against lottie-web evaluated state.",
+        "followedBy": [
+          "LOT-06 pose/detail discrepancy",
+          "LOT-01 midcycle confetti"
+        ]
+      }
+    ]
+  },
+  "remainingAttemptHistory": "loop.json carries previous invocation history unchanged; no attempts consumed here"
+}

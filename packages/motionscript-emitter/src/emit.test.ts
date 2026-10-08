@@ -23,6 +23,24 @@ function roundTrip(scene: SceneIR): { source: string; again: SceneIR } {
 }
 
 describe("canonical emitter", () => {
+  it("preserves fractional timing at the scene boundary", () => {
+    for (const [duration, start] of [[5000, 1233.3333333333335], [5000, 2633.3333333333335], [1e-8, 3e-9]]) {
+      const scene = compile(`scene "boundary" {
+        version "0.1"; viewport (10, 10); background #000000; duration ${duration}ms;
+      };
+      rectangle dot { size (1, 1); fill #ffffff; };
+      animate dot.opacity { start ${start}ms; duration ${duration! - start!}ms; from 0; to 1; };
+      complete;`);
+      const { again } = roundTrip(scene);
+      expect(again.timeline.durationMs).toBe(scene.timeline.durationMs);
+      expect(again.timeline.tracks).toEqual(scene.timeline.tracks);
+      const before = new AnimationRuntime(scene), after = new AnimationRuntime(again);
+      for (const time of [duration!, start!, (duration! + start!)/2, 0]) {
+        expect(after.evaluate(time)).toEqual(before.evaluate(time));
+      }
+    }
+  });
+
   it("round-trips a 0.2 program", () => {
     const source = `scene "cap" {
   version "0.2";

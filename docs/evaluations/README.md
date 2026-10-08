@@ -2,12 +2,14 @@
 
 An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
 
-The newest run is [2026-10-07T230859Z](2026-10-07T230859Z/report.md).
+The newest run is [2026-10-08T012312Z](2026-10-08T012312Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json): tested implementation commit `d492dcbc50d55cad22b8c3a43b9f5cbcfd783a81`. Execution-relevant source hashes are retained in the run’s final manifest; bulk captures and archives stay local. Shape-group animation improved Wave; remaining visual findings and gate calibration are open.
+Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final tested snapshot in `2026-10-08T012312Z`. Gate 1.0 is defined; Wave emitter timing is verified; visual paint loss and reference/coverage blockers remain.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
+| [2026-10-08T012312Z](2026-10-08T012312Z/report.md) | 2026-10-08T07:15:47.602552+00:00 | MotionScript / Scene IR 0.5.0 | 181 tests + typechecks PASS; Wave timing fixed; corpus visual FAIL; budget-exhausted |
+| [2026-10-08T010229Z](2026-10-08T010229Z/report.md) | 2026-10-08T01:06:59.053118+00:00 | MotionScript / Scene IR 0.5.0 | Baseline; 174 tests + typecheck PASS; Wave round-trip FAIL; VISUAL_UNVERIFIED; design-escalation |
 | [2026-10-07T230859Z](2026-10-07T230859Z/report.md) | 2026-10-07T23:15:23.757523+00:00 | MotionScript / Scene IR 0.5.0 | Wave full-window inspection improved; 174 tests + typecheck PASS; VISUAL_UNVERIFIED |
 | [2026-10-07T220358Z](2026-10-07T220358Z/report.md) | 2026-10-07T22:03:58Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | spatial-Z arc-length + stroke caps + first-key base; LOT-01 start/q25/q50 improved (beyond 0.0038→0.0005 / 0.0061→0.0031 / 0.0056→0.0046); VISUAL_UNVERIFIED gate; stop budget-exhausted |
 | [2026-10-07T215328Z](2026-10-07T215328Z/report.md) | 2026-10-07T21:53:28Z | MotionScript 0.5.0, Scene IR 0.5.0 (wire `0.2`) | AE-near easing diagonal fix; LOT-01 q25/q50 improved (beyond 0.0076→0.0061 / 0.0070→0.0056); q25 pose near-matched; VISUAL_UNVERIFIED gate; stop budget-exhausted |
@@ -20,7 +22,7 @@ Next Baseline reads [implementation-pin.json](implementation-pin.json): tested i
 
 `2026-10-07-baseline` is historical. Do not edit it. Do not use it as `comparedWith` once a newer run exists.
 
-Manifest / results / evidence for the newest run live under `2026-10-07T220358Z/`.
+Manifest / results / evidence for the newest run live under `2026-10-08T012312Z/`.
 
 `evaluation/evidence/` is scratch space for the harness. Copy a finished run into a new `docs/evaluations/<run-id>/` directory. Do not point the index at the scratch directory.
 
@@ -29,9 +31,11 @@ Manifest / results / evidence for the newest run live under `2026-10-07T220358Z/
 Before a fidelity Baseline:
 
 1. **Corpus** — `fixtures/corpus/` (LOT-00…07, SVG-01…02). Verify `shasum -a 256 -c fixtures/corpus/SHA256SUMS`. Do not use macOS Downloads paths.
-2. **Gate settings** — copy numbers from [`evaluation/gate-settings.json`](../evaluation/gate-settings.json) into `loop.json`. Visual certification remains `VISUAL_UNVERIFIED` until aggregate/local-region rules are operator-approved; keep diagnosing against the inspection threshold.
+2. **Gate settings** — read [visual-acceptance-policy.md](visual-acceptance-policy.md) and copy [`evaluation/gate-settings.json`](../../evaluation/gate-settings.json) into `loop.json` before implementation. The operator delegated policy 1.0: fixed frame/window/local/alpha rules plus material review and reference controls. Defining the gate does not pass existing fixtures. Sampled or incomplete evidence cannot certify full-window fidelity.
 3. **Browser** — Chrome or Chromium via `evaluation/harness/chrome.ts`. Set `GVR_CHROME` (or `CHROME_PATH`) when discovery fails (typical on Linux cloud images). Record the resolved binary and version in `environment.json`.
 4. **Commands** (repo root): `npx tsx evaluation/harness/run-pipeline.ts`, then `npx tsx evaluation/harness/drive-browser.ts` (after `cd evaluation && npm install` once for harness deps if needed).
+
+For both native routes, run `npx tsx evaluation/harness/check-round-trip.ts` after the pipeline, then `npx tsx evaluation/harness/prepare-fidelity.ts --full` before the browser driver. The default driver jobs are sampled and cannot certify a full-window pass. `--full-exact` captures full windows for the affected/previously exact imports while retaining known partial conversion fixtures as explicit sampled diagnostics; those fixtures' visual coverage remains NOT_RUN. Do not quietly exclude them from the accepted corpus. Save each stage before regenerating scratch evidence. Browser failures retain partial results and Chrome logs and cannot count as passed.
 
 ## What belongs in Git
 

@@ -114,6 +114,7 @@ async function prepare(id: string): Promise<Prepared> {
       rendererSettings: { clearCanvas: true, preserveAspectRatio: "xMidYMid meet", dpr: 1 },
     });
     player = animation;
+    animation.setSubframe(true);
     await new Promise<void>((resolve) => {
       let settled = false;
       const finish = () => {
@@ -126,7 +127,7 @@ async function prepare(id: string): Promise<Prepared> {
         notes.push("lottie-web data_failed");
         finish();
       });
-      window.setTimeout(finish, 8000);
+      window.setTimeout(() => { if (!settled) notes.push("reference DOMLoaded timeout: readiness unverified"); finish(); }, 8000);
     });
     const canvas = host.querySelector("canvas");
     if (canvas) referenceCanvas = canvas;
