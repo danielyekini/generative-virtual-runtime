@@ -1,22 +1,20 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-08T12:17:22.256060+00:00",
-  "afterRun": "2026-10-08T103605Z",
-  "comparedWithForNextBaseline": "2026-10-08T103605Z",
+  "pinnedAt": "2026-10-08T13:49:34.033132+00:00",
+  "afterRun": "2026-10-08T123430Z",
+  "comparedWithForNextBaseline": "2026-10-08T123430Z",
   "git": {
-    "head": "a72beab23bbd74c114cf931d0fc42eb385e8e4bf",
-    "short": "a72beab",
-    "subject": "Merge main into work, preserving historical fidelity evidence",
-    "treeCleanAtPin": false,
+    "head": "682a1c8fcda20d5f24f62d664d10de30d80efa1a",
+    "short": "682a1c8",
+    "subject": "Report clipped spatial approximation from importer context",
+    "treeCleanAtPin": true,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Final tested local edits; complete dirty snapshot required. No commit/push in this fidelity run."
+    "note": "Committed merged execution source. Prior evaluations certify only their recorded snapshots; merged visual verification required."
   },
   "snapshot": {
     "requiredWhenDirty": true,
-    "path": "docs/evaluations/2026-10-08T103605Z/source-snapshot/",
-    "finalArchive": "tree/final-source.tar.gz",
-    "manifest": "final-files.json",
-    "how": "Full source bytes excluding credentials, disposable dependencies and recursive snapshots. Archive contents are hashed by final-files.json."
+    "path": null,
+    "note": "Current committed execution source needs no dirty snapshot. Historical snapshots remain preserved locally."
   },
   "languages": {
     "motionscript": {
@@ -29,24 +27,19 @@
     }
   },
   "nextCause": {
-    "id": "paint.animatedSolidFill",
-    "phase": "B",
+    "id": "verification.mergedCorpusNativeCoverage",
+    "phase": "C",
     "attempts": 0,
     "remainingAttempts": 3,
-    "affectedFixtures": [
-      "LOT-06"
-    ],
-    "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
-    "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
+    "expectedEvidence": "Verify complete original corpus windows against merged source first; then resume retained animated solid fill phase B without resetting cause budgets."
   },
   "exactFixturesAtPin": [
     "LOT-00",
-    "LOT-01",
     "LOT-07"
   ],
-  "visualNote": "Corpus FAIL; LOT00 and LOT07 full-window visual PASS for both native routes, LOT06 partial/visual FAIL due eight animated fill losses; LOT05 repeat reference BLOCKED. No canonical promotion.",
+  "visualNote": "Merged execution VISUAL_UNVERIFIED; prior per-run statuses remain scoped to original snapshots. Corpus FAIL.",
   "attemptHistoryRun": "docs/evaluations/2026-10-08T103605Z/loop.json",
-  "commitReproduction": "Start with git.head, restore final-source.tar.gz and verify final-files.json; base commit alone omits these local corrections.",
+  "commitReproduction": "Checkout git.head; execution source is committed. Historical full PNG captures and source archives remain local and were not included in this push.",
   "retainedCauses": [
     {
       "id": "visual.wave.multipleStrokeLoss",
@@ -83,14 +76,53 @@
       "attempts": 1,
       "remainingAttempts": 2,
       "status": "INVENTORY_DIAGNOSTIC_CORRECTION; paint capability remains unimplemented"
+    },
+    {
+      "id": "visual.wave.clippedCubicMorph",
+      "phase": "A",
+      "attempts": 2,
+      "remainingAttempts": 1,
+      "status": "target correction verified; corpus Phase C incomplete",
+      "affectedFixtures": [
+        "LOT-07",
+        "LOT-01"
+      ],
+      "owner": "format-lottie composition-window track clipping",
+      "hypothesis": "negative-start morph is linearly sampled at the new start and reuses the unsplit cubic easing; layer isolation localizes residual to layers 2 and 5 with frame -0.368 keys",
+      "expectedResult": "in-window values and cubic subsegments match original unbounded source; full native windows and regressions",
+      "before": {
+        "frame2HotFraction": 0.005275,
+        "layer2Frame2": 0.003825,
+        "layer5Frame0": 0.0035125
+      },
+      "evidence": [
+        "layer-diagnostic/records.json",
+        "layer-diagnostic/measurements.json"
+      ],
+      "regressionEvidence": "before-after-program-identity.json: LOT-01 scalar clips change; LOT-03 diagnostic-only change remains quarantined; all other scene/program bytes identical",
+      "attemptHistory": [
+        {
+          "attempt": 1,
+          "phaseC": "185 tests + targeted conformance + semantic routes PASS; Wave complete original windows captured; source audit found shared clip helper modifies spatial control curves without a spatial subcurve lowering",
+          "snapshot": "attempt-1-implementation.tar.gz",
+          "evidence": "attempt-1/evidence/"
+        },
+        {
+          "attempt": 2,
+          "status": "186 tests/typechecks and 7 nonquarantined semantic routes PASS; Wave full windows numeric PASS; corpus incomplete",
+          "hypothesis": "retain legacy spatial lowering and report its approximation; scalar/morph cubic slicing remains corrected",
+          "expectedResult": "Wave improvement preserved; no spatial geometry drift from initial implementation; source loss not mislabeled exact"
+        }
+      ]
     }
   ],
   "productionExactLabelsAtPin": [
     "LOT-00",
-    "LOT-01",
     "LOT-07"
   ],
   "knownSourceLossOverrides": {
-    "LOT-06": "Eight animated fill colors unsupported; explicitly diagnosed partial."
-  }
+    "LOT-06": "Eight animated fill colors unsupported; explicitly diagnosed partial.",
+    "LOT-01": "Clipped spatial geometry explicitly approximate"
+  },
+  "integrationRun": "docs/evaluations/integration-push.json"
 }

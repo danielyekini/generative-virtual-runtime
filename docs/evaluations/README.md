@@ -4,7 +4,7 @@ An evaluation run records what one implementation revision reproduced. It is not
 
 The newest run is [2026-10-08T123430Z](2026-10-08T123430Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T103605Z`. Continue with animated solid fill design (phase B, 0/3 attempts); preserve all retained cause budgets. Corpus remains FAIL. No new canonical sample promotion.
+Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to committed merged execution source. Complete merged full-corpus Phase C first; then continue retained animated solid fill design. Historical fidelity results apply to their original snapshots. Corpus remains FAIL; merged visual status is UNVERIFIED.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
