@@ -1,0 +1,502 @@
+diff --git a/docs/evaluations/README.md b/docs/evaluations/README.md
+index 0dd6166..75ade7f 100644
+--- a/docs/evaluations/README.md
++++ b/docs/evaluations/README.md
+@@ -2,12 +2,13 @@
+ 
+ An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
+ 
+-The newest run is [2026-10-08T140610Z](2026-10-08T140610Z/report.md).
++The newest run is [2026-10-09T115503Z](2026-10-09T115503Z/report.md).
+ 
+-Next Baseline reads [implementation-pin.json](implementation-pin.json). The merged committed implementation requires fresh visual verification; historical results apply to their recorded source snapshots. Complete merged full-corpus verification, then continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
++Next Baseline reads [implementation-pin.json](implementation-pin.json) and restores the final dirty snapshot. Complete missing final native coverage and repair reference evidence before resuming phase A LOT01 contours; layer paint order retains 1/3 attempts, animated fill remains queued. Corpus FAIL; no canonical promotion.
+ 
+ | Run | Captured | Languages under test | Result |
+ | --- | --- | --- | --- |
++| [2026-10-09T115503Z](2026-10-09T115503Z/report.md) | 2026-10-09T12:59:43.538573+00:00 | MotionScript / Scene IR 0.5.0 | 202 tests + typechecks PASS; global paint order corrected; LOT01 local FAIL; incomplete capture/reference quarantines; budget-exhausted with finalization overrun |
+ | [2026-10-08T140610Z](2026-10-08T140610Z/report.md) | 2026-10-08T15:08:19.064275+00:00 | MotionScript / Scene IR 0.5.0 | 194 tests + typechecks PASS; spatial cuts corrected; LOT01 local visual FAIL; phase A paint order next; budget-exhausted |
+ | [2026-10-08T123430Z](2026-10-08T123430Z/report.md) | 2026-10-08T13:33:46.603914+00:00 | MotionScript / Scene IR 0.5.0 | 186 tests + typechecks PASS; clipped cubic morph fixed; Wave full-window PASS; corpus FAIL/incomplete; budget-exhausted |
+ | [2026-10-08T103605Z](2026-10-08T103605Z/report.md) | 2026-10-08T12:17:22.256060+00:00 | MotionScript / Scene IR 0.5.0 | 191 tests + typechecks PASS; clipping and shape order corrected; animated fill loss explicit; corpus FAIL; full native capture with reference blockers; budget overrun |
+diff --git a/docs/evaluations/implementation-pin.json b/docs/evaluations/implementation-pin.json
+index b9c1bd4..e0b0605 100644
+--- a/docs/evaluations/implementation-pin.json
++++ b/docs/evaluations/implementation-pin.json
+@@ -1,21 +1,22 @@
+ {
+   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
+-  "pinnedAt": "2026-10-08T15:41:26.379485+00:00",
+-  "afterRun": "2026-10-08T140610Z",
+-  "comparedWithForNextBaseline": "2026-10-08T140610Z",
++  "pinnedAt": "2026-10-09T12:59:43.538573+00:00",
++  "afterRun": "2026-10-09T115503Z",
++  "comparedWithForNextBaseline": "2026-10-09T115503Z",
+   "git": {
+-    "head": "eaf464865850cf56d3d2eabb3c3e1b0454baffbe",
++    "head": "a4988859ed56561a0183033289c32ac80014ef5c",
+     "short": "eaf4648",
+     "subject": "Merge main corrections with spatial clipping fidelity work",
+-    "treeCleanAtPin": true,
++    "treeCleanAtPin": false,
+     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
+-    "note": "Committed merged execution source. Historical evaluations retain their original source scope; merged visual verification required."
++    "note": "Execution source changed without commit; final complete source snapshot is required for reproduction."
+   },
+   "snapshot": {
+     "requiredWhenDirty": true,
+-    "path": null,
++    "path": "docs/evaluations/2026-10-09T115503Z/source-snapshot/tree/final-source.tar.gz",
+     "historicalSourceSnapshot": "docs/evaluations/2026-10-08T140610Z/source-snapshot/",
+-    "note": "Historical source archives committed; current execution source is reproduced by the commit pin."
++    "note": "Final tested execution source, complete source bytes and deletion-aware patch; metadata finalized after capture.",
++    "manifest": "docs/evaluations/2026-10-09T115503Z/source-snapshot/final-files.json"
+   },
+   "languages": {
+     "motionscript": {
+@@ -28,19 +29,19 @@
+     }
+   },
+   "nextCause": {
+-    "id": "verification.mergedCorpusNativeCoverage",
++    "id": "verification.finalSnapshotNativeCoverage",
+     "phase": "C",
+     "attempts": 0,
+     "remainingAttempts": 3,
+-    "expectedEvidence": "Verify all original corpus windows for merged implementation, then resume retained phase A layer paint order and queued phase B animated fill without resetting cause budgets."
++    "expectedEvidence": "Complete missing LOT04 compiled/native and extras, LOT05 new source-key extras on this final snapshot. Pin an effect-capable reference for LOT02/04 and diagnose LOT05 reference error; retain phase A layer paint-order history 1/3 and LOT01 local contour finding before queued animated fill."
+   },
+   "exactFixturesAtPin": [
+     "LOT-00",
+     "LOT-07"
+   ],
+-  "visualNote": "Merged execution VISUAL_UNVERIFIED; historical run results remain scoped to their original snapshots. Corpus remains FAIL.",
+-  "attemptHistoryRun": "docs/evaluations/2026-10-08T140610Z/loop.json",
+-  "commitReproduction": "Checkout git.head; merged execution source is committed.",
++  "visualNote": "Corpus FAIL. Ordering improved but LOT01 local gate fails; final coverage incomplete, effect references quarantined; budget overrun explicitly recorded.",
++  "attemptHistoryRun": "docs/evaluations/2026-10-09T115503Z/loop.json",
++  "commitReproduction": "Checkout git.head then restore final-source.tar.gz and source-snapshot/final-files.json; immutable run evidence supplies comparison inputs.",
+   "retainedCauses": [
+     {
+       "id": "visual.wave.multipleStrokeLoss",
+@@ -62,15 +63,31 @@
+     },
+     {
+       "id": "visual.layerPaintOrder",
+-      "attempts": 0,
+-      "remainingAttempts": 3,
+-      "status": "REOPENED_DIAGNOSTIC_CONFIRMED_LOT01_EARLY_OVERLAP",
++      "attempts": 1,
++      "remainingAttempts": 2,
++      "status": "IMPLEMENTED_MEASURED_IMPROVEMENT; NOT_FIDELITY_RESOLVED",
+       "affectedFixtures": [
+         "LOT-01"
+       ],
+       "phase": "A",
+       "newEvidence": "evidence/paint-order-counterfactual/results.json; pinned-original raster matches at all five probed frames. Source global order improves frame03 hot .0034\u2192.00055/local .35475\u2192.05464; other residuals remain. No shared implementation edited; attempts remain 0.",
+-      "previousScope": "LOT06 structural counterfactual was not causal; history preserved."
++      "previousScope": "LOT06 structural counterfactual was not causal; history preserved.",
++      "hypothesis": "Separate composition paint/opacity/visibility containment from Lottie transform parenting with published transform.parent.",
++      "ownerBoundary": "format-lottie normalise/placeLayers",
++      "expectedResult": "Global reverse source layer order; unchanged source transforms; only composition containment opacity/visibility inherited.",
++      "attemptStartedAt": "2026-10-09T12:30:06.975074+00:00",
++      "baselineEvidence": "evidence/baseline/render-results.json; evidence/paint-order-counterfactual/results.json",
++      "measurements": {
++        "LOT01Frame3": {
++          "beforeHot": 0.0034,
++          "afterHot": 0.00055,
++          "beforeLocal": 0.3547486033519553,
++          "afterLocal": 0.0546448087431694
++        },
++        "partialFinalWorstHot": 0.00149375,
++        "partialFinalWorstLocal": 0.38144329896907214,
++        "scope": "Actual completed LOT01 captures; whole final corpus capture still in progress. No cause-resolved or fixture-pass claim."
++      }
+     },
+     {
+       "id": "visual.shapeGroupPaintOrder",
+@@ -89,10 +106,22 @@
+       "attempts": 1,
+       "remainingAttempts": 2,
+       "status": "MEASURED_CORRECTION; fixture fidelity still FAIL; next independent layer paint-order finding retained"
++    },
++    {
++      "id": "paint.animatedSolidFill",
++      "phase": "B",
++      "attempts": 0,
++      "remainingAttempts": 3,
++      "affectedFixtures": [
++        "LOT-06"
++      ],
++      "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
++      "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
+     }
+   ],
+   "productionExactLabelsAtPin": [
+     "LOT-00",
++    "LOT-01",
+     "LOT-07"
+   ],
+   "knownSourceLossOverrides": {
+diff --git a/package-lock.json b/package-lock.json
+index 81b221b..3db77ae 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -2672,7 +2672,7 @@
+     },
+     "packages/format-lottie": {
+       "name": "@gvr/format-lottie",
+-      "version": "0.1.4",
++      "version": "0.1.5",
+       "dependencies": {
+         "@gvr/format-import-core": "*",
+         "@gvr/schema": "*"
+diff --git a/packages/format-lottie/CHANGELOG.md b/packages/format-lottie/CHANGELOG.md
+index c798f6a..a16c293 100644
+--- a/packages/format-lottie/CHANGELOG.md
++++ b/packages/format-lottie/CHANGELOG.md
+@@ -1,5 +1,9 @@
+ # @gvr/format-lottie
+ 
++## 0.1.5
++
++Keep each layer in its composition paint list, with reverse source order independent of transform parenting. Use the published `transformParentId` field for parent-local motion; inherit opacity and visibility only from composition containment. Scope parent lookup to each expansion so reused precomp assets retain their own chains. Canonical declaration order also preserves paint order in isolated render scopes. MotionScript and Scene IR remain 0.5.0, wire 0.2; no new syntax, schema, sampling rule or published release changes. Whole-fixture visual certification remains a separate gate.
++
+ ## 0.1.4
+ 
+ Preserve clipped spatial motion with existing vec2 keyframes and restricted temporal easing over the original arc-length polyline. Covered temporal curves are monotonic with cubic Y controls in [0,1]; holds and named easing retain their existing meanings. No language or wire change. Non-monotonic spatial clipping remains outside this correction.
+diff --git a/packages/format-lottie/package.json b/packages/format-lottie/package.json
+index f1e1066..eece203 100644
+--- a/packages/format-lottie/package.json
++++ b/packages/format-lottie/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/format-lottie",
+-  "version": "0.1.4",
++  "version": "0.1.5",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/format-lottie/src/lottie.test.ts b/packages/format-lottie/src/lottie.test.ts
+index 343f7b8..02e9eea 100644
+--- a/packages/format-lottie/src/lottie.test.ts
++++ b/packages/format-lottie/src/lottie.test.ts
+@@ -54,13 +54,120 @@ describe("lottie adapter", () => {
+ 
+   it("keeps parent-local child transforms", () => {
+     const result = load("parented_transform");
+-    const child = result.scene!.nodes.find((node) => node.id === "layer_1.layer_2");
+-    expect(child?.parentId).toBe("layer_1");
++    const child = result.scene!.nodes.find((node) => node.id === "layer_2");
++    expect(child?.parentId).toBeNull();
++    expect(child?.transformParentId).toBe("layer_1");
+     if (child?.kind === "group") {
+       expect(child.transform.position).toEqual({ x: 50, y: 0 });
+     }
+   });
+ 
++
++  it("keeps global source layer paint order independent of transform parenting", () => {
++    const imported = load("parent_interleaved_layers");
++    expect(imported.ok).toBe(true);
++    expect(imported.scene!.requiredCapabilities).toContain("transform.parent");
++    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
++    expect(compiled.ok).toBe(true);
++    for (const scene of [imported.scene!, compiled.scene!]) {
++      const child = scene.nodes.find(node => node.id === "layer_1")!;
++      expect(child.parentId).toBeNull();
++      expect(child.transformParentId).toBe("layer_3");
++      for (const time of [0, 1500, 500, 1999, 1000]) {
++        const items = new AnimationRuntime(scene).evaluate(time).drawItems;
++        expect(items.map(item => item.nodeId)).toEqual(["layer_3.Box", "layer_2.Box", "layer_1.Box"]);
++        expect(items.at(-1)!.appearance.fill).toMatchObject({ r: 1, g: 0, b: 0 });
++        expect(transformPoint(items.at(-1)!.logicalMatrix, 0, 0)).toEqual({ x: 34, y: 34 });
++      }
++    }
++  });
++
++  it("preserves precomp containment opacity and visibility without transform-parent inheritance", () => {
++    const imported = load("parent_precomp_containment");
++    expect(imported.ok).toBe(true);
++    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
++    expect(compiled.ok).toBe(true);
++    for (const scene of [imported.scene!, compiled.scene!]) {
++      const child = scene.nodes.find(node => node.id === "layer_10.layer_1")!;
++      expect(child.parentId).toBe("layer_10");
++      expect(child.transformParentId).toBe("layer_10.layer_3");
++      expect(child.inheritOpacity).toBeUndefined();
++      const runtime = new AnimationRuntime(scene);
++      for (const time of [0, 1500, 500, 1999, 1000]) {
++        const items = runtime.evaluate(time).drawItems;
++        expect(items.map(item => item.nodeId)).toEqual(["layer_10.layer_2.Box", "layer_10.layer_1.Box"]);
++        expect(items.every(item => item.opacity === 0.5)).toBe(true);
++      }
++    }
++  });
++
++  it("keeps multi-level parent transforms without inheriting parent paint state", () => {
++    const source = JSON.parse(readFileSync(join(fixtureDir, "parent_interleaved_layers.json"), "utf8"));
++    source.layers[0].parent = 2;
++    source.layers[1] = { ...source.layers[1], ty: 3, parent: 3, ks: { ...source.layers[1].ks, p: { a: 0, k: [10, 0] }, o: { a: 0, k: 30 } } };
++    source.layers[2] = { ...source.layers[2], ty: 3, hd: true, ip: 30, ks: { ...source.layers[2].ks, p: { a: 0, k: [20, 0] }, o: { a: 0, k: 25 } } };
++    const imported = importSource(lottieAdapter, JSON.stringify(source));
++    expect(imported.ok).toBe(true);
++    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
++    expect(compiled.ok).toBe(true);
++    for (const scene of [imported.scene!, compiled.scene!]) {
++      const runtime = new AnimationRuntime(scene);
++      for (const time of [0, 1500, 500, 1000]) {
++        const items = runtime.evaluate(time).drawItems;
++        expect(items).toHaveLength(1);
++        expect(items[0]!.opacity).toBe(1);
++        expect(transformPoint(items[0]!.logicalMatrix, 0, 0)).toEqual({ x: 64, y: 34 });
++      }
++    }
++  });
++
++  it("retains source paint order inside isolated render scopes through round trip", () => {
++    const source = JSON.parse(readFileSync(join(fixtureDir, "parent_interleaved_layers.json"), "utf8"));
++    source.layers[1].bm = 1;
++    const imported = importSource(lottieAdapter, JSON.stringify(source));
++    expect(imported.ok).toBe(true);
++    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
++    expect(compiled.ok).toBe(true);
++    const leaves = (tree: any): string[] => tree.kind === "leaf" ? [tree.item.nodeId] : tree.children.flatMap(leaves);
++    for (const scene of [imported.scene!, compiled.scene!]) {
++      const frame = new AnimationRuntime(scene).evaluate(0);
++      expect(leaves(frame.renderTree)).toEqual(["layer_3.Box", "layer_2.Box", "layer_1.Box"]);
++      expect(leaves(frame.renderTree)).toEqual(frame.drawItems.map(item => item.nodeId));
++    }
++  });
++
++  it("scopes transform parent lookup to each reused precomp expansion", () => {
++    const source = JSON.parse(readFileSync(join(fixtureDir, "parent_precomp_containment.json"), "utf8"));
++    source.layers.push({ ...source.layers[0], ind: 20, ks: { ...source.layers[0].ks, p: { a: 0, k: [100, 0] } } });
++    const imported = importSource(lottieAdapter, JSON.stringify(source));
++    expect(imported.ok).toBe(true);
++    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
++    expect(compiled.ok).toBe(true);
++    for (const scene of [imported.scene!, compiled.scene!]) {
++      expect(scene.nodes.find(node => node.id === "layer_10.layer_1")!.transformParentId).toBe("layer_10.layer_3");
++      expect(scene.nodes.find(node => node.id === "layer_20.layer_1")!.transformParentId).toBe("layer_20.layer_3");
++      const items = new AnimationRuntime(scene).evaluate(0).drawItems;
++      expect(transformPoint(items.find(item => item.nodeId === "layer_10.layer_1.Box")!.logicalMatrix, 0, 0).x).toBe(34);
++      expect(transformPoint(items.find(item => item.nodeId === "layer_20.layer_1.Box")!.logicalMatrix, 0, 0).x).toBe(134);
++    }
++  });
++
++  it("preserves the published one-ancestor opacity skip through round trip", () => {
++    const base = load("static_shape").scene!;
++    const transform = { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } };
++    const scene = { ...base, irVersion: "0.2" as const, requiredCapabilities: ["transform.parent"], nodes: [
++      { id: "grand", name: "grand", parentId: null, space: "world" as const, zIndex: 0, transform, visible: true, opacity: 0.5, kind: "group" as const },
++      { id: "grand.Bridge", name: "Bridge", parentId: "grand", zIndex: 0, transform, visible: true, opacity: 0.25, kind: "group" as const },
++      { id: "grand.Bridge.box", name: "box", parentId: "grand.Bridge", zIndex: 0, transform, visible: true, opacity: 0.8, inheritOpacity: false, kind: "rectangle" as const, size: { x: 10, y: 10 } },
++    ], timeline: { durationMs: 2000, tracks: [], steps: [] } };
++    expect(validateSceneIR(scene).ok).toBe(true);
++    const compiled = compileMotionScript(emitMotionScript(scene));
++    expect(compiled.ok, JSON.stringify(compiled.diagnostics)).toBe(true);
++    for (const route of [scene, compiled.scene!]) {
++      expect(new AnimationRuntime(route).evaluate(0).drawItems[0]!.opacity).toBe(0.4);
++    }
++  });
++
+   it("applies fill when fl is a sibling of geometry under shapes", () => {
+     const result = load("sibling_fill");
+     expect(result.ok).toBe(true);
+@@ -107,10 +214,11 @@ describe("lottie adapter", () => {
+   it("parents children when the parent layer is listed later in the JSON", () => {
+     const result = load("parent_listed_later");
+     expect(result.ok).toBe(true);
+-    const child = result.scene!.nodes.find((node) => node.id === "layer_10.layer_2");
+-    expect(child?.parentId).toBe("layer_10");
++    const child = result.scene!.nodes.find((node) => node.id === "layer_2");
++    expect(child?.parentId).toBeNull();
++    expect(child?.transformParentId).toBe("layer_10");
+     const runtime = new AnimationRuntime(result.scene!);
+-    const dot = "layer_10.layer_2.Dot";
++    const dot = "layer_2.Dot";
+     expect(origin(runtime, 0, dot)?.x).toBeCloseTo(120, 3);
+     expect(origin(runtime, 1000, dot)?.x).toBeCloseTo(190, 3);
+   });
+diff --git a/packages/format-lottie/src/model.ts b/packages/format-lottie/src/model.ts
+index 6e048a3..87e4cb8 100644
+--- a/packages/format-lottie/src/model.ts
++++ b/packages/format-lottie/src/model.ts
+@@ -3,7 +3,7 @@ import type { SegmentEasing, Vec2 } from "@gvr/schema";
+ export type LottieEasing = SegmentEasing | "bezier-approx";
+ import type { InventoryFinding } from "./inventory";
+ 
+-export const LOTTIE_ADAPTER_VERSION = "0.1.4";
++export const LOTTIE_ADAPTER_VERSION = "0.1.5";
+ 
+ export interface LottieDocument {
+   frameRate: number;
+diff --git a/packages/format-lottie/src/normalise.ts b/packages/format-lottie/src/normalise.ts
+index 38619e1..5947a93 100644
+--- a/packages/format-lottie/src/normalise.ts
++++ b/packages/format-lottie/src/normalise.ts
+@@ -1,5 +1,6 @@
+ import {
+   lerpPathCommands,
++  traversalOrder,
+   type CompositionDefinition,
+   type CompositionInstance,
+   type GeometryOperatorList,
+@@ -51,9 +52,7 @@ interface LowerContext {
+   steps: StepDefinition[];
+   trackSerial: number;
+   stepSerial: number;
+-  layerIdByIndex: Map<string, string>;
+   timeOffsetMs: number;
+-  scopeKey: string;
+   capabilities: string[];
+   handled: Set<string>;
+   compositions: CompositionDefinition[];
+@@ -90,9 +89,7 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
+     steps: [],
+     trackSerial: 0,
+     stepSerial: 0,
+-    layerIdByIndex: new Map<string, string>(),
+     timeOffsetMs: 0,
+-    scopeKey: "root",
+     capabilities: [],
+     handled: new Set<string>(),
+     compositions: [],
+@@ -145,11 +142,11 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
+   }
+ 
+   const maxOrder = Math.max(...document.layers.map((layer) => layer.arrayOrder));
+-  // Lottie paints by global layer list order (earlier = on top). Scene IR draws
+-  // by hierarchical zIndex, so a parent null listed below the sky would bury
+-  // its children. Lift each layer's zIndex to the max stack score among itself
+-  // and its descendants so parenting does not invert global paint order.
++  // Source layer parenting is a transform chain, not paint containment.
+   placeLayers(lower, supportedLayers, maxOrder, null);
++  // Emit declaration order in paint order too: isolated render scopes consume
++  // their children in declaration order, while flat draw lists sort by zIndex.
++  lower.nodes = traversalOrder(lower.nodes);
+ 
+   const capabilities = [...new Set(lower.capabilities)];
+   const profiled = capabilities.length > 0;
+@@ -181,11 +178,13 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
+ }
+ 
+ function placeLayers(lower: LowerContext, layers: LottieLayer[], maxOrder: number, hostParent: string | null): void {
+-  const layerZIndex = stackZIndexes(layers, maxOrder);
++  // This map is local to the composition expansion, so reused precomp assets
++  // cannot accidentally link to another instance's transform parents.
++  const layerIdByIndex = new Map<number, string>();
+   for (const layer of orderParentsBeforeChildren(layers)) {
+-    const zIndex = layerZIndex.get(layer.index) ?? (maxOrder - layer.arrayOrder) * 10;
+-    const linked = layer.parentIndex !== undefined ? lower.layerIdByIndex.get(`${lower.scopeKey}:${layer.parentIndex}`) : undefined;
+-    const parentId = linked ?? hostParent;
++    const zIndex = (maxOrder - layer.arrayOrder) * 10;
++    const linked = layer.parentIndex !== undefined ? layerIdByIndex.get(layer.parentIndex) : undefined;
++    const parentId = hostParent;
+     const lottieParent = linked !== undefined;
+     if (layer.parentIndex !== undefined && linked === undefined) {
+       lower.notes.push({
+@@ -196,7 +195,7 @@ function placeLayers(lower: LowerContext, layers: LottieLayer[], maxOrder: numbe
+       });
+     }
+     const layerId = allocateId(parentId, `layer_${layer.index}`, lower.usedIds);
+-    lower.layerIdByIndex.set(`${lower.scopeKey}:${layer.index}`, layerId.id);
++    layerIdByIndex.set(layer.index, layerId.id);
+     const anchor = vec2Static(layer.transform.anchor, { x: 0, y: 0 });
+     const position = vec2Static(layer.transform.position, { x: 0, y: 0 });
+     const scalePercent = vec2Static(layer.transform.scale, { x: 100, y: 100 });
+@@ -218,7 +217,7 @@ function placeLayers(lower: LowerContext, layers: LottieLayer[], maxOrder: numbe
+       visible: baseVisible,
+       ...(parentId ? {} : { space: "world" as const }),
+       kind: "group",
+-      ...(lottieParent && parentId ? { transformParentId: parentId, inheritOpacity: false as const } : {}),
++      ...(linked ? { transformParentId: linked } : {}),
+       ...(layer.blend || layer.blurRadius !== undefined
+         ? {
+             compositing: {
+@@ -302,14 +301,11 @@ function lowerPrecomp(ctx: LowerContext, layer: LottieLayer, parentId: string):
+   }
+   const offset = framesToMs((layer.startFrame ?? ctx.document.inFrame) - ctx.document.inFrame, ctx.document.frameRate);
+   const savedOffset = ctx.timeOffsetMs;
+-  const savedScope = ctx.scopeKey;
+   ctx.timeOffsetMs = savedOffset + (Number.isFinite(offset) ? offset : 0);
+-  ctx.scopeKey = `asset:${asset.id}`;
+   const layers = asset.layers.filter((entry) => entry.kind !== "unsupported");
+   const maxOrder = layers.reduce((max, entry) => Math.max(max, entry.arrayOrder), 0);
+   placeLayers(ctx, layers, maxOrder, parentId);
+   ctx.timeOffsetMs = savedOffset;
+-  ctx.scopeKey = savedScope;
+   ctx.handled.add(`precomp:asset_${asset.id}`);
+   ctx.handled.add(`layer:${layer.inventoryTarget}`);
+   const duration = framesToMs(ctx.document.outFrame - ctx.document.inFrame, ctx.document.frameRate);
+@@ -1167,34 +1163,6 @@ function nextStepId(ctx: LowerContext): string {
+   return `step${ctx.stepSerial}`;
+ }
+ 
+-/**
+- * Scene IR cannot interleave a child above an uncle. To approximate Lottie's
+- * global layer order under parenting, each layer gets
+- * max(ownScore, descendantScores) where earlier arrayOrder ⇒ higher score.
+- */
+-function stackZIndexes(layers: readonly LottieLayer[], maxOrder: number): Map<number, number> {
+-  const byIndex = new Map(layers.map((layer) => [layer.index, layer]));
+-  const children = new Map<number, LottieLayer[]>();
+-  for (const layer of layers) {
+-    if (layer.parentIndex === undefined || !byIndex.has(layer.parentIndex)) continue;
+-    const list = children.get(layer.parentIndex) ?? [];
+-    list.push(layer);
+-    children.set(layer.parentIndex, list);
+-  }
+-  const ownScore = (layer: LottieLayer) => (maxOrder - layer.arrayOrder) * 10;
+-  const memo = new Map<number, number>();
+-  const scoreOf = (layer: LottieLayer): number => {
+-    const cached = memo.get(layer.index);
+-    if (cached !== undefined) return cached;
+-    let score = ownScore(layer);
+-    for (const child of children.get(layer.index) ?? []) score = Math.max(score, scoreOf(child));
+-    memo.set(layer.index, score);
+-    return score;
+-  };
+-  for (const layer of layers) scoreOf(layer);
+-  return memo;
+-}
+-
+ /** Stable topological order: parents before children; array order breaks ties. */
+ function orderParentsBeforeChildren(layers: LottieLayer[]): LottieLayer[] {
+   const byIndex = new Map(layers.map((layer) => [layer.index, layer]));
+diff --git a/packages/schema/capabilities/registry.json b/packages/schema/capabilities/registry.json
+index 95d23bf..1196c1a 100644
+--- a/packages/schema/capabilities/registry.json
++++ b/packages/schema/capabilities/registry.json
+@@ -575,12 +575,27 @@
+       "id": "transform.parent",
+       "summary": "transformParentId selects the transform chain. inheritOpacity false skips one opacity ancestor.",
+       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+-      "targets": ["runtime"],
++      "targets": ["compiler", "runtime"],
+       "restrictions": ["Omitted transformParentId means the chain is parentId. inheritOpacity false skips exactly one ancestor."],
+-      "support": { "compiler": "untested", "runtime": "untested", "renderer": "not-applicable" },
+-      "conformanceTests": [],
++      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
++      "conformanceTests": [
++        "packages/format-lottie/src/lottie.test.ts#keeps global source layer paint order independent of transform parenting",
++        "packages/format-lottie/src/lottie.test.ts#keeps multi-level parent transforms without inheriting parent paint state",
++        "packages/format-lottie/src/lottie.test.ts#preserves the published one-ancestor opacity skip through round trip"
++      ],
+       "adapters": {
+-        "lottie": { "status": "untested", "scope": "A resolved Lottie parent sets transformParentId. Tests assert parentId, not that field." },
++        "lottie": {
++          "status": "exact",
++          "scope": "Acyclic supported layer parent chains use transformParentId independently of composition paint containment. Layers retain global reverse source-list order, including isolated scopes; parent visibility and opacity do not propagate as containment. Precomp containment opacity/visibility and per-expansion parent lookup are preserved. Static overlap/precomp source-direct-compiled reference probes and parent-position conformance back this scope; full fixture fidelity remains a separate gate. Missing parents remain diagnosed; animated anchors and other unsupported transform variations are outside this claim.",
++          "conformanceTests": [
++            "packages/format-lottie/src/lottie.test.ts#keeps global source layer paint order independent of transform parenting",
++            "packages/format-lottie/src/lottie.test.ts#preserves precomp containment opacity and visibility without transform-parent inheritance",
++            "packages/format-lottie/src/lottie.test.ts#keeps multi-level parent transforms without inheriting parent paint state",
++            "packages/format-lottie/src/lottie.test.ts#retains source paint order inside isolated render scopes through round trip",
++            "packages/format-lottie/src/lottie.test.ts#scopes transform parent lookup to each reused precomp expansion",
++            "packages/format-lottie/src/lottie.test.ts#parents children when the parent layer is listed later in the JSON"
++          ]
++        },
+         "svg": { "status": "not-applicable", "scope": "SVG parents are containment parents." }
+       }
+     },

@@ -2,12 +2,13 @@
 
 An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
 
-The newest run is [2026-10-08T140610Z](2026-10-08T140610Z/report.md).
+The newest run is [2026-10-09T115503Z](2026-10-09T115503Z/report.md).
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json). The merged committed implementation requires fresh visual verification; historical results apply to their recorded source snapshots. Complete merged full-corpus verification, then continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
+Next Baseline reads [implementation-pin.json](implementation-pin.json) and restores the final dirty snapshot. Complete missing final native coverage and repair reference evidence before resuming phase A LOT01 contours; layer paint order retains 1/3 attempts, animated fill remains queued. Corpus FAIL; no canonical promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
+| [2026-10-09T115503Z](2026-10-09T115503Z/report.md) | 2026-10-09T12:59:43.538573+00:00 | MotionScript / Scene IR 0.5.0 | 202 tests + typechecks PASS; global paint order corrected; LOT01 local FAIL; incomplete capture/reference quarantines; budget-exhausted with finalization overrun |
 | [2026-10-08T140610Z](2026-10-08T140610Z/report.md) | 2026-10-08T15:08:19.064275+00:00 | MotionScript / Scene IR 0.5.0 | 194 tests + typechecks PASS; spatial cuts corrected; LOT01 local visual FAIL; phase A paint order next; budget-exhausted |
 | [2026-10-08T123430Z](2026-10-08T123430Z/report.md) | 2026-10-08T13:33:46.603914+00:00 | MotionScript / Scene IR 0.5.0 | 186 tests + typechecks PASS; clipped cubic morph fixed; Wave full-window PASS; corpus FAIL/incomplete; budget-exhausted |
 | [2026-10-08T103605Z](2026-10-08T103605Z/report.md) | 2026-10-08T12:17:22.256060+00:00 | MotionScript / Scene IR 0.5.0 | 191 tests + typechecks PASS; clipping and shape order corrected; animated fill loss explicit; corpus FAIL; full native capture with reference blockers; budget overrun |

@@ -54,10 +54,117 @@ describe("lottie adapter", () => {
 
   it("keeps parent-local child transforms", () => {
     const result = load("parented_transform");
-    const child = result.scene!.nodes.find((node) => node.id === "layer_1.layer_2");
-    expect(child?.parentId).toBe("layer_1");
+    const child = result.scene!.nodes.find((node) => node.id === "layer_2");
+    expect(child?.parentId).toBeNull();
+    expect(child?.transformParentId).toBe("layer_1");
     if (child?.kind === "group") {
       expect(child.transform.position).toEqual({ x: 50, y: 0 });
+    }
+  });
+
+
+  it("keeps global source layer paint order independent of transform parenting", () => {
+    const imported = load("parent_interleaved_layers");
+    expect(imported.ok).toBe(true);
+    expect(imported.scene!.requiredCapabilities).toContain("transform.parent");
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      const child = scene.nodes.find(node => node.id === "layer_1")!;
+      expect(child.parentId).toBeNull();
+      expect(child.transformParentId).toBe("layer_3");
+      for (const time of [0, 1500, 500, 1999, 1000]) {
+        const items = new AnimationRuntime(scene).evaluate(time).drawItems;
+        expect(items.map(item => item.nodeId)).toEqual(["layer_3.Box", "layer_2.Box", "layer_1.Box"]);
+        expect(items.at(-1)!.appearance.fill).toMatchObject({ r: 1, g: 0, b: 0 });
+        expect(transformPoint(items.at(-1)!.logicalMatrix, 0, 0)).toEqual({ x: 34, y: 34 });
+      }
+    }
+  });
+
+  it("preserves precomp containment opacity and visibility without transform-parent inheritance", () => {
+    const imported = load("parent_precomp_containment");
+    expect(imported.ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      const child = scene.nodes.find(node => node.id === "layer_10.layer_1")!;
+      expect(child.parentId).toBe("layer_10");
+      expect(child.transformParentId).toBe("layer_10.layer_3");
+      expect(child.inheritOpacity).toBeUndefined();
+      const runtime = new AnimationRuntime(scene);
+      for (const time of [0, 1500, 500, 1999, 1000]) {
+        const items = runtime.evaluate(time).drawItems;
+        expect(items.map(item => item.nodeId)).toEqual(["layer_10.layer_2.Box", "layer_10.layer_1.Box"]);
+        expect(items.every(item => item.opacity === 0.5)).toBe(true);
+      }
+    }
+  });
+
+  it("keeps multi-level parent transforms without inheriting parent paint state", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "parent_interleaved_layers.json"), "utf8"));
+    source.layers[0].parent = 2;
+    source.layers[1] = { ...source.layers[1], ty: 3, parent: 3, ks: { ...source.layers[1].ks, p: { a: 0, k: [10, 0] }, o: { a: 0, k: 30 } } };
+    source.layers[2] = { ...source.layers[2], ty: 3, hd: true, ip: 30, ks: { ...source.layers[2].ks, p: { a: 0, k: [20, 0] }, o: { a: 0, k: 25 } } };
+    const imported = importSource(lottieAdapter, JSON.stringify(source));
+    expect(imported.ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      const runtime = new AnimationRuntime(scene);
+      for (const time of [0, 1500, 500, 1000]) {
+        const items = runtime.evaluate(time).drawItems;
+        expect(items).toHaveLength(1);
+        expect(items[0]!.opacity).toBe(1);
+        expect(transformPoint(items[0]!.logicalMatrix, 0, 0)).toEqual({ x: 64, y: 34 });
+      }
+    }
+  });
+
+  it("retains source paint order inside isolated render scopes through round trip", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "parent_interleaved_layers.json"), "utf8"));
+    source.layers[1].bm = 1;
+    const imported = importSource(lottieAdapter, JSON.stringify(source));
+    expect(imported.ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    const leaves = (tree: any): string[] => tree.kind === "leaf" ? [tree.item.nodeId] : tree.children.flatMap(leaves);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      const frame = new AnimationRuntime(scene).evaluate(0);
+      expect(leaves(frame.renderTree)).toEqual(["layer_3.Box", "layer_2.Box", "layer_1.Box"]);
+      expect(leaves(frame.renderTree)).toEqual(frame.drawItems.map(item => item.nodeId));
+    }
+  });
+
+  it("scopes transform parent lookup to each reused precomp expansion", () => {
+    const source = JSON.parse(readFileSync(join(fixtureDir, "parent_precomp_containment.json"), "utf8"));
+    source.layers.push({ ...source.layers[0], ind: 20, ks: { ...source.layers[0].ks, p: { a: 0, k: [100, 0] } } });
+    const imported = importSource(lottieAdapter, JSON.stringify(source));
+    expect(imported.ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(imported.scene!));
+    expect(compiled.ok).toBe(true);
+    for (const scene of [imported.scene!, compiled.scene!]) {
+      expect(scene.nodes.find(node => node.id === "layer_10.layer_1")!.transformParentId).toBe("layer_10.layer_3");
+      expect(scene.nodes.find(node => node.id === "layer_20.layer_1")!.transformParentId).toBe("layer_20.layer_3");
+      const items = new AnimationRuntime(scene).evaluate(0).drawItems;
+      expect(transformPoint(items.find(item => item.nodeId === "layer_10.layer_1.Box")!.logicalMatrix, 0, 0).x).toBe(34);
+      expect(transformPoint(items.find(item => item.nodeId === "layer_20.layer_1.Box")!.logicalMatrix, 0, 0).x).toBe(134);
+    }
+  });
+
+  it("preserves the published one-ancestor opacity skip through round trip", () => {
+    const base = load("static_shape").scene!;
+    const transform = { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } };
+    const scene = { ...base, irVersion: "0.2" as const, requiredCapabilities: ["transform.parent"], nodes: [
+      { id: "grand", name: "grand", parentId: null, space: "world" as const, zIndex: 0, transform, visible: true, opacity: 0.5, kind: "group" as const },
+      { id: "grand.Bridge", name: "Bridge", parentId: "grand", zIndex: 0, transform, visible: true, opacity: 0.25, kind: "group" as const },
+      { id: "grand.Bridge.box", name: "box", parentId: "grand.Bridge", zIndex: 0, transform, visible: true, opacity: 0.8, inheritOpacity: false, kind: "rectangle" as const, size: { x: 10, y: 10 } },
+    ], timeline: { durationMs: 2000, tracks: [], steps: [] } };
+    expect(validateSceneIR(scene).ok).toBe(true);
+    const compiled = compileMotionScript(emitMotionScript(scene));
+    expect(compiled.ok, JSON.stringify(compiled.diagnostics)).toBe(true);
+    for (const route of [scene, compiled.scene!]) {
+      expect(new AnimationRuntime(route).evaluate(0).drawItems[0]!.opacity).toBe(0.4);
     }
   });
 
@@ -107,10 +214,11 @@ describe("lottie adapter", () => {
   it("parents children when the parent layer is listed later in the JSON", () => {
     const result = load("parent_listed_later");
     expect(result.ok).toBe(true);
-    const child = result.scene!.nodes.find((node) => node.id === "layer_10.layer_2");
-    expect(child?.parentId).toBe("layer_10");
+    const child = result.scene!.nodes.find((node) => node.id === "layer_2");
+    expect(child?.parentId).toBeNull();
+    expect(child?.transformParentId).toBe("layer_10");
     const runtime = new AnimationRuntime(result.scene!);
-    const dot = "layer_10.layer_2.Dot";
+    const dot = "layer_2.Dot";
     expect(origin(runtime, 0, dot)?.x).toBeCloseTo(120, 3);
     expect(origin(runtime, 1000, dot)?.x).toBeCloseTo(190, 3);
   });

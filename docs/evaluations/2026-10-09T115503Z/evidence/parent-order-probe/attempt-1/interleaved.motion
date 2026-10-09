@@ -1,0 +1,52 @@
+scene "lottie" {
+  version "0.2";
+  viewport (128, 128);
+  background #101014;
+  duration 2s;
+  requires "transform.parent";
+};
+camera main {
+  position (64, 64);
+  zoom 1;
+  rotation 0deg;
+};
+group layer_3 {
+  rectangle Box {
+    position (34, 34);
+    zIndex 1;
+    size (60, 60);
+    fill #00ff00;
+  };
+};
+group layer_2 {
+  zIndex 10;
+  rectangle Box {
+    position (34, 34);
+    zIndex 11;
+    size (60, 60);
+    fill #0000ff;
+  };
+};
+group layer_1 {
+  transformParent layer_3;
+  zIndex 20;
+  rectangle Box {
+    position (34, 34);
+    zIndex 21;
+    size (60, 60);
+    fill #ff0000;
+  };
+};
+step layer_3.visible {
+  at 2s;
+  value false;
+};
+step layer_1.visible {
+  at 2s;
+  value false;
+};
+step layer_2.visible {
+  at 2s;
+  value false;
+};
+complete;

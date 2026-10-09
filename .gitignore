@@ -33,3 +33,12 @@ docs/evaluations/**/evidence/fixtures/**/generated.motion
 docs/evaluations/**/source-snapshot/working-tree.patch
 docs/evaluations/**/source-snapshot/tree/
 docs/evaluations/**/source-snapshot/files/
+
+# Lossless transport copies for the 2026-10-09 evaluation; see transport manifest.
+/work/
+/docs/evaluations/2026-10-09T115503Z/evidence/baseline/render-results.json
+/docs/evaluations/2026-10-09T115503Z/evidence/final/captures/LOT-02-compiled/partial-results.json
+/docs/evaluations/2026-10-09T115503Z/evidence/final/captures/LOT-02-imported/partial-results.json
+/docs/evaluations/2026-10-09T115503Z/evidence/final/render-results-recaptured.json
+/docs/evaluations/2026-10-09T115503Z/evidence/final/render-results.json
+/docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz

@@ -1,0 +1,57 @@
+{
+  "purpose": "GitHub transport of unchanged immutable evidence. Decode gzip or concatenate ordered parts to restore original paths and verify SHA256 against the run evidence-files.json. Source snapshot archives are committed explicitly.",
+  "files": [
+    {
+      "original": "docs/evaluations/2026-10-09T115503Z/evidence/baseline/render-results.json",
+      "sha256": "42b49724f37ab4dbb9b019f099b7791388bc3514bd8298f111a1aa68d80052ac",
+      "encoding": "gzip",
+      "transportFiles": [
+        "docs/evaluations/2026-10-09T115503Z/evidence/baseline/render-results.json.gz"
+      ]
+    },
+    {
+      "original": "docs/evaluations/2026-10-09T115503Z/evidence/final/captures/LOT-02-compiled/partial-results.json",
+      "sha256": "f4304d76f5556784e7d6e0a25ee485a493b0e5d068d7013e5294d8b77d723c58",
+      "encoding": "gzip",
+      "transportFiles": [
+        "docs/evaluations/2026-10-09T115503Z/evidence/final/captures/LOT-02-compiled/partial-results.json.gz"
+      ]
+    },
+    {
+      "original": "docs/evaluations/2026-10-09T115503Z/evidence/final/captures/LOT-02-imported/partial-results.json",
+      "sha256": "1f8c50c1253db77ca434d1a1c327bbad6355df4accf6612852a0a44691de8bf7",
+      "encoding": "gzip",
+      "transportFiles": [
+        "docs/evaluations/2026-10-09T115503Z/evidence/final/captures/LOT-02-imported/partial-results.json.gz"
+      ]
+    },
+    {
+      "original": "docs/evaluations/2026-10-09T115503Z/evidence/final/render-results-recaptured.json",
+      "sha256": "48e3db4c25a1933b544480e7ad073edd64223e75b988365e9f415ba7787e9b33",
+      "encoding": "gzip",
+      "transportFiles": [
+        "docs/evaluations/2026-10-09T115503Z/evidence/final/render-results-recaptured.json.gz"
+      ]
+    },
+    {
+      "original": "docs/evaluations/2026-10-09T115503Z/evidence/final/render-results.json",
+      "sha256": "0e9d4b3cd73d1e8a426a67931d4e6609519522b9111e2ab9e01f7b950c4ba8fa",
+      "encoding": "gzip",
+      "transportFiles": [
+        "docs/evaluations/2026-10-09T115503Z/evidence/final/render-results.json.gz"
+      ]
+    },
+    {
+      "original": "docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz",
+      "sha256": "bc0dfaf6406acbff65a9c405aace8f104ebad6974747af4050f2a441431cca7f",
+      "encoding": "concatenate ordered parts",
+      "transportFiles": [
+        "docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz.part-000",
+        "docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz.part-001",
+        "docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz.part-002",
+        "docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz.part-003",
+        "docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz.part-004"
+      ]
+    }
+  ]
+}

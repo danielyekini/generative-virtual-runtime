@@ -1,21 +1,22 @@
 {
   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
-  "pinnedAt": "2026-10-08T15:41:26.379485+00:00",
-  "afterRun": "2026-10-08T140610Z",
-  "comparedWithForNextBaseline": "2026-10-08T140610Z",
+  "pinnedAt": "2026-10-09T12:59:43.538573+00:00",
+  "afterRun": "2026-10-09T115503Z",
+  "comparedWithForNextBaseline": "2026-10-09T115503Z",
   "git": {
-    "head": "eaf464865850cf56d3d2eabb3c3e1b0454baffbe",
+    "head": "a4988859ed56561a0183033289c32ac80014ef5c",
     "short": "eaf4648",
     "subject": "Merge main corrections with spatial clipping fidelity work",
-    "treeCleanAtPin": true,
+    "treeCleanAtPin": false,
     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
-    "note": "Committed merged execution source. Historical evaluations retain their original source scope; merged visual verification required."
+    "note": "Execution source changed without commit; final complete source snapshot is required for reproduction."
   },
   "snapshot": {
     "requiredWhenDirty": true,
-    "path": null,
+    "path": "docs/evaluations/2026-10-09T115503Z/source-snapshot/tree/final-source.tar.gz",
     "historicalSourceSnapshot": "docs/evaluations/2026-10-08T140610Z/source-snapshot/",
-    "note": "Historical source archives committed; current execution source is reproduced by the commit pin."
+    "note": "Final tested execution source, complete source bytes and deletion-aware patch; metadata finalized after capture.",
+    "manifest": "docs/evaluations/2026-10-09T115503Z/source-snapshot/final-files.json"
   },
   "languages": {
     "motionscript": {
@@ -28,19 +29,19 @@
     }
   },
   "nextCause": {
-    "id": "verification.mergedCorpusNativeCoverage",
+    "id": "verification.finalSnapshotNativeCoverage",
     "phase": "C",
     "attempts": 0,
     "remainingAttempts": 3,
-    "expectedEvidence": "Verify all original corpus windows for merged implementation, then resume retained phase A layer paint order and queued phase B animated fill without resetting cause budgets."
+    "expectedEvidence": "Complete missing LOT04 compiled/native and extras, LOT05 new source-key extras on this final snapshot. Pin an effect-capable reference for LOT02/04 and diagnose LOT05 reference error; retain phase A layer paint-order history 1/3 and LOT01 local contour finding before queued animated fill."
   },
   "exactFixturesAtPin": [
     "LOT-00",
     "LOT-07"
   ],
-  "visualNote": "Merged execution VISUAL_UNVERIFIED; historical run results remain scoped to their original snapshots. Corpus remains FAIL.",
-  "attemptHistoryRun": "docs/evaluations/2026-10-08T140610Z/loop.json",
-  "commitReproduction": "Checkout git.head; merged execution source is committed.",
+  "visualNote": "Corpus FAIL. Ordering improved but LOT01 local gate fails; final coverage incomplete, effect references quarantined; budget overrun explicitly recorded.",
+  "attemptHistoryRun": "docs/evaluations/2026-10-09T115503Z/loop.json",
+  "commitReproduction": "Checkout git.head then restore final-source.tar.gz and source-snapshot/final-files.json; immutable run evidence supplies comparison inputs.",
   "retainedCauses": [
     {
       "id": "visual.wave.multipleStrokeLoss",
@@ -62,15 +63,31 @@
     },
     {
       "id": "visual.layerPaintOrder",
-      "attempts": 0,
-      "remainingAttempts": 3,
-      "status": "REOPENED_DIAGNOSTIC_CONFIRMED_LOT01_EARLY_OVERLAP",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "IMPLEMENTED_MEASURED_IMPROVEMENT; NOT_FIDELITY_RESOLVED",
       "affectedFixtures": [
         "LOT-01"
       ],
       "phase": "A",
       "newEvidence": "evidence/paint-order-counterfactual/results.json; pinned-original raster matches at all five probed frames. Source global order improves frame03 hot .0034\u2192.00055/local .35475\u2192.05464; other residuals remain. No shared implementation edited; attempts remain 0.",
-      "previousScope": "LOT06 structural counterfactual was not causal; history preserved."
+      "previousScope": "LOT06 structural counterfactual was not causal; history preserved.",
+      "hypothesis": "Separate composition paint/opacity/visibility containment from Lottie transform parenting with published transform.parent.",
+      "ownerBoundary": "format-lottie normalise/placeLayers",
+      "expectedResult": "Global reverse source layer order; unchanged source transforms; only composition containment opacity/visibility inherited.",
+      "attemptStartedAt": "2026-10-09T12:30:06.975074+00:00",
+      "baselineEvidence": "evidence/baseline/render-results.json; evidence/paint-order-counterfactual/results.json",
+      "measurements": {
+        "LOT01Frame3": {
+          "beforeHot": 0.0034,
+          "afterHot": 0.00055,
+          "beforeLocal": 0.3547486033519553,
+          "afterLocal": 0.0546448087431694
+        },
+        "partialFinalWorstHot": 0.00149375,
+        "partialFinalWorstLocal": 0.38144329896907214,
+        "scope": "Actual completed LOT01 captures; whole final corpus capture still in progress. No cause-resolved or fixture-pass claim."
+      }
     },
     {
       "id": "visual.shapeGroupPaintOrder",
@@ -89,10 +106,22 @@
       "attempts": 1,
       "remainingAttempts": 2,
       "status": "MEASURED_CORRECTION; fixture fidelity still FAIL; next independent layer paint-order finding retained"
+    },
+    {
+      "id": "paint.animatedSolidFill",
+      "phase": "B",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "affectedFixtures": [
+        "LOT-06"
+      ],
+      "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
+      "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
     }
   ],
   "productionExactLabelsAtPin": [
     "LOT-00",
+    "LOT-01",
     "LOT-07"
   ],
   "knownSourceLossOverrides": {

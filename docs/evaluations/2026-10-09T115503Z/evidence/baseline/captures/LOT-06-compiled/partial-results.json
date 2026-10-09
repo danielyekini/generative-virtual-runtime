@@ -1,0 +1,5369 @@
+{
+  "status": "NOT_RUN",
+  "job": {
+    "id": "LOT-06-compiled",
+    "format": "lottie",
+    "role": "pack",
+    "fileName": "Punches.json",
+    "sourceUrl": "/sources/LOT-06.json",
+    "sceneUrl": "/fixtures/LOT-06/compiled-scene.json",
+    "sceneKind": "compiled",
+    "executionRoute": "production",
+    "cssWidth": 720,
+    "cssHeight": 720,
+    "logicalWidth": 720,
+    "logicalHeight": 720,
+    "background": "#101014",
+    "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+    "samples": [
+      {
+        "id": "frame_00000",
+        "label": "source frame 0",
+        "sourceTimeMs": 0,
+        "lottieFrame": 0,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00001",
+        "label": "source frame 1",
+        "sourceTimeMs": 40,
+        "lottieFrame": 1,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00002",
+        "label": "source frame 2",
+        "sourceTimeMs": 80,
+        "lottieFrame": 2,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00003",
+        "label": "source frame 3",
+        "sourceTimeMs": 120,
+        "lottieFrame": 3,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00004",
+        "label": "source frame 4",
+        "sourceTimeMs": 160,
+        "lottieFrame": 4,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00005",
+        "label": "source frame 5",
+        "sourceTimeMs": 200,
+        "lottieFrame": 5,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00006",
+        "label": "source frame 6",
+        "sourceTimeMs": 240,
+        "lottieFrame": 6,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00007",
+        "label": "source frame 7",
+        "sourceTimeMs": 280,
+        "lottieFrame": 7,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00008",
+        "label": "source frame 8",
+        "sourceTimeMs": 320,
+        "lottieFrame": 8,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00009",
+        "label": "source frame 9",
+        "sourceTimeMs": 360,
+        "lottieFrame": 9,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00010",
+        "label": "source frame 10",
+        "sourceTimeMs": 400,
+        "lottieFrame": 10,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00011",
+        "label": "source frame 11",
+        "sourceTimeMs": 440,
+        "lottieFrame": 11,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00012",
+        "label": "source frame 12",
+        "sourceTimeMs": 480,
+        "lottieFrame": 12,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00013",
+        "label": "source frame 13",
+        "sourceTimeMs": 520,
+        "lottieFrame": 13,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00014",
+        "label": "source frame 14",
+        "sourceTimeMs": 560,
+        "lottieFrame": 14,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00015",
+        "label": "source frame 15",
+        "sourceTimeMs": 600,
+        "lottieFrame": 15,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00016",
+        "label": "source frame 16",
+        "sourceTimeMs": 640,
+        "lottieFrame": 16,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00017",
+        "label": "source frame 17",
+        "sourceTimeMs": 680,
+        "lottieFrame": 17,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00018",
+        "label": "source frame 18",
+        "sourceTimeMs": 720,
+        "lottieFrame": 18,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00019",
+        "label": "source frame 19",
+        "sourceTimeMs": 760,
+        "lottieFrame": 19,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00020",
+        "label": "source frame 20",
+        "sourceTimeMs": 800,
+        "lottieFrame": 20,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00021",
+        "label": "source frame 21",
+        "sourceTimeMs": 840,
+        "lottieFrame": 21,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00022",
+        "label": "source frame 22",
+        "sourceTimeMs": 880,
+        "lottieFrame": 22,
+        "scheduled": true
+      },
+      {
+        "id": "frame_00023",
+        "label": "source frame 23",
+        "sourceTimeMs": 920,
+        "lottieFrame": 23,
+        "scheduled": true
+      },
+      {
+        "id": "near_end",
+        "label": "near end (before out point)",
+        "fraction": 0.995,
+        "sourceTimeMs": 955.2,
+        "lottieFrame": 23.88,
+        "scheduled": false
+      },
+      {
+        "id": "subframe_0",
+        "label": "boundary subframe 0.5",
+        "sourceTimeMs": 20,
+        "lottieFrame": 0.5,
+        "scheduled": false
+      },
+      {
+        "id": "subframe_1",
+        "label": "boundary subframe 23.5",
+        "sourceTimeMs": 940,
+        "lottieFrame": 23.5,
+        "scheduled": false
+      }
+    ],
+    "observation": "One composition cycle from ip 0 to op 24 at 25 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON.",
+    "parentFixture": "LOT-06",
+    "fullWindow": true,
+    "coverageReason": "Affected/previously exact fixture full-window verification"
+  },
+  "frames": [
+    {
+      "id": "frame_00000",
+      "label": "source frame 0",
+      "scheduled": true,
+      "sourceTimeMs": 0,
+      "lottieFrame": 0,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 12.600000000093132,
+        "note": "lottie frame 0"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00000-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 2.900000000023283,
+        "note": "native 0 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00000-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.012717978395061728,
+        "maxLocalFractionBeyond": 0.994140625,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 223,
+            "foreground": 1024,
+            "fraction": 0.2177734375
+          },
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 373,
+            "foreground": 1024,
+            "fraction": 0.3642578125
+          },
+          {
+            "x": 544,
+            "y": 128,
+            "hot": 623,
+            "foreground": 1024,
+            "fraction": 0.6083984375
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 159,
+            "foreground": 1024,
+            "fraction": 0.1552734375
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 888,
+            "foreground": 1024,
+            "fraction": 0.8671875
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 1018,
+            "foreground": 1024,
+            "fraction": 0.994140625
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 817,
+            "foreground": 1024,
+            "fraction": 0.7978515625
+          },
+          {
+            "x": 512,
+            "y": 160,
+            "hot": 388,
+            "foreground": 1024,
+            "fraction": 0.37890625
+          },
+          {
+            "x": 544,
+            "y": 160,
+            "hot": 259,
+            "foreground": 1024,
+            "fraction": 0.2529296875
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 479,
+            "foreground": 1024,
+            "fraction": 0.4677734375
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 178,
+            "foreground": 1024,
+            "fraction": 0.173828125
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 493,
+            "foreground": 1024,
+            "fraction": 0.4814453125
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 140,
+            "foreground": 1024,
+            "fraction": 0.13671875
+          },
+          {
+            "x": 256,
+            "y": 256,
+            "hot": 232,
+            "foreground": 1024,
+            "fraction": 0.2265625
+          },
+          {
+            "x": 400,
+            "y": 144,
+            "hot": 269,
+            "foreground": 1024,
+            "fraction": 0.2626953125
+          },
+          {
+            "x": 432,
+            "y": 144,
+            "hot": 510,
+            "foreground": 1024,
+            "fraction": 0.498046875
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 670,
+            "foreground": 1024,
+            "fraction": 0.654296875
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 785,
+            "foreground": 1024,
+            "fraction": 0.7666015625
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 720,
+            "foreground": 1024,
+            "fraction": 0.703125
+          },
+          {
+            "x": 560,
+            "y": 144,
+            "hot": 429,
+            "foreground": 1024,
+            "fraction": 0.4189453125
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 499,
+            "foreground": 1024,
+            "fraction": 0.4873046875
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 893,
+            "foreground": 1024,
+            "fraction": 0.8720703125
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 477,
+            "foreground": 1024,
+            "fraction": 0.4658203125
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 115,
+            "foreground": 1024,
+            "fraction": 0.1123046875
+          },
+          {
+            "x": 240,
+            "y": 208,
+            "hot": 104,
+            "foreground": 1024,
+            "fraction": 0.1015625
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 225,
+            "foreground": 1024,
+            "fraction": 0.2197265625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 181,
+            "foreground": 1024,
+            "fraction": 0.1767578125
+          },
+          {
+            "x": 240,
+            "y": 240,
+            "hot": 277,
+            "foreground": 1024,
+            "fraction": 0.2705078125
+          },
+          {
+            "x": 272,
+            "y": 240,
+            "hot": 220,
+            "foreground": 1024,
+            "fraction": 0.21484375
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.1399602010959509,
+        "fractionBeyond": 0.012717978395061728,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00000-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00000-strip.png"
+      }
+    },
+    {
+      "id": "frame_00001",
+      "label": "source frame 1",
+      "scheduled": true,
+      "sourceTimeMs": 40,
+      "lottieFrame": 1,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 9.599999999976717,
+        "note": "lottie frame 1"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00001-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.1000000000931323,
+        "note": "native 40 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00001-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.012866512345679012,
+        "maxLocalFractionBeyond": 0.9736328125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 189,
+            "foreground": 1024,
+            "fraction": 0.1845703125
+          },
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 408,
+            "foreground": 1024,
+            "fraction": 0.3984375
+          },
+          {
+            "x": 544,
+            "y": 128,
+            "hot": 713,
+            "foreground": 1024,
+            "fraction": 0.6962890625
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 163,
+            "foreground": 1024,
+            "fraction": 0.1591796875
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 834,
+            "foreground": 1024,
+            "fraction": 0.814453125
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 997,
+            "foreground": 1024,
+            "fraction": 0.9736328125
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 874,
+            "foreground": 1024,
+            "fraction": 0.853515625
+          },
+          {
+            "x": 512,
+            "y": 160,
+            "hot": 357,
+            "foreground": 1024,
+            "fraction": 0.3486328125
+          },
+          {
+            "x": 544,
+            "y": 160,
+            "hot": 150,
+            "foreground": 1024,
+            "fraction": 0.146484375
+          },
+          {
+            "x": 256,
+            "y": 192,
+            "hot": 103,
+            "foreground": 1024,
+            "fraction": 0.1005859375
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 546,
+            "foreground": 1024,
+            "fraction": 0.533203125
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 256,
+            "foreground": 1024,
+            "fraction": 0.25
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 461,
+            "foreground": 1024,
+            "fraction": 0.4501953125
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 137,
+            "foreground": 1024,
+            "fraction": 0.1337890625
+          },
+          {
+            "x": 256,
+            "y": 256,
+            "hot": 305,
+            "foreground": 1024,
+            "fraction": 0.2978515625
+          },
+          {
+            "x": 560,
+            "y": 112,
+            "hot": 114,
+            "foreground": 1024,
+            "fraction": 0.111328125
+          },
+          {
+            "x": 400,
+            "y": 144,
+            "hot": 240,
+            "foreground": 1024,
+            "fraction": 0.234375
+          },
+          {
+            "x": 432,
+            "y": 144,
+            "hot": 430,
+            "foreground": 1024,
+            "fraction": 0.419921875
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 594,
+            "foreground": 1024,
+            "fraction": 0.580078125
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 777,
+            "foreground": 1024,
+            "fraction": 0.7587890625
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 685,
+            "foreground": 1024,
+            "fraction": 0.6689453125
+          },
+          {
+            "x": 560,
+            "y": 144,
+            "hot": 333,
+            "foreground": 1024,
+            "fraction": 0.3251953125
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 529,
+            "foreground": 1024,
+            "fraction": 0.5166015625
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 954,
+            "foreground": 1024,
+            "fraction": 0.931640625
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 562,
+            "foreground": 1024,
+            "fraction": 0.548828125
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 137,
+            "foreground": 1024,
+            "fraction": 0.1337890625
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 260,
+            "foreground": 1024,
+            "fraction": 0.25390625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 207,
+            "foreground": 1024,
+            "fraction": 0.2021484375
+          },
+          {
+            "x": 240,
+            "y": 240,
+            "hot": 157,
+            "foreground": 1024,
+            "fraction": 0.1533203125
+          },
+          {
+            "x": 272,
+            "y": 240,
+            "hot": 373,
+            "foreground": 1024,
+            "fraction": 0.3642578125
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.2013832359755146,
+        "fractionBeyond": 0.012866512345679012,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00001-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00001-strip.png"
+      }
+    },
+    {
+      "id": "frame_00002",
+      "label": "source frame 2",
+      "scheduled": true,
+      "sourceTimeMs": 80,
+      "lottieFrame": 2,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 14.5,
+        "note": "lottie frame 2"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00002-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 4.099999999976717,
+        "note": "native 80 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00002-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013057484567901234,
+        "maxLocalFractionBeyond": 0.998046875,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 512,
+            "foreground": 1024,
+            "fraction": 0.5
+          },
+          {
+            "x": 544,
+            "y": 128,
+            "hot": 714,
+            "foreground": 1024,
+            "fraction": 0.697265625
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 661,
+            "foreground": 1024,
+            "fraction": 0.6455078125
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 778,
+            "foreground": 1024,
+            "fraction": 0.759765625
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 927,
+            "foreground": 1024,
+            "fraction": 0.9052734375
+          },
+          {
+            "x": 512,
+            "y": 160,
+            "hot": 300,
+            "foreground": 1024,
+            "fraction": 0.29296875
+          },
+          {
+            "x": 256,
+            "y": 192,
+            "hot": 116,
+            "foreground": 1024,
+            "fraction": 0.11328125
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 112,
+            "foreground": 1024,
+            "fraction": 0.109375
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 716,
+            "foreground": 1024,
+            "fraction": 0.69921875
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 484,
+            "foreground": 1024,
+            "fraction": 0.47265625
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 334,
+            "foreground": 1024,
+            "fraction": 0.326171875
+          },
+          {
+            "x": 288,
+            "y": 224,
+            "hot": 176,
+            "foreground": 1024,
+            "fraction": 0.171875
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 114,
+            "foreground": 1024,
+            "fraction": 0.111328125
+          },
+          {
+            "x": 256,
+            "y": 256,
+            "hot": 295,
+            "foreground": 1024,
+            "fraction": 0.2880859375
+          },
+          {
+            "x": 528,
+            "y": 112,
+            "hot": 298,
+            "foreground": 1024,
+            "fraction": 0.291015625
+          },
+          {
+            "x": 400,
+            "y": 144,
+            "hot": 127,
+            "foreground": 1024,
+            "fraction": 0.1240234375
+          },
+          {
+            "x": 432,
+            "y": 144,
+            "hot": 211,
+            "foreground": 1024,
+            "fraction": 0.2060546875
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 402,
+            "foreground": 1024,
+            "fraction": 0.392578125
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 748,
+            "foreground": 1024,
+            "fraction": 0.73046875
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 590,
+            "foreground": 1024,
+            "fraction": 0.576171875
+          },
+          {
+            "x": 560,
+            "y": 144,
+            "hot": 138,
+            "foreground": 1024,
+            "fraction": 0.134765625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 607,
+            "foreground": 1024,
+            "fraction": 0.5927734375
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 1022,
+            "foreground": 1024,
+            "fraction": 0.998046875
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 794,
+            "foreground": 1024,
+            "fraction": 0.775390625
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 192,
+            "foreground": 1024,
+            "fraction": 0.1875
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 293,
+            "foreground": 1024,
+            "fraction": 0.2861328125
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 137,
+            "foreground": 1024,
+            "fraction": 0.1337890625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 286,
+            "foreground": 1024,
+            "fraction": 0.279296875
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 128,
+            "foreground": 1024,
+            "fraction": 0.125
+          },
+          {
+            "x": 272,
+            "y": 240,
+            "hot": 493,
+            "foreground": 1024,
+            "fraction": 0.4814453125
+          },
+          {
+            "x": 272,
+            "y": 272,
+            "hot": 124,
+            "foreground": 1024,
+            "fraction": 0.12109375
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.2775011371151657,
+        "fractionBeyond": 0.013057484567901234,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00002-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00002-strip.png"
+      }
+    },
+    {
+      "id": "frame_00003",
+      "label": "source frame 3",
+      "scheduled": true,
+      "sourceTimeMs": 120,
+      "lottieFrame": 3,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 12.199999999953434,
+        "note": "lottie frame 3"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00003-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.400000000023283,
+        "note": "native 120 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00003-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013381558641975308,
+        "maxLocalFractionBeyond": 0.95703125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 743,
+            "foreground": 1024,
+            "fraction": 0.7255859375
+          },
+          {
+            "x": 544,
+            "y": 128,
+            "hot": 327,
+            "foreground": 1024,
+            "fraction": 0.3193359375
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 398,
+            "foreground": 1024,
+            "fraction": 0.388671875
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 454,
+            "foreground": 1024,
+            "fraction": 0.443359375
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 884,
+            "foreground": 1024,
+            "fraction": 0.86328125
+          },
+          {
+            "x": 512,
+            "y": 160,
+            "hot": 203,
+            "foreground": 1024,
+            "fraction": 0.1982421875
+          },
+          {
+            "x": 256,
+            "y": 192,
+            "hot": 112,
+            "foreground": 1024,
+            "fraction": 0.109375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 145,
+            "foreground": 1024,
+            "fraction": 0.1416015625
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 229,
+            "foreground": 1024,
+            "fraction": 0.2236328125
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 980,
+            "foreground": 1024,
+            "fraction": 0.95703125
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 827,
+            "foreground": 1024,
+            "fraction": 0.8076171875
+          },
+          {
+            "x": 480,
+            "y": 192,
+            "hot": 256,
+            "foreground": 1024,
+            "fraction": 0.25
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 131,
+            "foreground": 1024,
+            "fraction": 0.1279296875
+          },
+          {
+            "x": 288,
+            "y": 224,
+            "hot": 249,
+            "foreground": 1024,
+            "fraction": 0.2431640625
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 180,
+            "foreground": 1024,
+            "fraction": 0.17578125
+          },
+          {
+            "x": 288,
+            "y": 256,
+            "hot": 442,
+            "foreground": 1024,
+            "fraction": 0.431640625
+          },
+          {
+            "x": 528,
+            "y": 112,
+            "hot": 476,
+            "foreground": 1024,
+            "fraction": 0.46484375
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 192,
+            "foreground": 1024,
+            "fraction": 0.1875
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 723,
+            "foreground": 1024,
+            "fraction": 0.7060546875
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 380,
+            "foreground": 1024,
+            "fraction": 0.37109375
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 660,
+            "foreground": 1024,
+            "fraction": 0.64453125
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 904,
+            "foreground": 1024,
+            "fraction": 0.8828125
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 972,
+            "foreground": 1024,
+            "fraction": 0.94921875
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 244,
+            "foreground": 1024,
+            "fraction": 0.23828125
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 247,
+            "foreground": 1024,
+            "fraction": 0.2412109375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 263,
+            "foreground": 1024,
+            "fraction": 0.2568359375
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 401,
+            "foreground": 1024,
+            "fraction": 0.3916015625
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 420,
+            "foreground": 1024,
+            "fraction": 0.41015625
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 145,
+            "foreground": 1024,
+            "fraction": 0.1416015625
+          },
+          {
+            "x": 272,
+            "y": 240,
+            "hot": 283,
+            "foreground": 1024,
+            "fraction": 0.2763671875
+          },
+          {
+            "x": 304,
+            "y": 240,
+            "hot": 296,
+            "foreground": 1024,
+            "fraction": 0.2890625
+          },
+          {
+            "x": 272,
+            "y": 272,
+            "hot": 140,
+            "foreground": 1024,
+            "fraction": 0.13671875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.3888982627474147,
+        "fractionBeyond": 0.013381558641975308,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00003-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00003-strip.png"
+      }
+    },
+    {
+      "id": "frame_00004",
+      "label": "source frame 4",
+      "scheduled": true,
+      "sourceTimeMs": 160,
+      "lottieFrame": 4,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 12.800000000046566,
+        "note": "lottie frame 4"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00004-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 4.799999999930151,
+        "note": "native 160 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00004-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.01310763888888889,
+        "maxLocalFractionBeyond": 0.9775390625,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 194,
+            "foreground": 1024,
+            "fraction": 0.189453125
+          },
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 767,
+            "foreground": 1024,
+            "fraction": 0.7490234375
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 157,
+            "foreground": 1024,
+            "fraction": 0.1533203125
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 790,
+            "foreground": 1024,
+            "fraction": 0.771484375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 108,
+            "foreground": 1024,
+            "fraction": 0.10546875
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 181,
+            "foreground": 1024,
+            "fraction": 0.1767578125
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 136,
+            "foreground": 1024,
+            "fraction": 0.1328125
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 1001,
+            "foreground": 1024,
+            "fraction": 0.9775390625
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 994,
+            "foreground": 1024,
+            "fraction": 0.970703125
+          },
+          {
+            "x": 480,
+            "y": 192,
+            "hot": 373,
+            "foreground": 1024,
+            "fraction": 0.3642578125
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 551,
+            "foreground": 1024,
+            "fraction": 0.5380859375
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 300,
+            "foreground": 1024,
+            "fraction": 0.29296875
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 227,
+            "foreground": 1024,
+            "fraction": 0.2216796875
+          },
+          {
+            "x": 288,
+            "y": 256,
+            "hot": 176,
+            "foreground": 1024,
+            "fraction": 0.171875
+          },
+          {
+            "x": 320,
+            "y": 256,
+            "hot": 333,
+            "foreground": 1024,
+            "fraction": 0.3251953125
+          },
+          {
+            "x": 496,
+            "y": 112,
+            "hot": 298,
+            "foreground": 1024,
+            "fraction": 0.291015625
+          },
+          {
+            "x": 528,
+            "y": 112,
+            "hot": 149,
+            "foreground": 1024,
+            "fraction": 0.1455078125
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 122,
+            "foreground": 1024,
+            "fraction": 0.119140625
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 741,
+            "foreground": 1024,
+            "fraction": 0.7236328125
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 118,
+            "foreground": 1024,
+            "fraction": 0.115234375
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 363,
+            "foreground": 1024,
+            "fraction": 0.3544921875
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 501,
+            "foreground": 1024,
+            "fraction": 0.4892578125
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 909,
+            "foreground": 1024,
+            "fraction": 0.8876953125
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 185,
+            "foreground": 1024,
+            "fraction": 0.1806640625
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 335,
+            "foreground": 1024,
+            "fraction": 0.3271484375
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 610,
+            "foreground": 1024,
+            "fraction": 0.595703125
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 803,
+            "foreground": 1024,
+            "fraction": 0.7841796875
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 453,
+            "foreground": 1024,
+            "fraction": 0.4423828125
+          },
+          {
+            "x": 304,
+            "y": 240,
+            "hot": 566,
+            "foreground": 1024,
+            "fraction": 0.552734375
+          },
+          {
+            "x": 336,
+            "y": 240,
+            "hot": 148,
+            "foreground": 1024,
+            "fraction": 0.14453125
+          },
+          {
+            "x": 304,
+            "y": 272,
+            "hot": 148,
+            "foreground": 1024,
+            "fraction": 0.14453125
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.4431555665653197,
+        "fractionBeyond": 0.01310763888888889,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00004-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00004-strip.png"
+      }
+    },
+    {
+      "id": "frame_00005",
+      "label": "source frame 5",
+      "scheduled": true,
+      "sourceTimeMs": 200,
+      "lottieFrame": 5,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 8.300000000046566,
+        "note": "lottie frame 5"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00005-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.400000000023283,
+        "note": "native 200 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00005-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.012366898148148148,
+        "maxLocalFractionBeyond": 0.9423828125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 571,
+            "foreground": 1024,
+            "fraction": 0.5576171875
+          },
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 121,
+            "foreground": 1024,
+            "fraction": 0.1181640625
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 124,
+            "foreground": 1024,
+            "fraction": 0.12109375
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 676,
+            "foreground": 1024,
+            "fraction": 0.66015625
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 365,
+            "foreground": 1024,
+            "fraction": 0.3564453125
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 228,
+            "foreground": 1024,
+            "fraction": 0.22265625
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 267,
+            "foreground": 1024,
+            "fraction": 0.2607421875
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 851,
+            "foreground": 1024,
+            "fraction": 0.8310546875
+          },
+          {
+            "x": 480,
+            "y": 192,
+            "hot": 269,
+            "foreground": 1024,
+            "fraction": 0.2626953125
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 676,
+            "foreground": 1024,
+            "fraction": 0.66015625
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 248,
+            "foreground": 1024,
+            "fraction": 0.2421875
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 721,
+            "foreground": 1024,
+            "fraction": 0.7041015625
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 666,
+            "foreground": 1024,
+            "fraction": 0.650390625
+          },
+          {
+            "x": 320,
+            "y": 256,
+            "hot": 367,
+            "foreground": 1024,
+            "fraction": 0.3583984375
+          },
+          {
+            "x": 496,
+            "y": 112,
+            "hot": 145,
+            "foreground": 1024,
+            "fraction": 0.1416015625
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 373,
+            "foreground": 1024,
+            "fraction": 0.3642578125
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 545,
+            "foreground": 1024,
+            "fraction": 0.5322265625
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 161,
+            "foreground": 1024,
+            "fraction": 0.1572265625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 200,
+            "foreground": 1024,
+            "fraction": 0.1953125
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 809,
+            "foreground": 1024,
+            "fraction": 0.7900390625
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 120,
+            "foreground": 1024,
+            "fraction": 0.1171875
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 472,
+            "foreground": 1024,
+            "fraction": 0.4609375
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 395,
+            "foreground": 1024,
+            "fraction": 0.3857421875
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 965,
+            "foreground": 1024,
+            "fraction": 0.9423828125
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 567,
+            "foreground": 1024,
+            "fraction": 0.5537109375
+          },
+          {
+            "x": 304,
+            "y": 240,
+            "hot": 217,
+            "foreground": 1024,
+            "fraction": 0.2119140625
+          },
+          {
+            "x": 336,
+            "y": 240,
+            "hot": 653,
+            "foreground": 1024,
+            "fraction": 0.6376953125
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 116,
+            "foreground": 1024,
+            "fraction": 0.11328125
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 272,
+            "foreground": 1024,
+            "fraction": 0.265625
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.4535471328460974,
+        "fractionBeyond": 0.012366898148148148,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00005-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00005-strip.png"
+      }
+    },
+    {
+      "id": "frame_00006",
+      "label": "source frame 6",
+      "scheduled": true,
+      "sourceTimeMs": 240,
+      "lottieFrame": 6,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 23.300000000046566,
+        "note": "lottie frame 6"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00006-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.400000000023283,
+        "note": "native 240 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00006-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.01048804012345679,
+        "maxLocalFractionBeyond": 0.7705078125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 448,
+            "y": 128,
+            "hot": 131,
+            "foreground": 1024,
+            "fraction": 0.1279296875
+          },
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 286,
+            "foreground": 1024,
+            "fraction": 0.279296875
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 339,
+            "foreground": 1024,
+            "fraction": 0.3310546875
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 355,
+            "foreground": 1024,
+            "fraction": 0.3466796875
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 202,
+            "foreground": 1024,
+            "fraction": 0.197265625
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 327,
+            "foreground": 1024,
+            "fraction": 0.3193359375
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 435,
+            "foreground": 1024,
+            "fraction": 0.4248046875
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 335,
+            "foreground": 1024,
+            "fraction": 0.3271484375
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 789,
+            "foreground": 1024,
+            "fraction": 0.7705078125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 712,
+            "foreground": 1024,
+            "fraction": 0.6953125
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 725,
+            "foreground": 1024,
+            "fraction": 0.7080078125
+          },
+          {
+            "x": 352,
+            "y": 256,
+            "hot": 118,
+            "foreground": 1024,
+            "fraction": 0.115234375
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 231,
+            "foreground": 1024,
+            "fraction": 0.2255859375
+          },
+          {
+            "x": 448,
+            "y": 256,
+            "hot": 121,
+            "foreground": 1024,
+            "fraction": 0.1181640625
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 760,
+            "foreground": 1024,
+            "fraction": 0.7421875
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 147,
+            "foreground": 1024,
+            "fraction": 0.1435546875
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 170,
+            "foreground": 1024,
+            "fraction": 0.166015625
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 760,
+            "foreground": 1024,
+            "fraction": 0.7421875
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 292,
+            "foreground": 1024,
+            "fraction": 0.28515625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 210,
+            "foreground": 1024,
+            "fraction": 0.205078125
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 712,
+            "foreground": 1024,
+            "fraction": 0.6953125
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 364,
+            "foreground": 1024,
+            "fraction": 0.35546875
+          },
+          {
+            "x": 336,
+            "y": 240,
+            "hot": 535,
+            "foreground": 1024,
+            "fraction": 0.5224609375
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 288,
+            "foreground": 1024,
+            "fraction": 0.28125
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 785,
+            "foreground": 1024,
+            "fraction": 0.7666015625
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.279713094767751,
+        "fractionBeyond": 0.01048804012345679,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00006-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00006-strip.png"
+      }
+    },
+    {
+      "id": "frame_00007",
+      "label": "source frame 7",
+      "scheduled": true,
+      "sourceTimeMs": 280,
+      "lottieFrame": 7,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 14.099999999976717,
+        "note": "lottie frame 7"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00007-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.900000000023283,
+        "note": "native 280 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00007-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.010210262345679013,
+        "maxLocalFractionBeyond": 0.802734375,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 765,
+            "foreground": 1024,
+            "fraction": 0.7470703125
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 152,
+            "foreground": 1024,
+            "fraction": 0.1484375
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 726,
+            "foreground": 1024,
+            "fraction": 0.708984375
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 384,
+            "foreground": 1024,
+            "fraction": 0.375
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 132,
+            "foreground": 1024,
+            "fraction": 0.12890625
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 697,
+            "foreground": 1024,
+            "fraction": 0.6806640625
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 128,
+            "foreground": 1024,
+            "fraction": 0.125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 487,
+            "foreground": 1024,
+            "fraction": 0.4755859375
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 418,
+            "foreground": 1024,
+            "fraction": 0.408203125
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 271,
+            "foreground": 1024,
+            "fraction": 0.2646484375
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 797,
+            "foreground": 1024,
+            "fraction": 0.7783203125
+          },
+          {
+            "x": 448,
+            "y": 256,
+            "hot": 137,
+            "foreground": 1024,
+            "fraction": 0.1337890625
+          },
+          {
+            "x": 432,
+            "y": 144,
+            "hot": 215,
+            "foreground": 1024,
+            "fraction": 0.2099609375
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 148,
+            "foreground": 1024,
+            "fraction": 0.14453125
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 385,
+            "foreground": 1024,
+            "fraction": 0.3759765625
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 180,
+            "foreground": 1024,
+            "fraction": 0.17578125
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 334,
+            "foreground": 1024,
+            "fraction": 0.326171875
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 157,
+            "foreground": 1024,
+            "fraction": 0.1533203125
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 555,
+            "foreground": 1024,
+            "fraction": 0.5419921875
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 806,
+            "foreground": 1024,
+            "fraction": 0.787109375
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 418,
+            "foreground": 1024,
+            "fraction": 0.408203125
+          },
+          {
+            "x": 368,
+            "y": 240,
+            "hot": 197,
+            "foreground": 1024,
+            "fraction": 0.1923828125
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 639,
+            "foreground": 1024,
+            "fraction": 0.6240234375
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 822,
+            "foreground": 1024,
+            "fraction": 0.802734375
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 135,
+            "foreground": 1024,
+            "fraction": 0.1318359375
+          },
+          {
+            "x": 432,
+            "y": 272,
+            "hot": 176,
+            "foreground": 1024,
+            "fraction": 0.171875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.20636153440033,
+        "fractionBeyond": 0.010210262345679013,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00007-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00007-strip.png"
+      }
+    },
+    {
+      "id": "frame_00008",
+      "label": "source frame 8",
+      "scheduled": true,
+      "sourceTimeMs": 320,
+      "lottieFrame": 8,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 12.600000000093132,
+        "note": "lottie frame 8"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00008-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.1000000000931323,
+        "note": "native 320 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00008-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013962191358024692,
+        "maxLocalFractionBeyond": 0.9970703125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 160,
+            "hot": 399,
+            "foreground": 1024,
+            "fraction": 0.3896484375
+          },
+          {
+            "x": 352,
+            "y": 160,
+            "hot": 129,
+            "foreground": 1024,
+            "fraction": 0.1259765625
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 320,
+            "foreground": 1024,
+            "fraction": 0.3125
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 135,
+            "foreground": 1024,
+            "fraction": 0.1318359375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 321,
+            "foreground": 1024,
+            "fraction": 0.3134765625
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 1021,
+            "foreground": 1024,
+            "fraction": 0.9970703125
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 987,
+            "foreground": 1024,
+            "fraction": 0.9638671875
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 512,
+            "foreground": 1024,
+            "fraction": 0.5
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 150,
+            "foreground": 1024,
+            "fraction": 0.146484375
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 245,
+            "foreground": 1024,
+            "fraction": 0.2392578125
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 547,
+            "foreground": 1024,
+            "fraction": 0.5341796875
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 675,
+            "foreground": 1024,
+            "fraction": 0.6591796875
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 584,
+            "foreground": 1024,
+            "fraction": 0.5703125
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 877,
+            "foreground": 1024,
+            "fraction": 0.8564453125
+          },
+          {
+            "x": 416,
+            "y": 288,
+            "hot": 165,
+            "foreground": 1024,
+            "fraction": 0.1611328125
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 691,
+            "foreground": 1024,
+            "fraction": 0.6748046875
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 803,
+            "foreground": 1024,
+            "fraction": 0.7841796875
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 449,
+            "foreground": 1024,
+            "fraction": 0.4384765625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 182,
+            "foreground": 1024,
+            "fraction": 0.177734375
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 423,
+            "foreground": 1024,
+            "fraction": 0.4130859375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 456,
+            "foreground": 1024,
+            "fraction": 0.4453125
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 679,
+            "foreground": 1024,
+            "fraction": 0.6630859375
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 821,
+            "foreground": 1024,
+            "fraction": 0.8017578125
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 111,
+            "foreground": 1024,
+            "fraction": 0.1083984375
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 160,
+            "foreground": 1024,
+            "fraction": 0.15625
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 1003,
+            "foreground": 1024,
+            "fraction": 0.9794921875
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 458,
+            "foreground": 1024,
+            "fraction": 0.447265625
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 696,
+            "foreground": 1024,
+            "fraction": 0.6796875
+          },
+          {
+            "x": 432,
+            "y": 272,
+            "hot": 179,
+            "foreground": 1024,
+            "fraction": 0.1748046875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.1810690784377382,
+        "fractionBeyond": 0.013962191358024692,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00008-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00008-strip.png"
+      }
+    },
+    {
+      "id": "frame_00009",
+      "label": "source frame 9",
+      "scheduled": true,
+      "sourceTimeMs": 360,
+      "lottieFrame": 9,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 8.20000000006985,
+        "note": "lottie frame 9"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00009-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 2.799999999930151,
+        "note": "native 360 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00009-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013099922839506173,
+        "maxLocalFractionBeyond": 0.994140625,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 160,
+            "hot": 465,
+            "foreground": 1024,
+            "fraction": 0.4541015625
+          },
+          {
+            "x": 352,
+            "y": 160,
+            "hot": 376,
+            "foreground": 1024,
+            "fraction": 0.3671875
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 270,
+            "foreground": 1024,
+            "fraction": 0.263671875
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 190,
+            "foreground": 1024,
+            "fraction": 0.185546875
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 1018,
+            "foreground": 1024,
+            "fraction": 0.994140625
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 982,
+            "foreground": 1024,
+            "fraction": 0.958984375
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 738,
+            "foreground": 1024,
+            "fraction": 0.720703125
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 274,
+            "foreground": 1024,
+            "fraction": 0.267578125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 593,
+            "foreground": 1024,
+            "fraction": 0.5791015625
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 638,
+            "foreground": 1024,
+            "fraction": 0.623046875
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 523,
+            "foreground": 1024,
+            "fraction": 0.5107421875
+          },
+          {
+            "x": 384,
+            "y": 288,
+            "hot": 364,
+            "foreground": 1024,
+            "fraction": 0.35546875
+          },
+          {
+            "x": 416,
+            "y": 288,
+            "hot": 180,
+            "foreground": 1024,
+            "fraction": 0.17578125
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 619,
+            "foreground": 1024,
+            "fraction": 0.6044921875
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 959,
+            "foreground": 1024,
+            "fraction": 0.9365234375
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 825,
+            "foreground": 1024,
+            "fraction": 0.8056640625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 220,
+            "foreground": 1024,
+            "fraction": 0.21484375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 337,
+            "foreground": 1024,
+            "fraction": 0.3291015625
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 548,
+            "foreground": 1024,
+            "fraction": 0.53515625
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 520,
+            "foreground": 1024,
+            "fraction": 0.5078125
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 470,
+            "foreground": 1024,
+            "fraction": 0.458984375
+          },
+          {
+            "x": 368,
+            "y": 240,
+            "hot": 113,
+            "foreground": 1024,
+            "fraction": 0.1103515625
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 945,
+            "foreground": 1024,
+            "fraction": 0.9228515625
+          },
+          {
+            "x": 368,
+            "y": 272,
+            "hot": 123,
+            "foreground": 1024,
+            "fraction": 0.1201171875
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 923,
+            "foreground": 1024,
+            "fraction": 0.9013671875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.0383098098268635,
+        "fractionBeyond": 0.013099922839506173,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00009-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00009-strip.png"
+      }
+    },
+    {
+      "id": "frame_00010",
+      "label": "source frame 10",
+      "scheduled": true,
+      "sourceTimeMs": 400,
+      "lottieFrame": 10,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 10.400000000023283,
+        "note": "lottie frame 10"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00010-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.200000000069849,
+        "note": "native 400 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00010-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.01308449074074074,
+        "maxLocalFractionBeyond": 0.9912109375,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 160,
+            "hot": 508,
+            "foreground": 1024,
+            "fraction": 0.49609375
+          },
+          {
+            "x": 352,
+            "y": 160,
+            "hot": 507,
+            "foreground": 1024,
+            "fraction": 0.4951171875
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 422,
+            "foreground": 1024,
+            "fraction": 0.412109375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 141,
+            "foreground": 1024,
+            "fraction": 0.1376953125
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 1015,
+            "foreground": 1024,
+            "fraction": 0.9912109375
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 892,
+            "foreground": 1024,
+            "fraction": 0.87109375
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 752,
+            "foreground": 1024,
+            "fraction": 0.734375
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 219,
+            "foreground": 1024,
+            "fraction": 0.2138671875
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 354,
+            "foreground": 1024,
+            "fraction": 0.345703125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 367,
+            "foreground": 1024,
+            "fraction": 0.3583984375
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 660,
+            "foreground": 1024,
+            "fraction": 0.64453125
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 309,
+            "foreground": 1024,
+            "fraction": 0.3017578125
+          },
+          {
+            "x": 384,
+            "y": 288,
+            "hot": 459,
+            "foreground": 1024,
+            "fraction": 0.4482421875
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 591,
+            "foreground": 1024,
+            "fraction": 0.5771484375
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 1008,
+            "foreground": 1024,
+            "fraction": 0.984375
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 1001,
+            "foreground": 1024,
+            "fraction": 0.9775390625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 321,
+            "foreground": 1024,
+            "fraction": 0.3134765625
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 308,
+            "foreground": 1024,
+            "fraction": 0.30078125
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 527,
+            "foreground": 1024,
+            "fraction": 0.5146484375
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 324,
+            "foreground": 1024,
+            "fraction": 0.31640625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 723,
+            "foreground": 1024,
+            "fraction": 0.7060546875
+          },
+          {
+            "x": 368,
+            "y": 240,
+            "hot": 113,
+            "foreground": 1024,
+            "fraction": 0.1103515625
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 786,
+            "foreground": 1024,
+            "fraction": 0.767578125
+          },
+          {
+            "x": 368,
+            "y": 272,
+            "hot": 144,
+            "foreground": 1024,
+            "fraction": 0.140625
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 736,
+            "foreground": 1024,
+            "fraction": 0.71875
+          },
+          {
+            "x": 400,
+            "y": 304,
+            "hot": 121,
+            "foreground": 1024,
+            "fraction": 0.1181640625
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.0163957478308705,
+        "fractionBeyond": 0.01308449074074074,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00010-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00010-strip.png"
+      }
+    },
+    {
+      "id": "frame_00011",
+      "label": "source frame 11",
+      "scheduled": true,
+      "sourceTimeMs": 440,
+      "lottieFrame": 11,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 11.800000000046566,
+        "note": "lottie frame 11"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00011-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 2.5,
+        "note": "native 440 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00011-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.01308449074074074,
+        "maxLocalFractionBeyond": 0.9912109375,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 160,
+            "hot": 508,
+            "foreground": 1024,
+            "fraction": 0.49609375
+          },
+          {
+            "x": 352,
+            "y": 160,
+            "hot": 507,
+            "foreground": 1024,
+            "fraction": 0.4951171875
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 422,
+            "foreground": 1024,
+            "fraction": 0.412109375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 141,
+            "foreground": 1024,
+            "fraction": 0.1376953125
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 1015,
+            "foreground": 1024,
+            "fraction": 0.9912109375
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 892,
+            "foreground": 1024,
+            "fraction": 0.87109375
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 752,
+            "foreground": 1024,
+            "fraction": 0.734375
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 219,
+            "foreground": 1024,
+            "fraction": 0.2138671875
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 354,
+            "foreground": 1024,
+            "fraction": 0.345703125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 367,
+            "foreground": 1024,
+            "fraction": 0.3583984375
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 660,
+            "foreground": 1024,
+            "fraction": 0.64453125
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 309,
+            "foreground": 1024,
+            "fraction": 0.3017578125
+          },
+          {
+            "x": 384,
+            "y": 288,
+            "hot": 459,
+            "foreground": 1024,
+            "fraction": 0.4482421875
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 591,
+            "foreground": 1024,
+            "fraction": 0.5771484375
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 1008,
+            "foreground": 1024,
+            "fraction": 0.984375
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 1001,
+            "foreground": 1024,
+            "fraction": 0.9775390625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 321,
+            "foreground": 1024,
+            "fraction": 0.3134765625
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 308,
+            "foreground": 1024,
+            "fraction": 0.30078125
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 527,
+            "foreground": 1024,
+            "fraction": 0.5146484375
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 324,
+            "foreground": 1024,
+            "fraction": 0.31640625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 723,
+            "foreground": 1024,
+            "fraction": 0.7060546875
+          },
+          {
+            "x": 368,
+            "y": 240,
+            "hot": 113,
+            "foreground": 1024,
+            "fraction": 0.1103515625
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 786,
+            "foreground": 1024,
+            "fraction": 0.767578125
+          },
+          {
+            "x": 368,
+            "y": 272,
+            "hot": 144,
+            "foreground": 1024,
+            "fraction": 0.140625
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 736,
+            "foreground": 1024,
+            "fraction": 0.71875
+          },
+          {
+            "x": 400,
+            "y": 304,
+            "hot": 121,
+            "foreground": 1024,
+            "fraction": 0.1181640625
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.0163957478308705,
+        "fractionBeyond": 0.01308449074074074,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00011-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00011-strip.png"
+      }
+    },
+    {
+      "id": "frame_00012",
+      "label": "source frame 12",
+      "scheduled": true,
+      "sourceTimeMs": 480,
+      "lottieFrame": 12,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 7.5,
+        "note": "lottie frame 12"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00012-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 4,
+        "note": "native 480 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00012-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.01308449074074074,
+        "maxLocalFractionBeyond": 0.9912109375,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 160,
+            "hot": 508,
+            "foreground": 1024,
+            "fraction": 0.49609375
+          },
+          {
+            "x": 352,
+            "y": 160,
+            "hot": 507,
+            "foreground": 1024,
+            "fraction": 0.4951171875
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 422,
+            "foreground": 1024,
+            "fraction": 0.412109375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 141,
+            "foreground": 1024,
+            "fraction": 0.1376953125
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 1015,
+            "foreground": 1024,
+            "fraction": 0.9912109375
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 892,
+            "foreground": 1024,
+            "fraction": 0.87109375
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 752,
+            "foreground": 1024,
+            "fraction": 0.734375
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 219,
+            "foreground": 1024,
+            "fraction": 0.2138671875
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 354,
+            "foreground": 1024,
+            "fraction": 0.345703125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 367,
+            "foreground": 1024,
+            "fraction": 0.3583984375
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 660,
+            "foreground": 1024,
+            "fraction": 0.64453125
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 309,
+            "foreground": 1024,
+            "fraction": 0.3017578125
+          },
+          {
+            "x": 384,
+            "y": 288,
+            "hot": 459,
+            "foreground": 1024,
+            "fraction": 0.4482421875
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 591,
+            "foreground": 1024,
+            "fraction": 0.5771484375
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 1008,
+            "foreground": 1024,
+            "fraction": 0.984375
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 1001,
+            "foreground": 1024,
+            "fraction": 0.9775390625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 321,
+            "foreground": 1024,
+            "fraction": 0.3134765625
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 308,
+            "foreground": 1024,
+            "fraction": 0.30078125
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 527,
+            "foreground": 1024,
+            "fraction": 0.5146484375
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 324,
+            "foreground": 1024,
+            "fraction": 0.31640625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 723,
+            "foreground": 1024,
+            "fraction": 0.7060546875
+          },
+          {
+            "x": 368,
+            "y": 240,
+            "hot": 113,
+            "foreground": 1024,
+            "fraction": 0.1103515625
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 786,
+            "foreground": 1024,
+            "fraction": 0.767578125
+          },
+          {
+            "x": 368,
+            "y": 272,
+            "hot": 144,
+            "foreground": 1024,
+            "fraction": 0.140625
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 736,
+            "foreground": 1024,
+            "fraction": 0.71875
+          },
+          {
+            "x": 400,
+            "y": 304,
+            "hot": 121,
+            "foreground": 1024,
+            "fraction": 0.1181640625
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.0163957478308705,
+        "fractionBeyond": 0.01308449074074074,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00012-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00012-strip.png"
+      }
+    },
+    {
+      "id": "frame_00013",
+      "label": "source frame 13",
+      "scheduled": true,
+      "sourceTimeMs": 520,
+      "lottieFrame": 13,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 11.5,
+        "note": "lottie frame 13"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00013-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.5,
+        "note": "native 520 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00013-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013099922839506173,
+        "maxLocalFractionBeyond": 0.994140625,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 160,
+            "hot": 465,
+            "foreground": 1024,
+            "fraction": 0.4541015625
+          },
+          {
+            "x": 352,
+            "y": 160,
+            "hot": 376,
+            "foreground": 1024,
+            "fraction": 0.3671875
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 270,
+            "foreground": 1024,
+            "fraction": 0.263671875
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 190,
+            "foreground": 1024,
+            "fraction": 0.185546875
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 1018,
+            "foreground": 1024,
+            "fraction": 0.994140625
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 982,
+            "foreground": 1024,
+            "fraction": 0.958984375
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 738,
+            "foreground": 1024,
+            "fraction": 0.720703125
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 274,
+            "foreground": 1024,
+            "fraction": 0.267578125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 593,
+            "foreground": 1024,
+            "fraction": 0.5791015625
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 638,
+            "foreground": 1024,
+            "fraction": 0.623046875
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 523,
+            "foreground": 1024,
+            "fraction": 0.5107421875
+          },
+          {
+            "x": 384,
+            "y": 288,
+            "hot": 364,
+            "foreground": 1024,
+            "fraction": 0.35546875
+          },
+          {
+            "x": 416,
+            "y": 288,
+            "hot": 180,
+            "foreground": 1024,
+            "fraction": 0.17578125
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 619,
+            "foreground": 1024,
+            "fraction": 0.6044921875
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 959,
+            "foreground": 1024,
+            "fraction": 0.9365234375
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 825,
+            "foreground": 1024,
+            "fraction": 0.8056640625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 220,
+            "foreground": 1024,
+            "fraction": 0.21484375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 337,
+            "foreground": 1024,
+            "fraction": 0.3291015625
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 548,
+            "foreground": 1024,
+            "fraction": 0.53515625
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 520,
+            "foreground": 1024,
+            "fraction": 0.5078125
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 470,
+            "foreground": 1024,
+            "fraction": 0.458984375
+          },
+          {
+            "x": 368,
+            "y": 240,
+            "hot": 113,
+            "foreground": 1024,
+            "fraction": 0.1103515625
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 945,
+            "foreground": 1024,
+            "fraction": 0.9228515625
+          },
+          {
+            "x": 368,
+            "y": 272,
+            "hot": 123,
+            "foreground": 1024,
+            "fraction": 0.1201171875
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 923,
+            "foreground": 1024,
+            "fraction": 0.9013671875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.0383098098268635,
+        "fractionBeyond": 0.013099922839506173,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00013-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00013-strip.png"
+      }
+    },
+    {
+      "id": "frame_00014",
+      "label": "source frame 14",
+      "scheduled": true,
+      "sourceTimeMs": 560,
+      "lottieFrame": 14,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 16.29999999993015,
+        "note": "lottie frame 14"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00014-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 2.299999999930151,
+        "note": "native 560 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00014-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013962191358024692,
+        "maxLocalFractionBeyond": 0.9970703125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 160,
+            "hot": 399,
+            "foreground": 1024,
+            "fraction": 0.3896484375
+          },
+          {
+            "x": 352,
+            "y": 160,
+            "hot": 129,
+            "foreground": 1024,
+            "fraction": 0.1259765625
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 320,
+            "foreground": 1024,
+            "fraction": 0.3125
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 135,
+            "foreground": 1024,
+            "fraction": 0.1318359375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 321,
+            "foreground": 1024,
+            "fraction": 0.3134765625
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 1021,
+            "foreground": 1024,
+            "fraction": 0.9970703125
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 987,
+            "foreground": 1024,
+            "fraction": 0.9638671875
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 512,
+            "foreground": 1024,
+            "fraction": 0.5
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 150,
+            "foreground": 1024,
+            "fraction": 0.146484375
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 245,
+            "foreground": 1024,
+            "fraction": 0.2392578125
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 547,
+            "foreground": 1024,
+            "fraction": 0.5341796875
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 675,
+            "foreground": 1024,
+            "fraction": 0.6591796875
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 584,
+            "foreground": 1024,
+            "fraction": 0.5703125
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 877,
+            "foreground": 1024,
+            "fraction": 0.8564453125
+          },
+          {
+            "x": 416,
+            "y": 288,
+            "hot": 165,
+            "foreground": 1024,
+            "fraction": 0.1611328125
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 691,
+            "foreground": 1024,
+            "fraction": 0.6748046875
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 803,
+            "foreground": 1024,
+            "fraction": 0.7841796875
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 449,
+            "foreground": 1024,
+            "fraction": 0.4384765625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 182,
+            "foreground": 1024,
+            "fraction": 0.177734375
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 423,
+            "foreground": 1024,
+            "fraction": 0.4130859375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 456,
+            "foreground": 1024,
+            "fraction": 0.4453125
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 679,
+            "foreground": 1024,
+            "fraction": 0.6630859375
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 821,
+            "foreground": 1024,
+            "fraction": 0.8017578125
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 111,
+            "foreground": 1024,
+            "fraction": 0.1083984375
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 160,
+            "foreground": 1024,
+            "fraction": 0.15625
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 1003,
+            "foreground": 1024,
+            "fraction": 0.9794921875
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 458,
+            "foreground": 1024,
+            "fraction": 0.447265625
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 696,
+            "foreground": 1024,
+            "fraction": 0.6796875
+          },
+          {
+            "x": 432,
+            "y": 272,
+            "hot": 179,
+            "foreground": 1024,
+            "fraction": 0.1748046875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.1810690784377382,
+        "fractionBeyond": 0.013962191358024692,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00014-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00014-strip.png"
+      }
+    },
+    {
+      "id": "frame_00015",
+      "label": "source frame 15",
+      "scheduled": true,
+      "sourceTimeMs": 600,
+      "lottieFrame": 15,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 10.599999999976717,
+        "note": "lottie frame 15"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00015-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.099999999976717,
+        "note": "native 600 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00015-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.010210262345679013,
+        "maxLocalFractionBeyond": 0.802734375,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 765,
+            "foreground": 1024,
+            "fraction": 0.7470703125
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 152,
+            "foreground": 1024,
+            "fraction": 0.1484375
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 726,
+            "foreground": 1024,
+            "fraction": 0.708984375
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 384,
+            "foreground": 1024,
+            "fraction": 0.375
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 132,
+            "foreground": 1024,
+            "fraction": 0.12890625
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 697,
+            "foreground": 1024,
+            "fraction": 0.6806640625
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 128,
+            "foreground": 1024,
+            "fraction": 0.125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 487,
+            "foreground": 1024,
+            "fraction": 0.4755859375
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 418,
+            "foreground": 1024,
+            "fraction": 0.408203125
+          },
+          {
+            "x": 384,
+            "y": 256,
+            "hot": 271,
+            "foreground": 1024,
+            "fraction": 0.2646484375
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 797,
+            "foreground": 1024,
+            "fraction": 0.7783203125
+          },
+          {
+            "x": 448,
+            "y": 256,
+            "hot": 137,
+            "foreground": 1024,
+            "fraction": 0.1337890625
+          },
+          {
+            "x": 432,
+            "y": 144,
+            "hot": 215,
+            "foreground": 1024,
+            "fraction": 0.2099609375
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 148,
+            "foreground": 1024,
+            "fraction": 0.14453125
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 385,
+            "foreground": 1024,
+            "fraction": 0.3759765625
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 180,
+            "foreground": 1024,
+            "fraction": 0.17578125
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 334,
+            "foreground": 1024,
+            "fraction": 0.326171875
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 157,
+            "foreground": 1024,
+            "fraction": 0.1533203125
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 555,
+            "foreground": 1024,
+            "fraction": 0.5419921875
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 806,
+            "foreground": 1024,
+            "fraction": 0.787109375
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 418,
+            "foreground": 1024,
+            "fraction": 0.408203125
+          },
+          {
+            "x": 368,
+            "y": 240,
+            "hot": 197,
+            "foreground": 1024,
+            "fraction": 0.1923828125
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 639,
+            "foreground": 1024,
+            "fraction": 0.6240234375
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 822,
+            "foreground": 1024,
+            "fraction": 0.802734375
+          },
+          {
+            "x": 400,
+            "y": 272,
+            "hot": 135,
+            "foreground": 1024,
+            "fraction": 0.1318359375
+          },
+          {
+            "x": 432,
+            "y": 272,
+            "hot": 176,
+            "foreground": 1024,
+            "fraction": 0.171875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.20636153440033,
+        "fractionBeyond": 0.010210262345679013,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00015-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00015-strip.png"
+      }
+    },
+    {
+      "id": "frame_00016",
+      "label": "source frame 16",
+      "scheduled": true,
+      "sourceTimeMs": 640,
+      "lottieFrame": 16,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 10.300000000046566,
+        "note": "lottie frame 16"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00016-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.400000000023283,
+        "note": "native 640 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00016-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.01048804012345679,
+        "maxLocalFractionBeyond": 0.7705078125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 448,
+            "y": 128,
+            "hot": 131,
+            "foreground": 1024,
+            "fraction": 0.1279296875
+          },
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 286,
+            "foreground": 1024,
+            "fraction": 0.279296875
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 339,
+            "foreground": 1024,
+            "fraction": 0.3310546875
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 355,
+            "foreground": 1024,
+            "fraction": 0.3466796875
+          },
+          {
+            "x": 352,
+            "y": 192,
+            "hot": 202,
+            "foreground": 1024,
+            "fraction": 0.197265625
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 327,
+            "foreground": 1024,
+            "fraction": 0.3193359375
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 435,
+            "foreground": 1024,
+            "fraction": 0.4248046875
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 335,
+            "foreground": 1024,
+            "fraction": 0.3271484375
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 789,
+            "foreground": 1024,
+            "fraction": 0.7705078125
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 712,
+            "foreground": 1024,
+            "fraction": 0.6953125
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 725,
+            "foreground": 1024,
+            "fraction": 0.7080078125
+          },
+          {
+            "x": 352,
+            "y": 256,
+            "hot": 118,
+            "foreground": 1024,
+            "fraction": 0.115234375
+          },
+          {
+            "x": 416,
+            "y": 256,
+            "hot": 231,
+            "foreground": 1024,
+            "fraction": 0.2255859375
+          },
+          {
+            "x": 448,
+            "y": 256,
+            "hot": 121,
+            "foreground": 1024,
+            "fraction": 0.1181640625
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 760,
+            "foreground": 1024,
+            "fraction": 0.7421875
+          },
+          {
+            "x": 336,
+            "y": 176,
+            "hot": 147,
+            "foreground": 1024,
+            "fraction": 0.1435546875
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 170,
+            "foreground": 1024,
+            "fraction": 0.166015625
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 760,
+            "foreground": 1024,
+            "fraction": 0.7421875
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 292,
+            "foreground": 1024,
+            "fraction": 0.28515625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 210,
+            "foreground": 1024,
+            "fraction": 0.205078125
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 712,
+            "foreground": 1024,
+            "fraction": 0.6953125
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 364,
+            "foreground": 1024,
+            "fraction": 0.35546875
+          },
+          {
+            "x": 336,
+            "y": 240,
+            "hot": 535,
+            "foreground": 1024,
+            "fraction": 0.5224609375
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 288,
+            "foreground": 1024,
+            "fraction": 0.28125
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 785,
+            "foreground": 1024,
+            "fraction": 0.7666015625
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.279301566401126,
+        "fractionBeyond": 0.01048804012345679,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00016-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00016-strip.png"
+      }
+    },
+    {
+      "id": "frame_00017",
+      "label": "source frame 17",
+      "scheduled": true,
+      "sourceTimeMs": 680,
+      "lottieFrame": 17,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 17.699999999953434,
+        "note": "lottie frame 17"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00017-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.400000000023283,
+        "note": "native 680 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00017-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.01236496913580247,
+        "maxLocalFractionBeyond": 0.9423828125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 571,
+            "foreground": 1024,
+            "fraction": 0.5576171875
+          },
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 121,
+            "foreground": 1024,
+            "fraction": 0.1181640625
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 124,
+            "foreground": 1024,
+            "fraction": 0.12109375
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 676,
+            "foreground": 1024,
+            "fraction": 0.66015625
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 365,
+            "foreground": 1024,
+            "fraction": 0.3564453125
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 227,
+            "foreground": 1024,
+            "fraction": 0.2216796875
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 267,
+            "foreground": 1024,
+            "fraction": 0.2607421875
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 851,
+            "foreground": 1024,
+            "fraction": 0.8310546875
+          },
+          {
+            "x": 480,
+            "y": 192,
+            "hot": 269,
+            "foreground": 1024,
+            "fraction": 0.2626953125
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 676,
+            "foreground": 1024,
+            "fraction": 0.66015625
+          },
+          {
+            "x": 352,
+            "y": 224,
+            "hot": 248,
+            "foreground": 1024,
+            "fraction": 0.2421875
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 721,
+            "foreground": 1024,
+            "fraction": 0.7041015625
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 666,
+            "foreground": 1024,
+            "fraction": 0.650390625
+          },
+          {
+            "x": 320,
+            "y": 256,
+            "hot": 367,
+            "foreground": 1024,
+            "fraction": 0.3583984375
+          },
+          {
+            "x": 496,
+            "y": 112,
+            "hot": 145,
+            "foreground": 1024,
+            "fraction": 0.1416015625
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 373,
+            "foreground": 1024,
+            "fraction": 0.3642578125
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 545,
+            "foreground": 1024,
+            "fraction": 0.5322265625
+          },
+          {
+            "x": 304,
+            "y": 176,
+            "hot": 161,
+            "foreground": 1024,
+            "fraction": 0.1572265625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 200,
+            "foreground": 1024,
+            "fraction": 0.1953125
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 809,
+            "foreground": 1024,
+            "fraction": 0.7900390625
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 120,
+            "foreground": 1024,
+            "fraction": 0.1171875
+          },
+          {
+            "x": 336,
+            "y": 208,
+            "hot": 472,
+            "foreground": 1024,
+            "fraction": 0.4609375
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 395,
+            "foreground": 1024,
+            "fraction": 0.3857421875
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 965,
+            "foreground": 1024,
+            "fraction": 0.9423828125
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 567,
+            "foreground": 1024,
+            "fraction": 0.5537109375
+          },
+          {
+            "x": 304,
+            "y": 240,
+            "hot": 217,
+            "foreground": 1024,
+            "fraction": 0.2119140625
+          },
+          {
+            "x": 336,
+            "y": 240,
+            "hot": 653,
+            "foreground": 1024,
+            "fraction": 0.6376953125
+          },
+          {
+            "x": 400,
+            "y": 240,
+            "hot": 116,
+            "foreground": 1024,
+            "fraction": 0.11328125
+          },
+          {
+            "x": 432,
+            "y": 240,
+            "hot": 272,
+            "foreground": 1024,
+            "fraction": 0.265625
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.4528932607727774,
+        "fractionBeyond": 0.01236496913580247,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00017-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00017-strip.png"
+      }
+    },
+    {
+      "id": "frame_00018",
+      "label": "source frame 18",
+      "scheduled": true,
+      "sourceTimeMs": 720,
+      "lottieFrame": 18,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 8,
+        "note": "lottie frame 18"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00018-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 2.5,
+        "note": "native 720 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00018-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013096064814814816,
+        "maxLocalFractionBeyond": 0.9775390625,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 480,
+            "y": 128,
+            "hot": 194,
+            "foreground": 1024,
+            "fraction": 0.189453125
+          },
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 767,
+            "foreground": 1024,
+            "fraction": 0.7490234375
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 157,
+            "foreground": 1024,
+            "fraction": 0.1533203125
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 790,
+            "foreground": 1024,
+            "fraction": 0.771484375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 108,
+            "foreground": 1024,
+            "fraction": 0.10546875
+          },
+          {
+            "x": 320,
+            "y": 192,
+            "hot": 181,
+            "foreground": 1024,
+            "fraction": 0.1767578125
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 136,
+            "foreground": 1024,
+            "fraction": 0.1328125
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 1001,
+            "foreground": 1024,
+            "fraction": 0.9775390625
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 994,
+            "foreground": 1024,
+            "fraction": 0.970703125
+          },
+          {
+            "x": 480,
+            "y": 192,
+            "hot": 373,
+            "foreground": 1024,
+            "fraction": 0.3642578125
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 551,
+            "foreground": 1024,
+            "fraction": 0.5380859375
+          },
+          {
+            "x": 416,
+            "y": 224,
+            "hot": 300,
+            "foreground": 1024,
+            "fraction": 0.29296875
+          },
+          {
+            "x": 448,
+            "y": 224,
+            "hot": 227,
+            "foreground": 1024,
+            "fraction": 0.2216796875
+          },
+          {
+            "x": 288,
+            "y": 256,
+            "hot": 176,
+            "foreground": 1024,
+            "fraction": 0.171875
+          },
+          {
+            "x": 320,
+            "y": 256,
+            "hot": 333,
+            "foreground": 1024,
+            "fraction": 0.3251953125
+          },
+          {
+            "x": 496,
+            "y": 112,
+            "hot": 298,
+            "foreground": 1024,
+            "fraction": 0.291015625
+          },
+          {
+            "x": 528,
+            "y": 112,
+            "hot": 149,
+            "foreground": 1024,
+            "fraction": 0.1455078125
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 122,
+            "foreground": 1024,
+            "fraction": 0.119140625
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 741,
+            "foreground": 1024,
+            "fraction": 0.7236328125
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 118,
+            "foreground": 1024,
+            "fraction": 0.115234375
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 363,
+            "foreground": 1024,
+            "fraction": 0.3544921875
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 501,
+            "foreground": 1024,
+            "fraction": 0.4892578125
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 909,
+            "foreground": 1024,
+            "fraction": 0.8876953125
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 185,
+            "foreground": 1024,
+            "fraction": 0.1806640625
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 335,
+            "foreground": 1024,
+            "fraction": 0.3271484375
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 610,
+            "foreground": 1024,
+            "fraction": 0.595703125
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 803,
+            "foreground": 1024,
+            "fraction": 0.7841796875
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 453,
+            "foreground": 1024,
+            "fraction": 0.4423828125
+          },
+          {
+            "x": 304,
+            "y": 240,
+            "hot": 566,
+            "foreground": 1024,
+            "fraction": 0.552734375
+          },
+          {
+            "x": 336,
+            "y": 240,
+            "hot": 148,
+            "foreground": 1024,
+            "fraction": 0.14453125
+          },
+          {
+            "x": 304,
+            "y": 272,
+            "hot": 148,
+            "foreground": 1024,
+            "fraction": 0.14453125
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.4421619314856045,
+        "fractionBeyond": 0.013096064814814816,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00018-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00018-strip.png"
+      }
+    },
+    {
+      "id": "frame_00019",
+      "label": "source frame 19",
+      "scheduled": true,
+      "sourceTimeMs": 760,
+      "lottieFrame": 19,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 22.400000000023283,
+        "note": "lottie frame 19"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00019-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.699999999953434,
+        "note": "native 760 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00019-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013368055555555555,
+        "maxLocalFractionBeyond": 0.95703125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 743,
+            "foreground": 1024,
+            "fraction": 0.7255859375
+          },
+          {
+            "x": 544,
+            "y": 128,
+            "hot": 327,
+            "foreground": 1024,
+            "fraction": 0.3193359375
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 398,
+            "foreground": 1024,
+            "fraction": 0.388671875
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 454,
+            "foreground": 1024,
+            "fraction": 0.443359375
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 884,
+            "foreground": 1024,
+            "fraction": 0.86328125
+          },
+          {
+            "x": 512,
+            "y": 160,
+            "hot": 203,
+            "foreground": 1024,
+            "fraction": 0.1982421875
+          },
+          {
+            "x": 256,
+            "y": 192,
+            "hot": 112,
+            "foreground": 1024,
+            "fraction": 0.109375
+          },
+          {
+            "x": 288,
+            "y": 192,
+            "hot": 145,
+            "foreground": 1024,
+            "fraction": 0.1416015625
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 229,
+            "foreground": 1024,
+            "fraction": 0.2236328125
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 980,
+            "foreground": 1024,
+            "fraction": 0.95703125
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 827,
+            "foreground": 1024,
+            "fraction": 0.8076171875
+          },
+          {
+            "x": 480,
+            "y": 192,
+            "hot": 256,
+            "foreground": 1024,
+            "fraction": 0.25
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 131,
+            "foreground": 1024,
+            "fraction": 0.1279296875
+          },
+          {
+            "x": 288,
+            "y": 224,
+            "hot": 249,
+            "foreground": 1024,
+            "fraction": 0.2431640625
+          },
+          {
+            "x": 320,
+            "y": 224,
+            "hot": 180,
+            "foreground": 1024,
+            "fraction": 0.17578125
+          },
+          {
+            "x": 288,
+            "y": 256,
+            "hot": 442,
+            "foreground": 1024,
+            "fraction": 0.431640625
+          },
+          {
+            "x": 528,
+            "y": 112,
+            "hot": 476,
+            "foreground": 1024,
+            "fraction": 0.46484375
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 192,
+            "foreground": 1024,
+            "fraction": 0.1875
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 723,
+            "foreground": 1024,
+            "fraction": 0.7060546875
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 380,
+            "foreground": 1024,
+            "fraction": 0.37109375
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 660,
+            "foreground": 1024,
+            "fraction": 0.64453125
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 904,
+            "foreground": 1024,
+            "fraction": 0.8828125
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 972,
+            "foreground": 1024,
+            "fraction": 0.94921875
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 244,
+            "foreground": 1024,
+            "fraction": 0.23828125
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 247,
+            "foreground": 1024,
+            "fraction": 0.2412109375
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 263,
+            "foreground": 1024,
+            "fraction": 0.2568359375
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 400,
+            "foreground": 1024,
+            "fraction": 0.390625
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 420,
+            "foreground": 1024,
+            "fraction": 0.41015625
+          },
+          {
+            "x": 464,
+            "y": 208,
+            "hot": 145,
+            "foreground": 1024,
+            "fraction": 0.1416015625
+          },
+          {
+            "x": 272,
+            "y": 240,
+            "hot": 283,
+            "foreground": 1024,
+            "fraction": 0.2763671875
+          },
+          {
+            "x": 304,
+            "y": 240,
+            "hot": 296,
+            "foreground": 1024,
+            "fraction": 0.2890625
+          },
+          {
+            "x": 272,
+            "y": 272,
+            "hot": 140,
+            "foreground": 1024,
+            "fraction": 0.13671875
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.387666420167244,
+        "fractionBeyond": 0.013368055555555555,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00019-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00019-strip.png"
+      }
+    },
+    {
+      "id": "frame_00020",
+      "label": "source frame 20",
+      "scheduled": true,
+      "sourceTimeMs": 800,
+      "lottieFrame": 20,
+      "referenceSeek": {
+        "ok": true,
+        "ms": 6.200000000069849,
+        "note": "lottie frame 20"
+      },
+      "reference": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00020-reference.png"
+      },
+      "nativeSeek": {
+        "ok": true,
+        "ms": 3.199999999953434,
+        "note": "native 800 ms of scene duration 960 ms"
+      },
+      "native": {
+        "width": 720,
+        "height": 720,
+        "path": "captures/LOT-06-compiled/frame_00020-native.png",
+        "sceneKind": "compiled"
+      },
+      "visualGate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.013049768518518518,
+        "maxLocalFractionBeyond": 0.998046875,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 512,
+            "y": 128,
+            "hot": 512,
+            "foreground": 1024,
+            "fraction": 0.5
+          },
+          {
+            "x": 544,
+            "y": 128,
+            "hot": 714,
+            "foreground": 1024,
+            "fraction": 0.697265625
+          },
+          {
+            "x": 384,
+            "y": 160,
+            "hot": 167,
+            "foreground": 1024,
+            "fraction": 0.1630859375
+          },
+          {
+            "x": 416,
+            "y": 160,
+            "hot": 661,
+            "foreground": 1024,
+            "fraction": 0.6455078125
+          },
+          {
+            "x": 448,
+            "y": 160,
+            "hot": 778,
+            "foreground": 1024,
+            "fraction": 0.759765625
+          },
+          {
+            "x": 480,
+            "y": 160,
+            "hot": 927,
+            "foreground": 1024,
+            "fraction": 0.9052734375
+          },
+          {
+            "x": 512,
+            "y": 160,
+            "hot": 300,
+            "foreground": 1024,
+            "fraction": 0.29296875
+          },
+          {
+            "x": 256,
+            "y": 192,
+            "hot": 116,
+            "foreground": 1024,
+            "fraction": 0.11328125
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 112,
+            "foreground": 1024,
+            "fraction": 0.109375
+          },
+          {
+            "x": 416,
+            "y": 192,
+            "hot": 716,
+            "foreground": 1024,
+            "fraction": 0.69921875
+          },
+          {
+            "x": 448,
+            "y": 192,
+            "hot": 484,
+            "foreground": 1024,
+            "fraction": 0.47265625
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 334,
+            "foreground": 1024,
+            "fraction": 0.326171875
+          },
+          {
+            "x": 288,
+            "y": 224,
+            "hot": 176,
+            "foreground": 1024,
+            "fraction": 0.171875
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 110,
+            "foreground": 1024,
+            "fraction": 0.107421875
+          },
+          {
+            "x": 256,
+            "y": 256,
+            "hot": 295,
+            "foreground": 1024,
+            "fraction": 0.2880859375
+          },
+          {
+            "x": 528,
+            "y": 112,
+            "hot": 298,
+            "foreground": 1024,
+            "fraction": 0.291015625
+          },
+          {
+            "x": 400,
+            "y": 144,
+            "hot": 127,
+            "foreground": 1024,
+            "fraction": 0.1240234375
+          },
+          {
+            "x": 432,
+            "y": 144,
+            "hot": 211,
+            "foreground": 1024,
+            "fraction": 0.2060546875
+          },
+          {
+            "x": 464,
+            "y": 144,
+            "hot": 402,
+            "foreground": 1024,
+            "fraction": 0.392578125
+          },
+          {
+            "x": 496,
+            "y": 144,
+            "hot": 748,
+            "foreground": 1024,
+            "fraction": 0.73046875
+          },
+          {
+            "x": 528,
+            "y": 144,
+            "hot": 590,
+            "foreground": 1024,
+            "fraction": 0.576171875
+          },
+          {
+            "x": 560,
+            "y": 144,
+            "hot": 138,
+            "foreground": 1024,
+            "fraction": 0.134765625
+          },
+          {
+            "x": 400,
+            "y": 176,
+            "hot": 607,
+            "foreground": 1024,
+            "fraction": 0.5927734375
+          },
+          {
+            "x": 432,
+            "y": 176,
+            "hot": 1022,
+            "foreground": 1024,
+            "fraction": 0.998046875
+          },
+          {
+            "x": 464,
+            "y": 176,
+            "hot": 794,
+            "foreground": 1024,
+            "fraction": 0.775390625
+          },
+          {
+            "x": 496,
+            "y": 176,
+            "hot": 192,
+            "foreground": 1024,
+            "fraction": 0.1875
+          },
+          {
+            "x": 272,
+            "y": 208,
+            "hot": 293,
+            "foreground": 1024,
+            "fraction": 0.2861328125
+          },
+          {
+            "x": 304,
+            "y": 208,
+            "hot": 137,
+            "foreground": 1024,
+            "fraction": 0.1337890625
+          },
+          {
+            "x": 400,
+            "y": 208,
+            "hot": 285,
+            "foreground": 1024,
+            "fraction": 0.2783203125
+          },
+          {
+            "x": 432,
+            "y": 208,
+            "hot": 128,
+            "foreground": 1024,
+            "fraction": 0.125
+          },
+          {
+            "x": 272,
+            "y": 240,
+            "hot": 493,
+            "foreground": 1024,
+            "fraction": 0.4814453125
+          },
+          {
+            "x": 272,
+            "y": 272,
+            "hot": 124,
+            "foreground": 1024,
+            "fraction": 0.12109375
+          }
+        ]
+      },
+      "diff": {
+        "comparable": true,
+        "meanDistance": 1.2769186817582394,
+        "fractionBeyond": 0.013049768518518518,
+        "threshold": "Euclidean RGB distance > 24; aggregate/local/alpha acceptance is recorded separately in visualGate.",
+        "diffPath": "captures/LOT-06-compiled/frame_00020-diff.png",
+        "stripPath": "captures/LOT-06-compiled/frame_00020-strip.png"
+      }
+    }
+  ]
+}

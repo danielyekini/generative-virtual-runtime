@@ -1,5 +1,9 @@
 # @gvr/format-lottie
 
+## 0.1.5
+
+Keep each layer in its composition paint list, with reverse source order independent of transform parenting. Use the published `transformParentId` field for parent-local motion; inherit opacity and visibility only from composition containment. Scope parent lookup to each expansion so reused precomp assets retain their own chains. Canonical declaration order also preserves paint order in isolated render scopes. MotionScript and Scene IR remain 0.5.0, wire 0.2; no new syntax, schema, sampling rule or published release changes. Whole-fixture visual certification remains a separate gate.
+
 ## 0.1.4
 
 Preserve clipped spatial motion with existing vec2 keyframes and restricted temporal easing over the original arc-length polyline. Covered temporal curves are monotonic with cubic Y controls in [0,1]; holds and named easing retain their existing meanings. No language or wire change. Non-monotonic spatial clipping remains outside this correction.

@@ -1,0 +1,29 @@
+{
+  "runId": "2026-10-09T115503Z",
+  "status": "budget-exhausted",
+  "stoppedAt": "2026-10-09T12:59:43.538573+00:00",
+  "deadline": "2026-10-09T12:55:03.762999+00:00",
+  "elapsedMinutes": 74.13301001666667,
+  "budgetOverrun": true,
+  "reason": "Capture interrupted to preserve the hard budget; recovery of large partial gate records and evidence finalization exceeded 60 minutes. No implementation after the deadline. Incomplete final capture and invalid effect references cannot certify fidelity.",
+  "nextCause": {
+    "id": "verification.finalSnapshotNativeCoverage",
+    "phase": "C",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "expectedEvidence": "Complete missing LOT04 compiled/native and extras, LOT05 new source-key extras on this final snapshot. Pin an effect-capable reference for LOT02/04 and diagnose LOT05 reference error; retain phase A layer paint-order history 1/3 and LOT01 local contour finding before queued animated fill."
+  },
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL_LOT01; REFERENCE_QUARANTINES; OTHER_REVIEW_UNVERIFIED",
+  "coverageStatus": "PARTIAL_FINAL_CAPTURE; EXACT_INPUT_REUSE_LOT00/05/07; LOT04_COMPILED_NOT_RUN; LOT05_EXTRA_NOT_RUN",
+  "implementation": {
+    "head": "a4988859ed56561a0183033289c32ac80014ef5c",
+    "uncommitted": true,
+    "finalSnapshot": "docs/evaluations/2026-10-09T115503Z/source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "docs/evaluations/2026-10-09T115503Z/source-snapshot/final-files.json"
+  },
+  "finalizedAt": "2026-10-09T13:09:10.980601+00:00",
+  "finalSnapshotSha256": "9ba72d110e0488965efd04a288a20a252014bc7998c5871fad21a46ec09e9ffc"
+}

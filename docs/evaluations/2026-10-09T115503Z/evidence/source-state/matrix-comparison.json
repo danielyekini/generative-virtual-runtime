@@ -1,0 +1,6 @@
+{
+  "compared": 149,
+  "maxDelta": 0.00009001354271731543,
+  "outcomes": [],
+  "method": "Source finalTransform matrices including source parenting, composed with precomp host, versus native logical draw matrix. Restricted to Shape1/Path1 groups verified identity in original source; unfiltered comparison omits rectangle/group transforms and is not causal evidence."
+}

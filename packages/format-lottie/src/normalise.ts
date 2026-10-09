@@ -1,5 +1,6 @@
 import {
   lerpPathCommands,
+  traversalOrder,
   type CompositionDefinition,
   type CompositionInstance,
   type GeometryOperatorList,
@@ -51,9 +52,7 @@ interface LowerContext {
   steps: StepDefinition[];
   trackSerial: number;
   stepSerial: number;
-  layerIdByIndex: Map<string, string>;
   timeOffsetMs: number;
-  scopeKey: string;
   capabilities: string[];
   handled: Set<string>;
   compositions: CompositionDefinition[];
@@ -90,9 +89,7 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
     steps: [],
     trackSerial: 0,
     stepSerial: 0,
-    layerIdByIndex: new Map<string, string>(),
     timeOffsetMs: 0,
-    scopeKey: "root",
     capabilities: [],
     handled: new Set<string>(),
     compositions: [],
@@ -145,11 +142,11 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
   }
 
   const maxOrder = Math.max(...document.layers.map((layer) => layer.arrayOrder));
-  // Lottie paints by global layer list order (earlier = on top). Scene IR draws
-  // by hierarchical zIndex, so a parent null listed below the sky would bury
-  // its children. Lift each layer's zIndex to the max stack score among itself
-  // and its descendants so parenting does not invert global paint order.
+  // Source layer parenting is a transform chain, not paint containment.
   placeLayers(lower, supportedLayers, maxOrder, null);
+  // Emit declaration order in paint order too: isolated render scopes consume
+  // their children in declaration order, while flat draw lists sort by zIndex.
+  lower.nodes = traversalOrder(lower.nodes);
 
   const capabilities = [...new Set(lower.capabilities)];
   const profiled = capabilities.length > 0;
@@ -181,11 +178,13 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
 }
 
 function placeLayers(lower: LowerContext, layers: LottieLayer[], maxOrder: number, hostParent: string | null): void {
-  const layerZIndex = stackZIndexes(layers, maxOrder);
+  // This map is local to the composition expansion, so reused precomp assets
+  // cannot accidentally link to another instance's transform parents.
+  const layerIdByIndex = new Map<number, string>();
   for (const layer of orderParentsBeforeChildren(layers)) {
-    const zIndex = layerZIndex.get(layer.index) ?? (maxOrder - layer.arrayOrder) * 10;
-    const linked = layer.parentIndex !== undefined ? lower.layerIdByIndex.get(`${lower.scopeKey}:${layer.parentIndex}`) : undefined;
-    const parentId = linked ?? hostParent;
+    const zIndex = (maxOrder - layer.arrayOrder) * 10;
+    const linked = layer.parentIndex !== undefined ? layerIdByIndex.get(layer.parentIndex) : undefined;
+    const parentId = hostParent;
     const lottieParent = linked !== undefined;
     if (layer.parentIndex !== undefined && linked === undefined) {
       lower.notes.push({
@@ -196,7 +195,7 @@ function placeLayers(lower: LowerContext, layers: LottieLayer[], maxOrder: numbe
       });
     }
     const layerId = allocateId(parentId, `layer_${layer.index}`, lower.usedIds);
-    lower.layerIdByIndex.set(`${lower.scopeKey}:${layer.index}`, layerId.id);
+    layerIdByIndex.set(layer.index, layerId.id);
     const anchor = vec2Static(layer.transform.anchor, { x: 0, y: 0 });
     const position = vec2Static(layer.transform.position, { x: 0, y: 0 });
     const scalePercent = vec2Static(layer.transform.scale, { x: 100, y: 100 });
@@ -218,7 +217,7 @@ function placeLayers(lower: LowerContext, layers: LottieLayer[], maxOrder: numbe
       visible: baseVisible,
       ...(parentId ? {} : { space: "world" as const }),
       kind: "group",
-      ...(lottieParent && parentId ? { transformParentId: parentId, inheritOpacity: false as const } : {}),
+      ...(linked ? { transformParentId: linked } : {}),
       ...(layer.blend || layer.blurRadius !== undefined
         ? {
             compositing: {
@@ -302,14 +301,11 @@ function lowerPrecomp(ctx: LowerContext, layer: LottieLayer, parentId: string): 
   }
   const offset = framesToMs((layer.startFrame ?? ctx.document.inFrame) - ctx.document.inFrame, ctx.document.frameRate);
   const savedOffset = ctx.timeOffsetMs;
-  const savedScope = ctx.scopeKey;
   ctx.timeOffsetMs = savedOffset + (Number.isFinite(offset) ? offset : 0);
-  ctx.scopeKey = `asset:${asset.id}`;
   const layers = asset.layers.filter((entry) => entry.kind !== "unsupported");
   const maxOrder = layers.reduce((max, entry) => Math.max(max, entry.arrayOrder), 0);
   placeLayers(ctx, layers, maxOrder, parentId);
   ctx.timeOffsetMs = savedOffset;
-  ctx.scopeKey = savedScope;
   ctx.handled.add(`precomp:asset_${asset.id}`);
   ctx.handled.add(`layer:${layer.inventoryTarget}`);
   const duration = framesToMs(ctx.document.outFrame - ctx.document.inFrame, ctx.document.frameRate);
@@ -1165,34 +1161,6 @@ function sub(a: Vec2, b: Vec2): Vec2 {
 function nextStepId(ctx: LowerContext): string {
   ctx.stepSerial += 1;
   return `step${ctx.stepSerial}`;
-}
-
-/**
- * Scene IR cannot interleave a child above an uncle. To approximate Lottie's
- * global layer order under parenting, each layer gets
- * max(ownScore, descendantScores) where earlier arrayOrder ⇒ higher score.
- */
-function stackZIndexes(layers: readonly LottieLayer[], maxOrder: number): Map<number, number> {
-  const byIndex = new Map(layers.map((layer) => [layer.index, layer]));
-  const children = new Map<number, LottieLayer[]>();
-  for (const layer of layers) {
-    if (layer.parentIndex === undefined || !byIndex.has(layer.parentIndex)) continue;
-    const list = children.get(layer.parentIndex) ?? [];
-    list.push(layer);
-    children.set(layer.parentIndex, list);
-  }
-  const ownScore = (layer: LottieLayer) => (maxOrder - layer.arrayOrder) * 10;
-  const memo = new Map<number, number>();
-  const scoreOf = (layer: LottieLayer): number => {
-    const cached = memo.get(layer.index);
-    if (cached !== undefined) return cached;
-    let score = ownScore(layer);
-    for (const child of children.get(layer.index) ?? []) score = Math.max(score, scoreOf(child));
-    memo.set(layer.index, score);
-    return score;
-  };
-  for (const layer of layers) scoreOf(layer);
-  return memo;
 }
 
 /** Stable topological order: parents before children; array order breaks ties. */

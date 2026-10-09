@@ -575,12 +575,27 @@
       "id": "transform.parent",
       "summary": "transformParentId selects the transform chain. inheritOpacity false skips one opacity ancestor.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
-      "targets": ["runtime"],
+      "targets": ["compiler", "runtime"],
       "restrictions": ["Omitted transformParentId means the chain is parentId. inheritOpacity false skips exactly one ancestor."],
-      "support": { "compiler": "untested", "runtime": "untested", "renderer": "not-applicable" },
-      "conformanceTests": [],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/format-lottie/src/lottie.test.ts#keeps global source layer paint order independent of transform parenting",
+        "packages/format-lottie/src/lottie.test.ts#keeps multi-level parent transforms without inheriting parent paint state",
+        "packages/format-lottie/src/lottie.test.ts#preserves the published one-ancestor opacity skip through round trip"
+      ],
       "adapters": {
-        "lottie": { "status": "untested", "scope": "A resolved Lottie parent sets transformParentId. Tests assert parentId, not that field." },
+        "lottie": {
+          "status": "exact",
+          "scope": "Acyclic supported layer parent chains use transformParentId independently of composition paint containment. Layers retain global reverse source-list order, including isolated scopes; parent visibility and opacity do not propagate as containment. Precomp containment opacity/visibility and per-expansion parent lookup are preserved. Static overlap/precomp source-direct-compiled reference probes and parent-position conformance back this scope; full fixture fidelity remains a separate gate. Missing parents remain diagnosed; animated anchors and other unsupported transform variations are outside this claim.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#keeps global source layer paint order independent of transform parenting",
+            "packages/format-lottie/src/lottie.test.ts#preserves precomp containment opacity and visibility without transform-parent inheritance",
+            "packages/format-lottie/src/lottie.test.ts#keeps multi-level parent transforms without inheriting parent paint state",
+            "packages/format-lottie/src/lottie.test.ts#retains source paint order inside isolated render scopes through round trip",
+            "packages/format-lottie/src/lottie.test.ts#scopes transform parent lookup to each reused precomp expansion",
+            "packages/format-lottie/src/lottie.test.ts#parents children when the parent layer is listed later in the JSON"
+          ]
+        },
         "svg": { "status": "not-applicable", "scope": "SVG parents are containment parents." }
       }
     },

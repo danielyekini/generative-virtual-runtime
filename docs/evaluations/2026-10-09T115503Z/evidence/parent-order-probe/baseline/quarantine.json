@@ -1,0 +1,5 @@
+{
+  "status": "QUARANTINED",
+  "reason": "Reference uniformly #101014; missing exported st/sr defaults; numeric mismatch does not establish implementation fidelity",
+  "replacement": "../baseline-v2"
+}

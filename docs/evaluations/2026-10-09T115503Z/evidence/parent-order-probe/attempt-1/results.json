@@ -1,0 +1,371 @@
+{
+  "scope": "Separate minimal reproductions; does not expand accepted corpus",
+  "output": [
+    {
+      "name": "interleaved",
+      "route": "imported",
+      "gate": {
+        "comparable": true,
+        "passed": true,
+        "fractionBeyond": 0,
+        "maxLocalFractionBeyond": 0,
+        "alphaFailures": 0,
+        "failedRegions": []
+      },
+      "items": [
+        {
+          "nodeId": "layer_3.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 0,
+              "g": 1,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 1
+        },
+        {
+          "nodeId": "layer_2.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 0,
+              "g": 0,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 1
+        },
+        {
+          "nodeId": "layer_1.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 1,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "name": "interleaved",
+      "route": "compiled",
+      "gate": {
+        "comparable": true,
+        "passed": true,
+        "fractionBeyond": 0,
+        "maxLocalFractionBeyond": 0,
+        "alphaFailures": 0,
+        "failedRegions": []
+      },
+      "items": [
+        {
+          "nodeId": "layer_3.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 0,
+              "g": 1,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 1
+        },
+        {
+          "nodeId": "layer_2.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 0,
+              "g": 0,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 1
+        },
+        {
+          "nodeId": "layer_1.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 1,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "name": "precomp",
+      "route": "imported",
+      "gate": {
+        "comparable": true,
+        "passed": true,
+        "fractionBeyond": 0,
+        "maxLocalFractionBeyond": 0,
+        "alphaFailures": 0,
+        "failedRegions": []
+      },
+      "items": [
+        {
+          "nodeId": "layer_10.layer_2.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 0,
+              "g": 0,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 0.5
+        },
+        {
+          "nodeId": "layer_10.layer_1.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 1,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 0.5
+        }
+      ]
+    },
+    {
+      "name": "precomp",
+      "route": "compiled",
+      "gate": {
+        "comparable": true,
+        "passed": true,
+        "fractionBeyond": 0,
+        "maxLocalFractionBeyond": 0,
+        "alphaFailures": 0,
+        "failedRegions": []
+      },
+      "items": [
+        {
+          "nodeId": "layer_10.layer_2.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 0,
+              "g": 0,
+              "b": 1,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 0.5
+        },
+        {
+          "nodeId": "layer_10.layer_1.Box",
+          "geometry": {
+            "kind": "rectangle",
+            "size": {
+              "x": 60,
+              "y": 60
+            }
+          },
+          "appearance": {
+            "fill": {
+              "type": "solid",
+              "r": 1,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "logicalMatrix": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            34,
+            34,
+            1
+          ],
+          "opacity": 0.5
+        }
+      ]
+    }
+  ]
+}
