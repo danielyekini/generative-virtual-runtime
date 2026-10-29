@@ -24,6 +24,7 @@ import packetJourneySource from "../../../fixtures/motionscript/stories/packet-j
 import craneSource from "../../../fixtures/motionscript/stories/a-crane-then-a-square.ms?raw";
 import blueSource from "../../../fixtures/motionscript/stories/through-the-blue.ms?raw";
 import circleSource from "../../../fixtures/motionscript/stories/a-circle-in-motion.ms?raw";
+import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
 import failedSource from "../../../fixtures/import/fixture/failed.json?raw";
@@ -81,6 +82,7 @@ export const motionExamples: MotionExample[] = [
   { id: "packet-journey", label: "Packet Journey", caption: "A message splits into five packets. One is lost, retransmitted, and the receiver rebuilds the line.", source: packetJourneySource },
   { id: "through-the-blue", label: "Through the Blue", caption: "A jellyfish crosses a moonlit reef, slips behind the rock, and hangs in the glow.", source: blueSource },
   { id: "a-circle-in-motion", label: "A Circle in Motion", caption: "One black outline falls as a drop and becomes a ripple, a clock, a bicycle wheel and a rising sun before falling again.", source: circleSource },
+  { id: "small-ideas-enormous-change", label: "Small Ideas, Enormous Change", caption: "A twenty-second typographic plate. One sentence resolves word by word into three lines, with scale on enormous and vermilion on change.", source: smallIdeasSource },
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
