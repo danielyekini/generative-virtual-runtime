@@ -24,6 +24,7 @@ import packetJourneySource from "../../../fixtures/motionscript/stories/packet-j
 import craneSource from "../../../fixtures/motionscript/stories/a-crane-then-a-square.ms?raw";
 import blueSource from "../../../fixtures/motionscript/stories/through-the-blue.ms?raw";
 import circleSource from "../../../fixtures/motionscript/stories/a-circle-in-motion.ms?raw";
+import homeSource from "../../../fixtures/motionscript/stories/from-blueprint-to-home.ms?raw";
 import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
@@ -72,6 +73,7 @@ export interface SourceExample {
 }
 
 export const motionExamples: MotionExample[] = [
+  { id: "from-blueprint-to-home", label: "From Blueprint to Home", caption: "An anchored blueprint rises into a house, then opens to reveal four furnished rooms.", source: homeSource },
   { id: "motionscript-to-motion", label: "From MotionScript to Motion", caption: "A thirty-second pipeline plate. One circle goes from description to compiled scene, evaluated state, and pixels.", source: motionToMotionSource },
   { id: "a-crane-then-a-square", label: "A Crane, Then a Square", caption: "A thirty-five-second crane fold. The sheet opens again and keeps the crease.", source: craneSource },
   { id: "into-the-moons-shadow", label: "Into the Moon’s Shadow", caption: "A forty-second eclipse plate. One moon path drives the orbit and the observer’s sky.", source: eclipseSource },
