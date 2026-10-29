@@ -13,7 +13,9 @@
   "implementation": {
     "benchmarkCommit": "5a4ea16a76d35aa328e29983943c4a056358b15e",
     "sourcePatch": "implementation.patch",
-    "sourceTreeAtMeasurement": "All execution code committed; only new evidence directory untracked. Later added animated-offset test assertion and report metadata do not change executable code."
+    "sourceTreeAtMeasurement": "Execution source was committed, but the evidence directory was untracked. A complete execution-source archive is retained to satisfy the dirty-tree snapshot rule; historical dated reports are excluded as non-executable evidence.",
+    "sourceSnapshot": "source-snapshot/source.tar.gz",
+    "snapshotManifest": "source-snapshot/manifest.json"
   },
   "languages": {
     "motionscript": "0.5.0",

@@ -1,0 +1,8 @@
+
+> generative-visual-runtime@0.1.0 benchmark
+> tsx evaluation/bench/run.mts --out work/verified-benchmark --samples 120 --warmup 30 --compile-samples 3 --cycles 10
+
+benchmark adding-two-vectors
+benchmark from-pixels-to-prediction
+benchmark square-wave-from-sine-waves
+/workspace/generative-visual-runtime/work/verified-benchmark/results.json

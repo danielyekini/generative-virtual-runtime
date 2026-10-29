@@ -1,0 +1,10 @@
+
+> generative-visual-runtime@0.1.0 benchmark
+> tsx evaluation/bench/run.mts --out work/verified-captures --correctness
+
+capture adding-two-vectors
+capture from-pixels-to-prediction
+capture square-wave-from-sine-waves
+capture the-city-comes-around
+capture a-crane-then-a-square
+/workspace/generative-visual-runtime/work/verified-captures/captures.json

@@ -1,0 +1,4 @@
+
+> generative-visual-runtime@0.1.0 typecheck
+> tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json && tsc --noEmit -p evaluation/bench/tsconfig.json
+

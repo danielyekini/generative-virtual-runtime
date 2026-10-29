@@ -1,0 +1,49 @@
+
+ RUN  v2.1.9 /workspace/generative-visual-runtime
+
+ ❯ packages/runtime/src/streaming.test.ts (6 tests | 1 failed) 37ms
+   × validates streamed nodes using the active wire family including queued headers 9ms
+     → expected [ { severity: 'error', …(12) } ] to deeply equal []
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/runtime/src/streaming.test.ts > validates streamed nodes using the active wire family including queued headers
+AssertionError: expected [ { severity: 'error', …(12) } ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   Object {
++     "category": "type",
++     "code": "UNSUPPORTED_PROPERTY",
++     "effect": "UNIT_REJECTED",
++     "generationId": undefined,
++     "message": "Property cornerRadius is not part of V1.",
++     "path": "nodes[0].cornerRadius",
++     "phase": "validate",
++     "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
++     "sceneTimeMs": undefined,
++     "severity": "error",
++     "sourceSpan": undefined,
++     "target": undefined,
++     "unitId": undefined,
++   },
++ ]
+
+ ❯ packages/runtime/src/streaming.test.ts:137:39
+    135|   for(const delta of compiled.deltas){runtime.enqueue(delta);if(flushE…
+    136|   runtime.flushCommands();
+    137|   expect(runtime.rejectedDiagnostics).toEqual([]);
+       |                                       ^
+    138|   expect(runtime.scene).toEqual(compiled.scene);
+    139|  }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  19:29:27
+   Duration  588ms (transform 300ms, setup 0ms, collect 358ms, tests 37ms, environment 0ms, prepare 62ms)
+

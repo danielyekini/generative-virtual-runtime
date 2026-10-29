@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 /workspace/generative-visual-runtime
+
+ ✓ packages/format-lottie/src/lottie.test.ts (46 tests) 287ms
+
+ Test Files  1 passed (1)
+      Tests  46 passed (46)
+   Start at  19:34:23
+   Duration  1.33s (transform 583ms, setup 0ms, collect 791ms, tests 287ms, environment 0ms, prepare 82ms)
+
