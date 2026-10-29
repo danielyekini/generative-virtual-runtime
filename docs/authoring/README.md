@@ -14,6 +14,7 @@ Supporting resources revision 1.0; [workflow 1.1](../workflows/authoring-loop.md
 - [Authoring corpus and registry](../../evaluation/authoring/README.md)
 - [Program storage and candidate inventory](../../samples/motionscript/README.md)
 - [Separate fidelity workflow](../evaluations/lottie-fidelity-loop-prompt.md)
+- [Story plates: briefs, programs and language proposals](stories/README.md)
 
 ## Routing and handoff
 
