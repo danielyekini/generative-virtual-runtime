@@ -70,7 +70,7 @@ The Marble Machine proposal was written after implementation, evaluated-output a
 | Progress along a path, or end markers | Packet, Vectors, MotionScript→Motion, Binary Tree, Marble, Threads | Relates to pending `transform.autoOrient`. |
 | Node, duration, step and source budgets | Packet, Clockwork, Copperleaf, MotionScript→Motion, Crane, Binary Tree, Order Book, Mountain, Home, Threads, Streetlight | Duration resolved by `1f1e3de`. Copperleaf asks for a profile of the 500-node cap before any change. Crane is 3.7× the 512 KiB source budget, which the compiler does not enforce, and uses 676 of 1,000 steps. |
 | Diagnostics that cascade after a rolled-back unit | Copperleaf, MotionScript→Motion, Mountain, Streetlight | Diagnostic fix. |
-| Audio or cue markers | Every story notes the absence, including Binary Tree, Order Book and Home (including Marble) | Moon and MotionScript→Motion suggest metadata cues; Vectors a clocked event channel later; Copperleaf and Blue recommend not adding audio. |
+| Audio or cue markers | Every story notes the absence, including Binary Tree, Order Book, Home, Marble and Streetlight | Moon and MotionScript→Motion suggest metadata cues; Vectors a clocked event channel later; Copperleaf and Blue recommend not adding audio. |
 | Shared builder tooling (runtime sampling, real-viewport preview, shared helpers) | Blue, Clockwork, MotionScript→Motion, Crane, Small Ideas, Circle, Binary Tree, Order Book, Mountain, Home, Marble, Threads, Streetlight | Tooling, no language change. Crane's builder checked the model, not the drawn mark, and missed that the mark was never drawn. Small Ideas' seams and a mid-move framing error showed only in real `CanvasRenderer` stills or an interval sweep, not in checks at named times. Circle adds a loop-boundary check and a stroke-aware on-screen check. |
 | Dynamic paint order | Counter, Crane, Home, Threads | `zIndex` is static. Crane duplicates every face into two paint-order banks. |
 | 3D-ish subjects: two-sided panels, hinge rotations | Crane, Home, Threads | Two-sided paint by matrix determinant is the smallest step; hinge transforms need a design decision. |
@@ -85,7 +85,6 @@ The Marble Machine proposal was written after implementation, evaluated-output a
 | Numeric text and duplicated states | Order Book, Binary Tree (structure snapshots) | Numeric formatting is distinct from pending per-character animators. Binary Tree first proposes reusing static letter tokens with existing tracks. |
 | Verification baselines and provenance | Order Book, Binary Tree, Streetlight | Retain actual Canvas evidence and hash-associated program/builder records; reproduce repository failures on the base. |
 | Generated repetition versus new execution models | Order Book, Binary Tree, Streetlight | Host builders already expand repetition. Test current constructs before adding syntax; loops/functions require an execution-model design decision. |
-
 | Per-frame graph indexing and inherited-transform cost | Streetlight | Static city geometry batching coincided with lower evaluation times; runtime source inspection suggests repeated index construction. Causal profiling remains a hypothesis; no runtime changes or budget increases. |
 
 Every proposal that mentions general loops or functions defers them: [AGENTS.md](../../../AGENTS.md) requires a design decision for a new execution model.
