@@ -16,6 +16,7 @@ it("handles boundaries, offsets and closed contours without connecting moves", (
  expect(trimCommands(path,0,.5,.75)).toEqual([{cmd:'M',x:25,y:0},{cmd:'L',x:30,y:0}]);
  const closed=[...path.slice(0,2),{cmd:'Z' as const},...path.slice(2)];
  expect(trimCommands(closed,0,1,0)).toEqual(closed);
+ expect(trimCommands(closed,0,2/3,0)).toEqual(closed.slice(0,3));
  expect(trimCommands(closed,0,.5,0)).toEqual([{cmd:'M',x:0,y:0},{cmd:'L',x:10,y:0},{cmd:'L',x:5,y:0}]);
  expect(trimCommands([{cmd:'M',x:0,y:0}],0,0,0)).toEqual([]);
 });

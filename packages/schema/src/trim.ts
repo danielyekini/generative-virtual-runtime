@@ -15,7 +15,7 @@ export function trimCommands(commands: readonly PathCommand[], start: number, en
     const points = samplePath(contour, 8);
     const lengths = [0];
     for (let i = 1; i < points.length; i++) lengths.push(lengths[i - 1]! + distance(points[i - 1]!, points[i]!));
-    return { points, lengths, total: lengths[lengths.length - 1]! };
+    return { commands: contour, points, lengths, total: lengths[lengths.length - 1]! };
   });
   const total = sampled.reduce((sum, contour) => sum + contour.total, 0);
   const window = trimWindow(start, end, offset);
@@ -29,6 +29,11 @@ export function trimCommands(commands: readonly PathCommand[], start: number, en
     const to = Math.min(contour.total, window.end * total - base);
     base += contour.total;
     if (to <= from + 1e-9) continue;
+    // A fully retained closed contour keeps its close command and join semantics.
+    if (from === 0 && to === contour.total && contour.commands.some(command => command.cmd === "Z")) {
+      for (const command of contour.commands) result.push(command);
+      continue;
+    }
     const first = pointAtLength(contour.points, contour.lengths, from)!;
     result.push({ cmd: "M", ...first });
     for (let i = 0; i < contour.points.length; i++) {
