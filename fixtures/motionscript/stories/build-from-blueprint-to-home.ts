@@ -118,6 +118,7 @@ roof('ridge',[[0,-210,180],[0,210,180]],14.3);
 roof('chimney',[[100,-110,150],[130,-110,150],[130,-110,210],[100,-110,210]],14.4,'#d7cbbd');
 // Blue segmented separation guides replace a dash capability.
 for(let i=0;i<12;i++) for(const [j,y] of [-190,190].entries()) line(`guide${j}n${i}`,[[-260+i*44,y,105],[-240+i*44,y,105]],18,BLUE,24,undefined,29);
+line('roofSeparation',[[-260,232,103],[260,232,103]],18,BLUE,19.2,undefined,31);
 for(let i=0;i<5;i++) line(`liftGuide${i}`,[[i*120-240,190,110],[i*120-240,190,225]],19,BLUE,22,undefined,28);
 floorRect('entryPath',-38,193,76,58,'#e7e3d8',15,0);
 for(let i=0;i<7;i++) line(`hatch${i}`,[[310+i*9,170,0],[325+i*9,150,0]],15,'#cccfc2',undefined,undefined,0);
@@ -224,7 +225,7 @@ assert(Math.hypot(westGap.x-eastGap.x,westGap.y-eastGap.y)>120,'Central circulat
 hidden(9.9,'winRearWest'); visible(12,'winFrontEast'); visible(12,'entranceDoor');
 assert(same(vertices(item(12,'entranceDoor'))[0]!.y,vertices(item(12,'entranceDoor'))[1]!.y-96*Math.sin(.24)*.6*.8,2),'Door failed to close into recess');
 visible(13.5,'truss0'); visible(15,'roofEast'); visible(15,'chimney');
-visible(17,'entryPath'); hidden(17,'guide0n0'); visible(18.5,'guide0n0');
+visible(17,'entryPath'); hidden(17,'guide0n0'); visible(18.5,'guide0n0'); visible(18.5,'roofSeparation');
 const r19=vertices(item(19,'roofWest')),r21=vertices(item(21,'roofWest'));
 for(let k=1;k<r19.length;k++) assert(same((r19[k]!.x-r19[0]!.x)*.92,r21[k]!.x-r21[0]!.x)&&same((r19[k]!.y-r19[0]!.y)*.92,r21[k]!.y-r21[0]!.y),'Roof lift distorted assembly');
 for(const t of [19.25,19.5,19.75,20,20.25,20.5,20.75,21.5]) {
@@ -256,7 +257,7 @@ for(const [index,r] of rooms.entries()) {
 }
 assert(item(28.3,'blueFootprint').opacity>.95&&item(29.5,'blueFootprint').opacity<.3,'Blueprint highlight timing wrong');
 // Interval sweep and every required boundary: all visible path vertices above captions.
-const captureTimes=[0,1,2,2.75,3.5,4.9,5,6,7,8,9,10,11,12,12.75,13.5,14.25,15,16,17,18,19,20,21,21.5,22,23,24,24.6,25,25.6,26,26.6,27,27.6,28,28.3,29,30];
+const captureTimes=[0,1,2,2.75,3.5,4.9,5,6,7,8,9,10,11,12,12.75,13.5,14.25,15,16,17,18,18.5,19,20,21,21.5,22,23,24,24.6,25,25.6,26,26.6,27,27.6,28,28.3,29,30];
 for(let t=0;t<=30;t+=.25) for(const i of frame(t)) {
  if(i.opacity<.04||i.geometry.kind!=='path')continue;
  for(const p of vertices(i)) assert(p.x>=12&&p.x<=1268&&p.y>=80&&p.y<650,`${i.nodeId} outside drawing area at ${t}: ${JSON.stringify(p)}`);

@@ -1,14 +1,14 @@
 {
-  "sourceBytes": 435476,
+  "sourceBytes": 437022,
   "maxSourceBytes": 524288,
-  "nodes": 197,
+  "nodes": 198,
   "maxNodes": 500,
-  "tracks": 434,
+  "tracks": 436,
   "maxTracks": 1000,
   "steps": 0,
   "maxSteps": 1000,
-  "compileMs": 6059.781652,
-  "builderMs": 9521.250696000001,
+  "compileMs": 6295.0934609999995,
+  "builderMs": 9976.837121,
   "captureTimes": [
     0,
     1,
@@ -31,6 +31,7 @@
     16,
     17,
     18,
+    18.5,
     19,
     20,
     21,
@@ -50,5 +51,5 @@
     29,
     30
   ],
-  "totalWithPreviewsMs": 19869.150856999997
+  "totalWithPreviewsMs": 16008.761492
 }
