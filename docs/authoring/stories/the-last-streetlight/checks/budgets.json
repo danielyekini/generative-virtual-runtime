@@ -1,0 +1,21 @@
+{
+  "maxDepth": 4,
+  "largestRootUnitBytes": 20836,
+  "limits": {
+    "maxDurationMs": 60000,
+    "maxNodes": 500,
+    "maxDepth": 16,
+    "maxTracks": 1000,
+    "maxSteps": 1000,
+    "maxGeometryItems": 10000,
+    "maxExpressionDepth": 32,
+    "maxExpressionOps": 256,
+    "maxSourceBytes": 524288,
+    "maxBufferedUnitBytes": 131072,
+    "maxDeferredUnits": 100,
+    "maxQueuedDeltas": 256,
+    "maxTransportQueue": 256,
+    "startupBufferMs": 750,
+    "transitionCapMs": 250
+  }
+}

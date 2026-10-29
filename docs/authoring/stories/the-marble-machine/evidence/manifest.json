@@ -1,0 +1,188 @@
+{
+  "date": "2026-10-29",
+  "baseCommit": "7f1e95b276d3ac9d459d45297d95dfae588a77fa",
+  "sourceSha256": "322d7fc7c35bc714f59c6c360ed824e162a4227b16fb028e2a0b5a5700407b28",
+  "captures": [
+    {
+      "time": 0.0,
+      "sha256": "283b4241fa00455beab80267d95e9375c4bd8714ba574d16ab8cd8f6fa2ab7f5",
+      "retainedOriginal": true
+    },
+    {
+      "time": 1.5,
+      "sha256": "283b4241fa00455beab80267d95e9375c4bd8714ba574d16ab8cd8f6fa2ab7f5",
+      "retainedOriginal": false
+    },
+    {
+      "time": 2.0,
+      "sha256": "c8c8b2d6fbd21d4f93fb024173f709110e37fdca4e6706ee77758dcfbc52105b",
+      "retainedOriginal": false
+    },
+    {
+      "time": 3.5,
+      "sha256": "f6281e06d1f8c68c7fcbfad99c8dc5552590c1033231cb7088fb1b9ec28b136f",
+      "retainedOriginal": false
+    },
+    {
+      "time": 5.0,
+      "sha256": "1fcc0687379ab9a62d0b799bf0c06113176299ea9d754a54aecae996ad625dd6",
+      "retainedOriginal": false
+    },
+    {
+      "time": 6.0,
+      "sha256": "e458015a74005e80e7527b535bb459814368a9de0e9ecb59ebd5079a4294af4c",
+      "retainedOriginal": false
+    },
+    {
+      "time": 7.0,
+      "sha256": "8f874b1241ecfae89fb6fe42394c5285aa712029960a3115c9ec12db80fc447f",
+      "retainedOriginal": true
+    },
+    {
+      "time": 7.5,
+      "sha256": "7643ef943ae3b7ab33d1441c2c321e6fdafcc458f0705a585994a0175221daae",
+      "retainedOriginal": false
+    },
+    {
+      "time": 8.0,
+      "sha256": "1d75adbe374f8238f900f66d88c5a4a9d9183c545ec6de2c020613daaaddf22f",
+      "retainedOriginal": false
+    },
+    {
+      "time": 9.0,
+      "sha256": "4ac98a86de1b204260f7c7233f851497d76986dd996f5255052569f02f8d6ea1",
+      "retainedOriginal": false
+    },
+    {
+      "time": 10.0,
+      "sha256": "3ae1eb4dde3d70bdec1ab714343b85f19af48695c74804813f4d697e397429b4",
+      "retainedOriginal": false
+    },
+    {
+      "time": 10.5,
+      "sha256": "6be4774fa7090cbceaea7d7b248d17c392b349ca097e39101f65d8bb12f64df0",
+      "retainedOriginal": false
+    },
+    {
+      "time": 11.0,
+      "sha256": "f213b0048425600423c0a7247cb6f53aaa5f4f8ade849aa5d6a45fd69d1c2b80",
+      "retainedOriginal": false
+    },
+    {
+      "time": 12.0,
+      "sha256": "e4e7397677c8323dbc1673a78a43c885f8c80931be1c714085fef5d345767d66",
+      "retainedOriginal": false
+    },
+    {
+      "time": 13.5,
+      "sha256": "dc47e3a67e82931e30d0a397089709506c1fc5e410c5fe78c735f50b35c73290",
+      "retainedOriginal": false
+    },
+    {
+      "time": 15.0,
+      "sha256": "c397bfc318d899926ce9319afd48932e8bf5bf3364b21ae5f7724e1debecfa40",
+      "retainedOriginal": false
+    },
+    {
+      "time": 16.0,
+      "sha256": "554fff0bcdcf2941af47b82c947ad78c52f8802e5e53ed9a3c1ae9855036d026",
+      "retainedOriginal": false
+    },
+    {
+      "time": 17.0,
+      "sha256": "0120e944106b18d9196768e1dc2fee493516ef48f21ddbd2103f1c0a62fba0a0",
+      "retainedOriginal": false
+    },
+    {
+      "time": 17.5,
+      "sha256": "91e3109160ce250c867cf6a2be15177f42b38733fdcfc3080763bb5a83d5941c",
+      "retainedOriginal": true
+    },
+    {
+      "time": 18.0,
+      "sha256": "ba1f1cb80b668c9f55850b453c33ab22c3c4dec9fd2d8fe4d89277582594e86f",
+      "retainedOriginal": false
+    },
+    {
+      "time": 19.0,
+      "sha256": "f47f89473966861213d30922b70b173b948dedbcf4c66a085150bc0b49de0ac6",
+      "retainedOriginal": false
+    },
+    {
+      "time": 20.0,
+      "sha256": "a692bea26441b97b0c4a81d556943d0b1abd99831e63e38e5cc635fa12e55dab",
+      "retainedOriginal": false
+    },
+    {
+      "time": 21.5,
+      "sha256": "64c7d4718db7b8ff96300f44b480b5ddca5df100c24c98f8a13c8d5d6c111326",
+      "retainedOriginal": false
+    },
+    {
+      "time": 23.0,
+      "sha256": "ffd32a5d6e1368fb50232da12178be8cc18a7563ca3e2cc972e416c9d8f984d9",
+      "retainedOriginal": true
+    },
+    {
+      "time": 24.0,
+      "sha256": "e6864ce12ee07dda8901eef24a83fb0ecfc11cf0deb5240022da3630b875925c",
+      "retainedOriginal": false
+    },
+    {
+      "time": 25.0,
+      "sha256": "112051817afeebac457fd523f37b87ac9ad919253ded721b7a8e1cec12a163a2",
+      "retainedOriginal": false
+    },
+    {
+      "time": 26.0,
+      "sha256": "79b5e7a5c97e7d8668ed5a32d8eb58d35bbbe90b31eeb46fd93c6d1663cca18f",
+      "retainedOriginal": false
+    },
+    {
+      "time": 27.0,
+      "sha256": "7015f49ac38ddc2d8e040e0b716d307b7a8960984ecc25c16eb1b08b8fe65c49",
+      "retainedOriginal": false
+    },
+    {
+      "time": 28.0,
+      "sha256": "0997f10212a97c6a1eb404614207f21041842c4633a337220093f3304ba7eb25",
+      "retainedOriginal": false
+    },
+    {
+      "time": 29.0,
+      "sha256": "d1f5322f374dbdb47de978d1a9ef4597f732b1b7572f4c198b7f65e6d1127f37",
+      "retainedOriginal": true
+    },
+    {
+      "time": 30.0,
+      "sha256": "90505f1235496cd3119694cc3ba0af0ea9c1d57b86a2b743f80248c8086dc01c",
+      "retainedOriginal": false
+    },
+    {
+      "time": 31.0,
+      "sha256": "79fe28c997789498a3a4e196cd5a9393e349dd1b1a4f8479598349b6c02e1b87",
+      "retainedOriginal": false
+    },
+    {
+      "time": 32.0,
+      "sha256": "695481fe633743cac8d28ddd21b035000b63aafd9fdbc1f799487b09c51f03c9",
+      "retainedOriginal": false
+    },
+    {
+      "time": 32.5,
+      "sha256": "0fccb225b1ad518a64f407c4d97ceec7eba2e8c34baa627b878ea4bd726bfa58",
+      "retainedOriginal": false
+    },
+    {
+      "time": 33.0,
+      "sha256": "a7b31a4840adb75d37ef437721f77847aae4b6234d49dbe70f8aa0910b850f49",
+      "retainedOriginal": false
+    },
+    {
+      "time": 35.0,
+      "sha256": "a7b31a4840adb75d37ef437721f77847aae4b6234d49dbe70f8aa0910b850f49",
+      "retainedOriginal": true
+    }
+  ],
+  "review": "All 36 frames inspected in the contact sheet; full size 7, 17.5, 23, 29 and 35 second frames also opened. Initial wide frame retained. Stills are sampled evidence, not frame-complete visual certification."
+}

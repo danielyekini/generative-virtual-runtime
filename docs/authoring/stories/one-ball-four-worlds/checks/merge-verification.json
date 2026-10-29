@@ -1,0 +1,14 @@
+{
+  "localParent": "310bcd3960a60ee7c6c9c9b315fc68b9c5d81bfa",
+  "remoteParent": "f5662f9355ef0a4339c8c1a92e3703abd3c2354b",
+  "programSha256": "aebdfdb14622f860578823c75141b9dccab87146a4a63cb0a22e915b5b90f642",
+  "builderSha256": "54cac2a8704144f8ad4d131ea1216c68dc6ec90bda2e93587bbaf8813e675f61",
+  "checks": {
+    "builder": 0,
+    "playgroundBuild": 0,
+    "browserSmoke": 0,
+    "typecheck": 2,
+    "vitest": 1
+  },
+  "baseFailuresUnchanged": true
+}

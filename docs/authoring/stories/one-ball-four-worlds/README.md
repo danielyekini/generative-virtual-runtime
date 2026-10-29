@@ -43,3 +43,7 @@ All 1,801 60 fps reference times from 0 through 30s also receive rendered-centre
 The builder's measured internal run time excludes TypeScript process startup. Preview-inclusive time includes companion bundling, browser startup and PNG writes. Timings are worker observations with visible variability, not benchmark averages. Counts and hashes refer to the implementation commit above.
 
 The program is a story plate, not a registered authoring sample. It has no revision in the sample registry and no canonical verification or training eligibility state. Base failures were reproduced at `b7e8459b7f569862bb79325c309c33adc425de8d` in an isolated detached worktree; existing files responsible for them were not changed.
+
+## Concurrent catalog merge
+
+The shared `work` branch advanced while this plate was being implemented. Its Marble Machine, Threads into Motion and Last Streetlight additions were merged without changing either hashed Four Worlds source file. The combined index is revision 1.11. The merged builder, playground build, typecheck and Vitest checks were repeated: builder and production build pass; typecheck retains the same 12 base-reproduced errors and Vitest retains the same one base-reproduced fixture failure. [Merged logs](checks/) are retained separately from the hash-associated baseline. The brief retains supplied Markdown hard-break spaces, and raw Vitest logs retain their generated whitespace; those produce expected `git diff --check` warnings.
