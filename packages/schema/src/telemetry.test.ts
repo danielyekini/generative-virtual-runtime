@@ -17,3 +17,9 @@ it("records intervals separately from application work even when work throws", (
  expect(metrics.snapshot().distributions['frame.interval_ms']?.mean).toBe(60);
  expect(metrics.snapshot().counters['frame.long_intervals']).toBe(1);
 });
+it("retains the first failure across cascades and explicitly resets an observation window", () => {
+ const metrics=new Telemetry(2);metrics.event('delta_rejected',{unitId:1});
+ for(let i=0;i<10;i++)metrics.event('delta_stale',{unitId:i+2});
+ expect(metrics.snapshot().firstFailure).toEqual({kind:'delta_rejected',detail:{unitId:1}});
+ metrics.reset();expect(metrics.snapshot().firstFailure).toBeUndefined();expect(metrics.snapshot().events).toEqual([]);
+});

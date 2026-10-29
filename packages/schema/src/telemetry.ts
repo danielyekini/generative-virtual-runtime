@@ -6,9 +6,15 @@ export class Telemetry {
   private readonly distributions = new Map<string, { count: number; sum: number; max: number; values: number[]; next: number }>();
   private readonly counters = new Map<string, number>();
   private readonly gauges = new Map<string, { value: number; highWater: number }>();
+  private firstFailure?: { kind: string; detail: unknown };
   private readonly events: { kind: string; detail: unknown }[] = [];
   constructor(readonly capacity = 256, private readonly clock: () => number = () => performance.now()) {
     if (!Number.isInteger(capacity) || capacity < 1 || capacity > 65536) throw new Error('Invalid telemetry capacity');
+  }
+  /** Starts a new observation window without replacing instrumented owners. */
+  reset(): void {
+    this.distributions.clear(); this.counters.clear(); this.gauges.clear();
+    this.events.length = 0; this.firstFailure = undefined;
   }
   now(): number { return this.clock(); }
   measure<T>(name: string, work: () => T): T {
@@ -34,6 +40,7 @@ export class Telemetry {
     if (this.gauges.has(name) || this.gauges.size < 64) this.gauges.set(name, { value, highWater: Math.max(value, this.gauges.get(name)?.highWater ?? value) });
   }
   event(kind: string, detail: unknown): void {
+    if (!this.firstFailure && /reject|stale/.test(kind)) this.firstFailure = {kind, detail};
     if (this.events.length === this.capacity) this.events.shift();
     this.events.push({kind, detail});
   }
@@ -45,7 +52,7 @@ export class Telemetry {
         const quantile = (p: number) => sorted[Math.ceil(p * sorted.length) - 1];
         return [name, {count: metric.count, retained: sorted.length, mean: metric.sum / metric.count, max: metric.max, p50: quantile(.5), p95: quantile(.95), p99: quantile(.99)}];
       })),
-      counters: Object.fromEntries(this.counters), gauges: Object.fromEntries(this.gauges), events: [...this.events],
+      counters: Object.fromEntries(this.counters), gauges: Object.fromEntries(this.gauges), events: [...this.events], firstFailure: this.firstFailure,
     };
   }
 }

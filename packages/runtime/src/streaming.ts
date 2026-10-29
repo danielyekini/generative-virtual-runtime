@@ -55,7 +55,16 @@ export class StreamingRuntime {
 
   enqueue(delta: SceneIRDelta): void {
     if (this.disposed) return;
-    const validated = validateDelta(delta);
+    // Queued CREATE_SCENE headers establish the schema for later queued nodes,
+    // even when the caller has not flushed the header yet.
+    let wireVersion = this.scene?.irVersion ?? "0.1";
+    for (const pending of [...this.queue, delta]) {
+      if (!Array.isArray(pending.operations)) continue;
+      for (const operation of pending.operations) {
+        if (operation?.op === 'CREATE_SCENE' && (operation.scene?.irVersion === '0.1' || operation.scene?.irVersion === '0.2')) wireVersion = operation.scene.irVersion;
+      }
+    }
+    const validated = validateDelta(delta, undefined, wireVersion);
     if (!validated.ok) {
       this.recordRejected(validated.diagnostics);
       this.telemetry?.count('runtime.rejected_deltas');

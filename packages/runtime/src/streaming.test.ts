@@ -126,3 +126,15 @@ it("rejects queue overflow at the configured bound", () => {
  expect(runtime.flushCommands()).toHaveLength(DEFAULT_LIMITS.maxQueuedDeltas);
  runtime.dispose();
 });
+it("validates streamed nodes using the active wire family including queued headers", () => {
+ const source=program.replace('version "0.1"','version "0.2"').replace('fill #ff0000;','fill #ff0000; cornerRadius 2;');
+ const compiled=compileMotionScript(source);
+ expect(compiled.ok).toBe(true);
+ for(const flushEach of [false,true]) {
+  const runtime=new StreamingRuntime();
+  for(const delta of compiled.deltas){runtime.enqueue(delta);if(flushEach)runtime.flushCommands();}
+  runtime.flushCommands();
+  expect(runtime.rejectedDiagnostics).toEqual([]);
+  expect(runtime.scene).toEqual(compiled.scene);
+ }
+});
