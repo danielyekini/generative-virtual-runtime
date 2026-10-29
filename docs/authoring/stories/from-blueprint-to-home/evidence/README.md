@@ -22,3 +22,9 @@ All 40 final PNGs were inspected in [contact-1.png](contact-1.png), [contact-2.p
 | `git diff --check` | PASS | Not applicable |
 
 Typecheck evidence: [working tree](typecheck.txt), [base](base-typecheck.txt). Test evidence: [working tree](vitest.txt), [base](base-vitest.txt). The failing test is `packages/schema/src/validate.test.ts`, “accepts the valid IR and rejects every required fault”: `fixtures/ir/invalid/duration-limit.json` no longer produces the expected fault. The base comparison used a detached worktree at the exact base commit, sharing installed dependencies, and removed it afterward. Unrelated baseline failures were left unchanged.
+
+## Concurrent branch integration
+
+The first push was rejected because remote `work` had advanced to `2cec383`. Those commits added the Binary Tree, Order Book and Mountain stories. They were merged without rewriting the implementation commit or changing the program/builder hashes above. Both sides of the playground catalog were retained, and the living story index continues at revision 1.7.
+
+After integration, [typecheck](merged-typecheck.txt) again reports exactly the same 12 base errors and [Vitest](merged-vitest.txt) again reports 201 passes and the same single failure. The [playground production build](merged-playground-build.txt) passes. A staged whitespace check against the pre-merge local parent reports existing Markdown hard-break spaces and trailing whitespace in incoming story briefs, raw check logs and generated files; [output](merge-whitespace.txt) is retained. Those unrelated source bytes were preserved. The resolved catalog/index changes pass their scoped whitespace check. The earlier unqualified `git diff --check` result in the table describes the pre-merge unstaged working-tree check, not a whitespace-clean claim for every committed evidence file.
