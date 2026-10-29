@@ -29,6 +29,7 @@ import circleSource from "../../../fixtures/motionscript/stories/a-circle-in-mot
 import homeSource from "../../../fixtures/motionscript/stories/from-blueprint-to-home.ms?raw";
 import binaryTreeSource from "../../../fixtures/motionscript/stories/two-ways-through-a-binary-tree.ms?raw";
 import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
+import pixelsSource from "../../../fixtures/motionscript/stories/from-pixels-to-prediction.ms?raw";
 import squareWaveSource from "../../../fixtures/motionscript/stories/square-wave-from-sine-waves.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
@@ -77,6 +78,7 @@ export interface SourceExample {
 }
 
 export const motionExamples: MotionExample[] = [
+  { id: "from-pixels-to-prediction", label: "From Pixels to Prediction", caption: "A thirty-second network schematic. A handwritten 7 becomes 784 inputs, two hidden layers of activations, and a 92% prediction.", source: pixelsSource },
   { id: "from-blueprint-to-home", label: "From Blueprint to Home", caption: "An anchored blueprint rises into a house, then opens to reveal four furnished rooms.", source: homeSource },
   { id: "through-the-mountain", label: "Through the Mountain", caption: "A red locomotive and three cream carriages cross warm fields, pass through a mountain tunnel, and emerge into a snowy blue valley.", source: mountainSource },
   { id: "two-ways-through-a-binary-tree", label: "Two Ways Through a Binary Tree", caption: "BFS visits each level while preorder DFS explores and returns, with a live queue, call stack and separate visit orders.", source: binaryTreeSource },
