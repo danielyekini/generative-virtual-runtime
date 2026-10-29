@@ -993,7 +993,7 @@ function cameraTracks(layout: Layout, radius: number, dialR: number): string[] {
   const axis = (channel: "x" | "y" | "zoom", read: (shot: (typeof shots)[number]) => number) =>
     track(
       channel === "zoom" ? "camera(main).zoom" : `camera(main).position.${channel}`,
-      shots.map((shot, index) => ({ t: shot.t, v: read(shot), ease: index < shots.length - 1 ? shot.ease : undefined })),
+      shots.map((shot, index) => ({ t: shot.t, v: read(shot), ease: index < shots.length - 1 && "ease" in shot ? shot.ease : undefined })),
     );
   return [axis("x", (shot) => shot.x), axis("y", (shot) => shot.y), axis("zoom", (shot) => shot.zoom)];
 }

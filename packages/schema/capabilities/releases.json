@@ -5,12 +5,12 @@
     "motionscript": {
       "current": "0.5.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.0"
+      "packageVersion": "0.1.1"
     },
     "scene-ir": {
       "current": "0.5.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.0"
+      "packageVersion": "0.1.1"
     }
   },
   "versions": [
@@ -131,6 +131,13 @@
       "sceneIr": "0.5.0",
       "compiler": "0.1.0",
       "runtime": "0.1.0",
+      "readers": "Wire stays 0.2. geometry.animatedTrim is gated by requiredCapabilities / requires. Packages without the capability reject those documents."
+    },
+    {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "compiler": "0.1.1",
+      "runtime": "0.1.1",
       "readers": "Wire stays 0.2. geometry.animatedTrim is gated by requiredCapabilities / requires. Packages without the capability reject those documents."
     }
   ]

@@ -1,4 +1,4 @@
-import type { Diagnostic, ResolvedFrame, SceneIR } from "@gvr/schema";
+import type { Telemetry, Diagnostic, ResolvedFrame, SceneIR } from "@gvr/schema";
 import { buildResolvedFrame } from "./frame";
 import { sampleScene } from "./sample";
 
@@ -10,7 +10,7 @@ export class AnimationRuntime {
   private degradedFlag = false;
   private diagnostics: Diagnostic[] = [];
 
-  constructor(readonly scene: SceneIR) {}
+  constructor(readonly scene: SceneIR, private readonly telemetry?: Telemetry) {}
 
   get degraded(): boolean {
     return this.degradedFlag;
@@ -22,6 +22,9 @@ export class AnimationRuntime {
   }
 
   evaluate(sceneTimeMs: number): ResolvedFrame {
+    return this.telemetry ? this.telemetry.measure('frame.evaluate_ms', () => this.evaluateInner(sceneTimeMs)) : this.evaluateInner(sceneTimeMs);
+  }
+  private evaluateInner(sceneTimeMs: number): ResolvedFrame {
     const sampled = sampleScene(this.scene, sceneTimeMs);
     this.diagnostics = sampled.diagnostics;
     if (sampled.diagnostics.length > 0) this.degradedFlag = true;

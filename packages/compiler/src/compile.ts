@@ -1,4 +1,5 @@
 import {
+  Telemetry,
   DEFAULT_LIMITS,
   DSL_VERSION,
   DSL_VERSION_02,
@@ -41,6 +42,7 @@ export interface CompileResult {
 }
 
 export interface Session {
+  telemetry?: Telemetry;
   scene: SceneIR;
   constants: Map<string, number>;
   sealedThroughMs: number;
@@ -61,46 +63,63 @@ export interface Session {
 }
 
 /** Compile one complete MotionScript file. A rejected unit leaves the accepted scene unchanged. */
-export function compileMotionScript(source: string): CompileResult {
-  const program = parseMotionScript(source);
-  return compileProgram(program);
+export function compileMotionScript(source: string, telemetry?: Telemetry): CompileResult {
+  const run = () => {
+    const bytes = new TextEncoder().encode(source).byteLength;
+    telemetry?.count('compile.source_bytes', bytes);
+    if (bytes > DEFAULT_LIMITS.maxSourceBytes) {
+      const issue = diagnostic({code: 'RESOURCE_LIMIT', phase: 'compile', category: 'resource', effect: 'PROGRAM_FATAL', message: `Source exceeds ${DEFAULT_LIMITS.maxSourceBytes} bytes.`});
+      telemetry?.count('compile.rejected_sources');
+      return {ok:false, diagnostics:[issue], sealedThroughMs:0, completed:false, deltas:[]};
+    }
+    const program = telemetry ? telemetry.measure('compile.lex_parse_ms', () => parseMotionScript(source)) : parseMotionScript(source);
+    return compileProgram(program, telemetry);
+  };
+  return telemetry ? telemetry.measure('compile.total_ms', run) : run();
 }
 
-export function compileProgram(program: ProgramAst): CompileResult {
+export function compileProgram(program: ProgramAst, telemetry?: Telemetry): CompileResult {
   const diagnostics = [...program.diagnostics];
   const header = program.header;
   if (!header || header.errors.length > 0 || !headerOk(header, diagnostics)) {
     return { ok: false, diagnostics, sealedThroughMs: 0, completed: false, deltas: [] };
   }
   const session = createSession(header, diagnostics);
+  session.telemetry = telemetry;
   emitCreate(session, header.span);
   for (const unit of program.units) pushUnit(session, unit);
   return finishSession(session, program.completed);
 }
 
 /** Live compiler used by the fragment feeder. The header must already be valid. */
-export function openSession(header: HeaderAst, diagnostics: Diagnostic[] = []): Session {
+export function openSession(header: HeaderAst, diagnostics: Diagnostic[] = [], telemetry?: Telemetry): Session {
   const session = createSession(header, diagnostics);
+  session.telemetry = telemetry;
   emitCreate(session, header.span);
   return session;
 }
 
 export function pushUnit(session: Session, unit: UnitAst): void {
   session.parsedUnits += 1;
+  session.telemetry?.count("compile.units_seen");
   if (session.authoringComplete) {
+    session.telemetry?.count("compile.rejected_units");
     session.diagnostics.push(problem("INVALID_TYPE", "Units cannot follow complete;.", unit.span));
     return;
   }
   if (session.deferred.length > 0 && unit.kind === "seal") {
+    session.telemetry?.count("compile.rejected_units");
     blockSeal(session, unit, `Seal at ${unit.timeMs}ms is blocked by an unresolved reference.`);
     return;
   }
   if (isUnresolved(session, unit)) {
     if (session.deferred.length >= DEFAULT_LIMITS.maxDeferredUnits) {
+      session.telemetry?.count("compile.rejected_units");
       session.diagnostics.push(problem("RESOURCE_LIMIT", "Too many deferred units.", unit.span));
       return;
     }
     session.deferred.push(unit);
+    session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
     return;
   }
   if (applyUnit(session, unit, true)) retryDeferred(session);
@@ -108,6 +127,9 @@ export function pushUnit(session: Session, unit: UnitAst): void {
 
 export function finishSession(session: Session, sourceCompleted: boolean, span?: SourceSpan): CompileResult {
   const unresolved = session.deferred.splice(0);
+  session.telemetry?.gauge("compile.deferred_units", 0);
+  session.telemetry?.count("compile.unresolved_units", unresolved.length);
+  session.telemetry?.count("compile.rejected_units", unresolved.length);
   for (const unit of unresolved) {
     if (unit.kind === "instance") {
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved composition ${unit.definition}.`, unit.span));
@@ -153,7 +175,7 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       }),
     );
   }
-  const validated = validateSceneIR(session.scene);
+  const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
   if (!validated.ok) session.diagnostics.push(...validated.diagnostics);
   const honorComplete = sourceCompleted && unresolved.length === 0 && validated.ok;
   if (honorComplete) {
@@ -176,6 +198,7 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
 export function drainDeltas(session: Session): SceneIRDelta[] {
   const deltas = session.pendingDeltas;
   session.pendingDeltas = [];
+  session.telemetry?.gauge("compile.pending_deltas", 0);
   return deltas;
 }
 
@@ -186,10 +209,12 @@ function retryDeferred(session: Session): void {
   for (const unit of pending) {
     if (isUnresolved(session, unit)) {
       session.deferred.push(unit);
+    session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
       continue;
     }
     applyUnit(session, unit, true);
   }
+  session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
 }
 
 function isUnresolved(session: Session, unit: UnitAst): boolean {
@@ -241,6 +266,9 @@ interface Capture {
 }
 
 function capture(session: Session): Capture {
+  return measured(session, 'compile.capture_ms', () => captureInner(session));
+}
+function captureInner(session: Session): Capture {
   return {
     nodes: session.scene.nodes.length,
     tracks: session.scene.timeline.tracks.length,
@@ -293,6 +321,7 @@ function emit(session: Session, operations: RuntimeOperation[], sourceSpan: Sour
   };
   session.deltas.push(delta);
   session.pendingDeltas.push(delta);
+  session.telemetry?.gauge("compile.pending_deltas", session.pendingDeltas.length);
 }
 
 function sceneHeader(session: Session): SceneHeader {
@@ -400,6 +429,17 @@ function createSession(header: HeaderAst, diagnostics: Diagnostic[]): Session {
 }
 
 function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean {
+  const accepted = applyUnitInner(session, unit, emitDelta);
+  if (emitDelta) session.telemetry?.count(accepted ? 'compile.accepted_units' : 'compile.rejected_units');
+  if (!accepted) session.telemetry?.event('compile.unit_rejected', {kind: unit.kind, span: unit.span, diagnostics: session.diagnostics.slice(-4)});
+  return accepted;
+}
+
+function measured<T>(session: Session, name: string, work: () => T): T {
+  return session.telemetry ? session.telemetry.measure(name, work) : work();
+}
+
+function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): boolean {
   if (
     session.frozen &&
     (unit.kind === "node" ||
@@ -428,7 +468,7 @@ function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean
       session.diagnostics.push(...unit.errors);
       return false;
     }
-    const snapshot = structuredClone(session.scene);
+    const snapshot = measured(session, 'compile.snapshot_ms', () => structuredClone(session.scene));
     const sealed = session.sealedThroughMs;
     const constants = new Map(session.constants);
     const before = capture(session);
@@ -437,7 +477,7 @@ function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean
       if (!applyUnit(session, item, false)) failed = true;
     }
     if (failed) {
-      restore(session, snapshot, sealed, constants);
+      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
       return false;
     }
     if (emitDelta) noteChanges(session, unit, before);
@@ -447,24 +487,24 @@ function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean
     session.diagnostics.push(...unit.errors);
     return false;
   }
-  const snapshot = structuredClone(session.scene);
+  const snapshot = measured(session, 'compile.snapshot_ms', () => structuredClone(session.scene));
   const sealed = session.sealedThroughMs;
   const constants = new Map(session.constants);
   const beforeDiag = session.diagnostics.length;
   const before = capture(session);
-  lower(session, unit);
+  measured(session, 'compile.lower_ms', () => lower(session, unit));
   if (session.diagnostics.length > beforeDiag) {
-    restore(session, snapshot, sealed, constants);
+    measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
     return false;
   }
-  const validated = validateSceneIR(session.scene);
+  const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
   if (!validated.ok) {
     const prior = validateSceneIR(snapshot);
     const priorKeys = new Set(!prior.ok ? prior.diagnostics.map((item) => `${item.code}:${item.message}`) : []);
     const fresh = validated.diagnostics.filter((item) => !priorKeys.has(`${item.code}:${item.message}`));
     if (fresh.length > 0) {
       session.diagnostics.push(...fresh);
-      restore(session, snapshot, sealed, constants);
+      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
       return false;
     }
   }

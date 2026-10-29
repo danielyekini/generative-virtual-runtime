@@ -2,7 +2,7 @@
 
 GVR is a portable animation stack: author in **MotionScript**, validate and sample **Scene IR**, then draw with a canvas renderer. Lottie and SVG importers lower into the same IR. A MotionScript emitter and round-trip verifier close the loop.
 
-Current languages are **MotionScript 0.4.0** and **Scene IR 0.4.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
+Current languages are **MotionScript 0.5.0** and **Scene IR 0.5.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
 
 **Support authority** is [`packages/schema/capabilities/registry.json`](packages/schema/capabilities/registry.json). Design notes such as [`packages/schema/CONTRACT.md`](packages/schema/CONTRACT.md) do not override it. Evaluation runs under [`docs/evaluations/`](docs/evaluations/README.md) measure one revision; they are not the specification.
 
@@ -22,7 +22,7 @@ Studio: `http://localhost:5173`.
 
 ## What is implemented
 
-Thirty-two capabilities are in the published languages. Nineteen have supported coverage on every applicable target (compiler, runtime, renderer). Thirteen more are in the schema and partially wired; their registry rows are `untested` until conformance pins them. Seven further ids are pending language work (unsupported everywhere).
+The registry distinguishes released and supported capabilities, implemented but untested targets, and pending unsupported proposals. Support applies only to each row’s stated scope and conformance evidence; a rendered story does not certify a whole capability.
 
 ### Scene and camera (0.1)
 
@@ -40,8 +40,11 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
 | `geometry.primitives` | 0.1 | Rectangle, circle, ellipse, line, polygon — supported end-to-end |
 | `geometry.path` | 0.1 | Absolute move/line/quadratic/cubic/close — compile and sample supported; renderer untested |
 | `geometry.roundedRect` | 0.2 | Corner radius on rectangles — schema present, untested |
-| `geometry.operators` / `geometry.trimPath` | 0.2 | Trim and round operators on nodes — compile supported for operators; trim application untested |
-| `geometry.spatialCurve` | 0.2 | Spatial in/out tangents on vec2 keys — Lottie exact; core targets untested |
+| `geometry.operators` / `geometry.trimPath` | 0.2 | Static trim supported, including contour breaks; round application remains untested |
+| `geometry.pathMorph` | 0.3 | Matching-topology path interpolation — supported within registry scope |
+| `paint.gradientStroke` | 0.4 | Static gradient strokes — supported within registry scope |
+| `geometry.animatedTrim` | 0.5 | Animated trim channels — supported; Lottie coverage is narrower |
+| `geometry.spatialCurve` | 0.2 | Spatial in/out tangents on vec2 keys — Compiler/runtime supported; Lottie exact within registry scope |
 | `paint.linearGradient` / `paint.radialGradient` | 0.2 | Gradient fills with colour stops — schema present, untested |
 | `resources.image` | 0.2 | Image nodes over declared resources — schema present, untested |
 | `text.basic` | 0.1 | One line, builtin font, alignment, baseline — supported |
@@ -69,7 +72,7 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
 | `effects.blur` | Blur on a render scope — supported; Lottie static Gaussian blur exact |
 | `effects.shadow` | Shadow on a render scope — schema present, untested |
 | `render.tree` | Nested render scopes for compositing groups — runtime supported; renderer untested |
-| `transform.parent` | Separate transform parent / opacity inheritance — untested |
+| `transform.parent` | Separate transform parent / opacity inheritance — compiler/runtime supported |
 | `scene.migration` | 0.2 readers load 0.1 scenes with identical samples — supported |
 
 ### Format adapters
@@ -135,4 +138,10 @@ Static SVG keeps both panes and disables the player. Folder conversion is not co
 
 ## Evaluations
 
-Indexed at [`docs/evaluations/README.md`](docs/evaluations/README.md). Newest run: [2026-10-07T183125Z](docs/evaluations/2026-10-07T183125Z/report.md) (MotionScript/Scene IR 0.2). Historical baseline: [2026-10-07-baseline](docs/evaluations/2026-10-07-baseline/report.md). Do not edit published runs; do not widen tolerances to pass a comparison.
+Indexed at [`docs/evaluations/README.md`](docs/evaluations/README.md). The [foundation run](docs/evaluations/2026-10-29T165600Z/report.md) records correctness checks and performance measurements; it does not replace incomplete Lottie corpus certification. The latest prior fidelity run is [2026-10-09T115503Z](docs/evaluations/2026-10-09T115503Z/report.md). Published reports remain immutable.
+
+## Measurement and resource policy
+
+Run `npm run benchmark -- --out work/benchmark` for browser compile/frame/queue/resource measurements on three pinned stories. Use `npm run benchmark -- --out work/captures --correctness` for before/after renderer evidence. Enable Studio diagnostics with `?telemetry=1#studio`, then call `window.__gvrTelemetry()` for JSON-compatible results. See [metric definitions and limitations](docs/telemetry.md).
+
+Resource settings are provisional. The current decoded source ceiling is 4 MiB, enforced for full and incremental compilation and shared by import defaults. This accommodates the 1.93 MB Crane workload while retaining bounded rejection. Duration remains 60 seconds; scene/geometry/expression limits remain in [`limits.ts`](packages/schema/src/limits.ts). Larger acceptance does not establish smooth playback or promote historical quarantined fixtures.

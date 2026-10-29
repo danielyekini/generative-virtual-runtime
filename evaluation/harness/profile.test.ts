@@ -24,8 +24,9 @@ describe("capability profile", () => {
     expect(profile.lot03.status).toBe("quarantined");
     expect(profile.performance.budgetClaim).toBe(false);
     expect(profile.importCeilings.candidateStatus).toBe("proposed-not-default");
-    expect(profile.importCeilings.defaultMaxSourceBytes).toBe(DEFAULT_IMPORT_LIMITS.maxSourceBytes);
-    expect(DEFAULT_IMPORT_LIMITS.maxSourceBytes).toBe(512 * 1024);
+    // Historical M6 profile is immutable; the current ceiling is a separate policy.
+    expect(profile.importCeilings.defaultMaxSourceBytes).toBe(512 * 1024);
+    expect(DEFAULT_IMPORT_LIMITS.maxSourceBytes).toBe(4 * 1024 * 1024);
     for (const name of profile.enabledCapabilities) expect(CAPABILITIES).toContain(name);
   });
 

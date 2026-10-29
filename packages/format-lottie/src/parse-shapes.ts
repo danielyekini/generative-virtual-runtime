@@ -382,7 +382,12 @@ function parseTrim(
   return {
     start: unit(start, 0),
     end: unit(end, 100),
-    offset: unit(offset, 0),
+    offset: (offset.kind === "static" ? offset.value : offset.keyframes[0]?.value ?? 0) / 360,
+    mappingLimitations: [
+      ...(entry.m === 2 ? ['Individual trim mode is not verified across multiple shapes.'] : []),
+      ...(offset.kind === 'animated' || (offset.kind === 'static' && offset.value !== 0) ? ['Offset units are converted from degrees, but native windows clip at one rather than retaining the wrapped tail.'] : []),
+      ...(unit(start,0) > unit(end,100) ? ['Reversed endpoints are swapped by lottie-web but empty in native trim.'] : []),
+    ],
     ...(animated ? { animated } : {}),
   };
 }

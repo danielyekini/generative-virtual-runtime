@@ -1,3 +1,4 @@
+import { telemetry } from "../telemetry";
 import { compileMotionScript, createIncrementalProgram, type IncrementalProgram } from "@gvr/compiler";
 import {
   ImportRegistry,
@@ -129,8 +130,8 @@ export function createWorkspace(shell: Shell) {
   let customImport = false;
 
   let streamExample = motionExamples[0] ?? fail("no stream examples");
-  let streamProgram: IncrementalProgram = createIncrementalProgram();
-  let streamRuntime = new StreamingRuntime();
+  let streamProgram: IncrementalProgram = createIncrementalProgram(telemetry);
+  let streamRuntime = new StreamingRuntime(telemetry);
   let streamCursor = 0;
   let streamPhase: StreamPhase = "idle";
   let streamDwellUntil = 0;
@@ -181,8 +182,10 @@ export function createWorkspace(shell: Shell) {
   function stopStream(): void {
     streamPhase = "idle";
     streamClock.stop();
-    streamProgram = createIncrementalProgram();
-    streamRuntime = new StreamingRuntime();
+    streamProgram.dispose();
+    streamRuntime.dispose();
+    streamProgram = createIncrementalProgram(telemetry);
+    streamRuntime = new StreamingRuntime(telemetry);
     streamCursor = 0;
     if (lane === "stream") lane = "script";
   }
@@ -238,11 +241,11 @@ export function createWorkspace(shell: Shell) {
     compiledText = source;
     compiledFormat = "motionscript";
     formatId = "motionscript";
-    const compiled = compileMotionScript(source);
+    const compiled = compileMotionScript(source, telemetry);
     compileMessages = compiled.diagnostics.map((item) => item.message);
     compileOk = compiled.ok;
     sceneA = compiled.scene && validateSceneIR(compiled.scene).ok ? compiled.scene : undefined;
-    runtimeA = sceneA ? new AnimationRuntime(sceneA) : undefined;
+    runtimeA = sceneA ? new AnimationRuntime(sceneA, telemetry) : undefined;
     script = "";
     sceneB = undefined;
     runtimeB = undefined;
@@ -251,14 +254,14 @@ export function createWorkspace(shell: Shell) {
       roundTripNote = "The source did not produce a Scene IR, so nothing was emitted.";
     } else {
       script = emitMotionScript(sceneA);
-      const again = compileMotionScript(script);
+      const again = compileMotionScript(script, telemetry);
       if (!again.ok || !again.scene) {
         failedStep = "irb";
         roundTripNote = "The emitted MotionScript did not compile back into Scene IR.";
         compileMessages = [...compileMessages, ...again.diagnostics.map((item) => item.message)];
       } else {
         sceneB = again.scene;
-        runtimeB = new AnimationRuntime(sceneB);
+        runtimeB = new AnimationRuntime(sceneB, telemetry);
         const mismatch = compareScenes(sceneA, sceneB);
         if (mismatch) {
           failedStep = "play";
@@ -274,8 +277,8 @@ export function createWorkspace(shell: Shell) {
   }
 
   function compareScenes(left: SceneIR, right: SceneIR): string {
-    const before = new AnimationRuntime(left);
-    const after = new AnimationRuntime(right);
+    const before = new AnimationRuntime(left, telemetry);
+    const after = new AnimationRuntime(right, telemetry);
     const times = [0, left.timeline.durationMs / 2, left.timeline.durationMs];
     for (const time of times) {
       const mismatch = sameItems(before.evaluate(time).drawItems, after.evaluate(time).drawItems);
@@ -315,7 +318,7 @@ export function createWorkspace(shell: Shell) {
       return;
     }
     importScript = emitMotionScript(imported.scene);
-    const again = compileMotionScript(importScript);
+    const again = compileMotionScript(importScript, telemetry);
     importSceneB = again.ok ? again.scene : undefined;
     importCompileOk = again.ok;
     importCompileDiagnostics = again.diagnostics.map((item) => `${item.code}\t${item.message}`).join("\n");
@@ -340,8 +343,8 @@ export function createWorkspace(shell: Shell) {
         importCompileOk = false;
         importCompileDiagnostics = "Import produced no Scene IR.";
       }
-      importRuntimeA = shown ? new AnimationRuntime(shown) : undefined;
-      importRuntimeB = importSceneB ? new AnimationRuntime(importSceneB) : undefined;
+      importRuntimeA = shown ? new AnimationRuntime(shown, telemetry) : undefined;
+      importRuntimeB = importSceneB ? new AnimationRuntime(importSceneB, telemetry) : undefined;
     }
     displayedSceneId = shown?.sceneId ?? "";
     frameMs = formatId === "lottie" ? readFrameMs(text) : 1000 / 30;
@@ -449,8 +452,10 @@ export function createWorkspace(shell: Shell) {
     }
     lane = "stream";
     playClock.pause();
-    streamProgram = createIncrementalProgram();
-    streamRuntime = new StreamingRuntime();
+    streamProgram.dispose();
+    streamRuntime.dispose();
+    streamProgram = createIncrementalProgram(telemetry);
+    streamRuntime = new StreamingRuntime(telemetry);
     streamCursor = 0;
     streamPhase = "setup";
     streamClock.stop();

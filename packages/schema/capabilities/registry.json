@@ -317,18 +317,21 @@
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["runtime"],
       "restrictions": [
-        "Static start/end/offset on geometryOperators. Animated trim.start/end/offset tracks require geometry.animatedTrim (0.5.0)."
+        "Static start/end/offset on geometryOperators. Animated trim.start/end/offset tracks require geometry.animatedTrim (0.5.0). Native trim uses aggregate drawn length across contours, excludes pen-up jumps and preserves M breaks. Shifted start wraps; the end clips at one. Reversed or equal endpoints are empty. Curves use eight samples per segment for partial windows."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [
-        "packages/runtime/src/runtime.test.ts#applies static trim operators when resolving paths"
+        "packages/runtime/src/runtime.test.ts#applies static trim operators when resolving paths",
+        "packages/schema/src/trim-regression.test.ts#preserves pen-up breaks and excludes jumps from trim length",
+        "packages/schema/src/trim-regression.test.ts#handles boundaries, offsets and closed contours without connecting moves"
       ],
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Static tm lowers to a trim operator and is applied when the path is resolved.",
+          "scope": "Verified scope: a single open straight path, simultaneous mode, zero offset and ordered endpoints in [0,100]. Offset degrees convert to turns, but wrapped tails, reversed endpoints and individual mode across multiple shapes are outside exact coverage and diagnosed as approximated when detected. Compound native paths do not imply Lottie multi-shape trim coverage.",
           "conformanceTests": [
-            "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks"
+            "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks",
+            "packages/format-lottie/src/lottie.test.ts#converts trim offset degrees and discloses unverified trim modes"
           ]
         },
         "svg": { "status": "not-applicable", "scope": "SVG stroke dash is not trim." }
@@ -352,7 +355,7 @@
       "adapters": {
         "lottie": {
           "status": "exact",
-          "scope": "Animated tm s/e/o lower to trim.start/end/offset tracks (0–1). Simultaneously mode only; individual trim mode is outside this claim.",
+          "scope": "Animated tm s/e/o lower to trim.start/end/offset tracks (0–1). Verified only for one open straight path, simultaneous mode, zero offset and ordered endpoints; individual mode across multiple shapes, reversed endpoints and offset wrapping are outside exact coverage. Offset source values are degrees, converted to turns.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks"
           ]
@@ -561,9 +564,10 @@
       "summary": "The default tree is a non-isolated root of draw-item leaves. Compositing groups nest.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["runtime"],
-      "restrictions": ["The conformance sample is the flat migrated tree. Nested scopes are not part of that assertion."],
+      "restrictions": ["Tree and flat routes share static sibling zIndex order, stable declaration ties and hierarchy boundaries. Ordering coverage does not certify isolated-opacity overlap semantics.", "Flat migration and nested sibling ordering have conformance coverage. Renderer isolation, blend and effect fidelity retain their separate registry statuses."],
       "support": { "compiler": "not-applicable", "runtime": "supported", "renderer": "untested" },
       "conformanceTests": [
+        "packages/canvas-renderer/src/renderer.test.ts#preserves hierarchical sibling order through CanvasRenderer",
         "packages/runtime/src/runtime.test.ts#keeps migrated 0.1 samples identical, including shuffled seeks"
       ],
       "adapters": {

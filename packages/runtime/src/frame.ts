@@ -1,5 +1,6 @@
 import {
   drawableOrder,
+  childrenOf,
   indexNodes,
   logicalMatrix,
   trimCommands,
@@ -64,11 +65,11 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
           opacity: node.opacity,
           ...(node.compositing.blend ? { blend: node.compositing.blend } : {}),
           ...(node.compositing.effect ? { effect: node.compositing.effect } : {}),
-          children: nodes.filter((child) => child.parentId === node.id).flatMap(place),
+          children: childrenOf(nodes, node.id).flatMap(place),
         },
       ];
     }
-    if (node.kind === "group") return nodes.filter((child) => child.parentId === node.id).flatMap(place);
+    if (node.kind === "group") return childrenOf(nodes, node.id).flatMap(place);
     const item = byId.get(node.id);
     return item ? [{ kind: "leaf", item }] : [];
   };
@@ -77,7 +78,7 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
     id: "root",
     isolated: false,
     opacity: 1,
-    children: nodes.filter((node) => node.parentId === null).flatMap(place),
+    children: childrenOf(nodes, null).flatMap(place),
   };
 }
 

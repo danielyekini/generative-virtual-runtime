@@ -1,4 +1,4 @@
-import { DEFAULT_LIMITS, createIncrementalLexer, diagnostic, type Diagnostic, type Token } from "@gvr/schema";
+import { Telemetry, DEFAULT_LIMITS, createIncrementalLexer, diagnostic, type Diagnostic, type Token } from "@gvr/schema";
 import type { UnitAst } from "./ast";
 import { drainDeltas, finishSession, openSession, pushUnit, type CompileResult, type Session } from "./compile";
 import { parseLeadingSlice } from "./parse";
@@ -39,13 +39,32 @@ export function compileIncrementally(chunks: readonly string[]): CompileResult {
 }
 
 export class IncrementalProgram {
-  private readonly lexer = createIncrementalLexer();
+  private lexer = createIncrementalLexer();
   private readonly buffer: Token[] = [];
   private session?: Session;
   private carried: Diagnostic[] = [];
   private result?: CompileResult;
   private stopped = false;
+  private sourceBytes = 0;
+  private endsInHighSurrogate = false;
   private closed = false;
+
+  constructor(private readonly telemetry?: Telemetry) {}
+
+  dispose(): void {
+    this.stopped = true;
+    this.buffer.length = 0;
+    this.lexer = createIncrementalLexer();
+    this.session = undefined;
+    this.carried = [];
+    this.result = undefined;
+    this.telemetry?.gauge('compile.buffered_tokens', 0);
+    this.telemetry?.gauge('compile.buffered_lexeme_bytes', 0);
+    this.telemetry?.gauge('compile.lexer_pending_bytes', 0);
+    this.telemetry?.gauge('compile.lexer_retained_tokens', 0);
+    this.telemetry?.gauge('compile.deferred_units', 0);
+    this.telemetry?.gauge('compile.pending_deltas', 0);
+  }
 
   get sealedThroughMs(): number {
     return this.session?.sealedThroughMs ?? 0;
@@ -73,8 +92,25 @@ export class IncrementalProgram {
 
   push(chunk: string): void {
     if (this.stopped || chunk.length === 0) return;
-    this.buffer.push(...this.lexer.push(chunk));
+    const first = chunk.charCodeAt(0);
+    const bytes = new TextEncoder().encode(chunk).byteLength - (this.endsInHighSurrogate && first >= 0xdc00 && first <= 0xdfff ? 2 : 0);
+    const last = chunk.charCodeAt(chunk.length - 1);
+    this.endsInHighSurrogate = last >= 0xd800 && last <= 0xdbff;
+    this.sourceBytes += bytes;
+    this.telemetry?.count('compile.source_bytes', bytes);
+    if (this.sourceBytes > DEFAULT_LIMITS.maxSourceBytes) {
+      this.carried.push(diagnostic({code:'RESOURCE_LIMIT',phase:'compile',category:'resource',effect:'PROGRAM_FATAL',message:`Source exceeds ${DEFAULT_LIMITS.maxSourceBytes} bytes.`}));
+      this.stopped = true;
+      this.buffer.length = 0;
+      this.lexer = createIncrementalLexer();
+      return;
+    }
+    const tokens = this.telemetry ? this.telemetry.measure('compile.lex_ms', () => this.lexer.push(chunk)) : this.lexer.push(chunk);
+    for (const token of tokens) this.buffer.push(token);
+    this.telemetry?.gauge('compile.buffered_tokens', this.buffer.length);
     this.drain();
+    this.telemetry?.gauge('compile.lexer_pending_bytes', this.lexer.pendingBytes);
+    this.telemetry?.gauge('compile.lexer_retained_tokens', this.lexer.retainedTokenCount);
   }
 
   drainDeltas() {
@@ -83,7 +119,7 @@ export class IncrementalProgram {
 
   finish(): CompileResult {
     const tail = this.lexer.finish();
-    this.buffer.push(...tail.tokens);
+    for (const token of tail.tokens) this.buffer.push(token);
     this.carried.push(...tail.diagnostics);
     this.drain();
     if (this.buffer.length > 0) {
@@ -140,6 +176,8 @@ export class IncrementalProgram {
       this.buffer.length = 0;
       if (this.result) this.result = { ...this.result, ok: false };
     }
+    this.telemetry?.gauge("compile.buffered_tokens", this.buffer.length);
+    this.telemetry?.gauge("compile.buffered_lexeme_bytes", this.buffer.reduce((sum, token) => sum + new TextEncoder().encode(token.lexeme).byteLength, 0));
     const buffered = this.buffer.reduce((sum, token) => sum + token.lexeme.length, 0);
     if (buffered > DEFAULT_LIMITS.maxBufferedUnitBytes) {
       this.carried.push(
@@ -157,7 +195,7 @@ export class IncrementalProgram {
   }
 
   private accept(tokens: Token[]): void {
-    const parsed = parseLeadingSlice(tokens);
+    const parsed = this.telemetry ? this.telemetry.measure('compile.parse_ms', () => parseLeadingSlice(tokens)) : parseLeadingSlice(tokens);
     if (parsed.kind === "invalid") {
       this.carried.push(...parsed.diagnostics);
       if (!this.session) {
@@ -171,7 +209,7 @@ export class IncrementalProgram {
         this.carried.push(problemSpan("A scene header cannot be repeated."));
         return;
       }
-      this.session = openSession(parsed.header, this.carried);
+      this.session = openSession(parsed.header, this.carried, this.telemetry);
       this.carried = [];
       return;
     }
@@ -205,8 +243,8 @@ export class IncrementalProgram {
   }
 }
 
-export function createIncrementalProgram(): IncrementalProgram {
-  return new IncrementalProgram();
+export function createIncrementalProgram(telemetry?: Telemetry): IncrementalProgram {
+  return new IncrementalProgram(telemetry);
 }
 
 function takeUnit(tokens: Token[]): Token[] | undefined {

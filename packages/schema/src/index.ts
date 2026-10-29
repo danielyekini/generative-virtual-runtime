@@ -16,3 +16,4 @@ export * from "./trim";
 export * from "./timing";
 export * from "./types";
 export * from "./validate";
+export { Telemetry, FrameTelemetry } from './telemetry';

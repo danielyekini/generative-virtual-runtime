@@ -791,3 +791,15 @@ describe("lottie adapter", () => {
     }
   });
 });
+
+it("converts trim offset degrees and discloses unverified trim modes", () => {
+ const source=JSON.parse(readFileSync(join(fixtureDir,'animated_trim.json'),'utf8'));
+ const trim=source.layers[0].shapes[0].it.find((item: {ty:string})=>item.ty==='tm');
+ trim.o={a:0,k:90};trim.m=2;
+ const result=importSource(lottieAdapter,JSON.stringify(source),{sourceName:'trim-modes.json'});
+ const operation=result.scene?.geometryOperators?.[0]?.operators[0];
+ expect(operation?.op).toBe('trim');
+ if(operation?.op==='trim')expect(operation.offset).toBe(.25);
+ expect(result.diagnostics.some(item=>item.feature==='tm' && item.fidelity==='approximated' && item.message.includes('Individual'))).toBe(true);
+ expect(result.diagnostics.some(item=>item.feature==='tm' && item.fidelity==='approximated' && item.message.includes('wrapped tail'))).toBe(true);
+});

@@ -1,3 +1,4 @@
+import { Telemetry, DEFAULT_LIMITS } from "@gvr/schema";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -100,4 +101,28 @@ describe("diagram path", () => {
       expect(sample?.logicalMatrix[7], `y at ${timeMs}`).toBeCloseTo(expected.y, 4);
     }
   });
+});
+
+it("observes rejection and stale deltas without applying them and releases cancelled queues", () => {
+ const telemetry=new Telemetry(4);
+ const runtime=new StreamingRuntime(telemetry);
+ const delta=compileMotionScript(program).deltas[0]!;
+ runtime.enqueue({...delta,expectedRevision:99,nextRevision:100});
+ expect(runtime.flushCommands()).toEqual([]);
+ runtime.enqueue({...delta,nextRevision:-1});
+ expect(runtime.rejectedDiagnostics.length).toBeGreaterThan(0);
+ runtime.enqueue(delta);
+ expect(telemetry.snapshot().gauges['runtime.queue_deltas']?.value).toBe(1);
+ runtime.dispose();runtime.enqueue(delta);
+ expect(runtime.flushCommands()).toEqual([]);
+ expect(runtime.scene).toBeUndefined();
+ expect(telemetry.snapshot().counters['runtime.stale_deltas']).toBe(1);
+ expect(telemetry.snapshot().gauges['runtime.queue_deltas']?.value).toBe(0);
+});
+it("rejects queue overflow at the configured bound", () => {
+ const runtime=new StreamingRuntime();const delta=compileMotionScript(program).deltas[0]!;
+ for(let i=0;i<=DEFAULT_LIMITS.maxQueuedDeltas;i++)runtime.enqueue({...delta,expectedRevision:i,nextRevision:i+1});
+ expect(runtime.rejectedDiagnostics.some(item=>item.code==='RESOURCE_LIMIT')).toBe(true);
+ expect(runtime.flushCommands()).toHaveLength(DEFAULT_LIMITS.maxQueuedDeltas);
+ runtime.dispose();
 });

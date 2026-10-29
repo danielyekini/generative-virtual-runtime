@@ -5,32 +5,39 @@ import type { PathCommand, Vec2 } from "./types";
  * start and end lie in [0, 1]. Offset shifts the window and wraps.
  */
 export function trimCommands(commands: readonly PathCommand[], start: number, end: number, offset: number): PathCommand[] {
-  const samples = samplePath(commands, 8);
-  if (samples.length < 2) return [...commands];
-  const lengths = [0];
-  for (let index = 1; index < samples.length; index += 1) {
-    const previous = lengths[index - 1] ?? 0;
-    lengths.push(previous + distance(samples[index - 1]!, samples[index]!));
+  // Sample each contour independently: a move never contributes ink length.
+  const contours: PathCommand[][] = [];
+  for (const command of commands) {
+    if (command.cmd === "M" || contours.length === 0) contours.push([]);
+    contours[contours.length - 1]!.push(command);
   }
-  const total = lengths[lengths.length - 1] ?? 0;
-  if (!(total > 0)) return [...commands];
+  const sampled = contours.map(contour => {
+    const points = samplePath(contour, 8);
+    const lengths = [0];
+    for (let i = 1; i < points.length; i++) lengths.push(lengths[i - 1]! + distance(points[i - 1]!, points[i]!));
+    return { points, lengths, total: lengths[lengths.length - 1]! };
+  });
+  const total = sampled.reduce((sum, contour) => sum + contour.total, 0);
   const window = trimWindow(start, end, offset);
-  const from = window.start * total;
-  const to = window.end * total;
-  if (to <= from + 1e-9) return [];
-  const kept: Vec2[] = [];
-  const startPoint = pointAtLength(samples, lengths, from);
-  const endPoint = pointAtLength(samples, lengths, to);
-  if (!startPoint || !endPoint) return [];
-  kept.push(startPoint);
-  for (let index = 0; index < samples.length; index += 1) {
-    const at = lengths[index] ?? 0;
-    if (at > from + 1e-6 && at < to - 1e-6) kept.push(samples[index]!);
+  if (window.end <= window.start) return [];
+  if (!(total > 0)) return [...commands];
+  if (window.start === 0 && window.end === 1 && (contours.length > 1 || commands.some(command => command.cmd === "Z"))) return [...commands];
+  const result: PathCommand[] = [];
+  let base = 0;
+  for (const contour of sampled) {
+    const from = Math.max(0, window.start * total - base);
+    const to = Math.min(contour.total, window.end * total - base);
+    base += contour.total;
+    if (to <= from + 1e-9) continue;
+    const first = pointAtLength(contour.points, contour.lengths, from)!;
+    result.push({ cmd: "M", ...first });
+    for (let i = 0; i < contour.points.length; i++) {
+      const at = contour.lengths[i]!;
+      if (at > from + 1e-6 && at < to - 1e-6) result.push({ cmd: "L", ...contour.points[i]! });
+    }
+    result.push({ cmd: "L", ...pointAtLength(contour.points, contour.lengths, to)! });
   }
-  kept.push(endPoint);
-  const [first, ...rest] = kept;
-  if (!first || rest.length === 0) return [];
-  return [{ cmd: "M", x: first.x, y: first.y }, ...rest.map((point) => ({ cmd: "L" as const, x: point.x, y: point.y }))];
+  return result;
 }
 
 function pointAtLength(samples: readonly Vec2[], lengths: readonly number[], target: number): Vec2 | undefined {

@@ -144,8 +144,8 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
   const maxOrder = Math.max(...document.layers.map((layer) => layer.arrayOrder));
   // Source layer parenting is a transform chain, not paint containment.
   placeLayers(lower, supportedLayers, maxOrder, null);
-  // Emit declaration order in paint order too: isolated render scopes consume
-  // their children in declaration order, while flat draw lists sort by zIndex.
+  // Keep canonical declaration order deterministic. Runtime tree and flat routes
+  // both apply the shared sibling zIndex/declaration tie-break contract.
   lower.nodes = traversalOrder(lower.nodes);
 
   const capabilities = [...new Set(lower.capabilities)];
@@ -535,6 +535,7 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
       ...(stroke ? { stroke } : {}),
     });
     if (item.trim) {
+      for (const message of item.trim.mappingLimitations ?? []) ctx.notes.push({feature:'tm',level:'approximated',message,target:nodeId.id});
       ctx.operators.push({
         nodeId: nodeId.id,
         operators: [{ op: "trim", start: item.trim.start, end: item.trim.end, offset: item.trim.offset }],
@@ -792,7 +793,7 @@ function addTrimTracks(
   const toUnit = (value: number) => value / 100;
   if (animated.start) addScalarTrack(ctx, nodeId, "trim.start", animated.start, toUnit, "tm");
   if (animated.end) addScalarTrack(ctx, nodeId, "trim.end", animated.end, toUnit, "tm");
-  if (animated.offset) addScalarTrack(ctx, nodeId, "trim.offset", animated.offset, toUnit, "tm");
+  if (animated.offset) addScalarTrack(ctx, nodeId, "trim.offset", animated.offset, value => value / 360, "tm");
   ctx.capabilities.push("geometry.animatedTrim");
   ctx.notes.push({
     feature: "tm",
