@@ -19,6 +19,7 @@ import eclipseSource from "../../../fixtures/motionscript/stories/into-the-moons
 import clockworkSource from "../../../fixtures/motionscript/stories/clockwork.ms?raw";
 import copperleafSource from "../../../fixtures/motionscript/stories/copperleaf-run.ms?raw";
 import counterSource from "../../../fixtures/motionscript/stories/counter.ms?raw";
+import orderBookSource from "../../../fixtures/motionscript/stories/inside-an-order-book.ms?raw";
 import packetJourneySource from "../../../fixtures/motionscript/stories/packet-journey.ms?raw";
 import craneSource from "../../../fixtures/motionscript/stories/a-crane-then-a-square.ms?raw";
 import blueSource from "../../../fixtures/motionscript/stories/through-the-blue.ms?raw";
@@ -69,6 +70,7 @@ export interface SourceExample {
 }
 
 export const motionExamples: MotionExample[] = [
+  { id: "inside-an-order-book", label: "Inside an Order Book", caption: "Price–time priority turns resting orders into four executions, a cancellation, and a narrower spread.", source: orderBookSource },
   { id: "a-crane-then-a-square", label: "A Crane, Then a Square", caption: "A thirty-five-second crane fold. The sheet opens again and keeps the crease.", source: craneSource },
   { id: "into-the-moons-shadow", label: "Into the Moon’s Shadow", caption: "A forty-second eclipse plate. One moon path drives the orbit and the observer’s sky.", source: eclipseSource },
   { id: "adding-two-vectors", label: "Adding Two Vectors", caption: "a = (3, 1) and b = (1, 2), placed head to tail. Either order reaches (4, 3).", source: vectorsSource },
