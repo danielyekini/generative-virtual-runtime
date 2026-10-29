@@ -211,7 +211,7 @@ Also, the node-budget rejection was printed before about 40 `UNKNOWN_TARGET` err
 
 1. **Index the node graph once per evaluation.**
    - Build `byId`, children and depth once per frame, or once per scene since membership is static, in `graph.ts`, instead of per call.
-   - This would remove the O(n²) term that dominates the ~90 ms frame here. It matters most for exactly the dense scenes stories are pushing toward.
+   - This would remove the O(n²) term that dominates the ~90 ms frame here. It matters most for exactly the dense scenes stories are pushing toward. Square Wave reported the same cause independently.
    - No language change. Confirm with this program as the benchmark.
 2. **Incremental compile validation.** The same fix the Crane review asks for. It would remove the 5.5–10s compile stall for this 233 KB program.
 3. **Diagnostics.**
@@ -242,7 +242,7 @@ Each would need the release process: a version entry, registry rows and conforma
 2. **Cyclic time.** A `period` on a keyframe track, or a wrapping timing scope (`local = ((parent − offset) / stretch) mod period`).
    - **Removes:** the clamp-sum expressions, the duplicated stride envelopes and the hand-written eases.
    - **Allows:** eased walk cycles and keyed poses per cycle.
-   - It changes the sampling rule, so it needs a Scene IR version. Whether a time wrap counts as a new execution model ("loops") is a design decision to settle first. New theme.
+   - It changes the sampling rule, so it needs a Scene IR version. Whether a time wrap counts as a new execution model ("loops") is a design decision to settle first. Recurs: Circle (seamless loops).
 3. **Depth-sorted paint order.** For example, a group whose children paint in order of an animated depth channel, or a stepped `zIndex` track.
    - **Removes:** the duplicate van and its steps, hidden back-street legs, relocated crossings, height caps and clearance rules.
    - **Allows:** vehicles visible on the back street, tall foreground buildings, actors walking round corners in front of and behind the same building.

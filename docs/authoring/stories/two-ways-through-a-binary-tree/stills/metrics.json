@@ -1,0 +1,12 @@
+{
+  "sourceBytes": 63110,
+  "maxSourceBytes": 524288,
+  "nodes": 405,
+  "maxNodes": 500,
+  "tracks": 151,
+  "maxTracks": 1000,
+  "steps": 0,
+  "maxSteps": 1000,
+  "compileMs": 2670.985351,
+  "builderMs": 14527.259558
+}
