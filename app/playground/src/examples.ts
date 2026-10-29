@@ -23,6 +23,7 @@ import motionToMotionSource from "../../../fixtures/motionscript/stories/motions
 import packetJourneySource from "../../../fixtures/motionscript/stories/packet-journey.ms?raw";
 import craneSource from "../../../fixtures/motionscript/stories/a-crane-then-a-square.ms?raw";
 import blueSource from "../../../fixtures/motionscript/stories/through-the-blue.ms?raw";
+import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
 import failedSource from "../../../fixtures/import/fixture/failed.json?raw";
@@ -79,6 +80,7 @@ export const motionExamples: MotionExample[] = [
   { id: "copperleaf", label: "Copperleaf Run", caption: "Pip runs a woodland ruin, clears a beetle, and keeps going into the cavern.", source: copperleafSource },
   { id: "packet-journey", label: "Packet Journey", caption: "A message splits into five packets. One is lost, retransmitted, and the receiver rebuilds the line.", source: packetJourneySource },
   { id: "through-the-blue", label: "Through the Blue", caption: "A jellyfish crosses a moonlit reef, slips behind the rock, and hangs in the glow.", source: blueSource },
+  { id: "small-ideas-enormous-change", label: "Small Ideas, Enormous Change", caption: "A twenty-second typographic plate. One sentence resolves word by word into three lines, with scale on enormous and vermilion on change.", source: smallIdeasSource },
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
