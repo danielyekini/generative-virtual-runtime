@@ -1,6 +1,6 @@
 # Story plates: briefs, programs and language proposals
 
-Status: living index, revision 1.3, 2026-10-29.
+Status: living index, revision 1.4, 2026-10-29.
 
 Each story plate in [`fixtures/motionscript/stories/`](../../../fixtures/motionscript/stories/) began as a direction script or prompt. It was implemented as a TypeScript builder that emits a `.ms` program, and the implementation was followed by a retrospective that suggested changes to MotionScript and GVR. This folder keeps those three things together, one folder per story.
 
@@ -18,7 +18,9 @@ They are **retrospectives from one implementation each**, not proposals in the [
 
 The crane story's proposal is different: its implementation run was cut short, so it is a later review of the committed program, written by a different agent and based on re-running the builder, real-renderer stills and a compile profile.
 
-The Small Ideas, Enormous Change proposal was written into this folder by the implementing agent, with measurements and real-renderer stills; it was not pasted. The other proposals' text was pasted from chat. Some tables were flattened into tab-separated lines and are kept as received. Claims about defects (for example the `sampleKeyframes` and `noteEase` findings in Adding Two Vectors) are as reported by that implementation and have not been re-verified here.
+The Marble Machine proposal was written after implementation, evaluated-output assertions and 36 real-renderer stills; it records schematic mechanical contacts and projected banking as explicit limitations. Its repository check failures also reproduce on its base commit.
+
+The Small Ideas, Enormous Change proposal was written into this folder by the implementing agent, with measurements and real-renderer stills; it was not pasted. The remaining older proposals' text was pasted from chat. Some tables were flattened into tab-separated lines and are kept as received. Claims about defects (for example the `sampleKeyframes` and `noteEase` findings in Adding Two Vectors) are as reported by that implementation and have not been re-verified here.
 
 Some proposals describe limits that have since changed. The default duration budget was raised from 30s to 60s in commit `1f1e3de`, which resolves the "35 seconds was illegal" findings in Packet Journey and Clockwork.
 
@@ -37,6 +39,7 @@ Some proposals describe limits that have since changed. The default duration bud
 | [A Crane, Then a Square](a-crane-then-a-square/) | 35s | Direction script | Review of the unfinished program |
 | [A Circle in Motion](a-circle-in-motion/) | 30s, looping | Direction script | Yes |
 | [Small Ideas, Enormous Change](small-ideas-enormous-change/) | 20s | Direction script | Yes |
+| [The Marble Machine](the-marble-machine/) | 35s | Direction script | Yes |
 
 ## Recurring themes
 
@@ -44,22 +47,22 @@ Some proposals describe limits that have since changed. The default duration bud
 
 | Theme | Raised by | Notes |
 | --- | --- | --- |
-| Expressions or tracks that read another channel (drivers, signals, point binding) | Moon, Packet, Vectors, Clockwork, Counter, MotionScript→Motion, Blue, Circle | The most frequent theme. Blue identifies it and prefers sampling the runtime in the generator first. Circle has three couplings: rolling, rays on a morphing outline, spokes inside a growing hub. |
+| Expressions or tracks that read another channel (drivers, signals, point binding) | Moon, Packet, Vectors, Clockwork, Counter, MotionScript→Motion, Blue, Circle, Marble | The most frequent theme. Blue identifies it and prefers sampling the runtime in the generator first. Circle has three couplings: rolling, rays on a morphing outline, spokes inside a growing hub. |
 | Reserved keywords used as ids, with unhelpful diagnostics | Moon (`left`, `right`), Packet (`cap`), Clockwork (`path`, `overlay`, `center`), Copperleaf (`step`), MotionScript→Motion (`cap`), Circle (a `step` target without `.visible`) | Diagnostic fix, no language change. Circle's case is not a keyword: the message does not say to append `.visible`. |
 | Drawable instances or parameterised symbols | Packet, Vectors, Clockwork, Counter, MotionScript→Motion | Instances are stored and not drawn today. Blue and Copperleaf caution that one film is not enough evidence. |
 | Animated colour (fill, and stroke) | Moon, Packet (stroke), Vectors, Counter, MotionScript→Motion, Small Ideas (stroke width and colour) | `paint.animatedSolidFill` is drafted in `pending.md`; it excludes stroke. Small Ideas fakes a weight change with a duplicate wider stroke. |
-| Camera fit or aim | Moon, Packet, Clockwork, MotionScript→Motion, Small Ideas, Circle | Blue suggests first measuring a vec2 spatial camera track against dense keys. Small Ideas computes its framings from bounds in the builder. Circle's follow camera is 16 sampled keys and was found too loose only in a still. |
-| Keyframe time in seconds, or named times | Packet, Vectors, Counter, MotionScript→Motion, Small Ideas | Copperleaf recommends against for its own case: hold-per-step keeps its pixel grid. |
+| Camera fit or aim | Moon, Packet, Clockwork, MotionScript→Motion, Small Ideas, Circle, Marble | Blue suggests first measuring a vec2 spatial camera track against dense keys. Small Ideas computes its framings from bounds in the builder. Circle's follow camera is 16 sampled keys and was found too loose only in a still. |
+| Keyframe time in seconds, or named times | Packet, Vectors, Counter, MotionScript→Motion, Small Ideas, Marble | Copperleaf recommends against for its own case: hold-per-step keeps its pixel grid. |
 | Text that changes, wraps or can be measured | Packet, Vectors, Counter, MotionScript→Motion, Small Ideas (per-glyph nodes, outlines and advances) | `text.animators` is pending. Small Ideas draws its own 17-glyph stroked face because a `text` node cannot be split into letters. |
 | Two writers on one channel (event over state, additive) | Packet, Blue, MotionScript→Motion | Blue asks only for a diagnostic hint that nested groups multiply. |
 | Labels that stay a constant pixel size on a world point | Moon, Packet, Clockwork | |
 | Dash pattern on a stroke | Packet, Vectors, Clockwork | |
-| Masks, mattes or clipping | Moon, Circle | Blue says its frond does not need one. Circle hides the sun behind the horizon with a background-coloured plate. `compositing.mask` and `.matte` are pending. |
-| Progress along a path, or end markers | Packet, Vectors, MotionScript→Motion | Relates to pending `transform.autoOrient`. |
+| Masks, mattes or clipping | Moon, Circle, Marble | Blue says its frond does not need one. Circle hides the sun behind the horizon with a background-coloured plate. `compositing.mask` and `.matte` are pending. |
+| Progress along a path, or end markers | Packet, Vectors, MotionScript→Motion, Marble | Relates to pending `transform.autoOrient`. |
 | Node, duration, step and source budgets | Packet, Clockwork, Copperleaf, MotionScript→Motion, Crane | Duration resolved by `1f1e3de`. Copperleaf asks for a profile of the 500-node cap before any change. Crane is 3.7× the 512 KiB source budget, which the compiler does not enforce, and uses 676 of 1,000 steps. |
 | Diagnostics that cascade after a rolled-back unit | Copperleaf, MotionScript→Motion | Diagnostic fix. |
-| Audio or cue markers | Every story notes the absence | Moon and MotionScript→Motion suggest metadata cues; Vectors a clocked event channel later; Copperleaf and Blue recommend not adding audio. |
-| Shared builder tooling (runtime sampling, real-viewport preview, shared helpers) | Blue, Clockwork, MotionScript→Motion, Crane, Small Ideas, Circle | Tooling, no language change. Crane's builder checked the model, not the drawn mark, and missed that the mark was never drawn. Small Ideas' seams and a mid-move framing error showed only in real `CanvasRenderer` stills or an interval sweep, not in checks at named times. Circle adds a loop-boundary check and a stroke-aware on-screen check. |
+| Audio or cue markers | Every story notes the absence, including Marble | Moon and MotionScript→Motion suggest metadata cues; Vectors a clocked event channel later; Copperleaf and Blue recommend not adding audio. |
+| Shared builder tooling (runtime sampling, real-viewport preview, shared helpers) | Blue, Clockwork, MotionScript→Motion, Crane, Small Ideas, Circle, Marble | Tooling, no language change. Crane's builder checked the model, not the drawn mark, and missed that the mark was never drawn. Small Ideas' seams and a mid-move framing error showed only in real `CanvasRenderer` stills or an interval sweep, not in checks at named times. Circle adds a loop-boundary check and a stroke-aware on-screen check. |
 | Dynamic paint order | Counter, Crane | `zIndex` is static. Crane duplicates every face into two paint-order banks. |
 | 3D-ish subjects: two-sided panels, hinge rotations | Crane | Two-sided paint by matrix determinant is the smallest step; hinge transforms need a design decision. |
 | Compiler performance on long generated programs | Crane | Per-unit `structuredClone` plus full validation is quadratic; the 1.9 MB crane takes about 60–90s to compile. |
@@ -81,3 +84,4 @@ Create `docs/authoring/stories/<playground-id>/` with the three files above. Sto
 - 1.1: Added the crane brief and a review-based proposal; added the paint-order, 3D-panel and compiler-performance themes.
 - 1.2: Added Small Ideas, Enormous Change (brief, program record and proposal); added it to the animated-colour, camera, seconds, text and tooling themes; added the seams theme.
 - 1.3: Added A Circle in Motion; added it to the driver, diagnostic, camera, mask and tooling themes; added the stroke-width (also raised by Small Ideas), seamless-loop and morph-topology themes.
+- 1.4: Added The Marble Machine, its generated program record, evaluated-output checks and real CanvasRenderer evidence; added recurrence to driver, camera, named-time, mask, path-progress, audio and shared-tooling themes. The proposal records remaining schematic contacts and base-reproduced check failures.
