@@ -57,6 +57,8 @@ The builder creates previews only when `GVR_PREVIEW_DIR` is set. No SVG approxim
 - `npx vitest run`: **FAIL**, 201 passed / 1 failed across 26 files, both on this revision and base `7f1e95b`. `packages/schema/src/validate.test.ts` expects `fixtures/ir/invalid/duration-limit.json` to be rejected, but receives no diagnostic. [Current](checks/vitest.txt), [base](checks/base-vitest.txt). This task does not change limits or repair that base fixture.
 - Builder runtime checks, compile/validation and `npm run build -w @gvr/playground`: **PASS**. The production bundle reports the existing large-chunk advisory; no bundle-size comparison with base was measured. [Builder](checks/builder.txt), [playground](checks/playground-build.txt).
 
+After merging concurrent `work` additions at `9182a01`, typecheck again produced the same base diagnostics, Vitest again reported 201 passed / 1 failed, and the playground build passed. The merge retained both other story catalogs and advanced the unified index to revision 1.6. [Merged typecheck](checks/merged-typecheck.txt), [merged Vitest](checks/merged-vitest.txt), [merged playground build](checks/merged-playground-build.txt). A staged whitespace check flagged only incoming historical briefs, generated source and test-log whitespace; those concurrent artifacts were preserved.
+
 ## 2. Hardest and most error-prone aspects
 
 Ranked by observed correctness risk and implementation rework, not measured task minutes:
