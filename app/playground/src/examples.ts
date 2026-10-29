@@ -75,7 +75,10 @@ export interface SourceExample {
   source: string;
 }
 
+import fourWorldsSource from "../../../fixtures/motionscript/stories/one-ball-four-worlds.ms?raw";
+
 export const motionExamples: MotionExample[] = [
+  { id: "one-ball-four-worlds", label: "One Ball, Four Worlds", caption: "One vivid red ball carries its momentum across graphite, layered paper, pixels and a glowing neon valley.", source: fourWorldsSource },
   { id: "from-blueprint-to-home", label: "From Blueprint to Home", caption: "An anchored blueprint rises into a house, then opens to reveal four furnished rooms.", source: homeSource },
   { id: "through-the-mountain", label: "Through the Mountain", caption: "A red locomotive and three cream carriages cross warm fields, pass through a mountain tunnel, and emerge into a snowy blue valley.", source: mountainSource },
   { id: "two-ways-through-a-binary-tree", label: "Two Ways Through a Binary Tree", caption: "BFS visits each level while preorder DFS explores and returns, with a live queue, call stack and separate visit orders.", source: binaryTreeSource },
