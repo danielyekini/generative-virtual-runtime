@@ -20,9 +20,15 @@ import clockworkSource from "../../../fixtures/motionscript/stories/clockwork.ms
 import copperleafSource from "../../../fixtures/motionscript/stories/copperleaf-run.ms?raw";
 import counterSource from "../../../fixtures/motionscript/stories/counter.ms?raw";
 import motionToMotionSource from "../../../fixtures/motionscript/stories/motionscript-to-motion.ms?raw";
+import orderBookSource from "../../../fixtures/motionscript/stories/inside-an-order-book.ms?raw";
 import packetJourneySource from "../../../fixtures/motionscript/stories/packet-journey.ms?raw";
 import craneSource from "../../../fixtures/motionscript/stories/a-crane-then-a-square.ms?raw";
 import blueSource from "../../../fixtures/motionscript/stories/through-the-blue.ms?raw";
+import mountainSource from "../../../fixtures/motionscript/stories/through-the-mountain.ms?raw";
+import circleSource from "../../../fixtures/motionscript/stories/a-circle-in-motion.ms?raw";
+import homeSource from "../../../fixtures/motionscript/stories/from-blueprint-to-home.ms?raw";
+import binaryTreeSource from "../../../fixtures/motionscript/stories/two-ways-through-a-binary-tree.ms?raw";
+import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
 import squareWaveSource from "../../../fixtures/motionscript/stories/square-wave-from-sine-waves.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
@@ -71,7 +77,11 @@ export interface SourceExample {
 }
 
 export const motionExamples: MotionExample[] = [
+  { id: "from-blueprint-to-home", label: "From Blueprint to Home", caption: "An anchored blueprint rises into a house, then opens to reveal four furnished rooms.", source: homeSource },
+  { id: "through-the-mountain", label: "Through the Mountain", caption: "A red locomotive and three cream carriages cross warm fields, pass through a mountain tunnel, and emerge into a snowy blue valley.", source: mountainSource },
+  { id: "two-ways-through-a-binary-tree", label: "Two Ways Through a Binary Tree", caption: "BFS visits each level while preorder DFS explores and returns, with a live queue, call stack and separate visit orders.", source: binaryTreeSource },
   { id: "motionscript-to-motion", label: "From MotionScript to Motion", caption: "A thirty-second pipeline plate. One circle goes from description to compiled scene, evaluated state, and pixels.", source: motionToMotionSource },
+  { id: "inside-an-order-book", label: "Inside an Order Book", caption: "Price–time priority turns resting orders into four executions, a cancellation, and a narrower spread.", source: orderBookSource },
   { id: "a-crane-then-a-square", label: "A Crane, Then a Square", caption: "A thirty-five-second crane fold. The sheet opens again and keeps the crease.", source: craneSource },
   { id: "into-the-moons-shadow", label: "Into the Moon’s Shadow", caption: "A forty-second eclipse plate. One moon path drives the orbit and the observer’s sky.", source: eclipseSource },
   { id: "square-wave-from-sine-waves", label: "Building a Square Wave from Sine Waves", caption: "Sixteen odd sine harmonics, added one at a time, approach a square wave and keep their Gibbs overshoot.", source: squareWaveSource },
@@ -81,6 +91,8 @@ export const motionExamples: MotionExample[] = [
   { id: "copperleaf", label: "Copperleaf Run", caption: "Pip runs a woodland ruin, clears a beetle, and keeps going into the cavern.", source: copperleafSource },
   { id: "packet-journey", label: "Packet Journey", caption: "A message splits into five packets. One is lost, retransmitted, and the receiver rebuilds the line.", source: packetJourneySource },
   { id: "through-the-blue", label: "Through the Blue", caption: "A jellyfish crosses a moonlit reef, slips behind the rock, and hangs in the glow.", source: blueSource },
+  { id: "a-circle-in-motion", label: "A Circle in Motion", caption: "One black outline falls as a drop and becomes a ripple, a clock, a bicycle wheel and a rising sun before falling again.", source: circleSource },
+  { id: "small-ideas-enormous-change", label: "Small Ideas, Enormous Change", caption: "A twenty-second typographic plate. One sentence resolves word by word into three lines, with scale on enormous and vermilion on change.", source: smallIdeasSource },
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },

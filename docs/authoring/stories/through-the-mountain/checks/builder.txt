@@ -1,0 +1,15 @@
+Runtime beat checks passed; 29 preview moments; 0.1s train framing sweeps.
+{
+  "sourceBytes": 162242,
+  "maxSourceBytes": 524288,
+  "nodes": 465,
+  "maxNodes": 500,
+  "tracks": 118,
+  "maxTracks": 1000,
+  "steps": 17,
+  "maxSteps": 1000,
+  "compileMs": 3313.810646,
+  "builderMsBeforePreviews": 18448.087061
+}
+Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)
+CanvasRenderer stills: /workspace/generative-visual-runtime/docs/authoring/stories/through-the-mountain/stills
