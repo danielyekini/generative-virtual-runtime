@@ -1,0 +1,18 @@
+{"maxJoinError":0.7067093491200276,"crossings":1}
+{
+  "maxJoinError": 0.7067093491200276,
+  "crossings": 1,
+  "sourceBytes": 481150,
+  "maxSourceBytes": 524288,
+  "nodes": 151,
+  "maxNodes": 500,
+  "tracks": 241,
+  "maxTracks": 1000,
+  "steps": 0,
+  "maxSteps": 1000,
+  "compileMs": 3070.279574,
+  "builderMsBeforePreviews": 6638.697064
+}
+Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)
+CanvasRenderer stills: /workspace/generative-visual-runtime/work/threads-into-motion
+builder total ms 10366.75
