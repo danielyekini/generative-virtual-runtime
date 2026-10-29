@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-29",
+  "implementationCommit": "5901cf775654aaffd682acd15793f4ae2397cbef",
+  "baseCommit": "7f1e95b276d3ac9d459d45297d95dfae588a77fa",
+  "metrics": {
+    "maxJoinError": 0.7067093491200276,
+    "crossings": 1,
+    "sourceBytes": 481150,
+    "maxSourceBytes": 524288,
+    "nodes": 151,
+    "maxNodes": 500,
+    "tracks": 241,
+    "maxTracks": 1000,
+    "steps": 0,
+    "maxSteps": 1000,
+    "compileMs": 3070.279574,
+    "builderMsBeforePreviews": 6638.697064
+  },
+  "builderTotalIncludingCapturesMs": 10366.75,
+  "observations": "Single invocation, not a benchmark distribution; PNG inspection at 35 times plus geometry sweep at 10 Hz; partial brief fidelity.",
+  "renderer": "CanvasRenderer, esbuild bundle, Chromium CDP Page.captureScreenshot",
+  "browser": "Chromium 151.0.7922.173 (Debian GNU/Linux 13)",
+  "viewport": [
+    1280,
+    720
+  ],
+  "devicePixelRatio": 1,
+  "checks": {
+    "builder": "PASS",
+    "compileDiagnostics": 0,
+    "sceneValidation": "PASS",
+    "typecheck": "FAIL: same 12 error lines as base",
+    "vitest": "FAIL: 201 passed, duration-limit manifest mismatch also on base",
+    "randomSeeks": "PASS",
+    "sourceBudget": "PASS"
+  },
+  "captures": [
+    {
+      "seconds": 0.0,
+      "file": "f0.00.png",
+      "pngSha256": "8f80e1fd667d7b605140f2229edeb4b60642f16812581e1818249228aaff5708"
+    },
+    {
+      "seconds": 1.5,
+      "file": "f1.50.png",
+      "pngSha256": "7adcbf84d6a32c086395acc0c437548baaad28650f224f06217f60bdeb6120fd"
+    },
+    {
+      "seconds": 3.0,
+      "file": "f3.00.png",
+      "pngSha256": "64bc009eec6ac184e6e7c1008580a0172b638bed32dbdcee2cf718b4c6d8f009"
+    },
+    {
+      "seconds": 4.0,
+      "file": "f4.00.png",
+      "pngSha256": "44c080b3733f481cea2279d15e32aa7c0706b4c775dc9def7e7633cf89e4b224"
+    },
+    {
+      "seconds": 5.0,
+      "file": "f5.00.png",
+      "pngSha256": "f5170929b9488ae59efd908074c69c33049e374ebdf0993da8380c6a6bc4fe8e"
+    },
+    {
+      "seconds": 6.0,
+      "file": "f6.00.png",
+      "pngSha256": "aaecba9404ce2ab0ed3bddbcc38051a8d2cf6fa649832e41b8b68daac0073c92"
+    },
+    {
+      "seconds": 7.0,
+      "file": "f7.00.png",
+      "pngSha256": "2d9e0355dad949307dbd90153a9712b7f22f6c73c5a42ad95dd20c4b38d720b9"
+    },
+    {
+      "seconds": 7.5,
+      "file": "f7.50.png",
+      "pngSha256": "2d9e0355dad949307dbd90153a9712b7f22f6c73c5a42ad95dd20c4b38d720b9"
+    },
+    {
+      "seconds": 8.0,
+      "file": "f8.00.png",
+      "pngSha256": "6de65ca3ef2d6e8a0e956d35ae21d16023c699017e75eacd99d9f310bf0db452"
+    },
+    {
+      "seconds": 9.0,
+      "file": "f9.00.png",
+      "pngSha256": "1fc99174d2f1cba0c6ea2e509c2d2330e3b172964831b27edefa86bd1ce90e6d"
+    },
+    {
+      "seconds": 10.0,
+      "file": "f10.00.png",
+      "pngSha256": "fb244330d6a1853f25957b703e728b2be3eb906299d1e4270c7e004fe0afaa02"
+    },
+    {
+      "seconds": 10.6,
+      "file": "f10.60.png",
+      "pngSha256": "77dcca722513eab63ec348edcbdc9e4b81a919e289d9c74167c98a9761643d99"
+    },
+    {
+      "seconds": 11.0,
+      "file": "f11.00.png",
+      "pngSha256": "5645f9e8f37056dd0ac92e0c1fa2e4e7abc251cc8e4ad9d81cbb91e3100f4339"
+    },
+    {
+      "seconds": 12.0,
+      "file": "f12.00.png",
+      "pngSha256": "ca3688a56bc59c427f5cd6007b3f1df7066cef95d2e5e2480cec11575f91cb40"
+    },
+    {
+      "seconds": 13.0,
+      "file": "f13.00.png",
+      "pngSha256": "31bcfd948d6d45fac8210d47a166bab9632d1519cea2a813f42e939dbd23ba7b"
+    },
+    {
+      "seconds": 14.5,
+      "file": "f14.50.png",
+      "pngSha256": "0550fb0a3826348c41b265a09b88b0b5e6fa0a92ad00125d987c10de299a90e2"
+    },
+    {
+      "seconds": 16.0,
+      "file": "f16.00.png",
+      "pngSha256": "3e47aacd285eeae2bafd18490fa12216750824eae2521120dec3e8400095fb41"
+    },
+    {
+      "seconds": 16.8,
+      "file": "f16.80.png",
+      "pngSha256": "76c38e21f82a231081371151be541d14aacf157779fc5d9b2e0086afa2a1e93b"
+    },
+    {
+      "seconds": 18.0,
+      "file": "f18.00.png",
+      "pngSha256": "473276988d731f1282ff1b721551c17317fd12bb35e0bce8331799f2975f878b"
+    },
+    {
+      "seconds": 19.0,
+      "file": "f19.00.png",
+      "pngSha256": "887560cb6a6d2b77b0eca220493335ceafbfaea4e86dc99b2a09485158b92b3b"
+    },
+    {
+      "seconds": 19.5,
+      "file": "f19.50.png",
+      "pngSha256": "7b887a455c449558e0c3e4eca3a32722839452235b43fb8cf199953150b93e62"
+    },
+    {
+      "seconds": 20.0,
+      "file": "f20.00.png",
+      "pngSha256": "519617c94cc288e59abdb25f554a3011fa2a0ce15ed376939d3709193bf7b1b2"
+    },
+    {
+      "seconds": 20.5,
+      "file": "f20.50.png",
+      "pngSha256": "513c722c5a8d6b2d39b75b843f5e9896801a01a456e2da94aaebe01e6ef14b61"
+    },
+    {
+      "seconds": 21.0,
+      "file": "f21.00.png",
+      "pngSha256": "890dd0869bbcc0ee5b13f719de4f2581c61cf42f8b7ef56a6b13ba05d189123c"
+    },
+    {
+      "seconds": 22.0,
+      "file": "f22.00.png",
+      "pngSha256": "fac03337241c31cb1110ea6dc8c14553bb2cdc0f9e36af3832af8fdf63e3957c"
+    },
+    {
+      "seconds": 23.0,
+      "file": "f23.00.png",
+      "pngSha256": "523be8079e14909093f9e7459a61137b85ed2b46a0508f41f9c07a571b82b04e"
+    },
+    {
+      "seconds": 24.0,
+      "file": "f24.00.png",
+      "pngSha256": "50111f355f91273d865b0e8870f5b9fedd734a27b9205e49fe3e39f4046f52af"
+    },
+    {
+      "seconds": 24.5,
+      "file": "f24.50.png",
+      "pngSha256": "c50efae5a91f0daef97f200c12e00301c6365f7909d158ecea6494464bc5a3ad"
+    },
+    {
+      "seconds": 25.0,
+      "file": "f25.00.png",
+      "pngSha256": "588126d9cef397da6c946667ce813cd23dbcb74021fcd2cfb16d8cdfdfad0d3b"
+    },
+    {
+      "seconds": 25.6,
+      "file": "f25.60.png",
+      "pngSha256": "548ded430e3e6d9f8e46d99659caf15240ac06e398f3da7d56e67a647e032145"
+    },
+    {
+      "seconds": 26.5,
+      "file": "f26.50.png",
+      "pngSha256": "4064bcbe6d02d4b7168caee946fd280cd27b366a4bfa61f06216e74031a58cb6"
+    },
+    {
+      "seconds": 27.8,
+      "file": "f27.80.png",
+      "pngSha256": "dbdcebe6018e428d6de574110a2fa95311983a814b1d161bd5b3bd378ec31daa"
+    },
+    {
+      "seconds": 28.4,
+      "file": "f28.40.png",
+      "pngSha256": "1ccb03adc791a8c781a4193bf6e95ff0b27189350785f4260d26db98ccbe960c"
+    },
+    {
+      "seconds": 29.0,
+      "file": "f29.00.png",
+      "pngSha256": "0ee6451a8f20c40366c6609efb1f9afc2229face4669771d2c83147b17b7a723"
+    },
+    {
+      "seconds": 30.0,
+      "file": "f30.00.png",
+      "pngSha256": "e1b09caf2d33a908f45c12dda98025c422dd38b14ef06aa7e9ec34540fcbd7f8"
+    }
+  ]
+}
