@@ -1,6 +1,6 @@
 # Story plates: briefs, programs and language proposals
 
-Status: living index, revision 1.4, 2026-10-29.
+Status: living index, revision 1.5, 2026-10-29.
 
 Each story plate in [`fixtures/motionscript/stories/`](../../../fixtures/motionscript/stories/) began as a direction script or prompt. It was implemented as a TypeScript builder that emits a `.ms` program, and the implementation was followed by a retrospective that suggested changes to MotionScript and GVR. This folder keeps those three things together, one folder per story.
 
@@ -26,6 +26,7 @@ Some proposals describe limits that have since changed. The default duration bud
 
 | Story | Duration | Brief | Proposal |
 | --- | --- | --- | --- |
+| [Inside an Order Book](inside-an-order-book/) | 35s | Direction script | Yes |
 | [Two Ways Through a Binary Tree](two-ways-through-a-binary-tree/) | 30s | Direction script | Yes |
 | [From MotionScript to Motion](motionscript-to-motion/) | 30s | Direction script | Yes |
 | [Into the Moon’s Shadow](into-the-moons-shadow/) | 40s | Direction script | Yes |
@@ -50,17 +51,17 @@ Some proposals describe limits that have since changed. The default duration bud
 | Drawable instances or parameterised symbols | Packet, Vectors, Clockwork, Counter, MotionScript→Motion, Binary Tree | Instances are stored and not drawn today. Blue and Copperleaf caution that one film is not enough evidence. |
 | Animated colour (fill, and stroke) | Moon, Packet (stroke), Vectors, Counter, MotionScript→Motion, Small Ideas (stroke width and colour), Binary Tree | `paint.animatedSolidFill` is drafted in `pending.md`; it excludes stroke. Small Ideas fakes a weight change with a duplicate wider stroke. |
 | Camera fit or aim | Moon, Packet, Clockwork, MotionScript→Motion, Small Ideas, Circle | Blue suggests first measuring a vec2 spatial camera track against dense keys. Small Ideas computes its framings from bounds in the builder. Circle's follow camera is 16 sampled keys and was found too loose only in a still. |
-| Keyframe time in seconds, or named times | Packet, Vectors, Counter, MotionScript→Motion, Small Ideas, Binary Tree | Copperleaf recommends against for its own case: hold-per-step keeps its pixel grid. |
+| Keyframe time in seconds, or named times | Packet, Vectors, Counter, MotionScript→Motion, Small Ideas, Binary Tree, Order Book | Copperleaf recommends against for its own case: hold-per-step keeps its pixel grid. |
 | Text that changes, wraps or can be measured | Packet, Vectors, Counter, MotionScript→Motion, Small Ideas (per-glyph nodes, outlines and advances) | `text.animators` is pending. Small Ideas draws its own 17-glyph stroked face because a `text` node cannot be split into letters. |
 | Two writers on one channel (event over state, additive) | Packet, Blue, MotionScript→Motion | Blue asks only for a diagnostic hint that nested groups multiply. |
 | Labels that stay a constant pixel size on a world point | Moon, Packet, Clockwork | |
 | Dash pattern on a stroke | Packet, Vectors, Clockwork | |
 | Masks, mattes or clipping | Moon, Circle | Blue says its frond does not need one. Circle hides the sun behind the horizon with a background-coloured plate. `compositing.mask` and `.matte` are pending. |
 | Progress along a path, or end markers | Packet, Vectors, MotionScript→Motion, Binary Tree | Relates to pending `transform.autoOrient`. |
-| Node, duration, step and source budgets | Packet, Clockwork, Copperleaf, MotionScript→Motion, Crane, Binary Tree | Duration resolved by `1f1e3de`. Copperleaf asks for a profile of the 500-node cap before any change. Crane is 3.7× the 512 KiB source budget, which the compiler does not enforce, and uses 676 of 1,000 steps. |
+| Node, duration, step and source budgets | Packet, Clockwork, Copperleaf, MotionScript→Motion, Crane, Binary Tree, Order Book | Duration resolved by `1f1e3de`. Copperleaf asks for a profile of the 500-node cap before any change. Crane is 3.7× the 512 KiB source budget, which the compiler does not enforce, and uses 676 of 1,000 steps. |
 | Diagnostics that cascade after a rolled-back unit | Copperleaf, MotionScript→Motion | Diagnostic fix. |
-| Audio or cue markers | Every story notes the absence, including Binary Tree | Moon and MotionScript→Motion suggest metadata cues; Vectors a clocked event channel later; Copperleaf and Blue recommend not adding audio. |
-| Shared builder tooling (runtime sampling, real-viewport preview, shared helpers) | Blue, Clockwork, MotionScript→Motion, Crane, Small Ideas, Circle, Binary Tree | Tooling, no language change. Crane's builder checked the model, not the drawn mark, and missed that the mark was never drawn. Small Ideas' seams and a mid-move framing error showed only in real `CanvasRenderer` stills or an interval sweep, not in checks at named times. Circle adds a loop-boundary check and a stroke-aware on-screen check. |
+| Audio or cue markers | Every story notes the absence, including Binary Tree and Order Book | Moon and MotionScript→Motion suggest metadata cues; Vectors a clocked event channel later; Copperleaf and Blue recommend not adding audio. |
+| Shared builder tooling (runtime sampling, real-viewport preview, shared helpers) | Blue, Clockwork, MotionScript→Motion, Crane, Small Ideas, Circle, Binary Tree, Order Book | Tooling, no language change. Crane's builder checked the model, not the drawn mark, and missed that the mark was never drawn. Small Ideas' seams and a mid-move framing error showed only in real `CanvasRenderer` stills or an interval sweep, not in checks at named times. Circle adds a loop-boundary check and a stroke-aware on-screen check. |
 | Dynamic paint order | Counter, Crane | `zIndex` is static. Crane duplicates every face into two paint-order banks. |
 | 3D-ish subjects: two-sided panels, hinge rotations | Crane | Two-sided paint by matrix determinant is the smallest step; hinge transforms need a design decision. |
 | Compiler performance on long generated programs | Crane | Per-unit `structuredClone` plus full validation is quadratic; the 1.9 MB crane takes about 60–90s to compile. |
@@ -70,6 +71,11 @@ Some proposals describe limits that have since changed. The default duration bud
 | Seamless loops: segments that wrap past the end | Circle | A fall spans 28s → 1.5s; the boundary easing was derived by hand. Changes sampling rules, so it needs a design decision. |
 | One contour through many forms (morph topology, rotation) | Circle | All 15 keys of one path share a command sequence; a half turn cannot be a morph, so it borrows a group rotation. Rotation-aware morph needs a design decision. |
 | Coordinating algorithm state, return highlights and first-visit records | Binary Tree | Nine independent rendered-text checkpoints distinguish first visits from stack returns. Complete structure snapshots are an implementation choice; token reuse is an untested current-language alternative. |
+
+| Shared transforms and attached annotations | Order Book, Binary Tree (TOP marker) | Prefer parent/local-space coupling; a larger camera or component rewrite remains a hypothesis. |
+| Numeric text and duplicated states | Order Book, Binary Tree (structure snapshots) | Numeric formatting is distinct from pending per-character animators. Binary Tree first proposes reusing static letter tokens with existing tracks. |
+| Verification baselines and provenance | Order Book, Binary Tree | Retain actual Canvas evidence and hash-associated program/builder records; reproduce repository failures on the base. |
+| Generated repetition versus new execution models | Order Book, Binary Tree | Host builders already expand repetition. Test current constructs before adding syntax; loops/functions require an execution-model design decision. |
 
 Every proposal that mentions general loops or functions defers them: [AGENTS.md](../../../AGENTS.md) requires a design decision for a new execution model.
 
@@ -84,3 +90,4 @@ Create `docs/authoring/stories/<playground-id>/` with the three files above. Sto
 - 1.2: Added Small Ideas, Enormous Change (brief, program record and proposal); added it to the animated-colour, camera, seconds, text and tooling themes; added the seams theme.
 - 1.3: Added A Circle in Motion; added it to the driver, diagnostic, camera, mask and tooling themes; added the stroke-width (also raised by Small Ideas), seamless-loop and morph-topology themes.
 - 1.4: Added Two Ways Through a Binary Tree with measured budgets, base-failure checks and 37 real-renderer stills; added it to diagnostic, symbols, animated-colour, named-time, path-progress, budget, audio and tooling themes; added the algorithm-state coordination theme.
+- 1.5: Reconcile the concurrent Inside an Order Book addition on `work` with the existing main-branch story catalog; retain both playground presets and all records, add Order Book to timing, budget, audio and tooling themes, and preserve its shared-transform, text, provenance and execution-model observations here. Its independently created index revisions 1.0–1.1 remain in merge history; this unified index continues the main-branch revision sequence.

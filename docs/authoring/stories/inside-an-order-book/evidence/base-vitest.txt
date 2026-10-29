@@ -1,0 +1,66 @@
+
+ RUN  v2.1.9 /workspace/generative-visual-runtime/work/base-check
+
+ ✓ packages/format-lottie/src/lottie.test.ts (45 tests) 378ms
+ ✓ packages/runtime/src/runtime.test.ts (25 tests) 99ms
+ ✓ packages/compiler/src/compiler.test.ts (16 tests) 42ms
+ ✓ packages/motionscript-emitter/src/emit.test.ts (4 tests) 379ms
+ ✓ packages/schema/src/contract.test.ts (17 tests) 45ms
+ ✓ packages/canvas-renderer/src/renderer.test.ts (9 tests) 12ms
+ ✓ packages/format-import-core/src/import.test.ts (11 tests) 2006ms
+   ✓ import core > prints the same report from the CLI 1987ms
+ ✓ packages/runtime/src/presentation.test.ts (8 tests) 41ms
+ ✓ packages/schema/src/registry.test.ts (3 tests) 24ms
+ ✓ packages/format-svg/src/svg.test.ts (13 tests) 36ms
+ ✓ packages/compiler/src/incremental.test.ts (9 tests) 543ms
+   ✓ fragment boundaries > compiles a 0.2 program across fragment strategies and every split 345ms
+ ✓ packages/schema/src/capability-02.test.ts (3 tests) 8ms
+ ✓ packages/runtime/src/streaming.test.ts (3 tests) 27ms
+ ✓ packages/schema/src/path-morph.test.ts (2 tests) 9ms
+ ✓ packages/format-lottie/src/clip-keyframes.test.ts (4 tests) 16ms
+ ✓ packages/format-lottie/src/clip-spatial-keyframes.test.ts (3 tests) 241ms
+ ❯ packages/schema/src/validate.test.ts (4 tests | 1 failed) 535ms
+   × fixture harness > accepts the valid IR and rejects every required fault 14ms
+     → expected [ { …(2) } ] to deeply equal []
+   ✓ fixture harness > prints PASS and FAIL from the command line 519ms
+ ✓ packages/round-trip/src/verify.test.ts (4 tests) 21ms
+ ✓ packages/format-lottie/src/dataset.test.ts (1 test) 150ms
+ ✓ packages/format-import-core/src/dataset.test.ts (3 tests) 14ms
+ ✓ evaluation/harness/visual-gate.test.ts (4 tests) 120ms
+ ✓ evaluation/harness/profile.test.ts (2 tests) 8ms
+ ✓ packages/schema/src/spatial.test.ts (2 tests) 4ms
+ ✓ evaluation/harness/render-status.test.ts (3 tests) 3ms
+ ✓ packages/canvas-renderer/src/frames.test.ts (2 tests) 7ms
+ ✓ evaluation/harness/cdp.test.ts (2 tests) 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/schema/src/validate.test.ts > fixture harness > accepts the valid IR and rejects every required fault
+AssertionError: expected [ { …(2) } ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   Object {
++     "codes": Array [],
++     "file": "/workspace/generative-visual-runtime/work/base-check/fixtures/ir/invalid/duration-limit.json",
++   },
++ ]
+
+ ❯ packages/schema/src/validate.test.ts:14:82
+     12|     const results = checkManifest(resolve(repo, "fixtures/ir/manifest.…
+     13|     const failed = results.filter((result) => !result.matched);
+     14|     expect(failed.map((result) => ({ file: result.file, codes: result.…
+       |                                                                                  ^
+     15|   });
+     16| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 25 passed (26)
+      Tests  1 failed | 201 passed (202)
+   Start at  10:24:02
+   Duration  19.26s (transform 5.09s, setup 0ms, collect 8.22s, tests 4.77s, environment 5ms, prepare 1.80s)
+
