@@ -1,0 +1,18 @@
+vite v5.4.21 building for production...
+
+(!) outDir /workspace/generative-visual-runtime/work/streetlight-playground-dist is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+transforming...
+✓ 142 modules transformed.
+rendering chunks...
+computing gzip size...
+../../work/streetlight-playground-dist/index.html                     9.60 kB │ gzip:   2.19 kB
+../../work/streetlight-playground-dist/assets/index-CU-vklrA.css      9.52 kB │ gzip:   2.60 kB
+../../work/streetlight-playground-dist/assets/index-vyvvlcyh.js   4,319.53 kB │ gzip: 508.89 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.99s

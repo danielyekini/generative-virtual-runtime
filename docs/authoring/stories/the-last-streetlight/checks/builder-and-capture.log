@@ -1,0 +1,76 @@
+Runtime checks passed: all five beats; 30fps title bounds; 35 still moments.
+{
+  "sourceLines": 2087,
+  "sourceBytes": 143514,
+  "nodes": 246,
+  "tracks": 196,
+  "steps": 0,
+  "keyframeValues": 1529,
+  "compileMs": 2448.3268679999996,
+  "evaluationMsPerFrame": 19.355124946666674,
+  "builderMsBeforePreviews": 8601.77267,
+  "geometryItems": 5652,
+  "builderLines": 278,
+  "builderBytes": 30635,
+  "limits": {
+    "maxDurationMs": 60000,
+    "maxNodes": 500,
+    "maxDepth": 16,
+    "maxTracks": 1000,
+    "maxSteps": 1000,
+    "maxGeometryItems": 10000,
+    "maxExpressionDepth": 32,
+    "maxExpressionOps": 256,
+    "maxSourceBytes": 524288,
+    "maxBufferedUnitBytes": 131072,
+    "maxDeferredUnits": 100,
+    "maxQueuedDeltas": 256,
+    "maxTransportQueue": 256,
+    "startupBufferMs": 750,
+    "transitionCapMs": 250
+  },
+  "times": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    5.5,
+    5.8,
+    6,
+    7,
+    8,
+    8.5,
+    8.65,
+    9.5,
+    10,
+    10.7,
+    11.8,
+    12,
+    12.7,
+    13.5,
+    14.8,
+    15,
+    16,
+    17,
+    17.5,
+    17.65,
+    18,
+    18.15,
+    18.5,
+    19,
+    20,
+    21,
+    23,
+    24.5,
+    24.75,
+    25
+  ]
+}
+Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)
+Video frame 0/750
+Video frame 150/750
+Video frame 300/750
+Video frame 450/750
+Video frame 600/750
+CanvasRenderer stills: /workspace/generative-visual-runtime/docs/authoring/stories/the-last-streetlight/stills

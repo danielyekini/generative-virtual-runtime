@@ -1,0 +1,10 @@
+{
+  "implementationCommit": "c40420b03b353ceb625980e6008bbdd195c2eb96",
+  "baseCommit": "b7e8459b7f569862bb79325c309c33adc425de8d",
+  "artifacts": {
+    "player.html": "37832c021ef2b077cf918c544ce8bcce42da208c4c46466c4fb6046d264a7eef",
+    "checks/browser-smoke.json": "ff7103149cc024f2db0d5cf7213e5c6c998540ac907439f6f1a572dda59dfb75",
+    "stills/measurements.json": "4ff8f51de7330459a63ea55bcea9019ae3593643ad160639192d9908118f9c21",
+    "stills/unit-metrics.json": "40b59480b64cf06f322c6a3b51a3a05034c9e0c8d73f7949a8ab76339be2b745"
+  }
+}

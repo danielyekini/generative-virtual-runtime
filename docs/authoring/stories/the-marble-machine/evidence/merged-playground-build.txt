@@ -1,0 +1,18 @@
+vite v5.4.21 building for production...
+
+(!) outDir /workspace/generative-visual-runtime/work/merged-playground-build is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+transforming...
+✓ 140 modules transformed.
+rendering chunks...
+computing gzip size...
+../../work/merged-playground-build/index.html                     9.60 kB │ gzip:   2.20 kB
+../../work/merged-playground-build/assets/index-CU-vklrA.css      9.52 kB │ gzip:   2.60 kB
+../../work/merged-playground-build/assets/index-CgXq161-.js   3,694.50 kB │ gzip: 419.93 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.23s
