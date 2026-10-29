@@ -1,6 +1,6 @@
 # Story plates: briefs, programs and language proposals
 
-Status: living index, revision 1.0, 2026-10-29.
+Status: living index, revision 1.1, 2026-10-29.
 
 Each story plate in [`fixtures/motionscript/stories/`](../../../fixtures/motionscript/stories/) began as a direction script or prompt. It was implemented as a TypeScript builder that emits a `.ms` program, and the implementation was followed by a retrospective that suggested changes to MotionScript and GVR. This folder keeps those three things together, one folder per story.
 
@@ -16,7 +16,9 @@ Programs are not copied here. Each story README points at the fixture the playgr
 
 They are **retrospectives from one implementation each**, not proposals in the [language proposal template](../templates/language-proposal.md). None has been evaluated, adopted or released, and none changes the registry, a published version file or `pending.md`. Under the [evolution policy](../../languages/evolution-policy.md) they are recurrence evidence: a theme raised independently by several stories is stronger evidence than one raised once. Turning a theme into a real proposal means writing it up in the template, with conformance tests and a version note, before anything is claimed.
 
-The text was pasted from chat. Some tables were flattened into tab-separated lines and are kept as received. Claims about defects (for example the `sampleKeyframes` and `noteEase` findings in Adding Two Vectors) are as reported by that implementation and have not been re-verified here.
+The crane story's proposal is different: its implementation run was cut short, so it is a later review of the committed program, written by a different agent and based on re-running the builder, real-renderer stills and a compile profile.
+
+The other proposals' text was pasted from chat. Some tables were flattened into tab-separated lines and are kept as received. Claims about defects (for example the `sampleKeyframes` and `noteEase` findings in Adding Two Vectors) are as reported by that implementation and have not been re-verified here.
 
 Some proposals describe limits that have since changed. The default duration budget was raised from 30s to 60s in commit `1f1e3de`, which resolves the "35 seconds was illegal" findings in Packet Journey and Clockwork.
 
@@ -32,7 +34,7 @@ Some proposals describe limits that have since changed. The default duration bud
 | [Clockwork](clockwork/) | 35s | Prompt | Yes |
 | [Through the Blue](through-the-blue/) | 30s | Direction script | Yes |
 | [Counter](counter/) | 30s | Direction script | Yes |
-| [A Crane, Then a Square](a-crane-then-a-square/) | 35s | **Missing** | **Missing** |
+| [A Crane, Then a Square](a-crane-then-a-square/) | 35s | Direction script | Review of the unfinished program |
 
 ## Recurring themes
 
@@ -52,10 +54,13 @@ Some proposals describe limits that have since changed. The default duration bud
 | Dash pattern on a stroke | Packet, Vectors, Clockwork | |
 | Masks, mattes or clipping | Moon | Blue says its frond does not need one. `compositing.mask` and `.matte` are pending. |
 | Progress along a path, or end markers | Packet, Vectors, MotionScript→Motion | Relates to pending `transform.autoOrient`. |
-| Node and duration budgets | Packet, Clockwork, Copperleaf, MotionScript→Motion | Duration resolved by `1f1e3de`. Copperleaf asks for a profile of the 500-node cap before any change. |
+| Node, duration, step and source budgets | Packet, Clockwork, Copperleaf, MotionScript→Motion, Crane | Duration resolved by `1f1e3de`. Copperleaf asks for a profile of the 500-node cap before any change. Crane is 3.7× the 512 KiB source budget, which the compiler does not enforce, and uses 676 of 1,000 steps. |
 | Diagnostics that cascade after a rolled-back unit | Copperleaf, MotionScript→Motion | Diagnostic fix. |
 | Audio or cue markers | Every story notes the absence | Moon and MotionScript→Motion suggest metadata cues; Vectors a clocked event channel later; Copperleaf and Blue recommend not adding audio. |
-| Shared builder tooling (runtime sampling, real-viewport preview, shared helpers) | Blue, Clockwork, MotionScript→Motion | Tooling, no language change. |
+| Shared builder tooling (runtime sampling, real-viewport preview, shared helpers) | Blue, Clockwork, MotionScript→Motion, Crane | Tooling, no language change. Crane's builder checked the model, not the drawn mark, and missed that the mark was never drawn. |
+| Dynamic paint order | Counter, Crane | `zIndex` is static. Crane duplicates every face into two paint-order banks. |
+| 3D-ish subjects: two-sided panels, hinge rotations | Crane | Two-sided paint by matrix determinant is the smallest step; hinge transforms need a design decision. |
+| Compiler performance on long generated programs | Crane | Per-unit `structuredClone` plus full validation is quadratic; the 1.9 MB crane takes about 60–90s to compile. |
 | Cyclic angles and scale through zero | Counter, Clockwork (angles in expressions) | |
 
 Every proposal that mentions general loops or functions defers them: [AGENTS.md](../../../AGENTS.md) requires a design decision for a new execution model.
@@ -67,3 +72,4 @@ Create `docs/authoring/stories/<playground-id>/` with the three files above. Sto
 ## Change log
 
 - 1.0: Initial index of nine story plates. Briefs and proposals for eight; the crane story's are missing.
+- 1.1: Added the crane brief and a review-based proposal; added the paint-order, 3D-panel and compiler-performance themes.

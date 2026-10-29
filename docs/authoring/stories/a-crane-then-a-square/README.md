@@ -2,7 +2,10 @@
 
 Duration 35s. Playground preset id `a-crane-then-a-square`.
 
-Brief and proposal: **not yet supplied.** Add `brief.md` and `proposal.md` here when they are available.
+- [Brief](brief.md): the direction script, as supplied.
+- [Language proposal](proposal.md): a review of the committed program written by a different agent after the original run was cut short. Unevaluated; see the [index](../README.md#what-these-proposals-are).
+
+**State:** the program covers all 35 seconds and compiles, but is not finished. The crane section does not read as a crane, the ochre mark is missing at the start and end, and the 1.9 MB source takes about a minute to compile. See the proposal for details.
 
 ## Program
 
