@@ -1,0 +1,187 @@
+{
+  "version": "0.1.0",
+  "name": "generative-visual-runtime",
+  "dependencies": {
+    "@gvr/canvas-renderer": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/canvas-renderer",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/compiler": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/compiler",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/format-import-core": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/format-import-core",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/runtime": {
+          "version": "0.1.0"
+        },
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/format-lottie": {
+      "version": "0.1.5",
+      "resolved": "file:../../packages/format-lottie",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/compiler": {
+          "version": "0.1.0"
+        },
+        "@gvr/format-import-core": {
+          "version": "0.1.0"
+        },
+        "@gvr/motionscript-emitter": {
+          "version": "0.1.1"
+        },
+        "@gvr/round-trip": {
+          "version": "0.1.0"
+        },
+        "@gvr/runtime": {
+          "version": "0.1.0"
+        },
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/format-svg": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/format-svg",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/format-import-core": {
+          "version": "0.1.0"
+        },
+        "@gvr/round-trip": {
+          "version": "0.1.0"
+        },
+        "@gvr/runtime": {
+          "version": "0.1.0"
+        },
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/motionscript-emitter": {
+      "version": "0.1.1",
+      "resolved": "file:../../packages/motionscript-emitter",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/playground": {
+      "resolved": "file:../../app/playground",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/canvas-renderer": {
+          "version": "0.1.0"
+        },
+        "@gvr/compiler": {
+          "version": "0.1.0"
+        },
+        "@gvr/format-import-core": {
+          "version": "0.1.0"
+        },
+        "@gvr/format-lottie": {
+          "version": "0.1.5"
+        },
+        "@gvr/format-svg": {
+          "version": "0.1.0"
+        },
+        "@gvr/motionscript-emitter": {
+          "version": "0.1.1"
+        },
+        "@gvr/runtime": {
+          "version": "0.1.0"
+        },
+        "@gvr/schema": {
+          "version": "0.1.0"
+        },
+        "lottie-web": {
+          "version": "5.13.0",
+          "resolved": "https://registry.npmjs.org/lottie-web/-/lottie-web-5.13.0.tgz",
+          "overridden": false
+        },
+        "vite": {
+          "version": "6.4.4",
+          "resolved": "https://registry.npmjs.org/vite/-/vite-6.4.4.tgz",
+          "overridden": false
+        }
+      }
+    },
+    "@gvr/round-trip": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/round-trip",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/compiler": {
+          "version": "0.1.0"
+        },
+        "@gvr/motionscript-emitter": {
+          "version": "0.1.1"
+        },
+        "@gvr/runtime": {
+          "version": "0.1.0"
+        },
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/runtime": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/runtime",
+      "overridden": false,
+      "dependencies": {
+        "@gvr/schema": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "@gvr/schema": {
+      "version": "0.1.0",
+      "resolved": "file:../../packages/schema",
+      "overridden": false
+    },
+    "@types/node": {
+      "version": "22.20.5",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-22.20.5.tgz",
+      "overridden": false
+    },
+    "tsx": {
+      "version": "4.23.15",
+      "resolved": "https://registry.npmjs.org/tsx/-/tsx-4.23.15.tgz",
+      "overridden": false
+    },
+    "typescript": {
+      "version": "5.9.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+      "overridden": false
+    },
+    "vitest": {
+      "version": "2.1.9",
+      "resolved": "https://registry.npmjs.org/vitest/-/vitest-2.1.9.tgz",
+      "overridden": false
+    }
+  }
+}

@@ -802,4 +802,9 @@ it("converts trim offset degrees and discloses unverified trim modes", () => {
  if(operation?.op==='trim')expect(operation.offset).toBe(.25);
  expect(result.diagnostics.some(item=>item.feature==='tm' && item.fidelity==='approximated' && item.message.includes('Individual'))).toBe(true);
  expect(result.diagnostics.some(item=>item.feature==='tm' && item.fidelity==='approximated' && item.message.includes('wrapped tail'))).toBe(true);
+ trim.o={a:1,k:[{t:0,s:[0],i:{x:[.833],y:[.833]},o:{x:[.167],y:[.167]}},{t:30,s:[90]}]};
+ const animated=importSource(lottieAdapter,JSON.stringify(source),{sourceName:'animated-offset.json'});
+ const offsetTrack=animated.scene?.timeline.tracks.find(track=>track.kind==='keyframe' && track.target.kind==='node' && track.target.channel==='trim.offset');
+ expect(offsetTrack?.kind).toBe('keyframe');
+ if(offsetTrack?.kind==='keyframe')expect(offsetTrack.keyframes.at(-1)?.value).toBe(.25);
 });

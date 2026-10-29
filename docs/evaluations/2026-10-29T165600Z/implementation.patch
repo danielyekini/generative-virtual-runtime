@@ -1,0 +1,2528 @@
+diff --git a/README.md b/README.md
+index 6d17bce..02914ee 100644
+--- a/README.md
++++ b/README.md
+@@ -2,7 +2,7 @@
+ 
+ GVR is a portable animation stack: author in **MotionScript**, validate and sample **Scene IR**, then draw with a canvas renderer. Lottie and SVG importers lower into the same IR. A MotionScript emitter and round-trip verifier close the loop.
+ 
+-Current languages are **MotionScript 0.4.0** and **Scene IR 0.4.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
++Current languages are **MotionScript 0.5.0** and **Scene IR 0.5.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
+ 
+ **Support authority** is [`packages/schema/capabilities/registry.json`](packages/schema/capabilities/registry.json). Design notes such as [`packages/schema/CONTRACT.md`](packages/schema/CONTRACT.md) do not override it. Evaluation runs under [`docs/evaluations/`](docs/evaluations/README.md) measure one revision; they are not the specification.
+ 
+@@ -22,7 +22,7 @@ Studio: `http://localhost:5173`.
+ 
+ ## What is implemented
+ 
+-Thirty-two capabilities are in the published languages. Nineteen have supported coverage on every applicable target (compiler, runtime, renderer). Thirteen more are in the schema and partially wired; their registry rows are `untested` until conformance pins them. Seven further ids are pending language work (unsupported everywhere).
++The registry distinguishes released and supported capabilities, implemented but untested targets, and pending unsupported proposals. Support applies only to each row’s stated scope and conformance evidence; a rendered story does not certify a whole capability.
+ 
+ ### Scene and camera (0.1)
+ 
+@@ -40,8 +40,11 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
+ | `geometry.primitives` | 0.1 | Rectangle, circle, ellipse, line, polygon — supported end-to-end |
+ | `geometry.path` | 0.1 | Absolute move/line/quadratic/cubic/close — compile and sample supported; renderer untested |
+ | `geometry.roundedRect` | 0.2 | Corner radius on rectangles — schema present, untested |
+-| `geometry.operators` / `geometry.trimPath` | 0.2 | Trim and round operators on nodes — compile supported for operators; trim application untested |
+-| `geometry.spatialCurve` | 0.2 | Spatial in/out tangents on vec2 keys — Lottie exact; core targets untested |
++| `geometry.operators` / `geometry.trimPath` | 0.2 | Static trim supported, including contour breaks; round application remains untested |
++| `geometry.pathMorph` | 0.3 | Matching-topology path interpolation — supported within registry scope |
++| `paint.gradientStroke` | 0.4 | Static gradient strokes — supported within registry scope |
++| `geometry.animatedTrim` | 0.5 | Animated trim channels — supported; Lottie coverage is narrower |
++| `geometry.spatialCurve` | 0.2 | Spatial in/out tangents on vec2 keys — Compiler/runtime supported; Lottie exact within registry scope |
+ | `paint.linearGradient` / `paint.radialGradient` | 0.2 | Gradient fills with colour stops — schema present, untested |
+ | `resources.image` | 0.2 | Image nodes over declared resources — schema present, untested |
+ | `text.basic` | 0.1 | One line, builtin font, alignment, baseline — supported |
+@@ -69,7 +72,7 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
+ | `effects.blur` | Blur on a render scope — supported; Lottie static Gaussian blur exact |
+ | `effects.shadow` | Shadow on a render scope — schema present, untested |
+ | `render.tree` | Nested render scopes for compositing groups — runtime supported; renderer untested |
+-| `transform.parent` | Separate transform parent / opacity inheritance — untested |
++| `transform.parent` | Separate transform parent / opacity inheritance — compiler/runtime supported |
+ | `scene.migration` | 0.2 readers load 0.1 scenes with identical samples — supported |
+ 
+ ### Format adapters
+@@ -135,4 +138,10 @@ Static SVG keeps both panes and disables the player. Folder conversion is not co
+ 
+ ## Evaluations
+ 
+-Indexed at [`docs/evaluations/README.md`](docs/evaluations/README.md). Newest run: [2026-10-07T183125Z](docs/evaluations/2026-10-07T183125Z/report.md) (MotionScript/Scene IR 0.2). Historical baseline: [2026-10-07-baseline](docs/evaluations/2026-10-07-baseline/report.md). Do not edit published runs; do not widen tolerances to pass a comparison.
++Indexed at [`docs/evaluations/README.md`](docs/evaluations/README.md). The [foundation run](docs/evaluations/2026-10-29T165600Z/report.md) records correctness checks and performance measurements; it does not replace incomplete Lottie corpus certification. The latest prior fidelity run is [2026-10-09T115503Z](docs/evaluations/2026-10-09T115503Z/report.md). Published reports remain immutable.
++
++## Measurement and resource policy
++
++Run `npm run benchmark -- --out work/benchmark` for browser compile/frame/queue/resource measurements on three pinned stories. Use `npm run benchmark -- --out work/captures --correctness` for before/after renderer evidence. Enable Studio diagnostics with `?telemetry=1#studio`, then call `window.__gvrTelemetry()` for JSON-compatible results. See [metric definitions and limitations](docs/telemetry.md).
++
++Resource settings are provisional. The current decoded source ceiling is 4 MiB, enforced for full and incremental compilation and shared by import defaults. This accommodates the 1.93 MB Crane workload while retaining bounded rejection. Duration remains 60 seconds; scene/geometry/expression limits remain in [`limits.ts`](packages/schema/src/limits.ts). Larger acceptance does not establish smooth playback or promote historical quarantined fixtures.
+diff --git a/app/playground/src/activities/workspace.ts b/app/playground/src/activities/workspace.ts
+index c9d522b..f90adb4 100644
+--- a/app/playground/src/activities/workspace.ts
++++ b/app/playground/src/activities/workspace.ts
+@@ -1,3 +1,4 @@
++import { telemetry } from "../telemetry";
+ import { compileMotionScript, createIncrementalProgram, type IncrementalProgram } from "@gvr/compiler";
+ import {
+   ImportRegistry,
+@@ -129,8 +130,8 @@ export function createWorkspace(shell: Shell) {
+   let customImport = false;
+ 
+   let streamExample = motionExamples[0] ?? fail("no stream examples");
+-  let streamProgram: IncrementalProgram = createIncrementalProgram();
+-  let streamRuntime = new StreamingRuntime();
++  let streamProgram: IncrementalProgram = createIncrementalProgram(telemetry);
++  let streamRuntime = new StreamingRuntime(telemetry);
+   let streamCursor = 0;
+   let streamPhase: StreamPhase = "idle";
+   let streamDwellUntil = 0;
+@@ -181,8 +182,10 @@ export function createWorkspace(shell: Shell) {
+   function stopStream(): void {
+     streamPhase = "idle";
+     streamClock.stop();
+-    streamProgram = createIncrementalProgram();
+-    streamRuntime = new StreamingRuntime();
++    streamProgram.dispose();
++    streamRuntime.dispose();
++    streamProgram = createIncrementalProgram(telemetry);
++    streamRuntime = new StreamingRuntime(telemetry);
+     streamCursor = 0;
+     if (lane === "stream") lane = "script";
+   }
+@@ -238,11 +241,11 @@ export function createWorkspace(shell: Shell) {
+     compiledText = source;
+     compiledFormat = "motionscript";
+     formatId = "motionscript";
+-    const compiled = compileMotionScript(source);
++    const compiled = compileMotionScript(source, telemetry);
+     compileMessages = compiled.diagnostics.map((item) => item.message);
+     compileOk = compiled.ok;
+     sceneA = compiled.scene && validateSceneIR(compiled.scene).ok ? compiled.scene : undefined;
+-    runtimeA = sceneA ? new AnimationRuntime(sceneA) : undefined;
++    runtimeA = sceneA ? new AnimationRuntime(sceneA, telemetry) : undefined;
+     script = "";
+     sceneB = undefined;
+     runtimeB = undefined;
+@@ -251,14 +254,14 @@ export function createWorkspace(shell: Shell) {
+       roundTripNote = "The source did not produce a Scene IR, so nothing was emitted.";
+     } else {
+       script = emitMotionScript(sceneA);
+-      const again = compileMotionScript(script);
++      const again = compileMotionScript(script, telemetry);
+       if (!again.ok || !again.scene) {
+         failedStep = "irb";
+         roundTripNote = "The emitted MotionScript did not compile back into Scene IR.";
+         compileMessages = [...compileMessages, ...again.diagnostics.map((item) => item.message)];
+       } else {
+         sceneB = again.scene;
+-        runtimeB = new AnimationRuntime(sceneB);
++        runtimeB = new AnimationRuntime(sceneB, telemetry);
+         const mismatch = compareScenes(sceneA, sceneB);
+         if (mismatch) {
+           failedStep = "play";
+@@ -274,8 +277,8 @@ export function createWorkspace(shell: Shell) {
+   }
+ 
+   function compareScenes(left: SceneIR, right: SceneIR): string {
+-    const before = new AnimationRuntime(left);
+-    const after = new AnimationRuntime(right);
++    const before = new AnimationRuntime(left, telemetry);
++    const after = new AnimationRuntime(right, telemetry);
+     const times = [0, left.timeline.durationMs / 2, left.timeline.durationMs];
+     for (const time of times) {
+       const mismatch = sameItems(before.evaluate(time).drawItems, after.evaluate(time).drawItems);
+@@ -315,7 +318,7 @@ export function createWorkspace(shell: Shell) {
+       return;
+     }
+     importScript = emitMotionScript(imported.scene);
+-    const again = compileMotionScript(importScript);
++    const again = compileMotionScript(importScript, telemetry);
+     importSceneB = again.ok ? again.scene : undefined;
+     importCompileOk = again.ok;
+     importCompileDiagnostics = again.diagnostics.map((item) => `${item.code}\t${item.message}`).join("\n");
+@@ -340,8 +343,8 @@ export function createWorkspace(shell: Shell) {
+         importCompileOk = false;
+         importCompileDiagnostics = "Import produced no Scene IR.";
+       }
+-      importRuntimeA = shown ? new AnimationRuntime(shown) : undefined;
+-      importRuntimeB = importSceneB ? new AnimationRuntime(importSceneB) : undefined;
++      importRuntimeA = shown ? new AnimationRuntime(shown, telemetry) : undefined;
++      importRuntimeB = importSceneB ? new AnimationRuntime(importSceneB, telemetry) : undefined;
+     }
+     displayedSceneId = shown?.sceneId ?? "";
+     frameMs = formatId === "lottie" ? readFrameMs(text) : 1000 / 30;
+@@ -449,8 +452,10 @@ export function createWorkspace(shell: Shell) {
+     }
+     lane = "stream";
+     playClock.pause();
+-    streamProgram = createIncrementalProgram();
+-    streamRuntime = new StreamingRuntime();
++    streamProgram.dispose();
++    streamRuntime.dispose();
++    streamProgram = createIncrementalProgram(telemetry);
++    streamRuntime = new StreamingRuntime(telemetry);
+     streamCursor = 0;
+     streamPhase = "setup";
+     streamClock.stop();
+diff --git a/app/playground/src/shell.ts b/app/playground/src/shell.ts
+index a6a5d93..684f29a 100644
+--- a/app/playground/src/shell.ts
++++ b/app/playground/src/shell.ts
+@@ -1,3 +1,4 @@
++import { telemetry } from "./telemetry";
+ import { CanvasRenderer } from "@gvr/canvas-renderer";
+ import type { ResolvedFrame } from "@gvr/schema";
+ import { clearCanvas } from "./describe";
+@@ -83,11 +84,11 @@ export class Shell {
+     generated: must<HTMLCanvasElement>("view-generated"),
+   };
+   readonly renderers = {
+-    single: new CanvasRenderer(this.canvases.single),
+-    a: new CanvasRenderer(this.canvases.a),
+-    b: new CanvasRenderer(this.canvases.b),
+-    system: new CanvasRenderer(this.canvases.system),
+-    generated: new CanvasRenderer(this.canvases.generated),
++    single: new CanvasRenderer(this.canvases.single, telemetry),
++    a: new CanvasRenderer(this.canvases.a, telemetry),
++    b: new CanvasRenderer(this.canvases.b, telemetry),
++    system: new CanvasRenderer(this.canvases.system, telemetry),
++    generated: new CanvasRenderer(this.canvases.generated, telemetry),
+   };
+ 
+   private readonly status = must<HTMLElement>("status");
+diff --git a/app/playground/src/studio.ts b/app/playground/src/studio.ts
+index 8f5fb6b..aa94da8 100644
+--- a/app/playground/src/studio.ts
++++ b/app/playground/src/studio.ts
+@@ -1,3 +1,4 @@
++import { frameTelemetry } from "./telemetry";
+ import { createStage } from "./activities/stage";
+ import { createWorkspace } from "./activities/workspace";
+ import type { GvrBridge } from "./bridge";
+@@ -93,9 +94,8 @@ show(readLocation());
+ requestAnimationFrame(function loop(now: number) {
+   const delta = Math.min(100, now - lastWall);
+   lastWall = now;
+-  active.tick(now, delta);
+-  active.draw();
+-  publish();
++  const work = () => { active.tick(now, delta); active.draw(); publish(); };
++  if (frameTelemetry) frameTelemetry.frame(now, work); else work();
+   requestAnimationFrame(loop);
+ });
+ 
+diff --git a/app/playground/src/telemetry.ts b/app/playground/src/telemetry.ts
+new file mode 100644
+index 0000000..b284a44
+--- /dev/null
++++ b/app/playground/src/telemetry.ts
+@@ -0,0 +1,5 @@
++import { Telemetry, FrameTelemetry } from '@gvr/schema';
++/** Page-lifetime, bounded diagnostics. Enable with ?telemetry=1 before the hash. */
++export const telemetry = new URLSearchParams(location.search).get('telemetry') === '1' ? new Telemetry(256) : undefined;
++export const frameTelemetry = telemetry ? new FrameTelemetry(telemetry) : undefined;
++if (telemetry) Object.assign(window, {__gvrTelemetry: () => telemetry.snapshot()});
+diff --git a/docs/telemetry.md b/docs/telemetry.md
+new file mode 100644
+index 0000000..3c8dea6
+--- /dev/null
++++ b/docs/telemetry.md
+@@ -0,0 +1,59 @@
++# Correctness and measurement foundation
++
++`Telemetry` and `FrameTelemetry` are shared, opt-in exports from `@gvr/schema`. Pass a collector to `compileMotionScript(source, collector)`, `createIncrementalProgram(collector)`, `new AnimationRuntime(scene, collector)`, `new StreamingRuntime(collector)` and `new CanvasRenderer(canvas, collector)`. Omit it for normal operation. `compileProgram` / `openSession` also accept a collector but have no source bytes to measure.
++
++Studio: start `npm run dev:renderer`, open `http://localhost:5173/?telemetry=1#studio`, and obtain a JSON-compatible snapshot with `window.__gvrTelemetry()`. The active Studio workspace instruments compilation, evaluation, rendering and its existing incremental/runtime queues. Stage shares renderer/application measurements; its presentation controller's internal evaluation is not separately instrumented. Legacy standalone development pages are not wired automatically. Nothing logs per frame or adds an animation timer.
++
++## Repeatable browser measurements
++
++From repository root, after `npm ci` and installing Chromium (or setting `GVR_CHROME`):
++
++```sh
++npm run benchmark -- --out work/benchmark --samples 120 --warmup 30 --compile-samples 3 --cycles 10
++npm run benchmark -- --out work/captures --correctness
++```
++
++Defaults benchmark Adding Two Vectors (small), From Pixels to Prediction (medium) and Square Wave (large source). `--stories` takes comma-separated story file stems. Size labels describe source bytes, not an assertion about frame cost. Correctness mode defaults to those three plus City and Crane. `--correctness --lottie-only` runs the minimal defects and Lottie reference probes. Port 5201 serves the local Vite harness; port 9341 is a disposable Chromium DevTools session. Ports must be available. The runner cleans up its own browser/profile/server, uses bounded CDP deadlines, records partial results and exits nonzero on failed compilation. Captures and results are written only to the selected directory. No production deployment or model/network call occurs.
++
++Each enabled/disabled pair uses the same viewport (1280×720), DPR 1, source hash, compile sample count, one unmeasured compiler warmup, animation warmup count, sample count and lifecycle count. Pair order alternates by story. RAF timestamps measure browser intervals; scene times are deterministic, evenly spaced seeks across the full story, rather than a claim about real-time completion. Off mode still has benchmark wall-clock observations, so its cost is not a zero-instrumentation oracle. `overhead.json` separately compares seven alternating batches of 100,000 empty instrumented/control calls. Paired story results are noisy estimates, not an optimisation claim or statistical confidence interval.
++
++Benchmark compile, sampled frame, streaming replay and lifecycle collectors are separate; frame observations reset after warmup. The JSON records Node/npm/browser/CPU/platform, dependency versions via the run manifest, commit/tree state, source SHA-256 and bytes, options, counts, distributions, queue observations, heap observations, unsupported fields and PNGs. Retain its tested source identity alongside it. Benchmark execution is not a visual fidelity certification.
++
++## Metric names and units
++
++| Metric | Definition |
++| --- | --- |
++| `compile.source_bytes` | Lifetime UTF-8 source bytes submitted, including rejected input; split surrogate pairs are accounted for by the incremental feeder. |
++| `compile.total_ms` | Complete-file synchronous compile call, including byte accounting, lex/parse, lowering and finalisation. |
++| `compile.lex_parse_ms` | Combined lexer/parser in complete-file mode; it is not a separate lexer measurement. |
++| `compile.lex_ms`, `compile.parse_ms` | Incremental lexer push and leading-unit parser call durations. |
++| `compile.lower_ms`, `compile.validate_ms` | Unit lowering and current-scene validation, including final validation. Prior-snapshot validation on a rejection is outside this phase counter. |
++| `compile.snapshot_ms`, `compile.capture_ms`, `compile.rollback_ms` | Scene clone, delta-change capture/serialisation, and restoration durations. Nested batch measurements can overlap; phase sums are not a total. |
++| `compile.units_seen`, `compile.accepted_units`, `compile.rejected_units` | Submitted top-level units and terminal application decisions; batch children are not separately accepted, unresolved final units count as rejected. A deferred unit has no terminal decision until resolved/finalised. Headers/complete markers are not units. |
++| `compile.unresolved_units`, `compile.rejected_sources` | Deferred units remaining at finalisation; source-budget rejections. Missing/rejected headers have diagnostics but no accepted/rejected unit count. |
++| `compile.pending_deltas`, `compile.deferred_units` | Existing compiler queue lengths, observed at emission/drain and defer/retry/finalisation. |
++| `compile.buffered_tokens`, `compile.buffered_lexeme_bytes` | Parser token queue depth and UTF-8 bytes of token lexemes, excluding whitespace/comments and the lexer's incomplete fragment. |
++| `compile.lexer_pending_bytes`, `compile.lexer_retained_tokens` | Pending lexical fragment bytes; emitted tokens still retained by the current lexer. The latter is a real retention issue, not parser queue depth. |
++| `frame.evaluate_ms` | Synchronous sampling plus resolved-frame construction, excluding renderer work. |
++| `frame.renderer_call_ms` | Synchronous CanvasRenderer call, including Canvas API submission. It does not measure GPU work, presentation, display latency or completion. |
++| `frame.application_ms` | Host work inside `FrameTelemetry.frame(timestamp, work)`. Studio includes tick, draw and bridge publication; benchmark includes evaluation and rendering. |
++| `frame.interval_ms` | Consecutive RAF timestamps supplied by the host. No synthetic zero for the first frame. |
++| `frame.missed_intervals`, `frame.long_intervals` | Interval >1.5× the configured frame budget (default 60 Hz), and interval >50 ms. These count affected intervals, not exact dropped display frames. |
++| `runtime.queue_deltas`, `runtime.retained_nodes` | Actual validated queued commands and loaded node counts, observed after enqueue/flush/disposal. |
++| `runtime.accepted_deltas`, `runtime.rejected_deltas`, `runtime.stale_deltas` | Enqueued valid deltas, invalid/overflow rejections, and revision mismatches. Enqueue acceptance does not strengthen scene semantic validation. |
++| `runtime.queue_wait_ms` | Monotonic time from valid enqueue to flush. Empty queues have no latency observation. |
++| `runtime.horizon_wait_evaluations` | Evaluation requests beyond the unsealed horizon. Wall-clock starvation duration is not measured. |
++| `renderer.image_cache_entries` | Actual image-map entries after insertion/disposal. Weak Path2D retention is not enumerable and not measured. |
++| `compile.wall_ms`, `frame.wall_ms` | Independent benchmark compile/application-call timing, present for enabled and disabled runs. |
++
++Counters are lifetime totals; gauges contain current observed value and lifetime high-water mark. Unobserved counters/gauges are absent, not proof of zero. An unavailable stage or resource is explicitly `unsupported`/`not-measured` in benchmark results. Existing compiler diagnostics remain authoritative. Bounded telemetry events identify rejected units/deltas and stale expected/required revisions. `firstFailure` retains the first rejection/stale event even if later cascades overwrite the event ring. `reset()` explicitly starts a new observation window. `StreamingRuntime.rejectedDiagnostics` exposes the latest 256 validation/overflow diagnostics even without telemetry. Invalid/stale work is never made valid by observation. Delta node validation uses the active wire family, including queued CREATE_SCENE headers; the default standalone validator remains wire 0.1 unless a context is supplied. Benchmark replay success additionally requires no runtime rejection and equality with offline draw items at start/mid/end.
++
++## Retention, overhead and resources
++
++A collector retains at most 64 distribution names, 64 counter names, 64 gauge names, and `capacity` events (default 256; accepted range 1–65,536). Each distribution is a ring of at most `capacity` samples, with lifetime count/sum/max. Mean/max describe the collector lifetime; p50/p95/p99 use nearest-rank quantiles of the latest retained observations. Names beyond each map bound are ignored. Library event payloads contain bounded diagnostic excerpts; callers should not put scenes/assets in events. Observers never reschedule work, advance clocks, accept deltas, or change animation channels. Timing itself and allocations still have cost; measure them for the target environment.
++
++Chromium's optional `performance.memory` fields are measured JS heap bytes (browser-specific, influenced by GC), not total browser/RSS/GPU memory. Canvas backing storage is an estimate of width×height×4, not a heap reading. CanvasRenderer currently has no offscreen-surface allocator, so offscreen allocations are unsupported rather than reported as zero. True group isolation and GPU/display completion are not inferred from synchronous timings.
++
++A lifecycle series loads a scene runtime, plays five frames and disposes the renderer, while separately loading/cancelling a simulated incremental prefix and disposing its compiler/runtime. The immutable source/scene stays intentionally referenced by the enclosing benchmark. No forced GC is used. Heap samples alone cannot prove a leak or prove absence of retention. Image maps and weak-path-map ownership are released by renderer disposal; compiler disposal drops lexer/session/buffers; runtime disposal clears queues/scene. Studio cancellation disposes the replaced streaming owners. The complete-file compiler remains synchronous and cannot be interrupted mid-call; incremental cancellation takes effect between pushes.
++
++Source defaults are now 4 MiB, a provisional finite bound accommodating the 1.93 MB Crane story. Whole-file and incremental compilation enforce it, and imports share that default. Buffered parser declarations have a 1 MiB UTF-8 lexeme ceiling (excluding whitespace/comments); the 128 KiB prototype ceiling rejected the existing Square Wave streaming workload. Lexically incomplete fragments are still bounded by the 4 MiB total source ceiling. Runtime command queue depth remains 256 with explicit overflow rejection. Duration stays 60 seconds. No scene/node/geometry/expression ceiling was raised without an obstructing workload. Historical 512 KiB fidelity profiles, quarantines and published version files are unchanged; new policy does not retroactively pass them.
+diff --git a/evaluation/bench/before/frame.ts b/evaluation/bench/before/frame.ts
+new file mode 100644
+index 0000000..7232a42
+--- /dev/null
++++ b/evaluation/bench/before/frame.ts
+@@ -0,0 +1,188 @@
++import {
++  drawableOrder,
++  indexNodes,
++  logicalMatrix,
++
++  type Camera2DDefinition,
++  type NodeDefinition,
++  type ResolvedAppearance,
++  type RenderTreeNode,
++  type ResolvedDrawItem,
++  type ResolvedFrame,
++  type ResolvedGeometry,
++  type SceneIR,
++} from "@gvr/schema";
++import type { SampledScene } from "../../../packages/runtime/src/sample";
++import { trimCommands } from "./trim";
++
++/** Flatten one sampled scene into the draw list the renderer already accepts. */
++export function buildResolvedFrame(
++  scene: SceneIR,
++  sampled: SampledScene,
++  sceneTimeMs: number,
++  revision = 0,
++): ResolvedFrame {
++  const drawItems = [];
++  for (const node of drawableOrder(sampled.nodes)) {
++    if (subtreeHidden(sampled.nodes, node.id)) continue;
++    const geometry = geometryOf(scene, node, sampled.trimOverrides);
++    if (!geometry) continue;
++    drawItems.push({
++      nodeId: node.id,
++      geometry,
++      appearance: appearanceOf(node),
++      logicalMatrix: logicalMatrix(sampled.nodes, scene.viewport, sampled.camera, node.id),
++      opacity: opacityProduct(sampled.nodes, node.id),
++    });
++  }
++  return {
++    sceneTimeMs,
++    revision,
++    viewport: scene.viewport,
++    background: scene.background,
++    drawItems,
++    renderTree: renderTreeFromScene(sampled.nodes, drawItems),
++  };
++}
++
++function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDrawItem[]): RenderTreeNode {
++  const flat = {
++    kind: "scope" as const,
++    id: "root",
++    isolated: false,
++    opacity: 1,
++    children: items.map((item) => ({ kind: "leaf" as const, item })),
++  };
++  if (!nodes.some((node) => node.kind === "group" && node.compositing)) return flat;
++  const byId = new Map(items.map((item) => [item.nodeId, item]));
++  const place = (node: NodeDefinition): RenderTreeNode[] => {
++    if (node.kind === "group" && node.compositing) {
++      return [
++        {
++          kind: "scope",
++          id: node.id,
++          isolated: node.compositing.isolated,
++          opacity: node.opacity,
++          ...(node.compositing.blend ? { blend: node.compositing.blend } : {}),
++          ...(node.compositing.effect ? { effect: node.compositing.effect } : {}),
++          children: nodes.filter((child) => child.parentId === node.id).flatMap(place),
++        },
++      ];
++    }
++    if (node.kind === "group") return nodes.filter((child) => child.parentId === node.id).flatMap(place);
++    const item = byId.get(node.id);
++    return item ? [{ kind: "leaf", item }] : [];
++  };
++  return {
++    kind: "scope",
++    id: "root",
++    isolated: false,
++    opacity: 1,
++    children: nodes.filter((node) => node.parentId === null).flatMap(place),
++  };
++}
++
++function subtreeHidden(nodes: readonly NodeDefinition[], id: string): boolean {
++  const index = indexNodes(nodes);
++  let current = index.byId.get(id);
++  const seen = new Set<string>();
++  while (current) {
++    if (seen.has(current.id)) return true;
++    seen.add(current.id);
++    if (!current.visible) return true;
++    current = current.parentId ? index.byId.get(current.parentId) : undefined;
++  }
++  return false;
++}
++
++function opacityProduct(nodes: readonly NodeDefinition[], id: string): number {
++  const index = indexNodes(nodes);
++  let product = 1;
++  let current = index.byId.get(id);
++  const seen = new Set<string>();
++  while (current) {
++    if (seen.has(current.id)) break;
++    seen.add(current.id);
++    const isolatedAncestor = current.kind === "group" && current.compositing?.isolated === true && current.id !== id;
++    if (!isolatedAncestor) product *= current.opacity;
++    let parent = current.parentId ? index.byId.get(current.parentId) : undefined;
++    if (current.inheritOpacity === false && parent) {
++      parent = parent.parentId ? index.byId.get(parent.parentId) : undefined;
++    }
++    current = parent;
++  }
++  return product;
++}
++
++function appearanceOf(node: NodeDefinition): ResolvedAppearance {
++  const appearance: ResolvedAppearance = {};
++  if ("fill" in node && node.fill) appearance.fill = node.fill;
++  if ("stroke" in node && node.stroke) appearance.stroke = node.stroke;
++  return appearance;
++}
++
++function geometryOf(
++  scene: SceneIR,
++  node: NodeDefinition,
++  overrides?: SampledScene["trimOverrides"],
++): ResolvedGeometry | undefined {
++  switch (node.kind) {
++    case "group":
++      return undefined;
++    case "rectangle":
++      return {
++        kind: "rectangle",
++        size: node.size,
++        ...(node.cornerRadius && node.cornerRadius > 0 ? { cornerRadius: node.cornerRadius } : {}),
++      };
++    case "image": {
++      const resource = scene.resources.find((entry) => entry.id === node.resourceId && entry.kind === "image");
++      return {
++        kind: "image",
++        resourceId: node.resourceId,
++        href: resource && resource.kind === "image" ? resource.href : "",
++        size: node.size,
++      };
++    }
++    case "circle":
++      return { kind: "circle", radius: node.radius };
++    case "ellipse":
++      return { kind: "ellipse", size: node.size };
++    case "line":
++      return { kind: "line", from: node.from, to: node.to };
++    case "polygon":
++      return { kind: "polygon", points: node.points };
++    case "path":
++      return { kind: "path", commands: trimmed(scene, node.id, node.commands, overrides), fillRule: node.fillRule };
++    case "text":
++      return {
++        kind: "text",
++        content: node.content,
++        font: node.font,
++        align: node.align,
++        baseline: node.baseline,
++      };
++  }
++}
++
++function trimmed(
++  scene: SceneIR,
++  nodeId: string,
++  commands: readonly { cmd: string }[],
++  overrides?: SampledScene["trimOverrides"],
++): ReturnType<typeof trimCommands> {
++  const list = scene.geometryOperators?.find((entry) => entry.nodeId === nodeId);
++  const override = overrides?.[nodeId];
++  if (!list && !override) return [...commands] as ReturnType<typeof trimCommands>;
++  let current = [...commands] as ReturnType<typeof trimCommands>;
++  if (override) {
++    current = trimCommands(current, override.start, override.end, override.offset);
++    return current;
++  }
++  for (const op of list!.operators) {
++    if (op.op === "trim") current = trimCommands(current, op.start, op.end, op.offset);
++  }
++  return current;
++}
++
++export type { Camera2DDefinition };
+diff --git a/evaluation/bench/before/trim.ts b/evaluation/bench/before/trim.ts
+new file mode 100644
+index 0000000..ad7edc9
+--- /dev/null
++++ b/evaluation/bench/before/trim.ts
+@@ -0,0 +1,122 @@
++import type { PathCommand, Vec2 } from "../../../packages/schema/src/types";
++
++/**
++ * Trim a path by normalised arc length.
++ * start and end lie in [0, 1]. Offset shifts the window and wraps.
++ */
++export function trimCommands(commands: readonly PathCommand[], start: number, end: number, offset: number): PathCommand[] {
++  const samples = samplePath(commands, 8);
++  if (samples.length < 2) return [...commands];
++  const lengths = [0];
++  for (let index = 1; index < samples.length; index += 1) {
++    const previous = lengths[index - 1] ?? 0;
++    lengths.push(previous + distance(samples[index - 1]!, samples[index]!));
++  }
++  const total = lengths[lengths.length - 1] ?? 0;
++  if (!(total > 0)) return [...commands];
++  const window = trimWindow(start, end, offset);
++  const from = window.start * total;
++  const to = window.end * total;
++  if (to <= from + 1e-9) return [];
++  const kept: Vec2[] = [];
++  const startPoint = pointAtLength(samples, lengths, from);
++  const endPoint = pointAtLength(samples, lengths, to);
++  if (!startPoint || !endPoint) return [];
++  kept.push(startPoint);
++  for (let index = 0; index < samples.length; index += 1) {
++    const at = lengths[index] ?? 0;
++    if (at > from + 1e-6 && at < to - 1e-6) kept.push(samples[index]!);
++  }
++  kept.push(endPoint);
++  const [first, ...rest] = kept;
++  if (!first || rest.length === 0) return [];
++  return [{ cmd: "M", x: first.x, y: first.y }, ...rest.map((point) => ({ cmd: "L" as const, x: point.x, y: point.y }))];
++}
++
++function pointAtLength(samples: readonly Vec2[], lengths: readonly number[], target: number): Vec2 | undefined {
++  if (target <= 0) return samples[0] ? { ...samples[0] } : undefined;
++  const total = lengths[lengths.length - 1] ?? 0;
++  if (target >= total) {
++    const last = samples[samples.length - 1];
++    return last ? { ...last } : undefined;
++  }
++  for (let index = 0; index < samples.length - 1; index += 1) {
++    const lo = lengths[index] ?? 0;
++    const hi = lengths[index + 1] ?? 0;
++    if (target < lo - 1e-9 || target > hi + 1e-9) continue;
++    if (Math.abs(hi - lo) < 1e-9) return { ...samples[index]! };
++    const t = (target - lo) / (hi - lo);
++    const a = samples[index]!;
++    const b = samples[index + 1]!;
++    return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
++  }
++  return undefined;
++}
++
++function trimWindow(start: number, end: number, offset: number): { start: number; end: number } {
++  const span = Math.min(1, Math.max(0, end)) - Math.min(1, Math.max(0, start));
++  const shifted = wrap(start + offset);
++  return { start: shifted, end: Math.min(1, shifted + Math.max(0, span)) };
++}
++
++function wrap(value: number): number {
++  const mod = value % 1;
++  return mod < 0 ? mod + 1 : mod;
++}
++
++function samplePath(commands: readonly PathCommand[], steps: number): Vec2[] {
++  const points: Vec2[] = [];
++  let cursor = { x: 0, y: 0 };
++  let start = { x: 0, y: 0 };
++  for (const command of commands) {
++    if (command.cmd === "M") {
++      cursor = { x: command.x, y: command.y };
++      start = cursor;
++      points.push(cursor);
++    } else if (command.cmd === "L") {
++      cursor = { x: command.x, y: command.y };
++      points.push(cursor);
++    } else if (command.cmd === "Q") {
++      const from = cursor;
++      for (let step = 1; step <= steps; step += 1) {
++        points.push(quadratic(from, { x: command.cx, y: command.cy }, { x: command.x, y: command.y }, step / steps));
++      }
++      cursor = { x: command.x, y: command.y };
++    } else if (command.cmd === "C") {
++      const from = cursor;
++      for (let step = 1; step <= steps; step += 1) {
++        points.push(
++          cubic(
++            from,
++            { x: command.c1x, y: command.c1y },
++            { x: command.c2x, y: command.c2y },
++            { x: command.x, y: command.y },
++            step / steps,
++          ),
++        );
++      }
++      cursor = { x: command.x, y: command.y };
++    } else if (command.cmd === "Z") {
++      points.push(start);
++      cursor = start;
++    }
++  }
++  return points;
++}
++
++function quadratic(p0: Vec2, c: Vec2, p1: Vec2, t: number): Vec2 {
++  const m = 1 - t;
++  return { x: m * m * p0.x + 2 * m * t * c.x + t * t * p1.x, y: m * m * p0.y + 2 * m * t * c.y + t * t * p1.y };
++}
++
++function cubic(p0: Vec2, c1: Vec2, c2: Vec2, p1: Vec2, t: number): Vec2 {
++  const m = 1 - t;
++  return {
++    x: m * m * m * p0.x + 3 * m * m * t * c1.x + 3 * m * t * t * c2.x + t * t * t * p1.x,
++    y: m * m * m * p0.y + 3 * m * m * t * c1.y + 3 * m * t * t * c2.y + t * t * t * p1.y,
++  };
++}
++
++function distance(left: Vec2, right: Vec2): number {
++  return Math.hypot(right.x - left.x, right.y - left.y);
++}
+diff --git a/evaluation/bench/correctness.ts b/evaluation/bench/correctness.ts
+new file mode 100644
+index 0000000..c21d1d0
+--- /dev/null
++++ b/evaluation/bench/correctness.ts
+@@ -0,0 +1,65 @@
++import { compileMotionScript } from '@gvr/compiler';
++import { sampleScene, buildResolvedFrame, AnimationRuntime } from '@gvr/runtime';
++import { CanvasRenderer } from '@gvr/canvas-renderer';
++import { buildResolvedFrame as beforeFrame } from './before/frame';
++import { importSource } from '@gvr/format-import-core';
++import { lottieAdapter } from '@gvr/format-lottie';
++import { emitMotionScript } from '@gvr/motionscript-emitter';
++import lottie from 'lottie-web';
++import { Telemetry } from '@gvr/schema';
++import { checkVisualFrame } from '../harness/visual-gate';
++import gates from '../gate-settings.json';
++import type { ResolvedFrame } from '@gvr/schema';
++
++function draw(frame:ResolvedFrame) {
++ const canvas=document.createElement('canvas');const renderer=new CanvasRenderer(canvas);
++ renderer.resize(1280,720,1);renderer.render(frame);renderer.dispose();
++ return canvas;
++}
++function compare(a:HTMLCanvasElement,b:HTMLCanvasElement) {
++ const x=a.getContext('2d')!.getImageData(0,0,a.width,a.height).data;
++ const y=b.getContext('2d')!.getImageData(0,0,b.width,b.height).data;
++ let changed=0,hot=0;
++ for(let i=0;i<x.length;i+=4){const d=Math.hypot(x[i]!-y[i]!,x[i+1]!-y[i+1]!,x[i+2]!-y[i+2]!);if(d>0||x[i+3]!==y[i+3])changed++;if(d>24)hot++;}
++ return {changedPixels:changed,hotPixels:hot,totalPixels:a.width*a.height,fractionBeyond:hot/(a.width*a.height)};
++}
++export function captureProgram(source:string,times:number[]) {
++ const telemetry=new Telemetry(32);
++ const result=compileMotionScript(source,telemetry);if(!result.ok||!result.scene)return {ok:false,diagnostics:result.diagnostics};
++ const scene=result.scene;
++ return {ok:true,compile:telemetry.snapshot(),counts:{nodes:scene.nodes.length,tracks:scene.timeline.tracks.length,steps:scene.timeline.steps.length},frames:times.map(time=>{
++  const sampled=sampleScene(scene,time);
++  const before=draw(beforeFrame(scene,sampled,time));const after=draw(buildResolvedFrame(scene,sampled,time));
++  return {time,...compare(before,after),before:before.toDataURL(),after:after.toDataURL()};
++ })};
++}
++export async function captureLottie(source:string,times:number[]) {
++ const imported=importSource(lottieAdapter,source,{sourceName:'trim-reference.json'});
++ if(!imported.scene)throw new Error(JSON.stringify(imported.diagnostics));
++ const emitted=emitMotionScript(imported.scene);
++ const compiled=compileMotionScript(emitted);
++ if(!compiled.scene||!compiled.ok)throw new Error(JSON.stringify(compiled.diagnostics));
++ const host=document.createElement('div');host.style.cssText='width:1280px;height:720px';document.body.append(host);
++ const animation=lottie.loadAnimation({container:host,renderer:'canvas',autoplay:false,loop:false,animationData:JSON.parse(source),rendererSettings:{clearCanvas:true,preserveAspectRatio:'xMidYMid meet',dpr:1}});
++ await new Promise<void>((resolve,reject)=>{animation.addEventListener('DOMLoaded',()=>resolve());animation.addEventListener('data_failed',()=>reject(new Error('reference failed')));setTimeout(()=>reject(new Error('reference load timeout')),10000);});
++ animation.setSubframe(true);
++ const frames=[];
++ const references:HTMLCanvasElement[]=[];
++ for(const time of times){
++  animation.goToAndStop(time*animation.frameRate/1000,true);
++  const reference=document.createElement('canvas');reference.width=1280;reference.height=720;
++  const ctx=reference.getContext('2d')!;ctx.fillStyle='#000000';ctx.fillRect(0,0,1280,720);ctx.fillStyle='#101014';ctx.fillRect(280,0,720,720);ctx.drawImage(host.querySelector('canvas')!,0,0,1280,720);
++  const direct=draw(new AnimationRuntime(imported.scene).evaluate(time));
++  const roundtrip=draw(new AnimationRuntime(compiled.scene).evaluate(time));
++  references.push(reference);
++  const raster=(canvas:HTMLCanvasElement)=>({width:canvas.width,height:canvas.height,data:canvas.getContext('2d')!.getImageData(0,0,canvas.width,canvas.height).data});
++  frames.push({time,referenceVsDirectGate:checkVisualFrame(raster(reference),raster(direct),gates.visualCertification,gates.pixel.inspectionThreshold),referenceVsCompiledGate:checkVisualFrame(raster(reference),raster(roundtrip),gates.visualCertification,gates.pixel.inspectionThreshold),referenceVsDirect:compare(reference,direct),directVsCompiled:compare(direct,roundtrip),reference:reference.toDataURL(),direct:direct.toDataURL(),compiled:roundtrip.toDataURL()});
++ }
++ animation.goToAndStop(times[0]! * animation.frameRate / 1000,true);
++ const repeat=document.createElement('canvas');repeat.width=1280;repeat.height=720;
++ const context=repeat.getContext('2d')!;context.fillStyle='#000000';context.fillRect(0,0,1280,720);context.fillStyle='#101014';context.fillRect(280,0,720,720);context.drawImage(host.querySelector('canvas')!,0,0,1280,720);
++ const controls={sameTimeRepeat:compare(references[0]!,repeat),motion:compare(references[0]!,references[references.length-1]!),subframe:true,player:'lottie-web 5.13.0 canvas',coverage:'sampled; no full-window certification'};
++ animation.destroy();host.remove();
++ return {ok:true,diagnostics:imported.diagnostics,controls,frames};
++}
++Object.assign(window,{correctness:{captureProgram,captureLottie}});
+diff --git a/evaluation/bench/index.html b/evaluation/bench/index.html
+new file mode 100644
+index 0000000..2f3f47a
+--- /dev/null
++++ b/evaluation/bench/index.html
+@@ -0,0 +1 @@
++<!doctype html><html><body style="margin:0"><canvas id="canvas"></canvas><script type="module" src="./main.ts"></script></body></html>
+diff --git a/evaluation/bench/main.ts b/evaluation/bench/main.ts
+new file mode 100644
+index 0000000..874bd8d
+--- /dev/null
++++ b/evaluation/bench/main.ts
+@@ -0,0 +1,104 @@
++import './correctness';
++import { Telemetry, FrameTelemetry } from '@gvr/schema';
++import { compileMotionScript, createIncrementalProgram } from '@gvr/compiler';
++import { AnimationRuntime, StreamingRuntime } from '@gvr/runtime';
++import { CanvasRenderer } from '@gvr/canvas-renderer';
++
++const canvas = document.querySelector('canvas')!;
++const heap = () => {
++  const memory = (performance as Performance & {memory?: {usedJSHeapSize:number; totalJSHeapSize:number; jsHeapSizeLimit:number}}).memory;
++  return memory ? {status:'measured', ...{usedJSHeapSize:memory.usedJSHeapSize,totalJSHeapSize:memory.totalJSHeapSize,jsHeapSizeLimit:memory.jsHeapSizeLimit}} : {status:'unsupported'};
++};
++const raf = () => new Promise<number>(resolve => requestAnimationFrame(resolve));
++const api = {
++  overhead() {
++    const result=new Telemetry(16);
++    let sink=0;
++    for(let batch=0;batch<7;batch++) {
++      for(const enabled of batch%2 ? [true,false] : [false,true]) {
++        const telemetry=enabled?new Telemetry(256):undefined;
++        const start=performance.now();
++        for(let i=0;i<100000;i++) {if(telemetry) telemetry.measure('empty_ms',()=>{sink++;});else sink++;}
++        result.observe(enabled?'enabled_batch_ms':'disabled_batch_ms',performance.now()-start);
++      }
++    }
++    return {iterationsPerBatch:100000,batches:7,sink,metrics:result.snapshot()};
++  },
++  async run(source: string, options: {warmup:number; samples:number; compileSamples:number; cycles:number; enabled:boolean}) {
++    const telemetry = options.enabled ? new Telemetry(256) : undefined;
++    const compileWall = new Telemetry(256);
++    let compiled = compileMotionScript(source); // unmeasured compiler warmup
++    if (!compiled.ok || !compiled.scene) return {ok:false,diagnostics:compiled.diagnostics,heap:heap()};
++    for(let i=0;i<options.compileSamples;i++) compiled = compileWall.measure('compile.wall_ms', () => compileMotionScript(source, telemetry));
++    const scene = compiled.scene!;
++    const frameMetrics = options.enabled ? new Telemetry(256) : undefined;
++    const runtime = new AnimationRuntime(scene, frameMetrics);
++    const renderer = new CanvasRenderer(canvas, frameMetrics);
++    renderer.resize(1280,720,1);
++    const baselineHeap = heap();
++    for(let i=0;i<options.warmup;i++) { await raf(); renderer.render(runtime.evaluate(i * 1000 / 60)); }
++    frameMetrics?.reset();
++    const frame = frameMetrics ? new FrameTelemetry(frameMetrics) : undefined;
++    const wall = new Telemetry(256);
++    let previous: number | undefined;
++    for(let i=0;i<options.samples;i++) {
++      const timestamp = await raf();
++      if(previous !== undefined) wall.observe('frame.interval_ms', timestamp-previous);
++      previous=timestamp;
++      const work = () => renderer.render(runtime.evaluate((i / Math.max(1, options.samples-1)) * scene.timeline.durationMs));
++      wall.measure('frame.wall_ms', () => frame ? frame.frame(timestamp,work) : work());
++    }
++    // Full source replay through the actual compiler/runtime queues. Chunking
++    // is simulated and deliberately has no model/network throughput claim.
++    const streamingTelemetry = options.enabled ? new Telemetry(256) : undefined;
++    const streamingCompiler=createIncrementalProgram(streamingTelemetry);
++    const streamingRuntime=new StreamingRuntime(streamingTelemetry);
++    const streamStart=performance.now();
++    for(let offset=0;offset<source.length;offset+=4096) {
++      streamingCompiler.push(source.slice(offset,offset+4096));
++      for(const delta of streamingCompiler.drainDeltas()) streamingRuntime.enqueue(delta);
++      streamingRuntime.flushCommands();
++    }
++    const streamed=streamingCompiler.finish();
++    for(const delta of streamingCompiler.drainDeltas()) streamingRuntime.enqueue(delta);
++    streamingRuntime.flushCommands();
++    const replayMatches = streamingRuntime.scene !== undefined && [0,scene.timeline.durationMs/2,scene.timeline.durationMs].every(time => JSON.stringify(streamingRuntime.evaluate(time).drawItems) === JSON.stringify(new AnimationRuntime(scene).evaluate(time).drawItems));
++    const runtimeDiagnostics=[...streamingRuntime.rejectedDiagnostics];
++    const streaming={ok:streamed.ok && runtimeDiagnostics.length===0 && replayMatches,replayMatches,runtimeDiagnostics,diagnostics:streamed.diagnostics,durationMs:performance.now()-streamStart,revision:streamingRuntime.revision,telemetry:streamingTelemetry?.snapshot()??{status:'disabled'},feeding:'simulated 4096 UTF16-code-unit chunks; synchronous drain after each push'};
++    streamingCompiler.dispose();streamingRuntime.dispose();
++    const png = canvas.toDataURL();
++    renderer.dispose();
++    const lifecycle = [];
++    const lifecycleMetrics = options.enabled ? new Telemetry(256) : undefined;
++    // Simulated source feeding, never model/network throughput. Explicitly cancel
++    // the compiler after a prefix; evaluate a full accepted load separately.
++    for(let cycle=0;cycle<options.cycles;cycle++) {
++      const compiler=createIncrementalProgram(lifecycleMetrics);
++      compiler.push(source.slice(0,Math.min(source.length,8192)));
++      const streaming = new StreamingRuntime(lifecycleMetrics);
++      for(const delta of compiler.drainDeltas()) streaming.enqueue(delta);
++      streaming.flushCommands();
++      if(streaming.scene) streaming.evaluate(0);
++      compiler.dispose(); streaming.dispose();
++      const replay=new CanvasRenderer(canvas,lifecycleMetrics);
++      replay.resize(1280,720,1);
++      const reloaded=new AnimationRuntime(scene,lifecycleMetrics);
++      for(let i=0;i<5;i++) replay.render(reloaded.evaluate(i*1000/60));
++      replay.dispose();
++      await raf();
++      lifecycle.push({cycle, heap:heap()});
++    }
++    return {ok:true, counts:{nodes:scene.nodes.length,tracks:scene.timeline.tracks.length,steps:scene.timeline.steps.length},
++      viewport:{width:1280,height:720,dpr:1}, options, compile:compileWall.snapshot(), frames:wall.snapshot(), telemetry:telemetry?.snapshot() ?? {status:'disabled'},
++      frameTelemetry:frameMetrics?.snapshot()??{status:'disabled'}, lifecycleTelemetry:lifecycleMetrics?.snapshot()??{status:'disabled'}, streaming, memory:{before:baselineHeap,after:heap(),lifecycle,canvasBackingBytes:{status:'estimated',bytes:1280*720*4},gpu:{status:'unsupported'},weakPathCacheRetainedEntries:{status:'not-measured'},offscreenSurfaces:{status:'unsupported',reason:'CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists'}},
++      transport:{status:'unsupported',reason:'No model/network transport in this benchmark'},png};
++  },
++  capture(source:string,time=0) {
++    const result=compileMotionScript(source);
++    if(!result.ok || !result.scene) throw new Error(JSON.stringify(result.diagnostics));
++    const renderer=new CanvasRenderer(canvas);renderer.resize(1280,720,1);
++    renderer.render(new AnimationRuntime(result.scene).evaluate(time));
++    const data=canvas.toDataURL();renderer.dispose();return data;
++  }
++};
++Object.assign(window,{benchmark:api});
+diff --git a/evaluation/bench/run.mts b/evaluation/bench/run.mts
+new file mode 100644
+index 0000000..b84e92a
+--- /dev/null
++++ b/evaluation/bench/run.mts
+@@ -0,0 +1,84 @@
++/** npm run benchmark -- --out work/benchmark [--samples 120 --warmup 30 --compile-samples 3 --cycles 10] */
++import { createServer } from 'vite';
++import { spawn, execFileSync } from 'node:child_process';
++import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
++import { tmpdir, platform, arch, cpus } from 'node:os';
++import { resolve } from 'node:path';
++import { createHash } from 'node:crypto';
++import { Cdp } from '../harness/cdp';
++import { resolveChromeBinary, chromeVersion } from '../harness/chrome';
++const args=process.argv.slice(2);
++const arg=(name:string,fallback:string)=> {const index=args.indexOf(name);return index<0?fallback:args[index+1]!;};
++const number=(name:string,fallback:number)=> {const n=Number(arg(name,String(fallback)));if(!Number.isInteger(n)||n<1||n>10000)throw new Error(`Invalid ${name}`);return n;};
++const out=resolve(arg('--out','work/benchmark'));
++mkdirSync(out,{recursive:true});
++const repo=process.cwd();
++const alias=Object.fromEntries(['schema','compiler','runtime','canvas-renderer','format-import-core','format-lottie','motionscript-emitter'].map(name=>[`@gvr/${name}`,resolve(repo,`packages/${name}/src/index.ts`)]));
++const server=await createServer({configFile:false,root:resolve(repo,'evaluation/bench'),resolve:{alias},server:{host:'127.0.0.1',port:5201,strictPort:true,hmr:false}});
++const profile=mkdtempSync(resolve(tmpdir(),'gvr-benchmark-'));
++const binary=resolveChromeBinary();
++const chrome=spawn(binary,['--headless=new','--no-sandbox','--disable-dev-shm-usage','--enable-precise-memory-info','--remote-debugging-port=9341',`--user-data-dir=${profile}`,'about:blank'],{stdio:'ignore'});
++let socket: WebSocket | undefined;
++try {
++ await server.listen();
++ let socketUrl='';
++ for(let i=0;i<100;i++) {try {const r=await fetch('http://127.0.0.1:9341/json/version');socketUrl=(await r.json()).webSocketDebuggerUrl;break;}catch{await new Promise(r=>setTimeout(r,100));}}
++ if(!socketUrl)throw new Error('Chrome did not start');
++ socket=new WebSocket(socketUrl);await new Promise<void>((yes,no)=>{socket!.addEventListener('open',()=>yes());socket!.addEventListener('error',()=>no(new Error('CDP connection failed')));});
++ const cdp=new Cdp(socket,180000);
++ const target=await cdp.send('Target.createTarget',{url:'http://127.0.0.1:5201/'});
++ const {sessionId}=await cdp.send('Target.attachToTarget',{targetId:target.targetId,flatten:true});
++ await cdp.send('Emulation.setDeviceMetricsOverride',{width:1280,height:720,deviceScaleFactor:1,mobile:false},sessionId);
++ async function evaluate(expression:string) {const result=await cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},sessionId);if(result.exceptionDetails)throw new Error(JSON.stringify(result.exceptionDetails));return result.result.value;}
++ for(let i=0;i<100;i++){if(await evaluate('Boolean(window.benchmark)'))break;await new Promise(r=>setTimeout(r,100));}
++ const options={samples:number('--samples',120),warmup:number('--warmup',30),compileSamples:number('--compile-samples',3),cycles:number('--cycles',10)};
++ const overhead=await evaluate('window.benchmark.overhead()');
++ writeFileSync(resolve(out,'overhead.json'),JSON.stringify(overhead,null,2));
++ writeFileSync(resolve(out,'environment.json'),JSON.stringify({node:process.version,browser:chromeVersion(binary),platform:platform(),arch:arch(),cpu:cpus()[0]?.model,commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),viewport:{width:1280,height:720,dpr:1}},null,2));
++ if(args.includes('--correctness')) {
++   const header='scene "regression" { version "0.2"; viewport (1280,720); background #101014; duration 1s; };';
++   const scope='group front { zIndex 10; isolated true; rectangle red { size (100,100); position (200,200); fill #ff0000; }; }; rectangle back { zIndex -1; size (100,100); position (200,200); fill #0000ff; }; complete;';
++   const trim='path ink { position (100,300); scale (30,1); stroke #ffffff width 8; move (0,0); line (10,0); move (20,0); line (30,0); }; operators ink { trim 0,1,0; }; complete;';
++   const captures: {ok:boolean;name:string}[]=[];
++   async function capture(name:string,source:string,times:number[],lottie=false) {
++     const result=await evaluate(`window.correctness.${lottie?'captureLottie':'captureProgram'}(${JSON.stringify(source)},${JSON.stringify(times)})`);
++     for(const frame of result.frames??[])for(const key of ['before','after','reference','direct','compiled']) {
++       if(frame[key]){const filename=`${name}-${frame.time}-${key}.png`;writeFileSync(resolve(out,filename),Buffer.from(frame[key].split(',')[1],'base64'));frame[key]=filename;}
++     }
++     captures.push({name,sourceSha256:createHash('sha256').update(source).digest('hex'),...result});
++     writeFileSync(resolve(out,'captures.json'),JSON.stringify(captures,null,2));
++   }
++   await capture('paint-order',header+scope,[0]);
++   await capture('compound-trim',header+trim,[0]);
++   for(const name of (args.includes('--lottie-only')?[]:arg('--stories','adding-two-vectors,from-pixels-to-prediction,square-wave-from-sine-waves,the-city-comes-around,a-crane-then-a-square').split(','))) {
++     console.log(`capture ${name}`);
++     await capture(name,readFileSync(`fixtures/motionscript/stories/${name}.ms`,'utf8'),[0,15000,29999]);
++   }
++   const fixture=readFileSync('fixtures/import/lottie/trim_reference.json','utf8');
++   await capture('lottie-trim',fixture,[0,500,1000,1999],true);
++   const offset=JSON.parse(fixture);offset.layers[0].shapes[0].it.find((x:{ty:string})=>x.ty==='tm').o={a:0,k:90};
++   await capture('lottie-offset',JSON.stringify(offset),[0,500,1000,1999],true);
++   console.log(resolve(out,'captures.json'));
++   process.exitCode=captures.every(x=>x.ok)?0:1;
++ } else {
++ const names=arg('--stories','adding-two-vectors,from-pixels-to-prediction,square-wave-from-sine-waves').split(',');
++ const results=[];
++ for(const [index,name] of names.entries()) {
++  const path=`fixtures/motionscript/stories/${name}.ms`;const source=readFileSync(path,'utf8');
++  console.log(`benchmark ${name}`);
++  const runs=[];
++  // Alternate paired order to reduce systematic warmup bias.
++  for(const enabled of index%2 ? [true,false] : [false,true]) {
++   const result=await evaluate(`window.benchmark.run(${JSON.stringify(source)},${JSON.stringify({...options,enabled})})`);
++   if(result.png){writeFileSync(resolve(out,`${name}-${enabled?'on':'off'}.png`),Buffer.from(result.png.split(',')[1],'base64'));delete result.png;}
++   runs.push({enabled,...result});
++  }
++  results.push({name,path,sha256:createHash('sha256').update(source).digest('hex'),bytes:Buffer.byteLength(source),runs});
++  writeFileSync(resolve(out,'results.json'),JSON.stringify({status:'partial',results},null,2));
++ }
++ const environment={node:process.version,npm:execFileSync('npm',['--version'],{encoding:'utf8'}).trim(),browser:chromeVersion(binary),binary,platform:platform(),arch:arch(),cpu:cpus()[0]?.model,logicalCpus:cpus().length,userAgent:await evaluate('navigator.userAgent'),commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),workingTree:execFileSync('git',['status','--short'],{encoding:'utf8'}),viewport:{width:1280,height:720,dpr:1},options};
++ writeFileSync(resolve(out,'results.json'),JSON.stringify({status:'complete',environment,results},null,2));
++ if(results.some(story=>story.runs.some(run=>!run.ok || !run.streaming?.ok)))process.exitCode=1;
++ console.log(resolve(out,'results.json'));
++ }
++} finally {socket?.close();chrome.kill();await server.close();await new Promise(r=>setTimeout(r,200));rmSync(profile,{recursive:true,force:true});}
+diff --git a/evaluation/bench/tsconfig.json b/evaluation/bench/tsconfig.json
+new file mode 100644
+index 0000000..c500ec5
+--- /dev/null
++++ b/evaluation/bench/tsconfig.json
+@@ -0,0 +1 @@
++{"extends":"../../tsconfig.json","compilerOptions":{"noEmit":true},"include":["./**/*.ts","./**/*.mts"]}
+diff --git a/evaluation/harness/profile.test.ts b/evaluation/harness/profile.test.ts
+index 0e4fb39..11018de 100644
+--- a/evaluation/harness/profile.test.ts
++++ b/evaluation/harness/profile.test.ts
+@@ -24,8 +24,9 @@ describe("capability profile", () => {
+     expect(profile.lot03.status).toBe("quarantined");
+     expect(profile.performance.budgetClaim).toBe(false);
+     expect(profile.importCeilings.candidateStatus).toBe("proposed-not-default");
+-    expect(profile.importCeilings.defaultMaxSourceBytes).toBe(DEFAULT_IMPORT_LIMITS.maxSourceBytes);
+-    expect(DEFAULT_IMPORT_LIMITS.maxSourceBytes).toBe(512 * 1024);
++    // Historical M6 profile is immutable; the current ceiling is a separate policy.
++    expect(profile.importCeilings.defaultMaxSourceBytes).toBe(512 * 1024);
++    expect(DEFAULT_IMPORT_LIMITS.maxSourceBytes).toBe(4 * 1024 * 1024);
+     for (const name of profile.enabledCapabilities) expect(CAPABILITIES).toContain(name);
+   });
+ 
+diff --git a/fixtures/import/lottie/trim_reference.json b/fixtures/import/lottie/trim_reference.json
+new file mode 100644
+index 0000000..ec39ee7
+--- /dev/null
++++ b/fixtures/import/lottie/trim_reference.json
+@@ -0,0 +1,229 @@
++{
++  "v": "5.7.4",
++  "fr": 30,
++  "ip": 0,
++  "op": 60,
++  "w": 200,
++  "h": 200,
++  "nm": "AnimatedTrim",
++  "layers": [
++    {
++      "ty": 4,
++      "nm": "Stroke",
++      "ind": 1,
++      "ip": 0,
++      "op": 60,
++      "ks": {
++        "o": {
++          "a": 0,
++          "k": 100
++        },
++        "r": {
++          "a": 0,
++          "k": 0
++        },
++        "p": {
++          "a": 0,
++          "k": [
++            20,
++            100
++          ]
++        },
++        "a": {
++          "a": 0,
++          "k": [
++            0,
++            0
++          ]
++        },
++        "s": {
++          "a": 0,
++          "k": [
++            100,
++            100
++          ]
++        }
++      },
++      "shapes": [
++        {
++          "ty": "gr",
++          "it": [
++            {
++              "ty": "sh",
++              "ks": {
++                "a": 0,
++                "k": {
++                  "c": false,
++                  "v": [
++                    [
++                      0,
++                      0
++                    ],
++                    [
++                      160,
++                      0
++                    ]
++                  ],
++                  "i": [
++                    [
++                      0,
++                      0
++                    ],
++                    [
++                      0,
++                      0
++                    ]
++                  ],
++                  "o": [
++                    [
++                      0,
++                      0
++                    ],
++                    [
++                      0,
++                      0
++                    ]
++                  ]
++                }
++              }
++            },
++            {
++              "ty": "st",
++              "c": {
++                "a": 0,
++                "k": [
++                  1,
++                  0.25,
++                  0.25,
++                  1
++                ]
++              },
++              "o": {
++                "a": 0,
++                "k": 100
++              },
++              "w": {
++                "a": 0,
++                "k": 8
++              },
++              "lc": 1,
++              "lj": 1
++            },
++            {
++              "ty": "tm",
++              "s": {
++                "a": 1,
++                "k": [
++                  {
++                    "t": 0,
++                    "s": [
++                      0
++                    ],
++                    "i": {
++                      "x": [
++                        0.833
++                      ],
++                      "y": [
++                        0.833
++                      ]
++                    },
++                    "o": {
++                      "x": [
++                        0.167
++                      ],
++                      "y": [
++                        0.167
++                      ]
++                    }
++                  },
++                  {
++                    "t": 30,
++                    "s": [
++                      0
++                    ]
++                  }
++                ]
++              },
++              "e": {
++                "a": 1,
++                "k": [
++                  {
++                    "t": 0,
++                    "s": [
++                      0
++                    ],
++                    "i": {
++                      "x": [
++                        0.833
++                      ],
++                      "y": [
++                        0.833
++                      ]
++                    },
++                    "o": {
++                      "x": [
++                        0.167
++                      ],
++                      "y": [
++                        0.167
++                      ]
++                    }
++                  },
++                  {
++                    "t": 30,
++                    "s": [
++                      100
++                    ]
++                  }
++                ]
++              },
++              "o": {
++                "a": 0,
++                "k": 0
++              },
++              "m": 1
++            },
++            {
++              "ty": "tr",
++              "p": {
++                "a": 0,
++                "k": [
++                  0,
++                  0
++                ]
++              },
++              "a": {
++                "a": 0,
++                "k": [
++                  0,
++                  0
++                ]
++              },
++              "s": {
++                "a": 0,
++                "k": [
++                  100,
++                  100
++                ]
++              },
++              "r": {
++                "a": 0,
++                "k": 0
++              },
++              "o": {
++                "a": 0,
++                "k": 100
++              }
++            }
++          ]
++        }
++      ],
++      "st": 0,
++      "sr": 1,
++      "ao": 0,
++      "ddd": 0
++    }
++  ],
++  "assets": [],
++  "ddd": 0
++}
+diff --git a/fixtures/ir/invalid/duration-limit.json b/fixtures/ir/invalid/duration-limit.json
+index e09161f..f362690 100644
+--- a/fixtures/ir/invalid/duration-limit.json
++++ b/fixtures/ir/invalid/duration-limit.json
+@@ -27,7 +27,7 @@
+   ],
+   "initialCameraId": "main",
+   "timeline": {
+-    "durationMs": 30001,
++    "durationMs": 60001,
+     "tracks": [],
+     "steps": []
+   },
+diff --git a/fixtures/motionscript/stories/build-clockwork.ts b/fixtures/motionscript/stories/build-clockwork.ts
+index dea07fb..7935425 100644
+--- a/fixtures/motionscript/stories/build-clockwork.ts
++++ b/fixtures/motionscript/stories/build-clockwork.ts
+@@ -993,7 +993,7 @@ function cameraTracks(layout: Layout, radius: number, dialR: number): string[] {
+   const axis = (channel: "x" | "y" | "zoom", read: (shot: (typeof shots)[number]) => number) =>
+     track(
+       channel === "zoom" ? "camera(main).zoom" : `camera(main).position.${channel}`,
+-      shots.map((shot, index) => ({ t: shot.t, v: read(shot), ease: index < shots.length - 1 ? shot.ease : undefined })),
++      shots.map((shot, index) => ({ t: shot.t, v: read(shot), ease: index < shots.length - 1 && "ease" in shot ? shot.ease : undefined })),
+     );
+   return [axis("x", (shot) => shot.x), axis("y", (shot) => shot.y), axis("zoom", (shot) => shot.zoom)];
+ }
+diff --git a/fixtures/motionscript/stories/build-counter.ts b/fixtures/motionscript/stories/build-counter.ts
+index b770293..7ea8c36 100644
+--- a/fixtures/motionscript/stories/build-counter.ts
++++ b/fixtures/motionscript/stories/build-counter.ts
+@@ -387,7 +387,7 @@ function solveLimb(frame: Frame, who: "cyan" | "orange", other: Frame, contact:
+         [step, -step],
+         [-step, step],
+         [-step, -step],
+-      ]) {
++      ] as const) {
+         const value = score(bestA + da, bestB + db);
+         if (value < best - 0.05) {
+           best = value;
+@@ -582,7 +582,7 @@ const cyanKeys: Key[] = [
+   K(20.85, 760, { ...GUARD }),
+   K(21.35, 690, { ...GUARD, body: -8, torso: 14, lL: tri(22, -34, -68), lR: tri(-18, -16, -64), ease: "easeIn" }),
+   K(22.15, 640, { body: -12, torso: 16, head: -4, aL: tri(-58, -88, 14), aR: tri(-30, -100, 16) }),
+-  K(22.85, 590, { body: -24, head: -10, x: 590, aL: tri(-30, -60, 8), aR: tri(-18, -50, 6), ease: "easeOut" }),
++  K(22.85, 590, { body: -24, head: -10, aL: tri(-30, -60, 8), aR: tri(-18, -50, 6), ease: "easeOut" }),
+   K(23.15, 548, { body: -28 }),
+   K(23.72, 610, { aL: tri(-132, -48, 6), aR: tri(-124, -58, 8), torso: 6, body: -6, head: 2 }),
+   K(24.05, 520, { body: -18, y: 500, aR: tri(24, 18, 0), aL: tri(-80, -40, 10), lL: tri(20, -24, -40), lR: tri(16, -20, -36) }),
+@@ -655,7 +655,7 @@ const orangeKeys: Key[] = [
+   K(20.9, 930, { ...GUARD, body: 2 }),
+   K(21.4, 960, { torso: 24, body: 8, lL: tri(32, -46, -50), lR: tri(-22, -28, -48), aL: tri(-20, -70, 12), ease: "easeIn" }),
+   K(22.2, 990, { aR: tri(48, -150, 24), torso: 18, body: 6, head: -4, aL: tri(-40, -80, 10), expr: "grin", jaw: -18, brow: -8 }),
+-  K(22.7, 940, { aR: tri(36, -140, 20), torso: 20, body: 10, x: 940, expr: "grin", ease: "easeOut" }),
++  K(22.7, 940, { aR: tri(36, -140, 20), torso: 20, body: 10, expr: "grin", ease: "easeOut" }),
+   K(23.05, 900, { expr: "grin", jaw: -24, head: -8, aR: tri(20, -120, 16), torso: 12, body: 2 }),
+   K(23.55, 820, { expr: "grin", aL: tri(-40, -100, 12), torso: 10, ease: "easeIn" }),
+   K(23.9, 690, { aL: tri(-124, -10, 4), torso: 16, body: 12, expr: "grin", jaw: -20, ease: "easeOut" }),
+diff --git a/fixtures/motionscript/stories/build-crane.ts b/fixtures/motionscript/stories/build-crane.ts
+index 38dd622..17f5a27 100644
+--- a/fixtures/motionscript/stories/build-crane.ts
++++ b/fixtures/motionscript/stories/build-crane.ts
+@@ -816,7 +816,7 @@ function track(id: string, samples: Sample[], close: boolean): string {
+   return `keyframes ${id}.commands {\n  start 0s;\n  duration ${DURATION}s;\n${lines.join("\n")}\n};`;
+ }
+ 
+-function stepsFor(id: string, samples: Sample[], initial: boolean): { visible: boolean; steps: string } {
++function stepsFor(id: string, samples: Sample[], initial: boolean): { visible: boolean; steps: string[] } {
+   let visible = initial;
+   const steps: string[] = [];
+   let cursor = initial;
+diff --git a/fixtures/motionscript/stories/build-into-the-moons-shadow.ts b/fixtures/motionscript/stories/build-into-the-moons-shadow.ts
+index 15e057f..eefa286 100644
+--- a/fixtures/motionscript/stories/build-into-the-moons-shadow.ts
++++ b/fixtures/motionscript/stories/build-into-the-moons-shadow.ts
+@@ -536,7 +536,7 @@ function labelTrack(t: number): Pt {
+ const TRACK = `move (${num(OBS.x + 18)}, ${num(EARTH.y - 48)}); line (${num(OBS.x + 18)}, ${num(EARTH.y + 52)});`;
+ 
+ function system(labels: boolean, coneOpacity: number, rayWidth: number, clip: boolean): string {
+-  const label = (content: string, x: number, y: number, size: number, align: "center" | "right") =>
++  const label = (content: string, x: number, y: number, size: number, align: "left" | "center" | "right") =>
+     labels
+       ? `text name {
+       content "${content}";
+diff --git a/package-lock.json b/package-lock.json
+index 3db77ae..cec9e8b 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -2648,21 +2648,21 @@
+     },
+     "packages/canvas-renderer": {
+       "name": "@gvr/canvas-renderer",
+-      "version": "0.1.0",
++      "version": "0.1.1",
+       "dependencies": {
+         "@gvr/schema": "*"
+       }
+     },
+     "packages/compiler": {
+       "name": "@gvr/compiler",
+-      "version": "0.1.0",
++      "version": "0.1.1",
+       "dependencies": {
+         "@gvr/schema": "*"
+       }
+     },
+     "packages/format-import-core": {
+       "name": "@gvr/format-import-core",
+-      "version": "0.1.0",
++      "version": "0.1.1",
+       "dependencies": {
+         "@gvr/schema": "*"
+       },
+@@ -2672,7 +2672,7 @@
+     },
+     "packages/format-lottie": {
+       "name": "@gvr/format-lottie",
+-      "version": "0.1.5",
++      "version": "0.1.1",
+       "dependencies": {
+         "@gvr/format-import-core": "*",
+         "@gvr/schema": "*"
+@@ -2715,14 +2715,14 @@
+     },
+     "packages/runtime": {
+       "name": "@gvr/runtime",
+-      "version": "0.1.0",
++      "version": "0.1.1",
+       "dependencies": {
+         "@gvr/schema": "*"
+       }
+     },
+     "packages/schema": {
+       "name": "@gvr/schema",
+-      "version": "0.1.0"
++      "version": "0.1.1"
+     }
+   }
+ }
+diff --git a/package.json b/package.json
+index aa35e85..f956a22 100644
+--- a/package.json
++++ b/package.json
+@@ -10,7 +10,7 @@
+   "scripts": {
+     "test": "vitest run",
+     "validate-ir": "tsx packages/schema/src/cli.ts",
+-    "typecheck": "tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json",
++    "typecheck": "tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json && tsc --noEmit -p evaluation/bench/tsconfig.json",
+     "import-fixture": "tsx packages/format-import-core/src/cli.ts",
+     "import-lottie": "tsx packages/format-lottie/src/cli.ts",
+     "import-svg": "tsx packages/format-svg/src/cli.ts",
+@@ -18,7 +18,8 @@
+     "dev:runtime": "npm run dev -w @gvr/playground",
+     "dev:streaming": "npm run dev -w @gvr/playground",
+     "dev:presentation": "npm run dev -w @gvr/playground",
+-    "frames": "tsx fixtures/write-frames.ts"
++    "frames": "tsx fixtures/write-frames.ts",
++    "benchmark": "tsx evaluation/bench/run.mts"
+   },
+   "devDependencies": {
+     "@types/node": "^22.10.2",
+diff --git a/packages/canvas-renderer/package.json b/packages/canvas-renderer/package.json
+index b2c0486..2938496 100644
+--- a/packages/canvas-renderer/package.json
++++ b/packages/canvas-renderer/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/canvas-renderer",
+-  "version": "0.1.0",
++  "version": "0.1.1",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/canvas-renderer/src/renderer.test.ts b/packages/canvas-renderer/src/renderer.test.ts
+index 6b1540c..00cc528 100644
+--- a/packages/canvas-renderer/src/renderer.test.ts
++++ b/packages/canvas-renderer/src/renderer.test.ts
+@@ -1,3 +1,5 @@
++import { compileMotionScript } from "@gvr/compiler";
++import { AnimationRuntime } from "@gvr/runtime";
+ import { describe, expect, it } from "vitest";
+ import {
+   deviceFitMatrix,
+@@ -265,3 +267,31 @@ describe("CanvasRenderer", () => {
+     expect(ctx.calls.some((call) => call.name === "filter" && call.args[0] === "blur(6px)")).toBe(true);
+   });
+ });
++
++// The recorder observes actual CanvasRenderer calls on both routing branches.
++
++describe("hierarchical paint ordering through CanvasRenderer", () => {
++  it("preserves hierarchical sibling order through CanvasRenderer", () => {
++    for (const scope of ["", "isolated true;"]) {
++      const source = `scene "order" { version "0.2"; viewport (100, 100); background #000000; duration 1s; requires "compositing.isolatedOpacity"; };
++        group front { zIndex 10; ${scope}
++          rectangle red { size (20,20); fill #ff0000; zIndex 2; };
++          group inner { zIndex 1; ${scope}
++            rectangle blue { size (20,20); fill #0000ff; zIndex 3; };
++            rectangle green { size (20,20); fill #00ff00; zIndex 0; };
++            rectangle tie { size (20,20); fill #ffff00; zIndex 0; };
++          };
++        };
++        rectangle back { size (20,20); fill #ffffff; zIndex -1; };
++        complete;`;
++      const compiled = compileMotionScript(source);
++      expect(compiled.diagnostics).toEqual([]);
++      const frame = new AnimationRuntime(compiled.scene!).evaluate(0);
++      expect(frame.drawItems.map(item => item.nodeId)).toEqual(["back", "front.inner.green", "front.inner.tie", "front.inner.blue", "front.red"]);
++      const {ctx} = render(frame, 100, 100, 1);
++      expect(ctx.calls.filter(call => call.name === "fill").map(call => call.fillStyle)).toEqual([
++        "rgba(255, 255, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 0, 1)"
++      ]);
++    }
++  });
++});
+diff --git a/packages/canvas-renderer/src/renderer.ts b/packages/canvas-renderer/src/renderer.ts
+index 8c2121f..58feb15 100644
+--- a/packages/canvas-renderer/src/renderer.ts
++++ b/packages/canvas-renderer/src/renderer.ts
+@@ -1,4 +1,5 @@
+ import {
++  type Telemetry,
+   deviceFitMatrix,
+   multiplyMat3,
+   transformPoint,
+@@ -25,11 +26,11 @@ export class CanvasRenderer {
+   private cssHeight = 0;
+   private devicePixelRatio = 1;
+   private disposed = false;
+-  private readonly paths = new WeakMap<object, Path2D>();
++  private paths = new WeakMap<object, Path2D>();
+   private readonly images = new Map<string, HTMLImageElement>();
+   private scopeAlpha = 1;
+ 
+-  constructor(canvas: HTMLCanvasElement) {
++  constructor(canvas: HTMLCanvasElement, private readonly telemetry?: Telemetry) {
+     this.canvas = canvas;
+     this.ctx = canvas.getContext("2d");
+   }
+@@ -48,6 +49,10 @@ export class CanvasRenderer {
+   }
+ 
+   render(frame: ResolvedFrame): void {
++    if (this.telemetry) this.telemetry.measure('frame.renderer_call_ms', () => this.renderInner(frame));
++    else this.renderInner(frame);
++  }
++  private renderInner(frame: ResolvedFrame): void {
+     const ctx = this.ctx;
+     if (this.disposed || !ctx || this.cssWidth <= 0 || this.cssHeight <= 0) return;
+ 
+@@ -82,6 +87,9 @@ export class CanvasRenderer {
+   dispose(): void {
+     this.disposed = true;
+     this.ctx = null;
++    this.images.clear();
++    this.paths = new WeakMap<object, Path2D>();
++    this.telemetry?.gauge("renderer.image_cache_entries", 0);
+   }
+ 
+   private drawItem(ctx: CanvasRenderingContext2D, device: Mat3, item: ResolvedDrawItem): void {
+@@ -180,6 +188,7 @@ export class CanvasRenderer {
+     const image = new Image();
+     image.src = href;
+     this.images.set(href, image);
++    this.telemetry?.gauge("renderer.image_cache_entries", this.images.size);
+     return image;
+   }
+ 
+diff --git a/packages/compiler/package.json b/packages/compiler/package.json
+index 2779574..f48f5aa 100644
+--- a/packages/compiler/package.json
++++ b/packages/compiler/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/compiler",
+-  "version": "0.1.0",
++  "version": "0.1.1",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/compiler/src/compile.ts b/packages/compiler/src/compile.ts
+index d6c03e6..707c79c 100644
+--- a/packages/compiler/src/compile.ts
++++ b/packages/compiler/src/compile.ts
+@@ -1,4 +1,5 @@
+ import {
++  Telemetry,
+   DEFAULT_LIMITS,
+   DSL_VERSION,
+   DSL_VERSION_02,
+@@ -41,6 +42,7 @@ export interface CompileResult {
+ }
+ 
+ export interface Session {
++  telemetry?: Telemetry;
+   scene: SceneIR;
+   constants: Map<string, number>;
+   sealedThroughMs: number;
+@@ -61,46 +63,63 @@ export interface Session {
+ }
+ 
+ /** Compile one complete MotionScript file. A rejected unit leaves the accepted scene unchanged. */
+-export function compileMotionScript(source: string): CompileResult {
+-  const program = parseMotionScript(source);
+-  return compileProgram(program);
++export function compileMotionScript(source: string, telemetry?: Telemetry): CompileResult {
++  const run = () => {
++    const bytes = new TextEncoder().encode(source).byteLength;
++    telemetry?.count('compile.source_bytes', bytes);
++    if (bytes > DEFAULT_LIMITS.maxSourceBytes) {
++      const issue = diagnostic({code: 'RESOURCE_LIMIT', phase: 'compile', category: 'resource', effect: 'PROGRAM_FATAL', message: `Source exceeds ${DEFAULT_LIMITS.maxSourceBytes} bytes.`});
++      telemetry?.count('compile.rejected_sources');
++      return {ok:false, diagnostics:[issue], sealedThroughMs:0, completed:false, deltas:[]};
++    }
++    const program = telemetry ? telemetry.measure('compile.lex_parse_ms', () => parseMotionScript(source)) : parseMotionScript(source);
++    return compileProgram(program, telemetry);
++  };
++  return telemetry ? telemetry.measure('compile.total_ms', run) : run();
+ }
+ 
+-export function compileProgram(program: ProgramAst): CompileResult {
++export function compileProgram(program: ProgramAst, telemetry?: Telemetry): CompileResult {
+   const diagnostics = [...program.diagnostics];
+   const header = program.header;
+   if (!header || header.errors.length > 0 || !headerOk(header, diagnostics)) {
+     return { ok: false, diagnostics, sealedThroughMs: 0, completed: false, deltas: [] };
+   }
+   const session = createSession(header, diagnostics);
++  session.telemetry = telemetry;
+   emitCreate(session, header.span);
+   for (const unit of program.units) pushUnit(session, unit);
+   return finishSession(session, program.completed);
+ }
+ 
+ /** Live compiler used by the fragment feeder. The header must already be valid. */
+-export function openSession(header: HeaderAst, diagnostics: Diagnostic[] = []): Session {
++export function openSession(header: HeaderAst, diagnostics: Diagnostic[] = [], telemetry?: Telemetry): Session {
+   const session = createSession(header, diagnostics);
++  session.telemetry = telemetry;
+   emitCreate(session, header.span);
+   return session;
+ }
+ 
+ export function pushUnit(session: Session, unit: UnitAst): void {
+   session.parsedUnits += 1;
++  session.telemetry?.count("compile.units_seen");
+   if (session.authoringComplete) {
++    session.telemetry?.count("compile.rejected_units");
+     session.diagnostics.push(problem("INVALID_TYPE", "Units cannot follow complete;.", unit.span));
+     return;
+   }
+   if (session.deferred.length > 0 && unit.kind === "seal") {
++    session.telemetry?.count("compile.rejected_units");
+     blockSeal(session, unit, `Seal at ${unit.timeMs}ms is blocked by an unresolved reference.`);
+     return;
+   }
+   if (isUnresolved(session, unit)) {
+     if (session.deferred.length >= DEFAULT_LIMITS.maxDeferredUnits) {
++      session.telemetry?.count("compile.rejected_units");
+       session.diagnostics.push(problem("RESOURCE_LIMIT", "Too many deferred units.", unit.span));
+       return;
+     }
+     session.deferred.push(unit);
++    session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
+     return;
+   }
+   if (applyUnit(session, unit, true)) retryDeferred(session);
+@@ -108,6 +127,9 @@ export function pushUnit(session: Session, unit: UnitAst): void {
+ 
+ export function finishSession(session: Session, sourceCompleted: boolean, span?: SourceSpan): CompileResult {
+   const unresolved = session.deferred.splice(0);
++  session.telemetry?.gauge("compile.deferred_units", 0);
++  session.telemetry?.count("compile.unresolved_units", unresolved.length);
++  session.telemetry?.count("compile.rejected_units", unresolved.length);
+   for (const unit of unresolved) {
+     if (unit.kind === "instance") {
+       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved composition ${unit.definition}.`, unit.span));
+@@ -153,7 +175,7 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
+       }),
+     );
+   }
+-  const validated = validateSceneIR(session.scene);
++  const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
+   if (!validated.ok) session.diagnostics.push(...validated.diagnostics);
+   const honorComplete = sourceCompleted && unresolved.length === 0 && validated.ok;
+   if (honorComplete) {
+@@ -176,6 +198,7 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
+ export function drainDeltas(session: Session): SceneIRDelta[] {
+   const deltas = session.pendingDeltas;
+   session.pendingDeltas = [];
++  session.telemetry?.gauge("compile.pending_deltas", 0);
+   return deltas;
+ }
+ 
+@@ -186,10 +209,12 @@ function retryDeferred(session: Session): void {
+   for (const unit of pending) {
+     if (isUnresolved(session, unit)) {
+       session.deferred.push(unit);
++    session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
+       continue;
+     }
+     applyUnit(session, unit, true);
+   }
++  session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
+ }
+ 
+ function isUnresolved(session: Session, unit: UnitAst): boolean {
+@@ -241,6 +266,9 @@ interface Capture {
+ }
+ 
+ function capture(session: Session): Capture {
++  return measured(session, 'compile.capture_ms', () => captureInner(session));
++}
++function captureInner(session: Session): Capture {
+   return {
+     nodes: session.scene.nodes.length,
+     tracks: session.scene.timeline.tracks.length,
+@@ -293,6 +321,7 @@ function emit(session: Session, operations: RuntimeOperation[], sourceSpan: Sour
+   };
+   session.deltas.push(delta);
+   session.pendingDeltas.push(delta);
++  session.telemetry?.gauge("compile.pending_deltas", session.pendingDeltas.length);
+ }
+ 
+ function sceneHeader(session: Session): SceneHeader {
+@@ -400,6 +429,17 @@ function createSession(header: HeaderAst, diagnostics: Diagnostic[]): Session {
+ }
+ 
+ function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean {
++  const accepted = applyUnitInner(session, unit, emitDelta);
++  if (emitDelta) session.telemetry?.count(accepted ? 'compile.accepted_units' : 'compile.rejected_units');
++  if (!accepted) session.telemetry?.event('compile.unit_rejected', {kind: unit.kind, span: unit.span, diagnostics: session.diagnostics.slice(-4)});
++  return accepted;
++}
++
++function measured<T>(session: Session, name: string, work: () => T): T {
++  return session.telemetry ? session.telemetry.measure(name, work) : work();
++}
++
++function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): boolean {
+   if (
+     session.frozen &&
+     (unit.kind === "node" ||
+@@ -428,7 +468,7 @@ function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean
+       session.diagnostics.push(...unit.errors);
+       return false;
+     }
+-    const snapshot = structuredClone(session.scene);
++    const snapshot = measured(session, 'compile.snapshot_ms', () => structuredClone(session.scene));
+     const sealed = session.sealedThroughMs;
+     const constants = new Map(session.constants);
+     const before = capture(session);
+@@ -437,7 +477,7 @@ function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean
+       if (!applyUnit(session, item, false)) failed = true;
+     }
+     if (failed) {
+-      restore(session, snapshot, sealed, constants);
++      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
+       return false;
+     }
+     if (emitDelta) noteChanges(session, unit, before);
+@@ -447,24 +487,24 @@ function applyUnit(session: Session, unit: UnitAst, emitDelta: boolean): boolean
+     session.diagnostics.push(...unit.errors);
+     return false;
+   }
+-  const snapshot = structuredClone(session.scene);
++  const snapshot = measured(session, 'compile.snapshot_ms', () => structuredClone(session.scene));
+   const sealed = session.sealedThroughMs;
+   const constants = new Map(session.constants);
+   const beforeDiag = session.diagnostics.length;
+   const before = capture(session);
+-  lower(session, unit);
++  measured(session, 'compile.lower_ms', () => lower(session, unit));
+   if (session.diagnostics.length > beforeDiag) {
+-    restore(session, snapshot, sealed, constants);
++    measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
+     return false;
+   }
+-  const validated = validateSceneIR(session.scene);
++  const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
+   if (!validated.ok) {
+     const prior = validateSceneIR(snapshot);
+     const priorKeys = new Set(!prior.ok ? prior.diagnostics.map((item) => `${item.code}:${item.message}`) : []);
+     const fresh = validated.diagnostics.filter((item) => !priorKeys.has(`${item.code}:${item.message}`));
+     if (fresh.length > 0) {
+       session.diagnostics.push(...fresh);
+-      restore(session, snapshot, sealed, constants);
++      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
+       return false;
+     }
+   }
+diff --git a/packages/compiler/src/incremental.ts b/packages/compiler/src/incremental.ts
+index e1ad702..4693d36 100644
+--- a/packages/compiler/src/incremental.ts
++++ b/packages/compiler/src/incremental.ts
+@@ -1,4 +1,4 @@
+-import { DEFAULT_LIMITS, createIncrementalLexer, diagnostic, type Diagnostic, type Token } from "@gvr/schema";
++import { Telemetry, DEFAULT_LIMITS, createIncrementalLexer, diagnostic, type Diagnostic, type Token } from "@gvr/schema";
+ import type { UnitAst } from "./ast";
+ import { drainDeltas, finishSession, openSession, pushUnit, type CompileResult, type Session } from "./compile";
+ import { parseLeadingSlice } from "./parse";
+@@ -39,14 +39,33 @@ export function compileIncrementally(chunks: readonly string[]): CompileResult {
+ }
+ 
+ export class IncrementalProgram {
+-  private readonly lexer = createIncrementalLexer();
++  private lexer = createIncrementalLexer();
+   private readonly buffer: Token[] = [];
+   private session?: Session;
+   private carried: Diagnostic[] = [];
+   private result?: CompileResult;
+   private stopped = false;
++  private sourceBytes = 0;
++  private endsInHighSurrogate = false;
+   private closed = false;
+ 
++  constructor(private readonly telemetry?: Telemetry) {}
++
++  dispose(): void {
++    this.stopped = true;
++    this.buffer.length = 0;
++    this.lexer = createIncrementalLexer();
++    this.session = undefined;
++    this.carried = [];
++    this.result = undefined;
++    this.telemetry?.gauge('compile.buffered_tokens', 0);
++    this.telemetry?.gauge('compile.buffered_lexeme_bytes', 0);
++    this.telemetry?.gauge('compile.lexer_pending_bytes', 0);
++    this.telemetry?.gauge('compile.lexer_retained_tokens', 0);
++    this.telemetry?.gauge('compile.deferred_units', 0);
++    this.telemetry?.gauge('compile.pending_deltas', 0);
++  }
++
+   get sealedThroughMs(): number {
+     return this.session?.sealedThroughMs ?? 0;
+   }
+@@ -73,8 +92,25 @@ export class IncrementalProgram {
+ 
+   push(chunk: string): void {
+     if (this.stopped || chunk.length === 0) return;
+-    this.buffer.push(...this.lexer.push(chunk));
++    const first = chunk.charCodeAt(0);
++    const bytes = new TextEncoder().encode(chunk).byteLength - (this.endsInHighSurrogate && first >= 0xdc00 && first <= 0xdfff ? 2 : 0);
++    const last = chunk.charCodeAt(chunk.length - 1);
++    this.endsInHighSurrogate = last >= 0xd800 && last <= 0xdbff;
++    this.sourceBytes += bytes;
++    this.telemetry?.count('compile.source_bytes', bytes);
++    if (this.sourceBytes > DEFAULT_LIMITS.maxSourceBytes) {
++      this.carried.push(diagnostic({code:'RESOURCE_LIMIT',phase:'compile',category:'resource',effect:'PROGRAM_FATAL',message:`Source exceeds ${DEFAULT_LIMITS.maxSourceBytes} bytes.`}));
++      this.stopped = true;
++      this.buffer.length = 0;
++      this.lexer = createIncrementalLexer();
++      return;
++    }
++    const tokens = this.telemetry ? this.telemetry.measure('compile.lex_ms', () => this.lexer.push(chunk)) : this.lexer.push(chunk);
++    for (const token of tokens) this.buffer.push(token);
++    this.telemetry?.gauge('compile.buffered_tokens', this.buffer.length);
+     this.drain();
++    this.telemetry?.gauge('compile.lexer_pending_bytes', this.lexer.pendingBytes);
++    this.telemetry?.gauge('compile.lexer_retained_tokens', this.lexer.retainedTokenCount);
+   }
+ 
+   drainDeltas() {
+@@ -83,7 +119,7 @@ export class IncrementalProgram {
+ 
+   finish(): CompileResult {
+     const tail = this.lexer.finish();
+-    this.buffer.push(...tail.tokens);
++    for (const token of tail.tokens) this.buffer.push(token);
+     this.carried.push(...tail.diagnostics);
+     this.drain();
+     if (this.buffer.length > 0) {
+@@ -140,7 +176,9 @@ export class IncrementalProgram {
+       this.buffer.length = 0;
+       if (this.result) this.result = { ...this.result, ok: false };
+     }
+-    const buffered = this.buffer.reduce((sum, token) => sum + token.lexeme.length, 0);
++    this.telemetry?.gauge("compile.buffered_tokens", this.buffer.length);
++    const buffered = new TextEncoder().encode(this.buffer.map(token => token.lexeme).join("")).byteLength;
++    this.telemetry?.gauge("compile.buffered_lexeme_bytes", buffered);
+     if (buffered > DEFAULT_LIMITS.maxBufferedUnitBytes) {
+       this.carried.push(
+         diagnostic({
+@@ -157,7 +195,7 @@ export class IncrementalProgram {
+   }
+ 
+   private accept(tokens: Token[]): void {
+-    const parsed = parseLeadingSlice(tokens);
++    const parsed = this.telemetry ? this.telemetry.measure('compile.parse_ms', () => parseLeadingSlice(tokens)) : parseLeadingSlice(tokens);
+     if (parsed.kind === "invalid") {
+       this.carried.push(...parsed.diagnostics);
+       if (!this.session) {
+@@ -171,7 +209,7 @@ export class IncrementalProgram {
+         this.carried.push(problemSpan("A scene header cannot be repeated."));
+         return;
+       }
+-      this.session = openSession(parsed.header, this.carried);
++      this.session = openSession(parsed.header, this.carried, this.telemetry);
+       this.carried = [];
+       return;
+     }
+@@ -205,8 +243,8 @@ export class IncrementalProgram {
+   }
+ }
+ 
+-export function createIncrementalProgram(): IncrementalProgram {
+-  return new IncrementalProgram();
++export function createIncrementalProgram(telemetry?: Telemetry): IncrementalProgram {
++  return new IncrementalProgram(telemetry);
+ }
+ 
+ function takeUnit(tokens: Token[]): Token[] | undefined {
+diff --git a/packages/compiler/src/telemetry.test.ts b/packages/compiler/src/telemetry.test.ts
+new file mode 100644
+index 0000000..6fdc3c0
+--- /dev/null
++++ b/packages/compiler/src/telemetry.test.ts
+@@ -0,0 +1,31 @@
++import { expect, it } from 'vitest';
++import { DEFAULT_LIMITS, Telemetry } from '@gvr/schema';
++import { compileMotionScript } from './compile';
++import { createIncrementalProgram } from './incremental';
++const source='scene "measure" { version "0.1"; viewport (100,100); background #000000; duration 1s; }; circle mark { radius 10; fill #ff0000; }; complete;';
++it("preserves accepted scenes and diagnostics with compile observation enabled", () => {
++ const telemetry=new Telemetry();
++ expect(compileMotionScript(source,telemetry)).toEqual(compileMotionScript(source));
++ const rejected=source.replace('radius 10','radius -1');
++ expect(compileMotionScript(rejected,telemetry)).toEqual(compileMotionScript(rejected));
++ expect(telemetry.snapshot().counters['compile.rejected_units']).toBeGreaterThan(0);
++ expect(telemetry.snapshot().distributions['compile.snapshot_ms']?.count).toBeGreaterThan(0);
++});
++it("bounds source acceptance, counts split UTF8 correctly and releases cancelled state", () => {
++ const telemetry=new Telemetry(); const stream=createIncrementalProgram(telemetry);
++ const unicode=source.replace('measure','😀');
++ for(const char of unicode.split(''))stream.push(char);
++ expect(stream.finish().ok).toBe(true);
++ expect(telemetry.snapshot().counters['compile.source_bytes']).toBe(new TextEncoder().encode(unicode).byteLength);
++ stream.dispose();expect(stream.scene).toBeUndefined();
++ const large=' '.repeat(DEFAULT_LIMITS.maxSourceBytes+1);
++ expect(compileMotionScript(large).diagnostics[0]?.code).toBe('RESOURCE_LIMIT');
++ const oversized=createIncrementalProgram();oversized.push(large);
++ expect(oversized.finish().diagnostics.some(d=>d.code==='RESOURCE_LIMIT')).toBe(true);
++});
++it("rejects a large invalid single fragment without an argument-stack overflow", () => {
++ const stream=createIncrementalProgram();
++ expect(()=>stream.push(';'.repeat(150000))).not.toThrow();
++ expect(stream.finish().ok).toBe(false);
++ stream.dispose();
++});
+diff --git a/packages/format-import-core/package.json b/packages/format-import-core/package.json
+index 587470e..7a5f22b 100644
+--- a/packages/format-import-core/package.json
++++ b/packages/format-import-core/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/format-import-core",
+-  "version": "0.1.0",
++  "version": "0.1.1",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/format-lottie/package.json b/packages/format-lottie/package.json
+index eece203..8635ab7 100644
+--- a/packages/format-lottie/package.json
++++ b/packages/format-lottie/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/format-lottie",
+-  "version": "0.1.5",
++  "version": "0.1.1",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/format-lottie/src/lottie.test.ts b/packages/format-lottie/src/lottie.test.ts
+index 02e9eea..cc70f06 100644
+--- a/packages/format-lottie/src/lottie.test.ts
++++ b/packages/format-lottie/src/lottie.test.ts
+@@ -791,3 +791,15 @@ describe("lottie adapter", () => {
+     }
+   });
+ });
++
++it("converts trim offset degrees and discloses unverified trim modes", () => {
++ const source=JSON.parse(readFileSync(join(fixtureDir,'animated_trim.json'),'utf8'));
++ const trim=source.layers[0].shapes[0].it.find((item: {ty:string})=>item.ty==='tm');
++ trim.o={a:0,k:90};trim.m=2;
++ const result=importSource(lottieAdapter,JSON.stringify(source),{sourceName:'trim-modes.json'});
++ const operation=result.scene?.geometryOperators?.[0]?.operators[0];
++ expect(operation?.op).toBe('trim');
++ if(operation?.op==='trim')expect(operation.offset).toBe(.25);
++ expect(result.diagnostics.some(item=>item.feature==='tm' && item.fidelity==='approximated' && item.message.includes('Individual'))).toBe(true);
++ expect(result.diagnostics.some(item=>item.feature==='tm' && item.fidelity==='approximated' && item.message.includes('wrapped tail'))).toBe(true);
++});
+diff --git a/packages/format-lottie/src/model.ts b/packages/format-lottie/src/model.ts
+index 87e4cb8..d7dc32f 100644
+--- a/packages/format-lottie/src/model.ts
++++ b/packages/format-lottie/src/model.ts
+@@ -125,7 +125,8 @@ export type LottieShapeItem =
+         start: number;
+         end: number;
+         offset: number;
+-        /** Present when Lottie `tm` start/end/offset is animated. Values are 0–100 percents. */
++        mappingLimitations?: string[];
++        /** Present when Lottie `tm` start/end/offset is animated. Start/end are percentages; offset is degrees. */
+         animated?: {
+           start?: AnimatedScalar;
+           end?: AnimatedScalar;
+diff --git a/packages/format-lottie/src/normalise.ts b/packages/format-lottie/src/normalise.ts
+index 5947a93..2d9dea3 100644
+--- a/packages/format-lottie/src/normalise.ts
++++ b/packages/format-lottie/src/normalise.ts
+@@ -144,8 +144,8 @@ export function normaliseLottie(document: LottieDocument, context: ImportContext
+   const maxOrder = Math.max(...document.layers.map((layer) => layer.arrayOrder));
+   // Source layer parenting is a transform chain, not paint containment.
+   placeLayers(lower, supportedLayers, maxOrder, null);
+-  // Emit declaration order in paint order too: isolated render scopes consume
+-  // their children in declaration order, while flat draw lists sort by zIndex.
++  // Keep canonical declaration order deterministic. Runtime tree and flat routes
++  // both apply the shared sibling zIndex/declaration tie-break contract.
+   lower.nodes = traversalOrder(lower.nodes);
+ 
+   const capabilities = [...new Set(lower.capabilities)];
+@@ -535,6 +535,7 @@ function lowerShapeItem(ctx: LowerContext, parentId: string, item: LottieShapeIt
+       ...(stroke ? { stroke } : {}),
+     });
+     if (item.trim) {
++      for (const message of item.trim.mappingLimitations ?? []) ctx.notes.push({feature:'tm',level:'approximated',message,target:nodeId.id});
+       ctx.operators.push({
+         nodeId: nodeId.id,
+         operators: [{ op: "trim", start: item.trim.start, end: item.trim.end, offset: item.trim.offset }],
+@@ -792,7 +793,7 @@ function addTrimTracks(
+   const toUnit = (value: number) => value / 100;
+   if (animated.start) addScalarTrack(ctx, nodeId, "trim.start", animated.start, toUnit, "tm");
+   if (animated.end) addScalarTrack(ctx, nodeId, "trim.end", animated.end, toUnit, "tm");
+-  if (animated.offset) addScalarTrack(ctx, nodeId, "trim.offset", animated.offset, toUnit, "tm");
++  if (animated.offset) addScalarTrack(ctx, nodeId, "trim.offset", animated.offset, value => value / 360, "tm");
+   ctx.capabilities.push("geometry.animatedTrim");
+   ctx.notes.push({
+     feature: "tm",
+diff --git a/packages/format-lottie/src/parse-shapes.ts b/packages/format-lottie/src/parse-shapes.ts
+index e01a5d7..2a26656 100644
+--- a/packages/format-lottie/src/parse-shapes.ts
++++ b/packages/format-lottie/src/parse-shapes.ts
+@@ -382,7 +382,12 @@ function parseTrim(
+   return {
+     start: unit(start, 0),
+     end: unit(end, 100),
+-    offset: unit(offset, 0),
++    offset: (offset.kind === "static" ? offset.value : offset.keyframes[0]?.value ?? 0) / 360,
++    mappingLimitations: [
++      ...(entry.m === 2 ? ['Individual trim mode is not verified across multiple shapes.'] : []),
++      ...(offset.kind === 'animated' || (offset.kind === 'static' && offset.value !== 0) ? ['Offset units are converted from degrees, but native windows clip at one rather than retaining the wrapped tail.'] : []),
++      ...(unit(start,0) > unit(end,100) ? ['Reversed endpoints are swapped by lottie-web but empty in native trim.'] : []),
++    ],
+     ...(animated ? { animated } : {}),
+   };
+ }
+diff --git a/packages/runtime/package.json b/packages/runtime/package.json
+index 0292def..2f222fd 100644
+--- a/packages/runtime/package.json
++++ b/packages/runtime/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/runtime",
+-  "version": "0.1.0",
++  "version": "0.1.1",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/runtime/src/frame.ts b/packages/runtime/src/frame.ts
+index 46f412c..2a11a19 100644
+--- a/packages/runtime/src/frame.ts
++++ b/packages/runtime/src/frame.ts
+@@ -1,5 +1,6 @@
+ import {
+   drawableOrder,
++  childrenOf,
+   indexNodes,
+   logicalMatrix,
+   trimCommands,
+@@ -64,11 +65,11 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
+           opacity: node.opacity,
+           ...(node.compositing.blend ? { blend: node.compositing.blend } : {}),
+           ...(node.compositing.effect ? { effect: node.compositing.effect } : {}),
+-          children: nodes.filter((child) => child.parentId === node.id).flatMap(place),
++          children: childrenOf(nodes, node.id).flatMap(place),
+         },
+       ];
+     }
+-    if (node.kind === "group") return nodes.filter((child) => child.parentId === node.id).flatMap(place);
++    if (node.kind === "group") return childrenOf(nodes, node.id).flatMap(place);
+     const item = byId.get(node.id);
+     return item ? [{ kind: "leaf", item }] : [];
+   };
+@@ -77,7 +78,7 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
+     id: "root",
+     isolated: false,
+     opacity: 1,
+-    children: nodes.filter((node) => node.parentId === null).flatMap(place),
++    children: childrenOf(nodes, null).flatMap(place),
+   };
+ }
+ 
+diff --git a/packages/runtime/src/runtime.ts b/packages/runtime/src/runtime.ts
+index 82810f4..e7c154e 100644
+--- a/packages/runtime/src/runtime.ts
++++ b/packages/runtime/src/runtime.ts
+@@ -1,4 +1,4 @@
+-import type { Diagnostic, ResolvedFrame, SceneIR } from "@gvr/schema";
++import type { Telemetry, Diagnostic, ResolvedFrame, SceneIR } from "@gvr/schema";
+ import { buildResolvedFrame } from "./frame";
+ import { sampleScene } from "./sample";
+ 
+@@ -10,7 +10,7 @@ export class AnimationRuntime {
+   private degradedFlag = false;
+   private diagnostics: Diagnostic[] = [];
+ 
+-  constructor(readonly scene: SceneIR) {}
++  constructor(readonly scene: SceneIR, private readonly telemetry?: Telemetry) {}
+ 
+   get degraded(): boolean {
+     return this.degradedFlag;
+@@ -22,6 +22,9 @@ export class AnimationRuntime {
+   }
+ 
+   evaluate(sceneTimeMs: number): ResolvedFrame {
++    return this.telemetry ? this.telemetry.measure('frame.evaluate_ms', () => this.evaluateInner(sceneTimeMs)) : this.evaluateInner(sceneTimeMs);
++  }
++  private evaluateInner(sceneTimeMs: number): ResolvedFrame {
+     const sampled = sampleScene(this.scene, sceneTimeMs);
+     this.diagnostics = sampled.diagnostics;
+     if (sampled.diagnostics.length > 0) this.degradedFlag = true;
+diff --git a/packages/runtime/src/streaming.test.ts b/packages/runtime/src/streaming.test.ts
+index 1dfaa12..206ff83 100644
+--- a/packages/runtime/src/streaming.test.ts
++++ b/packages/runtime/src/streaming.test.ts
+@@ -1,3 +1,4 @@
++import { Telemetry, DEFAULT_LIMITS } from "@gvr/schema";
+ import { readFileSync } from "node:fs";
+ import { resolve } from "node:path";
+ import { describe, expect, it } from "vitest";
+@@ -101,3 +102,39 @@ describe("diagram path", () => {
+     }
+   });
+ });
++
++it("observes rejection and stale deltas without applying them and releases cancelled queues", () => {
++ const telemetry=new Telemetry(4);
++ const runtime=new StreamingRuntime(telemetry);
++ const delta=compileMotionScript(program).deltas[0]!;
++ runtime.enqueue({...delta,expectedRevision:99,nextRevision:100});
++ expect(runtime.flushCommands()).toEqual([]);
++ runtime.enqueue({...delta,nextRevision:-1});
++ expect(runtime.rejectedDiagnostics.length).toBeGreaterThan(0);
++ runtime.enqueue(delta);
++ expect(telemetry.snapshot().gauges['runtime.queue_deltas']?.value).toBe(1);
++ runtime.dispose();runtime.enqueue(delta);
++ expect(runtime.flushCommands()).toEqual([]);
++ expect(runtime.scene).toBeUndefined();
++ expect(telemetry.snapshot().counters['runtime.stale_deltas']).toBe(1);
++ expect(telemetry.snapshot().gauges['runtime.queue_deltas']?.value).toBe(0);
++});
++it("rejects queue overflow at the configured bound", () => {
++ const runtime=new StreamingRuntime();const delta=compileMotionScript(program).deltas[0]!;
++ for(let i=0;i<=DEFAULT_LIMITS.maxQueuedDeltas;i++)runtime.enqueue({...delta,expectedRevision:i,nextRevision:i+1});
++ expect(runtime.rejectedDiagnostics.some(item=>item.code==='RESOURCE_LIMIT')).toBe(true);
++ expect(runtime.flushCommands()).toHaveLength(DEFAULT_LIMITS.maxQueuedDeltas);
++ runtime.dispose();
++});
++it("validates streamed nodes using the active wire family including queued headers", () => {
++ const source=program.replace('version "0.1"','version "0.2"').replace('fill #ff0000;','fill #ff0000; cornerRadius 2;');
++ const compiled=compileMotionScript(source);
++ expect(compiled.ok).toBe(true);
++ for(const flushEach of [false,true]) {
++  const runtime=new StreamingRuntime();
++  for(const delta of compiled.deltas){runtime.enqueue(delta);if(flushEach)runtime.flushCommands();}
++  runtime.flushCommands();
++  expect(runtime.rejectedDiagnostics).toEqual([]);
++  expect(runtime.scene).toEqual(compiled.scene);
++ }
++});
+diff --git a/packages/runtime/src/streaming.ts b/packages/runtime/src/streaming.ts
+index 2cd336d..6a61b9f 100644
+--- a/packages/runtime/src/streaming.ts
++++ b/packages/runtime/src/streaming.ts
+@@ -1,4 +1,7 @@
+ import {
++  type Telemetry,
++  DEFAULT_LIMITS,
++  diagnostic,
+   validateDelta,
+   type ApplyResult,
+   type Diagnostic,
+@@ -21,9 +24,27 @@ export class StreamingRuntime {
+   scene?: SceneIR;
+   private readonly queue: SceneIRDelta[] = [];
+   private readonly rejected: Diagnostic[] = [];
++  private readonly enqueuedAt: number[] = [];
++  private disposed = false;
+   private degradedFlag = false;
+   private diagnostics: Diagnostic[] = [];
+ 
++  constructor(private readonly telemetry?: Telemetry) {}
++
++  /** Invalid deltas retain existing diagnostics; stale observations are bounded by Telemetry. */
++  get rejectedDiagnostics(): readonly Diagnostic[] { return this.rejected; }
++
++  dispose(): void {
++    this.disposed = true;
++    this.queue.length = 0;
++    this.enqueuedAt.length = 0;
++    this.rejected.length = 0;
++    this.diagnostics = [];
++    this.scene = undefined;
++    this.telemetry?.gauge('runtime.queue_deltas', 0);
++    this.telemetry?.gauge('runtime.retained_nodes', 0);
++  }
++
+   get degraded(): boolean {
+     return this.degradedFlag;
+   }
+@@ -33,27 +54,60 @@ export class StreamingRuntime {
+   }
+ 
+   enqueue(delta: SceneIRDelta): void {
+-    const validated = validateDelta(delta);
++    if (this.disposed) return;
++    // Queued CREATE_SCENE headers establish the schema for later queued nodes,
++    // even when the caller has not flushed the header yet.
++    let wireVersion = this.scene?.irVersion ?? "0.1";
++    for (const pending of [...this.queue, delta]) {
++      if (!Array.isArray(pending.operations)) continue;
++      for (const operation of pending.operations) {
++        if (operation?.op === 'CREATE_SCENE' && (operation.scene?.irVersion === '0.1' || operation.scene?.irVersion === '0.2')) wireVersion = operation.scene.irVersion;
++      }
++    }
++    const validated = validateDelta(delta, undefined, wireVersion);
+     if (!validated.ok) {
+-      this.rejected.push(...validated.diagnostics);
++      this.recordRejected(validated.diagnostics);
++      this.telemetry?.count('runtime.rejected_deltas');
++      this.telemetry?.event('runtime.delta_rejected', {unitId: delta.unitId, diagnostics: validated.diagnostics.slice(0,4)});
++      return;
++    }
++    if (delta.expectedRevision !== this.revision + this.queue.length) {
++      this.telemetry?.count('runtime.stale_deltas');
++      this.telemetry?.event('runtime.delta_stale', {unitId: delta.unitId, expectedRevision: delta.expectedRevision, requiredRevision: this.revision + this.queue.length});
++      return;
++    }
++    if (this.queue.length >= DEFAULT_LIMITS.maxQueuedDeltas) {
++      const issue = diagnostic({code:'RESOURCE_LIMIT', phase:'runtime', category:'resource', effect:'UNIT_REJECTED',message:`Runtime queue exceeds ${DEFAULT_LIMITS.maxQueuedDeltas} deltas.`});
++      this.recordRejected([issue]);
++      this.telemetry?.count('runtime.rejected_deltas');
++      this.telemetry?.event('runtime.delta_rejected', {unitId:delta.unitId,diagnostics:[issue]});
+       return;
+     }
+-    if (delta.expectedRevision !== this.revision + this.queue.length) return;
+     this.queue.push(delta);
++    if (this.telemetry) this.enqueuedAt.push(this.telemetry.now());
++    this.telemetry?.count('runtime.accepted_deltas');
++    this.telemetry?.gauge('runtime.queue_deltas', this.queue.length);
+   }
+ 
+   flushCommands(): ApplyResult[] {
+     const results: ApplyResult[] = [];
+     for (const delta of this.queue.splice(0)) {
++      if (this.telemetry) this.telemetry.observe('runtime.queue_wait_ms', this.telemetry.now() - this.enqueuedAt.shift()!);
+       this.apply(delta);
+       results.push({ revision: this.revision, unitId: delta.unitId, ok: true });
+     }
++    this.telemetry?.gauge('runtime.queue_deltas', this.queue.length);
++    this.telemetry?.gauge('runtime.retained_nodes', this.scene?.nodes.length ?? 0);
+     return results;
+   }
+ 
+   evaluate(sceneTimeMs: number): ResolvedFrame {
++    return this.telemetry ? this.telemetry.measure('frame.evaluate_ms', () => this.evaluateInner(sceneTimeMs)) : this.evaluateInner(sceneTimeMs);
++  }
++  private evaluateInner(sceneTimeMs: number): ResolvedFrame {
+     if (!this.scene) throw new Error("Streaming runtime has no scene yet.");
+     const beyond = !this.authoringComplete && sceneTimeMs > this.sealedThroughMs;
++    if (beyond) this.telemetry?.count('runtime.horizon_wait_evaluations');
+     const time = beyond ? this.sealedThroughMs : sceneTimeMs;
+     const atFrontier = !this.authoringComplete && time === this.sealedThroughMs;
+     const sampled = sampleScene(this.scene, time, atFrontier ? { excludeStartsAtMs: this.sealedThroughMs } : undefined);
+@@ -62,6 +116,11 @@ export class StreamingRuntime {
+     return buildResolvedFrame(this.scene, sampled, time, this.revision);
+   }
+ 
++  private recordRejected(diagnostics: readonly Diagnostic[]): void {
++    this.rejected.push(...diagnostics.slice(-DEFAULT_LIMITS.maxQueuedDeltas));
++    if (this.rejected.length > DEFAULT_LIMITS.maxQueuedDeltas) this.rejected.splice(0,this.rejected.length - DEFAULT_LIMITS.maxQueuedDeltas);
++  }
++
+   private apply(delta: SceneIRDelta): void {
+     for (const operation of delta.operations) {
+       if (operation.op === "CREATE_SCENE") {
+diff --git a/packages/schema/capabilities/registry.json b/packages/schema/capabilities/registry.json
+index 1196c1a..b7798a4 100644
+--- a/packages/schema/capabilities/registry.json
++++ b/packages/schema/capabilities/registry.json
+@@ -317,18 +317,21 @@
+       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+       "targets": ["runtime"],
+       "restrictions": [
+-        "Static start/end/offset on geometryOperators. Animated trim.start/end/offset tracks require geometry.animatedTrim (0.5.0)."
++        "Static start/end/offset on geometryOperators. Animated trim.start/end/offset tracks require geometry.animatedTrim (0.5.0). Native trim uses aggregate drawn length across contours, excludes pen-up jumps and preserves M breaks. Shifted start wraps; the end clips at one. Reversed or equal endpoints are empty. Curves use eight samples per segment for partial windows."
+       ],
+       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+       "conformanceTests": [
+-        "packages/runtime/src/runtime.test.ts#applies static trim operators when resolving paths"
++        "packages/runtime/src/runtime.test.ts#applies static trim operators when resolving paths",
++        "packages/schema/src/trim-regression.test.ts#preserves pen-up breaks and excludes jumps from trim length",
++        "packages/schema/src/trim-regression.test.ts#handles boundaries, offsets and closed contours without connecting moves"
+       ],
+       "adapters": {
+         "lottie": {
+           "status": "exact",
+-          "scope": "Static tm lowers to a trim operator and is applied when the path is resolved.",
++          "scope": "Verified scope: a single open straight path, simultaneous mode, zero offset and ordered endpoints in [0,100]. Offset degrees convert to turns, but wrapped tails, reversed endpoints and individual mode across multiple shapes are outside exact coverage and diagnosed as approximated when detected. Compound native paths do not imply Lottie multi-shape trim coverage.",
+           "conformanceTests": [
+-            "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks"
++            "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks",
++            "packages/format-lottie/src/lottie.test.ts#converts trim offset degrees and discloses unverified trim modes"
+           ]
+         },
+         "svg": { "status": "not-applicable", "scope": "SVG stroke dash is not trim." }
+@@ -352,7 +355,7 @@
+       "adapters": {
+         "lottie": {
+           "status": "exact",
+-          "scope": "Animated tm s/e/o lower to trim.start/end/offset tracks (0–1). Simultaneously mode only; individual trim mode is outside this claim.",
++          "scope": "Animated tm s/e/o lower to trim.start/end/offset tracks (0–1). Verified only for one open straight path, simultaneous mode, zero offset and ordered endpoints; individual mode across multiple shapes, reversed endpoints and offset wrapping are outside exact coverage. Offset source values are degrees, converted to turns.",
+           "conformanceTests": [
+             "packages/format-lottie/src/lottie.test.ts#imports animated trim as trim.start/end tracks"
+           ]
+@@ -561,9 +564,10 @@
+       "summary": "The default tree is a non-isolated root of draw-item leaves. Compositing groups nest.",
+       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
+       "targets": ["runtime"],
+-      "restrictions": ["The conformance sample is the flat migrated tree. Nested scopes are not part of that assertion."],
++      "restrictions": ["Tree and flat routes share static sibling zIndex order, stable declaration ties and hierarchy boundaries. Ordering coverage does not certify isolated-opacity overlap semantics.", "Flat migration and nested sibling ordering have conformance coverage. Renderer isolation, blend and effect fidelity retain their separate registry statuses."],
+       "support": { "compiler": "not-applicable", "runtime": "supported", "renderer": "untested" },
+       "conformanceTests": [
++        "packages/canvas-renderer/src/renderer.test.ts#preserves hierarchical sibling order through CanvasRenderer",
+         "packages/runtime/src/runtime.test.ts#keeps migrated 0.1 samples identical, including shuffled seeks"
+       ],
+       "adapters": {
+diff --git a/packages/schema/capabilities/releases.json b/packages/schema/capabilities/releases.json
+index 35adf4d..32ada22 100644
+--- a/packages/schema/capabilities/releases.json
++++ b/packages/schema/capabilities/releases.json
+@@ -5,12 +5,12 @@
+     "motionscript": {
+       "current": "0.5.0",
+       "wireVersion": "0.2",
+-      "packageVersion": "0.1.0"
++      "packageVersion": "0.1.1"
+     },
+     "scene-ir": {
+       "current": "0.5.0",
+       "wireVersion": "0.2",
+-      "packageVersion": "0.1.0"
++      "packageVersion": "0.1.1"
+     }
+   },
+   "versions": [
+@@ -132,6 +132,13 @@
+       "compiler": "0.1.0",
+       "runtime": "0.1.0",
+       "readers": "Wire stays 0.2. geometry.animatedTrim is gated by requiredCapabilities / requires. Packages without the capability reject those documents."
++    },
++    {
++      "motionscript": "0.5.0",
++      "sceneIr": "0.5.0",
++      "compiler": "0.1.1",
++      "runtime": "0.1.1",
++      "readers": "Wire stays 0.2. geometry.animatedTrim is gated by requiredCapabilities / requires. Packages without the capability reject those documents."
+     }
+   ]
+ }
+diff --git a/packages/schema/package.json b/packages/schema/package.json
+index f3beca2..f7fa768 100644
+--- a/packages/schema/package.json
++++ b/packages/schema/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/schema",
+-  "version": "0.1.0",
++  "version": "0.1.1",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/schema/src/index.ts b/packages/schema/src/index.ts
+index 9d5008e..587da04 100644
+--- a/packages/schema/src/index.ts
++++ b/packages/schema/src/index.ts
+@@ -16,3 +16,4 @@ export * from "./trim";
+ export * from "./timing";
+ export * from "./types";
+ export * from "./validate";
++export { Telemetry, FrameTelemetry } from './telemetry';
+diff --git a/packages/schema/src/lex.ts b/packages/schema/src/lex.ts
+index 781f5c3..4c122b7 100644
+--- a/packages/schema/src/lex.ts
++++ b/packages/schema/src/lex.ts
+@@ -77,6 +77,10 @@ export class IncrementalLexer {
+   private reportedDiagnostics = 0;
+   private stripBom = true;
+ 
++  /** Observable pending lexical source, excluding already emitted tokens. */
++  get pendingBytes(): number { return new TextEncoder().encode(this.pending).byteLength; }
++  get retainedTokenCount(): number { return this.tokens.length; }
++
+   push(chunk: string): Token[] {
+     if (chunk.length === 0) return [];
+     if (this.stripBom) {
+diff --git a/packages/schema/src/limits.ts b/packages/schema/src/limits.ts
+index d87c347..549273c 100644
+--- a/packages/schema/src/limits.ts
++++ b/packages/schema/src/limits.ts
+@@ -38,8 +38,8 @@ export const DEFAULT_LIMITS: ResourceLimits = {
+   maxGeometryItems: 10_000,
+   maxExpressionDepth: 32,
+   maxExpressionOps: 256,
+-  maxSourceBytes: 512 * 1024,
+-  maxBufferedUnitBytes: 128 * 1024,
++  maxSourceBytes: 4 * 1024 * 1024,
++  maxBufferedUnitBytes: 1024 * 1024,
+   maxDeferredUnits: 100,
+   maxQueuedDeltas: 256,
+   maxTransportQueue: 256,
+diff --git a/packages/schema/src/telemetry.test.ts b/packages/schema/src/telemetry.test.ts
+new file mode 100644
+index 0000000..0e2fb1b
+--- /dev/null
++++ b/packages/schema/src/telemetry.test.ts
+@@ -0,0 +1,25 @@
++import { expect, it } from 'vitest';
++import { Telemetry, FrameTelemetry } from './telemetry';
++it("bounds observation retention and keeps lifetime totals", () => {
++ const metrics=new Telemetry(3);
++ for(let i=0;i<100;i++){metrics.observe('work_ms',i);metrics.event('rejected',{i});metrics.gauge('queue',i%5);}
++ const result=metrics.snapshot();
++ expect(result.distributions.work_ms).toEqual({count:100,retained:3,mean:49.5,max:99,p50:98,p95:99,p99:99});
++ expect(result.events).toHaveLength(3);
++ expect(result.gauges.queue).toEqual({value:4,highWater:4});
++});
++it("records intervals separately from application work even when work throws", () => {
++ let time=0;const metrics=new Telemetry(8,()=>time);
++ const frames=new FrameTelemetry(metrics);
++ frames.frame(0,()=>{time+=2;});
++ expect(()=>frames.frame(60,()=>{time+=3;throw new Error('test');})).toThrow('test');
++ expect(metrics.snapshot().distributions['frame.application_ms']?.mean).toBe(2.5);
++ expect(metrics.snapshot().distributions['frame.interval_ms']?.mean).toBe(60);
++ expect(metrics.snapshot().counters['frame.long_intervals']).toBe(1);
++});
++it("retains the first failure across cascades and explicitly resets an observation window", () => {
++ const metrics=new Telemetry(2);metrics.event('delta_rejected',{unitId:1});
++ for(let i=0;i<10;i++)metrics.event('delta_stale',{unitId:i+2});
++ expect(metrics.snapshot().firstFailure).toEqual({kind:'delta_rejected',detail:{unitId:1}});
++ metrics.reset();expect(metrics.snapshot().firstFailure).toBeUndefined();expect(metrics.snapshot().events).toEqual([]);
++});
+diff --git a/packages/schema/src/telemetry.ts b/packages/schema/src/telemetry.ts
+new file mode 100644
+index 0000000..8cc50b6
+--- /dev/null
++++ b/packages/schema/src/telemetry.ts
+@@ -0,0 +1,74 @@
++/** Opt-in, bounded diagnostic measurements. Durations use a monotonic clock.
++ * Distribution quantiles describe the most recent capacity observations; count,
++ * sum and max describe the entire collector lifetime. No scheduling or logging.
++ */
++export class Telemetry {
++  private readonly distributions = new Map<string, { count: number; sum: number; max: number; values: number[]; next: number }>();
++  private readonly counters = new Map<string, number>();
++  private readonly gauges = new Map<string, { value: number; highWater: number }>();
++  private firstFailure?: { kind: string; detail: unknown };
++  private readonly events: { kind: string; detail: unknown }[] = [];
++  constructor(readonly capacity = 256, private readonly clock: () => number = () => performance.now()) {
++    if (!Number.isInteger(capacity) || capacity < 1 || capacity > 65536) throw new Error('Invalid telemetry capacity');
++  }
++  /** Starts a new observation window without replacing instrumented owners. */
++  reset(): void {
++    this.distributions.clear(); this.counters.clear(); this.gauges.clear();
++    this.events.length = 0; this.firstFailure = undefined;
++  }
++  now(): number { return this.clock(); }
++  measure<T>(name: string, work: () => T): T {
++    const start = this.now();
++    try { return work(); } finally { this.observe(name, this.now() - start); }
++  }
++  observe(name: string, value: number): void {
++    if (!Number.isFinite(value)) return;
++    let metric = this.distributions.get(name);
++    if (!metric) {
++      if (this.distributions.size >= 64) return;
++      metric = {count: 0, sum: 0, max: -Infinity, values: [], next: 0};
++      this.distributions.set(name, metric);
++    }
++    metric.count++; metric.sum += value; metric.max = Math.max(metric.max, value);
++    metric.values[metric.next] = value; metric.next = (metric.next + 1) % this.capacity;
++  }
++  count(name: string, amount = 1): void {
++    if (this.counters.has(name) || this.counters.size < 64) this.counters.set(name, (this.counters.get(name) ?? 0) + amount);
++  }
++  gauge(name: string, value: number): void {
++    if (!Number.isFinite(value)) return;
++    if (this.gauges.has(name) || this.gauges.size < 64) this.gauges.set(name, { value, highWater: Math.max(value, this.gauges.get(name)?.highWater ?? value) });
++  }
++  event(kind: string, detail: unknown): void {
++    if (!this.firstFailure && /reject|stale/.test(kind)) this.firstFailure = {kind, detail};
++    if (this.events.length === this.capacity) this.events.shift();
++    this.events.push({kind, detail});
++  }
++  snapshot() {
++    return {
++      capacity: this.capacity,
++      distributions: Object.fromEntries([...this.distributions].map(([name, metric]) => {
++        const sorted = [...metric.values].sort((a,b) => a-b);
++        const quantile = (p: number) => sorted[Math.ceil(p * sorted.length) - 1];
++        return [name, {count: metric.count, retained: sorted.length, mean: metric.sum / metric.count, max: metric.max, p50: quantile(.5), p95: quantile(.95), p99: quantile(.99)}];
++      })),
++      counters: Object.fromEntries(this.counters), gauges: Object.fromEntries(this.gauges), events: [...this.events], firstFailure: this.firstFailure,
++    };
++  }
++}
++
++/** Measures host application work, including evaluation and synchronous rendering. */
++export class FrameTelemetry {
++  private previous?: number;
++  constructor(private readonly telemetry: Telemetry, readonly budgetMs = 1000 / 60) {}
++  frame<T>(timestampMs: number, work: () => T): T {
++    if (this.previous !== undefined) {
++      const interval = timestampMs - this.previous;
++      this.telemetry.observe('frame.interval_ms', interval);
++      if (interval > this.budgetMs * 1.5) this.telemetry.count('frame.missed_intervals');
++      if (interval > 50) this.telemetry.count('frame.long_intervals');
++    }
++    this.previous = timestampMs;
++    return this.telemetry.measure('frame.application_ms', work);
++  }
++}
+diff --git a/packages/schema/src/trim-regression.test.ts b/packages/schema/src/trim-regression.test.ts
+new file mode 100644
+index 0000000..771d7b3
+--- /dev/null
++++ b/packages/schema/src/trim-regression.test.ts
+@@ -0,0 +1,22 @@
++import { expect, it } from 'vitest';
++import { trimCommands } from './trim';
++const path = [{cmd:'M' as const,x:0,y:0},{cmd:'L' as const,x:10,y:0},{cmd:'M' as const,x:20,y:0},{cmd:'L' as const,x:30,y:0}];
++it("preserves pen-up breaks and excludes jumps from trim length", () => {
++ expect(trimCommands(path,0,1,0)).toEqual(path);
++ expect(trimCommands(path,.25,.75,0)).toEqual([{cmd:'M',x:5,y:0},{cmd:'L',x:10,y:0},{cmd:'M',x:20,y:0},{cmd:'L',x:25,y:0}]);
++});
++it("handles boundaries, offsets and closed contours without connecting moves", () => {
++ expect(trimCommands(path,0,.5,0)).toEqual(path.slice(0,2));
++ expect(trimCommands(path,.5,1,0)).toEqual(path.slice(2));
++ expect(trimCommands(path,.5,.5,0)).toEqual([]);
++ expect(trimCommands(path,.75,.25,0)).toEqual([]);
++ expect(trimCommands(path,0,.5,1.5)).toEqual(path.slice(2));
++ expect(trimCommands(path,0,.5,-.5)).toEqual(path.slice(2));
++ // Existing native rule: shifted start wraps, then end clips at one.
++ expect(trimCommands(path,0,.5,.75)).toEqual([{cmd:'M',x:25,y:0},{cmd:'L',x:30,y:0}]);
++ const closed=[...path.slice(0,2),{cmd:'Z' as const},...path.slice(2)];
++ expect(trimCommands(closed,0,1,0)).toEqual(closed);
++ expect(trimCommands(closed,0,2/3,0)).toEqual(closed.slice(0,3));
++ expect(trimCommands(closed,0,.5,0)).toEqual([{cmd:'M',x:0,y:0},{cmd:'L',x:10,y:0},{cmd:'L',x:5,y:0}]);
++ expect(trimCommands([{cmd:'M',x:0,y:0}],0,0,0)).toEqual([]);
++});
+diff --git a/packages/schema/src/trim.ts b/packages/schema/src/trim.ts
+index b278354..887e255 100644
+--- a/packages/schema/src/trim.ts
++++ b/packages/schema/src/trim.ts
+@@ -5,32 +5,44 @@ import type { PathCommand, Vec2 } from "./types";
+  * start and end lie in [0, 1]. Offset shifts the window and wraps.
+  */
+ export function trimCommands(commands: readonly PathCommand[], start: number, end: number, offset: number): PathCommand[] {
+-  const samples = samplePath(commands, 8);
+-  if (samples.length < 2) return [...commands];
+-  const lengths = [0];
+-  for (let index = 1; index < samples.length; index += 1) {
+-    const previous = lengths[index - 1] ?? 0;
+-    lengths.push(previous + distance(samples[index - 1]!, samples[index]!));
++  // Sample each contour independently: a move never contributes ink length.
++  const contours: PathCommand[][] = [];
++  for (const command of commands) {
++    if (command.cmd === "M" || contours.length === 0) contours.push([]);
++    contours[contours.length - 1]!.push(command);
+   }
+-  const total = lengths[lengths.length - 1] ?? 0;
+-  if (!(total > 0)) return [...commands];
++  const sampled = contours.map(contour => {
++    const points = samplePath(contour, 8);
++    const lengths = [0];
++    for (let i = 1; i < points.length; i++) lengths.push(lengths[i - 1]! + distance(points[i - 1]!, points[i]!));
++    return { commands: contour, points, lengths, total: lengths[lengths.length - 1]! };
++  });
++  const total = sampled.reduce((sum, contour) => sum + contour.total, 0);
+   const window = trimWindow(start, end, offset);
+-  const from = window.start * total;
+-  const to = window.end * total;
+-  if (to <= from + 1e-9) return [];
+-  const kept: Vec2[] = [];
+-  const startPoint = pointAtLength(samples, lengths, from);
+-  const endPoint = pointAtLength(samples, lengths, to);
+-  if (!startPoint || !endPoint) return [];
+-  kept.push(startPoint);
+-  for (let index = 0; index < samples.length; index += 1) {
+-    const at = lengths[index] ?? 0;
+-    if (at > from + 1e-6 && at < to - 1e-6) kept.push(samples[index]!);
++  if (window.end <= window.start) return [];
++  if (!(total > 0)) return [...commands];
++  if (window.start === 0 && window.end === 1 && (contours.length > 1 || commands.some(command => command.cmd === "Z"))) return [...commands];
++  const result: PathCommand[] = [];
++  let base = 0;
++  for (const contour of sampled) {
++    const from = Math.max(0, window.start * total - base);
++    const to = Math.min(contour.total, window.end * total - base);
++    base += contour.total;
++    if (to <= from + 1e-9) continue;
++    // A fully retained closed contour keeps its close command and join semantics.
++    if (from === 0 && to === contour.total && contour.commands.some(command => command.cmd === "Z")) {
++      for (const command of contour.commands) result.push(command);
++      continue;
++    }
++    const first = pointAtLength(contour.points, contour.lengths, from)!;
++    result.push({ cmd: "M", ...first });
++    for (let i = 0; i < contour.points.length; i++) {
++      const at = contour.lengths[i]!;
++      if (at > from + 1e-6 && at < to - 1e-6) result.push({ cmd: "L", ...contour.points[i]! });
++    }
++    result.push({ cmd: "L", ...pointAtLength(contour.points, contour.lengths, to)! });
+   }
+-  kept.push(endPoint);
+-  const [first, ...rest] = kept;
+-  if (!first || rest.length === 0) return [];
+-  return [{ cmd: "M", x: first.x, y: first.y }, ...rest.map((point) => ({ cmd: "L" as const, x: point.x, y: point.y }))];
++  return result;
+ }
+ 
+ function pointAtLength(samples: readonly Vec2[], lengths: readonly number[], target: number): Vec2 | undefined {
+diff --git a/packages/schema/src/validate.ts b/packages/schema/src/validate.ts
+index 525d6ca..ece1e71 100644
+--- a/packages/schema/src/validate.ts
++++ b/packages/schema/src/validate.ts
+@@ -198,6 +198,7 @@ export function validateResolvedFrame(input: unknown): ValidateResult<ResolvedFr
+ export function validateDelta(
+   input: unknown,
+   overrides?: Partial<ResourceLimits>,
++  wireVersion: SceneIR["irVersion"] = IR_VERSION,
+ ): ValidateResult<SceneIRDelta> {
+   const limits = resolveLimits(overrides);
+   const diags = new Diags();
+@@ -229,7 +230,7 @@ export function validateDelta(
+     diags.add("MISSING_REQUIRED", "operations", "A delta needs at least one operation.");
+   } else {
+     input.operations.forEach((operation, index) => {
+-      readOperation(operation, `operations[${index}]`, limits, diags);
++      readOperation(operation, `operations[${index}]`, limits, diags, wireVersion === IR_VERSION_02);
+     });
+   }
+   if (diags.items.length > 0) return { ok: false, diagnostics: diags.items };
+@@ -1361,7 +1362,7 @@ function readResolvedGeometry(value: unknown, path: string, diags: Diags): void
+   diags.add("INVALID_ENUM", `${path}.kind`, "Unknown resolved geometry.");
+ }
+ 
+-function readOperation(value: unknown, path: string, limits: ResourceLimits, diags: Diags): void {
++function readOperation(value: unknown, path: string, limits: ResourceLimits, diags: Diags, v02: boolean): void {
+   if (!isRecord(value) || typeof value.op !== "string") {
+     diags.add("INVALID_TYPE", path, "An operation needs an op name.");
+     return;
+@@ -1384,7 +1385,7 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
+   }
+   if (value.op === "ADD_NODES") {
+     rejectUnknown(value, ["op", "nodes"], path, diags);
+-    readNodes(value.nodes, diags, limits, false, "nodes", false);
++    readNodes(value.nodes, diags, limits, false, "nodes", v02);
+     return;
+   }
+   if (value.op === "ADD_TRACKS" || value.op === "ADD_STEPS" || value.op === "CREATE_SCENE") {

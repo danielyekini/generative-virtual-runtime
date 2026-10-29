@@ -1,0 +1,99 @@
+{
+  "runId": "2026-10-29T165600Z",
+  "objective": "Correctness and measurement foundation, with operator-authorised provisional resource revisions",
+  "baseline": {
+    "commit": "97c9c2b2d0a1078230a2c7e5b5be0aa765b9de1d",
+    "workingTree": "clean",
+    "testFailures": [
+      "fixtures/ir/invalid/duration-limit.json (30001ms accepted under 60000ms budget)"
+    ],
+    "typecheckFailures": 12,
+    "build": "PASS_WITH_BUNDLE_WARNING; replayed in isolated baseline source tree"
+  },
+  "implementation": {
+    "benchmarkCommit": "5a4ea16a76d35aa328e29983943c4a056358b15e",
+    "sourcePatch": "implementation.patch",
+    "sourceTreeAtMeasurement": "All execution code committed; only new evidence directory untracked. Later added animated-offset test assertion and report metadata do not change executable code."
+  },
+  "languages": {
+    "motionscript": "0.5.0",
+    "sceneIr": "0.5.0",
+    "wire": "0.2",
+    "packageCandidates": "0.1.1; not published"
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "browser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "binary": "/usr/bin/chromium",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 3,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "commit": "5a4ea16a76d35aa328e29983943c4a056358b15e",
+    "workingTree": "?? docs/evaluations/2026-10-29T165600Z/\n",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1
+    },
+    "options": {
+      "samples": 120,
+      "warmup": 30,
+      "compileSamples": 3,
+      "cycles": 10
+    }
+  },
+  "policy": {
+    "gateSettingsSha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "unchangedFromBaseline": true,
+    "fullCorpusRun": false
+  },
+  "sources": {
+    "audit": {
+      "path": "sources/audit-context.md",
+      "sha256": "bb7aff112ad4a993ccb8084ea6509da5b86258445588ff183a0e3792cdc7b000",
+      "role": "Context only; recommendations are not task instructions",
+      "auditedCommit": "80675916bc50ca6ec4f897ae9e718d24906151d2",
+      "atomicCheckoutClaim": false
+    },
+    "echoProposal": {
+      "path": "sources/echo-canyon-proposal.md",
+      "githubBlobSha": "860c225a573bc61520ad496b4fbe590646f30f4b",
+      "repository": "danielyekini/generative-visual-runtime",
+      "ref": "80675916bc50ca6ec4f897ae9e718d24906151d2",
+      "originalPath": "docs/authoring/stories/echo-canyon/proposal.md",
+      "reason": "Absent from current checkout; fetched pinned evidence using GitHub connector"
+    }
+  },
+  "commands": [
+    {
+      "command": "npm test",
+      "baseline": "201 passed, 1 failed; 25 files passed, 1 failed",
+      "final": "215 passed; 29 files passed"
+    },
+    {
+      "command": "npm run typecheck",
+      "baseline": "12 builder errors",
+      "final": "PASS including new benchmark TS project"
+    },
+    {
+      "command": "npm run build -w @gvr/playground",
+      "baseline": "PASS, >500kB bundle warning",
+      "final": "PASS, same warning category"
+    },
+    {
+      "command": "npm run benchmark -- --out work/verified-benchmark --samples 120 --warmup 30 --compile-samples 3 --cycles 10",
+      "final": "PASS; all 3 offline/stream replays equal; both instrumentation modes"
+    },
+    {
+      "command": "npm run benchmark -- --out work/verified-captures --correctness",
+      "final": "See captures.json; sampled regression evidence, not full-window fidelity"
+    },
+    {
+      "command": "npx vitest run packages/format-lottie/src/lottie.test.ts",
+      "final": "46 passed, including final animated-offset conversion assertion"
+    }
+  ]
+}
