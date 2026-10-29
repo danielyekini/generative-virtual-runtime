@@ -39,7 +39,7 @@ export const DEFAULT_LIMITS: ResourceLimits = {
   maxExpressionDepth: 32,
   maxExpressionOps: 256,
   maxSourceBytes: 4 * 1024 * 1024,
-  maxBufferedUnitBytes: 128 * 1024,
+  maxBufferedUnitBytes: 1024 * 1024,
   maxDeferredUnits: 100,
   maxQueuedDeltas: 256,
   maxTransportQueue: 256,

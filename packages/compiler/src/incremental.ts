@@ -177,8 +177,8 @@ export class IncrementalProgram {
       if (this.result) this.result = { ...this.result, ok: false };
     }
     this.telemetry?.gauge("compile.buffered_tokens", this.buffer.length);
-    this.telemetry?.gauge("compile.buffered_lexeme_bytes", this.buffer.reduce((sum, token) => sum + new TextEncoder().encode(token.lexeme).byteLength, 0));
-    const buffered = this.buffer.reduce((sum, token) => sum + token.lexeme.length, 0);
+    const buffered = new TextEncoder().encode(this.buffer.map(token => token.lexeme).join("")).byteLength;
+    this.telemetry?.gauge("compile.buffered_lexeme_bytes", buffered);
     if (buffered > DEFAULT_LIMITS.maxBufferedUnitBytes) {
       this.carried.push(
         diagnostic({
