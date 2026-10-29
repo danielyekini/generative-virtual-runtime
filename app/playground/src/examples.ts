@@ -30,6 +30,7 @@ import homeSource from "../../../fixtures/motionscript/stories/from-blueprint-to
 import binaryTreeSource from "../../../fixtures/motionscript/stories/two-ways-through-a-binary-tree.ms?raw";
 import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
 import pixelsSource from "../../../fixtures/motionscript/stories/from-pixels-to-prediction.ms?raw";
+import squareWaveSource from "../../../fixtures/motionscript/stories/square-wave-from-sine-waves.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
 import failedSource from "../../../fixtures/import/fixture/failed.json?raw";
@@ -85,6 +86,7 @@ export const motionExamples: MotionExample[] = [
   { id: "inside-an-order-book", label: "Inside an Order Book", caption: "Price–time priority turns resting orders into four executions, a cancellation, and a narrower spread.", source: orderBookSource },
   { id: "a-crane-then-a-square", label: "A Crane, Then a Square", caption: "A thirty-five-second crane fold. The sheet opens again and keeps the crease.", source: craneSource },
   { id: "into-the-moons-shadow", label: "Into the Moon’s Shadow", caption: "A forty-second eclipse plate. One moon path drives the orbit and the observer’s sky.", source: eclipseSource },
+  { id: "square-wave-from-sine-waves", label: "Building a Square Wave from Sine Waves", caption: "Sixteen odd sine harmonics, added one at a time, approach a square wave and keep their Gibbs overshoot.", source: squareWaveSource },
   { id: "adding-two-vectors", label: "Adding Two Vectors", caption: "a = (3, 1) and b = (1, 2), placed head to tail. Either order reaches (4, 3).", source: vectorsSource },
   { id: "clockwork", label: "Clockwork", caption: "A thirty-second technical drawing. A brass train assembles, meshes, and runs.", source: clockworkSource },
   { id: "counter", label: "Counter", caption: "A thirty-second stick fight. Cyan dodges, then answers.", source: counterSource },
