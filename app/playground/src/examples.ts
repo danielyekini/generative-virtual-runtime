@@ -31,6 +31,7 @@ import binaryTreeSource from "../../../fixtures/motionscript/stories/two-ways-th
 import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
 import pixelsSource from "../../../fixtures/motionscript/stories/from-pixels-to-prediction.ms?raw";
 import squareWaveSource from "../../../fixtures/motionscript/stories/square-wave-from-sine-waves.ms?raw";
+import cityLoopSource from "../../../fixtures/motionscript/stories/the-city-comes-around.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
 import failedSource from "../../../fixtures/import/fixture/failed.json?raw";
@@ -95,6 +96,7 @@ export const motionExamples: MotionExample[] = [
   { id: "through-the-blue", label: "Through the Blue", caption: "A jellyfish crosses a moonlit reef, slips behind the rock, and hangs in the glow.", source: blueSource },
   { id: "a-circle-in-motion", label: "A Circle in Motion", caption: "One black outline falls as a drop and becomes a ripple, a clock, a bicycle wheel and a rising sun before falling again.", source: circleSource },
   { id: "small-ideas-enormous-change", label: "Small Ideas, Enormous Change", caption: "A twenty-second typographic plate. One sentence resolves word by word into three lines, with scale on enormous and vermilion on change.", source: smallIdeasSource },
+  { id: "the-city-comes-around", label: "The City Comes Around", caption: "A thirty-second isometric loop: the camera leaves a corner café, rises over the rooftops and a passing train, and settles on the same café one district further on.", source: cityLoopSource },
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
