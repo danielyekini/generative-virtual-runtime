@@ -1,0 +1,26 @@
+{
+  "method": "Top-level brace-aware lexical units, excluding braces and semicolons inside strings/comments. Leading whitespace is counted.",
+  "largestUnitBytes": 69080,
+  "largestUnits": [
+    {
+      "bytes": 69080,
+      "prefix": "group pixel { visible false; zIndex 2; rectangle sky { posit"
+    },
+    {
+      "bytes": 39508,
+      "prefix": "group neon { visible false; zIndex 3; rectangle sky { positi"
+    },
+    {
+      "bytes": 35876,
+      "prefix": "group pencil { visible true; zIndex 0; rectangle sky { posit"
+    },
+    {
+      "bytes": 28381,
+      "prefix": "group paper { visible false; zIndex 1; rectangle sky { posit"
+    },
+    {
+      "bytes": 5585,
+      "prefix": "keyframes ball.fiber.rotation { start 0s; duration 30s; 0% 1"
+    }
+  ]
+}
