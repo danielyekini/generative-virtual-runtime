@@ -1,0 +1,138 @@
+{
+  "url": "/#studio",
+  "preset": "preset:the-last-streetlight",
+  "observations": [
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 0,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 5500,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 8500,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 10700,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 12700,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 17000,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 18000,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 21000,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 23000,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 25000,
+      "playing": false,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    },
+    {
+      "sceneId": "the-last-streetlight",
+      "timeMs": 22283.4,
+      "playing": true,
+      "rate": 1,
+      "degraded": false,
+      "diagnostics": [],
+      "origins": {},
+      "compileOk": true,
+      "sourceDiagnostics": [],
+      "nodeCount": 246
+    }
+  ]
+}

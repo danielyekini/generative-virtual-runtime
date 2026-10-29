@@ -1,0 +1,224 @@
+{
+  "implementationCommit": "cd3cbe05dca26989bfb852fc9392659bb41ab529",
+  "baseCommit": "b7e8459b7f569862bb79325c309c33adc425de8d",
+  "date": "2026-10-29",
+  "renderer": "CanvasRenderer",
+  "chromium": "151.0.7922.173",
+  "viewport": [
+    1280,
+    720
+  ],
+  "dpr": 1,
+  "artifacts": [
+    {
+      "path": "fixtures/motionscript/stories/the-last-streetlight.ms",
+      "bytes": 143514,
+      "sha256": "78d0ea063ab34ed76dc15ec87a3ab21ba10e561d3410fbaed9983d9e925d42c9"
+    },
+    {
+      "path": "fixtures/motionscript/stories/build-the-last-streetlight.ts",
+      "bytes": 30635,
+      "sha256": "d5d3264e35a7bb437363291191abd405131b219aef89f395634491fc122ac352"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/contact-sheet.png",
+      "bytes": 624094,
+      "sha256": "1fb727cf9ab155fb6b960a0da8b91e6c45c6df63d41f44c0b840f14458fc4536"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f0.0000.png",
+      "bytes": 118166,
+      "sha256": "4ae553eaa20e55f336a102eef2654366bb420a7b59a55d46a92ae65c5ac8fcd0"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f1.0000.png",
+      "bytes": 129007,
+      "sha256": "fda5a39d78edd5cd7b5bc38f7c352b229a7a857eceb8f564ed82daad13834d9b"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f10.0000.png",
+      "bytes": 185056,
+      "sha256": "3e6ae7c0eab64f599687b4011735f4243ae3c1968b3c695c0617d7669ec36c62"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f10.7000.png",
+      "bytes": 185256,
+      "sha256": "06b4d2412c75f30e7d55bc0538be25fc89e4c97b6cb472418f7036a4329bb4f4"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f11.8000.png",
+      "bytes": 166219,
+      "sha256": "146b203f9e487958cfb38d9e48f4f32620acea5dd43566f2bc3fd8b8693b1927"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f12.0000.png",
+      "bytes": 168102,
+      "sha256": "9e3213eec0d1ef8508736343672662a9acec9eb98b0270660a06a1270fdfb812"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f12.7000.png",
+      "bytes": 155369,
+      "sha256": "0e684929ad562164e9824bf7d2b00693acb929fbefa1b85d49ec9da5d78a9768"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f13.5000.png",
+      "bytes": 170937,
+      "sha256": "686729cbed3fb50cd2642ed9f63ed83dff622ba6e45393e3d062a86051ddf290"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f14.8000.png",
+      "bytes": 169782,
+      "sha256": "46c1893eb559572c88e6f46f0425f461d94ed2b385e43bd1077990aefe5f7484"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f15.0000.png",
+      "bytes": 173711,
+      "sha256": "202e94c86e9d7310e71d5b166502605a689e83c00acbe7d7dd918a718789a44e"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f16.0000.png",
+      "bytes": 187556,
+      "sha256": "9f3720bdc1840355a44d375fb395a38651ca2bef13f231d06e4d93302aea5f8b"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f17.0000.png",
+      "bytes": 185697,
+      "sha256": "486ab601306e242af51ece5704197078fb669dc530cbc6decda1721b7317460f"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f17.5000.png",
+      "bytes": 140810,
+      "sha256": "7e3fca209950ef5de358beb3b0d2c3b25ed9586075365d84e54312edaa222dac"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f17.6500.png",
+      "bytes": 182745,
+      "sha256": "27a7d3499edaf6adfe800fd4d5a70661cddf864716c3ba1294e93eca4cd0c23a"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f18.0000.png",
+      "bytes": 122345,
+      "sha256": "46f772a4f7bba5bcfdf68af01c5a5cb116ea0460d482229cd368d4ae6097635f"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f18.1500.png",
+      "bytes": 179919,
+      "sha256": "35f8db1cd3214c08beb600acf73d2b0f20328b957d57d31d125b6a0fcd7b11c5"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f18.5000.png",
+      "bytes": 195541,
+      "sha256": "458b7625eb78520e2dc274a9dbccb1b05acb61cce730d88407c6a87cf0318415"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f19.0000.png",
+      "bytes": 167715,
+      "sha256": "4673c7b606d9faca427c88a6677557d62565ea4dd8b67ea8d507a6ac12225341"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f2.0000.png",
+      "bytes": 129751,
+      "sha256": "3048b442092bf714a7eb76ad4e3341fe0cdbf01fead8866dadbc09adebffe80d"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f20.0000.png",
+      "bytes": 112858,
+      "sha256": "5314e36dc6f1fe9eebf8bf9f975007f082f5defc399ad112df62762a7390f387"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f21.0000.png",
+      "bytes": 103589,
+      "sha256": "3a01211ca2e0fc66b23cc2aa8c980a19654958ffe357c01bf178d1c889b048e4"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f23.0000.png",
+      "bytes": 109143,
+      "sha256": "93b44ce1b73c43d47f9c73697548d61bf98513d97da8c0e3137b018384185828"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f24.5000.png",
+      "bytes": 85730,
+      "sha256": "397d16f1483a4b43629a57fbe183757ef29ba5762f596fdd077cc2f34d920254"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f24.7500.png",
+      "bytes": 58774,
+      "sha256": "01fac4df6e76ad652d1d8301a88e7f966cee6e813e49f279556d5cbadabbcd2f"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f25.0000.png",
+      "bytes": 20861,
+      "sha256": "2d4e99510ae460197d112bb1a33a11a21233e195389bd6e92fb876ba335d46f7"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f4.0000.png",
+      "bytes": 143517,
+      "sha256": "1c2ac2484ddbe4c6c253e540b296ec0819c726e4cacd06fdb857abe48cabea2c"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f5.0000.png",
+      "bytes": 139917,
+      "sha256": "5d76ad2524b353b58873b7fb1e46f0e222924e9243440b00b74d1ea6ad6101bb"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f5.5000.png",
+      "bytes": 153108,
+      "sha256": "2689653c0cc6c8b60c45a4890dcf4554d010219d7ecaea2afe5a274d141be8e5"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f5.8000.png",
+      "bytes": 153390,
+      "sha256": "ee1f0b46f8c90de1c21fdb683830b921a8a73b7151dabf69eafaf7aade394c37"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f6.0000.png",
+      "bytes": 155531,
+      "sha256": "38dc6a1d1393608e730cfcbbfeacfb7ae7d840f10d1259374acd34df61e4ea32"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f7.0000.png",
+      "bytes": 179252,
+      "sha256": "6df7d3733a5594c1f54a75d14a78643777d82ae528dd3bf3389f8d2a9cd75472"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f8.0000.png",
+      "bytes": 157863,
+      "sha256": "51e7dd8b8ce8fea24950051090c5225fe0001ddfb6cff6b921e119475b66aa20"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f8.5000.png",
+      "bytes": 160831,
+      "sha256": "884b98f0daecc4e83e6e5deb24cf4748424b03a2bcab202863aa1e6c5825303f"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f8.6500.png",
+      "bytes": 155526,
+      "sha256": "3904f9db44d2ac03901f34bb551867e92eea0df18e635fe6871950eafe550e2f"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/f9.5000.png",
+      "bytes": 176522,
+      "sha256": "76d79ffd0276b09600d6377667a17b0b7bc2a5f3d7610a0b61c5bb4ca481aaaa"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/measurements.json",
+      "bytes": 1116,
+      "sha256": "b9d360fa8e0df872c6dea5b13d8fb07e1199ce4420eee90d452ba99377708684"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/soundtrack.wav",
+      "bytes": 1102544,
+      "sha256": "1e1aa8559afa6106ef84cd53cd9365988bcb426d5ecd1d873b66d0e44de4ed20"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/stills/the-last-streetlight.mp4",
+      "bytes": 7670108,
+      "sha256": "00bddb85af564e0d8f1191707915c8d13f9ccf9473efb3ede9d8ffaa1a6ec25f"
+    },
+    {
+      "path": "docs/authoring/stories/the-last-streetlight/checks/playground.png",
+      "bytes": 98254,
+      "sha256": "78a7e8de6ec0899c826cede7024b55e6a9d24b576f682d1147a6b8388aab774d"
+    }
+  ]
+}
