@@ -32,6 +32,9 @@ import marbleMachineSource from "../../../fixtures/motionscript/stories/the-marb
 import homeSource from "../../../fixtures/motionscript/stories/from-blueprint-to-home.ms?raw";
 import binaryTreeSource from "../../../fixtures/motionscript/stories/two-ways-through-a-binary-tree.ms?raw";
 import smallIdeasSource from "../../../fixtures/motionscript/stories/small-ideas-enormous-change.ms?raw";
+import pixelsSource from "../../../fixtures/motionscript/stories/from-pixels-to-prediction.ms?raw";
+import squareWaveSource from "../../../fixtures/motionscript/stories/square-wave-from-sine-waves.ms?raw";
+import cityLoopSource from "../../../fixtures/motionscript/stories/the-city-comes-around.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
 import failedSource from "../../../fixtures/import/fixture/failed.json?raw";
@@ -85,6 +88,7 @@ export const motionExamples: MotionExample[] = [
   { id: "the-last-streetlight", label: "The Last Streetlight", caption: "A rain-soaked noir encounter leaves one red clue as a detective’s shadow resolves into the opening title.", source: streetlightSource },
   { id: "threads-into-motion", label: "Threads into Motion", caption: "Indigo warp and a continuous coral weft form a square, unweave, and become a dancing ribbon.", source: threadsSource },
   { id: "the-marble-machine", label: "The Marble Machine", caption: "One striped blue marble triggers a wooden seesaw, eight dominoes, a gate and two paddle wheels on its way to a finish bowl.", source: marbleMachineSource },
+  { id: "from-pixels-to-prediction", label: "From Pixels to Prediction", caption: "A thirty-second network schematic. A handwritten 7 becomes 784 inputs, two hidden layers of activations, and a 92% prediction.", source: pixelsSource },
   { id: "from-blueprint-to-home", label: "From Blueprint to Home", caption: "An anchored blueprint rises into a house, then opens to reveal four furnished rooms.", source: homeSource },
   { id: "through-the-mountain", label: "Through the Mountain", caption: "A red locomotive and three cream carriages cross warm fields, pass through a mountain tunnel, and emerge into a snowy blue valley.", source: mountainSource },
   { id: "two-ways-through-a-binary-tree", label: "Two Ways Through a Binary Tree", caption: "BFS visits each level while preorder DFS explores and returns, with a live queue, call stack and separate visit orders.", source: binaryTreeSource },
@@ -92,6 +96,7 @@ export const motionExamples: MotionExample[] = [
   { id: "inside-an-order-book", label: "Inside an Order Book", caption: "Price–time priority turns resting orders into four executions, a cancellation, and a narrower spread.", source: orderBookSource },
   { id: "a-crane-then-a-square", label: "A Crane, Then a Square", caption: "A thirty-five-second crane fold. The sheet opens again and keeps the crease.", source: craneSource },
   { id: "into-the-moons-shadow", label: "Into the Moon’s Shadow", caption: "A forty-second eclipse plate. One moon path drives the orbit and the observer’s sky.", source: eclipseSource },
+  { id: "square-wave-from-sine-waves", label: "Building a Square Wave from Sine Waves", caption: "Sixteen odd sine harmonics, added one at a time, approach a square wave and keep their Gibbs overshoot.", source: squareWaveSource },
   { id: "adding-two-vectors", label: "Adding Two Vectors", caption: "a = (3, 1) and b = (1, 2), placed head to tail. Either order reaches (4, 3).", source: vectorsSource },
   { id: "clockwork", label: "Clockwork", caption: "A thirty-second technical drawing. A brass train assembles, meshes, and runs.", source: clockworkSource },
   { id: "counter", label: "Counter", caption: "A thirty-second stick fight. Cyan dodges, then answers.", source: counterSource },
@@ -100,6 +105,7 @@ export const motionExamples: MotionExample[] = [
   { id: "through-the-blue", label: "Through the Blue", caption: "A jellyfish crosses a moonlit reef, slips behind the rock, and hangs in the glow.", source: blueSource },
   { id: "a-circle-in-motion", label: "A Circle in Motion", caption: "One black outline falls as a drop and becomes a ripple, a clock, a bicycle wheel and a rising sun before falling again.", source: circleSource },
   { id: "small-ideas-enormous-change", label: "Small Ideas, Enormous Change", caption: "A twenty-second typographic plate. One sentence resolves word by word into three lines, with scale on enormous and vermilion on change.", source: smallIdeasSource },
+  { id: "the-city-comes-around", label: "The City Comes Around", caption: "A thirty-second isometric loop: the camera leaves a corner café, rises over the rooftops and a passing train, and settles on the same café one district further on.", source: cityLoopSource },
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },

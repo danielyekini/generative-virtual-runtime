@@ -1,0 +1,16 @@
+{
+  "workParent": "68ca27d55dc8b6b69e87382a5d6d790d5cfb2bce",
+  "mainParent": "97c9c2b2d0a1078230a2c7e5b5be0aa765b9de1d",
+  "conflictsResolved": [
+    "app/playground/src/examples.ts",
+    "docs/authoring/stories/README.md"
+  ],
+  "catalogUnionVerified": true,
+  "exitCodes": {
+    "typecheck": 2,
+    "vitest": 1,
+    "playgroundBuild": 0,
+    "browserSmoke": 0
+  },
+  "knownFailures": "Same 12 pre-existing story-builder TypeScript errors and one duration-limit fixture failure; 201 tests pass."
+}
