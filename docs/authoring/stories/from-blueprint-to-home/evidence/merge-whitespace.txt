@@ -1,0 +1,96 @@
+docs/authoring/stories/inside-an-order-book/brief.md:3: trailing whitespace.
++**Title:** Inside an Order Book  
+docs/authoring/stories/inside-an-order-book/brief.md:4: trailing whitespace.
++**Duration:** 35 seconds  
+docs/authoring/stories/inside-an-order-book/brief.md:5: trailing whitespace.
++**Style and tone:** Clear trading dashboard graphics on a dark navy background. Teal buy orders, coral sell orders, amber executions, and neutral white labels. Display prices to two decimal places and quantities in units.  
+docs/authoring/stories/inside-an-order-book/brief.md:6: trailing whitespace.
++**Setting and initial layout:** Two price ladders sit side by side: **BUY / BIDS** on the left, highest price first; **SELL / ASKS** on the right, lowest price first. Each row displays price and total quantity. An order-detail strip below reveals individual orders when needed. A trade tape sits at the far right.  
+docs/authoring/stories/inside-an-order-book/evidence/base-vitest.txt:58: trailing whitespace.
++     16| 
+docs/authoring/stories/inside-an-order-book/evidence/base-vitest.txt:66: new blank line at EOF.
+docs/authoring/stories/inside-an-order-book/evidence/vitest.txt:59: trailing whitespace.
++     16| 
+docs/authoring/stories/inside-an-order-book/evidence/vitest.txt:67: new blank line at EOF.
+docs/authoring/stories/through-the-mountain/brief.md:3: trailing whitespace.
++**Title:** Through the Mountain  
+docs/authoring/stories/through-the-mountain/brief.md:4: trailing whitespace.
++**Duration:** 30 seconds  
+docs/authoring/stories/through-the-mountain/brief.md:5: trailing whitespace.
++**Style and tone:** Layered travel illustration with textured shapes, warm countryside colours, and a cool blue snowy landscape. Smooth parallax gives depth.  
+docs/authoring/stories/through-the-mountain/brief.md:6: trailing whitespace.
++**Setting and initial layout:** A railway runs horizontally across the lower third. Fields, trees, distant hills, and clouds form distinct depth layers. A mountain tunnel lies ahead to the right.  
+docs/authoring/stories/through-the-mountain/checks/base-vitest.txt:60: trailing whitespace.
++     16| 
+docs/authoring/stories/through-the-mountain/checks/base-vitest.txt:68: new blank line at EOF.
+docs/authoring/stories/through-the-mountain/checks/merged-vitest.txt:58: trailing whitespace.
++     16| 
+docs/authoring/stories/through-the-mountain/checks/merged-vitest.txt:66: new blank line at EOF.
+docs/authoring/stories/through-the-mountain/checks/vitest.txt:58: trailing whitespace.
++     16| 
+docs/authoring/stories/through-the-mountain/checks/vitest.txt:66: new blank line at EOF.
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:3: trailing whitespace.
++**Title:** Two Ways Through a Binary Tree  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:4: trailing whitespace.
++**Duration:** 30 seconds  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:5: trailing whitespace.
++**Style and tone:** Clean computer science diagrams on white. Dark outlines, blue for the current node, pale blue for visited nodes, and amber for pending nodes.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:6: trailing whitespace.
++**Setting and initial layout:** Begin with one centred root node, **A**. The completed tree has **B, C** beneath A; **D, E** beneath B; and **F, G** beneath C.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:28: trailing whitespace.
++- **Action and poses:**  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:29: trailing whitespace.
++  **Left, BFS:** Remove A from the queue, append A to the visit strip, then enqueue B followed by C. Queue becomes **[B, C]**.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:38: trailing whitespace.
++- **Action and poses:**  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:39: trailing whitespace.
++  **12–14.5s, BFS:** Visit B; enqueue D then E. Queue becomes **[C, D, E]**.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:40: trailing whitespace.
++  **12–14.5s, DFS:** Visit B; push D. Stack reads **A → B → D**, bottom to top.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:41: trailing whitespace.
++  **14.5–17s, BFS:** Visit C; enqueue F then G. Queue becomes **[D, E, F, G]**.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:42: trailing whitespace.
++  **14.5–17s, DFS:** Visit D. Briefly mark it “Leaf,” then pop D and return the highlight to B.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:51: trailing whitespace.
++- **Action and poses:**  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:52: trailing whitespace.
++  **17–20s, BFS:** Dequeue and visit D, then E. Queue becomes **[F, G]**.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:53: trailing whitespace.
++  **17–20s, DFS:** Push and visit E, then pop E and B. Return to A, push C, and visit C.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:54: trailing whitespace.
++  **20–23s, BFS:** Dequeue and visit F, leaving **[G]**.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:55: trailing whitespace.
++  **20–23s, DFS:** Push and visit F, then pop F to return to C.  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:64: trailing whitespace.
++- **Action and poses:**  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:65: trailing whitespace.
++  **Left, BFS:** Dequeue and visit G. Display **“Queue empty — complete.”**  
+docs/authoring/stories/two-ways-through-a-binary-tree/brief.md:66: trailing whitespace.
++  **Right, DFS:** Push and visit G, then pop G, C, and A in sequence. Display **“Stack empty — complete.”**  
+docs/authoring/stories/two-ways-through-a-binary-tree/checks/base-vitest.txt:58: trailing whitespace.
++     16| 
+docs/authoring/stories/two-ways-through-a-binary-tree/checks/base-vitest.txt:66: new blank line at EOF.
+docs/authoring/stories/two-ways-through-a-binary-tree/checks/merged-vitest.txt:58: trailing whitespace.
++     16| 
+docs/authoring/stories/two-ways-through-a-binary-tree/checks/merged-vitest.txt:66: new blank line at EOF.
+docs/authoring/stories/two-ways-through-a-binary-tree/checks/vitest.txt:58: trailing whitespace.
++     16| 
+docs/authoring/stories/two-ways-through-a-binary-tree/checks/vitest.txt:66: new blank line at EOF.
+fixtures/motionscript/stories/build-through-the-mountain.ts:145: trailing whitespace.
++  
+fixtures/motionscript/stories/build-through-the-mountain.ts:156: trailing whitespace.
++  
+fixtures/motionscript/stories/inside-an-order-book.ms:21: trailing whitespace.
++    
+fixtures/motionscript/stories/inside-an-order-book.ms:22: trailing whitespace.
++    
+fixtures/motionscript/stories/inside-an-order-book.ms:31: trailing whitespace.
++    
+fixtures/motionscript/stories/inside-an-order-book.ms:32: trailing whitespace.
++    
+fixtures/motionscript/stories/inside-an-order-book.ms:38: trailing whitespace.
++    
+fixtures/motionscript/stories/inside-an-order-book.ms:53: trailing whitespace.
++    
+fixtures/motionscript/stories/inside-an-order-book.ms:54: trailing whitespace.
++    
