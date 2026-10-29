@@ -71,7 +71,6 @@ Some proposals describe limits that have since changed. The default duration bud
 | Seamless loops: segments that wrap past the end | Circle | A fall spans 28s → 1.5s; the boundary easing was derived by hand. Changes sampling rules, so it needs a design decision. |
 | One contour through many forms (morph topology, rotation) | Circle | All 15 keys of one path share a command sequence; a half turn cannot be a morph, so it borrows a group rotation. Rotation-aware morph needs a design decision. |
 | Coordinating algorithm state, return highlights and first-visit records | Binary Tree | Nine independent rendered-text checkpoints distinguish first visits from stack returns. Complete structure snapshots are an implementation choice; token reuse is an untested current-language alternative. |
-
 | Shared transforms and attached annotations | Order Book, Binary Tree (TOP marker) | Prefer parent/local-space coupling; a larger camera or component rewrite remains a hypothesis. |
 | Numeric text and duplicated states | Order Book, Binary Tree (structure snapshots) | Numeric formatting is distinct from pending per-character animators. Binary Tree first proposes reusing static letter tokens with existing tracks. |
 | Verification baselines and provenance | Order Book, Binary Tree | Retain actual Canvas evidence and hash-associated program/builder records; reproduce repository failures on the base. |
