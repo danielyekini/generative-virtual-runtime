@@ -223,7 +223,7 @@ describe("published contract", () => {
   it("keeps the grammar and the default budgets", () => {
     expect(MOTION_SCRIPT_EBNF).toContain("program        = sceneHeader");
     expect(MOTION_SCRIPT_EBNF).toContain("complete       = \"complete\"");
-    expect(DEFAULT_LIMITS.maxDurationMs).toBe(30_000);
+    expect(DEFAULT_LIMITS.maxDurationMs).toBe(60_000);
     expect(DEFAULT_LIMITS.maxNodes).toBe(500);
     expect(DEFAULT_LIMITS.maxDepth).toBe(16);
     expect(DEFAULT_LIMITS.maxTracks).toBe(1000);

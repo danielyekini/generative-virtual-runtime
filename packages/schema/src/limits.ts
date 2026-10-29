@@ -5,7 +5,7 @@
  * validator enforces the scene, geometry, and expression budgets.
  */
 export interface ResourceLimits {
-  /** Finite programme length. Default 30 seconds. */
+  /** Finite programme length. Default 60 seconds. */
   maxDurationMs: number;
   maxNodes: number;
   /** Root depth is 1. A chain of this many nodes is still valid. */
@@ -30,7 +30,7 @@ export interface ResourceLimits {
 }
 
 export const DEFAULT_LIMITS: ResourceLimits = {
-  maxDurationMs: 30_000,
+  maxDurationMs: 60_000,
   maxNodes: 500,
   maxDepth: 16,
   maxTracks: 1000,

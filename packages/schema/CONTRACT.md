@@ -12,7 +12,7 @@ Nothing in the IR is a Canvas call, a DOM node, or a JavaScript function.
 - A positive angle is **clockwise** on that y-down plane.
 - Opacity is a finite number in **[0, 1]**, inclusive.
 - Camera zoom is a finite number **strictly greater than 0**. Zoom magnifies the view. It is not a world scale of `z` that would invert to `1/z`.
-- Scene duration is finite and positive, and at most 30 seconds under the default budget.
+- Scene duration is finite and positive, and at most 60 seconds under the default budget.
 - The only fit policy is **contain**. The logical viewport is scaled uniformly and letterboxed. It is never stretched.
 
 The view matrix is
@@ -126,7 +126,7 @@ Default budgets, all overridable as configuration:
 
 | Budget | Default |
 | --- | --- |
-| Duration | 30s |
+| Duration | 60s |
 | Nodes | 500 |
 | Depth (root is 1) | 16 |
 | Tracks / steps | 1000 each |

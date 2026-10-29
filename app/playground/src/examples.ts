@@ -14,6 +14,14 @@ import gallerySource from "../../../fixtures/motionscript/frames/primitive-galle
 import textSource from "../../../fixtures/motionscript/frames/text.ms?raw";
 import zOrderSource from "../../../fixtures/motionscript/frames/z-order.ms?raw";
 import nestedSource from "../../../fixtures/motionscript/nested.ms?raw";
+import vectorsSource from "../../../fixtures/motionscript/stories/adding-two-vectors.ms?raw";
+import eclipseSource from "../../../fixtures/motionscript/stories/into-the-moons-shadow.ms?raw";
+import clockworkSource from "../../../fixtures/motionscript/stories/clockwork.ms?raw";
+import copperleafSource from "../../../fixtures/motionscript/stories/copperleaf-run.ms?raw";
+import counterSource from "../../../fixtures/motionscript/stories/counter.ms?raw";
+import packetJourneySource from "../../../fixtures/motionscript/stories/packet-journey.ms?raw";
+import craneSource from "../../../fixtures/motionscript/stories/a-crane-then-a-square.ms?raw";
+import blueSource from "../../../fixtures/motionscript/stories/through-the-blue.ms?raw";
 import degradedSource from "../../../fixtures/import/fixture/degraded.json?raw";
 import exactSource from "../../../fixtures/import/fixture/exact.json?raw";
 import failedSource from "../../../fixtures/import/fixture/failed.json?raw";
@@ -61,6 +69,14 @@ export interface SourceExample {
 }
 
 export const motionExamples: MotionExample[] = [
+  { id: "a-crane-then-a-square", label: "A Crane, Then a Square", caption: "A thirty-five-second crane fold. The sheet opens again and keeps the crease.", source: craneSource },
+  { id: "into-the-moons-shadow", label: "Into the Moon’s Shadow", caption: "A forty-second eclipse plate. One moon path drives the orbit and the observer’s sky.", source: eclipseSource },
+  { id: "adding-two-vectors", label: "Adding Two Vectors", caption: "a = (3, 1) and b = (1, 2), placed head to tail. Either order reaches (4, 3).", source: vectorsSource },
+  { id: "clockwork", label: "Clockwork", caption: "A thirty-second technical drawing. A brass train assembles, meshes, and runs.", source: clockworkSource },
+  { id: "counter", label: "Counter", caption: "A thirty-second stick fight. Cyan dodges, then answers.", source: counterSource },
+  { id: "copperleaf", label: "Copperleaf Run", caption: "Pip runs a woodland ruin, clears a beetle, and keeps going into the cavern.", source: copperleafSource },
+  { id: "packet-journey", label: "Packet Journey", caption: "A message splits into five packets. One is lost, retransmitted, and the receiver rebuilds the line.", source: packetJourneySource },
+  { id: "through-the-blue", label: "Through the Blue", caption: "A jellyfish crosses a moonlit reef, slips behind the rock, and hangs in the glow.", source: blueSource },
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
