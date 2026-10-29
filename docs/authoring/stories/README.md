@@ -46,7 +46,6 @@ The Marble Machine proposal was written after implementation, evaluated-output a
 | [A Circle in Motion](a-circle-in-motion/) | 30s, looping | Direction script | Yes |
 | [Small Ideas, Enormous Change](small-ideas-enormous-change/) | 20s | Direction script | Yes |
 | [Through the Mountain](through-the-mountain/) | 30s | Director script | Yes |
-
 | [Threads into Motion](threads-into-motion/) | 30s | Direction script | Yes |
 
 ## Recurring themes

@@ -210,5 +210,11 @@
       "file": "f30.00.png",
       "pngSha256": "e1b09caf2d33a908f45c12dda98025c422dd38b14ef06aa7e9ec34540fcbd7f8"
     }
-  ]
+  ],
+  "mergeVerification": {
+    "commit": "5c8c616",
+    "typecheck": "same 12 base error lines",
+    "vitest": "201 passed; same duration-limit manifest failure",
+    "note": "Concurrent story presets and records retained; engine and this story program/builder unchanged."
+  }
 }
