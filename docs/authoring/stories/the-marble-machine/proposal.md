@@ -84,3 +84,7 @@ General loops, functions, simulation and dynamic parent switching introduce subs
 **Experiment next:** hierarchical cup attachment versus sampled keys; spatial curves and distance-derived rolling; a shared capture/geometry-inspection utility. Measure visual continuity, expanded nodes/tracks, source bytes and runtime with the same timeline before selecting a winner.
 
 **Defer:** core binding/attachment semantics until those experiments and independent stories establish the smallest useful scope; masks and sound metadata through their own contracts; physics, general loops/functions and three-dimensional contact. This one plate does not establish a general need or a release-ready design.
+
+## Integration note
+
+The remote `work` branch advanced with four other story plates during implementation. Its story catalog and playground entries were merged without replacing the pinned implementation or original measurements above. The combined playground production build passes (with Vite's large-chunk warning). Re-running the marble builder passes and preserves the recorded program SHA-256. Combined typecheck output is identical to the base output; Vitest still has the same single duration-fixture failure. See [merged builder](evidence/merged-builder.txt), [merged typecheck](evidence/merged-typecheck.txt), [merged Vitest](evidence/merged-vitest.txt) and [playground build](evidence/merged-playground-build.txt). The merge's whitespace check reports formatting in incoming verbatim briefs, retained logs and generated fixtures; those existing artifacts were preserved.

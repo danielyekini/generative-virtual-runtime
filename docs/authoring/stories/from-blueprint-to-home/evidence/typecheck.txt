@@ -1,0 +1,17 @@
+
+> generative-visual-runtime@0.1.0 typecheck
+> tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json
+
+fixtures/motionscript/stories/build-clockwork.ts(996,101): error TS2339: Property 'ease' does not exist on type '{ ease: Ease; x: number; y: number; zoom: number; t: number; } | { x: number; y: number; zoom: number; t: number; }'.
+  Property 'ease' does not exist on type '{ x: number; y: number; zoom: number; t: number; }'.
+fixtures/motionscript/stories/build-counter.ts(391,37): error TS18048: 'da' is possibly 'undefined'.
+fixtures/motionscript/stories/build-counter.ts(391,49): error TS18048: 'db' is possibly 'undefined'.
+fixtures/motionscript/stories/build-counter.ts(394,20): error TS18048: 'da' is possibly 'undefined'.
+fixtures/motionscript/stories/build-counter.ts(395,20): error TS18048: 'db' is possibly 'undefined'.
+fixtures/motionscript/stories/build-counter.ts(585,41): error TS2353: Object literal may only specify known properties, and 'x' does not exist in type 'Omit<Key, "t" | "x">'.
+fixtures/motionscript/stories/build-counter.ts(658,62): error TS2353: Object literal may only specify known properties, and 'x' does not exist in type 'Omit<Key, "t" | "x">'.
+fixtures/motionscript/stories/build-crane.ts(829,21): error TS2322: Type 'string[]' is not assignable to type 'string'.
+fixtures/motionscript/stories/build-crane.ts(958,35): error TS2339: Property 'join' does not exist on type 'string'.
+fixtures/motionscript/stories/build-crane.ts(983,38): error TS2339: Property 'join' does not exist on type 'string'.
+fixtures/motionscript/stories/build-crane.ts(1035,31): error TS2339: Property 'join' does not exist on type 'string'.
+fixtures/motionscript/stories/build-into-the-moons-shadow.ts(645,36): error TS2345: Argument of type '"left"' is not assignable to parameter of type '"center" | "right"'.
