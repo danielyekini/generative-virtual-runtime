@@ -1,3 +1,4 @@
+import streetlightSource from "../../../fixtures/motionscript/stories/the-last-streetlight.ms?raw";
 /// <reference types="vite/client" />
 import { emitMotionScript } from "@gvr/motionscript-emitter";
 import { buildRuntimeScenes } from "../../../fixtures/runtime-scenes";
@@ -78,6 +79,7 @@ export interface SourceExample {
 }
 
 export const motionExamples: MotionExample[] = [
+  { id: "the-last-streetlight", label: "The Last Streetlight", caption: "A rain-soaked noir encounter leaves one red clue as a detective’s shadow resolves into the opening title.", source: streetlightSource },
   { id: "threads-into-motion", label: "Threads into Motion", caption: "Indigo warp and a continuous coral weft form a square, unweave, and become a dancing ribbon.", source: threadsSource },
   { id: "the-marble-machine", label: "The Marble Machine", caption: "One striped blue marble triggers a wooden seesaw, eight dominoes, a gate and two paddle wheels on its way to a finish bowl.", source: marbleMachineSource },
   { id: "from-blueprint-to-home", label: "From Blueprint to Home", caption: "An anchored blueprint rises into a house, then opens to reveal four furnished rooms.", source: homeSource },
