@@ -1,0 +1,17 @@
+{
+  "source": "scene \"external-parent\" {version \"0.2\"; viewport (1280,720); background #ffffff; duration 1s;}; group Parent {circle a {radius 5;};}; group Other {circle b {radius 3; transformParent Parent;};}; complete;",
+  "compilerOk": true,
+  "rejected": [
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "INVALID_PARENT",
+      "phase": "validate",
+      "category": "reference",
+      "message": "Transform parent Parent does not exist.",
+      "path": "Other.b",
+      "target": "Other.b"
+    }
+  ]
+}

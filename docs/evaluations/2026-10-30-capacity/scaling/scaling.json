@@ -1,0 +1,470 @@
+{
+  "warmup": 20,
+  "samples": 60,
+  "rows": [
+    {
+      "axis": "nodes",
+      "count": 250,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.38166666667287547,
+            "max": 0.7999999998137355,
+            "p50": 0.39999999990686774,
+            "p95": 0.6000000000931323,
+            "p99": 0.7999999998137355
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.2533333333403183,
+            "max": 10.800000000046566,
+            "p50": 1,
+            "p95": 2.699999999953434,
+            "p99": 10.800000000046566
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "nodes",
+      "count": 500,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.4633333333224679,
+            "max": 1.1999999999534339,
+            "p50": 0.39999999990686774,
+            "p95": 0.6999999999534339,
+            "p99": 1.1999999999534339
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.8783333333519598,
+            "max": 5.600000000093132,
+            "p50": 1.6000000000931323,
+            "p95": 3.5999999998603016,
+            "p99": 5.600000000093132
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "nodes",
+      "count": 1000,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.9083333333100503,
+            "max": 1.6999999999534339,
+            "p50": 0.8000000000465661,
+            "p95": 1.3000000000465661,
+            "p99": 1.6999999999534339
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 2.678333333348079,
+            "max": 4.600000000093132,
+            "p50": 2.5,
+            "p95": 3.5,
+            "p99": 4.600000000093132
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "nodes",
+      "count": 2000,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.6666666666433836,
+            "max": 5.199999999953434,
+            "p50": 1.5,
+            "p95": 2.2000000001862645,
+            "p99": 5.199999999953434
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 5.078333333367482,
+            "max": 8.400000000139698,
+            "p50": 4.7000000001862645,
+            "p95": 6.800000000046566,
+            "p99": 8.400000000139698
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "nodes",
+      "count": 4000,
+      "defaultAdmission": false,
+      "admissionDiagnostics": [
+        {
+          "severity": "error",
+          "effect": "UNIT_REJECTED",
+          "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+          "code": "RESOURCE_LIMIT",
+          "phase": "validate",
+          "category": "resource",
+          "message": "Node count 4000 exceeds 2000.",
+          "path": "nodes"
+        }
+      ],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 4.376666666652697,
+            "max": 23.800000000046566,
+            "p50": 2.800000000046566,
+            "p95": 9.399999999906868,
+            "p99": 23.800000000046566
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 12.285000000001553,
+            "max": 37.0999999998603,
+            "p50": 11.100000000093132,
+            "p95": 17.5999999998603,
+            "p99": 37.0999999998603
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "tracks",
+      "count": 250,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.1950000000108654,
+            "max": 3,
+            "p50": 1.1000000000931323,
+            "p95": 1.5,
+            "p99": 3
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.4133333333496314,
+            "max": 4.599999999860302,
+            "p50": 1.3000000000465661,
+            "p95": 2,
+            "p99": 4.599999999860302
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "tracks",
+      "count": 500,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.7466666666752038,
+            "max": 5.400000000139698,
+            "p50": 1.6000000000931323,
+            "p95": 2.699999999953434,
+            "p99": 5.400000000139698
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.6099999999937913,
+            "max": 3,
+            "p50": 1.5,
+            "p95": 2.199999999953434,
+            "p99": 3
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "tracks",
+      "count": 1000,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 2.428333333336438,
+            "max": 5.5,
+            "p50": 2.2999999998137355,
+            "p95": 3.5,
+            "p99": 5.5
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.4683333333348856,
+            "max": 3.1000000000931323,
+            "p50": 1.3000000000465661,
+            "p95": 2.199999999953434,
+            "p99": 3.1000000000931323
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "tracks",
+      "count": 2000,
+      "defaultAdmission": false,
+      "admissionDiagnostics": [
+        {
+          "severity": "error",
+          "effect": "UNIT_REJECTED",
+          "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+          "code": "RESOURCE_LIMIT",
+          "phase": "validate",
+          "category": "resource",
+          "message": "Track count 2000 exceeds 1000.",
+          "path": "timeline.tracks"
+        }
+      ],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 3.899999999984478,
+            "max": 7,
+            "p50": 3.699999999953434,
+            "p95": 5.2999999998137355,
+            "p99": 7
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 1.4516666666604578,
+            "max": 3.800000000046566,
+            "p50": 1.3999999999068677,
+            "p95": 2,
+            "p99": 3.800000000046566
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "morphCommands",
+      "count": 100,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.118333333323244,
+            "max": 0.30000000004656613,
+            "p50": 0.10000000009313226,
+            "p95": 0.2999999998137355,
+            "p99": 0.30000000004656613
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.14500000001474594,
+            "max": 0.4000000001396984,
+            "p50": 0.10000000009313226,
+            "p95": 0.2999999998137355,
+            "p99": 0.4000000001396984
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "morphCommands",
+      "count": 1000,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.23166666665347294,
+            "max": 2.2999999998137355,
+            "p50": 0.19999999995343387,
+            "p95": 0.30000000004656613,
+            "p99": 2.2999999998137355
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.23500000001319374,
+            "max": 1.8000000000465661,
+            "p50": 0.19999999995343387,
+            "p95": 0.30000000004656613,
+            "p99": 1.8000000000465661
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "morphCommands",
+      "count": 5000,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.46666666666278617,
+            "max": 0.7999999998137355,
+            "p50": 0.4000000001396984,
+            "p95": 0.6999999999534339,
+            "p99": 0.7999999998137355
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.3183333333504076,
+            "max": 1.3999999999068677,
+            "p50": 0.30000000004656613,
+            "p95": 0.5,
+            "p99": 1.3999999999068677
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    },
+    {
+      "axis": "morphCommands",
+      "count": 10000,
+      "defaultAdmission": true,
+      "admissionDiagnostics": [],
+      "extendedAdmission": true,
+      "extendedDiagnostics": [],
+      "metrics": {
+        "capacity": 128,
+        "distributions": {
+          "evaluate_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.7949999999914629,
+            "max": 2.199999999953434,
+            "p50": 0.6999999999534339,
+            "p95": 1.8999999999068677,
+            "p99": 2.199999999953434
+          },
+          "renderer_ms": {
+            "count": 60,
+            "retained": 60,
+            "mean": 0.46500000000620884,
+            "max": 1.2999999998137355,
+            "p50": 0.4000000001396984,
+            "p95": 1,
+            "p99": 1.2999999998137355
+          }
+        },
+        "counters": {},
+        "gauges": {},
+        "events": []
+      }
+    }
+  ]
+}

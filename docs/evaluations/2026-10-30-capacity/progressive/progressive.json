@@ -1,0 +1,2683 @@
+{
+  "verification": true,
+  "runs": [
+    {
+      "options": {
+        "bytesPerSecond": 4096,
+        "pattern": [
+          512
+        ],
+        "mode": "normal",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 4407.699951171875,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 16.60009765625,
+        "sourceComplete": false
+      },
+      "firstMotion": {
+        "wallMs": 4491.099853515625,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 100,
+        "sourceComplete": false
+      },
+      "firstSeal": {
+        "wallMs": 4402.699951171875,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 4402.699951171875,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        },
+        {
+          "wallMs": 4903.39990234375,
+          "bytes": 20030,
+          "horizonMs": 5000,
+          "playbackMs": 500.10009765625,
+          "bufferedMs": 4499.89990234375
+        },
+        {
+          "wallMs": 6781,
+          "bytes": 27710,
+          "horizonMs": 10000,
+          "playbackMs": 2383.60009765625,
+          "bufferedMs": 7616.39990234375
+        },
+        {
+          "wallMs": 8654.39990234375,
+          "bytes": 35390,
+          "horizonMs": 15000,
+          "playbackMs": 4249.900146484375,
+          "bufferedMs": 10750.099853515625
+        },
+        {
+          "wallMs": 10906.5,
+          "bytes": 44606,
+          "horizonMs": 20000,
+          "playbackMs": 6499.800048828125,
+          "bufferedMs": 13500.199951171875
+        },
+        {
+          "wallMs": 13658.300048828125,
+          "bytes": 55870,
+          "horizonMs": 25000,
+          "playbackMs": 9249.60009765625,
+          "bufferedMs": 15750.39990234375
+        },
+        {
+          "wallMs": 15029.5,
+          "bytes": 61502,
+          "horizonMs": 30000,
+          "playbackMs": 10633,
+          "bufferedMs": 19367
+        }
+      ],
+      "stalls": [],
+      "stallTotalMs": 0,
+      "arrival": {
+        "configuredBytesPerSecond": 4096,
+        "observedBytesPerSecond": 4091.6590029279237,
+        "generatedBytes": 61505,
+        "receivedBytes": 61505,
+        "wallMs": 15031.800048828125,
+        "lastWorkerSendMs": 15031.300048828125,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 123,
+              "retained": 123,
+              "mean": 0.20974260035569106,
+              "max": 2.5,
+              "p50": 0.199951171875,
+              "p95": 0.400146484375,
+              "p99": 1.89990234375
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "completion": {
+        "wallMs": 15031.89990234375,
+        "ok": true,
+        "completed": true,
+        "diagnostics": []
+      },
+      "totalWallMs": 34423.800048828125,
+      "playbackMs": 30000,
+      "compileMs": 167.89999999967404,
+      "presentationMs": 1249.5999999952037,
+      "queue": {
+        "producerHighWater": 1,
+        "producerBytesHighWater": 512,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 512,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 122,
+            "retained": 122,
+            "mean": 0.1032786885234451,
+            "max": 0.39999999990686774,
+            "p50": 0.10000000009313226,
+            "p95": 0.20000000018626451,
+            "p99": 0.30000000004656613
+          },
+          "compile.parse_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.013469387754341778,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.snapshot_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.002880658436022362,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.capture_ms": {
+            "count": 484,
+            "retained": 484,
+            "mean": 0.008264462807993134,
+            "max": 0.5999999998603016,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "compile.lower_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.015637860078663555,
+            "max": 0.6000000000931323,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.validate_ms": {
+            "count": 244,
+            "retained": 244,
+            "mean": 0.4868852459066013,
+            "max": 2.5,
+            "p50": 0.4000000001396984,
+            "p95": 0.9000000001396984,
+            "p99": 1.6999999999534339
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 61505,
+          "compile.units_seen": 243,
+          "compile.accepted_units": 243,
+          "compile.unresolved_units": 0,
+          "compile.rejected_units": 0
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 0,
+            "highWater": 1737
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 0,
+            "highWater": 3753
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 0,
+            "highWater": 19
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 18534,
+            "highWater": 18534
+          },
+          "compile.deferred_units": {
+            "value": 0,
+            "highWater": 0
+          }
+        },
+        "events": []
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.009387755097479236,
+            "max": 0.2999999998137355,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "frame.evaluate_ms": {
+            "count": 1799,
+            "retained": 1024,
+            "mean": 0.4210672595849071,
+            "max": 4.300000000046566,
+            "p50": 0.39999999990686774,
+            "p95": 0.6000000000931323,
+            "p99": 0.8000000000465661
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 245
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 2.699951171875,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 4402.89990234375,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 4407.800048828125,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 4903.599853515625,
+          "state": "BUFFERED",
+          "playbackMs": 500.10009765625
+        },
+        {
+          "wallMs": 6781.199951171875,
+          "state": "BUFFERED",
+          "playbackMs": 2383.60009765625
+        },
+        {
+          "wallMs": 8654.599853515625,
+          "state": "BUFFERED",
+          "playbackMs": 4249.900146484375
+        },
+        {
+          "wallMs": 10906.699951171875,
+          "state": "BUFFERED",
+          "playbackMs": 6499.800048828125
+        },
+        {
+          "wallMs": 13658.599853515625,
+          "state": "BUFFERED",
+          "playbackMs": 9249.60009765625
+        },
+        {
+          "wallMs": 15029.699951171875,
+          "state": "BUFFERED",
+          "playbackMs": 10633
+        },
+        {
+          "wallMs": 34407.699951171875,
+          "state": "COMPLETE",
+          "playbackMs": 30000
+        }
+      ],
+      "captures": [
+        {
+          "name": "first-visual",
+          "png": "run-0-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "run-0-first-motion.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    },
+    {
+      "options": {
+        "bytesPerSecond": 4096,
+        "pattern": [
+          17,
+          2048,
+          127,
+          509
+        ],
+        "mode": "normal",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 4401.699951171875,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 19,
+        "sourceComplete": false
+      },
+      "firstMotion": {
+        "wallMs": 4499.300048828125,
+        "bytes": 18109,
+        "generatedBytes": 18109,
+        "sceneTimeMs": 116.60009765625,
+        "sourceComplete": false
+      },
+      "firstSeal": {
+        "wallMs": 4401.300048828125,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 4401.300048828125,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        },
+        {
+          "wallMs": 5058.60009765625,
+          "bytes": 20683,
+          "horizonMs": 5000,
+          "playbackMs": 666.7001953125,
+          "bufferedMs": 4333.2998046875
+        },
+        {
+          "wallMs": 7037.300048828125,
+          "bytes": 28786,
+          "horizonMs": 10000,
+          "playbackMs": 2649.7001953125,
+          "bufferedMs": 7350.2998046875
+        },
+        {
+          "wallMs": 9019.199951171875,
+          "bytes": 36889,
+          "horizonMs": 15000,
+          "playbackMs": 4616.2001953125,
+          "bufferedMs": 10383.7998046875
+        },
+        {
+          "wallMs": 10998.400146484375,
+          "bytes": 44992,
+          "horizonMs": 20000,
+          "playbackMs": 6599.7001953125,
+          "bufferedMs": 13400.2998046875
+        },
+        {
+          "wallMs": 13638.300048828125,
+          "bytes": 55796,
+          "horizonMs": 25000,
+          "playbackMs": 9232.800048828125,
+          "bufferedMs": 15767.199951171875
+        },
+        {
+          "wallMs": 15024.900146484375,
+          "bytes": 61505,
+          "horizonMs": 30000,
+          "playbackMs": 10633.10009765625,
+          "bufferedMs": 19366.89990234375
+        }
+      ],
+      "stalls": [],
+      "stallTotalMs": 0,
+      "arrival": {
+        "configuredBytesPerSecond": 4096,
+        "observedBytesPerSecond": 4093.5108153078204,
+        "generatedBytes": 61505,
+        "receivedBytes": 61505,
+        "wallMs": 15025,
+        "lastWorkerSendMs": 15022.5,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 93,
+              "retained": 93,
+              "mean": 0.1571373067876344,
+              "max": 5.000244140625,
+              "p50": 0.000244140625,
+              "p95": 0.500244140625,
+              "p99": 5.000244140625
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "completion": {
+        "wallMs": 15025,
+        "ok": true,
+        "completed": true,
+        "diagnostics": []
+      },
+      "totalWallMs": 34414.699951171875,
+      "playbackMs": 30000,
+      "compileMs": 135.69999999925494,
+      "presentationMs": 1136.5000000023283,
+      "queue": {
+        "producerHighWater": 2,
+        "producerBytesHighWater": 2048,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 2048,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 92,
+            "retained": 92,
+            "mean": 0.10000000000202461,
+            "max": 0.4000000001396984,
+            "p50": 0.09999999986030161,
+            "p95": 0.30000000004656613,
+            "p99": 0.4000000001396984
+          },
+          "compile.parse_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.009387755104131541,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.snapshot_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.0012345679004680473,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.09999999986030161
+          },
+          "compile.capture_ms": {
+            "count": 484,
+            "retained": 484,
+            "mean": 0.00578512396800047,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "compile.lower_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.010699588474875062,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.validate_ms": {
+            "count": 244,
+            "retained": 244,
+            "mean": 0.42049180327334484,
+            "max": 2.6000000000931323,
+            "p50": 0.30000000004656613,
+            "p95": 0.8000000000465661,
+            "p99": 1.1999999999534339
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 61505,
+          "compile.units_seen": 243,
+          "compile.accepted_units": 243,
+          "compile.unresolved_units": 0,
+          "compile.rejected_units": 0
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 0,
+            "highWater": 2130
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 0,
+            "highWater": 3988
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 0,
+            "highWater": 17
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 18534,
+            "highWater": 18534
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 19
+          },
+          "compile.deferred_units": {
+            "value": 0,
+            "highWater": 0
+          }
+        },
+        "events": []
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.028571428570478244,
+            "max": 0.6999999999534339,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.6999999999534339
+          },
+          "frame.evaluate_ms": {
+            "count": 1801,
+            "retained": 1024,
+            "mean": 0.39716823986482735,
+            "max": 2.6000000000931323,
+            "p50": 0.39999999990686774,
+            "p95": 0.6000000000931323,
+            "p99": 0.8999999999068677
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 245
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 19
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 1.300048828125,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 4401.60009765625,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 4401.800048828125,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 5058.900146484375,
+          "state": "BUFFERED",
+          "playbackMs": 666.7001953125
+        },
+        {
+          "wallMs": 7037.400146484375,
+          "state": "BUFFERED",
+          "playbackMs": 2649.7001953125
+        },
+        {
+          "wallMs": 9019.5,
+          "state": "BUFFERED",
+          "playbackMs": 4616.2001953125
+        },
+        {
+          "wallMs": 10998.400146484375,
+          "state": "BUFFERED",
+          "playbackMs": 6599.7001953125
+        },
+        {
+          "wallMs": 13638.400146484375,
+          "state": "BUFFERED",
+          "playbackMs": 9232.800048828125
+        },
+        {
+          "wallMs": 15025,
+          "state": "BUFFERED",
+          "playbackMs": 10633.10009765625
+        },
+        {
+          "wallMs": 34399.10009765625,
+          "state": "COMPLETE",
+          "playbackMs": 30000
+        }
+      ],
+      "captures": [
+        {
+          "name": "first-visual",
+          "png": "run-1-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "run-1-first-motion.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    },
+    {
+      "options": {
+        "bytesPerSecond": 12288,
+        "pattern": [
+          512
+        ],
+        "mode": "normal",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 1481.60009765625,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 16,
+        "sourceComplete": false
+      },
+      "firstMotion": {
+        "wallMs": 1581.60009765625,
+        "bytes": 19006,
+        "generatedBytes": 19006,
+        "sceneTimeMs": 116,
+        "sourceComplete": false
+      },
+      "firstSeal": {
+        "wallMs": 1469.5,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 1469.5,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        },
+        {
+          "wallMs": 1637.39990234375,
+          "bytes": 20030,
+          "horizonMs": 5000,
+          "playbackMs": 166.099853515625,
+          "bufferedMs": 4833.900146484375
+        },
+        {
+          "wallMs": 2262.39990234375,
+          "bytes": 27710,
+          "horizonMs": 10000,
+          "playbackMs": 782.699951171875,
+          "bufferedMs": 9217.300048828125
+        },
+        {
+          "wallMs": 2888,
+          "bytes": 35390,
+          "horizonMs": 15000,
+          "playbackMs": 1416.2998046875,
+          "bufferedMs": 13583.7001953125
+        },
+        {
+          "wallMs": 3639.800048828125,
+          "bytes": 44606,
+          "horizonMs": 20000,
+          "playbackMs": 2166.2998046875,
+          "bufferedMs": 17833.7001953125
+        },
+        {
+          "wallMs": 4555,
+          "bytes": 55870,
+          "horizonMs": 25000,
+          "playbackMs": 3082.599853515625,
+          "bufferedMs": 21917.400146484375
+        },
+        {
+          "wallMs": 5014,
+          "bytes": 61502,
+          "horizonMs": 30000,
+          "playbackMs": 3532.5,
+          "bufferedMs": 26467.5
+        }
+      ],
+      "stalls": [],
+      "stallTotalMs": 0,
+      "arrival": {
+        "configuredBytesPerSecond": 12288,
+        "observedBytesPerSecond": 12263.47365086786,
+        "generatedBytes": 61505,
+        "receivedBytes": 61505,
+        "wallMs": 5015.300048828125,
+        "lastWorkerSendMs": 5014.60009765625,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 123,
+              "retained": 123,
+              "mean": 0.05523532774390244,
+              "max": 0.699951171875,
+              "p50": 0,
+              "p95": 0.199951171875,
+              "p99": 0.5
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "completion": {
+        "wallMs": 5015.300048828125,
+        "ok": true,
+        "completed": true,
+        "diagnostics": []
+      },
+      "totalWallMs": 31497.199951171875,
+      "playbackMs": 30000,
+      "compileMs": 136.19999999948777,
+      "presentationMs": 1108.6999999952968,
+      "queue": {
+        "producerHighWater": 1,
+        "producerBytesHighWater": 512,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 512,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 122,
+            "retained": 122,
+            "mean": 0.079508196713296,
+            "max": 0.20000000018626451,
+            "p50": 0.09999999986030161,
+            "p95": 0.19999999995343387,
+            "p99": 0.20000000018626451
+          },
+          "compile.parse_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.010204081634553719,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.snapshot_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.0016460905355543144,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.capture_ms": {
+            "count": 484,
+            "retained": 484,
+            "mean": 0.007024793390642606,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.lower_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.011522633744089447,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.validate_ms": {
+            "count": 244,
+            "retained": 244,
+            "mean": 0.40327868852230003,
+            "max": 1.7000000001862645,
+            "p50": 0.39999999990686774,
+            "p95": 0.7000000001862645,
+            "p99": 1
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 61505,
+          "compile.units_seen": 243,
+          "compile.accepted_units": 243,
+          "compile.unresolved_units": 0,
+          "compile.rejected_units": 0
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 0,
+            "highWater": 1737
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 0,
+            "highWater": 3753
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 0,
+            "highWater": 19
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 18534,
+            "highWater": 18534
+          },
+          "compile.deferred_units": {
+            "value": 0,
+            "highWater": 0
+          }
+        },
+        "events": []
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.010612244897388986,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "frame.evaluate_ms": {
+            "count": 1801,
+            "retained": 1024,
+            "mean": 0.3855635757893655,
+            "max": 3.699999999953434,
+            "p50": 0.39999999990686774,
+            "p95": 0.6000000000931323,
+            "p99": 1
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 245
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 0.89990234375,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1469.800048828125,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1481.699951171875,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1637.699951171875,
+          "state": "BUFFERED",
+          "playbackMs": 166.099853515625
+        },
+        {
+          "wallMs": 2262.5,
+          "state": "BUFFERED",
+          "playbackMs": 782.699951171875
+        },
+        {
+          "wallMs": 2888.199951171875,
+          "state": "BUFFERED",
+          "playbackMs": 1416.2998046875
+        },
+        {
+          "wallMs": 3640,
+          "state": "BUFFERED",
+          "playbackMs": 2166.2998046875
+        },
+        {
+          "wallMs": 4555.199951171875,
+          "state": "BUFFERED",
+          "playbackMs": 3082.599853515625
+        },
+        {
+          "wallMs": 5014.199951171875,
+          "state": "BUFFERED",
+          "playbackMs": 3532.5
+        },
+        {
+          "wallMs": 31481.5,
+          "state": "COMPLETE",
+          "playbackMs": 30000
+        }
+      ],
+      "captures": [
+        {
+          "name": "first-visual",
+          "png": "run-2-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "run-2-first-motion.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    },
+    {
+      "options": {
+        "bytesPerSecond": 12288,
+        "pattern": [
+          17,
+          2048,
+          127,
+          509
+        ],
+        "mode": "normal",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 1483.199951171875,
+        "bytes": 18109,
+        "generatedBytes": 18109,
+        "sceneTimeMs": 16.5,
+        "sourceComplete": false
+      },
+      "firstMotion": {
+        "wallMs": 1566.699951171875,
+        "bytes": 18635,
+        "generatedBytes": 18635,
+        "sceneTimeMs": 100,
+        "sourceComplete": false
+      },
+      "firstSeal": {
+        "wallMs": 1477.2998046875,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 1477.2998046875,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        },
+        {
+          "wallMs": 1696.5,
+          "bytes": 20683,
+          "horizonMs": 5000,
+          "playbackMs": 216.699951171875,
+          "bufferedMs": 4783.300048828125
+        },
+        {
+          "wallMs": 2356.5,
+          "bytes": 28786,
+          "horizonMs": 10000,
+          "playbackMs": 883.300048828125,
+          "bufferedMs": 9116.699951171875
+        },
+        {
+          "wallMs": 3016.39990234375,
+          "bytes": 36889,
+          "horizonMs": 15000,
+          "playbackMs": 1533.5,
+          "bufferedMs": 13466.5
+        },
+        {
+          "wallMs": 3678.099853515625,
+          "bytes": 44992,
+          "horizonMs": 20000,
+          "playbackMs": 2199.89990234375,
+          "bufferedMs": 17800.10009765625
+        },
+        {
+          "wallMs": 4553.5,
+          "bytes": 55796,
+          "horizonMs": 25000,
+          "playbackMs": 3066.300048828125,
+          "bufferedMs": 21933.699951171875
+        },
+        {
+          "wallMs": 5016.099853515625,
+          "bytes": 61505,
+          "horizonMs": 30000,
+          "playbackMs": 3533.300048828125,
+          "bufferedMs": 26466.699951171875
+        }
+      ],
+      "stalls": [],
+      "stallTotalMs": 0,
+      "arrival": {
+        "configuredBytesPerSecond": 12288,
+        "observedBytesPerSecond": 12261.029522702456,
+        "generatedBytes": 61505,
+        "receivedBytes": 61505,
+        "wallMs": 5016.2998046875,
+        "lastWorkerSendMs": 5014.099853515625,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 93,
+              "retained": 93,
+              "mean": 0.2225669942876344,
+              "max": 2.199951171875,
+              "p50": 0.10009765625,
+              "p95": 1.199951171875,
+              "p99": 2.199951171875
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "completion": {
+        "wallMs": 5016.2998046875,
+        "ok": true,
+        "completed": true,
+        "diagnostics": []
+      },
+      "totalWallMs": 31499,
+      "playbackMs": 30000,
+      "compileMs": 117.9000000001397,
+      "presentationMs": 1115.5000000009313,
+      "queue": {
+        "producerHighWater": 1,
+        "producerBytesHighWater": 2048,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 2048,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 92,
+            "retained": 92,
+            "mean": 0.07608695652173914,
+            "max": 0.30000000004656613,
+            "p50": 0.09999999986030161,
+            "p95": 0.2999999998137355,
+            "p99": 0.30000000004656613
+          },
+          "compile.parse_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.007755102040436195,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "compile.snapshot_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.004115226336490409,
+            "max": 0.20000000018626451,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.capture_ms": {
+            "count": 484,
+            "retained": 484,
+            "mean": 0.0041322314059207875,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.lower_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.009876543211409584,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.validate_ms": {
+            "count": 244,
+            "retained": 244,
+            "mean": 0.362295081964923,
+            "max": 2.4000000001396984,
+            "p50": 0.30000000004656613,
+            "p95": 0.6000000000931323,
+            "p99": 1.5
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 61505,
+          "compile.units_seen": 243,
+          "compile.accepted_units": 243,
+          "compile.unresolved_units": 0,
+          "compile.rejected_units": 0
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 0,
+            "highWater": 2130
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 0,
+            "highWater": 3988
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 0,
+            "highWater": 17
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 18534,
+            "highWater": 18534
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 19
+          },
+          "compile.deferred_units": {
+            "value": 0,
+            "highWater": 0
+          }
+        },
+        "events": []
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.045714285715996304,
+            "max": 2.5,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 2.3999999999068677
+          },
+          "frame.evaluate_ms": {
+            "count": 1801,
+            "retained": 1024,
+            "mean": 0.3793448084385663,
+            "max": 3,
+            "p50": 0.39999999990686774,
+            "p95": 0.5,
+            "p99": 0.8999999999068677
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 245
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 19
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 1.199951171875,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1477.599853515625,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1483.39990234375,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1696.7998046875,
+          "state": "BUFFERED",
+          "playbackMs": 216.699951171875
+        },
+        {
+          "wallMs": 2356.599853515625,
+          "state": "BUFFERED",
+          "playbackMs": 883.300048828125
+        },
+        {
+          "wallMs": 3016.599853515625,
+          "state": "BUFFERED",
+          "playbackMs": 1533.5
+        },
+        {
+          "wallMs": 3678.39990234375,
+          "state": "BUFFERED",
+          "playbackMs": 2199.89990234375
+        },
+        {
+          "wallMs": 4553.7998046875,
+          "state": "BUFFERED",
+          "playbackMs": 3066.300048828125
+        },
+        {
+          "wallMs": 5016.199951171875,
+          "state": "BUFFERED",
+          "playbackMs": 3533.300048828125
+        },
+        {
+          "wallMs": 31483.2998046875,
+          "state": "COMPLETE",
+          "playbackMs": 30000
+        }
+      ],
+      "captures": [
+        {
+          "name": "first-visual",
+          "png": "run-3-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "run-3-first-motion.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    },
+    {
+      "options": {
+        "bytesPerSecond": 12288,
+        "pattern": [
+          512
+        ],
+        "mode": "starvation",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 1480.900146484375,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 16.7001953125,
+        "sourceComplete": false
+      },
+      "firstMotion": {
+        "wallMs": 1564.199951171875,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 100,
+        "sourceComplete": false
+      },
+      "firstSeal": {
+        "wallMs": 1471.300048828125,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 1471.300048828125,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        },
+        {
+          "wallMs": 6139.10009765625,
+          "bytes": 20030,
+          "horizonMs": 5000,
+          "playbackMs": 2000,
+          "bufferedMs": 3000
+        },
+        {
+          "wallMs": 6764.699951171875,
+          "bytes": 27710,
+          "horizonMs": 10000,
+          "playbackMs": 2616.800048828125,
+          "bufferedMs": 7383.199951171875
+        },
+        {
+          "wallMs": 7391.699951171875,
+          "bytes": 35390,
+          "horizonMs": 15000,
+          "playbackMs": 3250.300048828125,
+          "bufferedMs": 11749.699951171875
+        },
+        {
+          "wallMs": 8140.699951171875,
+          "bytes": 44606,
+          "horizonMs": 20000,
+          "playbackMs": 4000.199951171875,
+          "bufferedMs": 15999.800048828125
+        },
+        {
+          "wallMs": 9057.10009765625,
+          "bytes": 55870,
+          "horizonMs": 25000,
+          "playbackMs": 4916.599853515625,
+          "bufferedMs": 20083.400146484375
+        },
+        {
+          "wallMs": 9514.800048828125,
+          "bytes": 61502,
+          "horizonMs": 30000,
+          "playbackMs": 5366.599853515625,
+          "bufferedMs": 24633.400146484375
+        }
+      ],
+      "stalls": [
+        {
+          "startMs": 3480.800048828125,
+          "durationMs": 2666.5
+        }
+      ],
+      "stallTotalMs": 2666.5,
+      "arrival": {
+        "configuredBytesPerSecond": 12288,
+        "observedBytesPerSecond": 6462.577819807387,
+        "generatedBytes": 61505,
+        "receivedBytes": 61505,
+        "wallMs": 9517.10009765625,
+        "lastWorkerSendMs": 9516.5,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 123,
+              "retained": 123,
+              "mean": 0.15527939214939024,
+              "max": 0.60009765625,
+              "p50": 0.10009765625,
+              "p95": 0.300048828125,
+              "p99": 0.5
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "completion": {
+        "wallMs": 9517.199951171875,
+        "ok": true,
+        "completed": true,
+        "diagnostics": []
+      },
+      "totalWallMs": 34163.199951171875,
+      "playbackMs": 30000,
+      "compileMs": 137.89999999990687,
+      "presentationMs": 1216.8000000042375,
+      "queue": {
+        "producerHighWater": 1,
+        "producerBytesHighWater": 512,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 512,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 122,
+            "retained": 122,
+            "mean": 0.06967213114372409,
+            "max": 0.20000000018626451,
+            "p50": 0.09999999986030161,
+            "p95": 0.19999999995343387,
+            "p99": 0.20000000018626451
+          },
+          "compile.parse_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.013877551020028031,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.snapshot_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.002469135803810547,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.capture_ms": {
+            "count": 484,
+            "retained": 484,
+            "mean": 0.009297520660194914,
+            "max": 1.2000000001862645,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "compile.lower_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.01234567901522013,
+            "max": 0.8000000000465661,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.validate_ms": {
+            "count": 244,
+            "retained": 244,
+            "mean": 0.41475409836332755,
+            "max": 3.300000000046566,
+            "p50": 0.39999999990686774,
+            "p95": 0.7000000001862645,
+            "p99": 1.3999999999068677
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 61505,
+          "compile.units_seen": 243,
+          "compile.accepted_units": 243,
+          "compile.unresolved_units": 0,
+          "compile.rejected_units": 0
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 0,
+            "highWater": 1737
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 0,
+            "highWater": 3753
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 0,
+            "highWater": 19
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 18534,
+            "highWater": 18534
+          },
+          "compile.deferred_units": {
+            "value": 0,
+            "highWater": 0
+          }
+        },
+        "events": []
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.011836734697298736,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "frame.evaluate_ms": {
+            "count": 1961,
+            "retained": 1024,
+            "mean": 0.3882202957635712,
+            "max": 2.2000000001862645,
+            "p50": 0.39999999990686774,
+            "p95": 0.6000000000931323,
+            "p99": 1
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 245
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 2.400146484375,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1471.5,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1481,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 3481.10009765625,
+          "state": "STARVED: holding sealed frontier",
+          "playbackMs": 2000
+        },
+        {
+          "wallMs": 6139.300048828125,
+          "state": "BUFFERED",
+          "playbackMs": 2000
+        },
+        {
+          "wallMs": 6147.5,
+          "state": "PLAYING",
+          "playbackMs": 2016.699951171875
+        },
+        {
+          "wallMs": 6764.900146484375,
+          "state": "BUFFERED",
+          "playbackMs": 2616.800048828125
+        },
+        {
+          "wallMs": 7392,
+          "state": "BUFFERED",
+          "playbackMs": 3250.300048828125
+        },
+        {
+          "wallMs": 8140.900146484375,
+          "state": "BUFFERED",
+          "playbackMs": 4000.199951171875
+        },
+        {
+          "wallMs": 9057.199951171875,
+          "state": "BUFFERED",
+          "playbackMs": 4916.599853515625
+        },
+        {
+          "wallMs": 9515,
+          "state": "BUFFERED",
+          "playbackMs": 5366.599853515625
+        },
+        {
+          "wallMs": 34147.300048828125,
+          "state": "COMPLETE",
+          "playbackMs": 30000
+        }
+      ],
+      "captures": [
+        {
+          "name": "first-visual",
+          "png": "starvation-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "starvation-first-motion.png"
+        },
+        {
+          "name": "starved",
+          "png": "starvation-starved.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    },
+    {
+      "options": {
+        "bytesPerSecond": 12288,
+        "pattern": [
+          512
+        ],
+        "mode": "truncation",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 1480.60009765625,
+        "bytes": 18022,
+        "generatedBytes": 18022,
+        "sceneTimeMs": 16.60009765625,
+        "sourceComplete": true
+      },
+      "firstMotion": {
+        "wallMs": 1580.60009765625,
+        "bytes": 18022,
+        "generatedBytes": 18022,
+        "sceneTimeMs": 116.60009765625,
+        "sourceComplete": true
+      },
+      "firstSeal": {
+        "wallMs": 1472.199951171875,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 1472.199951171875,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        }
+      ],
+      "stalls": [
+        {
+          "startMs": 3480.60009765625,
+          "durationMs": 4.800048828125
+        }
+      ],
+      "stallTotalMs": 4.800048828125,
+      "arrival": {
+        "configuredBytesPerSecond": 12288,
+        "observedBytesPerSecond": 12211.681395667769,
+        "generatedBytes": 18022,
+        "receivedBytes": 18022,
+        "wallMs": 1475.800048828125,
+        "lastWorkerSendMs": 1475.7001953125,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 38,
+              "retained": 38,
+              "mean": 0.17098195929276316,
+              "max": 2,
+              "p50": 0.099853515625,
+              "p95": 0.300048828125,
+              "p99": 2
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "completion": {
+        "wallMs": 1476.300048828125,
+        "ok": false,
+        "completed": false,
+        "diagnostics": [
+          {
+            "severity": "error",
+            "effect": "PROGRAM_FATAL",
+            "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+            "code": "UNTERMINATED_STRING",
+            "phase": "parse",
+            "category": "syntax",
+            "message": "The stream ended inside an unfinished declaration."
+          },
+          {
+            "severity": "error",
+            "effect": "UNIT_REJECTED",
+            "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+            "code": "MISSING_REQUIRED",
+            "phase": "compile",
+            "category": "syntax",
+            "message": "The program has no complete;."
+          }
+        ]
+      },
+      "totalWallMs": 3497.300048828125,
+      "playbackMs": 2000,
+      "compileMs": 25.299999999813735,
+      "presentationMs": 59.99999999953434,
+      "queue": {
+        "producerHighWater": 1,
+        "producerBytesHighWater": 512,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 512,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "effect": "PROGRAM_FATAL",
+          "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+          "code": "UNTERMINATED_STRING",
+          "phase": "parse",
+          "category": "syntax",
+          "message": "The stream ended inside an unfinished declaration."
+        },
+        {
+          "severity": "error",
+          "effect": "UNIT_REJECTED",
+          "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+          "code": "MISSING_REQUIRED",
+          "phase": "compile",
+          "category": "syntax",
+          "message": "The program has no complete;."
+        }
+      ],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 37,
+            "retained": 37,
+            "mean": 0.0648648648686405,
+            "max": 0.20000000018626451,
+            "p50": 0.09999999986030161,
+            "p95": 0.19999999995343387,
+            "p99": 0.20000000018626451
+          },
+          "compile.parse_ms": {
+            "count": 63,
+            "retained": 63,
+            "mean": 0.031746031746031744,
+            "max": 1.5,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 1.5
+          },
+          "compile.snapshot_ms": {
+            "count": 62,
+            "retained": 62,
+            "mean": 0.0016129032273085849,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.capture_ms": {
+            "count": 122,
+            "retained": 122,
+            "mean": 0.006557377049562017,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "compile.lower_ms": {
+            "count": 62,
+            "retained": 62,
+            "mean": 0.01129032258740476,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.validate_ms": {
+            "count": 63,
+            "retained": 63,
+            "mean": 0.2253968253886948,
+            "max": 0.5,
+            "p50": 0.19999999995343387,
+            "p95": 0.30000000004656613,
+            "p99": 0.5
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 18022,
+          "compile.units_seen": 62,
+          "compile.accepted_units": 62,
+          "compile.unresolved_units": 0,
+          "compile.rejected_units": 0
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 10,
+            "highWater": 1737
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 5
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 35,
+            "highWater": 3753
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 2,
+            "highWater": 17
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 5613,
+            "highWater": 5613
+          },
+          "compile.deferred_units": {
+            "value": 0,
+            "highWater": 0
+          }
+        },
+        "events": []
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 63,
+            "retained": 63,
+            "mean": 0.009523809521592088,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "frame.evaluate_ms": {
+            "count": 121,
+            "retained": 121,
+            "mean": 0.3024793388245027,
+            "max": 0.9000000001396984,
+            "p50": 0.2999999998137355,
+            "p95": 0.5999999998603016,
+            "p99": 0.8999999999068677
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 63
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 5
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 1.10009765625,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1472.400146484375,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1476.400146484375,
+          "state": "TRUNCATED: holding sealed prefix",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1480.60009765625,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 3480.800048828125,
+          "state": "STARVED: holding sealed frontier",
+          "playbackMs": 2000
+        },
+        {
+          "wallMs": 3485.300048828125,
+          "state": "TRUNCATED: sealed prefix retained",
+          "playbackMs": 2000
+        }
+      ],
+      "captures": [
+        {
+          "name": "first-visual",
+          "png": "truncation-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "truncation-first-motion.png"
+        },
+        {
+          "name": "starved",
+          "png": "truncation-starved.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    },
+    {
+      "options": {
+        "bytesPerSecond": 12288,
+        "pattern": [
+          512
+        ],
+        "mode": "rejection",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 1477.300048828125,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 16.699951171875,
+        "sourceComplete": false
+      },
+      "firstMotion": {
+        "wallMs": 1560.60009765625,
+        "bytes": 19006,
+        "generatedBytes": 19006,
+        "sceneTimeMs": 100,
+        "sourceComplete": false
+      },
+      "firstSeal": {
+        "wallMs": 1472.2001953125,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 1472.2001953125,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        },
+        {
+          "wallMs": 1638.800048828125,
+          "bytes": 20030,
+          "horizonMs": 5000,
+          "playbackMs": 166.60009765625,
+          "bufferedMs": 4833.39990234375
+        },
+        {
+          "wallMs": 2264.800048828125,
+          "bytes": 27710,
+          "horizonMs": 10000,
+          "playbackMs": 800,
+          "bufferedMs": 9200
+        },
+        {
+          "wallMs": 2890.10009765625,
+          "bytes": 35390,
+          "horizonMs": 15000,
+          "playbackMs": 1416.699951171875,
+          "bufferedMs": 13583.300048828125
+        },
+        {
+          "wallMs": 3640.300048828125,
+          "bytes": 44606,
+          "horizonMs": 20000,
+          "playbackMs": 2166.60009765625,
+          "bufferedMs": 17833.39990234375
+        },
+        {
+          "wallMs": 4560.60009765625,
+          "bytes": 55870,
+          "horizonMs": 25000,
+          "playbackMs": 3083.300048828125,
+          "bufferedMs": 21916.699951171875
+        },
+        {
+          "wallMs": 5015.900146484375,
+          "bytes": 61502,
+          "horizonMs": 30000,
+          "playbackMs": 3549.89990234375,
+          "bufferedMs": 26450.10009765625
+        }
+      ],
+      "stalls": [],
+      "stallTotalMs": 0,
+      "arrival": {
+        "configuredBytesPerSecond": 12288,
+        "observedBytesPerSecond": 12256.630757271358,
+        "generatedBytes": 61505,
+        "receivedBytes": 61505,
+        "wallMs": 5018.10009765625,
+        "lastWorkerSendMs": 5017.5,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 123,
+              "retained": 123,
+              "mean": 0.048024247332317076,
+              "max": 0.60009765625,
+              "p50": 0,
+              "p95": 0.199951171875,
+              "p99": 0.60009765625
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "completion": {
+        "wallMs": 5018.2001953125,
+        "ok": false,
+        "completed": true,
+        "diagnostics": [
+          {
+            "severity": "error",
+            "effect": "UNIT_REJECTED",
+            "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+            "code": "INVALID_TIMING",
+            "phase": "compile",
+            "category": "temporal",
+            "message": "Base definitions are frozen after the first seal.",
+            "sourceSpan": {
+              "start": {
+                "offset": 17976,
+                "line": 405,
+                "column": 1
+              },
+              "end": {
+                "offset": 17982,
+                "line": 405,
+                "column": 7
+              }
+            }
+          }
+        ]
+      },
+      "totalWallMs": 31493,
+      "playbackMs": 30000,
+      "compileMs": 133.10000000079162,
+      "presentationMs": 1225.1999999955297,
+      "queue": {
+        "producerHighWater": 1,
+        "producerBytesHighWater": 512,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 512,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "effect": "UNIT_REJECTED",
+          "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+          "code": "INVALID_TIMING",
+          "phase": "compile",
+          "category": "temporal",
+          "message": "Base definitions are frozen after the first seal.",
+          "sourceSpan": {
+            "start": {
+              "offset": 17976,
+              "line": 405,
+              "column": 1
+            },
+            "end": {
+              "offset": 17982,
+              "line": 405,
+              "column": 7
+            }
+          }
+        }
+      ],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 123,
+            "retained": 123,
+            "mean": 0.07560975610172542,
+            "max": 0.20000000018626451,
+            "p50": 0.09999999986030161,
+            "p95": 0.19999999995343387,
+            "p99": 0.20000000018626451
+          },
+          "compile.parse_ms": {
+            "count": 246,
+            "retained": 246,
+            "mean": 0.008536585363392846,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "compile.snapshot_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.004526748974451128,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.capture_ms": {
+            "count": 484,
+            "retained": 484,
+            "mean": 0.006818181818278029,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.09999999986030161,
+            "p99": 0.10000000009313226
+          },
+          "compile.lower_ms": {
+            "count": 243,
+            "retained": 243,
+            "mean": 0.011934156379175713,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.validate_ms": {
+            "count": 244,
+            "retained": 244,
+            "mean": 0.40737704918185463,
+            "max": 2.1000000000931323,
+            "p50": 0.30000000004656613,
+            "p95": 0.8999999999068677,
+            "p99": 1.1999999999534339
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 61549,
+          "compile.units_seen": 244,
+          "compile.accepted_units": 243,
+          "compile.rejected_units": 1,
+          "compile.unresolved_units": 0
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 0,
+            "highWater": 1737
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 0,
+            "highWater": 3753
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 0,
+            "highWater": 19
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 18545,
+            "highWater": 18545
+          },
+          "compile.deferred_units": {
+            "value": 0,
+            "highWater": 0
+          }
+        },
+        "events": [
+          {
+            "kind": "compile.unit_rejected",
+            "detail": {
+              "kind": "node",
+              "span": {
+                "start": {
+                  "offset": 17976,
+                  "line": 405,
+                  "column": 1
+                },
+                "end": {
+                  "offset": 17982,
+                  "line": 405,
+                  "column": 7
+                }
+              },
+              "diagnostics": [
+                {
+                  "severity": "error",
+                  "effect": "UNIT_REJECTED",
+                  "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+                  "code": "INVALID_TIMING",
+                  "phase": "compile",
+                  "category": "temporal",
+                  "message": "Base definitions are frozen after the first seal.",
+                  "sourceSpan": {
+                    "start": {
+                      "offset": 17976,
+                      "line": 405,
+                      "column": 1
+                    },
+                    "end": {
+                      "offset": 17982,
+                      "line": 405,
+                      "column": 7
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "firstFailure": {
+          "kind": "compile.unit_rejected",
+          "detail": {
+            "kind": "node",
+            "span": {
+              "start": {
+                "offset": 17976,
+                "line": 405,
+                "column": 1
+              },
+              "end": {
+                "offset": 17982,
+                "line": 405,
+                "column": 7
+              }
+            },
+            "diagnostics": [
+              {
+                "severity": "error",
+                "effect": "UNIT_REJECTED",
+                "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+                "code": "INVALID_TIMING",
+                "phase": "compile",
+                "category": "temporal",
+                "message": "Base definitions are frozen after the first seal.",
+                "sourceSpan": {
+                  "start": {
+                    "offset": 17976,
+                    "line": 405,
+                    "column": 1
+                  },
+                  "end": {
+                    "offset": 17982,
+                    "line": 405,
+                    "column": 7
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 245,
+            "retained": 245,
+            "mean": 0.0048979591806324165,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "frame.evaluate_ms": {
+            "count": 1801,
+            "retained": 1024,
+            "mean": 0.42093281510522873,
+            "max": 3.300000000046566,
+            "p50": 0.39999999990686774,
+            "p95": 0.7999999998137355,
+            "p99": 1.1000000000931323
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 245
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 9
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 1.300048828125,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1472.400146484375,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1472.7001953125,
+          "state": "REJECTED: base definitions frozen; prefix retained",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1477.300048828125,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1639,
+          "state": "BUFFERED",
+          "playbackMs": 166.60009765625
+        },
+        {
+          "wallMs": 2265,
+          "state": "BUFFERED",
+          "playbackMs": 800
+        },
+        {
+          "wallMs": 2890.300048828125,
+          "state": "BUFFERED",
+          "playbackMs": 1416.699951171875
+        },
+        {
+          "wallMs": 3640.5,
+          "state": "BUFFERED",
+          "playbackMs": 2166.60009765625
+        },
+        {
+          "wallMs": 4560.800048828125,
+          "state": "BUFFERED",
+          "playbackMs": 3083.300048828125
+        },
+        {
+          "wallMs": 5016.10009765625,
+          "state": "BUFFERED",
+          "playbackMs": 3549.89990234375
+        },
+        {
+          "wallMs": 31476.800048828125,
+          "state": "COMPLETE",
+          "playbackMs": 30000
+        }
+      ],
+      "captures": [
+        {
+          "name": "rejection",
+          "png": "rejection-rejection.png"
+        },
+        {
+          "name": "first-visual",
+          "png": "rejection-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "rejection-first-motion.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    },
+    {
+      "options": {
+        "bytesPerSecond": 12288,
+        "pattern": [
+          512
+        ],
+        "mode": "cancellation",
+        "firstSealBytes": 17982
+      },
+      "firstVisual": {
+        "wallMs": 1482.699951171875,
+        "bytes": 17982,
+        "generatedBytes": 17982,
+        "sceneTimeMs": 15.39990234375,
+        "sourceComplete": false
+      },
+      "firstMotion": {
+        "wallMs": 1582.800048828125,
+        "bytes": 19006,
+        "generatedBytes": 19006,
+        "sceneTimeMs": 115.5,
+        "sourceComplete": false
+      },
+      "firstSeal": {
+        "wallMs": 1471.199951171875,
+        "bytes": 17982,
+        "horizonMs": 2000,
+        "playbackMs": 0,
+        "bufferedMs": 2000
+      },
+      "seals": [
+        {
+          "wallMs": 1471.199951171875,
+          "bytes": 17982,
+          "horizonMs": 2000,
+          "playbackMs": 0,
+          "bufferedMs": 2000
+        },
+        {
+          "wallMs": 1638.900146484375,
+          "bytes": 20030,
+          "horizonMs": 5000,
+          "playbackMs": 165.5,
+          "bufferedMs": 4834.5
+        }
+      ],
+      "stalls": [],
+      "stallTotalMs": 0,
+      "arrival": {
+        "configuredBytesPerSecond": 12288,
+        "observedBytesPerSecond": 11979.042629197427,
+        "generatedBytes": 25150,
+        "receivedBytes": 25150,
+        "wallMs": null,
+        "lastWorkerSendMs": 2053.800048828125,
+        "independentOfRAF": true,
+        "deliveryLag": {
+          "capacity": 1024,
+          "distributions": {
+            "arrival.delivery_lag_ms": {
+              "count": 50,
+              "retained": 50,
+              "mean": 0.130009765625,
+              "max": 0.400146484375,
+              "p50": 0.10009765625,
+              "p95": 0.199951171875,
+              "p99": 0.400146484375
+            }
+          },
+          "counters": {},
+          "gauges": {},
+          "events": []
+        }
+      },
+      "totalWallMs": 2099.60009765625,
+      "playbackMs": 615.699951171875,
+      "compileMs": 39.69999999948777,
+      "presentationMs": 20.00000000023283,
+      "queue": {
+        "producerHighWater": 1,
+        "producerBytesHighWater": 512,
+        "mainHighWater": 1,
+        "mainBytesHighWater": 512,
+        "boundFragments": 256,
+        "boundBytes": 65536
+      },
+      "diagnostics": [],
+      "compileTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "compile.lex_ms": {
+            "count": 50,
+            "retained": 50,
+            "mean": 0.07599999999161809,
+            "max": 0.19999999995343387,
+            "p50": 0.09999999986030161,
+            "p95": 0.19999999995343387,
+            "p99": 0.19999999995343387
+          },
+          "compile.parse_ms": {
+            "count": 87,
+            "retained": 87,
+            "mean": 0.011494252870887005,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.10000000009313226
+          },
+          "compile.snapshot_ms": {
+            "count": 86,
+            "retained": 86,
+            "mean": 0.0034883720962720554,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.10000000009313226
+          },
+          "compile.capture_ms": {
+            "count": 170,
+            "retained": 170,
+            "mean": 0.0017647058812572676,
+            "max": 0.10000000009313226,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.09999999986030161
+          },
+          "compile.lower_ms": {
+            "count": 86,
+            "retained": 86,
+            "mean": 0.016279069771773593,
+            "max": 0.30000000004656613,
+            "p50": 0,
+            "p95": 0.10000000009313226,
+            "p99": 0.30000000004656613
+          },
+          "compile.validate_ms": {
+            "count": 86,
+            "retained": 86,
+            "mean": 0.29069767441319,
+            "max": 0.8000000000465661,
+            "p50": 0.2999999998137355,
+            "p95": 0.6000000000931323,
+            "p99": 0.8000000000465661
+          }
+        },
+        "counters": {
+          "compile.source_bytes": 25150,
+          "compile.units_seen": 86,
+          "compile.accepted_units": 86
+        },
+        "gauges": {
+          "compile.buffered_tokens": {
+            "value": 69,
+            "highWater": 1737
+          },
+          "compile.pending_deltas": {
+            "value": 0,
+            "highWater": 5
+          },
+          "compile.buffered_lexeme_bytes": {
+            "value": 190,
+            "highWater": 3753
+          },
+          "compile.lexer_pending_bytes": {
+            "value": 0,
+            "highWater": 17
+          },
+          "compile.lexer_retained_tokens": {
+            "value": 7894,
+            "highWater": 7894
+          }
+        },
+        "events": []
+      },
+      "runtimeTelemetry": {
+        "capacity": 1024,
+        "distributions": {
+          "runtime.queue_wait_ms": {
+            "count": 87,
+            "retained": 87,
+            "mean": 0.006896551725208417,
+            "max": 0.19999999995343387,
+            "p50": 0,
+            "p95": 0,
+            "p99": 0.19999999995343387
+          },
+          "frame.evaluate_ms": {
+            "count": 37,
+            "retained": 37,
+            "mean": 0.3513513513324732,
+            "max": 0.6000000000931323,
+            "p50": 0.30000000004656613,
+            "p95": 0.5999999998603016,
+            "p99": 0.6000000000931323
+          }
+        },
+        "counters": {
+          "runtime.accepted_deltas": 87
+        },
+        "gauges": {
+          "runtime.queue_deltas": {
+            "value": 0,
+            "highWater": 5
+          },
+          "runtime.retained_nodes": {
+            "value": 49,
+            "highWater": 49
+          }
+        },
+        "events": []
+      },
+      "events": [
+        {
+          "wallMs": 1.300048828125,
+          "state": "WAITING FOR EXECUTABLE PREFIX",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1471.400146484375,
+          "state": "BUFFERED",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1482.800048828125,
+          "state": "PLAYING",
+          "playbackMs": 0
+        },
+        {
+          "wallMs": 1639,
+          "state": "BUFFERED",
+          "playbackMs": 165.5
+        },
+        {
+          "wallMs": 2083.900146484375,
+          "state": "CANCELLED: generation and playback stopped",
+          "playbackMs": 615.699951171875
+        }
+      ],
+      "captures": [
+        {
+          "name": "first-visual",
+          "png": "cancellation-first-visual.png"
+        },
+        {
+          "name": "first-motion",
+          "png": "cancellation-first-motion.png"
+        },
+        {
+          "name": "cancelled",
+          "png": "cancellation-cancelled.png"
+        }
+      ],
+      "disposed": {
+        "compilerSceneAbsent": true,
+        "runtimeSceneAbsent": true
+      }
+    }
+  ]
+}

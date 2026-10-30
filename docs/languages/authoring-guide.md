@@ -1,6 +1,6 @@
 # Idiomatic MotionScript authoring guide
 
-Status: living guide, revision 1.0, 2026-10-08. This initial guide contains evaluation techniques, not certified syntax examples. The installed examples below refer to existing compiling repository fixtures and conformance cases; they are not refinement or visual certifications.
+Status: living guide, revision 1.1, 2026-10-30. This initial guide contains evaluation techniques, not certified syntax examples. The installed examples below refer to existing compiling repository fixtures and conformance cases; they are not refinement or visual certifications.
 
 ## How to use this guide
 
@@ -25,6 +25,7 @@ Maintain a verified table for supported construction order, declaration/referenc
 
 ## Change log
 
+- 1.1: Add measured current-contract progressive authoring recipe and evidence.
 - 1.0: Initial guide structure. No unverified language constructs asserted.
 
 ## Current construction and compiling examples

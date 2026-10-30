@@ -2,12 +2,15 @@
 
 An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
 
+The newest capacity run is [2026-10-30-capacity](2026-10-30-capacity/report.md): measured compiler/frame improvements, 2,000-node admission and useful progressive playback with independent UTF-8 arrival. It does not certify the historical fidelity corpus.
+
 The newest foundation run is [2026-10-29T165600Z](2026-10-29T165600Z/report.md): correctness repairs, green checks and a reproducible browser measurement baseline. The latest full-corpus fidelity attempt remains [2026-10-09T115503Z](2026-10-09T115503Z/report.md); the foundation run does not certify that corpus.
 
-Next fidelity Baseline reads [implementation-pin.json](implementation-pin.json) for the foundation implementation commit. Historical missing native coverage/reference evidence and phase A LOT01 contours remain unresolved; layer paint order retains its prior attempt history and animated fill remains queued. Corpus certification remains incomplete/failing; no canonical promotion.
+Next fidelity Baseline reads [implementation-pin.json](implementation-pin.json) for the current measured implementation commit. Historical missing native coverage/reference evidence and phase A LOT01 contours remain unresolved; layer paint order retains its prior attempt history and animated fill remains queued. Corpus certification remains incomplete/failing; no canonical promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
+| [2026-10-30-capacity](2026-10-30-capacity/report.md) | 2026-10-30 | MotionScript / Scene IR 0.5.0 | Capacity/progressive PASS: 221 tests; matched benchmarks; 105 prefix checks, 450 completed-state/16 renderer comparisons; full corpus NOT RUN |
 | [2026-10-29T165600Z](2026-10-29T165600Z/report.md) | 2026-10-29 | MotionScript / Scene IR 0.5.0 | Targeted foundation PASS: 215 tests, typechecks/build, renderer regressions and three-story offline/stream measurement baseline; full corpus NOT RUN |
 | [2026-10-09T115503Z](2026-10-09T115503Z/report.md) | 2026-10-09T12:59:43.538573+00:00 | MotionScript / Scene IR 0.5.0 | 202 tests + typechecks PASS; global paint order corrected; LOT01 local FAIL; incomplete capture/reference quarantines; budget-exhausted with finalization overrun |
 | [2026-10-08T140610Z](2026-10-08T140610Z/report.md) | 2026-10-08T15:08:19.064275+00:00 | MotionScript / Scene IR 0.5.0 | 194 tests + typechecks PASS; spatial cuts corrected; LOT01 local visual FAIL; phase A paint order next; budget-exhausted |

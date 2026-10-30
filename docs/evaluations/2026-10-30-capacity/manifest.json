@@ -1,0 +1,108 @@
+{
+  "runId": "2026-10-30-capacity",
+  "recordedAt": "2026-10-30T08:16:36.767543+00:00",
+  "baselineCommit": "775892ba3316077a59ea24d30eab16313b3b99b3",
+  "implementationCommit": "94d6dd6a9c379b920d349b424a1f14379fca2586",
+  "treeCleanAtExecution": true,
+  "sourceReproduction": "git checkout 94d6dd6a9c379b920d349b424a1f14379fca2586",
+  "priorRun": "2026-10-29T165600Z",
+  "priorFinalHandover": "d6d6375465c4cad4fc9fe3ace4e081a59a7ee9e0",
+  "priorExecutedImplementation": "5a4ea16a76d35aa328e29983943c4a056358b15e",
+  "language": {
+    "motionscript": "0.5.0",
+    "sceneIr": "0.5.0",
+    "wire": "0.2"
+  },
+  "packages": {
+    "schema": "0.1.2",
+    "compiler": "0.1.2",
+    "runtime": "0.1.2"
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "browser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "binary": "/usr/bin/chromium",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 3,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "commit": "94d6dd6a9c379b920d349b424a1f14379fca2586",
+    "workingTree": "",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1
+    },
+    "options": {
+      "samples": 60,
+      "warmup": 20,
+      "compileSamples": 3,
+      "cycles": 3
+    }
+  },
+  "audit": {
+    "sha256": "bb7aff112ad4a993ccb8084ea6509da5b86258445588ff183a0e3792cdc7b000",
+    "path": "docs/evaluations/2026-10-29T165600Z/sources/audit-context.md",
+    "authority": "supporting context only"
+  },
+  "gateSha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+  "experimentalVariant": {
+    "status": "experimental",
+    "baseline": "fixtures/motionscript/stories/a-circle-in-motion.ms",
+    "baselineSha256": "ef60f52a5f32a386b64797ec01bdce9a4784a2ee0807d3bf959eaa972d72a537",
+    "programSha256": "c43e28243c461a48470891483c3e1117e8501891a898e6e2bd77039b412707e2",
+    "bytes": 61505,
+    "baseBytes": 7206,
+    "nodes": 49,
+    "tracks": 168,
+    "seals": [
+      {
+        "horizonMs": 2000,
+        "sourceBytes": 17982
+      },
+      {
+        "horizonMs": 5000,
+        "sourceBytes": 19931
+      },
+      {
+        "horizonMs": 10000,
+        "sourceBytes": 27371
+      },
+      {
+        "horizonMs": 15000,
+        "sourceBytes": 35225
+      },
+      {
+        "horizonMs": 20000,
+        "sourceBytes": 44451
+      },
+      {
+        "horizonMs": 25000,
+        "sourceBytes": 55440
+      },
+      {
+        "horizonMs": 30000,
+        "sourceBytes": 61495
+      }
+    ],
+    "recipe": "evaluation/bench/progressive/generate.mts",
+    "languageRelease": "0.5.0",
+    "wireVersion": "0.2"
+  },
+  "baselineChecks": "PASS 215 tests, typecheck, build; run once",
+  "finalChecks": "PASS 221 tests, typecheck, build; existing bundle warning",
+  "unmodifiedStorySourceHashes": {
+    "fixtures/motionscript/stories/adding-two-vectors.ms": "2601487342974c9ef7ff071326f77e8add87d6a806618ea99b597b6894bf8c6d",
+    "fixtures/motionscript/stories/from-pixels-to-prediction.ms": "a7ae6b6d2b6c888a8f133f74d0e6d3eef46af909b044931178b19fb747b5c3dc",
+    "fixtures/motionscript/stories/square-wave-from-sine-waves.ms": "d7df7f4030ba0db58510f47ada3107939bfefbaf7c9cf75648e79ee102e52a84",
+    "fixtures/motionscript/stories/a-crane-then-a-square.ms": "7d1743a1f514e7b2b23d02cc3558c04b1a36f1590349be85ce2fb95e1c06a326",
+    "fixtures/motionscript/stories/a-circle-in-motion.ms": "ef60f52a5f32a386b64797ec01bdce9a4784a2ee0807d3bf959eaa972d72a537"
+  },
+  "notes": [
+    "Final benchmark/Node/progressive/scaling runs were sequential, with clean execution commit pins.",
+    "Later evidence/docs/verifiers do not change executed production code.",
+    "No full historical fidelity recertification or capability promotion."
+  ]
+}
