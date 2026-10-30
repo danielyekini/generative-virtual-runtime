@@ -1,0 +1,43 @@
+{
+  "status": "experimental",
+  "baseline": "fixtures/motionscript/stories/a-circle-in-motion.ms",
+  "baselineSha256": "ef60f52a5f32a386b64797ec01bdce9a4784a2ee0807d3bf959eaa972d72a537",
+  "programSha256": "c43e28243c461a48470891483c3e1117e8501891a898e6e2bd77039b412707e2",
+  "bytes": 61505,
+  "baseBytes": 7206,
+  "nodes": 49,
+  "tracks": 168,
+  "seals": [
+    {
+      "horizonMs": 2000,
+      "sourceBytes": 17982
+    },
+    {
+      "horizonMs": 5000,
+      "sourceBytes": 19931
+    },
+    {
+      "horizonMs": 10000,
+      "sourceBytes": 27371
+    },
+    {
+      "horizonMs": 15000,
+      "sourceBytes": 35225
+    },
+    {
+      "horizonMs": 20000,
+      "sourceBytes": 44451
+    },
+    {
+      "horizonMs": 25000,
+      "sourceBytes": 55440
+    },
+    {
+      "horizonMs": 30000,
+      "sourceBytes": 61495
+    }
+  ],
+  "recipe": "evaluation/bench/progressive/generate.mts",
+  "languageRelease": "0.5.0",
+  "wireVersion": "0.2"
+}

@@ -1,0 +1,3356 @@
+{
+  "status": "complete",
+  "environment": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "browser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "binary": "/usr/bin/chromium",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 3,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "commit": "94d6dd6a9c379b920d349b424a1f14379fca2586",
+    "workingTree": "",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1
+    },
+    "options": {
+      "samples": 60,
+      "warmup": 20,
+      "compileSamples": 3,
+      "cycles": 3
+    }
+  },
+  "results": [
+    {
+      "name": "adding-two-vectors",
+      "path": "fixtures/motionscript/stories/adding-two-vectors.ms",
+      "sha256": "2601487342974c9ef7ff071326f77e8add87d6a806618ea99b597b6894bf8c6d",
+      "bytes": 19873,
+      "runs": [
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 72,
+            "tracks": 41,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 28,
+                "max": 33.799999999813735,
+                "p50": 27,
+                "p95": 33.799999999813735,
+                "p99": 33.799999999813735
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.256666666661234,
+                "max": 4.5,
+                "p50": 1.1000000000931323,
+                "p95": 1.6999999999534339,
+                "p99": 4.5
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.66610169491525,
+                "max": 16.799999999999955,
+                "p50": 16.699999999999818,
+                "p95": 16.799999999999955,
+                "p99": 16.799999999999955
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 41.199999999953434,
+            "revision": 73,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 7610069,
+              "totalJSHeapSize": 16840293,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 7960093,
+              "totalJSHeapSize": 17408265,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 9990875,
+                  "totalJSHeapSize": 17391371,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 8994650,
+                  "totalJSHeapSize": 17399818,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 7940065,
+                  "totalJSHeapSize": 17408265,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 72,
+            "tracks": 41,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 22.899999999984477,
+                "max": 25,
+                "p50": 24.0999999998603,
+                "p95": 25,
+                "p99": 25
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.0866666666775322,
+                "max": 3.1000000000931323,
+                "p50": 1,
+                "p95": 1.6999999999534339,
+                "p99": 3.1000000000931323
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.66610169491526,
+                "max": 16.800000000000182,
+                "p50": 16.699999999999818,
+                "p95": 16.799999999999727,
+                "p99": 16.800000000000182
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 1.200000000031044,
+                "max": 1.6000000000931323,
+                "p50": 1,
+                "p95": 1.6000000000931323,
+                "p99": 1.6000000000931323
+              },
+              "compile.snapshot_ms": {
+                "count": 216,
+                "retained": 216,
+                "mean": 0.0023148148126589754,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.09999999986030161
+              },
+              "compile.capture_ms": {
+                "count": 426,
+                "retained": 256,
+                "mean": 0.003755868545912661,
+                "max": 0.19999999995343387,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.lower_ms": {
+                "count": 216,
+                "retained": 216,
+                "mean": 0.012499999999784416,
+                "max": 0.20000000018626451,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 219,
+                "retained": 219,
+                "mean": 0.25433789954210323,
+                "max": 2.300000000046566,
+                "p50": 0.19999999995343387,
+                "p95": 0.5,
+                "p99": 0.8000000000465661
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 22.899999999984477,
+                "max": 25,
+                "p50": 24.0999999998603,
+                "p95": 25,
+                "p99": 25
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 59619,
+              "compile.units_seen": 216,
+              "compile.accepted_units": 216,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 73,
+                "highWater": 73
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.506666666676756,
+                "max": 2.0999999998603016,
+                "p50": 0.5,
+                "p95": 0.6999999999534339,
+                "p99": 2.0999999998603016
+              },
+              "frame.renderer_call_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.5550000000046567,
+                "max": 1.1999999999534339,
+                "p50": 0.5,
+                "p95": 1,
+                "p99": 1.1999999999534339
+              },
+              "frame.application_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.0666666666744278,
+                "max": 3,
+                "p50": 1,
+                "p95": 1.6999999999534339,
+                "p99": 3
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.66610169491526,
+                "max": 16.800000000000182,
+                "p50": 16.699999999999818,
+                "p95": 16.799999999999727,
+                "p99": 16.800000000000182
+              }
+            },
+            "counters": {},
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 1.1999999999534339,
+                "max": 1.5999999998603016,
+                "p50": 1.1000000000931323,
+                "p95": 1.5999999998603016,
+                "p99": 1.5999999998603016
+              },
+              "compile.parse_ms": {
+                "count": 18,
+                "retained": 18,
+                "mean": 0.022222222229983244,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.snapshot_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.capture_ms": {
+                "count": 27,
+                "retained": 27,
+                "mean": 0.011111111112835782,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.lower_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.02666666666045785,
+                "max": 0.19999999995343387,
+                "p50": 0,
+                "p95": 0.19999999995343387,
+                "p99": 0.19999999995343387
+              },
+              "compile.validate_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.09333333334264655,
+                "max": 0.19999999995343387,
+                "p50": 0.10000000009313226,
+                "p95": 0.19999999995343387,
+                "p99": 0.19999999995343387
+              },
+              "runtime.queue_wait_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.019999999972060322,
+                "max": 0.09999999986030161,
+                "p50": 0,
+                "p95": 0.09999999986030161,
+                "p99": 0.09999999986030161
+              },
+              "frame.evaluate_ms": {
+                "count": 18,
+                "retained": 18,
+                "mean": 0.24444444441340035,
+                "max": 0.39999999990686774,
+                "p50": 0.19999999995343387,
+                "p95": 0.39999999990686774,
+                "p99": 0.39999999990686774
+              },
+              "frame.renderer_call_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.35333333336748185,
+                "max": 1.1999999999534339,
+                "p50": 0.30000000004656613,
+                "p95": 1.1999999999534339,
+                "p99": 1.1999999999534339
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 24576,
+              "compile.units_seen": 15,
+              "compile.accepted_units": 15,
+              "runtime.accepted_deltas": 15
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 2184
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 5
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 255
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 0
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 2184
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 5
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 37
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 26.199999999953434,
+            "revision": 73,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 5,
+                  "retained": 5,
+                  "mean": 0.6,
+                  "max": 0.8999999999068677,
+                  "p50": 0.6999999999534339,
+                  "p95": 0.8999999999068677,
+                  "p99": 0.8999999999068677
+                },
+                "compile.parse_ms": {
+                  "count": 74,
+                  "retained": 74,
+                  "mean": 0.029729729729100457,
+                  "max": 2.1000000000931323,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 2.1000000000931323
+                },
+                "compile.snapshot_ms": {
+                  "count": 72,
+                  "retained": 72,
+                  "mean": 0.0013888888901823924,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.capture_ms": {
+                  "count": 142,
+                  "retained": 142,
+                  "mean": 0.0042253521133319176,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.lower_ms": {
+                  "count": 72,
+                  "retained": 72,
+                  "mean": 0.004166666667313418,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.validate_ms": {
+                  "count": 73,
+                  "retained": 73,
+                  "mean": 0.21506849313409973,
+                  "max": 0.8999999999068677,
+                  "p50": 0.19999999995343387,
+                  "p95": 0.6000000000931323,
+                  "p99": 0.8999999999068677
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 73,
+                  "retained": 73,
+                  "mean": 0.053424657485128875,
+                  "max": 0.19999999995343387,
+                  "p50": 0.09999999986030161,
+                  "p95": 0.10000000009313226,
+                  "p99": 0.19999999995343387
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 0.30000000004656613,
+                  "max": 0.4000000001396984,
+                  "p50": 0.30000000004656613,
+                  "p95": 0.4000000001396984,
+                  "p99": 0.4000000001396984
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 19873,
+                "compile.units_seen": 72,
+                "compile.accepted_units": 72,
+                "runtime.accepted_deltas": 73,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 1300
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 31
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 255
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 1
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 4879,
+                  "highWater": 4879
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 31
+                },
+                "runtime.retained_nodes": {
+                  "value": 72,
+                  "highWater": 72
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 9426889,
+              "totalJSHeapSize": 17749901,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 11296482,
+              "totalJSHeapSize": 26059018,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 12810172,
+                  "totalJSHeapSize": 23420684,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 8175563,
+                  "totalJSHeapSize": 26050571,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 11163566,
+                  "totalJSHeapSize": 26059018,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "from-pixels-to-prediction",
+      "path": "fixtures/motionscript/stories/from-pixels-to-prediction.ms",
+      "sha256": "a7ae6b6d2b6c888a8f133f74d0e6d3eef46af909b044931178b19fb747b5c3dc",
+      "bytes": 107977,
+      "runs": [
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 390,
+            "tracks": 280,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 293.2333333333954,
+                "max": 311.39999999990687,
+                "p50": 299.9000000001397,
+                "p95": 311.39999999990687,
+                "p99": 311.39999999990687
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 3.5500000000116416,
+                "max": 6,
+                "p50": 3.3999999999068677,
+                "p95": 5,
+                "p99": 6
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 17.513559322033885,
+                "max": 33.400000000000546,
+                "p50": 16.699999999999818,
+                "p95": 33.30000000000018,
+                "p99": 33.400000000000546
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 9.733333333395422,
+                "max": 12.5,
+                "p50": 11.100000000093132,
+                "p95": 12.5,
+                "p99": 12.5
+              },
+              "compile.snapshot_ms": {
+                "count": 918,
+                "retained": 256,
+                "mean": 0.0010893246192436397,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.capture_ms": {
+                "count": 1830,
+                "retained": 256,
+                "mean": 0.0036612021869119726,
+                "max": 0.20000000018626451,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.lower_ms": {
+                "count": 918,
+                "retained": 256,
+                "mean": 0.026034858388712626,
+                "max": 0.30000000004656613,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 921,
+                "retained": 256,
+                "mean": 0.856134636259115,
+                "max": 2.5,
+                "p50": 0.7999999998137355,
+                "p95": 1.1999999999534339,
+                "p99": 1.5
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 293.2333333333954,
+                "max": 311.39999999990687,
+                "p50": 299.9000000001397,
+                "p95": 311.39999999990687,
+                "p99": 311.39999999990687
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 323931,
+              "compile.units_seen": 918,
+              "compile.accepted_units": 918,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 308,
+                "highWater": 308
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.8116666666814125,
+                "max": 3.6000000000931323,
+                "p50": 1.6999999999534339,
+                "p95": 2.5,
+                "p99": 3.6000000000931323
+              },
+              "frame.renderer_call_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.7216666666596818,
+                "max": 2.8999999999068677,
+                "p50": 1.6000000000931323,
+                "p95": 2.699999999953434,
+                "p99": 2.8999999999068677
+              },
+              "frame.application_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 3.5416666666783083,
+                "max": 5.899999999906868,
+                "p50": 3.3999999999068677,
+                "p95": 5,
+                "p99": 5.899999999906868
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 17.513559322033885,
+                "max": 33.400000000000546,
+                "p50": 16.699999999999818,
+                "p95": 33.30000000000018,
+                "p99": 33.400000000000546
+              }
+            },
+            "counters": {
+              "frame.missed_intervals": 3
+            },
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 1.2666666666821886,
+                "max": 1.6999999999534339,
+                "p50": 1.5,
+                "p95": 1.6999999999534339,
+                "p99": 1.6999999999534339
+              },
+              "compile.parse_ms": {
+                "count": 6,
+                "retained": 6,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.snapshot_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.capture_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.lower_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.validate_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 0.03333333328676721,
+                "max": 0.09999999986030161,
+                "p50": 0,
+                "p95": 0.09999999986030161,
+                "p99": 0.09999999986030161
+              },
+              "runtime.queue_wait_ms": {
+                "count": 6,
+                "retained": 6,
+                "mean": 0.016666666643383603,
+                "max": 0.09999999986030161,
+                "p50": 0,
+                "p95": 0.09999999986030161,
+                "p99": 0.09999999986030161
+              },
+              "frame.evaluate_ms": {
+                "count": 18,
+                "retained": 18,
+                "mean": 0.9888888888914759,
+                "max": 1.8000000000465661,
+                "p50": 1,
+                "p95": 1.8000000000465661,
+                "p99": 1.8000000000465661
+              },
+              "frame.renderer_call_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 1.113333333345751,
+                "max": 1.9000000001396984,
+                "p50": 1,
+                "p95": 1.9000000001396984,
+                "p99": 1.9000000001396984
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 24579,
+              "compile.units_seen": 3,
+              "compile.accepted_units": 3,
+              "runtime.accepted_deltas": 6
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 2985
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 2
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 5792
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 0
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 2985
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 2
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 0
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 391.0999999998603,
+            "revision": 308,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 27,
+                  "retained": 27,
+                  "mean": 0.4740740740671754,
+                  "max": 1.1999999999534339,
+                  "p50": 0.5,
+                  "p95": 0.8999999999068677,
+                  "p99": 1.1999999999534339
+                },
+                "compile.parse_ms": {
+                  "count": 308,
+                  "retained": 256,
+                  "mean": 0.00811688311537123,
+                  "max": 0.19999999995343387,
+                  "p50": 0,
+                  "p95": 0.09999999986030161,
+                  "p99": 0.10000000009313226
+                },
+                "compile.snapshot_ms": {
+                  "count": 306,
+                  "retained": 256,
+                  "mean": 0.0019607843132689595,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.09999999986030161
+                },
+                "compile.capture_ms": {
+                  "count": 610,
+                  "retained": 256,
+                  "mean": 0.005573770493177361,
+                  "max": 0.20000000018626451,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.lower_ms": {
+                  "count": 306,
+                  "retained": 256,
+                  "mean": 0.028104575163703047,
+                  "max": 0.30000000004656613,
+                  "p50": 0,
+                  "p95": 0.10000000009313226,
+                  "p99": 0.10000000009313226
+                },
+                "compile.validate_ms": {
+                  "count": 307,
+                  "retained": 256,
+                  "mean": 1.017263843646085,
+                  "max": 10,
+                  "p50": 0.8999999999068677,
+                  "p95": 1.6999999999534339,
+                  "p99": 2.5
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 308,
+                  "retained": 256,
+                  "mean": 0.07824675323647241,
+                  "max": 0.39999999990686774,
+                  "p50": 0.09999999986030161,
+                  "p95": 0.2999999998137355,
+                  "p99": 0.39999999990686774
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 6.233333333317812,
+                  "max": 14.899999999906868,
+                  "p50": 2.1000000000931323,
+                  "p95": 14.899999999906868,
+                  "p99": 14.899999999906868
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 107977,
+                "compile.units_seen": 306,
+                "compile.accepted_units": 306,
+                "runtime.accepted_deltas": 308,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 6925
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 28
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 10912
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 7
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 30489,
+                  "highWater": 30489
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 28
+                },
+                "runtime.retained_nodes": {
+                  "value": 390,
+                  "highWater": 390
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 29301849,
+              "totalJSHeapSize": 51686309,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 27805492,
+              "totalJSHeapSize": 48381888,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 29103118,
+                  "totalJSHeapSize": 49087102,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 19393163,
+                  "totalJSHeapSize": 48367903,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 27681892,
+                  "totalJSHeapSize": 48381888,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 390,
+            "tracks": 280,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 292.89999999998446,
+                "max": 301.10000000009313,
+                "p50": 296.29999999981374,
+                "p95": 301.10000000009313,
+                "p99": 301.10000000009313
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 3.335000000001552,
+                "max": 10.599999999860302,
+                "p50": 3.0999999998603016,
+                "p95": 4.800000000046566,
+                "p99": 10.599999999860302
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 18.079661016949135,
+                "max": 33.399999999999636,
+                "p50": 16.69999999999891,
+                "p95": 33.29999999999927,
+                "p99": 33.399999999999636
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 320.30000000004657,
+            "revision": 308,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 27611699,
+              "totalJSHeapSize": 55045367,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 16423230,
+              "totalJSHeapSize": 81207170,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 40655940,
+                  "totalJSHeapSize": 83841600,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 48542461,
+                  "totalJSHeapSize": 83855585,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 16409094,
+                  "totalJSHeapSize": 81207170,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "square-wave-from-sine-waves",
+      "path": "fixtures/motionscript/stories/square-wave-from-sine-waves.ms",
+      "sha256": "d7df7f4030ba0db58510f47ada3107939bfefbaf7c9cf75648e79ee102e52a84",
+      "bytes": 417381,
+      "runs": [
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 249,
+            "tracks": 62,
+            "steps": 67
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 307.93333333327126,
+                "max": 324.39999999990687,
+                "p50": 303,
+                "p95": 324.39999999990687,
+                "p99": 324.39999999990687
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 3.033333333313931,
+                "max": 6.600000000093132,
+                "p50": 2.6000000000931323,
+                "p95": 4.800000000046566,
+                "p99": 6.600000000093132
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.66610169491524,
+                "max": 16.80000000000109,
+                "p50": 16.69999999999891,
+                "p95": 16.799999999999272,
+                "p99": 16.80000000000109
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 447.69999999995343,
+            "revision": 163,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 78119734,
+              "totalJSHeapSize": 129539330,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 19777550,
+              "totalJSHeapSize": 105336658,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 52723499,
+                  "totalJSHeapSize": 110046843,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 62244447,
+                  "totalJSHeapSize": 110317367,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 19762918,
+                  "totalJSHeapSize": 105336658,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 249,
+            "tracks": 62,
+            "steps": 67
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 272.23333333331783,
+                "max": 275.39999999990687,
+                "p50": 272.10000000009313,
+                "p95": 275.39999999990687,
+                "p99": 275.39999999990687
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 2.5599999999976717,
+                "max": 4.699999999953434,
+                "p50": 2.5,
+                "p95": 3.2000000001862645,
+                "p99": 4.699999999953434
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.667796610169486,
+                "max": 16.799999999999272,
+                "p50": 16.69999999999891,
+                "p95": 16.700000000000728,
+                "p99": 16.799999999999272
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 29.166666666589055,
+                "max": 35.299999999813735,
+                "p50": 26.600000000093132,
+                "p95": 35.299999999813735,
+                "p99": 35.299999999813735
+              },
+              "compile.snapshot_ms": {
+                "count": 486,
+                "retained": 256,
+                "mean": 0.0018518518521392971,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.capture_ms": {
+                "count": 966,
+                "retained": 256,
+                "mean": 0.003312629400742844,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.lower_ms": {
+                "count": 486,
+                "retained": 256,
+                "mean": 0.012962962961142476,
+                "max": 0.20000000018626451,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 489,
+                "retained": 256,
+                "mean": 1.4456032719848781,
+                "max": 6,
+                "p50": 1.5999999998603016,
+                "p95": 2.6000000000931323,
+                "p99": 3.1000000000931323
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 272.23333333331783,
+                "max": 275.39999999990687,
+                "p50": 272.10000000009313,
+                "p95": 275.39999999990687,
+                "p99": 275.39999999990687
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 1252143,
+              "compile.units_seen": 486,
+              "compile.accepted_units": 486,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 163,
+                "highWater": 163
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.3966666666441596,
+                "max": 2.1000000000931323,
+                "p50": 1.3999999999068677,
+                "p95": 1.7000000001862645,
+                "p99": 2.1000000000931323
+              },
+              "frame.renderer_call_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.1516666666953825,
+                "max": 3.300000000046566,
+                "p50": 1.1000000000931323,
+                "p95": 1.6000000000931323,
+                "p99": 3.300000000046566
+              },
+              "frame.application_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 2.556666666668995,
+                "max": 4.699999999953434,
+                "p50": 2.5,
+                "p95": 3.2000000001862645,
+                "p99": 4.699999999953434
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.667796610169486,
+                "max": 16.799999999999272,
+                "p50": 16.69999999999891,
+                "p95": 16.700000000000728,
+                "p99": 16.799999999999272
+              }
+            },
+            "counters": {},
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 0.866666666775321,
+                "max": 1.4000000001396984,
+                "p50": 0.6000000000931323,
+                "p95": 1.4000000001396984,
+                "p99": 1.4000000001396984
+              },
+              "compile.parse_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.0066666666728754835,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.snapshot_ms": {
+                "count": 12,
+                "retained": 12,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.capture_ms": {
+                "count": 21,
+                "retained": 21,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.lower_ms": {
+                "count": 12,
+                "retained": 12,
+                "mean": 0.033333333306169756,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 12,
+                "retained": 12,
+                "mean": 0.058333333348855376,
+                "max": 0.19999999995343387,
+                "p50": 0,
+                "p95": 0.19999999995343387,
+                "p99": 0.19999999995343387
+              },
+              "runtime.queue_wait_ms": {
+                "count": 12,
+                "retained": 12,
+                "mean": 0.03333333336437742,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "frame.evaluate_ms": {
+                "count": 18,
+                "retained": 18,
+                "mean": 1.0555555555684906,
+                "max": 6.300000000046566,
+                "p50": 0.8000000000465661,
+                "p95": 6.300000000046566,
+                "p99": 6.300000000046566
+              },
+              "frame.renderer_call_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.6066666666573535,
+                "max": 0.8999999999068677,
+                "p50": 0.6000000000931323,
+                "p95": 0.8999999999068677,
+                "p99": 0.8999999999068677
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 24621,
+              "compile.units_seen": 12,
+              "compile.accepted_units": 12,
+              "runtime.accepted_deltas": 12
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 2633
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 4
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 173
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 1
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 2633
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 4
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 22
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 452.80000000004657,
+            "revision": 163,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 102,
+                  "retained": 102,
+                  "mean": 0.2754901960861924,
+                  "max": 0.8000000000465661,
+                  "p50": 0.2999999998137355,
+                  "p95": 0.5,
+                  "p99": 0.6999999999534339
+                },
+                "compile.parse_ms": {
+                  "count": 164,
+                  "retained": 164,
+                  "mean": 0.0164634146324427,
+                  "max": 1.1999999999534339,
+                  "p50": 0,
+                  "p95": 0.09999999986030161,
+                  "p99": 0.20000000018626451
+                },
+                "compile.snapshot_ms": {
+                  "count": 162,
+                  "retained": 162,
+                  "mean": 0.0012345678995098965,
+                  "max": 0.09999999986030161,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.09999999986030161
+                },
+                "compile.capture_ms": {
+                  "count": 322,
+                  "retained": 256,
+                  "mean": 0.005590062110499705,
+                  "max": 0.19999999995343387,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.lower_ms": {
+                  "count": 162,
+                  "retained": 162,
+                  "mean": 0.013580246916167254,
+                  "max": 0.30000000004656613,
+                  "p50": 0,
+                  "p95": 0.10000000009313226,
+                  "p99": 0.10000000009313226
+                },
+                "compile.validate_ms": {
+                  "count": 163,
+                  "retained": 163,
+                  "mean": 1.521472392638037,
+                  "max": 5.800000000046566,
+                  "p50": 1.6999999999534339,
+                  "p95": 2.3999999999068677,
+                  "p99": 3.199999999953434
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 163,
+                  "retained": 163,
+                  "mean": 0.07239263801852618,
+                  "max": 0.39999999990686774,
+                  "p50": 0.09999999986030161,
+                  "p95": 0.19999999995343387,
+                  "p99": 0.30000000004656613
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 1.1333333333022892,
+                  "max": 1.3000000000465661,
+                  "p50": 1.2999999998137355,
+                  "p95": 1.3000000000465661,
+                  "p99": 1.3000000000465661
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 417381,
+                "compile.units_seen": 162,
+                "compile.accepted_units": 162,
+                "runtime.accepted_deltas": 163,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 92962
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 57
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 238500
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 6
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 135073,
+                  "highWater": 135073
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 57
+                },
+                "runtime.retained_nodes": {
+                  "value": 249,
+                  "highWater": 249
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 77684588,
+              "totalJSHeapSize": 135148056,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 29745363,
+              "totalJSHeapSize": 105127963,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 70878123,
+                  "totalJSHeapSize": 121507495,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 44070704,
+                  "totalJSHeapSize": 118574948,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 29616055,
+                  "totalJSHeapSize": 105127963,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "a-crane-then-a-square",
+      "path": "fixtures/motionscript/stories/a-crane-then-a-square.ms",
+      "sha256": "7d1743a1f514e7b2b23d02cc3558c04b1a36f1590349be85ce2fb95e1c06a326",
+      "bytes": 1934979,
+      "runs": [
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 112,
+            "tracks": 123,
+            "steps": 676
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 5320.333333333333,
+                "max": 5386,
+                "p50": 5335.800000000047,
+                "p95": 5386,
+                "p99": 5386
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.4583333333333333,
+                "max": 3.1000000000931323,
+                "p50": 1.3000000000465661,
+                "p95": 2.1000000000931323,
+                "p99": 3.1000000000931323
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.666101694915305,
+                "max": 16.80000000000291,
+                "p50": 16.69999999999709,
+                "p95": 16.80000000000291,
+                "p99": 16.80000000000291
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 159.23333333339542,
+                "max": 181.20000000018626,
+                "p50": 148.30000000004657,
+                "p95": 181.20000000018626,
+                "p99": 181.20000000018626
+              },
+              "compile.snapshot_ms": {
+                "count": 2736,
+                "retained": 256,
+                "mean": 0.002119883041037791,
+                "max": 0.19999999995343387,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.09999999986030161
+              },
+              "compile.capture_ms": {
+                "count": 5472,
+                "retained": 256,
+                "mean": 0.002850877193254773,
+                "max": 2.1000000000931323,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.lower_ms": {
+                "count": 2736,
+                "retained": 256,
+                "mean": 0.007711988303702112,
+                "max": 0.30000000004656613,
+                "p50": 0,
+                "p95": 0.09999999986030161,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 2739,
+                "retained": 256,
+                "mean": 5.609419496165277,
+                "max": 16.199999999953434,
+                "p50": 6.800000000046566,
+                "p95": 7.900000000139698,
+                "p99": 9.199999999953434
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 5320.300000000047,
+                "max": 5385.90000000014,
+                "p50": 5335.800000000047,
+                "p95": 5385.90000000014,
+                "p99": 5385.90000000014
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 5804937,
+              "compile.units_seen": 2736,
+              "compile.accepted_units": 2736,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 913,
+                "highWater": 913
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.030000000000776,
+                "max": 2.800000000046566,
+                "p50": 0.9000000001396984,
+                "p95": 1.6000000000931323,
+                "p99": 2.800000000046566
+              },
+              "frame.renderer_call_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.4133333333302289,
+                "max": 0.8000000000465661,
+                "p50": 0.39999999990686774,
+                "p95": 0.5,
+                "p99": 0.8000000000465661
+              },
+              "frame.application_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.451666666668219,
+                "max": 3.1000000000931323,
+                "p50": 1.3000000000465661,
+                "p95": 2.1000000000931323,
+                "p99": 3.1000000000931323
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.666101694915305,
+                "max": 16.80000000000291,
+                "p50": 16.69999999999709,
+                "p95": 16.80000000000291,
+                "p99": 16.80000000000291
+              }
+            },
+            "counters": {},
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 0.600000000015522,
+                "max": 0.8000000000465661,
+                "p50": 0.5,
+                "p95": 0.8000000000465661,
+                "p99": 0.8000000000465661
+              },
+              "compile.parse_ms": {
+                "count": 105,
+                "retained": 105,
+                "mean": 0.004761904761904762,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.snapshot_ms": {
+                "count": 102,
+                "retained": 102,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.capture_ms": {
+                "count": 204,
+                "retained": 204,
+                "mean": 0.0004901960777465766,
+                "max": 0.09999999986030161,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.lower_ms": {
+                "count": 102,
+                "retained": 102,
+                "mean": 0.002941176473327419,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 102,
+                "retained": 102,
+                "mean": 0.04117647059234407,
+                "max": 0.19999999995343387,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "runtime.queue_wait_ms": {
+                "count": 102,
+                "retained": 102,
+                "mean": 0.1264705882366637,
+                "max": 0.19999999995343387,
+                "p50": 0.10000000009313226,
+                "p95": 0.19999999995343387,
+                "p99": 0.19999999995343387
+              },
+              "frame.evaluate_ms": {
+                "count": 18,
+                "retained": 18,
+                "mean": 0.43333333333592033,
+                "max": 0.8999999999068677,
+                "p50": 0.5,
+                "p95": 0.8999999999068677,
+                "p99": 0.8999999999068677
+              },
+              "frame.renderer_call_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.27333333333954213,
+                "max": 0.5,
+                "p50": 0.2999999998137355,
+                "p95": 0.5,
+                "p99": 0.5
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 24582,
+              "compile.units_seen": 102,
+              "compile.accepted_units": 102,
+              "runtime.accepted_deltas": 102
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 1861
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 34
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 23
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 1
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 1861
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 34
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 33
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 5664.199999999953,
+            "revision": 913,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 473,
+                  "retained": 256,
+                  "mean": 0.28477801267898406,
+                  "max": 5.2999999998137355,
+                  "p50": 0.19999999995343387,
+                  "p95": 0.39999999990686774,
+                  "p99": 0.6000000000931323
+                },
+                "compile.parse_ms": {
+                  "count": 914,
+                  "retained": 256,
+                  "mean": 0.015317286650805085,
+                  "max": 0.30000000004656613,
+                  "p50": 0,
+                  "p95": 0.09999999986030161,
+                  "p99": 0.10000000009313226
+                },
+                "compile.snapshot_ms": {
+                  "count": 912,
+                  "retained": 256,
+                  "mean": 0.003618421052937935,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0.09999999986030161,
+                  "p99": 0.10000000009313226
+                },
+                "compile.capture_ms": {
+                  "count": 1824,
+                  "retained": 256,
+                  "mean": 0.002631578946372764,
+                  "max": 0.19999999995343387,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.lower_ms": {
+                  "count": 912,
+                  "retained": 256,
+                  "mean": 0.01359649122771276,
+                  "max": 2.800000000046566,
+                  "p50": 0,
+                  "p95": 0.09999999986030161,
+                  "p99": 0.10000000009313226
+                },
+                "compile.validate_ms": {
+                  "count": 913,
+                  "retained": 256,
+                  "mean": 5.900657174154007,
+                  "max": 40.800000000046566,
+                  "p50": 6.800000000046566,
+                  "p95": 8.100000000093132,
+                  "p99": 9.199999999953434
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 913,
+                  "retained": 256,
+                  "mean": 0.08828039429796225,
+                  "max": 0.30000000004656613,
+                  "p50": 0.10000000009313226,
+                  "p95": 0.30000000004656613,
+                  "p99": 0.30000000004656613
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 0.899999999984478,
+                  "max": 1,
+                  "p50": 1,
+                  "p95": 1,
+                  "p99": 1
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 1934979,
+                "compile.units_seen": 912,
+                "compile.accepted_units": 912,
+                "runtime.accepted_deltas": 913,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 7006
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 83
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 16446
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 7
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 571286,
+                  "highWater": 571286
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 83
+                },
+                "runtime.retained_nodes": {
+                  "value": 112,
+                  "highWater": 112
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 307359535,
+              "totalJSHeapSize": 365878779,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 119582640,
+              "totalJSHeapSize": 160311856,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 109627156,
+                  "totalJSHeapSize": 160295420,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 114544022,
+                  "totalJSHeapSize": 160303638,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 119454868,
+                  "totalJSHeapSize": 160311856,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 112,
+            "tracks": 123,
+            "steps": 676
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 5449.266666666682,
+                "max": 5688.699999999953,
+                "p50": 5341.100000000093,
+                "p95": 5688.699999999953,
+                "p99": 5688.699999999953
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 1.3599999999937913,
+                "max": 2.4000000001396984,
+                "p50": 1.3000000000465661,
+                "p95": 1.7999999998137355,
+                "p99": 2.4000000001396984
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.666101694915305,
+                "max": 16.80000000000291,
+                "p50": 16.69999999999709,
+                "p95": 16.80000000000291,
+                "p99": 16.80000000000291
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 5758.200000000186,
+            "revision": 913,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 110928999,
+              "totalJSHeapSize": 204263679,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 104202860,
+              "totalJSHeapSize": 184011388,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 128209618,
+                  "totalJSHeapSize": 183994954,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 99491495,
+                  "totalJSHeapSize": 184003171,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 104188360,
+                  "totalJSHeapSize": 184011388,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "a-circle-in-motion",
+      "path": "fixtures/motionscript/stories/a-circle-in-motion.ms",
+      "sha256": "ef60f52a5f32a386b64797ec01bdce9a4784a2ee0807d3bf959eaa972d72a537",
+      "bytes": 42008,
+      "runs": [
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 49,
+            "tracks": 50,
+            "steps": 58
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 31.266666666682188,
+                "max": 33.4000000001397,
+                "p50": 33.39999999990687,
+                "p95": 33.4000000001397,
+                "p99": 33.4000000001397
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.5583333333410944,
+                "max": 0.9000000001396984,
+                "p50": 0.5,
+                "p95": 0.8000000000465661,
+                "p99": 0.9000000001396984
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.66779661016964,
+                "max": 16.80000000000291,
+                "p50": 16.69999999999709,
+                "p95": 16.80000000000291,
+                "p99": 16.80000000000291
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 31.699999999953434,
+            "revision": 120,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 121248076,
+              "totalJSHeapSize": 184221412,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 124362458,
+              "totalJSHeapSize": 184587150,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 118362204,
+                  "totalJSHeapSize": 184570684,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 121365821,
+                  "totalJSHeapSize": 184578917,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 124348598,
+                  "totalJSHeapSize": 184587150,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 49,
+            "tracks": 50,
+            "steps": 58
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 60,
+            "warmup": 20,
+            "compileSamples": 3,
+            "cycles": 3,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 29.600000000015523,
+                "max": 31.100000000093132,
+                "p50": 28.899999999906868,
+                "p95": 31.100000000093132,
+                "p99": 31.100000000093132
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.5833333333566164,
+                "max": 1.8999999999068677,
+                "p50": 0.5999999998603016,
+                "p95": 0.7000000001862645,
+                "p99": 1.8999999999068677
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.666101694915305,
+                "max": 16.70000000001164,
+                "p50": 16.69999999999709,
+                "p95": 16.70000000001164,
+                "p99": 16.70000000001164
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 2.3333333334109434,
+                "max": 2.5,
+                "p50": 2.4000000001396984,
+                "p95": 2.5,
+                "p99": 2.5
+              },
+              "compile.snapshot_ms": {
+                "count": 354,
+                "retained": 256,
+                "mean": 0.0008474576279079005,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.capture_ms": {
+                "count": 702,
+                "retained": 256,
+                "mean": 0.002279202279998281,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.lower_ms": {
+                "count": 354,
+                "retained": 256,
+                "mean": 0.006497175140716767,
+                "max": 0.19999999995343387,
+                "p50": 0,
+                "p95": 0.09999999986030161,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 357,
+                "retained": 256,
+                "mean": 0.20700280112214386,
+                "max": 2.8999999999068677,
+                "p50": 0.19999999995343387,
+                "p95": 0.39999999990686774,
+                "p99": 1.1999999999534339
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 29.600000000015523,
+                "max": 31.100000000093132,
+                "p50": 28.899999999906868,
+                "p95": 31.100000000093132,
+                "p99": 31.100000000093132
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 126024,
+              "compile.units_seen": 354,
+              "compile.accepted_units": 354,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 120,
+                "highWater": 120
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.3600000000054327,
+                "max": 1.5,
+                "p50": 0.30000000004656613,
+                "p95": 0.5,
+                "p99": 1.5
+              },
+              "frame.renderer_call_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.20333333334031825,
+                "max": 0.39999999990686774,
+                "p50": 0.19999999995343387,
+                "p95": 0.30000000004656613,
+                "p99": 0.39999999990686774
+              },
+              "frame.application_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.5716666666868453,
+                "max": 1.8999999999068677,
+                "p50": 0.5,
+                "p95": 0.7000000001862645,
+                "p99": 1.8999999999068677
+              },
+              "frame.interval_ms": {
+                "count": 59,
+                "retained": 59,
+                "mean": 16.666101694915305,
+                "max": 16.70000000001164,
+                "p50": 16.69999999999709,
+                "p95": 16.70000000001164,
+                "p99": 16.70000000001164
+              }
+            },
+            "counters": {},
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 0.4333333334264656,
+                "max": 0.5,
+                "p50": 0.4000000001396984,
+                "p95": 0.5,
+                "p99": 0.5
+              },
+              "compile.parse_ms": {
+                "count": 36,
+                "retained": 36,
+                "mean": 0.011111111114991622,
+                "max": 0.30000000004656613,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.30000000004656613
+              },
+              "compile.snapshot_ms": {
+                "count": 33,
+                "retained": 33,
+                "mean": 0.00303030303312522,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.10000000009313226
+              },
+              "compile.capture_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.0066666666728754835,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0.10000000009313226,
+                "p99": 0.10000000009313226
+              },
+              "compile.lower_ms": {
+                "count": 33,
+                "retained": 33,
+                "mean": 0.006060606059194965,
+                "max": 0.10000000009313226,
+                "p50": 0,
+                "p95": 0.09999999986030161,
+                "p99": 0.10000000009313226
+              },
+              "compile.validate_ms": {
+                "count": 33,
+                "retained": 33,
+                "mean": 0.07575757574346481,
+                "max": 0.20000000018626451,
+                "p50": 0.09999999986030161,
+                "p95": 0.20000000018626451,
+                "p99": 0.20000000018626451
+              },
+              "runtime.queue_wait_ms": {
+                "count": 36,
+                "retained": 36,
+                "mean": 0.025000000003880512,
+                "max": 0.19999999995343387,
+                "p50": 0,
+                "p95": 0.19999999995343387,
+                "p99": 0.19999999995343387
+              },
+              "frame.evaluate_ms": {
+                "count": 18,
+                "retained": 18,
+                "mean": 0.15555555551933745,
+                "max": 0.30000000004656613,
+                "p50": 0.19999999995343387,
+                "p95": 0.30000000004656613,
+                "p99": 0.30000000004656613
+              },
+              "frame.renderer_call_ms": {
+                "count": 15,
+                "retained": 15,
+                "mean": 0.08666666670081516,
+                "max": 0.30000000004656613,
+                "p50": 0.10000000009313226,
+                "p95": 0.30000000004656613,
+                "p99": 0.30000000004656613
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 24624,
+              "compile.units_seen": 33,
+              "compile.accepted_units": 33,
+              "runtime.accepted_deltas": 36
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 2167
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 12
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 25
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 3
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 2167
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 12
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 49
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 31.5999999998603,
+            "revision": 120,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 11,
+                  "retained": 11,
+                  "mean": 0.25454545454968786,
+                  "max": 0.30000000004656613,
+                  "p50": 0.30000000004656613,
+                  "p95": 0.30000000004656613,
+                  "p99": 0.30000000004656613
+                },
+                "compile.parse_ms": {
+                  "count": 120,
+                  "retained": 120,
+                  "mean": 0.004166666664726411,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.snapshot_ms": {
+                  "count": 118,
+                  "retained": 118,
+                  "mean": 0.0008474576279079005,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0
+                },
+                "compile.capture_ms": {
+                  "count": 234,
+                  "retained": 234,
+                  "mean": 0.0029914529912539907,
+                  "max": 0.20000000018626451,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000009313226
+                },
+                "compile.lower_ms": {
+                  "count": 118,
+                  "retained": 118,
+                  "mean": 0.0067796610193169215,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0.10000000009313226,
+                  "p99": 0.10000000009313226
+                },
+                "compile.validate_ms": {
+                  "count": 119,
+                  "retained": 119,
+                  "mean": 0.19915966386906803,
+                  "max": 1.6000000000931323,
+                  "p50": 0.19999999995343387,
+                  "p95": 0.30000000004656613,
+                  "p99": 0.5
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 120,
+                  "retained": 120,
+                  "mean": 0.027499999977104988,
+                  "max": 0.10000000009313226,
+                  "p50": 0,
+                  "p95": 0.10000000009313226,
+                  "p99": 0.10000000009313226
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 0.16666666674427688,
+                  "max": 0.20000000018626451,
+                  "p50": 0.19999999995343387,
+                  "p95": 0.20000000018626451,
+                  "p99": 0.20000000018626451
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 42008,
+                "compile.units_seen": 118,
+                "compile.accepted_units": 118,
+                "runtime.accepted_deltas": 120,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 3325
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 19
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 2989
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 7
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 13533,
+                  "highWater": 13533
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 19
+                },
+                "runtime.retained_nodes": {
+                  "value": 49,
+                  "highWater": 49
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 131926626,
+              "totalJSHeapSize": 184755182,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 135018786,
+              "totalJSHeapSize": 185090666,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 129006222,
+                  "totalJSHeapSize": 185074194,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 131944534,
+                  "totalJSHeapSize": 185082430,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 134879590,
+                  "totalJSHeapSize": 185090666,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    }
+  ]
+}

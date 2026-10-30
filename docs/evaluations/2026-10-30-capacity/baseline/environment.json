@@ -1,0 +1,13 @@
+{
+  "node": "v24.19.0",
+  "browser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "commit": "775892ba3316077a59ea24d30eab16313b3b99b3",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "dpr": 1
+  }
+}

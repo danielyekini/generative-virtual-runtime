@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><title>MotionScript progressive playback</title><style>
+body{margin:0;background:#e7e5df;color:#202020;font:16px system-ui}canvas{width:100%;max-width:1280px;display:block;margin:56px auto 0}nav{padding:12px;display:flex;gap:16px;align-items:center}label{display:flex;gap:6px}pre{max-height:260px;overflow:auto;margin:16px}p{margin:16px}
+</style></head><body><canvas></canvas><nav>
+<label>Simulated arrival <select id="rate"><option value="4096">4 KiB/s</option><option value="12288">12 KiB/s</option></select></label>
+<label>Fragments <select id="pattern"><option value="fixed">512 bytes</option><option value="ragged">17 / 2048 / 127 / 509 bytes</option></select></label>
+<label>Scenario <select id="mode"><option>normal</option><option>starvation</option><option>truncation</option><option>rejection</option><option>cancellation</option></select></label>
+<button id="start">Play progressively</button><button id="cancel">Cancel</button></nav>
+<p>A Circle in Motion · original 30-second choreography · source arrives independently in a Worker. Rates simulate transport; they do not measure model generation.</p><pre id="result"></pre><script type="module" src="./progressive/demo.ts"></script></body></html>

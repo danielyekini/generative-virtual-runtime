@@ -1,6 +1,6 @@
 # Idiomatic MotionScript authoring guide
 
-Status: living guide, revision 1.0, 2026-10-08. This initial guide contains evaluation techniques, not certified syntax examples. The installed examples below refer to existing compiling repository fixtures and conformance cases; they are not refinement or visual certifications.
+Status: living guide, revision 1.1, 2026-10-30. This initial guide contains evaluation techniques, not certified syntax examples. The installed examples below refer to existing compiling repository fixtures and conformance cases; they are not refinement or visual certifications.
 
 ## How to use this guide
 
@@ -25,6 +25,7 @@ Maintain a verified table for supported construction order, declaration/referenc
 
 ## Change log
 
+- 1.1: Add measured current-contract progressive authoring recipe and evidence.
 - 1.0: Initial guide structure. No unverified language constructs asserted.
 
 ## Current construction and compiling examples
@@ -39,3 +40,9 @@ Maintain a verified table for supported construction order, declaration/referenc
 General loop/function declarations and a general authoring package/module facility are not implemented by this grammar. Package/API/host ideas in the evolution policy are proposals until a released contract and tests establish support. Resource resolution and ownership details must be verified per recipe against current contracts/tests rather than generalised from these examples.
 
 Installation evidence/rationale (revision 1.0): grammar, compiler resolution and named conformance tests distinguish current construction from proposed abstractions. Repository tests pass; no recipe adoption, measured refinement gains or new syntax is claimed.
+
+## Observed progressive recipe (2026-10-30)
+
+With the current frozen-base contract, predeclare dependency-complete objects/operators, send initial channel writers, then seal the first useful interval. Send later time-local tracks/steps before advancing each subsequent seal. A segment crossing a seal must already be present. Never move a writer or visibility step into sealed history. Split tracks at existing key boundaries to preserve easing; arbitrary cuts inside a cubic/eased segment require a separate exact subdivision derivation.
+
+The [experimental Circle source](../../samples/motionscript/a-circle-in-motion/experimental/progressive-capacity/program.ms), [reproducible rewrite](../../evaluation/bench/progressive/generate.mts) and [decision/evidence](../design/capacity-transactions.md) demonstrate this recipe locally. All original objects, morphs, captions and camera choreography remain. Local writers increase source size; predeclaring a much larger persistent world can still block useful startup. This is one measured native story, not general authoring/model-generation certification. Existing animation, interaction, audio and persistent-editing boundaries remain unchanged.

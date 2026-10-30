@@ -7,7 +7,7 @@ import {
 import { isKnownCapability } from "./capabilities";
 import { cubicControlsMonotonic } from "./easing";
 import { expressionComplexity, exprsEqual, parseExpression } from "./expr";
-import { nodeDepth } from "./graph";
+import { indexNodes, nodeDepth } from "./graph";
 import { resolveLimits, type ResourceLimits } from "./limits";
 import { channelSpec, isValidSample, scalarWriters } from "./registry";
 import { pathsShareTopology } from "./spatial";
@@ -145,9 +145,12 @@ export function validateSceneIR(
   if (nodes) {
     let geometry = 0;
     let depth = 0;
+    // Validation still visits every structure; share only the topology lookup
+    // within this call. No accepted/rejected revision can reuse this index.
     for (const list of [nodes, ...compositions.map((composition) => composition.nodes)]) {
+      const index = indexNodes(list);
       for (const node of list) {
-        if (typeof node.id === "string") depth = Math.max(depth, nodeDepth(list, node.id));
+        if (typeof node.id === "string") depth = Math.max(depth, nodeDepth(list, node.id, index));
         if (node.kind === "path" && Array.isArray(node.commands)) geometry += node.commands.length;
         if (node.kind === "polygon" && Array.isArray(node.points)) geometry += node.points.length;
       }

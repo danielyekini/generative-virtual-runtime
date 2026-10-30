@@ -31,7 +31,9 @@ export interface ResourceLimits {
 
 export const DEFAULT_LIMITS: ResourceLimits = {
   maxDurationMs: 60_000,
-  maxNodes: 500,
+  // Total-scene admission, not a frame budget. Measured up to 4000 nodes;
+  // retain conservative 2000-node headroom. See docs/design/capacity-transactions.md.
+  maxNodes: 2000,
   maxDepth: 16,
   maxTracks: 1000,
   maxSteps: 1000,

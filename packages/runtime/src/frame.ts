@@ -1,8 +1,6 @@
 import {
-  drawableOrder,
-  childrenOf,
-  indexNodes,
-  logicalMatrix,
+  cameraViewMatrix, IDENTITY, localMatrix, multiplyMat3,
+  type Mat3,
   trimCommands,
   type Camera2DDefinition,
   type NodeDefinition,
@@ -22,17 +20,18 @@ export function buildResolvedFrame(
   sceneTimeMs: number,
   revision = 0,
 ): ResolvedFrame {
+  const graph = resolveGraph(sampled.nodes, scene, sampled.camera);
   const drawItems = [];
-  for (const node of drawableOrder(sampled.nodes)) {
-    if (subtreeHidden(sampled.nodes, node.id)) continue;
+  for (const node of graph.ordered) {
+    if (node.kind === "group" || graph.hidden.get(node.id)) continue;
     const geometry = geometryOf(scene, node, sampled.trimOverrides);
     if (!geometry) continue;
     drawItems.push({
       nodeId: node.id,
       geometry,
       appearance: appearanceOf(node),
-      logicalMatrix: logicalMatrix(sampled.nodes, scene.viewport, sampled.camera, node.id),
-      opacity: opacityProduct(sampled.nodes, node.id),
+      logicalMatrix: graph.logical(node),
+      opacity: graph.opacity(node),
     });
   }
   return {
@@ -41,11 +40,11 @@ export function buildResolvedFrame(
     viewport: scene.viewport,
     background: scene.background,
     drawItems,
-    renderTree: renderTreeFromScene(sampled.nodes, drawItems),
+    renderTree: renderTreeFromScene(sampled.nodes, drawItems, graph.children),
   };
 }
 
-function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDrawItem[]): RenderTreeNode {
+function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDrawItem[], children: Map<string | null, NodeDefinition[]>): RenderTreeNode {
   const flat = {
     kind: "scope" as const,
     id: "root",
@@ -65,11 +64,11 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
           opacity: node.opacity,
           ...(node.compositing.blend ? { blend: node.compositing.blend } : {}),
           ...(node.compositing.effect ? { effect: node.compositing.effect } : {}),
-          children: childrenOf(nodes, node.id).flatMap(place),
+          children: (children.get(node.id) ?? []).flatMap(place),
         },
       ];
     }
-    if (node.kind === "group") return childrenOf(nodes, node.id).flatMap(place);
+    if (node.kind === "group") return (children.get(node.id) ?? []).flatMap(place);
     const item = byId.get(node.id);
     return item ? [{ kind: "leaf", item }] : [];
   };
@@ -78,40 +77,65 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
     id: "root",
     isolated: false,
     opacity: 1,
-    children: childrenOf(nodes, null).flatMap(place),
+    children: (children.get(null) ?? []).flatMap(place),
   };
 }
 
-function subtreeHidden(nodes: readonly NodeDefinition[], id: string): boolean {
-  const index = indexNodes(nodes);
-  let current = index.byId.get(id);
-  const seen = new Set<string>();
-  while (current) {
-    if (seen.has(current.id)) return true;
-    seen.add(current.id);
-    if (!current.visible) return true;
-    current = current.parentId ? index.byId.get(current.parentId) : undefined;
+/** All indexes and derived values belong to this sample, never to a scene revision.
+ * Rebuilding once is linear and makes streaming additions/cancel/dispose safe.
+ * See docs/design/capacity-transactions.md. */
+function resolveGraph(nodes: readonly NodeDefinition[], scene: SceneIR, camera: Camera2DDefinition) {
+  const byId = new Map(nodes.map(node => [node.id, node]));
+  const children = new Map<string | null, NodeDefinition[]>();
+  for (const node of nodes) {
+    const list = children.get(node.parentId) ?? [];
+    list.push(node);
+    children.set(node.parentId, list);
   }
-  return false;
-}
-
-function opacityProduct(nodes: readonly NodeDefinition[], id: string): number {
-  const index = indexNodes(nodes);
-  let product = 1;
-  let current = index.byId.get(id);
-  const seen = new Set<string>();
-  while (current) {
-    if (seen.has(current.id)) break;
-    seen.add(current.id);
-    const isolatedAncestor = current.kind === "group" && current.compositing?.isolated === true && current.id !== id;
-    if (!isolatedAncestor) product *= current.opacity;
-    let parent = current.parentId ? index.byId.get(current.parentId) : undefined;
-    if (current.inheritOpacity === false && parent) {
-      parent = parent.parentId ? index.byId.get(parent.parentId) : undefined;
+  // Stable sort preserves declaration ties, including within compositing scopes.
+  for (const list of children.values()) list.sort((a,b) => a.zIndex - b.zIndex);
+  const ordered: NodeDefinition[] = [];
+  const hidden = new Map<string, boolean>();
+  const screen = new Map<string, boolean>();
+  const visit = (parent: string | null, ancestorHidden: boolean, isScreen: boolean) => {
+    for (const node of children.get(parent) ?? []) {
+      const h = ancestorHidden || !node.visible;
+      const sc = parent === null ? node.space === "screen" : isScreen;
+      ordered.push(node); hidden.set(node.id, h); screen.set(node.id, sc);
+      visit(node.id, h, sc);
     }
-    current = parent;
-  }
-  return product;
+  };
+  visit(null, false, false);
+  const worlds = new Map<string, Mat3>();
+  const resolving = new Set<string>();
+  const world = (node: NodeDefinition): Mat3 => {
+    const cached = worlds.get(node.id);
+    if (cached) return cached;
+    if (resolving.has(node.id)) throw new Error(`cycle at ${node.id}`);
+    resolving.add(node.id);
+    const parentId = node.transformParentId !== undefined ? node.transformParentId : node.parentId;
+    const parent = parentId ? byId.get(parentId) : undefined;
+    const result = multiplyMat3(parent ? world(parent) : IDENTITY, localMatrix(node.transform));
+    resolving.delete(node.id); worlds.set(node.id, result);
+    return result;
+  };
+  const view = cameraViewMatrix(scene.viewport, camera);
+  const opacity = (node: NodeDefinition): number => {
+    // Preserve multiplication order and the published skip-exactly-one rule.
+    let value = 1;
+    let current: NodeDefinition | undefined = node;
+    const seen = new Set<string>();
+    while (current && !seen.has(current.id)) {
+      seen.add(current.id);
+      if (!(current.kind === "group" && current.compositing?.isolated && current.id !== node.id)) value *= current.opacity;
+      let parent: NodeDefinition | undefined = current.parentId ? byId.get(current.parentId) : undefined;
+      if (current.inheritOpacity === false && parent) parent = parent.parentId ? byId.get(parent.parentId) : undefined;
+      current = parent;
+    }
+    return value;
+  };
+  return {ordered, children, hidden, opacity,
+    logical: (node: NodeDefinition) => screen.get(node.id) ? world(node) : multiplyMat3(view, world(node))};
 }
 
 function appearanceOf(node: NodeDefinition): ResolvedAppearance {

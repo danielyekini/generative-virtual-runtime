@@ -8,6 +8,16 @@ import { validateSceneIR } from "./validate";
 const repo = resolve(import.meta.dirname, "../../..");
 
 describe("fixture harness", () => {
+  it("admits 2000 nodes and rejects 2001 with the live finite limit", () => {
+    const scene = JSON.parse(readFileSync(resolve(repo, "fixtures/ir/valid/minimal.json"), "utf8"));
+    const node = scene.nodes[0];
+    scene.timeline.tracks = []; scene.timeline.steps = [];
+    scene.nodes = Array.from({length: 2000}, (_, i) => ({...node, id: `n${i}`, name: `n${i}`}));
+    expect(validateSceneIR(scene).ok).toBe(true);
+    scene.nodes.push({...node,id:"extra",name:"extra"});
+    const result=validateSceneIR(scene);expect(result.ok).toBe(false);
+    if(!result.ok)expect(result.diagnostics).toEqual(expect.arrayContaining([expect.objectContaining({code:"RESOURCE_LIMIT",message:"Node count 2001 exceeds 2000."})]));
+  });
   it("accepts the valid IR and rejects every required fault", () => {
     const results = checkManifest(resolve(repo, "fixtures/ir/manifest.json"));
     const failed = results.filter((result) => !result.matched);
