@@ -77,6 +77,10 @@ export class IncrementalLexer {
   private reportedDiagnostics = 0;
   private stripBom = true;
 
+  /** Observable pending lexical source, excluding already emitted tokens. */
+  get pendingBytes(): number { return new TextEncoder().encode(this.pending).byteLength; }
+  get retainedTokenCount(): number { return this.tokens.length; }
+
   push(chunk: string): Token[] {
     if (chunk.length === 0) return [];
     if (this.stripBom) {

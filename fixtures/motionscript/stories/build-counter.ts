@@ -387,7 +387,7 @@ function solveLimb(frame: Frame, who: "cyan" | "orange", other: Frame, contact: 
         [step, -step],
         [-step, step],
         [-step, -step],
-      ]) {
+      ] as const) {
         const value = score(bestA + da, bestB + db);
         if (value < best - 0.05) {
           best = value;
@@ -582,7 +582,7 @@ const cyanKeys: Key[] = [
   K(20.85, 760, { ...GUARD }),
   K(21.35, 690, { ...GUARD, body: -8, torso: 14, lL: tri(22, -34, -68), lR: tri(-18, -16, -64), ease: "easeIn" }),
   K(22.15, 640, { body: -12, torso: 16, head: -4, aL: tri(-58, -88, 14), aR: tri(-30, -100, 16) }),
-  K(22.85, 590, { body: -24, head: -10, x: 590, aL: tri(-30, -60, 8), aR: tri(-18, -50, 6), ease: "easeOut" }),
+  K(22.85, 590, { body: -24, head: -10, aL: tri(-30, -60, 8), aR: tri(-18, -50, 6), ease: "easeOut" }),
   K(23.15, 548, { body: -28 }),
   K(23.72, 610, { aL: tri(-132, -48, 6), aR: tri(-124, -58, 8), torso: 6, body: -6, head: 2 }),
   K(24.05, 520, { body: -18, y: 500, aR: tri(24, 18, 0), aL: tri(-80, -40, 10), lL: tri(20, -24, -40), lR: tri(16, -20, -36) }),
@@ -655,7 +655,7 @@ const orangeKeys: Key[] = [
   K(20.9, 930, { ...GUARD, body: 2 }),
   K(21.4, 960, { torso: 24, body: 8, lL: tri(32, -46, -50), lR: tri(-22, -28, -48), aL: tri(-20, -70, 12), ease: "easeIn" }),
   K(22.2, 990, { aR: tri(48, -150, 24), torso: 18, body: 6, head: -4, aL: tri(-40, -80, 10), expr: "grin", jaw: -18, brow: -8 }),
-  K(22.7, 940, { aR: tri(36, -140, 20), torso: 20, body: 10, x: 940, expr: "grin", ease: "easeOut" }),
+  K(22.7, 940, { aR: tri(36, -140, 20), torso: 20, body: 10, expr: "grin", ease: "easeOut" }),
   K(23.05, 900, { expr: "grin", jaw: -24, head: -8, aR: tri(20, -120, 16), torso: 12, body: 2 }),
   K(23.55, 820, { expr: "grin", aL: tri(-40, -100, 12), torso: 10, ease: "easeIn" }),
   K(23.9, 690, { aL: tri(-124, -10, 4), torso: 16, body: 12, expr: "grin", jaw: -20, ease: "easeOut" }),

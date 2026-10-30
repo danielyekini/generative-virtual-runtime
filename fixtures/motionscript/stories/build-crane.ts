@@ -816,7 +816,7 @@ function track(id: string, samples: Sample[], close: boolean): string {
   return `keyframes ${id}.commands {\n  start 0s;\n  duration ${DURATION}s;\n${lines.join("\n")}\n};`;
 }
 
-function stepsFor(id: string, samples: Sample[], initial: boolean): { visible: boolean; steps: string } {
+function stepsFor(id: string, samples: Sample[], initial: boolean): { visible: boolean; steps: string[] } {
   let visible = initial;
   const steps: string[] = [];
   let cursor = initial;

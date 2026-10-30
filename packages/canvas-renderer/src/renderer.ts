@@ -1,4 +1,5 @@
 import {
+  type Telemetry,
   deviceFitMatrix,
   multiplyMat3,
   transformPoint,
@@ -25,11 +26,11 @@ export class CanvasRenderer {
   private cssHeight = 0;
   private devicePixelRatio = 1;
   private disposed = false;
-  private readonly paths = new WeakMap<object, Path2D>();
+  private paths = new WeakMap<object, Path2D>();
   private readonly images = new Map<string, HTMLImageElement>();
   private scopeAlpha = 1;
 
-  constructor(canvas: HTMLCanvasElement) {
+  constructor(canvas: HTMLCanvasElement, private readonly telemetry?: Telemetry) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
   }
@@ -48,6 +49,10 @@ export class CanvasRenderer {
   }
 
   render(frame: ResolvedFrame): void {
+    if (this.telemetry) this.telemetry.measure('frame.renderer_call_ms', () => this.renderInner(frame));
+    else this.renderInner(frame);
+  }
+  private renderInner(frame: ResolvedFrame): void {
     const ctx = this.ctx;
     if (this.disposed || !ctx || this.cssWidth <= 0 || this.cssHeight <= 0) return;
 
@@ -82,6 +87,9 @@ export class CanvasRenderer {
   dispose(): void {
     this.disposed = true;
     this.ctx = null;
+    this.images.clear();
+    this.paths = new WeakMap<object, Path2D>();
+    this.telemetry?.gauge("renderer.image_cache_entries", 0);
   }
 
   private drawItem(ctx: CanvasRenderingContext2D, device: Mat3, item: ResolvedDrawItem): void {
@@ -180,6 +188,7 @@ export class CanvasRenderer {
     const image = new Image();
     image.src = href;
     this.images.set(href, image);
+    this.telemetry?.gauge("renderer.image_cache_entries", this.images.size);
     return image;
   }
 

@@ -198,6 +198,7 @@ export function validateResolvedFrame(input: unknown): ValidateResult<ResolvedFr
 export function validateDelta(
   input: unknown,
   overrides?: Partial<ResourceLimits>,
+  wireVersion: SceneIR["irVersion"] = IR_VERSION,
 ): ValidateResult<SceneIRDelta> {
   const limits = resolveLimits(overrides);
   const diags = new Diags();
@@ -229,7 +230,7 @@ export function validateDelta(
     diags.add("MISSING_REQUIRED", "operations", "A delta needs at least one operation.");
   } else {
     input.operations.forEach((operation, index) => {
-      readOperation(operation, `operations[${index}]`, limits, diags);
+      readOperation(operation, `operations[${index}]`, limits, diags, wireVersion === IR_VERSION_02);
     });
   }
   if (diags.items.length > 0) return { ok: false, diagnostics: diags.items };
@@ -1361,7 +1362,7 @@ function readResolvedGeometry(value: unknown, path: string, diags: Diags): void 
   diags.add("INVALID_ENUM", `${path}.kind`, "Unknown resolved geometry.");
 }
 
-function readOperation(value: unknown, path: string, limits: ResourceLimits, diags: Diags): void {
+function readOperation(value: unknown, path: string, limits: ResourceLimits, diags: Diags, v02: boolean): void {
   if (!isRecord(value) || typeof value.op !== "string") {
     diags.add("INVALID_TYPE", path, "An operation needs an op name.");
     return;
@@ -1384,7 +1385,7 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
   }
   if (value.op === "ADD_NODES") {
     rejectUnknown(value, ["op", "nodes"], path, diags);
-    readNodes(value.nodes, diags, limits, false, "nodes", false);
+    readNodes(value.nodes, diags, limits, false, "nodes", v02);
     return;
   }
   if (value.op === "ADD_TRACKS" || value.op === "ADD_STEPS" || value.op === "CREATE_SCENE") {

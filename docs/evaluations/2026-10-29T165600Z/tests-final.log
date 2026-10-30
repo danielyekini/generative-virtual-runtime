@@ -1,0 +1,45 @@
+
+> generative-visual-runtime@0.1.0 test
+> vitest run
+
+
+ RUN  v2.1.9 /workspace/generative-visual-runtime
+
+ ✓ packages/format-lottie/src/lottie.test.ts (46 tests) 250ms
+ ✓ packages/runtime/src/runtime.test.ts (25 tests) 35ms
+ ✓ packages/compiler/src/compiler.test.ts (16 tests) 26ms
+ ✓ packages/motionscript-emitter/src/emit.test.ts (4 tests) 55ms
+ ✓ packages/canvas-renderer/src/renderer.test.ts (10 tests) 18ms
+ ✓ packages/schema/src/contract.test.ts (17 tests) 15ms
+ ✓ packages/format-import-core/src/import.test.ts (11 tests) 1553ms
+   ✓ import core > prints the same report from the CLI 1540ms
+ ✓ packages/runtime/src/presentation.test.ts (8 tests) 30ms
+ ✓ packages/schema/src/registry.test.ts (3 tests) 24ms
+ ✓ packages/format-svg/src/svg.test.ts (13 tests) 44ms
+ ✓ packages/compiler/src/incremental.test.ts (9 tests) 610ms
+   ✓ fragment boundaries > compiles a 0.2 program across fragment strategies and every split 387ms
+ ✓ packages/runtime/src/streaming.test.ts (6 tests) 37ms
+ ✓ packages/schema/src/capability-02.test.ts (3 tests) 8ms
+ ✓ packages/schema/src/path-morph.test.ts (2 tests) 6ms
+ ✓ packages/format-lottie/src/clip-keyframes.test.ts (4 tests) 22ms
+ ✓ packages/format-lottie/src/clip-spatial-keyframes.test.ts (3 tests) 275ms
+ ✓ packages/schema/src/validate.test.ts (4 tests) 475ms
+   ✓ fixture harness > prints PASS and FAIL from the command line 466ms
+ ✓ packages/round-trip/src/verify.test.ts (4 tests) 25ms
+ ✓ packages/format-lottie/src/dataset.test.ts (1 test) 149ms
+ ✓ packages/format-import-core/src/dataset.test.ts (3 tests) 10ms
+ ✓ evaluation/harness/visual-gate.test.ts (4 tests) 146ms
+ ✓ evaluation/harness/profile.test.ts (2 tests) 8ms
+ ✓ packages/compiler/src/telemetry.test.ts (3 tests) 89ms
+ ✓ packages/schema/src/spatial.test.ts (2 tests) 5ms
+ ✓ packages/schema/src/telemetry.test.ts (3 tests) 5ms
+ ✓ packages/schema/src/trim-regression.test.ts (2 tests) 4ms
+ ✓ evaluation/harness/render-status.test.ts (3 tests) 3ms
+ ✓ packages/canvas-renderer/src/frames.test.ts (2 tests) 8ms
+ ✓ evaluation/harness/cdp.test.ts (2 tests) 5ms
+
+ Test Files  29 passed (29)
+      Tests  215 passed (215)
+   Start at  19:31:14
+   Duration  10.41s (transform 653ms, setup 0ms, collect 1.75s, tests 3.94s, environment 5ms, prepare 1.42s)
+

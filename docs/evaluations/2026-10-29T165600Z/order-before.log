@@ -1,0 +1,41 @@
+
+ RUN  v2.1.9 /workspace/generative-visual-runtime
+
+ ❯ packages/canvas-renderer/src/renderer.test.ts (11 tests | 1 failed) 30ms
+   × hierarchical paint ordering through CanvasRenderer > orders siblings and nested groups with isolated true; 11ms
+     → expected [ 'rgba(255, 0, 0, 1)', …(4) ] to deeply equal [ 'rgba(255, 255, 255, 1)', …(4) ]
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/canvas-renderer/src/renderer.test.ts > hierarchical paint ordering through CanvasRenderer > orders siblings and nested groups with isolated true;
+AssertionError: expected [ 'rgba(255, 0, 0, 1)', …(4) ] to deeply equal [ 'rgba(255, 255, 255, 1)', …(4) ]
+
+- Expected
++ Received
+
+  Array [
+-   "rgba(255, 255, 255, 1)",
++   "rgba(255, 0, 0, 1)",
++   "rgba(0, 0, 255, 1)",
+    "rgba(0, 255, 0, 1)",
+    "rgba(255, 255, 0, 1)",
+-   "rgba(0, 0, 255, 1)",
+-   "rgba(255, 0, 0, 1)",
++   "rgba(255, 255, 255, 1)",
+  ]
+
+ ❯ packages/canvas-renderer/src/renderer.test.ts:292:90
+    290|       expect(frame.drawItems.map(item => item.nodeId)).toEqual(["back"…
+    291|       const {ctx} = render(frame, 100, 100, 1);
+    292|       expect(ctx.calls.filter(call => call.name === "fill").map(call =…
+       |                                                                                          ^
+    293|         "rgba(255, 255, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255…
+    294|       ]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 10 passed (11)
+   Start at  17:04:22
+   Duration  574ms (transform 292ms, setup 0ms, collect 365ms, tests 30ms, environment 0ms, prepare 58ms)
+

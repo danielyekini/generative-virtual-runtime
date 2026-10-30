@@ -27,7 +27,7 @@
   ],
   "initialCameraId": "main",
   "timeline": {
-    "durationMs": 30001,
+    "durationMs": 60001,
     "tracks": [],
     "steps": []
   },

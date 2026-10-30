@@ -1,0 +1,11 @@
+
+ RUN  v2.1.9 /workspace/generative-visual-runtime
+
+ ✓ packages/runtime/src/streaming.test.ts (6 tests) 36ms
+ ✓ packages/schema/src/telemetry.test.ts (2 tests) 4ms
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  19:29:57
+   Duration  769ms (transform 272ms, setup 0ms, collect 354ms, tests 41ms, environment 0ms, prepare 96ms)
+

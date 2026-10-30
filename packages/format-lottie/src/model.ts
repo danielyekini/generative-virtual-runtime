@@ -125,7 +125,8 @@ export type LottieShapeItem =
         start: number;
         end: number;
         offset: number;
-        /** Present when Lottie `tm` start/end/offset is animated. Values are 0–100 percents. */
+        mappingLimitations?: string[];
+        /** Present when Lottie `tm` start/end/offset is animated. Start/end are percentages; offset is degrees. */
         animated?: {
           start?: AnimatedScalar;
           end?: AnimatedScalar;

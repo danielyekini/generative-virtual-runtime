@@ -2,12 +2,13 @@
 
 An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
 
-The newest run is [2026-10-09T115503Z](2026-10-09T115503Z/report.md).
+The newest foundation run is [2026-10-29T165600Z](2026-10-29T165600Z/report.md): correctness repairs, green checks and a reproducible browser measurement baseline. The latest full-corpus fidelity attempt remains [2026-10-09T115503Z](2026-10-09T115503Z/report.md); the foundation run does not certify that corpus.
 
-Next Baseline reads [implementation-pin.json](implementation-pin.json) and restores the final dirty snapshot. Complete missing final native coverage and repair reference evidence before resuming phase A LOT01 contours; layer paint order retains 1/3 attempts, animated fill remains queued. Corpus FAIL; no canonical promotion.
+Next fidelity Baseline reads [implementation-pin.json](implementation-pin.json) for the foundation implementation commit. Historical missing native coverage/reference evidence and phase A LOT01 contours remain unresolved; layer paint order retains its prior attempt history and animated fill remains queued. Corpus certification remains incomplete/failing; no canonical promotion.
 
 | Run | Captured | Languages under test | Result |
 | --- | --- | --- | --- |
+| [2026-10-29T165600Z](2026-10-29T165600Z/report.md) | 2026-10-29 | MotionScript / Scene IR 0.5.0 | Targeted foundation PASS: 215 tests, typechecks/build, renderer regressions and three-story offline/stream measurement baseline; full corpus NOT RUN |
 | [2026-10-09T115503Z](2026-10-09T115503Z/report.md) | 2026-10-09T12:59:43.538573+00:00 | MotionScript / Scene IR 0.5.0 | 202 tests + typechecks PASS; global paint order corrected; LOT01 local FAIL; incomplete capture/reference quarantines; budget-exhausted with finalization overrun |
 | [2026-10-08T140610Z](2026-10-08T140610Z/report.md) | 2026-10-08T15:08:19.064275+00:00 | MotionScript / Scene IR 0.5.0 | 194 tests + typechecks PASS; spatial cuts corrected; LOT01 local visual FAIL; phase A paint order next; budget-exhausted |
 | [2026-10-08T123430Z](2026-10-08T123430Z/report.md) | 2026-10-08T13:33:46.603914+00:00 | MotionScript / Scene IR 0.5.0 | 186 tests + typechecks PASS; clipped cubic morph fixed; Wave full-window PASS; corpus FAIL/incomplete; budget-exhausted |
@@ -28,7 +29,7 @@ Next Baseline reads [implementation-pin.json](implementation-pin.json) and resto
 
 `2026-10-07-baseline` is historical. Do not edit it. Do not use it as `comparedWith` once a newer run exists.
 
-Manifest / results / evidence for the newest run live under `2026-10-08T140610Z/`.
+Manifest / results / evidence for the foundation run live under `2026-10-29T165600Z/`; the latest historical corpus attempt remains under `2026-10-09T115503Z/`.
 
 `evaluation/evidence/` is scratch space for the harness. Copy a finished run into a new `docs/evaluations/<run-id>/` directory. Do not point the index at the scratch directory.
 

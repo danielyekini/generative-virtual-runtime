@@ -1,3 +1,4 @@
+import { frameTelemetry } from "./telemetry";
 import { createStage } from "./activities/stage";
 import { createWorkspace } from "./activities/workspace";
 import type { GvrBridge } from "./bridge";
@@ -93,9 +94,8 @@ show(readLocation());
 requestAnimationFrame(function loop(now: number) {
   const delta = Math.min(100, now - lastWall);
   lastWall = now;
-  active.tick(now, delta);
-  active.draw();
-  publish();
+  const work = () => { active.tick(now, delta); active.draw(); publish(); };
+  if (frameTelemetry) frameTelemetry.frame(now, work); else work();
   requestAnimationFrame(loop);
 });
 

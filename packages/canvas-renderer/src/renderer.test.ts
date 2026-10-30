@@ -1,3 +1,5 @@
+import { compileMotionScript } from "@gvr/compiler";
+import { AnimationRuntime } from "@gvr/runtime";
 import { describe, expect, it } from "vitest";
 import {
   deviceFitMatrix,
@@ -263,5 +265,33 @@ describe("CanvasRenderer", () => {
     };
     const { ctx } = render(frame, 1280, 720, 1);
     expect(ctx.calls.some((call) => call.name === "filter" && call.args[0] === "blur(6px)")).toBe(true);
+  });
+});
+
+// The recorder observes actual CanvasRenderer calls on both routing branches.
+
+describe("hierarchical paint ordering through CanvasRenderer", () => {
+  it("preserves hierarchical sibling order through CanvasRenderer", () => {
+    for (const scope of ["", "isolated true;"]) {
+      const source = `scene "order" { version "0.2"; viewport (100, 100); background #000000; duration 1s; requires "compositing.isolatedOpacity"; };
+        group front { zIndex 10; ${scope}
+          rectangle red { size (20,20); fill #ff0000; zIndex 2; };
+          group inner { zIndex 1; ${scope}
+            rectangle blue { size (20,20); fill #0000ff; zIndex 3; };
+            rectangle green { size (20,20); fill #00ff00; zIndex 0; };
+            rectangle tie { size (20,20); fill #ffff00; zIndex 0; };
+          };
+        };
+        rectangle back { size (20,20); fill #ffffff; zIndex -1; };
+        complete;`;
+      const compiled = compileMotionScript(source);
+      expect(compiled.diagnostics).toEqual([]);
+      const frame = new AnimationRuntime(compiled.scene!).evaluate(0);
+      expect(frame.drawItems.map(item => item.nodeId)).toEqual(["back", "front.inner.green", "front.inner.tie", "front.inner.blue", "front.red"]);
+      const {ctx} = render(frame, 100, 100, 1);
+      expect(ctx.calls.filter(call => call.name === "fill").map(call => call.fillStyle)).toEqual([
+        "rgba(255, 255, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 0, 1)"
+      ]);
+    }
   });
 });

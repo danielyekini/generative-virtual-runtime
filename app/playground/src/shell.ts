@@ -1,3 +1,4 @@
+import { telemetry } from "./telemetry";
 import { CanvasRenderer } from "@gvr/canvas-renderer";
 import type { ResolvedFrame } from "@gvr/schema";
 import { clearCanvas } from "./describe";
@@ -83,11 +84,11 @@ export class Shell {
     generated: must<HTMLCanvasElement>("view-generated"),
   };
   readonly renderers = {
-    single: new CanvasRenderer(this.canvases.single),
-    a: new CanvasRenderer(this.canvases.a),
-    b: new CanvasRenderer(this.canvases.b),
-    system: new CanvasRenderer(this.canvases.system),
-    generated: new CanvasRenderer(this.canvases.generated),
+    single: new CanvasRenderer(this.canvases.single, telemetry),
+    a: new CanvasRenderer(this.canvases.a, telemetry),
+    b: new CanvasRenderer(this.canvases.b, telemetry),
+    system: new CanvasRenderer(this.canvases.system, telemetry),
+    generated: new CanvasRenderer(this.canvases.generated, telemetry),
   };
 
   private readonly status = must<HTMLElement>("status");

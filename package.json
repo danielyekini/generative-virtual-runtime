@@ -10,7 +10,7 @@
   "scripts": {
     "test": "vitest run",
     "validate-ir": "tsx packages/schema/src/cli.ts",
-    "typecheck": "tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json",
+    "typecheck": "tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json && tsc --noEmit -p evaluation/bench/tsconfig.json",
     "import-fixture": "tsx packages/format-import-core/src/cli.ts",
     "import-lottie": "tsx packages/format-lottie/src/cli.ts",
     "import-svg": "tsx packages/format-svg/src/cli.ts",
@@ -18,7 +18,8 @@
     "dev:runtime": "npm run dev -w @gvr/playground",
     "dev:streaming": "npm run dev -w @gvr/playground",
     "dev:presentation": "npm run dev -w @gvr/playground",
-    "frames": "tsx fixtures/write-frames.ts"
+    "frames": "tsx fixtures/write-frames.ts",
+    "benchmark": "tsx evaluation/bench/run.mts"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

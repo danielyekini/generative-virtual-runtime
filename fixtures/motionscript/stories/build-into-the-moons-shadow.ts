@@ -536,7 +536,7 @@ function labelTrack(t: number): Pt {
 const TRACK = `move (${num(OBS.x + 18)}, ${num(EARTH.y - 48)}); line (${num(OBS.x + 18)}, ${num(EARTH.y + 52)});`;
 
 function system(labels: boolean, coneOpacity: number, rayWidth: number, clip: boolean): string {
-  const label = (content: string, x: number, y: number, size: number, align: "center" | "right") =>
+  const label = (content: string, x: number, y: number, size: number, align: "left" | "center" | "right") =>
     labels
       ? `text name {
       content "${content}";
