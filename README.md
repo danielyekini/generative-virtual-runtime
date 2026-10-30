@@ -1,6 +1,10 @@
-# Generative Visual Runtime
+# Generative Virtual Runtime
 
-GVR is a portable animation stack: author in **MotionScript**, validate and sample **Scene IR**, then draw with a canvas renderer. Lottie and SVG importers lower into the same IR. A MotionScript emitter and round-trip verifier close the loop.
+GVR is a virtual runtime environment for live, on-the-fly generated software. Author in **MotionScript**, validate and sample **Scene IR**, then draw with a canvas renderer. Studio is the human and agent workbench; Lottie/SVG import and explicit comparison remain useful utilities. Interactive audiovisual teaching is the adopted direction, not current support.
+
+Start with the [charter](docs/project/charter.md), [roadmap](docs/project/roadmap.md), [authority map](docs/operations/authority.md), and [autonomous personas](docs/operations/README.md). GitHub issues/Project own active work; [config](docs/operations/config.json) records verified routing IDs. [Current capabilities](docs/reference/current-capabilities.md) distinguishes implementation from plans.
+
+Run `$gvr-engine-run` or `$gvr-product-run` to discover and resume the next task. Each has its own orchestrator and five-run clock. All PRs require `npm run verify`, permitted self-merge and cleanup of the owning merged branch. See [Git standards](docs/operations/git.md).
 
 Current languages are **MotionScript 0.5.0** and **Scene IR 0.5.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
 
@@ -97,7 +101,7 @@ These ids are listed in `docs/languages/*/versions/pending.md` and are **unsuppo
 
 `compositing.matte`, `compositing.mask`, `transform.skew`, `transform.autoOrient`, `geometry.repeater`, `geometry.mergePaths`, `text.animators`.
 
-The project aim is to grow Scene IR and MotionScript until modern Lottie and SVG can render. Those pending rows are gaps to close, not a closed V1 ceiling. Loops and function declarations are the only class that needs a design decision before implementation.
+Capability growth follows the adopted charter and live lane priorities. Pending registry rows are unsupported proposals, not an automatic parity queue or fixed language ceiling. Consequential new execution models require a recorded design decision.
 
 ---
 

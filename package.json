@@ -1,5 +1,5 @@
 {
-  "name": "generative-visual-runtime",
+  "name": "generative-virtual-runtime",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -9,22 +9,24 @@
   ],
   "scripts": {
     "test": "vitest run",
-    "validate-ir": "tsx packages/schema/src/cli.ts",
+    "validate-ir": "node --import tsx packages/schema/src/cli.ts",
     "typecheck": "tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json && tsc --noEmit -p evaluation/bench/tsconfig.json",
-    "import-fixture": "tsx packages/format-import-core/src/cli.ts",
-    "import-lottie": "tsx packages/format-lottie/src/cli.ts",
-    "import-svg": "tsx packages/format-svg/src/cli.ts",
+    "import-fixture": "node --import tsx packages/format-import-core/src/cli.ts",
+    "import-lottie": "node --import tsx packages/format-lottie/src/cli.ts",
+    "import-svg": "node --import tsx packages/format-svg/src/cli.ts",
     "dev:renderer": "npm run dev -w @gvr/playground",
     "dev:runtime": "npm run dev -w @gvr/playground",
     "dev:streaming": "npm run dev -w @gvr/playground",
     "dev:presentation": "npm run dev -w @gvr/playground",
-    "frames": "tsx fixtures/write-frames.ts",
-    "benchmark": "tsx evaluation/bench/run.mts"
+    "frames": "node --import tsx fixtures/write-frames.ts",
+    "benchmark": "node --import tsx evaluation/bench/run.mts",
+    "verify": "npm test && npm run typecheck && npm run build --workspace @gvr/playground && npm run validate-ir -- --manifest fixtures/ir/manifest.json && python3 -m unittest discover -s tools/gvr-ops/tests -v && python3 tools/gvr-ops/current_capabilities.py --check"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
-  }
+  },
+  "description": "GVR is a virtual runtime environment for live, on-the-fly generated software."
 }

@@ -2,7 +2,7 @@
 
 This file is the rule for versions, the capability registry, and evaluation runs. It does not grant support that `packages/schema/capabilities/registry.json` does not record.
 
-The strategy is reliable fidelity within a declared, useful source profile, followed by selective expansion. An unsupported or untested source construct is a candidate for expansion when it benefits that profile, not an obligation to implement every feature of every source format. Correct supported semantics and verify their fidelity before adding coverage. New nodes, paints, tracks, operators and render scopes use the normal version, registry and test process. Changes to the execution model, such as loops or function declarations, require a design decision.
+Product strategy and task routing follow the [charter](../project/charter.md) and [operating authority](../operations/authority.md), adopted 30 October 2026. For an explicit source-fidelity claim, work within its declared useful profile, correct supported semantics before extending that profile, and verify the affected claim. Unsupported/untested source constructs are candidates when useful, not a universal parity obligation. Native capability work does not require unrelated whole-corpus certification. New nodes, paints, tracks, operators and render scopes use the normal version, registry and test process. Changes to the execution model, such as loops or function declarations, require a design decision.
 
 ## Authority
 
@@ -66,7 +66,7 @@ A 0.1 consumer accepts wire `0.1` and rejects wire `0.2` before playback. A 0.2 
 4. A support claim of `exact`, `approximate`, or `unsupported` names a scope and at least one existing conformance test. `exact` is that scope, not every variation of the feature. `untested` is not a support claim.
 5. The registry separates language expressiveness from importer coverage. A feature may compile and draw while one adapter still cannot import it.
 
-## Evaluation loop
+## Evaluation loop (explicit source-fidelity claims only)
 
 Each run is a new directory `docs/evaluations/<run-id>/` with `report.md`, `manifest.json`, and `results.json`. The run pins source hashes, the implementation revision (`git` SHA when clean, otherwise a complete source snapshot), language and IR versions, the reference player, and the comparison settings. It does not edit an older run. The next Baseline reads `docs/evaluations/implementation-pin.json`.
 

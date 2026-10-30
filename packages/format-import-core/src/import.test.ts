@@ -11,7 +11,6 @@ import { displayedScene, formatImportReport, retainedScene } from "./report";
 import { allocateId, framesToMs, sanitiseName, secondsToMs, yUpToYDown } from "./normalise";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../../..");
-const tsx = join(root, "node_modules/tsx/dist/cli.mjs");
 const cli = join(root, "packages/format-import-core/src/cli.ts");
 
 function fixture(name: string): string {
@@ -35,7 +34,7 @@ function walk(dir: string): string[] {
 function runCli(file?: string): { code: number; stdout: string } {
   const args = file ? [cli, file] : [cli];
   try {
-    const stdout = execFileSync(process.execPath, [tsx, ...args], { cwd: root, encoding: "utf8" });
+    const stdout = execFileSync(process.execPath, ["--import", "tsx", ...args], { cwd: root, encoding: "utf8" });
     return { code: 0, stdout };
   } catch (error) {
     const failed = error as { status?: number; stdout?: string | Buffer };
