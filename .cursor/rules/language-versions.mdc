@@ -17,4 +17,4 @@ Wire strings (`0.1`, `0.2`) are coarse family ids. Consumers distinguish additiv
 
 Evaluation Baselines pin `git rev-parse HEAD` (clean tree) or a complete source snapshot. See `docs/evaluations/implementation-pin.json` and `docs/evaluations/lottie-fidelity-loop-prompt.md`.
 
-There is no V1 feature ceiling. Add Scene IR and MotionScript capabilities needed to render modern Lottie and SVG. Path morph, mattes, animated paint, and repeater/merge are in that set. Stop for a design decision only for a new execution model, such as loops or function declarations.
+Follow the current root AGENTS.md, charter and owning workstream direction. Legacy format parity is not the mission or a universal gate. Capability changes need live task justification; consequential alternatives and new execution models need a bounded recorded decision. Preserve valid versioning and scoped conformance requirements.

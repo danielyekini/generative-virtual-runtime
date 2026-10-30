@@ -1,5 +1,11 @@
 # MotionScript authoring workflow 1.1
 
+> Operating revision 2026-10-30: [current operations](../operations/README.md) and
+> [migration map](../operations/migration-map.md) own new work routing and full-test/Git
+> gates. This procedure is scoped to explicit imported-program refinement/source-fidelity
+> claims. Its historical records and valid quality/storage rules remain; it does not
+> require universal parity, native round trips or a separate reviewer.
+
 Status: stable process contract. Ordinary authoring agents must not edit this file. A workflow change requires an explicit operator request and a separately recorded revision. Supporting documents may evolve autonomously under the documentation policy.
 
 ## Responsibility

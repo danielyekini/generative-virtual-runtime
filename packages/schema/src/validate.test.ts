@@ -72,14 +72,13 @@ describe("fixture harness", () => {
   });
 
   it("prints PASS and FAIL from the command line", () => {
-    const tsx = resolve(repo, "node_modules/tsx/dist/cli.mjs");
-    const pass = execFileSync(process.execPath, [tsx, "packages/schema/src/cli.ts", "fixtures/ir/valid/minimal.json"], {
+    const pass = execFileSync(process.execPath, ["--import", "tsx", "packages/schema/src/cli.ts", "fixtures/ir/valid/minimal.json"], {
       cwd: repo,
       encoding: "utf8",
     });
     expect(pass.trim()).toBe("PASS");
     expect(() =>
-      execFileSync(process.execPath, [tsx, "packages/schema/src/cli.ts", "fixtures/ir/invalid/invalid-opacity.json"], {
+      execFileSync(process.execPath, ["--import", "tsx", "packages/schema/src/cli.ts", "fixtures/ir/invalid/invalid-opacity.json"], {
         cwd: repo,
         encoding: "utf8",
       }),
