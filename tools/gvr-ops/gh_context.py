@@ -14,6 +14,11 @@ def gh(args,payload=None):
  v=json.loads(r.stdout)
  if isinstance(v,dict) and v.get('errors'):raise RuntimeError('GraphQL returned errors: '+str(v['errors'])[:400])
  return v
+def resolve_repository(config):
+ if not config.get('repository_id'):return config['repository']
+ repository=gh(['api',f"repositories/{config['repository_id']}"])
+ if str(repository.get('id'))!=str(config['repository_id']):raise RuntimeError('Repository identity mismatch')
+ return repository['full_name']
 def fetch_items(config):
  cursor=None;items=[]
  while True:
@@ -81,6 +86,7 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('--config',default='docs/operations/config.json');ap.add_argument('--lane',choices=['engine','product'],required=True);ap.add_argument('--mode',choices=['route','context','inbox','intake-receipt'],default='route');ap.add_argument('--persona');ap.add_argument('--agent-id',default=os.getenv('GVR_AGENT_ID'));ap.add_argument('--session-id',default=os.getenv('GVR_RUN_ID'));ap.add_argument('--receipt');a=ap.parse_args()
  c=json.loads(Path(a.config).read_text())
  if not c.get('installed') or not c['project'].get('id'):raise SystemExit('Installation incomplete: verify live Project and routing config.')
+ c['repository']=resolve_repository(c)
  items=[normalize(i) for i in fetch_items(c)]
  pages=gh(['api','--paginate','--slurp',f"repos/{c['repository']}/issues?state=open&labels=kind%3Arequest&per_page=100"])
  all_mail,mail=request_flags([x for p in pages for x in p if 'pull_request' not in x],a.lane)

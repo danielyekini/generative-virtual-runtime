@@ -1,195 +1,200 @@
 {
   "schema_version": 1,
-  "repository": "danielyekini/generative-visual-runtime",
+  "repository": "danielyekini/generative-virtual-runtime",
   "installed": false,
   "project": {
     "owner": "danielyekini",
-    "number": null,
+    "number": 3,
     "id": null,
-    "url": null,
+    "url": "https://github.com/users/danielyekini/projects/3",
     "field_map": {},
-    "views_verified": false
+    "views_verified": false,
+    "title": "Generative Virtual Runtime"
   },
   "issues": {
     "OPS001": {
       "number": 13,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/13"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/13"
     },
     "M1": {
       "number": 14,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/14"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/14"
     },
     "M2": {
       "number": 15,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/15"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/15"
     },
     "M3": {
       "number": 16,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/16"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/16"
     },
     "M4": {
       "number": 17,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/17"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/17"
     },
     "M5": {
       "number": 18,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/18"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/18"
     },
     "M6": {
       "number": 19,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/19"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/19"
     },
     "E001": {
       "number": 20,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/20"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/20"
     },
     "E002": {
       "number": 21,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/21"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/21"
     },
     "E003": {
       "number": 22,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/22"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/22"
     },
     "E004": {
       "number": 23,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/23"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/23"
     },
     "E005": {
       "number": 24,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/24"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/24"
     },
     "E006": {
       "number": 25,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/25"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/25"
     },
     "E007": {
       "number": 26,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/26"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/26"
     },
     "E008": {
       "number": 27,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/27"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/27"
     },
     "E009": {
       "number": 28,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/28"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/28"
     },
     "E010": {
       "number": 29,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/29"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/29"
     },
     "E011": {
       "number": 30,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/30"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/30"
     },
     "E012": {
       "number": 31,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/31"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/31"
     },
     "E013": {
       "number": 32,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/32"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/32"
     },
     "E014": {
       "number": 33,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/33"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/33"
     },
     "E015": {
       "number": 34,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/34"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/34"
     },
     "E016": {
       "number": 35,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/35"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/35"
     },
     "E017": {
       "number": 36,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/36"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/36"
     },
     "E018": {
       "number": 37,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/37"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/37"
     },
     "E019": {
       "number": 38,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/38"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/38"
     },
     "E020": {
       "number": 39,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/39"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/39"
     },
     "E021": {
       "number": 40,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/40"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/40"
     },
     "E022": {
       "number": 41,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/41"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/41"
     },
     "P001": {
       "number": 42,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/42"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/42"
     },
     "P002": {
       "number": 43,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/43"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/43"
     },
     "P003": {
       "number": 44,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/44"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/44"
     },
     "P004": {
       "number": 45,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/45"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/45"
     },
     "P005": {
       "number": 46,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/46"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/46"
     },
     "P006": {
       "number": 47,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/47"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/47"
     },
     "P007": {
       "number": 48,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/48"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/48"
     },
     "P008": {
       "number": 49,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/49"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/49"
     },
     "P009": {
       "number": 50,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/50"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/50"
     },
     "P010": {
       "number": 51,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/51"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/51"
     },
     "P011": {
       "number": 52,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/52"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/52"
     },
     "P012": {
       "number": 53,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/53"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/53"
     },
     "P013": {
       "number": 54,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/54"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/54"
     },
     "X001": {
       "number": 55,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/55"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/55"
     },
     "X002": {
       "number": 56,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/56"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/56"
     },
     "OPS002": {
       "number": 59,
-      "url": "https://github.com/danielyekini/generative-visual-runtime/issues/59"
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/59"
+    },
+    "OPS003": {
+      "number": 61,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/61"
     }
   },
   "features": {
@@ -217,6 +222,7 @@
   },
   "authority_note": "No active issue state is stored here. Installer replaces null routing IDs only with verified GitHub values.",
   "setup_blockers": [
-    "Authenticate GitHub CLI with repository and project scope; connector issue access cannot create/query Projects v2."
-  ]
+    "Authenticate GitHub CLI to apply Project #3 membership, native hierarchy, milestones and verify live routing; reconcile the remote repository name before installation completion."
+  ],
+  "repository_id": 1409281098
 }

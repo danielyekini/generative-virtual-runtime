@@ -1,5 +1,5 @@
 {
-  "name": "generative-visual-runtime",
+  "name": "generative-virtual-runtime",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -27,5 +27,6 @@
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
-  }
+  },
+  "description": "GVR is a virtual runtime environment for live, on-the-fly generated software."
 }

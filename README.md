@@ -1,6 +1,6 @@
-# Generative Visual Runtime
+# Generative Virtual Runtime
 
-GVR is the native visual execution engine for a progressive, speech-first software-output system. Author in **MotionScript**, validate and sample **Scene IR**, then draw with a canvas renderer. Studio is the human and agent workbench; Lottie/SVG import and explicit comparison remain useful utilities. Interactive audiovisual teaching is the adopted direction, not current support.
+GVR is a virtual runtime environment for live, on-the-fly generated software. Author in **MotionScript**, validate and sample **Scene IR**, then draw with a canvas renderer. Studio is the human and agent workbench; Lottie/SVG import and explicit comparison remain useful utilities. Interactive audiovisual teaching is the adopted direction, not current support.
 
 Start with the [charter](docs/project/charter.md), [roadmap](docs/project/roadmap.md), [authority map](docs/operations/authority.md), and [autonomous personas](docs/operations/README.md). GitHub issues/Project own active work; [config](docs/operations/config.json) records verified routing IDs. [Current capabilities](docs/reference/current-capabilities.md) distinguishes implementation from plans.
 

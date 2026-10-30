@@ -2,16 +2,51 @@ import json
 import re
 import sys
 import unittest
+import io
+import tempfile
+from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'tools/gvr-ops'))
-from gh_context import fetch_items, normalize, select, claims_and_handover
+from gh_context import fetch_items, normalize, select, claims_and_handover, resolve_repository
 from complete_setup import desired
+import complete_setup
 
 
 class InstallationAcceptance(unittest.TestCase):
+    def test_repository_lookup_survives_remote_name_changes_by_stable_id(self):
+        with patch('gh_context.gh', return_value={'id': 7, 'full_name': 'owner/current-name'}):
+            self.assertEqual(resolve_repository({'repository_id': 7, 'repository': 'owner/intended-name'}), 'owner/current-name')
+        with patch('gh_context.gh', return_value={'id': 8, 'full_name': 'owner/other'}):
+            with self.assertRaises(RuntimeError):
+                resolve_repository({'repository_id': 7})
+
+    def test_setup_plan_honors_explicit_project_and_never_creates_parallel_board(self):
+        config = {'repository_id': 7, 'repository': 'owner/intended-name',
+                  'project': {'number': 3, 'owner': 'owner', 'url': 'https://github.com/users/owner/projects/3'},
+                  'issues': {'E001': {'number': 20}}}
+        issue = {'number': 20, 'body': '<!-- gvr-key: E001 -->'}
+        def api(*args, **kwargs):
+            if args[:2] == ('api', 'repositories/7'):
+                return {'id': 7, 'full_name': 'owner/current-name'}
+            if args[:3] == ('api', '--paginate', '--slurp'):
+                return [[issue]]
+            if args[:3] == ('project', 'view', 3):
+                return {'number': 3, 'id': 'actual-project', 'url': config['project']['url'], 'title': 'Existing project'}
+            raise AssertionError('Unexpected mutation or board selection: ' + str(args))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'config.json'
+            path.write_text(json.dumps(config))
+            output = io.StringIO()
+            with patch.object(complete_setup, 'CONFIG', path), patch.object(complete_setup, 'gh', side_effect=api), \
+                 patch.object(sys, 'argv', ['complete_setup.py']), redirect_stdout(output):
+                complete_setup.main()
+            value = json.loads(output.getvalue())
+            self.assertFalse(value['network_mutations'])
+            self.assertEqual(value['existing_project']['number'], 3)
+
     def test_paginated_project_response_keeps_actual_fields_and_issue_identity(self):
         item = {'id': 'item', 'content': {'number': 20, 'title': 'Atomic deltas',
                 'body': '<!-- gvr-key: E001 -->\n<!-- gvr-dependencies:  -->', 'state': 'OPEN',

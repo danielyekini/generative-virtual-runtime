@@ -1,6 +1,6 @@
 # GitHub Project and work-item authority
 
-Use one repository-linked GitHub Projects (v2) project with Engine, Product,
+Use the configured repository-linked [Generative Virtual Runtime Project #3](https://github.com/users/danielyekini/projects/3) with Engine, Product,
 Milestones, Requests and Human verification views. Its URL/IDs/field mappings
 are recorded in config.json by installation. Issues/subissues are the work items;
 issue bodies own requirements/acceptance/handover, project fields own status,
@@ -43,3 +43,8 @@ Stable keys survive deduplication and are mapped to real issue URLs in config.
 Once seeded, edit live issues and fields, not the seed file. Refresh direction
 documents only when the goal/sequence changes. Orchestrator mail is excluded
 from worker queues and ordinary context packets.
+
+Overarching goals use repository milestones M1–M6 as well as parent goal issues.
+Use native parent/subissue links for related execution work and OPS001 children;
+read back hierarchy and milestone assignments. The explicit Project number/URL
+in config takes precedence over title discovery; do not create a parallel board.

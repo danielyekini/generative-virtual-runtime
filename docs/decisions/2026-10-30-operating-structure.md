@@ -1,6 +1,6 @@
 # Adopt two coordinated workstreams
 
-Status: adopted user direction, 30 October 2026. Work item: [OPS001](https://github.com/danielyekini/generative-visual-runtime/issues/13).
+Status: adopted user direction, 30 October 2026. Work item: [OPS001](https://github.com/danielyekini/generative-virtual-runtime/issues/13).
 
 Use repo-local run/orchestrator personas for Engine and Product, independent
 five-terminal-run clocks, immediate same-session request intake and GitHub

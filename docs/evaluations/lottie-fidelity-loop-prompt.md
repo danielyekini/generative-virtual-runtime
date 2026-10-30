@@ -6,7 +6,7 @@
 > claims. Its historical records and valid quality/storage rules remain; it does not
 > require universal parity, native round trips or a separate reviewer.
 
-Work in the generative-visual-runtime repository. Establish trustworthy source conversion, semantic round trip and visual quality for the declared animation test set; expand useful missing capabilities within that profile. MotionScript is the authoring language and Scene IR is the executable representation. Importing another format does not require reproducing its entire language. Do not execute this workflow merely because you are editing this prompt.
+Work in the generative-virtual-runtime repository. Establish trustworthy source conversion, semantic round trip and visual quality for the declared animation test set; expand useful missing capabilities within that profile. MotionScript is the authoring language and Scene IR is the executable representation. Importing another format does not require reproducing its entire language. Do not execute this workflow merely because you are editing this prompt.
 
 ## Read first and preserve authority
 

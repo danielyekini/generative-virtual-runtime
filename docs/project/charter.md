@@ -5,7 +5,9 @@ orchestrators may refine delivery within this charter. Record material changes.
 
 ## Vision
 
-Build a speech-first, LLM-powered software-output system. The model constructs
+Build Generative Virtual Runtime (GVR), a virtual runtime environment for live,
+on-the-fly generated software with visual, audible and interactive capabilities.
+Use speech-first, LLM-powered generation as the primary product interface. The model constructs
 useful visual and audible output progressively while the user watches, and
 eventually creates persistent, interactive miniature programs. MotionScript and
 GVR are the underlying authoring/execution technology. Education is the primary

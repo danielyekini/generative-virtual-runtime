@@ -7,7 +7,7 @@
 > require universal parity, native round trips or a separate reviewer.
 > This older installation prompt is superseded process evidence; do not reinstall it.
 
-Work in danielyekini/generative-visual-runtime. Install this documentation bundle and separate authoring from fidelity. This task is documentation and process integration, not implementation of new language capabilities. Preserve unrelated working-tree changes. Read root and applicable AGENTS.md first.
+Work in danielyekini/generative-virtual-runtime. Install this documentation bundle and separate authoring from fidelity. This task is documentation and process integration, not implementation of new language capabilities. Preserve unrelated working-tree changes. Read root and applicable AGENTS.md first.
 
 ## Grounding
 
