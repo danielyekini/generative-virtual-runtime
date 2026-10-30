@@ -102,3 +102,5 @@ const api = {
   }
 };
 Object.assign(window,{benchmark:api});
+
+import "./progressive/main";

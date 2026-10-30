@@ -468,8 +468,9 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       session.diagnostics.push(...unit.errors);
       return false;
     }
-    const snapshot = measured(session, 'compile.snapshot_ms', () => structuredClone(session.scene));
+    const snapshot = measured(session, 'compile.snapshot_ms', () => snapshotScene(session.scene));
     const sealed = session.sealedThroughMs;
+    const state = {trackCount: session.trackCount, stepCount: session.stepCount, fontCount: session.fontCount, frozen: session.frozen};
     const constants = new Map(session.constants);
     const before = capture(session);
     let failed = false;
@@ -477,7 +478,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       if (!applyUnit(session, item, false)) failed = true;
     }
     if (failed) {
-      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
+      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
       return false;
     }
     if (emitDelta) noteChanges(session, unit, before);
@@ -487,14 +488,15 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     session.diagnostics.push(...unit.errors);
     return false;
   }
-  const snapshot = measured(session, 'compile.snapshot_ms', () => structuredClone(session.scene));
+  const snapshot = measured(session, 'compile.snapshot_ms', () => snapshotScene(session.scene));
   const sealed = session.sealedThroughMs;
+  const state = {trackCount: session.trackCount, stepCount: session.stepCount, fontCount: session.fontCount, frozen: session.frozen};
   const constants = new Map(session.constants);
   const beforeDiag = session.diagnostics.length;
   const before = capture(session);
   measured(session, 'compile.lower_ms', () => lower(session, unit));
   if (session.diagnostics.length > beforeDiag) {
-    measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
+    measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
     return false;
   }
   const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
@@ -504,13 +506,29 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     const fresh = validated.diagnostics.filter((item) => !priorKeys.has(`${item.code}:${item.message}`));
     if (fresh.length > 0) {
       session.diagnostics.push(...fresh);
-      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants));
+      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
       return false;
     }
   }
   if (unit.kind === "seal") session.frozen = true;
   if (emitDelta) noteChanges(session, unit, before);
   return true;
+}
+
+/** Lowering appends/replaces list entries; accepted nested values are immutable.
+ * Copy list containers only, retaining geometry/keyframes across transactions.
+ * See docs/design/capacity-transactions.md before adding in-place mutations. */
+function snapshotScene(scene: SceneIR): SceneIR {
+  return {
+    ...scene,
+    nodes: [...scene.nodes], cameras: [...scene.cameras], resources: [...scene.resources],
+    timeline: {...scene.timeline, tracks: [...scene.timeline.tracks], steps: [...scene.timeline.steps]},
+    ...(scene.compositions ? {compositions: [...scene.compositions]} : {}),
+    ...(scene.instances ? {instances: [...scene.instances]} : {}),
+    ...(scene.timingScopes ? {timingScopes: [...scene.timingScopes]} : {}),
+    ...(scene.requiredCapabilities ? {requiredCapabilities: [...scene.requiredCapabilities]} : {}),
+    ...(scene.geometryOperators ? {geometryOperators: [...scene.geometryOperators]} : {}),
+  };
 }
 
 function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators">(
@@ -522,7 +540,8 @@ function restoreList<K extends "compositions" | "instances" | "timingScopes" | "
   else scene[key] = snapshot[key];
 }
 
-function restore(session: Session, snapshot: SceneIR, sealed: number, constants: Map<string, number>): void {
+function restore(session: Session, snapshot: SceneIR, sealed: number, constants: Map<string, number>, state: Pick<Session, "trackCount" | "stepCount" | "fontCount" | "frozen">): void {
+  Object.assign(session, state);
   session.scene.nodes = snapshot.nodes;
   session.scene.cameras = snapshot.cameras;
   session.scene.resources = snapshot.resources;
@@ -588,6 +607,10 @@ function lower(session: Session, unit: UnitAst): void {
     const resolved = resolveAddress(unit.target, nodeIds, ["main"]);
     if (!resolved.ok || resolved.animation !== "step" || resolved.target.kind !== "node") {
       session.diagnostics.push(problem("INVALID_TRACK_TARGET", "A step can write only a node's visible property.", unit.span));
+      return;
+    }
+    if (unit.timeMs + 1e-9 < session.sealedThroughMs) {
+      session.diagnostics.push(problem("INVALID_TIMING", `${unit.target} steps at ${unit.timeMs}ms, before the seal at ${session.sealedThroughMs}ms.`, unit.span));
       return;
     }
     if (unit.timeMs < 0 || unit.timeMs > session.scene.timeline.durationMs) {

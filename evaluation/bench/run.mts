@@ -35,7 +35,37 @@ try {
  const overhead=await evaluate('window.benchmark.overhead()');
  writeFileSync(resolve(out,'overhead.json'),JSON.stringify(overhead,null,2));
  writeFileSync(resolve(out,'environment.json'),JSON.stringify({node:process.version,browser:chromeVersion(binary),platform:platform(),arch:arch(),cpu:cpus()[0]?.model,commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),viewport:{width:1280,height:720,dpr:1}},null,2));
- if(args.includes('--correctness')) {
+ if(args.includes('--scaling')) {
+   const result=await evaluate('window.progressive.scale()');writeFileSync(resolve(out,'scaling.json'),JSON.stringify(result,null,2));
+ } else if(args.includes('--progressive')) {
+   const source=readFileSync('samples/motionscript/a-circle-in-motion/experimental/progressive-capacity/program.ms','utf8');
+   const baseline=readFileSync('fixtures/motionscript/stories/a-circle-in-motion.ms','utf8');
+   const manifest=JSON.parse(readFileSync('samples/motionscript/a-circle-in-motion/experimental/progressive-capacity/manifest.json','utf8'));
+   function saveCaptures(result:any,prefix:string) {
+    for(const capture of result.captures??[]){const filename=`${prefix}-${capture.name}.png`;writeFileSync(resolve(out,filename),Buffer.from(capture.png.split(',')[1],'base64'));capture.png=filename;}
+   }
+   const verification=await evaluate(`window.progressive.verify(${JSON.stringify(source)},${JSON.stringify(baseline)})`);
+   saveCaptures(verification,'verification');
+   writeFileSync(resolve(out,'verification.json'),JSON.stringify(verification,null,2));
+   const runs=[];
+   for(const rate of [4096,12288])for(const pattern of [[512],[17,2048,127,509]]) {
+    console.log(`progressive ${rate} ${pattern}`);
+    const options={bytesPerSecond:rate,pattern,mode:'normal',firstSealBytes:manifest.seals[0].sourceBytes};
+    const result=await evaluate(`window.progressive.run(${JSON.stringify(source)},${JSON.stringify(options)})`);
+    saveCaptures(result,`run-${runs.length}`);
+    const screen=await cdp.send('Page.captureScreenshot',{format:'png'},sessionId);writeFileSync(resolve(out,`run-${runs.length}-page.png`),Buffer.from(screen.data,'base64'));runs.push(result);
+    writeFileSync(resolve(out,'progressive.json'),JSON.stringify({verification:verification.ok,runs},null,2));
+   }
+   for(const mode of ['starvation','truncation','rejection','cancellation']) {
+    console.log(`progressive ${mode}`);
+    const options={bytesPerSecond:12288,pattern:[512],mode,firstSealBytes:manifest.seals[0].sourceBytes};
+    const result=await evaluate(`window.progressive.run(${JSON.stringify(source)},${JSON.stringify(options)})`);
+    saveCaptures(result,mode);
+    const screen=await cdp.send('Page.captureScreenshot',{format:'png'},sessionId);writeFileSync(resolve(out,`${mode}-page.png`),Buffer.from(screen.data,'base64'));runs.push(result);
+    writeFileSync(resolve(out,'progressive.json'),JSON.stringify({verification:verification.ok,runs},null,2));
+   }
+   process.exitCode=verification.ok && runs.filter(r=>r.options.mode==='normal').every(r=>r.completion?.ok && r.firstMotion?.sourceComplete===false)?0:1;
+ } else if(args.includes('--correctness')) {
    const header='scene "regression" { version "0.2"; viewport (1280,720); background #101014; duration 1s; };';
    const scope='group front { zIndex 10; isolated true; rectangle red { size (100,100); position (200,200); fill #ff0000; }; }; rectangle back { zIndex -1; size (100,100); position (200,200); fill #0000ff; }; complete;';
    const trim='path ink { position (100,300); scale (30,1); stroke #ffffff width 8; move (0,0); line (10,0); move (20,0); line (30,0); }; operators ink { trim 0,1,0; }; complete;';

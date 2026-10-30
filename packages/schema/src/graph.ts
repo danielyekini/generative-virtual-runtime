@@ -101,8 +101,7 @@ export function logicalMatrix(
   return multiplyMat3(cameraViewMatrix(viewport, camera), world);
 }
 
-export function nodeDepth(nodes: readonly NodeDefinition[], id: string): number {
-  const index = indexNodes(nodes);
+export function nodeDepth(nodes: readonly NodeDefinition[], id: string, index: NodeIndex = indexNodes(nodes)): number {
   let depth = 0;
   let current = index.byId.get(id);
   const seen = new Set<string>();

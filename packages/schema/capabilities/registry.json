@@ -152,7 +152,8 @@
       "restrictions": ["V1 steps write only node visibility. A child step cannot reveal a hidden ancestor."],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
-        "packages/runtime/src/runtime.test.ts#hides a subtree with a step and does not let a child step reveal it"
+        "packages/runtime/src/runtime.test.ts#hides a subtree with a step and does not let a child step reveal it",
+        "packages/compiler/src/transactions.test.ts#rejects a visibility step before a seal while retaining boundary steps"
       ],
       "adapters": {
         "lottie": { "status": "untested", "scope": "In and out points become visibility steps, without a conformance assertion of the step times." },

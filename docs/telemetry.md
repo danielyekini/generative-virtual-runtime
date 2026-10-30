@@ -57,3 +57,17 @@ Chromium's optional `performance.memory` fields are measured JS heap bytes (brow
 A lifecycle series loads a scene runtime, plays five frames and disposes the renderer, while separately loading/cancelling a simulated incremental prefix and disposing its compiler/runtime. The immutable source/scene stays intentionally referenced by the enclosing benchmark. No forced GC is used. Heap samples alone cannot prove a leak or prove absence of retention. Image maps and weak-path-map ownership are released by renderer disposal; compiler disposal drops lexer/session/buffers; runtime disposal clears queues/scene. Studio cancellation disposes the replaced streaming owners. The complete-file compiler remains synchronous and cannot be interrupted mid-call; incremental cancellation takes effect between pushes.
 
 Source defaults are now 4 MiB, a provisional finite bound accommodating the 1.93 MB Crane story. Whole-file and incremental compilation enforce it, and imports share that default. Buffered parser declarations have a 1 MiB UTF-8 lexeme ceiling (excluding whitespace/comments); the 128 KiB prototype ceiling rejected the existing Square Wave streaming workload. Lexically incomplete fragments are still bounded by the 4 MiB total source ceiling. Runtime command queue depth remains 256 with explicit overflow rejection. Duration stays 60 seconds. No scene/node/geometry/expression ceiling was raised without an obstructing workload. Historical 512 KiB fidelity profiles, quarantines and published version files are unchanged; new policy does not retroactively pass them.
+
+## Practical capacity and progressive playback
+
+The [capacity decision](design/capacity-transactions.md) explains shallow compiler transactions, call-local validation indexes, sample-local frame graphs and the 2,000-node admission default. `compile.snapshot_ms` now measures container checkpoints rather than deep payload cloning. It still excludes validation.
+
+```sh
+npx tsx evaluation/bench/progressive/generate.mts
+npm run benchmark -- --out work/progressive --progressive
+npm run benchmark -- --out work/scaling --scaling
+```
+
+The progressive suite uses *A Circle in Motion*, 4 / 12 KiB/s simulated UTF-8 arrival and fixed/ragged byte fragmentation; it also runs forced starvation, truncation, rejection and cancellation. Its Worker arrival schedule is independent of RAF and bounded separately from compiler/runtime queues. Observed arrival, delivery lag, compile work, synchronous presentation, first visual/motion, seals and stall durations are reported separately. No model-generation claim follows from these rates. The original film is preserved; state/render comparisons include original key boundaries and intermediate samples.
+
+For a visible local demo, run `npm run benchmark -- --out work/demo --progressive` for evidence, or start `npx vite --host 127.0.0.1 --port 5201` from the repository root and open `http://127.0.0.1:5201/evaluation/bench/progressive.html`. The root dev server resolves workspace packages directly. Controls select arrival rate, fragmentation and failure scenario; Cancel releases the active stream.
