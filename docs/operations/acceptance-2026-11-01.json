@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-01",
+  "scope": "Installation fixtures only; no feature work or production terminal records",
+  "fixtures": {
+    "clock_issue": 63,
+    "request_issue": 64,
+    "state": "closed completed"
+  },
+  "hierarchy": {
+    "stable_keys": 48,
+    "native_parent_links": 39,
+    "milestones": 6,
+    "milestone_assignments": 43
+  },
+  "clocks": {
+    "before_review": {
+      "engine": {
+        "lane": "engine",
+        "terminal_runs": 5,
+        "unreviewed_run_ids": [
+          "install-fixture-engine-1",
+          "install-fixture-engine-2",
+          "install-fixture-engine-3",
+          "install-fixture-engine-4",
+          "install-fixture-engine-5"
+        ],
+        "unreviewed_count": 5,
+        "review_every": 5,
+        "review_due": true
+      },
+      "product": {
+        "lane": "product",
+        "terminal_runs": 1,
+        "unreviewed_run_ids": [
+          "install-fixture-product-1"
+        ],
+        "unreviewed_count": 1,
+        "review_every": 5,
+        "review_due": false
+      }
+    },
+    "after_review": {
+      "engine": {
+        "lane": "engine",
+        "terminal_runs": 6,
+        "unreviewed_run_ids": [
+          "install-fixture-engine-6"
+        ],
+        "unreviewed_count": 1,
+        "review_every": 5,
+        "review_due": false
+      },
+      "product": {
+        "lane": "product",
+        "terminal_runs": 1,
+        "unreviewed_run_ids": [
+          "install-fixture-product-1"
+        ],
+        "unreviewed_count": 1,
+        "review_every": 5,
+        "review_due": false
+      }
+    },
+    "passed": true
+  },
+  "routing": {
+    "request_updates": "PASS",
+    "new_session_reassessment": "PASS",
+    "same_session_clearance": "PASS",
+    "interrupted_claim_and_handover": "PASS",
+    "full_worker_dispatch": "PENDING authenticated Project query"
+  },
+  "real_ledgers": {
+    "engine_issue": 57,
+    "product_issue": 58,
+    "terminal_records": 0
+  },
+  "final_integration": "PENDING"
+}

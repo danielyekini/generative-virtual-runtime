@@ -5,9 +5,58 @@
   "project": {
     "owner": "danielyekini",
     "number": 3,
-    "id": null,
+    "id": "PVT_kwHOB8zWK84BpeNs",
     "url": "https://github.com/users/danielyekini/projects/3",
-    "field_map": {},
+    "field_map": {
+      "Status": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn5twQ",
+        "options": {
+          "Candidate": "627f4bb5",
+          "Ready": "6f49cf2a",
+          "In progress": "d04e455c",
+          "Blocked": "63b3e7f8",
+          "Human verification": "6ebe0b42",
+          "Deferred": "5d6c4bb8",
+          "Done": "3e01b845",
+          "Todo": "4b368228"
+        }
+      },
+      "Workstream": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn65x8",
+        "options": {
+          "Engine": "85fdff69",
+          "Product": "46f72516",
+          "Joint": "cbe9db29"
+        }
+      },
+      "Kind": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn654s",
+        "options": {
+          "Milestone": "1e6e63ee",
+          "Epic": "14dad7c9",
+          "Task": "c56ed57c",
+          "Bug": "85c2fa15",
+          "Experiment": "6b1aadc3",
+          "Decision": "06d19a90",
+          "Idea": "bc602a53",
+          "Request": "f5a2a36a",
+          "Review": "4b96583b"
+        }
+      },
+      "Priority": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn657k",
+        "options": {
+          "P0": "4ce9ea96",
+          "P1": "0eb465ed",
+          "P2": "1b945237",
+          "P3": "e305d5a1"
+        }
+      },
+      "Queue order": {
+        "id": "PVTF_lAHOB8zWK84BpeNszhn65-s",
+        "options": {}
+      }
+    },
     "views_verified": false,
     "title": "Generative Virtual Runtime"
   },
@@ -200,7 +249,7 @@
   "features": {
     "projects_read": false,
     "projects_write": false,
-    "native_subissues": false,
+    "native_subissues": true,
     "background_agent_wake": false,
     "repository_issue_write": true
   },
@@ -222,7 +271,33 @@
   },
   "authority_note": "No active issue state is stored here. Installer replaces null routing IDs only with verified GitHub values.",
   "setup_blockers": [
-    "Authenticate GitHub CLI to apply Project #3 membership, native hierarchy, milestones and verify live routing; reconcile the remote repository name before installation completion."
+    "Fresh authenticated Project membership/view readback and complete live worker dispatch acceptance; final full gate, self-merge and own-branch cleanup."
   ],
-  "repository_id": 1409281098
+  "repository_id": 1409281098,
+  "milestones": {
+    "M6": {
+      "number": 1,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/1"
+    },
+    "M5": {
+      "number": 2,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/2"
+    },
+    "M4": {
+      "number": 3,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/3"
+    },
+    "M3": {
+      "number": 4,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/4"
+    },
+    "M2": {
+      "number": 5,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/5"
+    },
+    "M1": {
+      "number": 6,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/6"
+    }
+  }
 }

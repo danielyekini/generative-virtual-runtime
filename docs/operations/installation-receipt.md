@@ -1,8 +1,11 @@
 # Operating structure installation receipt
 
-30 October 2026. Work item [OPS001 #13](https://github.com/danielyekini/generative-virtual-runtime/issues/13).
-State: **prepared; live Project setup and integration incomplete**. Routing config
-intentionally remains `installed=false`. Target board is the user-selected [Generative Virtual Runtime #3](https://github.com/users/danielyekini/projects/3), verified publicly. Its node/field IDs and writes still await authentication.
+Updated 1 November 2026. Work item [OPS001 #13](https://github.com/danielyekini/generative-virtual-runtime/issues/13).
+State: **GitHub structure configured; final authenticated routing and integration incomplete**.
+Routing config remains `installed=false` until the full live gate passes. The
+user-selected [Generative Virtual Runtime #3](https://github.com/users/danielyekini/projects/3)
+has verified project/field IDs in config. The repository identity and description
+have been updated and read back from GitHub.
 
 ## Actual preparation
 
@@ -16,7 +19,9 @@ intentionally remains `installed=false`. Target board is the user-selected [Gene
 - Created 44 seed issues exactly once after searching existing work (only unrelated
   Test 1 #12 existed). Keys/actual URLs are in config; no installed seed queue.
   Parent task links and explicit dependency markers are on live issues. All 48
-  supplied audit themes resolve through that map. Native subissues await a real probe.
+  supplied audit themes resolve through that map. All 39 native parent-child links are verified, with 6 repository milestones and
+  43 milestone assignments. There are 48 stable-key issues including the two clocks
+  and OPS002/OPS003; acceptance fixtures are separate and closed.
 - Created independent static clock issues: [Engine #57](https://github.com/danielyekini/generative-virtual-runtime/issues/57)
   and [Product #58](https://github.com/danielyekini/generative-virtual-runtime/issues/58).
   Both start at zero; installation/intake did not fabricate terminal run records.
@@ -38,14 +43,14 @@ intentionally remains `installed=false`. Target board is the user-selected [Gene
 | Complete repository tests | PASS, 221/221 across 31 files after OPS002 repair |
 | All existing typechecks / Studio production build | PASS; existing build bundle-size warning retained |
 | Schema fixture manifest | PASS |
-| Installed operations acceptance | PASS locally: 16 tests; independent clocks, concurrent review, dedup, intake clearance/new updates, worker filters/dependencies, recovery/handovers, PR lifecycle, pagination, config/persona structure |
+| Installed operations acceptance | PASS locally: 25 tests; independent clocks, concurrent review, dedup, intake clearance/new updates, worker filters/dependencies, recovery/handovers, PR lifecycle, pagination, config/persona structure |
 | Capability index | Generated from current releases/registry; freshness check PASS |
 | Issue/label/comment API | Actual create/update/readback PASS |
-| Projects v2 read/write, fields, link, native hierarchy | BLOCKED: connector has no Projects tools; local CLI/API unauthenticated |
+| Project structure | 48 keyed members plus existing Test 1; fields, repository link, 39 native links and 6 milestones configured/read back on 30 October. Public identity/fields/hierarchy rechecked 1 November; fresh authenticated membership readback pending |
 | Actual live dispatcher selecting E001/P001 | BLOCKED until Project IDs/fields/readback are available; config fails closed |
 | Runtime persona discovery | Five canonical SKILL.md files and root invocation/path routing verified; this Work runtime has no repo-skill auto-discovery/agent CLI. Explicit SKILL.md path is the supported fallback; no personal/global installation |
 | Duplicate installation | Bundled planner stable-key test PASS; one live issue set created. Actual second authenticated Project setup remains NOT_RUN |
-| Live requests after run one / fifth-run reviews | Helper behavior PASS; no synthetic terminal runs posted to production ledgers. Live API scenario remains NOT_RUN |
+| Live requests / independent fifth-run reviews | PASS using isolated fixtures #63/#64: request updates and new sessions retrigger intake, interrupted claims retain handover, duplicate terminal record counts once, Engine review covers exactly five records while concurrent sixth and Product record remain. Full dispatcher round trip pending; real clocks #57/#58 remain empty |
 | PR creation/merge/cleanup / final-main gate | Pending live setup and final verification; no premature merged claim |
 
 Initial full tests exposed two inherited `tsx` wrapper IPC failures (219 passed,
@@ -56,35 +61,36 @@ was skipped, weakened or removed. No sandbox permissions were bypassed.
 
 ## Exact continuation
 
-Authenticate GitHub CLI once for repository, Projects and workflow writes. The
-existing GitHub connector already has repository write/admin access but cannot
-lend its credential to the CLI or expose Projects operations. No token should be
-pasted into issues, documents or chat. The prepared setup helper accepts none.
+The CLI login from 30 October did not survive replacement of the transient runtime.
+The GitHub connector still supports repository writes but exposes no Projects API.
+Restore the same authorised repository/project/workflow CLI access, then read back
+all memberships and views, run the live dispatcher/receipt/recovery scenarios and
+repeat setup to verify idempotence. No token belongs in issues, documents or chat.
 
-With authenticated `gh` on PATH:
+Prepared commands (authenticated `gh` on PATH):
 
 ```sh
 python3 tools/gvr-ops/complete_setup.py
 python3 tools/gvr-ops/complete_setup.py --apply
+python3 tools/gvr-ops/configure_views.py --apply
 ```
 
-The helper targets the configured Project #3 and actual issue keys, verifies identities,
-links the repository, creates fields/items, gates dependencies, tries/readbacks
-native subissues, and creates/reuses repository milestones for M1–M6. Existing
-board items/options are retained, with an exact-value recovery snapshot before
-field-option changes. It leaves `installed=false`;
-schema/API behavior must be verified live before calling the installation complete.
-Never reset existing populated board field values from installation intentions.
+Setup preserves existing membership, populated fields, option IDs and custom views.
+The reader resolves Project indexing omissions through each issue's exact live
+membership, rejects ambiguity and normalises GitHub's `In Progress` display case.
+API credentials stay in memory; requests are restricted to `api.github.com`, with
+redirects and off-origin pagination rejected before transmission.
 
-Finish views for Engine, Product, Milestones, Requests and Human verification.
-Worker views exclude `audience:orchestrator`/reviews. Verify live API round trips,
-request intake and route/context for both lanes, then set installed true and
-record actual board/field/view IDs in config. Verify absence of background wake.
-Recheck main; run the entire final gate; open the linked passing installation PR,
-self-merge if protections permit, read back merged state/SHA, update main and
-remove only this run's merged remote/local branch. Leave OPS001 open until its
-full gate is met. Preserve OPS002's verification evidence and close only its
-completed repair scope upon integration.
+Six named views exist: Delivery, Engine, Product, Milestones, Requests and Human
+verification. The Engine browser view shows 20 indexed cards and two Ready tasks;
+#21/#39 require the verified membership fallback for routing. Keep that limitation
+explicit until GitHub's index catches up. No background LLM wake is configured.
+
+After live acceptance, mark installed, record verified view IDs and acceptance
+results, recheck main and run `npm run verify` on the final candidate. Self-merge
+only when actual checks/protections allow; read back merge SHA, verify final main
+and delete only this run's merged branch. OPS001/OPS002/OPS003 remain open until
+integration. No feature implementation, publication or deployment is included.
 
 First invocations after completion: `$gvr-engine-run` -> [E001 #20](https://github.com/danielyekini/generative-virtual-runtime/issues/20),
 `$gvr-product-run` -> [P001 #42](https://github.com/danielyekini/generative-virtual-runtime/issues/42).
@@ -101,8 +107,6 @@ measured bytes; this does not grant current support to future sound/interaction.
 
 Use the existing Project #3, not a second delivery board. OPS002 and OPS003 are
 installation children of OPS001; lane work remains nested under M1–M6 goal issues,
-with matching repository milestones for overarching goals. The current GitHub
-repository still needs its authenticated identity/description update. The setup
-helper resolves stable repository ID 1409281098, applies the intended identity,
-updates origin and then operates on the canonical server-returned name. It does
-not assume an intended URL already exists.
+with matching repository milestones for overarching goals. The remote repository now resolves to the intended identity by stable numeric ID
+1409281098. Current official descriptions state the product directly, without a
+rename announcement. Historical measured bytes remain immutable.

@@ -7,11 +7,14 @@ from datetime import datetime,timezone
 from pathlib import Path
 from ops_state import clock
 
-QUERY='''query($id:ID!,$after:String){node(id:$id){... on ProjectV2{items(first:100,after:$after){pageInfo{hasNextPage endCursor} nodes{id fieldValues(first:100){nodes{... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2SingleSelectField{name}}} ... on ProjectV2ItemFieldNumberValue{number field{... on ProjectV2Field{name}}} ... on ProjectV2ItemFieldTextValue{text field{... on ProjectV2Field{name}}}}} content{... on Issue{number title body url state stateReason labels(first:100){nodes{name}}}}}}}}}'''
+QUERY='''query($id:ID!,$after:String){node(id:$id){... on ProjectV2{items(first:100,after:$after){pageInfo{hasNextPage endCursor} nodes{id isArchived fieldValues(first:100){nodes{... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2SingleSelectField{name}}} ... on ProjectV2ItemFieldNumberValue{number field{... on ProjectV2Field{name}}} ... on ProjectV2ItemFieldTextValue{text field{... on ProjectV2Field{name}}}}} content{... on Issue{number title body url state stateReason labels(first:100){nodes{name}}}}}}}}}'''
+MEMBER_FIELDS='id isArchived project{id} fieldValues(first:100){nodes{... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2SingleSelectField{name}}} ... on ProjectV2ItemFieldNumberValue{number field{... on ProjectV2Field{name}}} ... on ProjectV2ItemFieldTextValue{text field{... on ProjectV2Field{name}}}}} content{... on Issue{number title body url state stateReason labels(first:100){nodes{name}}}}'
 def gh(args,payload=None):
- r=subprocess.run(['gh',*args],input=json.dumps(payload) if payload is not None else None,text=True,capture_output=True)
- if r.returncode:raise RuntimeError('GitHub command failed; verify project/issue access. Details: '+r.stderr[:400])
- v=json.loads(r.stdout)
+ from github_api import api,pages
+ if args[:2]==['api','graphql']:v=api('graphql','POST',payload)
+ elif args[:3]==['api','--paginate','--slurp']:v=pages(args[3])
+ elif len(args)==2 and args[0]=='api':v=api(args[1])
+ else:raise ValueError('Unsupported read-only API command')
  if isinstance(v,dict) and v.get('errors'):raise RuntimeError('GraphQL returned errors: '+str(v['errors'])[:400])
  return v
 def resolve_repository(config):
@@ -26,14 +29,29 @@ def fetch_items(config):
   n=v['data']['node']
   if not n:raise RuntimeError('Project is not accessible')
   page=n['items'];items.extend(page['nodes'])
-  if not page['pageInfo']['hasNextPage']:return items
+  if not page['pageInfo']['hasNextPage']:break
   cursor=page['pageInfo']['endCursor']
+ expected={int(v['number']) for v in config.get('issues',{}).values()}
+ missing=sorted(expected-{(i.get('content') or {}).get('number') for i in items})
+ if missing:
+  owner,name=config['repository'].split('/',1)
+  fields=MEMBER_FIELDS
+  selection=' '.join(f'i{number}:issue(number:{number}){{projectItems(first:100){{nodes{{{fields}}}}}}}' for number in missing)
+  query='query($owner:String!,$name:String!){repository(owner:$owner,name:$name){'+selection+'}}'
+  value=gh(['api','graphql','--input','-'],{'query':query,'variables':{'owner':owner,'name':name}})['data']['repository']
+  ids={i['id'] for i in items}
+  for number in missing:
+   matches=[i for i in ((value.get('i'+str(number)) or {}).get('projectItems',{}).get('nodes',[])) if i['project']['id']==config['project']['id']]
+   if len(matches)!=1:raise RuntimeError(f'Configured issue #{number} has no unique live Project membership.')
+   if matches[0]['id'] not in ids:items.append(matches[0]);ids.add(matches[0]['id'])
+ return items
 def normalize(item):
  c=item.get('content') or {}
  if not c.get('number'):return None
  fields={v['field']['name']:v.get('name',v.get('number',v.get('text'))) for v in item.get('fieldValues',{}).get('nodes',[]) if v.get('field')}
+ if isinstance(fields.get('Status'),str):fields['Status']=next((v for v in ('Candidate','Ready','In progress','Blocked','Human verification','Done','Deferred') if v.casefold()==fields['Status'].casefold()),fields['Status'])
  key=re.search(r'<!-- gvr-key: ([A-Z0-9]+) -->',c.get('body',''))
- return {**c,'key':key[1] if key else None,'fields':fields,'labels':[l['name'] for l in c.get('labels',{}).get('nodes',[])]}
+ return {**c,'isArchived':item.get('isArchived',False),'key':key[1] if key else None,'fields':fields,'labels':[l['name'] for l in c.get('labels',{}).get('nodes',[])]}
 def select(items,lane):
  keys=[i['key'] for i in items if i and i.get('key')]
  if len(keys)!=len(set(keys)):raise ValueError('Duplicate stable issue keys; reconcile through owning orchestrator.')
@@ -41,7 +59,7 @@ def select(items,lane):
  for i in items:
   if not i:continue
   f=i['fields'];labels=i['labels']
-  if 'audience:orchestrator' in labels or 'ops:clock' in labels:continue
+  if i.get('isArchived') or 'audience:orchestrator' in labels or 'ops:clock' in labels:continue
   if f.get('Workstream','').lower()!=lane or f.get('Status')!='Ready' or i['state']!='OPEN':continue
   if f.get('Kind') in ('Milestone','Epic','Request','Review'):continue
   d=re.search(r'<!-- gvr-dependencies: ([^>]*) -->',i.get('body',''))
@@ -108,7 +126,7 @@ def main():
  if mail or state['review_due']:raise SystemExit('Route to owning orchestrator intake/review first; raw requests are excluded from worker context.')
  recovery=[]
  for i in items:
-  if i and i['state']=='OPEN' and i['fields'].get('Status')=='In progress' and i['fields'].get('Workstream','').lower()==a.lane and 'audience:orchestrator' not in i['labels']:
+  if i and not i.get('isArchived') and i['state']=='OPEN' and i['fields'].get('Status')=='In progress' and i['fields'].get('Workstream','').lower()==a.lane and 'audience:orchestrator' not in i['labels']:
    detail=claims_and_handover(comments(c,i['number']),agent_id=a.agent_id)
    if detail['recoverable'] or not detail['claim']:recovery.append({'issue':i,**detail})
  selected=None if recovery else select(items,a.lane)

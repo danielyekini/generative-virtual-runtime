@@ -116,23 +116,27 @@ def main():
         if name not in current:
             gh('project', 'field-create', number, '--owner', owner, '--name', name, '--data-type', 'SINGLE_SELECT',
                '--single-select-options', ','.join(options), '--format', 'json')
-        elif not set(options).issubset({option['name'] for option in current[name].get('options', [])}):
+        elif not {option.casefold() for option in options}.issubset({option['name'].casefold() for option in current[name].get('options', [])}):
             # Preserve extra options on a reused board; never delete other work/statuses.
-            names = list(dict.fromkeys([option['name'] for option in current[name].get('options', [])] + options))
+            names = []
+            for option in [v['name'] for v in current[name].get('options', [])] + options:
+                if option.casefold() not in {v.casefold() for v in names}:names.append(option)
+            detail=graphql('query($id:ID!){node(id:$id){... on ProjectV2SingleSelectField{options{id name color description}}}}',{'id':current[name]['id']})['node']
+            existing_options={v['name'].casefold():v for v in detail['options']}
             graphql('mutation($input:UpdateProjectV2FieldInput!){updateProjectV2Field(input:$input){projectV2Field{... on ProjectV2SingleSelectField{id name options{id name}}}}}',
                     {'input': {'fieldId': current[name]['id'], 'singleSelectOptions': [
-                        {'name': option, 'color': 'GRAY', 'description': ''} for option in names]}})
+                        existing_options.get(option.casefold(), {'name': option, 'color': 'GRAY', 'description': ''}) for option in names]}})
             refreshed = fields()[name]
             option_ids = {option['name']: option['id'] for option in refreshed['options']}
             for original in existing_items:
                 normalized = normalize(original)
                 if normalized and normalized['fields'].get(name) is not None:
                     gh('project', 'item-edit', '--id', original['id'], '--project-id', project_id,
-                       '--field-id', refreshed['id'], '--single-select-option-id', option_ids[normalized['fields'][name]])
+                       '--field-id', refreshed['id'], '--single-select-option-id', next(value for label,value in option_ids.items() if label.casefold()==normalized['fields'][name].casefold()))
     if 'Queue order' not in current:
         gh('project', 'field-create', number, '--owner', owner, '--name', 'Queue order', '--data-type', 'NUMBER', '--format', 'json')
     current = fields()
-    field_map = {name: {'id': current[name]['id'], 'options': {v['name']: v['id'] for v in current[name].get('options', [])}}
+    field_map = {name: {'id': current[name]['id'], 'options': {next((label for label in SELECTS.get(name,[]) if label.casefold()==v['name'].casefold()),v['name']): v['id'] for v in current[name].get('options', [])}}
                  for name in [*SELECTS, 'Queue order']}
     # Repository milestones represent overarching goals; parent issues provide hierarchy.
     milestone_pages = gh('api', '--paginate', '--slurp', f'repos/{repo}/milestones?state=all&per_page=100')
@@ -162,7 +166,7 @@ def main():
                 children = gh('api', '--paginate', '--slurp', f'repos/{repo}/issues/{parent_issue["number"]}/sub_issues?per_page=100')
                 if not any(child['id'] == issue['id'] for page in children for child in page):
                     gh('api', '--method', 'POST', f'repos/{repo}/issues/{parent_issue["number"]}/sub_issues', '--input', '-',
-                       payload={'issue_id': issue['id']})
+                       payload={'sub_issue_id': issue['id']})
                 check = gh('api', '--paginate', '--slurp', f'repos/{repo}/issues/{parent_issue["number"]}/sub_issues?per_page=100')
                 if not any(child['id'] == issue['id'] for page in check for child in page):
                     raise RuntimeError('Native hierarchy write did not read back')

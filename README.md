@@ -24,6 +24,8 @@ Studio: `http://localhost:5173`.
 
 ---
 
+Track delivery in the [Generative Virtual Runtime Project](https://github.com/users/danielyekini/projects/3), with native sub-issues and milestone goals.
+
 ## What is implemented
 
 The registry distinguishes released and supported capabilities, implemented but untested targets, and pending unsupported proposals. Support applies only to each row’s stated scope and conformance evidence; a rendered story does not certify a whole capability.

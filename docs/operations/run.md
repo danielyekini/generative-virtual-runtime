@@ -96,3 +96,7 @@ and must be reconciled with it before claim. If they disagree, fail closed and
 resolve through own orchestrator; don't silently proceed. Closed dependencies
 must be completed, not rejected/not-planned. Keep dependency issues on the Project
 or resolve missing ones by live issue read before marking the child executable.
+
+Keep an interrupted claim’s run_id until its terminal record exists. The intake
+session UUID does not create another run outcome. Resuming after a terminal
+partial result starts a new ordinary run on the same issue; retain its handover.
