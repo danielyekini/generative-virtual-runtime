@@ -1,0 +1,47 @@
+name: Project board sync
+# Mirrors issue state (labels, "Board status:" markers, gvr-claim comments,
+# closed state) onto Project #3 fields. See tools/gvr-ops/project_sync.py.
+on:
+  issues:
+    types: [opened, edited, closed, reopened, labeled, unlabeled]
+  issue_comment:
+    types: [created, edited]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: probe (check token), dry-run or sync
+        type: choice
+        options: [probe, dry-run, sync]
+        default: probe
+permissions:
+  contents: read
+concurrency:
+  group: project-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    if: ${{ !(github.event_name == 'issue_comment' && github.event.issue.pull_request) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Sync
+        env:
+          GVR_GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'sync' }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          if [ -z "$GVR_GITHUB_TOKEN" ]; then
+            echo "::warning::PROJECT_TOKEN secret is not set; skipping board sync."
+            exit 0
+          fi
+          cd tools/gvr-ops
+          if [ -n "$ISSUE" ]; then
+            python3 project_sync.py --mode "$MODE" --issue "$ISSUE"
+          else
+            python3 project_sync.py --mode "$MODE"
+          fi

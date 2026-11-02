@@ -25,9 +25,13 @@ use authorised gh/REST/GraphQL. No token contents in logs. If project writes are
 unavailable, ask for the smallest setup/action (or user-created board link), finish
 all reviewable repo preparation and issue work that is authorised, and clearly
 mark installation incomplete. Never silently substitute a local board as SSOT.
-Claude Code cloud sessions currently cannot reach Project #3 (no GraphQL, no
-user-level projectsV2 REST); they record intended Status as "Board status: …"
-in issue bodies per git.md until OPS004 restores automatic sync.
+Claude Code cloud sessions cannot reach Project #3 (no GraphQL, no user-level
+projectsV2 REST). The `Project board sync` workflow (`.github/workflows/project-sync.yml`,
+`tools/gvr-ops/project_sync.py`, secret `PROJECT_TOKEN`) mirrors issue state onto the
+board instead: it adds `lane:*` issues and sets Status (closed → Done/Deferred, active
+unexpired `gvr-claim` → In progress, body `Board status: <Status>`, label `state:ready`
+→ Ready), Workstream, Kind and Priority from labels. Agents therefore keep issues
+current; run the workflow with mode `probe` to check the token, `dry-run` to preview.
 
 ## Work-item lifecycle
 

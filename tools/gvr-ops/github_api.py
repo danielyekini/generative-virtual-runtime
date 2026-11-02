@@ -1,5 +1,5 @@
 """Authenticated GitHub requests restricted to api.github.com; never follow redirects."""
-import json,re,subprocess,urllib.request,urllib.parse,urllib.error
+import json,os,re,subprocess,urllib.request,urllib.parse,urllib.error
 ORIGIN='https://api.github.com'
 _token=None
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -7,6 +7,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 def request(path,method='GET',payload=None):
  global _token
  if '://' in path or path.startswith('//'):raise ValueError('Only relative api.github.com paths are permitted.')
+ if _token is None and os.environ.get('GVR_GITHUB_TOKEN','').strip():_token=os.environ['GVR_GITHUB_TOKEN'].strip()
  if _token is None:
   try:r=subprocess.run(['gh','auth','token'],capture_output=True,text=True)
   except FileNotFoundError:raise RuntimeError('Authenticated GitHub CLI is required for Project access.') from None
