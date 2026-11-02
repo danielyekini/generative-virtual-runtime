@@ -57,6 +57,8 @@ export interface PlayerProbe {
 }
 
 export interface GvrBridge {
+  stream?: import("@gvr/runtime").StreamingExecutionObservation & { receivedCharacters: number; totalCharacters: number; arrivalPaused: boolean; arrivalDone: boolean; waitingMs: number; resolvedThroughMs: number };
+  runStream?: () => void;
   activity: string;
   canvas: HTMLCanvasElement;
   logicalToDevice?: (x: number, y: number) => { x: number; y: number };

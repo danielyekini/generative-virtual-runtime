@@ -114,9 +114,9 @@ try {
   check("Source panel is closed by default", !landing.sourceOpen && !(await visible("#source-panel")), landing);
   check("old left rail and right dock are gone", await ev("!document.querySelector('#tools') && !document.querySelector('#dock')"));
   const tabs = await ev("[...document.querySelectorAll('.panel-tabs [role=tab]')].map(t => t.textContent.trim().split(' ')[0])");
-  check("bottom panel has Diagnostics, Scene and Report tabs", JSON.stringify(tabs) === JSON.stringify(["Diagnostics", "Scene", "Report"]), tabs);
+  check("bottom panel has Diagnostics, Stream, Scene and Report tabs", JSON.stringify(tabs) === JSON.stringify(["Diagnostics", "Stream", "Scene", "Report"]), tabs);
   const stream = await ev("({ disabled: document.querySelector('#stream').disabled, title: document.querySelector('#stream').title })");
-  check("Stream action is present but disabled until P002", stream.disabled && /P002/.test(stream.title), stream);
+  check("Stream action is disabled until a native program is loaded", stream.disabled && /MotionScript/.test(stream.title), stream);
   await shot("0-landing");
 
   // 2. Library page
@@ -370,6 +370,67 @@ try {
   check("Split controls fit the editor at a narrower viewport", await ev(`(() => { const a = document.querySelector('#split-controls'), b = document.querySelector('#source-panel'); return a.scrollWidth <= b.clientWidth && document.documentElement.scrollWidth <= document.documentElement.clientWidth; })()`));
   await shot('12-split-narrow');
   await cdp.send("Emulation.setDeviceMetricsOverride", {width:1440, height:900, deviceScaleFactor:1, mobile:false}, sessionId);
+
+  // P002: one loaded program, real Worker arrival, independent arrival/playback controls.
+  await navigate("/");
+  const streamScript = `scene "live-source" { version "0.1"; viewport (400, 300); background #101014; duration 2s; };
+  // Unicode arrival 🌙
+  circle c { radius 20; fill #ffffff; };
+  animate c.position.x { from 0; to 100; duration 1s; };
+  seal 1s;
+  animate c.position.x { from 100; to 200; start 1s; duration 1s; };
+  seal 2s;
+  complete;`;
+  await ev(`window.__gvr.open('motion:bunny')`);
+  // Library keys may change; create an explicit MotionScript draft through Split.
+  await ev(`document.querySelector('#toggle-split').click(); document.querySelector('#source').value = ${JSON.stringify(streamScript)}; document.querySelector('#source').dispatchEvent(new Event('input')); document.querySelector('#arrival-rate').value = '20'; document.querySelector('#arrival-size').value = '2';`);
+  await player();
+  await ev("document.querySelector('#stream').click()");
+  await sleep(300);
+  let live = await ev("window.__gvr.stream");
+  check("Stream starts current draft with a real partial arrival", live && live.receivedCharacters > 0 && live.receivedCharacters < live.totalCharacters, live);
+  check("Stream exposes no unarrived source", await ev(`document.querySelector('#stream-source').textContent.replace(/[◌▷✓✕]/g, '') === ${JSON.stringify(streamScript)}.slice(0, window.__gvr.stream.receivedCharacters)`));
+  await ev("document.querySelector('#arrival-pause').click()");
+  await sleep(100);
+  const pausedCursor = await ev("window.__gvr.stream.receivedCharacters");
+  await sleep(300);
+  check("Pause arrival stops Worker delivery", await ev("window.__gvr.stream.arrivalPaused && window.__gvr.stream.receivedCharacters") === pausedCursor);
+  await ev("document.querySelector('#arrival-step').click()");
+  await sleep(150);
+  check("Step delivers one bounded chunk and stays paused", await ev(`window.__gvr.stream.arrivalPaused && window.__gvr.stream.receivedCharacters === ${pausedCursor + 8}`));
+  await ev("document.querySelector('#stream-menu').click()");
+  check("Advanced exposes approved chunking, jitter, stalls and seed", await visible('#arrival-mode') && await visible('#arrival-seed'));
+  check("Partial arrival shows waiting instead of a false failure", !(await visible('#failed')) && await visible('#ready'));
+  check("Stream header fits desktop width", await ev("document.documentElement.scrollWidth <= document.documentElement.clientWidth"));
+  await shot('13-stream-arriving');
+  // Restart at Instant: old pending producer must not leak into the new session.
+  await ev("document.querySelector('#arrival-rate').value = '0'; document.querySelector('#stream').click()");
+  for (let i = 0; i < 100 && !(await ev("window.__gvr.stream?.arrivalDone")); i++) await sleep(50);
+  live = await ev("window.__gvr.stream");
+  check("Instant simulated arrival completes native compilation", live?.authoringComplete && live.receivedCharacters === streamScript.length && live.appliedRevision > 0, live);
+  check("Source has accepted units ahead of playhead", await ev("!!document.querySelector('#stream-source .stream-queued')"));
+  await ev("window.__gvr.seek(2000)"); await player();
+  check("Playback resolves applied unit spans", await ev("!!document.querySelector('#stream-source .stream-resolved') && !document.querySelector('#stream-source .stream-queued')"));
+  await shot('14-stream-resolved');
+  await ev("document.querySelector('#play').click()"); await player();
+  check("Completed stream can replay from zero", (await player()).playing && (await player()).timeMs < 1000);
+  await cdp.send("Emulation.setDeviceMetricsOverride", {width:800, height:900, deviceScaleFactor:1, mobile:false}, sessionId);
+  await sleep(100);
+  check("Stream controls fit a narrow viewport", await ev("document.documentElement.scrollWidth <= document.documentElement.clientWidth"));
+  await shot('16-stream-narrow');
+  await cdp.send("Emulation.setDeviceMetricsOverride", {width:1440, height:900, deviceScaleFactor:1, mobile:false}, sessionId);
+  await ev("document.querySelector('#run').click()"); await player();
+  check("Run leaves Stream mode and removes monitoring controls", await ev("!window.__gvr.stream && document.querySelector('#stream-controls').hidden && document.querySelector('#tab-stream').hidden"));
+  check("Run retains exact draft after streaming", await ev(`document.querySelector('#source').value === ${JSON.stringify(streamScript)}`));
+  // Rejected text stays in arrived source with diagnostic cue.
+  await ev(`document.querySelector('#source').value = ${JSON.stringify(streamScript.replace('#ffffff', '#zz'))}; document.querySelector('#stream').click();`);
+  for (let i = 0; i < 100 && !(await ev("window.__gvr.stream?.arrivalDone")); i++) await sleep(50);
+  check("Rejected arrived source has red diagnostic markers", await ev("!!document.querySelector('#stream-source .stream-rejected') && window.__gvr.sourceDiagnostics.length > 0"));
+  await shot('15-stream-rejected');
+  // Non-native drafts are still run via existing importers, with Stream unavailable.
+  await ev("document.querySelector('#split-format').value = 'svg'; document.querySelector('#split-format').dispatchEvent(new Event('change'));");
+  await player();
+  check("Changing program cancels arrival; imports use Run", await ev("!window.__gvr.stream && document.querySelector('#stream').disabled"));
 
   // 9. Temporary legacy route keeps streaming working
   await navigate("/legacy.html#stream");

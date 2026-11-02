@@ -14,6 +14,8 @@ import { clampTime, collectKeyTimes, formatClock, isStaticScene, stepKey } from 
 import { FORMAT_LABELS, installedPrograms } from "./programs";
 import { LibraryPage } from "./library-page";
 import { compareScene, type Comparison } from "./comparison";
+import { StreamSession } from "./stream-session";
+import { createArrival, DEFAULT_ARRIVAL, type ArrivalOptions } from "./arrival";
 import { runProgram, type RunOutcome } from "./run";
 import { describeSceneSummary } from "./scene-summary";
 import {
@@ -130,7 +132,88 @@ const catalogue = [...installedPrograms(), ...decodeMine(read(STORAGE_KEY))];
 const settings = decodeSettings(read(SETTINGS_KEY));
 let recent = decodeRecent(read(RECENT_KEY));
 const renderer = new CanvasRenderer(ui.canvas, telemetry);
-const clock = new RuntimeClock();
+const instantClock = new RuntimeClock();
+let stream: StreamSession | null = null;
+let arrival: Worker | null = null;
+let popout: Window | null = null;
+// One transport dispatches to the active mode. Playback and arrival pause separately.
+const clock = {
+  get timeMs() { return stream?.clock.timeMs ?? instantClock.timeMs; },
+  get isPlaying() { return stream ? ["playing", "waiting_for_content"].includes(stream.clock.playbackState) : instantClock.isPlaying; },
+  play() {
+    if (stream) {
+      if (stream.clock.playbackState === "complete") {
+        const time = stream.clock.timeMs;
+        stream.clock.stop();
+        stream.clock.setHorizon(stream.runtime.sealedThroughMs, durationMs(), stream.runtime.authoringComplete);
+        stream.clock.seek(time);
+      }
+      stream.clock.play();
+    } else instantClock.play();
+  },
+  pause() { if (stream) stream.clock.pause(); else instantClock.pause(); },
+  seek(t: number) { if (stream) stream.clock.seek(t); else instantClock.seek(t); },
+  setRate(r: number) { if (stream) stream.clock.setRate(r); else instantClock.setRate(r); },
+  tick(dt: number) { if (stream) stream.clock.tick(dt); else instantClock.tick(dt); },
+};
+function stopStream(): void {
+  arrival?.terminate(); arrival = null;
+  if (stream) {
+    // A subsequent failed instant Run must retain a usable last accepted scene.
+    const scene = stream.runtime.scene;
+    runtime = scene ? new AnimationRuntime(scene, telemetry) : null;
+    instantClock.pause(); instantClock.seek(stream.clock.timeMs); instantClock.setRate(stream.clock.playbackRate);
+    stream.dispose(); stream = null;
+  }
+  popout?.close(); popout = null;
+  if (settings.panelTab === "stream") settings.panelTab = "diagnostics";
+  closeMenus();
+}
+function arrivalOptions(): ArrivalOptions {
+  const number = (id: string, fallback: number, min: number, max: number) => {
+    const value = Number($<HTMLInputElement>(id).value);
+    return Number.isFinite(value) ? Math.floor(Math.max(min, Math.min(max, value))) : fallback;
+  };
+  const min = number("arrival-min", 4, 1, 16384);
+  return { ...DEFAULT_ARRIVAL, rate: number("arrival-rate", 60, 0, 200),
+    mode: $<HTMLSelectElement>("arrival-mode").value as ArrivalOptions["mode"],
+    size: number("arrival-size", 4, 1, 4096), min,
+    max: Math.max(min, number("arrival-max", 32, 1, 16384)),
+    jitter: number("arrival-jitter", 0, 0, 100),
+    stallEvery: number("arrival-stall-every", 0, 0, 10000),
+    stallMs: number("arrival-stall-ms", 1000, 0, 60000), seed: number("arrival-seed", 1, 0, 4294967295) };
+}
+function runStream(): void {
+  if (!loaded || loaded.format !== "motionscript") return;
+  stopStream(); instantClock.pause();
+  comparison = null; comparisonRuntime = null; ui.splitCompare.checked = false;
+  const session = new StreamSession(ui.source.value);
+  session.clock.setRate(Number(ui.speed.value) || 1);
+  stream = session; runtime = null; frame = null;
+  rememberDraft();
+  const source = session.source;
+  outcome = { format: "motionscript", state: "ok", source, diagnostics: [], summary: "Simulated arrival started.", report: "", frameMs: 1000 / 30 };
+  selectTab("stream", true);
+  arrival = createArrival(source, arrivalOptions(), (data) => {
+    if (stream !== session) return;
+    if (data.stallMs !== undefined) session.stallUntil = performance.now() + data.stallMs;
+    if (data.text !== undefined) session.push(data.text);
+    if (data.end) { session.finish(); arrival?.terminate(); arrival = null; }
+    const scene = session.runtime.scene;
+    runtime = scene ? { scene, evaluate: (t) => session.runtime.evaluate(t) } : null;
+    outcome = { ...outcome!, scene, diagnostics: session.diagnostics,
+      state: session.diagnostics.some(d => d.severity === "error" || d.severity === "fatal") ? scene ? "recovered" : "failed" : "ok",
+      summary: session.done ? "Simulated arrival finished." : "Simulated arrival in progress.", report: "Engine observation is in the Stream tab." };
+    render();
+  });
+  arrival.onerror = () => {
+    if (stream !== session) return;
+    arrival?.terminate(); arrival = null; session.done = true;
+    outcome = { ...outcome!, state: "failed", summary: "Arrival Worker failed; press Stream to retry." };
+    render();
+  };
+}
+
 
 let loaded: ProgramEntry | null = null;
 // Drafts live only in this visit; explicit Library/preset/file loads replace that format's draft.
@@ -141,7 +224,7 @@ let comparisonRuntime: AnimationRuntime | null = null;
 let comparisonRenderer: CanvasRenderer | null = null;
 let fileReadId = 0;
 let outcome: RunOutcome | null = null;
-let runtime: AnimationRuntime | null = null;
+let runtime: Pick<AnimationRuntime, "scene" | "evaluate"> | null = null;
 let frame: ResolvedFrame | null = null;
 let fullscreen = false;
 let scrubbing = false;
@@ -166,10 +249,11 @@ function durationMs(): number {
 }
 
 function isStill(): boolean {
-  return !runtime || isStaticScene(runtime.scene) || durationMs() <= 0;
+  return stream ? !runtime || durationMs() <= 0 : !runtime || isStaticScene(runtime.scene) || durationMs() <= 0;
 }
 
 function openProgram(entry: ProgramEntry, options: { fromHash?: boolean; waitForRun?: boolean } = {}): void {
+  stopStream();
   rememberDraft();
   fileReadId++;
   loaded = { ...entry };
@@ -206,6 +290,7 @@ function openKey(key: string): boolean {
 
 function run(): void {
   if (!loaded) return;
+  stopStream();
   outcome = runProgram(ui.source.value, loaded.format, loaded.label, telemetry);
   rememberDraft();
   clock.pause();
@@ -413,7 +498,7 @@ function paint(): void {
   const size = canvasSize();
   renderer.resize(Math.max(1, size.width), Math.max(1, size.height), dpr());
   const time = isStill() ? 0 : clampTime(clock.timeMs, durationMs());
-  frame = runtime ? runtime.evaluate(time) : null;
+  frame = stream ? stream.evaluate() : runtime ? runtime.evaluate(time) : null;
   if (frame) renderer.render(frame);
   else clearCanvas(ui.canvas);
   if (split && ui.splitCompare.checked && !fullscreen) {
@@ -427,6 +512,7 @@ function paint(): void {
 function stateBadge(): { text: string; tone: string } {
   if (!loaded) return { text: "", tone: "" };
   if (!outcome) return { text: "○ not run", tone: "" };
+  if (stream) return { text: `≋ ${stream.clock.playbackState} · ${stream.done ? "arrival done" : stream.paused ? "arrival paused" : "arriving"}`, tone: "" };
   const errors = outcome.diagnostics.filter((item) => item.severity === "error" || item.severity === "fatal").length;
   const base = outcome.state === "ok"
     ? { text: "✓ ran", tone: "is-ok" }
@@ -444,6 +530,15 @@ function renderHeader(): void {
   put(ui.programState, badge.text);
   ui.programState.className = `badge ${badge.tone}`.trim();
   ui.run.disabled = !loaded;
+  $<HTMLButtonElement>("stream").disabled = !loaded || loaded.format !== "motionscript";
+  $("stream").title = loaded?.format !== "motionscript" ? "Stream supports native MotionScript; use Run for imports." : "Simulate arrival of the current source";
+  $("stream").setAttribute("aria-pressed", String(Boolean(stream)));
+  $("stream-controls").hidden = !stream;
+  ui.streamMenu.hidden = !stream;
+  tabs.get("stream")!.tab.hidden = !stream;
+  $<HTMLButtonElement>("arrival-pause").disabled = !stream || stream.done;
+  $<HTMLButtonElement>("arrival-step").disabled = !stream || stream.done;
+  put($("arrival-pause"), stream?.paused ? "Resume arrival" : "Pause arrival");
   ui.sourceRun.disabled = !loaded;
   ui.fullscreen.disabled = !runtime;
   ui.toggleSplit.setAttribute("aria-pressed", String(split));
@@ -454,6 +549,12 @@ function renderHeader(): void {
 function renderOverlays(): void {
   ui.empty.hidden = Boolean(loaded);
   ui.ready.hidden = !loaded || Boolean(outcome);
+  ui.readyRun.hidden = Boolean(stream);
+  if (stream && !runtime && outcome?.state !== "failed") {
+    ui.ready.hidden = false;
+    put(ui.readyTitle, "Waiting for an executable prefix");
+    put(ui.readyNote, stream.paused ? "Arrival is paused. Resume or step a chunk." : "Simulated source is arriving; playback waits for an accepted seal.");
+  }
   ui.failed.hidden = !outcome || Boolean(runtime);
   if (loaded && !outcome) {
     put(ui.readyTitle, loaded.label);
@@ -462,6 +563,7 @@ function renderOverlays(): void {
   const retainedFailure = outcome?.state === "failed" && Boolean(runtime);
   ui.failed.classList.toggle("has-retained-scene", retainedFailure);
   ui.failed.hidden = !outcome || (Boolean(runtime) && !retainedFailure);
+  if (stream && outcome?.state !== "failed") ui.failed.hidden = true;
   if (outcome?.state === "failed") {
     const first = outcome.diagnostics[0];
     const more = outcome.diagnostics.length > 1 ? ` (+${outcome.diagnostics.length - 1} more)` : "";
@@ -507,7 +609,9 @@ function renderTransport(): void {
   put(ui.clock, text);
   put(ui.fsClock, text);
   const fraction = !still && span > 0 ? time / span : 0;
-  ui.tapeLoaded.style.width = runtime ? "100%" : "0%";
+  ui.tapeLoaded.style.width = stream ? `${span > 0 ? stream.runtime.sealedThroughMs / span * 100 : 0}%` : runtime ? "100%" : "0%";
+  ui.track.classList.toggle("is-waiting", Boolean(stream?.observation.waitingForContent));
+  ui.track.title = stream ? `Sealed ${stream.runtime.sealedThroughMs} ms · playhead ${stream.clock.timeMs.toFixed(0)} ms · waiting ${stream.waitingMs.toFixed(0)} ms` : "Seek";
   ui.playhead.style.left = `${(fraction * 100).toFixed(3)}%`;
   ui.playhead.hidden = !runtime;
   ui.track.setAttribute("aria-valuemax", String(Math.round(span)));
@@ -554,6 +658,7 @@ function renderPanel(): void {
     tab.setAttribute("aria-selected", String(id === settings.panelTab));
     pane.hidden = !settings.panelOpen || id !== settings.panelTab;
   }
+  renderStream();
   const diagnostics = outcome?.diagnostics ?? [];
   put(ui.diagCount, diagnostics.length ? String(diagnostics.length) : "");
   put(
@@ -607,6 +712,44 @@ function renderPanel(): void {
   if (settings.panelOpen && settings.panelTab === "report") {
     put(ui.reportSummary, outcome ? outcome.summary : "Run a program to see its report.");
     put(ui.report, [outcome?.report, comparison?.report].filter(Boolean).join("\n\n"));
+  }
+}
+
+let streamKey = "";
+function renderStream(): void {
+  if (!stream) { streamKey = ""; return; }
+  const o = stream.observation;
+  put($("stream-summary"), [
+    `${stream.cursor}/${stream.source.length} characters · ${o.receivedBytes} UTF-8 bytes`,
+    `${o.parsedUnits} declaration units · ${o.pendingCompileDeltas} compile deltas pending · ${o.queuedRuntimeDeltas} runtime deltas queued`,
+    `revision ${o.appliedRevision} · sealed ${o.sealedThroughMs} ms · playhead ${o.playheadMs.toFixed(0)} ms`,
+    `${o.playbackState} · waiting ${stream.waitingMs.toFixed(0)} ms`,
+    stream.done ? "arrival complete" : stream.paused ? "arrival paused" : performance.now() < stream.stallUntil ? "scheduled arrival stall" : "simulated arrival",
+  ].join(" | "));
+  const segments = stream.segments();
+  const key = JSON.stringify(segments);
+  if (key !== streamKey) {
+    streamKey = key;
+    const nodes = segments.map((part) => {
+      const span = document.createElement("span");
+      span.className = `stream-${part.state}`;
+      span.dataset.state = part.state;
+      span.title = part.message ?? part.state;
+      const cue = document.createElement("span");
+      cue.className = "stream-cue";
+      cue.textContent = { arrived: "◌", queued: "▷", resolved: "✓", rejected: "✕" }[part.state];
+      cue.setAttribute("aria-label", part.message ?? part.state);
+      span.append(cue, document.createTextNode(part.text));
+      return span;
+    });
+    $("stream-source").replaceChildren(...nodes);
+  }
+  if (popout && !popout.closed) {
+    const pre = popout.document.querySelector("pre");
+    if (pre) {
+      const text = segments.map(p => `[${p.state}] ${p.text}`).join("");
+      if (pre.textContent !== text) pre.textContent = text;
+    }
   }
 }
 
@@ -684,6 +827,8 @@ function publish(): void {
       seek(timeMs);
     },
     player: probe(),
+    stream: stream ? { ...stream.observation, receivedCharacters: stream.cursor, totalCharacters: stream.source.length, arrivalPaused: stream.paused, arrivalDone: stream.done, waitingMs: stream.waitingMs, resolvedThroughMs: stream.clock.timeMs } : undefined,
+    runStream,
     run,
     open: openKey,
   };
@@ -745,6 +890,23 @@ ui.optDpr.addEventListener("change", () => {
 ui.openLibrary.addEventListener("click", () => openLibrary());
 ui.emptyLibrary.addEventListener("click", () => openLibrary());
 
+$("stream").addEventListener("click", runStream);
+$("arrival-pause").addEventListener("click", () => {
+  if (!stream || stream.done) return;
+  stream.paused = !stream.paused;
+  arrival?.postMessage({ pause: stream.paused }); render();
+});
+$("arrival-step").addEventListener("click", () => {
+  if (!stream || stream.done) return;
+  stream.paused = true;
+  arrival?.postMessage({ step: true }); render();
+});
+$("stream-popout").addEventListener("click", () => {
+  popout = window.open("", "gvr-arrived-source", "width=800,height=600");
+  if (popout) { popout.document.title = "Arrived source · GVR Studio"; popout.document.body.style.cssText = "background:#181818;color:#eee"; popout.document.body.replaceChildren(document.createElement("pre")); }
+  render();
+});
+window.addEventListener("pagehide", () => stopStream());
 ui.run.addEventListener("click", run);
 ui.readyRun.addEventListener("click", run);
 ui.sourceRun.addEventListener("click", run);
@@ -921,9 +1083,13 @@ requestAnimationFrame(function loop(now: number) {
   const delta = Math.min(100, now - lastWall);
   lastWall = now;
   const work = () => {
-    if (clock.isPlaying && !scrubbing && runtime) {
+    if (stream && !libraryVisible) {
+      if (stream.observation.waitingForContent && !scrubbing) stream.waitingMs += delta;
+      needsDraw = true;
+    }
+    if (!libraryVisible && clock.isPlaying && !scrubbing && runtime) {
       clock.tick(delta);
-      if (clock.timeMs >= durationMs()) {
+      if ((!stream || stream.done) && clock.timeMs >= durationMs()) {
         clock.seek(durationMs());
         clock.pause();
       }

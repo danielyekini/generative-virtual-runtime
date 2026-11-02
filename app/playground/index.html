@@ -17,11 +17,23 @@
       </div>
       <div class="run-actions" role="group" aria-label="Run actions">
         <button id="run" class="run" type="button" disabled title="Run the loaded program (Ctrl/⌘+Enter)">▶ Run</button>
-        <button id="stream" type="button" disabled title="Stream mode is coming in P002. The legacy stream workbench is in ▾.">≋ Stream</button>
-        <button id="stream-menu" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Stream options">▾</button>
-        <div id="stream-pop" class="menu" role="menu" hidden>
-          <p class="menu-note">Stream mode arrives in P002. Until then the old stream tool runs in the legacy workbench.</p>
-          <a role="menuitem" href="/legacy.html#stream">Open legacy stream workbench</a>
+        <button id="stream" type="button" disabled title="Simulate arrival of the loaded MotionScript">≋ Stream</button>
+        <span id="stream-controls" hidden>
+          <label>Rate <select id="arrival-rate" aria-label="Simulated arrival rate"><option value="20">Slow · 20 estimated tokens/s</option><option value="60" selected>Medium · 60 estimated tokens/s</option><option value="200">Fast · 200 estimated tokens/s</option><option value="0">Instant</option></select></label>
+          <button id="arrival-pause" type="button">Pause arrival</button>
+          <button id="arrival-step" type="button">Step chunk</button>
+        </span>
+        <button id="stream-menu" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Advanced arrival controls" hidden>Advanced ▾</button>
+        <div id="stream-pop" class="menu" hidden>
+          <p class="menu-note">Simulated arrival. One estimated token = 4 UTF-16 characters; not model speed. Changes apply on the next Stream.</p>
+          <label class="field">Chunking <select id="arrival-mode"><option value="tokens">Estimated tokens</option><option value="characters">Characters</option><option value="lines">Lines</option><option value="random">Random characters</option></select></label>
+          <label class="field">Chunk size <input id="arrival-size" type="number" min="1" max="4096" value="4"></label>
+          <label class="field">Random min <input id="arrival-min" type="number" min="1" max="16384" value="4"></label>
+          <label class="field">Random max <input id="arrival-max" type="number" min="1" max="16384" value="32"></label>
+          <label class="field">Timing jitter % <input id="arrival-jitter" type="number" min="0" max="100" value="0"></label>
+          <label class="field">Stall every N chunks (0 = off) <input id="arrival-stall-every" type="number" min="0" max="10000" value="0"></label>
+          <label class="field">Stall duration ms <input id="arrival-stall-ms" type="number" min="0" max="60000" value="1000"></label>
+          <label class="field">Random seed <input id="arrival-seed" type="number" min="0" max="4294967295" value="1"></label>
         </div>
       </div>
       <span class="spacer"></span>
@@ -140,6 +152,7 @@
       <section id="panel" aria-label="Bottom panel">
         <div class="panel-tabs" role="tablist" aria-label="Bottom panel">
           <button id="tab-diagnostics" type="button" role="tab" aria-selected="true">Diagnostics <span id="diag-count" class="count"></span></button>
+          <button id="tab-stream" type="button" role="tab" aria-selected="false" hidden>Stream</button>
           <button id="tab-scene" type="button" role="tab" aria-selected="false">Scene</button>
           <button id="tab-report" type="button" role="tab" aria-selected="false">Report / Compare</button>
           <span class="spacer"></span>
@@ -148,6 +161,12 @@
         <div id="pane-diagnostics" class="pane" role="tabpanel">
           <p id="diag-note" class="pane-note">Run a program to see diagnostics.</p>
           <ol id="diag-list" class="diag-list"></ol>
+        </div>
+        <div id="pane-stream" class="pane" role="tabpanel" hidden>
+          <p id="stream-summary" class="pane-note" role="status"></p>
+          <p class="pane-note">◌ arrived · ▷ accepted / queued ahead of playhead · ✓ resolved at playhead · ✕ rejected. Highlights follow declaration spans, not frames.</p>
+          <button id="stream-popout" type="button">Pop out source</button>
+          <pre id="stream-source" aria-label="Arrived source"></pre>
         </div>
         <div id="pane-scene" class="pane" role="tabpanel" hidden>
           <p id="scene-note" class="pane-note">Run a program to inspect its Scene IR.</p>

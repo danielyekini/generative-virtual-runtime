@@ -364,3 +364,22 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 /* The Source affordance is a bare right-panel icon, matching the user's reference. */
 #toggle-source { display: inline-flex; align-items: center; justify-content: center; padding: 3px 5px; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: var(--muted); }
 #toggle-source:hover:not(:disabled), #toggle-source[aria-pressed="true"] { background: transparent; color: var(--text); }
+
+#stream-controls { display: inline-flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+#stream-controls[hidden] { display: none; }
+#stream-pop { max-height: 70vh; overflow: auto; }
+#stream-pop input { width: 95px; }
+#stream-source { white-space: pre-wrap; overflow-wrap: anywhere; }
+.stream-arrived { color: #999; }
+.stream-queued { color: #edab57; }
+.stream-resolved { color: #eee; }
+.stream-rejected { color: #ff8080; text-decoration: underline wavy; }
+.stream-cue { font-size: .8em; margin-right: 3px; user-select: none; }
+#track-time.is-waiting { outline: 1px dashed #edab57; }
+#bar { flex-wrap: wrap; }
+.run-actions { align-items: center; flex-wrap: wrap; gap: 3px; }
+.run-actions .menu { max-width: min(310px, calc(100vw - 24px)); }
+@media (max-width: 1000px) {
+  .run-actions { position: static; }
+  .run-actions .menu { left: auto; right: 8px; }
+}
