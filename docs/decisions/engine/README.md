@@ -30,3 +30,7 @@
   (rigid 3D surface placement, hinges, perspective/orthographic camera) projected
   into ordinary draw items; two-sided faces, plane-test depth order, fail-closed
   bounds and unprojection for input; versioning in E028 (`space.planar25d`).
+- [Physics integration (E011)](physics-integration.md): planar fixed-step 2D
+  rigid bodies/colliders/joints with physics-owned channel writes, checkpoints,
+  event replay, seeds and cost; authored distance constraints retained as the
+  non-dynamic alternative; versioning child E029 (`physics.planar2d`).

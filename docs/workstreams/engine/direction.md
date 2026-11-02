@@ -23,6 +23,9 @@ required-resource hold, deterministic `mixAudio` export), E026 `audio.cues`
 Studio Web Audio backend and bridge WAV export),
 E010 bounded spatial graphics decision/prototype (planar 2.5D layers,
 `projectSpatialFrame`, `docs/decisions/engine/spatial-graphics.md`),
+E028 versioned `space.planar25d` (Scene IR / MotionScript 0.12.0),
+E011 physics integration decision/prototype (planar fixed-step 2D session,
+`docs/decisions/engine/physics-integration.md`),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -33,22 +36,26 @@ and E003 immutable path/keyframe validation-fact reuse are merged
 `docs/decisions/engine/immutable-validation-facts.md`,
 `docs/decisions/engine/native-input.md`,
 `docs/decisions/engine/audible-media-clock.md`,
+`docs/decisions/engine/physics-integration.md`,
 `observeStreamingExecution` / `EntityRevisionStore` / `APPLY_ENTITY_PATCH` /
-`REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection in
-`@gvr/runtime`, `emitEntityPatchDelta` in `@gvr/compiler`).
+`REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection /
+`PhysicsSession` in `@gvr/runtime`, `emitEntityPatchDelta` in `@gvr/compiler`).
 Capacity-transactions evidence and PR #11 remain valid starting points; do not
 repeat their proofs without an affected failure. Product may adapt P002/P005 to
 the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. E028 ([#107](https://github.com/danielyekini/generative-virtual-runtime/issues/107)):
-   version planar 2.5D spatial layers (`space.planar25d`, MotionScript / Scene IR
-   0.12.0) per the E010 decision; Candidate until the orchestrator promotes it.
-2. Then replenish Ready from remaining M4/M5 Candidates with satisfied
-   dependencies: E011 physics (adopts E010 coordinate conventions) and E016
-   seams/intersection splitting (on the E010 order contract) are unblocked.
-   Audible human judgement of E026 output and visible media controls sit with P009.
+1. E029 ([#110](https://github.com/danielyekini/generative-virtual-runtime/issues/110)):
+   version `physics.planar2d` in MotionScript / Scene IR per the E011 decision;
+   Candidate until the orchestrator promotes it.
+2. E016 ([#35](https://github.com/danielyekini/generative-virtual-runtime/issues/35)):
+   dynamic depth/paint order and seam-free surfaces (decision); on the E010
+   order/spatial contract. Ready.
+3. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+   complete. Audible human judgement of E026 output and visible media controls
+   sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
+   remains a Candidate emitter round-trip bug (no language change).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
