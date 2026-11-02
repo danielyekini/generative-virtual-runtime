@@ -23,5 +23,6 @@
 - [Audible media clock (E008)](audible-media-clock.md): scene-time master clock,
   pure audio schedule (narration/effects/music buses, loops, fades, ducking),
   reconciling `AudioSession` with resync/drift correction, required-resource
-  hold, interaction one-shots and deterministic offline export; language
-  wiring and Studio backend deferred to E026.
+  hold, interaction one-shots and deterministic offline export; versioned as
+  `audio.cues` (MotionScript / Scene IR 0.11.0) with the Studio Web Audio
+  backend in E026.

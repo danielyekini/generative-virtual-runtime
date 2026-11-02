@@ -216,6 +216,7 @@ function assemble(base: CandidateState, delta: SceneIRDelta, store: EntityRevisi
       if (sealedThroughMs > 0) return fail("INVALID_TIMING", "Base definitions are frozen after the first seal.", path);
       const {durationMs, ...header} = operation.scene;
       scene = {...header, nodes: scene?.nodes ?? [],
+        ...(scene?.audioCues ? {audioCues: scene.audioCues} : {}),
         timeline: {durationMs, tracks: scene?.timeline.tracks ?? [], steps: scene?.timeline.steps ?? []}};
     } else if (operation.op === "APPLY_ENTITY_PATCH") {
       if (!scene) return fail("MISSING_REQUIRED", "CREATE_SCENE must precede scene operations.", path);
@@ -270,6 +271,8 @@ function assemble(base: CandidateState, delta: SceneIRDelta, store: EntityRevisi
         scene.timeline.tracks.push(...operation.tracks);
       } else if (operation.op === "ADD_STEPS") {
         scene.timeline.steps.push(...operation.steps);
+      } else if (operation.op === "ADD_AUDIO_CUES") {
+        scene.audioCues = [...(scene.audioCues ?? []), ...operation.cues];
       } else if (operation.op === "SEAL_TIMELINE") {
         if (operation.horizonMs <= sealedThroughMs + 1e-9 || operation.horizonMs > scene.timeline.durationMs) {
           return fail("SEAL_BLOCKED", "A seal must advance within the scene duration.", path);
@@ -301,6 +304,8 @@ function assemble(base: CandidateState, delta: SceneIRDelta, store: EntityRevisi
       }
     } else if (operation.op === "ADD_STEPS" && operation.steps.some((step) => step.timeMs + 1e-9 < frontier)) {
       return fail("INVALID_TIMING", `A step writes before the seal at ${frontier}ms.`, `operations[${index}].steps`);
+    } else if (operation.op === "ADD_AUDIO_CUES" && operation.cues.some((cue) => cue.startMs + 1e-9 < frontier)) {
+      return fail("INVALID_TIMING", `An audio cue starts before the seal at ${frontier}ms.`, `operations[${index}].cues`);
     }
   }
   return {ok: true, state: {scene, sealedThroughMs, authoringComplete, entities, entityPatches}};

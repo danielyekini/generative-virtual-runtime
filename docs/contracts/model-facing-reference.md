@@ -42,6 +42,12 @@ Interactive programs may use released MotionScript 0.10.0 `interact`
 declarations (gated by `input.bindings`): bounded `set` / `toggle` / `step` /
 `dragTranslate` actions on input-owned channels that no track may also write.
 
+Audible programs may use released MotionScript 0.11.0 `audio` / `cue`
+declarations (gated by `audio.cues`): resources with a decoded length, and
+narration/effects/music cues on scene time. Narration is required (playback
+waits for it); effects and music are optional. Speech synthesis is a host
+service, not syntax.
+
 ## Snapshot metadata (P006 must record)
 
 - Source authority paths + content hashes (or git tree identity)

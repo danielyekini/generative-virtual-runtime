@@ -3,7 +3,19 @@
  * One loaded program; nothing runs until Run (or the Autoplay option).
  */
 import { CanvasRenderer } from "@gvr/canvas-renderer";
-import { AnimationRuntime, createSceneInputSession, logicalPointFromCss, RuntimeClock, type InputEvent, type InputSession } from "@gvr/runtime";
+import {
+  AnimationRuntime,
+  createSceneAudioSession,
+  createSceneInputSession,
+  encodeWav,
+  logicalPointFromCss,
+  mixAudio,
+  RuntimeClock,
+  sceneAudioResources,
+  type AudioSession,
+  type InputEvent,
+  type InputSession,
+} from "@gvr/runtime";
 import type { ResolvedFrame } from "@gvr/schema";
 import type { GvrBridge, PlayerProbe } from "../bridge";
 import { isTypingTarget } from "../bridge";
@@ -16,6 +28,7 @@ import { LibraryPage } from "./library-page";
 import { compareScene, type Comparison } from "./comparison";
 import { runProgram, type RunOutcome } from "./run";
 import { describeSceneSummary } from "./scene-summary";
+import { WebAudioBackend } from "./web-audio";
 import {
   PANEL_TABS,
   RECENT_KEY,
@@ -144,6 +157,16 @@ let outcome: RunOutcome | null = null;
 let runtime: AnimationRuntime | null = null;
 /** Input session for scenes that declare `interact` targets (input.bindings). */
 let input: InputSession | null = null;
+/** Audio session for scenes that declare audio.cues; driven by the player clock. */
+let audio: AudioSession | null = null;
+const audioBackend = new WebAudioBackend();
+let audioSeeked = false;
+/** True while the required-audio gate (not the user) paused the clock. */
+let audioHold = false;
+let audioNote = "";
+/** Required audio must be decoded this far ahead of the playhead. */
+const AUDIO_LOOKAHEAD_MS = 250;
+const EXPORT_SAMPLE_RATE = 44100;
 let frame: ResolvedFrame | null = null;
 let fullscreen = false;
 let scrubbing = false;
@@ -182,6 +205,7 @@ function openProgram(entry: ProgramEntry, options: { fromHash?: boolean; waitFor
   outcome = null;
   runtime = null;
   frame = null;
+  stopAudio();
   clock.pause();
   clock.seek(0);
   ui.source.value = entry.source;
@@ -218,6 +242,7 @@ function run(): void {
     input = outcome.scene.interactions?.length ? createSceneInputSession(outcome.scene, { wrapFocus: false }) : null;
     // Interactive scenes take keyboard focus for Tab / Enter / bound keys.
     ui.canvas.tabIndex = input ? 0 : -1;
+    startAudio(outcome.scene);
     clock.seek(0);
     refreshComparison();
     if (!isStill()) clock.play();
@@ -233,16 +258,79 @@ function togglePlay(): void {
   if (!runtime || isStill()) return;
   if (clock.isPlaying) clock.pause();
   else {
-    if (clock.timeMs >= durationMs()) clock.seek(0);
+    if (clock.timeMs >= durationMs()) seek(0);
+    audioBackend.resume();
     clock.play();
   }
+  audioHold = false;
   render();
 }
 
 function seek(timeMs: number): void {
   if (!runtime || isStill()) return;
   clock.seek(clampTime(timeMs, durationMs()));
+  audioSeeked = true;
   render();
+}
+
+// ---------------------------------------------------------------- audio
+
+function stopAudio(): void {
+  audio?.dispose();
+  audio = null;
+  audioHold = false;
+  audioNote = "";
+}
+
+/** Lower declared cues into a session and start decoding (readiness feeds the gate). */
+function startAudio(scene: NonNullable<RunOutcome["scene"]>): void {
+  stopAudio();
+  const resources = sceneAudioResources(scene);
+  if (resources.length === 0 && !scene.audioCues?.length) return;
+  const session = createSceneAudioSession(scene, { backend: audioBackend });
+  audio = session;
+  audioBackend.resume();
+  void audioBackend.load(resources, (resourceId, state) => {
+    if (audio !== session) return;
+    session.setResourceState(resourceId, state);
+    render();
+  });
+}
+
+/**
+ * Reconcile audio with the presented scene time once per frame. Scene time is
+ * the master clock; a playing clock holds while required audio near the
+ * playhead is loading or failed, and resumes at the same scene time.
+ */
+function syncAudio(wallDeltaMs: number): void {
+  if (!audio || !runtime) return;
+  const time = isStill() ? 0 : clampTime(clock.timeMs, durationMs());
+  const readiness = audio.readiness(time, AUDIO_LOOKAHEAD_MS);
+  const note = readiness.failed.length > 0
+    ? `required audio ${readiness.failed.join(", ")} failed to load; playback blocked`
+    : readiness.waitingFor.length > 0 ? `waiting for audio ${readiness.waitingFor.join(", ")}` : "";
+  if (!readiness.ok && clock.isPlaying) {
+    clock.pause();
+    audioHold = true;
+  } else if (readiness.ok && audioHold) {
+    audioHold = false;
+    clock.play();
+  }
+  if (note !== audioNote) {
+    audioNote = note;
+    render();
+  }
+  const playing = clock.isPlaying && !libraryVisible && !scrubbing;
+  audio.sync({ sceneTimeMs: time, state: playing ? "playing" : "paused", rate: clock.playbackRate, wallDeltaMs, seeked: audioSeeked });
+  audioSeeked = false;
+}
+
+/** Deterministic offline mix of the declared schedule (same gains/offsets as live playback). */
+function exportAudio(): { wav: Uint8Array; sampleRate: number; channels: number; durationMs: number } | null {
+  if (!audio || !runtime) return null;
+  const channels = 2;
+  const mixed = mixAudio(audio.schedule(), audioBackend.decoded(), { startMs: 0, endMs: durationMs(), sampleRate: EXPORT_SAMPLE_RATE, channels });
+  return { wav: encodeWav(mixed, EXPORT_SAMPLE_RATE), sampleRate: EXPORT_SAMPLE_RATE, channels, durationMs: durationMs() };
 }
 
 function step(kind: "frame" | "key", direction: -1 | 1): void {
@@ -253,6 +341,7 @@ function step(kind: "frame" | "key", direction: -1 | 1): void {
     : clampTime(clock.timeMs + direction * (outcome?.frameMs ?? 1000 / 30), span);
   clock.pause();
   clock.seek(next);
+  audioSeeked = true;
   render();
 }
 
@@ -378,6 +467,7 @@ function showPlayer(): void {
 function openLibrary(fromHash = false): void {
   closeMenus();
   clock.pause();
+  audioHold = false;
   fileReadId++;
   libraryVisible = true;
   document.body.classList.add("library-open");
@@ -622,7 +712,8 @@ function renderStatus(): void {
     loaded ? loaded.label : "no program",
     outcome ? outcome.state : loaded ? "not run" : "",
     runtime ? runtime.scene.sceneId : "",
-    runtime && !isStill() ? (clock.isPlaying ? "playing" : "paused") : "",
+    runtime && !isStill() ? (clock.isPlaying ? "playing" : audioHold ? "holding for audio" : "paused") : "",
+    audioNote,
     `canvas ${Math.round(size.width)}×${Math.round(size.height)} css`,
     `dpr ${dpr()}`,
     fullscreen ? "fullscreen" : "",
@@ -663,6 +754,16 @@ function probe(): PlayerProbe {
     panelOpen: settings.panelOpen,
     panelTab: settings.panelTab,
     diagnostics: (outcome?.diagnostics ?? []).map((item) => item.text),
+    audio: audio
+      ? {
+          voices: [...audio.runningVoices],
+          holding: audioHold,
+          note: audioNote,
+          context: audioBackend.running ? "running" : "suspended",
+          diagnostics: audio.diagnostics.map((item) => `${item.code} ${item.message}`),
+          log: [...audioBackend.log],
+        }
+      : undefined,
     canvas: {
       cssWidth: ui.canvas.clientWidth,
       cssHeight: ui.canvas.clientHeight,
@@ -692,6 +793,7 @@ function publish(): void {
     player: probe(),
     run,
     open: openKey,
+    exportAudio,
   };
   window.__gvr = bridge;
 }
@@ -993,6 +1095,7 @@ requestAnimationFrame(function loop(now: number) {
       }
       needsDraw = true;
     }
+    syncAudio(delta);
     if (needsDraw) {
       needsDraw = false;
       draw();

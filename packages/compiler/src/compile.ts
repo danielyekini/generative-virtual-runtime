@@ -150,6 +150,10 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${unit.nodeId}.`, unit.span));
       continue;
     }
+    if (unit.kind === "cue") {
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved audio resource ${unit.cue.resourceId}.`, unit.span));
+      continue;
+    }
     if (unit.kind === "timing") {
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved timing parent ${unit.parent ?? ""}.`, unit.span));
       continue;
@@ -234,6 +238,9 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
     return !session.scene.compositions?.some((composition) => composition.id === unit.definition);
   }
   if (unit.kind === "operators") return !knownNodeIds(session).has(unit.nodeId);
+  if (unit.kind === "cue") {
+    return !session.scene.resources.some((resource) => resource.kind === "audio" && resource.id === unit.cue.resourceId);
+  }
   if (unit.kind === "interact") {
     const ids = new Set(session.scene.nodes.map((node) => node.id));
     return [unit.nodeId, ...unit.bindings.map((binding) => binding.nodeId)].some((id) => id !== undefined && !ids.has(id));
@@ -272,6 +279,7 @@ function blockSeal(session: Session, unit: Extract<UnitAst, { kind: "seal" }>, m
 
 interface Capture {
   nodes: number;
+  audioCues: number;
   tracks: number;
   steps: number;
   resources: string;
@@ -286,6 +294,7 @@ function capture(session: Session): Capture {
 function captureInner(session: Session): Capture {
   return {
     nodes: session.scene.nodes.length,
+    audioCues: session.scene.audioCues?.length ?? 0,
     tracks: session.scene.timeline.tracks.length,
     steps: session.scene.timeline.steps.length,
     resources: JSON.stringify(session.scene.resources),
@@ -315,6 +324,8 @@ function noteChanges(session: Session, unit: UnitAst, before: Capture): void {
   if (tracks.length > 0) ops.push({ op: "ADD_TRACKS", tracks });
   const steps = session.scene.timeline.steps.slice(before.steps);
   if (steps.length > 0) ops.push({ op: "ADD_STEPS", steps });
+  const cues = (session.scene.audioCues ?? []).slice(before.audioCues);
+  if (cues.length > 0) ops.push({ op: "ADD_AUDIO_CUES", cues });
   if (session.sealedThroughMs !== before.sealed) ops.push({ op: "SEAL_TIMELINE", horizonMs: session.sealedThroughMs });
   if (ops.length > 0) emit(session, ops, unit.span);
 }
@@ -493,6 +504,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       unit.kind === "timing" ||
       unit.kind === "operators" ||
       unit.kind === "interact" ||
+      unit.kind === "audio" ||
       (unit.kind === "batch" && unit.items.some((item) => item.kind === "node")))
   ) {
     session.diagnostics.push(
@@ -612,10 +624,11 @@ function snapshotScene(scene: SceneIR): SceneIR {
     ...(scene.requiredCapabilities ? {requiredCapabilities: [...scene.requiredCapabilities]} : {}),
     ...(scene.geometryOperators ? {geometryOperators: [...scene.geometryOperators]} : {}),
     ...(scene.interactions ? {interactions: [...scene.interactions]} : {}),
+    ...(scene.audioCues ? {audioCues: [...scene.audioCues]} : {}),
   };
 }
 
-function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators" | "interactions">(
+function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators" | "interactions" | "audioCues">(
   scene: SceneIR,
   snapshot: SceneIR,
   key: K,
@@ -636,6 +649,7 @@ function restore(session: Session, snapshot: SceneIR, sealed: number, constants:
   restoreList(session.scene, snapshot, "requiredCapabilities");
   restoreList(session.scene, snapshot, "geometryOperators");
   restoreList(session.scene, snapshot, "interactions");
+  restoreList(session.scene, snapshot, "audioCues");
   session.sealedThroughMs = sealed;
   session.constants = constants;
 }
@@ -677,6 +691,15 @@ function lower(session: Session, unit: UnitAst): void {
       return;
     }
     lowerInteract(session, unit);
+    return;
+  }
+  if (unit.kind === "audio" || unit.kind === "cue") {
+    if (session.scene.irVersion !== "0.2") {
+      session.diagnostics.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare audio.", unit.span));
+      return;
+    }
+    if (unit.kind === "audio") lowerAudio(session, unit);
+    else lowerCue(session, unit);
     return;
   }
   if (unit.kind === "timing" || unit.kind === "composition" || unit.kind === "instance" || unit.kind === "operators") {
@@ -1319,6 +1342,33 @@ function lowerInteract(session: Session, unit: Extract<UnitAst, { kind: "interac
   // Replace the container so earlier emitted headers keep their own list.
   session.scene.interactions = [...list, target];
   ensureCapability(session, "input.bindings");
+}
+
+function lowerAudio(session: Session, unit: Extract<UnitAst, { kind: "audio" }>): void {
+  if (session.scene.resources.some((resource) => resource.id === unit.id)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `Resource ${unit.id} already exists.`, unit.span));
+    return;
+  }
+  // Readiness is host-reported (loader decode); the program declares none.
+  session.scene.resources = [...session.scene.resources, { id: unit.id, kind: "audio", href: unit.href, durationMs: unit.durationMs }];
+  ensureCapability(session, "audio.cues");
+}
+
+function lowerCue(session: Session, unit: Extract<UnitAst, { kind: "cue" }>): void {
+  const list = session.scene.audioCues ?? [];
+  if (list.some((cue) => cue.id === unit.cue.id)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `Audio cue ${unit.cue.id} already exists.`, unit.span));
+    return;
+  }
+  if (unit.cue.startMs + 1e-9 < session.sealedThroughMs) {
+    session.diagnostics.push(
+      problem("INVALID_TIMING", `Cue ${unit.cue.id} starts before the sealed horizon ${session.sealedThroughMs}ms.`, unit.span),
+    );
+    return;
+  }
+  // Replace the container so earlier emitted deltas keep their own list.
+  session.scene.audioCues = [...list, { ...unit.cue }];
+  ensureCapability(session, "audio.cues");
 }
 
 function knownNodeIds(session: Session): Set<string> {

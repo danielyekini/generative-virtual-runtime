@@ -322,7 +322,40 @@ export interface GeometryOperatorList {
   operators: GeometryOperator[];
 }
 
-export type ResourceDefinition = FontResource | ImageResource;
+/**
+ * Decoded audio resource (Scene IR 0.11.0 audio.cues). `durationMs` is the
+ * decoded length; readiness is reported by the host loader.
+ */
+export interface AudioResourceDefinition {
+  id: string;
+  kind: "audio";
+  href: string;
+  durationMs: number;
+  readiness?: "ready" | "pending" | "failed";
+}
+
+export type ResourceDefinition = FontResource | ImageResource | AudioResourceDefinition;
+
+export type AudioBusName = "narration" | "effects" | "music";
+
+/**
+ * Audio cue on root scene time (Scene IR 0.11.0 audio.cues). Semantics follow
+ * docs/decisions/engine/audible-media-clock.md: span = play length x loops,
+ * linear fades, narration required by default.
+ */
+export interface AudioCueDefinition {
+  id: string;
+  resourceId: string;
+  bus: AudioBusName;
+  startMs: number;
+  offsetMs?: number;
+  durationMs?: number;
+  loops?: number;
+  gain?: number;
+  fadeInMs?: number;
+  fadeOutMs?: number;
+  required?: boolean;
+}
 
 export type Expr =
   | { type: "number"; value: number }
@@ -477,6 +510,8 @@ export interface SceneIR {
   geometryOperators?: GeometryOperatorList[];
   /** Requires input.bindings (Scene IR 0.10.0). */
   interactions?: InteractionTarget[];
+  /** Requires audio.cues (Scene IR 0.11.0). Streamed with ADD_AUDIO_CUES. */
+  audioCues?: AudioCueDefinition[];
 }
 
 /** Channels an interaction binding may write (Scene IR 0.10.0 input.bindings). */
@@ -608,6 +643,8 @@ export type RuntimeOperation =
   | { op: "ADD_NODES"; nodes: NodeDefinition[] }
   | { op: "ADD_TRACKS"; tracks: TrackDefinition[] }
   | { op: "ADD_STEPS"; steps: StepDefinition[] }
+  /** Requires audio.cues (Scene IR 0.11.0). Cues may start at or after the seal frontier. */
+  | { op: "ADD_AUDIO_CUES"; cues: AudioCueDefinition[] }
   | { op: "SEAL_TIMELINE"; horizonMs: number }
   | { op: "COMPLETE_PROGRAM" }
   /** Requires entities.durableRevisions. May activate after the first seal. */

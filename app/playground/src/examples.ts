@@ -2,6 +2,7 @@ import streetlightSource from "../../../fixtures/motionscript/stories/the-last-s
 /// <reference types="vite/client" />
 import { emitMotionScript } from "@gvr/motionscript-emitter";
 import { buildRuntimeScenes } from "../../../fixtures/runtime-scenes";
+import audioLessonSource from "../../../fixtures/motionscript/audio-lesson.ms?raw";
 import ballSource from "../../../fixtures/motionscript/ball.ms?raw";
 import bunnySource from "../../../fixtures/motionscript/bunny.ms?raw";
 import cameraSource from "../../../fixtures/motionscript/camera.ms?raw";
@@ -110,6 +111,7 @@ export const motionExamples: MotionExample[] = [
   { id: "echo-canyon", label: "ECHO Canyon", caption: "A twenty-second kinetic-type plate: ECHO strikes a sandstone canyon wall and five smaller, cooler, fainter echoes ricochet deeper until the last fades at the distant opening.", source: echoCanyonSource },
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
+  { id: "audio-lesson", label: "Audio lesson", caption: "Narration, a looping music bed and timed click effects (audio.cues).", source: audioLessonSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
   { id: "nested", label: "Nested", caption: "A wheel and its spoke rotate together.", source: nestedSource },
   { id: "diagram", label: "Diagram", caption: "The sample follows the same two quadratics the curve is drawn with.", source: diagramSource },

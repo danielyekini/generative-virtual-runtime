@@ -1,3 +1,4 @@
+import type { AudioCueDefinition, SceneIR } from "@gvr/schema";
 import type { PlaybackClock, PlaybackState } from "./playback";
 
 /**
@@ -11,8 +12,8 @@ import type { PlaybackClock, PlaybackState } from "./playback";
  * mixes the same schedule sample by sample, so live and exported audio share
  * one gain/offset function.
  *
- * No MotionScript / Scene IR syntax is claimed here; language wiring is a
- * separate versioned implementation item.
+ * Scenes declare resources and cues with Scene IR 0.11.0 `audio.cues`;
+ * `createSceneAudioSession` lowers them into a session (E026).
  */
 
 export type AudioBus = "narration" | "effects" | "music";
@@ -313,6 +314,10 @@ export class AudioSession {
     return this.triggers;
   }
 
+  hasCue(cueId: string): boolean {
+    return this.cueIds.has(cueId);
+  }
+
   get runningVoices(): readonly string[] {
     return [...this.running.keys()].sort();
   }
@@ -547,6 +552,79 @@ export class AudioSession {
   private assertLive(): void {
     if (this.disposed) throw new Error("AudioSession is disposed.");
   }
+}
+
+// ---------------------------------------------------------------------------
+// Scene-declared audio (Scene IR 0.11.0 audio.cues)
+
+/** Host loader readiness by audio resource id. */
+export type AudioStates = Readonly<Record<string, AudioResourceState>>;
+
+export interface SceneAudioResource extends AudioResource {
+  href: string;
+  /** Readiness declared by the scene, if any. */
+  readiness?: AudioResourceState;
+}
+
+export function sceneAudioResources(scene: SceneIR): SceneAudioResource[] {
+  const out: SceneAudioResource[] = [];
+  for (const resource of scene.resources) {
+    if (resource.kind !== "audio") continue;
+    const entry: SceneAudioResource = { id: resource.id, href: resource.href, durationMs: resource.durationMs };
+    if (resource.readiness) entry.readiness = resource.readiness;
+    out.push(entry);
+  }
+  return out;
+}
+
+/**
+ * Initial session state for a scene resource: the host's loader state when
+ * given, else "failed" when the scene says so, else "pending" until the host
+ * decodes it. A scene's "ready" claim never starts playback without decoded data.
+ */
+function initialState(resource: SceneAudioResource, states: AudioStates | undefined): AudioResourceState {
+  return states?.[resource.id] ?? (resource.readiness === "failed" ? "failed" : "pending");
+}
+
+function toCue(cue: AudioCueDefinition): AudioCue {
+  return { ...cue };
+}
+
+export interface SceneAudioOptions extends Omit<AudioSessionOptions, "resources" | "cues"> {
+  states?: AudioStates;
+}
+
+/** Lower a scene's audio resources and cues into a live session. */
+export function createSceneAudioSession(scene: SceneIR, options: SceneAudioOptions = {}): AudioSession {
+  const { states, ...rest } = options;
+  return new AudioSession({
+    ...rest,
+    resources: sceneAudioResources(scene).map((resource) => ({ id: resource.id, durationMs: resource.durationMs, state: initialState(resource, states) })),
+    cues: (scene.audioCues ?? []).map(toCue),
+  });
+}
+
+/** Add cues that arrived after the session was created (streamed ADD_AUDIO_CUES). */
+export function syncSceneAudioCues(session: AudioSession, scene: SceneIR): AudioDiagnostic[] {
+  const fresh = (scene.audioCues ?? []).filter((cue) => !session.hasCue(cue.id)).map(toCue);
+  return fresh.length > 0 ? session.addCues(fresh) : [];
+}
+
+/** Pure schedule for a scene (export, readiness). */
+export function sceneAudioSchedule(scene: SceneIR, states?: AudioStates, mix: AudioMixSettings = {}): AudioSchedule {
+  const resources = sceneAudioResources(scene);
+  return {
+    cues: (scene.audioCues ?? []).map(toCue),
+    resources: new Map(resources.map((resource) => [resource.id, { id: resource.id, durationMs: resource.durationMs }])),
+    states: new Map(resources.map((resource) => [resource.id, initialState(resource, states)])),
+    busGain: { narration: 1, effects: 1, music: 1, ...mix.busGain },
+    duckGain: mix.duckGain ?? 0.35,
+  };
+}
+
+/** Required-audio readiness of a scene over [fromMs, fromMs + lookaheadMs]. */
+export function sceneAudioReadiness(scene: SceneIR, fromMs: number, lookaheadMs: number, states?: AudioStates): AudioReadiness {
+  return audioReadiness(sceneAudioSchedule(scene, states), fromMs, lookaheadMs);
 }
 
 // ---------------------------------------------------------------------------

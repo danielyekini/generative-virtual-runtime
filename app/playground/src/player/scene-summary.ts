@@ -14,6 +14,9 @@ export function describeSceneSummary(scene: SceneIR): string {
     `nodes ${scene.nodes.length} (${[...kinds].map(([kind, count]) => `${kind} ${count}`).join(", ")})`,
     `tracks ${scene.timeline.tracks.length} · steps ${scene.timeline.steps.length}`,
     `resources ${scene.resources.length} · cameras ${scene.cameras.length}`,
+    ...(scene.audioCues?.length
+      ? [`audio cues ${scene.audioCues.length} (${scene.audioCues.map((cue) => `${cue.id} ${cue.bus} @${cue.startMs}ms`).join(", ")})`]
+      : []),
     "",
     ...scene.nodes.slice(0, NODE_LIMIT).map((node) => `${node.id}\t${node.kind}`),
   ];

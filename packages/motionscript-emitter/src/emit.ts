@@ -86,6 +86,22 @@ export function emitMotionScript(scene: SceneIR): string {
     lines.push(`operators ${list.nodeId} {`, ...body, `};`);
   }
   for (const track of scene.timeline.tracks) lines.push(...emitTrack(track));
+  // audio.cues (MotionScript 0.11.0): resources then cues, all before completion.
+  for (const resource of scene.resources) {
+    if (resource.kind === "audio") lines.push(`audio ${resource.id} ${quote(resource.href)} ${formatDuration(resource.durationMs)};`);
+  }
+  for (const cue of scene.audioCues ?? []) {
+    const body: string[] = [];
+    if (cue.offsetMs !== undefined) body.push(`offset ${formatDuration(cue.offsetMs)};`);
+    if (cue.durationMs !== undefined) body.push(`duration ${formatDuration(cue.durationMs)};`);
+    if (cue.loops !== undefined) body.push(`loops ${formatNumber(cue.loops)};`);
+    if (cue.gain !== undefined) body.push(`gain ${formatNumber(cue.gain)};`);
+    if (cue.fadeInMs !== undefined) body.push(`fadeIn ${formatDuration(cue.fadeInMs)};`);
+    if (cue.fadeOutMs !== undefined) body.push(`fadeOut ${formatDuration(cue.fadeOutMs)};`);
+    if (cue.required !== undefined) body.push(`required ${cue.required ? "true" : "false"};`);
+    const head = `cue ${cue.id} ${cue.bus} ${cue.resourceId} at ${formatDuration(cue.startMs)}`;
+    lines.push(body.length > 0 ? `${head} { ${body.join(" ")} };` : `${head};`);
+  }
   for (const step of scene.timeline.steps) {
     lines.push(`step ${step.target.nodeId}.visible {`);
     lines.push(`  at ${formatDuration(step.timeMs)};`);
