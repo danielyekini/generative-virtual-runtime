@@ -11,6 +11,7 @@ mandatory fidelity/review routing no longer governs unrelated native work.
 
 - [2026-10-30: two-workstream operating structure](2026-10-30-operating-structure.md).
 - [2026-11-02 (joint): native proposal scope; legacy draft obligations retired](2026-11-02-native-proposal-scope.md).
+- [2026-11-02 (engine): generative audio via ElevenLabs → E031](engine/generative-audio-elevenlabs.md).
 - [2026-11-02 (product): Studio UX redesign replaces incremental P001](product/2026-11-02-studio-ux-redesign.md).
 - [2026-11-02 (product): P001 Studio library/editor/execute/fullscreen workflow](product/2026-11-02-p001-studio-workflow.md).
 

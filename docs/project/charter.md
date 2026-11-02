@@ -51,8 +51,18 @@ options, not grounds for an immediate engine rewrite. Do not force a model,
 backend, 3D/physics library or UX tool without a bounded selection experiment.
 Core syntax must not be invented by generation prompts or draft documents.
 
+**Authorised exception (user steering, 2 November 2026):** ElevenLabs is the
+adopted generative audio provider for timed narration and sound effects — GVR's
+first meaningful paid external dependency. Engine designs a provider-abstracted
+integration ([E031](https://github.com/danielyekini/generative-virtual-runtime/issues/119);
+[steering decision](../decisions/engine/generative-audio-elevenlabs.md)). Do not
+treat this as a licence to add other paid services or hard-wire vendor APIs into
+MotionScript / Scene IR. Eventual in-house audio generation remains a distant
+aspiration, not current work.
+
 The user delegates roadmap/task/design choices, issue management and creation
 and merging of passing PRs to agents. No mandatory independent review stage.
 Repository protections and platform permission boundaries still apply. Deployment,
 package publication, new paid services or fundamental changes to this vision
-need separate authorisation; ordinary technical decisions do not.
+need separate authorisation (ElevenLabs audio generation is already authorised
+above); ordinary technical decisions do not.

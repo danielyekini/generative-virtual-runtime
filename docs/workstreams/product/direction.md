@@ -47,6 +47,13 @@ native reference and real model authoring experiment, then director-script pipel
 P008-P013 cover speech/media/customer/teaching/desktop/landing decisions later.
 Do not conflate a standalone generated movie/audio companion with native support.
 
+## Generative audio provider (engine steering, 2 November 2026)
+
+Engine adopted ElevenLabs for timed generative narration/SFX ([E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)).
+Product inbox: [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) —
+triage at next intake; update P009 for host credentials/synthesis readiness after
+E031 publishes the host contract. Studio redesign queue above is unchanged.
+
 ## Corpus inputs (prospective direction, 2 November 2026)
 
 Product owns realistic single-turn prompts and multi-turn conversations with
