@@ -101,6 +101,27 @@ export type {
   StreamingUnitOutcome,
 } from "./observation";
 export { PlaybackClock } from "./playback";
+export {
+  PHYSICS_CHANNELS,
+  PhysicsSession,
+  solveAuthoredConstraints,
+} from "./physics";
+export type {
+  AuthoredDistanceConstraint,
+  PhysicsBody,
+  PhysicsBodyKind,
+  PhysicsChannel,
+  PhysicsCollider,
+  PhysicsCost,
+  PhysicsDiagnostic,
+  PhysicsDiagnosticCode,
+  PhysicsDistanceJoint,
+  PhysicsEvent,
+  PhysicsOwnership,
+  PhysicsSessionOptions,
+  PhysicsSnapshot,
+  PhysicsWrite,
+} from "./physics";
 export { assessReadiness, PresentationController } from "./presentation";
 export type { GeneratedOffer, PresentationPhase, PresentationView, Readiness, SystemCatalogueEntry } from "./presentation";
 export type { PlaybackState } from "./playback";
