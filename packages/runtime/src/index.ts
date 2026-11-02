@@ -3,8 +3,10 @@ export { EntityRevisionStore } from "./entities";
 export type {
   BehaviourId,
   BehaviourRecord,
+  BindingPatchOp,
   ChannelId,
   CompactEntityContext,
+  DrawableReuseBudget,
   EntityId,
   EntityPatch,
   EntityPatchCode,
@@ -12,6 +14,11 @@ export type {
   EntityPatchOp,
   EntityRecord,
   EntityStoreSnapshot,
+  ExtendedEntityPatch,
+  ExtendedEntityPatchOp,
+  GeometryAsset,
+  GeometryBinding,
+  GeometryId,
   OwnershipGrant,
   WriterClass,
 } from "./entities";
