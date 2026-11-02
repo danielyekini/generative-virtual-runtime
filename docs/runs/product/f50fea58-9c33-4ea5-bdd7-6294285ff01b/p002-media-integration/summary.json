@@ -1,0 +1,1113 @@
+{
+  "checks": [
+    {
+      "name": "no horizontal page overflow",
+      "ok": true,
+      "detail": [
+        1440,
+        1440
+      ]
+    },
+    {
+      "name": "landing is an empty player with nothing loaded",
+      "ok": true,
+      "detail": {
+        "programKey": null,
+        "programName": null,
+        "format": null,
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 540,
+          "backingWidth": 1440,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "landing shows Open Library in the header and on the canvas",
+      "ok": true
+    },
+    {
+      "name": "Run is disabled until a program is loaded",
+      "ok": true
+    },
+    {
+      "name": "Source panel is closed by default",
+      "ok": true,
+      "detail": {
+        "programKey": null,
+        "programName": null,
+        "format": null,
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 540,
+          "backingWidth": 1440,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "old left rail and right dock are gone",
+      "ok": true
+    },
+    {
+      "name": "bottom panel has Diagnostics, Stream, Scene and Report tabs",
+      "ok": true,
+      "detail": [
+        "Diagnostics",
+        "Stream",
+        "Scene",
+        "Report"
+      ]
+    },
+    {
+      "name": "Stream action is disabled until a native program is loaded",
+      "ok": true,
+      "detail": {
+        "disabled": true,
+        "title": "Stream supports native MotionScript; use Run for imports."
+      }
+    },
+    {
+      "name": "Open Library opens the Library page",
+      "ok": true
+    },
+    {
+      "name": "picker search filters programs",
+      "ok": true,
+      "detail": [
+        "story:two-ways-through-a-binary-tree"
+      ]
+    },
+    {
+      "name": "collection chip narrows the picker",
+      "ok": true,
+      "detail": [
+        "frame:camera-mapping",
+        "frame:hierarchy-transform",
+        "frame:opacity",
+        "frame:path-stress",
+        "frame:primitive-gallery",
+        "frame:text",
+        "frame:z-order"
+      ]
+    },
+    {
+      "name": "thumbnail bitmap fits inside the responsive card",
+      "ok": true
+    },
+    {
+      "name": "pointer scrubbing samples a real later frame",
+      "ok": true,
+      "detail": {
+        "poster": {
+          "time": 1400,
+          "x": 58.59375,
+          "y": 0.8125,
+          "w": 311.953125
+        },
+        "scrub": 3200
+      }
+    },
+    {
+      "name": "leaving restores the fixed thumbnail",
+      "ok": true
+    },
+    {
+      "name": "editable tags participate in accent-insensitive search",
+      "ok": true
+    },
+    {
+      "name": "favourites filter uses the saved toggle",
+      "ok": true
+    },
+    {
+      "name": "opening loads the program without running it",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 540,
+          "backingWidth": 1440,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "header names the loaded program and waits for Run",
+      "ok": true
+    },
+    {
+      "name": "hash names the loaded program",
+      "ok": true
+    },
+    {
+      "name": "Run compiles and plays the loaded program",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 633.3000000000011,
+        "durationMs": 4000,
+        "playing": true,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 540,
+          "backingWidth": 1440,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "Fullscreen is enabled after Run",
+      "ok": true
+    },
+    {
+      "name": "clicking the tape seeks to that fraction of the program",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 2000,
+        "durationMs": 4000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 540,
+          "backingWidth": 1440,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "fullscreen shows the canvas only at window size",
+      "ok": true,
+      "detail": {
+        "probe": {
+          "programKey": "sample:ball",
+          "programName": "Ball",
+          "format": "motionscript",
+          "runState": "ok",
+          "sceneId": "bouncing-ball",
+          "timeMs": 2000,
+          "durationMs": 4000,
+          "playing": false,
+          "dirty": false,
+          "fullscreen": true,
+          "sourceOpen": false,
+          "split": false,
+          "comparison": false,
+          "comparisonSceneId": "",
+          "panelOpen": true,
+          "panelTab": "diagnostics",
+          "diagnostics": [],
+          "canvas": {
+            "cssWidth": 1440,
+            "cssHeight": 900,
+            "backingWidth": 1440,
+            "backingHeight": 900
+          }
+        },
+        "area": [
+          1440,
+          900
+        ],
+        "bar": "none",
+        "panel": "none"
+      }
+    },
+    {
+      "name": "fullscreen canvas fills the area; renderer contain-fits the logical viewport",
+      "ok": true,
+      "detail": {
+        "cssWidth": 1440,
+        "cssHeight": 900,
+        "backingWidth": 1440,
+        "backingHeight": 900
+      }
+    },
+    {
+      "name": "fullscreen has a visible exit control",
+      "ok": true
+    },
+    {
+      "name": "Escape leaves fullscreen",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 2000,
+        "durationMs": 4000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 540,
+          "backingWidth": 1440,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "exit button leaves fullscreen",
+      "ok": true
+    },
+    {
+      "name": "Source panel opens on the right with the loaded source",
+      "ok": true
+    },
+    {
+      "name": "editing marks the program as edited since Run",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 2000,
+        "durationMs": 4000,
+        "playing": false,
+        "dirty": true,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 540,
+          "backingWidth": 1016,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "page navigation preserves unsaved Player edits and loaded program",
+      "ok": true
+    },
+    {
+      "name": "Ctrl+Enter re-runs the edited source",
+      "ok": true
+    },
+    {
+      "name": "upload opens the full Library editor",
+      "ok": true
+    },
+    {
+      "name": "opened file becomes the loaded program, not run",
+      "ok": true,
+      "detail": {
+        "programKey": "mine:d152936d-9093-4f27-8fff-d4f3a668f856",
+        "programName": "broken-upload",
+        "format": "motionscript",
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 540,
+          "backingWidth": 1016,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "failed Run lists located diagnostics and keeps the source",
+      "ok": true,
+      "detail": {
+        "programKey": "mine:d152936d-9093-4f27-8fff-d4f3a668f856",
+        "programName": "broken-upload",
+        "format": "motionscript",
+        "runState": "failed",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [
+          "line 8, column 8 · BAD_COLOR · A colour needs #RRGGBB or #RRGGBBAA. Short forms are not accepted."
+        ],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 540,
+          "backingWidth": 1016,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "diagnostic row shows line, column, code, message and recovery",
+      "ok": true,
+      "detail": "✕ errorLn 8, Col 8BAD_COLORA colour needs #RRGGBB or #RRGGBBAA. Short forms are not accepted.Recovery: Reject this unit atomically. Keep the last accepted scene unchanged."
+    },
+    {
+      "name": "selecting a diagnostic jumps to its source span",
+      "ok": true,
+      "detail": {
+        "start": 113,
+        "end": 114,
+        "focused": true
+      }
+    },
+    {
+      "name": "imports run through the Player with a fidelity report",
+      "ok": true,
+      "detail": {
+        "imported": {
+          "programKey": "import:lottie:animated_position",
+          "programName": "Lottie: position",
+          "format": "lottie",
+          "runState": "ok",
+          "sceneId": "lottie",
+          "timeMs": 233.3000000000011,
+          "durationMs": 2000,
+          "playing": true,
+          "dirty": false,
+          "fullscreen": false,
+          "sourceOpen": true,
+          "split": false,
+          "comparison": false,
+          "comparisonSceneId": "",
+          "panelOpen": true,
+          "panelTab": "report",
+          "diagnostics": [
+            "IMPORT_EXACT · Imported motion on layer_1.transform.position.x.",
+            "IMPORT_EXACT · Imported motion on layer_1.transform.position.y.",
+            "IMPORT_EXACT · Imported ellipse layer_1.group0.ellipseNode.",
+            "IMPORT_EXACT · Converted composition frames 0–60 at 30fps to 2000ms."
+          ],
+          "canvas": {
+            "cssWidth": 1016,
+            "cssHeight": 540,
+            "backingWidth": 1016,
+            "backingHeight": 540
+          }
+        },
+        "report": "STATUS\texact\nCOUNTS\tconversion\texact\t4\tapproximated\t0\tdropped\t0\tunsupported\t0\nGR"
+      }
+    },
+    {
+      "name": "Autoplay on open runs the program immediately",
+      "ok": true,
+      "detail": {
+        "programKey": "frame:primitive-gallery",
+        "programName": "Primitive gallery",
+        "format": "motionscript",
+        "runState": "recovered",
+        "sceneId": "primitive-gallery",
+        "timeMs": 0,
+        "durationMs": 1000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [
+          "line 12, column 11 · INVALID_TYPE · rectangle needs a name.",
+          "line 12, column 11 · INVALID_TYPE · Expected '{'.",
+          "line 12, column 21 · INVALID_TYPE · Unknown property rectangle.",
+          "line 18, column 8 · INVALID_TYPE · circle needs a name.",
+          "line 18, column 8 · INVALID_TYPE · Expected '{'.",
+          "line 18, column 15 · INVALID_TYPE · Unknown property circle.",
+          "line 24, column 9 · INVALID_TYPE · ellipse needs a name.",
+          "line 24, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 24, column 17 · INVALID_TYPE · Unknown property ellipse.",
+          "line 30, column 6 · INVALID_TYPE · line needs a name.",
+          "line 30, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 30, column 11 · INVALID_TYPE · Unknown property line.",
+          "line 36, column 9 · INVALID_TYPE · polygon needs a name.",
+          "line 36, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 36, column 17 · INVALID_TYPE · Unknown property polygon.",
+          "line 42, column 6 · INVALID_TYPE · path needs a name.",
+          "line 42, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 42, column 11 · INVALID_TYPE · Unknown property path.",
+          "line 12, column 11 · INVALID_TYPE · rectangle needs a name.",
+          "line 12, column 11 · INVALID_TYPE · Expected '{'.",
+          "line 12, column 21 · INVALID_TYPE · Unknown property rectangle.",
+          "line 18, column 8 · INVALID_TYPE · circle needs a name.",
+          "line 18, column 8 · INVALID_TYPE · Expected '{'.",
+          "line 18, column 15 · INVALID_TYPE · Unknown property circle.",
+          "line 24, column 9 · INVALID_TYPE · ellipse needs a name.",
+          "line 24, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 24, column 17 · INVALID_TYPE · Unknown property ellipse.",
+          "line 30, column 6 · INVALID_TYPE · line needs a name.",
+          "line 30, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 30, column 11 · INVALID_TYPE · Unknown property line.",
+          "line 36, column 9 · INVALID_TYPE · polygon needs a name.",
+          "line 36, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 36, column 17 · INVALID_TYPE · Unknown property polygon.",
+          "line 42, column 6 · INVALID_TYPE · path needs a name.",
+          "line 42, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 42, column 11 · INVALID_TYPE · Unknown property path."
+        ],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 540,
+          "backingWidth": 1016,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "loading by hash restores the program without running it (autoplay off)",
+      "ok": true,
+      "detail": {
+        "programKey": "story:through-the-blue",
+        "programName": "Through the Blue",
+        "format": "motionscript",
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "split": false,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 540,
+          "backingWidth": 1016,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "landing lists recent programs",
+      "ok": true,
+      "detail": [
+        "Through the Blue",
+        "Primitive gallery",
+        "Lottie: position",
+        "broken-upload",
+        "Ball"
+      ]
+    },
+    {
+      "name": "Library route restores saved favourites and tags",
+      "ok": true
+    },
+    {
+      "name": "My programs survive reload",
+      "ok": true
+    },
+    {
+      "name": "Library authoring draft survives page navigation",
+      "ok": true
+    },
+    {
+      "name": "failed save reports storage failure and keeps editor source",
+      "ok": true
+    },
+    {
+      "name": "Paste saves to My programs and opens without running",
+      "ok": true
+    },
+    {
+      "name": "New opens a full blank editor",
+      "ok": true
+    },
+    {
+      "name": "uploaded SVG retains its format after reload",
+      "ok": true
+    },
+    {
+      "name": "saved SVG still imports through Player Run",
+      "ok": true
+    },
+    {
+      "name": "duration sort resolves and orders playable programs",
+      "ok": true,
+      "detail": [
+        4,
+        4,
+        30,
+        30,
+        35
+      ]
+    },
+    {
+      "name": "recent sort puts the latest opened program first",
+      "ok": true
+    },
+    {
+      "name": "empty results explain how to recover",
+      "ok": true
+    },
+    {
+      "name": "Library fits a narrow viewport",
+      "ok": true
+    },
+    {
+      "name": "Open still works when clicking it blurs an edited tag field",
+      "ok": true
+    },
+    {
+      "name": "Split expands the single Source editor with explicit formats",
+      "ok": true
+    },
+    {
+      "name": "Split comparison defaults off with no emitted script",
+      "ok": true
+    },
+    {
+      "name": "format switches restore separate native and SVG drafts",
+      "ok": true
+    },
+    {
+      "name": "returning to SVG preserves its independent draft and waits for Run",
+      "ok": true
+    },
+    {
+      "name": "pasted SVG runs through the existing importer",
+      "ok": true
+    },
+    {
+      "name": "explicit comparison builds and displays the second scene",
+      "ok": true,
+      "detail": {
+        "programKey": "mine:bcc2cc26-1e24-4e2a-b348-2431acdc7790",
+        "programName": "saved-logo.svg",
+        "format": "svg",
+        "runState": "ok",
+        "sceneId": "svg",
+        "timeMs": 0,
+        "durationMs": 1000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "split": true,
+        "comparison": true,
+        "comparisonSceneId": "svg",
+        "panelOpen": true,
+        "panelTab": "report",
+        "diagnostics": [
+          "IMPORT_EXACT · Static SVG uses a 1000ms duration so the runtime can seek it."
+        ],
+        "canvas": {
+          "cssWidth": 788,
+          "cssHeight": 540,
+          "backingWidth": 788,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "turning comparison off removes its runtime and emitted result",
+      "ok": true
+    },
+    {
+      "name": "lottie preset loads without running",
+      "ok": true
+    },
+    {
+      "name": "lottie Split Run produces a real rendered frame",
+      "ok": true
+    },
+    {
+      "name": "fixture preset loads without running",
+      "ok": true
+    },
+    {
+      "name": "fixture Split Run produces a real rendered frame",
+      "ok": true
+    },
+    {
+      "name": "motionscript preset loads without running",
+      "ok": true
+    },
+    {
+      "name": "motionscript Split Run produces a real rendered frame",
+      "ok": true
+    },
+    {
+      "name": "native comparison uses the same playhead and renders matching pixels",
+      "ok": true
+    },
+    {
+      "name": "comparison canvases align vertically and use identical backing dimensions",
+      "ok": true
+    },
+    {
+      "name": "failed Run retains previous successful scene and the rejected draft",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "failed",
+        "sceneId": "bouncing-ball",
+        "timeMs": 500,
+        "durationMs": 4000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "split": true,
+        "comparison": false,
+        "comparisonSceneId": "",
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [
+          "line 1, column 1 · INVALID_TYPE · A program starts with scene \"name\" { ... };.",
+          "line 1, column 1 · INVALID_TYPE · Expected a declaration.",
+          "line 1, column 13 · INVALID_TYPE · A program ends with complete;.",
+          "MISSING_REQUIRED · A scene needs a name.",
+          "UNSUPPORTED_IR_VERSION · MotionScript version must be \"0.1\" or \"0.2\".",
+          "INVALID_GEOMETRY · The viewport needs a positive width and height.",
+          "MISSING_REQUIRED · The scene needs a background colour.",
+          "INVALID_TIMING · The scene needs a positive duration."
+        ],
+        "canvas": {
+          "cssWidth": 788,
+          "cssHeight": 540,
+          "backingWidth": 788,
+          "backingHeight": 540
+        }
+      }
+    },
+    {
+      "name": "closing/reopening Split keeps edits and comparison stays off",
+      "ok": true
+    },
+    {
+      "name": "Open file uses the selected format and waits for Run",
+      "ok": true
+    },
+    {
+      "name": "late file reads cannot overwrite a newer format draft",
+      "ok": true
+    },
+    {
+      "name": "file read errors are visible and preserve the draft",
+      "ok": true
+    },
+    {
+      "name": "Library navigation preserves the selected Split draft",
+      "ok": true
+    },
+    {
+      "name": "Split controls fit the editor at a narrower viewport",
+      "ok": true
+    },
+    {
+      "name": "Stream starts current draft with a real partial arrival",
+      "ok": true,
+      "detail": {
+        "receivedBytes": 16,
+        "parsedUnits": 0,
+        "pendingCompileDeltas": 0,
+        "queuedRuntimeDeltas": 0,
+        "appliedRevision": 0,
+        "sealedThroughMs": 0,
+        "authoringComplete": false,
+        "playheadMs": 0,
+        "playbackState": "waiting_for_content",
+        "waitingForContent": true,
+        "cancelled": false,
+        "recentUnits": [],
+        "rejectedDiagnostics": [],
+        "receivedCharacters": 16,
+        "totalCharacters": 318,
+        "arrivalPaused": false,
+        "arrivalDone": false,
+        "waitingMs": 300.10000000000014,
+        "resolvedThroughMs": 0
+      }
+    },
+    {
+      "name": "Stream exposes no unarrived source",
+      "ok": true
+    },
+    {
+      "name": "Pause arrival stops Worker delivery",
+      "ok": true
+    },
+    {
+      "name": "Step delivers one bounded chunk and stays paused",
+      "ok": true
+    },
+    {
+      "name": "Advanced exposes approved chunking, jitter, stalls and seed",
+      "ok": true
+    },
+    {
+      "name": "Partial arrival shows waiting instead of a false failure",
+      "ok": true
+    },
+    {
+      "name": "Stream header fits desktop width",
+      "ok": true
+    },
+    {
+      "name": "Advanced stalls are real producer pauses with honest status",
+      "ok": true
+    },
+    {
+      "name": "Instant simulated arrival completes native compilation",
+      "ok": true,
+      "detail": {
+        "receivedBytes": 320,
+        "parsedUnits": 5,
+        "pendingCompileDeltas": 0,
+        "queuedRuntimeDeltas": 0,
+        "appliedRevision": 7,
+        "sealedThroughMs": 2000,
+        "authoringComplete": true,
+        "playheadMs": 50,
+        "playbackState": "playing",
+        "waitingForContent": false,
+        "cancelled": false,
+        "recentUnits": [
+          {
+            "unitId": 1,
+            "outcome": "applied",
+            "sourceSpan": {
+              "start": {
+                "offset": 0,
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "offset": 93,
+                "line": 1,
+                "column": 94
+              }
+            },
+            "revision": 1
+          },
+          {
+            "unitId": 2,
+            "outcome": "applied",
+            "sourceSpan": {
+              "start": {
+                "offset": 120,
+                "line": 3,
+                "column": 3
+              },
+              "end": {
+                "offset": 126,
+                "line": 3,
+                "column": 9
+              }
+            },
+            "revision": 2
+          },
+          {
+            "unitId": 3,
+            "outcome": "applied",
+            "sourceSpan": {
+              "start": {
+                "offset": 161,
+                "line": 4,
+                "column": 3
+              },
+              "end": {
+                "offset": 168,
+                "line": 4,
+                "column": 10
+              }
+            },
+            "revision": 3
+          },
+          {
+            "unitId": 4,
+            "outcome": "applied",
+            "sourceSpan": {
+              "start": {
+                "offset": 218,
+                "line": 5,
+                "column": 3
+              },
+              "end": {
+                "offset": 222,
+                "line": 5,
+                "column": 7
+              }
+            },
+            "revision": 4
+          },
+          {
+            "unitId": 5,
+            "outcome": "applied",
+            "sourceSpan": {
+              "start": {
+                "offset": 229,
+                "line": 6,
+                "column": 3
+              },
+              "end": {
+                "offset": 236,
+                "line": 6,
+                "column": 10
+              }
+            },
+            "revision": 5
+          },
+          {
+            "unitId": 6,
+            "outcome": "applied",
+            "sourceSpan": {
+              "start": {
+                "offset": 298,
+                "line": 7,
+                "column": 3
+              },
+              "end": {
+                "offset": 302,
+                "line": 7,
+                "column": 7
+              }
+            },
+            "revision": 6
+          },
+          {
+            "unitId": 7,
+            "outcome": "applied",
+            "sourceSpan": {
+              "start": {
+                "offset": 309,
+                "line": 8,
+                "column": 3
+              },
+              "end": {
+                "offset": 318,
+                "line": 8,
+                "column": 12
+              }
+            },
+            "revision": 7
+          }
+        ],
+        "rejectedDiagnostics": [],
+        "receivedCharacters": 318,
+        "totalCharacters": 318,
+        "arrivalPaused": false,
+        "arrivalDone": true,
+        "waitingMs": 16.59999999999991,
+        "resolvedThroughMs": 50
+      }
+    },
+    {
+      "name": "Source has accepted units ahead of playhead",
+      "ok": true
+    },
+    {
+      "name": "Playback resolves applied unit spans",
+      "ok": true
+    },
+    {
+      "name": "Completed stream can replay from zero",
+      "ok": true
+    },
+    {
+      "name": "Stream controls fit a narrow viewport",
+      "ok": true
+    },
+    {
+      "name": "Run leaves Stream mode and removes monitoring controls",
+      "ok": true
+    },
+    {
+      "name": "Run retains exact draft after streaming",
+      "ok": true
+    },
+    {
+      "name": "Rejected arrived source has red diagnostic markers",
+      "ok": true
+    },
+    {
+      "name": "Changing program cancels arrival; imports use Run",
+      "ok": true
+    },
+    {
+      "name": "Stream applies native pointer input overlays",
+      "ok": true
+    },
+    {
+      "name": "Stream starts decoded audio on its playback clock",
+      "ok": true,
+      "detail": {
+        "voices": [],
+        "holding": false,
+        "note": "",
+        "context": "running",
+        "diagnostics": [],
+        "log": [
+          "decoded Click 80ms",
+          "start First#0 offset=17 gain=1.000 rate=1 enter",
+          "stop First#0@1",
+          "start Later#0 offset=17 gain=1.000 rate=1 enter",
+          "stop Later#0@2"
+        ]
+      }
+    },
+    {
+      "name": "Stream appends audio cues after the first seal",
+      "ok": true,
+      "detail": {
+        "voices": [],
+        "holding": false,
+        "note": "",
+        "context": "running",
+        "diagnostics": [],
+        "log": [
+          "decoded Click 80ms",
+          "start First#0 offset=17 gain=1.000 rate=1 enter",
+          "stop First#0@1",
+          "start Later#0 offset=17 gain=1.000 rate=1 enter",
+          "stop Later#0@2"
+        ]
+      }
+    },
+    {
+      "name": "Stream audio follows playback pause",
+      "ok": true
+    },
+    {
+      "name": "Stream audio retains the existing offline export path",
+      "ok": true,
+      "detail": {
+        "bytes": 352844,
+        "durationMs": 2000
+      }
+    },
+    {
+      "name": "legacy stream workbench still streams until P002",
+      "ok": true,
+      "detail": {
+        "sceneId": "bunny-demo",
+        "timeMs": 2000,
+        "playing": false,
+        "rate": 1,
+        "degraded": false,
+        "diagnostics": [],
+        "origins": {},
+        "state": "waiting_for_content",
+        "sealedThroughMs": 2000,
+        "revision": 5,
+        "parsedUnits": 5,
+        "phase": "dwell"
+      }
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": 99,
+  "failed": 0
+}

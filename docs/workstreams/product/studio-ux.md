@@ -164,8 +164,9 @@ Performance inspector placement and metrics (P003), agent-facing commands
 
 ## Open questions
 
-- Exact preset rates and the Advanced control set are to be proposed with
-  mockups in P002.
+- P002 controls were approved in [issue #43](https://github.com/danielyekini/generative-virtual-runtime/issues/43#issuecomment-6584899369). Rates: Slow 20, Medium 60 (default), Fast 200 estimated tokens/sec and Instant. One estimated token is four UTF-16 code units; these are simulated arrival rates, not provider measurements.
+- Advanced controls: characters / lines / estimated tokens / random-character chunks; chunk size or random min/max; timing jitter percent; stall frequency in chunks and duration in ms; repeatable seed. Default: four estimated tokens per chunk, no jitter/stalls, seed 1. Controls apply on the next Stream run. Arrival pause/step are separate from playback pause/seek.
+- P002 renders declaration-span source states. Units awaiting their next accepted seal are queued; after application, a unit resolves when evaluation reaches that seal's horizon. Multiple states may share a source line. This is a host presentation mapping over E018, not a line-to-frame relationship. The frame filmstrip remains P016.
 
 ## Frame-tape states (decided 2 November 2026)
 

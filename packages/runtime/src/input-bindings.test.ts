@@ -83,6 +83,27 @@ describe("scene-declared interactions (Scene IR 0.10.0 input.bindings)", () => {
     expect(streaming.scene?.requiredCapabilities).toContain("input.bindings");
   });
 
+  it("applies input overlays to the sealed streaming sample", () => {
+    const result = compileMotionScript(source.replace("complete;", "seal 1s;\ncomplete;"));
+    const streaming = new StreamingRuntime();
+    for (const delta of result.deltas) {
+      if (delta.operations.some(op => op.op === "COMPLETE_PROGRAM")) continue;
+      streaming.enqueue(delta); streaming.flushCommands();
+    }
+    const session = createSceneInputSession(streaming.scene!);
+    let overlayTime = -1;
+    const frame = (time: number) => streaming.evaluate(time, (sampled, boundedTime) => {
+      overlayTime = boundedTime;
+      return session.applyTo(sampled, boundedTime);
+    });
+    const toggle = at(frame(0), "Toggle", { x: 30, y: 15 });
+    session.process({ type: "pointerdown", sceneTimeMs: 0, pointerId: 1, x: toggle.x, y: toggle.y }, frame(0));
+    session.process({ type: "pointerup", sceneTimeMs: 0, pointerId: 1, x: toggle.x, y: toggle.y }, frame(0));
+    expect(frame(9000).drawItems.find(item => item.nodeId === "Lamp")!.opacity).toBe(1);
+    expect(overlayTime).toBe(1000);
+    expect(streaming.evaluate(9000).drawItems.find(item => item.nodeId === "Lamp")!.opacity).toBe(0.2);
+  });
+
   it("maps CSS pointer positions through the renderer contain fit", () => {
     // 400×300 viewport in an 800×800 box: scale 2, letterbox 100px top.
     expect(logicalPointFromCss({ width: 400, height: 300 }, 800, 800, 0, 100)).toEqual({ x: 0, y: 0 });

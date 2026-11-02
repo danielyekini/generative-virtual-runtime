@@ -754,7 +754,8 @@
         "packages/compiler/src/interact.test.ts#lowers targets and every bounded action into Scene IR interactions",
         "packages/compiler/src/interact.test.ts#enforces exclusive input ownership, bounds and duplicate targets through validation",
         "packages/runtime/src/input-bindings.test.ts#drives declared bindings through AnimationRuntime with parent-space drag",
-        "packages/runtime/src/input-bindings.test.ts#delivers interactions through streamed compiler deltas"
+        "packages/runtime/src/input-bindings.test.ts#delivers interactions through streamed compiler deltas",
+        "packages/runtime/src/input-bindings.test.ts#applies input overlays to the sealed streaming sample"
       ],
       "adapters": {
         "lottie": {

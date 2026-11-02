@@ -13,3 +13,6 @@ mandatory fidelity/review routing no longer governs unrelated native work.
 - [2026-11-02 (joint): native proposal scope; legacy draft obligations retired](2026-11-02-native-proposal-scope.md).
 - [2026-11-02 (product): Studio UX redesign replaces incremental P001](product/2026-11-02-studio-ux-redesign.md).
 - [2026-11-02 (product): P001 Studio library/editor/execute/fullscreen workflow](product/2026-11-02-p001-studio-workflow.md).
+
+- [2026-11-02 (product): P002 current-program Stream mode and truthful source states](product/2026-11-02-player-stream-mode.md).
+- [2026-11-02 (product): P002 integration with released input/audio](product/2026-11-02-player-stream-integration.md).

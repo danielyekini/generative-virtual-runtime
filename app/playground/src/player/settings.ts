@@ -11,8 +11,8 @@ export interface PlayerSettings {
   dpr: "device" | "1" | "2";
 }
 
-export type PanelTab = "diagnostics" | "scene" | "report";
-export const PANEL_TABS: readonly PanelTab[] = ["diagnostics", "scene", "report"];
+export type PanelTab = "diagnostics" | "stream" | "scene" | "report";
+export const PANEL_TABS: readonly PanelTab[] = ["diagnostics", "stream", "scene", "report"];
 
 export const DEFAULT_SETTINGS: PlayerSettings = {
   autoplay: false,
