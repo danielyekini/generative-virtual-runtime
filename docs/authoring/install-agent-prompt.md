@@ -1,6 +1,13 @@
 # Agent prompt: install the separate authoring workflow
 
-Work in danielyekini/generative-visual-runtime. Install this documentation bundle and separate authoring from fidelity. This task is documentation and process integration, not implementation of new language capabilities. Preserve unrelated working-tree changes. Read root and applicable AGENTS.md first.
+> Operating revision 2026-10-30: [current operations](../operations/README.md) and
+> [migration map](../operations/migration-map.md) own new work routing and full-test/Git
+> gates. This procedure is scoped to explicit imported-program refinement/source-fidelity
+> claims. Its historical records and valid quality/storage rules remain; it does not
+> require universal parity, native round trips or a separate reviewer.
+> This older installation prompt is superseded process evidence; do not reinstall it.
+
+Work in danielyekini/generative-virtual-runtime. Install this documentation bundle and separate authoring from fidelity. This task is documentation and process integration, not implementation of new language capabilities. Preserve unrelated working-tree changes. Read root and applicable AGENTS.md first.
 
 ## Grounding
 

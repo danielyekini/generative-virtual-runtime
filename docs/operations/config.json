@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "repository": "danielyekini/generative-virtual-runtime",
+  "installed": true,
+  "project": {
+    "owner": "danielyekini",
+    "number": 3,
+    "id": "PVT_kwHOB8zWK84BpeNs",
+    "url": "https://github.com/users/danielyekini/projects/3",
+    "field_map": {
+      "Status": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn5twQ",
+        "options": {
+          "Candidate": "627f4bb5",
+          "Ready": "6f49cf2a",
+          "In progress": "d04e455c",
+          "Blocked": "63b3e7f8",
+          "Human verification": "6ebe0b42",
+          "Deferred": "5d6c4bb8",
+          "Done": "3e01b845",
+          "Todo": "4b368228"
+        }
+      },
+      "Workstream": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn65x8",
+        "options": {
+          "Engine": "85fdff69",
+          "Product": "46f72516",
+          "Joint": "cbe9db29"
+        }
+      },
+      "Kind": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn654s",
+        "options": {
+          "Milestone": "1e6e63ee",
+          "Epic": "14dad7c9",
+          "Task": "c56ed57c",
+          "Bug": "85c2fa15",
+          "Experiment": "6b1aadc3",
+          "Decision": "06d19a90",
+          "Idea": "bc602a53",
+          "Request": "f5a2a36a",
+          "Review": "4b96583b"
+        }
+      },
+      "Priority": {
+        "id": "PVTSSF_lAHOB8zWK84BpeNszhn657k",
+        "options": {
+          "P0": "4ce9ea96",
+          "P1": "0eb465ed",
+          "P2": "1b945237",
+          "P3": "e305d5a1"
+        }
+      },
+      "Queue order": {
+        "id": "PVTF_lAHOB8zWK84BpeNszhn65-s",
+        "options": {}
+      }
+    },
+    "views_verified": true,
+    "title": "Generative Virtual Runtime",
+    "views": {
+      "Milestones": {
+        "number": 4,
+        "url": "https://github.com/users/danielyekini/projects/3/views/4",
+        "layout": "TABLE_LAYOUT",
+        "filter": "label:\"kind:milestone\""
+      },
+      "Requests": {
+        "number": 5,
+        "url": "https://github.com/users/danielyekini/projects/3/views/5",
+        "layout": "TABLE_LAYOUT",
+        "filter": "label:\"kind:request\" label:\"audience:orchestrator\""
+      },
+      "Human verification": {
+        "number": 6,
+        "url": "https://github.com/users/danielyekini/projects/3/views/6",
+        "layout": "TABLE_LAYOUT",
+        "filter": "status:\"Human verification\""
+      },
+      "Engine": {
+        "number": 2,
+        "url": "https://github.com/users/danielyekini/projects/3/views/2",
+        "layout": "BOARD_LAYOUT",
+        "filter": "label:\"lane:engine\" label:\"audience:worker\" -label:\"kind:review\""
+      },
+      "Product": {
+        "number": 3,
+        "url": "https://github.com/users/danielyekini/projects/3/views/3",
+        "layout": "BOARD_LAYOUT",
+        "filter": "label:\"lane:product\" label:\"audience:worker\" -label:\"kind:review\""
+      },
+      "Delivery": {
+        "number": 1,
+        "url": "https://github.com/users/danielyekini/projects/3/views/1",
+        "layout": "TABLE_LAYOUT",
+        "filter": "label:\"audience:worker\" -label:\"kind:review\""
+      }
+    }
+  },
+  "issues": {
+    "OPS001": {
+      "number": 13,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/13"
+    },
+    "M1": {
+      "number": 14,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/14"
+    },
+    "M2": {
+      "number": 15,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/15"
+    },
+    "M3": {
+      "number": 16,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/16"
+    },
+    "M4": {
+      "number": 17,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/17"
+    },
+    "M5": {
+      "number": 18,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/18"
+    },
+    "M6": {
+      "number": 19,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/19"
+    },
+    "E001": {
+      "number": 20,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/20"
+    },
+    "E002": {
+      "number": 21,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/21"
+    },
+    "E003": {
+      "number": 22,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/22"
+    },
+    "E004": {
+      "number": 23,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/23"
+    },
+    "E005": {
+      "number": 24,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/24"
+    },
+    "E006": {
+      "number": 25,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/25"
+    },
+    "E007": {
+      "number": 26,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/26"
+    },
+    "E008": {
+      "number": 27,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/27"
+    },
+    "E009": {
+      "number": 28,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/28"
+    },
+    "E010": {
+      "number": 29,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/29"
+    },
+    "E011": {
+      "number": 30,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/30"
+    },
+    "E012": {
+      "number": 31,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/31"
+    },
+    "E013": {
+      "number": 32,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/32"
+    },
+    "E014": {
+      "number": 33,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/33"
+    },
+    "E015": {
+      "number": 34,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/34"
+    },
+    "E016": {
+      "number": 35,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/35"
+    },
+    "E017": {
+      "number": 36,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/36"
+    },
+    "E018": {
+      "number": 37,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/37"
+    },
+    "E019": {
+      "number": 38,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/38"
+    },
+    "E020": {
+      "number": 39,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/39"
+    },
+    "E021": {
+      "number": 40,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/40"
+    },
+    "E022": {
+      "number": 41,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/41"
+    },
+    "P001": {
+      "number": 42,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/42"
+    },
+    "P002": {
+      "number": 43,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/43"
+    },
+    "P003": {
+      "number": 44,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/44"
+    },
+    "P004": {
+      "number": 45,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/45"
+    },
+    "P005": {
+      "number": 46,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/46"
+    },
+    "P006": {
+      "number": 47,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/47"
+    },
+    "P007": {
+      "number": 48,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/48"
+    },
+    "P008": {
+      "number": 49,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/49"
+    },
+    "P009": {
+      "number": 50,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/50"
+    },
+    "P010": {
+      "number": 51,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/51"
+    },
+    "P011": {
+      "number": 52,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/52"
+    },
+    "P012": {
+      "number": 53,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/53"
+    },
+    "P013": {
+      "number": 54,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/54"
+    },
+    "X001": {
+      "number": 55,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/55"
+    },
+    "X002": {
+      "number": 56,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/56"
+    },
+    "OPS002": {
+      "number": 59,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/59"
+    },
+    "OPS003": {
+      "number": 61,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/61"
+    }
+  },
+  "features": {
+    "projects_read": true,
+    "projects_write": true,
+    "native_subissues": true,
+    "background_agent_wake": false,
+    "repository_issue_write": true,
+    "direct_cli_access": false
+  },
+  "clocks": {
+    "engine": {
+      "issue_number": 57,
+      "review_every": 5
+    },
+    "product": {
+      "issue_number": 58,
+      "review_every": 5
+    }
+  },
+  "paths": {
+    "charter": "docs/project/charter.md",
+    "roadmap": "docs/project/roadmap.md",
+    "engine_direction": "docs/workstreams/engine/direction.md",
+    "product_direction": "docs/workstreams/product/direction.md"
+  },
+  "authority_note": "No active issue state is stored here. Installer replaces null routing IDs only with verified GitHub values.",
+  "setup_blockers": [],
+  "repository_id": 1409281098,
+  "milestones": {
+    "M6": {
+      "number": 1,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/1"
+    },
+    "M5": {
+      "number": 2,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/2"
+    },
+    "M4": {
+      "number": 3,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/3"
+    },
+    "M3": {
+      "number": 4,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/4"
+    },
+    "M2": {
+      "number": 5,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/5"
+    },
+    "M1": {
+      "number": 6,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/6"
+    }
+  },
+  "dispatch": {
+    "available": [
+      "connected_tools",
+      "github_cli_with_authentication"
+    ],
+    "work_runtime": "connected_tools",
+    "instructions": "docs/operations/tool-dispatch.md"
+  },
+  "runtime_limitations": [
+    "Direct CLI device authorisation is blocked by this environment; the verified connected-tools path is available.",
+    "Repository persona auto-discovery is unavailable in this Work runtime; read the canonical SKILL.md path explicitly.",
+    "No background agent wake runner is configured."
+  ]
+}

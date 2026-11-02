@@ -42,3 +42,7 @@ docs/evaluations/**/source-snapshot/files/
 /docs/evaluations/2026-10-09T115503Z/evidence/final/render-results-recaptured.json
 /docs/evaluations/2026-10-09T115503Z/evidence/final/render-results.json
 /docs/evaluations/2026-10-09T115503Z/source-snapshot/initial-head.tar.gz
+
+# Operations helper caches; intake receipts already excluded by /work/
+__pycache__/
+*.pyc

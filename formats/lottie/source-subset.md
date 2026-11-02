@@ -5,7 +5,7 @@ This document freezes the **source-side** contract for `@gvr/format-lottie` v0.1
 ## Version boundary
 
 - **Adapter:** `0.1.0` (see package `IMPORT_VERSION` / adapter metadata).
-- **Target IR:** Scene IR `0.1` (Generative Visual Runtime V1).
+- **Target IR:** Scene IR `0.1` (Generative Virtual Runtime V1).
 - **Authoritative external reference:** [Lottie Animation Community specification](https://lottie.github.io/lottie-spec/latest/) for field meaning; this adapter versions its **supported subset** independently and rejects unknown **behaviour-affecting** fields rather than guessing.
 
 ## Top-level animation object

@@ -1,19 +1,58 @@
 # Agent rules
 
-Read this file before changing language, schema, importer, compiler, runtime, or evaluation support.
+## Start here
 
-Also read, in this order:
+Read [charter](docs/project/charter.md), [authority map](docs/operations/authority.md),
+[own workstream direction](docs/project/roadmap.md) and
+[routing config](docs/operations/config.json). Live GitHub issues/Project own work
+status; repository documents own goals, contracts, decisions and immutable evidence.
+The user explicitly adopted this structure on 30 October 2026; the
+[migration map](docs/operations/migration-map.md) supersedes conflicting old routing.
 
-1. `packages/schema/capabilities/releases.json`
-2. The current MotionScript and Scene IR version files named there (`docs/languages/*/versions/`)
-3. `docs/languages/compatibility-policy.md`
-4. `packages/schema/capabilities/registry.json` for any capability you touch
+Invoke one repository persona, without supplying issue IDs:
+
+| Invocation | Canonical instructions |
+| --- | --- |
+| `$gvr-engine-run` | [.agents/skills/gvr-engine-run/SKILL.md](.agents/skills/gvr-engine-run/SKILL.md) |
+| `$gvr-product-run` | [.agents/skills/gvr-product-run/SKILL.md](.agents/skills/gvr-product-run/SKILL.md) |
+| `$gvr-engine-orchestrator` | [.agents/skills/gvr-engine-orchestrator/SKILL.md](.agents/skills/gvr-engine-orchestrator/SKILL.md) |
+| `$gvr-product-orchestrator` | [.agents/skills/gvr-product-orchestrator/SKILL.md](.agents/skills/gvr-product-orchestrator/SKILL.md) |
+| `$gvr-direction-change` | [.agents/skills/gvr-direction-change/SKILL.md](.agents/skills/gvr-direction-change/SKILL.md) |
+
+If the runtime has not discovered repository skills, read the linked SKILL.md
+explicitly and follow it; do not install personal/global copies. Commands and
+runtime limitations: [operations entry](docs/operations/README.md).
+Workers receive only own direction, selected issue/handover, route flags and
+applicable contracts. Switch to own orchestrator for pending intake or the
+independent five-terminal-run review. Never mix raw other-lane requests into
+worker context. No background LLM wake is configured.
+
+## Mandatory verification and Git lifecycle
+
+Follow [git.md](docs/operations/git.md). Use an isolated issue branch from current
+main. Run `npm run verify` (full tests, all existing typechecks, Studio build,
+operations acceptance and reference freshness) before PR submission and after
+final code/main integration. Repair inherited failures without weakening tests.
+No mandatory independent review. Self-merge only after acceptance and actual
+protection/check permissions; verify remote merge then delete only own merged
+remote/local feature branch. Keep external blockers explicit; never bypass gates.
 
 ## Aim
 
-Build reliable fidelity within a declared, useful source profile, then expand selectively. Correct discrepancies in already-supported semantics before adding coverage. There is no fixed language ceiling, but source-format features are added when they benefit the accepted corpus or an explicit authoring goal.
+Build reliable native progressive visual software toward the adopted charter.
+Lottie/SVG are maintained import/comparison utilities. Scoped fidelity checks
+apply when an issue changes their claims; they are not the universal mission or
+an entry gate for native functionality. Compare consequential alternatives with
+bounded designs and preserve released semantics/diagnostic truth.
 
-Capability additions update the language contract, registry, tests and version note before adapter lowering. A new execution model, such as loops or function declarations, requires a design decision. Routine capability work uses the existing release process; missing original sources or an uncalibrated visual gate remain evidence blockers.
+## Technical contracts (read when affected)
+
+Before changing language, schema, importer, compiler, runtime or evaluation support:
+
+1. Read `packages/schema/capabilities/releases.json`.
+2. Read the current MotionScript and Scene IR version files named there.
+3. Read `docs/languages/compatibility-policy.md`.
+4. Read touched rows in `packages/schema/capabilities/registry.json`.
 
 ## Authority
 
@@ -30,24 +69,25 @@ The grammar and schema decide syntax. The registry decides what support is claim
 - Package `version` fields are not language versions. The wire strings remain the coarse family ids (`0.1`, `0.2`, …) until a version file says otherwise. Additive features inside a wire family are distinguished by the fuller language release id and by `requiredCapabilities` / `requires`. See `docs/languages/compatibility-policy.md`.
 - Completing a capability already named in a published version file is a package + registry update. A construct only in `pending.md` (for example `geometry.pathMorph`) needs a new version entry before it is claimed.
 
-## Evaluations
+## Evidence and program preservation
 
-Historical runs under `docs/evaluations/` are immutable. A new run gets a new directory and is linked from `docs/evaluations/README.md`. Do not overwrite `2026-10-07-baseline` or treat it as the current specification.
+Historical runs under `docs/evaluations/` and `docs/authoring/runs/` are immutable.
+New compact run summaries use `docs/runs/<lane>/<run-id>/summary.md`; live issue
+comments own latest handovers. Pin clean commit or complete reproducible source
+snapshot for measurements. Reuse prior evidence unless affected, failed or incomplete.
+For a source-fidelity claim, use the pinned visual policy, original bytes, correct
+reference, full required coverage and existing attempt history. Do not widen a
+tolerance to pass. Import `exact` is not full visual certification.
 
-Every new run pins the implementation to `git rev-parse HEAD` when the tree is clean, or to a complete source snapshot when it is not. Follow `docs/evaluations/lottie-fidelity-loop-prompt.md` Stage 1. The pin file `docs/evaluations/implementation-pin.json` names the commit or snapshot the next Baseline must start from.
+For explicit imported-program refinement or source conversion only, consult the
+[scoped legacy workflow](docs/workflows/authoring-loop.md),
+[fidelity procedure](docs/evaluations/lottie-fidelity-loop-prompt.md),
+[storage rules](docs/authoring/sample-registry-spec.md) and relevant quality policy.
+They do not add universal review, round-trip or whole-corpus gates to native work.
+Preserve distinct `faithful/`, `authored/`, `experimental/` programs and immutable
+revisions. Keep recorded/verified/preferred registry pointers separate, with exact
+source/program hashes and evidence. Never silently certify migrated inputs.
 
-Fidelity corpus bytes live in `fixtures/corpus/` (private-repo policy; verify `SHA256SUMS`). Gate numbers live in `evaluation/gate-settings.json`. Browser binary via `GVR_CHROME` / `CHROME_PATH` or `evaluation/harness/chrome.ts`. Do not depend on macOS Downloads paths.
-
-Read `docs/evaluations/visual-acceptance-policy.md` and freeze the current gate settings in the run before implementation. The operator has delegated defining policy 1.0; this does not certify existing output. Numeric frame/window/local rules, material review, reference controls, alpha, both native routes and complete frame coverage are all required. Future policy revisions never retroactively change historical run outcomes.
-
-Do not widen a tolerance to make a comparison pass. An import status of `exact` is not a visual pass until the browser capture against lottie-web is recorded for that fixture.
-
-## Authoring routing and supporting documents
-
-Use [the single fidelity prompt](docs/evaluations/lottie-fidelity-loop-prompt.md) for source conversion, semantic round-trip and shared visual correctness defects. Use [authoring workflow 1.1](docs/workflows/authoring-loop.md) for implementation refinement and evidence-based language proposals. An individually verified input may enter authoring while other fidelity fixtures remain unresolved; broad adoption needs the readiness gate, not an arbitrary sample count.
-
-Before authoring read [the authoring index](docs/authoring/README.md), [design goals](docs/languages/design-goals.md), [guide](docs/languages/authoring-guide.md), [evolution policy](docs/languages/evolution-policy.md), [documentation policy](docs/authoring/documentation-policy.md), [evaluation/readiness specification](docs/authoring/evaluation-spec.md) and [sample registry/storage rules](docs/authoring/sample-registry-spec.md), in addition to the released authorities above. Re-verify every changed imported program against its original source. Candidate quality failure rejects/repairs the candidate; a confirmed shared system defect becomes a fidelity finding. Keep run IDs, indexes, continuations and attempt budgets independent; never silently reset fidelity history.
-
-Agents are explicitly permitted to update all supporting documents with evidence/rationale, including insights marked **hypothesis**, without repeated approval. Ordinary edits to `docs/workflows/authoring-loop.md` are excluded: workflow changes require explicit operator direction and a recorded revision. Preserve immutable published releases, historical fidelity/authoring runs, baseline/source bytes, frozen benchmark records and every program revision. Existing release and publishing rules still apply; documentation revisions do not bump MotionScript or Scene IR.
-
-Canonical `samples/motionscript/<sample-id>/faithful/`, `authored/` and `experimental/` storage is distinct. Canonical programs use `.ms`; existing generated `.motion` evidence stays at its original path. Reserve monotonic revisions through the registry; never overwrite program bytes. Keep `latestRecordedRevision`, `latestVerifiedFaithfulRevision` and `preferredVerifiedAuthoredRevision` separate, with append-only pointer rationale and exact hash-associated evidence. Inventory candidates before any migration; preserve originals, hashes and verification state. Installation is not provenance, quality or training certification.
+Supporting guidance may evolve with evidence/rationale. Published versions,
+historical criteria/reports and source/program bytes remain immutable. New
+semantic support follows the release process; deployment/publication is separate.
