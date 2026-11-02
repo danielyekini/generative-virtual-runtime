@@ -77,12 +77,11 @@ support until the follow-up ships a versioned capability.
 
 ## Child work
 
-- **Follow-up implementation** (Candidate): versioned Scene IR / MotionScript
-  capability (provisional id `entities.drawableBindings`) wiring
-  `REGISTER_GEOMETRY` / `BIND_GEOMETRY` through `APPLY_ENTITY_PATCH`, projecting
-  bound drawables in `StreamingRuntime` / `sampleScene`, and aligning or
-  superseding inert `composition.instances` expansion with the same ownership
-  table. Create/link the live issue when promoting this decision to Ready work.
+- **Follow-up implementation** ([E023](https://github.com/danielyekini/generative-virtual-runtime/issues/86)):
+  versioned Scene IR / MotionScript 0.7.0 capability `entities.drawableBindings`
+  wiring `REGISTER_GEOMETRY` / `BIND_GEOMETRY` through `APPLY_ENTITY_PATCH` and
+  projecting bound drawables in `StreamingRuntime` / `projectScene`. Shipped with
+  that release; `composition.instances` remain non-drawing records.
 
 ## Revisit
 

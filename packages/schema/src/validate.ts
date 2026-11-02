@@ -72,6 +72,8 @@ const ENTITY_PATCH_OPS = new Set([
   "REVOKE_OWNERSHIP",
   "ACTIVATE_BEHAVIOUR",
   "CANCEL_BEHAVIOUR",
+  "REGISTER_GEOMETRY",
+  "BIND_GEOMETRY",
 ]);
 
 const CATEGORY: Partial<Record<DiagnosticCode, DiagnosticCategory>> = {
@@ -1503,6 +1505,49 @@ function readEntityPatchOp(value: unknown, path: string, limits: ResourceLimits,
   if (value.op === "CANCEL_BEHAVIOUR") {
     rejectUnknown(value, ["op", "behaviourId"], path, diags);
     readEntityId(value.behaviourId, `${path}.behaviourId`, diags);
+    return;
+  }
+  if (value.op === "REGISTER_GEOMETRY") {
+    rejectUnknown(value, ["op", "geometry", "activationMs"], path, diags);
+    readFinite(value.activationMs, `${path}.activationMs`, diags);
+    readGeometryAsset(value.geometry, `${path}.geometry`, limits, diags, v02);
+    return;
+  }
+  if (value.op === "BIND_GEOMETRY") {
+    rejectUnknown(value, ["op", "entityId", "geometryId", "activationMs"], path, diags);
+    readEntityId(value.entityId, `${path}.entityId`, diags);
+    readEntityId(value.geometryId, `${path}.geometryId`, diags);
+    readFinite(value.activationMs, `${path}.activationMs`, diags);
+  }
+}
+
+function readGeometryAsset(
+  value: unknown,
+  path: string,
+  limits: ResourceLimits,
+  diags: Diags,
+  v02: boolean,
+): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "Geometry asset required.");
+    return;
+  }
+  rejectUnknown(value, ["id", "space", "node"], path, diags);
+  readEntityId(value.id, `${path}.id`, diags);
+  if (value.space !== "world" && value.space !== "local") {
+    diags.add("INVALID_ENUM", `${path}.space`, 'Geometry space must be "world" or "local".');
+  }
+  if (value.node === undefined) {
+    diags.add("INVALID_TYPE", `${path}.node`, "Geometry asset requires a node payload.");
+    return;
+  }
+  readNodes([value.node], diags, limits, false, `${path}.node`, v02);
+  if (isRecord(value.node) && typeof value.node.id === "string" && typeof value.id === "string" && value.node.id !== value.id) {
+    diags.add(
+      "INVALID_TYPE",
+      `${path}.node.id`,
+      `Geometry node id ${value.node.id} must match geometry id ${value.id}.`,
+    );
   }
 }
 

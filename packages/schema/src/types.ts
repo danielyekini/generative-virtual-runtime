@@ -517,9 +517,23 @@ export interface BehaviourRecord {
   active: boolean;
 }
 
+/** Stable id for an immutable shared geometry asset (entities.drawableBindings). */
+export type GeometryId = string;
+
 /**
- * Topology / ownership / behaviour mutation. Activation times must not rewrite
- * the sealed presentation prefix (see entities.durableRevisions).
+ * Immutable shared drawable asset. Geometry ids must stay disjoint from entity
+ * ids so bind edges remain acyclic (entity → geometry leaf).
+ */
+export interface GeometryAsset {
+  id: GeometryId;
+  space: "world" | "local";
+  node: NodeDefinition;
+}
+
+/**
+ * Topology / ownership / behaviour / drawable-binding mutation. Activation times
+ * must not rewrite the sealed presentation prefix (see entities.durableRevisions
+ * and entities.drawableBindings).
  */
 export type EntityPatchOp =
   | { op: "UPSERT_ENTITY"; entity: EntityRecord; activationMs: number; node?: NodeDefinition }
@@ -528,7 +542,11 @@ export type EntityPatchOp =
   | { op: "GRANT_OWNERSHIP"; grant: OwnershipGrant }
   | { op: "REVOKE_OWNERSHIP"; entityId: EntityId; channel: ChannelId; atMs: number }
   | { op: "ACTIVATE_BEHAVIOUR"; behaviour: BehaviourRecord }
-  | { op: "CANCEL_BEHAVIOUR"; behaviourId: BehaviourId };
+  | { op: "CANCEL_BEHAVIOUR"; behaviourId: BehaviourId }
+  /** Requires entities.drawableBindings (and durable revisions on APPLY_ENTITY_PATCH). */
+  | { op: "REGISTER_GEOMETRY"; geometry: GeometryAsset; activationMs: number }
+  /** Requires entities.drawableBindings (and durable revisions on APPLY_ENTITY_PATCH). */
+  | { op: "BIND_GEOMETRY"; entityId: EntityId; geometryId: GeometryId; activationMs: number };
 
 export interface EntityPatch {
   expectedRevision: number;

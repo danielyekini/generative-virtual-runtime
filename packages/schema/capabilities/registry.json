@@ -361,6 +361,28 @@
       }
     },
     {
+      "id": "entities.drawableBindings",
+      "summary": "Immutable shared geometry assets with per-instance binds projected at sample time without expanding private node copies.",
+      "introducedIn": { "motionscript": "0.7.0", "sceneIr": "0.7.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing entities.drawableBindings (and entities.durableRevisions for APPLY_ENTITY_PATCH).",
+        "REGISTER_GEOMETRY / BIND_GEOMETRY ride APPLY_ENTITY_PATCH. Geometry ids stay disjoint from entity ids; assets are immutable leaves.",
+        "Sampling clones the asset under the instance entity id. Channel ownership remains exclusive per (entityId, channel) on the instance.",
+        "composition.instances remain non-drawing records; declarative MotionScript bind syntax is outside this claim."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/runtime/src/drawable-bindings.test.ts#projects shared geometry under two window instances after seal",
+        "packages/runtime/src/drawable-bindings.test.ts#post-seal bind leaves sealed prefix unchanged",
+        "packages/compiler/src/entity-patch.test.ts#emits APPLY_ENTITY_PATCH deltas for drawable bindings"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Lottie has no shared-geometry entity bind ops." },
+        "svg": { "status": "not-applicable", "scope": "SVG has no shared-geometry entity bind ops." }
+      }
+    },
+    {
       "id": "geometry.animatedTrim",
       "summary": "Keyframe tracks may drive trim.start, trim.end, and trim.offset on a path node.",
       "introducedIn": { "motionscript": "0.5.0", "sceneIr": "0.5.0" },

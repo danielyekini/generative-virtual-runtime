@@ -23,6 +23,7 @@ export const CAPABILITIES = [
   "effects.shadow",
   "geometry.pathMorph",
   "entities.durableRevisions",
+  "entities.drawableBindings",
 ] as const;
 
 export type CapabilityName = (typeof CAPABILITIES)[number];
