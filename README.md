@@ -128,17 +128,15 @@ Fixtures: `fixtures/ir`, `fixtures/meanings`, `fixtures/motionscript`, `fixtures
 
 ## Studio
 
-`npm run dev:renderer` opens one workspace at `http://localhost:5173`.
+`npm run dev:renderer` opens the Studio **Player** at `http://localhost:5173` ([UX spec](docs/workstreams/product/studio-ux.md)).
 
-- **Left:** test scripts, canvas size and DPR, streaming, import.
-- **Right:** source editor and inspector.
-- **Format** on the inspector: MotionScript, Fixture, Lottie, or SVG. Compile runs the editor through that format. Import picks a simulation preset, paste, or file. Play lowers into Scene IR (same reports as `npm run import-fixture` / `import-lottie` / `import-svg`).
-- **Compiled / Round-trip / Both** share one clock.
-- **Stream** seals a horizon, waits, and resumes when more text arrives.
-- **Split** (`#import/split`): imported Scene IR beside MotionScript round-trip.
-- **Stage** (`#stage`): prompt → system scene → stand-in generated scene crossfade → prompt returns. The generated picture is a stand-in until a model is connected.
+- **Landing:** an empty player. **Library** (header, or the canvas prompt and recent programs) opens a temporary program picker until the Library page lands (P014). Opening loads the program; nothing runs until **Run** (Ctrl/⌘+Enter). Autoplay on open is a ⚙ option, off by default. `#p/<key>` names the loaded program.
+- **Layout:** header (program, Run, Stream, Source, Fullscreen, ⚙), canvas, transport and tape track (click/drag to seek), and a collapsible bottom panel with **Diagnostics**, **Scene** and **Report**. The **Source** panel (right, closed by default, `E`) is for quick edits and re-Run; diagnostics list line, column, code, message and recovery and jump to the span. Source is never replaced on failure.
+- **Fullscreen** (`F`): canvas only, contain-fit on the logical viewport; Esc or the exit control leaves it.
+- **Imports:** Lottie, SVG and fixture programs in the Imports collection run through their importers; the fidelity report is in Report. No round-trip runs here.
+- **Temporary legacy route:** `/legacy.html` keeps the old workbench for streaming (`#stream`), import/Split round-trip (`#import/split`) and Stage (`#stage`) until P002 and P004 move them into the Player.
 
-Static SVG keeps both panes and disables the player. Folder conversion is not connected yet. `PASS` means the document matches the schema; `FAIL` prints a diagnostic and does not replace an accepted scene.
+`npm run smoke:studio` runs a headless walkthrough with screenshots in `work/studio-smoke/` (set `GVR_CHROME` if Chromium is not discovered).
 
 ---
 

@@ -1,0 +1,866 @@
+/**
+ * Studio Player page (P001, docs/workstreams/product/studio-ux.md "Player").
+ * One loaded program; nothing runs until Run (or the Autoplay option).
+ */
+import { CanvasRenderer } from "@gvr/canvas-renderer";
+import { AnimationRuntime, RuntimeClock } from "@gvr/runtime";
+import type { ResolvedFrame } from "@gvr/schema";
+import type { GvrBridge, PlayerProbe } from "../bridge";
+import { isTypingTarget } from "../bridge";
+import { clearCanvas, describeFrame } from "../describe";
+import { collectionsOf, filterLibrary, selectionFor, type LocatedDiagnostic, type ProgramEntry } from "../library";
+import { frameTelemetry, telemetry } from "../telemetry";
+import { clampTime, collectKeyTimes, formatClock, isStaticScene, stepKey } from "../timeline";
+import { FORMAT_LABELS, formatForFile, installedPrograms } from "./programs";
+import { runProgram, type RunOutcome } from "./run";
+import { describeSceneSummary } from "./scene-summary";
+import {
+  PANEL_TABS,
+  RECENT_KEY,
+  SETTINGS_KEY,
+  decodeRecent,
+  decodeSettings,
+  pushRecent,
+  read,
+  write,
+  type PanelTab,
+} from "./settings";
+
+function $<T extends HTMLElement>(id: string): T {
+  const element = document.getElementById(id);
+  if (!element) throw new Error(`player markup missing #${id}`);
+  return element as T;
+}
+
+function put(element: HTMLElement, value: string): void {
+  if (element.textContent !== value) element.textContent = value;
+}
+
+const SIZE_PRESETS = [
+  { id: "window", label: "Fill window", width: 0, height: 0 },
+  { id: "16:9", label: "960×540 (16:9)", width: 960, height: 540 },
+  { id: "ultrawide", label: "1200×480 (ultrawide)", width: 1200, height: 480 },
+  { id: "portrait", label: "420×760 (portrait)", width: 420, height: 760 },
+  { id: "tiny", label: "320×200 (tiny)", width: 320, height: 200 },
+];
+
+const ui = {
+  run: $<HTMLButtonElement>("run"),
+  openLibrary: $<HTMLButtonElement>("open-library"),
+  programName: $("program-name"),
+  programMeta: $("program-meta"),
+  programState: $("program-state"),
+  streamMenu: $<HTMLButtonElement>("stream-menu"),
+  streamPop: $("stream-pop"),
+  options: $<HTMLButtonElement>("options"),
+  optionsPop: $("options-pop"),
+  optAutoplay: $<HTMLInputElement>("opt-autoplay"),
+  optSize: $<HTMLSelectElement>("opt-size"),
+  optDpr: $<HTMLSelectElement>("opt-dpr"),
+  toggleSource: $<HTMLButtonElement>("toggle-source"),
+  fullscreen: $<HTMLButtonElement>("fullscreen"),
+  canvasArea: $("canvas-area"),
+  canvas: $<HTMLCanvasElement>("view"),
+  empty: $("empty"),
+  emptyLibrary: $<HTMLButtonElement>("empty-library"),
+  recent: $("recent"),
+  recentList: $("recent-list"),
+  ready: $("ready"),
+  readyTitle: $("ready-title"),
+  readyNote: $("ready-note"),
+  readyRun: $<HTMLButtonElement>("ready-run"),
+  failed: $("failed"),
+  failedNote: $("failed-note"),
+  failedDiagnostics: $<HTMLButtonElement>("failed-diagnostics"),
+  fsPlay: $<HTMLButtonElement>("fs-play"),
+  fsClock: $("fs-clock"),
+  fsExit: $<HTMLButtonElement>("fs-exit"),
+  transport: $("transport"),
+  play: $<HTMLButtonElement>("play"),
+  frameBack: $<HTMLButtonElement>("frame-back"),
+  frameFwd: $<HTMLButtonElement>("frame-fwd"),
+  keyBack: $<HTMLButtonElement>("key-back"),
+  keyFwd: $<HTMLButtonElement>("key-fwd"),
+  clock: $("clock"),
+  speed: $<HTMLSelectElement>("speed"),
+  track: $("track-time"),
+  tapeLoaded: $("tape-loaded"),
+  tapeTicks: $("tape-ticks"),
+  playhead: $("playhead"),
+  sourcePanel: $("source-panel"),
+  sourceResize: $("source-resize"),
+  sourceFormat: $("source-format"),
+  sourceDirty: $("source-dirty"),
+  sourceRun: $<HTMLButtonElement>("source-run"),
+  sourceClose: $<HTMLButtonElement>("source-close"),
+  source: $<HTMLTextAreaElement>("source"),
+  panel: $("panel"),
+  panelResize: $("panel-resize"),
+  panelToggle: $<HTMLButtonElement>("panel-toggle"),
+  diagCount: $("diag-count"),
+  diagNote: $("diag-note"),
+  diagList: $("diag-list"),
+  sceneNote: $("scene-note"),
+  sceneSummary: $("scene-summary"),
+  sceneFrame: $("scene-frame"),
+  reportSummary: $("report-summary"),
+  report: $("report"),
+  status: $("status"),
+  picker: $<HTMLDialogElement>("picker"),
+  pickerClose: $<HTMLButtonElement>("picker-close"),
+  pickerSearch: $<HTMLInputElement>("picker-search"),
+  pickerCollections: $("picker-collections"),
+  pickerList: $("picker-list"),
+  pickerFile: $<HTMLButtonElement>("picker-file"),
+  pickerCount: $("picker-count"),
+  file: $<HTMLInputElement>("file"),
+};
+
+const tabs = new Map<PanelTab, { tab: HTMLButtonElement; pane: HTMLElement }>(
+  PANEL_TABS.map((id) => [id, { tab: $<HTMLButtonElement>(`tab-${id}`), pane: $(`pane-${id}`) }]),
+);
+
+const catalogue = installedPrograms();
+const settings = decodeSettings(read(SETTINGS_KEY));
+let recent = decodeRecent(read(RECENT_KEY));
+const renderer = new CanvasRenderer(ui.canvas, telemetry);
+const clock = new RuntimeClock();
+
+let loaded: ProgramEntry | null = null;
+let outcome: RunOutcome | null = null;
+let runtime: AnimationRuntime | null = null;
+let frame: ResolvedFrame | null = null;
+let fullscreen = false;
+let scrubbing = false;
+let needsDraw = true;
+let pickerCollection = "all";
+let lastWall = performance.now();
+let ticksKey = "";
+
+function saveSettings(): void {
+  write(SETTINGS_KEY, JSON.stringify(settings));
+}
+
+// ---------------------------------------------------------------- program
+
+function dirty(): boolean {
+  if (!loaded) return false;
+  return ui.source.value !== (outcome?.source ?? loaded.source);
+}
+
+function durationMs(): number {
+  return runtime?.scene.timeline.durationMs ?? 0;
+}
+
+function isStill(): boolean {
+  return !runtime || isStaticScene(runtime.scene) || durationMs() <= 0;
+}
+
+function openProgram(entry: ProgramEntry, options: { fromHash?: boolean } = {}): void {
+  loaded = entry;
+  outcome = null;
+  runtime = null;
+  frame = null;
+  clock.pause();
+  clock.seek(0);
+  ui.source.value = entry.source;
+  ui.source.disabled = false;
+  if (catalogue.some((item) => item.key === entry.key)) {
+    recent = pushRecent(recent, entry.key);
+    write(RECENT_KEY, JSON.stringify(recent));
+    const hash = `#p/${encodeURIComponent(entry.key)}`;
+    if (!options.fromHash && location.hash !== hash) history.replaceState(null, "", hash);
+  } else if (location.hash) {
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+  if (settings.autoplay) run();
+  render();
+}
+
+function openKey(key: string): boolean {
+  const entry = catalogue.find((item) => item.key === key);
+  if (!entry) return false;
+  openProgram(entry);
+  return true;
+}
+
+function run(): void {
+  if (!loaded) return;
+  outcome = runProgram(ui.source.value, loaded.format, loaded.label, telemetry);
+  runtime = outcome.scene ? new AnimationRuntime(outcome.scene, telemetry) : null;
+  clock.pause();
+  clock.seek(0);
+  if (runtime && !isStill()) clock.play();
+  if (outcome.diagnostics.some((item) => item.severity === "error" || item.severity === "fatal")) {
+    selectTab("diagnostics", true);
+  }
+  render();
+}
+
+function togglePlay(): void {
+  if (!runtime || isStill()) return;
+  if (clock.isPlaying) clock.pause();
+  else {
+    if (clock.timeMs >= durationMs()) clock.seek(0);
+    clock.play();
+  }
+  render();
+}
+
+function seek(timeMs: number): void {
+  if (!runtime || isStill()) return;
+  clock.seek(clampTime(timeMs, durationMs()));
+  render();
+}
+
+function step(kind: "frame" | "key", direction: -1 | 1): void {
+  if (!runtime || isStill()) return;
+  const span = durationMs();
+  const next = kind === "key"
+    ? stepKey(collectKeyTimes(runtime.scene, span), clock.timeMs, direction, span)
+    : clampTime(clock.timeMs + direction * (outcome?.frameMs ?? 1000 / 30), span);
+  clock.pause();
+  clock.seek(next);
+  render();
+}
+
+// ---------------------------------------------------------------- layout
+
+function setSourceOpen(open: boolean): void {
+  settings.sourceOpen = open;
+  saveSettings();
+  render();
+  if (open) ui.source.focus({ preventScroll: true });
+}
+
+function selectTab(tab: PanelTab, open = true): void {
+  settings.panelTab = tab;
+  if (open) settings.panelOpen = true;
+  saveSettings();
+  render();
+}
+
+function enterFullscreen(): void {
+  if (!runtime || fullscreen) return;
+  fullscreen = true;
+  document.body.classList.add("is-fullscreen");
+  const request = ui.canvasArea.requestFullscreen?.bind(ui.canvasArea);
+  if (request) request().catch(() => undefined);
+  render();
+}
+
+function exitFullscreen(): void {
+  if (!fullscreen) return;
+  fullscreen = false;
+  document.body.classList.remove("is-fullscreen");
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => undefined);
+  render();
+}
+
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement && fullscreen) exitFullscreen();
+});
+
+function jumpTo(item: LocatedDiagnostic): void {
+  const range = selectionFor(item, ui.source.value);
+  setSourceOpen(true);
+  if (!range) return;
+  ui.source.focus({ preventScroll: true });
+  ui.source.setSelectionRange(range.start, range.end);
+  const before = ui.source.value.slice(0, range.start).split("\n").length - 1;
+  const lineHeight = parseFloat(getComputedStyle(ui.source).lineHeight) || 18;
+  ui.source.scrollTop = Math.max(0, before * lineHeight - ui.source.clientHeight / 3);
+}
+
+// ---------------------------------------------------------------- picker
+
+function openPicker(): void {
+  pickerCollection = "all";
+  ui.pickerSearch.value = "";
+  renderPicker();
+  if (!ui.picker.open) ui.picker.showModal();
+  ui.pickerSearch.focus();
+}
+
+function closePicker(): void {
+  if (ui.picker.open) ui.picker.close();
+}
+
+function pickerMatches(): ProgramEntry[] {
+  return filterLibrary(catalogue, { text: ui.pickerSearch.value, collection: pickerCollection });
+}
+
+function renderPicker(): void {
+  const chips = [{ name: "all", count: catalogue.length }, ...collectionsOf(catalogue)];
+  ui.pickerCollections.replaceChildren(
+    ...chips.map((chip) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "chip";
+      button.textContent = `${chip.name === "all" ? "All" : chip.name} ${chip.count}`;
+      button.setAttribute("aria-pressed", String(chip.name === pickerCollection));
+      button.addEventListener("click", () => {
+        pickerCollection = chip.name;
+        renderPicker();
+      });
+      return button;
+    }),
+  );
+  const matches = pickerMatches();
+  ui.pickerList.replaceChildren(
+    ...matches.map((entry) => {
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.role = "option";
+      button.dataset.key = entry.key;
+      button.setAttribute("aria-selected", String(entry.key === loaded?.key));
+      const title = document.createElement("strong");
+      title.textContent = entry.label;
+      const meta = document.createElement("span");
+      meta.className = "meta";
+      meta.textContent = `${entry.collection} · ${FORMAT_LABELS[entry.format]}`;
+      const caption = document.createElement("small");
+      caption.textContent = entry.caption;
+      button.append(title, meta, caption);
+      button.addEventListener("click", () => {
+        closePicker();
+        openProgram(entry);
+      });
+      item.append(button);
+      return item;
+    }),
+  );
+  put(ui.pickerCount, `${matches.length} of ${catalogue.length} programs`);
+}
+
+// ---------------------------------------------------------------- render
+
+function canvasSize(): { width: number; height: number } {
+  const preset = SIZE_PRESETS.find((entry) => entry.id === settings.canvasSize);
+  const box = { width: ui.canvasArea.clientWidth, height: ui.canvasArea.clientHeight };
+  if (!fullscreen && preset && preset.width > 0) {
+    return { width: Math.min(preset.width, box.width), height: Math.min(preset.height, box.height) };
+  }
+  return box;
+}
+
+function dpr(): number {
+  if (settings.dpr === "1") return 1;
+  if (settings.dpr === "2") return 2;
+  return window.devicePixelRatio || 1;
+}
+
+function paint(): void {
+  const size = canvasSize();
+  renderer.resize(Math.max(1, size.width), Math.max(1, size.height), dpr());
+  const time = isStill() ? 0 : clampTime(clock.timeMs, durationMs());
+  frame = runtime ? runtime.evaluate(time) : null;
+  if (frame) renderer.render(frame);
+  else clearCanvas(ui.canvas);
+}
+
+function stateBadge(): { text: string; tone: string } {
+  if (!loaded) return { text: "", tone: "" };
+  if (!outcome) return { text: "○ not run", tone: "" };
+  const errors = outcome.diagnostics.filter((item) => item.severity === "error" || item.severity === "fatal").length;
+  const base = outcome.state === "ok"
+    ? { text: "✓ ran", tone: "is-ok" }
+    : outcome.state === "recovered"
+      ? { text: `⚠ ran with ${errors || outcome.diagnostics.length} issue${(errors || outcome.diagnostics.length) === 1 ? "" : "s"}`, tone: "is-warn" }
+      : { text: "✕ run failed", tone: "is-bad" };
+  return dirty() ? { text: `${base.text} · ● edited`, tone: base.tone } : base;
+}
+
+function renderHeader(): void {
+  put(ui.programName, loaded ? loaded.label : "No program loaded");
+  put(ui.programMeta, loaded ? `${loaded.collection} · ${FORMAT_LABELS[loaded.format]}` : "");
+  const badge = stateBadge();
+  ui.programState.hidden = !badge.text;
+  put(ui.programState, badge.text);
+  ui.programState.className = `badge ${badge.tone}`.trim();
+  ui.run.disabled = !loaded;
+  ui.sourceRun.disabled = !loaded;
+  ui.fullscreen.disabled = !runtime;
+  ui.toggleSource.setAttribute("aria-pressed", String(settings.sourceOpen));
+  document.title = loaded ? `${loaded.label} · GVR Studio` : "GVR Studio";
+}
+
+function renderOverlays(): void {
+  ui.empty.hidden = Boolean(loaded);
+  ui.ready.hidden = !loaded || Boolean(outcome);
+  ui.failed.hidden = !outcome || Boolean(runtime);
+  if (loaded && !outcome) {
+    put(ui.readyTitle, loaded.label);
+    put(ui.readyNote, settings.autoplay ? "Loaded." : "Loaded. Nothing runs until you press Run.");
+  }
+  if (outcome && !runtime) {
+    const first = outcome.diagnostics[0];
+    const more = outcome.diagnostics.length > 1 ? ` (+${outcome.diagnostics.length - 1} more)` : "";
+    put(ui.failedNote, first ? `${first.text.replace(/\.$/, "")}${more}. The source is unchanged.` : outcome.summary);
+  }
+  if (!loaded) {
+    const items = recent.map((key) => catalogue.find((entry) => entry.key === key)).filter((entry): entry is ProgramEntry => Boolean(entry));
+    ui.recent.hidden = items.length === 0;
+    const key = items.map((entry) => entry.key).join("|");
+    if (ui.recentList.dataset.key !== key) {
+      ui.recentList.dataset.key = key;
+      ui.recentList.replaceChildren(
+        ...items.map((entry) => {
+          const item = document.createElement("li");
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = entry.label;
+          button.title = entry.caption;
+          button.addEventListener("click", () => openProgram(entry));
+          item.append(button);
+          return item;
+        }),
+      );
+    }
+  }
+}
+
+function renderTransport(): void {
+  const span = durationMs();
+  const still = isStill();
+  const time = still ? 0 : clampTime(clock.timeMs, span);
+  ui.transport.classList.toggle("is-disabled", still);
+  for (const control of [ui.play, ui.frameBack, ui.frameFwd, ui.keyBack, ui.keyFwd, ui.speed, ui.fsPlay]) control.disabled = still;
+  const label = clock.isPlaying ? "❚❚" : "▶";
+  put(ui.play, label);
+  put(ui.fsPlay, label);
+  ui.play.setAttribute("aria-label", clock.isPlaying ? "Pause" : "Play");
+  ui.fsPlay.setAttribute("aria-label", clock.isPlaying ? "Pause" : "Play");
+  const text = runtime
+    ? still ? `static · ${formatClock(0)}` : `${formatClock(time)} / ${formatClock(span)}`
+    : "—";
+  put(ui.clock, text);
+  put(ui.fsClock, text);
+  const fraction = !still && span > 0 ? time / span : 0;
+  ui.tapeLoaded.style.width = runtime ? "100%" : "0%";
+  ui.playhead.style.left = `${(fraction * 100).toFixed(3)}%`;
+  ui.playhead.hidden = !runtime;
+  ui.track.setAttribute("aria-valuemax", String(Math.round(span)));
+  ui.track.setAttribute("aria-valuenow", String(Math.round(time)));
+  ui.track.setAttribute("aria-valuetext", text);
+  ui.track.classList.toggle("is-disabled", still);
+  const key = runtime && !still ? `${runtime.scene.sceneId}:${span}` : "";
+  if (key !== ticksKey) {
+    ticksKey = key;
+    const times = runtime && !still ? collectKeyTimes(runtime.scene, span).slice(0, 400) : [];
+    ui.tapeTicks.replaceChildren(
+      ...times.map((at) => {
+        const tick = document.createElement("i");
+        tick.style.left = `${((at / span) * 100).toFixed(3)}%`;
+        return tick;
+      }),
+    );
+  }
+}
+
+function renderSource(): void {
+  ui.sourcePanel.hidden = !settings.sourceOpen;
+  ui.sourceResize.hidden = !settings.sourceOpen;
+  ui.sourcePanel.style.width = `${settings.sourceWidth}px`;
+  put(ui.sourceFormat, loaded ? FORMAT_LABELS[loaded.format] : "");
+  ui.sourceDirty.hidden = !dirty();
+  put(ui.sourceDirty, outcome ? "● edited since Run" : "● edited");
+}
+
+let diagKey = "";
+function renderPanel(): void {
+  ui.panel.classList.toggle("is-collapsed", !settings.panelOpen);
+  ui.panel.style.height = settings.panelOpen ? `${settings.panelHeight}px` : "";
+  ui.panelResize.hidden = !settings.panelOpen;
+  ui.panelToggle.setAttribute("aria-expanded", String(settings.panelOpen));
+  ui.panelToggle.setAttribute("aria-label", settings.panelOpen ? "Collapse panel" : "Expand panel");
+  put(ui.panelToggle, settings.panelOpen ? "▾" : "▴");
+  for (const [id, { tab, pane }] of tabs) {
+    tab.setAttribute("aria-selected", String(id === settings.panelTab));
+    pane.hidden = !settings.panelOpen || id !== settings.panelTab;
+  }
+  const diagnostics = outcome?.diagnostics ?? [];
+  put(ui.diagCount, diagnostics.length ? String(diagnostics.length) : "");
+  put(
+    ui.diagNote,
+    !loaded
+      ? "Open a program, then Run it to see diagnostics."
+      : !outcome
+        ? "Not run yet."
+        : diagnostics.length === 0
+          ? `No diagnostics. ${outcome.summary}`
+          : `${outcome.summary} Select a row to jump to its source span.${dirty() ? " The source changed since this Run, so spans may be off." : ""}`,
+  );
+  const key = outcome ? `${outcome.source.length}:${diagnostics.map((item) => item.text).join("|")}` : "";
+  if (key !== diagKey) {
+    diagKey = key;
+    ui.diagList.replaceChildren(
+      ...diagnostics.map((item) => {
+        const row = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `diag sev-${item.severity}`;
+        const sev = document.createElement("b");
+        sev.textContent = item.severity === "error" || item.severity === "fatal" ? "✕ error" : item.severity === "warning" ? "⚠ warning" : "ℹ info";
+        const where = document.createElement("span");
+        where.className = "where";
+        where.textContent = item.line !== undefined ? `Ln ${item.line}, Col ${item.column}` : "no span";
+        const code = document.createElement("code");
+        code.textContent = item.code;
+        const message = document.createElement("span");
+        message.className = "message";
+        message.textContent = item.message;
+        button.append(sev, where, code, message);
+        if (item.recovery) {
+          const recovery = document.createElement("small");
+          recovery.textContent = `Recovery: ${item.recovery}`;
+          button.append(recovery);
+        }
+        button.disabled = item.start === undefined;
+        button.title = item.start === undefined ? "This diagnostic has no source span." : "Jump to the source span";
+        button.addEventListener("click", () => jumpTo(item));
+        row.append(button);
+        return row;
+      }),
+    );
+  }
+  if (settings.panelOpen && settings.panelTab === "scene") {
+    put(ui.sceneNote, runtime ? `Scene IR from the last Run. Resolved frame at the playhead.` : outcome ? "The last Run produced no Scene IR." : "Run a program to inspect its Scene IR.");
+    put(ui.sceneSummary, runtime ? describeSceneSummary(runtime.scene) : "");
+    put(ui.sceneFrame, frame ? describeFrame(frame) : "");
+  }
+  if (settings.panelOpen && settings.panelTab === "report") {
+    put(ui.reportSummary, outcome ? outcome.summary : "Run a program to see its report.");
+    put(ui.report, outcome?.report ?? "");
+  }
+}
+
+function renderStatus(): void {
+  const size = canvasSize();
+  put(ui.status, [
+    loaded ? loaded.label : "no program",
+    outcome ? outcome.state : loaded ? "not run" : "",
+    runtime ? runtime.scene.sceneId : "",
+    runtime && !isStill() ? (clock.isPlaying ? "playing" : "paused") : "",
+    `canvas ${Math.round(size.width)}×${Math.round(size.height)} css`,
+    `dpr ${dpr()}`,
+    fullscreen ? "fullscreen" : "",
+  ].filter(Boolean).join("  ·  "));
+}
+
+function render(): void {
+  needsDraw = true;
+}
+
+function draw(): void {
+  paint();
+  renderHeader();
+  renderOverlays();
+  renderTransport();
+  renderSource();
+  renderPanel();
+  renderStatus();
+  publish();
+}
+
+function probe(): PlayerProbe {
+  return {
+    programKey: loaded?.key ?? null,
+    programName: loaded?.label ?? null,
+    format: loaded?.format ?? null,
+    runState: outcome?.state ?? "not-run",
+    sceneId: runtime?.scene.sceneId ?? "",
+    timeMs: isStill() ? 0 : clampTime(clock.timeMs, durationMs()),
+    durationMs: durationMs(),
+    playing: clock.isPlaying,
+    dirty: dirty(),
+    fullscreen,
+    sourceOpen: settings.sourceOpen,
+    panelOpen: settings.panelOpen,
+    panelTab: settings.panelTab,
+    diagnostics: (outcome?.diagnostics ?? []).map((item) => item.text),
+    canvas: {
+      cssWidth: ui.canvas.clientWidth,
+      cssHeight: ui.canvas.clientHeight,
+      backingWidth: ui.canvas.width,
+      backingHeight: ui.canvas.height,
+    },
+  };
+}
+
+function publish(): void {
+  const bridge: GvrBridge = {
+    activity: "player",
+    canvas: ui.canvas,
+    frame: frame ?? undefined,
+    sceneId: runtime?.scene.sceneId ?? "",
+    compileOk: outcome ? outcome.state === "ok" : undefined,
+    sourceDiagnostics: outcome?.diagnostics.map((item) => item.text),
+    editor: ui.source.value,
+    dirty: dirty(),
+    report: outcome?.report,
+    seek: (timeMs: number) => {
+      clock.pause();
+      seek(timeMs);
+    },
+    player: probe(),
+    run,
+    open: openKey,
+  };
+  window.__gvr = bridge;
+}
+
+// ---------------------------------------------------------------- wiring
+
+function closeMenus(except?: HTMLElement): void {
+  for (const [menu, button] of [[ui.streamPop, ui.streamMenu], [ui.optionsPop, ui.options]] as const) {
+    if (menu === except) continue;
+    menu.hidden = true;
+    button.setAttribute("aria-expanded", "false");
+  }
+}
+
+function toggleMenu(menu: HTMLElement, button: HTMLButtonElement): void {
+  const open = menu.hidden;
+  closeMenus(menu);
+  menu.hidden = !open;
+  button.setAttribute("aria-expanded", String(open));
+}
+
+ui.streamMenu.addEventListener("click", (event) => {
+  event.stopPropagation();
+  toggleMenu(ui.streamPop, ui.streamMenu);
+});
+ui.options.addEventListener("click", (event) => {
+  event.stopPropagation();
+  toggleMenu(ui.optionsPop, ui.options);
+});
+document.addEventListener("pointerdown", (event) => {
+  const target = event.target;
+  if (target instanceof Node && (ui.streamPop.contains(target) || ui.optionsPop.contains(target) || ui.streamMenu.contains(target) || ui.options.contains(target))) return;
+  closeMenus();
+});
+
+ui.optSize.replaceChildren(...SIZE_PRESETS.map((preset) => new Option(preset.label, preset.id)));
+ui.optSize.value = SIZE_PRESETS.some((preset) => preset.id === settings.canvasSize) ? settings.canvasSize : "window";
+ui.optDpr.value = settings.dpr;
+ui.optAutoplay.checked = settings.autoplay;
+ui.optAutoplay.addEventListener("change", () => {
+  settings.autoplay = ui.optAutoplay.checked;
+  saveSettings();
+  render();
+});
+ui.optSize.addEventListener("change", () => {
+  settings.canvasSize = ui.optSize.value;
+  saveSettings();
+  render();
+});
+ui.optDpr.addEventListener("change", () => {
+  const value = ui.optDpr.value;
+  settings.dpr = value === "1" || value === "2" ? value : "device";
+  saveSettings();
+  render();
+});
+
+ui.openLibrary.addEventListener("click", openPicker);
+ui.emptyLibrary.addEventListener("click", openPicker);
+ui.pickerClose.addEventListener("click", closePicker);
+ui.pickerSearch.addEventListener("input", renderPicker);
+ui.pickerSearch.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+  const first = pickerMatches()[0];
+  if (!first) return;
+  event.preventDefault();
+  closePicker();
+  openProgram(first);
+});
+ui.picker.addEventListener("click", (event) => {
+  if (event.target === ui.picker) closePicker();
+});
+ui.pickerFile.addEventListener("click", () => ui.file.click());
+ui.file.addEventListener("change", () => {
+  const file = ui.file.files?.[0];
+  ui.file.value = "";
+  if (!file) return;
+  void file.text().then((text) => {
+    closePicker();
+    openProgram({
+      key: `file:${file.name}`,
+      label: file.name,
+      caption: "Opened from a local file (not saved; P014 adds My programs).",
+      collection: "Opened file",
+      origin: "mine",
+      format: formatForFile(file.name, text),
+      source: text,
+    });
+  });
+});
+
+ui.run.addEventListener("click", run);
+ui.readyRun.addEventListener("click", run);
+ui.sourceRun.addEventListener("click", run);
+ui.failedDiagnostics.addEventListener("click", () => selectTab("diagnostics", true));
+ui.toggleSource.addEventListener("click", () => setSourceOpen(!settings.sourceOpen));
+ui.sourceClose.addEventListener("click", () => setSourceOpen(false));
+ui.source.addEventListener("input", render);
+ui.fullscreen.addEventListener("click", enterFullscreen);
+ui.fsExit.addEventListener("click", exitFullscreen);
+ui.canvas.addEventListener("dblclick", () => (fullscreen ? exitFullscreen() : enterFullscreen()));
+
+let hoverTimer = 0;
+ui.canvasArea.addEventListener("pointermove", () => {
+  if (!fullscreen) return;
+  ui.canvasArea.classList.add("is-hover");
+  window.clearTimeout(hoverTimer);
+  hoverTimer = window.setTimeout(() => ui.canvasArea.classList.remove("is-hover"), 1800);
+});
+
+ui.play.addEventListener("click", togglePlay);
+ui.fsPlay.addEventListener("click", togglePlay);
+ui.frameBack.addEventListener("click", () => step("frame", -1));
+ui.frameFwd.addEventListener("click", () => step("frame", 1));
+ui.keyBack.addEventListener("click", () => step("key", -1));
+ui.keyFwd.addEventListener("click", () => step("key", 1));
+ui.speed.addEventListener("change", () => {
+  clock.setRate(Number(ui.speed.value) || 1);
+  render();
+});
+
+function seekFromPointer(event: PointerEvent): void {
+  const rect = ui.track.getBoundingClientRect();
+  const fraction = rect.width > 0 ? Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width)) : 0;
+  seek(fraction * durationMs());
+}
+ui.track.addEventListener("pointerdown", (event) => {
+  if (isStill()) return;
+  scrubbing = true;
+  ui.track.setPointerCapture(event.pointerId);
+  seekFromPointer(event);
+});
+ui.track.addEventListener("pointermove", (event) => {
+  if (scrubbing) seekFromPointer(event);
+});
+ui.track.addEventListener("pointerup", () => {
+  scrubbing = false;
+});
+ui.track.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault();
+    event.stopPropagation();
+    step(event.shiftKey ? "key" : "frame", event.key === "ArrowLeft" ? -1 : 1);
+  }
+});
+
+for (const [id, { tab }] of tabs) {
+  tab.addEventListener("click", () => selectTab(id, true));
+}
+ui.panelToggle.addEventListener("click", () => {
+  settings.panelOpen = !settings.panelOpen;
+  saveSettings();
+  render();
+});
+
+function dragResize(handle: HTMLElement, axis: "x" | "y", apply: (delta: number, start: number) => void, start: () => number): void {
+  handle.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    const origin = axis === "x" ? event.clientX : event.clientY;
+    const initial = start();
+    handle.setPointerCapture(event.pointerId);
+    const move = (next: PointerEvent) => {
+      apply((axis === "x" ? next.clientX : next.clientY) - origin, initial);
+      render();
+    };
+    const up = () => {
+      handle.removeEventListener("pointermove", move);
+      handle.removeEventListener("pointerup", up);
+      saveSettings();
+    };
+    handle.addEventListener("pointermove", move);
+    handle.addEventListener("pointerup", up);
+  });
+}
+dragResize(ui.sourceResize, "x", (delta, initial) => {
+  settings.sourceWidth = Math.round(Math.min(window.innerWidth * 0.7, Math.max(240, initial - delta)));
+}, () => settings.sourceWidth);
+dragResize(ui.panelResize, "y", (delta, initial) => {
+  settings.panelHeight = Math.round(Math.min(window.innerHeight * 0.7, Math.max(96, initial - delta)));
+}, () => settings.panelHeight);
+
+window.addEventListener("keydown", (event) => {
+  if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+    event.preventDefault();
+    run();
+    return;
+  }
+  if (event.key === "Escape") {
+    if (fullscreen) {
+      event.preventDefault();
+      exitFullscreen();
+      return;
+    }
+    closeMenus();
+    return;
+  }
+  if (ui.picker.open || isTypingTarget(event.target)) return;
+  if (event.metaKey || event.ctrlKey || event.altKey) return;
+  const key = event.key.toLowerCase();
+  if (event.key === " ") {
+    event.preventDefault();
+    togglePlay();
+  } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault();
+    step("key", event.key === "ArrowLeft" ? -1 : 1);
+  } else if (key === "f") {
+    if (fullscreen) exitFullscreen();
+    else enterFullscreen();
+  } else if (key === "e") {
+    setSourceOpen(!settings.sourceOpen);
+  } else if (key === "o") {
+    event.preventDefault();
+    openPicker();
+  }
+});
+
+function readHash(): void {
+  const match = /^#p\/(.+)$/.exec(location.hash);
+  if (!match?.[1]) return;
+  const key = decodeURIComponent(match[1]);
+  if (key === loaded?.key) return;
+  const entry = catalogue.find((item) => item.key === key);
+  if (entry) openProgram(entry, { fromHash: true });
+}
+window.addEventListener("hashchange", readHash);
+window.addEventListener("resize", render);
+new ResizeObserver(render).observe(ui.canvasArea);
+
+readHash();
+draw();
+
+requestAnimationFrame(function loop(now: number) {
+  const delta = Math.min(100, now - lastWall);
+  lastWall = now;
+  const work = () => {
+    if (clock.isPlaying && !scrubbing && runtime) {
+      clock.tick(delta);
+      if (clock.timeMs >= durationMs()) {
+        clock.seek(durationMs());
+        clock.pause();
+      }
+      needsDraw = true;
+    }
+    if (needsDraw) {
+      needsDraw = false;
+      draw();
+    }
+  };
+  if (frameTelemetry) frameTelemetry.frame(now, work);
+  else work();
+  requestAnimationFrame(loop);
+});
+
+declare global {
+  interface Window {
+    __gvr?: GvrBridge;
+  }
+}

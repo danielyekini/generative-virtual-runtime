@@ -34,6 +34,25 @@ export interface GvrCompare {
   openText: (name: string, source: string) => void;
 }
 
+/** Player page state for automation and smoke tests (P001). */
+export interface PlayerProbe {
+  programKey: string | null;
+  programName: string | null;
+  format: string | null;
+  runState: "not-run" | "ok" | "recovered" | "failed";
+  sceneId: string;
+  timeMs: number;
+  durationMs: number;
+  playing: boolean;
+  dirty: boolean;
+  fullscreen: boolean;
+  sourceOpen: boolean;
+  panelOpen: boolean;
+  panelTab: string;
+  diagnostics: string[];
+  canvas: { cssWidth: number; cssHeight: number; backingWidth: number; backingHeight: number };
+}
+
 export interface GvrBridge {
   activity: string;
   canvas: HTMLCanvasElement;
@@ -66,6 +85,9 @@ export interface GvrBridge {
   generatedOpacity?: number;
   status?: string;
   seen?: string[];
+  player?: PlayerProbe;
+  run?: () => void;
+  open?: (key: string) => boolean;
 }
 
 export function button(label: string, pressed: boolean, onClick: () => void): HTMLButtonElement {
