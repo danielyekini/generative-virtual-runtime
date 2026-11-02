@@ -65,10 +65,17 @@ E033 versions the language surface (MotionScript / Scene IR 0.14.0).
 
 ## Next work
 
-1. Replenish further from M4/M5 Candidates with satisfied dependencies as these
-   complete. Audible human judgement of E026 output and visible media controls
-   sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
-   remains a Candidate emitter round-trip bug (no language change).
+Engine review (2 November 2026, runs E029, E031, E032, E033/E034, E030): continue.
+
+1. E012 ([#31](https://github.com/danielyekini/generative-virtual-runtime/issues/31)):
+   clip-first scoped compositing (clips, then justified mattes). Native; design
+   pass before syntax; a language claim takes the next minor (≥ 0.16.0). Ready.
+2. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
+   verify and fix native diagnostic and latent-correctness leads against 0.15.0. Ready.
+3. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105)):
+   emitter drops `interact` declarations (no language change). Ready.
+4. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
+   judgement of E026/E033 output and visible media controls sit with P009.
 
 E032–E034 generative audio slice is Done (runtime provider, language 0.14.0,
 ElevenLabs adapter). Studio credentials remain Product (#120 / P009).
