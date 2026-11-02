@@ -1,0 +1,30 @@
+{
+  "run_id": "0294d5d3-abe5-4137-987e-2d132a2e03a2",
+  "issue": 20,
+  "implementation_commit": "9a4b4773e106f8e5ba551f04c53afd7058411be9",
+  "base_commit": "7fa2fa1a0ff4378cd93afa7957210f6ed6397b78",
+  "command": "npm run verify",
+  "exit_code": 0,
+  "vitest_tests": 254,
+  "vitest_files": 32,
+  "ir_manifest_fixtures": 21,
+  "operations_tests": 29,
+  "log_sha256": "630f8db4519c736a0f4d6704a310376752e480f124e06e500990f2ce8cc41d26",
+  "reproduction": {
+    "before": {
+      "revision": 2,
+      "expected": 4,
+      "diagnostic": "INVALID_PARENT"
+    },
+    "after": {
+      "revision": 4,
+      "expected": 4,
+      "rejected": 0,
+      "flush_modes": [
+        "each",
+        "deferred"
+      ]
+    }
+  },
+  "project_write": "denied by integration"
+}
