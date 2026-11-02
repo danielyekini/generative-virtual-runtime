@@ -8,11 +8,12 @@ import type { ResolvedFrame } from "@gvr/schema";
 import type { GvrBridge, PlayerProbe } from "../bridge";
 import { isTypingTarget } from "../bridge";
 import { clearCanvas, describeFrame } from "../describe";
-import { decodeMine, STORAGE_KEY, selectionFor, type LocatedDiagnostic, type ProgramEntry } from "../library";
+import { decodeMine, STORAGE_KEY, selectionFor, type LocatedDiagnostic, type ProgramEntry, type ProgramFormat } from "../library";
 import { frameTelemetry, telemetry } from "../telemetry";
 import { clampTime, collectKeyTimes, formatClock, isStaticScene, stepKey } from "../timeline";
 import { FORMAT_LABELS, installedPrograms } from "./programs";
 import { LibraryPage } from "./library-page";
+import { compareScene, type Comparison } from "./comparison";
 import { runProgram, type RunOutcome } from "./run";
 import { describeSceneSummary } from "./scene-summary";
 import {
@@ -58,6 +59,18 @@ const ui = {
   optAutoplay: $<HTMLInputElement>("opt-autoplay"),
   optSize: $<HTMLSelectElement>("opt-size"),
   optDpr: $<HTMLSelectElement>("opt-dpr"),
+  toggleSplit: $<HTMLButtonElement>("toggle-split"),
+  splitControls: $("split-controls"),
+  splitFormat: $<HTMLSelectElement>("split-format"),
+  splitPresets: $<HTMLSelectElement>("split-presets"),
+  splitOpen: $<HTMLButtonElement>("split-open"),
+  splitFile: $<HTMLInputElement>("split-file"),
+  splitCompare: $<HTMLInputElement>("split-compare"),
+  splitError: $("split-error"),
+  comparison: $("comparison"),
+  comparisonArea: $("comparison-area"),
+  comparisonCanvas: $<HTMLCanvasElement>("compare-view"),
+  comparisonNote: $("comparison-note"),
   toggleSource: $<HTMLButtonElement>("toggle-source"),
   fullscreen: $<HTMLButtonElement>("fullscreen"),
   canvasArea: $("canvas-area"),
@@ -120,6 +133,13 @@ const renderer = new CanvasRenderer(ui.canvas, telemetry);
 const clock = new RuntimeClock();
 
 let loaded: ProgramEntry | null = null;
+// Drafts live only in this visit; explicit Library/preset/file loads replace that format's draft.
+const drafts = new Map<ProgramFormat, ProgramEntry>();
+let split = false;
+let comparison: Comparison | null = null;
+let comparisonRuntime: AnimationRuntime | null = null;
+let comparisonRenderer: CanvasRenderer | null = null;
+let fileReadId = 0;
 let outcome: RunOutcome | null = null;
 let runtime: AnimationRuntime | null = null;
 let frame: ResolvedFrame | null = null;
@@ -138,7 +158,7 @@ function saveSettings(): void {
 
 function dirty(): boolean {
   if (!loaded) return false;
-  return ui.source.value !== (outcome?.source ?? loaded.source);
+  return (outcome && outcome.format !== loaded.format) || ui.source.value !== (outcome?.source ?? loaded.source);
 }
 
 function durationMs(): number {
@@ -149,8 +169,14 @@ function isStill(): boolean {
   return !runtime || isStaticScene(runtime.scene) || durationMs() <= 0;
 }
 
-function openProgram(entry: ProgramEntry, options: { fromHash?: boolean } = {}): void {
-  loaded = entry;
+function openProgram(entry: ProgramEntry, options: { fromHash?: boolean; waitForRun?: boolean } = {}): void {
+  rememberDraft();
+  fileReadId++;
+  loaded = { ...entry };
+  drafts.set(entry.format, loaded);
+  comparison = null;
+  comparisonRuntime = null;
+  ui.splitError.hidden = true;
   outcome = null;
   runtime = null;
   frame = null;
@@ -166,7 +192,8 @@ function openProgram(entry: ProgramEntry, options: { fromHash?: boolean } = {}):
   } else if (location.hash) {
     history.replaceState(null, "", location.pathname + location.search);
   }
-  if (settings.autoplay) run();
+  refreshPresets();
+  if (settings.autoplay && !options.waitForRun) run();
   render();
 }
 
@@ -180,10 +207,16 @@ function openKey(key: string): boolean {
 function run(): void {
   if (!loaded) return;
   outcome = runProgram(ui.source.value, loaded.format, loaded.label, telemetry);
-  runtime = outcome.scene ? new AnimationRuntime(outcome.scene, telemetry) : null;
+  rememberDraft();
   clock.pause();
-  clock.seek(0);
-  if (runtime && !isStill()) clock.play();
+  // Failure preserves the previous successful scene and playhead, with a visible notice.
+  if (outcome.scene) {
+    runtime = new AnimationRuntime(outcome.scene, telemetry);
+    clock.seek(0);
+    refreshComparison();
+    if (!isStill()) clock.play();
+  }
+  if (loaded.format !== "motionscript") selectTab("report", true);
   if (outcome.diagnostics.some((item) => item.severity === "error" || item.severity === "fatal")) {
     selectTab("diagnostics", true);
   }
@@ -217,9 +250,58 @@ function step(kind: "frame" | "key", direction: -1 | 1): void {
   render();
 }
 
+// ---------------------------------------------------------------- Split
+
+function rememberDraft(): void {
+  if (loaded) drafts.set(loaded.format, { ...loaded, source: ui.source.value });
+}
+
+function refreshPresets(): void {
+  const format = loaded?.format ?? "motionscript";
+  ui.splitFormat.value = format;
+  ui.splitPresets.replaceChildren(new Option("Choose preset…", ""), ...catalogue
+    .filter((entry) => entry.origin === "installed" && entry.format === format)
+    .map((entry) => new Option(entry.label, entry.key)));
+}
+
+function setSplit(open: boolean): void {
+  split = open;
+  settings.sourceOpen = open;
+  if (open) {
+    if (!loaded) selectFormat("motionscript");
+    settings.sourceWidth = Math.max(settings.sourceWidth, Math.round(window.innerWidth * .45));
+  } else {
+    ui.splitCompare.checked = false;
+    comparison = null;
+    comparisonRuntime = null;
+    fileReadId++;
+  }
+  saveSettings();
+  render();
+  if (open) ui.source.focus({ preventScroll: true });
+}
+
+function selectFormat(format: ProgramFormat): void {
+  rememberDraft();
+  const draft = drafts.get(format) ?? {
+    key: `split:${format}`, label: `Untitled ${FORMAT_LABELS[format]}`,
+    caption: "Split draft", collection: "Split drafts", origin: "mine" as const, format, source: "",
+  };
+  openProgram(draft, { waitForRun: true });
+}
+
+function refreshComparison(): void {
+  comparison = null;
+  comparisonRuntime = null;
+  if (!split || !ui.splitCompare.checked || !runtime) return;
+  comparison = compareScene(runtime.scene);
+  comparisonRuntime = comparison.outcome?.scene ? new AnimationRuntime(comparison.outcome.scene) : null;
+}
+
 // ---------------------------------------------------------------- layout
 
 function setSourceOpen(open: boolean): void {
+  if (!open && split) { setSplit(false); return; }
   settings.sourceOpen = open;
   saveSettings();
   render();
@@ -290,6 +372,7 @@ function showPlayer(): void {
 function openLibrary(fromHash = false): void {
   closeMenus();
   clock.pause();
+  fileReadId++;
   libraryVisible = true;
   document.body.classList.add("library-open");
   document.body.dataset.surface = "library";
@@ -308,6 +391,11 @@ function openLibrary(fromHash = false): void {
 function canvasSize(): { width: number; height: number } {
   const preset = SIZE_PRESETS.find((entry) => entry.id === settings.canvasSize);
   const box = { width: ui.canvasArea.clientWidth, height: ui.canvasArea.clientHeight };
+  // Compare both evaluated scenes at identical canvas sizes, without changing authored coordinates.
+  if (!fullscreen && split && ui.splitCompare.checked && ui.comparisonArea.clientWidth > 0) {
+    box.width = Math.min(box.width, ui.comparisonArea.clientWidth);
+    box.height = Math.min(box.height, ui.comparisonArea.clientHeight);
+  }
   if (!fullscreen && preset && preset.width > 0) {
     return { width: Math.min(preset.width, box.width), height: Math.min(preset.height, box.height) };
   }
@@ -328,6 +416,12 @@ function paint(): void {
   frame = runtime ? runtime.evaluate(time) : null;
   if (frame) renderer.render(frame);
   else clearCanvas(ui.canvas);
+  if (split && ui.splitCompare.checked && !fullscreen) {
+    if (!comparisonRenderer) comparisonRenderer = new CanvasRenderer(ui.comparisonCanvas);
+    comparisonRenderer.resize(Math.max(1, size.width), Math.max(1, size.height), dpr());
+    if (comparisonRuntime) comparisonRenderer.render(comparisonRuntime.evaluate(clampTime(time, comparisonRuntime.scene.timeline.durationMs)));
+    else clearCanvas(ui.comparisonCanvas);
+  }
 }
 
 function stateBadge(): { text: string; tone: string } {
@@ -352,6 +446,7 @@ function renderHeader(): void {
   ui.run.disabled = !loaded;
   ui.sourceRun.disabled = !loaded;
   ui.fullscreen.disabled = !runtime;
+  ui.toggleSplit.setAttribute("aria-pressed", String(split));
   ui.toggleSource.setAttribute("aria-pressed", String(settings.sourceOpen));
   if (!libraryVisible) document.title = loaded ? `${loaded.label} · GVR Studio` : "GVR Studio";
 }
@@ -364,10 +459,14 @@ function renderOverlays(): void {
     put(ui.readyTitle, loaded.label);
     put(ui.readyNote, settings.autoplay ? "Loaded." : "Loaded. Nothing runs until you press Run.");
   }
-  if (outcome && !runtime) {
+  const retainedFailure = outcome?.state === "failed" && Boolean(runtime);
+  ui.failed.classList.toggle("has-retained-scene", retainedFailure);
+  ui.failed.hidden = !outcome || (Boolean(runtime) && !retainedFailure);
+  if (outcome?.state === "failed") {
     const first = outcome.diagnostics[0];
     const more = outcome.diagnostics.length > 1 ? ` (+${outcome.diagnostics.length - 1} more)` : "";
     put(ui.failedNote, first ? `${first.text.replace(/\.$/, "")}${more}. The source is unchanged.` : outcome.summary);
+    if (retainedFailure) put(ui.failedNote, `${ui.failedNote.textContent} Showing the previous successful scene.`);
   }
   if (!loaded) {
     const items = recent.map((key) => catalogue.find((entry) => entry.key === key)).filter((entry): entry is ProgramEntry => Boolean(entry));
@@ -432,7 +531,12 @@ function renderTransport(): void {
 function renderSource(): void {
   ui.sourcePanel.hidden = !settings.sourceOpen;
   ui.sourceResize.hidden = !settings.sourceOpen;
-  ui.sourcePanel.style.width = `${settings.sourceWidth}px`;
+  ui.sourcePanel.style.width = `${Math.min(settings.sourceWidth, window.innerWidth * (split ? .6 : .7))}px`;
+  document.body.classList.toggle("split-open", split);
+  document.body.classList.toggle("has-comparison", split && ui.splitCompare.checked && !fullscreen);
+  ui.splitControls.hidden = !split;
+  ui.comparison.hidden = !split || !ui.splitCompare.checked || fullscreen;
+  put(ui.comparisonNote, comparison ? comparison.outcome?.scene ? "Emitted/recompiled Scene IR; inspect Report / Compare for scope." : comparison.report : "Run a playable program to compare it.");
   put(ui.sourceFormat, loaded ? FORMAT_LABELS[loaded.format] : "");
   ui.sourceDirty.hidden = !dirty();
   put(ui.sourceDirty, outcome ? "● edited since Run" : "● edited");
@@ -502,7 +606,7 @@ function renderPanel(): void {
   }
   if (settings.panelOpen && settings.panelTab === "report") {
     put(ui.reportSummary, outcome ? outcome.summary : "Run a program to see its report.");
-    put(ui.report, outcome?.report ?? "");
+    put(ui.report, [outcome?.report, comparison?.report].filter(Boolean).join("\n\n"));
   }
 }
 
@@ -547,6 +651,9 @@ function probe(): PlayerProbe {
     dirty: dirty(),
     fullscreen,
     sourceOpen: settings.sourceOpen,
+    split,
+    comparison: split && ui.splitCompare.checked,
+    comparisonSceneId: comparisonRuntime?.scene.sceneId ?? "",
     panelOpen: settings.panelOpen,
     panelTab: settings.panelTab,
     diagnostics: (outcome?.diagnostics ?? []).map((item) => item.text),
@@ -569,7 +676,9 @@ function publish(): void {
     sourceDiagnostics: outcome?.diagnostics.map((item) => item.text),
     editor: ui.source.value,
     dirty: dirty(),
-    report: outcome?.report,
+    report: [outcome?.report, comparison?.report].filter(Boolean).join("\n\n"),
+    script: comparison?.script,
+    scriptCompiles: comparison?.outcome?.state === "ok",
     seek: (timeMs: number) => {
       clock.pause();
       seek(timeMs);
@@ -642,7 +751,35 @@ ui.sourceRun.addEventListener("click", run);
 ui.failedDiagnostics.addEventListener("click", () => selectTab("diagnostics", true));
 ui.toggleSource.addEventListener("click", () => setSourceOpen(!settings.sourceOpen));
 ui.sourceClose.addEventListener("click", () => setSourceOpen(false));
-ui.source.addEventListener("input", render);
+ui.source.addEventListener("input", () => { rememberDraft(); fileReadId++; render(); });
+ui.toggleSplit.addEventListener("click", () => setSplit(!split));
+ui.splitFormat.addEventListener("change", () => selectFormat(ui.splitFormat.value as ProgramFormat));
+ui.splitPresets.addEventListener("change", () => {
+  const entry = catalogue.find((item) => item.key === ui.splitPresets.value && item.format === loaded?.format);
+  if (entry) openProgram(entry, { waitForRun: true });
+});
+ui.splitOpen.addEventListener("click", () => {
+  ui.splitFile.accept = loaded?.format === "svg" ? ".svg,image/svg+xml" : loaded?.format === "motionscript" ? ".ms,.motionscript,.txt,text/plain" : ".json,application/json";
+  ui.splitFile.click();
+});
+ui.splitFile.addEventListener("change", async () => {
+  const file = ui.splitFile.files?.[0];
+  ui.splitFile.value = "";
+  if (!file || !loaded) return;
+  const format = loaded.format;
+  const requestId = ++fileReadId;
+  try {
+    const source = await file.text();
+    // A slow read must never overwrite a newer draft, format or Library selection.
+    if (requestId !== fileReadId) return;
+    openProgram({ key: `split:${format}`, label: file.name, caption: file.name, collection: "Split drafts", origin: "mine", format, source }, { waitForRun: true });
+  } catch (error) {
+    if (requestId !== fileReadId) return;
+    put(ui.splitError, `Could not read ${file.name}: ${error instanceof Error ? error.message : String(error)}`);
+    ui.splitError.hidden = false;
+  }
+});
+ui.splitCompare.addEventListener("change", () => { refreshComparison(); selectTab("report", true); });
 ui.fullscreen.addEventListener("click", enterFullscreen);
 ui.fsExit.addEventListener("click", exitFullscreen);
 ui.canvas.addEventListener("dblclick", () => (fullscreen ? exitFullscreen() : enterFullscreen()));

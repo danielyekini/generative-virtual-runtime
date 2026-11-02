@@ -89,6 +89,22 @@ any unsaved edits.
   bottom panel. This replaces the old Import rail section; no automatic
   round-trip work happens outside this mode.
 
+#### Split details (confirmed 2 November 2026, P004)
+
+The Split toggle expands the existing Source editor beside the canvas, with
+explicit MotionScript/Lottie/SVG/Fixture format selection, a format-filtered
+Presets selector and Open file. Files and presets load into the selected draft
+and wait for Run. Format selection does not convert source. Each format retains
+its own draft for the current visit; closing Split and visiting Library preserve
+edits. Explicitly loading another program, preset or file replaces that format's
+draft. Drafts are not a persistent save feature.
+
+The comparison checkbox defaults off. Only requesting comparison emits and
+recompiles MotionScript and opens a second canvas at the same playhead. Report /
+Compare describes this Scene IR round-trip scope; it does not certify an external
+source renderer. Failed Run retains source and the previous successful scene,
+with a visible failure notice and diagnostics. Ordinary Run does no comparison.
+
 ### Library
 
 - A separate page with a grid of program cards. Each card has a **thumbnail**,
@@ -142,7 +158,7 @@ any unsaved edits.
 ## Later sections (to be specified with the user before building)
 
 Performance inspector placement and metrics (P003), agent-facing commands
-(P005), legacy format selection details (P004), speech/media surfaces.
+(P005), speech/media surfaces.
 
 ## Open questions
 

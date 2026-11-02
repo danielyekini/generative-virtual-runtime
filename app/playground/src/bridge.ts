@@ -47,6 +47,9 @@ export interface PlayerProbe {
   dirty: boolean;
   fullscreen: boolean;
   sourceOpen: boolean;
+  split: boolean;
+  comparison: boolean;
+  comparisonSceneId: string;
   panelOpen: boolean;
   panelTab: string;
   diagnostics: string[];
