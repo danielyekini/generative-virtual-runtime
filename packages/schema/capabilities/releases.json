@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.11.0",
+      "current": "0.12.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.9"
+      "packageVersion": "0.1.10"
     },
     "scene-ir": {
-      "current": "0.11.0",
+      "current": "0.12.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.9"
+      "packageVersion": "0.1.10"
     }
   },
   "versions": [
@@ -90,6 +90,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.11.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.12.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.12.0.md"
     },
     {
       "language": "motionscript",
@@ -173,6 +180,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.11.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.12.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.12.0.md"
     },
     {
       "language": "scene-ir",
@@ -265,6 +279,13 @@
       "compiler": "0.1.8",
       "runtime": "0.1.9",
       "readers": "Wire stays 0.2. audio.cues is gated by requiredCapabilities / requires. Packages without the capability reject audio resources, audioCues and ADD_AUDIO_CUES."
+    },
+    {
+      "motionscript": "0.12.0",
+      "sceneIr": "0.12.0",
+      "compiler": "0.1.9",
+      "runtime": "0.1.10",
+      "readers": "Wire stays 0.2. space.planar25d is gated by requiredCapabilities / requires. Packages without the capability reject scenes and CREATE_SCENE headers carrying spatialLayers."
     }
   ]
 }

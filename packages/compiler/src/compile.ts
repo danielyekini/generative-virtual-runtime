@@ -150,6 +150,11 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${unit.nodeId}.`, unit.span));
       continue;
     }
+    if (unit.kind === "spatialLayer") {
+      const missing = missingSurfaceNode(session, unit);
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${missing ?? unit.layer.id}.`, unit.span));
+      continue;
+    }
     if (unit.kind === "cue") {
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved audio resource ${unit.cue.resourceId}.`, unit.span));
       continue;
@@ -238,6 +243,7 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
     return !session.scene.compositions?.some((composition) => composition.id === unit.definition);
   }
   if (unit.kind === "operators") return !knownNodeIds(session).has(unit.nodeId);
+  if (unit.kind === "spatialLayer") return missingSurfaceNode(session, unit) !== undefined;
   if (unit.kind === "cue") {
     return !session.scene.resources.some((resource) => resource.kind === "audio" && resource.id === unit.cue.resourceId);
   }
@@ -307,6 +313,7 @@ function captureInner(session: Session): Capture {
       requiredCapabilities: session.scene.requiredCapabilities,
       geometryOperators: session.scene.geometryOperators,
       interactions: session.scene.interactions,
+      spatialLayers: session.scene.spatialLayers,
     }),
   };
 }
@@ -393,6 +400,7 @@ function sceneHeader(session: Session): SceneHeader {
     header.requiredCapabilities = [...(session.scene.requiredCapabilities ?? [])];
     header.geometryOperators = [...(session.scene.geometryOperators ?? [])];
     if (session.scene.interactions) header.interactions = [...session.scene.interactions];
+    if (session.scene.spatialLayers) header.spatialLayers = [...session.scene.spatialLayers];
   }
   return header;
 }
@@ -505,6 +513,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       unit.kind === "operators" ||
       unit.kind === "interact" ||
       unit.kind === "audio" ||
+      unit.kind === "spatialLayer" ||
       (unit.kind === "batch" && unit.items.some((item) => item.kind === "node")))
   ) {
     session.diagnostics.push(
@@ -625,10 +634,11 @@ function snapshotScene(scene: SceneIR): SceneIR {
     ...(scene.geometryOperators ? {geometryOperators: [...scene.geometryOperators]} : {}),
     ...(scene.interactions ? {interactions: [...scene.interactions]} : {}),
     ...(scene.audioCues ? {audioCues: [...scene.audioCues]} : {}),
+    ...(scene.spatialLayers ? {spatialLayers: [...scene.spatialLayers]} : {}),
   };
 }
 
-function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators" | "interactions" | "audioCues">(
+function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators" | "interactions" | "audioCues" | "spatialLayers">(
   scene: SceneIR,
   snapshot: SceneIR,
   key: K,
@@ -650,6 +660,7 @@ function restore(session: Session, snapshot: SceneIR, sealed: number, constants:
   restoreList(session.scene, snapshot, "geometryOperators");
   restoreList(session.scene, snapshot, "interactions");
   restoreList(session.scene, snapshot, "audioCues");
+  restoreList(session.scene, snapshot, "spatialLayers");
   session.sealedThroughMs = sealed;
   session.constants = constants;
 }
@@ -700,6 +711,14 @@ function lower(session: Session, unit: UnitAst): void {
     }
     if (unit.kind === "audio") lowerAudio(session, unit);
     else lowerCue(session, unit);
+    return;
+  }
+  if (unit.kind === "spatialLayer") {
+    if (session.scene.irVersion !== "0.2") {
+      session.diagnostics.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare spatial layers.", unit.span));
+      return;
+    }
+    lowerSpatialLayer(session, unit);
     return;
   }
   if (unit.kind === "timing" || unit.kind === "composition" || unit.kind === "instance" || unit.kind === "operators") {
@@ -1342,6 +1361,35 @@ function lowerInteract(session: Session, unit: Extract<UnitAst, { kind: "interac
   // Replace the container so earlier emitted headers keep their own list.
   session.scene.interactions = [...list, target];
   ensureCapability(session, "input.bindings");
+}
+
+/** First surface or parent node of a layer that does not exist yet (declaration may precede it). */
+function missingSurfaceNode(session: Session, unit: Extract<UnitAst, { kind: "spatialLayer" }>): string | undefined {
+  const ids = new Set(session.scene.nodes.map((node) => node.id));
+  return unit.layer.surfaces.map((surface) => surface.nodeId).find((id) => !ids.has(id));
+}
+
+function lowerSpatialLayer(session: Session, unit: Extract<UnitAst, { kind: "spatialLayer" }>): void {
+  const list = session.scene.spatialLayers ?? [];
+  if (list.some((layer) => layer.id === unit.layer.id)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `Spatial layer ${unit.layer.id} already exists.`, unit.span));
+    return;
+  }
+  const owned = new Set(list.flatMap((layer) => layer.surfaces.map((surface) => surface.nodeId)));
+  const inLayer = new Set(unit.layer.surfaces.map((surface) => surface.nodeId));
+  for (const surface of unit.layer.surfaces) {
+    if (owned.has(surface.nodeId)) {
+      session.diagnostics.push(problem("DUPLICATE_ID", `Node ${surface.nodeId} is already a spatial surface.`, unit.span));
+      return;
+    }
+    if (surface.parent !== undefined && !inLayer.has(surface.parent)) {
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Surface ${surface.nodeId} names parent ${surface.parent}, which is not a surface of layer ${unit.layer.id}.`, unit.span));
+      return;
+    }
+  }
+  // Replace the container so earlier emitted headers keep their own list.
+  session.scene.spatialLayers = [...list, structuredClone(unit.layer)];
+  ensureCapability(session, "space.planar25d");
 }
 
 function lowerAudio(session: Session, unit: Extract<UnitAst, { kind: "audio" }>): void {

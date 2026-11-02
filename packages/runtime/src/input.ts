@@ -13,7 +13,10 @@ import {
   type ResolvedFrame,
   type Vec2,
 } from "@gvr/schema";
+import { buildResolvedFrame } from "./frame";
 import { sampleScene, type SampledScene } from "./sample";
+import { projectSpatialFrame, surfaceDragDelta } from "./spatial";
+import { layersFromScene } from "./spatial-scene";
 
 /**
  * E007 native input prototype. See docs/decisions/engine/native-input.md.
@@ -416,6 +419,13 @@ export interface InputSessionOptions {
    */
   dragSpace?: (entityId: string, sceneTimeMs: number) => Mat3 | undefined;
   /**
+   * Pointer-aware plane drag for projected spatial surfaces (space.planar25d).
+   * When it returns a delta, dragTranslate uses it instead of the affine
+   * dragSpace Jacobian (which is wrong under perspective). Arguments are the
+   * previous and current logical pointer positions.
+   */
+  dragPlaneDelta?: (entityId: string, from: Vec2, to: Vec2, sceneTimeMs: number) => Vec2 | undefined;
+  /**
    * Tab/Shift+Tab wrap around the focus order (default true). Embedded hosts
    * pass false so focus leaves the scene at either end instead of trapping it.
    */
@@ -600,21 +610,23 @@ export class InputSession {
       if (!capture) this.updateHover(this.pick(frame, point), signals);
       return;
     }
-    const delta = { x: point.x - capture.last.x, y: point.y - capture.last.y };
+    const from = { ...capture.last };
+    const delta = { x: point.x - from.x, y: point.y - from.y };
     if (!capture.dragging) {
       const moved = Math.hypot(point.x - capture.origin.x, point.y - capture.origin.y);
       if (moved < (this.options.dragThreshold ?? 4)) return;
       capture.dragging = true;
-      const total = { x: point.x - capture.origin.x, y: point.y - capture.origin.y };
+      const origin = { ...capture.origin };
+      const total = { x: point.x - origin.x, y: point.y - origin.y };
       signals.push({ type: "dragstart", entityId: capture.entityId, delta: { x: 0, y: 0 } });
       capture.last = point;
       signals.push({ type: "drag", entityId: capture.entityId, delta: total });
-      this.runBindings(capture.entityId, "drag", { delta: total }, event.sceneTimeMs, signals);
+      this.runBindings(capture.entityId, "drag", { delta: total, from: origin, to: point }, event.sceneTimeMs, signals);
       return;
     }
     capture.last = point;
     signals.push({ type: "drag", entityId: capture.entityId, delta });
-    this.runBindings(capture.entityId, "drag", { delta }, event.sceneTimeMs, signals);
+    this.runBindings(capture.entityId, "drag", { delta, from, to: point }, event.sceneTimeMs, signals);
   }
 
   private pointerDown(
@@ -728,7 +740,7 @@ export class InputSession {
   private runBindings(
     targetId: string,
     trigger: InputTrigger,
-    detail: { delta?: Vec2; sign?: number; key?: string },
+    detail: { delta?: Vec2; from?: Vec2; to?: Vec2; sign?: number; key?: string },
     sceneTimeMs: number,
     signals: InputSignal[],
   ): void {
@@ -762,7 +774,7 @@ export class InputSession {
           // All-or-nothing: both axes must be input-owned before either moves.
           const t = sceneTimeMs;
           if (!this.owns(entityId, "transform.position.x", t, signals) || !this.owns(entityId, "transform.position.y", t, signals)) break;
-          const delta = this.parentDelta(entityId, detail.delta, t);
+          const delta = this.translateDelta(entityId, detail, t);
           if (!delta) break;
           this.write(entityId, "transform.position.x", clamp(x + delta.x, action.min.x, action.max.x), t, signals);
           this.write(entityId, "transform.position.y", clamp(y + delta.y, action.min.y, action.max.y), t, signals);
@@ -770,6 +782,19 @@ export class InputSession {
         }
       }
     }
+  }
+
+  /** Prefer exact ray–plane deltas when a spatial hook is provided; else affine parent space. */
+  private translateDelta(
+    entityId: string,
+    detail: { delta?: Vec2; from?: Vec2; to?: Vec2 },
+    sceneTimeMs: number,
+  ): Vec2 | undefined {
+    if (detail.from && detail.to && this.options.dragPlaneDelta) {
+      const plane = this.options.dragPlaneDelta(entityId, detail.from, detail.to, sceneTimeMs);
+      if (plane) return plane;
+    }
+    return this.parentDelta(entityId, detail.delta!, sceneTimeMs);
   }
 
   /** Viewport delta → parent-space delta via the inverse linear part of the parent matrix. */
@@ -928,6 +953,20 @@ export function createSceneInputSession(
       // logical = parent × local, so parent = logical × local⁻¹.
       return multiplyMat3(world, local);
     },
+    ...(scene.spatialLayers?.length
+      ? {
+          dragPlaneDelta: (entityId: string, from: Vec2, to: Vec2, sceneTimeMs: number) => {
+            const layers = layersFromScene(scene);
+            if (!layers.some((layer) => layer.surfaces.some((surface) => surface.nodeId === entityId))) {
+              return undefined;
+            }
+            const sampled = session.applyTo(sampleScene(scene, sceneTimeMs), sceneTimeMs);
+            // Project the unprojected layout frame so unprojection matches authored surfaces.
+            const layout = buildResolvedFrame(scene, sampled, sceneTimeMs);
+            return surfaceDragDelta(projectSpatialFrame(layout, layers), entityId, from, to);
+          },
+        }
+      : {}),
   });
   return session;
 }

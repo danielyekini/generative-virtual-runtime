@@ -158,7 +158,7 @@ export function validateSceneIR(
   const version = input.irVersion;
   const v02 = version === IR_VERSION_02;
   const sceneKeys = ["irVersion", "sceneId", "viewport", "background", "resources", "nodes", "cameras", "initialCameraId", "timeline"];
-  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "audioCues");
+  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "audioCues", "spatialLayers");
   rejectUnknown(input, sceneKeys, "", diags);
   if (version !== IR_VERSION && version !== IR_VERSION_02) {
     diags.add("UNSUPPORTED_IR_VERSION", "irVersion", `IR version must be ${IR_VERSION} or ${IR_VERSION_02}.`);
@@ -183,6 +183,7 @@ export function validateSceneIR(
   readTimeline(input.timeline, nodes, cameras, limits, diags, v02, scopes);
   if (v02) readInteractions(input.interactions, nodes, input.timeline, input.requiredCapabilities, diags);
   if (v02) readAudio(input.audioCues, resources, input.timeline, input.requiredCapabilities, diags);
+  if (v02) readSpatialLayers(input.spatialLayers, nodeIds, input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
@@ -1489,7 +1490,7 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
         diags.add("INVALID_TYPE", `${path}.scene`, "CREATE_SCENE requires a scene header.");
       } else {
         const keys = ["irVersion", "sceneId", "viewport", "background", "resources", "cameras", "initialCameraId", "durationMs"];
-        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions");
+        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "spatialLayers");
         rejectUnknown(value.scene, keys, `${path}.scene`, diags);
         for (const list of ["resources", "cameras"]) {
           if (!Array.isArray(value.scene[list])) diags.add("INVALID_TYPE", `${path}.scene.${list}`, `${list} must be an array.`);
@@ -2044,6 +2045,146 @@ function readAudio(value: unknown, resources: ResourceFacts[], timeline: unknown
     }
     if (entry.required !== undefined && typeof entry.required !== "boolean") {
       diags.add("INVALID_TYPE", `${path}.required`, "required must be a boolean.");
+    }
+  });
+}
+
+/** Surfaces across all layers in one scene, matching the runtime projection default. */
+export const MAX_SPATIAL_SURFACES = 1024;
+
+function readSpatialVec3(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "Expected a vector { x, y, z }.");
+    return;
+  }
+  rejectUnknown(value, ["x", "y", "z"], path, diags);
+  for (const axis of ["x", "y", "z"] as const) readFinite(value[axis], `${path}.${axis}`, diags);
+}
+
+function readSpatialCamera(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "A spatial layer needs a camera object.");
+    return;
+  }
+  rejectUnknown(value, ["projection", "position", "yaw", "pitch", "roll", "focalLength", "zoom", "near"], path, diags);
+  if (value.projection !== "perspective" && value.projection !== "orthographic") {
+    diags.add("INVALID_ENUM", `${path}.projection`, 'projection must be "perspective" or "orthographic".');
+  }
+  if (value.position !== undefined) readSpatialVec3(value.position, `${path}.position`, diags);
+  for (const key of ["yaw", "pitch", "roll"] as const) {
+    if (value[key] !== undefined) readFinite(value[key], `${path}.${key}`, diags);
+  }
+  for (const key of ["focalLength", "zoom", "near"] as const) {
+    if (value[key] === undefined) continue;
+    const n = readFinite(value[key], `${path}.${key}`, diags);
+    if (n !== undefined && !(n > 0)) diags.add("INVALID_TRACK_VALUE", `${path}.${key}`, `${key} must be greater than 0.`);
+  }
+}
+
+function readSpatialTransform(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "A surface transform must be an object.");
+    return;
+  }
+  rejectUnknown(value, ["position", "pivot", "rotation", "scale", "hinge"], path, diags);
+  for (const key of ["position", "pivot", "rotation", "scale"] as const) {
+    if (value[key] !== undefined) readSpatialVec3(value[key], `${path}.${key}`, diags);
+  }
+  if (value.hinge === undefined) return;
+  const hpath = `${path}.hinge`;
+  if (!isRecord(value.hinge)) {
+    diags.add("INVALID_TYPE", hpath, "A hinge must be an object.");
+    return;
+  }
+  rejectUnknown(value.hinge, ["from", "to", "angle"], hpath, diags);
+  const from = readVec(value.hinge.from, `${hpath}.from`, diags);
+  const to = readVec(value.hinge.to, `${hpath}.to`, diags);
+  readFinite(value.hinge.angle, `${hpath}.angle`, diags);
+  if (from && to && from.x === to.x && from.y === to.y) {
+    diags.add("INVALID_TRACK_VALUE", hpath, "A hinge line needs distinct from and to points.");
+  }
+}
+
+/**
+ * space.planar25d (Scene IR 0.12.0). Layers list their surfaces; each surface
+ * names a root-scene node, appears once in the scene, and parents only within
+ * its layer. Projection happens at frame resolution (runtime SpatialLayer).
+ */
+function readSpatialLayers(value: unknown, nodeIds: Set<string>, required: unknown, diags: Diags): void {
+  if (value === undefined) return;
+  if (!Array.isArray(value)) {
+    diags.add("INVALID_TYPE", "spatialLayers", "spatialLayers must be an array.");
+    return;
+  }
+  if (value.length > 0 && !(Array.isArray(required) && required.includes("space.planar25d"))) {
+    diags.add("MISSING_REQUIRED", "requiredCapabilities", "spatialLayers require space.planar25d in requiredCapabilities.");
+  }
+  let total = 0;
+  for (const layer of value) if (isRecord(layer) && Array.isArray(layer.surfaces)) total += layer.surfaces.length;
+  if (total > MAX_SPATIAL_SURFACES) {
+    diags.add("RESOURCE_LIMIT", "spatialLayers", `Surface count ${total} exceeds ${MAX_SPATIAL_SURFACES}.`);
+  }
+  const layerIds = new Set<string>();
+  const surfaceOwner = new Set<string>();
+  value.forEach((layer, index) => {
+    const path = `spatialLayers[${index}]`;
+    if (!isRecord(layer)) {
+      diags.add("INVALID_TYPE", path, "A spatial layer must be an object.");
+      return;
+    }
+    rejectUnknown(layer, ["id", "camera", "surfaces"], path, diags);
+    const id = readIdent(layer.id, `${path}.id`, diags);
+    if (id !== undefined) {
+      if (layerIds.has(id)) diags.add("DUPLICATE_ID", `${path}.id`, `Duplicate spatial layer id ${id}.`);
+      layerIds.add(id);
+    }
+    readSpatialCamera(layer.camera, `${path}.camera`, diags);
+    if (!Array.isArray(layer.surfaces)) {
+      diags.add("INVALID_TYPE", `${path}.surfaces`, "surfaces must be an array.");
+      return;
+    }
+    const inLayer = new Set<string>();
+    for (const surface of layer.surfaces) if (isRecord(surface) && typeof surface.nodeId === "string") inLayer.add(surface.nodeId);
+    const parents = new Map<string, string>();
+    const seen = new Set<string>();
+    layer.surfaces.forEach((surface, surfaceIndex) => {
+      const spath = `${path}.surfaces[${surfaceIndex}]`;
+      if (!isRecord(surface)) {
+        diags.add("INVALID_TYPE", spath, "A spatial surface must be an object.");
+        return;
+      }
+      rejectUnknown(surface, ["nodeId", "parent", "transform", "backFill", "backface"], spath, diags);
+      const nodeId = typeof surface.nodeId === "string" ? surface.nodeId : undefined;
+      if (nodeId === undefined || !nodeIds.has(nodeId)) {
+        diags.add("UNKNOWN_TARGET", `${spath}.nodeId`, "A spatial surface names a node that does not exist.");
+      } else if (seen.has(nodeId) || surfaceOwner.has(nodeId)) {
+        diags.add("DUPLICATE_ID", `${spath}.nodeId`, `Node ${nodeId} is already a spatial surface.`);
+      } else {
+        seen.add(nodeId);
+        surfaceOwner.add(nodeId);
+      }
+      if (surface.parent !== undefined) {
+        if (typeof surface.parent !== "string" || !inLayer.has(surface.parent)) {
+          diags.add("UNKNOWN_TARGET", `${spath}.parent`, "A surface parent must be another surface of the same layer.");
+        } else if (surface.parent === nodeId) {
+          diags.add("CYCLE", `${spath}.parent`, "A surface cannot be its own parent.");
+        } else if (nodeId !== undefined) parents.set(nodeId, surface.parent);
+      }
+      if (surface.transform !== undefined) readSpatialTransform(surface.transform, `${spath}.transform`, diags);
+      if (surface.backFill !== undefined) readColor(surface.backFill, `${spath}.backFill`, diags);
+      if (surface.backface !== undefined && surface.backface !== "visible" && surface.backface !== "hidden") {
+        diags.add("INVALID_ENUM", `${spath}.backface`, 'backface must be "visible" or "hidden".');
+      }
+    });
+    for (const start of parents.keys()) {
+      const trail = new Set<string>([start]);
+      for (let at = parents.get(start); at !== undefined; at = parents.get(at)) {
+        if (trail.has(at)) {
+          diags.add("CYCLE", `${path}.surfaces`, `Surface parents form a cycle at ${at}.`);
+          return;
+        }
+        trail.add(at);
+      }
     }
   });
 }

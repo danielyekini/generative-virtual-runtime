@@ -137,3 +137,4 @@ export type {
   SurfaceMode,
   Vec3,
 } from "./spatial";
+export { layersFromScene, projectSceneSpatial } from "./spatial-scene";

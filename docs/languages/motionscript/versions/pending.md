@@ -25,6 +25,7 @@ Not yet in a published MotionScript version:
 Declarative entity sugar landed in MotionScript 0.9.0.
 `input.bindings` (interaction targets and bounded input actions) landed in MotionScript 0.10.0.
 `audio.cues` (audio resources and narration/effects/music cues) landed in MotionScript 0.11.0.
+`space.planar25d` (`spatialLayer` declarations: camera and surfaces) landed in MotionScript 0.12.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

@@ -9,6 +9,9 @@ import {
   type Paint,
   type SolidColor,
   type SegmentEasing,
+  type SpatialLayerDefinition,
+  type SpatialSurfaceDefinition,
+  type SpatialTransformDefinition,
   type Stroke,
   type TrackDefinition,
   type Vec2,
@@ -66,6 +69,7 @@ export function emitMotionScript(scene: SceneIR): string {
   }
   const camera = scene.cameras.find((item) => item.id === "main") ?? scene.cameras[0];
   if (camera) lines.push(...emitCamera(camera));
+  for (const layer of scene.spatialLayers ?? []) lines.push(...emitSpatialLayer(layer));
   // Transform parents may follow their children in paint/declaration order.
   // Keep that order and admit all node definitions as one dependency-complete unit.
   const batchNodes = scene.nodes.some((node) => Boolean(node.transformParentId));
@@ -120,6 +124,50 @@ function emitCamera(camera: Camera2DDefinition): string[] {
     `  rotation ${formatAngle(camera.rotation)};`,
     "};",
   ];
+}
+
+function emitSpatialLayer(layer: SpatialLayerDefinition): string[] {
+  const body: string[] = ["  camera {"];
+  const camera = layer.camera;
+  body.push(`    projection ${camera.projection};`);
+  if (camera.position) body.push(`    position ${formatVec3(camera.position)};`);
+  if (camera.yaw !== undefined) body.push(`    yaw ${formatNumber(camera.yaw)};`);
+  if (camera.pitch !== undefined) body.push(`    pitch ${formatNumber(camera.pitch)};`);
+  if (camera.roll !== undefined) body.push(`    roll ${formatNumber(camera.roll)};`);
+  if (camera.focalLength !== undefined) body.push(`    focalLength ${formatNumber(camera.focalLength)};`);
+  if (camera.zoom !== undefined) body.push(`    zoom ${formatNumber(camera.zoom)};`);
+  if (camera.near !== undefined) body.push(`    near ${formatNumber(camera.near)};`);
+  body.push("  };");
+  for (const surface of layer.surfaces) body.push(...emitSpatialSurface(surface));
+  return [`spatialLayer ${layer.id} {`, ...body, "};"];
+}
+
+function emitSpatialSurface(surface: SpatialSurfaceDefinition): string[] {
+  const body: string[] = [];
+  if (surface.parent) body.push(`    parent ${surface.parent};`);
+  if (surface.transform) body.push(...emitSpatialTransform(surface.transform));
+  if (surface.backface) body.push(`    backface ${surface.backface};`);
+  if (surface.backFill) body.push(`    backFill ${formatColor(surface.backFill)};`);
+  return [`  surface ${surface.nodeId} {`, ...body, "  };"];
+}
+
+function emitSpatialTransform(transform: SpatialTransformDefinition): string[] {
+  const lines: string[] = [];
+  if (transform.position) lines.push(`    position ${formatVec3(transform.position)};`);
+  if (transform.pivot) lines.push(`    pivot ${formatVec3(transform.pivot)};`);
+  if (transform.rotation) lines.push(`    rotation ${formatVec3(transform.rotation)};`);
+  if (transform.scale) lines.push(`    scale ${formatVec3(transform.scale)};`);
+  if (transform.hinge) {
+    lines.push(
+      `    hinge ${formatVec(transform.hinge.from)} ${formatVec(transform.hinge.to)} ${formatAngle(transform.hinge.angle)};`,
+    );
+  }
+  return lines;
+}
+
+/** Spatial layer vectors always need three components (z = 0 is meaningful). */
+function formatVec3(value: { x: number; y: number; z: number }): string {
+  return `(${formatNumber(value.x)}, ${formatNumber(value.y)}, ${formatNumber(value.z)})`;
 }
 
 function emitNode(scene: SceneIR, nodes: readonly NodeDefinition[], node: NodeDefinition, depth: number, emitted: Set<string>): string[] {

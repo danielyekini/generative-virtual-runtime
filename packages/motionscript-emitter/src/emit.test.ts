@@ -41,6 +41,15 @@ describe("canonical emitter", () => {
     }
   });
 
+  it("round-trips spatialLayer declarations (space.planar25d)", () => {
+    const source = readFileSync(resolve(motionDir, "spatial-crane.ms"), "utf8");
+    const scene = compile(source);
+    const { again } = roundTrip(scene);
+    expect(again.requiredCapabilities).toContain("space.planar25d");
+    expect(again.spatialLayers).toEqual(scene.spatialLayers);
+    expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
+  });
+
   it("round-trips animated solid paint channels", () => {
     const source = `scene "paint" {
   version "0.2";

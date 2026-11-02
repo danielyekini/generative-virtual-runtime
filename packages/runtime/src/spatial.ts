@@ -5,9 +5,9 @@
  * hinges and a layer camera (perspective or orthographic). The result is again
  * an ordinary `ResolvedFrame`: projected items, front/back appearance and a
  * depth-resolved paint order. Renderers and `hitTest` consume it unchanged, so
- * what is painted is what is hit. No Scene IR or MotionScript wiring: language
- * support is the follow-up versioning item named in
- * docs/decisions/engine/spatial-graphics.md.
+ * what is painted is what is hit. Scene IR / MotionScript declare layers via
+ * space.planar25d (0.12.0); AnimationRuntime projects them through
+ * projectSceneSpatial.
  *
  * Coordinates: x right, y down, z away from the viewer (right-handed). The
  * plane z = 0 is the 2D layout ("plane space": each item's logicalMatrix output).

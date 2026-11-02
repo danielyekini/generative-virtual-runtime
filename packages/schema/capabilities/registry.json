@@ -802,6 +802,38 @@
       }
     },
     {
+      "id": "space.planar25d",
+      "summary": "Scenes declare planar 2.5D layers: a camera and surfaces (root-scene nodes) with 3D placement, hinges and reverse-face control, projected at frame resolution.",
+      "introducedIn": { "motionscript": "0.12.0", "sceneIr": "0.12.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing space.planar25d; spatialLayers without it are rejected.",
+        "Each layer has one camera (perspective or orthographic, finite position/yaw/pitch/roll, positive focalLength/zoom/near when present) and surfaces naming root-scene nodes. A node is a surface of at most one layer; parents are surfaces of the same layer and may not form a cycle.",
+        "A hinge needs distinct from/to points in the parent surface's plane and a finite angle in radians. Layer ids are unique; at most 1024 surfaces per scene.",
+        "Layers are base definitions: they cannot be added after the first seal. AnimationRuntime and StreamingRuntime project declared layers through projectSpatialFrame on every evaluate; spatial diagnostics appear on lastDiagnostics. createSceneInputSession supplies dragPlaneDelta so dragTranslate on surfaces uses surfaceDragDelta. Animated spatial channels (surface z/rotations/hinge angle and spatial camera values as track targets) are outside this release."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/spatial.test.ts#lowers a spatial layer with camera, surfaces, hinge and backface into Scene IR",
+        "packages/compiler/src/spatial.test.ts#rejects spatial layers without the capability and enforces validation bounds",
+        "packages/compiler/src/spatial.test.ts#reports compile diagnostics, forward references and frozen layers",
+        "packages/compiler/src/spatial.test.ts#keeps older identifiers spelled like spatial body words compiling",
+        "packages/runtime/src/spatial-scene.test.ts#projects declared layers on evaluate and exposes spatial diagnostics",
+        "packages/runtime/src/spatial-scene.test.ts#hits the projected crane flap centre",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips spatialLayer declarations (space.planar25d)"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native spatial layers; Lottie 3D layers are not imported."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native spatial layers; SVG has no 3D model to import."
+        }
+      }
+    },
+    {
       "id": "compositing.matte",
       "summary": "A track matte would clip one layer by another.",
       "targets": [],

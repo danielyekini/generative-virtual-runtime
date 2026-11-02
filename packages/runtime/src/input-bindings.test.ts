@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { compileMotionScript } from "@gvr/compiler";
 import { transformPoint, type ResolvedFrame, type SceneIR, type Vec2 } from "@gvr/schema";
+import { buildResolvedFrame } from "./frame";
 import { createSceneInputSession, declaredInputChannels, logicalPointFromCss } from "./input";
 import { AnimationRuntime } from "./runtime";
+import { sampleScene } from "./sample";
+import { projectSpatialFrame, projectSurfacePoint } from "./spatial";
+import { layersFromScene } from "./spatial-scene";
 import { StreamingRuntime } from "./streaming";
 
 const source = `scene "lesson" {version "0.2"; viewport (400,300); background #ffffff; duration 4s;};
@@ -108,5 +112,42 @@ describe("scene-declared interactions (Scene IR 0.10.0 input.bindings)", () => {
     // 400×300 viewport in an 800×800 box: scale 2, letterbox 100px top.
     expect(logicalPointFromCss({ width: 400, height: 300 }, 800, 800, 0, 100)).toEqual({ x: 0, y: 0 });
     expect(logicalPointFromCss({ width: 400, height: 300 }, 800, 800, 400, 400)).toEqual({ x: 200, y: 150 });
+  });
+
+  it("uses surfaceDragDelta for dragTranslate on projected spatial surfaces", () => {
+    const result = compileMotionScript(`scene "floor" {
+  version "0.2"; viewport (640, 360); background #ffffff; duration 1s; requires "space.planar25d";
+};
+rectangle Floor { position (220, 100); size (200, 200); fill #e0d6c0; };
+spatialLayer room {
+  camera { projection perspective; position (320, 180, -1000); yaw 0.4; pitch -0.5; focalLength 1000; };
+  surface Floor { hinge (220, 260) (420, 260) 90deg; position (0, 160, 0); };
+};
+interact Floor { on drag dragTranslate (-400, -400) (400, 400); };
+complete;`);
+    expect(result.diagnostics).toEqual([]);
+    const scene = result.scene!;
+    const runtime = new AnimationRuntime(scene);
+    const session = createSceneInputSession(scene);
+    const overlay = session.applyTo.bind(session);
+    const frame = (t: number) => runtime.evaluate(t, overlay);
+    const layout = buildResolvedFrame(scene, sampleScene(scene, 0), 0);
+    const projected = projectSpatialFrame(layout, layersFromScene(scene));
+    const start = projectSurfacePoint(projected, "Floor", { x: 320, y: 180 })!;
+    const end = projectSurfacePoint(projected, "Floor", { x: 360, y: 180 })!;
+    session.process({ type: "pointerdown", sceneTimeMs: 0, pointerId: 1, x: start.x, y: start.y }, frame(0));
+    const before = session.state();
+    const moved = session.process(
+      { type: "pointermove", sceneTimeMs: 16, pointerId: 1, x: end.x, y: end.y },
+      frame(16),
+    );
+    const after = session.state();
+    expect(moved.some((signal) => signal.type === "write")).toBe(true);
+    // Exact plane delta along +x (~40), not the foreshortened viewport dx.
+    expect(after["Floor:transform.position.x"]).toBeCloseTo((before["Floor:transform.position.x"] ?? 0) + 40, 6);
+    expect(after["Floor:transform.position.x"]).not.toBeCloseTo(
+      (before["Floor:transform.position.x"] ?? 0) + (end.x - start.x),
+      1,
+    );
   });
 });
