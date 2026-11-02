@@ -9,6 +9,7 @@ report, source/program revision or published language release was moved/replaced
 | .cursor/rules/language-versions.mdc | Established version rules + superseded aim | root AGENTS + compatibility policy | Keep version safeguards; replace broad parity mandate |
 | packages/schema/capabilities/{releases,registry}.json | Established contract/support authority | same paths | Unchanged; generated reference links here |
 | docs/languages/*/versions/*.md | Established released contract; pending proposals separately | release pointers | Published versions immutable; no semantic bump |
+| docs/languages/*/versions/pending.md | Editable native candidates, not commissioned work | charter + selected live native issue | 2 November: remove Lottie-derived adapter/fidelity obligations; native paint scope belongs to E009; original drafts remain in pinned Git history via the scope decision |
 | docs/languages/compatibility-policy.md | Established version contract + scoped fidelity procedure | same path / charter for strategy | Scope old strategy/evaluation loop to fidelity claims; technical version rules unchanged |
 | docs/languages/design-goals.md | Current authoring guidance | charter for product intent | Retain quality/evidence goals; not a cap on new charter work |
 | docs/languages/authoring-guide.md | Tested examples + observed recipes | grammar, scoped conformance | Retain; P006/E006 later build tested model reference |

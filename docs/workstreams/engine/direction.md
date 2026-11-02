@@ -31,5 +31,8 @@ the published observation snapshot; engine does not own Studio inspector UI.
    entity/behaviour statements).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
+E009 owns native animated paint scope. Pending language candidates are not a
+queue; old Lottie gaps do not add adapter lowering or source-fidelity acceptance.
+Proactive legacy-format work requires a fresh explicit user request.
 Broader audio, interaction, paint/text/path/camera, spatial and physics work is
 tracked in GitHub. Capacity improvements remain ongoing, evidence-driven work.

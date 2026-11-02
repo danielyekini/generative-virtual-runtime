@@ -12,6 +12,10 @@ there, stop and ask the user with options, mockups or a UI-generator prompt
 instead of building a guess. Preserve working compile, playback, streaming and
 import/compare functions while moving them into the new layout.
 
+P004's confirmed Split flow reuses existing supported importers. It does not
+commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
+drafts cannot add that scope; a fresh explicit user request is required.
+
 ## Queue (2 November 2026)
 
 1. P001 #42 Player page redesign — Ready.

@@ -6,6 +6,13 @@ Product strategy and task routing follow the [charter](../project/charter.md) an
 
 ## Authority
 
+Current direction contains no proactive Lottie/other-format adapter expansion or
+fidelity campaign. Old draft gaps and unsupported coverage are reference, not
+instructions to implement them. Such work needs a fresh explicit user request.
+Native acceptance follows the selected native issue: compiler/emitter equivalence
+does not imply an external-format source/direct/compiled certification gate.
+Existing supported utilities, regression checks and truthful diagnostics remain.
+
 | Artifact | What it decides |
 | --- | --- |
 | Grammar and schema (`packages/schema`) | Valid syntax and the executable representation |
