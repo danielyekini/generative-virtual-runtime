@@ -403,6 +403,9 @@ try {
   check("Partial arrival shows waiting instead of a false failure", !(await visible('#failed')) && await visible('#ready'));
   check("Stream header fits desktop width", await ev("document.documentElement.scrollWidth <= document.documentElement.clientWidth"));
   await shot('13-stream-arriving');
+  await ev("document.querySelector('#arrival-rate').value = '200'; document.querySelector('#arrival-stall-every').value = '1'; document.querySelector('#arrival-stall-ms').value = '200'; document.querySelector('#arrival-jitter').value = '25'; document.querySelector('#arrival-seed').value = '99'; document.querySelector('#stream').click()");
+  await sleep(120);
+  check("Advanced stalls are real producer pauses with honest status", await ev("document.querySelector('#stream-summary').textContent.includes('scheduled arrival stall') && window.__gvr.stream.receivedCharacters < 24"));
   // Restart at Instant: old pending producer must not leak into the new session.
   await ev("document.querySelector('#arrival-rate').value = '0'; document.querySelector('#stream').click()");
   for (let i = 0; i < 100 && !(await ev("window.__gvr.stream?.arrivalDone")); i++) await sleep(50);
