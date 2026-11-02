@@ -198,6 +198,7 @@ export function validateResolvedFrame(input: unknown): ValidateResult<ResolvedFr
   return { ok: true, value: input as unknown as ResolvedFrame };
 }
 
+/** Validate delta shape. References and aggregate limits require the assembled scene. */
 export function validateDelta(
   input: unknown,
   overrides?: Partial<ResourceLimits>,
@@ -232,8 +233,13 @@ export function validateDelta(
   if (!Array.isArray(input.operations) || input.operations.length === 0) {
     diags.add("MISSING_REQUIRED", "operations", "A delta needs at least one operation.");
   } else {
+    let version = wireVersion;
     input.operations.forEach((operation, index) => {
-      readOperation(operation, `operations[${index}]`, limits, diags, wireVersion === IR_VERSION_02);
+      if (isRecord(operation) && operation.op === "CREATE_SCENE" && isRecord(operation.scene)
+        && (operation.scene.irVersion === IR_VERSION || operation.scene.irVersion === IR_VERSION_02)) {
+        version = operation.scene.irVersion;
+      }
+      readOperation(operation, `operations[${index}]`, limits, diags, version === IR_VERSION_02);
     });
   }
   if (diags.items.length > 0) return { ok: false, diagnostics: diags.items };
@@ -671,25 +677,25 @@ function readNodes(
       if (node.space !== "world" && node.space !== "screen") {
         diags.add("SPACE_VIOLATION", node.id, "A root must declare space world or screen.");
       }
-      continue;
-    }
-    if (!byId.has(node.parentId)) {
-      if (requireParents) {
-        diags.add("INVALID_PARENT", node.id, `Parent ${node.parentId} does not exist.`, {
-          target: node.id,
-        });
+    } else {
+      if (!byId.has(node.parentId)) {
+        if (requireParents) {
+          diags.add("INVALID_PARENT", node.id, `Parent ${node.parentId} does not exist.`, {
+            target: node.id,
+          });
+        }
+      } else if (node.id !== `${node.parentId}.${node.name}`) {
+        diags.add(
+          "INVALID_ID",
+          node.id,
+          `Canonical id must be ${node.parentId}.${node.name}.`,
+        );
       }
-    } else if (node.id !== `${node.parentId}.${node.name}`) {
-      diags.add(
-        "INVALID_ID",
-        node.id,
-        `Canonical id must be ${node.parentId}.${node.name}.`,
-      );
+      if (node.space !== undefined) {
+        diags.add("SPACE_VIOLATION", node.id, "Only a root may declare space.");
+      }
     }
-    if (node.space !== undefined) {
-      diags.add("SPACE_VIOLATION", node.id, "Only a root may declare space.");
-    }
-    if (node.transformParentId) {
+    if (requireParents && node.transformParentId) {
       if (!byId.has(node.transformParentId)) {
         diags.add("INVALID_PARENT", node.id, `Transform parent ${node.transformParentId} does not exist.`, {
           target: node.id,
@@ -1392,8 +1398,19 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
     return;
   }
   if (value.op === "ADD_TRACKS" || value.op === "ADD_STEPS" || value.op === "CREATE_SCENE") {
-    if (value.op === "CREATE_SCENE" && !isRecord(value.scene)) {
-      diags.add("INVALID_TYPE", `${path}.scene`, "CREATE_SCENE requires a scene header.");
+    const key = value.op === "CREATE_SCENE" ? "scene" : value.op === "ADD_TRACKS" ? "tracks" : "steps";
+    rejectUnknown(value, ["op", key], path, diags);
+    if (value.op === "CREATE_SCENE") {
+      if (!isRecord(value.scene)) {
+        diags.add("INVALID_TYPE", `${path}.scene`, "CREATE_SCENE requires a scene header.");
+      } else {
+        const keys = ["irVersion", "sceneId", "viewport", "background", "resources", "cameras", "initialCameraId", "durationMs"];
+        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators");
+        rejectUnknown(value.scene, keys, `${path}.scene`, diags);
+        for (const list of ["resources", "cameras"]) {
+          if (!Array.isArray(value.scene[list])) diags.add("INVALID_TYPE", `${path}.scene.${list}`, `${list} must be an array.`);
+        }
+      }
     }
     if ((value.op === "ADD_TRACKS" || value.op === "ADD_STEPS") && !Array.isArray(value[value.op === "ADD_TRACKS" ? "tracks" : "steps"])) {
       diags.add("INVALID_TYPE", path, `${value.op} requires an array payload.`);
