@@ -225,4 +225,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except RuntimeError as error:
+        if "not accessible by personal access token" in str(error):
+            # Read-only token: warn once per run instead of failing every issue event.
+            print("::warning::PROJECT_TOKEN cannot write to the Project. Use a classic PAT with the `project` scope "
+                  "(fine-grained tokens cannot write user-owned Projects). Run mode `probe` to check.")
+            sys.exit(0)
+        raise
