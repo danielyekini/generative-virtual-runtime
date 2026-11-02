@@ -89,7 +89,8 @@ button.primary:hover, button.run:hover:not(:disabled) { background: #2563eb; }
 .run-actions { position: relative; display: flex; gap: 0; }
 .run-actions > button { border-radius: 0; margin-left: -1px; }
 .run-actions > button:first-of-type { border-radius: 4px 0 0 4px; margin-left: 0; }
-.run-actions > button:last-of-type { border-radius: 0 4px 4px 0; padding: 4px 6px; }
+.run-actions > button:last-of-type { border-radius: 0 4px 4px 0; padding: 4px 7px; }
+#stream-menu[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
 .run-actions .menu { left: 0; right: auto; }
 
 .menu {
@@ -376,8 +377,9 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 #toggle-source { display: inline-flex; align-items: center; justify-content: center; padding: 3px 5px; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: var(--muted); }
 #toggle-source:hover:not(:disabled), #toggle-source[aria-pressed="true"] { background: transparent; color: var(--text); }
 
-#stream-controls { display: inline-flex; align-items: center; gap: 4px; flex-wrap: wrap; }
-#stream-controls[hidden] { display: none; }
+/* Stream options live in the dropdown on the Stream split button. */
+.menu-row { display: flex; gap: 6px; }
+.menu-row > button { flex: 1; }
 #stream-pop { max-height: 70vh; overflow: auto; }
 #stream-pop input { width: 95px; }
 #stream-source { white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -395,7 +397,7 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 .stream-cue { font-size: .8em; margin-right: 3px; user-select: none; }
 #track-time.is-waiting { border-color: var(--bad); }
 #bar { flex-wrap: wrap; }
-.run-actions { align-items: center; flex-wrap: wrap; gap: 3px; }
+.run-actions { align-items: center; }
 .run-actions .menu { max-width: min(310px, calc(100vw - 24px)); }
 @media (max-width: 1000px) {
   .run-actions { position: static; }

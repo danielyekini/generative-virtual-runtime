@@ -110,6 +110,7 @@ try {
   check("no horizontal page overflow", overflow[0] <= overflow[1], overflow);
   check("landing is an empty player with nothing loaded", landing.programKey === null && landing.runState === "not-run" && !(await ev("!!window.__gvr.frame")), landing);
   check("landing shows Open Library in the header and on the canvas", (await visible("#open-library")) && (await visible("#empty-library")));
+  check("Library is a blue text-only button just left of the Source toggle", await ev("(() => { const b = document.querySelector('#open-library'); const t = document.querySelector('#toggle-source'); return b.nextElementSibling === t && b.textContent.trim() === 'Library' && b.classList.contains('primary') && b.getBoundingClientRect().left > innerWidth / 2; })()"));
   check("Run is disabled until a program is loaded", await ev("document.querySelector('#run').disabled"));
   check("Source panel is closed by default", !landing.sourceOpen && !(await visible("#source-panel")), landing);
   check("old left rail and right dock are gone", await ev("!document.querySelector('#tools') && !document.querySelector('#dock')"));
@@ -411,8 +412,9 @@ try {
   await ev("document.querySelector('#arrival-step').click()");
   await sleep(150);
   check("Step delivers one bounded chunk and stays paused", await ev(`window.__gvr.stream.arrivalPaused && window.__gvr.stream.receivedCharacters === ${pausedCursor + 8}`));
+  check("stream controls live only in the Stream dropdown", await ev("['arrival-rate', 'arrival-pause', 'arrival-step', 'arrival-mode'].every(id => document.getElementById(id).closest('#stream-pop')) && !document.querySelector('#bar > #stream-controls, .run-actions > #stream-controls')"));
   await ev("document.querySelector('#stream-menu').click()");
-  check("Advanced exposes approved chunking, jitter, stalls and seed", await visible('#arrival-mode') && await visible('#arrival-seed'));
+  check("Stream dropdown shows rate, pause/step and Advanced fields", await visible('#arrival-rate') && await visible('#arrival-pause') && await visible('#arrival-step') && await visible('#arrival-mode') && await visible('#arrival-seed'));
   check("Partial arrival shows waiting instead of a false failure", !(await visible('#failed')) && await visible('#ready'));
   check("Stream header fits desktop width", await ev("document.documentElement.scrollWidth <= document.documentElement.clientWidth"));
   await shot('13-stream-arriving');

@@ -675,7 +675,8 @@ function renderHeader(): void {
   $("stream").title = loaded?.format !== "motionscript" ? "Stream supports native MotionScript; use Run for imports." : "Simulate arrival of the current source";
   $("stream").setAttribute("aria-pressed", String(Boolean(stream)));
   $("stream-controls").hidden = !stream;
-  ui.streamMenu.hidden = !stream;
+  ui.streamMenu.disabled = !loaded || loaded.format !== "motionscript";
+  ui.streamMenu.setAttribute("aria-pressed", String(Boolean(stream)));
   tabs.get("stream")!.tab.hidden = !stream;
   $<HTMLButtonElement>("arrival-pause").disabled = !stream || stream.done;
   $<HTMLButtonElement>("arrival-step").disabled = !stream || stream.done;
