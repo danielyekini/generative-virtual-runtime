@@ -34,3 +34,6 @@
   rigid bodies/colliders/joints with physics-owned channel writes, checkpoints,
   event replay, seeds and cost; authored distance constraints retained as the
   non-dynamic alternative; versioning child E029 (`physics.planar2d`).
+- [Seam depth/paint order (E016)](seam-depth-order.md): plane-test occlusion
+  stays authoritative; shared-edge seams, projected intersection splits and
+  coplanar union helper; animated order is tie-break only; versioning child E030.

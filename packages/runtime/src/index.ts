@@ -128,6 +128,24 @@ export type { PlaybackState } from "./playback";
 export { AnimationRuntime } from "./runtime";
 export type { SampleOverlay } from "./runtime";
 export { sampleScene } from "./sample";
+export {
+  classifySurfacePair,
+  clipPolygon,
+  findSharedEdge,
+  outlineOf,
+  resolveSeams,
+  splitIntersectingPair,
+  unionProjected,
+} from "./seams";
+export type {
+  SeamDiagnostic,
+  SeamDiagnosticCode,
+  SeamPairClassification,
+  SeamPairKind,
+  SeamResolveOptions,
+  SeamResolveResult,
+  SharedEdge,
+} from "./seams";
 export { StreamingRuntime } from "./streaming";
 export {
   DEFAULT_FOCAL_LENGTH,
