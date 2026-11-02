@@ -146,6 +146,7 @@ button.primary:hover, button.run:hover:not(:disabled) { background: #2563eb; }
 .overlay-note { margin: 0; color: var(--muted); max-width: 560px; }
 .overlay .primary { font-size: 15px; padding: 8px 18px; }
 .overlay.is-failed .overlay-title { color: var(--bad); }
+#ready { background: linear-gradient(180deg, rgb(10 10 12 / 0.2), rgb(10 10 12 / 0.6)); text-shadow: 0 1px 3px #000; }
 #empty { background: radial-gradient(circle at 50% 40%, #1b1b20 0%, #0b0b0d 70%); }
 .recent { margin-top: 18px; }
 .recent h3 { margin: 0 0 6px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
@@ -171,7 +172,8 @@ button.primary:hover, button.run:hover:not(:disabled) { background: #2563eb; }
 .track-body {
   position: relative;
   flex: 1;
-  height: 22px;
+  height: 40px;
+  overflow: hidden;
   border: 1px solid var(--line-strong);
   border-radius: 3px;
   background: repeating-linear-gradient(90deg, #26262a 0 2px, transparent 2px 12px), #1a1a1d;
@@ -179,10 +181,13 @@ button.primary:hover, button.run:hover:not(:disabled) { background: #2563eb; }
   touch-action: none;
 }
 .track-body.is-disabled { cursor: default; opacity: 0.6; }
-.tape-loaded { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(180deg, #3f3f46, #34343a); }
+/* Frame tape (P016): tiles appear once resolved; grey layer = resolved but not yet played. */
+.tape-frames { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.tape-ahead { position: absolute; top: 0; bottom: 0; left: 0; width: 0; pointer-events: none; background: rgb(24 24 27 / 0.55); backdrop-filter: grayscale(1); -webkit-backdrop-filter: grayscale(1); }
+.tape-gap { position: absolute; top: 0; bottom: 0; width: 6px; margin-left: 1px; pointer-events: none; background: repeating-linear-gradient(135deg, var(--bad) 0 3px, #7f1d1d 3px 6px); }
 .tape-ticks i { position: absolute; top: 60%; bottom: 0; width: 1px; background: #a1a1aa; opacity: 0.55; }
-.playhead { position: absolute; top: -3px; bottom: -3px; width: 2px; margin-left: -1px; background: #fafafa; box-shadow: 0 0 0 1px #000; pointer-events: none; }
-.playhead::before { content: ""; position: absolute; top: -4px; left: -4px; border: 5px solid transparent; border-top-color: #fafafa; }
+.playhead { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fafafa; box-shadow: 0 0 0 1px #000; pointer-events: none; }
+.playhead::before { content: ""; position: absolute; top: 0; left: -4px; border: 5px solid transparent; border-top-color: #fafafa; }
 
 /* ---------- source side panel ---------- */
 .resize-x { width: 4px; flex: none; cursor: col-resize; background: var(--line); }
@@ -277,7 +282,9 @@ body.has-comparison #view { right: 50%; }
 .diag.sev-info b { color: #93c5fd; }
 
 #status {
+  position: relative;
   display: flex;
+  align-items: center;
   gap: 8px;
   padding: 2px 10px;
   min-height: 22px;
@@ -285,9 +292,13 @@ body.has-comparison #view { right: 50%; }
   color: #cbd5e1;
   font-size: 12px;
   white-space: nowrap;
-  overflow: hidden;
 }
-
+#status-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* Settings lives at the far right of the status bar and opens upward. */
+#status #options { border: 0; background: transparent; color: inherit; padding: 0 8px; font-size: 15px; line-height: 20px; border-radius: 0; }
+#status #options:hover, #status #options[aria-expanded="true"] { background: rgb(255 255 255 / 0.12); }
+.menu.menu-up { top: auto; bottom: calc(100% + 4px); right: 4px; color: var(--text); font-size: 13px; white-space: normal; }
+.icon-button { display: inline-flex; align-items: center; justify-content: center; padding: 5px 7px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { border-radius: 999px; padding: 2px 10px; font-size: 12px; }
 
@@ -323,7 +334,7 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 
 @media (max-width: 900px) {
   .program .meta, #program-meta { display: none; }
-  #toggle-source, #fullscreen { padding: 4px 6px; }
+  #toggle-source { padding: 4px 6px; }
   .scene-cols { grid-template-columns: 1fr; }
 }
 
@@ -370,12 +381,19 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 #stream-pop { max-height: 70vh; overflow: auto; }
 #stream-pop input { width: 95px; }
 #stream-source { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* Stream source follows arriving text; scrolling up pauses following until Jump to latest. */
+#pane-stream { display: flex; flex-direction: column; overflow: hidden; }
+.stream-head { display: flex; align-items: flex-start; gap: 8px; }
+.stream-head .pane-note { flex: 1; }
+.stream-body { position: relative; flex: 1; min-height: 40px; }
+.stream-scroll { position: absolute; inset: 0; overflow: auto; }
+.stream-follow { position: absolute; right: 16px; bottom: 8px; border-radius: 999px; background: #1d4ed8; border-color: #3b82f6; box-shadow: 0 4px 14px rgb(0 0 0 / 0.45); }
 .stream-arrived { color: #999; }
 .stream-queued { color: #edab57; }
 .stream-resolved { color: #eee; }
 .stream-rejected { color: #ff8080; text-decoration: underline wavy; }
 .stream-cue { font-size: .8em; margin-right: 3px; user-select: none; }
-#track-time.is-waiting { outline: 1px dashed #edab57; }
+#track-time.is-waiting { border-color: var(--bad); }
 #bar { flex-wrap: wrap; }
 .run-actions { align-items: center; flex-wrap: wrap; gap: 3px; }
 .run-actions .menu { max-width: min(310px, calc(100vw - 24px)); }

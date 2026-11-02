@@ -56,14 +56,17 @@ any unsaved edits.
 
 ```
 ┌────────────────────────────────────────┐
-│ ▤ Library │ program-name │ ▶ Run  ≋ Stream ▾ │ ⚙ │  header
+│ ▤ Library │ program-name │ ▶ Run  ≋ Stream ▾ │ ▯ │  header
 ├──────────────────────────────┬─────────┤
 │                              │ Source  │
 │           CANVAS             │ (opt.)  │
 ├──────────────────────────────┴─────────┤
-│ ❚❚ 0:03.2 ▏[▣▣▣▣▣▣▒▒▒▒░░░░]  frame tape │
+│ ❚❚ −1f ‹key key› +1f 0:03.2 Speed    ⛶ │  transport
+│ TIME [▣▣▣▣▣▣▒▒▒▒░░░░]           frame tape │
 ├────────────────────────────────────────┤
 │ [Diagnostics][Stream][Scene][Perf]  ▾  │
+├────────────────────────────────────────┤
+│ status text …                       ⚙ │  status bar
 └────────────────────────────────────────┘
 ```
 
@@ -76,6 +79,13 @@ any unsaved edits.
   Run or Stream. Autoplay on open is a header run option (off by default).
 - There is exactly one loaded program. Stream, Scene and Diagnostics always
   refer to it; there is no second source selector anywhere.
+- **Chrome placement** (user steering, 2 November 2026, P017): the Fullscreen
+  control is an icon-only button at the far right of the transport row above the
+  tape. **Settings** (⚙: Split, Autoplay, canvas size, DPR, additional tools) is
+  at the far right of the blue status bar and opens upward. Neither is in the
+  header. When a program is loaded but not run, the canvas shows its Studio
+  thumbnail (the Library poster policy, 35% of duration) under the Run prompt;
+  nothing plays until Run.
 - **Fullscreen** presents the canvas only, using contain-fit on the logical
   viewport (no stretching, no change to authored coordinates). Esc or a visible
   exit control leaves it. Transport may appear on hover.
@@ -91,7 +101,7 @@ any unsaved edits.
 
 #### Split details (confirmed 2 November 2026, P004)
 
-The Split toggle lives in the header Settings menu (user steering, 2 November 2026).
+The Split toggle lives in the Settings menu (user steering, 2 November 2026; Settings moved to the status bar by P017).
 The header Source control is a borderless right-panel outline icon, with an
 accessible name and tooltip. Split expands the existing Source editor beside the canvas, with
 explicit MotionScript/Lottie/SVG/Fixture format selection, a format-filtered
@@ -147,6 +157,12 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
   - **red**: rejected unit, with a diagnostic marker; it stays visible.
   - Every state also has a non-colour cue (gutter icon or label). The states map
     to real engine events from X001/E018, not to invented per-line frames.
+  - The tab and pop-out stay pinned to the newest arrived text (user steering,
+    P017). Scrolling up pauses following and re-rendering of the source view; a
+    **Jump to latest** control returns to the bottom and resumes. The pop-out
+    shows the same icons, colours and legend as the tab.
+  - Stream-control placement (Rate, Pause/Step, Advanced in the header) is an
+    open UX question; see P018. Do not move it without proposing options.
 - **Frame tape** (user direction, 2 November 2026): a video-editor style track of
   frame thumbnails instead of a plain line, with a vertical playhead line at the
   current time. In stream mode, frames are added to the tape as they are
@@ -169,6 +185,13 @@ Performance inspector placement and metrics (P003), agent-facing commands
 - P002 renders declaration-span source states. Units awaiting their next accepted seal are queued; after application, a unit resolves when evaluation reaches that seal's horizon. Multiple states may share a source line. This is a host presentation mapping over E018, not a line-to-frame relationship. The frame filmstrip remains P016.
 
 ## Frame-tape states (decided 2 November 2026)
+
+Built in P016 (frame tiles are equal slices of scene time; a tile's thumbnail is
+its start frame; "resolved" = the tile's whole range is at or before the sealed
+horizon, or the whole scene in Run mode; sampling is bounded per drawn frame and
+reported on the agent bridge as `player.tape`). The red gap marks playback
+waiting at the resolved frontier; rejected units have no scene-time range, so
+they stay marked in the source view rather than on the tape.
 
 Build: **no tile** while the range is not resolved; **grey** tile once resolved
 but ahead of the playhead; **normal** tile once played; a **red gap** for a stall

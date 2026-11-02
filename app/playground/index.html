@@ -40,25 +40,6 @@
       <button id="toggle-source" type="button" aria-label="Source panel" aria-pressed="false" title="Source panel (E)">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5" /><path d="M16.5 4.5v15" /></svg>
       </button>
-      <button id="fullscreen" type="button" disabled title="Fullscreen (F)">⛶ Fullscreen</button>
-      <button id="options" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Settings" title="Settings">⚙</button>
-      <div id="options-pop" class="menu" role="menu" hidden>
-      <button id="toggle-split" type="button" aria-pressed="false" title="Paste and run beside the canvas">Split</button>
-
-        <label class="check"><input id="opt-autoplay" type="checkbox" /> Autoplay on open</label>
-        <label class="field">Canvas size <select id="opt-size" aria-label="Canvas size"></select></label>
-        <label class="field">DPR
-          <select id="opt-dpr" aria-label="Device pixel ratio">
-            <option value="device">Device</option>
-            <option value="1">1×</option>
-            <option value="2">2×</option>
-          </select>
-        </label>
-        <hr />
-        <p class="menu-note">Additional tools</p>
-        <a role="menuitem" href="/legacy.html#stream">Legacy stream workbench</a>
-        <a role="menuitem" href="/legacy.html#stage">Stage demo</a>
-      </div>
     </header>
 
     <main id="player">
@@ -112,12 +93,18 @@
                 <option value="2">2×</option>
               </select>
             </label>
+            <span class="spacer"></span>
+            <button id="fullscreen" class="icon-button" type="button" disabled aria-label="Fullscreen" title="Fullscreen (F)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" /></svg>
+            </button>
           </div>
           <div id="tape" class="tape" role="group" aria-label="Tape">
             <div class="track" data-track="time">
               <span class="track-label">Time</span>
               <div id="track-time" class="track-body" role="slider" tabindex="0" aria-label="Scene time" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
-                <div id="tape-loaded" class="tape-loaded"></div>
+                <canvas id="tape-frames" class="tape-frames" aria-hidden="true"></canvas>
+                <div id="tape-ahead" class="tape-ahead"></div>
+                <div id="tape-gap" class="tape-gap" hidden></div>
                 <div id="tape-ticks" class="tape-ticks"></div>
                 <div id="playhead" class="playhead"></div>
               </div>
@@ -164,9 +151,16 @@
         </div>
         <div id="pane-stream" class="pane" role="tabpanel" hidden>
           <p id="stream-summary" class="pane-note" role="status"></p>
-          <p class="pane-note">◌ arrived · ▷ accepted / queued ahead of playhead · ✓ resolved at playhead · ✕ rejected. Highlights follow declaration spans, not frames.</p>
-          <button id="stream-popout" type="button">Pop out source</button>
-          <pre id="stream-source" aria-label="Arrived source"></pre>
+          <div class="stream-head">
+            <p id="stream-legend" class="pane-note">◌ arrived · ▷ accepted / queued ahead of playhead · ✓ resolved at playhead · ✕ rejected. Highlights follow declaration spans, not frames.</p>
+            <button id="stream-popout" type="button">Pop out source</button>
+          </div>
+          <div class="stream-body">
+            <div id="stream-scroll" class="stream-scroll" tabindex="0" aria-label="Arrived source, scroll up to pause following">
+              <pre id="stream-source" aria-label="Arrived source"></pre>
+            </div>
+            <button id="stream-follow" class="stream-follow" type="button" hidden title="Return to the latest arrived text and resume following">↓ Jump to latest</button>
+          </div>
         </div>
         <div id="pane-scene" class="pane" role="tabpanel" hidden>
           <p id="scene-note" class="pane-note">Run a program to inspect its Scene IR.</p>
@@ -181,7 +175,27 @@
         </div>
       </section>
     </main>
-    <footer id="status"></footer>
+    <footer id="status">
+      <span id="status-text"></span>
+      <span class="spacer"></span>
+      <button id="options" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Settings" title="Settings">⚙</button>
+      <div id="options-pop" class="menu menu-up" role="menu" hidden>
+        <button id="toggle-split" type="button" aria-pressed="false" title="Paste and run beside the canvas">Split</button>
+        <label class="check"><input id="opt-autoplay" type="checkbox" /> Autoplay on open</label>
+        <label class="field">Canvas size <select id="opt-size" aria-label="Canvas size"></select></label>
+        <label class="field">DPR
+          <select id="opt-dpr" aria-label="Device pixel ratio">
+            <option value="device">Device</option>
+            <option value="1">1×</option>
+            <option value="2">2×</option>
+          </select>
+        </label>
+        <hr />
+        <p class="menu-note">Additional tools</p>
+        <a role="menuitem" href="/legacy.html#stream">Legacy stream workbench</a>
+        <a role="menuitem" href="/legacy.html#stage">Stage demo</a>
+      </div>
+    </footer>
 
     <p id="library-error" role="alert" hidden></p>
     <main id="library" hidden aria-labelledby="library-title">
