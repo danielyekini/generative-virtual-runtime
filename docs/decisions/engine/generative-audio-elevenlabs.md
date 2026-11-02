@@ -69,18 +69,20 @@ scene time.
 5. **Queue priority:** E031 is Ready **P0** for the next engine run. E030
    (`space.planarSeams`) stays Ready but after E031 unless E031 is Blocked.
 
-## Alternatives (to be ranked in E031)
+## Design outcome (E031)
 
-1. **Sugar over `audio.cues`** — generative decls lower to ordinary resources +
-   cues after host synthesis; smallest language delta; duration revision still
-   needed.
-2. **New capability** (e.g. `audio.generative`) — explicit generative resources
-   in IR with prompt fields; clearer gating; more version surface.
-3. **Host-only synthesis** — MotionScript stays on `href` resources; Studio/
-   director fills buffers before compile or via side channel. Fastest demo, but
-   weak for progressive generative programs and model-authored MotionScript.
-
-E031 must pick with evidence against streaming, hold/failure, export and cost.
+Ranked and decided in
+[generative-audio-contract.md](generative-audio-contract.md): capability
+`audio.generative` with provider-abstracted generative resources; cues remain
+`audio.cues`; host `GenerativeAudioProvider` (ElevenLabs first); duration
+revision on `AudioSession`. Host-only and pre-compile-only sugar were rejected
+as the sole contract. Implementation: E032
+[#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124)
+(runtime), E033
+[#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)
+(language), E034
+[#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)
+(ElevenLabs adapter).
 
 ## Out of scope for this steering record
 
