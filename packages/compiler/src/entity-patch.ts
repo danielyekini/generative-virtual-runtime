@@ -1,8 +1,10 @@
 /**
- * Compiler wiring for entities.durableRevisions (E004).
+ * Compiler wiring for entities.durableRevisions (E004) and
+ * entities.drawableBindings (E023).
  * Builds Scene IR deltas that apply durable entity patches after/before seals.
  * Declarative MotionScript statements for these ops remain a follow-up; hosts and
- * tests use this emitter with `requires "entities.durableRevisions"`.
+ * tests use this emitter with `requires "entities.durableRevisions"` and, for
+ * geometry register/bind ops, `requires "entities.drawableBindings"`.
  */
 
 import type {

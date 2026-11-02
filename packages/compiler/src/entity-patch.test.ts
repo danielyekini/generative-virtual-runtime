@@ -41,4 +41,56 @@ describe("emitEntityPatchDelta", () => {
     const validated = validateDelta(delta, undefined, "0.2");
     expect(validated.ok, validated.ok ? "" : validated.diagnostics.map((d) => d.message).join("; ")).toBe(true);
   });
+
+  it("emits APPLY_ENTITY_PATCH deltas for drawable bindings", () => {
+    const delta = emitEntityPatchDelta({
+      generationId: "e023",
+      unitId: 2,
+      expectedRevision: 1,
+      nextRevision: 2,
+      patchExpectedRevision: 0,
+      patchNextRevision: 1,
+      operations: [
+        {
+          op: "REGISTER_GEOMETRY",
+          activationMs: 0,
+          geometry: {
+            id: "pane",
+            space: "world",
+            node: {
+              id: "pane",
+              name: "pane",
+              parentId: null,
+              space: "world",
+              kind: "rectangle",
+              zIndex: 0,
+              transform: { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
+              opacity: 1,
+              visible: true,
+              size: { x: 20, y: 40 },
+              fill: { type: "solid", r: 0.2, g: 0.4, b: 0.8, a: 1 },
+            },
+          },
+        },
+        {
+          op: "UPSERT_ENTITY",
+          activationMs: 0,
+          entity: { id: "window-a", kind: "drawable", parentId: null, present: true, label: "left" },
+        },
+        { op: "BIND_GEOMETRY", entityId: "window-a", geometryId: "pane", activationMs: 0 },
+      ],
+    });
+    expect(delta.operations[0]).toMatchObject({
+      op: "APPLY_ENTITY_PATCH",
+      patch: {
+        operations: [
+          expect.objectContaining({ op: "REGISTER_GEOMETRY" }),
+          expect.objectContaining({ op: "UPSERT_ENTITY" }),
+          expect.objectContaining({ op: "BIND_GEOMETRY", entityId: "window-a", geometryId: "pane" }),
+        ],
+      },
+    });
+    const validated = validateDelta(delta, undefined, "0.2");
+    expect(validated.ok, validated.ok ? "" : validated.diagnostics.map((d) => d.message).join("; ")).toBe(true);
+  });
 });

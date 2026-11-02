@@ -20,6 +20,7 @@ Not yet in a published MotionScript version:
 
 `geometry.animatedTrim` landed in MotionScript 0.5.0.
 `entities.durableRevisions` landed in MotionScript 0.6.0 (requires token + compiler `emitEntityPatchDelta`; declarative entity/behaviour statements remain open).
+`entities.drawableBindings` landed in MotionScript 0.7.0 (requires token + `REGISTER_GEOMETRY` / `BIND_GEOMETRY` on `APPLY_ENTITY_PATCH`; declarative bind syntax remains open).
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 
