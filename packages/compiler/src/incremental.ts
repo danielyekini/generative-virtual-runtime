@@ -1,4 +1,4 @@
-import { Telemetry, DEFAULT_LIMITS, createIncrementalLexer, diagnostic, type Diagnostic, type Token } from "@gvr/schema";
+import { Telemetry, DEFAULT_LIMITS, createIncrementalLexer, diagnostic, type Diagnostic, type SceneIRDelta, type Token } from "@gvr/schema";
 import type { UnitAst } from "./ast";
 import { drainDeltas, finishSession, openSession, pushUnit, type CompileResult, type Session } from "./compile";
 import { parseLeadingSlice } from "./parse";
@@ -48,10 +48,12 @@ export class IncrementalProgram {
   private sourceBytes = 0;
   private endsInHighSurrogate = false;
   private closed = false;
+  private disposedFlag = false;
 
   constructor(private readonly telemetry?: Telemetry) {}
 
   dispose(): void {
+    this.disposedFlag = true;
     this.stopped = true;
     this.buffer.length = 0;
     this.lexer = createIncrementalLexer();
@@ -64,6 +66,16 @@ export class IncrementalProgram {
     this.telemetry?.gauge('compile.lexer_retained_tokens', 0);
     this.telemetry?.gauge('compile.deferred_units', 0);
     this.telemetry?.gauge('compile.pending_deltas', 0);
+  }
+
+  /** UTF-8 bytes accepted by push so far (host observation). */
+  get receivedBytes(): number {
+    return this.sourceBytes;
+  }
+
+  /** True after dispose/cancel; further pushes are ignored. */
+  get disposed(): boolean {
+    return this.disposedFlag;
   }
 
   get sealedThroughMs(): number {
@@ -88,6 +100,11 @@ export class IncrementalProgram {
 
   get scene() {
     return this.result?.scene ?? this.session?.scene;
+  }
+
+  /** Pending Scene IR deltas not yet drained; includes unitId and sourceSpan. */
+  peekPendingDeltas(): readonly SceneIRDelta[] {
+    return this.session?.pendingDeltas ?? [];
   }
 
   push(chunk: string): void {
