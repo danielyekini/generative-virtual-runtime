@@ -23,3 +23,7 @@ and historical design debates. Record source versions/hashes, required profile,
 prompt/token budget and generation tests. Block stale generation references when
 their authorities change until refreshed/verified. Never fill an unimplemented
 feature into the model's reference for convenience.
+
+**Current pointer:** [motionscript-authoring/current.json](motionscript-authoring/current.json)
+(immutable snapshots under `motionscript-authoring/snapshots/`). Generate with
+`npm run reference:generate`; `npm run verify` includes `npm run reference:check`.
