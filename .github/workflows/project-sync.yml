@@ -17,8 +17,12 @@ on:
         default: probe
 permissions:
   contents: read
+# One queue per issue (full syncs share "all"). A single shared group let
+# GitHub cancel queued runs during bursts, so one issue's update could
+# displace another's and that issue waited for the 6-hourly full sync.
+# Same-issue bursts still collapse safely: every run reads current state.
 concurrency:
-  group: project-sync
+  group: project-sync-${{ github.event.issue.number || 'all' }}
   cancel-in-progress: false
 jobs:
   sync:

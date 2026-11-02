@@ -58,7 +58,9 @@ If the runtime cannot write Project fields (for example Claude Code cloud
 sessions, which have no Project/GraphQL access), do every issue-level update,
 state the intended Status in the issue body ("Board status: …") and the
 handover, and say so in the final report; never claim a board change that was
-not read back. OPS004 tracks restoring automatic board sync.
+not read back. The `Project board sync` workflow mirrors those issue updates;
+dispatch it in `sync` mode and cite its job log as the board readback
+(tracking.md).
 
 ## Merge and cleanup
 

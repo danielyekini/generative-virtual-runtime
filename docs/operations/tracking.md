@@ -32,6 +32,9 @@ board instead: it adds `lane:*` issues and sets Status (closed → Done/Deferred
 unexpired `gvr-claim` → In progress, body `Board status: <Status>`, label `state:ready`
 → Ready), Workstream, Kind and Priority from labels. Agents therefore keep issues
 current; run the workflow with mode `probe` to check the token, `dry-run` to preview.
+Board readback without Project access: after issue updates, dispatch the workflow
+with mode `sync` (connected Actions tools) and read the Sync step log, which lists
+each applied `#N: Field -> Value`; `0 change(s)` means the board already matched.
 
 ## Work-item lifecycle
 
