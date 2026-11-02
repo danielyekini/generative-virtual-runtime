@@ -1,5 +1,16 @@
 export { RuntimeClock } from "./clock";
 export { buildResolvedFrame } from "./frame";
+export { observeStreamingExecution } from "./observation";
+export type {
+  ObservedDeltaRef,
+  StreamingCompileObservationSource,
+  StreamingExecutionObservation,
+  StreamingObservationSources,
+  StreamingPlaybackObservationSource,
+  StreamingRuntimeObservationSource,
+  StreamingUnitObservation,
+  StreamingUnitOutcome,
+} from "./observation";
 export { PlaybackClock } from "./playback";
 export { assessReadiness, PresentationController } from "./presentation";
 export type { GeneratedOffer, PresentationPhase, PresentationView, Readiness, SystemCatalogueEntry } from "./presentation";

@@ -12,6 +12,7 @@ import {
   type SceneIRDelta,
 } from "@gvr/schema";
 import { buildResolvedFrame } from "./frame";
+import type { ObservedDeltaRef } from "./observation";
 import { sampleScene } from "./sample";
 
 /**
@@ -23,11 +24,12 @@ export class StreamingRuntime {
   sealedThroughMs = 0;
   authoringComplete = false;
   scene?: SceneIR;
-  private readonly queue: { unitId: number; nextRevision: number }[] = [];
+  private readonly queue: ObservedDeltaRef[] = [];
   private queuedState?: CandidateState;
   private readonly rejected: Diagnostic[] = [];
+  private readonly applied: ObservedDeltaRef[] = [];
   private readonly enqueuedAt: number[] = [];
-  private disposed = false;
+  private disposedFlag = false;
   private degradedFlag = false;
   private diagnostics: Diagnostic[] = [];
 
@@ -36,12 +38,22 @@ export class StreamingRuntime {
   /** Invalid deltas retain existing diagnostics; stale observations are bounded by Telemetry. */
   get rejectedDiagnostics(): readonly Diagnostic[] { return this.rejected; }
 
+  /** Accepted but not yet flushed deltas, with initiating unit spans. */
+  get queuedDeltas(): readonly ObservedDeltaRef[] { return this.queue; }
+
+  /** Recently applied deltas (bounded), newest last. */
+  get appliedUnits(): readonly ObservedDeltaRef[] { return this.applied; }
+
+  /** True after dispose/cancel; further enqueue/flush are no-ops. */
+  get disposed(): boolean { return this.disposedFlag; }
+
   dispose(): void {
-    this.disposed = true;
+    this.disposedFlag = true;
     this.queue.length = 0;
     this.queuedState = undefined;
     this.enqueuedAt.length = 0;
     this.rejected.length = 0;
+    this.applied.length = 0;
     this.diagnostics = [];
     this.scene = undefined;
     this.telemetry?.gauge('runtime.queue_deltas', 0);
@@ -57,7 +69,7 @@ export class StreamingRuntime {
   }
 
   enqueue(delta: SceneIRDelta): void {
-    if (this.disposed) return;
+    if (this.disposedFlag) return;
     const base = this.queuedState ?? {
       scene: this.scene,
       sealedThroughMs: this.sealedThroughMs,
@@ -94,7 +106,11 @@ export class StreamingRuntime {
       return;
     }
     this.queuedState = candidate.state;
-    this.queue.push({unitId: owned.unitId, nextRevision: owned.nextRevision});
+    this.queue.push({
+      unitId: owned.unitId,
+      nextRevision: owned.nextRevision,
+      sourceSpan: owned.sourceSpan,
+    });
     if (this.telemetry) this.enqueuedAt.push(this.telemetry.now());
     this.telemetry?.count('runtime.accepted_deltas');
     this.telemetry?.gauge('runtime.queue_deltas', this.queue.length);
@@ -104,7 +120,12 @@ export class StreamingRuntime {
     const results: ApplyResult[] = [];
     for (const delta of this.queue.splice(0)) {
       if (this.telemetry) this.telemetry.observe('runtime.queue_wait_ms', this.telemetry.now() - this.enqueuedAt.shift()!);
-      results.push({ revision: delta.nextRevision, unitId: delta.unitId, ok: true });
+      const revision = delta.nextRevision!;
+      results.push({ revision, unitId: delta.unitId, ok: true });
+      this.applied.push({ unitId: delta.unitId, revision, sourceSpan: delta.sourceSpan });
+    }
+    if (this.applied.length > DEFAULT_LIMITS.maxQueuedDeltas) {
+      this.applied.splice(0, this.applied.length - DEFAULT_LIMITS.maxQueuedDeltas);
     }
     if (this.queuedState) {
       this.scene = this.queuedState.scene;
