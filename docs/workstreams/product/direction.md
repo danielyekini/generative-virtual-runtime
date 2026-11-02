@@ -20,7 +20,9 @@ import/compare functions while moving them into the new layout.
 4. P004 #45 Player Split paste-and-run — after P001.
 5. P002 #43 Stream run mode — after P001 and engine E018; propose presets and
    Advanced controls to the user first.
-6. P003 #44 Performance tab — after P001; UX proposal to the user first.
+6. P016 #71 Stream frame tape (filmstrip with playhead, grey until played,
+   extensible tracks) — after P002; confirm the orange mapping first.
+7. P003 #44 Performance tab — after P001; UX proposal to the user first.
 
 Paused prototype: PR #65 history commit 2d08de0 (reuse helpers only).
 
