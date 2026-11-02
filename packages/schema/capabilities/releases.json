@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.14.0",
+      "current": "0.15.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.12"
+      "packageVersion": "0.1.13"
     },
     "scene-ir": {
-      "current": "0.14.0",
+      "current": "0.15.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.12"
+      "packageVersion": "0.1.13"
     }
   },
   "versions": [
@@ -111,6 +111,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.14.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.15.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.15.0.md"
     },
     {
       "language": "motionscript",
@@ -215,6 +222,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.14.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.15.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.15.0.md"
     },
     {
       "language": "scene-ir",
@@ -328,6 +342,13 @@
       "compiler": "0.1.11",
       "runtime": "0.1.16",
       "readers": "Wire stays 0.2. audio.generative is gated by requiredCapabilities / requires (with audio.cues). Packages without the capability reject generative audio sources."
+    },
+    {
+      "motionscript": "0.15.0",
+      "sceneIr": "0.15.0",
+      "compiler": "0.1.12",
+      "runtime": "0.1.17",
+      "readers": "Wire stays 0.2. space.planarSeams is gated by requiredCapabilities / requires. Packages without the capability reject spatial layers carrying seams; older validators reject the unknown seams key."
     }
   ]
 }

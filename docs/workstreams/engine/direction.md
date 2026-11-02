@@ -29,6 +29,8 @@ E011 physics integration decision/prototype (planar fixed-step 2D session,
 E029 versioned `physics.planar2d` (Scene IR / MotionScript 0.13.0),
 E016 seam depth/paint-order decision/prototype
 (`docs/decisions/engine/seam-depth-order.md`),
+E030 versioned `space.planarSeams` (Scene IR / MotionScript 0.15.0: exact
+plane-line intersection splitting and declared seam checks in `projectSpatialFrame`),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -68,11 +70,7 @@ E033 versions the language surface (MotionScript / Scene IR 0.14.0).
 2. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
    ElevenLabs adapter package. Ready after E032; Studio credentials stay with
    Product ([#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) / P009).
-3. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
-   version seam/split support (e.g. `space.planarSeams`) on top of
-   `space.planar25d`. Ready after the generative-audio P0 slice unless that
-   slice is Blocked.
-4. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+3. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
    sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
    remains a Candidate emitter round-trip bug (no language change).

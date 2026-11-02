@@ -1415,9 +1415,19 @@ function lowerSpatialLayer(session: Session, unit: Extract<UnitAst, { kind: "spa
       return;
     }
   }
+  const surfaces = new Set(unit.layer.surfaces.map((surface) => surface.nodeId));
+  for (const edge of unit.layer.seams?.edges ?? []) {
+    for (const id of [edge.a, edge.b]) {
+      if (!surfaces.has(id)) {
+        session.diagnostics.push(problem("UNKNOWN_TARGET", `Seam edge names ${id}, which is not a surface of layer ${unit.layer.id}.`, unit.span));
+        return;
+      }
+    }
+  }
   // Replace the container so earlier emitted headers keep their own list.
   session.scene.spatialLayers = [...list, structuredClone(unit.layer)];
   ensureCapability(session, "space.planar25d");
+  if (unit.layer.seams) ensureCapability(session, "space.planarSeams");
 }
 
 /** First body/constraint entity that does not exist yet (declaration may precede it). */
