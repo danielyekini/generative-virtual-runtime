@@ -25,6 +25,9 @@ use authorised gh/REST/GraphQL. No token contents in logs. If project writes are
 unavailable, ask for the smallest setup/action (or user-created board link), finish
 all reviewable repo preparation and issue work that is authorised, and clearly
 mark installation incomplete. Never silently substitute a local board as SSOT.
+Claude Code cloud sessions currently cannot reach Project #3 (no GraphQL, no
+user-level projectsV2 REST); they record intended Status as "Board status: …"
+in issue bodies per git.md until OPS004 restores automatic sync.
 
 ## Work-item lifecycle
 

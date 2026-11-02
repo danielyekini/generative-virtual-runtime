@@ -12,18 +12,17 @@ there, stop and ask the user with options, mockups or a UI-generator prompt
 instead of building a guess. Preserve working compile, playback, streaming and
 import/compare functions while moving them into the new layout.
 
-## P001 (redesigned)
+## Queue (2 November 2026)
 
-Deliver the Player and Library pages from studio-ux.md: an empty-player landing
-page, a Library with collections, tags, search, sort, favourites, recents,
-static thumbnails and hover preview (confirm the preview style first), and New,
-Paste and Upload editing. Opening a program loads it into the Player and waits
-for Run (autoplay is a setting). The Player has a VS Code-style bottom panel,
-an optional Source panel with diagnostics that jump to the source, fullscreen
-with contain-fit and exit, and Split paste-and-run for supported formats. The
-Stream run mode lands in P002. P001 may be split into Player-shell and Library
-items, but each must be usable end to end. Provide a smoke route/demo.
-Paused prototype: PR #65 (reuse helpers only).
+1. P001 #42 Player page redesign — Ready.
+2. P015 #67 Library hover-preview style — waiting on user decision.
+3. P014 #68 Library page — after P001 and P015.
+4. P004 #45 Player Split paste-and-run — after P001.
+5. P002 #43 Stream run mode — after P001 and engine E018; propose presets and
+   Advanced controls to the user first.
+6. P003 #44 Performance tab — after P001; UX proposal to the user first.
+
+Paused prototype: PR #65 history commit 2d08de0 (reuse helpers only).
 
 ## Next
 

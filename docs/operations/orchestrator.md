@@ -41,6 +41,19 @@ No dependency on a global CTO session. The two orchestrators may exchange
 requests and change their lane plans, but cannot independently rewrite the
 other lane's direction or create contradictory public contract claims.
 
+## Board authority
+
+The orchestrator owns its lane's board state: it may create, rewrite, split,
+merge, re-prioritise, re-order, close (with reason) and add/remove Project
+items and field values, and must leave at least the next executable item
+clearly marked Ready with a current handover. Ticket upkeep and the fallback
+for runtimes without Project access are defined in git.md.
+
+UX rule (product): Studio flows follow `docs/workstreams/product/studio-ux.md`.
+When a needed flow is undefined, create or update a user-decision issue and ask
+the user with options, mockups or a UI-generator prompt instead of queuing
+guessed UI for implementation.
+
 ## Administration budget
 
 Aim for a short intake and a review under ~20% of a session. This is a design
