@@ -64,9 +64,9 @@ E033 versions the language surface (MotionScript / Scene IR 0.14.0).
 ## Next work
 
 1. E033 ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)):
-   version `audio.generative` in MotionScript / Scene IR 0.14.0. In progress.
+   version `audio.generative` in MotionScript / Scene IR 0.14.0. Done (PR #132).
 2. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
-   ElevenLabs adapter package. Ready after E032; Studio credentials stay with
+   ElevenLabs adapter package. Done; Studio credentials stay with
    Product ([#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) / P009).
 3. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
    version seam/split support (e.g. `space.planarSeams`) on top of
