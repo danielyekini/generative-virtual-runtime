@@ -3,30 +3,36 @@
 Read charter, this direction, selected live issue/latest relevant handover and
 applicable technical contracts. Do not read every engine run or engine inbox.
 
-## First run: P001
+## Studio UX authority (user steering, 2 November 2026)
 
-Compare two plausible Studio workflow/navigation approaches in one bounded
-design pass, critique with human/agent scenarios, then implement the smallest
-end-to-end library -> editor -> execute -> fullscreen slice. Keep an extensible
-professional workbench presentation; don't clone Photoshop's editing scope.
-Preserve working imports, playback, streaming and comparison access during changes.
-No mandatory extra UX agent/review chain. Ask for a missing design tool only if
-it materially blocks a concrete decision; proceed with available alternatives.
+[studio-ux.md](studio-ux.md) is the user-confirmed Studio specification:
+a **full redesign** with separate Library and Player pages, not features added
+to the old three-column workbench. If a workflow's experience is undefined
+there, stop and ask the user with options, mockups or a UI-generator prompt
+instead of building a guess. Preserve working compile, playback, streaming and
+import/compare functions while moving them into the new layout.
 
-P001 acceptance: searchable/filterable installed program library, upload native
-source and paste/edit, one unambiguous active program, explicit execute action,
-working playback/fullscreen/exit, actionable compile errors preserving source,
-and a meaningful smoke-test/demo route for the user. Fullscreen is presentation,
-not changing logical authored coordinates or stretching contain-fit implicitly.
-Choose scope/gates for first usable slice, not a full video editor rewrite.
+## P001 (redesigned)
+
+Deliver the Player and Library pages from studio-ux.md: an empty-player landing
+page, a Library with collections, tags, search, sort, favourites, recents,
+static thumbnails and hover preview (confirm the preview style first), and New,
+Paste and Upload editing. Opening a program loads it into the Player and waits
+for Run (autoplay is a setting). The Player has a VS Code-style bottom panel,
+an optional Source panel with diagnostics that jump to the source, fullscreen
+with contain-fit and exit, and Split paste-and-run for supported formats. The
+Stream run mode lands in P002. P001 may be split into Player-shell and Library
+items, but each must be usable end to end. Provide a smoke route/demo.
+Paused prototype: PR #65 (reuse helpers only).
 
 ## Next
 
-P002: streaming execution UX on current source, independent arrival simulation,
-received/parsed/accepted/rejected/queued units, sealed playable coverage and
-playhead/buffer inspection. Grey/orange/white are candidate treatments; map them
-to actual events, not fictional per-line frames; add labels/non-colour cues.
-Fix the blank stream-source pane. Request X001 from engine rather than defining
+P002: Stream as a Run mode of the loaded program (studio-ux.md "Streaming"),
+using rate presets plus advanced arrival controls. Line states are confirmed as
+grey (arrived), orange (queued), white (resolved) and red (rejected), mapped to
+actual events and never to fictional per-line frames, with non-colour cues.
+Tape timeline shows loaded vs playhead; counters name their units. This
+replaces the blank stream-source pane. Request X001 from engine rather than defining
 new engine states privately. Reuse PR #11 Worker/evidence, don't call it real LLM speed.
 
 P003/P005: contextual performance inspector and agent-facing commands/services
