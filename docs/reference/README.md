@@ -14,9 +14,12 @@ direct authority links from current sources. It must not rewrite historical
 claims or label planned work supported. Reuse existing reference docs where valid.
 
 The generation-facing native MotionScript reference is a separate versioned
-artifact built by P006/E006 from released grammar, capabilities and validated
-examples. Include syntax, construction/streaming rules, idioms and repair advice;
-exclude roadmap/backlogs and historical design debates. Record source versions/
-hashes, required profile, prompt/token budget and generation tests. Block stale
-generation references when their authorities change until refreshed/verified.
-Never fill an unimplemented feature into the model's reference for convenience.
+artifact built by P006 from the E006
+[model-facing reference contract](../contracts/model-facing-reference.md) and
+[streaming authorship rules](../contracts/streaming-authorship.md), using released
+grammar, capabilities and validated streaming fixtures. Include syntax,
+construction/streaming rules, idioms and repair advice; exclude roadmap/backlogs
+and historical design debates. Record source versions/hashes, required profile,
+prompt/token budget and generation tests. Block stale generation references when
+their authorities change until refreshed/verified. Never fill an unimplemented
+feature into the model's reference for convenience.

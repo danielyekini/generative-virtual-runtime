@@ -1,6 +1,6 @@
 # Idiomatic MotionScript authoring guide
 
-Status: living guide, revision 1.1, 2026-10-30. This initial guide contains evaluation techniques, not certified syntax examples. The installed examples below refer to existing compiling repository fixtures and conformance cases; they are not refinement or visual certifications.
+Status: living guide, revision 1.2, 2026-11-02. This initial guide contains evaluation techniques, not certified syntax examples. The installed examples below refer to existing compiling repository fixtures and conformance cases; they are not refinement or visual certifications. Progressive streaming rules and the model-facing generation contract live in [`docs/contracts/streaming-authorship.md`](../contracts/streaming-authorship.md) and [`docs/contracts/model-facing-reference.md`](../contracts/model-facing-reference.md); machine checks use `lintStreamingAuthorship` in `@gvr/compiler`.
 
 ## How to use this guide
 
@@ -25,6 +25,7 @@ Maintain a verified table for supported construction order, declaration/referenc
 
 ## Change log
 
+- 1.2: Link E006 streaming authorship contract, model-facing reference inputs and stream linter fixtures.
 - 1.1: Add measured current-contract progressive authoring recipe and evidence.
 - 1.0: Initial guide structure. No unverified language constructs asserted.
 
@@ -36,6 +37,7 @@ Maintain a verified table for supported construction order, declaration/referenc
 | Hierarchy, keyframes and expression motion | [bunny.ms](../../fixtures/motionscript/bunny.ms); compiler tests “compiles the design example to a valid scene” and “keeps the hierarchy, the hop, and the sealed zoom” | Preserve pivots, compositing and sampled time behaviour during any rewrite |
 | Compositions, instances and timing scopes in wire 0.2 | Compiler tests “compiles compositions, instances, scopes, and cubic easing”; grammar and [compiler resolution](../../packages/compiler/src/compile.ts) | Some references are deferred; do not assume arbitrary procedural execution or unrestricted scope |
 | Streaming construction/seals and interrupted input | [incremental compiler tests](../../packages/compiler/src/incremental.test.ts); [runtime streaming tests](../../packages/runtime/src/streaming.test.ts) | Existing incremental execution does not establish first-meaningful-visual or generation efficiency measurements |
+| Progressive authorship lints (offline vs progressive) | [streaming fixtures](../../fixtures/motionscript/streaming/); [stream-lint tests](../../packages/compiler/src/stream-lint.test.ts); [streaming authorship contract](../contracts/streaming-authorship.md) | Finding codes classify progressive playability; they do not add language syntax |
 
 General loop/function declarations and a general authoring package/module facility are not implemented by this grammar. Package/API/host ideas in the evolution policy are proposals until a released contract and tests establish support. Resource resolution and ownership details must be verified per recipe against current contracts/tests rather than generalised from these examples.
 
