@@ -272,42 +272,8 @@ button.primary:hover, button.run:hover:not(:disabled) { background: #2563eb; }
   overflow: hidden;
 }
 
-/* ---------- temporary program picker ---------- */
-#picker {
-  width: min(760px, 94vw);
-  max-height: 82vh;
-  padding: 0;
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
-  background: #222225;
-  color: var(--text);
-  box-shadow: 0 20px 60px rgb(0 0 0 / 0.6);
-}
-#picker::backdrop { background: rgb(0 0 0 / 0.55); }
-.picker { display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; max-height: 82vh; }
-.picker-head { display: flex; align-items: baseline; gap: 10px; }
-.picker-head h2 { margin: 0; font-size: 15px; }
-#picker-search { width: 100%; padding: 7px 10px; border: 1px solid var(--line-strong); border-radius: 4px; background: #18181b; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { border-radius: 999px; padding: 2px 10px; font-size: 12px; }
-.picker-list { list-style: none; margin: 0; padding: 0; overflow: auto; min-height: 120px; max-height: 52vh; display: flex; flex-direction: column; gap: 2px; }
-.picker-list button {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2px 12px;
-  text-align: left;
-  border: 0;
-  border-radius: 4px;
-  background: transparent;
-  padding: 6px 8px;
-  white-space: normal;
-}
-.picker-list button:hover, .picker-list button:focus-visible { background: #2f2f35; }
-.picker-list button[aria-selected="true"] { background: var(--accent-soft); }
-.picker-list button[aria-selected="true"] strong::before { content: "● "; color: #93c5fd; }
-.picker-list small { grid-column: 1 / -1; color: var(--muted); }
-.picker-foot { display: flex; align-items: center; gap: 10px; }
 
 /* ---------- fullscreen: canvas only ---------- */
 body.is-fullscreen #bar,
@@ -344,3 +310,35 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
   #toggle-source, #fullscreen { padding: 4px 6px; }
   .scene-cols { grid-template-columns: 1fr; }
 }
+
+/* Library is a full page, sharing Player typography and controls. */
+#library { flex: 1; min-height: 0; overflow: auto; padding: 24px clamp(16px, 4vw, 64px) 48px; }
+.library-heading, .library-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.library-heading { margin-bottom: 20px; }
+.library-heading h1 { font-size: 24px; margin: 0; }
+.library-heading p { margin: 5px 0 0; }
+.library-toolbar { margin-bottom: 12px; }
+.library-toolbar label { display: flex; align-items: center; gap: 8px; }
+#library input { border: 1px solid var(--line-strong); background: var(--bar); border-radius: 4px; padding: 7px 10px; min-width: 0; }
+#library-search { flex: 1; min-width: 180px !important; }
+#library-collections { margin: 12px 0 22px; }
+#library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 275px), 1fr)); gap: 18px; }
+.program-card { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--panel); min-width: 0; }
+.program-preview { display: block; position: relative; width: 100%; padding: 0; border: 0; border-radius: 0; background: #111318; aspect-ratio: 16/9; overflow: hidden; }
+.program-preview canvas { display: block; width: 100%; height: 100%; }
+.preview-status { position: absolute; right: 7px; bottom: 7px; background: #101014dc; padding: 3px 7px; border-radius: 4px; font-size: 11px; max-width: calc(100% - 14px); white-space: normal; }
+.program-card-body { padding: 13px; }
+.program-card h3 { font-size: 14px; margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.program-card .library-toolbar { flex-wrap: nowrap; }
+.program-card .meta { margin: 0; }
+.card-caption { color: var(--muted); font-size: 12px; height: 34px; overflow: hidden; margin: 8px 0 12px; }
+.program-card input { width: 100%; font-size: 12px; margin-bottom: 12px; }
+.program-card .library-toolbar:last-child { justify-content: space-between; margin-bottom: 0; }
+.favourite { font-size: 18px; padding: 0 7px; }
+#library-recent { padding: 0 0 18px; }
+#library-recent h2 { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+#library-recent-list { display: flex; gap: 8px; overflow: auto; }
+#library-editor { border: 1px solid var(--line-strong); padding: 16px; margin-bottom: 24px; border-radius: 6px; }
+#library-source { display: block; width: 100%; height: 45vh; min-height: 240px; resize: vertical; background: var(--bar); border: 1px solid var(--line-strong); padding: 12px; font: 13px/1.5 ui-monospace, monospace; tab-size: 2; }
+#library-error { color: var(--bad); padding: 12px; border: 1px solid var(--bad); }
+@media (max-width: 600px) { #library { padding: 16px; } .library-heading .spacer { display: none; } }

@@ -8,10 +8,11 @@ import type { ResolvedFrame } from "@gvr/schema";
 import type { GvrBridge, PlayerProbe } from "../bridge";
 import { isTypingTarget } from "../bridge";
 import { clearCanvas, describeFrame } from "../describe";
-import { collectionsOf, filterLibrary, selectionFor, type LocatedDiagnostic, type ProgramEntry } from "../library";
+import { decodeMine, STORAGE_KEY, selectionFor, type LocatedDiagnostic, type ProgramEntry } from "../library";
 import { frameTelemetry, telemetry } from "../telemetry";
 import { clampTime, collectKeyTimes, formatClock, isStaticScene, stepKey } from "../timeline";
-import { FORMAT_LABELS, formatForFile, installedPrograms } from "./programs";
+import { FORMAT_LABELS, installedPrograms } from "./programs";
+import { LibraryPage } from "./library-page";
 import { runProgram, type RunOutcome } from "./run";
 import { describeSceneSummary } from "./scene-summary";
 import {
@@ -106,21 +107,13 @@ const ui = {
   reportSummary: $("report-summary"),
   report: $("report"),
   status: $("status"),
-  picker: $<HTMLDialogElement>("picker"),
-  pickerClose: $<HTMLButtonElement>("picker-close"),
-  pickerSearch: $<HTMLInputElement>("picker-search"),
-  pickerCollections: $("picker-collections"),
-  pickerList: $("picker-list"),
-  pickerFile: $<HTMLButtonElement>("picker-file"),
-  pickerCount: $("picker-count"),
-  file: $<HTMLInputElement>("file"),
 };
 
 const tabs = new Map<PanelTab, { tab: HTMLButtonElement; pane: HTMLElement }>(
   PANEL_TABS.map((id) => [id, { tab: $<HTMLButtonElement>(`tab-${id}`), pane: $(`pane-${id}`) }]),
 );
 
-const catalogue = installedPrograms();
+const catalogue = [...installedPrograms(), ...decodeMine(read(STORAGE_KEY))];
 const settings = decodeSettings(read(SETTINGS_KEY));
 let recent = decodeRecent(read(RECENT_KEY));
 const renderer = new CanvasRenderer(ui.canvas, telemetry);
@@ -133,7 +126,7 @@ let frame: ResolvedFrame | null = null;
 let fullscreen = false;
 let scrubbing = false;
 let needsDraw = true;
-let pickerCollection = "all";
+let libraryVisible = false;
 let lastWall = performance.now();
 let ticksKey = "";
 
@@ -272,66 +265,42 @@ function jumpTo(item: LocatedDiagnostic): void {
   ui.source.scrollTop = Math.max(0, before * lineHeight - ui.source.clientHeight / 3);
 }
 
-// ---------------------------------------------------------------- picker
-
-function openPicker(): void {
-  pickerCollection = "all";
-  ui.pickerSearch.value = "";
-  renderPicker();
-  if (!ui.picker.open) ui.picker.showModal();
-  ui.pickerSearch.focus();
+// Library and Player are separate routes in one document so navigation preserves drafts.
+const library = new LibraryPage(catalogue, {
+  open: (entry) => {
+    showPlayer();
+    if (entry.key !== loaded?.key) openProgram(entry);
+    else history.replaceState(null, "", `#p/${encodeURIComponent(entry.key)}`);
+  },
+  back: () => {
+    showPlayer();
+    history.replaceState(null, "", loaded ? `#p/${encodeURIComponent(loaded.key)}` : location.pathname + location.search);
+  },
+});
+function showPlayer(): void {
+  libraryVisible = false;
+  document.body.classList.remove("library-open");
+  document.body.dataset.surface = "player";
+  $("library").hidden = true;
+  $("player").hidden = false;
+  $("bar").hidden = false;
+  $("status").hidden = false;
+  render();
 }
-
-function closePicker(): void {
-  if (ui.picker.open) ui.picker.close();
-}
-
-function pickerMatches(): ProgramEntry[] {
-  return filterLibrary(catalogue, { text: ui.pickerSearch.value, collection: pickerCollection });
-}
-
-function renderPicker(): void {
-  const chips = [{ name: "all", count: catalogue.length }, ...collectionsOf(catalogue)];
-  ui.pickerCollections.replaceChildren(
-    ...chips.map((chip) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "chip";
-      button.textContent = `${chip.name === "all" ? "All" : chip.name} ${chip.count}`;
-      button.setAttribute("aria-pressed", String(chip.name === pickerCollection));
-      button.addEventListener("click", () => {
-        pickerCollection = chip.name;
-        renderPicker();
-      });
-      return button;
-    }),
-  );
-  const matches = pickerMatches();
-  ui.pickerList.replaceChildren(
-    ...matches.map((entry) => {
-      const item = document.createElement("li");
-      const button = document.createElement("button");
-      button.type = "button";
-      button.role = "option";
-      button.dataset.key = entry.key;
-      button.setAttribute("aria-selected", String(entry.key === loaded?.key));
-      const title = document.createElement("strong");
-      title.textContent = entry.label;
-      const meta = document.createElement("span");
-      meta.className = "meta";
-      meta.textContent = `${entry.collection} · ${FORMAT_LABELS[entry.format]}`;
-      const caption = document.createElement("small");
-      caption.textContent = entry.caption;
-      button.append(title, meta, caption);
-      button.addEventListener("click", () => {
-        closePicker();
-        openProgram(entry);
-      });
-      item.append(button);
-      return item;
-    }),
-  );
-  put(ui.pickerCount, `${matches.length} of ${catalogue.length} programs`);
+function openLibrary(fromHash = false): void {
+  closeMenus();
+  clock.pause();
+  libraryVisible = true;
+  document.body.classList.add("library-open");
+  document.body.dataset.surface = "library";
+  $("player").hidden = true;
+  $("bar").hidden = true;
+  $("status").hidden = true;
+  $("library").hidden = false;
+  if (!fromHash && location.hash !== "#library") location.hash = "library";
+  library.show();
+  document.title = "Library · GVR Studio";
+  render();
 }
 
 // ---------------------------------------------------------------- render
@@ -352,6 +321,7 @@ function dpr(): number {
 }
 
 function paint(): void {
+  if (libraryVisible) return;
   const size = canvasSize();
   renderer.resize(Math.max(1, size.width), Math.max(1, size.height), dpr());
   const time = isStill() ? 0 : clampTime(clock.timeMs, durationMs());
@@ -383,7 +353,7 @@ function renderHeader(): void {
   ui.sourceRun.disabled = !loaded;
   ui.fullscreen.disabled = !runtime;
   ui.toggleSource.setAttribute("aria-pressed", String(settings.sourceOpen));
-  document.title = loaded ? `${loaded.label} · GVR Studio` : "GVR Studio";
+  if (!libraryVisible) document.title = loaded ? `${loaded.label} · GVR Studio` : "GVR Studio";
 }
 
 function renderOverlays(): void {
@@ -663,39 +633,8 @@ ui.optDpr.addEventListener("change", () => {
   render();
 });
 
-ui.openLibrary.addEventListener("click", openPicker);
-ui.emptyLibrary.addEventListener("click", openPicker);
-ui.pickerClose.addEventListener("click", closePicker);
-ui.pickerSearch.addEventListener("input", renderPicker);
-ui.pickerSearch.addEventListener("keydown", (event) => {
-  if (event.key !== "Enter") return;
-  const first = pickerMatches()[0];
-  if (!first) return;
-  event.preventDefault();
-  closePicker();
-  openProgram(first);
-});
-ui.picker.addEventListener("click", (event) => {
-  if (event.target === ui.picker) closePicker();
-});
-ui.pickerFile.addEventListener("click", () => ui.file.click());
-ui.file.addEventListener("change", () => {
-  const file = ui.file.files?.[0];
-  ui.file.value = "";
-  if (!file) return;
-  void file.text().then((text) => {
-    closePicker();
-    openProgram({
-      key: `file:${file.name}`,
-      label: file.name,
-      caption: "Opened from a local file (not saved; P014 adds My programs).",
-      collection: "Opened file",
-      origin: "mine",
-      format: formatForFile(file.name, text),
-      source: text,
-    });
-  });
-});
+ui.openLibrary.addEventListener("click", () => openLibrary());
+ui.emptyLibrary.addEventListener("click", () => openLibrary());
 
 ui.run.addEventListener("click", run);
 ui.readyRun.addEventListener("click", run);
@@ -790,9 +729,10 @@ dragResize(ui.panelResize, "y", (delta, initial) => {
 window.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
     event.preventDefault();
-    run();
+    if (!libraryVisible) run();
     return;
   }
+  if (libraryVisible) return;
   if (event.key === "Escape") {
     if (fullscreen) {
       event.preventDefault();
@@ -802,7 +742,7 @@ window.addEventListener("keydown", (event) => {
     closeMenus();
     return;
   }
-  if (ui.picker.open || isTypingTarget(event.target)) return;
+  if (isTypingTarget(event.target)) return;
   if (event.metaKey || event.ctrlKey || event.altKey) return;
   const key = event.key.toLowerCase();
   if (event.key === " ") {
@@ -818,14 +758,17 @@ window.addEventListener("keydown", (event) => {
     setSourceOpen(!settings.sourceOpen);
   } else if (key === "o") {
     event.preventDefault();
-    openPicker();
+    openLibrary();
   }
 });
 
 function readHash(): void {
+  if (location.hash === "#library") { openLibrary(true); return; }
+  showPlayer();
   const match = /^#p\/(.+)$/.exec(location.hash);
   if (!match?.[1]) return;
-  const key = decodeURIComponent(match[1]);
+  let key: string;
+  try { key = decodeURIComponent(match[1]); } catch { return; }
   if (key === loaded?.key) return;
   const entry = catalogue.find((item) => item.key === key);
   if (entry) openProgram(entry, { fromHash: true });

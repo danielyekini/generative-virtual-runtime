@@ -1,6 +1,5 @@
 /**
- * Installed programs for the Player's temporary picker. P014 replaces the
- * picker with the Library page; this catalogue stays the shared source.
+ * Installed catalogue shared by the Library page and Player routing.
  */
 import {
   fixtureExamples,

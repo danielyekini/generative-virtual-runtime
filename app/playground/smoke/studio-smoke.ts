@@ -1,5 +1,5 @@
 /**
- * Studio Player smoke (P001): empty landing → Library picker → open (no run)
+ * Studio Player and Library smoke (P001/P014): empty landing → Library page → open (no run)
  * → Run → tape seek → fullscreen (Esc and exit button) → Source edit → file
  * with a compile error → located diagnostic jump → import report → autoplay
  * and hash restore → legacy stream route. Real page, headless Chromium.
@@ -119,21 +119,38 @@ try {
   check("Stream action is present but disabled until P002", stream.disabled && /P002/.test(stream.title), stream);
   await shot("0-landing");
 
-  // 2. Library picker
+  // 2. Library page
   await ev("document.querySelector('#empty-library').click()");
   await sleep(150);
-  check("Open Library opens the program picker", await ev("document.querySelector('#picker').open"));
-  await ev(`(() => { const s = document.querySelector('#picker-search'); s.value = 'binary tree'; s.dispatchEvent(new Event('input')); })()`);
-  const found = await ev("[...document.querySelectorAll('#picker-list button')].map(b => b.dataset.key)");
+  check("Open Library opens the Library page", await ev("!document.querySelector('#library').hidden"));
+  await ev(`(() => { const s = document.querySelector('#library-search'); s.value = 'binary tree'; s.dispatchEvent(new Event('input')); })()`);
+  const found = await ev("[...document.querySelectorAll('#library-grid article')].map(b => b.dataset.key)");
   check("picker search filters programs", found.length === 1 && found[0] === "story:two-ways-through-a-binary-tree", found);
-  await ev(`(() => { const s = document.querySelector('#picker-search'); s.value = ''; s.dispatchEvent(new Event('input')); [...document.querySelectorAll('#picker-collections button')].find(b => b.textContent.startsWith('Test frames')).click(); })()`);
-  const frames = await ev("[...document.querySelectorAll('#picker-list button')].map(b => b.dataset.key)");
+  await ev(`(() => { const s = document.querySelector('#library-search'); s.value = ''; s.dispatchEvent(new Event('input')); [...document.querySelectorAll('#library-collections button')].find(b => b.textContent.startsWith('Test frames')).click(); })()`);
+  const frames = await ev("[...document.querySelectorAll('#library-grid article')].map(b => b.dataset.key)");
   check("collection chip narrows the picker", frames.length > 0 && frames.every((item: string) => item.startsWith("frame:")), frames);
-  await ev(`[...document.querySelectorAll('#picker-collections button')].find(b => b.textContent.startsWith('All')).click()`);
-  await shot("1-picker");
-  await ev(`(() => { const s = document.querySelector('#picker-search'); s.value = 'ball expression'; s.dispatchEvent(new Event('input')); document.querySelector('#picker-list button[data-key="sample:ball"]').click(); })()`);
+  await ev(`[...document.querySelectorAll('#library-collections button')].find(b => b.textContent.startsWith('All')).click()`);
+  await sleep(1500);
+  await shot("1-library");
+  await ev(`(() => { const c = document.querySelector('#library-grid article[data-key="sample:ball"]'); c.scrollIntoView(); return true; })()`);
+  await sleep(500);
+  check("thumbnail bitmap fits inside the responsive card", await ev(`(() => { const b = document.querySelector('article[data-key="sample:ball"] .program-preview'); const c = b.querySelector('canvas'); return c.getBoundingClientRect().width <= b.getBoundingClientRect().width + 1; })()`));
+  const poster = await ev(`(() => { const c = document.querySelector('article[data-key="sample:ball"]'); const b = c.querySelector('.program-preview'); const r = b.getBoundingClientRect(); return {time: Number(c.querySelector('canvas').dataset.time), x: r.x, y: r.y, w: r.width}; })()`);
+  await cdp.send("Input.dispatchMouseEvent", {type:"mouseMoved", x:poster.x + poster.w * .8, y:poster.y + 20}, sessionId);
+  const scrub = await ev(`Number(document.querySelector('article[data-key="sample:ball"] canvas').dataset.time)`);
+  check("pointer scrubbing samples a real later frame", scrub > poster.time, {poster, scrub});
+  await cdp.send("Input.dispatchMouseEvent", {type:"mouseMoved", x:0, y:0}, sessionId);
+  check("leaving restores the fixed thumbnail", await ev(`Number(document.querySelector('article[data-key="sample:ball"] canvas').dataset.time) === ${poster.time}`));
+  await ev(`document.querySelector('article[data-key="sample:ball"] .favourite').click()`);
+  await ev(`(() => { const t = document.querySelector('article[data-key="sample:ball"] input'); t.value = 'smoke-tag, élan'; t.dispatchEvent(new Event('change')); const s = document.querySelector('#library-search'); s.value = 'elan'; s.dispatchEvent(new Event('input')); })()`);
+  check("editable tags participate in accent-insensitive search", await ev(`document.querySelectorAll('#library-grid article').length === 1 && document.querySelector('#library-grid article').dataset.key === 'sample:ball'`));
+  await ev(`document.querySelector('#library-favourites').click()`);
+  check("favourites filter uses the saved toggle", await ev(`document.querySelectorAll('#library-grid article').length === 1`));
+  await ev(`document.querySelector('#library-favourites').click()`);
+  await ev(`(() => { const s = document.querySelector('#library-search'); s.value = 'ball expression'; s.dispatchEvent(new Event('input')); document.querySelector('#library-grid article[data-key="sample:ball"] .program-preview').click(); })()`);
+  await sleep(150);
   const opened = await player();
-  check("opening loads the program without running it", opened.programKey === "sample:ball" && opened.runState === "not-run" && !(await ev("!!window.__gvr.frame")) && !(await ev("document.querySelector('#picker').open")), opened);
+  check("opening loads the program without running it", opened.programKey === "sample:ball" && opened.runState === "not-run" && !(await ev("!!window.__gvr.frame")) && !(await ev("!document.querySelector('#library').hidden")), opened);
   check("header names the loaded program and waits for Run", (await ev("document.querySelector('#program-name').textContent")) === "Ball" && (await visible("#ready-run")) && !(await ev("document.querySelector('#run').disabled")));
   check("hash names the loaded program", (await ev("location.hash")) === "#p/sample%3Aball");
   await shot("2-loaded");
@@ -176,16 +193,24 @@ try {
   await ev(`(() => { const box = document.querySelector('#source'); box.value += '\\n'; box.dispatchEvent(new Event('input')); })()`);
   const edited = await player();
   check("editing marks the program as edited since Run", edited.dirty && (await visible("#source-dirty")), edited);
+  const draft = await ev("document.querySelector('#source').value");
+  await ev("document.querySelector('#open-library').click()");
+  await sleep(100);
+  await ev("document.querySelector('#library-player').click()");
+  check("page navigation preserves unsaved Player edits and loaded program", (await player()).dirty && await ev(`document.querySelector('#source').value === ${JSON.stringify(draft)}`));
   await key("Enter", "Enter", 13, 2);
   await sleep(200);
   check("Ctrl+Enter re-runs the edited source", !(await player()).dirty);
 
   // 6. Opened file with a compile error
   await ev("document.querySelector('#open-library').click()");
-  await ev(`(() => { const input = document.querySelector('#file'); const dt = new DataTransfer(); dt.items.add(new File([${JSON.stringify(BROKEN)}], 'broken-upload.ms', { type: 'text/plain' })); input.files = dt.files; input.dispatchEvent(new Event('change')); })()`);
+  await ev(`(() => { const input = document.querySelector('#library-file'); const dt = new DataTransfer(); dt.items.add(new File([${JSON.stringify(BROKEN)}], 'broken-upload.ms', { type: 'text/plain' })); input.files = dt.files; input.dispatchEvent(new Event('change')); })()`);
   await sleep(300);
+  check("upload opens the full Library editor", await visible("#library-editor"));
+  await ev("document.querySelector('#library-save').click()");
+  await sleep(200);
   const uploaded = await player();
-  check("opened file becomes the loaded program, not run", uploaded.programName === "broken-upload.ms" && uploaded.format === "motionscript" && uploaded.runState === "not-run", uploaded);
+  check("opened file becomes the loaded program, not run", uploaded.programName === "broken-upload" && uploaded.format === "motionscript" && uploaded.runState === "not-run", uploaded);
   await ev("document.querySelector('#run').click()");
   await sleep(200);
   const failed = await player();
@@ -220,6 +245,46 @@ try {
   await navigate("/");
   const recent = await ev("[...document.querySelectorAll('#recent-list button')].map(b => b.textContent)");
   check("landing lists recent programs", recent[0] === "Through the Blue" && recent.includes("Ball"), recent);
+
+  await navigate("/#library");
+  check("Library route restores saved favourites and tags", await ev(`document.querySelector('article[data-key="sample:ball"] .favourite').getAttribute('aria-pressed') === 'true' && document.querySelector('article[data-key="sample:ball"] input').value.includes('smoke-tag')`));
+  check("My programs survive reload", await ev(`[...document.querySelectorAll('#library-grid article')].some(c => c.querySelector('h3').textContent === 'broken-upload')`));
+  await ev(`document.querySelector('#library-paste').click()`);
+  await ev(`(() => { const b = document.querySelector('#library-source'); b.value = 'scene "saved-draft" {};'; const t = document.querySelector('#library-name'); t.value = 'Saved draft'; })()`);
+  await ev(`document.querySelector('#library-player').click()`);
+  await ev(`document.querySelector('#open-library').click()`);
+  check("Library authoring draft survives page navigation", await ev(`document.querySelector('#library-source').value.includes('saved-draft')`));
+  // Simulate quota failure at the browser boundary, preserving the real editor.
+  await ev(`window.originalSetItem = Storage.prototype.setItem; Storage.prototype.setItem = function(){throw new DOMException('full', 'QuotaExceededError')}; document.querySelector('#library-save').click();`);
+  check("failed save reports storage failure and keeps editor source", await visible('#library-error') && await visible('#library-editor') && await ev(`document.querySelector('#library-source').value.includes('saved-draft') && location.hash === '#library'`));
+  await ev(`Storage.prototype.setItem = window.originalSetItem; document.querySelector('#library-save').click();`);
+  check("Paste saves to My programs and opens without running", (await player()).programName === "Saved draft" && (await player()).runState === "not-run");
+  await ev(`document.querySelector('#open-library').click(); document.querySelector('#library-new').click();`);
+  check("New opens a full blank editor", await visible('#library-editor') && await ev(`document.querySelector('#library-source').value === ''`));
+  await shot("7-library-editor");
+  await ev(`(() => { const t = document.querySelector('#library-source'); t.value = ''; document.querySelector('#library-cancel').click(); const input = document.querySelector('#library-file'); const dt = new DataTransfer(); dt.items.add(new File(['<svg xmlns="http://www.w3.org/2000/svg" width="80" height="60"><rect width="80" height="60" fill="red"/></svg>'], 'saved-logo.svg')); input.files = dt.files; input.dispatchEvent(new Event('change')); })()`);
+  await sleep(150);
+  await ev(`document.querySelector('#library-save').click()`);
+  const svgKey = (await player()).programKey;
+  await navigate(`/#p/${encodeURIComponent(svgKey)}`);
+  check("uploaded SVG retains its format after reload", (await player()).format === 'svg' && (await player()).runState === 'not-run');
+  await ev(`document.querySelector('#run').click()`);
+  check("saved SVG still imports through Player Run", (await player()).sceneId !== '');
+  await ev(`document.querySelector('#open-library').click(); document.querySelector('#library-sort').value = 'duration'; document.querySelector('#library-sort').dispatchEvent(new Event('change'));`);
+  for (let i=0; i<300 && await ev(`document.querySelector('#library-count').textContent.includes('Reading')`); i++) await sleep(100);
+  const durations = await ev(`[...document.querySelectorAll('#library-grid article')].map(c => { const t = c.querySelector('.program-duration').textContent; return t === 'Static' ? 0 : t.endsWith(' s') ? Number(t.slice(0,-2)) : null; }).filter(t => t !== null)`);
+  check("duration sort resolves and orders playable programs", durations.length > 0 && durations.every((n: number, i: number) => i === 0 || n >= durations[i-1]), durations);
+  await ev(`document.querySelector('#library-sort').value = 'recent'; document.querySelector('#library-sort').dispatchEvent(new Event('change'));`);
+  check("recent sort puts the latest opened program first", await ev(`document.querySelector('#library-grid article').dataset.key === ${JSON.stringify(svgKey)}`));
+  await ev(`document.querySelector('#library-search').value = 'no-matching-program-986'; document.querySelector('#library-search').dispatchEvent(new Event('input'));`);
+  check("empty results explain how to recover", await visible('#library-empty'));
+  await ev(`document.querySelector('#library-search').value = ''; document.querySelector('#library-search').dispatchEvent(new Event('input'));`);
+  await cdp.send("Emulation.setDeviceMetricsOverride", {width:390, height:844, deviceScaleFactor:1, mobile:false}, sessionId);
+  await sleep(200);
+  check("Library fits a narrow viewport", await ev(`document.documentElement.scrollWidth <= document.documentElement.clientWidth && document.querySelector('#library').scrollWidth <= document.querySelector('#library').clientWidth`));
+  await shot('8-library-narrow');
+  await cdp.send("Emulation.setDeviceMetricsOverride", {width:1440, height:900, deviceScaleFactor:1, mobile:false}, sessionId);
+
 
   // 9. Temporary legacy route keeps streaming working
   await navigate("/legacy.html#stream");
