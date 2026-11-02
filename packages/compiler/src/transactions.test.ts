@@ -32,3 +32,24 @@ describe('append-only scene transactions',()=>{
   const result=finishSession(s,true);expect(result.ok).toBe(false);
  });
 });
+
+it('validates forward transform references once at the enclosing batch boundary',()=>{
+ const s=session();
+ const unit=units('batch {circle child {radius 3; transformParent Parent;}; group Parent {circle mark {radius 2;};};};')[0]!;
+ pushUnit(s,unit);
+ expect(s.diagnostics).toEqual([]);
+ expect(s.scene.nodes.map(n=>n.id)).toEqual(['child','Parent','Parent.mark']);
+ expect(drainDeltas(s).flatMap(d=>d.operations).filter(op=>op.op==='ADD_NODES')).toHaveLength(1);
+ expect(finishSession(s,true).ok).toBe(true);
+});
+it('rejects an unresolved batch atomically with its initiating span',()=>{
+ const s=session();pushUnit(s,units('circle kept {radius 2;};')[0]!);drainDeltas(s);
+ const before=structuredClone(s.scene),revision=s.revision;
+ const items=units('circle child {radius 3; transformParent absent;}; seal 1s;');
+ const unit={kind:'batch' as const,items,span:items[0]!.span,errors:[]};
+ pushUnit(s,unit);
+ expect(s.scene).toEqual(before);
+ expect([s.revision,s.sealedThroughMs,s.frozen]).toEqual([revision,0,false]);
+ expect(drainDeltas(s)).toEqual([]);
+ expect(s.diagnostics[0]).toMatchObject({code:'INVALID_PARENT',sourceSpan:unit.span,target:'child'});
+});

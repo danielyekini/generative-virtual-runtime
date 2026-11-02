@@ -330,17 +330,17 @@ function sceneHeader(session: Session): SceneHeader {
     sceneId: session.scene.sceneId,
     viewport: session.scene.viewport,
     background: session.scene.background,
-    resources: session.scene.resources,
-    cameras: session.scene.cameras,
+    resources: [...session.scene.resources],
+    cameras: [...session.scene.cameras],
     initialCameraId: session.scene.initialCameraId,
     durationMs: session.scene.timeline.durationMs,
   };
   if (session.scene.irVersion === "0.2") {
-    header.compositions = session.scene.compositions ?? [];
-    header.instances = session.scene.instances ?? [];
-    header.timingScopes = session.scene.timingScopes ?? [];
-    header.requiredCapabilities = session.scene.requiredCapabilities ?? [];
-    header.geometryOperators = session.scene.geometryOperators ?? [];
+    header.compositions = [...(session.scene.compositions ?? [])];
+    header.instances = [...(session.scene.instances ?? [])];
+    header.timingScopes = [...(session.scene.timingScopes ?? [])];
+    header.requiredCapabilities = [...(session.scene.requiredCapabilities ?? [])];
+    header.geometryOperators = [...(session.scene.geometryOperators ?? [])];
   }
   return header;
 }
@@ -477,6 +477,15 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     for (const item of unit.items) {
       if (!applyUnit(session, item, false)) failed = true;
     }
+    // The enclosing batch is the dependency-complete transaction. Intermediate
+    // child prefixes may refer to definitions added later in that same batch.
+    if (!failed && emitDelta) {
+      const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
+      if (!validated.ok) {
+        session.diagnostics.push(...validated.diagnostics.map((issue) => ({...issue, sourceSpan: unit.span})));
+        failed = true;
+      }
+    }
     if (failed) {
       measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
       return false;
@@ -499,15 +508,17 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
     return false;
   }
-  const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
-  if (!validated.ok) {
-    const prior = validateSceneIR(snapshot);
-    const priorKeys = new Set(!prior.ok ? prior.diagnostics.map((item) => `${item.code}:${item.message}`) : []);
-    const fresh = validated.diagnostics.filter((item) => !priorKeys.has(`${item.code}:${item.message}`));
-    if (fresh.length > 0) {
-      session.diagnostics.push(...fresh);
-      measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
-      return false;
+  if (emitDelta) {
+    const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
+    if (!validated.ok) {
+      const prior = validateSceneIR(snapshot);
+      const priorKeys = new Set(!prior.ok ? prior.diagnostics.map((item) => `${item.code}:${item.message}`) : []);
+      const fresh = validated.diagnostics.filter((item) => !priorKeys.has(`${item.code}:${item.message}`));
+      if (fresh.length > 0) {
+        session.diagnostics.push(...fresh);
+        measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
+        return false;
+      }
     }
   }
   if (unit.kind === "seal") session.frozen = true;

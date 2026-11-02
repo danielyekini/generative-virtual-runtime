@@ -66,11 +66,17 @@ export function emitMotionScript(scene: SceneIR): string {
   }
   const camera = scene.cameras.find((item) => item.id === "main") ?? scene.cameras[0];
   if (camera) lines.push(...emitCamera(camera));
+  // Transform parents may follow their children in paint/declaration order.
+  // Keep that order and admit all node definitions as one dependency-complete unit.
+  const batchNodes = scene.nodes.some((node) => Boolean(node.transformParentId));
+  if (batchNodes) lines.push("batch {");
   const emitted = new Set<string>();
-  for (const node of childrenOf(scene.nodes, null)) lines.push(...emitNode(scene, scene.nodes, node, 0, emitted));
+  const depth = batchNodes ? 1 : 0;
+  for (const node of childrenOf(scene.nodes, null)) lines.push(...emitNode(scene, scene.nodes, node, depth, emitted));
   for (const node of scene.nodes) {
-    if (!emitted.has(node.id)) lines.push(...emitNode(scene, scene.nodes, node, 0, emitted));
+    if (!emitted.has(node.id)) lines.push(...emitNode(scene, scene.nodes, node, depth, emitted));
   }
+  if (batchNodes) lines.push("};");
   for (const list of scene.geometryOperators ?? []) {
     const body = list.operators.map((operator) =>
       operator.op === "round"

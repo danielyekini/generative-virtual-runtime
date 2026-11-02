@@ -25,3 +25,13 @@ The implementation accepts optional spatial tangent `z` and MotionScript `(x, y,
 ## Animated solid fill colour proposal (not implemented or released)
 
 The 2026-10-08T103605Z fidelity run identifies omitted `fl.c` animations on LOT-06 upper-arm layers 3 and 4. Current node channels cannot animate fill colour. A candidate minor contract could add gated scalar `fill.r`, `fill.g`, `fill.b`, `fill.a` channels on solid-filled nodes (`paint.animatedSolidFill`), with straight-alpha [0,1] samples and existing keyframe easing/timing. Defaults and older programs must retain static paint semantics; gradients and stroke colour are outside this initial scope. The vertical slice needs schema/property registry and rejection gates, compiler, runtime sampling, emitter equivalence, adapter lowering, conformance and full-window source/direct/compiled evidence. No capability token is enabled and no release pointer changes in this run. Preserve unsupported diagnostics until that candidate is verified.
+
+## Compatible assembled-delta validation repair (E001)
+
+Streaming admission validates the assembled accepted/queued candidate, including
+root and non-root transform parents, before publishing scene/revision/seal state.
+Transform-parent emission uses existing atomic batches to preserve declaration
+order with forward references; compiler contextual validation occurs at the outer
+batch boundary. No syntax, representation or sampling rule changes; released
+language/wire pointers remain unchanged. See
+[decision](../../../decisions/engine/assembled-delta-validation.md) and its tests.

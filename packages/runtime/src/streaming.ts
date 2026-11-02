@@ -3,10 +3,11 @@ import {
   DEFAULT_LIMITS,
   diagnostic,
   validateDelta,
+  validateSceneIR,
+  rootTimeMs,
   type ApplyResult,
   type Diagnostic,
   type ResolvedFrame,
-  type SceneHeader,
   type SceneIR,
   type SceneIRDelta,
 } from "@gvr/schema";
@@ -22,7 +23,8 @@ export class StreamingRuntime {
   sealedThroughMs = 0;
   authoringComplete = false;
   scene?: SceneIR;
-  private readonly queue: SceneIRDelta[] = [];
+  private readonly queue: { unitId: number; nextRevision: number }[] = [];
+  private queuedState?: CandidateState;
   private readonly rejected: Diagnostic[] = [];
   private readonly enqueuedAt: number[] = [];
   private disposed = false;
@@ -37,6 +39,7 @@ export class StreamingRuntime {
   dispose(): void {
     this.disposed = true;
     this.queue.length = 0;
+    this.queuedState = undefined;
     this.enqueuedAt.length = 0;
     this.rejected.length = 0;
     this.diagnostics = [];
@@ -55,20 +58,14 @@ export class StreamingRuntime {
 
   enqueue(delta: SceneIRDelta): void {
     if (this.disposed) return;
-    // Queued CREATE_SCENE headers establish the schema for later queued nodes,
-    // even when the caller has not flushed the header yet.
-    let wireVersion = this.scene?.irVersion ?? "0.1";
-    for (const pending of [...this.queue, delta]) {
-      if (!Array.isArray(pending.operations)) continue;
-      for (const operation of pending.operations) {
-        if (operation?.op === 'CREATE_SCENE' && (operation.scene?.irVersion === '0.1' || operation.scene?.irVersion === '0.2')) wireVersion = operation.scene.irVersion;
-      }
-    }
-    const validated = validateDelta(delta, undefined, wireVersion);
+    const base = this.queuedState ?? {
+      scene: this.scene,
+      sealedThroughMs: this.sealedThroughMs,
+      authoringComplete: this.authoringComplete,
+    };
+    const validated = validateDelta(delta, undefined, base.scene?.irVersion);
     if (!validated.ok) {
-      this.recordRejected(validated.diagnostics);
-      this.telemetry?.count('runtime.rejected_deltas');
-      this.telemetry?.event('runtime.delta_rejected', {unitId: delta.unitId, diagnostics: validated.diagnostics.slice(0,4)});
+      this.reject(delta, validated.diagnostics);
       return;
     }
     if (delta.expectedRevision !== this.revision + this.queue.length) {
@@ -78,12 +75,26 @@ export class StreamingRuntime {
     }
     if (this.queue.length >= DEFAULT_LIMITS.maxQueuedDeltas) {
       const issue = diagnostic({code:'RESOURCE_LIMIT', phase:'runtime', category:'resource', effect:'UNIT_REJECTED',message:`Runtime queue exceeds ${DEFAULT_LIMITS.maxQueuedDeltas} deltas.`});
-      this.recordRejected([issue]);
-      this.telemetry?.count('runtime.rejected_deltas');
-      this.telemetry?.event('runtime.delta_rejected', {unitId:delta.unitId,diagnostics:[issue]});
+      this.reject(delta, [issue]);
       return;
     }
-    this.queue.push(delta);
+    // Own only the new payload; previously accepted nested values are shared,
+    // never edited. Caller mutation cannot invalidate an admitted queued scene.
+    let owned: SceneIRDelta;
+    try {
+      owned = structuredClone(delta);
+    } catch {
+      this.reject(delta, [diagnostic({code: "INVALID_TYPE", phase: "validate", category: "type",
+        message: "Delta payload must contain cloneable Scene IR values."})]);
+      return;
+    }
+    const candidate = assemble(base, owned);
+    if (!candidate.ok) {
+      this.reject(delta, candidate.diagnostics);
+      return;
+    }
+    this.queuedState = candidate.state;
+    this.queue.push({unitId: owned.unitId, nextRevision: owned.nextRevision});
     if (this.telemetry) this.enqueuedAt.push(this.telemetry.now());
     this.telemetry?.count('runtime.accepted_deltas');
     this.telemetry?.gauge('runtime.queue_deltas', this.queue.length);
@@ -93,8 +104,14 @@ export class StreamingRuntime {
     const results: ApplyResult[] = [];
     for (const delta of this.queue.splice(0)) {
       if (this.telemetry) this.telemetry.observe('runtime.queue_wait_ms', this.telemetry.now() - this.enqueuedAt.shift()!);
-      this.apply(delta);
-      results.push({ revision: this.revision, unitId: delta.unitId, ok: true });
+      results.push({ revision: delta.nextRevision, unitId: delta.unitId, ok: true });
+    }
+    if (this.queuedState) {
+      this.scene = this.queuedState.scene;
+      this.sealedThroughMs = this.queuedState.sealedThroughMs;
+      this.authoringComplete = this.queuedState.authoringComplete;
+      this.revision = results[results.length - 1]!.revision;
+      this.queuedState = undefined;
     }
     this.telemetry?.gauge('runtime.queue_deltas', this.queue.length);
     this.telemetry?.gauge('runtime.retained_nodes', this.scene?.nodes.length ?? 0);
@@ -121,55 +138,79 @@ export class StreamingRuntime {
     if (this.rejected.length > DEFAULT_LIMITS.maxQueuedDeltas) this.rejected.splice(0,this.rejected.length - DEFAULT_LIMITS.maxQueuedDeltas);
   }
 
-  private apply(delta: SceneIRDelta): void {
-    for (const operation of delta.operations) {
-      if (operation.op === "CREATE_SCENE") {
-        const header = operation.scene;
-        if (!this.scene) {
-          this.scene = {
-            irVersion: header.irVersion,
-            sceneId: header.sceneId,
-            viewport: header.viewport,
-            background: header.background,
-            resources: [...header.resources],
-            nodes: [],
-            cameras: header.cameras.map((camera) => ({ ...camera, position: { ...camera.position } })),
-            initialCameraId: header.initialCameraId,
-            timeline: { durationMs: header.durationMs, tracks: [], steps: [] },
-          };
-          copyCapabilityProfile(this.scene, header);
-        } else {
-          this.scene.sceneId = header.sceneId;
-          this.scene.viewport = header.viewport;
-          this.scene.background = header.background;
-          this.scene.resources = [...header.resources];
-          this.scene.cameras = header.cameras.map((camera) => ({ ...camera, position: { ...camera.position } }));
-          this.scene.initialCameraId = header.initialCameraId;
-          this.scene.timeline.durationMs = header.durationMs;
-          copyCapabilityProfile(this.scene, header);
-        }
-      } else if (operation.op === "ADD_NODES") {
-        this.scene?.nodes.push(...operation.nodes);
-      } else if (operation.op === "ADD_TRACKS") {
-        this.scene?.timeline.tracks.push(...operation.tracks);
-      } else if (operation.op === "ADD_STEPS") {
-        this.scene?.timeline.steps.push(...operation.steps);
-      } else if (operation.op === "SEAL_TIMELINE") {
-        this.sealedThroughMs = operation.horizonMs;
-      } else if (operation.op === "COMPLETE_PROGRAM") {
-        this.authoringComplete = true;
-        if (this.scene) this.sealedThroughMs = Math.max(this.sealedThroughMs, this.scene.timeline.durationMs);
-      }
-    }
-    this.revision = delta.nextRevision;
+  private reject(delta: SceneIRDelta, diagnostics: readonly Diagnostic[]): void {
+    const attributed = diagnostics.map((issue) => ({...issue,
+      generationId: delta?.generationId, unitId: delta?.unitId, sourceSpan: delta?.sourceSpan}));
+    this.recordRejected(attributed);
+    this.telemetry?.count('runtime.rejected_deltas');
+    this.telemetry?.event('runtime.delta_rejected', {unitId: delta?.unitId, diagnostics: attributed.slice(0, 4)});
   }
 }
 
-function copyCapabilityProfile(scene: SceneIR, header: SceneHeader): void {
-  if (header.irVersion !== "0.2") return;
-  scene.compositions = header.compositions ?? [];
-  scene.instances = header.instances ?? [];
-  scene.timingScopes = header.timingScopes ?? [];
-  scene.requiredCapabilities = header.requiredCapabilities ?? [];
-  scene.geometryOperators = header.geometryOperators ?? [];
+interface CandidateState {
+  scene?: SceneIR;
+  sealedThroughMs: number;
+  authoringComplete: boolean;
+}
+
+type CandidateResult = {ok: true; state: CandidateState} | {ok: false; diagnostics: Diagnostic[]};
+
+/** No writes to base or its nested values: rejection simply discards these containers. */
+function assemble(base: CandidateState, delta: SceneIRDelta): CandidateResult {
+  let scene = base.scene && {...base.scene, nodes: [...base.scene.nodes],
+    timeline: {...base.scene.timeline, tracks: [...base.scene.timeline.tracks], steps: [...base.scene.timeline.steps]}};
+  let sealedThroughMs = base.sealedThroughMs;
+  let authoringComplete = base.authoringComplete;
+  const fail = (code: Diagnostic["code"], message: string, path: string): CandidateResult => ({
+    ok: false, diagnostics: [diagnostic({code, phase: "validate", category: code === "MISSING_REQUIRED" ? "reference" : "temporal", message, path})],
+  });
+  for (const [index, operation] of delta.operations.entries()) {
+    const path = `operations[${index}]`;
+    if (authoringComplete) return fail("INVALID_TIMING", "The program is already complete.", path);
+    if (operation.op === "CREATE_SCENE") {
+      if (sealedThroughMs > 0) return fail("INVALID_TIMING", "Base definitions are frozen after the first seal.", path);
+      const {durationMs, ...header} = operation.scene;
+      scene = {...header, nodes: scene?.nodes ?? [],
+        timeline: {durationMs, tracks: scene?.timeline.tracks ?? [], steps: scene?.timeline.steps ?? []}};
+    } else {
+      if (!scene) return fail("MISSING_REQUIRED", "CREATE_SCENE must precede scene operations.", path);
+      if (operation.op === "ADD_NODES") {
+        if (sealedThroughMs > 0) return fail("INVALID_TIMING", "Base definitions are frozen after the first seal.", path);
+        scene.nodes.push(...operation.nodes);
+      } else if (operation.op === "ADD_TRACKS") {
+        scene.timeline.tracks.push(...operation.tracks);
+      } else if (operation.op === "ADD_STEPS") {
+        scene.timeline.steps.push(...operation.steps);
+      } else if (operation.op === "SEAL_TIMELINE") {
+        if (operation.horizonMs <= sealedThroughMs + 1e-9 || operation.horizonMs > scene.timeline.durationMs) {
+          return fail("SEAL_BLOCKED", "A seal must advance within the scene duration.", path);
+        }
+        sealedThroughMs = operation.horizonMs;
+      } else if (operation.op === "COMPLETE_PROGRAM") {
+        authoringComplete = true;
+        sealedThroughMs = Math.max(sealedThroughMs, scene.timeline.durationMs);
+      }
+    }
+  }
+  if (!scene) return fail("MISSING_REQUIRED", "A delta must establish a scene.", "operations");
+  const validated = validateSceneIR(scene);
+  if (!validated.ok) return validated;
+  // Check new writers against the frontier at their position in the transaction,
+  // not the final frontier: a batch may add writers and then seal them.
+  let frontier = base.sealedThroughMs;
+  for (const [index, operation] of delta.operations.entries()) {
+    if (operation.op === "SEAL_TIMELINE") frontier = operation.horizonMs;
+    if (operation.op === "ADD_TRACKS") {
+      for (const track of operation.tracks) {
+        const start = track.timingScopeId ? rootTimeMs(scene.timingScopes ?? [], track.timingScopeId, track.startMs) : track.startMs;
+        const end = track.timingScopeId ? rootTimeMs(scene.timingScopes ?? [], track.timingScopeId, track.startMs + track.durationMs) : track.startMs + track.durationMs;
+        if (Math.min(start!, end!) + 1e-9 < frontier) {
+          return fail("INVALID_TIMING", `Track ${track.id} writes before the seal at ${frontier}ms.`, `operations[${index}].tracks`);
+        }
+      }
+    } else if (operation.op === "ADD_STEPS" && operation.steps.some((step) => step.timeMs + 1e-9 < frontier)) {
+      return fail("INVALID_TIMING", `A step writes before the seal at ${frontier}ms.`, `operations[${index}].steps`);
+    }
+  }
+  return {ok: true, state: {scene, sealedThroughMs, authoringComplete}};
 }

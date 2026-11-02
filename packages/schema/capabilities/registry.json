@@ -584,6 +584,8 @@
       "restrictions": ["Omitted transformParentId means the chain is parentId. inheritOpacity false skips exactly one ancestor."],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
+        "packages/runtime/src/streaming-admission.test.ts#replays non-root cross-unit transform parents with offline frame equivalence",
+        "packages/runtime/src/streaming-admission.test.ts#does not accept operations before a scene or leak root transform-parent holes into full validation",
         "packages/format-lottie/src/lottie.test.ts#keeps global source layer paint order independent of transform parenting",
         "packages/format-lottie/src/lottie.test.ts#keeps multi-level parent transforms without inheriting parent paint state",
         "packages/format-lottie/src/lottie.test.ts#preserves the published one-ancestor opacity skip through round trip"
