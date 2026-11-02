@@ -45,7 +45,7 @@ any unsaved edits.
 ### Player (landing page)
 
 - With nothing loaded, the landing page is an empty player. The header's
-  **Open Library** button is always present; the empty canvas repeats it as a
+  **Library** button is always present; the empty canvas repeats it as a
   prominent prompt (plus recent programs if any). Nothing auto-loads.
 - Layout follows VS Code. A **header bar** (like VS Code's title and run bar)
   holds the program name, **Open Library**, the run actions and run options.
@@ -56,7 +56,7 @@ any unsaved edits.
 
 ```
 ┌────────────────────────────────────────┐
-│ ▤ Library │ program-name │ ▶ Run  ≋ Stream ▾ │ ▯ │  header
+│ program-name │ ▶ Run │ ≋ Stream ▾ │   Library ▯ │  header
 ├──────────────────────────────┬─────────┤
 │                              │ Source  │
 │           CANVAS             │ (opt.)  │
@@ -71,10 +71,17 @@ any unsaved edits.
 ```
 
 - **Header run actions** (user direction, 2 November 2026): **Run** executes the
-  loaded program in instant mode. **Stream** runs it in stream mode, and
-  switching to stream adds the stream controls (rate preset, Advanced, pause and
-  step) to the header and the stream monitoring tools (Stream tab, frame-tape
-  states) to the layout. Leaving stream mode removes them again.
+  loaded program in instant mode. **Stream** runs it in stream mode and adds the
+  stream monitoring tools (Stream tab, frame-tape states) to the layout; leaving
+  stream mode removes them again.
+- **Stream dropdown** (user steering, 2 November 2026, P018): Stream is a split
+  button. Its ▾ dropdown holds every stream control: the rate preset (settable
+  before streaming), Pause/Resume arrival and Step chunk (shown only while
+  streaming), and the Advanced arrival fields. Nothing stream-specific sits
+  inline in the header.
+- **Library button** (user steering, P018): a blue (accent) text-only "Library"
+  button at the right of the header, immediately left of the Source panel
+  toggle.
 - **Opening a program** from the Library loads it into the player and waits for
   Run or Stream. Autoplay on open is a header run option (off by default).
 - There is exactly one loaded program. Stream, Scene and Diagnostics always
@@ -161,8 +168,8 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
     P017). Scrolling up pauses following and re-rendering of the source view; a
     **Jump to latest** control returns to the bottom and resumes. The pop-out
     shows the same icons, colours and legend as the tab.
-  - Stream-control placement (Rate, Pause/Step, Advanced in the header) is an
-    open UX question; see P018. Do not move it without proposing options.
+  - Stream controls live in the Stream button's dropdown (P018, resolved by the
+    user).
 - **Frame tape** (user direction, 2 November 2026): a video-editor style track of
   frame thumbnails instead of a plain line, with a vertical playhead line at the
   current time. In stream mode, frames are added to the tape as they are

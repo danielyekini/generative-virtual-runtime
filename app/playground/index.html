@@ -9,7 +9,6 @@
   <body data-surface="player">
     <header id="bar">
       <a class="mark" href="/" title="GVR Studio Player">GVR</a>
-      <button id="open-library" type="button" title="Open Library (O)">▤ Library</button>
       <div id="program" class="program" aria-live="polite">
         <span id="program-name">No program loaded</span>
         <span id="program-meta" class="meta"></span>
@@ -18,14 +17,15 @@
       <div class="run-actions" role="group" aria-label="Run actions">
         <button id="run" class="run" type="button" disabled title="Run the loaded program (Ctrl/⌘+Enter)">▶ Run</button>
         <button id="stream" type="button" disabled title="Simulate arrival of the loaded MotionScript">≋ Stream</button>
-        <span id="stream-controls" hidden>
-          <label>Rate <select id="arrival-rate" aria-label="Simulated arrival rate"><option value="20">Slow · 20 estimated tokens/s</option><option value="60" selected>Medium · 60 estimated tokens/s</option><option value="200">Fast · 200 estimated tokens/s</option><option value="0">Instant</option></select></label>
-          <button id="arrival-pause" type="button">Pause arrival</button>
-          <button id="arrival-step" type="button">Step chunk</button>
-        </span>
-        <button id="stream-menu" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Advanced arrival controls" hidden>Advanced ▾</button>
+        <button id="stream-menu" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Stream options" title="Stream options" disabled>▾</button>
         <div id="stream-pop" class="menu" hidden>
-          <p class="menu-note">Simulated arrival. One estimated token = 4 UTF-16 characters; not model speed. Changes apply on the next Stream.</p>
+          <label class="field">Rate <select id="arrival-rate" aria-label="Simulated arrival rate"><option value="20">Slow · 20 estimated tokens/s</option><option value="60" selected>Medium · 60 estimated tokens/s</option><option value="200">Fast · 200 estimated tokens/s</option><option value="0">Instant</option></select></label>
+          <div id="stream-controls" class="menu-row" hidden>
+            <button id="arrival-pause" type="button">Pause arrival</button>
+            <button id="arrival-step" type="button">Step chunk</button>
+          </div>
+          <hr />
+          <p class="menu-note"><strong>Advanced</strong> · Simulated arrival. One estimated token = 4 UTF-16 characters; not model speed. Rate and Advanced changes apply on the next Stream.</p>
           <label class="field">Chunking <select id="arrival-mode"><option value="tokens">Estimated tokens</option><option value="characters">Characters</option><option value="lines">Lines</option><option value="random">Random characters</option></select></label>
           <label class="field">Chunk size <input id="arrival-size" type="number" min="1" max="4096" value="4"></label>
           <label class="field">Random min <input id="arrival-min" type="number" min="1" max="16384" value="4"></label>
@@ -37,6 +37,7 @@
         </div>
       </div>
       <span class="spacer"></span>
+      <button id="open-library" class="primary" type="button" title="Open Library (O)">Library</button>
       <button id="toggle-source" type="button" aria-label="Source panel" aria-pressed="false" title="Source panel (E)">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5" /><path d="M16.5 4.5v15" /></svg>
       </button>
