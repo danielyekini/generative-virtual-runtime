@@ -514,6 +514,75 @@ export interface SceneIR {
   audioCues?: AudioCueDefinition[];
   /** Requires space.planar25d (Scene IR 0.12.0). Projected at frame resolution. */
   spatialLayers?: SpatialLayerDefinition[];
+  /** Requires physics.planar2d (Scene IR 0.13.0). One planar physics world per scene. */
+  physics?: PhysicsWorldDefinition;
+}
+
+/**
+ * Planar 2D physics world (physics.planar2d). Aligns with @gvr/runtime PhysicsSession.
+ * Dynamic mode uses rigid bodies/joints; authored mode uses position-based constraints.
+ * Physics exclusively owns transform.position.x/y and transform.rotation for each body entity.
+ */
+export type PhysicsBodyKind = "static" | "kinematic" | "dynamic";
+export type PhysicsWorldMode = "dynamic" | "authored";
+
+export type PhysicsColliderDefinition =
+  | { kind: "circle"; radius: number }
+  | { kind: "aabb"; halfWidth: number; halfHeight: number };
+
+export interface PhysicsBodyDefinition {
+  id: string;
+  /** Entity that receives channel writes; defaults to id. */
+  entityId?: string;
+  kind: PhysicsBodyKind;
+  x: number;
+  y: number;
+  /** Radians. */
+  angle: number;
+  vx?: number;
+  vy?: number;
+  omega?: number;
+  mass?: number;
+  restitution?: number;
+  friction?: number;
+  collider: PhysicsColliderDefinition;
+  /** Optional E010 planar surface attachment (presentation only). */
+  surfaceId?: string;
+}
+
+export interface PhysicsJointDefinition {
+  id: string;
+  bodyA: string;
+  bodyB: string;
+  restLength: number;
+  anchorA?: Vec2;
+  anchorB?: Vec2;
+  compliance?: number;
+}
+
+/** Authored (non-dynamic) distance constraint between entity/point ids. */
+export interface PhysicsConstraintDefinition {
+  id: string;
+  a: string;
+  b: string;
+  restLength: number;
+  stiffness?: number;
+}
+
+export interface PhysicsWorldDefinition {
+  id: string;
+  mode: PhysicsWorldMode;
+  gravity?: Vec2;
+  fixedDtMs?: number;
+  seed?: number;
+  maxBodies?: number;
+  maxJoints?: number;
+  maxContactsPerStep?: number;
+  maxSolverIterations?: number;
+  maxStepsPerAdvance?: number;
+  bodies: PhysicsBodyDefinition[];
+  joints?: PhysicsJointDefinition[];
+  constraints?: PhysicsConstraintDefinition[];
 }
 
 /** Planar 2.5D layer (space.planar25d). Aligns with @gvr/runtime SpatialLayer. */
@@ -618,6 +687,8 @@ export interface SceneHeader {
   interactions?: InteractionTarget[];
   /** Requires space.planar25d (Scene IR 0.12.0). */
   spatialLayers?: SpatialLayerDefinition[];
+  /** Requires physics.planar2d (Scene IR 0.13.0). Base definition, frozen after the first seal. */
+  physics?: PhysicsWorldDefinition;
 }
 
 /** Stable semantic entity identity for durable revisions (entities.durableRevisions). */

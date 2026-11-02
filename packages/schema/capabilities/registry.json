@@ -834,6 +834,39 @@
       }
     },
     {
+      "id": "physics.planar2d",
+      "summary": "Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels.",
+      "introducedIn": { "motionscript": "0.13.0", "sceneIr": "0.13.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing physics.planar2d; physics without it is rejected.",
+        "One world per scene. Dynamic mode needs bodies (circle/AABB colliders, optional distance joints); authored mode needs constraints and rejects joints. Body/joint limits match PhysicsSession defaults (256).",
+        "Physics exclusively owns transform.position.x/y and transform.rotation for each body entity; authored constraint endpoints own position.x/y. Tracks and input bindings on those scalars are rejected.",
+        "The world is a base definition on CREATE_SCENE, frozen after the first seal. Hosts lower with createScenePhysicsSession and apply writes as a SampleOverlay; AnimationRuntime stays pure. Drag handoff uses PhysicsSession beginDrag/dragTo/endDrag. No volumetric 3D, soft bodies, fluids or motors."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/physics.test.ts#lowers a dynamic world with bodies and joints into Scene IR",
+        "packages/compiler/src/physics.test.ts#rejects physics without the capability and enforces validation bounds",
+        "packages/compiler/src/physics.test.ts#reports compile diagnostics, forward references and frozen worlds",
+        "packages/compiler/src/physics.test.ts#keeps older identifiers spelled like physics body words compiling",
+        "packages/runtime/src/physics-scene.test.ts#advances declared bodies on evaluate overlay and exposes physics diagnostics",
+        "packages/runtime/src/physics-scene.test.ts#solves authored constraints onto entity positions",
+        "packages/runtime/src/physics-scene.test.ts#hands drag to kinematic pose then restores dynamic ownership writes",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips physics declarations (physics.planar2d)"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native physics; Lottie has no physics model to import."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native physics; SVG has no physics model to import."
+        }
+      }
+    },
+    {
       "id": "compositing.matte",
       "summary": "A track matte would clip one layer by another.",
       "targets": [],

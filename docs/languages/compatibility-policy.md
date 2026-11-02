@@ -81,6 +81,10 @@ Landed in MotionScript / Scene IR **0.11.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.12.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `space.planar25d`. `spatialLayer` declarations lower to scene `spatialLayers` (layer id, camera, surfaces naming root-scene nodes with 3D placement, hinge, `backFill` and `backface`), carried on `CREATE_SCENE` headers as a base definition frozen after the first seal. Only `spatialLayer` became a reserved word; `camera`, `surface` and body words match by spelling, so older identifiers keep compiling. Older readers reject the capability token and the unknown `spatialLayers` key. See `docs/decisions/engine/spatial-graphics.md`.
 
+### Decision for `physics.planar2d`
+
+Landed in MotionScript / Scene IR **0.13.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `physics.planar2d`. `physics` declarations lower to scene `physics` (one world: dynamic bodies/joints or authored constraints), carried on `CREATE_SCENE` headers as a base definition frozen after the first seal. Physics exclusively owns `transform.position.x` / `transform.position.y` / `transform.rotation` for body entities (authored endpoints own position channels). Only `physics` became a reserved word; `mode`, `body`, `joint`, `constraint` and body words match by spelling. Older readers reject the capability token and the unknown `physics` key. See `docs/decisions/engine/physics-integration.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

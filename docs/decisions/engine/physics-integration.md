@@ -66,8 +66,10 @@ attachment. No universal cross-platform bitwise determinism claim.
 - **Ownership.** Writes go only through a `PhysicsOwnership` predicate (typically
   `EntityRevisionStore` grants with `writerClass: "physics"`). Rejected writes
   emit `PHYSICS_OWNERSHIP_REJECTED` and do not mutate host state.
-- **Channels.** Prototype writes `transform.x`, `transform.y`, `transform.rotation`
-  (degrees). Future language work may add velocity/readback channels.
+- **Channels.** Language contract (E029 / `physics.planar2d`) writes
+  `transform.position.x`, `transform.position.y`, `transform.rotation` (degrees)
+  so ownership aligns with Scene IR tracks and input. Future work may add
+  velocity/readback channels.
 - **Drag / input handoff.** `beginDrag(bodyId)` → kinematic; `dragTo` sets pose;
   `endDrag` restores prior kind. Input keeps exclusive ownership of the drag
   gesture (E007); physics resumes writing only after release when ownership

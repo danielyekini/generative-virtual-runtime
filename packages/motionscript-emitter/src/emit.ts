@@ -9,6 +9,10 @@ import {
   type Paint,
   type SolidColor,
   type SegmentEasing,
+  type PhysicsBodyDefinition,
+  type PhysicsConstraintDefinition,
+  type PhysicsJointDefinition,
+  type PhysicsWorldDefinition,
   type SpatialLayerDefinition,
   type SpatialSurfaceDefinition,
   type SpatialTransformDefinition,
@@ -70,6 +74,7 @@ export function emitMotionScript(scene: SceneIR): string {
   const camera = scene.cameras.find((item) => item.id === "main") ?? scene.cameras[0];
   if (camera) lines.push(...emitCamera(camera));
   for (const layer of scene.spatialLayers ?? []) lines.push(...emitSpatialLayer(layer));
+  if (scene.physics) lines.push(...emitPhysics(scene.physics));
   // Transform parents may follow their children in paint/declaration order.
   // Keep that order and admit all node definitions as one dependency-complete unit.
   const batchNodes = scene.nodes.some((node) => Boolean(node.transformParentId));
@@ -168,6 +173,70 @@ function emitSpatialTransform(transform: SpatialTransformDefinition): string[] {
 /** Spatial layer vectors always need three components (z = 0 is meaningful). */
 function formatVec3(value: { x: number; y: number; z: number }): string {
   return `(${formatNumber(value.x)}, ${formatNumber(value.y)}, ${formatNumber(value.z)})`;
+}
+
+function emitPhysics(world: PhysicsWorldDefinition): string[] {
+  const body: string[] = [`  mode ${world.mode};`];
+  if (world.gravity) body.push(`  gravity ${formatVec(world.gravity)};`);
+  if (world.fixedDtMs !== undefined) body.push(`  fixedDtMs ${formatNumber(world.fixedDtMs)};`);
+  if (world.seed !== undefined) body.push(`  seed ${formatNumber(world.seed)};`);
+  if (world.maxBodies !== undefined) body.push(`  maxBodies ${formatNumber(world.maxBodies)};`);
+  if (world.maxJoints !== undefined) body.push(`  maxJoints ${formatNumber(world.maxJoints)};`);
+  if (world.maxContactsPerStep !== undefined) body.push(`  maxContactsPerStep ${formatNumber(world.maxContactsPerStep)};`);
+  if (world.maxSolverIterations !== undefined) body.push(`  maxSolverIterations ${formatNumber(world.maxSolverIterations)};`);
+  if (world.maxStepsPerAdvance !== undefined) body.push(`  maxStepsPerAdvance ${formatNumber(world.maxStepsPerAdvance)};`);
+  for (const item of world.bodies) body.push(...emitPhysicsBody(item));
+  for (const joint of world.joints ?? []) body.push(...emitPhysicsJoint(joint));
+  for (const constraint of world.constraints ?? []) body.push(...emitPhysicsConstraint(constraint));
+  return [`physics ${world.id} {`, ...body, "};"];
+}
+
+function emitPhysicsBody(body: PhysicsBodyDefinition): string[] {
+  const lines: string[] = [`  body ${body.id} {`, `    kind ${body.kind};`];
+  if (body.entityId) lines.push(`    entity ${body.entityId};`);
+  lines.push(`    position ${formatVec({ x: body.x, y: body.y })};`);
+  if (body.angle) lines.push(`    angle ${formatAngle(body.angle)};`);
+  if (body.vx !== undefined || body.vy !== undefined) {
+    lines.push(`    velocity ${formatVec({ x: body.vx ?? 0, y: body.vy ?? 0 })};`);
+  }
+  if (body.omega !== undefined) lines.push(`    omega ${formatNumber(body.omega)};`);
+  if (body.mass !== undefined) lines.push(`    mass ${formatNumber(body.mass)};`);
+  if (body.restitution !== undefined) lines.push(`    restitution ${formatNumber(body.restitution)};`);
+  if (body.friction !== undefined) lines.push(`    friction ${formatNumber(body.friction)};`);
+  if (body.collider.kind === "circle") {
+    lines.push(`    collider circle ${formatNumber(body.collider.radius)};`);
+  } else {
+    lines.push(`    collider aabb ${formatNumber(body.collider.halfWidth)} ${formatNumber(body.collider.halfHeight)};`);
+  }
+  if (body.surfaceId) lines.push(`    surface ${body.surfaceId};`);
+  lines.push("  };");
+  return lines;
+}
+
+function emitPhysicsJoint(joint: PhysicsJointDefinition): string[] {
+  const lines: string[] = [
+    `  joint ${joint.id} {`,
+    `    a ${joint.bodyA};`,
+    `    b ${joint.bodyB};`,
+    `    restLength ${formatNumber(joint.restLength)};`,
+  ];
+  if (joint.anchorA) lines.push(`    anchorA ${formatVec(joint.anchorA)};`);
+  if (joint.anchorB) lines.push(`    anchorB ${formatVec(joint.anchorB)};`);
+  if (joint.compliance !== undefined) lines.push(`    compliance ${formatNumber(joint.compliance)};`);
+  lines.push("  };");
+  return lines;
+}
+
+function emitPhysicsConstraint(constraint: PhysicsConstraintDefinition): string[] {
+  const lines: string[] = [
+    `  constraint ${constraint.id} {`,
+    `    a ${constraint.a};`,
+    `    b ${constraint.b};`,
+    `    restLength ${formatNumber(constraint.restLength)};`,
+  ];
+  if (constraint.stiffness !== undefined) lines.push(`    stiffness ${formatNumber(constraint.stiffness)};`);
+  lines.push("  };");
+  return lines;
 }
 
 function emitNode(scene: SceneIR, nodes: readonly NodeDefinition[], node: NodeDefinition, depth: number, emitted: Set<string>): string[] {

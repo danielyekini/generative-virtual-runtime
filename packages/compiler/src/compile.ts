@@ -155,6 +155,11 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${missing ?? unit.layer.id}.`, unit.span));
       continue;
     }
+    if (unit.kind === "physics") {
+      const missing = missingPhysicsEntity(session, unit);
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${missing ?? unit.world.id}.`, unit.span));
+      continue;
+    }
     if (unit.kind === "cue") {
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved audio resource ${unit.cue.resourceId}.`, unit.span));
       continue;
@@ -244,6 +249,7 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
   }
   if (unit.kind === "operators") return !knownNodeIds(session).has(unit.nodeId);
   if (unit.kind === "spatialLayer") return missingSurfaceNode(session, unit) !== undefined;
+  if (unit.kind === "physics") return missingPhysicsEntity(session, unit) !== undefined;
   if (unit.kind === "cue") {
     return !session.scene.resources.some((resource) => resource.kind === "audio" && resource.id === unit.cue.resourceId);
   }
@@ -314,6 +320,7 @@ function captureInner(session: Session): Capture {
       geometryOperators: session.scene.geometryOperators,
       interactions: session.scene.interactions,
       spatialLayers: session.scene.spatialLayers,
+      physics: session.scene.physics,
     }),
   };
 }
@@ -401,6 +408,7 @@ function sceneHeader(session: Session): SceneHeader {
     header.geometryOperators = [...(session.scene.geometryOperators ?? [])];
     if (session.scene.interactions) header.interactions = [...session.scene.interactions];
     if (session.scene.spatialLayers) header.spatialLayers = [...session.scene.spatialLayers];
+    if (session.scene.physics) header.physics = structuredClone(session.scene.physics);
   }
   return header;
 }
@@ -514,6 +522,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       unit.kind === "interact" ||
       unit.kind === "audio" ||
       unit.kind === "spatialLayer" ||
+      unit.kind === "physics" ||
       (unit.kind === "batch" && unit.items.some((item) => item.kind === "node")))
   ) {
     session.diagnostics.push(
@@ -635,6 +644,7 @@ function snapshotScene(scene: SceneIR): SceneIR {
     ...(scene.interactions ? {interactions: [...scene.interactions]} : {}),
     ...(scene.audioCues ? {audioCues: [...scene.audioCues]} : {}),
     ...(scene.spatialLayers ? {spatialLayers: [...scene.spatialLayers]} : {}),
+    ...(scene.physics ? {physics: structuredClone(scene.physics)} : {}),
   };
 }
 
@@ -661,6 +671,8 @@ function restore(session: Session, snapshot: SceneIR, sealed: number, constants:
   restoreList(session.scene, snapshot, "interactions");
   restoreList(session.scene, snapshot, "audioCues");
   restoreList(session.scene, snapshot, "spatialLayers");
+  if (snapshot.physics === undefined) delete session.scene.physics;
+  else session.scene.physics = structuredClone(snapshot.physics);
   session.sealedThroughMs = sealed;
   session.constants = constants;
 }
@@ -719,6 +731,14 @@ function lower(session: Session, unit: UnitAst): void {
       return;
     }
     lowerSpatialLayer(session, unit);
+    return;
+  }
+  if (unit.kind === "physics") {
+    if (session.scene.irVersion !== "0.2") {
+      session.diagnostics.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare physics.", unit.span));
+      return;
+    }
+    lowerPhysics(session, unit);
     return;
   }
   if (unit.kind === "timing" || unit.kind === "composition" || unit.kind === "instance" || unit.kind === "operators") {
@@ -1390,6 +1410,53 @@ function lowerSpatialLayer(session: Session, unit: Extract<UnitAst, { kind: "spa
   // Replace the container so earlier emitted headers keep their own list.
   session.scene.spatialLayers = [...list, structuredClone(unit.layer)];
   ensureCapability(session, "space.planar25d");
+}
+
+/** First body/constraint entity that does not exist yet (declaration may precede it). */
+function missingPhysicsEntity(session: Session, unit: Extract<UnitAst, { kind: "physics" }>): string | undefined {
+  const ids = new Set(session.scene.nodes.map((node) => node.id));
+  for (const body of unit.world.bodies) {
+    const entityId = body.entityId ?? body.id;
+    if (!ids.has(entityId)) return entityId;
+  }
+  for (const constraint of unit.world.constraints ?? []) {
+    if (!ids.has(constraint.a)) return constraint.a;
+    if (!ids.has(constraint.b)) return constraint.b;
+  }
+  return undefined;
+}
+
+function lowerPhysics(session: Session, unit: Extract<UnitAst, { kind: "physics" }>): void {
+  if (session.scene.physics) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `Physics world ${session.scene.physics.id} already exists; only one world is allowed.`, unit.span));
+    return;
+  }
+  if (unit.world.mode === "dynamic" && unit.world.bodies.length === 0) {
+    session.diagnostics.push(problem("MISSING_REQUIRED", "A dynamic physics world needs at least one body.", unit.span));
+    return;
+  }
+  if (unit.world.mode === "authored" && (unit.world.constraints?.length ?? 0) === 0) {
+    session.diagnostics.push(problem("MISSING_REQUIRED", "An authored physics world needs at least one constraint.", unit.span));
+    return;
+  }
+  const bodyIds = new Set<string>();
+  for (const body of unit.world.bodies) {
+    if (bodyIds.has(body.id)) {
+      session.diagnostics.push(problem("DUPLICATE_ID", `Physics body ${body.id} already exists.`, unit.span));
+      return;
+    }
+    bodyIds.add(body.id);
+  }
+  for (const joint of unit.world.joints ?? []) {
+    if (!bodyIds.has(joint.bodyA) || !bodyIds.has(joint.bodyB)) {
+      session.diagnostics.push(
+        problem("UNKNOWN_TARGET", `Joint ${joint.id} names unknown body ${!bodyIds.has(joint.bodyA) ? joint.bodyA : joint.bodyB}.`, unit.span),
+      );
+      return;
+    }
+  }
+  session.scene.physics = structuredClone(unit.world);
+  ensureCapability(session, "physics.planar2d");
 }
 
 function lowerAudio(session: Session, unit: Extract<UnitAst, { kind: "audio" }>): void {

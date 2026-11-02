@@ -122,6 +122,12 @@ export type {
   PhysicsSnapshot,
   PhysicsWrite,
 } from "./physics";
+export {
+  createScenePhysicsSession,
+  declaredPhysicsChannels,
+  physicsOwnershipFromWorld,
+} from "./physics-scene";
+export type { ScenePhysicsSession } from "./physics-scene";
 export { assessReadiness, PresentationController } from "./presentation";
 export type { GeneratedOffer, PresentationPhase, PresentationView, Readiness, SystemCatalogueEntry } from "./presentation";
 export type { PlaybackState } from "./playback";

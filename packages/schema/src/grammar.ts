@@ -40,7 +40,7 @@ headerProperty = "version" , string , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
                | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
-               | audioDecl | cueDecl | spatialLayerDecl
+               | audioDecl | cueDecl | spatialLayerDecl | physicsDecl
                | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
                | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
@@ -209,6 +209,42 @@ surfaceItem    = ( "parent" , dottedId , ";" )
                | ( "backFill" , color , ";" ) ;
 vec3           = "(" , signedNumber , "," , signedNumber , "," , signedNumber , ")" ;
 angleOrNumber  = angle | signedNumber ;
+
+(* MotionScript 0.13 planar 2D physics (physics.planar2d). Only "physics" is
+   reserved; mode/body/joint/constraint and every body word match by spelling.
+   One world per scene; it is a base definition, frozen after the first seal.
+   Dynamic mode uses rigid bodies and distance joints; authored mode uses
+   position-based constraints without velocity. Physics exclusively owns
+   transform.position.x/y and transform.rotation for each body entity.
+*)
+physicsDecl    = "physics" , identifier , "{" , { physicsItem } , "}" , ";" ;
+physicsItem    = ( "mode" , ( "dynamic" | "authored" ) , ";" )
+               | ( "gravity" , vec2 , ";" )
+               | ( ( "fixedDtMs" | "seed" | "maxBodies" | "maxJoints"
+                   | "maxContactsPerStep" | "maxSolverIterations" | "maxStepsPerAdvance" )
+                   , signedNumber , ";" )
+               | physicsBody | physicsJoint | physicsConstraint ;
+physicsBody    = "body" , identifier , "{" , { bodyItem } , "}" , ";" ;
+bodyItem       = ( "entity" , dottedId , ";" )
+               | ( "kind" , ( "static" | "kinematic" | "dynamic" ) , ";" )
+               | ( "position" , vec2 , ";" )
+               | ( "angle" , angleOrNumber , ";" )
+               | ( "velocity" , vec2 , ";" )
+               | ( "omega" , signedNumber , ";" )
+               | ( ( "mass" | "restitution" | "friction" ) , signedNumber , ";" )
+               | ( "collider" , colliderSpec , ";" )
+               | ( "surface" , dottedId , ";" ) ;
+colliderSpec   = ( "circle" , signedNumber )
+               | ( "aabb" , signedNumber , signedNumber ) ;
+physicsJoint   = "joint" , identifier , "{" , { jointItem } , "}" , ";" ;
+jointItem      = ( ( "a" | "b" ) , identifier , ";" )
+               | ( "restLength" , signedNumber , ";" )
+               | ( ( "anchorA" | "anchorB" ) , vec2 , ";" )
+               | ( "compliance" , signedNumber , ";" ) ;
+physicsConstraint = "constraint" , identifier , "{" , { constraintItem } , "}" , ";" ;
+constraintItem = ( ( "a" | "b" ) , dottedId , ";" )
+               | ( "restLength" , signedNumber , ";" )
+               | ( "stiffness" , signedNumber , ";" ) ;
 
 (* MotionScript 0.9 declarative entity statements. Lower 1:1 onto released
    APPLY_ENTITY_PATCH ops (entities.durableRevisions / entities.drawableBindings).
@@ -392,6 +428,7 @@ export const KEYWORDS = [
   "audio",
   "cue",
   "spatialLayer",
+  "physics",
 ] as const;
 
 export const KEYWORD_SET = new Set<string>(KEYWORDS);

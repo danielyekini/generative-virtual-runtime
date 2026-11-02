@@ -1,4 +1,15 @@
-import type { AudioCueDefinition, Diagnostic, InteractionBinding, Paint, PathCommand, SolidColor, SourceSpan, SpatialLayerDefinition, Stroke } from "@gvr/schema";
+import type {
+  AudioCueDefinition,
+  Diagnostic,
+  InteractionBinding,
+  Paint,
+  PathCommand,
+  PhysicsWorldDefinition,
+  SolidColor,
+  SourceSpan,
+  SpatialLayerDefinition,
+  Stroke,
+} from "@gvr/schema";
 
 export interface Vec {
   x: number;
@@ -180,6 +191,16 @@ export interface SpatialLayerAst {
   errors: Diagnostic[];
 }
 
+/** Planar 2D physics world (MotionScript 0.13 / physics.planar2d). */
+export interface PhysicsAst {
+  kind: "physics";
+  world: PhysicsWorldDefinition;
+  /** True once `mode dynamic|authored` parsed. */
+  hasMode: boolean;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
 export interface StepAst {
   kind: "step";
   target: string;
@@ -287,6 +308,7 @@ export type UnitAst =
   | AudioDeclAst
   | CueDeclAst
   | SpatialLayerAst
+  | PhysicsAst
   | EntityDeclAst
   | GeometryDeclAst
   | BindDeclAst

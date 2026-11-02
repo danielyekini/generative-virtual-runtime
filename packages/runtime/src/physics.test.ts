@@ -57,7 +57,7 @@ describe("solveAuthoredConstraints", () => {
 
 describe("PhysicsSession", () => {
   it("exposes the physics channel set used for ownership writes", () => {
-    expect(PHYSICS_CHANNELS).toEqual(["transform.x", "transform.y", "transform.rotation"]);
+    expect(PHYSICS_CHANNELS).toEqual(["transform.position.x", "transform.position.y", "transform.rotation"]);
   });
 
   it("integrates gravity onto a dynamic body and writes physics-owned channels", () => {
@@ -65,19 +65,19 @@ describe("PhysicsSession", () => {
     const session = new PhysicsSession({ ownership: owned, gravity: { x: 0, y: 980 }, fixedDtMs: 1000 / 60 });
     expect(session.addBody(ball("m", { x: 50, y: 10 }))).toBeUndefined();
     const writes = session.advance(1000 / 60);
-    const y = writes.find((w) => w.entityId === "m" && w.channel === "transform.y")!;
+    const y = writes.find((w) => w.entityId === "m" && w.channel === "transform.position.y")!;
     expect(y.value).toBeGreaterThan(10);
     expect(session.cost.steps).toBe(1);
     expect(session.body("m")!.vy).toBeGreaterThan(0);
   });
 
   it("rejects writes when ownership denies physics", () => {
-    const ownership: PhysicsOwnership = (_e, channel) => channel !== "transform.y";
+    const ownership: PhysicsOwnership = (_e, channel) => channel !== "transform.position.y";
     const session = new PhysicsSession({ ownership, gravity: { x: 0, y: 0 } });
     session.addBody(ball("m", { x: 1, y: 2 }));
     const writes = session.advance(0);
-    expect(writes.some((w) => w.channel === "transform.y")).toBe(false);
-    expect(writes.some((w) => w.channel === "transform.x")).toBe(true);
+    expect(writes.some((w) => w.channel === "transform.position.y")).toBe(false);
+    expect(writes.some((w) => w.channel === "transform.position.x")).toBe(true);
     expect(session.lastDiagnostics.some((d) => d.code === "PHYSICS_OWNERSHIP_REJECTED")).toBe(true);
   });
 
