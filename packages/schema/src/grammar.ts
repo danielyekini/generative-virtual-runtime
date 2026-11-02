@@ -40,6 +40,7 @@ headerProperty = "version" , string , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
                | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
+               | audioDecl | cueDecl
                | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
                | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
@@ -174,6 +175,17 @@ interactAction = ( "set" , interactAddr , signedNumber )
                | ( "dragTranslate" , vec2 , vec2 ) ;
 interactAddr   = [ dottedId , "." ] , interactChannel ;
 interactChannel= "position.x" | "position.y" | "rotation" | "scale.x" | "scale.y" | "opacity" ;
+
+(* MotionScript 0.11 audio resources and cues (audio.cues). Only "audio" and
+   "cue" are reserved; bus and body words match by spelling. Cues use root
+   scene time; a cue may follow the first seal when it starts at or after it. *)
+audioDecl      = "audio" , identifier , string , duration , ";" ;
+cueDecl        = "cue" , identifier , bus , identifier , "at" , duration ,
+                 [ "{" , { cueItem } , "}" ] , ";" ;
+bus            = "narration" | "effects" | "music" ;
+cueItem        = ( ( "offset" | "duration" | "fadeIn" | "fadeOut" ) , duration , ";" )
+               | ( ( "loops" | "gain" ) , signedNumber , ";" )
+               | ( "required" , boolean , ";" ) ;
 
 (* MotionScript 0.9 declarative entity statements. Lower 1:1 onto released
    APPLY_ENTITY_PATCH ops (entities.durableRevisions / entities.drawableBindings).
@@ -354,6 +366,8 @@ export const KEYWORDS = [
   "cancel",
   "activate",
   "interact",
+  "audio",
+  "cue",
 ] as const;
 
 export const KEYWORD_SET = new Set<string>(KEYWORDS);

@@ -73,6 +73,10 @@ Landed in MotionScript / Scene IR **0.9.0**. Wire stays `"0.2"`. Completes autho
 
 Landed in MotionScript / Scene IR **0.10.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `input.bindings`. `interact` declarations lower to scene/header `interactions`. Declared channels are exclusively input-owned for the whole scene; tracks on the same scalar are rejected. Only `interact` became a reserved word, so older identifiers spelled like interaction sub-words keep compiling. See `docs/decisions/engine/native-input.md`.
 
+### Decision for `audio.cues`
+
+Landed in MotionScript / Scene IR **0.11.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `audio.cues`. `audio` declarations add `kind: "audio"` resources (base definitions); `cue` declarations lower to scene `audioCues`, streamed with the new `ADD_AUDIO_CUES` op, which may follow the first seal for cues starting at or after it. Only `audio` and `cue` became reserved words. See `docs/decisions/engine/audible-media-clock.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

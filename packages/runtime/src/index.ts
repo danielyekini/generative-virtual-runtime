@@ -2,12 +2,17 @@ export {
   AUDIO_BUSES,
   AudioSession,
   audioReadiness,
+  createSceneAudioSession,
   cueSpanMs,
   cueVoiceAt,
   encodeWav,
   isRequired,
   mixAudio,
   narrationActiveAt,
+  sceneAudioReadiness,
+  sceneAudioResources,
+  sceneAudioSchedule,
+  syncSceneAudioCues,
   voicesAt,
 } from "./audio";
 export type {
@@ -24,11 +29,14 @@ export type {
   AudioSchedule,
   AudioSessionOptions,
   AudioStartCommand,
+  AudioStates,
   AudioSyncInput,
   AudioTriggerRecord,
   AudioVoice,
   DecodedAudio,
   MixOptions,
+  SceneAudioOptions,
+  SceneAudioResource,
 } from "./audio";
 export { RuntimeClock } from "./clock";
 export { EntityRevisionStore } from "./entities";

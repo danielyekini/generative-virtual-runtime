@@ -119,6 +119,19 @@ integrates push-to-talk and host playback on top of this contract.
   token, registry rows, conformance tests), expose a Web Audio `AudioBackend`
   for Studio's player, and verify narration + effects with Product P009.
 
+## Implementation (E026)
+
+Landed as MotionScript / Scene IR **0.11.0** `audio.cues`: `audio` resources
+(href + decoded `durationMs`), `cue` declarations lowered to scene `audioCues`
+and streamed with `ADD_AUDIO_CUES` (allowed after the first seal for cues at or
+after it). `createSceneAudioSession` / `syncSceneAudioCues` / `sceneAudioSchedule`
+lower scenes into this contract; `assessReadiness` (`audioStates`) and
+`acceptScene` block only on required audio. The Studio player drives a Web Audio
+backend (`app/playground/src/player/web-audio.ts`) from its clock with
+`wallDeltaMs`, holds for required audio within 250 ms, and exposes WAV export on
+the agent bridge (`exportAudio`). Visible media controls remain a Product/UX
+decision (P009, studio-ux.md).
+
 ## Revisit
 
 If stories need sub-frame lip-sync tighter than the tolerance, evaluate the

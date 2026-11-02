@@ -768,6 +768,39 @@
       }
     },
     {
+      "id": "audio.cues",
+      "summary": "Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline.",
+      "introducedIn": { "motionscript": "0.11.0", "sceneIr": "0.11.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing audio.cues; audio resources or cues without it are rejected.",
+        "Resources declare href and decoded durationMs; readiness is host-reported. Cues use root scene time, buses narration/effects/music, offset/duration inside the resource, loops 1..1000, gain 0..4, linear fades; at most 4096 cues.",
+        "Scene time is the master clock (docs/decisions/engine/audible-media-clock.md): audio is silent unless playing at a rate in [0.5, 2]; voices re-seek beyond 40 ms error; narration ducks effects/music by a step gain of 0.35.",
+        "Narration is required by default: pending required audio holds startup/playback and failed required audio blocks acceptance; optional cues are skipped with AUDIO_OPTIONAL_SKIPPED.",
+        "Cues may stream after the first seal (ADD_AUDIO_CUES) only when they start at or after the seal; audio resources are base definitions. No spatial audio, ducking ramps, per-cue rate or speech synthesis."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/audio.test.ts#lowers audio resources and every cue property into Scene IR",
+        "packages/compiler/src/audio.test.ts#rejects audio constructs without the capability and invalid cues through validation",
+        "packages/compiler/src/audio.test.ts#streams cues after the first seal with ADD_AUDIO_CUES and rejects cues behind the seal",
+        "packages/runtime/src/audio-scene.test.ts#lowers declared cues into AudioSession with ducking, loops and export equal to live voices",
+        "packages/runtime/src/audio-scene.test.ts#delivers cues through streamed compiler deltas and adds late cues to a live session",
+        "packages/runtime/src/audio-scene.test.ts#rejects streamed cues that start behind the seal frontier",
+        "packages/runtime/src/audio-scene.test.ts#feeds required audio readiness into assessReadiness and acceptScene"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native audio; Lottie audio layers are not imported."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native audio; SVG has no audio model to import."
+        }
+      }
+    },
+    {
       "id": "compositing.matte",
       "summary": "A track matte would clip one layer by another.",
       "targets": [],

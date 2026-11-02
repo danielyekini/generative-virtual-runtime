@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.10.0 | 0.2 |
-| scene-ir | 0.10.0 | 0.2 |
+| motionscript | 0.11.0 | 0.2 |
+| scene-ir | 0.11.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -47,6 +47,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | paint.gradientStroke | supported | supported | supported | A stroke painted with a linear or radial gradient. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | paint.animatedSolid | supported | supported | supported | Keyframe tracks may drive solid fill/stroke colour components and uniform stroke width on a node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | input.bindings | supported | supported | not-applicable | Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/interact.test.ts) |
+| audio.cues | supported | supported | not-applicable | Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/audio.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.mask | unsupported | unsupported | unsupported | A layer mask would clip geometry to a path. [registry](../../packages/schema/capabilities/registry.json) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
@@ -68,5 +69,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `aadb06bdd26a4898a1c7b6dfe60fd24e4cc53b86f5f8e0b97666dd1719d78750`
-- `packages/schema/capabilities/registry.json` SHA-256 `78d135b30d928c48ac3377a45b100afe41debd60cc9a36246db924f4476c5f1f`
+- `packages/schema/capabilities/releases.json` SHA-256 `bd8b05ea69bb3ea68584e14461eaedf24e5be676f39da5b47984ffed1697c496`
+- `packages/schema/capabilities/registry.json` SHA-256 `1471353f37aabb6866ef48da7d3a2da1e81b75bae48d346cf1acb8795b227086`

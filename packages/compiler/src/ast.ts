@@ -1,4 +1,4 @@
-import type { Diagnostic, InteractionBinding, Paint, PathCommand, SolidColor, SourceSpan, Stroke } from "@gvr/schema";
+import type { AudioCueDefinition, Diagnostic, InteractionBinding, Paint, PathCommand, SolidColor, SourceSpan, Stroke } from "@gvr/schema";
 
 export interface Vec {
   x: number;
@@ -152,6 +152,24 @@ export interface InteractAst {
   errors: Diagnostic[];
 }
 
+/** Audio resource declaration (MotionScript 0.11 / audio.cues). */
+export interface AudioDeclAst {
+  kind: "audio";
+  id: string;
+  href: string;
+  durationMs: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+/** Audio cue declaration on root scene time (MotionScript 0.11 / audio.cues). */
+export interface CueDeclAst {
+  kind: "cue";
+  cue: AudioCueDefinition;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
 export interface StepAst {
   kind: "step";
   target: string;
@@ -256,6 +274,8 @@ export type UnitAst =
   | InstanceAst
   | OperatorsAst
   | InteractAst
+  | AudioDeclAst
+  | CueDeclAst
   | EntityDeclAst
   | GeometryDeclAst
   | BindDeclAst

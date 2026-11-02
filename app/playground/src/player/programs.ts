@@ -13,7 +13,7 @@ import {
 import type { ProgramEntry, ProgramFormat } from "../library";
 
 /** Short behaviour samples among the MotionScript examples (not stories). */
-const SAMPLE_IDS = new Set(["bunny", "ball", "caption", "nested", "diagram", "camera"]);
+const SAMPLE_IDS = new Set(["bunny", "ball", "caption", "nested", "diagram", "camera", "audio-lesson"]);
 
 const IMPORT_LABELS: Record<Exclude<ProgramFormat, "motionscript">, string> = {
   fixture: "Fixture",

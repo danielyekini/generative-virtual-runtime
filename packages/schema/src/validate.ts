@@ -91,6 +91,7 @@ const OPS = new Set([
   "ADD_NODES",
   "ADD_TRACKS",
   "ADD_STEPS",
+  "ADD_AUDIO_CUES",
   "SEAL_TIMELINE",
   "COMPLETE_PROGRAM",
   "APPLY_ENTITY_PATCH",
@@ -157,7 +158,7 @@ export function validateSceneIR(
   const version = input.irVersion;
   const v02 = version === IR_VERSION_02;
   const sceneKeys = ["irVersion", "sceneId", "viewport", "background", "resources", "nodes", "cameras", "initialCameraId", "timeline"];
-  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions");
+  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "audioCues");
   rejectUnknown(input, sceneKeys, "", diags);
   if (version !== IR_VERSION && version !== IR_VERSION_02) {
     diags.add("UNSUPPORTED_IR_VERSION", "irVersion", `IR version must be ${IR_VERSION} or ${IR_VERSION_02}.`);
@@ -181,6 +182,7 @@ export function validateSceneIR(
   }
   readTimeline(input.timeline, nodes, cameras, limits, diags, v02, scopes);
   if (v02) readInteractions(input.interactions, nodes, input.timeline, input.requiredCapabilities, diags);
+  if (v02) readAudio(input.audioCues, resources, input.timeline, input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
@@ -1002,12 +1004,12 @@ function readFont(value: unknown, path: string, diags: Diags): void {
   }
 }
 
-function readResources(value: unknown, diags: Diags, v02 = false): { id: string; kind: string; family: string }[] {
+function readResources(value: unknown, diags: Diags, v02 = false): ResourceFacts[] {
   if (!Array.isArray(value)) {
     diags.add("INVALID_TYPE", "resources", "resources must be an array.");
     return [];
   }
-  const resources: { id: string; kind: string; family: string }[] = [];
+  const resources: ResourceFacts[] = [];
   const ids = new Set<string>();
   value.forEach((entry, index) => {
     const path = `resources[${index}]`;
@@ -1030,8 +1032,21 @@ function readResources(value: unknown, diags: Diags, v02 = false): { id: string;
       resources.push({ id: id ?? "", kind: "image", family: "" });
       return;
     }
+    if (entry.kind === "audio") {
+      if (!v02) diags.add("UNSUPPORTED_PROPERTY", path, "Audio resources require Scene IR 0.2.");
+      rejectUnknown(entry, ["id", "kind", "href", "durationMs", "readiness"], path, diags);
+      if (typeof entry.href !== "string" || entry.href.length === 0) {
+        diags.add("MISSING_REQUIRED", `${path}.href`, "An audio resource needs an href.");
+      }
+      const duration = readFinite(entry.durationMs, `${path}.durationMs`, diags);
+      if (duration !== undefined && !(duration > 0)) {
+        diags.add("INVALID_TIMING", `${path}.durationMs`, "An audio resource needs a positive decoded durationMs.");
+      }
+      resources.push({ id: id ?? "", kind: "audio", family: "", durationMs: duration !== undefined && duration > 0 ? duration : undefined });
+      return;
+    }
     rejectUnknown(entry, v02 ? ["id", "kind", "family", "source", "readiness"] : ["id", "kind", "family", "source"], path, diags);
-    if (entry.kind !== "font") diags.add("INVALID_ENUM", `${path}.kind`, 'A resource kind is "font" or, in 0.2, "image".');
+    if (entry.kind !== "font") diags.add("INVALID_ENUM", `${path}.kind`, 'A resource kind is "font" or, in 0.2, "image" or "audio".');
     if (entry.source !== "builtin") diags.add("INVALID_ENUM", `${path}.source`, 'V1 font source must be "builtin".');
     if (typeof entry.family !== "string" || entry.family.length === 0) {
       diags.add("INVALID_TYPE", `${path}.family`, "A font family name is required.");
@@ -1052,8 +1067,8 @@ function checkImages(nodes: NodeDefinition[], resources: { id: string; kind: str
   }
 }
 
-function checkFonts(nodes: NodeDefinition[], resources: { family: string }[], diags: Diags): void {
-  const families = new Set(resources.map((resource) => resource.family));
+function checkFonts(nodes: NodeDefinition[], resources: ResourceFacts[], diags: Diags): void {
+  const families = new Set(resources.filter((resource) => resource.kind === "font").map((resource) => resource.family));
   for (const node of nodes) {
     if (node.kind !== "text" || !node.font || typeof node.font.family !== "string") continue;
     if (!families.has(node.font.family)) {
@@ -1454,6 +1469,11 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
   if (value.op === "ADD_NODES") {
     rejectUnknown(value, ["op", "nodes"], path, diags);
     readNodes(value.nodes, diags, limits, false, "nodes", v02);
+    return;
+  }
+  if (value.op === "ADD_AUDIO_CUES") {
+    rejectUnknown(value, ["op", "cues"], path, diags);
+    if (!Array.isArray(value.cues)) diags.add("INVALID_TYPE", `${path}.cues`, "ADD_AUDIO_CUES requires a cues array.");
     return;
   }
   if (value.op === "APPLY_ENTITY_PATCH") {
@@ -1931,6 +1951,100 @@ function readCapabilities(value: unknown, diags: Diags): void {
     }
     if (seen.has(entry)) diags.add("INVALID_ENUM", `requiredCapabilities[${index}]`, `Duplicate capability ${entry}.`);
     seen.add(entry);
+  });
+}
+
+interface ResourceFacts {
+  id: string;
+  kind: string;
+  family: string;
+  /** Decoded length for audio resources. */
+  durationMs?: number;
+}
+
+const AUDIO_BUS_NAMES = new Set(["narration", "effects", "music"]);
+/** Cue count bound, matching the runtime AudioSession default. */
+export const MAX_AUDIO_CUES = 4096;
+
+/**
+ * audio.cues (Scene IR 0.11.0). Audio resources and cues require the
+ * capability. Cues name declared audio resources, use a known bus and stay
+ * inside the resource; start times lie in [0, durationMs]. Semantics follow
+ * docs/decisions/engine/audible-media-clock.md.
+ */
+function readAudio(value: unknown, resources: ResourceFacts[], timeline: unknown, required: unknown, diags: Diags): void {
+  const audio = new Map(resources.filter((resource) => resource.kind === "audio").map((resource) => [resource.id, resource]));
+  const hasCapability = Array.isArray(required) && required.includes("audio.cues");
+  if (audio.size > 0 && !hasCapability) {
+    diags.add("MISSING_REQUIRED", "requiredCapabilities", "Audio resources require audio.cues in requiredCapabilities.");
+  }
+  if (value === undefined) return;
+  if (!Array.isArray(value)) {
+    diags.add("INVALID_TYPE", "audioCues", "audioCues must be an array.");
+    return;
+  }
+  if (value.length > 0 && !hasCapability && audio.size === 0) {
+    diags.add("MISSING_REQUIRED", "requiredCapabilities", "Audio cues require audio.cues in requiredCapabilities.");
+  }
+  if (value.length > MAX_AUDIO_CUES) {
+    diags.add("RESOURCE_LIMIT", "audioCues", `Audio cue count ${value.length} exceeds ${MAX_AUDIO_CUES}.`);
+  }
+  const sceneDuration = isRecord(timeline) && typeof timeline.durationMs === "number" ? timeline.durationMs : undefined;
+  const ids = new Set<string>();
+  value.forEach((entry, index) => {
+    const path = `audioCues[${index}]`;
+    if (!isRecord(entry)) {
+      diags.add("INVALID_TYPE", path, "An audio cue must be an object.");
+      return;
+    }
+    rejectUnknown(
+      entry,
+      ["id", "resourceId", "bus", "startMs", "offsetMs", "durationMs", "loops", "gain", "fadeInMs", "fadeOutMs", "required"],
+      path,
+      diags,
+    );
+    const id = readIdent(entry.id, `${path}.id`, diags);
+    if (id !== undefined) {
+      if (ids.has(id)) diags.add("DUPLICATE_ID", `${path}.id`, `Duplicate audio cue id ${id}.`);
+      ids.add(id);
+    }
+    const resource = typeof entry.resourceId === "string" ? audio.get(entry.resourceId) : undefined;
+    if (!resource) diags.add("UNKNOWN_TARGET", `${path}.resourceId`, "An audio cue names an audio resource that does not exist.");
+    if (typeof entry.bus !== "string" || !AUDIO_BUS_NAMES.has(entry.bus)) {
+      diags.add("INVALID_ENUM", `${path}.bus`, "bus must be narration, effects or music.");
+    }
+    const start = readFinite(entry.startMs, `${path}.startMs`, diags);
+    if (start !== undefined && (start < 0 || (sceneDuration !== undefined && start > sceneDuration + 1e-9))) {
+      diags.add("INVALID_TIMING", `${path}.startMs`, "A cue starts within [0, timeline.durationMs].");
+    }
+    const nonNegative = (key: string): number | undefined => {
+      if (entry[key] === undefined) return undefined;
+      const n = readFinite(entry[key], `${path}.${key}`, diags);
+      if (n !== undefined && n < 0) diags.add("INVALID_TIMING", `${path}.${key}`, `${key} must not be negative.`);
+      return n;
+    };
+    const offset = nonNegative("offsetMs") ?? 0;
+    nonNegative("fadeInMs");
+    nonNegative("fadeOutMs");
+    const length = entry.durationMs === undefined ? undefined : readFinite(entry.durationMs, `${path}.durationMs`, diags);
+    if (length !== undefined && !(length > 0)) diags.add("INVALID_TIMING", `${path}.durationMs`, "A cue durationMs must be positive.");
+    if (resource?.durationMs !== undefined) {
+      if (offset >= resource.durationMs) {
+        diags.add("INVALID_TIMING", `${path}.offsetMs`, `offsetMs must lie inside resource ${resource.id} (${resource.durationMs}ms).`);
+      } else if (length !== undefined && offset + length > resource.durationMs + 1e-9) {
+        diags.add("INVALID_TIMING", `${path}.durationMs`, `offsetMs + durationMs exceeds resource ${resource.id} (${resource.durationMs}ms).`);
+      }
+    }
+    if (entry.loops !== undefined && !(typeof entry.loops === "number" && Number.isInteger(entry.loops) && entry.loops >= 1 && entry.loops <= 1000)) {
+      diags.add("INVALID_TYPE", `${path}.loops`, "loops must be an integer in [1, 1000].");
+    }
+    if (entry.gain !== undefined) {
+      const gain = readFinite(entry.gain, `${path}.gain`, diags);
+      if (gain !== undefined && (gain < 0 || gain > 4)) diags.add("INVALID_TRACK_VALUE", `${path}.gain`, "gain must lie in [0, 4].");
+    }
+    if (entry.required !== undefined && typeof entry.required !== "boolean") {
+      diags.add("INVALID_TYPE", `${path}.required`, "required must be a boolean.");
+    }
   });
 }
 

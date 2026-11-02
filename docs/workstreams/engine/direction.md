@@ -18,7 +18,9 @@ E007 native input decision/prototype (painted-geometry hit-testing,
 `input.bindings` (`interact` declarations, MotionScript / Scene IR 0.10.0,
 Studio player wiring), E008 audible media clock decision/prototype
 (scene-time master, pure audio schedule, reconciling `AudioSession`,
-required-resource hold, deterministic `mixAudio` export),
+required-resource hold, deterministic `mixAudio` export), E026 `audio.cues`
+(`audio` / `cue` declarations, MotionScript / Scene IR 0.11.0, `ADD_AUDIO_CUES`,
+Studio Web Audio backend and bridge WAV export),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -38,10 +40,12 @@ the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. E026 ([#103](https://github.com/danielyekini/generative-virtual-runtime/issues/103)):
-   version audio resources/cues (MotionScript / Scene IR) and the Studio Web
-   Audio backend per the E008 decision; host speech paths stay with P009.
-2. Then replenish Ready from remaining M4/M5 Candidates with satisfied dependencies.
+1. E010 ([#29](https://github.com/danielyekini/generative-virtual-runtime/issues/29)):
+   bounded spatial graphics decision/prototype (M5); must keep input hit-testing
+   correct under projection.
+2. Then replenish Ready from remaining M4/M5 Candidates with satisfied
+   dependencies (E011 physics after E010 settles space conventions). Audible
+   human judgement of E026 output and visible media controls sit with P009.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

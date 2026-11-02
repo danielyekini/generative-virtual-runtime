@@ -24,6 +24,8 @@ import type {
   EntityDeclAst,
   GeometryDeclAst,
   InteractAst,
+  AudioDeclAst,
+  CueDeclAst,
   HeaderAst,
   InstanceAst,
   KeyframeAst,
@@ -173,6 +175,8 @@ function parseUnit(parser: Parser): UnitAst | undefined {
   if (token.lexeme === "instance") return parseInstance(parser);
   if (token.lexeme === "operators") return parseOperators(parser);
   if (token.lexeme === "interact") return parseInteract(parser);
+  if (token.lexeme === "audio") return parseAudioDecl(parser);
+  if (token.lexeme === "cue") return parseCueDecl(parser);
   if (token.lexeme === "entity") return parseEntityDecl(parser);
   if (token.lexeme === "geometry") return parseGeometryDecl(parser);
   if (token.lexeme === "bind") return parseBindDecl(parser);
@@ -1314,6 +1318,86 @@ function parseInteractBinding(parser: Parser, node: InteractAst): InteractionBin
   if (verb.lexeme === "set") return withKey({ on, ...target, action: { kind: "set", channel, value: a } });
   if (verb.lexeme === "toggle") return withKey({ on, ...target, action: { kind: "toggle", channel, values: [a, b] } });
   return withKey({ on, ...target, action: { kind: "step", channel, delta: a, min: b, max: c } });
+}
+
+/** `audio <id> "<href>" <duration>;` — decoded length in ms or s. */
+function parseAudioDecl(parser: Parser): AudioDeclAst {
+  const start = eat(parser, "keyword", "audio");
+  const node: AudioDeclAst = { kind: "audio", id: "", href: "", durationMs: 0, span: start?.span ?? emptySpan(), errors: [] };
+  const id = eat(parser, "identifier");
+  if (id) node.id = id.lexeme;
+  else note(node, parser, "audio needs a resource id.");
+  const href = eat(parser, "string");
+  if (href?.stringValue) node.href = href.stringValue;
+  else note(node, parser, 'audio needs an href string, for example "voice.wav".');
+  const length = eat(parser, "duration");
+  if (length?.numberValue === undefined) note(node, parser, "audio needs its decoded length with ms or s.");
+  else node.durationMs = length.numberValue;
+  expectSemi(parser);
+  return node;
+}
+
+const CUE_BUSES = new Set(["narration", "effects", "music"]);
+
+/**
+ * `cue <id> <bus> <resource> at <time> [{ offset t; duration t; loops n; gain g;
+ * fadeIn t; fadeOut t; required true|false; }];` Body words match by spelling.
+ */
+function parseCueDecl(parser: Parser): CueDeclAst {
+  const start = eat(parser, "keyword", "cue");
+  const node: CueDeclAst = {
+    kind: "cue",
+    cue: { id: "", resourceId: "", bus: "effects", startMs: 0 },
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const id = eat(parser, "identifier");
+  if (id) node.cue.id = id.lexeme;
+  else note(node, parser, "cue needs an id.");
+  const bus = eatWord(parser);
+  if (bus && CUE_BUSES.has(bus.lexeme)) node.cue.bus = bus.lexeme as CueDeclAst["cue"]["bus"];
+  else note(node, parser, "cue needs a bus: narration, effects or music.");
+  const resource = eat(parser, "identifier");
+  if (resource) node.cue.resourceId = resource.lexeme;
+  else note(node, parser, "cue needs an audio resource id.");
+  if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
+  const time = eat(parser, "duration");
+  if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+  else node.cue.startMs = time.numberValue;
+  if (eat(parser, "lbrace")) {
+    while (!done(parser) && !at(parser, "rbrace")) {
+      const key = eatWord(parser);
+      const timeKeys: Record<string, "offsetMs" | "durationMs" | "fadeInMs" | "fadeOutMs"> = {
+        offset: "offsetMs",
+        duration: "durationMs",
+        fadeIn: "fadeInMs",
+        fadeOut: "fadeOutMs",
+      };
+      if (!key) {
+        note(node, parser, "Expected a cue property.");
+        skipProperty(parser);
+      } else if (timeKeys[key.lexeme]) {
+        const value = eat(parser, "duration");
+        if (value?.numberValue === undefined) note(node, parser, `${key.lexeme} needs a time with ms or s.`);
+        else node.cue[timeKeys[key.lexeme]!] = value.numberValue;
+      } else if (key.lexeme === "loops" || key.lexeme === "gain") {
+        const value = parseSignedNumber(parser);
+        if (value === undefined) note(node, parser, `${key.lexeme} needs a number.`);
+        else node.cue[key.lexeme] = value;
+      } else if (key.lexeme === "required") {
+        if (eat(parser, "keyword", "true")) node.cue.required = true;
+        else if (eat(parser, "keyword", "false")) node.cue.required = false;
+        else note(node, parser, "required needs true or false.");
+      } else {
+        note(node, parser, `Unknown cue property ${key.lexeme}.`);
+        skipProperty(parser);
+      }
+      expectSemi(parser);
+    }
+    eat(parser, "rbrace");
+  }
+  expectSemi(parser);
+  return node;
 }
 
 function parseEasing(parser: Parser): EaseAst | undefined {
