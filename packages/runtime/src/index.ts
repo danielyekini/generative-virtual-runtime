@@ -23,6 +23,22 @@ export type {
   WriterClass,
 } from "./entities";
 export { buildResolvedFrame } from "./frame";
+export { hitTest, hitTestAll, INPUT_CHANNELS, InputSession, ownershipFromGrants, replayInput } from "./input";
+export type {
+  HitResult,
+  HitTestOptions,
+  InputAction,
+  InputBinding,
+  InputChannel,
+  InputEvent,
+  InputOwnership,
+  InputSessionOptions,
+  InputSignal,
+  InputStep,
+  InputTarget,
+  InputTrigger,
+  TextMetrics,
+} from "./input";
 export { observeStreamingExecution } from "./observation";
 export type {
   ObservedDeltaRef,

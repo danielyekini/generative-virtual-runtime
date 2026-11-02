@@ -13,6 +13,8 @@ decision/prototype, E023 versioned `entities.drawableBindings` (Scene IR /
 MotionScript 0.7.0), E006 streaming authorship/stream linter, E009 animated
 solid paint channels (Scene IR / MotionScript 0.8.0 `paint.animatedSolid`),
 E024 declarative entity statements (MotionScript / Scene IR 0.9.0),
+E007 native input decision/prototype (painted-geometry hit-testing,
+`InputSession` routing, bounded `input`-owned actions, replay; no language claim),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -21,6 +23,7 @@ and E003 immutable path/keyframe validation-fact reuse are merged
 `docs/decisions/engine/streaming-authorship-and-declarative-entities.md`,
 `docs/decisions/engine/animated-paint-channels.md`,
 `docs/decisions/engine/immutable-validation-facts.md`,
+`docs/decisions/engine/native-input.md`,
 `observeStreamingExecution` / `EntityRevisionStore` / `APPLY_ENTITY_PATCH` /
 `REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection in
 `@gvr/runtime`, `emitEntityPatchDelta` in `@gvr/compiler`).
@@ -30,10 +33,9 @@ the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. After E024 (declarative entity statements / language 0.9.0): replenish Ready
-   from M2/M4 Candidates (for example E007 input decision) with satisfied
-   dependencies. Streaming authorship contract, stream linter, E009 paint
-   channels and declarative entity sugar are landed.
+1. After E007 (input decision/prototype): E025 (#100) versions interaction
+   targets/bindings and wires the Studio host; then replenish Ready from M4
+   Candidates (for example E008 audible media clock) with satisfied dependencies.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

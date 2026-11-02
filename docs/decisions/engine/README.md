@@ -16,3 +16,6 @@
 - [Animated solid paint channels (E009)](animated-paint-channels.md): gated
   `fill.*` / `stroke.*` / `stroke.width` scalars as MotionScript/Scene IR 0.8.0
   `paint.animatedSolid`.
+- [Native input (E007)](native-input.md): painted-geometry hit-testing over the
+  resolved frame, capture/hover/click/drag/wheel/focus routing, bounded actions
+  on `input`-owned channels and deterministic replay; language wiring is E025.
