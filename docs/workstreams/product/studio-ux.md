@@ -44,8 +44,9 @@ any unsaved edits.
 
 ### Player (landing page)
 
-- With nothing loaded, the landing page is an empty player with a prominent
-  **Open Library** action (plus recent programs if any). Nothing auto-loads.
+- With nothing loaded, the landing page is an empty player. The header's
+  **Open Library** button is always present; the empty canvas repeats it as a
+  prominent prompt (plus recent programs if any). Nothing auto-loads.
 - Layout follows VS Code. A **header bar** (like VS Code's title and run bar)
   holds the program name, **Open Library**, the run actions and run options.
   The canvas fills the main area, with an optional **Source** side panel on the
