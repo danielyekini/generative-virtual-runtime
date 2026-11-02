@@ -309,6 +309,18 @@ function structuredCloneMapSnapshot(base: EntityStoreSnapshot): EntityStoreSnaps
     ownership: base.ownership.map((grant) => ({ ...grant })),
     behaviours: new Map([...base.behaviours.entries()].map(([id, behaviour]) => [id, { ...behaviour }])),
     nodes: new Map([...base.nodes.entries()].map(([id, node]) => [id, structuredClone(node)])),
+    geometries: new Map(
+      [...(base.geometries ?? new Map()).entries()].map(([id, asset]) => [
+        id,
+        { id: asset.id, space: asset.space, node: structuredClone(asset.node) },
+      ]),
+    ),
+    bindings: new Map(
+      [...(base.bindings ?? new Map()).entries()].map(([id, versions]) => [
+        id,
+        versions.map((v) => ({ fromMs: v.fromMs, geometryId: v.geometryId })),
+      ]),
+    ),
   };
 }
 

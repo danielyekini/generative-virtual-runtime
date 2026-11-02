@@ -35,7 +35,10 @@ export type EntityPatchCode =
   | "OWNERSHIP_CONFLICT"
   | "INVALID_ACTIVATION"
   | "UNKNOWN_BEHAVIOUR"
-  | "NODE_CONFLICT";
+  | "NODE_CONFLICT"
+  | "UNKNOWN_GEOMETRY"
+  | "GEOMETRY_CONFLICT"
+  | "BIND_CYCLE";
 
 export interface EntityPatchDiagnostic {
   code: EntityPatchCode;
@@ -49,11 +52,61 @@ export interface CompactEntityContext {
   entity: EntityRecord | null;
   ownership: OwnershipGrant[];
   behaviours: BehaviourRecord[];
+  /** Shared geometry id when this entity is bound (E005 prototype). */
+  geometryId?: GeometryId | null;
+}
+
+export type GeometryId = string;
+
+/** Immutable shared drawable asset (E005 prototype; language wiring deferred). */
+export interface GeometryAsset {
+  id: GeometryId;
+  /** Prototype leaf space; world/local only. */
+  space: "world" | "local";
+  node: NodeDefinition;
+}
+
+export interface GeometryBinding {
+  entityId: EntityId;
+  geometryId: GeometryId;
+  fromMs: number;
+}
+
+/**
+ * Runtime-local patch ops for drawable reuse (E005). Not Scene IR wire ops yet;
+ * the follow-up implementation issue versions these under a capability gate.
+ */
+export type BindingPatchOp =
+  | { op: "REGISTER_GEOMETRY"; geometry: GeometryAsset; activationMs: number }
+  | { op: "BIND_GEOMETRY"; entityId: EntityId; geometryId: GeometryId; activationMs: number };
+
+export type ExtendedEntityPatchOp = EntityPatchOp | BindingPatchOp;
+
+export interface ExtendedEntityPatch {
+  expectedRevision: number;
+  nextRevision: number;
+  operations: ExtendedEntityPatchOp[];
+}
+
+export interface DrawableReuseBudget {
+  geometryAssets: number;
+  boundInstances: number;
+  /** Geometry payloads if every binding expanded a private copy. */
+  expandedGeometryPayloads: number;
+  /** Shared geometry payloads retained (one per asset). */
+  retainedGeometryPayloads: number;
+  /** Assets + bound instance records (host accounting helper). */
+  retainedUnits: number;
 }
 
 interface EntityVersion {
   fromMs: number;
   record: EntityRecord;
+}
+
+interface BindingVersion {
+  fromMs: number;
+  geometryId: GeometryId | null;
 }
 
 export interface EntityStoreSnapshot {
@@ -64,6 +117,10 @@ export interface EntityStoreSnapshot {
   behaviours: Map<BehaviourId, BehaviourRecord>;
   /** Late or bound node payloads keyed by entity id (immutable records). */
   nodes: Map<EntityId, NodeDefinition>;
+  /** Shared immutable geometry assets (E005). */
+  geometries: Map<GeometryId, GeometryAsset>;
+  /** Per-entity binding timeline (null geometryId = unbound). */
+  bindings: Map<EntityId, BindingVersion[]>;
 }
 
 function cloneSnapshot(base: EntityStoreSnapshot): EntityStoreSnapshot {
@@ -79,6 +136,18 @@ function cloneSnapshot(base: EntityStoreSnapshot): EntityStoreSnapshot {
     ownership: base.ownership.map((grant) => ({ ...grant })),
     behaviours: new Map([...base.behaviours.entries()].map(([id, behaviour]) => [id, { ...behaviour }])),
     nodes: new Map([...base.nodes.entries()].map(([id, node]) => [id, structuredClone(node)])),
+    geometries: new Map(
+      [...base.geometries.entries()].map(([id, asset]) => [
+        id,
+        { id: asset.id, space: asset.space, node: structuredClone(asset.node) },
+      ]),
+    ),
+    bindings: new Map(
+      [...base.bindings.entries()].map(([id, versions]) => [
+        id,
+        versions.map((v) => ({ fromMs: v.fromMs, geometryId: v.geometryId })),
+      ]),
+    ),
   };
 }
 
@@ -127,7 +196,27 @@ function emptySnapshot(): EntityStoreSnapshot {
     ownership: [],
     behaviours: new Map(),
     nodes: new Map(),
+    geometries: new Map(),
+    bindings: new Map(),
   };
+}
+
+function latestBinding(
+  versions: BindingVersion[] | undefined,
+  sceneTimeMs: number,
+  options?: { excludeStartsAtMs?: number },
+): GeometryId | null {
+  if (!versions || versions.length === 0) return null;
+  const exclude = options?.excludeStartsAtMs;
+  let chosen: BindingVersion | undefined;
+  for (const version of versions) {
+    const visible =
+      exclude !== undefined && sceneTimeMs === exclude
+        ? version.fromMs < exclude
+        : version.fromMs <= sceneTimeMs;
+    if (visible) chosen = version;
+  }
+  return chosen?.geometryId ?? null;
 }
 
 /**
@@ -180,8 +269,9 @@ export class EntityRevisionStore {
   /**
    * Validate and stage a patch against accepted (+ pending) state.
    * Does not publish until {@link commit}.
+   * Accepts schema EntityPatch ops and E005 runtime-local binding ops.
    */
-  enqueue(patch: EntityPatch): EntityPatchDiagnostic | undefined {
+  enqueue(patch: EntityPatch | ExtendedEntityPatch): EntityPatchDiagnostic | undefined {
     if (this.disposed) return fail("INVALID_ACTIVATION", "Store is disposed.");
     const base = this.pending ?? this.accepted;
     if (patch.expectedRevision !== base.revision) {
@@ -210,7 +300,7 @@ export class EntityRevisionStore {
   /** Apply a patch to a snapshot without mutating this store (assemble path). */
   applyToSnapshot(
     base: EntityStoreSnapshot,
-    patch: EntityPatch,
+    patch: EntityPatch | ExtendedEntityPatch,
   ): { ok: true; snapshot: EntityStoreSnapshot } | { ok: false; diagnostic: EntityPatchDiagnostic } {
     if (patch.expectedRevision !== base.revision) {
       return {
@@ -287,6 +377,11 @@ export class EntityRevisionStore {
 
   context(entityId: EntityId): CompactEntityContext {
     const entity = currentRecord(this.accepted.entities.get(entityId));
+    const bindingVersions = this.accepted.bindings.get(entityId);
+    const geometryId =
+      bindingVersions && bindingVersions.length > 0
+        ? bindingVersions[bindingVersions.length - 1]!.geometryId
+        : null;
     return {
       revision: this.accepted.revision,
       sealedThroughMs: this.accepted.sealedThroughMs,
@@ -295,12 +390,69 @@ export class EntityRevisionStore {
       behaviours: [...this.accepted.behaviours.values()]
         .filter((behaviour) => behaviour.entityId === entityId)
         .map((behaviour) => ({ ...behaviour })),
+      geometryId,
+    };
+  }
+
+  /** Shared geometry asset, or undefined when unregistered. */
+  geometry(geometryId: GeometryId): GeometryAsset | undefined {
+    const asset = this.accepted.geometries.get(geometryId);
+    return asset
+      ? { id: asset.id, space: asset.space, node: structuredClone(asset.node) }
+      : undefined;
+  }
+
+  /** Binding effective at scene time (null = unbound). */
+  bindingAt(
+    entityId: EntityId,
+    sceneTimeMs: number,
+    options?: { excludeStartsAtMs?: number },
+  ): GeometryId | null {
+    return latestBinding(this.accepted.bindings.get(entityId), sceneTimeMs, options);
+  }
+
+  /**
+   * Resolve a presentation node for a bound entity by cloning shared geometry
+   * under the instance entity id. Unbound entities fall back to private nodes.
+   */
+  resolveDrawable(
+    entityId: EntityId,
+    sceneTimeMs: number,
+    options?: { excludeStartsAtMs?: number },
+  ): NodeDefinition | undefined {
+    const entity = this.entityAt(entityId, sceneTimeMs, options);
+    if (!entity) return undefined;
+    const geometryId = this.bindingAt(entityId, sceneTimeMs, options);
+    if (geometryId) {
+      const asset = this.accepted.geometries.get(geometryId);
+      if (!asset) return undefined;
+      const node = structuredClone(asset.node);
+      node.id = entityId;
+      return node;
+    }
+    return this.nodeFor(entityId);
+  }
+
+  /** Streaming/execution budget for shared geometry versus expansion. */
+  drawableBudget(sceneTimeMs: number, options?: { excludeStartsAtMs?: number }): DrawableReuseBudget {
+    const geometryAssets = this.accepted.geometries.size;
+    let boundInstances = 0;
+    for (const entityId of this.accepted.entities.keys()) {
+      if (!this.entityAt(entityId, sceneTimeMs, options)) continue;
+      if (this.bindingAt(entityId, sceneTimeMs, options)) boundInstances += 1;
+    }
+    return {
+      geometryAssets,
+      boundInstances,
+      expandedGeometryPayloads: boundInstances,
+      retainedGeometryPayloads: geometryAssets,
+      retainedUnits: geometryAssets + boundInstances,
     };
   }
 
   private applyOp(
     state: EntityStoreSnapshot,
-    operation: EntityPatchOp,
+    operation: ExtendedEntityPatchOp,
     path: string,
   ): EntityPatchDiagnostic | undefined {
     switch (operation.op) {
@@ -318,6 +470,10 @@ export class EntityRevisionStore {
         return this.activateBehaviour(state, operation.behaviour, path);
       case "CANCEL_BEHAVIOUR":
         return this.cancelBehaviour(state, operation.behaviourId, path);
+      case "REGISTER_GEOMETRY":
+        return this.registerGeometry(state, operation.geometry, operation.activationMs, path);
+      case "BIND_GEOMETRY":
+        return this.bindGeometry(state, operation.entityId, operation.geometryId, operation.activationMs, path);
     }
   }
 
@@ -504,6 +660,76 @@ export class EntityRevisionStore {
         ? { ...grant, untilMs: Math.max(state.sealedThroughMs, grant.fromMs) }
         : grant,
     );
+    return undefined;
+  }
+
+  private registerGeometry(
+    state: EntityStoreSnapshot,
+    geometry: GeometryAsset,
+    activationMs: number,
+    path: string,
+  ): EntityPatchDiagnostic | undefined {
+    const guarded = this.guardActivation(state, activationMs, path);
+    if (guarded) return guarded;
+    if (!geometry.id || geometry.id.length > 200) {
+      return fail("INVALID_ACTIVATION", "geometry id must be a short non-empty string.", path);
+    }
+    if (geometry.space !== "world" && geometry.space !== "local") {
+      return fail("INVALID_ACTIVATION", 'geometry space must be "world" or "local".', path);
+    }
+    if (state.geometries.has(geometry.id)) {
+      return fail("GEOMETRY_CONFLICT", `Geometry ${geometry.id} is already registered.`, path);
+    }
+    // Keep geometry and entity id spaces disjoint so bind edges stay acyclic.
+    if (state.entities.has(geometry.id)) {
+      return fail(
+        "BIND_CYCLE",
+        `Geometry id ${geometry.id} collides with an entity id.`,
+        path,
+      );
+    }
+    if (geometry.node.id !== geometry.id) {
+      return fail(
+        "NODE_CONFLICT",
+        `Geometry node id ${geometry.node.id} must match geometry id ${geometry.id}.`,
+        path,
+      );
+    }
+    state.geometries.set(geometry.id, {
+      id: geometry.id,
+      space: geometry.space,
+      node: structuredClone(geometry.node),
+    });
+    return undefined;
+  }
+
+  private bindGeometry(
+    state: EntityStoreSnapshot,
+    entityId: EntityId,
+    geometryId: GeometryId,
+    activationMs: number,
+    path: string,
+  ): EntityPatchDiagnostic | undefined {
+    const guarded = this.guardActivation(state, activationMs, path);
+    if (guarded) return guarded;
+    const entity = currentRecord(state.entities.get(entityId));
+    if (!entity || !entity.present) {
+      return fail("UNKNOWN_ENTITY", `Entity ${entityId} does not exist.`, path);
+    }
+    if (entity.kind !== "drawable") {
+      return fail("INVALID_ACTIVATION", `Only drawable entities may bind geometry (got ${entity.kind}).`, path);
+    }
+    const asset = state.geometries.get(geometryId);
+    if (!asset) {
+      return fail("UNKNOWN_GEOMETRY", `Geometry ${geometryId} does not exist.`, path);
+    }
+    if (entityId === geometryId) {
+      return fail("BIND_CYCLE", `Entity ${entityId} cannot bind itself as geometry.`, path);
+    }
+    // Typed dependency edge entity → geometry. Geometry assets are leaves, so the
+    // only cycles are id collisions (handled at register) or self-bind.
+    const versions = state.bindings.get(entityId) ?? [];
+    state.bindings.set(entityId, [...versions, { fromMs: activationMs, geometryId }]);
     return undefined;
   }
 }

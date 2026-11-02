@@ -153,6 +153,7 @@ describe("EntityRevisionStore (E002 prototype)", () => {
       entity: { id: "roof", kind: "drawable", parentId: "room", present: true, label: "roof" },
       ownership: [],
       behaviours: [],
+      geometryId: null,
     });
   });
 });
