@@ -34,22 +34,6 @@ export interface GvrCompare {
   openText: (name: string, source: string) => void;
 }
 
-/** The one active Studio program and its execution state. */
-export interface GvrProgram {
-  key: string;
-  name: string;
-  origin: string;
-  /** not-executed | running | paused | edited | failed | import | stream */
-  state: string;
-  executed: boolean;
-  presenting: boolean;
-  diagnostics: { line?: number; column?: number; code: string; message: string; recovery: string }[];
-  library: { key: string; label: string; collection: string }[];
-  open: (key: string) => void;
-  execute: () => void;
-  search: (text: string, collection?: string) => void;
-}
-
 export interface GvrBridge {
   activity: string;
   canvas: HTMLCanvasElement;
@@ -82,7 +66,6 @@ export interface GvrBridge {
   generatedOpacity?: number;
   status?: string;
   seen?: string[];
-  program?: GvrProgram;
 }
 
 export function button(label: string, pressed: boolean, onClick: () => void): HTMLButtonElement {
