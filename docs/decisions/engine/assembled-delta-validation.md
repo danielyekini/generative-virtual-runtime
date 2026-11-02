@@ -15,7 +15,9 @@ writer conflicts and excess total resource use. (2) validate after mutating and
 roll back; this needs a complete journal and risks accepted object aliases.
 (3) assemble detached list containers and use the existing full scene validator.
 Choose (3): retain all contextual checks without maintaining another validator.
-This intentionally does not implement E003's immutable validation-fact cache.
+E003 later landed identity WeakMap reuse of immutable path/keyframe walks
+(`docs/decisions/engine/immutable-validation-facts.md`); assembled admission
+still runs full contextual checks every candidate.
 
 Full-scene validation now also checks root transform parents (the old root
 `continue` skipped them). The full suite exposed the emitter relying on that

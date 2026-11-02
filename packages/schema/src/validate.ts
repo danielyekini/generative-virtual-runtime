@@ -9,6 +9,28 @@ import { cubicControlsMonotonic } from "./easing";
 import { expressionComplexity, exprsEqual, parseExpression } from "./expr";
 import { indexNodes, nodeDepth } from "./graph";
 import { resolveLimits, type ResourceLimits } from "./limits";
+
+/**
+ * Identity-keyed reuse of immutable path/keyframe payload walks (E003).
+ * Nested geometry and keyframe arrays are shared by reference across assemble/
+ * compile candidates and must not be mutated once accepted. Contextual
+ * reference, writer, timing, seal and limit checks always re-run.
+ */
+const validatedPathArrays = new WeakMap<object, true>();
+const validatedKeyframeArrays = new WeakMap<object, true>();
+let immutableFactHits = 0;
+let immutableFactMisses = 0;
+
+/** Test/telemetry counters for immutable validation-fact reuse. */
+export function immutableValidationFactStats(): { hits: number; misses: number } {
+  return { hits: immutableFactHits, misses: immutableFactMisses };
+}
+
+/** Reset reuse counters (tests). WeakMaps keep living object entries. */
+export function resetImmutableValidationFactStats(): void {
+  immutableFactHits = 0;
+  immutableFactMisses = 0;
+}
 import { channelSpec, isValidSample, scalarWriters } from "./registry";
 import { pathsShareTopology } from "./spatial";
 import { rootTimeMs } from "./timing";
@@ -157,8 +179,9 @@ export function validateSceneIR(
   if (nodes) {
     let geometry = 0;
     let depth = 0;
-    // Validation still visits every structure; share only the topology lookup
-    // within this call. No accepted/rejected revision can reuse this index.
+    // Topology depth/index stays call-local. Immutable path/keyframe payloads may
+    // reuse prior successful walks via identity WeakMaps (E003); graph/writer/
+    // timing/seal/limit checks still run every call.
     for (const list of [nodes, ...compositions.map((composition) => composition.nodes)]) {
       const index = indexNodes(list);
       for (const node of list) {
@@ -433,6 +456,12 @@ function readKeyframes(
     diags.add("INVALID_KEYFRAMES", path, "A keyframe track needs at least two keyframes.");
     return;
   }
+  if (validatedKeyframeArrays.has(value)) {
+    immutableFactHits += 1;
+    return;
+  }
+  immutableFactMisses += 1;
+  const before = diags.items.length;
   let sawStart = false;
   let sawEnd = false;
   let previous = -1;
@@ -507,6 +536,7 @@ function readKeyframes(
       }
     }
   }
+  if (diags.items.length === before) validatedKeyframeArrays.set(value, true);
 }
 
 function readExpressionTrack(value: Record<string, unknown>, path: string, limits: ResourceLimits, diags: Diags): void {
@@ -864,6 +894,12 @@ function readPath(value: unknown, path: string, diags: Diags): void {
     diags.add("MALFORMED_PATH", path, "A path needs at least one command and must start with move.");
     return;
   }
+  if (validatedPathArrays.has(value)) {
+    immutableFactHits += 1;
+    return;
+  }
+  immutableFactMisses += 1;
+  const before = diags.items.length;
   const first = value[0];
   if (!isRecord(first) || first.cmd !== "M") {
     diags.add("MALFORMED_PATH", path, "A path must start with an absolute move.");
@@ -918,6 +954,7 @@ function readPath(value: unknown, path: string, diags: Diags): void {
     }
     diags.add("MALFORMED_PATH", commandPath, `Unknown path command ${command.cmd}.`);
   });
+  if (diags.items.length === before) validatedPathArrays.set(value, true);
 }
 
 function readTransform(value: unknown, path: string, diags: Diags): void {

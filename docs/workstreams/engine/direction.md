@@ -9,12 +9,14 @@ Resolve live work-item URLs and own clock from config.json / GitHub.
 E001 assembled-delta admission, E018 host streaming observation, E002
 persistent-entity decision/prototype, E004 durable revision ops (Scene IR /
 MotionScript 0.6.0 `entities.durableRevisions`), E005 drawable-reuse
-decision/prototype, and E023 versioned `entities.drawableBindings` (Scene IR /
-MotionScript 0.7.0) are merged
+decision/prototype, E023 versioned `entities.drawableBindings` (Scene IR /
+MotionScript 0.7.0), and E003 immutable path/keyframe validation-fact reuse
+are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
 `docs/decisions/engine/persistent-entities.md`,
 `docs/decisions/engine/drawable-reuse-bindings.md`,
+`docs/decisions/engine/immutable-validation-facts.md`,
 `observeStreamingExecution` / `EntityRevisionStore` / `APPLY_ENTITY_PATCH` /
 `REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection in
 `@gvr/runtime`, `emitEntityPatchDelta` in `@gvr/compiler`).
@@ -24,11 +26,7 @@ the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. E003: profile/reuse immutable geometry/keyframe validation facts on Crane if
-   it still obstructs the selected workload. Preserve contextual references,
-   writer/timing/seal checks and bounded memory. May proceed independently when
-   validation cost blocks the chosen workload.
-2. E006: native streaming authorship rules and compact reference contract when
+1. E006: native streaming authorship rules and compact reference contract when
    sequenced after Ready work (including declarative MotionScript
    entity/behaviour/bind statements).
 
