@@ -1,4 +1,19 @@
 export { RuntimeClock } from "./clock";
+export { EntityRevisionStore } from "./entities";
+export type {
+  BehaviourId,
+  BehaviourRecord,
+  ChannelId,
+  CompactEntityContext,
+  EntityId,
+  EntityPatch,
+  EntityPatchCode,
+  EntityPatchDiagnostic,
+  EntityPatchOp,
+  EntityRecord,
+  OwnershipGrant,
+  WriterClass,
+} from "./entities";
 export { buildResolvedFrame } from "./frame";
 export { observeStreamingExecution } from "./observation";
 export type {
