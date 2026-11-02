@@ -1,4 +1,4 @@
-import type { Diagnostic, Paint, PathCommand, SolidColor, SourceSpan, Stroke } from "@gvr/schema";
+import type { Diagnostic, InteractionBinding, Paint, PathCommand, SolidColor, SourceSpan, Stroke } from "@gvr/schema";
 
 export interface Vec {
   x: number;
@@ -140,6 +140,18 @@ export interface OperatorsAst {
   errors: Diagnostic[];
 }
 
+/** Interaction target (MotionScript 0.10 / input.bindings). */
+export interface InteractAst {
+  kind: "interact";
+  nodeId: string;
+  pointer?: "auto" | "none";
+  focusable?: boolean;
+  tabIndex?: number;
+  bindings: InteractionBinding[];
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
 export interface StepAst {
   kind: "step";
   target: string;
@@ -243,6 +255,7 @@ export type UnitAst =
   | CompositionAst
   | InstanceAst
   | OperatorsAst
+  | InteractAst
   | EntityDeclAst
   | GeometryDeclAst
   | BindDeclAst

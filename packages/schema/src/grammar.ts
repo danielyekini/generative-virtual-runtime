@@ -39,7 +39,7 @@ headerProperty = "version" , string , ";"
                | "duration" , duration , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
-               | timingDecl | compositionDecl | instanceDecl | operatorsDecl
+               | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
                | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
                | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
@@ -159,6 +159,21 @@ instanceProperty = "start" , duration , ";"
 operatorsDecl  = "operators" , dottedId , "{" , { operatorDecl } , "}" , ";" ;
 operatorDecl   = "trim" , signedNumber , "," , signedNumber , "," , signedNumber , ";"
                | "round" , signedNumber , ";" ;
+
+(* MotionScript 0.10 interaction targets (input.bindings). Only "interact" is
+   reserved; body words match by spelling. dragTranslate only follows on drag. *)
+interactDecl   = "interact" , dottedId , "{" , { interactItem } , "}" , ";" ;
+interactItem   = ( "focusable" , boolean , ";" )
+               | ( "tabIndex" , signedNumber , ";" )
+               | ( "pointer" , ( "auto" | "none" ) , ";" )
+               | ( "on" , trigger , interactAction , ";" ) ;
+trigger        = "click" | "activate" | "wheel" | "drag" | ( "key" , string ) ;
+interactAction = ( "set" , interactAddr , signedNumber )
+               | ( "toggle" , interactAddr , signedNumber , signedNumber )
+               | ( "step" , interactAddr , signedNumber , signedNumber , signedNumber )
+               | ( "dragTranslate" , vec2 , vec2 ) ;
+interactAddr   = [ dottedId , "." ] , interactChannel ;
+interactChannel= "position.x" | "position.y" | "rotation" | "scale.x" | "scale.y" | "opacity" ;
 
 (* MotionScript 0.9 declarative entity statements. Lower 1:1 onto released
    APPLY_ENTITY_PATCH ops (entities.durableRevisions / entities.drawableBindings).
@@ -338,6 +353,7 @@ export const KEYWORDS = [
   "reparent",
   "cancel",
   "activate",
+  "interact",
 ] as const;
 
 export const KEYWORD_SET = new Set<string>(KEYWORDS);

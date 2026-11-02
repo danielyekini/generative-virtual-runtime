@@ -738,6 +738,36 @@
       }
     },
     {
+      "id": "input.bindings",
+      "summary": "Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation.",
+      "introducedIn": { "motionscript": "0.10.0", "sceneIr": "0.10.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing input.bindings.",
+        "Targets name root-scene nodes. Actions are set, toggle, step and dragTranslate on position.x/y, rotation, scale.x/y and opacity only; no scripts, loops or timers.",
+        "Every written (node, channel) is exclusively input-owned for the whole scene; a timeline track writing the same scalar is rejected (OVERLAPPING_WRITERS).",
+        "Hit regions are painted fill/stroke geometry in logical viewport space; curves flatten at 16 segments and text uses host metrics or an em-box estimate. Clips/masks, multi-pointer gestures and text entry are out of scope.",
+        "dragTranslate converts viewport deltas into the node's parent space and clamps to the declared bounds."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/interact.test.ts#lowers targets and every bounded action into Scene IR interactions",
+        "packages/compiler/src/interact.test.ts#enforces exclusive input ownership, bounds and duplicate targets through validation",
+        "packages/runtime/src/input-bindings.test.ts#drives declared bindings through AnimationRuntime with parent-space drag",
+        "packages/runtime/src/input-bindings.test.ts#delivers interactions through streamed compiler deltas"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native interaction; Lottie has no input model to import."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native interaction; SVG event attributes are not imported."
+        }
+      }
+    },
+    {
       "id": "compositing.matte",
       "summary": "A track matte would clip one layer by another.",
       "targets": [],

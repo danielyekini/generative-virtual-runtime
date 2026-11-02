@@ -1,4 +1,4 @@
-# E007: native input, hit-testing, focus and bounded state actions
+# Engine run 99a8c7a8: E007 native input decision + E025 `input.bindings`
 
 Run `99a8c7a8-bc66-49e2-9f84-201c7ba1e051`, 2 November 2026. [Issue #26](https://github.com/danielyekini/generative-virtual-runtime/issues/26).
 Measured implementation: `d204ca69442ca93daeaa8ded8f2fadaee484e9bc` (clean tree at verification); base `57fe5a5b3fc3cb07924a5931b421d9c7dc82be2b`.
@@ -33,3 +33,34 @@ Historical Lottie certification and benchmarks not rerun (unaffected).
 
 Project field writes are unavailable to this session (no Project API); board
 status is recorded in issue handovers for reconciliation.
+
+---
+
+## E025: `input.bindings` (MotionScript / Scene IR 0.10.0)
+
+[Issue #100](https://github.com/danielyekini/generative-virtual-runtime/issues/100).
+Measured implementation: `0fa38e22c76caddfebe321838f842d360892eb04` (clean tree);
+base `2d2b64a908a352f655ed813d22b9e7c99a98ef36` (E007 merge).
+
+`interact` declarations (only new reserved word) lower to scene / `CREATE_SCENE`
+`interactions`; actions `set` / `toggle` / `step` / `dragTranslate` on
+position.x/y, rotation, scale.x/y, opacity. Declared channels are exclusively
+input-owned: tracks on the same scalar fail `OVERLAPPING_WRITERS`. Validator
+requires `input.bindings`; frozen after first seal; forward targets defer.
+`createSceneInputSession` seeds values from authored bases and converts drag
+deltas into parent space; `AnimationRuntime.evaluate(t, overlay)`;
+`logicalPointFromCss`. Studio player routes pointer/wheel/key events and uses
+`wrapFocus: false` so Tab leaves the canvas at either end.
+[MotionScript 0.10.0](../../../languages/motionscript/versions/0.10.0.md),
+[Scene IR 0.10.0](../../../languages/scene-ir/versions/0.10.0.md), registry row
+`input.bindings`.
+
+Verification: `npm run verify` **exit 0** on the measured commit: 332 tests / 47
+files (8 compiler/schema conformance in `interact.test.ts`, 3 runtime in
+`input-bindings.test.ts`, 1 added focus-wrap test), all typechecks, Studio build,
+21 IR fixtures, 33 ops tests, capability index fresh. Built Studio in headless
+Chromium (Playwright, `vite preview`): uploaded program ran with no
+diagnostics; canvas click toggled `Lamp` opacity 0.2→1; drag of +40,+20 CSS-
+mapped logical units moved a dot under a 2× parent by exactly +40,+20 logical;
+Tab then Enter on the canvas toggled back to 0.2; a second Tab released focus
+to the next page control. Not run: physical touch devices, screen readers.

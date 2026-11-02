@@ -1,12 +1,19 @@
 import {
+  containFit,
+  localMatrix,
+  logicalMatrix,
+  multiplyMat3,
+  type InteractionTarget,
   type Mat3,
   type NodeDefinition,
+  type SceneIR,
+  type Viewport,
   type PathCommand,
   type ResolvedDrawItem,
   type ResolvedFrame,
   type Vec2,
 } from "@gvr/schema";
-import type { SampledScene } from "./sample";
+import { sampleScene, type SampledScene } from "./sample";
 
 /**
  * E007 native input prototype. See docs/decisions/engine/native-input.md.
@@ -402,6 +409,17 @@ export interface InputSessionOptions {
   /** Bound on retained replay log entries (default 4096); older entries drop first. */
   maxLog?: number;
   hit?: Omit<HitTestOptions, "passThrough">;
+  /**
+   * Parent-space → logical viewport matrix for an entity at a scene time.
+   * When supplied, dragTranslate converts viewport deltas into parent space;
+   * otherwise deltas apply directly (identity parent).
+   */
+  dragSpace?: (entityId: string, sceneTimeMs: number) => Mat3 | undefined;
+  /**
+   * Tab/Shift+Tab wrap around the focus order (default true). Embedded hosts
+   * pass false so focus leaves the scene at either end instead of trapping it.
+   */
+  wrapFocus?: boolean;
 }
 
 interface Capture {
@@ -659,6 +677,11 @@ export class InputSession {
       const order = this.focusOrder(frame);
       if (order.length === 0) return;
       const index = this.focused ? order.indexOf(this.focused) : -1;
+      const step = event.shiftKey ? -1 : 1;
+      if (this.options.wrapFocus === false && index >= 0 && (index + step < 0 || index + step >= order.length)) {
+        this.setFocus(undefined, "keyboard", frame, signals);
+        return;
+      }
       const next =
         index < 0
           ? order[event.shiftKey ? order.length - 1 : 0]
@@ -739,12 +762,23 @@ export class InputSession {
           // All-or-nothing: both axes must be input-owned before either moves.
           const t = sceneTimeMs;
           if (!this.owns(entityId, "transform.position.x", t, signals) || !this.owns(entityId, "transform.position.y", t, signals)) break;
-          this.write(entityId, "transform.position.x", clamp(x + detail.delta.x, action.min.x, action.max.x), t, signals);
-          this.write(entityId, "transform.position.y", clamp(y + detail.delta.y, action.min.y, action.max.y), t, signals);
+          const delta = this.parentDelta(entityId, detail.delta, t);
+          if (!delta) break;
+          this.write(entityId, "transform.position.x", clamp(x + delta.x, action.min.x, action.max.x), t, signals);
+          this.write(entityId, "transform.position.y", clamp(y + delta.y, action.min.y, action.max.y), t, signals);
           break;
         }
       }
     }
+  }
+
+  /** Viewport delta → parent-space delta via the inverse linear part of the parent matrix. */
+  private parentDelta(entityId: string, delta: Vec2, sceneTimeMs: number): Vec2 | undefined {
+    const space = this.options.dragSpace?.(entityId, sceneTimeMs);
+    if (!space) return delta;
+    const inverse = invert(space);
+    if (!inverse) return undefined;
+    return { x: inverse[0] * delta.x + inverse[3] * delta.y, y: inverse[1] * delta.x + inverse[4] * delta.y };
   }
 
   private owns(entityId: string, channel: InputChannel, sceneTimeMs: number, signals: InputSignal[]): boolean {
@@ -802,4 +836,98 @@ function writeChannel(node: NodeDefinition, channel: InputChannel, value: number
       node.opacity = value;
       break;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Scene-declared interactions (Scene IR 0.10.0 input.bindings)
+
+/** CSS pixel → logical viewport point under the renderer's contain fit. */
+export function logicalPointFromCss(
+  viewport: Pick<Viewport, "width" | "height">,
+  cssWidth: number,
+  cssHeight: number,
+  x: number,
+  y: number,
+): Vec2 {
+  const fit = containFit(viewport, cssWidth, cssHeight);
+  return { x: (x - fit.offsetX) / fit.scale, y: (y - fit.offsetY) / fit.scale };
+}
+
+/** Input-owned (node, channel) pairs declared by a scene's interactions. */
+export function declaredInputChannels(interactions: readonly InteractionTarget[] | undefined): Set<string> {
+  const owned = new Set<string>();
+  for (const target of interactions ?? []) {
+    for (const binding of target.bindings ?? []) {
+      const nodeId = binding.nodeId ?? target.nodeId;
+      const channels: InputChannel[] =
+        binding.action.kind === "dragTranslate" ? ["transform.position.x", "transform.position.y"] : [binding.action.channel];
+      for (const channel of channels) owned.add(`${nodeId}:${channel}`);
+    }
+  }
+  return owned;
+}
+
+function baseValue(node: NodeDefinition, channel: InputChannel): number {
+  switch (channel) {
+    case "transform.position.x":
+      return node.transform.position.x;
+    case "transform.position.y":
+      return node.transform.position.y;
+    case "transform.rotation":
+      return node.transform.rotation;
+    case "transform.scale.x":
+      return node.transform.scale.x;
+    case "transform.scale.y":
+      return node.transform.scale.y;
+    case "opacity":
+      return node.opacity;
+  }
+}
+
+/**
+ * Build an InputSession from a validated scene's `interactions`. Declared
+ * channels are input-owned for the whole scene (the validator rejects tracks
+ * that write them); initial values are the authored node bases.
+ */
+export function createSceneInputSession(
+  scene: SceneIR,
+  options: Pick<InputSessionOptions, "dragThreshold" | "maxLog" | "hit" | "wrapFocus"> = {},
+): InputSession {
+  const interactions = scene.interactions ?? [];
+  const owned = declaredInputChannels(interactions);
+  const byId = new Map(scene.nodes.map((node) => [node.id, node]));
+  const initial: Record<string, number> = {};
+  for (const key of owned) {
+    const cut = key.lastIndexOf(":");
+    const node = byId.get(key.slice(0, cut));
+    if (node) initial[key] = baseValue(node, key.slice(cut + 1) as InputChannel);
+  }
+  const session: InputSession = new InputSession({
+    ...options,
+    initial,
+    ownership: (entityId, channel) => owned.has(`${entityId}:${channel}`),
+    targets: interactions.map((target) => ({
+      entityId: target.nodeId,
+      ...(target.pointer ? { pointer: target.pointer } : {}),
+      ...(target.focusable !== undefined ? { focusable: target.focusable } : {}),
+      ...(target.tabIndex !== undefined ? { tabIndex: target.tabIndex } : {}),
+      bindings: (target.bindings ?? []).map((binding) => ({
+        on: binding.on,
+        ...(binding.key !== undefined ? { key: binding.key } : {}),
+        ...(binding.nodeId !== undefined ? { entityId: binding.nodeId } : {}),
+        action: binding.action,
+      })),
+    })),
+    dragSpace: (entityId, sceneTimeMs) => {
+      const sampled = session.applyTo(sampleScene(scene, sceneTimeMs), sceneTimeMs);
+      const node = sampled.nodes.find((entry) => entry.id === entityId);
+      if (!node) return undefined;
+      const world = logicalMatrix(sampled.nodes, scene.viewport, sampled.camera, entityId);
+      const local = invert(localMatrix(node.transform));
+      if (!local) return undefined;
+      // logical = parent × local, so parent = logical × local⁻¹.
+      return multiplyMat3(world, local);
+    },
+  });
+  return session;
 }

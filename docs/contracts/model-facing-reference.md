@@ -38,6 +38,10 @@ Entity edits in the snapshot may use released MotionScript 0.9.0 declarative
 `entities.durableRevisions` / `entities.drawableBindings`) or host
 `emitEntityPatchDelta` / `APPLY_ENTITY_PATCH`.
 
+Interactive programs may use released MotionScript 0.10.0 `interact`
+declarations (gated by `input.bindings`): bounded `set` / `toggle` / `step` /
+`dragTranslate` actions on input-owned channels that no track may also write.
+
 ## Snapshot metadata (P006 must record)
 
 - Source authority paths + content hashes (or git tree identity)

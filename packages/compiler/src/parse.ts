@@ -2,6 +2,8 @@ import {
   diagnostic,
   lex,
   type Diagnostic,
+  type InteractionBinding,
+  type InteractionChannel,
   type Paint,
   type PathCommand,
   type SourceSpan,
@@ -21,6 +23,7 @@ import type {
   EaseAst,
   EntityDeclAst,
   GeometryDeclAst,
+  InteractAst,
   HeaderAst,
   InstanceAst,
   KeyframeAst,
@@ -169,6 +172,7 @@ function parseUnit(parser: Parser): UnitAst | undefined {
   if (token.lexeme === "composition") return parseComposition(parser);
   if (token.lexeme === "instance") return parseInstance(parser);
   if (token.lexeme === "operators") return parseOperators(parser);
+  if (token.lexeme === "interact") return parseInteract(parser);
   if (token.lexeme === "entity") return parseEntityDecl(parser);
   if (token.lexeme === "geometry") return parseGeometryDecl(parser);
   if (token.lexeme === "bind") return parseBindDecl(parser);
@@ -1175,6 +1179,141 @@ function parseOperators(parser: Parser): OperatorsAst {
   eat(parser, "rbrace");
   expectSemi(parser);
   return node;
+}
+
+const INTERACT_CHANNELS: Record<string, InteractionChannel> = {
+  "position.x": "transform.position.x",
+  "position.y": "transform.position.y",
+  rotation: "transform.rotation",
+  "scale.x": "transform.scale.x",
+  "scale.y": "transform.scale.y",
+  opacity: "opacity",
+};
+
+/** A bare word, whether or not it is reserved. Interaction sub-words are not new keywords. */
+function eatWord(parser: Parser, lexeme?: string): Token | undefined {
+  return eat(parser, "identifier", lexeme) ?? eat(parser, "keyword", lexeme);
+}
+
+/** `[node.path.]channel` where channel is one of the interaction channel paths. */
+function parseInteractAddress(parser: Parser): { nodeId?: string; channel: InteractionChannel } | undefined {
+  const first = eatWord(parser);
+  if (!first) return undefined;
+  const parts = [first.lexeme];
+  while (eat(parser, "dot")) {
+    const part = eatWord(parser);
+    if (!part) return undefined;
+    parts.push(part.lexeme);
+  }
+  for (const size of [2, 1]) {
+    if (parts.length < size) continue;
+    const channel = INTERACT_CHANNELS[parts.slice(-size).join(".")];
+    if (!channel) continue;
+    const nodeId = parts.slice(0, -size).join(".");
+    return nodeId ? { nodeId, channel } : { channel };
+  }
+  return undefined;
+}
+
+function parseInteract(parser: Parser): InteractAst {
+  const start = eat(parser, "keyword", "interact");
+  const node: InteractAst = { kind: "interact", nodeId: "", bindings: [], span: start?.span ?? emptySpan(), errors: [] };
+  const nodeId = parseDotted(parser, false);
+  if (nodeId) node.nodeId = nodeId;
+  else note(node, parser, "interact needs a node id.");
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected an interaction property.");
+      skipProperty(parser);
+      expectSemi(parser);
+      continue;
+    }
+    if (key.lexeme === "focusable") {
+      if (eat(parser, "keyword", "true")) node.focusable = true;
+      else if (eat(parser, "keyword", "false")) node.focusable = false;
+      else note(node, parser, "focusable needs true or false.");
+    } else if (key.lexeme === "tabIndex") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined || !Number.isInteger(value)) note(node, parser, "tabIndex needs an integer.");
+      else node.tabIndex = value;
+    } else if (key.lexeme === "pointer") {
+      if (eatWord(parser, "none")) node.pointer = "none";
+      else if (eatWord(parser, "auto")) node.pointer = "auto";
+      else note(node, parser, "pointer needs auto or none.");
+    } else if (key.lexeme === "on") {
+      const binding = parseInteractBinding(parser, node);
+      if (binding) node.bindings.push(binding);
+      else skipProperty(parser);
+    } else {
+      note(node, parser, `Unknown interact property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  return node;
+}
+
+function parseInteractBinding(parser: Parser, node: InteractAst): InteractionBinding | undefined {
+  const trigger = eatWord(parser);
+  if (!trigger || !["click", "activate", "drag", "wheel", "key"].includes(trigger.lexeme)) {
+    note(node, parser, "on needs click, activate, drag, wheel or key.");
+    return undefined;
+  }
+  const on = trigger.lexeme as InteractionBinding["on"];
+  let key: string | undefined;
+  if (on === "key") {
+    const name = eat(parser, "string");
+    if (!name?.stringValue) {
+      note(node, parser, 'on key needs a key name string, for example "ArrowRight".');
+      return undefined;
+    }
+    key = name.stringValue;
+  }
+  const verb = eatWord(parser);
+  const withKey = (binding: InteractionBinding): InteractionBinding => (key === undefined ? binding : { ...binding, key });
+  if (verb?.lexeme === "dragTranslate") {
+    const min = parseVec(parser);
+    const max = parseVec(parser);
+    if (!min || !max) {
+      note(node, parser, "dragTranslate needs (minX, minY) (maxX, maxY).");
+      return undefined;
+    }
+    return withKey({ on, action: { kind: "dragTranslate", min: { x: min.x, y: min.y }, max: { x: max.x, y: max.y } } });
+  }
+  if (verb?.lexeme !== "set" && verb?.lexeme !== "toggle" && verb?.lexeme !== "step") {
+    note(node, parser, "Interaction action must be set, toggle, step or dragTranslate.");
+    return undefined;
+  }
+  const address = parseInteractAddress(parser);
+  if (!address) {
+    note(node, parser, "Interaction actions write position.x, position.y, rotation, scale.x, scale.y or opacity.");
+    return undefined;
+  }
+  const numbers: number[] = [];
+  for (;;) {
+    const before = parser.index;
+    const value = parseSignedNumber(parser);
+    if (value === undefined) {
+      parser.index = before;
+      break;
+    }
+    numbers.push(value);
+  }
+  const target = address.nodeId === undefined ? {} : { nodeId: address.nodeId };
+  const expected = verb.lexeme === "set" ? 1 : verb.lexeme === "toggle" ? 2 : 3;
+  if (numbers.length !== expected) {
+    note(node, parser, `${verb.lexeme} needs ${expected} number${expected === 1 ? "" : "s"}.`);
+    return undefined;
+  }
+  const [a, b, c] = numbers as [number, number, number];
+  const channel = address.channel;
+  if (verb.lexeme === "set") return withKey({ on, ...target, action: { kind: "set", channel, value: a } });
+  if (verb.lexeme === "toggle") return withKey({ on, ...target, action: { kind: "toggle", channel, values: [a, b] } });
+  return withKey({ on, ...target, action: { kind: "step", channel, delta: a, min: b, max: c } });
 }
 
 function parseEasing(parser: Parser): EaseAst | undefined {

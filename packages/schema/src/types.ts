@@ -475,6 +475,45 @@ export interface SceneIR {
   timingScopes?: TimingScope[];
   requiredCapabilities?: string[];
   geometryOperators?: GeometryOperatorList[];
+  /** Requires input.bindings (Scene IR 0.10.0). */
+  interactions?: InteractionTarget[];
+}
+
+/** Channels an interaction binding may write (Scene IR 0.10.0 input.bindings). */
+export type InteractionChannel =
+  | "transform.position.x"
+  | "transform.position.y"
+  | "transform.rotation"
+  | "transform.scale.x"
+  | "transform.scale.y"
+  | "opacity";
+
+export type InteractionTrigger = "click" | "activate" | "drag" | "wheel" | "key";
+
+/** Bounded state actions. No arbitrary code, loops or timers. */
+export type InteractionAction =
+  | { kind: "set"; channel: InteractionChannel; value: number }
+  | { kind: "toggle"; channel: InteractionChannel; values: [number, number] }
+  | { kind: "step"; channel: InteractionChannel; delta: number; min: number; max: number }
+  /** Position delta in the node's parent space, clamped to [min, max]. */
+  | { kind: "dragTranslate"; min: Vec2; max: Vec2 };
+
+export interface InteractionBinding {
+  on: InteractionTrigger;
+  /** Required for `key`; a KeyboardEvent.key value. */
+  key?: string;
+  /** Node whose channel is written; defaults to the interaction target. */
+  nodeId?: string;
+  action: InteractionAction;
+}
+
+/** Interaction target (input.bindings). Declared channels are exclusively input-owned. */
+export interface InteractionTarget {
+  nodeId: string;
+  pointer?: "auto" | "none";
+  focusable?: boolean;
+  tabIndex?: number;
+  bindings?: InteractionBinding[];
 }
 
 export interface SceneHeader {
@@ -491,6 +530,7 @@ export interface SceneHeader {
   timingScopes?: TimingScope[];
   requiredCapabilities?: string[];
   geometryOperators?: GeometryOperatorList[];
+  interactions?: InteractionTarget[];
 }
 
 /** Stable semantic entity identity for durable revisions (entities.durableRevisions). */

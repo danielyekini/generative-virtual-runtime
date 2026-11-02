@@ -69,6 +69,10 @@ Landed in MotionScript / Scene IR **0.8.0**. Wire stays `"0.2"`; scenes and prog
 
 Landed in MotionScript / Scene IR **0.9.0**. Wire stays `"0.2"`. Completes authorship for existing `entities.durableRevisions` / `entities.drawableBindings` with declarative `entity` / `geometry` / `bind` / `behaviour` / `remove` / `reparent` / `cancel` productions that lower onto `APPLY_ENTITY_PATCH`. No new capability token; Scene IR ops are unchanged.
 
+### Decision for `input.bindings`
+
+Landed in MotionScript / Scene IR **0.10.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `input.bindings`. `interact` declarations lower to scene/header `interactions`. Declared channels are exclusively input-owned for the whole scene; tracks on the same scalar are rejected. Only `interact` became a reserved word, so older identifiers spelled like interaction sub-words keep compiling. See `docs/decisions/engine/native-input.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.
