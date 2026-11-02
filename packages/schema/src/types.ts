@@ -322,16 +322,52 @@ export interface GeometryOperatorList {
   operators: GeometryOperator[];
 }
 
+/** Portable generative modality (Scene IR 0.14.0 audio.generative). */
+export type AudioGenerativeModality = "speech" | "effect";
+
+/** Optional portable style knobs for generative audio (provider-mapped). */
+export interface AudioGenerativeStyle {
+  stability?: number;
+  similarity?: number;
+  speed?: number;
+}
+
+/** Static decoded-file source (audio.cues href form). */
+export interface AudioHrefSource {
+  type: "href";
+  href: string;
+}
+
 /**
- * Decoded audio resource (Scene IR 0.11.0 audio.cues). `durationMs` is the
- * decoded length; readiness is reported by the host loader.
+ * Provider-abstracted generative intent (audio.generative). No vendor endpoint,
+ * model id, or API key on the wire.
+ */
+export interface AudioGenerativeSource {
+  type: "generative";
+  modality: AudioGenerativeModality;
+  prompt: string;
+  voice?: string;
+  durationHintMs?: number;
+  loop?: boolean;
+  seed?: number;
+  style?: AudioGenerativeStyle;
+}
+
+export type AudioResourceSource = AudioHrefSource | AudioGenerativeSource;
+
+/**
+ * Audio resource (Scene IR 0.11.0 audio.cues; generative source in 0.14.0).
+ * Href resources require non-empty `href` and positive `durationMs`. Generative
+ * resources carry `source.type === "generative"`; `durationMs` may be
+ * provisional or omitted while pending; host may fill `href` after synthesis.
  */
 export interface AudioResourceDefinition {
   id: string;
   kind: "audio";
-  href: string;
-  durationMs: number;
+  href?: string;
+  durationMs?: number;
   readiness?: "ready" | "pending" | "failed";
+  source?: AudioResourceSource;
 }
 
 export type ResourceDefinition = FontResource | ImageResource | AudioResourceDefinition;

@@ -27,6 +27,7 @@ export const CAPABILITIES = [
   "entities.drawableBindings",
   "input.bindings",
   "audio.cues",
+  "audio.generative",
   "space.planar25d",
   "physics.planar2d",
 ] as const;

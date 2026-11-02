@@ -52,6 +52,14 @@ export class WebAudioBackend implements AudioBackend {
     return Promise.all(
       resources.map(async (resource) => {
         try {
+          // Generative resources (audio.generative) materialise via a host provider;
+          // leave them pending until href/bytes are available.
+          if (!resource.href) {
+            if (generation !== this.loadGeneration) return;
+            this.record(`pending ${resource.id} (no href yet)`);
+            report(resource.id, "pending");
+            return;
+          }
           const response = await fetch(new URL(resource.href, base));
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const decoded = await ctx.decodeAudioData(await response.arrayBuffer());

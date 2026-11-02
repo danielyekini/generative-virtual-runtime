@@ -1,5 +1,7 @@
 import type {
   AudioCueDefinition,
+  AudioGenerativeModality,
+  AudioGenerativeStyle,
   Diagnostic,
   InteractionBinding,
   Paint,
@@ -163,12 +165,39 @@ export interface InteractAst {
   errors: Diagnostic[];
 }
 
-/** Audio resource declaration (MotionScript 0.11 / audio.cues). */
+/** Portable generative fields shared by explicit and sugar audio decls. */
+export interface AudioGenerativeFields {
+  modality: AudioGenerativeModality;
+  prompt: string;
+  voice?: string;
+  durationHintMs?: number;
+  loop?: boolean;
+  seed?: number;
+  style?: AudioGenerativeStyle;
+}
+
+/** Audio resource declaration (MotionScript 0.11 href / 0.14 generative). */
 export interface AudioDeclAst {
   kind: "audio";
   id: string;
-  href: string;
-  durationMs: number;
+  /** Href form (audio.cues). */
+  href?: string;
+  durationMs?: number;
+  /** Generative form (audio.generative). */
+  generative?: AudioGenerativeFields;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+/**
+ * Authoring sugar `audio.narration(...)` / `audio.effects(...)` (0.14).
+ * Lowers to an anonymous generative resource plus a cue.
+ */
+export interface AudioSugarAst {
+  kind: "audioSugar";
+  bus: "narration" | "effects";
+  generative: AudioGenerativeFields;
+  startMs: number;
   span: SourceSpan;
   errors: Diagnostic[];
 }
@@ -306,6 +335,7 @@ export type UnitAst =
   | OperatorsAst
   | InteractAst
   | AudioDeclAst
+  | AudioSugarAst
   | CueDeclAst
   | SpatialLayerAst
   | PhysicsAst

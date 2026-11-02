@@ -85,6 +85,10 @@ Landed in MotionScript / Scene IR **0.12.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.13.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `physics.planar2d`. `physics` declarations lower to scene `physics` (one world: dynamic bodies/joints or authored constraints), carried on `CREATE_SCENE` headers as a base definition frozen after the first seal. Physics exclusively owns `transform.position.x` / `transform.position.y` / `transform.rotation` for body entities (authored endpoints own position channels). Only `physics` became a reserved word; `mode`, `body`, `joint`, `constraint` and body words match by spelling. Older readers reject the capability token and the unknown `physics` key. See `docs/decisions/engine/physics-integration.md`.
 
+### Decision for `audio.generative`
+
+Landed in MotionScript / Scene IR **0.14.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `audio.generative` (and `audio.cues` whenever audio resources or cues are present). Audio resources may carry `source: { type: "generative", modality, prompt, … }`; cues stay the 0.11.0 shape. MotionScript adds `audio <id> = speech|effect "…"` and sugar `audio.narration` / `audio.effects`. No new reserved words. Hosts synthesise through `GenerativeAudioProvider` with duration revision (E032); the ElevenLabs adapter is a separate package (E034). See `docs/decisions/engine/generative-audio-contract.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

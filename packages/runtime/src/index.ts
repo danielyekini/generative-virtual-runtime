@@ -43,6 +43,7 @@ export {
   estimateProvisionalDurationMs,
   fixtureWavBytes,
   generativeCacheKey,
+  generativeRequestFromResource,
   materializeGenerativeResource,
   requiredGenerativeExportReady,
 } from "./generative-audio";

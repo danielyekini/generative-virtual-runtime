@@ -6,11 +6,14 @@ import {
   IR_VERSION,
   IR_VERSION_02,
   diagnostic,
+  estimateGenerativeAudioDurationMs,
   isKnownCapability,
   localTimeMs,
   parseExpression,
   resolveAddress,
   validateSceneIR,
+  type AudioGenerativeSource,
+  type AudioResourceDefinition,
   type Diagnostic,
   type Expr,
   type InteractionTarget,
@@ -28,7 +31,7 @@ import {
   type Transform,
   type Vec2,
 } from "@gvr/schema";
-import type { AnimLiteral, EaseAst, HeaderAst, NodeAst, ProgramAst, Prop, UnitAst } from "./ast";
+import type { AnimLiteral, AudioDeclAst, AudioGenerativeFields, AudioSugarAst, EaseAst, HeaderAst, NodeAst, ProgramAst, Prop, UnitAst } from "./ast";
 import type { EntityPatchOp } from "@gvr/schema";
 import {
   emitEntityStatementDelta,
@@ -71,6 +74,8 @@ export interface Session {
   pendingDeltas: SceneIRDelta[];
   authoringComplete: boolean;
   headerSpan: SourceSpan;
+  /** Counter for anonymous audio.narration / audio.effects sugar ids. */
+  generativeSugarCount: number;
 }
 
 /** Compile one complete MotionScript file. A rejected unit leaves the accepted scene unchanged. */
@@ -495,6 +500,7 @@ function createSession(header: HeaderAst, diagnostics: Diagnostic[]): Session {
     pendingDeltas: [],
     authoringComplete: false,
     headerSpan: header.span,
+    generativeSugarCount: 0,
   };
 }
 
@@ -521,6 +527,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       unit.kind === "operators" ||
       unit.kind === "interact" ||
       unit.kind === "audio" ||
+      unit.kind === "audioSugar" ||
       unit.kind === "spatialLayer" ||
       unit.kind === "physics" ||
       (unit.kind === "batch" && unit.items.some((item) => item.kind === "node")))
@@ -716,12 +723,13 @@ function lower(session: Session, unit: UnitAst): void {
     lowerInteract(session, unit);
     return;
   }
-  if (unit.kind === "audio" || unit.kind === "cue") {
+  if (unit.kind === "audio" || unit.kind === "audioSugar" || unit.kind === "cue") {
     if (session.scene.irVersion !== "0.2") {
       session.diagnostics.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare audio.", unit.span));
       return;
     }
     if (unit.kind === "audio") lowerAudio(session, unit);
+    else if (unit.kind === "audioSugar") lowerAudioSugar(session, unit);
     else lowerCue(session, unit);
     return;
   }
@@ -1459,14 +1467,66 @@ function lowerPhysics(session: Session, unit: Extract<UnitAst, { kind: "physics"
   ensureCapability(session, "physics.planar2d");
 }
 
-function lowerAudio(session: Session, unit: Extract<UnitAst, { kind: "audio" }>): void {
+function generativeResource(id: string, fields: AudioGenerativeFields): AudioResourceDefinition {
+  const durationMs = estimateGenerativeAudioDurationMs(fields.modality, fields.prompt, fields.durationHintMs);
+  const source: AudioGenerativeSource = {
+    type: "generative",
+    modality: fields.modality,
+    prompt: fields.prompt,
+  };
+  if (fields.voice !== undefined) source.voice = fields.voice;
+  if (fields.durationHintMs !== undefined) source.durationHintMs = fields.durationHintMs;
+  if (fields.loop !== undefined) source.loop = fields.loop;
+  if (fields.seed !== undefined) source.seed = fields.seed;
+  if (fields.style !== undefined) source.style = { ...fields.style };
+  return { id, kind: "audio", durationMs, readiness: "pending", source };
+}
+
+function lowerAudio(session: Session, unit: AudioDeclAst): void {
   if (session.scene.resources.some((resource) => resource.id === unit.id)) {
     session.diagnostics.push(problem("DUPLICATE_ID", `Resource ${unit.id} already exists.`, unit.span));
     return;
   }
-  // Readiness is host-reported (loader decode); the program declares none.
-  session.scene.resources = [...session.scene.resources, { id: unit.id, kind: "audio", href: unit.href, durationMs: unit.durationMs }];
+  if (unit.generative) {
+    if (!unit.generative.prompt) {
+      session.diagnostics.push(problem("MISSING_REQUIRED", "Generative audio needs a non-empty prompt.", unit.span));
+      return;
+    }
+    session.scene.resources = [...session.scene.resources, generativeResource(unit.id, unit.generative)];
+    ensureCapability(session, "audio.cues");
+    ensureCapability(session, "audio.generative");
+    return;
+  }
+  // Href form: readiness is host-reported (loader decode); the program declares none.
+  session.scene.resources = [
+    ...session.scene.resources,
+    { id: unit.id, kind: "audio", href: unit.href ?? "", durationMs: unit.durationMs ?? 0 },
+  ];
   ensureCapability(session, "audio.cues");
+}
+
+function lowerAudioSugar(session: Session, unit: AudioSugarAst): void {
+  if (!unit.generative.prompt) {
+    session.diagnostics.push(problem("MISSING_REQUIRED", "Audio sugar needs a non-empty prompt.", unit.span));
+    return;
+  }
+  session.generativeSugarCount += 1;
+  const prefix = unit.bus === "narration" ? "GenNarration" : "GenEffects";
+  const resourceId = `${prefix}${session.generativeSugarCount}`;
+  const cueId = `${prefix}Cue${session.generativeSugarCount}`;
+  if (session.scene.resources.some((resource) => resource.id === resourceId)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `Resource ${resourceId} already exists.`, unit.span));
+    return;
+  }
+  session.scene.resources = [...session.scene.resources, generativeResource(resourceId, unit.generative)];
+  ensureCapability(session, "audio.cues");
+  ensureCapability(session, "audio.generative");
+  lowerCue(session, {
+    kind: "cue",
+    cue: { id: cueId, resourceId, bus: unit.bus, startMs: unit.startMs },
+    span: unit.span,
+    errors: [],
+  });
 }
 
 function lowerCue(session: Session, unit: Extract<UnitAst, { kind: "cue" }>): void {

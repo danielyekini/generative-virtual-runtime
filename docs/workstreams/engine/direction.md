@@ -59,26 +59,26 @@ visuals — first meaningful paid external dependency. Scene-time `audio.cues`
 with-timestamps TTS + SFX v3 behind the adapter
 ([generative-audio-contract.md](../../decisions/engine/generative-audio-contract.md);
 steering [generative-audio-elevenlabs.md](../../decisions/engine/generative-audio-elevenlabs.md)).
-Syntax sugar is not grammar until E033.
+E033 versions the language surface (MotionScript / Scene IR 0.14.0).
 
 ## Next work
 
-1. E032 ([#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124)):
-   runtime duration revision + `GenerativeAudioProvider` + fixture provider
-   (no language claim). Done.
-2. E033 ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)):
-   version `audio.generative` in MotionScript / Scene IR. Ready after E032.
-3. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
+1. E033 ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)):
+   version `audio.generative` in MotionScript / Scene IR 0.14.0. In progress.
+2. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
    ElevenLabs adapter package. Ready after E032; Studio credentials stay with
    Product ([#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) / P009).
-4. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
+3. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
    version seam/split support (e.g. `space.planarSeams`) on top of
    `space.planar25d`. Ready after the generative-audio P0 slice unless that
    slice is Blocked.
-5. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+4. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
    sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
    remains a Candidate emitter round-trip bug (no language change).
+
+E032 ([#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124))
+runtime `GenerativeAudioProvider` + duration revision is Done.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

@@ -59,6 +59,29 @@ describe("canonical emitter", () => {
     expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
   });
 
+  it("round-trips generative audio declarations (audio.generative)", () => {
+    const source = `scene "gen-audio" {
+  version "0.2";
+  viewport (400, 300);
+  background #ffffff;
+  duration 4s;
+};
+circle Dot { position (200, 150); radius 20; fill #3366ff; };
+audio Hello = speech "This is an example of what I sound like";
+audio Tracks = effect "Train tracks" { duration 3s; loop; voice "rails"; seed 1; stability 0.4; };
+cue N1 narration Hello at 0ms;
+cue E1 effects Tracks at 1200ms;
+complete;
+`;
+    const scene = compile(source);
+    const { again } = roundTrip(scene);
+    expect(again.requiredCapabilities).toEqual(expect.arrayContaining(["audio.cues", "audio.generative"]));
+    expect(again.resources.filter((resource) => resource.kind === "audio")).toEqual(
+      scene.resources.filter((resource) => resource.kind === "audio"),
+    );
+    expect(again.audioCues).toEqual(scene.audioCues);
+  });
+
   it("round-trips animated solid paint channels", () => {
     const source = `scene "paint" {
   version "0.2";

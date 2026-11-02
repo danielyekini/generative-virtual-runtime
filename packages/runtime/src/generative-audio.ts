@@ -1,13 +1,19 @@
 /**
- * Generative audio provider boundary (E031/E032).
+ * Generative audio provider boundary (E031/E032/E033).
  * See docs/decisions/engine/generative-audio-contract.md.
  *
- * Scene IR / MotionScript generative source fields land in E033. This module is
- * the host-facing synthesize contract, a deterministic fixture provider for
- * tests, and a helper that materialises bytes into an AudioSession via duration
- * revision. No vendor SDK is imported here.
+ * Host-facing synthesize contract, deterministic fixture provider, and a helper
+ * that materialises Scene IR generative resources into an AudioSession via
+ * duration revision. No vendor SDK is imported here.
  */
 
+import {
+  estimateGenerativeAudioDurationMs,
+  type AudioGenerativeModality,
+  type AudioGenerativeSource,
+  type AudioGenerativeStyle,
+  type AudioResourceDefinition,
+} from "@gvr/schema";
 import type { AudioDiagnostic, AudioSession } from "./audio";
 import { encodeWav } from "./audio";
 
@@ -21,13 +27,8 @@ function fnv1aHex(text: string): string {
   return (hash >>> 0).toString(16).padStart(8, "0");
 }
 
-export type GenerativeAudioModality = "speech" | "effect";
-
-export interface GenerativeAudioStyle {
-  stability?: number;
-  similarity?: number;
-  speed?: number;
-}
+export type GenerativeAudioModality = AudioGenerativeModality;
+export type GenerativeAudioStyle = AudioGenerativeStyle;
 
 export interface GenerativeAudioRequest {
   resourceId: string;
@@ -81,21 +82,33 @@ export function generativeCacheKey(
   return `gvr-gen-${fnv1aHex(payload)}-${fnv1aHex(payload.split("").reverse().join(""))}`;
 }
 
-/**
- * Provisional length before synthesis completes. Prefer an explicit hint;
- * otherwise estimate speech from prompt length (~14 chars/s) and effects at 2s.
- */
+/** Provisional length before synthesis (alias of schema estimate). */
 export function estimateProvisionalDurationMs(
   modality: GenerativeAudioModality,
   prompt: string,
   durationHintMs?: number,
 ): number {
-  if (durationHintMs !== undefined && Number.isFinite(durationHintMs) && durationHintMs > 0) {
-    return durationHintMs;
-  }
-  if (modality === "effect") return 2000;
-  const chars = Math.max(1, prompt.trim().length);
-  return Math.min(60_000, Math.max(500, Math.round((chars / 14) * 1000)));
+  return estimateGenerativeAudioDurationMs(modality, prompt, durationHintMs);
+}
+
+/** Build a synthesize request from a Scene IR generative audio resource. */
+export function generativeRequestFromResource(
+  resource: AudioResourceDefinition,
+  signal?: AbortSignal,
+): GenerativeAudioRequest | undefined {
+  if (resource.kind !== "audio" || resource.source?.type !== "generative") return undefined;
+  const source: AudioGenerativeSource = resource.source;
+  return {
+    resourceId: resource.id,
+    modality: source.modality,
+    prompt: source.prompt,
+    voice: source.voice,
+    durationHintMs: source.durationHintMs,
+    loop: source.loop,
+    seed: source.seed,
+    style: source.style,
+    signal,
+  };
 }
 
 function throwIfAborted(signal: AbortSignal | undefined): void {
@@ -158,7 +171,7 @@ export function createFixtureGenerativeAudioProvider(
       const entry = fixtures.get(request.prompt);
       const durationMs =
         entry?.durationMs ??
-        estimateProvisionalDurationMs(request.modality, request.prompt, request.durationHintMs);
+        estimateGenerativeAudioDurationMs(request.modality, request.prompt, request.durationHintMs);
       const bytes = fixtureWavBytes(durationMs, 24_000, entry?.toneHz ?? (request.modality === "speech" ? 220 : 0));
       throwIfAborted(request.signal);
       return {
@@ -187,7 +200,7 @@ export async function materializeGenerativeResource(
   request: GenerativeAudioRequest,
   _options: MaterializeGenerativeOptions = {},
 ): Promise<{ result?: GenerativeAudioResult; diagnostics: AudioDiagnostic[] }> {
-  const provisional = estimateProvisionalDurationMs(request.modality, request.prompt, request.durationHintMs);
+  const provisional = estimateGenerativeAudioDurationMs(request.modality, request.prompt, request.durationHintMs);
   const defined = session.defineResource({ id: request.resourceId, durationMs: provisional }, "pending");
   if (defined.length > 0 && !defined.some((d) => d.code === "AUDIO_DUPLICATE_RESOURCE")) {
     return { diagnostics: defined };

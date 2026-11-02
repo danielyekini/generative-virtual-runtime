@@ -1036,15 +1036,45 @@ function readResources(value: unknown, diags: Diags, v02 = false): ResourceFacts
     }
     if (entry.kind === "audio") {
       if (!v02) diags.add("UNSUPPORTED_PROPERTY", path, "Audio resources require Scene IR 0.2.");
-      rejectUnknown(entry, ["id", "kind", "href", "durationMs", "readiness"], path, diags);
-      if (typeof entry.href !== "string" || entry.href.length === 0) {
-        diags.add("MISSING_REQUIRED", `${path}.href`, "An audio resource needs an href.");
+      rejectUnknown(entry, ["id", "kind", "href", "durationMs", "readiness", "source"], path, diags);
+      const source = entry.source;
+      const generative = isRecord(source) && source.type === "generative";
+      if (generative) {
+        readGenerativeAudioSource(source, `${path}.source`, diags);
+        if (entry.href !== undefined && (typeof entry.href !== "string" || entry.href.length === 0)) {
+          diags.add("INVALID_TYPE", `${path}.href`, "A materialised generative href must be a non-empty string.");
+        }
+      } else {
+        if (isRecord(source) && source.type === "href") {
+          rejectUnknown(source, ["type", "href"], `${path}.source`, diags);
+          if (typeof source.href !== "string" || source.href.length === 0) {
+            diags.add("MISSING_REQUIRED", `${path}.source.href`, "An href audio source needs a non-empty href.");
+          }
+        } else if (source !== undefined) {
+          diags.add("INVALID_ENUM", `${path}.source.type`, 'Audio source type must be "href" or "generative".');
+        }
+        const href = typeof entry.href === "string" ? entry.href : isRecord(source) && typeof source.href === "string" ? source.href : "";
+        if (href.length === 0) {
+          diags.add("MISSING_REQUIRED", `${path}.href`, "An audio resource needs an href.");
+        }
       }
-      const duration = readFinite(entry.durationMs, `${path}.durationMs`, diags);
+      const duration = entry.durationMs === undefined ? undefined : readFinite(entry.durationMs, `${path}.durationMs`, diags);
       if (duration !== undefined && !(duration > 0)) {
         diags.add("INVALID_TIMING", `${path}.durationMs`, "An audio resource needs a positive decoded durationMs.");
+      } else if (!generative && duration === undefined) {
+        diags.add("MISSING_REQUIRED", `${path}.durationMs`, "An audio resource needs a positive decoded durationMs.");
       }
-      resources.push({ id: id ?? "", kind: "audio", family: "", durationMs: duration !== undefined && duration > 0 ? duration : undefined });
+      // Ready generative resources still need a positive durationMs.
+      if (generative && entry.readiness === "ready" && (duration === undefined || !(duration > 0))) {
+        diags.add("INVALID_TIMING", `${path}.durationMs`, "A ready generative audio resource needs a positive durationMs.");
+      }
+      resources.push({
+        id: id ?? "",
+        kind: "audio",
+        family: "",
+        durationMs: duration !== undefined && duration > 0 ? duration : undefined,
+        generative: generative || undefined,
+      });
       return;
     }
     rejectUnknown(entry, v02 ? ["id", "kind", "family", "source", "readiness"] : ["id", "kind", "family", "source"], path, diags);
@@ -1962,23 +1992,78 @@ interface ResourceFacts {
   family: string;
   /** Decoded length for audio resources. */
   durationMs?: number;
+  /** True when the resource carries a generative source (audio.generative). */
+  generative?: boolean;
 }
 
 const AUDIO_BUS_NAMES = new Set(["narration", "effects", "music"]);
 /** Cue count bound, matching the runtime AudioSession default. */
 export const MAX_AUDIO_CUES = 4096;
 
+function readGenerativeAudioSource(source: Record<string, unknown>, path: string, diags: Diags): void {
+  rejectUnknown(source, ["type", "modality", "prompt", "voice", "durationHintMs", "loop", "seed", "style"], path, diags);
+  if (source.modality !== "speech" && source.modality !== "effect") {
+    diags.add("INVALID_ENUM", `${path}.modality`, 'Generative modality must be "speech" or "effect".');
+  }
+  if (typeof source.prompt !== "string" || source.prompt.length === 0) {
+    diags.add("MISSING_REQUIRED", `${path}.prompt`, "A generative audio source needs a non-empty prompt.");
+  }
+  if (source.voice !== undefined && typeof source.voice !== "string") {
+    diags.add("INVALID_TYPE", `${path}.voice`, "voice must be a string.");
+  }
+  if (source.durationHintMs !== undefined) {
+    const hint = readFinite(source.durationHintMs, `${path}.durationHintMs`, diags);
+    if (hint !== undefined && !(hint > 0)) {
+      diags.add("INVALID_TIMING", `${path}.durationHintMs`, "durationHintMs must be positive.");
+    }
+  }
+  if (source.loop !== undefined && typeof source.loop !== "boolean") {
+    diags.add("INVALID_TYPE", `${path}.loop`, "loop must be a boolean.");
+  }
+  if (source.seed !== undefined) {
+    const seed = readFinite(source.seed, `${path}.seed`, diags);
+    if (seed !== undefined && !Number.isInteger(seed)) {
+      diags.add("INVALID_TYPE", `${path}.seed`, "seed must be an integer.");
+    }
+  }
+  if (source.style !== undefined) {
+    if (!isRecord(source.style)) {
+      diags.add("INVALID_TYPE", `${path}.style`, "style must be an object.");
+    } else {
+      rejectUnknown(source.style, ["stability", "similarity", "speed"], `${path}.style`, diags);
+      for (const key of ["stability", "similarity", "speed"] as const) {
+        if (source.style[key] === undefined) continue;
+        const value = readFinite(source.style[key], `${path}.style.${key}`, diags);
+        if (value !== undefined && !Number.isFinite(value)) {
+          diags.add("INVALID_TYPE", `${path}.style.${key}`, `${key} must be a finite number.`);
+        }
+      }
+    }
+  }
+}
+
 /**
- * audio.cues (Scene IR 0.11.0). Audio resources and cues require the
- * capability. Cues name declared audio resources, use a known bus and stay
- * inside the resource; start times lie in [0, durationMs]. Semantics follow
- * docs/decisions/engine/audible-media-clock.md.
+ * audio.cues (Scene IR 0.11.0) and audio.generative (0.14.0). Audio resources
+ * and cues require audio.cues; generative sources also require audio.generative.
+ * Cues name declared audio resources, use a known bus and stay inside the
+ * resource when duration is known; start times lie in [0, durationMs].
+ * Semantics follow docs/decisions/engine/audible-media-clock.md and
+ * docs/decisions/engine/generative-audio-contract.md.
  */
 function readAudio(value: unknown, resources: ResourceFacts[], timeline: unknown, required: unknown, diags: Diags): void {
   const audio = new Map(resources.filter((resource) => resource.kind === "audio").map((resource) => [resource.id, resource]));
   const hasCapability = Array.isArray(required) && required.includes("audio.cues");
+  const hasGenerative = Array.isArray(required) && required.includes("audio.generative");
+  const generativeCount = [...audio.values()].filter((resource) => resource.generative).length;
   if (audio.size > 0 && !hasCapability) {
     diags.add("MISSING_REQUIRED", "requiredCapabilities", "Audio resources require audio.cues in requiredCapabilities.");
+  }
+  if (generativeCount > 0 && !hasGenerative) {
+    diags.add(
+      "MISSING_REQUIRED",
+      "requiredCapabilities",
+      "Generative audio resources require audio.generative in requiredCapabilities.",
+    );
   }
   if (value === undefined) return;
   if (!Array.isArray(value)) {

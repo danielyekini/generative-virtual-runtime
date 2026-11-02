@@ -40,7 +40,7 @@ headerProperty = "version" , string , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
                | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
-               | audioDecl | cueDecl | spatialLayerDecl | physicsDecl
+               | audioDecl | audioSugar | cueDecl | spatialLayerDecl | physicsDecl
                | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
                | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
@@ -178,8 +178,27 @@ interactChannel= "position.x" | "position.y" | "rotation" | "scale.x" | "scale.y
 
 (* MotionScript 0.11 audio resources and cues (audio.cues). Only "audio" and
    "cue" are reserved; bus and body words match by spelling. Cues use root
-   scene time; a cue may follow the first seal when it starts at or after it. *)
-audioDecl      = "audio" , identifier , string , duration , ";" ;
+   scene time; a cue may follow the first seal when it starts at or after it.
+   MotionScript 0.14 extends audioDecl with generative sources (audio.generative)
+   and adds audioSugar; speech/effect/narration/effects body words stay unreserved. *)
+audioDecl      = audioHref | audioGenerative ;
+audioHref      = "audio" , identifier , string , duration , ";" ;
+audioGenerative= "audio" , identifier , "=" , ("speech" | "effect") , string ,
+                 [ "{" , { generativeItem } , "}" ] , ";" ;
+generativeItem = ( "duration" , duration , ";" )
+               | ( "voice" , string , ";" )
+               | ( "loop" , [ boolean ] , ";" )
+               | ( "seed" , signedNumber , ";" )
+               | ( ( "stability" | "similarity" | "speed" ) , signedNumber , ";" ) ;
+(* Sugar emits an anonymous generative resource plus a cue. Optional args are
+   comma-separated key/value pairs (no colon token). Optional "at" sets cue start. *)
+audioSugar     = "audio" , "." , ("narration" | "effects") , "(" , string ,
+                 { "," , sugarArg } , ")" , [ "at" , duration ] , ";" ;
+sugarArg       = ( "duration" , duration )
+               | ( "voice" , string )
+               | ( "loop" , [ boolean ] )
+               | ( "seed" , signedNumber )
+               | ( ( "stability" | "similarity" | "speed" ) , signedNumber ) ;
 cueDecl        = "cue" , identifier , bus , identifier , "at" , duration ,
                  [ "{" , { cueItem } , "}" ] , ";" ;
 bus            = "narration" | "effects" | "music" ;
