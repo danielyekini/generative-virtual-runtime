@@ -648,6 +648,7 @@ function renderSource(): void {
 
 let diagKey = "";
 function renderPanel(): void {
+  if (!stream && settings.panelTab === "stream") settings.panelTab = "diagnostics";
   ui.panel.classList.toggle("is-collapsed", !settings.panelOpen);
   ui.panel.style.height = settings.panelOpen ? `${settings.panelHeight}px` : "";
   ui.panelResize.hidden = !settings.panelOpen;
@@ -715,9 +716,9 @@ function renderPanel(): void {
   }
 }
 
-let streamKey = "";
+let lastStreamSegments: ReturnType<StreamSession["segments"]> | null = null;
 function renderStream(): void {
-  if (!stream) { streamKey = ""; return; }
+  if (!stream) { lastStreamSegments = null; return; }
   const o = stream.observation;
   put($("stream-summary"), [
     `${stream.cursor}/${stream.source.length} characters · ${o.receivedBytes} UTF-8 bytes`,
@@ -727,9 +728,8 @@ function renderStream(): void {
     stream.done ? "arrival complete" : stream.paused ? "arrival paused" : performance.now() < stream.stallUntil ? "scheduled arrival stall" : "simulated arrival",
   ].join(" | "));
   const segments = stream.segments();
-  const key = JSON.stringify(segments);
-  if (key !== streamKey) {
-    streamKey = key;
+  if (segments !== lastStreamSegments) {
+    lastStreamSegments = segments;
     const nodes = segments.map((part) => {
       const span = document.createElement("span");
       span.className = `stream-${part.state}`;
