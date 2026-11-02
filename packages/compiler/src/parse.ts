@@ -6,6 +6,10 @@ import {
   type InteractionChannel,
   type Paint,
   type PathCommand,
+  type PhysicsBodyDefinition,
+  type PhysicsColliderDefinition,
+  type PhysicsConstraintDefinition,
+  type PhysicsJointDefinition,
   type SourceSpan,
   type SpatialSurfaceDefinition,
   type SpatialTransformDefinition,
@@ -29,6 +33,7 @@ import type {
   InteractAst,
   AudioDeclAst,
   CueDeclAst,
+  PhysicsAst,
   SpatialLayerAst,
   HeaderAst,
   InstanceAst,
@@ -182,6 +187,7 @@ function parseUnit(parser: Parser): UnitAst | undefined {
   if (token.lexeme === "audio") return parseAudioDecl(parser);
   if (token.lexeme === "cue") return parseCueDecl(parser);
   if (token.lexeme === "spatialLayer") return parseSpatialLayer(parser);
+  if (token.lexeme === "physics") return parsePhysics(parser);
   if (token.lexeme === "entity") return parseEntityDecl(parser);
   if (token.lexeme === "geometry") return parseGeometryDecl(parser);
   if (token.lexeme === "bind") return parseBindDecl(parser);
@@ -1561,6 +1567,288 @@ function parseSpatialSurface(parser: Parser, node: SpatialLayerAst): SpatialSurf
   eat(parser, "rbrace");
   if (Object.keys(transform).length > 0) surface.transform = transform;
   return surface;
+}
+
+/**
+ * `physics <id> { mode …; body …; joint …; constraint …; };` Only `physics`
+ * is reserved; mode/body/joint/constraint and body words match by spelling.
+ */
+function parsePhysics(parser: Parser): PhysicsAst {
+  const start = eat(parser, "keyword", "physics");
+  const node: PhysicsAst = {
+    kind: "physics",
+    world: { id: "", mode: "dynamic", bodies: [] },
+    hasMode: false,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const id = eat(parser, "identifier");
+  if (id) node.world.id = id.lexeme;
+  else note(node, parser, "physics needs an id.");
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected a physics item.");
+      skipSpatialBlock(parser);
+    } else if (key.lexeme === "mode") {
+      const mode = eatWord(parser);
+      if (mode?.lexeme === "dynamic" || mode?.lexeme === "authored") {
+        node.world.mode = mode.lexeme;
+        node.hasMode = true;
+      } else note(node, parser, "mode needs dynamic or authored.");
+    } else if (key.lexeme === "gravity") {
+      const value = parseVec(parser);
+      if (value) node.world.gravity = value;
+      else note(node, parser, "gravity needs (x, y).");
+    } else if (
+      key.lexeme === "fixedDtMs" ||
+      key.lexeme === "seed" ||
+      key.lexeme === "maxBodies" ||
+      key.lexeme === "maxJoints" ||
+      key.lexeme === "maxContactsPerStep" ||
+      key.lexeme === "maxSolverIterations" ||
+      key.lexeme === "maxStepsPerAdvance"
+    ) {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, `${key.lexeme} needs a number.`);
+      else node.world[key.lexeme] = value;
+    } else if (key.lexeme === "body") {
+      const body = parsePhysicsBody(parser, node);
+      if (body) node.world.bodies.push(body);
+    } else if (key.lexeme === "joint") {
+      const joint = parsePhysicsJoint(parser, node);
+      if (joint) {
+        node.world.joints ??= [];
+        node.world.joints.push(joint);
+      }
+    } else if (key.lexeme === "constraint") {
+      const constraint = parsePhysicsConstraint(parser, node);
+      if (constraint) {
+        node.world.constraints ??= [];
+        node.world.constraints.push(constraint);
+      }
+    } else {
+      note(node, parser, `Unknown physics item ${key.lexeme}.`);
+      skipSpatialBlock(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  if (!node.hasMode && node.errors.length === 0) note(node, parser, "physics needs mode dynamic or authored.");
+  return node;
+}
+
+function parsePhysicsBody(parser: Parser, node: PhysicsAst): PhysicsBodyDefinition | undefined {
+  const id = eat(parser, "identifier");
+  if (!id) {
+    note(node, parser, "body needs an id.");
+    skipSpatialBlock(parser);
+    return undefined;
+  }
+  const body: PhysicsBodyDefinition = {
+    id: id.lexeme,
+    kind: "dynamic",
+    x: 0,
+    y: 0,
+    angle: 0,
+    collider: { kind: "circle", radius: 10 },
+  };
+  let hasCollider = false;
+  let hasKind = false;
+  if (!eat(parser, "lbrace")) {
+    note(node, parser, "body needs a { … } block.");
+    return body;
+  }
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected a body property.");
+      skipProperty(parser);
+    } else if (key.lexeme === "entity") {
+      const entityId = parseDotted(parser, false);
+      if (entityId) body.entityId = entityId;
+      else note(node, parser, "entity needs a node id.");
+    } else if (key.lexeme === "kind") {
+      const kind = eatWord(parser);
+      if (kind?.lexeme === "static" || kind?.lexeme === "kinematic" || kind?.lexeme === "dynamic") {
+        body.kind = kind.lexeme;
+        hasKind = true;
+      } else note(node, parser, "kind needs static, kinematic or dynamic.");
+    } else if (key.lexeme === "position") {
+      const value = parseVec(parser);
+      if (value) {
+        body.x = value.x;
+        body.y = value.y;
+      } else note(node, parser, "position needs (x, y).");
+    } else if (key.lexeme === "angle") {
+      const value = parseAngle(parser);
+      if (value === undefined) note(node, parser, "angle needs an angle.");
+      else body.angle = value;
+    } else if (key.lexeme === "velocity") {
+      const value = parseVec(parser);
+      if (value) {
+        body.vx = value.x;
+        body.vy = value.y;
+      } else note(node, parser, "velocity needs (x, y).");
+    } else if (key.lexeme === "omega" || key.lexeme === "mass" || key.lexeme === "restitution" || key.lexeme === "friction") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, `${key.lexeme} needs a number.`);
+      else body[key.lexeme] = value;
+    } else if (key.lexeme === "collider") {
+      const collider = parseCollider(parser, node);
+      if (collider) {
+        body.collider = collider;
+        hasCollider = true;
+      }
+    } else if (key.lexeme === "surface") {
+      const surfaceId = parseDotted(parser, false);
+      if (surfaceId) body.surfaceId = surfaceId;
+      else note(node, parser, "surface needs a surface id.");
+    } else {
+      note(node, parser, `Unknown body property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  if (!hasKind) note(node, parser, `body ${body.id} needs kind static, kinematic or dynamic.`);
+  if (!hasCollider) note(node, parser, `body ${body.id} needs a collider.`);
+  return body;
+}
+
+function parseCollider(parser: Parser, node: PhysicsAst): PhysicsColliderDefinition | undefined {
+  const kind = eatWord(parser);
+  if (kind?.lexeme === "circle") {
+    const radius = parseSignedNumber(parser);
+    if (radius === undefined) {
+      note(node, parser, "circle collider needs a radius.");
+      return undefined;
+    }
+    return { kind: "circle", radius };
+  }
+  if (kind?.lexeme === "aabb") {
+    const halfWidth = parseSignedNumber(parser);
+    const halfHeight = parseSignedNumber(parser);
+    if (halfWidth === undefined || halfHeight === undefined) {
+      note(node, parser, "aabb collider needs halfWidth halfHeight.");
+      return undefined;
+    }
+    return { kind: "aabb", halfWidth, halfHeight };
+  }
+  note(node, parser, "collider needs circle <r> or aabb <hx> <hy>.");
+  return undefined;
+}
+
+function parsePhysicsJoint(parser: Parser, node: PhysicsAst): PhysicsJointDefinition | undefined {
+  const id = eat(parser, "identifier");
+  if (!id) {
+    note(node, parser, "joint needs an id.");
+    skipSpatialBlock(parser);
+    return undefined;
+  }
+  const joint: PhysicsJointDefinition = { id: id.lexeme, bodyA: "", bodyB: "", restLength: 0 };
+  let hasA = false;
+  let hasB = false;
+  let hasRest = false;
+  if (!eat(parser, "lbrace")) {
+    note(node, parser, "joint needs a { … } block.");
+    return joint;
+  }
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected a joint property.");
+      skipProperty(parser);
+    } else if (key.lexeme === "a" || key.lexeme === "b") {
+      const body = eat(parser, "identifier");
+      if (!body) note(node, parser, `${key.lexeme} needs a body id.`);
+      else if (key.lexeme === "a") {
+        joint.bodyA = body.lexeme;
+        hasA = true;
+      } else {
+        joint.bodyB = body.lexeme;
+        hasB = true;
+      }
+    } else if (key.lexeme === "restLength") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, "restLength needs a number.");
+      else {
+        joint.restLength = value;
+        hasRest = true;
+      }
+    } else if (key.lexeme === "anchorA" || key.lexeme === "anchorB") {
+      const value = parseVec(parser);
+      if (value) joint[key.lexeme] = value;
+      else note(node, parser, `${key.lexeme} needs (x, y).`);
+    } else if (key.lexeme === "compliance") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, "compliance needs a number.");
+      else joint.compliance = value;
+    } else {
+      note(node, parser, `Unknown joint property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  if (!hasA || !hasB) note(node, parser, `joint ${joint.id} needs a and b body ids.`);
+  if (!hasRest) note(node, parser, `joint ${joint.id} needs restLength.`);
+  return joint;
+}
+
+function parsePhysicsConstraint(parser: Parser, node: PhysicsAst): PhysicsConstraintDefinition | undefined {
+  const id = eat(parser, "identifier");
+  if (!id) {
+    note(node, parser, "constraint needs an id.");
+    skipSpatialBlock(parser);
+    return undefined;
+  }
+  const constraint: PhysicsConstraintDefinition = { id: id.lexeme, a: "", b: "", restLength: 0 };
+  let hasA = false;
+  let hasB = false;
+  let hasRest = false;
+  if (!eat(parser, "lbrace")) {
+    note(node, parser, "constraint needs a { … } block.");
+    return constraint;
+  }
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected a constraint property.");
+      skipProperty(parser);
+    } else if (key.lexeme === "a" || key.lexeme === "b") {
+      const point = parseDotted(parser, false);
+      if (!point) note(node, parser, `${key.lexeme} needs a point id.`);
+      else if (key.lexeme === "a") {
+        constraint.a = point;
+        hasA = true;
+      } else {
+        constraint.b = point;
+        hasB = true;
+      }
+    } else if (key.lexeme === "restLength") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, "restLength needs a number.");
+      else {
+        constraint.restLength = value;
+        hasRest = true;
+      }
+    } else if (key.lexeme === "stiffness") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, "stiffness needs a number.");
+      else constraint.stiffness = value;
+    } else {
+      note(node, parser, `Unknown constraint property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  if (!hasA || !hasB) note(node, parser, `constraint ${constraint.id} needs a and b.`);
+  if (!hasRest) note(node, parser, `constraint ${constraint.id} needs restLength.`);
+  return constraint;
 }
 
 function parseEasing(parser: Parser): EaseAst | undefined {

@@ -26,6 +26,7 @@ MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
 `input.bindings` (scene `interactions`) landed in Scene IR 0.10.0.
 `audio.cues` (audio resources, `audioCues`, `ADD_AUDIO_CUES`) landed in Scene IR 0.11.0.
 `space.planar25d` (`spatialLayers` on scenes and `CREATE_SCENE` headers) landed in Scene IR 0.12.0.
+`physics.planar2d` (`physics` world on scenes and `CREATE_SCENE` headers) landed in Scene IR 0.13.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

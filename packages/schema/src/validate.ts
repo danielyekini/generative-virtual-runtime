@@ -158,7 +158,7 @@ export function validateSceneIR(
   const version = input.irVersion;
   const v02 = version === IR_VERSION_02;
   const sceneKeys = ["irVersion", "sceneId", "viewport", "background", "resources", "nodes", "cameras", "initialCameraId", "timeline"];
-  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "audioCues", "spatialLayers");
+  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "audioCues", "spatialLayers", "physics");
   rejectUnknown(input, sceneKeys, "", diags);
   if (version !== IR_VERSION && version !== IR_VERSION_02) {
     diags.add("UNSUPPORTED_IR_VERSION", "irVersion", `IR version must be ${IR_VERSION} or ${IR_VERSION_02}.`);
@@ -184,6 +184,7 @@ export function validateSceneIR(
   if (v02) readInteractions(input.interactions, nodes, input.timeline, input.requiredCapabilities, diags);
   if (v02) readAudio(input.audioCues, resources, input.timeline, input.requiredCapabilities, diags);
   if (v02) readSpatialLayers(input.spatialLayers, nodeIds, input.requiredCapabilities, diags);
+  if (v02) readPhysics(input.physics, nodeIds, input.timeline, input.interactions, input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
@@ -1490,7 +1491,7 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
         diags.add("INVALID_TYPE", `${path}.scene`, "CREATE_SCENE requires a scene header.");
       } else {
         const keys = ["irVersion", "sceneId", "viewport", "background", "resources", "cameras", "initialCameraId", "durationMs"];
-        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "spatialLayers");
+        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "spatialLayers", "physics");
         rejectUnknown(value.scene, keys, `${path}.scene`, diags);
         for (const list of ["resources", "cameras"]) {
           if (!Array.isArray(value.scene[list])) diags.add("INVALID_TYPE", `${path}.scene.${list}`, `${list} must be an array.`);
@@ -2051,6 +2052,13 @@ function readAudio(value: unknown, resources: ResourceFacts[], timeline: unknown
 
 /** Surfaces across all layers in one scene, matching the runtime projection default. */
 export const MAX_SPATIAL_SURFACES = 1024;
+export const MAX_PHYSICS_BODIES = 256;
+export const MAX_PHYSICS_JOINTS = 256;
+export const PHYSICS_OWNED_CHANNELS = [
+  "transform.position.x",
+  "transform.position.y",
+  "transform.rotation",
+] as const;
 
 function readSpatialVec3(value: unknown, path: string, diags: Diags): void {
   if (!isRecord(value)) {
@@ -2198,6 +2206,297 @@ const INTERACTION_CHANNELS = new Set([
   "opacity",
 ]);
 const INTERACTION_TRIGGERS = new Set(["click", "activate", "drag", "wheel", "key"]);
+
+/**
+ * physics.planar2d (Scene IR 0.13.0). One world per scene. Dynamic mode needs
+ * bodies (and optional joints); authored mode needs constraints. Each body
+ * entity exclusively owns transform.position.x/y and transform.rotation.
+ */
+function readPhysics(
+  value: unknown,
+  nodeIds: Set<string>,
+  timeline: unknown,
+  interactions: unknown,
+  required: unknown,
+  diags: Diags,
+): void {
+  if (value === undefined) return;
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", "physics", "physics must be an object.");
+    return;
+  }
+  if (!(Array.isArray(required) && required.includes("physics.planar2d"))) {
+    diags.add("MISSING_REQUIRED", "requiredCapabilities", "physics requires physics.planar2d in requiredCapabilities.");
+  }
+  rejectUnknown(
+    value,
+    [
+      "id",
+      "mode",
+      "gravity",
+      "fixedDtMs",
+      "seed",
+      "maxBodies",
+      "maxJoints",
+      "maxContactsPerStep",
+      "maxSolverIterations",
+      "maxStepsPerAdvance",
+      "bodies",
+      "joints",
+      "constraints",
+    ],
+    "physics",
+    diags,
+  );
+  readIdent(value.id, "physics.id", diags);
+  if (value.mode !== "dynamic" && value.mode !== "authored") {
+    diags.add("INVALID_ENUM", "physics.mode", 'mode must be "dynamic" or "authored".');
+  }
+  if (value.gravity !== undefined) {
+    if (!isRecord(value.gravity)) diags.add("INVALID_TYPE", "physics.gravity", "gravity must be a vec2.");
+    else {
+      rejectUnknown(value.gravity, ["x", "y"], "physics.gravity", diags);
+      readFinite(value.gravity.x, "physics.gravity.x", diags);
+      readFinite(value.gravity.y, "physics.gravity.y", diags);
+    }
+  }
+  for (const key of [
+    "fixedDtMs",
+    "seed",
+    "maxBodies",
+    "maxJoints",
+    "maxContactsPerStep",
+    "maxSolverIterations",
+    "maxStepsPerAdvance",
+  ] as const) {
+    if (value[key] === undefined) continue;
+    const number = readFinite(value[key], `physics.${key}`, diags);
+    if (number !== undefined && key !== "seed" && !(number > 0)) {
+      diags.add("INVALID_TRACK_VALUE", `physics.${key}`, `${key} must be greater than 0.`);
+    }
+  }
+  if (!Array.isArray(value.bodies)) {
+    diags.add("INVALID_TYPE", "physics.bodies", "bodies must be an array.");
+    return;
+  }
+  if (value.bodies.length > MAX_PHYSICS_BODIES) {
+    diags.add("RESOURCE_LIMIT", "physics.bodies", `Body count ${value.bodies.length} exceeds ${MAX_PHYSICS_BODIES}.`);
+  }
+  if (value.mode === "dynamic" && value.bodies.length === 0) {
+    diags.add("MISSING_REQUIRED", "physics.bodies", "A dynamic physics world needs at least one body.");
+  }
+  if (value.mode === "authored") {
+    if (!Array.isArray(value.constraints) || value.constraints.length === 0) {
+      diags.add("MISSING_REQUIRED", "physics.constraints", "An authored physics world needs at least one constraint.");
+    }
+    if (Array.isArray(value.joints) && value.joints.length > 0) {
+      diags.add("INVALID_TYPE", "physics.joints", "Authored mode does not use joints; use constraints.");
+    }
+  }
+  const bodyIds = new Set<string>();
+  const owned = new Map<string, string>();
+  value.bodies.forEach((body, index) => {
+    const path = `physics.bodies[${index}]`;
+    if (!isRecord(body)) {
+      diags.add("INVALID_TYPE", path, "A physics body must be an object.");
+      return;
+    }
+    rejectUnknown(
+      body,
+      ["id", "entityId", "kind", "x", "y", "angle", "vx", "vy", "omega", "mass", "restitution", "friction", "collider", "surfaceId"],
+      path,
+      diags,
+    );
+    const id = readIdent(body.id, `${path}.id`, diags);
+    if (id !== undefined) {
+      if (bodyIds.has(id)) diags.add("DUPLICATE_ID", `${path}.id`, `Duplicate physics body id ${id}.`);
+      bodyIds.add(id);
+    }
+    const entityId = body.entityId === undefined ? id : typeof body.entityId === "string" ? body.entityId : undefined;
+    if (body.entityId !== undefined && (typeof body.entityId !== "string" || body.entityId.length === 0)) {
+      diags.add("INVALID_TYPE", `${path}.entityId`, "entityId must be a non-empty string.");
+    } else if (entityId !== undefined && !nodeIds.has(entityId)) {
+      diags.add("UNKNOWN_TARGET", `${path}.entityId`, `Physics body ${id ?? "?"} names entity ${entityId}, which does not exist.`);
+    }
+    if (body.kind !== "static" && body.kind !== "kinematic" && body.kind !== "dynamic") {
+      diags.add("INVALID_ENUM", `${path}.kind`, 'kind must be "static", "kinematic" or "dynamic".');
+    }
+    for (const key of ["x", "y", "angle"] as const) readFinite(body[key], `${path}.${key}`, diags);
+    for (const key of ["vx", "vy", "omega", "mass", "restitution", "friction"] as const) {
+      if (body[key] !== undefined) readFinite(body[key], `${path}.${key}`, diags);
+    }
+    if (body.mass !== undefined) {
+      const mass = readFinite(body.mass, `${path}.mass`, diags);
+      if (mass !== undefined && mass < 0) diags.add("INVALID_TRACK_VALUE", `${path}.mass`, "mass must be >= 0.");
+    }
+    if (body.surfaceId !== undefined && (typeof body.surfaceId !== "string" || body.surfaceId.length === 0)) {
+      diags.add("INVALID_TYPE", `${path}.surfaceId`, "surfaceId must be a non-empty string.");
+    }
+    readPhysicsCollider(body.collider, `${path}.collider`, diags);
+    if (entityId !== undefined) {
+      for (const channel of PHYSICS_OWNED_CHANNELS) {
+        owned.set(`node:${entityId}:${channel}`, path);
+      }
+    }
+  });
+  if (value.mode === "authored" && Array.isArray(value.constraints)) {
+    value.constraints.forEach((constraint, index) => {
+      if (!isRecord(constraint)) return;
+      for (const key of ["a", "b"] as const) {
+        if (typeof constraint[key] !== "string") continue;
+        owned.set(`node:${constraint[key]}:transform.position.x`, `physics.constraints[${index}]`);
+        owned.set(`node:${constraint[key]}:transform.position.y`, `physics.constraints[${index}]`);
+      }
+    });
+  }
+  if (value.joints !== undefined) {
+    if (!Array.isArray(value.joints)) {
+      diags.add("INVALID_TYPE", "physics.joints", "joints must be an array.");
+    } else {
+      if (value.joints.length > MAX_PHYSICS_JOINTS) {
+        diags.add("RESOURCE_LIMIT", "physics.joints", `Joint count ${value.joints.length} exceeds ${MAX_PHYSICS_JOINTS}.`);
+      }
+      const jointIds = new Set<string>();
+      value.joints.forEach((joint, index) => {
+        const path = `physics.joints[${index}]`;
+        if (!isRecord(joint)) {
+          diags.add("INVALID_TYPE", path, "A physics joint must be an object.");
+          return;
+        }
+        rejectUnknown(joint, ["id", "bodyA", "bodyB", "restLength", "anchorA", "anchorB", "compliance"], path, diags);
+        const id = readIdent(joint.id, `${path}.id`, diags);
+        if (id !== undefined) {
+          if (jointIds.has(id)) diags.add("DUPLICATE_ID", `${path}.id`, `Duplicate physics joint id ${id}.`);
+          jointIds.add(id);
+        }
+        for (const key of ["bodyA", "bodyB"] as const) {
+          if (typeof joint[key] !== "string" || !bodyIds.has(joint[key])) {
+            diags.add("UNKNOWN_TARGET", `${path}.${key}`, `Joint names unknown body ${String(joint[key])}.`);
+          }
+        }
+        const rest = readFinite(joint.restLength, `${path}.restLength`, diags);
+        if (rest !== undefined && rest < 0) diags.add("INVALID_TRACK_VALUE", `${path}.restLength`, "restLength must be >= 0.");
+        if (joint.compliance !== undefined) {
+          const compliance = readFinite(joint.compliance, `${path}.compliance`, diags);
+          if (compliance !== undefined && (compliance < 0 || compliance > 1)) {
+            diags.add("INVALID_TRACK_VALUE", `${path}.compliance`, "compliance must be in [0, 1].");
+          }
+        }
+        for (const key of ["anchorA", "anchorB"] as const) {
+          if (joint[key] === undefined) continue;
+          if (!isRecord(joint[key])) diags.add("INVALID_TYPE", `${path}.${key}`, "anchor must be a vec2.");
+          else {
+            rejectUnknown(joint[key], ["x", "y"], `${path}.${key}`, diags);
+            readFinite(joint[key].x, `${path}.${key}.x`, diags);
+            readFinite(joint[key].y, `${path}.${key}.y`, diags);
+          }
+        }
+      });
+    }
+  }
+  if (value.constraints !== undefined) {
+    if (!Array.isArray(value.constraints)) {
+      diags.add("INVALID_TYPE", "physics.constraints", "constraints must be an array.");
+    } else {
+      const constraintIds = new Set<string>();
+      value.constraints.forEach((constraint, index) => {
+        const path = `physics.constraints[${index}]`;
+        if (!isRecord(constraint)) {
+          diags.add("INVALID_TYPE", path, "A physics constraint must be an object.");
+          return;
+        }
+        rejectUnknown(constraint, ["id", "a", "b", "restLength", "stiffness"], path, diags);
+        const id = readIdent(constraint.id, `${path}.id`, diags);
+        if (id !== undefined) {
+          if (constraintIds.has(id)) diags.add("DUPLICATE_ID", `${path}.id`, `Duplicate physics constraint id ${id}.`);
+          constraintIds.add(id);
+        }
+        for (const key of ["a", "b"] as const) {
+          if (typeof constraint[key] !== "string" || !nodeIds.has(constraint[key])) {
+            diags.add("UNKNOWN_TARGET", `${path}.${key}`, `Constraint names unknown point/entity ${String(constraint[key])}.`);
+          }
+        }
+        const rest = readFinite(constraint.restLength, `${path}.restLength`, diags);
+        if (rest !== undefined && rest < 0) diags.add("INVALID_TRACK_VALUE", `${path}.restLength`, "restLength must be >= 0.");
+        if (constraint.stiffness !== undefined) {
+          const stiffness = readFinite(constraint.stiffness, `${path}.stiffness`, diags);
+          if (stiffness !== undefined && (stiffness < 0 || stiffness > 1)) {
+            diags.add("INVALID_TRACK_VALUE", `${path}.stiffness`, "stiffness must be in [0, 1].");
+          }
+        }
+      });
+    }
+  }
+  // Exclusive ownership vs tracks and input bindings.
+  const tracks = isRecord(timeline) && Array.isArray(timeline.tracks) ? timeline.tracks : [];
+  tracks.forEach((track, index) => {
+    if (!isRecord(track) || !isRecord(track.target) || track.target.kind !== "node") return;
+    let scalars: string[] = [];
+    try {
+      scalars = scalarWriters(track.target as unknown as Parameters<typeof scalarWriters>[0]);
+    } catch {
+      return;
+    }
+    for (const scalar of scalars) {
+      if (owned.has(scalar)) {
+        diags.add(
+          "OVERLAPPING_WRITERS",
+          `timeline.tracks[${index}]`,
+          `${scalar.slice(5)} is physics-owned by ${owned.get(scalar)}; a track cannot also write it.`,
+        );
+      }
+    }
+  });
+  if (Array.isArray(interactions)) {
+    interactions.forEach((entry, index) => {
+      if (!isRecord(entry) || !Array.isArray(entry.bindings)) return;
+      const target = typeof entry.nodeId === "string" ? entry.nodeId : undefined;
+      entry.bindings.forEach((binding, bindingIndex) => {
+        if (!isRecord(binding) || !isRecord(binding.action)) return;
+        const writes = binding.nodeId === undefined ? target : typeof binding.nodeId === "string" ? binding.nodeId : undefined;
+        if (writes === undefined) return;
+        const channels =
+          binding.action.kind === "dragTranslate"
+            ? ["transform.position.x", "transform.position.y"]
+            : typeof binding.action.channel === "string"
+              ? [binding.action.channel]
+              : [];
+        for (const channel of channels) {
+          const key = `node:${writes}:${channel}`;
+          if (owned.has(key)) {
+            diags.add(
+              "OVERLAPPING_WRITERS",
+              `interactions[${index}].bindings[${bindingIndex}]`,
+              `${writes}.${channel} is physics-owned; input cannot also write it. Use PhysicsSession drag handoff instead.`,
+            );
+          }
+        }
+      });
+    });
+  }
+}
+
+function readPhysicsCollider(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "collider must be an object.");
+    return;
+  }
+  if (value.kind === "circle") {
+    rejectUnknown(value, ["kind", "radius"], path, diags);
+    const radius = readFinite(value.radius, `${path}.radius`, diags);
+    if (radius !== undefined && !(radius > 0)) diags.add("INVALID_TRACK_VALUE", `${path}.radius`, "circle radius must be > 0.");
+    return;
+  }
+  if (value.kind === "aabb") {
+    rejectUnknown(value, ["kind", "halfWidth", "halfHeight"], path, diags);
+    const hx = readFinite(value.halfWidth, `${path}.halfWidth`, diags);
+    const hy = readFinite(value.halfHeight, `${path}.halfHeight`, diags);
+    if (hx !== undefined && !(hx > 0)) diags.add("INVALID_TRACK_VALUE", `${path}.halfWidth`, "halfWidth must be > 0.");
+    if (hy !== undefined && !(hy > 0)) diags.add("INVALID_TRACK_VALUE", `${path}.halfHeight`, "halfHeight must be > 0.");
+    return;
+  }
+  diags.add("INVALID_ENUM", `${path}.kind`, 'collider kind must be "circle" or "aabb".');
+}
 
 /**
  * input.bindings (Scene IR 0.10.0). Targets name root-scene nodes; actions are

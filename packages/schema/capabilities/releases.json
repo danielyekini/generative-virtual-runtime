@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.12.0",
+      "current": "0.13.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.10"
+      "packageVersion": "0.1.11"
     },
     "scene-ir": {
-      "current": "0.12.0",
+      "current": "0.13.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.10"
+      "packageVersion": "0.1.11"
     }
   },
   "versions": [
@@ -97,6 +97,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.12.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.13.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.13.0.md"
     },
     {
       "language": "motionscript",
@@ -187,6 +194,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.12.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.13.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.13.0.md"
     },
     {
       "language": "scene-ir",
@@ -286,6 +300,13 @@
       "compiler": "0.1.9",
       "runtime": "0.1.10",
       "readers": "Wire stays 0.2. space.planar25d is gated by requiredCapabilities / requires. Packages without the capability reject scenes and CREATE_SCENE headers carrying spatialLayers."
+    },
+    {
+      "motionscript": "0.13.0",
+      "sceneIr": "0.13.0",
+      "compiler": "0.1.10",
+      "runtime": "0.1.14",
+      "readers": "Wire stays 0.2. physics.planar2d is gated by requiredCapabilities / requires. Packages without the capability reject scenes and CREATE_SCENE headers carrying physics."
     }
   ]
 }

@@ -26,6 +26,7 @@ E010 bounded spatial graphics decision/prototype (planar 2.5D layers,
 E028 versioned `space.planar25d` (Scene IR / MotionScript 0.12.0),
 E011 physics integration decision/prototype (planar fixed-step 2D session,
 `docs/decisions/engine/physics-integration.md`),
+E029 versioned `physics.planar2d` (Scene IR / MotionScript 0.13.0),
 E016 seam depth/paint-order decision/prototype
 (`docs/decisions/engine/seam-depth-order.md`),
 and E003 immutable path/keyframe validation-fact reuse are merged
@@ -42,21 +43,18 @@ and E003 immutable path/keyframe validation-fact reuse are merged
 `docs/decisions/engine/seam-depth-order.md`,
 `observeStreamingExecution` / `EntityRevisionStore` / `APPLY_ENTITY_PATCH` /
 `REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection /
-`PhysicsSession` / `resolveSeams` in `@gvr/runtime`, `emitEntityPatchDelta` in
-`@gvr/compiler`).
+`PhysicsSession` / `createScenePhysicsSession` / `resolveSeams` in
+`@gvr/runtime`, `emitEntityPatchDelta` in `@gvr/compiler`).
 Capacity-transactions evidence and PR #11 remain valid starting points; do not
 repeat their proofs without an affected failure. Product may adapt P002/P005 to
 the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. E029 ([#110](https://github.com/danielyekini/generative-virtual-runtime/issues/110)):
-   version `physics.planar2d` in MotionScript / Scene IR per the E011 decision.
-   Ready.
-2. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
+1. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
    version seam/split support (e.g. `space.planarSeams`) on top of
-   `space.planar25d`. Ready (second independent item).
-3. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+   `space.planar25d`. Ready.
+2. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
    sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
    remains a Candidate emitter round-trip bug (no language change).

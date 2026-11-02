@@ -2,8 +2,8 @@
  * E011 planar 2D physics prototype. See docs/decisions/engine/physics-integration.md.
  *
  * Simulation is fixed-step in the E010 world/layer XY plane. Bodies write only
- * physics-owned channels. Checkpoints + event log support seek/replay. No
- * MotionScript / Scene IR syntax is claimed here.
+ * physics-owned channels. Checkpoints + event log support seek/replay.
+ * Scene declarations lower through createScenePhysicsSession (physics.planar2d).
  */
 
 export type PhysicsBodyKind = "static" | "kinematic" | "dynamic";
@@ -55,11 +55,12 @@ export interface AuthoredDistanceConstraint {
   stiffness?: number;
 }
 
-export type PhysicsChannel = "transform.x" | "transform.y" | "transform.rotation";
+/** Scene IR / input-aligned channel ids (physics.planar2d language contract). */
+export type PhysicsChannel = "transform.position.x" | "transform.position.y" | "transform.rotation";
 
 export const PHYSICS_CHANNELS: readonly PhysicsChannel[] = [
-  "transform.x",
-  "transform.y",
+  "transform.position.x",
+  "transform.position.y",
   "transform.rotation",
 ];
 
@@ -681,8 +682,8 @@ export class PhysicsSession {
     const writes: PhysicsWrite[] = [];
     for (const body of this.bodies.values()) {
       const candidates: PhysicsWrite[] = [
-        { entityId: body.entityId, channel: "transform.x", value: body.x },
-        { entityId: body.entityId, channel: "transform.y", value: body.y },
+        { entityId: body.entityId, channel: "transform.position.x", value: body.x },
+        { entityId: body.entityId, channel: "transform.position.y", value: body.y },
         { entityId: body.entityId, channel: "transform.rotation", value: (body.angle * 180) / Math.PI },
       ];
       for (const write of candidates) {

@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.12.0 | 0.2 |
-| scene-ir | 0.12.0 | 0.2 |
+| motionscript | 0.13.0 | 0.2 |
+| scene-ir | 0.13.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -49,6 +49,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | input.bindings | supported | supported | not-applicable | Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/interact.test.ts) |
 | audio.cues | supported | supported | not-applicable | Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/audio.test.ts) |
 | space.planar25d | supported | supported | not-applicable | Scenes declare planar 2.5D layers: a camera and surfaces (root-scene nodes) with 3D placement, hinges and reverse-face control, projected at frame resolution. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/spatial.test.ts) |
+| physics.planar2d | supported | supported | not-applicable | Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/physics.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.mask | unsupported | unsupported | unsupported | A layer mask would clip geometry to a path. [registry](../../packages/schema/capabilities/registry.json) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
@@ -70,5 +71,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `cd027876b30b172b4e945e397ac708a4b513c0800bd8b87d384e02b0a8a70b64`
-- `packages/schema/capabilities/registry.json` SHA-256 `a5d77b2cf0b5d8d8ce4a9e77b41c57aa8f2e4d59c7e10478dfd84f3beab35d61`
+- `packages/schema/capabilities/releases.json` SHA-256 `c4f8fb8852b748a5a29ee3ccc0391560ed52b92f7f4136d2f19a030f09855f05`
+- `packages/schema/capabilities/registry.json` SHA-256 `5fb9317571310445be0841ee680cd80e987b29f812a22f2673853b57aa53a0ca`

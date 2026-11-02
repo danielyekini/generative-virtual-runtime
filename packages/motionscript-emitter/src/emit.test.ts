@@ -50,6 +50,15 @@ describe("canonical emitter", () => {
     expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
   });
 
+  it("round-trips physics declarations (physics.planar2d)", () => {
+    const source = readFileSync(resolve(motionDir, "physics-marble.ms"), "utf8");
+    const scene = compile(source);
+    const { again } = roundTrip(scene);
+    expect(again.requiredCapabilities).toContain("physics.planar2d");
+    expect(again.physics).toEqual(scene.physics);
+    expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
+  });
+
   it("round-trips animated solid paint channels", () => {
     const source = `scene "paint" {
   version "0.2";
