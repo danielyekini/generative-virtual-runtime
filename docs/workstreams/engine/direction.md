@@ -63,22 +63,16 @@ E033 versions the language surface (MotionScript / Scene IR 0.14.0).
 
 ## Next work
 
-1. E033 ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)):
-   version `audio.generative` in MotionScript / Scene IR 0.14.0. Done (PR #132).
-2. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
-   ElevenLabs adapter package. Done; Studio credentials stay with
-   Product ([#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) / P009).
-3. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
+1. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
    version seam/split support (e.g. `space.planarSeams`) on top of
-   `space.planar25d`. Ready after the generative-audio P0 slice unless that
-   slice is Blocked.
-4. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+   `space.planar25d`. Ready (generative-audio P0 slice complete).
+2. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
    sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
    remains a Candidate emitter round-trip bug (no language change).
 
-E032 ([#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124))
-runtime `GenerativeAudioProvider` + duration revision is Done.
+E032–E034 generative audio slice is Done (runtime provider, language 0.14.0,
+ElevenLabs adapter). Studio credentials remain Product (#120 / P009).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
