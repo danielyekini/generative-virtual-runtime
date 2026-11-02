@@ -752,7 +752,7 @@ ui.failedDiagnostics.addEventListener("click", () => selectTab("diagnostics", tr
 ui.toggleSource.addEventListener("click", () => setSourceOpen(!settings.sourceOpen));
 ui.sourceClose.addEventListener("click", () => setSourceOpen(false));
 ui.source.addEventListener("input", () => { rememberDraft(); fileReadId++; render(); });
-ui.toggleSplit.addEventListener("click", () => setSplit(!split));
+ui.toggleSplit.addEventListener("click", () => { closeMenus(); setSplit(!split); });
 ui.splitFormat.addEventListener("change", () => selectFormat(ui.splitFormat.value as ProgramFormat));
 ui.splitPresets.addEventListener("change", () => {
   const entry = catalogue.find((item) => item.key === ui.splitPresets.value && item.format === loaded?.format);
