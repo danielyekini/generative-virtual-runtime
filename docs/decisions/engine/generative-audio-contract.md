@@ -198,7 +198,8 @@ they must not silently substitute.
 
 1. **E032** ([#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124)) —
    Runtime duration revision + `GenerativeAudioProvider` interface + fixture
-   provider + tests. No language / registry claim.
+   provider + tests. No language / registry claim. Landed in `@gvr/runtime`
+   (`generative-audio.ts`, `AudioSession.reviseResourceDuration`).
 2. **E033** ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)) —
    Version `audio.generative` in MotionScript / Scene IR (grammar sugar,
    validator, capability, registry, conformance). Depends on E032.

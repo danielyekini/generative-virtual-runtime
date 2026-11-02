@@ -267,6 +267,20 @@ function finiteNonNegative(value: number | undefined): boolean {
   return value === undefined || (Number.isFinite(value) && value >= 0);
 }
 
+/** Null when the cue's offset/duration window fits the resource. */
+function cueWindowProblem(cue: AudioCue, resource: AudioResource): string | null {
+  const offset = cue.offsetMs ?? 0;
+  if (!finiteNonNegative(cue.offsetMs) || !(offset < resource.durationMs)) {
+    return `Audio cue ${cue.id} offset ${offset} is outside resource ${resource.id} duration ${resource.durationMs}.`;
+  }
+  if (cue.durationMs !== undefined) {
+    if (!(Number.isFinite(cue.durationMs) && cue.durationMs > 0 && offset + cue.durationMs <= resource.durationMs + 1e-9)) {
+      return `Audio cue ${cue.id} duration window exceeds resource ${resource.id} duration ${resource.durationMs}.`;
+    }
+  }
+  return null;
+}
+
 /**
  * Live audio coordinator. Call `sync` after each clock tick/seek/state change
  * with the presented scene time; it returns (and applies) the backend commands
@@ -343,11 +357,60 @@ export class AudioSession {
     return [];
   }
 
+  /**
+   * Update a resource's decoded length after generative synthesis (or a better
+   * decode). Scene time does not jump. Cues that omit `durationMs` follow the
+   * new length. Explicit cue windows that no longer fit report
+   * `AUDIO_INVALID_CUE`; a required cue among them marks the resource failed.
+   */
+  reviseResourceDuration(resourceId: string, durationMs: number): AudioDiagnostic[] {
+    this.assertLive();
+    if (!this.resources.has(resourceId)) {
+      return [this.report({ code: "AUDIO_UNKNOWN_RESOURCE", resourceId, message: `Cannot revise unknown audio resource ${resourceId}.` })];
+    }
+    if (!(Number.isFinite(durationMs) && durationMs > 0)) {
+      return [this.report({ code: "AUDIO_INVALID_CUE", resourceId, message: `Audio resource ${resourceId} revise needs a positive durationMs.` })];
+    }
+    this.resources.set(resourceId, { id: resourceId, durationMs });
+    const resource = this.resources.get(resourceId)!;
+    const out: AudioDiagnostic[] = [];
+    const dropOptional: string[] = [];
+    let failRequired = false;
+    for (const cue of this.cues) {
+      if (cue.resourceId !== resourceId) continue;
+      const problem = cueWindowProblem(cue, resource);
+      if (!problem) continue;
+      out.push(this.report({ code: "AUDIO_INVALID_CUE", cueId: cue.id, resourceId, message: problem }));
+      if (isRequired(cue)) failRequired = true;
+      else dropOptional.push(cue.id);
+    }
+    if (dropOptional.length > 0) {
+      for (const id of dropOptional) this.cueIds.delete(id);
+      for (let i = this.cues.length - 1; i >= 0; i -= 1) {
+        if (dropOptional.includes(this.cues[i]!.id)) this.cues.splice(i, 1);
+      }
+    }
+    if (failRequired) this.states.set(resourceId, "failed");
+    return out;
+  }
+
   /** Readiness transition reported by the host loader. */
   setResourceState(resourceId: string, state: AudioResourceState): void {
     this.assertLive();
     if (!this.resources.has(resourceId)) return;
     this.states.set(resourceId, state);
+  }
+
+  /**
+   * Export gate: every resource referenced by a required cue must be ready.
+   * Generative hosts call this before `mixAudio` / WAV export.
+   */
+  requiredResourcesReady(): boolean {
+    for (const cue of this.cues) {
+      if (!isRequired(cue)) continue;
+      if (this.states.get(cue.resourceId) !== "ready") return false;
+    }
+    return true;
   }
 
   /** Append sealed cues (streaming). Invalid cues are rejected individually with diagnostics. */
@@ -524,17 +587,23 @@ export class AudioSession {
     const resource = this.resources.get(cue.resourceId);
     if (!resource) return { code: "AUDIO_UNKNOWN_RESOURCE", cueId: cue.id, resourceId: cue.resourceId, message: `Audio cue ${cue.id} names undeclared resource ${cue.resourceId}.` };
     const loops = cue.loops ?? 1;
-    const offset = cue.offsetMs ?? 0;
+    const windowProblem = cueWindowProblem(cue, resource);
     const valid =
       typeof cue.id === "string" && cue.id.length > 0 &&
       (AUDIO_BUSES as readonly string[]).includes(cue.bus) &&
       Number.isFinite(cue.startMs) && cue.startMs >= 0 &&
-      finiteNonNegative(cue.offsetMs) && offset < resource.durationMs &&
-      (cue.durationMs === undefined || (Number.isFinite(cue.durationMs) && cue.durationMs > 0 && offset + cue.durationMs <= resource.durationMs + 1e-9)) &&
       Number.isInteger(loops) && loops >= 1 && loops <= 1000 &&
       (cue.gain === undefined || (Number.isFinite(cue.gain) && cue.gain >= 0 && cue.gain <= 4)) &&
-      finiteNonNegative(cue.fadeInMs) && finiteNonNegative(cue.fadeOutMs);
-    if (!valid) return { code: "AUDIO_INVALID_CUE", cueId: cue.id, resourceId: cue.resourceId, message: `Audio cue ${cue.id} has an invalid bus, time, offset, duration, loop count, gain or fade.` };
+      finiteNonNegative(cue.fadeInMs) && finiteNonNegative(cue.fadeOutMs) &&
+      !windowProblem;
+    if (!valid) {
+      return {
+        code: "AUDIO_INVALID_CUE",
+        cueId: cue.id,
+        resourceId: cue.resourceId,
+        message: windowProblem ?? `Audio cue ${cue.id} has an invalid bus, time, offset, duration, loop count, gain or fade.`,
+      };
+    }
     return null;
   }
 

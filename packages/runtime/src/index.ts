@@ -38,6 +38,25 @@ export type {
   SceneAudioOptions,
   SceneAudioResource,
 } from "./audio";
+export {
+  createFixtureGenerativeAudioProvider,
+  estimateProvisionalDurationMs,
+  fixtureWavBytes,
+  generativeCacheKey,
+  materializeGenerativeResource,
+  requiredGenerativeExportReady,
+} from "./generative-audio";
+export type {
+  FixtureGenerativeAudioEntry,
+  FixtureGenerativeAudioOptions,
+  GenerativeAudioAlignment,
+  GenerativeAudioModality,
+  GenerativeAudioProvider,
+  GenerativeAudioRequest,
+  GenerativeAudioResult,
+  GenerativeAudioStyle,
+  MaterializeGenerativeOptions,
+} from "./generative-audio";
 export { RuntimeClock } from "./clock";
 export { EntityRevisionStore } from "./entities";
 export type {

@@ -65,7 +65,7 @@ Syntax sugar is not grammar until E033.
 
 1. E032 ([#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124)):
    runtime duration revision + `GenerativeAudioProvider` + fixture provider
-   (no language claim). Ready, **P0**.
+   (no language claim). Done.
 2. E033 ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)):
    version `audio.generative` in MotionScript / Scene IR. Ready after E032.
 3. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
