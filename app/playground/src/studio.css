@@ -658,3 +658,7 @@ body.is-switching #present {
   #split { grid-template-columns: 1fr; }
   .prompt-row { flex-direction: column; }
 }
+
+/* Temporary legacy route banner (P001). */
+.legacy-back { color: #93c5fd; text-decoration: none; white-space: nowrap; }
+.legacy-note { color: #a1a1aa; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }

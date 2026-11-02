@@ -1,0 +1,545 @@
+{
+  "checks": [
+    {
+      "name": "no horizontal page overflow",
+      "ok": true,
+      "detail": [
+        1440,
+        1440
+      ]
+    },
+    {
+      "name": "landing is an empty player with nothing loaded",
+      "ok": true,
+      "detail": {
+        "programKey": null,
+        "programName": null,
+        "format": null,
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 541,
+          "backingWidth": 1440,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "landing shows Open Library in the header and on the canvas",
+      "ok": true
+    },
+    {
+      "name": "Run is disabled until a program is loaded",
+      "ok": true
+    },
+    {
+      "name": "Source panel is closed by default",
+      "ok": true,
+      "detail": {
+        "programKey": null,
+        "programName": null,
+        "format": null,
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 541,
+          "backingWidth": 1440,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "old left rail and right dock are gone",
+      "ok": true
+    },
+    {
+      "name": "bottom panel has Diagnostics, Scene and Report tabs",
+      "ok": true,
+      "detail": [
+        "Diagnostics",
+        "Scene",
+        "Report"
+      ]
+    },
+    {
+      "name": "Stream action is present but disabled until P002",
+      "ok": true,
+      "detail": {
+        "disabled": true,
+        "title": "Stream mode is coming in P002. The legacy stream workbench is in ▾."
+      }
+    },
+    {
+      "name": "Open Library opens the program picker",
+      "ok": true
+    },
+    {
+      "name": "picker search filters programs",
+      "ok": true,
+      "detail": [
+        "story:two-ways-through-a-binary-tree"
+      ]
+    },
+    {
+      "name": "collection chip narrows the picker",
+      "ok": true,
+      "detail": [
+        "frame:primitive-gallery",
+        "frame:hierarchy-transform",
+        "frame:camera-mapping",
+        "frame:z-order",
+        "frame:opacity",
+        "frame:text",
+        "frame:path-stress"
+      ]
+    },
+    {
+      "name": "opening loads the program without running it",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 541,
+          "backingWidth": 1440,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "header names the loaded program and waits for Run",
+      "ok": true
+    },
+    {
+      "name": "hash names the loaded program",
+      "ok": true
+    },
+    {
+      "name": "Run compiles and plays the loaded program",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 650,
+        "durationMs": 4000,
+        "playing": true,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 541,
+          "backingWidth": 1440,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "Fullscreen is enabled after Run",
+      "ok": true
+    },
+    {
+      "name": "clicking the tape seeks to that fraction of the program",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 2000,
+        "durationMs": 4000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 541,
+          "backingWidth": 1440,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "fullscreen shows the canvas only at window size",
+      "ok": true,
+      "detail": {
+        "probe": {
+          "programKey": "sample:ball",
+          "programName": "Ball",
+          "format": "motionscript",
+          "runState": "ok",
+          "sceneId": "bouncing-ball",
+          "timeMs": 2000,
+          "durationMs": 4000,
+          "playing": false,
+          "dirty": false,
+          "fullscreen": true,
+          "sourceOpen": false,
+          "panelOpen": true,
+          "panelTab": "diagnostics",
+          "diagnostics": [],
+          "canvas": {
+            "cssWidth": 1440,
+            "cssHeight": 900,
+            "backingWidth": 1440,
+            "backingHeight": 900
+          }
+        },
+        "area": [
+          1440,
+          900
+        ],
+        "bar": "none",
+        "panel": "none"
+      }
+    },
+    {
+      "name": "fullscreen canvas fills the area; renderer contain-fits the logical viewport",
+      "ok": true,
+      "detail": {
+        "cssWidth": 1440,
+        "cssHeight": 900,
+        "backingWidth": 1440,
+        "backingHeight": 900
+      }
+    },
+    {
+      "name": "fullscreen has a visible exit control",
+      "ok": true
+    },
+    {
+      "name": "Escape leaves fullscreen",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 2000,
+        "durationMs": 4000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": false,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1440,
+          "cssHeight": 541,
+          "backingWidth": 1440,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "exit button leaves fullscreen",
+      "ok": true
+    },
+    {
+      "name": "Source panel opens on the right with the loaded source",
+      "ok": true
+    },
+    {
+      "name": "editing marks the program as edited since Run",
+      "ok": true,
+      "detail": {
+        "programKey": "sample:ball",
+        "programName": "Ball",
+        "format": "motionscript",
+        "runState": "ok",
+        "sceneId": "bouncing-ball",
+        "timeMs": 2000,
+        "durationMs": 4000,
+        "playing": false,
+        "dirty": true,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 541,
+          "backingWidth": 1016,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "Ctrl+Enter re-runs the edited source",
+      "ok": true
+    },
+    {
+      "name": "opened file becomes the loaded program, not run",
+      "ok": true,
+      "detail": {
+        "programKey": "file:broken-upload.ms",
+        "programName": "broken-upload.ms",
+        "format": "motionscript",
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 541,
+          "backingWidth": 1016,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "failed Run lists located diagnostics and keeps the source",
+      "ok": true,
+      "detail": {
+        "programKey": "file:broken-upload.ms",
+        "programName": "broken-upload.ms",
+        "format": "motionscript",
+        "runState": "failed",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [
+          "line 8, column 8 · BAD_COLOR · A colour needs #RRGGBB or #RRGGBBAA. Short forms are not accepted."
+        ],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 541,
+          "backingWidth": 1016,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "diagnostic row shows line, column, code, message and recovery",
+      "ok": true,
+      "detail": "✕ errorLn 8, Col 8BAD_COLORA colour needs #RRGGBB or #RRGGBBAA. Short forms are not accepted.Recovery: Reject this unit atomically. Keep the last accepted scene unchanged."
+    },
+    {
+      "name": "selecting a diagnostic jumps to its source span",
+      "ok": true,
+      "detail": {
+        "start": 113,
+        "end": 114,
+        "focused": true
+      }
+    },
+    {
+      "name": "imports run through the Player with a fidelity report",
+      "ok": true,
+      "detail": {
+        "imported": {
+          "programKey": "import:lottie:animated_position",
+          "programName": "Lottie: position",
+          "format": "lottie",
+          "runState": "ok",
+          "sceneId": "lottie",
+          "timeMs": 250,
+          "durationMs": 2000,
+          "playing": true,
+          "dirty": false,
+          "fullscreen": false,
+          "sourceOpen": true,
+          "panelOpen": true,
+          "panelTab": "report",
+          "diagnostics": [
+            "IMPORT_EXACT · Imported motion on layer_1.transform.position.x.",
+            "IMPORT_EXACT · Imported motion on layer_1.transform.position.y.",
+            "IMPORT_EXACT · Imported ellipse layer_1.group0.ellipseNode.",
+            "IMPORT_EXACT · Converted composition frames 0–60 at 30fps to 2000ms."
+          ],
+          "canvas": {
+            "cssWidth": 1016,
+            "cssHeight": 541,
+            "backingWidth": 1016,
+            "backingHeight": 541
+          }
+        },
+        "report": "STATUS\texact\nCOUNTS\tconversion\texact\t4\tapproximated\t0\tdropped\t0\tunsupported\t0\nGR"
+      }
+    },
+    {
+      "name": "Autoplay on open runs the program immediately",
+      "ok": true,
+      "detail": {
+        "programKey": "frame:primitive-gallery",
+        "programName": "Primitive gallery",
+        "format": "motionscript",
+        "runState": "recovered",
+        "sceneId": "primitive-gallery",
+        "timeMs": 0,
+        "durationMs": 1000,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [
+          "line 12, column 11 · INVALID_TYPE · rectangle needs a name.",
+          "line 12, column 11 · INVALID_TYPE · Expected '{'.",
+          "line 12, column 21 · INVALID_TYPE · Unknown property rectangle.",
+          "line 18, column 8 · INVALID_TYPE · circle needs a name.",
+          "line 18, column 8 · INVALID_TYPE · Expected '{'.",
+          "line 18, column 15 · INVALID_TYPE · Unknown property circle.",
+          "line 24, column 9 · INVALID_TYPE · ellipse needs a name.",
+          "line 24, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 24, column 17 · INVALID_TYPE · Unknown property ellipse.",
+          "line 30, column 6 · INVALID_TYPE · line needs a name.",
+          "line 30, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 30, column 11 · INVALID_TYPE · Unknown property line.",
+          "line 36, column 9 · INVALID_TYPE · polygon needs a name.",
+          "line 36, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 36, column 17 · INVALID_TYPE · Unknown property polygon.",
+          "line 42, column 6 · INVALID_TYPE · path needs a name.",
+          "line 42, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 42, column 11 · INVALID_TYPE · Unknown property path.",
+          "line 12, column 11 · INVALID_TYPE · rectangle needs a name.",
+          "line 12, column 11 · INVALID_TYPE · Expected '{'.",
+          "line 12, column 21 · INVALID_TYPE · Unknown property rectangle.",
+          "line 18, column 8 · INVALID_TYPE · circle needs a name.",
+          "line 18, column 8 · INVALID_TYPE · Expected '{'.",
+          "line 18, column 15 · INVALID_TYPE · Unknown property circle.",
+          "line 24, column 9 · INVALID_TYPE · ellipse needs a name.",
+          "line 24, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 24, column 17 · INVALID_TYPE · Unknown property ellipse.",
+          "line 30, column 6 · INVALID_TYPE · line needs a name.",
+          "line 30, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 30, column 11 · INVALID_TYPE · Unknown property line.",
+          "line 36, column 9 · INVALID_TYPE · polygon needs a name.",
+          "line 36, column 9 · INVALID_TYPE · Expected '{'.",
+          "line 36, column 17 · INVALID_TYPE · Unknown property polygon.",
+          "line 42, column 6 · INVALID_TYPE · path needs a name.",
+          "line 42, column 6 · INVALID_TYPE · Expected '{'.",
+          "line 42, column 11 · INVALID_TYPE · Unknown property path."
+        ],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 541,
+          "backingWidth": 1016,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "loading by hash restores the program without running it (autoplay off)",
+      "ok": true,
+      "detail": {
+        "programKey": "story:through-the-blue",
+        "programName": "Through the Blue",
+        "format": "motionscript",
+        "runState": "not-run",
+        "sceneId": "",
+        "timeMs": 0,
+        "durationMs": 0,
+        "playing": false,
+        "dirty": false,
+        "fullscreen": false,
+        "sourceOpen": true,
+        "panelOpen": true,
+        "panelTab": "diagnostics",
+        "diagnostics": [],
+        "canvas": {
+          "cssWidth": 1016,
+          "cssHeight": 541,
+          "backingWidth": 1016,
+          "backingHeight": 541
+        }
+      }
+    },
+    {
+      "name": "landing lists recent programs",
+      "ok": true,
+      "detail": [
+        "Through the Blue",
+        "Primitive gallery",
+        "Lottie: position",
+        "Ball"
+      ]
+    },
+    {
+      "name": "legacy stream workbench still streams until P002",
+      "ok": true,
+      "detail": {
+        "sceneId": "bunny-demo",
+        "timeMs": 2000,
+        "playing": false,
+        "rate": 1,
+        "degraded": false,
+        "diagnostics": [],
+        "origins": {},
+        "state": "waiting_for_content",
+        "sealedThroughMs": 2000,
+        "revision": 5,
+        "parsedUnits": 5,
+        "phase": "dwell"
+      }
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "passed": 35,
+  "failed": 0
+}

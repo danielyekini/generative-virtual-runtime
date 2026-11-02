@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client"]
+  },
+  "include": ["src/player/**/*.ts", "src/legacy.ts", "src/library.ts", "src/library.test.ts", "smoke/**/*.ts"]
+}
