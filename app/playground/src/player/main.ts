@@ -1028,7 +1028,7 @@ $("stream-popout").addEventListener("click", () => {
   if (popout) { popout.document.title = "Arrived source · GVR Studio"; popout.document.body.style.cssText = "background:#181818;color:#eee"; popout.document.body.replaceChildren(document.createElement("pre")); }
   render();
 });
-window.addEventListener("pagehide", () => stopStream());
+window.addEventListener("pagehide", () => { stopStream(); stopAudio(); input?.dispose(); input = null; });
 ui.run.addEventListener("click", run);
 ui.readyRun.addEventListener("click", run);
 ui.sourceRun.addEventListener("click", run);

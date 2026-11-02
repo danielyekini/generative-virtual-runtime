@@ -17,6 +17,7 @@ import { EntityRevisionStore, type EntityStoreSnapshot } from "./entities";
 import { buildResolvedFrame } from "./frame";
 import type { ObservedDeltaRef } from "./observation";
 import { sampleScene } from "./sample";
+import type { SampleOverlay } from "./runtime";
 
 /**
  * Applies revision-guarded scene deltas and evaluates the sealed prefix.
@@ -157,10 +158,10 @@ export class StreamingRuntime {
     return results;
   }
 
-  evaluate(sceneTimeMs: number): ResolvedFrame {
-    return this.telemetry ? this.telemetry.measure('frame.evaluate_ms', () => this.evaluateInner(sceneTimeMs)) : this.evaluateInner(sceneTimeMs);
+  evaluate(sceneTimeMs: number, overlay?: SampleOverlay): ResolvedFrame {
+    return this.telemetry ? this.telemetry.measure('frame.evaluate_ms', () => this.evaluateInner(sceneTimeMs, overlay)) : this.evaluateInner(sceneTimeMs, overlay);
   }
-  private evaluateInner(sceneTimeMs: number): ResolvedFrame {
+  private evaluateInner(sceneTimeMs: number, overlay?: SampleOverlay): ResolvedFrame {
     if (!this.scene) throw new Error("Streaming runtime has no scene yet.");
     const beyond = !this.authoringComplete && sceneTimeMs > this.sealedThroughMs;
     if (beyond) this.telemetry?.count('runtime.horizon_wait_evaluations');
@@ -168,7 +169,8 @@ export class StreamingRuntime {
     const atFrontier = !this.authoringComplete && time === this.sealedThroughMs;
     const frontierOptions = atFrontier ? { excludeStartsAtMs: this.sealedThroughMs } : undefined;
     const view = projectScene(this.scene, this.entities, time, frontierOptions);
-    const sampled = sampleScene(view, time, frontierOptions);
+    const raw = sampleScene(view, time, frontierOptions);
+    const sampled = overlay ? overlay(raw, time) : raw;
     this.diagnostics = sampled.diagnostics;
     if (sampled.diagnostics.length > 0) this.degradedFlag = true;
     return buildResolvedFrame(view, sampled, time, this.revision);

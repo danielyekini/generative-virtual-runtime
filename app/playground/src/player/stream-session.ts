@@ -1,5 +1,5 @@
 import { createIncrementalProgram } from "@gvr/compiler";
-import { PlaybackClock, StreamingRuntime, observeStreamingExecution } from "@gvr/runtime";
+import { PlaybackClock, StreamingRuntime, observeStreamingExecution, type SampleOverlay } from "@gvr/runtime";
 import type { SourceSpan } from "@gvr/schema";
 import { locateDiagnostics } from "../library";
 
@@ -49,9 +49,9 @@ export class StreamSession {
     }
     this.clock.setHorizon(this.runtime.sealedThroughMs, this.runtime.scene?.timeline.durationMs ?? 0, this.runtime.authoringComplete);
   }
-  evaluate() {
+  evaluate(overlay?: SampleOverlay) {
     if (!this.runtime.scene) return null;
-    const frame = this.runtime.evaluate(this.clock.timeMs);
+    const frame = this.runtime.evaluate(this.clock.timeMs, overlay);
     if (frame) for (const unit of this.units.values()) {
       if (unit.state !== "rejected") {
         const state = this.clock.timeMs >= unit.horizon ? "resolved" : "queued";

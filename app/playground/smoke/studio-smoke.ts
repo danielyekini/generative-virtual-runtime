@@ -435,6 +435,37 @@ try {
   await player();
   check("Changing program cancels arrival; imports use Run", await ev("!window.__gvr.stream && document.querySelector('#stream').disabled"));
 
+  // Main integration: keep newly released input and audio services on Stream's clock.
+  await ev("document.querySelector('#split-format').value = 'motionscript'; document.querySelector('#split-format').dispatchEvent(new Event('change'));"); await player();
+  const interactiveScript = `scene "stream-input" { version "0.2"; viewport (400, 300); background #101014; duration 2s; };
+  circle lamp { position (100, 100); radius 30; fill #ffffff; opacity 0.2; };
+  interact lamp { focusable true; on click toggle opacity 1 0.2; };
+  seal 1s;
+  complete;`;
+  await ev(`document.querySelector('#source').value = ${JSON.stringify(interactiveScript)}; document.querySelector('#stream').click()`);
+  for (let i = 0; i < 100 && !(await ev("window.__gvr.stream?.arrivalDone")); i++) await sleep(50);
+  const lampPoint = await ev(`(() => { const r = document.querySelector('#view').getBoundingClientRect(); const fit = Math.min(r.width / 400, r.height / 300); return {x:r.left + (r.width - 400 * fit) / 2 + 100 * fit, y:r.top + (r.height - 300 * fit) / 2 + 100 * fit}; })()`);
+  await click(lampPoint.x, lampPoint.y); await player();
+  check("Stream applies native pointer input overlays", await ev("window.__gvr.frame?.drawItems.find(item => item.nodeId === 'lamp')?.opacity === 1"));
+  const audioScript = `scene "stream-audio" { version "0.2"; viewport (400, 300); background #101014; duration 2s; };
+  audio Click "/audio/click.wav" 80ms;
+  circle lamp { position (100, 100); radius 30; fill #ffffff; };
+  cue First narration Click at 0ms;
+  seal 250ms;
+  cue Later effects Click at 500ms;
+  seal 1s;
+  complete;`;
+  await ev(`document.querySelector('#source').value = ${JSON.stringify(audioScript)}; document.querySelector('#stream').click()`);
+  for (let i = 0; i < 100 && !(await ev("window.__gvr.stream?.arrivalDone")); i++) await sleep(50);
+  await sleep(750);
+  const audioProbe = (await player()).audio;
+  check("Stream starts decoded audio on its playback clock", Boolean(audioProbe?.log.some((line: string) => line.includes('start First#0'))), audioProbe);
+  check("Stream appends audio cues after the first seal", Boolean(audioProbe?.log.some((line: string) => line.includes('start Later#0'))), audioProbe);
+  await ev("document.querySelector('#play').click()"); await player();
+  check("Stream audio follows playback pause", (await player()).audio?.voices.length === 0);
+  const exportedAudio = await ev("(() => { const wav = window.__gvr.exportAudio(); return wav && {bytes: wav.wav.length, durationMs: wav.durationMs}; })()");
+  check("Stream audio retains the existing offline export path", exportedAudio?.bytes > 44 && exportedAudio?.durationMs === 2000, exportedAudio);
+
   // 9. Temporary legacy route keeps streaming working
   await navigate("/legacy.html#stream");
   await ev("(() => { const t = document.querySelector('#stream-toggle'); t.checked = true; t.dispatchEvent(new Event('change')); const p = document.querySelector('#stream-preset'); p.value = 'bunny'; p.dispatchEvent(new Event('change')); document.querySelector('#stream-run').click(); })()");
