@@ -1,0 +1,225 @@
+[
+  {
+    "name": "crane-0",
+    "order": [
+      "Base",
+      "Flap",
+      "Mark"
+    ],
+    "probes": [
+      {
+        "label": "flap",
+        "at": {
+          "x": 287.40711490700977,
+          "y": 208.7455011229259
+        },
+        "expectHit": "Flap",
+        "hit": "Flap",
+        "pixel": [
+          255,
+          248,
+          230,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "crane-45",
+    "order": [
+      "Base",
+      "Flap",
+      "Mark"
+    ],
+    "probes": [
+      {
+        "label": "flap",
+        "at": {
+          "x": 304.89892793159464,
+          "y": 189.3842342448936
+        },
+        "expectHit": "Flap",
+        "hit": "Flap",
+        "pixel": [
+          255,
+          248,
+          230,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "crane-135",
+    "order": [
+      "Base",
+      "Flap"
+    ],
+    "probes": [
+      {
+        "label": "flap",
+        "at": {
+          "x": 351.29325919746776,
+          "y": 148.57387465654347
+        },
+        "expectHit": "Flap",
+        "hit": "Flap",
+        "pixel": [
+          89,
+          115,
+          179,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "crane-180",
+    "order": [
+      "Base",
+      "Flap"
+    ],
+    "probes": [
+      {
+        "label": "flap",
+        "at": {
+          "x": 351.37839186599354,
+          "y": 152.32562885899532
+        },
+        "expectHit": "Flap",
+        "hit": "Flap",
+        "pixel": [
+          89,
+          115,
+          179,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "home-front",
+    "order": [
+      "Floor",
+      "Back",
+      "Left",
+      "Front",
+      "Door"
+    ],
+    "probes": [
+      {
+        "label": "wall",
+        "at": {
+          "x": 273.97102724202307,
+          "y": 263.16097574611337
+        },
+        "expectHit": "Front",
+        "hit": "Front",
+        "pixel": [
+          216,
+          200,
+          168,
+          255
+        ]
+      },
+      {
+        "label": "door",
+        "at": {
+          "x": 359.05909559684505,
+          "y": 293.54133250410956
+        },
+        "expectHit": "Door",
+        "hit": "Door",
+        "pixel": [
+          107,
+          74,
+          43,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "home-door-open",
+    "order": [
+      "Floor",
+      "Back",
+      "Left",
+      "Front",
+      "Door"
+    ],
+    "probes": [
+      {
+        "label": "wall",
+        "at": {
+          "x": 273.97102724202307,
+          "y": 263.16097574611337
+        },
+        "expectHit": "Front",
+        "hit": "Front",
+        "pixel": [
+          216,
+          200,
+          168,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "home-behind",
+    "order": [
+      "Floor",
+      "Front",
+      "Door",
+      "Left",
+      "Back"
+    ],
+    "probes": [
+      {
+        "label": "wall",
+        "at": {
+          "x": 366.0289727579769,
+          "y": 263.16097574611325
+        },
+        "expectHit": "Back",
+        "hit": "Back",
+        "pixel": [
+          176,
+          160,
+          128,
+          255
+        ]
+      }
+    ]
+  },
+  {
+    "name": "echo",
+    "order": [
+      "WallL",
+      "WallR",
+      "W4",
+      "W3",
+      "W2",
+      "W1",
+      "W0"
+    ],
+    "probes": [
+      {
+        "label": "W0",
+        "at": {
+          "x": 320,
+          "y": 205
+        },
+        "expectHit": "W0",
+        "hit": "W0",
+        "pixel": [
+          101,
+          85,
+          107,
+          255
+        ]
+      }
+    ]
+  }
+]
