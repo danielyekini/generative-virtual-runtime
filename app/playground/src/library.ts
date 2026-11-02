@@ -18,6 +18,7 @@ export interface ProgramEntry {
   origin: ProgramOrigin;
   format: ProgramFormat;
   source: string;
+  tags?: string[];
 }
 
 export interface LibraryQuery {
@@ -32,7 +33,7 @@ export function filterLibrary(entries: readonly ProgramEntry[], query: LibraryQu
   return entries.filter((entry) => {
     if (query.collection !== "all" && entry.collection !== query.collection) return false;
     if (tokens.length === 0) return true;
-    const haystack = fold(`${entry.label} ${entry.caption} ${entry.key} ${entry.collection}`);
+    const haystack = fold(`${entry.label} ${entry.caption} ${entry.key} ${entry.collection} ${(entry.tags ?? []).join(" ")}`);
     return tokens.every((token) => haystack.includes(token));
   });
 }
@@ -65,12 +66,13 @@ export interface StoredProgram {
   key: string;
   label: string;
   source: string;
+  format?: ProgramFormat;
 }
 
 export function encodeMine(entries: readonly ProgramEntry[]): string {
   const stored: StoredProgram[] = entries
     .filter((entry) => entry.origin === "mine")
-    .map((entry) => ({ key: entry.key, label: entry.label, source: entry.source }));
+    .map((entry) => ({ key: entry.key, label: entry.label, source: entry.source, ...(entry.format !== "motionscript" ? { format: entry.format } : {}) }));
   return JSON.stringify({ version: 1, programs: stored });
 }
 
@@ -81,9 +83,11 @@ export function decodeMine(raw: string | null | undefined): ProgramEntry[] {
     if (parsed.version !== 1 || !Array.isArray(parsed.programs)) return [];
     return parsed.programs.flatMap((item: unknown) => {
       if (!item || typeof item !== "object") return [];
-      const { key, label, source } = item as Partial<StoredProgram>;
+      const { key, label, source, format } = item as Partial<StoredProgram>;
       if (typeof key !== "string" || !key.startsWith("mine:") || typeof label !== "string" || typeof source !== "string") return [];
-      return [mineEntry(key, label, source)];
+      const entry = mineEntry(key, label, source);
+      if (format === "fixture" || format === "lottie" || format === "svg") entry.format = format;
+      return [entry];
     });
   } catch {
     return [];

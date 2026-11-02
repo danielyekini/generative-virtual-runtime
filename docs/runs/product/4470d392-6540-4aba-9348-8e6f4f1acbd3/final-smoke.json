@@ -1,0 +1,226 @@
+{
+  "passed": 55,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "no horizontal page overflow",
+      "ok": true
+    },
+    {
+      "name": "landing is an empty player with nothing loaded",
+      "ok": true
+    },
+    {
+      "name": "landing shows Open Library in the header and on the canvas",
+      "ok": true
+    },
+    {
+      "name": "Run is disabled until a program is loaded",
+      "ok": true
+    },
+    {
+      "name": "Source panel is closed by default",
+      "ok": true
+    },
+    {
+      "name": "old left rail and right dock are gone",
+      "ok": true
+    },
+    {
+      "name": "bottom panel has Diagnostics, Scene and Report tabs",
+      "ok": true
+    },
+    {
+      "name": "Stream action is present but disabled until P002",
+      "ok": true
+    },
+    {
+      "name": "Open Library opens the Library page",
+      "ok": true
+    },
+    {
+      "name": "picker search filters programs",
+      "ok": true
+    },
+    {
+      "name": "collection chip narrows the picker",
+      "ok": true
+    },
+    {
+      "name": "thumbnail bitmap fits inside the responsive card",
+      "ok": true
+    },
+    {
+      "name": "pointer scrubbing samples a real later frame",
+      "ok": true
+    },
+    {
+      "name": "leaving restores the fixed thumbnail",
+      "ok": true
+    },
+    {
+      "name": "editable tags participate in accent-insensitive search",
+      "ok": true
+    },
+    {
+      "name": "favourites filter uses the saved toggle",
+      "ok": true
+    },
+    {
+      "name": "opening loads the program without running it",
+      "ok": true
+    },
+    {
+      "name": "header names the loaded program and waits for Run",
+      "ok": true
+    },
+    {
+      "name": "hash names the loaded program",
+      "ok": true
+    },
+    {
+      "name": "Run compiles and plays the loaded program",
+      "ok": true
+    },
+    {
+      "name": "Fullscreen is enabled after Run",
+      "ok": true
+    },
+    {
+      "name": "clicking the tape seeks to that fraction of the program",
+      "ok": true
+    },
+    {
+      "name": "fullscreen shows the canvas only at window size",
+      "ok": true
+    },
+    {
+      "name": "fullscreen canvas fills the area; renderer contain-fits the logical viewport",
+      "ok": true
+    },
+    {
+      "name": "fullscreen has a visible exit control",
+      "ok": true
+    },
+    {
+      "name": "Escape leaves fullscreen",
+      "ok": true
+    },
+    {
+      "name": "exit button leaves fullscreen",
+      "ok": true
+    },
+    {
+      "name": "Source panel opens on the right with the loaded source",
+      "ok": true
+    },
+    {
+      "name": "editing marks the program as edited since Run",
+      "ok": true
+    },
+    {
+      "name": "page navigation preserves unsaved Player edits and loaded program",
+      "ok": true
+    },
+    {
+      "name": "Ctrl+Enter re-runs the edited source",
+      "ok": true
+    },
+    {
+      "name": "upload opens the full Library editor",
+      "ok": true
+    },
+    {
+      "name": "opened file becomes the loaded program, not run",
+      "ok": true
+    },
+    {
+      "name": "failed Run lists located diagnostics and keeps the source",
+      "ok": true
+    },
+    {
+      "name": "diagnostic row shows line, column, code, message and recovery",
+      "ok": true
+    },
+    {
+      "name": "selecting a diagnostic jumps to its source span",
+      "ok": true
+    },
+    {
+      "name": "imports run through the Player with a fidelity report",
+      "ok": true
+    },
+    {
+      "name": "Autoplay on open runs the program immediately",
+      "ok": true
+    },
+    {
+      "name": "loading by hash restores the program without running it (autoplay off)",
+      "ok": true
+    },
+    {
+      "name": "landing lists recent programs",
+      "ok": true
+    },
+    {
+      "name": "Library route restores saved favourites and tags",
+      "ok": true
+    },
+    {
+      "name": "My programs survive reload",
+      "ok": true
+    },
+    {
+      "name": "Library authoring draft survives page navigation",
+      "ok": true
+    },
+    {
+      "name": "failed save reports storage failure and keeps editor source",
+      "ok": true
+    },
+    {
+      "name": "Paste saves to My programs and opens without running",
+      "ok": true
+    },
+    {
+      "name": "New opens a full blank editor",
+      "ok": true
+    },
+    {
+      "name": "uploaded SVG retains its format after reload",
+      "ok": true
+    },
+    {
+      "name": "saved SVG still imports through Player Run",
+      "ok": true
+    },
+    {
+      "name": "duration sort resolves and orders playable programs",
+      "ok": true
+    },
+    {
+      "name": "recent sort puts the latest opened program first",
+      "ok": true
+    },
+    {
+      "name": "empty results explain how to recover",
+      "ok": true
+    },
+    {
+      "name": "Library fits a narrow viewport",
+      "ok": true
+    },
+    {
+      "name": "Open still works when clicking it blurs an edited tag field",
+      "ok": true
+    },
+    {
+      "name": "legacy stream workbench still streams until P002",
+      "ok": true
+    },
+    {
+      "name": "no page errors",
+      "ok": true
+    }
+  ]
+}
