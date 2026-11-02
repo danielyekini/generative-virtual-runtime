@@ -49,3 +49,13 @@ After two non-improving attempts choose a materially different approach, narrow
 the scope or stop; renaming the approach does not reset its history.
 Future ideas enter Candidate, get evaluated and promoted/deferred/rejected by
 the owning orchestrator. Frequency in an audit is evidence, not an automatic priority.
+
+## Continual engine and story improvement
+
+Adopted prospective process direction, 2 November 2026: milestone delivery runs
+alongside [Generate Stories → Expand System → Reimplement Stories → Select next corpus](../workflows/native-story-cycle.md).
+Stories evolve with released engine/language improvements; each iteration combines
+new Product scenarios and more ambitious selected returning stories. Future corpus
+authorship is native MotionScript, with explicit friction evidence and versioned
+reimplementation. Explore persistent, multi-turn software beyond fixed-duration films.
+The current expansion sequence remains in place; orchestrators bound subsequent work.

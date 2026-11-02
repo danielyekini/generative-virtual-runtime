@@ -46,3 +46,14 @@ comparison; no automatic native round-trip overhead. P006/P007: compact versione
 native reference and real model authoring experiment, then director-script pipeline.
 P008-P013 cover speech/media/customer/teaching/desktop/landing decisions later.
 Do not conflate a standalone generated movie/audio companion with native support.
+
+## Corpus inputs (prospective direction, 2 November 2026)
+
+Product owns realistic single-turn prompts and multi-turn conversations with
+production expectations, derived from the [established functionality index](functionality.md)
+and [future functionality list](future-functionality.md). Maintain both as capabilities
+evolve. Follow the [native story cycle](../../workflows/native-story-cycle.md);
+coordinate director-script ownership/generation procedure with Engine through P008
+before the next corpus. Include persistent canvas edits, continuing loops, extended
+explanations and architectural micro-prompts. Director streaming is an experiment
+hypothesis. This adds future iteration preparation without displacing current Studio work.
