@@ -91,7 +91,9 @@ any unsaved edits.
 
 #### Split details (confirmed 2 November 2026, P004)
 
-The Split toggle expands the existing Source editor beside the canvas, with
+The Split toggle lives in the header Settings menu (user steering, 2 November 2026).
+The header Source control is a borderless right-panel outline icon, with an
+accessible name and tooltip. Split expands the existing Source editor beside the canvas, with
 explicit MotionScript/Lottie/SVG/Fixture format selection, a format-filtered
 Presets selector and Open file. Files and presets load into the selected draft
 and wait for Run. Format selection does not convert source. Each format retains

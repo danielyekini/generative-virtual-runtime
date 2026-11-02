@@ -25,11 +25,14 @@
         </div>
       </div>
       <span class="spacer"></span>
-      <button id="toggle-split" type="button" aria-pressed="false" title="Paste and run beside the canvas">Split</button>
-      <button id="toggle-source" type="button" aria-pressed="false" title="Source panel (E)">⟨/⟩ Source</button>
+      <button id="toggle-source" type="button" aria-label="Source panel" aria-pressed="false" title="Source panel (E)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5" /><path d="M16.5 4.5v15" /></svg>
+      </button>
       <button id="fullscreen" type="button" disabled title="Fullscreen (F)">⛶ Fullscreen</button>
-      <button id="options" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Run options" title="Run options">⚙</button>
+      <button id="options" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Settings" title="Settings">⚙</button>
       <div id="options-pop" class="menu" role="menu" hidden>
+      <button id="toggle-split" type="button" aria-pressed="false" title="Paste and run beside the canvas">Split</button>
+
         <label class="check"><input id="opt-autoplay" type="checkbox" /> Autoplay on open</label>
         <label class="field">Canvas size <select id="opt-size" aria-label="Canvas size"></select></label>
         <label class="field">DPR

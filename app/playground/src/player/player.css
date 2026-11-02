@@ -360,3 +360,7 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 @media (max-width: 600px) { #library { padding: 16px; } .library-heading .spacer { display: none; } }
 
 #transport, #source-panel .panel-bar { flex-wrap: wrap; }
+
+/* The Source affordance is a bare right-panel icon, matching the user's reference. */
+#toggle-source { display: inline-flex; align-items: center; justify-content: center; padding: 3px 5px; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: var(--muted); }
+#toggle-source:hover:not(:disabled), #toggle-source[aria-pressed="true"] { background: transparent; color: var(--text); }
