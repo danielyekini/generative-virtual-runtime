@@ -16,43 +16,49 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (2 November 2026)
+## Queue (2 November 2026, post-review)
 
-1. P001 #42 Player page redesign — Ready.
-2. P015 #67 Library hover-preview style — waiting on user decision.
-3. P014 #68 Library page — after P001 and P015.
-4. P004 #45 Player Split paste-and-run — after P001.
-5. P002 #43 Stream run mode — after P001 and engine E018; propose presets and
-   Advanced controls to the user first.
-6. P016 #71 Stream frame tape (filmstrip with playhead, grey until played,
-   extensible tracks) — after P002; confirm the orange mapping first.
-7. P003 #44 Performance tab — after P001; UX proposal to the user first.
+Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
+P017, P018 Done). Paused prototype history: PR #65 commit 2d08de0 (reuse
+helpers only).
 
-Paused prototype: PR #65 history commit 2d08de0 (reuse helpers only).
+1. **P006 #47** native MotionScript authoring reference — **Ready** (resume;
+   E006 Done; prior environment Blocker cleared; rebuild from current main).
+2. **P007 #48** real-model native generation experiment — after P006.
+3. **P008 #49** director-script / next-corpus prep (#88 accepted) — after P007;
+   record director-script ownership with Engine before the next corpus.
+4. **P003 #44** Performance tab — Candidate until user UX confirmation
+   (studio-ux.md open section).
+5. **P005 #46** agent toolbox / shared host API — Candidate until agent-facing
+   command UX is confirmed in studio-ux.md (API can share Player execution
+   paths once specified).
+6. **P009 #50** push-to-talk / narration / SFX host — Candidate; depends on
+   P007, E008, **E031** (accepted #120). Promote after E031 Done on main.
+7. P010–P013 remain later Candidate work (interaction, demo, desktop/landing,
+   teaching).
 
 ## Next
 
-P002: Stream as a Run mode of the loaded program (studio-ux.md "Streaming"),
-using rate presets plus advanced arrival controls. Line states are confirmed as
-grey (arrived), orange (queued), white (resolved) and red (rejected), mapped to
-actual events and never to fictional per-line frames, with non-colour cues.
-Tape timeline shows loaded vs playhead; counters name their units. This
-replaces the blank stream-source pane. Request X001 from engine rather than defining
-new engine states privately. Reuse PR #11 Worker/evidence, don't call it real LLM speed.
+**Ordinary dispatch:** claim P006 and ship the versioned native reference
+(released-authority allow-list, immutable release+fingerprint snapshot,
+freshness guard, fixture/lint verification, honest token-size estimate). Do not
+wait on P003/P005 UX to unblock that path.
 
-P003/P005: contextual performance inspector and agent-facing commands/services
-sharing execution paths with human Studio. P004: unobtrusive format selection/
-comparison; no automatic native round-trip overhead. P006/P007: compact versioned
-native reference and real model authoring experiment, then director-script pipeline.
-P008-P013 cover speech/media/customer/teaching/desktop/landing decisions later.
-Do not conflate a standalone generated movie/audio companion with native support.
+**User decisions still required before implementation:** Performance inspector
+metrics/layout (P003) and agent-facing command surfaces (P005). Ask with
+options/mockups/UI-generator prompt; do not guess Studio chrome.
 
-## Generative audio provider (engine steering, 2 November 2026)
+**After P006:** P007 model experiment, then P008 director/corpus prep. Keep
+Studio delivery ahead of prospective corpus generation.
 
-Engine adopted ElevenLabs for timed generative narration/SFX ([E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)).
-Product inbox: [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) —
-triage at next intake; update P009 for host credentials/synthesis readiness after
-E031 publishes the host contract. Studio redesign queue above is unchanged.
+## Generative audio provider (intake cleared, 2 November 2026)
+
+Engine owns ElevenLabs design/implementation ([E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)
+and children E032–E034). Product accepted [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120):
+P009 carries the E031 host/provider contract dependency (credentials, synthesis
+readiness into `AudioSession`, required-narration vs optional-effects failure UX,
+offline fixtures). Do not invent MotionScript generative-audio syntax in Studio.
+Existing `href` audio + E026 Web Audio remain the fallback until E031 lands.
 
 ## Corpus inputs (prospective direction, 2 November 2026)
 
