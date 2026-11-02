@@ -108,3 +108,32 @@ export { AnimationRuntime } from "./runtime";
 export type { SampleOverlay } from "./runtime";
 export { sampleScene } from "./sample";
 export { StreamingRuntime } from "./streaming";
+export {
+  DEFAULT_FOCAL_LENGTH,
+  DEFAULT_SPATIAL_LIMITS,
+  hingeMatrix,
+  multiplyMat4,
+  orbitCamera,
+  projectSpatialFrame,
+  projectSurfacePoint,
+  spatialLocalMatrix,
+  surfaceDragDelta,
+  transformPoint4,
+  unprojectToSurface,
+} from "./spatial";
+export type {
+  Mat4,
+  ProjectedSurface,
+  SpatialCamera,
+  SpatialDiagnostic,
+  SpatialDiagnosticCode,
+  SpatialHinge,
+  SpatialLayer,
+  SpatialLimits,
+  SpatialProjection,
+  SpatialRotation,
+  SpatialSurface,
+  SpatialTransform,
+  SurfaceMode,
+  Vec3,
+} from "./spatial";
