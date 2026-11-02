@@ -65,6 +65,10 @@ Landed in MotionScript / Scene IR **0.7.0**. Wire stays `"0.2"`; scenes and prog
 
 Landed in MotionScript / Scene IR **0.8.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `paint.animatedSolid`. Channels `fill.r/g/b/a`, `stroke.r/g/b/a` and `stroke.width` sample over authored solid paint; node opacity stays independent of paint alpha. Gradients and adapter paint-animation lowering are outside this release.
 
+### Decision for declarative entity statements
+
+Landed in MotionScript / Scene IR **0.9.0**. Wire stays `"0.2"`. Completes authorship for existing `entities.durableRevisions` / `entities.drawableBindings` with declarative `entity` / `geometry` / `bind` / `behaviour` / `remove` / `reparent` / `cancel` productions that lower onto `APPLY_ENTITY_PATCH`. No new capability token; Scene IR ops are unchanged.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

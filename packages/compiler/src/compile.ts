@@ -28,6 +28,12 @@ import {
   type Vec2,
 } from "@gvr/schema";
 import type { AnimLiteral, EaseAst, HeaderAst, NodeAst, ProgramAst, Prop, UnitAst } from "./ast";
+import type { EntityPatchOp } from "@gvr/schema";
+import {
+  emitEntityStatementDelta,
+  isEntityStatement,
+  lowerEntityStatement,
+} from "./entity-statements";
 import { parseMotionScript } from "./parse";
 
 const BUILTINS = new Set(["PI", "t", "local_t", "progress", "sin", "cos", "abs", "sqrt", "min", "max", "pow", "clamp", "lerp"]);
@@ -54,6 +60,10 @@ export interface Session {
   frozen: boolean;
   deferred: UnitAst[];
   revision: number;
+  /** Nested APPLY_ENTITY_PATCH revision counter (independent of scene delta revision). */
+  entityPatchRevision: number;
+  /** Entity ops deferred while applying a batch (emitDelta false). */
+  pendingEntityOps: EntityPatchOp[];
   unitSerial: number;
   parsedUnits: number;
   deltas: SceneIRDelta[];
@@ -324,6 +334,30 @@ function emit(session: Session, operations: RuntimeOperation[], sourceSpan: Sour
   session.telemetry?.gauge("compile.pending_deltas", session.pendingDeltas.length);
 }
 
+function flushPendingEntityOps(session: Session, sourceSpan: SourceSpan): void {
+  if (session.pendingEntityOps.length === 0) return;
+  const operations = session.pendingEntityOps;
+  session.pendingEntityOps = [];
+  const expectedRevision = session.revision;
+  session.revision += 1;
+  session.unitSerial += 1;
+  const patchExpected = session.entityPatchRevision;
+  session.entityPatchRevision += 1;
+  const delta = emitEntityStatementDelta({
+    generationId: "local",
+    unitId: session.unitSerial,
+    expectedRevision,
+    nextRevision: session.revision,
+    patchExpectedRevision: patchExpected,
+    patchNextRevision: session.entityPatchRevision,
+    operations,
+    sourceSpan,
+  });
+  session.deltas.push(delta);
+  session.pendingDeltas.push(delta);
+  session.telemetry?.gauge("compile.pending_deltas", session.pendingDeltas.length);
+}
+
 function sceneHeader(session: Session): SceneHeader {
   const header: SceneHeader = {
     irVersion: session.scene.irVersion,
@@ -419,6 +453,8 @@ function createSession(header: HeaderAst, diagnostics: Diagnostic[]): Session {
     frozen: false,
     deferred: [],
     revision: 0,
+    entityPatchRevision: 0,
+    pendingEntityOps: [],
     unitSerial: 0,
     parsedUnits: 0,
     deltas: [],
@@ -473,6 +509,8 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     const state = {trackCount: session.trackCount, stepCount: session.stepCount, fontCount: session.fontCount, frozen: session.frozen};
     const constants = new Map(session.constants);
     const before = capture(session);
+    const priorPending = session.pendingEntityOps;
+    session.pendingEntityOps = [];
     let failed = false;
     for (const item of unit.items) {
       if (!applyUnit(session, item, false)) failed = true;
@@ -488,14 +526,40 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     }
     if (failed) {
       measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
+      session.pendingEntityOps = priorPending;
       return false;
     }
-    if (emitDelta) noteChanges(session, unit, before);
+    if (emitDelta) {
+      noteChanges(session, unit, before);
+      flushPendingEntityOps(session, unit.span);
+    } else {
+      priorPending.push(...session.pendingEntityOps);
+      session.pendingEntityOps = priorPending;
+    }
     return true;
   }
   if (unit.errors.length > 0) {
     session.diagnostics.push(...unit.errors);
     return false;
+  }
+  if (isEntityStatement(unit)) {
+    const beforeDiag = session.diagnostics.length;
+    const ops = measured(session, "compile.lower_ms", () =>
+      lowerEntityStatement(unit, {
+        sealedThroughMs: session.sealedThroughMs,
+        diagnostics: session.diagnostics,
+        ensureCapability: (name) => ensureCapability(session, name),
+        lowerNode: (ast, parentId) => lowerNode(session, ast, parentId),
+      }),
+    );
+    if (!ops || session.diagnostics.length > beforeDiag) return false;
+    if (emitDelta) {
+      session.pendingEntityOps.push(...ops);
+      flushPendingEntityOps(session, unit.span);
+    } else {
+      session.pendingEntityOps.push(...ops);
+    }
+    return true;
   }
   const snapshot = measured(session, 'compile.snapshot_ms', () => snapshotScene(session.scene));
   const sealed = session.sealedThroughMs;

@@ -347,10 +347,12 @@
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing entities.durableRevisions.",
         "APPLY_ENTITY_PATCH carries EntityPatch ops. ADD_NODES remains frozen after the first seal; post-seal structure changes use entity patches.",
         "Activation before the sealed horizon is rejected. Undo is a new compensating patch; replay re-applies the accepted patch log.",
-        "Declarative MotionScript entity/behaviour statements are outside this claim; authorship uses emitEntityPatchDelta."
+        "MotionScript 0.9.0 declarative entity/behaviour/remove/reparent/cancel statements lower onto APPLY_ENTITY_PATCH; emitEntityPatchDelta remains supported for hosts."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles geometry entity bind behaviour onto APPLY_ENTITY_PATCH",
+        "packages/compiler/src/compiler.test.ts#allows post-seal entity bind after sealed horizon",
         "packages/runtime/src/durable-revisions.test.ts#roof remove pillar add retains independent rotation with sealed prefix and compact context",
         "packages/runtime/src/durable-revisions.test.ts#undo and replay restore topology from the accepted patch log",
         "packages/compiler/src/entity-patch.test.ts#emits APPLY_ENTITY_PATCH deltas for durable revisions"
@@ -369,10 +371,11 @@
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing entities.drawableBindings (and entities.durableRevisions for APPLY_ENTITY_PATCH).",
         "REGISTER_GEOMETRY / BIND_GEOMETRY ride APPLY_ENTITY_PATCH. Geometry ids stay disjoint from entity ids; assets are immutable leaves.",
         "Sampling clones the asset under the instance entity id. Channel ownership remains exclusive per (entityId, channel) on the instance.",
-        "composition.instances remain non-drawing records; declarative MotionScript bind syntax is outside this claim."
+        "composition.instances remain non-drawing records; MotionScript 0.9.0 declarative geometry/bind statements lower onto REGISTER_GEOMETRY / BIND_GEOMETRY."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles geometry entity bind behaviour onto APPLY_ENTITY_PATCH",
         "packages/runtime/src/drawable-bindings.test.ts#projects shared geometry under two window instances after seal",
         "packages/runtime/src/drawable-bindings.test.ts#post-seal bind leaves sealed prefix unchanged",
         "packages/compiler/src/entity-patch.test.ts#emits APPLY_ENTITY_PATCH deltas for drawable bindings"

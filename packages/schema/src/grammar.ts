@@ -39,7 +39,9 @@ headerProperty = "version" , string , ";"
                | "duration" , duration , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
-               | timingDecl | compositionDecl | instanceDecl | operatorsDecl ;
+               | timingDecl | compositionDecl | instanceDecl | operatorsDecl
+               | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
+               | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
 cameraDecl     = "camera" , identifier , "{" , { cameraProperty } , "}" , ";" ;
 cameraProperty = "position" , vec2 , ";"
@@ -157,6 +159,26 @@ instanceProperty = "start" , duration , ";"
 operatorsDecl  = "operators" , dottedId , "{" , { operatorDecl } , "}" , ";" ;
 operatorDecl   = "trim" , signedNumber , "," , signedNumber , "," , signedNumber , ";"
                | "round" , signedNumber , ";" ;
+
+(* MotionScript 0.9 declarative entity statements. Lower 1:1 onto released
+   APPLY_ENTITY_PATCH ops (entities.durableRevisions / entities.drawableBindings).
+   Activation times must be >= the sealed left-limit. Geometry space is world|local.
+*)
+entityDecl     = "entity" , dottedId , "{" , { entityItem } , "}" , ";" ;
+entityItem     = "kind" , ( "drawable" | "group" ) , ";"
+               | "parent" , ( "root" | dottedId ) , ";"
+               | "label" , string , ";"
+               | "at" , duration , ";"
+               | nodeDecl ;
+geometryDecl   = "geometry" , identifier , "{" , "space" , ( "world" | "local" ) , ";" ,
+                 "at" , duration , ";" , nodeDecl , "}" , ";" ;
+bindDecl       = "bind" , dottedId , "to" , identifier , "at" , duration , ";" ;
+removeEntity   = "remove" , "entity" , dottedId , "at" , duration , ";" ;
+reparentDecl   = "reparent" , dottedId , "under" , ( "root" | dottedId ) , "at" , duration , ";" ;
+behaviourDecl  = "behaviour" , identifier , "on" , dottedId , "{" ,
+                 "activate" , "at" , duration , ";" , "}" , ";" ;
+cancelBehaviour = "cancel" , "behaviour" , identifier , ";" ;
+
 dottedId       = identifier , { "." , identifier } ;
 segmentEase    = "linear" | "easeIn" | "easeOut" | "easeInOut" | "hold"
                | "cubic" , "(" , signedNumber , "," , signedNumber , "," , signedNumber , "," , signedNumber , ")" ;
@@ -308,6 +330,14 @@ export const KEYWORDS = [
   "overlay",
   "sourceOver",
   "radial",
+  "entity",
+  "behaviour",
+  "geometry",
+  "bind",
+  "remove",
+  "reparent",
+  "cancel",
+  "activate",
 ] as const;
 
 export const KEYWORD_SET = new Set<string>(KEYWORDS);
