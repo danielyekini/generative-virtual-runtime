@@ -1,7 +1,7 @@
 # Engine run 6b578e8c: E030 space.planarSeams (MotionScript / Scene IR 0.15.0)
 
 Run `6b578e8c-3dbc-4984-b1f9-094499bb1945`, 2 November 2026. [Issue #112](https://github.com/danielyekini/generative-virtual-runtime/issues/112).
-Base: `4849441` (E031 direction adoption). Branch: `claude/nifty-cannon-f2esde`.
+Base: `e5a6e2c` (after E033 `audio.generative` 0.14.0; rebased from `4849441`, so this release is 0.15.0). Branch: `claude/nifty-cannon-f2esde`.
 
 ## Result
 
@@ -30,7 +30,7 @@ Base: `4849441` (E031 direction adoption). Branch: `claude/nifty-cannon-f2esde`.
 
 ## Verification
 
-- `npm run verify` exit 0 (439 Vitest tests; all typechecks; Studio build; IR manifest;
+- `npm run verify` exit 0 (456 Vitest tests; all typechecks; Studio build; IR manifest;
   33 ops tests; capability index).
 - Pixel oracle (unprojected nearest hit vs `hitTest`): 0 mismatches for perspective,
   orthographic, concave shared-edge and three-way crossings. Unsplit frames show mismatches.
