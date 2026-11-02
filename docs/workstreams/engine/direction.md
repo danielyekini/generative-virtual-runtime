@@ -65,18 +65,13 @@ E033 versions the language surface (MotionScript / Scene IR 0.14.0).
 
 ## Next work
 
-1. E033 ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)):
-   version `audio.generative` in MotionScript / Scene IR 0.14.0. In progress.
-2. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
-   ElevenLabs adapter package. Ready after E032; Studio credentials stay with
-   Product ([#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) / P009).
-3. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+1. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
    sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
    remains a Candidate emitter round-trip bug (no language change).
 
-E032 ([#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124))
-runtime `GenerativeAudioProvider` + duration revision is Done.
+E032–E034 generative audio slice is Done (runtime provider, language 0.14.0,
+ElevenLabs adapter). Studio credentials remain Product (#120 / P009).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
