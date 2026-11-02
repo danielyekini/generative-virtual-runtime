@@ -37,7 +37,7 @@ installation and future work; examples are scenarios, not claims of current supp
 | R30 | Explain fed units/received/accepted/queued/resolved/sealed/playhead | P002 + request X001 |
 | R31 | Source progression grey/orange/white with accurate semantic mapping and accessible labels | P002; no false line->frame mapping |
 | R32 | Timeline shows playable coverage ahead of playhead; repair empty stream-code pane | P002 |
-| R33 | Other formats accepted on import; subtle language selector, tucked-away comparison | P004 |
+| R33 | Existing supported formats remain accessible through the confirmed Studio Split flow; no new adapter coverage implied | P004; Studio UX |
 | R34 | Expose performance/diagnostics where relevant, avoid dumping implementation details into customer flow | P003/P011 |
 | R35 | Future live director-script/native-MS generation and prompt experiments | P007/P008 |
 | R36 | User-facing speech input, demo stage expansion, later desktop/landing | P009/P011/P012 |
@@ -46,7 +46,7 @@ installation and future work; examples are scenarios, not claims of current supp
 | R39 | Orchestrators can revise delivery scope/sequence within charter | Review protocol; clarify only material user-only decisions |
 | R40 | Keep admin small and evidence progressive; no repeated encyclopedia read | Four-layer startup; concise handover |
 | R41 | Consolidate old material without deleting historical evidence or breaking links | Migration plan; source/index classification |
-| R42 | Legacy fidelity expansion is no longer a strategic gate | Charter; conditional reference checks only |
+| R42 | No proactive legacy-format expansion or fidelity campaign; old proposals do not commission work, and any restart needs an explicit user request | Charter; native proposal scope decision |
 | R43 | Skills and all session context live in repo/GitHub and can resume after interruption | Repo-local skills; issue handovers; lease/resume |
 | R44 | Initial work continues from latest merged capacity milestone | PR #11 evidence; first engine E001 |
 | R46 | Every run runs full tests before PR submission; inherited failures get fixed, no weakening/skipping | Git standards; all persona skills |

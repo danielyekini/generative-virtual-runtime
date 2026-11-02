@@ -23,3 +23,9 @@ feature. Existing immutable version/evidence rules are retained. Old process
 requirements contradicting this explicitly commissioned operating structure
 are superseded for new work after installation; record the supersession map.
 Current external protections/permissions are never bypassed by a repo rule.
+
+Editable pending language notes list candidate contracts, not an execution queue.
+Only selected live work within the charter commissions a native capability.
+Legacy-format-only proposals and missing adapter coverage are inactive reference
+material unless the user explicitly requests that work again. See the
+[native proposal scope decision](../decisions/2026-11-02-native-proposal-scope.md).

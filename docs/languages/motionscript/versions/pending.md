@@ -2,7 +2,11 @@
 
 Editable. Draft. Not the current release.
 
-These ids are open language work. They are not a ban, and they are not waiting on a design review. Land each one as syntax, tests, and a registry row. An importer-only correction still does not bump MotionScript.
+These are candidate contract ideas, not an execution queue or an instruction to
+implement every listed construct. The charter and selected live native issue own
+scope, priority and acceptance; unsupported adapter coverage creates no work.
+Legacy-format expansion or fidelity work requires a fresh explicit user request.
+See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md).
 
 Not yet in a published MotionScript version:
 
@@ -23,9 +27,20 @@ Promoting one of them is a new version file, a registry update, and conformance 
 
 The implementation accepts optional spatial tangent `z` and MotionScript `(x, y, z)` tangents, but the published 0.2.0 spatial-curve contract does not explicitly introduce either representation. Arc-length corrections to existing 2D curves are implementation fixes; accepting a third component is a new contract. A candidate minor release must document and gate this representation, including older-reader rejection and migration tests, before it is claimed as released. Current language pointers remain 0.6.0; no additional release is authorised for this audit in this run. Existing ungated acceptance is an unresolved compatibility issue.
 
-## Animated solid fill colour proposal (not implemented or released)
+## Native animated paint candidate (E009; not implemented or released)
 
-The 2026-10-08T103605Z fidelity run identifies omitted `fl.c` animations on LOT-06 upper-arm layers 3 and 4. Current node channels cannot animate fill colour. A candidate minor contract could add gated scalar `fill.r`, `fill.g`, `fill.b`, `fill.a` channels on solid-filled nodes (`paint.animatedSolidFill`), with straight-alpha [0,1] samples and existing keyframe easing/timing. Defaults and older programs must retain static paint semantics; gradients and stroke colour are outside this initial scope. The vertical slice needs schema/property registry and rejection gates, compiler, runtime sampling, emitter equivalence, adapter lowering, conformance and full-window source/direct/compiled evidence. No capability token is enabled and no release pointer changes in this run. Preserve unsupported diagnostics until that candidate is verified.
+[E009](https://github.com/danielyekini/generative-virtual-runtime/issues/28) owns
+the bounded native use case: animate authored fill/text/stroke colour or alpha
+and stroke width without unnecessary overlay-node expansion. Its live scope and
+design decide the initial channels and syntax; this note chooses neither.
+Verify interpolation, writer ownership, inheritance, streaming/seek behaviour,
+compiler/emitter equivalence and older-program compatibility for the selected
+native slice. Any new semantics need the normal version, registry and conformance
+change together. Preserve unsupported diagnostics until support is verified.
+
+The retired Lottie-originated proposal is provenance in Git history, linked from
+the scope decision above. It imposes no adapter lowering, Lottie compilation or
+external source-fidelity gate on E009. No capability or release is enabled here.
 
 ## Compatible assembled-delta validation repair (E001)
 

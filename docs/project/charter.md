@@ -40,7 +40,13 @@ General creative/technical outputs remain useful engine capability tests.
 
 Lottie/SVG compatibility is maintained legacy utility, not the mission or a
 prerequisite for native expansion. No return to universal format parity without
-an explicit strategic decision. Desktop packaging and a landing page are future
+an explicit user request. Current direction commissions no proactive Lottie or
+other-format adapter expansion, source-conversion campaign or fidelity backlog.
+Historical proposals, unsupported registry rows and old evaluation failures do
+not create work. Preserve existing supported utilities and relevant regression
+tests; the confirmed Studio Split-mode flow may reuse existing importers without
+expanding their coverage. Native capabilities have native requirements and gates.
+Desktop packaging and a landing page are future
 options, not grounds for an immediate engine rewrite. Do not force a model,
 backend, 3D/physics library or UX tool without a bounded selection experiment.
 Core syntax must not be invented by generation prompts or draft documents.

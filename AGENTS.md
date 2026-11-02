@@ -45,6 +45,12 @@ apply when an issue changes their claims; they are not the universal mission or
 an entry gate for native functionality. Compare consequential alternatives with
 bounded designs and preserve released semantics/diagnostic truth.
 
+Current direction commissions no proactive Lottie/other-format adapter expansion
+or fidelity campaign. Historical gaps, draft proposals and unsupported registry
+rows do not authorise that work; require a fresh explicit user request. Keep
+existing supported utilities and regression tests. Native feature acceptance is
+defined by the selected native issue, not an old importer proposal.
+
 ## Technical contracts (read when affected)
 
 Before changing language, schema, importer, compiler, runtime or evaluation support:
