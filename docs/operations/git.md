@@ -39,6 +39,27 @@ replaying all historical benchmark/corpus evidence every run: rerun those
 experiments only if their claim is affected, failed or incomplete. Existing
 published contracts and measured outcomes remain honest.
 
+## Ticket upkeep (every run, user requirement 2 November 2026)
+
+The issue and its Project item are the live record; keep them current without
+being asked. On claim: set Status In progress (fallback below) and post the
+`gvr-claim` comment. At each checkpoint and on exit: update the issue body's
+acceptance/"Latest handover" when scope or findings changed, post a
+`gvr-handover` comment, and set the final Status (Done only when merged and
+accepted; Ready/In progress with next step for partial; Blocked/Human
+verification with the exact blocker). Close completed issues with a reason;
+create or update follow-up issues for any split or discovered work rather than
+leaving it in prose. Orchestrators have full board authority within the
+charter: create, rewrite, split, re-prioritise, re-order, close (with reason)
+and add/remove Project items and fields for their lane, and set joint items
+by agreement.
+
+If the runtime cannot write Project fields (for example Claude Code cloud
+sessions, which have no Project/GraphQL access), do every issue-level update,
+state the intended Status in the issue body ("Board status: …") and the
+handover, and say so in the final report; never claim a board change that was
+not read back. OPS004 tracks restoring automatic board sync.
+
 ## Merge and cleanup
 
 Create the PR only after the full local gate passes. Link the work item and
