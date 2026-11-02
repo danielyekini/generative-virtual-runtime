@@ -17,14 +17,17 @@
     </header>
     <div id="workspace">
       <aside id="tools">
-        <section class="tool-section" id="tool-scripts">
-          <h2>Test scripts</h2>
-          <label class="stack">
-            Preset
-            <select id="test-scripts" aria-label="Test scripts"></select>
-          </label>
-          <p id="test-caption" class="tool-note"></p>
-          <button id="compile" type="button">Compile</button>
+        <section class="tool-section" id="tool-library">
+          <h2 id="library-heading">Library</h2>
+          <input id="library-search" type="search" placeholder="Search programs" autocomplete="off" aria-label="Search programs" aria-controls="library-list" />
+          <div id="library-filters" class="chips" role="group" aria-label="Collection filter"></div>
+          <ul id="library-list" aria-labelledby="library-heading"></ul>
+          <p id="library-note" class="tool-note" aria-live="polite"></p>
+          <div class="group">
+            <button id="library-upload" type="button">Upload .ms…</button>
+            <button id="library-new" type="button">New program</button>
+          </div>
+          <select id="test-scripts" class="visually-hidden" tabindex="-1" aria-hidden="true"></select>
         </section>
         <section class="tool-section" id="tool-canvas">
           <h2>Canvas</h2>
@@ -88,8 +91,21 @@
         </section>
       </aside>
       <div id="stage">
+        <div id="program-bar" aria-label="Active program">
+          <div class="program-id">
+            <span id="program-origin" class="badge"></span>
+            <strong id="program-name"></strong>
+            <span id="program-state" class="program-state" role="status"></span>
+          </div>
+          <p id="program-caption"></p>
+          <div class="program-actions">
+            <button id="execute" type="button" class="primary" title="Execute the editor source (Ctrl/⌘+Enter)">Execute</button>
+            <button id="fullscreen" type="button" aria-pressed="false" title="Present the canvas fullscreen (F)">Fullscreen</button>
+          </div>
+        </div>
         <div id="single">
           <canvas id="view"></canvas>
+          <p id="stage-message" class="stage-message" hidden></p>
         </div>
         <div id="split" hidden>
           <section class="split-pane">
@@ -172,6 +188,7 @@
             <p id="source-note" class="panel-note"></p>
             <div id="source-tools" class="group"></div>
             <textarea id="source" spellcheck="false" aria-label="Source"></textarea>
+            <ol id="source-diagnostics" aria-label="Execution diagnostics" hidden></ol>
             <div id="stream-view" hidden>
               <pre id="incoming" aria-label="Incoming source"><span id="fed"></span><span id="rest"></span></pre>
               <pre id="stream-diagnostics"></pre>
@@ -204,6 +221,7 @@
     </div>
     <footer id="status"></footer>
     <input id="file" type="file" hidden aria-label="Open a source file" />
+    <input id="library-file" type="file" hidden accept=".ms,.motionscript,.txt,text/plain" aria-label="Upload a MotionScript program" />
     <div id="popout" class="float-window" hidden>
       <div id="pop-bar">
         <span id="pop-title">MotionScript</span>

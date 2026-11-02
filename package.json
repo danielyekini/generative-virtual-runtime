@@ -10,7 +10,7 @@
   "scripts": {
     "test": "vitest run",
     "validate-ir": "node --import tsx packages/schema/src/cli.ts",
-    "typecheck": "tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json && tsc --noEmit -p evaluation/bench/tsconfig.json",
+    "typecheck": "tsc --noEmit -p packages/schema/tsconfig.json && tsc --noEmit -p packages/canvas-renderer/tsconfig.json && tsc --noEmit -p packages/runtime/tsconfig.json && tsc --noEmit -p packages/compiler/tsconfig.json && tsc --noEmit -p packages/motionscript-emitter/tsconfig.json && tsc --noEmit -p packages/format-import-core/tsconfig.json && tsc --noEmit -p packages/format-lottie/tsconfig.json && tsc --noEmit -p packages/round-trip/tsconfig.json && tsc --noEmit -p packages/format-svg/tsconfig.json && tsc --noEmit -p evaluation/bench/tsconfig.json && tsc --noEmit -p app/playground/tsconfig.json",
     "import-fixture": "node --import tsx packages/format-import-core/src/cli.ts",
     "import-lottie": "node --import tsx packages/format-lottie/src/cli.ts",
     "import-svg": "node --import tsx packages/format-svg/src/cli.ts",
@@ -20,6 +20,7 @@
     "dev:presentation": "npm run dev -w @gvr/playground",
     "frames": "node --import tsx fixtures/write-frames.ts",
     "benchmark": "node --import tsx evaluation/bench/run.mts",
+    "smoke:studio": "node --import tsx app/playground/smoke/studio-smoke.ts",
     "verify": "npm test && npm run typecheck && npm run build --workspace @gvr/playground && npm run validate-ir -- --manifest fixtures/ir/manifest.json && python3 -m unittest discover -s tools/gvr-ops/tests -v && python3 tools/gvr-ops/current_capabilities.py --check"
   },
   "devDependencies": {

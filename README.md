@@ -128,6 +128,9 @@ Fixtures: `fixtures/ir`, `fixtures/meanings`, `fixtures/motionscript`, `fixtures
 
 ## Studio
 
+Studio opens on a **Library** of installed native programs (search, collection filters) plus **My programs** you upload (`.ms`) or create with **New program**. Selecting a program makes it the single active program and loads it into the editor without running it; **Execute** (Ctrl/⌘+Enter) compiles and plays it. The active-program bar always states whether the canvas shows that program, an edited-since-execution result, a failure or an import/stream utility. Failed executions list located diagnostics; selecting one jumps to the span while the source is kept. **Fullscreen** (or `F`) presents the stage with contain-fit on the logical viewport; Esc or **Exit fullscreen** returns. Run `npm run smoke:studio` (set `GVR_CHROME` if Chromium is not discovered) for a headless walkthrough with screenshots in `work/studio-smoke/`. Design: [P001 decision](docs/decisions/product/2026-11-02-p001-studio-workflow.md).
+
+
 `npm run dev:renderer` opens one workspace at `http://localhost:5173`.
 
 - **Left:** test scripts, canvas size and DPR, streaming, import.

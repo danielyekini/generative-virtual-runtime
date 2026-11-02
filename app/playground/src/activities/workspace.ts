@@ -13,7 +13,21 @@ import { svgAdapter } from "@gvr/format-svg";
 import { emitMotionScript } from "@gvr/motionscript-emitter";
 import { AnimationRuntime, PlaybackClock, RuntimeClock, StreamingRuntime } from "@gvr/runtime";
 import { validateSceneIR, type SceneIR } from "@gvr/schema";
-import type { GvrBridge, GvrCompare } from "../bridge";
+import type { GvrBridge, GvrCompare, GvrProgram } from "../bridge";
+import {
+  MINE_COLLECTION,
+  STORAGE_KEY,
+  collectionsOf,
+  decodeMine,
+  encodeMine,
+  filterLibrary,
+  locateDiagnostics,
+  mineEntry,
+  programNameFromFile,
+  selectionFor,
+  type LocatedDiagnostic,
+  type ProgramEntry,
+} from "../library";
 import { describeFrame, describeScene, sameItems } from "../describe";
 import {
   fixtureExamples,
@@ -33,6 +47,53 @@ import { clampTime, collectKeyTimes, isStaticScene, readFrameMs, stepKey } from 
 type Lane = "script" | "import" | "stream";
 type Picture = "compiled" | "roundtrip" | "both";
 type StreamPhase = "idle" | "setup" | "wait" | "dwell" | "rest" | "done";
+type ProgramState = "not-executed" | "running" | "paused" | "edited" | "failed" | "import" | "stream";
+
+const NEW_PROGRAM_SOURCE = `scene "untitled" {
+  version "0.1";
+  viewport (1280, 720);
+  background #101014;
+  duration 3s;
+};
+circle dot {
+  position (640, 360);
+  radius 60;
+  fill #84cc16;
+};
+animate dot.position.x {
+  from 320;
+  to 960;
+  duration 3s;
+  ease easeInOut;
+};
+`;
+
+const stateLabels: Record<ProgramState, string> = {
+  "not-executed": "Not executed",
+  running: "Running",
+  paused: "Executed · paused",
+  edited: "Edited since execution",
+  failed: "Execution failed",
+  import: "Import utility",
+  stream: "Stream utility",
+};
+
+function readStorage(): string | null {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function writeStorage(value: string): boolean {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 const catalogs: Record<string, SourceExample[]> = {
   fixture: fixtureExamples,
@@ -77,7 +138,21 @@ export function createWorkspace(shell: Shell) {
   const playClock = new RuntimeClock();
   const streamClock = new PlaybackClock();
   const testSelect = must<HTMLSelectElement>("test-scripts");
-  const testCaption = must<HTMLElement>("test-caption");
+  const librarySearch = must<HTMLInputElement>("library-search");
+  const libraryFilters = must<HTMLElement>("library-filters");
+  const libraryList = must<HTMLUListElement>("library-list");
+  const libraryNote = must<HTMLElement>("library-note");
+  const libraryFile = must<HTMLInputElement>("library-file");
+  const programBar = must<HTMLElement>("program-bar");
+  const programOrigin = must<HTMLElement>("program-origin");
+  const programName = must<HTMLElement>("program-name");
+  const programStateLabel = must<HTMLElement>("program-state");
+  const programCaption = must<HTMLElement>("program-caption");
+  const executeButton = must<HTMLButtonElement>("execute");
+  const fullscreenButton = must<HTMLButtonElement>("fullscreen");
+  const stageMessage = must<HTMLElement>("stage-message");
+  const sourceBox = must<HTMLTextAreaElement>("source");
+  const sourceDiagnostics = must<HTMLOListElement>("source-diagnostics");
   const picture = must<HTMLElement>("picture");
   const sizeSelect = must<HTMLSelectElement>("canvas-size");
   const dprSelect = must<HTMLSelectElement>("canvas-dpr");
@@ -102,8 +177,9 @@ export function createWorkspace(shell: Shell) {
   let sceneB: SceneIR | undefined;
   let script = "";
   let compileMessages: string[] = [];
+  let located: LocatedDiagnostic[] = [];
   let compileOk = false;
-  let roundTripNote = "Press Compile to build Scene IR.";
+  let roundTripNote = "Press Execute to build Scene IR.";
   let failedStep: string | null = null;
   let runtimeA: AnimationRuntime | undefined;
   let runtimeB: AnimationRuntime | undefined;
@@ -137,6 +213,19 @@ export function createWorkspace(shell: Shell) {
   let streamDwellUntil = 0;
   let streamBuffer = streamExample.source;
 
+  // One active program. The editor holds its working copy while editorOwner is "program".
+  let mine: ProgramEntry[] = decodeMine(readStorage());
+  let activeKey = "preset:bunny";
+  let executedKey = "";
+  let executedSource = "";
+  let editorOwner: "program" | "import" = "program";
+  const drafts = new Map<string, string>();
+  let libraryText = "";
+  let libraryCollection = "all";
+  let presenting = false;
+  let fallbackPresenting = false;
+  let storageNote = "";
+
   function fail(message: string): never {
     throw new Error(message);
   }
@@ -153,13 +242,275 @@ export function createWorkspace(shell: Shell) {
     ];
   }
 
-  function currentScript(): MotionExample | undefined {
-    return allScripts().find((entry) => entry.key === scriptId)?.item;
+  const collectionNames: Record<string, string> = { preset: "Stories", scene: "Runtime scenes", frame: "Frames" };
+
+  function installed(): ProgramEntry[] {
+    return allScripts().map(({ key, item }) => ({
+      key,
+      label: item.label,
+      caption: item.caption,
+      collection: collectionNames[key.split(":")[0] ?? ""] ?? "Installed",
+      origin: "installed" as const,
+      source: item.source,
+    }));
+  }
+
+  let installedEntries: ProgramEntry[] = [];
+
+  function libraryEntries(): ProgramEntry[] {
+    if (installedEntries.length === 0) installedEntries = installed();
+    return [...mine, ...installedEntries];
+  }
+
+  function entryFor(key: string): ProgramEntry | undefined {
+    return libraryEntries().find((entry) => entry.key === key);
+  }
+
+  function activeEntry(): ProgramEntry {
+    return entryFor(activeKey) ?? libraryEntries()[0] ?? mineEntry("mine:empty", "Untitled program", "");
+  }
+
+  function persistMine(): void {
+    if (mine.length === 0) {
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // Storage unavailable: nothing to clear.
+      }
+      storageNote = "";
+      return;
+    }
+    storageNote = writeStorage(encodeMine(mine))
+      ? ""
+      : "Browser storage is unavailable or full; your programs last for this session only.";
+  }
+
+  function stashDraft(): void {
+    if (editorOwner !== "program" || lane === "import") return;
+    const text = shell.sourceValue();
+    const entry = entryFor(activeKey);
+    if (!entry) return;
+    if (entry.origin === "mine") {
+      if (entry.source !== text) {
+        entry.source = text;
+        persistMine();
+      }
+      drafts.delete(activeKey);
+    } else if (text !== entry.source) drafts.set(activeKey, text);
+    else drafts.delete(activeKey);
+  }
+
+  /** Make a library entry the active program. Loading never executes. */
+  function openProgram(key: string): void {
+    const entry = entryFor(key);
+    if (!entry) return;
+    stashDraft();
+    stopStream();
+    activeKey = entry.key;
+    lane = "script";
+    editorOwner = "program";
+    formatId = "motionscript";
+    formatSelect.value = "motionscript";
+    if (entry.key.startsWith("preset:") || entry.key.startsWith("scene:") || entry.key.startsWith("frame:")) {
+      scriptId = entry.key;
+      testSelect.value = entry.key;
+    }
+    shell.setSourceValue(drafts.get(entry.key) ?? entry.source);
+    playClock.pause();
+    playClock.seek(0);
+    renderLibrary();
+    draw();
+  }
+
+  /** Explicit execution of the editor source through the selected format. */
+  function execute(): void {
+    if (formatSelect.value === "motionscript") {
+      editorOwner = "program";
+      const entry = entryFor(activeKey);
+      if (entry?.origin === "mine" && entry.source !== shell.sourceValue()) {
+        entry.source = shell.sourceValue();
+        persistMine();
+        renderLibrary();
+      }
+    }
+    compileThroughFormat();
+    if (lane === "script" && sceneA && !isStaticScene(sceneA)) playClock.play();
+    else if (lane === "import" && shown && !isStaticScene(shown)) playClock.play();
+    draw();
+  }
+
+  function addMine(label: string, text: string): ProgramEntry {
+    const key = `mine:${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
+    const entry = mineEntry(key, label, text);
+    mine = [entry, ...mine];
+    persistMine();
+    return entry;
+  }
+
+  function renderLibrary(): void {
+    const entries = libraryEntries();
+    const groups = [{ name: "all", count: entries.length }, ...collectionsOf(entries)];
+    if (!groups.some((group) => group.name === libraryCollection)) libraryCollection = "all";
+    libraryFilters.replaceChildren(...groups.map((group) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.dataset.collection = group.name;
+      chip.textContent = `${group.name === "all" ? "All" : group.name} ${group.count}`;
+      chip.setAttribute("aria-pressed", String(group.name === libraryCollection));
+      return chip;
+    }));
+    const shownEntries = filterLibrary(entries, { text: libraryText, collection: libraryCollection });
+    libraryList.replaceChildren(...shownEntries.map((entry) => {
+      const item = document.createElement("li");
+      const open = document.createElement("button");
+      open.type = "button";
+      open.dataset.key = entry.key;
+      open.className = "library-item";
+      if (entry.key === activeKey) open.setAttribute("aria-current", "true");
+      const title = document.createElement("span");
+      title.className = "library-title";
+      title.textContent = drafts.has(entry.key) ? `${entry.label} •` : entry.label;
+      const meta = document.createElement("span");
+      meta.className = "library-meta";
+      meta.textContent = `${entry.collection} · ${entry.caption}`;
+      open.title = drafts.has(entry.key) ? `${entry.caption}\nUnexecuted edits are kept for this session.` : entry.caption;
+      open.append(title, meta);
+      item.append(open);
+      if (entry.origin === "mine") {
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "library-remove";
+        remove.dataset.remove = entry.key;
+        remove.textContent = "×";
+        remove.setAttribute("aria-label", `Remove ${entry.label} from My programs`);
+        item.append(remove);
+      }
+      return item;
+    }));
+    const found = shownEntries.length;
+    libraryNote.textContent = [
+      found === 0 ? "No programs match. Clear the search or choose All." : `${found} of ${entries.length} programs`,
+      storageNote,
+    ].filter(Boolean).join(" ");
+  }
+
+  function programState(): ProgramState {
+    if (lane === "import") return "import";
+    if (lane === "stream") return "stream";
+    if (executedKey !== activeKey) return "not-executed";
+    if (!sceneA) return "failed";
+    if (scriptDirty()) return "edited";
+    return playClock.isPlaying ? "running" : "paused";
+  }
+
+  function paintProgramBar(): void {
+    const state = programState();
+    const entry = activeEntry();
+    const utility = state === "import" || state === "stream";
+    const name = state === "import"
+      ? sourceName
+      : state === "stream"
+        ? (streamSource.value === "editor" ? `${entry.label} (editor)` : streamExample.label)
+        : entry.label;
+    const origin = state === "import"
+      ? (formatLabels[importedFormat] ?? importedFormat)
+      : state === "stream" ? "Stream" : entry.origin === "mine" ? "Yours" : "Installed";
+    const caption = state === "failed"
+      ? `${located.length} diagnostic${located.length === 1 ? "" : "s"}${located[0]?.line ? `, first at line ${located[0].line}` : ""}. The editor keeps your source; select a diagnostic to jump to it.`
+      : state === "edited"
+        ? "The canvas shows the last execution. Execute again to run your edits."
+        : state === "not-executed"
+          ? "Loaded into the editor. Press Execute (Ctrl/⌘+Enter) to run it."
+          : state === "import"
+            ? "The canvas shows an import utility result, not the active native program. Open a library program to return."
+            : state === "stream"
+              ? "The canvas shows the stream utility."
+              : entry.caption;
+    if (programName.textContent !== name) programName.textContent = name;
+    if (programOrigin.textContent !== origin) programOrigin.textContent = origin;
+    if (programStateLabel.textContent !== stateLabels[state]) programStateLabel.textContent = stateLabels[state];
+    programBar.dataset.state = state;
+    if (programCaption.textContent !== caption) programCaption.textContent = caption;
+    executeButton.textContent = utility && state === "stream" ? "Execute" : formatId === "motionscript" ? "Execute" : `Execute as ${formatLabels[formatId] ?? formatId}`;
+    executeButton.disabled = lane === "stream";
+    fullscreenButton.textContent = presenting ? "Exit fullscreen" : "Fullscreen";
+    fullscreenButton.setAttribute("aria-pressed", String(presenting));
+  }
+
+  function paintDiagnostics(): void {
+    const show = lane === "script" && executedKey === activeKey && located.length > 0 && !sourceBox.hidden;
+    sourceDiagnostics.hidden = !show;
+    if (!show) {
+      if (sourceDiagnostics.childElementCount) sourceDiagnostics.replaceChildren();
+      return;
+    }
+    const signature = located.map((item) => item.text).join("\n");
+    if (sourceDiagnostics.dataset.signature === signature) return;
+    sourceDiagnostics.dataset.signature = signature;
+    sourceDiagnostics.replaceChildren(...located.map((item, index) => {
+      const row = document.createElement("li");
+      const jump = document.createElement("button");
+      jump.type = "button";
+      jump.dataset.index = String(index);
+      jump.className = `diagnostic is-${item.severity}`;
+      const where = document.createElement("span");
+      where.className = "diagnostic-where";
+      where.textContent = item.line ? `Line ${item.line}:${item.column}` : "No location";
+      const message = document.createElement("span");
+      message.className = "diagnostic-message";
+      message.textContent = `${item.code} · ${item.message}`;
+      const recovery = document.createElement("span");
+      recovery.className = "diagnostic-recovery";
+      recovery.textContent = item.recovery;
+      jump.append(where, message, recovery);
+      jump.disabled = item.start === undefined;
+      row.append(jump);
+      return row;
+    }));
+  }
+
+  function jumpTo(item: LocatedDiagnostic): void {
+    const text = shell.sourceValue();
+    const range = selectionFor(item, text);
+    if (!range) return;
+    sourceBox.focus();
+    sourceBox.setSelectionRange(range.start, range.end);
+    const line = text.slice(0, range.start).split("\n").length - 1;
+    const lineHeight = Number.parseFloat(getComputedStyle(sourceBox).lineHeight) || 17;
+    sourceBox.scrollTop = Math.max(0, line * lineHeight - sourceBox.clientHeight / 3);
+  }
+
+  function setPresenting(next: boolean): void {
+    if (next === presenting) return;
+    if (next) {
+      const request = shell.stage.requestFullscreen?.bind(shell.stage);
+      const fallback = () => {
+        fallbackPresenting = true;
+        presenting = true;
+        shell.stage.classList.add("is-presenting");
+        draw();
+      };
+      if (!request) {
+        fallback();
+        return;
+      }
+      request().then(() => {
+        presenting = true;
+        shell.stage.classList.add("is-presenting");
+        draw();
+      }, fallback);
+      return;
+    }
+    presenting = false;
+    shell.stage.classList.remove("is-presenting");
+    if (fallbackPresenting) fallbackPresenting = false;
+    else if (document.fullscreenElement) void document.exitFullscreen().catch(() => undefined);
+    draw();
   }
 
   function sizeOf(box: HTMLElement): { width: number; height: number } {
     const preset = sizePresets.find((entry) => entry.id === sizeSelect.value);
-    if (preset && preset.width > 0 && pictureMode !== "both" && !(lane === "import" && split)) {
+    if (!presenting && preset && preset.width > 0 && pictureMode !== "both" && !(lane === "import" && split)) {
       return { width: preset.width, height: preset.height };
     }
     return { width: box.clientWidth, height: box.clientHeight };
@@ -228,12 +579,7 @@ export function createWorkspace(shell: Shell) {
       button.setAttribute("aria-pressed", String(mode === pictureMode));
       if (button instanceof HTMLButtonElement) button.disabled = lane === "stream";
     }
-    const caption = lane === "import"
-      ? sourceName
-      : lane === "stream"
-        ? (streamCaptions[streamExample.id] ?? streamExample.caption)
-        : (currentScript()?.caption ?? "Compile MotionScript, or pick a test script.");
-    if (testCaption.textContent !== caption) testCaption.textContent = caption;
+    paintProgramBar();
   }
 
   function compile(): void {
@@ -242,6 +588,9 @@ export function createWorkspace(shell: Shell) {
     compiledFormat = "motionscript";
     formatId = "motionscript";
     const compiled = compileMotionScript(source, telemetry);
+    executedKey = activeKey;
+    executedSource = source;
+    located = locateDiagnostics(compiled.diagnostics, source);
     compileMessages = compiled.diagnostics.map((item) => item.message);
     compileOk = compiled.ok;
     sceneA = compiled.scene && validateSceneIR(compiled.scene).ok ? compiled.scene : undefined;
@@ -290,15 +639,20 @@ export function createWorkspace(shell: Shell) {
   function loadScript(key: string): void {
     const found = allScripts().find((entry) => entry.key === key) ?? allScripts()[0];
     if (!found) return;
+    stashDraft();
     stopStream();
     lane = "script";
+    editorOwner = "program";
     formatId = "motionscript";
     formatSelect.value = "motionscript";
     scriptId = found.key;
+    activeKey = found.key;
     testSelect.value = found.key;
+    drafts.delete(found.key);
     source = found.item.source;
     shell.setSourceValue(source);
     compile();
+    renderLibrary();
     draw();
   }
 
@@ -356,8 +710,10 @@ export function createWorkspace(shell: Shell) {
   function loadImport(value: string, autoplay: boolean): void {
     const [id, indexText] = value.split(":");
     if (!id || !(id in catalogs)) return;
+    stashDraft();
     stopStream();
     lane = "import";
+    editorOwner = "import";
     formatId = id;
     formatSelect.value = id;
     const items = catalog();
@@ -375,6 +731,7 @@ export function createWorkspace(shell: Shell) {
   }
 
   function compileThroughFormat(): void {
+    stashDraft();
     stopStream();
     formatId = formatSelect.value || "motionscript";
     if (formatId === "motionscript") {
@@ -383,6 +740,7 @@ export function createWorkspace(shell: Shell) {
       return;
     }
     lane = "import";
+    editorOwner = "import";
     const text = shell.sourceValue();
     const fromCatalog = catalog().some((item) => item.source === text);
     customImport = !fromCatalog;
@@ -487,6 +845,15 @@ export function createWorkspace(shell: Shell) {
           draw();
           return;
         }
+        if (lane === "script") {
+          // Play resumes the last execution; only Execute compiles.
+          if (executedKey === activeKey && sceneA && !isStaticScene(sceneA)) {
+            if (playClock.timeMs >= sceneA.timeline.durationMs) playClock.seek(0);
+            playClock.play();
+          }
+          draw();
+          return;
+        }
         playThroughFormat();
       },
       onPause: () => {
@@ -571,8 +938,9 @@ export function createWorkspace(shell: Shell) {
     }
     const time = still ? 0 : clampTime(playClock.timeMs, span);
     if (still) playClock.seek(0);
-    const frameA = runtimeA?.evaluate(time) ?? null;
-    const frameB = runtimeB?.evaluate(time) ?? null;
+    const executed = executedKey === activeKey;
+    const frameA = executed ? (runtimeA?.evaluate(time) ?? null) : null;
+    const frameB = executed ? (runtimeB?.evaluate(time) ?? null) : null;
     const splitView = pictureMode === "both";
     paintPicture(frameA, frameB, splitView, [
       "Compiled Scene IR",
@@ -581,11 +949,11 @@ export function createWorkspace(shell: Shell) {
       sceneB ? `${sceneB.sceneId} · ${sceneB.timeline.durationMs.toFixed(0)} ms` : "Scene IR B",
     ]);
     if (splitView) {
-      shell.setPaneEmpty("a", frameA ? null : "Compile a program to see Scene IR A.");
+      shell.setPaneEmpty("a", frameA ? null : "Execute a program to see Scene IR A.");
       shell.setPaneEmpty("b", frameB ? null : "Round-trip is unavailable.");
     }
     const waiting = scriptDirty();
-    const shownScene = shownScriptScene();
+    const shownScene = executedKey === activeKey ? shownScriptScene() : undefined;
     shell.setTransport({
       hidden: false,
       enabled: span > 0 && !still,
@@ -597,8 +965,17 @@ export function createWorkspace(shell: Shell) {
     });
     shell.setSourceMode("editor");
     shell.setSourceEditable(true);
-    shell.setSourceNote(waiting ? `This text is waiting for Compile through ${formatLabels[formatId] ?? formatId}. The canvas stays on the last compile.` : (currentScript()?.caption ?? "MotionScript in the editor."));
-    shell.setReport(currentScript()?.caption ?? "MotionScript", roundTripNote, failedStep ? "is-bad" : compiledText ? "exact" : "", compileMessages.join("\n"));
+    const state = programState();
+    shell.setSourceNote(
+      state === "not-executed"
+        ? `${activeEntry().label}: not executed yet. Edit freely, then Execute (Ctrl/⌘+Enter).`
+        : state === "failed"
+          ? "Execution failed. Your source is unchanged; select a diagnostic below to jump to it."
+          : waiting
+            ? `This text is waiting for Execute (${formatLabels[formatId] ?? formatId}). The canvas stays on the last execution.`
+            : activeEntry().caption,
+    );
+    shell.setReport(activeEntry().label, roundTripNote, failedStep ? "is-bad" : compiledText ? "exact" : "", compileMessages.join("\n"));
     shell.setFlow([
       { label: "Source", hint: formatLabels.motionscript ?? "MotionScript", state: flowState("source") },
       { label: "Scene IR A", hint: "compile", state: flowState("ira") },
@@ -610,9 +987,9 @@ export function createWorkspace(shell: Shell) {
       sceneB ? "Scene IR A is the compile. Scene IR B is the emit compiled again." : "Scene IR from the last compile.",
       [describeScene(sceneA, "Scene IR A"), describeScene(sceneB, "Scene IR B")].filter(Boolean).join("\n\n"),
     );
-    shell.setScript(script ? "Canonical MotionScript emitted from Scene IR A." : "Compile a scene to emit MotionScript.", script);
+    shell.setScript(script ? "Canonical MotionScript emitted from Scene IR A." : "Execute a program to emit MotionScript.", script);
     const frame = pictureMode === "roundtrip" ? frameB : frameA;
-    shell.setFrames(frame ? "Resolved draw items at the player time." : "Compile a scene to inspect frames.", frame ? describeFrame(frame) : "");
+    shell.setFrames(frame ? "Resolved draw items at the player time." : "Execute a program to inspect frames.", frame ? describeFrame(frame) : "");
     shell.setSession("One workspace. Test scripts, the editor, import, and streaming all share this canvas.", [
       shownScene?.sceneId ?? "no scene",
       compileOk ? "compiled" : compiledText ? "partial" : "waiting",
@@ -624,7 +1001,7 @@ export function createWorkspace(shell: Shell) {
     ].join("\n"));
     shell.setStatus([
       shownScene?.sceneId ?? "no scene",
-      waiting ? "editor changed" : compileOk ? "compiled" : compiledText ? "partial" : "waiting",
+      stateLabels[state].toLowerCase(),
       span ? `t ${time.toFixed(1)}ms` : "",
       playClock.isPlaying ? "playing" : "paused",
       pictureMode,
@@ -667,13 +1044,13 @@ export function createWorkspace(shell: Shell) {
           : "This import produced no Scene IR. The canvas is clear."
       : "";
     const summary = !result
-      ? "Press Play to import this source into Scene IR."
+      ? "Press Execute to import this source into Scene IR."
       : importFailed
         ? dirty
           ? `The editor has changed. ${failedCopy}`
           : failedCopy
         : dirty
-          ? `This text is waiting for Compile through ${formatLabels[formatId] ?? formatId}. The canvas stays on the last result.`
+          ? `This text is waiting for Execute (${formatLabels[formatId] ?? formatId}). The canvas stays on the last result.`
           : !shown
             ? "This import produced no Scene IR. The canvas is clear."
             : result.fidelity.overall === "exact"
@@ -694,7 +1071,7 @@ export function createWorkspace(shell: Shell) {
       importFailed && shown
         ? `Import of ${attemptedFixtureId || sourceName} failed. The canvas is still showing ${shown.sceneId}.`
         : dirty
-          ? `This text is waiting for Compile through ${formatLabels[formatId] ?? formatId}. The canvas stays on the last result.`
+          ? `This text is waiting for Execute (${formatLabels[formatId] ?? formatId}). The canvas stays on the last result.`
           : `Compiled through ${formatLabels[importedFormat] ?? importedFormat}. Split plays the MotionScript round-trip beside it.`,
     );
     const showReport = Boolean(result) && (!dirty || importFailed);
@@ -796,11 +1173,25 @@ export function createWorkspace(shell: Shell) {
     ].join("  ·  "));
   }
 
+  function stageMessageText(): string {
+    if (lane !== "script" || pictureMode === "both") return "";
+    const state = programState();
+    if (state === "not-executed") return `${activeEntry().label} is loaded but not executed. Press Execute.`;
+    if (state === "failed") return located.length > 0
+      ? `Execution failed with ${located.length} diagnostic${located.length === 1 ? "" : "s"}. Nothing is playing.`
+      : "Execution produced no valid Scene IR. Nothing is playing.";
+    return "";
+  }
+
   function draw(): void {
     syncChrome();
     if (lane === "stream") drawStream();
     else if (lane === "import") drawImport();
     else drawScript();
+    const message = stageMessageText();
+    stageMessage.hidden = message === "";
+    if (stageMessage.textContent !== message) stageMessage.textContent = message;
+    paintDiagnostics();
   }
 
   function applyExtra(extra: string): void {
@@ -819,10 +1210,112 @@ export function createWorkspace(shell: Shell) {
 
   fillSelects();
   testSelect.addEventListener("change", () => loadScript(testSelect.value));
-  must<HTMLButtonElement>("compile").addEventListener("click", () => {
-    compileThroughFormat();
-    draw();
+  librarySearch.addEventListener("input", () => {
+    libraryText = librarySearch.value;
+    renderLibrary();
   });
+  librarySearch.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const first = libraryList.querySelector<HTMLButtonElement>("button.library-item");
+      if (first?.dataset.key) {
+        event.preventDefault();
+        openProgram(first.dataset.key);
+      }
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      libraryList.querySelector<HTMLButtonElement>("button.library-item")?.focus();
+    }
+  });
+  libraryFilters.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLButtonElement) || !target.dataset.collection) return;
+    libraryCollection = target.dataset.collection;
+    renderLibrary();
+  });
+  libraryList.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target.closest("button") : null;
+    if (!target) return;
+    if (target.dataset.remove) {
+      const removed = mine.find((entry) => entry.key === target.dataset.remove);
+      if (!removed || !window.confirm(`Remove "${removed.label}" from My programs? This cannot be undone.`)) return;
+      mine = mine.filter((entry) => entry !== removed);
+      drafts.delete(removed.key);
+      persistMine();
+      if (activeKey === removed.key) {
+        // The editor keeps the removed text until another program is opened.
+        editorOwner = "import";
+        openProgram(libraryEntries()[0]?.key ?? "preset:bunny");
+      } else renderLibrary();
+      return;
+    }
+    if (target.dataset.key) openProgram(target.dataset.key);
+  });
+  libraryList.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    const items = Array.from(libraryList.querySelectorAll<HTMLButtonElement>("button.library-item"));
+    const at = items.indexOf(document.activeElement as HTMLButtonElement);
+    if (at < 0) return;
+    event.preventDefault();
+    if (event.key === "ArrowUp" && at === 0) librarySearch.focus();
+    else items[Math.min(items.length - 1, Math.max(0, at + (event.key === "ArrowDown" ? 1 : -1)))]?.focus();
+  });
+  must<HTMLButtonElement>("library-upload").addEventListener("click", () => {
+    libraryFile.value = "";
+    libraryFile.click();
+  });
+  libraryFile.addEventListener("change", () => {
+    const file = libraryFile.files?.[0];
+    if (file) void uploadProgram(file);
+  });
+  must<HTMLButtonElement>("library-new").addEventListener("click", () => {
+    const entry = addMine("Untitled program", NEW_PROGRAM_SOURCE);
+    libraryText = "";
+    librarySearch.value = "";
+    openProgram(entry.key);
+    sourceBox.focus();
+  });
+  executeButton.addEventListener("click", () => execute());
+  fullscreenButton.addEventListener("click", () => setPresenting(!presenting));
+  document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement && presenting && !fallbackPresenting) {
+      presenting = false;
+      shell.stage.classList.remove("is-presenting");
+      draw();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    // Escape leaves presentation from any focus, including the fallback mode.
+    if (event.key === "Escape" && presenting && document.body.dataset.surface === "studio") {
+      event.preventDefault();
+      setPresenting(false);
+    }
+  });
+  sourceBox.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && (event.ctrlKey || event.metaKey) && document.body.dataset.surface === "studio") {
+      event.preventDefault();
+      execute();
+    }
+  });
+  sourceDiagnostics.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target.closest<HTMLButtonElement>("button[data-index]") : null;
+    const item = target ? located[Number(target.dataset.index)] : undefined;
+    if (item) jumpTo(item);
+  });
+
+  async function uploadProgram(file: File): Promise<void> {
+    let text: string;
+    try {
+      text = await file.text();
+    } catch {
+      libraryNote.textContent = `Could not read ${file.name}.`;
+      return;
+    }
+    const entry = addMine(programNameFromFile(file.name), text);
+    libraryText = "";
+    librarySearch.value = "";
+    libraryCollection = MINE_COLLECTION;
+    openProgram(entry.key);
+  }
   picture.addEventListener("click", (event) => {
     const target = event.target;
     if (!(target instanceof HTMLButtonElement) || !target.dataset.picture) return;
@@ -862,15 +1355,21 @@ export function createWorkspace(shell: Shell) {
       if (!shell.sourceValue()) {
         formatId = "motionscript";
         formatSelect.value = "motionscript";
-        shell.setSourceValue(currentScript()?.source || source);
+        shell.setSourceValue(drafts.get(activeKey) ?? activeEntry().source ?? source);
       }
-      if (formatId === "motionscript" && shell.sourceValue() !== compiledText) compile();
+      renderLibrary();
       shell.onSourceInput(() => draw());
       shell.onFile((file) => {
         void file.text().then((text) => {
           const name = file.name;
+          if (name.endsWith(".ms")) {
+            const entry = addMine(programNameFromFile(name), text);
+            openProgram(entry.key);
+            return;
+          }
+          stashDraft();
+          editorOwner = "import";
           if (name.endsWith(".svg")) formatId = "svg";
-          else if (name.endsWith(".ms")) formatId = "motionscript";
           else if (name.endsWith(".json") && (formatId === "svg" || formatId === "motionscript")) formatId = "lottie";
           formatSelect.value = formatId;
           customImport = true;
@@ -887,6 +1386,7 @@ export function createWorkspace(shell: Shell) {
     deactivate() {
       const text = shell.sourceValue();
       if (text) source = text;
+      if (presenting) setPresenting(false);
       playClock.pause();
       streamClock.pause();
       shell.setPopoutVisible(false);
@@ -920,6 +1420,15 @@ export function createWorkspace(shell: Shell) {
     },
     draw,
     key(event: KeyboardEvent) {
+      if (!(event.metaKey || event.ctrlKey || event.altKey) && (event.key === "f" || event.key === "F")) {
+        setPresenting(!presenting);
+        return true;
+      }
+      if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+        event.preventDefault();
+        execute();
+        return true;
+      }
       if (!(event.metaKey || event.ctrlKey || event.altKey)) return false;
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return false;
       event.preventDefault();
@@ -929,6 +1438,36 @@ export function createWorkspace(shell: Shell) {
       return true;
     },
     hook(): Partial<GvrBridge> {
+      return { ...laneHook(), program: programHook() };
+    },
+  };
+
+  function programHook(): GvrProgram {
+    const entry = activeEntry();
+    return {
+      key: entry.key,
+      name: entry.label,
+      origin: entry.origin,
+      state: programState(),
+      executed: executedKey === activeKey,
+      presenting,
+      diagnostics: executedKey === activeKey
+        ? located.map(({ line, column, code, message, recovery }) => ({ line, column, code, message, recovery }))
+        : [],
+      library: filterLibrary(libraryEntries(), { text: libraryText, collection: libraryCollection })
+        .map(({ key, label, collection }) => ({ key, label, collection })),
+      open: (key: string) => openProgram(key),
+      execute: () => execute(),
+      search: (text: string, collection = "all") => {
+        libraryText = text;
+        librarySearch.value = text;
+        libraryCollection = collection;
+        renderLibrary();
+      },
+    };
+  }
+
+  function laneHook(): Partial<GvrBridge> {
       if (lane === "stream") {
         return {
           frame: streamRuntime.scene ? streamRuntime.evaluate(streamClock.timeMs) : undefined,
@@ -996,7 +1535,7 @@ export function createWorkspace(shell: Shell) {
       const scene = shownScriptScene();
       const runtime = pictureMode === "roundtrip" ? runtimeB : runtimeA;
       return {
-        frame: runtime?.evaluate(clampTime(playClock.timeMs, activeSpan())),
+        frame: executedKey === activeKey ? runtime?.evaluate(clampTime(playClock.timeMs, activeSpan())) : undefined,
         compileOk,
         sourceDiagnostics: compileMessages,
         script,
@@ -1021,6 +1560,5 @@ export function createWorkspace(shell: Shell) {
           nodeCount: scene?.nodes.length ?? 0,
         }),
       };
-    },
-  };
+  }
 }
