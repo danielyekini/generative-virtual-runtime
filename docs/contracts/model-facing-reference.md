@@ -30,14 +30,23 @@ engine decisions under `docs/decisions/engine/` — link out, do not dump.
 
 - Roadmaps, backlog queues, pending.md candidate lists as if released
 - Historical evaluation debates and fidelity corpora
-- Unreleased declarative `entity` / `behaviour` / `geometry` / `bind` statement
-  productions (designed in E006; not in generation context until published)
 - Legacy Lottie/SVG adapter expansion guidance
 - Invented loop / function / package syntax
 
-Entity edits in the snapshot must describe the **released** path:
-`requires "entities.durableRevisions"` / `entities.drawableBindings` and host
-`emitEntityPatchDelta` / `APPLY_ENTITY_PATCH`, not speculative MotionScript sugar.
+Entity edits in the snapshot may use released MotionScript 0.9.0 declarative
+`entity` / `geometry` / `bind` / `behaviour` statements (gated by
+`entities.durableRevisions` / `entities.drawableBindings`) or host
+`emitEntityPatchDelta` / `APPLY_ENTITY_PATCH`.
+
+Interactive programs may use released MotionScript 0.10.0 `interact`
+declarations (gated by `input.bindings`): bounded `set` / `toggle` / `step` /
+`dragTranslate` actions on input-owned channels that no track may also write.
+
+Audible programs may use released MotionScript 0.11.0 `audio` / `cue`
+declarations (gated by `audio.cues`): resources with a decoded length, and
+narration/effects/music cues on scene time. Narration is required (playback
+waits for it); effects and music are optional. Speech synthesis is a host
+service, not syntax.
 
 ## Snapshot metadata (P006 must record)
 

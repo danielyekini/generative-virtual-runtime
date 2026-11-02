@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.8.0 | 0.2 |
-| scene-ir | 0.8.0 | 0.2 |
+| motionscript | 0.11.0 | 0.2 |
+| scene-ir | 0.11.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -27,8 +27,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | composition.definitions | supported | supported | not-applicable | A composition definition and an instance record. Instances are not drawn a second time. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | geometry.operators | supported | untested | untested | A node can store a trim operator and a round operator. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | geometry.trimPath | supported | supported | supported | Trim operators apply when a path is resolved. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/runtime.test.ts) |
-| entities.durableRevisions | supported | supported | supported | Revision-guarded entity topology, ownership and behaviour patches that may activate after a seal without rewriting sealed presentation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/durable-revisions.test.ts) |
-| entities.drawableBindings | supported | supported | supported | Immutable shared geometry assets with per-instance binds projected at sample time without expanding private node copies. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/drawable-bindings.test.ts) |
+| entities.durableRevisions | supported | supported | supported | Revision-guarded entity topology, ownership and behaviour patches that may activate after a seal without rewriting sealed presentation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
+| entities.drawableBindings | supported | supported | supported | Immutable shared geometry assets with per-instance binds projected at sample time without expanding private node copies. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | geometry.animatedTrim | supported | supported | supported | Keyframe tracks may drive trim.start, trim.end, and trim.offset on a path node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/runtime.test.ts) |
 | geometry.roundedRect | untested | untested | untested | A rectangle may carry a corner radius. [registry](../../packages/schema/capabilities/registry.json) |
 | geometry.spatialCurve | supported | supported | not-applicable | A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic (After Effects / lottie-web), not by the raw bezier parameter. Optional tangent Z participates in length only and is not drawn. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/spatial.test.ts) |
@@ -46,6 +46,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | geometry.pathMorph | supported | supported | supported | Animated path vertices with a shared command topology. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/path-morph.test.ts) |
 | paint.gradientStroke | supported | supported | supported | A stroke painted with a linear or radial gradient. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | paint.animatedSolid | supported | supported | supported | Keyframe tracks may drive solid fill/stroke colour components and uniform stroke width on a node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
+| input.bindings | supported | supported | not-applicable | Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/interact.test.ts) |
+| audio.cues | supported | supported | not-applicable | Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/audio.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.mask | unsupported | unsupported | unsupported | A layer mask would clip geometry to a path. [registry](../../packages/schema/capabilities/registry.json) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
@@ -67,5 +69,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `2238b7ae2d02590303226d93b969bf66fecb2a52f671d7c2eefee28a369ad3bc`
-- `packages/schema/capabilities/registry.json` SHA-256 `beec11d2c0cee1a2011b46b18bfd62b48e33db536567a76f49260a88d8a5013d`
+- `packages/schema/capabilities/releases.json` SHA-256 `bd8b05ea69bb3ea68584e14461eaedf24e5be676f39da5b47984ffed1697c496`
+- `packages/schema/capabilities/registry.json` SHA-256 `1471353f37aabb6866ef48da7d3a2da1e81b75bae48d346cf1acb8795b227086`

@@ -347,10 +347,12 @@
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing entities.durableRevisions.",
         "APPLY_ENTITY_PATCH carries EntityPatch ops. ADD_NODES remains frozen after the first seal; post-seal structure changes use entity patches.",
         "Activation before the sealed horizon is rejected. Undo is a new compensating patch; replay re-applies the accepted patch log.",
-        "Declarative MotionScript entity/behaviour statements are outside this claim; authorship uses emitEntityPatchDelta."
+        "MotionScript 0.9.0 declarative entity/behaviour/remove/reparent/cancel statements lower onto APPLY_ENTITY_PATCH; emitEntityPatchDelta remains supported for hosts."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles geometry entity bind behaviour onto APPLY_ENTITY_PATCH",
+        "packages/compiler/src/compiler.test.ts#allows post-seal entity bind after sealed horizon",
         "packages/runtime/src/durable-revisions.test.ts#roof remove pillar add retains independent rotation with sealed prefix and compact context",
         "packages/runtime/src/durable-revisions.test.ts#undo and replay restore topology from the accepted patch log",
         "packages/compiler/src/entity-patch.test.ts#emits APPLY_ENTITY_PATCH deltas for durable revisions"
@@ -369,10 +371,11 @@
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing entities.drawableBindings (and entities.durableRevisions for APPLY_ENTITY_PATCH).",
         "REGISTER_GEOMETRY / BIND_GEOMETRY ride APPLY_ENTITY_PATCH. Geometry ids stay disjoint from entity ids; assets are immutable leaves.",
         "Sampling clones the asset under the instance entity id. Channel ownership remains exclusive per (entityId, channel) on the instance.",
-        "composition.instances remain non-drawing records; declarative MotionScript bind syntax is outside this claim."
+        "composition.instances remain non-drawing records; MotionScript 0.9.0 declarative geometry/bind statements lower onto REGISTER_GEOMETRY / BIND_GEOMETRY."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles geometry entity bind behaviour onto APPLY_ENTITY_PATCH",
         "packages/runtime/src/drawable-bindings.test.ts#projects shared geometry under two window instances after seal",
         "packages/runtime/src/drawable-bindings.test.ts#post-seal bind leaves sealed prefix unchanged",
         "packages/compiler/src/entity-patch.test.ts#emits APPLY_ENTITY_PATCH deltas for drawable bindings"
@@ -731,6 +734,69 @@
         "svg": {
           "status": "not-applicable",
           "scope": "Native animated paint; SVG paint animation lowering is not commissioned with this release."
+        }
+      }
+    },
+    {
+      "id": "input.bindings",
+      "summary": "Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation.",
+      "introducedIn": { "motionscript": "0.10.0", "sceneIr": "0.10.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing input.bindings.",
+        "Targets name root-scene nodes. Actions are set, toggle, step and dragTranslate on position.x/y, rotation, scale.x/y and opacity only; no scripts, loops or timers.",
+        "Every written (node, channel) is exclusively input-owned for the whole scene; a timeline track writing the same scalar is rejected (OVERLAPPING_WRITERS).",
+        "Hit regions are painted fill/stroke geometry in logical viewport space; curves flatten at 16 segments and text uses host metrics or an em-box estimate. Clips/masks, multi-pointer gestures and text entry are out of scope.",
+        "dragTranslate converts viewport deltas into the node's parent space and clamps to the declared bounds."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/interact.test.ts#lowers targets and every bounded action into Scene IR interactions",
+        "packages/compiler/src/interact.test.ts#enforces exclusive input ownership, bounds and duplicate targets through validation",
+        "packages/runtime/src/input-bindings.test.ts#drives declared bindings through AnimationRuntime with parent-space drag",
+        "packages/runtime/src/input-bindings.test.ts#delivers interactions through streamed compiler deltas"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native interaction; Lottie has no input model to import."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native interaction; SVG event attributes are not imported."
+        }
+      }
+    },
+    {
+      "id": "audio.cues",
+      "summary": "Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline.",
+      "introducedIn": { "motionscript": "0.11.0", "sceneIr": "0.11.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing audio.cues; audio resources or cues without it are rejected.",
+        "Resources declare href and decoded durationMs; readiness is host-reported. Cues use root scene time, buses narration/effects/music, offset/duration inside the resource, loops 1..1000, gain 0..4, linear fades; at most 4096 cues.",
+        "Scene time is the master clock (docs/decisions/engine/audible-media-clock.md): audio is silent unless playing at a rate in [0.5, 2]; voices re-seek beyond 40 ms error; narration ducks effects/music by a step gain of 0.35.",
+        "Narration is required by default: pending required audio holds startup/playback and failed required audio blocks acceptance; optional cues are skipped with AUDIO_OPTIONAL_SKIPPED.",
+        "Cues may stream after the first seal (ADD_AUDIO_CUES) only when they start at or after the seal; audio resources are base definitions. No spatial audio, ducking ramps, per-cue rate or speech synthesis."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/audio.test.ts#lowers audio resources and every cue property into Scene IR",
+        "packages/compiler/src/audio.test.ts#rejects audio constructs without the capability and invalid cues through validation",
+        "packages/compiler/src/audio.test.ts#streams cues after the first seal with ADD_AUDIO_CUES and rejects cues behind the seal",
+        "packages/runtime/src/audio-scene.test.ts#lowers declared cues into AudioSession with ducking, loops and export equal to live voices",
+        "packages/runtime/src/audio-scene.test.ts#delivers cues through streamed compiler deltas and adds late cues to a live session",
+        "packages/runtime/src/audio-scene.test.ts#rejects streamed cues that start behind the seal frontier",
+        "packages/runtime/src/audio-scene.test.ts#feeds required audio readiness into assessReadiness and acceptScene"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native audio; Lottie audio layers are not imported."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native audio; SVG has no audio model to import."
         }
       }
     },

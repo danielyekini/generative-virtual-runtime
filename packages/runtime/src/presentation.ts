@@ -4,6 +4,7 @@ import {
   type ResolvedFrame,
   type SceneIR,
 } from "@gvr/schema";
+import { sceneAudioReadiness, type AudioStates } from "./audio";
 import { PlaybackClock } from "./playback";
 import { AnimationRuntime } from "./runtime";
 
@@ -26,6 +27,8 @@ export interface GeneratedOffer {
   unresolved?: boolean;
   fatal?: boolean;
   resourcesReady?: boolean;
+  /** Host loader states for audio.cues resources; required audio in the startup window must be ready. */
+  audioStates?: AudioStates;
 }
 
 export interface Readiness {
@@ -256,6 +259,11 @@ export function assessReadiness(offer: GeneratedOffer, startupBufferMs: number):
   }
   const durationMs = validated.value.timeline.durationMs;
   const neededMs = Math.min(startupBufferMs, durationMs);
+  if (validated.value.audioCues?.length) {
+    const audio = sceneAudioReadiness(validated.value, 0, neededMs, offer.audioStates);
+    if (audio.failed.length > 0) return { ok: false, reason: `Required audio ${audio.failed[0]} failed to load.` };
+    if (audio.waitingFor.length > 0) return { ok: false, reason: `Required audio ${audio.waitingFor[0]} is still loading.` };
+  }
   if (!(offer.sealedThroughMs >= neededMs - 1e-9)) {
     return { ok: false, reason: `Sealed coverage is ${offer.sealedThroughMs}ms; playback needs ${neededMs}ms.` };
   }

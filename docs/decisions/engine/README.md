@@ -16,3 +16,17 @@
 - [Animated solid paint channels (E009)](animated-paint-channels.md): gated
   `fill.*` / `stroke.*` / `stroke.width` scalars as MotionScript/Scene IR 0.8.0
   `paint.animatedSolid`.
+- [Native input (E007)](native-input.md): painted-geometry hit-testing over the
+  resolved frame, capture/hover/click/drag/wheel/focus routing, bounded actions
+  on `input`-owned channels and deterministic replay; versioned as MotionScript /
+  Scene IR 0.10.0 `input.bindings` by E025.
+- [Audible media clock (E008)](audible-media-clock.md): scene-time master clock,
+  pure audio schedule (narration/effects/music buses, loops, fades, ducking),
+  reconciling `AudioSession` with resync/drift correction, required-resource
+  hold, interaction one-shots and deterministic offline export; versioned as
+  `audio.cues` (MotionScript / Scene IR 0.11.0) with the Studio Web Audio
+  backend in E026.
+- [Bounded spatial graphics (E010)](spatial-graphics.md): planar 2.5D layers
+  (rigid 3D surface placement, hinges, perspective/orthographic camera) projected
+  into ordinary draw items; two-sided faces, plane-test depth order, fail-closed
+  bounds and unprojection for input; versioning in E028 (`space.planar25d`).

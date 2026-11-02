@@ -1,4 +1,4 @@
-import type { Diagnostic, Paint, PathCommand, SolidColor, SourceSpan, Stroke } from "@gvr/schema";
+import type { AudioCueDefinition, Diagnostic, InteractionBinding, Paint, PathCommand, SolidColor, SourceSpan, Stroke } from "@gvr/schema";
 
 export interface Vec {
   x: number;
@@ -140,6 +140,36 @@ export interface OperatorsAst {
   errors: Diagnostic[];
 }
 
+/** Interaction target (MotionScript 0.10 / input.bindings). */
+export interface InteractAst {
+  kind: "interact";
+  nodeId: string;
+  pointer?: "auto" | "none";
+  focusable?: boolean;
+  tabIndex?: number;
+  bindings: InteractionBinding[];
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+/** Audio resource declaration (MotionScript 0.11 / audio.cues). */
+export interface AudioDeclAst {
+  kind: "audio";
+  id: string;
+  href: string;
+  durationMs: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+/** Audio cue declaration on root scene time (MotionScript 0.11 / audio.cues). */
+export interface CueDeclAst {
+  kind: "cue";
+  cue: AudioCueDefinition;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
 export interface StepAst {
   kind: "step";
   target: string;
@@ -163,6 +193,73 @@ export interface SealAst {
   errors: Diagnostic[];
 }
 
+/** Declarative durable entity upsert (MotionScript 0.9 / entities.durableRevisions). */
+export interface EntityDeclAst {
+  kind: "entity";
+  name: string;
+  entityKind: "drawable" | "group";
+  parentId: string | null;
+  label?: string;
+  activationMs: number;
+  node?: NodeAst;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+/** Shared immutable geometry asset (entities.drawableBindings). */
+export interface GeometryDeclAst {
+  kind: "geometry";
+  name: string;
+  space: "world" | "local";
+  node?: NodeAst;
+  activationMs: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+export interface BindDeclAst {
+  kind: "bind";
+  entityId: string;
+  geometryId: string;
+  activationMs: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+export interface RemoveEntityAst {
+  kind: "removeEntity";
+  entityId: string;
+  activationMs: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+export interface ReparentDeclAst {
+  kind: "reparent";
+  entityId: string;
+  parentId: string | null;
+  activationMs: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+export interface BehaviourDeclAst {
+  kind: "behaviour";
+  id: string;
+  entityId: string;
+  channel: string;
+  activationMs: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+export interface CancelBehaviourAst {
+  kind: "cancelBehaviour";
+  behaviourId: string;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
 export type UnitAst =
   | ConstAst
   | CameraAst
@@ -175,7 +272,17 @@ export type UnitAst =
   | TimingAst
   | CompositionAst
   | InstanceAst
-  | OperatorsAst;
+  | OperatorsAst
+  | InteractAst
+  | AudioDeclAst
+  | CueDeclAst
+  | EntityDeclAst
+  | GeometryDeclAst
+  | BindDeclAst
+  | RemoveEntityAst
+  | ReparentDeclAst
+  | BehaviourDeclAst
+  | CancelBehaviourAst;
 
 export interface HeaderAst {
   sceneId?: string;

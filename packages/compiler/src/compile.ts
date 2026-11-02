@@ -13,6 +13,7 @@ import {
   validateSceneIR,
   type Diagnostic,
   type Expr,
+  type InteractionTarget,
   type NodeDefinition,
   type PathCommand,
   type RuntimeOperation,
@@ -28,6 +29,12 @@ import {
   type Vec2,
 } from "@gvr/schema";
 import type { AnimLiteral, EaseAst, HeaderAst, NodeAst, ProgramAst, Prop, UnitAst } from "./ast";
+import type { EntityPatchOp } from "@gvr/schema";
+import {
+  emitEntityStatementDelta,
+  isEntityStatement,
+  lowerEntityStatement,
+} from "./entity-statements";
 import { parseMotionScript } from "./parse";
 
 const BUILTINS = new Set(["PI", "t", "local_t", "progress", "sin", "cos", "abs", "sqrt", "min", "max", "pow", "clamp", "lerp"]);
@@ -54,6 +61,10 @@ export interface Session {
   frozen: boolean;
   deferred: UnitAst[];
   revision: number;
+  /** Nested APPLY_ENTITY_PATCH revision counter (independent of scene delta revision). */
+  entityPatchRevision: number;
+  /** Entity ops deferred while applying a batch (emitDelta false). */
+  pendingEntityOps: EntityPatchOp[];
   unitSerial: number;
   parsedUnits: number;
   deltas: SceneIRDelta[];
@@ -135,8 +146,12 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved composition ${unit.definition}.`, unit.span));
       continue;
     }
-    if (unit.kind === "operators") {
+    if (unit.kind === "operators" || unit.kind === "interact") {
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${unit.nodeId}.`, unit.span));
+      continue;
+    }
+    if (unit.kind === "cue") {
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved audio resource ${unit.cue.resourceId}.`, unit.span));
       continue;
     }
     if (unit.kind === "timing") {
@@ -223,6 +238,13 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
     return !session.scene.compositions?.some((composition) => composition.id === unit.definition);
   }
   if (unit.kind === "operators") return !knownNodeIds(session).has(unit.nodeId);
+  if (unit.kind === "cue") {
+    return !session.scene.resources.some((resource) => resource.kind === "audio" && resource.id === unit.cue.resourceId);
+  }
+  if (unit.kind === "interact") {
+    const ids = new Set(session.scene.nodes.map((node) => node.id));
+    return [unit.nodeId, ...unit.bindings.map((binding) => binding.nodeId)].some((id) => id !== undefined && !ids.has(id));
+  }
   if (unit.kind === "timing") {
     return Boolean(unit.parent) && !session.scene.timingScopes?.some((scope) => scope.id === unit.parent);
   }
@@ -257,6 +279,7 @@ function blockSeal(session: Session, unit: Extract<UnitAst, { kind: "seal" }>, m
 
 interface Capture {
   nodes: number;
+  audioCues: number;
   tracks: number;
   steps: number;
   resources: string;
@@ -271,6 +294,7 @@ function capture(session: Session): Capture {
 function captureInner(session: Session): Capture {
   return {
     nodes: session.scene.nodes.length,
+    audioCues: session.scene.audioCues?.length ?? 0,
     tracks: session.scene.timeline.tracks.length,
     steps: session.scene.timeline.steps.length,
     resources: JSON.stringify(session.scene.resources),
@@ -282,6 +306,7 @@ function captureInner(session: Session): Capture {
       timingScopes: session.scene.timingScopes,
       requiredCapabilities: session.scene.requiredCapabilities,
       geometryOperators: session.scene.geometryOperators,
+      interactions: session.scene.interactions,
     }),
   };
 }
@@ -299,6 +324,8 @@ function noteChanges(session: Session, unit: UnitAst, before: Capture): void {
   if (tracks.length > 0) ops.push({ op: "ADD_TRACKS", tracks });
   const steps = session.scene.timeline.steps.slice(before.steps);
   if (steps.length > 0) ops.push({ op: "ADD_STEPS", steps });
+  const cues = (session.scene.audioCues ?? []).slice(before.audioCues);
+  if (cues.length > 0) ops.push({ op: "ADD_AUDIO_CUES", cues });
   if (session.sealedThroughMs !== before.sealed) ops.push({ op: "SEAL_TIMELINE", horizonMs: session.sealedThroughMs });
   if (ops.length > 0) emit(session, ops, unit.span);
 }
@@ -324,6 +351,30 @@ function emit(session: Session, operations: RuntimeOperation[], sourceSpan: Sour
   session.telemetry?.gauge("compile.pending_deltas", session.pendingDeltas.length);
 }
 
+function flushPendingEntityOps(session: Session, sourceSpan: SourceSpan): void {
+  if (session.pendingEntityOps.length === 0) return;
+  const operations = session.pendingEntityOps;
+  session.pendingEntityOps = [];
+  const expectedRevision = session.revision;
+  session.revision += 1;
+  session.unitSerial += 1;
+  const patchExpected = session.entityPatchRevision;
+  session.entityPatchRevision += 1;
+  const delta = emitEntityStatementDelta({
+    generationId: "local",
+    unitId: session.unitSerial,
+    expectedRevision,
+    nextRevision: session.revision,
+    patchExpectedRevision: patchExpected,
+    patchNextRevision: session.entityPatchRevision,
+    operations,
+    sourceSpan,
+  });
+  session.deltas.push(delta);
+  session.pendingDeltas.push(delta);
+  session.telemetry?.gauge("compile.pending_deltas", session.pendingDeltas.length);
+}
+
 function sceneHeader(session: Session): SceneHeader {
   const header: SceneHeader = {
     irVersion: session.scene.irVersion,
@@ -341,6 +392,7 @@ function sceneHeader(session: Session): SceneHeader {
     header.timingScopes = [...(session.scene.timingScopes ?? [])];
     header.requiredCapabilities = [...(session.scene.requiredCapabilities ?? [])];
     header.geometryOperators = [...(session.scene.geometryOperators ?? [])];
+    if (session.scene.interactions) header.interactions = [...session.scene.interactions];
   }
   return header;
 }
@@ -419,6 +471,8 @@ function createSession(header: HeaderAst, diagnostics: Diagnostic[]): Session {
     frozen: false,
     deferred: [],
     revision: 0,
+    entityPatchRevision: 0,
+    pendingEntityOps: [],
     unitSerial: 0,
     parsedUnits: 0,
     deltas: [],
@@ -449,6 +503,8 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       unit.kind === "instance" ||
       unit.kind === "timing" ||
       unit.kind === "operators" ||
+      unit.kind === "interact" ||
+      unit.kind === "audio" ||
       (unit.kind === "batch" && unit.items.some((item) => item.kind === "node")))
   ) {
     session.diagnostics.push(
@@ -473,6 +529,8 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     const state = {trackCount: session.trackCount, stepCount: session.stepCount, fontCount: session.fontCount, frozen: session.frozen};
     const constants = new Map(session.constants);
     const before = capture(session);
+    const priorPending = session.pendingEntityOps;
+    session.pendingEntityOps = [];
     let failed = false;
     for (const item of unit.items) {
       if (!applyUnit(session, item, false)) failed = true;
@@ -488,14 +546,40 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     }
     if (failed) {
       measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
+      session.pendingEntityOps = priorPending;
       return false;
     }
-    if (emitDelta) noteChanges(session, unit, before);
+    if (emitDelta) {
+      noteChanges(session, unit, before);
+      flushPendingEntityOps(session, unit.span);
+    } else {
+      priorPending.push(...session.pendingEntityOps);
+      session.pendingEntityOps = priorPending;
+    }
     return true;
   }
   if (unit.errors.length > 0) {
     session.diagnostics.push(...unit.errors);
     return false;
+  }
+  if (isEntityStatement(unit)) {
+    const beforeDiag = session.diagnostics.length;
+    const ops = measured(session, "compile.lower_ms", () =>
+      lowerEntityStatement(unit, {
+        sealedThroughMs: session.sealedThroughMs,
+        diagnostics: session.diagnostics,
+        ensureCapability: (name) => ensureCapability(session, name),
+        lowerNode: (ast, parentId) => lowerNode(session, ast, parentId),
+      }),
+    );
+    if (!ops || session.diagnostics.length > beforeDiag) return false;
+    if (emitDelta) {
+      session.pendingEntityOps.push(...ops);
+      flushPendingEntityOps(session, unit.span);
+    } else {
+      session.pendingEntityOps.push(...ops);
+    }
+    return true;
   }
   const snapshot = measured(session, 'compile.snapshot_ms', () => snapshotScene(session.scene));
   const sealed = session.sealedThroughMs;
@@ -539,10 +623,12 @@ function snapshotScene(scene: SceneIR): SceneIR {
     ...(scene.timingScopes ? {timingScopes: [...scene.timingScopes]} : {}),
     ...(scene.requiredCapabilities ? {requiredCapabilities: [...scene.requiredCapabilities]} : {}),
     ...(scene.geometryOperators ? {geometryOperators: [...scene.geometryOperators]} : {}),
+    ...(scene.interactions ? {interactions: [...scene.interactions]} : {}),
+    ...(scene.audioCues ? {audioCues: [...scene.audioCues]} : {}),
   };
 }
 
-function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators">(
+function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators" | "interactions" | "audioCues">(
   scene: SceneIR,
   snapshot: SceneIR,
   key: K,
@@ -562,6 +648,8 @@ function restore(session: Session, snapshot: SceneIR, sealed: number, constants:
   restoreList(session.scene, snapshot, "timingScopes");
   restoreList(session.scene, snapshot, "requiredCapabilities");
   restoreList(session.scene, snapshot, "geometryOperators");
+  restoreList(session.scene, snapshot, "interactions");
+  restoreList(session.scene, snapshot, "audioCues");
   session.sealedThroughMs = sealed;
   session.constants = constants;
 }
@@ -595,6 +683,23 @@ function lower(session: Session, unit: UnitAst): void {
     const nodes = lowerNode(session, unit, null);
     if (!nodes) return;
     session.scene.nodes.push(...nodes);
+    return;
+  }
+  if (unit.kind === "interact") {
+    if (session.scene.irVersion !== "0.2") {
+      session.diagnostics.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare interactions.", unit.span));
+      return;
+    }
+    lowerInteract(session, unit);
+    return;
+  }
+  if (unit.kind === "audio" || unit.kind === "cue") {
+    if (session.scene.irVersion !== "0.2") {
+      session.diagnostics.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare audio.", unit.span));
+      return;
+    }
+    if (unit.kind === "audio") lowerAudio(session, unit);
+    else lowerCue(session, unit);
     return;
   }
   if (unit.kind === "timing" || unit.kind === "composition" || unit.kind === "instance" || unit.kind === "operators") {
@@ -1214,6 +1319,56 @@ function lowerOperators(session: Session, unit: Extract<UnitAst, { kind: "operat
   lists.push({ nodeId: unit.nodeId, operators: unit.operators });
   session.scene.geometryOperators = lists;
   ensureCapability(session, "geometry.operators");
+}
+
+function lowerInteract(session: Session, unit: Extract<UnitAst, { kind: "interact" }>): void {
+  const ids = new Set(session.scene.nodes.map((node) => node.id));
+  for (const id of [unit.nodeId, ...unit.bindings.map((binding) => binding.nodeId)]) {
+    if (id !== undefined && !ids.has(id)) {
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Node ${id} does not exist.`, unit.span));
+      return;
+    }
+  }
+  const list = session.scene.interactions ?? [];
+  if (list.some((target) => target.nodeId === unit.nodeId)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `${unit.nodeId} already has an interact declaration.`, unit.span));
+    return;
+  }
+  const target: InteractionTarget = { nodeId: unit.nodeId };
+  if (unit.pointer !== undefined) target.pointer = unit.pointer;
+  if (unit.focusable !== undefined) target.focusable = unit.focusable;
+  if (unit.tabIndex !== undefined) target.tabIndex = unit.tabIndex;
+  if (unit.bindings.length > 0) target.bindings = unit.bindings.map((binding) => structuredClone(binding));
+  // Replace the container so earlier emitted headers keep their own list.
+  session.scene.interactions = [...list, target];
+  ensureCapability(session, "input.bindings");
+}
+
+function lowerAudio(session: Session, unit: Extract<UnitAst, { kind: "audio" }>): void {
+  if (session.scene.resources.some((resource) => resource.id === unit.id)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `Resource ${unit.id} already exists.`, unit.span));
+    return;
+  }
+  // Readiness is host-reported (loader decode); the program declares none.
+  session.scene.resources = [...session.scene.resources, { id: unit.id, kind: "audio", href: unit.href, durationMs: unit.durationMs }];
+  ensureCapability(session, "audio.cues");
+}
+
+function lowerCue(session: Session, unit: Extract<UnitAst, { kind: "cue" }>): void {
+  const list = session.scene.audioCues ?? [];
+  if (list.some((cue) => cue.id === unit.cue.id)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `Audio cue ${unit.cue.id} already exists.`, unit.span));
+    return;
+  }
+  if (unit.cue.startMs + 1e-9 < session.sealedThroughMs) {
+    session.diagnostics.push(
+      problem("INVALID_TIMING", `Cue ${unit.cue.id} starts before the sealed horizon ${session.sealedThroughMs}ms.`, unit.span),
+    );
+    return;
+  }
+  // Replace the container so earlier emitted deltas keep their own list.
+  session.scene.audioCues = [...list, { ...unit.cue }];
+  ensureCapability(session, "audio.cues");
 }
 
 function knownNodeIds(session: Session): Set<string> {

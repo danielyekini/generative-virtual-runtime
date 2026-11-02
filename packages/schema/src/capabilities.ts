@@ -25,6 +25,8 @@ export const CAPABILITIES = [
   "geometry.pathMorph",
   "entities.durableRevisions",
   "entities.drawableBindings",
+  "input.bindings",
+  "audio.cues",
 ] as const;
 
 export type CapabilityName = (typeof CAPABILITIES)[number];

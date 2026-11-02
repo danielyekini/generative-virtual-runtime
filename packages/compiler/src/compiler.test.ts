@@ -357,6 +357,95 @@ complete;
   });
 });
 
+describe("declarative entity statements", () => {
+  it("compiles geometry entity bind behaviour onto APPLY_ENTITY_PATCH", () => {
+    const compiled = compileMotionScript(`scene "windows" {
+  version "0.2";
+  viewport (200, 200);
+  background #ffffff;
+  duration 2000ms;
+  requires "entities.durableRevisions";
+  requires "entities.drawableBindings";
+};
+geometry pane {
+  space world;
+  at 0ms;
+  rectangle pane { size (20, 40); fill #3366cc; };
+};
+entity window_a {
+  kind drawable;
+  label "left";
+  at 0ms;
+};
+bind window_a to pane at 0ms;
+behaviour spin on window_a.transform.rotation {
+  activate at 0ms;
+};
+cancel behaviour spin;
+complete;
+`);
+    expect(compiled.ok, compiled.diagnostics.map((item) => item.message).join("\n")).toBe(true);
+    expect(compiled.scene?.requiredCapabilities).toEqual(
+      expect.arrayContaining(["entities.durableRevisions", "entities.drawableBindings"]),
+    );
+    const patches = compiled.deltas.flatMap((delta) =>
+      delta.operations.filter((op) => op.op === "APPLY_ENTITY_PATCH"),
+    );
+    expect(patches.length).toBeGreaterThanOrEqual(4);
+    const ops = patches.flatMap((op) => (op.op === "APPLY_ENTITY_PATCH" ? op.patch.operations : []));
+    expect(ops.map((item) => item.op)).toEqual(
+      expect.arrayContaining([
+        "REGISTER_GEOMETRY",
+        "UPSERT_ENTITY",
+        "BIND_GEOMETRY",
+        "ACTIVATE_BEHAVIOUR",
+        "CANCEL_BEHAVIOUR",
+      ]),
+    );
+  });
+
+  it("allows post-seal entity bind after sealed horizon", () => {
+    const compiled = compileMotionScript(`scene "chip" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+  requires "entities.durableRevisions";
+  requires "entities.drawableBindings";
+};
+geometry pane {
+  space world;
+  at 0ms;
+  circle pane { radius 5; fill #ffffff; };
+};
+seal 200ms;
+entity chip_3 {
+  kind drawable;
+  at 200ms;
+};
+bind chip_3 to pane at 200ms;
+complete;
+`);
+    expect(compiled.ok, compiled.diagnostics.map((item) => item.message).join("\n")).toBe(true);
+    const early = compileMotionScript(`scene "early" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+  requires "entities.durableRevisions";
+};
+seal 200ms;
+entity too_early {
+  kind drawable;
+  at 100ms;
+};
+complete;
+`);
+    expect(early.ok).toBe(false);
+    expect(early.diagnostics.some((item) => item.code === "INVALID_TIMING")).toBe(true);
+  });
+});
+
 describe("paint.animatedSolid", () => {
   it("compiles animated solid paint channels with paint.animatedSolid", () => {
     const compiled = compileMotionScript(`scene "paint" {

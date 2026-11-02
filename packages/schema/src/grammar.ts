@@ -39,7 +39,10 @@ headerProperty = "version" , string , ";"
                | "duration" , duration , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
-               | timingDecl | compositionDecl | instanceDecl | operatorsDecl ;
+               | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
+               | audioDecl | cueDecl
+               | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
+               | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
 cameraDecl     = "camera" , identifier , "{" , { cameraProperty } , "}" , ";" ;
 cameraProperty = "position" , vec2 , ";"
@@ -157,6 +160,52 @@ instanceProperty = "start" , duration , ";"
 operatorsDecl  = "operators" , dottedId , "{" , { operatorDecl } , "}" , ";" ;
 operatorDecl   = "trim" , signedNumber , "," , signedNumber , "," , signedNumber , ";"
                | "round" , signedNumber , ";" ;
+
+(* MotionScript 0.10 interaction targets (input.bindings). Only "interact" is
+   reserved; body words match by spelling. dragTranslate only follows on drag. *)
+interactDecl   = "interact" , dottedId , "{" , { interactItem } , "}" , ";" ;
+interactItem   = ( "focusable" , boolean , ";" )
+               | ( "tabIndex" , signedNumber , ";" )
+               | ( "pointer" , ( "auto" | "none" ) , ";" )
+               | ( "on" , trigger , interactAction , ";" ) ;
+trigger        = "click" | "activate" | "wheel" | "drag" | ( "key" , string ) ;
+interactAction = ( "set" , interactAddr , signedNumber )
+               | ( "toggle" , interactAddr , signedNumber , signedNumber )
+               | ( "step" , interactAddr , signedNumber , signedNumber , signedNumber )
+               | ( "dragTranslate" , vec2 , vec2 ) ;
+interactAddr   = [ dottedId , "." ] , interactChannel ;
+interactChannel= "position.x" | "position.y" | "rotation" | "scale.x" | "scale.y" | "opacity" ;
+
+(* MotionScript 0.11 audio resources and cues (audio.cues). Only "audio" and
+   "cue" are reserved; bus and body words match by spelling. Cues use root
+   scene time; a cue may follow the first seal when it starts at or after it. *)
+audioDecl      = "audio" , identifier , string , duration , ";" ;
+cueDecl        = "cue" , identifier , bus , identifier , "at" , duration ,
+                 [ "{" , { cueItem } , "}" ] , ";" ;
+bus            = "narration" | "effects" | "music" ;
+cueItem        = ( ( "offset" | "duration" | "fadeIn" | "fadeOut" ) , duration , ";" )
+               | ( ( "loops" | "gain" ) , signedNumber , ";" )
+               | ( "required" , boolean , ";" ) ;
+
+(* MotionScript 0.9 declarative entity statements. Lower 1:1 onto released
+   APPLY_ENTITY_PATCH ops (entities.durableRevisions / entities.drawableBindings).
+   Activation times must be >= the sealed left-limit. Geometry space is world|local.
+*)
+entityDecl     = "entity" , dottedId , "{" , { entityItem } , "}" , ";" ;
+entityItem     = "kind" , ( "drawable" | "group" ) , ";"
+               | "parent" , ( "root" | dottedId ) , ";"
+               | "label" , string , ";"
+               | "at" , duration , ";"
+               | nodeDecl ;
+geometryDecl   = "geometry" , identifier , "{" , "space" , ( "world" | "local" ) , ";" ,
+                 "at" , duration , ";" , nodeDecl , "}" , ";" ;
+bindDecl       = "bind" , dottedId , "to" , identifier , "at" , duration , ";" ;
+removeEntity   = "remove" , "entity" , dottedId , "at" , duration , ";" ;
+reparentDecl   = "reparent" , dottedId , "under" , ( "root" | dottedId ) , "at" , duration , ";" ;
+behaviourDecl  = "behaviour" , identifier , "on" , dottedId , "{" ,
+                 "activate" , "at" , duration , ";" , "}" , ";" ;
+cancelBehaviour = "cancel" , "behaviour" , identifier , ";" ;
+
 dottedId       = identifier , { "." , identifier } ;
 segmentEase    = "linear" | "easeIn" | "easeOut" | "easeInOut" | "hold"
                | "cubic" , "(" , signedNumber , "," , signedNumber , "," , signedNumber , "," , signedNumber , ")" ;
@@ -308,6 +357,17 @@ export const KEYWORDS = [
   "overlay",
   "sourceOver",
   "radial",
+  "entity",
+  "behaviour",
+  "geometry",
+  "bind",
+  "remove",
+  "reparent",
+  "cancel",
+  "activate",
+  "interact",
+  "audio",
+  "cue",
 ] as const;
 
 export const KEYWORD_SET = new Set<string>(KEYWORDS);

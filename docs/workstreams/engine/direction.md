@@ -12,6 +12,17 @@ MotionScript 0.6.0 `entities.durableRevisions`), E005 drawable-reuse
 decision/prototype, E023 versioned `entities.drawableBindings` (Scene IR /
 MotionScript 0.7.0), E006 streaming authorship/stream linter, E009 animated
 solid paint channels (Scene IR / MotionScript 0.8.0 `paint.animatedSolid`),
+E024 declarative entity statements (MotionScript / Scene IR 0.9.0),
+E007 native input decision/prototype (painted-geometry hit-testing,
+`InputSession` routing, bounded `input`-owned actions, replay), E025
+`input.bindings` (`interact` declarations, MotionScript / Scene IR 0.10.0,
+Studio player wiring), E008 audible media clock decision/prototype
+(scene-time master, pure audio schedule, reconciling `AudioSession`,
+required-resource hold, deterministic `mixAudio` export), E026 `audio.cues`
+(`audio` / `cue` declarations, MotionScript / Scene IR 0.11.0, `ADD_AUDIO_CUES`,
+Studio Web Audio backend and bridge WAV export),
+E010 bounded spatial graphics decision/prototype (planar 2.5D layers,
+`projectSpatialFrame`, `docs/decisions/engine/spatial-graphics.md`),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -20,6 +31,8 @@ and E003 immutable path/keyframe validation-fact reuse are merged
 `docs/decisions/engine/streaming-authorship-and-declarative-entities.md`,
 `docs/decisions/engine/animated-paint-channels.md`,
 `docs/decisions/engine/immutable-validation-facts.md`,
+`docs/decisions/engine/native-input.md`,
+`docs/decisions/engine/audible-media-clock.md`,
 `observeStreamingExecution` / `EntityRevisionStore` / `APPLY_ENTITY_PATCH` /
 `REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection in
 `@gvr/runtime`, `emitEntityPatchDelta` in `@gvr/compiler`).
@@ -29,10 +42,13 @@ the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. Follow-up after E006: declarative MotionScript `entity` / `behaviour` /
-   `geometry` / `bind` statement implementation (versioned), using the E006
-   design against released 0.6–0.7 ops (tracked as E024). Streaming authorship
-   contract, stream linter and P006 generation inputs are landed with E006.
+1. E028 ([#107](https://github.com/danielyekini/generative-virtual-runtime/issues/107)):
+   version planar 2.5D spatial layers (`space.planar25d`, MotionScript / Scene IR
+   0.12.0) per the E010 decision; Candidate until the orchestrator promotes it.
+2. Then replenish Ready from remaining M4/M5 Candidates with satisfied
+   dependencies: E011 physics (adopts E010 coordinate conventions) and E016
+   seams/intersection splitting (on the E010 order contract) are unblocked.
+   Audible human judgement of E026 output and visible media controls sit with P009.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

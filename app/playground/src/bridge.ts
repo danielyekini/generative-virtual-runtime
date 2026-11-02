@@ -54,6 +54,16 @@ export interface PlayerProbe {
   panelTab: string;
   diagnostics: string[];
   canvas: { cssWidth: number; cssHeight: number; backingWidth: number; backingHeight: number };
+  /** Present when the scene declares audio.cues (E026). */
+  audio?: {
+    voices: string[];
+    holding: boolean;
+    note: string;
+    context: "running" | "suspended";
+    diagnostics: string[];
+    /** Bounded Web Audio backend command log. */
+    log: string[];
+  };
 }
 
 export interface GvrBridge {
@@ -93,6 +103,8 @@ export interface GvrBridge {
   player?: PlayerProbe;
   run?: () => void;
   open?: (key: string) => boolean;
+  /** Offline WAV export of the declared audio schedule (mixAudio + encodeWav). */
+  exportAudio?: () => { wav: Uint8Array; sampleRate: number; channels: number; durationMs: number } | null;
 }
 
 export function button(label: string, pressed: boolean, onClick: () => void): HTMLButtonElement {

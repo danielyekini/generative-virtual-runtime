@@ -1,6 +1,9 @@
 import type { Telemetry, Diagnostic, ResolvedFrame, SceneIR } from "@gvr/schema";
 import { buildResolvedFrame } from "./frame";
-import { sampleScene } from "./sample";
+import { sampleScene, type SampledScene } from "./sample";
+
+/** Host overlay over one sample, for example InputSession.applyTo. */
+export type SampleOverlay = (sampled: SampledScene, sceneTimeMs: number) => SampledScene;
 
 /**
  * Evaluates one complete SceneIR. MotionScript and timeline deltas are not
@@ -21,11 +24,12 @@ export class AnimationRuntime {
     return this.diagnostics;
   }
 
-  evaluate(sceneTimeMs: number): ResolvedFrame {
-    return this.telemetry ? this.telemetry.measure('frame.evaluate_ms', () => this.evaluateInner(sceneTimeMs)) : this.evaluateInner(sceneTimeMs);
+  evaluate(sceneTimeMs: number, overlay?: SampleOverlay): ResolvedFrame {
+    return this.telemetry ? this.telemetry.measure('frame.evaluate_ms', () => this.evaluateInner(sceneTimeMs, overlay)) : this.evaluateInner(sceneTimeMs, overlay);
   }
-  private evaluateInner(sceneTimeMs: number): ResolvedFrame {
-    const sampled = sampleScene(this.scene, sceneTimeMs);
+  private evaluateInner(sceneTimeMs: number, overlay?: SampleOverlay): ResolvedFrame {
+    const raw = sampleScene(this.scene, sceneTimeMs);
+    const sampled = overlay ? overlay(raw, sceneTimeMs) : raw;
     this.diagnostics = sampled.diagnostics;
     if (sampled.diagnostics.length > 0) this.degradedFlag = true;
     return buildResolvedFrame(this.scene, sampled, sceneTimeMs);

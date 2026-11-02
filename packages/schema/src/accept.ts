@@ -33,7 +33,16 @@ export function acceptScene(
   if (missing.length > 0) {
     return fail("MISSING_REQUIRED", `Missing required capabilities: ${missing.join(", ")}.`);
   }
-  const blocked = again.value.resources.filter((resource) => resource.readiness === "pending" || resource.readiness === "failed");
+  // Audio (audio.cues): only resources used by a required cue block acceptance;
+  // optional effects/music degrade at playback with AUDIO_OPTIONAL_SKIPPED.
+  const requiredAudio = new Set(
+    (again.value.audioCues ?? []).filter((cue) => cue.required ?? cue.bus === "narration").map((cue) => cue.resourceId),
+  );
+  const blocked = again.value.resources.filter(
+    (resource) =>
+      (resource.readiness === "pending" || resource.readiness === "failed") &&
+      (resource.kind !== "audio" || requiredAudio.has(resource.id)),
+  );
   if (blocked.length > 0) {
     return fail("MISSING_REQUIRED", `Resource ${blocked[0]?.id ?? ""} is not ready.`);
   }

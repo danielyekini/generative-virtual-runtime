@@ -2,6 +2,8 @@ import {
   diagnostic,
   lex,
   type Diagnostic,
+  type InteractionBinding,
+  type InteractionChannel,
   type Paint,
   type PathCommand,
   type SourceSpan,
@@ -12,10 +14,18 @@ import type {
   AnimLiteral,
   AnimateAst,
   BatchAst,
+  BehaviourDeclAst,
+  BindDeclAst,
   CameraAst,
+  CancelBehaviourAst,
   CompositionAst,
   ConstAst,
   EaseAst,
+  EntityDeclAst,
+  GeometryDeclAst,
+  InteractAst,
+  AudioDeclAst,
+  CueDeclAst,
   HeaderAst,
   InstanceAst,
   KeyframeAst,
@@ -23,6 +33,8 @@ import type {
   OperatorsAst,
   ProgramAst,
   Prop,
+  RemoveEntityAst,
+  ReparentDeclAst,
   SealAst,
   StepAst,
   TimingAst,
@@ -162,6 +174,16 @@ function parseUnit(parser: Parser): UnitAst | undefined {
   if (token.lexeme === "composition") return parseComposition(parser);
   if (token.lexeme === "instance") return parseInstance(parser);
   if (token.lexeme === "operators") return parseOperators(parser);
+  if (token.lexeme === "interact") return parseInteract(parser);
+  if (token.lexeme === "audio") return parseAudioDecl(parser);
+  if (token.lexeme === "cue") return parseCueDecl(parser);
+  if (token.lexeme === "entity") return parseEntityDecl(parser);
+  if (token.lexeme === "geometry") return parseGeometryDecl(parser);
+  if (token.lexeme === "bind") return parseBindDecl(parser);
+  if (token.lexeme === "remove") return parseRemoveEntity(parser);
+  if (token.lexeme === "reparent") return parseReparentDecl(parser);
+  if (token.lexeme === "behaviour") return parseBehaviourDecl(parser);
+  if (token.lexeme === "cancel") return parseCancelBehaviour(parser);
   fail(parser, `Unexpected ${token.lexeme}.`);
   skipUnit(parser);
   return undefined;
@@ -701,6 +723,295 @@ function parseSeal(parser: Parser): SealAst {
   return node;
 }
 
+function parseEntityDecl(parser: Parser): EntityDeclAst {
+  const start = eat(parser, "keyword", "entity");
+  const node: EntityDeclAst = {
+    kind: "entity",
+    name: "",
+    entityKind: "drawable",
+    parentId: null,
+    activationMs: 0,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const name = parseDotted(parser, false);
+  if (name) node.name = name;
+  else note(node, parser, "entity needs an id.");
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  let sawAt = false;
+  while (!done(parser) && !at(parser, "rbrace")) {
+    if (isNodeStart(parser)) {
+      if (node.node) note(node, parser, "entity allows at most one private node.");
+      else node.node = parseNode(parser);
+      continue;
+    }
+    const key = eat(parser, "keyword") ?? eat(parser, "identifier");
+    if (!key) break;
+    if (key.lexeme === "kind") {
+      const kind = eat(parser, "identifier") ?? eat(parser, "keyword", "group");
+      if (kind?.lexeme === "drawable" || kind?.lexeme === "group") node.entityKind = kind.lexeme;
+      else note(node, parser, "kind must be drawable or group.");
+    } else if (key.lexeme === "parent") {
+      const root = eat(parser, "identifier");
+      if (root?.lexeme === "root") node.parentId = null;
+      else if (root) {
+        // First segment already consumed; allow dotted remainder.
+        let parent = root.lexeme;
+        while (eat(parser, "dot")) {
+          const part = eatPathSegment(parser);
+          if (!part) break;
+          parent += `.${part.lexeme}`;
+        }
+        node.parentId = parent;
+      } else note(node, parser, "parent needs an entity id or root.");
+    } else if (key.lexeme === "label") {
+      const label = eat(parser, "string");
+      if (label) node.label = label.stringValue ?? label.lexeme;
+      else note(node, parser, "label needs a string.");
+    } else if (key.lexeme === "at") {
+      const time = eat(parser, "duration");
+      if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+      else {
+        node.activationMs = time.numberValue;
+        sawAt = true;
+      }
+    } else note(node, parser, `Unknown entity property ${key.lexeme}.`);
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  if (!sawAt) note(node, parser, "entity needs at <time>.");
+  return node;
+}
+
+function parseGeometryDecl(parser: Parser): GeometryDeclAst {
+  const start = eat(parser, "keyword", "geometry");
+  const node: GeometryDeclAst = {
+    kind: "geometry",
+    name: "",
+    space: "world",
+    activationMs: 0,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const name = eat(parser, "identifier");
+  if (name) node.name = name.lexeme;
+  else note(node, parser, "geometry needs an id.");
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  let sawAt = false;
+  let sawSpace = false;
+  while (!done(parser) && !at(parser, "rbrace")) {
+    if (isNodeStart(parser)) {
+      if (node.node) note(node, parser, "geometry needs exactly one drawable node.");
+      else node.node = parseNode(parser);
+      continue;
+    }
+    const key = eat(parser, "keyword");
+    if (!key) break;
+    if (key.lexeme === "space") {
+      const space = eat(parser, "keyword", "world") ?? eat(parser, "identifier");
+      if (space?.lexeme === "world" || space?.lexeme === "local") {
+        node.space = space.lexeme;
+        sawSpace = true;
+      } else note(node, parser, "space must be world or local.");
+    } else if (key.lexeme === "at") {
+      const time = eat(parser, "duration");
+      if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+      else {
+        node.activationMs = time.numberValue;
+        sawAt = true;
+      }
+    } else note(node, parser, `Unknown geometry property ${key.lexeme}.`);
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  if (!sawSpace) note(node, parser, "geometry needs space world|local.");
+  if (!sawAt) note(node, parser, "geometry needs at <time>.");
+  if (!node.node) note(node, parser, "geometry needs one drawable node.");
+  return node;
+}
+
+function parseBindDecl(parser: Parser): BindDeclAst {
+  const start = eat(parser, "keyword", "bind");
+  const node: BindDeclAst = {
+    kind: "bind",
+    entityId: "",
+    geometryId: "",
+    activationMs: 0,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const entityId = parseDotted(parser, false);
+  if (entityId) node.entityId = entityId;
+  else note(node, parser, "bind needs an entity id.");
+  if (!eat(parser, "keyword", "to")) note(node, parser, "Expected 'to'.");
+  const geometryId = eat(parser, "identifier");
+  if (geometryId) node.geometryId = geometryId.lexeme;
+  else note(node, parser, "bind needs a geometry id.");
+  if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
+  const time = eat(parser, "duration");
+  if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+  else node.activationMs = time.numberValue;
+  expectSemi(parser);
+  return node;
+}
+
+function parseRemoveEntity(parser: Parser): RemoveEntityAst {
+  const start = eat(parser, "keyword", "remove");
+  const node: RemoveEntityAst = {
+    kind: "removeEntity",
+    entityId: "",
+    activationMs: 0,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  if (!eat(parser, "keyword", "entity")) note(node, parser, "Expected 'entity'.");
+  const entityId = parseDotted(parser, false);
+  if (entityId) node.entityId = entityId;
+  else note(node, parser, "remove entity needs an id.");
+  if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
+  const time = eat(parser, "duration");
+  if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+  else node.activationMs = time.numberValue;
+  expectSemi(parser);
+  return node;
+}
+
+function parseReparentDecl(parser: Parser): ReparentDeclAst {
+  const start = eat(parser, "keyword", "reparent");
+  const node: ReparentDeclAst = {
+    kind: "reparent",
+    entityId: "",
+    parentId: null,
+    activationMs: 0,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const entityId = parseDotted(parser, false);
+  if (entityId) node.entityId = entityId;
+  else note(node, parser, "reparent needs an entity id.");
+  const under = eat(parser, "identifier");
+  if (under?.lexeme !== "under") note(node, parser, "Expected 'under'.");
+  const rootOrParent = eat(parser, "identifier") ?? eat(parser, "keyword");
+  if (rootOrParent?.lexeme === "root") node.parentId = null;
+  else if (rootOrParent) {
+    let parent = rootOrParent.lexeme;
+    while (eat(parser, "dot")) {
+      const part = eatPathSegment(parser);
+      if (!part) break;
+      parent += `.${part.lexeme}`;
+    }
+    node.parentId = parent;
+  } else note(node, parser, "under needs an entity id or root.");
+  if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
+  const time = eat(parser, "duration");
+  if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+  else node.activationMs = time.numberValue;
+  expectSemi(parser);
+  return node;
+}
+
+function parseBehaviourDecl(parser: Parser): BehaviourDeclAst {
+  const start = eat(parser, "keyword", "behaviour");
+  const node: BehaviourDeclAst = {
+    kind: "behaviour",
+    id: "",
+    entityId: "",
+    channel: "",
+    activationMs: 0,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const id = eat(parser, "identifier");
+  if (id) node.id = id.lexeme;
+  else note(node, parser, "behaviour needs an id.");
+  const on = eat(parser, "identifier");
+  if (on?.lexeme !== "on") note(node, parser, "Expected 'on'.");
+  const address = parseDotted(parser, false);
+  if (address) {
+    const split = splitEntityChannel(address);
+    if (split) {
+      node.entityId = split.entityId;
+      node.channel = split.channel;
+    } else note(node, parser, `Unknown behaviour channel in ${address}.`);
+  } else note(node, parser, "behaviour needs entity.channel.");
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  let sawActivate = false;
+  while (!done(parser) && !at(parser, "rbrace")) {
+    if (!eat(parser, "keyword", "activate")) {
+      note(node, parser, "behaviour body only supports activate at <time>.");
+      break;
+    }
+    if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
+    const time = eat(parser, "duration");
+    if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+    else {
+      node.activationMs = time.numberValue;
+      sawActivate = true;
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  if (!sawActivate) note(node, parser, "behaviour needs activate at <time>.");
+  return node;
+}
+
+function parseCancelBehaviour(parser: Parser): CancelBehaviourAst {
+  const start = eat(parser, "keyword", "cancel");
+  const node: CancelBehaviourAst = {
+    kind: "cancelBehaviour",
+    behaviourId: "",
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  if (!eat(parser, "keyword", "behaviour")) note(node, parser, "Expected 'behaviour'.");
+  const id = eat(parser, "identifier");
+  if (id) node.behaviourId = id.lexeme;
+  else note(node, parser, "cancel behaviour needs an id.");
+  expectSemi(parser);
+  return node;
+}
+
+function splitEntityChannel(address: string): { entityId: string; channel: string } | undefined {
+  const channels = [
+    "transform.position.x",
+    "transform.position.y",
+    "transform.position",
+    "transform.rotation",
+    "transform.scale.x",
+    "transform.scale.y",
+    "transform.scale",
+    "transform.pivot.x",
+    "transform.pivot.y",
+    "transform.pivot",
+    "stroke.width",
+    "stroke.r",
+    "stroke.g",
+    "stroke.b",
+    "stroke.a",
+    "fill.r",
+    "fill.g",
+    "fill.b",
+    "fill.a",
+    "trim.start",
+    "trim.end",
+    "trim.offset",
+    "opacity",
+    "visible",
+    "commands",
+  ];
+  for (const channel of channels) {
+    const suffix = `.${channel}`;
+    if (address.endsWith(suffix)) {
+      const entityId = address.slice(0, -suffix.length);
+      if (entityId) return { entityId, channel };
+    }
+  }
+  return undefined;
+}
+
 function parseTarget(parser: Parser): string | undefined {
   if (at(parser, "keyword", "camera")) {
     eat(parser, "keyword", "camera");
@@ -870,6 +1181,221 @@ function parseOperators(parser: Parser): OperatorsAst {
     expectSemi(parser);
   }
   eat(parser, "rbrace");
+  expectSemi(parser);
+  return node;
+}
+
+const INTERACT_CHANNELS: Record<string, InteractionChannel> = {
+  "position.x": "transform.position.x",
+  "position.y": "transform.position.y",
+  rotation: "transform.rotation",
+  "scale.x": "transform.scale.x",
+  "scale.y": "transform.scale.y",
+  opacity: "opacity",
+};
+
+/** A bare word, whether or not it is reserved. Interaction sub-words are not new keywords. */
+function eatWord(parser: Parser, lexeme?: string): Token | undefined {
+  return eat(parser, "identifier", lexeme) ?? eat(parser, "keyword", lexeme);
+}
+
+/** `[node.path.]channel` where channel is one of the interaction channel paths. */
+function parseInteractAddress(parser: Parser): { nodeId?: string; channel: InteractionChannel } | undefined {
+  const first = eatWord(parser);
+  if (!first) return undefined;
+  const parts = [first.lexeme];
+  while (eat(parser, "dot")) {
+    const part = eatWord(parser);
+    if (!part) return undefined;
+    parts.push(part.lexeme);
+  }
+  for (const size of [2, 1]) {
+    if (parts.length < size) continue;
+    const channel = INTERACT_CHANNELS[parts.slice(-size).join(".")];
+    if (!channel) continue;
+    const nodeId = parts.slice(0, -size).join(".");
+    return nodeId ? { nodeId, channel } : { channel };
+  }
+  return undefined;
+}
+
+function parseInteract(parser: Parser): InteractAst {
+  const start = eat(parser, "keyword", "interact");
+  const node: InteractAst = { kind: "interact", nodeId: "", bindings: [], span: start?.span ?? emptySpan(), errors: [] };
+  const nodeId = parseDotted(parser, false);
+  if (nodeId) node.nodeId = nodeId;
+  else note(node, parser, "interact needs a node id.");
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected an interaction property.");
+      skipProperty(parser);
+      expectSemi(parser);
+      continue;
+    }
+    if (key.lexeme === "focusable") {
+      if (eat(parser, "keyword", "true")) node.focusable = true;
+      else if (eat(parser, "keyword", "false")) node.focusable = false;
+      else note(node, parser, "focusable needs true or false.");
+    } else if (key.lexeme === "tabIndex") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined || !Number.isInteger(value)) note(node, parser, "tabIndex needs an integer.");
+      else node.tabIndex = value;
+    } else if (key.lexeme === "pointer") {
+      if (eatWord(parser, "none")) node.pointer = "none";
+      else if (eatWord(parser, "auto")) node.pointer = "auto";
+      else note(node, parser, "pointer needs auto or none.");
+    } else if (key.lexeme === "on") {
+      const binding = parseInteractBinding(parser, node);
+      if (binding) node.bindings.push(binding);
+      else skipProperty(parser);
+    } else {
+      note(node, parser, `Unknown interact property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  return node;
+}
+
+function parseInteractBinding(parser: Parser, node: InteractAst): InteractionBinding | undefined {
+  const trigger = eatWord(parser);
+  if (!trigger || !["click", "activate", "drag", "wheel", "key"].includes(trigger.lexeme)) {
+    note(node, parser, "on needs click, activate, drag, wheel or key.");
+    return undefined;
+  }
+  const on = trigger.lexeme as InteractionBinding["on"];
+  let key: string | undefined;
+  if (on === "key") {
+    const name = eat(parser, "string");
+    if (!name?.stringValue) {
+      note(node, parser, 'on key needs a key name string, for example "ArrowRight".');
+      return undefined;
+    }
+    key = name.stringValue;
+  }
+  const verb = eatWord(parser);
+  const withKey = (binding: InteractionBinding): InteractionBinding => (key === undefined ? binding : { ...binding, key });
+  if (verb?.lexeme === "dragTranslate") {
+    const min = parseVec(parser);
+    const max = parseVec(parser);
+    if (!min || !max) {
+      note(node, parser, "dragTranslate needs (minX, minY) (maxX, maxY).");
+      return undefined;
+    }
+    return withKey({ on, action: { kind: "dragTranslate", min: { x: min.x, y: min.y }, max: { x: max.x, y: max.y } } });
+  }
+  if (verb?.lexeme !== "set" && verb?.lexeme !== "toggle" && verb?.lexeme !== "step") {
+    note(node, parser, "Interaction action must be set, toggle, step or dragTranslate.");
+    return undefined;
+  }
+  const address = parseInteractAddress(parser);
+  if (!address) {
+    note(node, parser, "Interaction actions write position.x, position.y, rotation, scale.x, scale.y or opacity.");
+    return undefined;
+  }
+  const numbers: number[] = [];
+  for (;;) {
+    const before = parser.index;
+    const value = parseSignedNumber(parser);
+    if (value === undefined) {
+      parser.index = before;
+      break;
+    }
+    numbers.push(value);
+  }
+  const target = address.nodeId === undefined ? {} : { nodeId: address.nodeId };
+  const expected = verb.lexeme === "set" ? 1 : verb.lexeme === "toggle" ? 2 : 3;
+  if (numbers.length !== expected) {
+    note(node, parser, `${verb.lexeme} needs ${expected} number${expected === 1 ? "" : "s"}.`);
+    return undefined;
+  }
+  const [a, b, c] = numbers as [number, number, number];
+  const channel = address.channel;
+  if (verb.lexeme === "set") return withKey({ on, ...target, action: { kind: "set", channel, value: a } });
+  if (verb.lexeme === "toggle") return withKey({ on, ...target, action: { kind: "toggle", channel, values: [a, b] } });
+  return withKey({ on, ...target, action: { kind: "step", channel, delta: a, min: b, max: c } });
+}
+
+/** `audio <id> "<href>" <duration>;` — decoded length in ms or s. */
+function parseAudioDecl(parser: Parser): AudioDeclAst {
+  const start = eat(parser, "keyword", "audio");
+  const node: AudioDeclAst = { kind: "audio", id: "", href: "", durationMs: 0, span: start?.span ?? emptySpan(), errors: [] };
+  const id = eat(parser, "identifier");
+  if (id) node.id = id.lexeme;
+  else note(node, parser, "audio needs a resource id.");
+  const href = eat(parser, "string");
+  if (href?.stringValue) node.href = href.stringValue;
+  else note(node, parser, 'audio needs an href string, for example "voice.wav".');
+  const length = eat(parser, "duration");
+  if (length?.numberValue === undefined) note(node, parser, "audio needs its decoded length with ms or s.");
+  else node.durationMs = length.numberValue;
+  expectSemi(parser);
+  return node;
+}
+
+const CUE_BUSES = new Set(["narration", "effects", "music"]);
+
+/**
+ * `cue <id> <bus> <resource> at <time> [{ offset t; duration t; loops n; gain g;
+ * fadeIn t; fadeOut t; required true|false; }];` Body words match by spelling.
+ */
+function parseCueDecl(parser: Parser): CueDeclAst {
+  const start = eat(parser, "keyword", "cue");
+  const node: CueDeclAst = {
+    kind: "cue",
+    cue: { id: "", resourceId: "", bus: "effects", startMs: 0 },
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const id = eat(parser, "identifier");
+  if (id) node.cue.id = id.lexeme;
+  else note(node, parser, "cue needs an id.");
+  const bus = eatWord(parser);
+  if (bus && CUE_BUSES.has(bus.lexeme)) node.cue.bus = bus.lexeme as CueDeclAst["cue"]["bus"];
+  else note(node, parser, "cue needs a bus: narration, effects or music.");
+  const resource = eat(parser, "identifier");
+  if (resource) node.cue.resourceId = resource.lexeme;
+  else note(node, parser, "cue needs an audio resource id.");
+  if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
+  const time = eat(parser, "duration");
+  if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+  else node.cue.startMs = time.numberValue;
+  if (eat(parser, "lbrace")) {
+    while (!done(parser) && !at(parser, "rbrace")) {
+      const key = eatWord(parser);
+      const timeKeys: Record<string, "offsetMs" | "durationMs" | "fadeInMs" | "fadeOutMs"> = {
+        offset: "offsetMs",
+        duration: "durationMs",
+        fadeIn: "fadeInMs",
+        fadeOut: "fadeOutMs",
+      };
+      if (!key) {
+        note(node, parser, "Expected a cue property.");
+        skipProperty(parser);
+      } else if (timeKeys[key.lexeme]) {
+        const value = eat(parser, "duration");
+        if (value?.numberValue === undefined) note(node, parser, `${key.lexeme} needs a time with ms or s.`);
+        else node.cue[timeKeys[key.lexeme]!] = value.numberValue;
+      } else if (key.lexeme === "loops" || key.lexeme === "gain") {
+        const value = parseSignedNumber(parser);
+        if (value === undefined) note(node, parser, `${key.lexeme} needs a number.`);
+        else node.cue[key.lexeme] = value;
+      } else if (key.lexeme === "required") {
+        if (eat(parser, "keyword", "true")) node.cue.required = true;
+        else if (eat(parser, "keyword", "false")) node.cue.required = false;
+        else note(node, parser, "required needs true or false.");
+      } else {
+        note(node, parser, `Unknown cue property ${key.lexeme}.`);
+        skipProperty(parser);
+      }
+      expectSemi(parser);
+    }
+    eat(parser, "rbrace");
+  }
   expectSemi(parser);
   return node;
 }
