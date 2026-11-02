@@ -14,7 +14,10 @@
 
 Start implementation promptly. Default run budget: 60-90 minutes of focused
 work, adjustable to task evidence. This is a stopping/replanning checkpoint,
-not a false completion promise. Maintain one primary outcome per ordinary run.
+not a false completion promise. Aim to complete **more than one ticket per run**
+when budget allows (user direction, 2 November 2026). After each ticket is
+merged and handed over, re-check routing and claim the next ready item with
+satisfied dependencies. Each ticket keeps its own branch/PR and handover.
 
 ## Claim and concurrency
 
@@ -53,7 +56,7 @@ when that gate remains, Blocked for an external dependency. Partial work returns
 to Ready/continues In progress with an explicit next step as appropriate.
 
 Record exactly one terminal run outcome (complete/partial/blocked/failed) in
-the lane ledger. Administration/intake/review sessions do not advance that
+the lane ledger per run, listing every issue the run touched. Administration/intake/review sessions do not advance that
 clock. Check incoming-request route flags at natural implementation checkpoints and again before exit or another task.
 Do not inspect other-lane orchestrator mail as an ordinary worker. Resulting
 execution requests are normal visible issues assigned by orchestrators.

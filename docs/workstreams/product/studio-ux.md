@@ -44,28 +44,36 @@ any unsaved edits.
 
 ### Player (landing page)
 
-- With nothing loaded, the landing page is an empty player with a prominent
-  **Open Library** action (plus recent programs if any). Nothing auto-loads.
-- Layout follows VS Code: the canvas fills the main area, with an optional
-  **Source** side panel on the right (closed by default). Under the canvas sit
-  the transport and the **tape timeline**. Below that is a collapsible, tabbed
-  **bottom panel**: Diagnostics, Stream, Scene, Performance (later),
-  Compare/Report.
+- With nothing loaded, the landing page is an empty player. The header's
+  **Open Library** button is always present; the empty canvas repeats it as a
+  prominent prompt (plus recent programs if any). Nothing auto-loads.
+- Layout follows VS Code. A **header bar** (like VS Code's title and run bar)
+  holds the program name, **Open Library**, the run actions and run options.
+  The canvas fills the main area, with an optional **Source** side panel on the
+  right (closed by default). Under the canvas sit the transport and the **tape**.
+  Below that is a collapsible, tabbed **bottom panel**: Diagnostics, Stream,
+  Scene, Performance (later), Compare/Report.
 
 ```
-┌──────────────────────────────┬─────────┐
+┌────────────────────────────────────────┐
+│ ▤ Library │ program-name │ ▶ Run  ≋ Stream ▾ │ ⚙ │  header
+├──────────────────────────────┬─────────┤
 │                              │ Source  │
 │           CANVAS             │ (opt.)  │
 ├──────────────────────────────┴─────────┤
-│ ▶ ❚❚  ▓▓▓▓▓▓▓▓░░░░░░  tape: loaded/play │
+│ ❚❚ 0:03.2 ▏[▣▣▣▣▣▣▒▒▒▒░░░░]  frame tape │
 ├────────────────────────────────────────┤
 │ [Diagnostics][Stream][Scene][Perf]  ▾  │
 └────────────────────────────────────────┘
 ```
 
+- **Header run actions** (user direction, 2 November 2026): **Run** executes the
+  loaded program in instant mode. **Stream** runs it in stream mode, and
+  switching to stream adds the stream controls (rate preset, Advanced, pause and
+  step) to the header and the stream monitoring tools (Stream tab, frame-tape
+  states) to the layout. Leaving stream mode removes them again.
 - **Opening a program** from the Library loads it into the player and waits for
-  **Run**. The Run control has a mode choice: **Instant** or **Stream**.
-  Autoplay on open is a user setting (off by default).
+  Run or Stream. Autoplay on open is a header run option (off by default).
 - There is exactly one loaded program. Stream, Scene and Diagnostics always
   refer to it; there is no second source selector anywhere.
 - **Fullscreen** presents the canvas only, using contain-fit on the logical
@@ -116,9 +124,15 @@ any unsaved edits.
   - **red**: rejected unit, with a diagnostic marker; it stays visible.
   - Every state also has a non-colour cue (gutter icon or label). The states map
     to real engine events from X001/E018, not to invented per-line frames.
-- **Tape timeline**: shows the sealed/loaded range against the playhead, so you
-  can see whether loading stays ahead of playback, plus waiting or stall
-  periods. Counters always state their unit (characters, units, ms).
+- **Frame tape** (user direction, 2 November 2026): a video-editor style track of
+  frame thumbnails instead of a plain line, with a vertical playhead line at the
+  current time. In stream mode, frames are added to the tape as they are
+  resolved and stay **greyed out until played**, then show normally once the
+  playhead has passed them. This shows at a glance whether resolved content
+  stays ahead of playback, along with waiting and stall gaps. In instant mode the
+  whole tape is available at once. The tape is a track system: further tracks
+  (sound, narration, events) are added as those capabilities land. Counters
+  always state their unit (characters, units, ms).
 
 ## Later sections (to be specified with the user before building)
 
@@ -132,6 +146,12 @@ Performance inspector placement and metrics (P003), agent-facing commands
   building the Library page.
 - Exact preset rates and the Advanced control set are to be proposed with
   mockups in P002.
+- Frame-tape state mapping: the user asked for the same grey/orange/white system
+  as the source view, and for frames that are "resolved but greyed until
+  played". Proposed: no tile (sealed range not yet resolved), grey (resolved,
+  ahead of the playhead), normal (played), red gap (stall or rejected range).
+  Confirm whether orange should mean "sealed and queued but not yet rendered"
+  before building P016.
 
 ## UI generator prompt template
 
