@@ -1,0 +1,26 @@
+{
+  "providerId": "ollama",
+  "modelId": "qwen2.5-coder:14b",
+  "taskId": "drop-seal",
+  "promptChars": 209,
+  "referenceFingerprint": null,
+  "referencePath": null,
+  "ttfbMs": null,
+  "totalMs": 506.76079100000004,
+  "firstSealMs": null,
+  "firstSealHorizonMs": null,
+  "firstSealBytes": null,
+  "sourceChars": 0,
+  "estimatedTokensUtf16Div4": 0,
+  "offlineOk": false,
+  "progressiveOk": false,
+  "compileErrorCount": 7,
+  "runtimeRejectCount": 0,
+  "repairAttempts": 0,
+  "cancelled": true,
+  "staleIgnored": false,
+  "status": "cancelled",
+  "notes": [
+    "generation aborted"
+  ]
+}

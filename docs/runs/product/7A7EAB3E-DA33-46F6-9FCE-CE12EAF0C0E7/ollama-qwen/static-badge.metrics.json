@@ -1,0 +1,26 @@
+{
+  "providerId": "ollama",
+  "modelId": "qwen2.5-coder:14b",
+  "taskId": "static-badge",
+  "promptChars": 260,
+  "referenceFingerprint": "1501009ad9086e06e83d51ca2983b2aac01467bc66bc566ed6811f21663ef0aa",
+  "referencePath": "docs/reference/motionscript-authoring/snapshots/ms-0.14.0_sir-0.14.0-1501009a.md",
+  "ttfbMs": 12728.461875,
+  "totalMs": 38703.491709,
+  "firstSealMs": 38703.49,
+  "firstSealHorizonMs": 2000,
+  "firstSealBytes": 311,
+  "sourceChars": 311,
+  "estimatedTokensUtf16Div4": 78,
+  "offlineOk": true,
+  "progressiveOk": false,
+  "compileErrorCount": 0,
+  "runtimeRejectCount": 0,
+  "repairAttempts": 1,
+  "cancelled": false,
+  "staleIgnored": false,
+  "status": "pass",
+  "notes": [
+    "repair 1: 7 compile error(s)"
+  ]
+}
