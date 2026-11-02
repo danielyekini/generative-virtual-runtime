@@ -6,3 +6,11 @@ export type { EntityPatchDeltaOptions } from "./entity-patch";
 export { compileIncrementally, createIncrementalProgram, fragmentSource } from "./incremental";
 export type { FragmentKind, IncrementalProgram } from "./incremental";
 export { parseMotionScript } from "./parse";
+export { lintStreamingAuthorship } from "./stream-lint";
+export type {
+  StreamLintCode,
+  StreamLintFinding,
+  StreamLintOptions,
+  StreamLintResult,
+  StreamLintSeverity,
+} from "./stream-lint";

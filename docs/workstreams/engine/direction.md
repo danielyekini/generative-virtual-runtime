@@ -26,9 +26,10 @@ the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. E006: native streaming authorship rules and compact reference contract when
-   sequenced after Ready work (including declarative MotionScript
-   entity/behaviour/bind statements).
+1. Follow-up after E006: declarative MotionScript `entity` / `behaviour` /
+   `geometry` / `bind` statement implementation (versioned), using the E006
+   design against released 0.6–0.7 ops. Streaming authorship contract, stream
+   linter and P006 generation inputs are landed with E006.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 E009 owns native animated paint scope. Pending language candidates are not a

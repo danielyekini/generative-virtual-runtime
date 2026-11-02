@@ -10,3 +10,6 @@
 - [Drawable reuse bindings (E005)](drawable-reuse-bindings.md): shared immutable
   geometry assets, instance bindings, per-instance ownership and streaming
   activation; language wiring deferred to a follow-up implementation issue.
+- [Streaming authorship + declarative entities (E006)](streaming-authorship-and-declarative-entities.md):
+  progressive unit/seal/writer contract, stream linter, model-facing generation
+  inputs for P006; declarative entity/behaviour/bind design recorded, syntax deferred.
