@@ -51,11 +51,11 @@ the published observation snapshot; engine does not own Studio inspector UI.
 ## Next work
 
 1. E029 ([#110](https://github.com/danielyekini/generative-virtual-runtime/issues/110)):
-   version `physics.planar2d` in MotionScript / Scene IR per the E011 decision;
-   Candidate until the orchestrator promotes it.
+   version `physics.planar2d` in MotionScript / Scene IR per the E011 decision.
+   Ready.
 2. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
    version seam/split support (e.g. `space.planarSeams`) on top of
-   `space.planar25d`; Candidate until promoted.
+   `space.planar25d`. Ready (second independent item).
 3. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
    sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
