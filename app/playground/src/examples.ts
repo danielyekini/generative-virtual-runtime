@@ -8,6 +8,9 @@ import bunnySource from "../../../fixtures/motionscript/bunny.ms?raw";
 import cameraSource from "../../../fixtures/motionscript/camera.ms?raw";
 import captionSource from "../../../fixtures/motionscript/caption.ms?raw";
 import diagramSource from "../../../fixtures/motionscript/diagram.ms?raw";
+import spatialCraneSource from "../../../fixtures/motionscript/spatial-crane.ms?raw";
+import spatialEchoSource from "../../../fixtures/motionscript/spatial-echo.ms?raw";
+import spatialHomeSource from "../../../fixtures/motionscript/spatial-home.ms?raw";
 import cameraMappingSource from "../../../fixtures/motionscript/frames/camera-mapping.ms?raw";
 import hierarchyTransformSource from "../../../fixtures/motionscript/frames/hierarchy-transform.ms?raw";
 import opacitySource from "../../../fixtures/motionscript/frames/opacity.ms?raw";
@@ -112,6 +115,9 @@ export const motionExamples: MotionExample[] = [
   { id: "bunny", label: "Bunny", caption: "Nested rabbit, hop, then a sealed zoom.", source: bunnySource },
   { id: "ball", label: "Ball", caption: "A ball travels and bounces on an expression.", source: ballSource },
   { id: "audio-lesson", label: "Audio lesson", caption: "Narration, a looping music bed and timed click effects (audio.cues).", source: audioLessonSource },
+  { id: "spatial-crane", label: "Spatial crane", caption: "A folded paper flap on a planar 2.5D layer (space.planar25d).", source: spatialCraneSource },
+  { id: "spatial-home", label: "Spatial home", caption: "Orbiting walls and a door on planar surfaces (space.planar25d).", source: spatialHomeSource },
+  { id: "spatial-echo", label: "Spatial echo", caption: "Receding type in perspective depth (space.planar25d).", source: spatialEchoSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
   { id: "nested", label: "Nested", caption: "A wheel and its spoke rotate together.", source: nestedSource },
   { id: "diagram", label: "Diagram", caption: "The sample follows the same two quadratics the curve is drawn with.", source: diagramSource },

@@ -77,6 +77,10 @@ Landed in MotionScript / Scene IR **0.10.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.11.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `audio.cues`. `audio` declarations add `kind: "audio"` resources (base definitions); `cue` declarations lower to scene `audioCues`, streamed with the new `ADD_AUDIO_CUES` op, which may follow the first seal for cues starting at or after it. Only `audio` and `cue` became reserved words. See `docs/decisions/engine/audible-media-clock.md`.
 
+### Decision for `space.planar25d`
+
+Landed in MotionScript / Scene IR **0.12.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `space.planar25d`. `spatialLayer` declarations lower to scene `spatialLayers` (layer id, camera, surfaces naming root-scene nodes with 3D placement, hinge, `backFill` and `backface`), carried on `CREATE_SCENE` headers as a base definition frozen after the first seal. Only `spatialLayer` became a reserved word; `camera`, `surface` and body words match by spelling, so older identifiers keep compiling. Older readers reject the capability token and the unknown `spatialLayers` key. See `docs/decisions/engine/spatial-graphics.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

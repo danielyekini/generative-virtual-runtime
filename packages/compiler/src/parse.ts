@@ -7,6 +7,9 @@ import {
   type Paint,
   type PathCommand,
   type SourceSpan,
+  type SpatialSurfaceDefinition,
+  type SpatialTransformDefinition,
+  type SpatialVec3,
   type Stroke,
   type Token,
 } from "@gvr/schema";
@@ -26,6 +29,7 @@ import type {
   InteractAst,
   AudioDeclAst,
   CueDeclAst,
+  SpatialLayerAst,
   HeaderAst,
   InstanceAst,
   KeyframeAst,
@@ -177,6 +181,7 @@ function parseUnit(parser: Parser): UnitAst | undefined {
   if (token.lexeme === "interact") return parseInteract(parser);
   if (token.lexeme === "audio") return parseAudioDecl(parser);
   if (token.lexeme === "cue") return parseCueDecl(parser);
+  if (token.lexeme === "spatialLayer") return parseSpatialLayer(parser);
   if (token.lexeme === "entity") return parseEntityDecl(parser);
   if (token.lexeme === "geometry") return parseGeometryDecl(parser);
   if (token.lexeme === "bind") return parseBindDecl(parser);
@@ -1398,6 +1403,164 @@ function parseCueDecl(parser: Parser): CueDeclAst {
   }
   expectSemi(parser);
   return node;
+}
+
+/** `(x, y, z)` with three signed numbers. */
+function parseVec3(parser: Parser): SpatialVec3 | undefined {
+  if (!eat(parser, "lparen")) return undefined;
+  const x = parseSignedNumber(parser);
+  if (x === undefined || !eat(parser, "comma")) return undefined;
+  const y = parseSignedNumber(parser);
+  if (y === undefined || !eat(parser, "comma")) return undefined;
+  const z = parseSignedNumber(parser);
+  if (z === undefined || !eat(parser, "rparen")) return undefined;
+  return { x, y, z };
+}
+
+/**
+ * `spatialLayer <id> { camera { … }; surface <node> { … }; … };` Only
+ * `spatialLayer` is reserved; `camera`, `surface` and every body word match by
+ * spelling, as audio buses do.
+ */
+function parseSpatialLayer(parser: Parser): SpatialLayerAst {
+  const start = eat(parser, "keyword", "spatialLayer");
+  const node: SpatialLayerAst = {
+    kind: "spatialLayer",
+    layer: { id: "", camera: { projection: "perspective" }, surfaces: [] },
+    hasCamera: false,
+    span: start?.span ?? emptySpan(),
+    errors: [],
+  };
+  const id = eat(parser, "identifier");
+  if (id) node.layer.id = id.lexeme;
+  else note(node, parser, "spatialLayer needs an id.");
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (key?.lexeme === "camera") {
+      parseSpatialCamera(parser, node);
+    } else if (key?.lexeme === "surface") {
+      const surface = parseSpatialSurface(parser, node);
+      if (surface) node.layer.surfaces.push(surface);
+    } else {
+      note(node, parser, key ? `Unknown spatialLayer item ${key.lexeme}.` : "Expected camera or surface.");
+      skipSpatialBlock(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  if (!node.hasCamera && node.errors.length === 0) note(node, parser, "spatialLayer needs a camera block with a projection.");
+  return node;
+}
+
+/** Skip to the end of an unrecognised `{ … }` item (or a plain property). */
+function skipSpatialBlock(parser: Parser): void {
+  let depth = 0;
+  while (!done(parser)) {
+    if (at(parser, "lbrace")) depth += 1;
+    else if (at(parser, "rbrace")) {
+      if (depth === 0) return;
+      depth -= 1;
+      if (depth === 0) {
+        parser.index += 1;
+        return;
+      }
+    } else if (at(parser, "semicolon") && depth === 0) return;
+    parser.index += 1;
+  }
+}
+
+function parseSpatialCamera(parser: Parser, node: SpatialLayerAst): void {
+  if (!eat(parser, "lbrace")) {
+    note(node, parser, "camera needs a { … } block.");
+    return;
+  }
+  const camera = node.layer.camera;
+  let projection = false;
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected a camera property.");
+      skipProperty(parser);
+    } else if (key.lexeme === "projection") {
+      const mode = eatWord(parser);
+      if (mode?.lexeme === "perspective" || mode?.lexeme === "orthographic") {
+        camera.projection = mode.lexeme;
+        projection = true;
+      } else note(node, parser, "projection needs perspective or orthographic.");
+    } else if (key.lexeme === "position") {
+      const value = parseVec3(parser);
+      if (value) camera.position = value;
+      else note(node, parser, "position needs (x, y, z).");
+    } else if (key.lexeme === "yaw" || key.lexeme === "pitch" || key.lexeme === "roll") {
+      const value = parseAngle(parser);
+      if (value === undefined) note(node, parser, `${key.lexeme} needs an angle.`);
+      else camera[key.lexeme] = value;
+    } else if (key.lexeme === "focalLength" || key.lexeme === "zoom" || key.lexeme === "near") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, `${key.lexeme} needs a number.`);
+      else camera[key.lexeme] = value;
+    } else {
+      note(node, parser, `Unknown camera property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  if (projection) node.hasCamera = true;
+  else note(node, parser, "camera needs a projection (perspective or orthographic).");
+}
+
+function parseSpatialSurface(parser: Parser, node: SpatialLayerAst): SpatialSurfaceDefinition | undefined {
+  const nodeId = parseDotted(parser, false);
+  if (!nodeId) {
+    note(node, parser, "surface needs a node id.");
+    skipSpatialBlock(parser);
+    return undefined;
+  }
+  const surface: SpatialSurfaceDefinition = { nodeId };
+  if (!eat(parser, "lbrace")) {
+    note(node, parser, "surface needs a { … } block.");
+    return surface;
+  }
+  const transform: SpatialTransformDefinition = {};
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected a surface property.");
+      skipProperty(parser);
+    } else if (key.lexeme === "parent") {
+      const parent = parseDotted(parser, false);
+      if (parent) surface.parent = parent;
+      else note(node, parser, "parent needs a surface node id.");
+    } else if (key.lexeme === "position" || key.lexeme === "pivot" || key.lexeme === "rotation" || key.lexeme === "scale") {
+      const value = parseVec3(parser);
+      if (value) transform[key.lexeme] = value;
+      else note(node, parser, `${key.lexeme} needs (x, y, z).`);
+    } else if (key.lexeme === "hinge") {
+      const from = parseVec(parser);
+      const to = parseVec(parser);
+      const angle = from && to ? parseAngle(parser) : undefined;
+      if (from && to && angle !== undefined) transform.hinge = { from, to, angle };
+      else note(node, parser, "hinge needs (x, y) (x, y) angle.");
+    } else if (key.lexeme === "backface") {
+      const mode = eatWord(parser);
+      if (mode?.lexeme === "visible" || mode?.lexeme === "hidden") surface.backface = mode.lexeme;
+      else note(node, parser, "backface needs visible or hidden.");
+    } else if (key.lexeme === "backFill") {
+      const color = eat(parser, "color");
+      if (color?.colorValue) surface.backFill = color.colorValue;
+      else note(node, parser, "backFill needs a colour.");
+    } else {
+      note(node, parser, `Unknown surface property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  if (Object.keys(transform).length > 0) surface.transform = transform;
+  return surface;
 }
 
 function parseEasing(parser: Parser): EaseAst | undefined {

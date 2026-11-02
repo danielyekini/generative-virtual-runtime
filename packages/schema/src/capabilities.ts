@@ -27,6 +27,7 @@ export const CAPABILITIES = [
   "entities.drawableBindings",
   "input.bindings",
   "audio.cues",
+  "space.planar25d",
 ] as const;
 
 export type CapabilityName = (typeof CAPABILITIES)[number];

@@ -1,4 +1,4 @@
-import type { AudioCueDefinition, Diagnostic, InteractionBinding, Paint, PathCommand, SolidColor, SourceSpan, Stroke } from "@gvr/schema";
+import type { AudioCueDefinition, Diagnostic, InteractionBinding, Paint, PathCommand, SolidColor, SourceSpan, SpatialLayerDefinition, Stroke } from "@gvr/schema";
 
 export interface Vec {
   x: number;
@@ -170,6 +170,16 @@ export interface CueDeclAst {
   errors: Diagnostic[];
 }
 
+/** Planar 2.5D layer declaration (MotionScript 0.12 / space.planar25d). */
+export interface SpatialLayerAst {
+  kind: "spatialLayer";
+  layer: SpatialLayerDefinition;
+  /** True once a `camera { … }` block parsed with a projection. */
+  hasCamera: boolean;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
 export interface StepAst {
   kind: "step";
   target: string;
@@ -276,6 +286,7 @@ export type UnitAst =
   | InteractAst
   | AudioDeclAst
   | CueDeclAst
+  | SpatialLayerAst
   | EntityDeclAst
   | GeometryDeclAst
   | BindDeclAst

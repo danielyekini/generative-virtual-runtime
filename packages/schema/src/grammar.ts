@@ -40,7 +40,7 @@ headerProperty = "version" , string , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
                | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
-               | audioDecl | cueDecl
+               | audioDecl | cueDecl | spatialLayerDecl
                | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
                | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
@@ -186,6 +186,29 @@ bus            = "narration" | "effects" | "music" ;
 cueItem        = ( ( "offset" | "duration" | "fadeIn" | "fadeOut" ) , duration , ";" )
                | ( ( "loops" | "gain" ) , signedNumber , ";" )
                | ( "required" , boolean , ";" ) ;
+
+(* MotionScript 0.12 planar 2.5D layers (space.planar25d). Only "spatialLayer" is
+   reserved; "camera", "surface" and every body word match by spelling, as audio
+   buses do. Surfaces name root-scene nodes and wait for forward references; a
+   layer is a base definition, frozen after the first seal. Angles are radians
+   as a bare number or an angle token. A hinge is a line in the parent surface's
+   plane and a rotation about it.
+*)
+spatialLayerDecl = "spatialLayer" , identifier , "{" , { spatialItem } , "}" , ";" ;
+spatialItem    = spatialCamera | spatialSurface ;
+spatialCamera  = "camera" , "{" , { cameraItem3 } , "}" , ";" ;
+cameraItem3    = ( "projection" , ( "perspective" | "orthographic" ) , ";" )
+               | ( "position" , vec3 , ";" )
+               | ( ( "yaw" | "pitch" | "roll" ) , angleOrNumber , ";" )
+               | ( ( "focalLength" | "zoom" | "near" ) , signedNumber , ";" ) ;
+spatialSurface = "surface" , dottedId , "{" , { surfaceItem } , "}" , ";" ;
+surfaceItem    = ( "parent" , dottedId , ";" )
+               | ( ( "position" | "pivot" | "rotation" | "scale" ) , vec3 , ";" )
+               | ( "hinge" , vec2 , vec2 , angleOrNumber , ";" )
+               | ( "backface" , ( "visible" | "hidden" ) , ";" )
+               | ( "backFill" , color , ";" ) ;
+vec3           = "(" , signedNumber , "," , signedNumber , "," , signedNumber , ")" ;
+angleOrNumber  = angle | signedNumber ;
 
 (* MotionScript 0.9 declarative entity statements. Lower 1:1 onto released
    APPLY_ENTITY_PATCH ops (entities.durableRevisions / entities.drawableBindings).
@@ -368,6 +391,7 @@ export const KEYWORDS = [
   "interact",
   "audio",
   "cue",
+  "spatialLayer",
 ] as const;
 
 export const KEYWORD_SET = new Set<string>(KEYWORDS);

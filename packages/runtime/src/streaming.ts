@@ -18,6 +18,7 @@ import { buildResolvedFrame } from "./frame";
 import type { ObservedDeltaRef } from "./observation";
 import { sampleScene } from "./sample";
 import type { SampleOverlay } from "./runtime";
+import { projectSceneSpatial } from "./spatial-scene";
 
 /**
  * Applies revision-guarded scene deltas and evaluates the sealed prefix.
@@ -171,9 +172,11 @@ export class StreamingRuntime {
     const view = projectScene(this.scene, this.entities, time, frontierOptions);
     const raw = sampleScene(view, time, frontierOptions);
     const sampled = overlay ? overlay(raw, time) : raw;
-    this.diagnostics = sampled.diagnostics;
-    if (sampled.diagnostics.length > 0) this.degradedFlag = true;
-    return buildResolvedFrame(view, sampled, time, this.revision);
+    const frame = buildResolvedFrame(view, sampled, time, this.revision);
+    const projected = projectSceneSpatial(view, frame);
+    this.diagnostics = [...sampled.diagnostics, ...projected.diagnostics];
+    if (this.diagnostics.length > 0) this.degradedFlag = true;
+    return projected.frame;
   }
 
   private recordRejected(diagnostics: readonly Diagnostic[]): void {

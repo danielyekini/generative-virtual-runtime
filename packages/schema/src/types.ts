@@ -512,6 +512,56 @@ export interface SceneIR {
   interactions?: InteractionTarget[];
   /** Requires audio.cues (Scene IR 0.11.0). Streamed with ADD_AUDIO_CUES. */
   audioCues?: AudioCueDefinition[];
+  /** Requires space.planar25d (Scene IR 0.12.0). Projected at frame resolution. */
+  spatialLayers?: SpatialLayerDefinition[];
+}
+
+/** Planar 2.5D layer (space.planar25d). Aligns with @gvr/runtime SpatialLayer. */
+export interface SpatialVec3 {
+  x: number;
+  y: number;
+  z: number;
+}
+
+export interface SpatialHingeDefinition {
+  from: Vec2;
+  to: Vec2;
+  /** Radians. */
+  angle: number;
+}
+
+export interface SpatialTransformDefinition {
+  position?: SpatialVec3;
+  pivot?: SpatialVec3;
+  rotation?: SpatialVec3;
+  scale?: SpatialVec3;
+  hinge?: SpatialHingeDefinition;
+}
+
+export interface SpatialSurfaceDefinition {
+  nodeId: string;
+  parent?: string;
+  transform?: SpatialTransformDefinition;
+  /** Reverse-face solid fill; omitted keeps the front appearance. */
+  backFill?: SolidColor;
+  backface?: "visible" | "hidden";
+}
+
+export interface SpatialCameraDefinition {
+  projection: "perspective" | "orthographic";
+  position?: SpatialVec3;
+  yaw?: number;
+  pitch?: number;
+  roll?: number;
+  focalLength?: number;
+  zoom?: number;
+  near?: number;
+}
+
+export interface SpatialLayerDefinition {
+  id: string;
+  camera: SpatialCameraDefinition;
+  surfaces: SpatialSurfaceDefinition[];
 }
 
 /** Channels an interaction binding may write (Scene IR 0.10.0 input.bindings). */
@@ -566,6 +616,8 @@ export interface SceneHeader {
   requiredCapabilities?: string[];
   geometryOperators?: GeometryOperatorList[];
   interactions?: InteractionTarget[];
+  /** Requires space.planar25d (Scene IR 0.12.0). */
+  spatialLayers?: SpatialLayerDefinition[];
 }
 
 /** Stable semantic entity identity for durable revisions (entities.durableRevisions). */
