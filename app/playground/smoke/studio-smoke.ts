@@ -286,6 +286,13 @@ try {
   await cdp.send("Emulation.setDeviceMetricsOverride", {width:1440, height:900, deviceScaleFactor:1, mobile:false}, sessionId);
 
 
+  // Blur from a tag edit must not remove the Open button before its click.
+  await ev(`document.querySelector('#library-sort').value = 'name'; document.querySelector('#library-sort').dispatchEvent(new Event('change'));`);
+  await ev(`(() => { const c = document.querySelector('article[data-key="sample:ball"]'); c.scrollIntoView(); const t = c.querySelector('input'); t.focus(); t.value = 'last-tag-edit'; })()`);
+  const openRect = await ev(`(() => { const b = document.querySelector('article[data-key="sample:ball"] .program-card-body > .library-toolbar:last-child button'); const r = b.getBoundingClientRect(); return {x:r.x+r.width/2, y:r.y+r.height/2}; })()`);
+  await click(openRect.x, openRect.y);
+  check("Open still works when clicking it blurs an edited tag field", (await player()).programKey === 'sample:ball' && await ev(`document.querySelector('#library').hidden`));
+
   // 9. Temporary legacy route keeps streaming working
   await navigate("/legacy.html#stream");
   await ev("(() => { const t = document.querySelector('#stream-toggle'); t.checked = true; t.dispatchEvent(new Event('change')); const p = document.querySelector('#stream-preset'); p.value = 'bunny'; p.dispatchEvent(new Event('change')); document.querySelector('#stream-run').click(); })()");

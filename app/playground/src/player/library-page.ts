@@ -221,7 +221,9 @@ export class LibraryPage {
     const tags = el("input"); tags.value = (entry.tags ?? []).join(", "); tags.placeholder = "Add tags, comma separated";
     tags.setAttribute("aria-label", `Tags for ${entry.label}`);
     tags.onchange = () => {
-      if (this.updateMeta(entry.key, { tags: parseTags(tags.value), modifiedAt: Date.now() })) this.render();
+      // Keep the card mounted: blur fires before a click on its Open button.
+      // Replacing it here would swallow that click (and keyboard focus).
+      if (this.updateMeta(entry.key, { tags: parseTags(tags.value), modifiedAt: Date.now() })) tags.value = parseTags(tags.value).join(", ");
     };
     const foot = el("div"); foot.className = "library-toolbar";
     const knownDuration = this.durations.get(entry.key);
