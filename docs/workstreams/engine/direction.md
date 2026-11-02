@@ -38,3 +38,15 @@ queue; old Lottie gaps do not add adapter lowering or source-fidelity acceptance
 Proactive legacy-format work requires a fresh explicit user request.
 Broader audio, interaction, paint/text/path/camera, spatial and physics work is
 tracked in GitHub. Capacity improvements remain ongoing, evidence-driven work.
+
+## Continual story improvement (prospective direction, 2 November 2026)
+
+Alongside milestone delivery, Engine permanently improves capabilities, performance
+and native authoring through the [native story cycle](../../workflows/native-story-cycle.md):
+Generate Stories → Expand System → Reimplement Stories → Select next corpus.
+Current expansion work continues. Future corpus implementations use native
+MotionScript directly; improvements include affected-story reimplementation and
+versioned library updates. Orchestrators choose bounded work, reimplementation
+timing and increasingly ambitious returning stories. Include persistent/multi-turn
+scenes as well as timed films. Product supplies prompts and expected responses;
+agree director generation ownership before the next corpus.
