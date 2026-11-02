@@ -46,6 +46,10 @@ Landed in MotionScript / Scene IR **0.4.0**. Wire stays `"0.2"`; scenes and prog
 
 Landed in MotionScript / Scene IR **0.5.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `geometry.animatedTrim`. Static trim remains `geometry.trimPath` (0.2.0); animated `trim.start` / `trim.end` / `trim.offset` tracks require the 0.5.0 capability.
 
+### Decision for `entities.durableRevisions`
+
+Landed in MotionScript / Scene IR **0.6.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `entities.durableRevisions`. `APPLY_ENTITY_PATCH` carries revision-guarded topology/ownership/behaviour ops; `ADD_NODES` remains frozen after the first seal. Declarative MotionScript entity/behaviour statements are outside this release.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.5.0",
+      "current": "0.6.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.1"
+      "packageVersion": "0.1.3"
     },
     "scene-ir": {
-      "current": "0.5.0",
+      "current": "0.6.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.1"
+      "packageVersion": "0.1.3"
     }
   },
   "versions": [
@@ -48,6 +48,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.5.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.6.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.6.0.md"
     },
     {
       "language": "motionscript",
@@ -89,6 +96,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.5.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.6.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.6.0.md"
     },
     {
       "language": "scene-ir",
@@ -139,6 +153,13 @@
       "compiler": "0.1.1",
       "runtime": "0.1.1",
       "readers": "Wire stays 0.2. geometry.animatedTrim is gated by requiredCapabilities / requires. Packages without the capability reject those documents."
+    },
+    {
+      "motionscript": "0.6.0",
+      "sceneIr": "0.6.0",
+      "compiler": "0.1.3",
+      "runtime": "0.1.4",
+      "readers": "Wire stays 0.2. entities.durableRevisions is gated by requiredCapabilities / requires. Packages without the capability reject APPLY_ENTITY_PATCH."
     }
   ]
 }

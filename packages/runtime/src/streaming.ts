@@ -7,10 +7,13 @@ import {
   rootTimeMs,
   type ApplyResult,
   type Diagnostic,
+  type EntityPatch,
+  type NodeDefinition,
   type ResolvedFrame,
   type SceneIR,
   type SceneIRDelta,
 } from "@gvr/schema";
+import { EntityRevisionStore, type EntityStoreSnapshot } from "./entities";
 import { buildResolvedFrame } from "./frame";
 import type { ObservedDeltaRef } from "./observation";
 import { sampleScene } from "./sample";
@@ -18,12 +21,15 @@ import { sampleScene } from "./sample";
 /**
  * Applies revision-guarded scene deltas and evaluates the sealed prefix.
  * At the unsealed horizon, tracks and steps that start on that instant are held back.
+ * With entities.durableRevisions, APPLY_ENTITY_PATCH may change topology after seal
+ * without rewriting the sealed presentation prefix.
  */
 export class StreamingRuntime {
   revision = 0;
   sealedThroughMs = 0;
   authoringComplete = false;
   scene?: SceneIR;
+  readonly entities = new EntityRevisionStore();
   private readonly queue: ObservedDeltaRef[] = [];
   private queuedState?: CandidateState;
   private readonly rejected: Diagnostic[] = [];
@@ -32,6 +38,8 @@ export class StreamingRuntime {
   private disposedFlag = false;
   private degradedFlag = false;
   private diagnostics: Diagnostic[] = [];
+  /** Append-only accepted entity patches for undo/replay (newest last). */
+  private readonly entityPatchLog: EntityPatch[] = [];
 
   constructor(private readonly telemetry?: Telemetry) {}
 
@@ -47,6 +55,9 @@ export class StreamingRuntime {
   /** True after dispose/cancel; further enqueue/flush are no-ops. */
   get disposed(): boolean { return this.disposedFlag; }
 
+  /** Accepted entity patches in apply order — replay foundation. */
+  get entityPatches(): readonly EntityPatch[] { return this.entityPatchLog; }
+
   dispose(): void {
     this.disposedFlag = true;
     this.queue.length = 0;
@@ -56,6 +67,8 @@ export class StreamingRuntime {
     this.applied.length = 0;
     this.diagnostics = [];
     this.scene = undefined;
+    this.entityPatchLog.length = 0;
+    this.entities.dispose();
     this.telemetry?.gauge('runtime.queue_deltas', 0);
     this.telemetry?.gauge('runtime.retained_nodes', 0);
   }
@@ -74,6 +87,8 @@ export class StreamingRuntime {
       scene: this.scene,
       sealedThroughMs: this.sealedThroughMs,
       authoringComplete: this.authoringComplete,
+      entities: this.entities.snapshot(),
+      entityPatches: [...this.entityPatchLog],
     };
     const validated = validateDelta(delta, undefined, base.scene?.irVersion);
     if (!validated.ok) {
@@ -100,7 +115,7 @@ export class StreamingRuntime {
         message: "Delta payload must contain cloneable Scene IR values."})]);
       return;
     }
-    const candidate = assemble(base, owned);
+    const candidate = assemble(base, owned, this.entities);
     if (!candidate.ok) {
       this.reject(delta, candidate.diagnostics);
       return;
@@ -131,6 +146,9 @@ export class StreamingRuntime {
       this.scene = this.queuedState.scene;
       this.sealedThroughMs = this.queuedState.sealedThroughMs;
       this.authoringComplete = this.queuedState.authoringComplete;
+      this.entities.restore(this.queuedState.entities);
+      this.entityPatchLog.length = 0;
+      this.entityPatchLog.push(...this.queuedState.entityPatches);
       this.revision = results[results.length - 1]!.revision;
       this.queuedState = undefined;
     }
@@ -148,10 +166,12 @@ export class StreamingRuntime {
     if (beyond) this.telemetry?.count('runtime.horizon_wait_evaluations');
     const time = beyond ? this.sealedThroughMs : sceneTimeMs;
     const atFrontier = !this.authoringComplete && time === this.sealedThroughMs;
-    const sampled = sampleScene(this.scene, time, atFrontier ? { excludeStartsAtMs: this.sealedThroughMs } : undefined);
+    const frontierOptions = atFrontier ? { excludeStartsAtMs: this.sealedThroughMs } : undefined;
+    const view = projectScene(this.scene, this.entities, time, frontierOptions);
+    const sampled = sampleScene(view, time, frontierOptions);
     this.diagnostics = sampled.diagnostics;
     if (sampled.diagnostics.length > 0) this.degradedFlag = true;
-    return buildResolvedFrame(this.scene, sampled, time, this.revision);
+    return buildResolvedFrame(view, sampled, time, this.revision);
   }
 
   private recordRejected(diagnostics: readonly Diagnostic[]): void {
@@ -172,16 +192,20 @@ interface CandidateState {
   scene?: SceneIR;
   sealedThroughMs: number;
   authoringComplete: boolean;
+  entities: EntityStoreSnapshot;
+  entityPatches: EntityPatch[];
 }
 
 type CandidateResult = {ok: true; state: CandidateState} | {ok: false; diagnostics: Diagnostic[]};
 
 /** No writes to base or its nested values: rejection simply discards these containers. */
-function assemble(base: CandidateState, delta: SceneIRDelta): CandidateResult {
+function assemble(base: CandidateState, delta: SceneIRDelta, store: EntityRevisionStore): CandidateResult {
   let scene = base.scene && {...base.scene, nodes: [...base.scene.nodes],
     timeline: {...base.scene.timeline, tracks: [...base.scene.timeline.tracks], steps: [...base.scene.timeline.steps]}};
   let sealedThroughMs = base.sealedThroughMs;
   let authoringComplete = base.authoringComplete;
+  let entities = structuredCloneMapSnapshot(base.entities);
+  const entityPatches = [...base.entityPatches];
   const fail = (code: Diagnostic["code"], message: string, path: string): CandidateResult => ({
     ok: false, diagnostics: [diagnostic({code, phase: "validate", category: code === "MISSING_REQUIRED" ? "reference" : "temporal", message, path})],
   });
@@ -193,6 +217,40 @@ function assemble(base: CandidateState, delta: SceneIRDelta): CandidateResult {
       const {durationMs, ...header} = operation.scene;
       scene = {...header, nodes: scene?.nodes ?? [],
         timeline: {durationMs, tracks: scene?.timeline.tracks ?? [], steps: scene?.timeline.steps ?? []}};
+    } else if (operation.op === "APPLY_ENTITY_PATCH") {
+      if (!scene) return fail("MISSING_REQUIRED", "CREATE_SCENE must precede scene operations.", path);
+      const required = scene.requiredCapabilities ?? [];
+      if (!required.includes("entities.durableRevisions")) {
+        return fail(
+          "MISSING_REQUIRED",
+          "APPLY_ENTITY_PATCH requires entities.durableRevisions in requiredCapabilities.",
+          path,
+        );
+      }
+      // Keep entity seal frontier aligned with scene seals before applying.
+      entities = { ...entities, sealedThroughMs };
+      const applied = store.applyToSnapshot(entities, operation.patch);
+      if (!applied.ok) {
+        const code = applied.diagnostic.code === "SEALED_HISTORY" ? "INVALID_TIMING"
+          : applied.diagnostic.code === "STALE_REVISION" ? "INVALID_TIMING"
+          : applied.diagnostic.code === "UNKNOWN_ENTITY" ? "MISSING_REQUIRED"
+          : "INVALID_TYPE";
+        return fail(code, applied.diagnostic.message, applied.diagnostic.path ?? path);
+      }
+      entities = applied.snapshot;
+      entityPatches.push(structuredClone(operation.patch));
+      // Bind late nodes into the scene graph when upserted after the first seal.
+      for (const op of operation.patch.operations) {
+        if (op.op === "UPSERT_ENTITY" && op.node && sealedThroughMs > 0) {
+          const existing = scene.nodes.findIndex((node) => node.id === op.node!.id);
+          if (existing >= 0) scene.nodes[existing] = structuredClone(op.node);
+          else scene.nodes.push(structuredClone(op.node));
+        } else if (op.op === "UPSERT_ENTITY" && op.node && sealedThroughMs === 0) {
+          if (!scene.nodes.some((node) => node.id === op.node!.id)) {
+            scene.nodes.push(structuredClone(op.node));
+          }
+        }
+      }
     } else {
       if (!scene) return fail("MISSING_REQUIRED", "CREATE_SCENE must precede scene operations.", path);
       if (operation.op === "ADD_NODES") {
@@ -207,9 +265,11 @@ function assemble(base: CandidateState, delta: SceneIRDelta): CandidateResult {
           return fail("SEAL_BLOCKED", "A seal must advance within the scene duration.", path);
         }
         sealedThroughMs = operation.horizonMs;
+        entities = { ...entities, sealedThroughMs };
       } else if (operation.op === "COMPLETE_PROGRAM") {
         authoringComplete = true;
         sealedThroughMs = Math.max(sealedThroughMs, scene.timeline.durationMs);
+        entities = { ...entities, sealedThroughMs };
       }
     }
   }
@@ -233,5 +293,50 @@ function assemble(base: CandidateState, delta: SceneIRDelta): CandidateResult {
       return fail("INVALID_TIMING", `A step writes before the seal at ${frontier}ms.`, `operations[${index}].steps`);
     }
   }
-  return {ok: true, state: {scene, sealedThroughMs, authoringComplete}};
+  return {ok: true, state: {scene, sealedThroughMs, authoringComplete, entities, entityPatches}};
+}
+
+function structuredCloneMapSnapshot(base: EntityStoreSnapshot): EntityStoreSnapshot {
+  return {
+    revision: base.revision,
+    sealedThroughMs: base.sealedThroughMs,
+    entities: new Map(
+      [...base.entities.entries()].map(([id, versions]) => [
+        id,
+        versions.map((v) => ({ fromMs: v.fromMs, record: { ...v.record } })),
+      ]),
+    ),
+    ownership: base.ownership.map((grant) => ({ ...grant })),
+    behaviours: new Map([...base.behaviours.entries()].map(([id, behaviour]) => [id, { ...behaviour }])),
+    nodes: new Map([...base.nodes.entries()].map(([id, node]) => [id, structuredClone(node)])),
+  };
+}
+
+/** Filter tracked entities that are absent at scene time; keep untracked nodes. */
+function projectScene(
+  scene: SceneIR,
+  store: EntityRevisionStore,
+  sceneTimeMs: number,
+  options?: { excludeStartsAtMs?: number },
+): SceneIR {
+  const nodes: NodeDefinition[] = [];
+  const seen = new Set<string>();
+  for (const node of scene.nodes) {
+    if (store.tracks(node.id)) {
+      const entity = store.entityAt(node.id, sceneTimeMs, options);
+      if (!entity) continue;
+    }
+    nodes.push(node);
+    seen.add(node.id);
+  }
+  // Include bound late nodes still present but missing from the frozen list (defensive).
+  for (const [entityId] of store.snapshot().nodes) {
+    if (seen.has(entityId)) continue;
+    if (!store.tracks(entityId)) continue;
+    const entity = store.entityAt(entityId, sceneTimeMs, options);
+    if (!entity) continue;
+    const node = store.nodeFor(entityId);
+    if (node) nodes.push(node);
+  }
+  return { ...scene, nodes };
 }

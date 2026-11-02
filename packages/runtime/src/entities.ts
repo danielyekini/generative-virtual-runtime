@@ -1,55 +1,32 @@
 /**
- * Critical prototype for E002 persistent entities / revisions / behaviours.
- * Not wired into Scene IR ops or StreamingRuntime yet — E004/E005 implement that.
+ * Durable entity revisions (entities.durableRevisions / E002–E004).
  * Follows capacity/E001 rules: copy containers, never mutate accepted nested maps.
  */
 
-export type EntityId = string;
-export type ChannelId = string;
-export type BehaviourId = string;
-export type WriterClass = "generative" | "behaviour" | "input" | "physics";
+import type {
+  BehaviourId,
+  BehaviourRecord,
+  ChannelId,
+  EntityId,
+  EntityPatch,
+  EntityPatchOp,
+  EntityRecord,
+  NodeDefinition,
+  OwnershipGrant,
+  WriterClass,
+} from "@gvr/schema";
 
-export interface EntityRecord {
-  id: EntityId;
-  kind: "drawable" | "group";
-  parentId: EntityId | null;
-  /** False means removed for presentation at/after its removal activation. */
-  present: boolean;
-  label?: string;
-}
-
-export interface OwnershipGrant {
-  entityId: EntityId;
-  channel: ChannelId;
-  owner: BehaviourId | "generative";
-  writerClass: WriterClass;
-  fromMs: number;
-  /** Exclusive until this instant; omit for open-ended. */
-  untilMs?: number;
-}
-
-export interface BehaviourRecord {
-  id: BehaviourId;
-  entityId: EntityId;
-  channel: ChannelId;
-  activationMs: number;
-  active: boolean;
-}
-
-export type EntityPatchOp =
-  | { op: "UPSERT_ENTITY"; entity: EntityRecord; activationMs: number }
-  | { op: "REMOVE_ENTITY"; entityId: EntityId; activationMs: number }
-  | { op: "REPARENT"; entityId: EntityId; parentId: EntityId | null; activationMs: number }
-  | { op: "GRANT_OWNERSHIP"; grant: OwnershipGrant }
-  | { op: "REVOKE_OWNERSHIP"; entityId: EntityId; channel: ChannelId; atMs: number }
-  | { op: "ACTIVATE_BEHAVIOUR"; behaviour: BehaviourRecord }
-  | { op: "CANCEL_BEHAVIOUR"; behaviourId: BehaviourId };
-
-export interface EntityPatch {
-  expectedRevision: number;
-  nextRevision: number;
-  operations: EntityPatchOp[];
-}
+export type {
+  BehaviourId,
+  BehaviourRecord,
+  ChannelId,
+  EntityId,
+  EntityPatch,
+  EntityPatchOp,
+  EntityRecord,
+  OwnershipGrant,
+  WriterClass,
+};
 
 export type EntityPatchCode =
   | "STALE_REVISION"
@@ -57,7 +34,8 @@ export type EntityPatchCode =
   | "UNKNOWN_ENTITY"
   | "OWNERSHIP_CONFLICT"
   | "INVALID_ACTIVATION"
-  | "UNKNOWN_BEHAVIOUR";
+  | "UNKNOWN_BEHAVIOUR"
+  | "NODE_CONFLICT";
 
 export interface EntityPatchDiagnostic {
   code: EntityPatchCode;
@@ -78,22 +56,29 @@ interface EntityVersion {
   record: EntityRecord;
 }
 
-interface StoreState {
+export interface EntityStoreSnapshot {
   revision: number;
   sealedThroughMs: number;
-  /** Append-only version timelines per entity; never edit prior versions in place. */
   entities: Map<EntityId, EntityVersion[]>;
   ownership: OwnershipGrant[];
   behaviours: Map<BehaviourId, BehaviourRecord>;
+  /** Late or bound node payloads keyed by entity id (immutable records). */
+  nodes: Map<EntityId, NodeDefinition>;
 }
 
-function cloneState(base: StoreState): StoreState {
+function cloneSnapshot(base: EntityStoreSnapshot): EntityStoreSnapshot {
   return {
     revision: base.revision,
     sealedThroughMs: base.sealedThroughMs,
-    entities: new Map([...base.entities.entries()].map(([id, versions]) => [id, versions.map((v) => ({ fromMs: v.fromMs, record: { ...v.record } }))])),
+    entities: new Map(
+      [...base.entities.entries()].map(([id, versions]) => [
+        id,
+        versions.map((v) => ({ fromMs: v.fromMs, record: { ...v.record } })),
+      ]),
+    ),
     ownership: base.ownership.map((grant) => ({ ...grant })),
     behaviours: new Map([...base.behaviours.entries()].map(([id, behaviour]) => [id, { ...behaviour }])),
+    nodes: new Map([...base.nodes.entries()].map(([id, node]) => [id, structuredClone(node)])),
   };
 }
 
@@ -108,16 +93,22 @@ function fail(code: EntityPatchCode, message: string, path?: string): EntityPatc
   return { code, message, path };
 }
 
-function latestVersion(versions: EntityVersion[] | undefined, sceneTimeMs: number, sealedThroughMs: number): EntityRecord | null {
+function latestVersion(
+  versions: EntityVersion[] | undefined,
+  sceneTimeMs: number,
+  options?: { excludeStartsAtMs?: number },
+): EntityRecord | null {
   if (!versions || versions.length === 0) return null;
-  // Sealed left-limit matches runtime tracks: facts that start at the seal are excluded.
-  const atSealedPrefix = sceneTimeMs <= sealedThroughMs;
-  const cutoff = atSealedPrefix ? sealedThroughMs : sceneTimeMs;
+  // At an incomplete seal frontier, exclude activations that start on the seal
+  // (matches track sampling). Otherwise use inclusive time.
+  const exclude = options?.excludeStartsAtMs;
   let chosen: EntityVersion | undefined;
   for (const version of versions) {
-    if (atSealedPrefix ? version.fromMs < cutoff : version.fromMs <= cutoff) {
-      chosen = version;
-    }
+    const visible =
+      exclude !== undefined && sceneTimeMs === exclude
+        ? version.fromMs < exclude
+        : version.fromMs <= sceneTimeMs;
+    if (visible) chosen = version;
   }
   if (!chosen) return null;
   return chosen.record.present ? { ...chosen.record } : null;
@@ -128,6 +119,17 @@ function currentRecord(versions: EntityVersion[] | undefined): EntityRecord | nu
   return { ...versions[versions.length - 1]!.record };
 }
 
+function emptySnapshot(): EntityStoreSnapshot {
+  return {
+    revision: 0,
+    sealedThroughMs: 0,
+    entities: new Map(),
+    ownership: [],
+    behaviours: new Map(),
+    nodes: new Map(),
+  };
+}
+
 /**
  * Revision-guarded entity/ownership/behaviour store.
  * Topology and behaviour changes that would alter the sealed presentation prefix
@@ -135,14 +137,8 @@ function currentRecord(versions: EntityVersion[] | undefined): EntityRecord | nu
  * the sealed left-limit sample.
  */
 export class EntityRevisionStore {
-  private accepted: StoreState = {
-    revision: 0,
-    sealedThroughMs: 0,
-    entities: new Map(),
-    ownership: [],
-    behaviours: new Map(),
-  };
-  private pending?: StoreState;
+  private accepted: EntityStoreSnapshot = emptySnapshot();
+  private pending?: EntityStoreSnapshot;
   private disposed = false;
 
   get revision(): number {
@@ -151,6 +147,23 @@ export class EntityRevisionStore {
 
   get sealedThroughMs(): number {
     return this.accepted.sealedThroughMs;
+  }
+
+  /** Export a deep clone for assemble candidates. */
+  snapshot(): EntityStoreSnapshot {
+    return cloneSnapshot(this.accepted);
+  }
+
+  /** Replace accepted state (used when publishing a flushed assemble candidate). */
+  restore(snapshot: EntityStoreSnapshot): void {
+    if (this.disposed) return;
+    this.accepted = cloneSnapshot(snapshot);
+    this.pending = undefined;
+  }
+
+  /** True when this id has any revisioned entity timeline. */
+  tracks(entityId: EntityId): boolean {
+    return this.accepted.entities.has(entityId);
   }
 
   /** Advance the sealed presentation frontier (monotonic). */
@@ -183,7 +196,7 @@ export class EntityRevisionStore {
         `nextRevision must be ${base.revision + 1}, got ${patch.nextRevision}.`,
       );
     }
-    const candidate = cloneState(base);
+    const candidate = cloneSnapshot(base);
     for (const [index, operation] of patch.operations.entries()) {
       const path = `operations[${index}]`;
       const error = this.applyOp(candidate, operation, path);
@@ -192,6 +205,39 @@ export class EntityRevisionStore {
     candidate.revision = patch.nextRevision;
     this.pending = candidate;
     return undefined;
+  }
+
+  /** Apply a patch to a snapshot without mutating this store (assemble path). */
+  applyToSnapshot(
+    base: EntityStoreSnapshot,
+    patch: EntityPatch,
+  ): { ok: true; snapshot: EntityStoreSnapshot } | { ok: false; diagnostic: EntityPatchDiagnostic } {
+    if (patch.expectedRevision !== base.revision) {
+      return {
+        ok: false,
+        diagnostic: fail(
+          "STALE_REVISION",
+          `Expected revision ${base.revision}, got ${patch.expectedRevision}.`,
+        ),
+      };
+    }
+    if (patch.nextRevision !== base.revision + 1) {
+      return {
+        ok: false,
+        diagnostic: fail(
+          "STALE_REVISION",
+          `nextRevision must be ${base.revision + 1}, got ${patch.nextRevision}.`,
+        ),
+      };
+    }
+    const candidate = cloneSnapshot(base);
+    for (const [index, operation] of patch.operations.entries()) {
+      const path = `operations[${index}]`;
+      const error = this.applyOp(candidate, operation, path);
+      if (error) return { ok: false, diagnostic: error };
+    }
+    candidate.revision = patch.nextRevision;
+    return { ok: true, snapshot: candidate };
   }
 
   /** Publish the staged candidate; no-op if nothing is pending. */
@@ -209,22 +255,34 @@ export class EntityRevisionStore {
   dispose(): void {
     this.disposed = true;
     this.pending = undefined;
-    this.accepted = {
-      revision: this.accepted.revision,
-      sealedThroughMs: this.accepted.sealedThroughMs,
-      entities: new Map(),
-      ownership: [],
-      behaviours: new Map(),
-    };
+    this.accepted = emptySnapshot();
   }
 
-  /** Entity as effective at scene time (sealed prefix excludes activations at the seal). */
-  entityAt(entityId: EntityId, sceneTimeMs: number): EntityRecord | null {
-    return latestVersion(
-      this.accepted.entities.get(entityId),
-      sceneTimeMs,
-      this.accepted.sealedThroughMs,
-    );
+  /**
+   * Entity as effective at scene time.
+   * Pass excludeStartsAtMs when sampling an incomplete seal frontier so
+   * activations that start on the seal stay invisible (E002 left-limit).
+   */
+  entityAt(
+    entityId: EntityId,
+    sceneTimeMs: number,
+    options?: { excludeStartsAtMs?: number },
+  ): EntityRecord | null {
+    return latestVersion(this.accepted.entities.get(entityId), sceneTimeMs, options);
+  }
+
+  entityAtSnapshot(
+    snapshot: EntityStoreSnapshot,
+    entityId: EntityId,
+    sceneTimeMs: number,
+    options?: { excludeStartsAtMs?: number },
+  ): EntityRecord | null {
+    return latestVersion(snapshot.entities.get(entityId), sceneTimeMs, options);
+  }
+
+  nodeFor(entityId: EntityId): NodeDefinition | undefined {
+    const node = this.accepted.nodes.get(entityId);
+    return node ? structuredClone(node) : undefined;
   }
 
   context(entityId: EntityId): CompactEntityContext {
@@ -241,13 +299,13 @@ export class EntityRevisionStore {
   }
 
   private applyOp(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     operation: EntityPatchOp,
     path: string,
   ): EntityPatchDiagnostic | undefined {
     switch (operation.op) {
       case "UPSERT_ENTITY":
-        return this.upsert(state, operation.entity, operation.activationMs, path);
+        return this.upsert(state, operation.entity, operation.activationMs, operation.node, path);
       case "REMOVE_ENTITY":
         return this.remove(state, operation.entityId, operation.activationMs, path);
       case "REPARENT":
@@ -263,7 +321,11 @@ export class EntityRevisionStore {
     }
   }
 
-  private guardActivation(state: StoreState, activationMs: number, path: string): EntityPatchDiagnostic | undefined {
+  private guardActivation(
+    state: EntityStoreSnapshot,
+    activationMs: number,
+    path: string,
+  ): EntityPatchDiagnostic | undefined {
     if (!Number.isFinite(activationMs) || activationMs < 0) {
       return fail("INVALID_ACTIVATION", "activationMs must be a finite number >= 0.", path);
     }
@@ -279,19 +341,16 @@ export class EntityRevisionStore {
     return undefined;
   }
 
-  private appendVersion(
-    state: StoreState,
-    entity: EntityRecord,
-    activationMs: number,
-  ): void {
+  private appendVersion(state: EntityStoreSnapshot, entity: EntityRecord, activationMs: number): void {
     const versions = state.entities.get(entity.id) ?? [];
     state.entities.set(entity.id, [...versions, { fromMs: activationMs, record: { ...entity } }]);
   }
 
   private upsert(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     entity: EntityRecord,
     activationMs: number,
+    node: NodeDefinition | undefined,
     path: string,
   ): EntityPatchDiagnostic | undefined {
     const guarded = this.guardActivation(state, activationMs, path);
@@ -302,12 +361,18 @@ export class EntityRevisionStore {
         return fail("UNKNOWN_ENTITY", `Parent ${entity.parentId} does not exist.`, path);
       }
     }
+    if (node) {
+      if (node.id !== entity.id) {
+        return fail("NODE_CONFLICT", `Node id ${node.id} must match entity id ${entity.id}.`, path);
+      }
+      state.nodes.set(entity.id, structuredClone(node));
+    }
     this.appendVersion(state, entity, activationMs);
     return undefined;
   }
 
   private remove(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     entityId: EntityId,
     activationMs: number,
     path: string,
@@ -323,7 +388,7 @@ export class EntityRevisionStore {
   }
 
   private reparent(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     entityId: EntityId,
     parentId: EntityId | null,
     activationMs: number,
@@ -346,7 +411,7 @@ export class EntityRevisionStore {
   }
 
   private grant(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     grant: OwnershipGrant,
     path: string,
   ): EntityPatchDiagnostic | undefined {
@@ -375,7 +440,7 @@ export class EntityRevisionStore {
   }
 
   private revoke(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     entityId: EntityId,
     channel: ChannelId,
     atMs: number,
@@ -400,7 +465,7 @@ export class EntityRevisionStore {
   }
 
   private activateBehaviour(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     behaviour: BehaviourRecord,
     path: string,
   ): EntityPatchDiagnostic | undefined {
@@ -427,7 +492,7 @@ export class EntityRevisionStore {
   }
 
   private cancelBehaviour(
-    state: StoreState,
+    state: EntityStoreSnapshot,
     behaviourId: BehaviourId,
     path: string,
   ): EntityPatchDiagnostic | undefined {

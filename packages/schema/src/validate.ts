@@ -62,6 +62,16 @@ const OPS = new Set([
   "ADD_STEPS",
   "SEAL_TIMELINE",
   "COMPLETE_PROGRAM",
+  "APPLY_ENTITY_PATCH",
+]);
+const ENTITY_PATCH_OPS = new Set([
+  "UPSERT_ENTITY",
+  "REMOVE_ENTITY",
+  "REPARENT",
+  "GRANT_OWNERSHIP",
+  "REVOKE_OWNERSHIP",
+  "ACTIVATE_BEHAVIOUR",
+  "CANCEL_BEHAVIOUR",
 ]);
 
 const CATEGORY: Partial<Record<DiagnosticCode, DiagnosticCategory>> = {
@@ -1397,6 +1407,11 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
     readNodes(value.nodes, diags, limits, false, "nodes", v02);
     return;
   }
+  if (value.op === "APPLY_ENTITY_PATCH") {
+    rejectUnknown(value, ["op", "patch"], path, diags);
+    readEntityPatch(value.patch, `${path}.patch`, limits, diags, v02);
+    return;
+  }
   if (value.op === "ADD_TRACKS" || value.op === "ADD_STEPS" || value.op === "CREATE_SCENE") {
     const key = value.op === "CREATE_SCENE" ? "scene" : value.op === "ADD_TRACKS" ? "tracks" : "steps";
     rejectUnknown(value, ["op", key], path, diags);
@@ -1415,6 +1430,143 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
     if ((value.op === "ADD_TRACKS" || value.op === "ADD_STEPS") && !Array.isArray(value[value.op === "ADD_TRACKS" ? "tracks" : "steps"])) {
       diags.add("INVALID_TYPE", path, `${value.op} requires an array payload.`);
     }
+  }
+}
+
+function readEntityPatch(value: unknown, path: string, limits: ResourceLimits, diags: Diags, v02: boolean): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "APPLY_ENTITY_PATCH requires a patch object.");
+    return;
+  }
+  rejectUnknown(value, ["expectedRevision", "nextRevision", "operations"], path, diags);
+  for (const key of ["expectedRevision", "nextRevision"] as const) {
+    const revision = value[key];
+    if (typeof revision !== "number" || !Number.isInteger(revision) || revision < 0) {
+      diags.add("INVALID_TYPE", `${path}.${key}`, "Entity patch revisions must be integers >= 0.");
+    }
+  }
+  if (!Array.isArray(value.operations)) {
+    diags.add("INVALID_TYPE", `${path}.operations`, "Entity patch operations must be an array.");
+    return;
+  }
+  for (const [index, operation] of value.operations.entries()) {
+    readEntityPatchOp(operation, `${path}.operations[${index}]`, limits, diags, v02);
+  }
+}
+
+function readEntityPatchOp(value: unknown, path: string, limits: ResourceLimits, diags: Diags, v02: boolean): void {
+  if (!isRecord(value) || typeof value.op !== "string") {
+    diags.add("INVALID_TYPE", path, "An entity patch operation needs an op name.");
+    return;
+  }
+  if (!ENTITY_PATCH_OPS.has(value.op)) {
+    diags.add("INVALID_ENUM", `${path}.op`, `Unknown entity patch operation ${value.op}.`);
+    return;
+  }
+  if (value.op === "UPSERT_ENTITY") {
+    rejectUnknown(value, ["op", "entity", "activationMs", "node"], path, diags);
+    readFinite(value.activationMs, `${path}.activationMs`, diags);
+    readEntityRecord(value.entity, `${path}.entity`, diags);
+    if (value.node !== undefined) readNodes([value.node], diags, limits, false, `${path}.node`, v02);
+    return;
+  }
+  if (value.op === "REMOVE_ENTITY") {
+    rejectUnknown(value, ["op", "entityId", "activationMs"], path, diags);
+    readEntityId(value.entityId, `${path}.entityId`, diags);
+    readFinite(value.activationMs, `${path}.activationMs`, diags);
+    return;
+  }
+  if (value.op === "REPARENT") {
+    rejectUnknown(value, ["op", "entityId", "parentId", "activationMs"], path, diags);
+    readEntityId(value.entityId, `${path}.entityId`, diags);
+    if (value.parentId !== null) readEntityId(value.parentId, `${path}.parentId`, diags);
+    readFinite(value.activationMs, `${path}.activationMs`, diags);
+    return;
+  }
+  if (value.op === "GRANT_OWNERSHIP") {
+    rejectUnknown(value, ["op", "grant"], path, diags);
+    readOwnershipGrant(value.grant, `${path}.grant`, diags);
+    return;
+  }
+  if (value.op === "REVOKE_OWNERSHIP") {
+    rejectUnknown(value, ["op", "entityId", "channel", "atMs"], path, diags);
+    readEntityId(value.entityId, `${path}.entityId`, diags);
+    readChannelId(value.channel, `${path}.channel`, diags);
+    readFinite(value.atMs, `${path}.atMs`, diags);
+    return;
+  }
+  if (value.op === "ACTIVATE_BEHAVIOUR") {
+    rejectUnknown(value, ["op", "behaviour"], path, diags);
+    readBehaviourRecord(value.behaviour, `${path}.behaviour`, diags);
+    return;
+  }
+  if (value.op === "CANCEL_BEHAVIOUR") {
+    rejectUnknown(value, ["op", "behaviourId"], path, diags);
+    readEntityId(value.behaviourId, `${path}.behaviourId`, diags);
+  }
+}
+
+function readEntityId(value: unknown, path: string, diags: Diags): void {
+  if (typeof value !== "string" || value.length === 0 || value.length > 200) {
+    diags.add("INVALID_TYPE", path, "Entity ids must be short non-empty strings.");
+  }
+}
+
+function readChannelId(value: unknown, path: string, diags: Diags): void {
+  if (typeof value !== "string" || value.length === 0 || value.length > 200) {
+    diags.add("INVALID_TYPE", path, "Channel ids must be short non-empty strings.");
+  }
+}
+
+function readEntityRecord(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "Entity record required.");
+    return;
+  }
+  rejectUnknown(value, ["id", "kind", "parentId", "present", "label"], path, diags);
+  readEntityId(value.id, `${path}.id`, diags);
+  if (value.kind !== "drawable" && value.kind !== "group") {
+    diags.add("INVALID_ENUM", `${path}.kind`, "Entity kind must be drawable or group.");
+  }
+  if (value.parentId !== null) readEntityId(value.parentId, `${path}.parentId`, diags);
+  if (typeof value.present !== "boolean") {
+    diags.add("INVALID_TYPE", `${path}.present`, "present must be a boolean.");
+  }
+  if (value.label !== undefined && (typeof value.label !== "string" || value.label.length > 200)) {
+    diags.add("INVALID_TYPE", `${path}.label`, "label must be a short string.");
+  }
+}
+
+function readOwnershipGrant(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "Ownership grant required.");
+    return;
+  }
+  rejectUnknown(value, ["entityId", "channel", "owner", "writerClass", "fromMs", "untilMs"], path, diags);
+  readEntityId(value.entityId, `${path}.entityId`, diags);
+  readChannelId(value.channel, `${path}.channel`, diags);
+  if (typeof value.owner !== "string" || value.owner.length === 0) {
+    diags.add("INVALID_TYPE", `${path}.owner`, "owner must be a behaviour id or generative.");
+  }
+  if (!["generative", "behaviour", "input", "physics"].includes(value.writerClass as string)) {
+    diags.add("INVALID_ENUM", `${path}.writerClass`, "Unknown writer class.");
+  }
+  readFinite(value.fromMs, `${path}.fromMs`, diags);
+  if (value.untilMs !== undefined) readFinite(value.untilMs, `${path}.untilMs`, diags);
+}
+
+function readBehaviourRecord(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "Behaviour record required.");
+    return;
+  }
+  rejectUnknown(value, ["id", "entityId", "channel", "activationMs", "active"], path, diags);
+  readEntityId(value.id, `${path}.id`, diags);
+  readEntityId(value.entityId, `${path}.entityId`, diags);
+  readChannelId(value.channel, `${path}.channel`, diags);
+  readFinite(value.activationMs, `${path}.activationMs`, diags);
+  if (typeof value.active !== "boolean") {
+    diags.add("INVALID_TYPE", `${path}.active`, "active must be a boolean.");
   }
 }
 
