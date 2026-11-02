@@ -57,6 +57,10 @@ Landed in MotionScript / Scene IR **0.5.0**. Wire stays `"0.2"`; scenes and prog
 
 Landed in MotionScript / Scene IR **0.6.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `entities.durableRevisions`. `APPLY_ENTITY_PATCH` carries revision-guarded topology/ownership/behaviour ops; `ADD_NODES` remains frozen after the first seal. Declarative MotionScript entity/behaviour statements are outside this release.
 
+### Decision for `entities.drawableBindings`
+
+Landed in MotionScript / Scene IR **0.7.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `entities.drawableBindings` (and `entities.durableRevisions` for `APPLY_ENTITY_PATCH`). `REGISTER_GEOMETRY` / `BIND_GEOMETRY` publish immutable shared geometry and bind drawable instances; sampling projects clones under instance ids. Declarative MotionScript bind syntax is outside this release.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

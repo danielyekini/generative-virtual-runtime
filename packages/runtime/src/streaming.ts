@@ -227,6 +227,16 @@ function assemble(base: CandidateState, delta: SceneIRDelta, store: EntityRevisi
           path,
         );
       }
+      const hasBindingOps = operation.patch.operations.some(
+        (op) => op.op === "REGISTER_GEOMETRY" || op.op === "BIND_GEOMETRY",
+      );
+      if (hasBindingOps && !required.includes("entities.drawableBindings")) {
+        return fail(
+          "MISSING_REQUIRED",
+          "REGISTER_GEOMETRY / BIND_GEOMETRY require entities.drawableBindings in requiredCapabilities.",
+          path,
+        );
+      }
       // Keep entity seal frontier aligned with scene seals before applying.
       entities = { ...entities, sealedThroughMs };
       const applied = store.applyToSnapshot(entities, operation.patch);
@@ -324,7 +334,11 @@ function structuredCloneMapSnapshot(base: EntityStoreSnapshot): EntityStoreSnaps
   };
 }
 
-/** Filter tracked entities that are absent at scene time; keep untracked nodes. */
+/**
+ * Filter tracked entities that are absent at scene time; keep untracked nodes.
+ * Bound drawables resolve to a clone of shared geometry under the instance id
+ * (entities.drawableBindings); unbound tracked entities keep private nodes.
+ */
 function projectScene(
   scene: SceneIR,
   store: EntityRevisionStore,
@@ -337,18 +351,27 @@ function projectScene(
     if (store.tracks(node.id)) {
       const entity = store.entityAt(node.id, sceneTimeMs, options);
       if (!entity) continue;
+      // Prefer shared-geometry projection; fall back to the authored scene node
+      // for present entities that have no private/bound drawable (e.g. groups).
+      nodes.push(store.resolveDrawable(node.id, sceneTimeMs, options) ?? node);
+      seen.add(node.id);
+      continue;
     }
     nodes.push(node);
     seen.add(node.id);
   }
-  // Include bound late nodes still present but missing from the frozen list (defensive).
-  for (const [entityId] of store.snapshot().nodes) {
+  // Present tracked entities missing from the scene node list (bound-only drawables,
+  // late upserts) resolve through the store so shared geometry can project.
+  for (const entityId of store.snapshot().entities.keys()) {
     if (seen.has(entityId)) continue;
     if (!store.tracks(entityId)) continue;
     const entity = store.entityAt(entityId, sceneTimeMs, options);
     if (!entity) continue;
-    const node = store.nodeFor(entityId);
-    if (node) nodes.push(node);
+    const resolved = store.resolveDrawable(entityId, sceneTimeMs, options);
+    if (resolved) {
+      nodes.push(resolved);
+      seen.add(entityId);
+    }
   }
   return { ...scene, nodes };
 }

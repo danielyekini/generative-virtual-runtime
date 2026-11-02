@@ -1,5 +1,6 @@
 /**
- * Durable entity revisions (entities.durableRevisions / E002–E004).
+ * Durable entity revisions (entities.durableRevisions / E002–E004) and
+ * drawable bindings (entities.drawableBindings / E005–E023).
  * Follows capacity/E001 rules: copy containers, never mutate accepted nested maps.
  */
 
@@ -11,6 +12,8 @@ import type {
   EntityPatch,
   EntityPatchOp,
   EntityRecord,
+  GeometryAsset,
+  GeometryId,
   NodeDefinition,
   OwnershipGrant,
   WriterClass,
@@ -24,6 +27,8 @@ export type {
   EntityPatch,
   EntityPatchOp,
   EntityRecord,
+  GeometryAsset,
+  GeometryId,
   OwnershipGrant,
   WriterClass,
 };
@@ -56,37 +61,20 @@ export interface CompactEntityContext {
   geometryId?: GeometryId | null;
 }
 
-export type GeometryId = string;
-
-/** Immutable shared drawable asset (E005 prototype; language wiring deferred). */
-export interface GeometryAsset {
-  id: GeometryId;
-  /** Prototype leaf space; world/local only. */
-  space: "world" | "local";
-  node: NodeDefinition;
-}
-
 export interface GeometryBinding {
   entityId: EntityId;
   geometryId: GeometryId;
   fromMs: number;
 }
 
-/**
- * Runtime-local patch ops for drawable reuse (E005). Not Scene IR wire ops yet;
- * the follow-up implementation issue versions these under a capability gate.
- */
-export type BindingPatchOp =
-  | { op: "REGISTER_GEOMETRY"; geometry: GeometryAsset; activationMs: number }
-  | { op: "BIND_GEOMETRY"; entityId: EntityId; geometryId: GeometryId; activationMs: number };
+/** @deprecated Prefer EntityPatchOp; binding ops are on the Scene IR wire in 0.7.0. */
+export type BindingPatchOp = Extract<EntityPatchOp, { op: "REGISTER_GEOMETRY" } | { op: "BIND_GEOMETRY" }>;
 
-export type ExtendedEntityPatchOp = EntityPatchOp | BindingPatchOp;
+/** @deprecated Prefer EntityPatchOp. */
+export type ExtendedEntityPatchOp = EntityPatchOp;
 
-export interface ExtendedEntityPatch {
-  expectedRevision: number;
-  nextRevision: number;
-  operations: ExtendedEntityPatchOp[];
-}
+/** @deprecated Prefer EntityPatch. */
+export type ExtendedEntityPatch = EntityPatch;
 
 export interface DrawableReuseBudget {
   geometryAssets: number;
@@ -269,9 +257,8 @@ export class EntityRevisionStore {
   /**
    * Validate and stage a patch against accepted (+ pending) state.
    * Does not publish until {@link commit}.
-   * Accepts schema EntityPatch ops and E005 runtime-local binding ops.
    */
-  enqueue(patch: EntityPatch | ExtendedEntityPatch): EntityPatchDiagnostic | undefined {
+  enqueue(patch: EntityPatch): EntityPatchDiagnostic | undefined {
     if (this.disposed) return fail("INVALID_ACTIVATION", "Store is disposed.");
     const base = this.pending ?? this.accepted;
     if (patch.expectedRevision !== base.revision) {
@@ -300,7 +287,7 @@ export class EntityRevisionStore {
   /** Apply a patch to a snapshot without mutating this store (assemble path). */
   applyToSnapshot(
     base: EntityStoreSnapshot,
-    patch: EntityPatch | ExtendedEntityPatch,
+    patch: EntityPatch,
   ): { ok: true; snapshot: EntityStoreSnapshot } | { ok: false; diagnostic: EntityPatchDiagnostic } {
     if (patch.expectedRevision !== base.revision) {
       return {
@@ -452,7 +439,7 @@ export class EntityRevisionStore {
 
   private applyOp(
     state: EntityStoreSnapshot,
-    operation: ExtendedEntityPatchOp,
+    operation: EntityPatchOp,
     path: string,
   ): EntityPatchDiagnostic | undefined {
     switch (operation.op) {
