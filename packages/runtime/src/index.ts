@@ -11,6 +11,7 @@ export type {
   EntityPatchDiagnostic,
   EntityPatchOp,
   EntityRecord,
+  EntityStoreSnapshot,
   OwnershipGrant,
   WriterClass,
 } from "./entities";

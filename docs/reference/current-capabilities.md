@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.5.0 | 0.2 |
-| scene-ir | 0.5.0 | 0.2 |
+| motionscript | 0.6.0 | 0.2 |
+| scene-ir | 0.6.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -27,6 +27,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | composition.definitions | supported | supported | not-applicable | A composition definition and an instance record. Instances are not drawn a second time. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | geometry.operators | supported | untested | untested | A node can store a trim operator and a round operator. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | geometry.trimPath | supported | supported | supported | Trim operators apply when a path is resolved. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/runtime.test.ts) |
+| entities.durableRevisions | supported | supported | supported | Revision-guarded entity topology, ownership and behaviour patches that may activate after a seal without rewriting sealed presentation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/durable-revisions.test.ts) |
 | geometry.animatedTrim | supported | supported | supported | Keyframe tracks may drive trim.start, trim.end, and trim.offset on a path node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/runtime.test.ts) |
 | geometry.roundedRect | untested | untested | untested | A rectangle may carry a corner radius. [registry](../../packages/schema/capabilities/registry.json) |
 | geometry.spatialCurve | supported | supported | not-applicable | A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic (After Effects / lottie-web), not by the raw bezier parameter. Optional tangent Z participates in length only and is not drawn. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/spatial.test.ts) |
@@ -64,5 +65,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `b53e1b0e4212a99a9ba64afee490575fc69f14a4e6b36666f554fcccb3248f06`
-- `packages/schema/capabilities/registry.json` SHA-256 `62040d5ac6acbc5bb7e021b101ade39ffc7a483341b3763529a80dbc3258f7fe`
+- `packages/schema/capabilities/releases.json` SHA-256 `0280ecc714958c5121f12e07c5bf3bdd119f3e8cc0657b73529be3f2f573dd14`
+- `packages/schema/capabilities/registry.json` SHA-256 `7cbb12ce35603c9b276bbc7c4d586f3874750e4666f7a387c98a165cd4acd1c6`

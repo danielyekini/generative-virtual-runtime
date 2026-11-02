@@ -484,13 +484,67 @@ export interface SceneHeader {
   geometryOperators?: GeometryOperatorList[];
 }
 
+/** Stable semantic entity identity for durable revisions (entities.durableRevisions). */
+export type EntityId = string;
+export type ChannelId = string;
+export type BehaviourId = string;
+export type WriterClass = "generative" | "behaviour" | "input" | "physics";
+
+export interface EntityRecord {
+  id: EntityId;
+  kind: "drawable" | "group";
+  parentId: EntityId | null;
+  /** False means removed for presentation at/after its removal activation. */
+  present: boolean;
+  label?: string;
+}
+
+export interface OwnershipGrant {
+  entityId: EntityId;
+  channel: ChannelId;
+  owner: BehaviourId | "generative";
+  writerClass: WriterClass;
+  fromMs: number;
+  /** Exclusive until this instant; omit for open-ended. */
+  untilMs?: number;
+}
+
+export interface BehaviourRecord {
+  id: BehaviourId;
+  entityId: EntityId;
+  channel: ChannelId;
+  activationMs: number;
+  active: boolean;
+}
+
+/**
+ * Topology / ownership / behaviour mutation. Activation times must not rewrite
+ * the sealed presentation prefix (see entities.durableRevisions).
+ */
+export type EntityPatchOp =
+  | { op: "UPSERT_ENTITY"; entity: EntityRecord; activationMs: number; node?: NodeDefinition }
+  | { op: "REMOVE_ENTITY"; entityId: EntityId; activationMs: number }
+  | { op: "REPARENT"; entityId: EntityId; parentId: EntityId | null; activationMs: number }
+  | { op: "GRANT_OWNERSHIP"; grant: OwnershipGrant }
+  | { op: "REVOKE_OWNERSHIP"; entityId: EntityId; channel: ChannelId; atMs: number }
+  | { op: "ACTIVATE_BEHAVIOUR"; behaviour: BehaviourRecord }
+  | { op: "CANCEL_BEHAVIOUR"; behaviourId: BehaviourId };
+
+export interface EntityPatch {
+  expectedRevision: number;
+  nextRevision: number;
+  operations: EntityPatchOp[];
+}
+
 export type RuntimeOperation =
   | { op: "CREATE_SCENE"; scene: SceneHeader }
   | { op: "ADD_NODES"; nodes: NodeDefinition[] }
   | { op: "ADD_TRACKS"; tracks: TrackDefinition[] }
   | { op: "ADD_STEPS"; steps: StepDefinition[] }
   | { op: "SEAL_TIMELINE"; horizonMs: number }
-  | { op: "COMPLETE_PROGRAM" };
+  | { op: "COMPLETE_PROGRAM" }
+  /** Requires entities.durableRevisions. May activate after the first seal. */
+  | { op: "APPLY_ENTITY_PATCH"; patch: EntityPatch };
 
 export interface SceneIRDelta {
   generationId: string;

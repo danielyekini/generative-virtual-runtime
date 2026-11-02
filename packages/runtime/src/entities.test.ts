@@ -42,8 +42,9 @@ describe("EntityRevisionStore (E002 prototype)", () => {
     store.commit();
 
     // Sealed left-limit still shows the roof and no pillar.
-    expect(store.entityAt("roof", 500)?.label).toBe("roof");
-    expect(store.entityAt("pillar", 500)).toBeNull();
+    const atSeal = { excludeStartsAtMs: 500 };
+    expect(store.entityAt("roof", 500, atSeal)?.label).toBe("roof");
+    expect(store.entityAt("pillar", 500, atSeal)).toBeNull();
     // Past the seal, roof is gone and pillar is present.
     expect(store.entityAt("roof", 501)).toBeNull();
     expect(store.entityAt("pillar", 501)?.label).toBe("pillar");

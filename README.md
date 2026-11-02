@@ -6,7 +6,7 @@ Start with the [charter](docs/project/charter.md), [roadmap](docs/project/roadma
 
 Run `$gvr-engine-run` or `$gvr-product-run` to discover and resume the next task. Each has its own orchestrator and five-run clock. All PRs require `npm run verify`, permitted self-merge and cleanup of the owning merged branch. See [Git standards](docs/operations/git.md).
 
-Current languages are **MotionScript 0.5.0** and **Scene IR 0.5.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
+Current languages are **MotionScript 0.6.0** and **Scene IR 0.6.0** (wire `"0.2"`). A 0.2 consumer migrates wire `"0.1"` without changing 0.1 samples. Package versions are separate from language versions; see [`packages/schema/capabilities/releases.json`](packages/schema/capabilities/releases.json).
 
 **Support authority** is [`packages/schema/capabilities/registry.json`](packages/schema/capabilities/registry.json). Design notes such as [`packages/schema/CONTRACT.md`](packages/schema/CONTRACT.md) do not override it. Evaluation runs under [`docs/evaluations/`](docs/evaluations/README.md) measure one revision; they are not the specification.
 

@@ -339,6 +339,28 @@
       }
     },
     {
+      "id": "entities.durableRevisions",
+      "summary": "Revision-guarded entity topology, ownership and behaviour patches that may activate after a seal without rewriting sealed presentation.",
+      "introducedIn": { "motionscript": "0.6.0", "sceneIr": "0.6.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing entities.durableRevisions.",
+        "APPLY_ENTITY_PATCH carries EntityPatch ops. ADD_NODES remains frozen after the first seal; post-seal structure changes use entity patches.",
+        "Activation before the sealed horizon is rejected. Undo is a new compensating patch; replay re-applies the accepted patch log.",
+        "Declarative MotionScript entity/behaviour statements are outside this claim; authorship uses emitEntityPatchDelta."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/runtime/src/durable-revisions.test.ts#roof remove pillar add retains independent rotation with sealed prefix and compact context",
+        "packages/runtime/src/durable-revisions.test.ts#undo and replay restore topology from the accepted patch log",
+        "packages/compiler/src/entity-patch.test.ts#emits APPLY_ENTITY_PATCH deltas for durable revisions"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Lottie has no durable entity revision ops." },
+        "svg": { "status": "not-applicable", "scope": "SVG has no durable entity revision ops." }
+      }
+    },
+    {
       "id": "geometry.animatedTrim",
       "summary": "Keyframe tracks may drive trim.start, trim.end, and trim.offset on a path node.",
       "introducedIn": { "motionscript": "0.5.0", "sceneIr": "0.5.0" },
