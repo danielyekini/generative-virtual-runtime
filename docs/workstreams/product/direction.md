@@ -16,40 +16,32 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (2 November 2026, post-review)
+## Queue (2 November 2026, post-P006)
 
 Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
-P017, P018 Done). Paused prototype history: PR #65 commit 2d08de0 (reuse
-helpers only).
+P017, P018 Done). P006 native authoring reference is **Done** (PR #130).
+Paused prototype history: PR #65 commit 2d08de0 (reuse helpers only).
 
-1. **P006 #47** native MotionScript authoring reference — **Ready** (resume;
-   E006 Done; prior environment Blocker cleared; rebuild from current main).
-2. **P007 #48** real-model native generation experiment — after P006.
-3. **P008 #49** director-script / next-corpus prep (#88 accepted) — after P007;
-   record director-script ownership with Engine before the next corpus.
-4. **P003 #44** Performance tab — Candidate until user UX confirmation
-   (studio-ux.md open section).
-5. **P005 #46** agent toolbox / shared host API — Candidate until agent-facing
-   command UX is confirmed in studio-ux.md (API can share Player execution
-   paths once specified).
-6. **P009 #50** push-to-talk / narration / SFX host — Candidate; depends on
+1. **P005 #46** agent toolbox / shared host API — Candidate; **user UX
+   confirmation required** before Ready (blocks P007).
+2. **P007 #48** real-model native generation experiment — after P005+P006
+   (P006 Done; waiting on P005).
+3. **P008 #49** director-script / next-corpus prep (#88 accepted) — after P007.
+4. **P003 #44** Performance tab — Candidate until user UX confirmation.
+5. **P009 #50** push-to-talk / narration / SFX host — Candidate; depends on
    P007, E008, **E031** (accepted #120). Promote after E031 Done on main.
-7. P010–P013 remain later Candidate work (interaction, demo, desktop/landing,
-   teaching).
+6. P010–P013 remain later Candidate work.
 
 ## Next
 
-**Ordinary dispatch:** claim P006 and ship the versioned native reference
-(released-authority allow-list, immutable release+fingerprint snapshot,
-freshness guard, fixture/lint verification, honest token-size estimate). Do not
-wait on P003/P005 UX to unblock that path.
+**No ordinary Ready item** until P005’s agent-facing command UX is confirmed
+and the issue is marked Ready (P007’s live dependencies are `P005,P006`).
 
-**User decisions still required before implementation:** Performance inspector
-metrics/layout (P003) and agent-facing command surfaces (P005). Ask with
+**User decisions required:** (1) agent-facing commands / shared host API shape
+for P005; (2) Performance inspector metrics/layout for P003. Ask with
 options/mockups/UI-generator prompt; do not guess Studio chrome.
 
-**After P006:** P007 model experiment, then P008 director/corpus prep. Keep
-Studio delivery ahead of prospective corpus generation.
+Keep Studio delivery ahead of prospective corpus generation (P008).
 
 ## Generative audio provider (intake cleared, 2 November 2026)
 
