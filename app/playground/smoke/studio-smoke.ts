@@ -153,6 +153,14 @@ try {
   check("opening loads the program without running it", opened.programKey === "sample:ball" && opened.runState === "not-run" && !(await ev("!!window.__gvr.frame")) && !(await ev("!document.querySelector('#library').hidden")), opened);
   check("header names the loaded program and waits for Run", (await ev("document.querySelector('#program-name').textContent")) === "Ball" && (await visible("#ready-run")) && !(await ev("document.querySelector('#run').disabled")));
   check("hash names the loaded program", (await ev("location.hash")) === "#p/sample%3Aball");
+  const posterColours = await ev(`(() => { const c = document.querySelector('#view'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; const seen = new Set(); for (let i = 0; i < d.length; i += 4 * 97) seen.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]); return seen.size; })()`);
+  check("loaded program shows its Studio thumbnail on the canvas before Run", posterColours > 1 && !(await ev("!!window.__gvr.frame")), posterColours);
+  check("Fullscreen sits icon-only at the right of the transport", await ev("(() => { const b = document.querySelector('#fullscreen'); return b.closest('#transport') !== null && b.textContent.trim() === '' && !!b.querySelector('svg') && b.getAttribute('aria-label') === 'Fullscreen' && !document.querySelector('#bar #fullscreen'); })()"));
+  check("Settings lives at the far right of the status bar", await ev("(() => { const o = document.querySelector('#options'); const s = document.querySelector('#status').getBoundingClientRect(); return o.closest('#status') !== null && !document.querySelector('#bar #options') && s.right - o.getBoundingClientRect().right < 16; })()"));
+  await ev("document.querySelector('#options').click()");
+  check("status-bar Settings menu opens upward inside the window", await ev("(() => { const r = document.querySelector('#options-pop').getBoundingClientRect(); return !document.querySelector('#options-pop').hidden && r.top >= 0 && r.bottom <= document.querySelector('#status').getBoundingClientRect().top + 1 && r.right <= innerWidth; })()"));
+  await shot("2b-settings");
+  await ev("document.querySelector('#options').click()");
   await shot("2-loaded");
 
   // 3. Run
@@ -166,6 +174,11 @@ try {
   await click(track.x + track.w * 0.5, track.y + track.h / 2);
   const sought = await player();
   check("clicking the tape seeks to that fraction of the program", Math.abs(sought.timeMs - sought.durationMs * 0.5) < sought.durationMs * 0.02 && !sought.playing, sought);
+  for (let i = 0; i < 40 && (await player()).tape?.pending; i++) await sleep(20);
+  const tapeRun = (await player()).tape;
+  check("Run mode fills the whole frame tape with thumbnail tiles", tapeRun && tapeRun.tiles > 4 && tapeRun.drawn === tapeRun.tiles && tapeRun.failed === 0, tapeRun);
+  const ahead = await ev("(() => { const a = document.querySelector('#tape-ahead').getBoundingClientRect(), t = document.querySelector('#track-time').getBoundingClientRect(); return { left: (a.left - t.left) / t.width, width: a.width / t.width }; })()");
+  check("frames ahead of the playhead are greyed until played", Math.abs(ahead.left - 0.5) < 0.03 && Math.abs(ahead.width - 0.5) < 0.03, ahead);
   await shot("3-running");
 
   // 4. Fullscreen
@@ -412,6 +425,17 @@ try {
   live = await ev("window.__gvr.stream");
   check("Instant simulated arrival completes native compilation", live?.authoringComplete && live.receivedCharacters === streamScript.length && live.appliedRevision > 0, live);
   check("Source has accepted units ahead of playhead", await ev("!!document.querySelector('#stream-source .stream-queued')"));
+  const tapeStream = (await player()).tape;
+  check("Stream mode draws frame tiles only for the resolved range", tapeStream && tapeStream.drawn > 0 && tapeStream.drawn <= tapeStream.tiles, tapeStream);
+  await ev("document.querySelector('.stream-body').style.flex = 'none'; document.querySelector('.stream-body').style.height = '40px'"); await player();
+  await ev("(() => { const s = document.querySelector('#stream-scroll'); s.scrollTop = 0; s.dispatchEvent(new Event('scroll')); })()"); await player();
+  check("scrolling up stops following and offers Jump to latest", await visible("#stream-follow") && await ev("document.querySelector('#stream-scroll').scrollTop === 0"));
+  await ev("document.querySelector('#stream-follow').click()"); await player();
+  check("Jump to latest returns to the newest arrived text", !(await visible("#stream-follow")) && await ev("(() => { const s = document.querySelector('#stream-scroll'); return s.scrollHeight - s.scrollTop - s.clientHeight <= 4; })()"));
+  await ev("document.querySelector('.stream-body').style.flex = ''; document.querySelector('.stream-body').style.height = ''");
+  await ev("document.querySelector('#stream-popout').click()"); await player();
+  const pop = await ev(`(() => { const w = window.open('', 'gvr-arrived-source'); const span = w.document.querySelector('#stream-source span[data-state]'); return { cues: w.document.querySelectorAll('#stream-source .stream-cue').length, colour: span ? w.getComputedStyle(span).color : '', legend: w.document.body.textContent.includes('◌ arrived') }; })()`);
+  check("pop-out keeps state icons, colours and the legend", pop.cues > 0 && pop.colour !== "" && pop.colour !== "rgb(0, 0, 0)" && pop.legend, pop);
   await ev("window.__gvr.seek(2000)"); await player();
   check("Playback resolves applied unit spans", await ev("!!document.querySelector('#stream-source .stream-resolved') && !document.querySelector('#stream-source .stream-queued')"));
   await shot('14-stream-resolved');

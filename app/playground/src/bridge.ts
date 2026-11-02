@@ -54,6 +54,8 @@ export interface PlayerProbe {
   panelTab: string;
   diagnostics: string[];
   canvas: { cssWidth: number; cssHeight: number; backingWidth: number; backingHeight: number };
+  /** Frame tape sampling (P016): tile count, tiles drawn, pending and measured cost in ms. */
+  tape?: { tiles: number; drawn: number; pending: number; lastDrawMs: number; totalMs: number; failed: number };
   /** Present when the scene declares audio.cues (E026). */
   audio?: {
     voices: string[];

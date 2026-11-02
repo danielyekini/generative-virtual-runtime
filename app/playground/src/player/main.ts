@@ -27,7 +27,8 @@ import { clampTime, collectKeyTimes, formatClock, isStaticScene, stepKey } from 
 import { FORMAT_LABELS, installedPrograms } from "./programs";
 import { LibraryPage } from "./library-page";
 import { compareScene, type Comparison } from "./comparison";
-import { StreamSession } from "./stream-session";
+import { StreamSession, type SourceState } from "./stream-session";
+import { FrameTape } from "./frame-tape";
 import { createArrival, DEFAULT_ARRIVAL, type ArrivalOptions } from "./arrival";
 import { runProgram, type RunOutcome } from "./run";
 import { describeSceneSummary } from "./scene-summary";
@@ -114,7 +115,9 @@ const ui = {
   clock: $("clock"),
   speed: $<HTMLSelectElement>("speed"),
   track: $("track-time"),
-  tapeLoaded: $("tape-loaded"),
+  tapeFrames: $<HTMLCanvasElement>("tape-frames"),
+  tapeAhead: $("tape-ahead"),
+  tapeGap: $("tape-gap"),
   tapeTicks: $("tape-ticks"),
   playhead: $("playhead"),
   sourcePanel: $("source-panel"),
@@ -135,7 +138,9 @@ const ui = {
   sceneFrame: $("scene-frame"),
   reportSummary: $("report-summary"),
   report: $("report"),
-  status: $("status"),
+  status: $("status-text"),
+  streamScroll: $("stream-scroll"),
+  streamFollow: $<HTMLButtonElement>("stream-follow"),
 };
 
 const tabs = new Map<PanelTab, { tab: HTMLButtonElement; pane: HTMLElement }>(
@@ -146,6 +151,15 @@ const catalogue = [...installedPrograms(), ...decodeMine(read(STORAGE_KEY))];
 const settings = decodeSettings(read(SETTINGS_KEY));
 let recent = decodeRecent(read(RECENT_KEY));
 const renderer = new CanvasRenderer(ui.canvas, telemetry);
+const tape = new FrameTape(ui.tapeFrames);
+/** Bumped per Run/Stream so the tape never reuses another session's tiles. */
+let tapeSession = 0;
+/** Studio poster for a loaded, not-yet-run program (same policy as Library thumbnails). */
+let poster: { key: string; runtime: AnimationRuntime } | null = null;
+const POSTER = 0.35;
+/** Stream source follows arriving text until the user scrolls up. */
+let streamFollow = true;
+let popoutFollow = true;
 const instantClock = new RuntimeClock();
 let stream: StreamSession | null = null;
 let arrival: Worker | null = null;
@@ -205,6 +219,8 @@ function runStream(): void {
   stopAudio();
   comparison = null; comparisonRuntime = null; ui.splitCompare.checked = false;
   const session = new StreamSession(ui.source.value);
+  tapeSession++;
+  streamFollow = true;
   session.clock.setRate(Number(ui.speed.value) || 1);
   stream = session; runtime = null; frame = null;
   rememberDraft();
@@ -308,6 +324,7 @@ function openProgram(entry: ProgramEntry, options: { fromHash?: boolean; waitFor
   clock.seek(0);
   ui.source.value = entry.source;
   ui.source.disabled = false;
+  poster = posterFor(loaded);
   if (catalogue.some((item) => item.key === entry.key)) {
     recent = pushRecent(recent, entry.key);
     write(RECENT_KEY, JSON.stringify(recent));
@@ -321,6 +338,16 @@ function openProgram(entry: ProgramEntry, options: { fromHash?: boolean; waitFor
   render();
 }
 
+function posterFor(entry: ProgramEntry): typeof poster {
+  // Compile only to draw the Studio thumbnail; nothing plays and no outcome is recorded.
+  try {
+    const scene = runProgram(entry.source, entry.format, entry.label).scene;
+    return scene ? { key: entry.key, runtime: new AnimationRuntime(scene) } : null;
+  } catch {
+    return null;
+  }
+}
+
 function openKey(key: string): boolean {
   const entry = catalogue.find((item) => item.key === key);
   if (!entry) return false;
@@ -332,6 +359,7 @@ function run(): void {
   if (!loaded) return;
   stopStream();
   outcome = runProgram(ui.source.value, loaded.format, loaded.label, telemetry);
+  if (outcome.scene) tapeSession++;
   rememberDraft();
   clock.pause();
   // Failure preserves the previous successful scene and playhead, with a visible notice.
@@ -610,7 +638,10 @@ function paint(): void {
   const time = isStill() ? 0 : clampTime(clock.timeMs, durationMs());
   frame = stream ? stream.evaluate(inputOverlay()) : runtime ? runtime.evaluate(time, inputOverlay()) : null;
   if (frame) renderer.render(frame);
-  else clearCanvas(ui.canvas);
+  else if (!outcome && poster && poster.key === loaded?.key) {
+    const span = poster.runtime.scene.timeline.durationMs;
+    renderer.render(poster.runtime.evaluate(span > 0 ? span * POSTER : 0));
+  } else clearCanvas(ui.canvas);
   if (split && ui.splitCompare.checked && !fullscreen) {
     if (!comparisonRenderer) comparisonRenderer = new CanvasRenderer(ui.comparisonCanvas);
     comparisonRenderer.resize(Math.max(1, size.width), Math.max(1, size.height), dpr());
@@ -719,9 +750,7 @@ function renderTransport(): void {
   put(ui.clock, text);
   put(ui.fsClock, text);
   const fraction = !still && span > 0 ? time / span : 0;
-  ui.tapeLoaded.style.width = stream ? `${span > 0 ? stream.runtime.sealedThroughMs / span * 100 : 0}%` : runtime ? "100%" : "0%";
-  ui.track.classList.toggle("is-waiting", Boolean(stream?.observation.waitingForContent));
-  ui.track.title = stream ? `Sealed ${stream.runtime.sealedThroughMs} ms · playhead ${stream.clock.timeMs.toFixed(0)} ms · waiting ${stream.waitingMs.toFixed(0)} ms` : "Seek";
+  renderTape(span, still, fraction);
   ui.playhead.style.left = `${(fraction * 100).toFixed(3)}%`;
   ui.playhead.hidden = !runtime;
   ui.track.setAttribute("aria-valuemax", String(Math.round(span)));
@@ -740,6 +769,49 @@ function renderTransport(): void {
       }),
     );
   }
+}
+
+/** Scene time whose frames are resolved now: whole scene in Run mode, the sealed horizon while streaming. */
+function resolvedThroughMs(span: number): number {
+  if (!runtime) return 0;
+  if (!stream) return span;
+  return stream.runtime.authoringComplete ? span : Math.min(span, stream.runtime.sealedThroughMs);
+}
+
+function renderTape(span: number, still: boolean, fraction: number): void {
+  const resolved = resolvedThroughMs(span);
+  const resolvedFraction = !still && span > 0 ? Math.min(1, resolved / span) : 0;
+  if (!runtime || still || libraryVisible || fullscreen) {
+    if (!runtime || still) tape.clear();
+  } else {
+    const scene = runtime.scene;
+    const evaluator = runtime;
+    const more = tape.update({
+      key: `${tapeSession}:${scene.sceneId}`,
+      spanMs: span,
+      resolvedThroughMs: resolved,
+      aspect: scene.viewport.width / Math.max(1, scene.viewport.height),
+      dpr: Math.min(2, dpr()),
+      // Sampling a streaming runtime ahead of the playhead stays within its sealed prefix.
+      evaluate: (timeMs) => evaluator.evaluate(Math.min(timeMs, resolved)),
+    });
+    if (more) needsDraw = true;
+  }
+  // Grey layer: resolved but not yet played. Normal tiles sit left of the playhead.
+  const ahead = Math.max(0, resolvedFraction - fraction);
+  ui.tapeAhead.style.left = `${(fraction * 100).toFixed(3)}%`;
+  ui.tapeAhead.style.width = `${(ahead * 100).toFixed(3)}%`;
+  const waiting = Boolean(stream?.observation.waitingForContent);
+  ui.track.classList.toggle("is-waiting", waiting);
+  // Red gap: playback is stalled at the resolved frontier waiting for content.
+  ui.tapeGap.hidden = !waiting || still;
+  ui.tapeGap.style.left = `${(resolvedFraction * 100).toFixed(3)}%`;
+  const stats = tape.stats;
+  ui.track.dataset.tiles = String(stats.tiles);
+  ui.track.dataset.drawn = String(stats.drawn);
+  ui.track.title = stream
+    ? `Sealed ${stream.runtime.sealedThroughMs} ms · playhead ${stream.clock.timeMs.toFixed(0)} ms · waiting ${stream.waitingMs.toFixed(0)} ms · ${stats.drawn}/${stats.tiles} frame tiles`
+    : runtime ? `Seek · ${stats.drawn}/${stats.tiles} frame tiles` : "Seek";
 }
 
 function renderSource(): void {
@@ -827,8 +899,46 @@ function renderPanel(): void {
 }
 
 let lastStreamSegments: ReturnType<StreamSession["segments"]> | null = null;
+let lastPopoutSegments: ReturnType<StreamSession["segments"]> | null = null;
+const STREAM_CUES: Record<SourceState, string> = { arrived: "◌", queued: "▷", resolved: "✓", rejected: "✕" };
+const STREAM_LEGEND = "◌ arrived · ▷ accepted / queued ahead of playhead · ✓ resolved at playhead · ✕ rejected. Highlights follow declaration spans, not frames.";
+const POPOUT_CSS = `
+  html, body { margin: 0; height: 100%; background: #181818; color: #eee; font: 13px/1.4 ui-sans-serif, system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; }
+  header { padding: 8px 12px; border-bottom: 1px solid #2f2f34; color: #a1a1aa; }
+  header p { margin: 0 0 4px; }
+  .stream-body { position: relative; flex: 1; min-height: 0; }
+  .stream-scroll { position: absolute; inset: 0; overflow: auto; padding: 8px 12px; }
+  pre { margin: 0; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .stream-arrived { color: #999; } .stream-queued { color: #edab57; } .stream-resolved { color: #eee; }
+  .stream-rejected { color: #ff8080; text-decoration: underline wavy; }
+  .stream-cue { font-size: .8em; margin-right: 3px; user-select: none; }
+  .stream-follow { position: absolute; right: 16px; bottom: 12px; font: inherit; color: #e4e4e7; background: #1d4ed8; border: 1px solid #3b82f6; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+  [hidden] { display: none !important; }
+`;
+
+/** Build the coloured, iconed spans in whichever document will hold them (main page or pop-out). */
+function streamNodes(doc: Document, segments: ReturnType<StreamSession["segments"]>): Node[] {
+  return segments.map((part) => {
+    const span = doc.createElement("span");
+    span.className = `stream-${part.state}`;
+    span.dataset.state = part.state;
+    span.title = part.message ?? part.state;
+    const cue = doc.createElement("span");
+    cue.className = "stream-cue";
+    cue.textContent = STREAM_CUES[part.state];
+    cue.setAttribute("aria-label", part.message ?? part.state);
+    span.append(cue, doc.createTextNode(part.text));
+    return span;
+  });
+}
+
+function atBottom(element: Element): boolean {
+  return element.scrollHeight - element.scrollTop - element.clientHeight <= 4;
+}
+
 function renderStream(): void {
-  if (!stream) { lastStreamSegments = null; return; }
+  if (!stream) { lastStreamSegments = null; lastPopoutSegments = null; return; }
   const o = stream.observation;
   put($("stream-summary"), [
     `${stream.cursor}/${stream.source.length} characters · ${o.receivedBytes} UTF-8 bytes`,
@@ -838,29 +948,66 @@ function renderStream(): void {
     stream.done ? "arrival complete" : stream.paused ? "arrival paused" : performance.now() < stream.stallUntil ? "scheduled arrival stall" : "simulated arrival",
   ].join(" | "));
   const segments = stream.segments();
-  if (segments !== lastStreamSegments) {
+  // Scrolling up freezes the view (no re-render, no jump) until Jump to latest.
+  if (streamFollow && segments !== lastStreamSegments) {
     lastStreamSegments = segments;
-    const nodes = segments.map((part) => {
-      const span = document.createElement("span");
-      span.className = `stream-${part.state}`;
-      span.dataset.state = part.state;
-      span.title = part.message ?? part.state;
-      const cue = document.createElement("span");
-      cue.className = "stream-cue";
-      cue.textContent = { arrived: "◌", queued: "▷", resolved: "✓", rejected: "✕" }[part.state];
-      cue.setAttribute("aria-label", part.message ?? part.state);
-      span.append(cue, document.createTextNode(part.text));
-      return span;
-    });
-    $("stream-source").replaceChildren(...nodes);
+    $("stream-source").replaceChildren(...streamNodes(document, segments));
   }
+  ui.streamFollow.hidden = streamFollow;
+  if (streamFollow && !atBottom(ui.streamScroll)) ui.streamScroll.scrollTop = ui.streamScroll.scrollHeight;
   if (popout && !popout.closed) {
-    const pre = popout.document.querySelector("pre");
-    if (pre) {
-      const text = segments.map(p => `[${p.state}] ${p.text}`).join("");
-      if (pre.textContent !== text) pre.textContent = text;
+    const doc = popout.document;
+    const pre = doc.getElementById("stream-source");
+    const scroller = doc.getElementById("stream-scroll");
+    const follow = doc.getElementById("stream-follow");
+    const summary = doc.getElementById("stream-summary");
+    if (summary) summary.textContent = $("stream-summary").textContent;
+    if (pre && popoutFollow && segments !== lastPopoutSegments) {
+      lastPopoutSegments = segments;
+      pre.replaceChildren(...streamNodes(doc, segments));
     }
+    if (follow) follow.hidden = popoutFollow;
+    if (scroller && popoutFollow && !atBottom(scroller)) scroller.scrollTop = scroller.scrollHeight;
   }
+}
+
+function openPopout(): void {
+  popout = window.open("", "gvr-arrived-source", "width=800,height=600");
+  if (!popout) return;
+  const doc = popout.document;
+  doc.title = "Arrived source · GVR Studio";
+  const style = doc.createElement("style");
+  style.textContent = POPOUT_CSS;
+  doc.head.replaceChildren(style);
+  const header = doc.createElement("header");
+  const summary = doc.createElement("p");
+  summary.id = "stream-summary";
+  const legend = doc.createElement("p");
+  legend.textContent = STREAM_LEGEND;
+  header.append(summary, legend);
+  const body = doc.createElement("div");
+  body.className = "stream-body";
+  const scroller = doc.createElement("div");
+  scroller.id = "stream-scroll";
+  scroller.className = "stream-scroll";
+  const pre = doc.createElement("pre");
+  pre.id = "stream-source";
+  scroller.append(pre);
+  const follow = doc.createElement("button");
+  follow.id = "stream-follow";
+  follow.className = "stream-follow";
+  follow.type = "button";
+  follow.textContent = "↓ Jump to latest";
+  follow.hidden = true;
+  body.append(scroller, follow);
+  doc.body.replaceChildren(header, body);
+  popoutFollow = true;
+  lastPopoutSegments = null;
+  scroller.addEventListener("scroll", () => {
+    const bottom = atBottom(scroller);
+    if (bottom !== popoutFollow) { popoutFollow = bottom; render(); }
+  });
+  follow.addEventListener("click", () => { popoutFollow = true; lastPopoutSegments = null; render(); });
 }
 
 function renderStatus(): void {
@@ -921,6 +1068,7 @@ function probe(): PlayerProbe {
           log: [...audioBackend.log],
         }
       : undefined,
+    tape: { ...tape.stats },
     canvas: {
       cssWidth: ui.canvas.clientWidth,
       cssHeight: ui.canvas.clientHeight,
@@ -1023,9 +1171,16 @@ $("arrival-step").addEventListener("click", () => {
   stream.paused = true;
   arrival?.postMessage({ step: true }); render();
 });
-$("stream-popout").addEventListener("click", () => {
-  popout = window.open("", "gvr-arrived-source", "width=800,height=600");
-  if (popout) { popout.document.title = "Arrived source · GVR Studio"; popout.document.body.style.cssText = "background:#181818;color:#eee"; popout.document.body.replaceChildren(document.createElement("pre")); }
+$("stream-popout").addEventListener("click", () => { openPopout(); render(); });
+ui.streamScroll.addEventListener("scroll", () => {
+  // Only a visible pane can be scrolled by the user; hidden panes report zero sizes.
+  if (ui.streamScroll.clientHeight === 0) return;
+  const bottom = atBottom(ui.streamScroll);
+  if (bottom !== streamFollow) { streamFollow = bottom; render(); }
+});
+ui.streamFollow.addEventListener("click", () => {
+  streamFollow = true;
+  lastStreamSegments = null;
   render();
 });
 window.addEventListener("pagehide", () => { stopStream(); stopAudio(); input?.dispose(); input = null; });
