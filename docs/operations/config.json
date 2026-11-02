@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repository": "danielyekini/generative-virtual-runtime",
-  "installed": false,
+  "installed": true,
   "project": {
     "owner": "danielyekini",
     "number": 3,
@@ -57,8 +57,46 @@
         "options": {}
       }
     },
-    "views_verified": false,
-    "title": "Generative Virtual Runtime"
+    "views_verified": true,
+    "title": "Generative Virtual Runtime",
+    "views": {
+      "Milestones": {
+        "number": 4,
+        "url": "https://github.com/users/danielyekini/projects/3/views/4",
+        "layout": "TABLE_LAYOUT",
+        "filter": "label:\"kind:milestone\""
+      },
+      "Requests": {
+        "number": 5,
+        "url": "https://github.com/users/danielyekini/projects/3/views/5",
+        "layout": "TABLE_LAYOUT",
+        "filter": "label:\"kind:request\" label:\"audience:orchestrator\""
+      },
+      "Human verification": {
+        "number": 6,
+        "url": "https://github.com/users/danielyekini/projects/3/views/6",
+        "layout": "TABLE_LAYOUT",
+        "filter": "status:\"Human verification\""
+      },
+      "Engine": {
+        "number": 2,
+        "url": "https://github.com/users/danielyekini/projects/3/views/2",
+        "layout": "BOARD_LAYOUT",
+        "filter": "label:\"lane:engine\" label:\"audience:worker\" -label:\"kind:review\""
+      },
+      "Product": {
+        "number": 3,
+        "url": "https://github.com/users/danielyekini/projects/3/views/3",
+        "layout": "BOARD_LAYOUT",
+        "filter": "label:\"lane:product\" label:\"audience:worker\" -label:\"kind:review\""
+      },
+      "Delivery": {
+        "number": 1,
+        "url": "https://github.com/users/danielyekini/projects/3/views/1",
+        "layout": "TABLE_LAYOUT",
+        "filter": "label:\"audience:worker\" -label:\"kind:review\""
+      }
+    }
   },
   "issues": {
     "OPS001": {
@@ -247,11 +285,12 @@
     }
   },
   "features": {
-    "projects_read": false,
-    "projects_write": false,
+    "projects_read": true,
+    "projects_write": true,
     "native_subissues": true,
     "background_agent_wake": false,
-    "repository_issue_write": true
+    "repository_issue_write": true,
+    "direct_cli_access": false
   },
   "clocks": {
     "engine": {
@@ -270,9 +309,7 @@
     "product_direction": "docs/workstreams/product/direction.md"
   },
   "authority_note": "No active issue state is stored here. Installer replaces null routing IDs only with verified GitHub values.",
-  "setup_blockers": [
-    "Fresh authenticated Project membership/view readback and complete live worker dispatch acceptance; final full gate, self-merge and own-branch cleanup."
-  ],
+  "setup_blockers": [],
   "repository_id": 1409281098,
   "milestones": {
     "M6": {
@@ -299,5 +336,18 @@
       "number": 6,
       "url": "https://github.com/danielyekini/generative-virtual-runtime/milestone/6"
     }
-  }
+  },
+  "dispatch": {
+    "available": [
+      "connected_tools",
+      "github_cli_with_authentication"
+    ],
+    "work_runtime": "connected_tools",
+    "instructions": "docs/operations/tool-dispatch.md"
+  },
+  "runtime_limitations": [
+    "Direct CLI device authorisation is blocked by this environment; the verified connected-tools path is available.",
+    "Repository persona auto-discovery is unavailable in this Work runtime; read the canonical SKILL.md path explicitly.",
+    "No background agent wake runner is configured."
+  ]
 }

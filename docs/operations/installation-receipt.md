@@ -1,142 +1,88 @@
 # Operating structure installation receipt
 
-Updated 1 November 2026. Work item [OPS001 #13](https://github.com/danielyekini/generative-virtual-runtime/issues/13).
-State: **GitHub structure configured; final authenticated routing and integration incomplete**.
-Routing config remains `installed=false` until the full live gate passes. The
-user-selected [Generative Virtual Runtime #3](https://github.com/users/danielyekini/projects/3)
-has verified project/field IDs in config. The repository identity and description
-have been updated and read back from GitHub.
+2 November 2026. Functional installation and live acceptance **passed**; config.json
+is enabled. [PR #60](https://github.com/danielyekini/generative-virtual-runtime/pull/60)
+and [OPS001 #13](https://github.com/danielyekini/generative-virtual-runtime/issues/13)
+record actual integration, merge SHA, final-main verification and own-branch cleanup.
+Those live records decide integration status.
 
-## Actual preparation
+## Authority and preparation
 
-- Extracted pack v1, validated manifest/schema/links, ran all 11 bundled tests.
-- Reconciled against main `8edfaab10dd4cc7d402238848645dce1efebd926` (PR #11 merged).
-  No newer main changes at initial reconciliation. Reused its handover, decisions
-  and known delta reproduction; no capacity/Circle experiment was repeated.
-- Applied conflict-free overlay. Installed five canonical repo-local personas,
-  compact startup navigation, charter/requirements/directions, decision and
-  migration map. Preserved released contracts and historical evidence/programs.
-- Created 44 seed issues exactly once after searching existing work (only unrelated
-  Test 1 #12 existed). Keys/actual URLs are in config; no installed seed queue.
-  Parent task links and explicit dependency markers are on live issues. All 48
-  supplied audit themes resolve through that map. All 39 native parent-child links are verified, with 6 repository milestones and
-  43 milestone assignments. There are 48 stable-key issues including the two clocks
-  and OPS002/OPS003; acceptance fixtures are separate and closed.
-- Created independent static clock issues: [Engine #57](https://github.com/danielyekini/generative-virtual-runtime/issues/57)
-  and [Product #58](https://github.com/danielyekini/generative-virtual-runtime/issues/58).
-  Both start at zero; installation/intake did not fabricate terminal run records.
-- Read back issue writes, E001's marked PR #11 handover, accepted X001 intake and
-  P001 worker labels. Marked X001 accepted into E018; X002 accepted into P002/P005.
-  Cross-lane requests remain orchestrator-only routing. E001/P001 are first intended
-  worker selections; E018 is independent second engine work. Product's later tasks
-  depend on the initial slice/shared contracts; do not manufacture a second Ready
-  task by starting speculative late-stage delivery work.
-- Added `npm run verify` and matching GitHub Actions workflow. Existing protections
-  were not changed. Full-test, final integration, self-merge and own-branch cleanup
-  requirements are on every persona. No deployment or package publishing occurred.
+[Project #3](https://github.com/users/danielyekini/projects/3) owns active work.
+Config contains verified repository/project/field/option IDs, six milestone URLs
+and six actual view URLs/numbers/filters. There are 48 stable-key issues, 49 members
+including Test 1 #12, 39 native parent-child links and 43 milestone assignments.
+Test 1 retains Todo. All 48 supplied audit themes route to live work.
 
-## Checks and their limits
+Engine and Product show all 22 and 13 tasks. Delivery shows seven parent groups
+with native hierarchy; Milestones six goals, Requests two orchestrator requests,
+Human verification no unresolved gate. Stale associations #21/#39 were refreshed
+and all five observed routing fields restored; both now appear in board/export.
+No duplicate issue or seed queue was installed.
+
+Five canonical repository personas, charter/directions/requirements, authority and
+migration map, operating decision and generated capability index are installed.
+No personal/global skills were installed. Work lacks repo-skill auto-discovery;
+explicit canonical SKILL.md paths are the tested fallback.
+
+PR #11's handover and known delta reproduction were reused. Main remained
+8edfaab10dd4cc7d402238848645dce1efebd926 at final reconciliation. Completed cloning,
+graph and Circle experiments were not repeated. Published contracts and historical
+evidence/program bytes remain intact. Current repository identity is
+danielyekini/generative-virtual-runtime; description: “GVR is a virtual runtime
+environment for live, on-the-fly generated software.”
+
+## Actual acceptance
 
 | Check | Observed result |
 | --- | --- |
-| Pack validation + tests | PASS, 11/11 |
-| Complete repository tests | PASS, 221/221 across 31 files after OPS002 repair |
-| All existing typechecks / Studio production build | PASS; existing build bundle-size warning retained |
-| Schema fixture manifest | PASS |
-| Installed operations acceptance | PASS locally: 25 tests; independent clocks, concurrent review, dedup, intake clearance/new updates, worker filters/dependencies, recovery/handovers, PR lifecycle, pagination, config/persona structure |
-| Capability index | Generated from current releases/registry; freshness check PASS |
-| Issue/label/comment API | Actual create/update/readback PASS |
-| Project structure | 48 keyed members plus existing Test 1; fields, repository link, 39 native links and 6 milestones configured/read back on 30 October. Public identity/fields/hierarchy rechecked 1 November; fresh authenticated membership readback pending |
-| Actual live dispatcher selecting E001/P001 | BLOCKED until Project IDs/fields/readback are available; config fails closed |
-| Runtime persona discovery | Five canonical SKILL.md files and root invocation/path routing verified; this Work runtime has no repo-skill auto-discovery/agent CLI. Explicit SKILL.md path is the supported fallback; no personal/global installation |
-| Duplicate installation | Bundled planner stable-key test PASS; one live issue set created. Actual second authenticated Project setup remains NOT_RUN |
-| Live requests / independent fifth-run reviews | PASS using isolated fixtures #63/#64: request updates and new sessions retrigger intake, interrupted claims retain handover, duplicate terminal record counts once, Engine review covers exactly five records while concurrent sixth and Product record remain. Full dispatcher round trip pending; real clocks #57/#58 remain empty |
-| PR creation/merge/cleanup / final-main gate | Pending live setup and final verification; no premature merged claim |
+| Supplied pack validation/tests | PASS, 11 tests at extraction |
+| Full repository suite | PASS, 221 tests across 31 files |
+| All existing typechecks / Studio production build | PASS; existing bundle-size warning retained |
+| IR manifest / capability-index freshness | PASS |
+| Operations suite | PASS, 29 tests, including full dispatcher subprocess coverage |
+| API/UI round trips | Actual issue/comment REST reads, Project export/field write + reload, hierarchy, fields, repository link and six views verified |
+| First live workers | E001 #20 and P001 #42 with marked handovers; no raw mail in worker output |
+| Independent fifth-terminal review | Isolated live fixture: duplicates count once; five Engine outcomes trigger only Engine; exact review coverage leaves concurrent sixth and Product outcome unreviewed |
+| Intake before five runs | Outside-Project request #64 triggers after one unreviewed fixture run; same-session accepted intake clears; update/new session retriggers; Product unaffected |
+| Interrupted recovery | Temporary In Progress fixture #63 returns interrupted claim/latest handover before new Ready work |
+| Fixture cleanup | #63/#64 closed completed; temporary Project membership removed; real ledgers #57/#58 remain empty |
+| Deduplication | 48 unique keys and 49 members after reconciliation; bundled/installed idempotence tests pass; repeat CLI installer unavailable and not claimed as run |
+| Branch/protection policy | Admin/push, main protected=false, no rulesets read back; no protection changed/bypassed; merge requires actual passing checks and expected head |
 
-Initial full tests exposed two inherited `tsx` wrapper IPC failures (219 passed,
-2 failed) in the managed environment. [OPS002 #59](https://github.com/danielyekini/generative-virtual-runtime/issues/59)
-replaces one-shot wrappers with Node `--import tsx`, including CLI subprocess
-tests. The same entrypoints, output and failure-code assertions remain; no test
-was skipped, weakened or removed. No sandbox permissions were bypassed.
+Initial full tests exposed two inherited tsx IPC wrapper failures (219 passed,
+2 failed). [OPS002 #59](https://github.com/danielyekini/generative-virtual-runtime/issues/59)
+uses Node --import tsx for the same one-shot entrypoints and subprocess assertions.
+No test was removed, skipped or weakened.
 
-## Exact continuation
+## Runtime access and limitations
 
-The CLI login from 30 October did not survive replacement of the transient runtime.
-The GitHub connector still supports repository writes but exposes no Projects API.
-Restore the same authorised repository/project/workflow CLI access, then read back
-all memberships and views, run the live dispatcher/receipt/recovery scenarios and
-repeat setup to verify idempotence. No token belongs in issues, documents or chat.
+Direct CLI device authorisation remains **BLOCKED** by the environment's network
+policy; no CLI live-acceptance or repeat CLI installer result is claimed. The pack
+permits available tools. The verified [connected-tools path](tool-dispatch.md)
+combines authorised issue/comment REST reads with a signed-in Project export/sidebar
+and feeds the same dispatcher. It rejects observations older than ten minutes,
+conflicting authority, duplicate keys and missing memberships/fields/clocks.
+Observations and session receipts stay in ignored work/ops; they are not a queue.
+Recheck live state before claims/writes. No browser credentials were extracted.
 
-Prepared commands (authenticated `gh` on PATH):
+Search briefly omitted a newly reopened request; exhaustive paginated REST issue
+reads own intake. Acquisition stays inside the router utility; workers receive
+only route/context output. The CLI path remains available in authenticated
+runtimes and is not required in this Work session.
 
-```sh
-python3 tools/gvr-ops/complete_setup.py
-python3 tools/gvr-ops/complete_setup.py --apply
-python3 tools/gvr-ops/configure_views.py --apply
-```
+No background wake is configured. Administration/intake does not increment either
+clock. No unrelated feature, deployment or publication was performed. Full-test,
+isolated-branch, self-merge and own-branch cleanup rules are installed in every
+persona and GitHub Actions. Evidence: [1 November fixtures](acceptance-2026-11-01.json)
+and [2 November live dispatch](acceptance-2026-11-02.json).
 
-Setup preserves existing membership, populated fields, option IDs and custom views.
-The reader resolves Project indexing omissions through each issue's exact live
-membership, rejects ambiguity and normalises GitHub's `In Progress` display case.
-API credentials stay in memory; requests are restricted to `api.github.com`, with
-redirects and off-origin pagination rejected before transmission.
+## First invocations
 
-Six named views exist: Delivery, Engine, Product, Milestones, Requests and Human
-verification. The Engine browser view shows 20 indexed cards and two Ready tasks;
-#21/#39 require the verified membership fallback for routing. Keep that limitation
-explicit until GitHub's index catches up. No background LLM wake is configured.
+- $gvr-engine-run → [E001 #20](https://github.com/danielyekini/generative-virtual-runtime/issues/20), atomic assembled-scene delta validation. E018 #37 is second independent Ready work.
+- $gvr-product-run → [P001 #42](https://github.com/danielyekini/generative-virtual-runtime/issues/42), Studio library/editor/execute/fullscreen. Later work depends on that slice/contracts; no speculative second Ready task was invented.
+- $gvr-engine-orchestrator and $gvr-product-orchestrator maintain their queues, inboxes and independent review clocks.
+- $gvr-direction-change applies user steering.
 
-After live acceptance, mark installed, record verified view IDs and acceptance
-results, recheck main and run `npm run verify` on the final candidate. Self-merge
-only when actual checks/protections allow; read back merge SHA, verify final main
-and delete only this run's merged branch. OPS001/OPS002/OPS003 remain open until
-integration. No feature implementation, publication or deployment is included.
-
-First invocations after completion: `$gvr-engine-run` -> [E001 #20](https://github.com/danielyekini/generative-virtual-runtime/issues/20),
-`$gvr-product-run` -> [P001 #42](https://github.com/danielyekini/generative-virtual-runtime/issues/42).
-Direct orchestrators: `$gvr-engine-orchestrator`, `$gvr-product-orchestrator`;
-steering: `$gvr-direction-change`.
-
-## Current steering and continuation
-
-Use Generative Virtual Runtime and the `generative-virtual-runtime` repository
-identity. Current description: “GVR is a virtual runtime environment for live,
-on-the-fly generated software.” Current descriptions use that identity directly.
-Captured logs, audited excerpts and historical machine paths retain original
-measured bytes; this does not grant current support to future sound/interaction.
-
-Use the existing Project #3, not a second delivery board. OPS002 and OPS003 are
-installation children of OPS001; lane work remains nested under M1–M6 goal issues,
-with matching repository milestones for overarching goals. The remote repository now resolves to the intended identity by stable numeric ID
-1409281098. Current official descriptions state the product directly, without a
-rename announcement. Historical measured bytes remain immutable.
-
-## Connected-tools acceptance, 2 November 2026
-
-CLI device authorisation remains BLOCKED by the execution environment's API
-network policy; no CLI acceptance is claimed. The pack also permits available
-tools. The signed-in Project UI and connected issue/comment API now provide a
-second read-only input path to the same dispatcher, documented in tool-dispatch.md.
-Observations stay in ignored work/ops, expire after ten minutes, and fail closed
-on stale data, missing memberships/fields/clocks or conflicting authority.
-
-Fresh Project export plus direct issue-sidebar membership readbacks resolved
-49 members (48 stable keys plus existing Test 1, whose Todo was preserved).
-The complete issue feed exhausted at 124 records across repositories; 52 belong
-to GVR, including closed fixtures. Search alone omitted a newly reopened request,
-so the authoritative recent-issues REST feed, not search indexing, owns intake.
-
-Actual complete dispatcher runs selected E001 #20 and P001 #42 with their marked
-handovers and zero production clocks. Isolated fixture #64 was discovered outside
-the Project after one unreviewed fixture run, triggered Engine intake before five,
-cleared after same-session accepted intake, retriggered on an updated request and
-on a new session, and did not contaminate Product context. An actual temporary
-In Progress fixture #63 returned its interrupted claim/latest handover before new
-Ready work. Both fixtures were closed completed and #63's temporary membership
-removed afterwards. No feature or production terminal record was created.
-
-The Project numeric field write/readback round trip 39 -> 39.5 -> 39 was verified
-in the issue sidebar with a fresh reload; its original value is restored. Current
-code passes 221 repository tests and 29 operations tests plus the complete gate.
-Remote CI for the preceding saved commit is green. View/index reconciliation and
-final enabled configuration/integration are still in progress in this checkpoint.
+If repo skills are not auto-discovered, read .agents/skills/<persona-name>/SKILL.md.
+The user supplies no issue IDs, Project IDs or handover.

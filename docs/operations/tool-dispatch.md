@@ -14,8 +14,18 @@ temporarily clear the filter and turn off Show hierarchy, scroll through the
 whole table, then Export view data. These are unsaved inspection changes: restore
 the saved filter and hierarchy afterwards. Do not overwrite a user's saved view.
 
+Acquisition belongs to the router utility: assemble API payloads in code-mode
+orchestration and write them directly to transient files without printing raw
+mail into worker context. Surface only route/context output. Only the owning
+orchestrator reads request bodies through inbox mode.
+
 Read exported issues through the issue API tools, including full state,
-state reason, body, labels and update time. The connected recent-issues API
+state reason, body, labels and update time. Prefer the connected GitHub reader's
+approved REST issue collection: `/repos/<repository>/issues?state=all&per_page=100&page=1`.
+Increment page until a response has fewer than 100 entries, exclude pull requests,
+and derive open `kind:request` issues from the complete result. Re-read after writes.
+The connected recent-issues API is an alternative when the collection reader is
+unavailable. It
 transparently paginates; increase its result limit until the response contains
 fewer issues than that limit, then filter the complete result to this repository.
 Use it for **repository-wide** open `kind:request` discovery, including requests
@@ -45,7 +55,7 @@ Keep observations only in ignored `work/ops`. Create a readback JSON object:
 ```
 
 The array strings above describe required objects, not literal data. GitHub's
-`issue_number`/`number` and comment `url`/`html_url` spellings are supported. An
+`issue_number`/`number`, issue `html_url`, and comment `url`/`html_url` spellings are supported. An
 explicit empty comments array means the API returned no comments; a missing key
 means unread, and blocks context. Extra membership rows use `URL`, `Status`,
 `Workstream`, `Kind`, `Priority` and `Queue order` as export headers.

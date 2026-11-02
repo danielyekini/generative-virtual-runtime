@@ -60,6 +60,8 @@ class ToolSourceTests(unittest.TestCase):
 
     def test_join_requires_live_issue_identity_and_keeps_handover_url(self):
         self.assertEqual(self.read(self.value)['comments']['20'][0]['html_url'], self.comments[20][0]['url'])
+        rest = [{**i, 'number': i['issue_number'], 'html_url': i['url'], 'url': i['url'].replace('github.com/', 'api.github.com/repos/')} for i in self.issues]
+        self.assertEqual(build(self.config, self.rows, rest, self.comments, [], self.now.isoformat())['items'][0]['number'], 20)
         with self.assertRaises(ValueError):
             build(self.config, self.rows, self.issues[1:], self.comments, [], self.now.isoformat())
 

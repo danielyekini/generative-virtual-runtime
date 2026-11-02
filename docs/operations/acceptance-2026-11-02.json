@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-02",
+  "source": "Actual connected GitHub REST reads and signed-in Project UI exports/writes",
+  "project_url": "https://github.com/users/danielyekini/projects/3",
+  "memberships": 49,
+  "stable_keys": 48,
+  "native_parent_links": 39,
+  "milestones": 6,
+  "milestone_assignments": 43,
+  "views": [
+    {
+      "name": "Milestones",
+      "url": "https://github.com/users/danielyekini/projects/3/views/4",
+      "filter": "label:\"kind:milestone\"",
+      "matching_items": 6
+    },
+    {
+      "name": "Requests",
+      "url": "https://github.com/users/danielyekini/projects/3/views/5",
+      "filter": "label:\"kind:request\" label:\"audience:orchestrator\"",
+      "matching_items": 2
+    },
+    {
+      "name": "Human verification",
+      "url": "https://github.com/users/danielyekini/projects/3/views/6",
+      "filter": "status:\"Human verification\"",
+      "matching_items": 0
+    },
+    {
+      "name": "Engine",
+      "url": "https://github.com/users/danielyekini/projects/3/views/2",
+      "filter": "label:\"lane:engine\" label:\"audience:worker\" -label:\"kind:review\"",
+      "matching_items": 22
+    },
+    {
+      "name": "Product",
+      "url": "https://github.com/users/danielyekini/projects/3/views/3",
+      "filter": "label:\"lane:product\" label:\"audience:worker\" -label:\"kind:review\"",
+      "matching_items": 13
+    },
+    {
+      "name": "Delivery",
+      "url": "https://github.com/users/danielyekini/projects/3/views/1",
+      "filter": "label:\"audience:worker\" -label:\"kind:review\"",
+      "matching_items": 7
+    }
+  ],
+  "first_workers": {
+    "engine": {
+      "selected_key": "E001",
+      "issue": 20,
+      "handover": "https://github.com/danielyekini/generative-virtual-runtime/issues/20#issuecomment-6528497551"
+    },
+    "product": {
+      "selected_key": "P001",
+      "issue": 42,
+      "handover": "https://github.com/danielyekini/generative-virtual-runtime/issues/42#issuecomment-6528497922"
+    }
+  },
+  "live_intake_and_recovery": {
+    "repo_wide_request_outside_project": 64,
+    "intake_after_one_unreviewed_run": {
+      "lane": "engine",
+      "intake_required": true,
+      "review_due": false,
+      "unreviewed_count": 1
+    },
+    "accepted_same_session_clearance": "PASS",
+    "new_session_reassessment": "PASS",
+    "interrupted_recovery_before_new_claim": "PASS",
+    "recovery_issue": 63,
+    "handover_url": "https://github.com/danielyekini/generative-virtual-runtime/issues/63#issuecomment-6564283675",
+    "updated_request_retriggers": "PASS",
+    "other_lane_worker_not_affected": "PASS"
+  },
+  "live_clock_scenarios": "PASS; see acceptance-2026-11-01.json and isolated fixture #63",
+  "production_clocks": {
+    "engine_terminal_records": 0,
+    "product_terminal_records": 0
+  },
+  "fixtures": {
+    "63": "closed completed; temporary Project membership removed",
+    "64": "closed completed; never required Project membership"
+  },
+  "index_repair": {
+    "issues": [
+      21,
+      39
+    ],
+    "result": "Removed/re-added only stale associations, restored all five observed routing fields; both now exported and visible in Engine board"
+  },
+  "unrelated_item_12": "Todo preserved",
+  "duplicate_installation": "48 unique stable keys and exactly 49 members after reconciliation; no duplicate issues/memberships. Repeat CLI installer remains unavailable, not claimed as run.",
+  "direct_cli_acceptance": "BLOCKED by environment network policy; connected-tools dispatcher acceptance PASS",
+  "repository_personas": "Five canonical repo-local skills; explicit path fallback verified; no personal/global copies",
+  "tests": {
+    "repository": 221,
+    "files": 31,
+    "operations": 29,
+    "full_gate": "npm run verify"
+  },
+  "integration_record": "Live PR #60 and OPS001 own merge SHA, final-main gate and own-branch cleanup evidence; no future result is predicted here."
+}

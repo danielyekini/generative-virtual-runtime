@@ -29,7 +29,7 @@ def build(config, rows, issues, comments, requests, observed_at):
         issue = by_number.get(number)
         if not issue:
             raise ValueError('Full live issue API readback required: ' + str(number))
-        if issue.get('url', issue.get('html_url')) != url:
+        if issue.get('html_url', issue.get('url')) != url:
             raise ValueError('Issue identity mismatch')
         fields = {name: row[name] for name in ('Status', 'Workstream', 'Kind', 'Priority', 'Queue order') if row.get(name) != '' and row.get(name) is not None}
         if fields.get('Status', '').casefold() == 'in progress':
