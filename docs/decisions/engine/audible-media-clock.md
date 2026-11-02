@@ -139,3 +139,9 @@ engine-mixer backend (alternative 4) behind the same commands. If narration
 length is unknown until synthesis completes, add a duration-revision path to
 the schedule rather than letting audio move scene time. If spatial audio lands
 (E010), positional gain joins the pure gain function.
+
+**Generative synthesis (user steering, 2 November 2026):** ElevenLabs is the
+adopted provider for prompt-driven narration and effects
+([generative-audio-elevenlabs.md](generative-audio-elevenlabs.md)). Design and
+language wiring live in [E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119);
+this clock decision is not superseded.

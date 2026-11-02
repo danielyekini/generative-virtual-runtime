@@ -21,7 +21,7 @@ docs/operations/config.json; never maintain a parallel local issue status table.
 | M1 | Reliable live native execution | Context-aware atomic delta validation; safe revision/dependency handling; usable async/cancellation path selected by evidence; production-style source arrival and preserved accepted history |
 | M2 | Persistent compositional scenes | Stable entities/instances, atomic edits and named independent behaviours; roof/pillar/ongoing-rotation scenario; compact revision/time-aware context; streaming activation rules |
 | M3 | Human/agent Studio and runtime generation | Library/editor/execute/fullscreen workflows; single active source; honest streaming inspector; explicit compare utility; real model generation evaluated against versioned native authoring reference |
-| M4 | Interactive audiovisual output | Pointer/keyboard/focus and bounded state actions; audible narration/effects on defined clocks; cancellation/seek/replay/resource failure; human-facing controls |
+| M4 | Interactive audiovisual output | Pointer/keyboard/focus and bounded state actions; audible narration/effects on defined clocks (including ElevenLabs generative narration/SFX behind a provider-abstracted contract — E031); cancellation/seek/replay/resource failure; human-facing controls |
 | M5 | Expressive teaching and spatial capability | Curriculum/objective/check/adaptation pilot; selected affine/2.5D/3D capabilities, 2D and scoped 3D physics; replay/ownership/cost demonstrated |
 | M6 | Consumer delivery | Representative device performance, resource recovery, accessibility/privacy/session behaviour; desktop/hosting/landing choices justified by evidence |
 
@@ -31,6 +31,8 @@ Engine: assembled-scene delta correctness -> persistent entity/edit/behaviour
 design + bounded critique -> implementation -> dependencies/instances/expressive
 authoring. Keep ongoing capacity work evidence-driven; do not reopen cloning/index
 work already resolved in PR #11. Design interaction/audio/spatial ownership early.
+**Immediate (2 November 2026):** generative audio via ElevenLabs (E031 design)
+is P0 engine work for M4; do not hard-wire vendor APIs into Scene IR.
 
 Product: bounded Studio workflow alternatives -> implement library/editor/
 execution/fullscreen slice -> truthful streaming inspector and agent adapter ->

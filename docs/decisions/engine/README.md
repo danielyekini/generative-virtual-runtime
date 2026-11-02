@@ -26,6 +26,10 @@
   hold, interaction one-shots and deterministic offline export; versioned as
   `audio.cues` (MotionScript / Scene IR 0.11.0) with the Studio Web Audio
   backend in E026.
+- [Generative audio via ElevenLabs (steering → E031)](generative-audio-elevenlabs.md):
+  user-adopted paid provider for timed narration/SFX; provider-abstracted
+  design commissioned as E031; builds on `audio.cues` without replacing the
+  scene-time clock.
 - [Bounded spatial graphics (E010)](spatial-graphics.md): planar 2.5D layers
   (rigid 3D surface placement, hinges, perspective/orthographic camera) projected
   into ordinary draw items; two-sided faces, plane-test depth order, fail-closed
