@@ -12,6 +12,7 @@ MotionScript 0.6.0 `entities.durableRevisions`), E005 drawable-reuse
 decision/prototype, E023 versioned `entities.drawableBindings` (Scene IR /
 MotionScript 0.7.0), E006 streaming authorship/stream linter, E009 animated
 solid paint channels (Scene IR / MotionScript 0.8.0 `paint.animatedSolid`),
+E024 declarative entity statements (MotionScript / Scene IR 0.9.0),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -29,10 +30,10 @@ the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. Follow-up after E006: declarative MotionScript `entity` / `behaviour` /
-   `geometry` / `bind` statement implementation (versioned), using the E006
-   design against released 0.6–0.7 ops (tracked as E024). Streaming authorship
-   contract, stream linter and P006 generation inputs are landed with E006.
+1. After E024 (declarative entity statements / language 0.9.0): replenish Ready
+   from M2/M4 Candidates (for example E007 input decision) with satisfied
+   dependencies. Streaming authorship contract, stream linter, E009 paint
+   channels and declarative entity sugar are landed.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

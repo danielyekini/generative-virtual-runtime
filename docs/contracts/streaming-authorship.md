@@ -1,22 +1,21 @@
 # Native streaming authorship rules
 
 Authority: [E006 decision](../decisions/engine/streaming-authorship-and-declarative-entities.md),
-released MotionScript / Scene IR through **0.7.0**, `lintStreamingAuthorship` in
+released MotionScript / Scene IR through **0.9.0**, `lintStreamingAuthorship` in
 `@gvr/compiler`. Product [P006](https://github.com/danielyekini/generative-virtual-runtime/issues/47)
 consumes this with the [model-facing reference contract](model-facing-reference.md).
 
 This document states executable progressive rules from **released** syntax only.
-Host entity patches use `emitEntityPatchDelta` (`entities.durableRevisions` /
-`entities.drawableBindings`). Declarative `entity` / `behaviour` / `bind`
-statements are designed but not released — see the decision; do not invent them
-in generated programs.
+Entity patches use declarative MotionScript 0.9.0 statements and/or host
+`emitEntityPatchDelta` (`entities.durableRevisions` /
+`entities.drawableBindings`).
 
 ## Executable units
 
 | Unit | Role |
 | --- | --- |
 | Scene header | One `scene "…" { … };` opens the program (version, viewport, duration, `requires`). |
-| Top-level declaration | Constant, camera, node/group, composition, instance, timing scope, operators, track, step, batch, or seal ending at a depth-zero `;`. |
+| Top-level declaration | Constant, camera, node/group, composition, instance, timing scope, operators, entity/geometry/bind/behaviour statements, track, step, batch, or seal ending at a depth-zero `;`. |
 | Batch | Atomic multi-unit commit; children emit only if the batch succeeds. |
 | Complete | `complete;` seals remaining duration and finishes authoring. |
 
