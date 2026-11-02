@@ -1,4 +1,9 @@
-import type { AudioCueDefinition, SceneIR } from "@gvr/schema";
+import {
+  estimateGenerativeAudioDurationMs,
+  type AudioCueDefinition,
+  type AudioResourceSource,
+  type SceneIR,
+} from "@gvr/schema";
 import type { PlaybackClock, PlaybackState } from "./playback";
 
 /**
@@ -630,17 +635,31 @@ export class AudioSession {
 export type AudioStates = Readonly<Record<string, AudioResourceState>>;
 
 export interface SceneAudioResource extends AudioResource {
-  href: string;
+  /** Href may be absent until a generative resource is materialised. */
+  href?: string;
   /** Readiness declared by the scene, if any. */
   readiness?: AudioResourceState;
+  source?: AudioResourceSource;
 }
 
 export function sceneAudioResources(scene: SceneIR): SceneAudioResource[] {
   const out: SceneAudioResource[] = [];
   for (const resource of scene.resources) {
     if (resource.kind !== "audio") continue;
-    const entry: SceneAudioResource = { id: resource.id, href: resource.href, durationMs: resource.durationMs };
+    const durationMs =
+      resource.durationMs ??
+      (resource.source?.type === "generative"
+        ? estimateGenerativeAudioDurationMs(
+            resource.source.modality,
+            resource.source.prompt,
+            resource.source.durationHintMs,
+          )
+        : 0);
+    const entry: SceneAudioResource = { id: resource.id, durationMs };
+    if (resource.href !== undefined) entry.href = resource.href;
+    else if (resource.source?.type === "href") entry.href = resource.source.href;
     if (resource.readiness) entry.readiness = resource.readiness;
+    if (resource.source) entry.source = resource.source;
     out.push(entry);
   }
   return out;

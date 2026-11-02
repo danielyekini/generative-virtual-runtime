@@ -778,7 +778,7 @@
         "Resources declare href and decoded durationMs; readiness is host-reported. Cues use root scene time, buses narration/effects/music, offset/duration inside the resource, loops 1..1000, gain 0..4, linear fades; at most 4096 cues.",
         "Scene time is the master clock (docs/decisions/engine/audible-media-clock.md): audio is silent unless playing at a rate in [0.5, 2]; voices re-seek beyond 40 ms error; narration ducks effects/music by a step gain of 0.35.",
         "Narration is required by default: pending required audio holds startup/playback and failed required audio blocks acceptance; optional cues are skipped with AUDIO_OPTIONAL_SKIPPED.",
-        "Cues may stream after the first seal (ADD_AUDIO_CUES) only when they start at or after the seal; audio resources are base definitions. No spatial audio, ducking ramps, per-cue rate or speech synthesis."
+        "Cues may stream after the first seal (ADD_AUDIO_CUES) only when they start at or after the seal; audio resources are base definitions. No spatial audio, ducking ramps or per-cue rate. Generative prompts are gated separately by audio.generative."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
@@ -798,6 +798,36 @@
         "svg": {
           "status": "not-applicable",
           "scope": "Native audio; SVG has no audio model to import."
+        }
+      }
+    },
+    {
+      "id": "audio.generative",
+      "summary": "Scenes declare provider-abstracted generative audio resources (speech/effect prompts) that materialise into scene-time cues via a host GenerativeAudioProvider and duration revision.",
+      "introducedIn": { "motionscript": "0.14.0", "sceneIr": "0.14.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing audio.generative; generative sources without it are rejected. Generative resources also require audio.cues.",
+        "source.type generative carries modality speech|effect, non-empty prompt, optional voice/durationHintMs/loop/seed/style; no vendor endpoint, model id or API key on the wire. durationMs may be provisional while pending; ready generative resources need positive durationMs.",
+        "MotionScript: audio <id> = speech|effect \"…\" [{…}]; and sugar audio.narration / audio.effects (comma args, optional at). Cues unchanged. Resources are base definitions frozen after the first seal.",
+        "Hosts synthesise through GenerativeAudioProvider; CI uses the fixture provider only. Export of required generative cues waits until those resources are ready. ElevenLabs adapter is a separate package (E034)."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/generative-audio.test.ts#lowers generative audio and sugar into Scene IR with audio.generative",
+        "packages/compiler/src/generative-audio.test.ts#rejects generative audio without the capability and invalid sources through validation",
+        "packages/compiler/src/generative-audio.test.ts#freezes generative audio after the first seal and keeps older identifiers compiling",
+        "packages/runtime/src/generative-audio-scene.test.ts#materialises compiled generative resources with the fixture provider and revises duration",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips generative audio declarations (audio.generative)"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native generative audio; Lottie has no prompt synthesis model to import."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native generative audio; SVG has no audio model to import."
         }
       }
     },

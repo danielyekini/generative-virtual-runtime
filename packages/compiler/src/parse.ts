@@ -32,6 +32,8 @@ import type {
   GeometryDeclAst,
   InteractAst,
   AudioDeclAst,
+  AudioGenerativeFields,
+  AudioSugarAst,
   CueDeclAst,
   PhysicsAst,
   SpatialLayerAst,
@@ -184,7 +186,7 @@ function parseUnit(parser: Parser): UnitAst | undefined {
   if (token.lexeme === "instance") return parseInstance(parser);
   if (token.lexeme === "operators") return parseOperators(parser);
   if (token.lexeme === "interact") return parseInteract(parser);
-  if (token.lexeme === "audio") return parseAudioDecl(parser);
+  if (token.lexeme === "audio") return parseAudioUnit(parser);
   if (token.lexeme === "cue") return parseCueDecl(parser);
   if (token.lexeme === "spatialLayer") return parseSpatialLayer(parser);
   if (token.lexeme === "physics") return parsePhysics(parser);
@@ -1331,13 +1333,42 @@ function parseInteractBinding(parser: Parser, node: InteractAst): InteractionBin
   return withKey({ on, ...target, action: { kind: "step", channel, delta: a, min: b, max: c } });
 }
 
-/** `audio <id> "<href>" <duration>;` — decoded length in ms or s. */
-function parseAudioDecl(parser: Parser): AudioDeclAst {
+/**
+ * `audio <id> "<href>" <duration>;`
+ * `audio <id> = speech|effect "<prompt>" [{ … }];`
+ * `audio.narration|effects("<prompt>" [, args…]) [at <time>];`
+ */
+function parseAudioUnit(parser: Parser): AudioDeclAst | AudioSugarAst {
   const start = eat(parser, "keyword", "audio");
-  const node: AudioDeclAst = { kind: "audio", id: "", href: "", durationMs: 0, span: start?.span ?? emptySpan(), errors: [] };
+  const span = start?.span ?? emptySpan();
+  if (eat(parser, "dot")) return parseAudioSugar(parser, span);
+  const node: AudioDeclAst = { kind: "audio", id: "", span, errors: [] };
   const id = eat(parser, "identifier");
   if (id) node.id = id.lexeme;
   else note(node, parser, "audio needs a resource id.");
+  if (eat(parser, "eq")) {
+    const modality = eatWord(parser);
+    if (modality?.lexeme === "speech" || modality?.lexeme === "effect") {
+      const prompt = eat(parser, "string");
+      if (prompt?.stringValue !== undefined) {
+        node.generative = { modality: modality.lexeme, prompt: prompt.stringValue };
+      } else {
+        note(node, parser, "generative audio needs a prompt string.");
+        node.generative = { modality: modality.lexeme, prompt: "" };
+      }
+      if (eat(parser, "lbrace")) {
+        while (!done(parser) && !at(parser, "rbrace")) {
+          parseGenerativeItem(parser, node, node.generative);
+          expectSemi(parser);
+        }
+        eat(parser, "rbrace");
+      }
+    } else {
+      note(node, parser, "generative audio needs speech or effect after '='.");
+    }
+    expectSemi(parser);
+    return node;
+  }
   const href = eat(parser, "string");
   if (href?.stringValue) node.href = href.stringValue;
   else note(node, parser, 'audio needs an href string, for example "voice.wav".');
@@ -1346,6 +1377,96 @@ function parseAudioDecl(parser: Parser): AudioDeclAst {
   else node.durationMs = length.numberValue;
   expectSemi(parser);
   return node;
+}
+
+function parseAudioSugar(parser: Parser, span: SourceSpan): AudioSugarAst {
+  const kind = eatWord(parser);
+  const bus = kind?.lexeme === "narration" ? "narration" : kind?.lexeme === "effects" ? "effects" : undefined;
+  const node: AudioSugarAst = {
+    kind: "audioSugar",
+    bus: bus ?? "narration",
+    generative: { modality: bus === "effects" ? "effect" : "speech", prompt: "" },
+    startMs: 0,
+    span,
+    errors: [],
+  };
+  if (!bus) note(node, parser, "audio sugar needs .narration or .effects.");
+  if (!eat(parser, "lparen")) note(node, parser, "Expected '(' after audio sugar.");
+  const prompt = eat(parser, "string");
+  if (prompt?.stringValue !== undefined) node.generative.prompt = prompt.stringValue;
+  else note(node, parser, "audio sugar needs a prompt string.");
+  while (eat(parser, "comma")) parseSugarArg(parser, node, node.generative);
+  if (!eat(parser, "rparen")) note(node, parser, "Expected ')'.");
+  if (eat(parser, "keyword", "at")) {
+    const time = eat(parser, "duration");
+    if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
+    else node.startMs = time.numberValue;
+  }
+  expectSemi(parser);
+  return node;
+}
+
+function parseGenerativeItem(parser: Parser, node: { errors: Diagnostic[]; span: SourceSpan }, fields: AudioGenerativeFields): void {
+  const key = eatWord(parser);
+  if (!key) {
+    note(node, parser, "Expected a generative audio property.");
+    skipProperty(parser);
+    return;
+  }
+  applyGenerativeArg(parser, node, fields, key.lexeme, true);
+}
+
+function parseSugarArg(parser: Parser, node: { errors: Diagnostic[]; span: SourceSpan }, fields: AudioGenerativeFields): void {
+  const key = eatWord(parser);
+  if (!key) {
+    note(node, parser, "Expected a sugar argument name.");
+    return;
+  }
+  applyGenerativeArg(parser, node, fields, key.lexeme, false);
+}
+
+function applyGenerativeArg(
+  parser: Parser,
+  node: { errors: Diagnostic[]; span: SourceSpan },
+  fields: AudioGenerativeFields,
+  key: string,
+  bodyForm: boolean,
+): void {
+  if (key === "duration") {
+    const value = eat(parser, "duration");
+    if (value?.numberValue === undefined) note(node, parser, "duration needs a time with ms or s.");
+    else fields.durationHintMs = value.numberValue;
+    return;
+  }
+  if (key === "voice") {
+    const value = eat(parser, "string");
+    if (value?.stringValue === undefined) note(node, parser, "voice needs a string.");
+    else fields.voice = value.stringValue;
+    return;
+  }
+  if (key === "loop") {
+    if (eat(parser, "keyword", "true")) fields.loop = true;
+    else if (eat(parser, "keyword", "false")) fields.loop = false;
+    else if (bodyForm) fields.loop = true;
+    else note(node, parser, "loop needs true or false.");
+    return;
+  }
+  if (key === "seed") {
+    const value = parseSignedNumber(parser);
+    if (value === undefined) note(node, parser, "seed needs a number.");
+    else fields.seed = value;
+    return;
+  }
+  if (key === "stability" || key === "similarity" || key === "speed") {
+    const value = parseSignedNumber(parser);
+    if (value === undefined) note(node, parser, `${key} needs a number.`);
+    else {
+      fields.style = { ...fields.style, [key]: value };
+    }
+    return;
+  }
+  note(node, parser, `Unknown generative audio property ${key}.`);
+  if (bodyForm) skipProperty(parser);
 }
 
 const CUE_BUSES = new Set(["narration", "effects", "music"]);

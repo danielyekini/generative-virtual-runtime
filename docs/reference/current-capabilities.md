@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.13.0 | 0.2 |
-| scene-ir | 0.13.0 | 0.2 |
+| motionscript | 0.14.0 | 0.2 |
+| scene-ir | 0.14.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -48,6 +48,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | paint.animatedSolid | supported | supported | supported | Keyframe tracks may drive solid fill/stroke colour components and uniform stroke width on a node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | input.bindings | supported | supported | not-applicable | Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/interact.test.ts) |
 | audio.cues | supported | supported | not-applicable | Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/audio.test.ts) |
+| audio.generative | supported | supported | not-applicable | Scenes declare provider-abstracted generative audio resources (speech/effect prompts) that materialise into scene-time cues via a host GenerativeAudioProvider and duration revision. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/generative-audio.test.ts) |
 | space.planar25d | supported | supported | not-applicable | Scenes declare planar 2.5D layers: a camera and surfaces (root-scene nodes) with 3D placement, hinges and reverse-face control, projected at frame resolution. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/spatial.test.ts) |
 | physics.planar2d | supported | supported | not-applicable | Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/physics.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
@@ -71,5 +72,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `c4f8fb8852b748a5a29ee3ccc0391560ed52b92f7f4136d2f19a030f09855f05`
-- `packages/schema/capabilities/registry.json` SHA-256 `5fb9317571310445be0841ee680cd80e987b29f812a22f2673853b57aa53a0ca`
+- `packages/schema/capabilities/releases.json` SHA-256 `1a562c49f6e62a5f40a0935968747725d2ab3ec44720345d3222d5e4089a172f`
+- `packages/schema/capabilities/registry.json` SHA-256 `45134f5f998c411c03e5632cf93d87ffc35edd3d10969b6015b15125a92eb937`

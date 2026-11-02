@@ -1,6 +1,7 @@
 import {
   CAMERA_CHANNELS,
   NODE_CHANNELS,
+  type AudioResourceDefinition,
   type Camera2DDefinition,
   type KeyframeTrack,
   type NodeDefinition,
@@ -95,9 +96,15 @@ export function emitMotionScript(scene: SceneIR): string {
     lines.push(`operators ${list.nodeId} {`, ...body, `};`);
   }
   for (const track of scene.timeline.tracks) lines.push(...emitTrack(track));
-  // audio.cues (MotionScript 0.11.0): resources then cues, all before completion.
+  // audio.cues / audio.generative: resources then cues, all before completion.
   for (const resource of scene.resources) {
-    if (resource.kind === "audio") lines.push(`audio ${resource.id} ${quote(resource.href)} ${formatDuration(resource.durationMs)};`);
+    if (resource.kind !== "audio") continue;
+    if (resource.source?.type === "generative") {
+      lines.push(emitGenerativeAudio(resource));
+      continue;
+    }
+    const href = resource.href ?? (resource.source?.type === "href" ? resource.source.href : "");
+    lines.push(`audio ${resource.id} ${quote(href)} ${formatDuration(resource.durationMs ?? 0)};`);
   }
   for (const cue of scene.audioCues ?? []) {
     const body: string[] = [];
@@ -406,6 +413,22 @@ function formatColor(color: SolidColor): string {
   const hex = (value: number) => channel(value).toString(16).padStart(2, "0");
   const rgb = `#${hex(color.r)}${hex(color.g)}${hex(color.b)}`;
   return channel(color.a) === 255 ? rgb : `${rgb}${hex(color.a)}`;
+}
+
+function emitGenerativeAudio(resource: AudioResourceDefinition): string {
+  const source = resource.source;
+  if (source?.type !== "generative") return `audio ${resource.id} ${quote("")} 0ms;`;
+  const body: string[] = [];
+  if (source.durationHintMs !== undefined) body.push(`duration ${formatDuration(source.durationHintMs)};`);
+  if (source.voice !== undefined) body.push(`voice ${quote(source.voice)};`);
+  if (source.loop === true) body.push("loop;");
+  else if (source.loop === false) body.push("loop false;");
+  if (source.seed !== undefined) body.push(`seed ${formatNumber(source.seed)};`);
+  if (source.style?.stability !== undefined) body.push(`stability ${formatNumber(source.style.stability)};`);
+  if (source.style?.similarity !== undefined) body.push(`similarity ${formatNumber(source.style.similarity)};`);
+  if (source.style?.speed !== undefined) body.push(`speed ${formatNumber(source.style.speed)};`);
+  const head = `audio ${resource.id} = ${source.modality} ${quote(source.prompt)}`;
+  return body.length > 0 ? `${head} { ${body.join(" ")} };` : `${head};`;
 }
 
 function formatDuration(ms: number): string {

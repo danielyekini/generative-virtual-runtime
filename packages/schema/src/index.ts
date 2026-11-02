@@ -3,6 +3,7 @@ export * from "./capabilities";
 export * from "./diagnostics";
 export * from "./easing";
 export * from "./expr";
+export * from "./generative-audio";
 export * from "./grammar";
 export * from "./graph";
 export * from "./lex";
