@@ -135,10 +135,11 @@ decision (P009, studio-ux.md).
 ## Revisit
 
 If stories need sub-frame lip-sync tighter than the tolerance, evaluate the
-engine-mixer backend (alternative 4) behind the same commands. If narration
-length is unknown until synthesis completes, add a duration-revision path to
-the schedule rather than letting audio move scene time. If spatial audio lands
-(E010), positional gain joins the pure gain function.
+engine-mixer backend (alternative 4) behind the same commands. Duration revision
+for unknown generative lengths is implemented on `AudioSession.reviseResourceDuration`
+(E032; design [generative-audio-contract.md](generative-audio-contract.md)) —
+scene time still does not follow audio. If spatial audio lands (E010), positional
+gain joins the pure gain function.
 
 **Generative synthesis (user steering, 2 November 2026):** ElevenLabs is the
 adopted provider for prompt-driven narration and effects
