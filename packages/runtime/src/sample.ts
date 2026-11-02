@@ -32,6 +32,15 @@ interface NodePose {
   trimStart?: number;
   trimEnd?: number;
   trimOffset?: number;
+  fillR?: number;
+  fillG?: number;
+  fillB?: number;
+  fillA?: number;
+  strokeR?: number;
+  strokeG?: number;
+  strokeB?: number;
+  strokeA?: number;
+  strokeWidth?: number;
 }
 
 export type TrimOverride = { start: number; end: number; offset: number };
@@ -182,16 +191,70 @@ function applyNodePose(node: NodeDefinition, pose: NodePose): NodeDefinition {
     rotation: pose.rotation,
     scale: { ...pose.scale },
   };
-  if (node.kind === "path" && pose.commands) {
-    return {
-      ...node,
-      transform,
-      opacity: pose.opacity,
-      visible: pose.visible,
-      commands: pose.commands.map((command) => ({ ...command })),
-    };
+  const posed: NodeDefinition =
+    node.kind === "path" && pose.commands
+      ? {
+          ...node,
+          transform,
+          opacity: pose.opacity,
+          visible: pose.visible,
+          commands: pose.commands.map((command) => ({ ...command })),
+        }
+      : { ...node, transform, opacity: pose.opacity, visible: pose.visible };
+  return applyPaintPose(posed, pose);
+}
+
+function applyPaintPose(node: NodeDefinition, pose: NodePose): NodeDefinition {
+  let next: NodeDefinition = node;
+  if ("fill" in next && next.fill?.type === "solid") {
+    const hasFill =
+      pose.fillR !== undefined ||
+      pose.fillG !== undefined ||
+      pose.fillB !== undefined ||
+      pose.fillA !== undefined;
+    if (hasFill) {
+      next = {
+        ...next,
+        fill: {
+          type: "solid",
+          r: pose.fillR ?? next.fill.r,
+          g: pose.fillG ?? next.fill.g,
+          b: pose.fillB ?? next.fill.b,
+          a: pose.fillA ?? next.fill.a,
+        },
+      };
+    }
   }
-  return { ...node, transform, opacity: pose.opacity, visible: pose.visible };
+  if ("stroke" in next && next.stroke) {
+    const stroke = next.stroke;
+    const hasStrokeColor =
+      pose.strokeR !== undefined ||
+      pose.strokeG !== undefined ||
+      pose.strokeB !== undefined ||
+      pose.strokeA !== undefined;
+    const hasWidth = pose.strokeWidth !== undefined;
+    if (hasStrokeColor || hasWidth) {
+      const color =
+        hasStrokeColor && stroke.color.type === "solid"
+          ? {
+              type: "solid" as const,
+              r: pose.strokeR ?? stroke.color.r,
+              g: pose.strokeG ?? stroke.color.g,
+              b: pose.strokeB ?? stroke.color.b,
+              a: pose.strokeA ?? stroke.color.a,
+            }
+          : stroke.color;
+      next = {
+        ...next,
+        stroke: {
+          ...stroke,
+          color,
+          width: pose.strokeWidth ?? stroke.width,
+        },
+      };
+    }
+  }
+  return next;
 }
 
 function selectWriter(
@@ -419,6 +482,33 @@ function writeNode(pose: NodePose, channel: string, value: number): void {
       break;
     case "trim.offset":
       pose.trimOffset = value;
+      break;
+    case "fill.r":
+      pose.fillR = value;
+      break;
+    case "fill.g":
+      pose.fillG = value;
+      break;
+    case "fill.b":
+      pose.fillB = value;
+      break;
+    case "fill.a":
+      pose.fillA = value;
+      break;
+    case "stroke.r":
+      pose.strokeR = value;
+      break;
+    case "stroke.g":
+      pose.strokeG = value;
+      break;
+    case "stroke.b":
+      pose.strokeB = value;
+      break;
+    case "stroke.a":
+      pose.strokeA = value;
+      break;
+    case "stroke.width":
+      pose.strokeWidth = value;
       break;
     default:
       break;

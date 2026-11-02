@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.7.0 | 0.2 |
-| scene-ir | 0.7.0 | 0.2 |
+| motionscript | 0.8.0 | 0.2 |
+| scene-ir | 0.8.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -45,6 +45,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | transform.parent | supported | supported | not-applicable | transformParentId selects the transform chain. inheritOpacity false skips one opacity ancestor. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/streaming-admission.test.ts) |
 | geometry.pathMorph | supported | supported | supported | Animated path vertices with a shared command topology. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/path-morph.test.ts) |
 | paint.gradientStroke | supported | supported | supported | A stroke painted with a linear or radial gradient. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
+| paint.animatedSolid | supported | supported | supported | Keyframe tracks may drive solid fill/stroke colour components and uniform stroke width on a node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.mask | unsupported | unsupported | unsupported | A layer mask would clip geometry to a path. [registry](../../packages/schema/capabilities/registry.json) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
@@ -66,5 +67,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `db6c7542058386ee8be7fcb898fe7791f4423f84f424e193634abd68415c0e9e`
-- `packages/schema/capabilities/registry.json` SHA-256 `15211c19b4ab51acc9e5f9143bdc51cda0a361adc35721fdc7be1423ba8c22e7`
+- `packages/schema/capabilities/releases.json` SHA-256 `2238b7ae2d02590303226d93b969bf66fecb2a52f671d7c2eefee28a369ad3bc`
+- `packages/schema/capabilities/registry.json` SHA-256 `beec11d2c0cee1a2011b46b18bfd62b48e33db536567a76f49260a88d8a5013d`

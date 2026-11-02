@@ -13,3 +13,6 @@
 - [Streaming authorship + declarative entities (E006)](streaming-authorship-and-declarative-entities.md):
   progressive unit/seal/writer contract, stream linter, model-facing generation
   inputs for P006; declarative entity/behaviour/bind design recorded, syntax deferred.
+- [Animated solid paint channels (E009)](animated-paint-channels.md): gated
+  `fill.*` / `stroke.*` / `stroke.width` scalars as MotionScript/Scene IR 0.8.0
+  `paint.animatedSolid`.

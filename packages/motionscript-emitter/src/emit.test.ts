@@ -41,6 +41,44 @@ describe("canonical emitter", () => {
     }
   });
 
+  it("round-trips animated solid paint channels", () => {
+    const source = `scene "paint" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+  requires "paint.animatedSolid";
+};
+circle Dot {
+  radius 10;
+  fill #ff0000;
+  stroke #00ff00 width 2;
+};
+keyframes Dot.fill.r {
+  start 0ms;
+  duration 1000ms;
+  0% 1;
+  100% 0;
+};
+keyframes Dot.stroke.width {
+  start 0ms;
+  duration 1000ms;
+  0% 2;
+  100% 8;
+};
+complete;
+`;
+    const scene = compile(source);
+    const { again } = roundTrip(scene);
+    expect(again.requiredCapabilities).toContain("paint.animatedSolid");
+    expect(again.timeline.tracks.map((track) => track.target)).toEqual(scene.timeline.tracks.map((track) => track.target));
+    const before = new AnimationRuntime(scene);
+    const after = new AnimationRuntime(again);
+    for (const time of [0, 500, 1000]) {
+      expect(after.evaluate(time)).toEqual(before.evaluate(time));
+    }
+  });
+
   it("round-trips a 0.2 program", () => {
     const source = `scene "cap" {
   version "0.2";

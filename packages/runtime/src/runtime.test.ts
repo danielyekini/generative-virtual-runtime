@@ -862,6 +862,257 @@ describe("geometry.trimPath", () => {
   });
 });
 
+describe("paint.animatedSolid", () => {
+  it("samples animated solid fill stroke colour alpha and width", () => {
+    const fill = { before: "none" as const, after: "forwards" as const };
+    const scene: SceneIR = {
+      irVersion: "0.2",
+      sceneId: "paint-animated",
+      viewport: { width: 200, height: 200, fit: "contain" },
+      background: { type: "solid", r: 0, g: 0, b: 0, a: 1 },
+      resources: [],
+      cameras: [{ id: "main", position: { x: 100, y: 100 }, zoom: 1, rotation: 0 }],
+      initialCameraId: "main",
+      nodes: [
+        {
+          id: "dot",
+          name: "dot",
+          parentId: null,
+          zIndex: 0,
+          space: "world",
+          transform: { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
+          opacity: 1,
+          visible: true,
+          kind: "circle",
+          radius: 10,
+          fill: { type: "solid", r: 1, g: 0, b: 0, a: 1 },
+          stroke: {
+            color: { type: "solid", r: 0, g: 1, b: 0, a: 1 },
+            width: 2,
+            cap: "butt",
+            join: "miter",
+            miterLimit: 4,
+          },
+        },
+      ],
+      timeline: {
+        durationMs: 1000,
+        tracks: [
+          {
+            id: "fillR",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "dot", channel: "fill.r" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 1 },
+              { offset: 1, value: 0 },
+            ],
+          },
+          {
+            id: "fillA",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "dot", channel: "fill.a" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 1 },
+              { offset: 1, value: 0.25 },
+            ],
+          },
+          {
+            id: "strokeB",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "dot", channel: "stroke.b" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 0 },
+              { offset: 1, value: 1 },
+            ],
+          },
+          {
+            id: "strokeWidth",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "dot", channel: "stroke.width" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 2 },
+              { offset: 1, value: 8 },
+            ],
+          },
+        ],
+        steps: [],
+      },
+      requiredCapabilities: ["paint.animatedSolid"],
+    };
+    expect(validateSceneIR(scene).ok).toBe(true);
+    expect(acceptScene(scene, { consumer: "0.2", enabled: ["paint.animatedSolid"] }).ok).toBe(true);
+    expect(acceptScene(scene, { consumer: "0.2", enabled: [] }).ok).toBe(false);
+    const runtime = new AnimationRuntime(scene);
+    const appearance = (ms: number) => runtime.evaluate(ms).drawItems.find((item) => item.nodeId === "dot")?.appearance;
+    const start = appearance(0);
+    expect(start?.fill).toMatchObject({ type: "solid", r: 1, g: 0, b: 0, a: 1 });
+    expect(start?.stroke?.color).toMatchObject({ type: "solid", r: 0, g: 1, b: 0, a: 1 });
+    expect(start?.stroke?.width).toBeCloseTo(2, 6);
+    const mid = appearance(500);
+    expect(mid?.fill).toMatchObject({ type: "solid", g: 0, b: 0 });
+    expect(mid?.fill && mid.fill.type === "solid" ? mid.fill.r : undefined).toBeCloseTo(0.5, 6);
+    expect(mid?.fill && mid.fill.type === "solid" ? mid.fill.a : undefined).toBeCloseTo(0.625, 6);
+    expect(mid?.stroke?.color.type === "solid" ? mid.stroke.color.b : undefined).toBeCloseTo(0.5, 6);
+    expect(mid?.stroke?.width).toBeCloseTo(5, 6);
+    const end = appearance(1000);
+    expect(end?.fill).toMatchObject({ type: "solid", r: 0, g: 0, b: 0, a: 0.25 });
+    expect(end?.stroke?.color).toMatchObject({ type: "solid", r: 0, g: 1, b: 1, a: 1 });
+    expect(end?.stroke?.width).toBeCloseTo(8, 6);
+    // Seek back: paint tracks remain deterministic.
+    const rewind = appearance(0);
+    expect(rewind?.fill).toMatchObject({ type: "solid", r: 1, a: 1 });
+    expect(rewind?.stroke?.width).toBeCloseTo(2, 6);
+    // Node opacity stays independent of fill.a.
+    expect(runtime.evaluate(1000).drawItems.find((item) => item.nodeId === "dot")?.opacity).toBe(1);
+  });
+
+  it("replaces overlay colour crossfade with one painted node", () => {
+    const fill = { before: "none" as const, after: "forwards" as const };
+    const baseNode = {
+      parentId: null as string | null,
+      zIndex: 0,
+      space: "world" as const,
+      transform: { position: { x: 0, y: 0 }, pivot: { x: 0, y: 0 }, rotation: 0, scale: { x: 1, y: 1 } },
+      visible: true,
+      kind: "circle" as const,
+      radius: 10,
+    };
+    const overlay: SceneIR = {
+      irVersion: "0.2",
+      sceneId: "overlay-paint",
+      viewport: { width: 100, height: 100, fit: "contain" },
+      background: { type: "solid", r: 0, g: 0, b: 0, a: 1 },
+      resources: [],
+      cameras: [{ id: "main", position: { x: 50, y: 50 }, zoom: 1, rotation: 0 }],
+      initialCameraId: "main",
+      nodes: [
+        {
+          ...baseNode,
+          id: "red",
+          name: "red",
+          opacity: 1,
+          fill: { type: "solid", r: 1, g: 0, b: 0, a: 1 },
+        },
+        {
+          ...baseNode,
+          id: "blue",
+          name: "blue",
+          opacity: 0,
+          fill: { type: "solid", r: 0, g: 0, b: 1, a: 1 },
+        },
+      ],
+      timeline: {
+        durationMs: 1000,
+        tracks: [
+          {
+            id: "fadeOut",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "red", channel: "opacity" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 1 },
+              { offset: 1, value: 0 },
+            ],
+          },
+          {
+            id: "fadeIn",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "blue", channel: "opacity" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 0 },
+              { offset: 1, value: 1 },
+            ],
+          },
+        ],
+        steps: [],
+      },
+    };
+    const native: SceneIR = {
+      ...overlay,
+      sceneId: "native-paint",
+      nodes: [
+        {
+          ...baseNode,
+          id: "dot",
+          name: "dot",
+          opacity: 1,
+          fill: { type: "solid", r: 1, g: 0, b: 0, a: 1 },
+        },
+      ],
+      timeline: {
+        durationMs: 1000,
+        tracks: [
+          {
+            id: "toBlueR",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "dot", channel: "fill.r" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 1 },
+              { offset: 1, value: 0 },
+            ],
+          },
+          {
+            id: "toBlueB",
+            kind: "keyframe",
+            target: { kind: "node", nodeId: "dot", channel: "fill.b" },
+            valueType: "number",
+            startMs: 0,
+            durationMs: 1000,
+            fill,
+            keyframes: [
+              { offset: 0, value: 0 },
+              { offset: 1, value: 1 },
+            ],
+          },
+        ],
+        steps: [],
+      },
+      requiredCapabilities: ["paint.animatedSolid"],
+    };
+    expect(overlay.nodes.length).toBe(2);
+    expect(native.nodes.length).toBe(1);
+    expect(overlay.timeline.tracks.length).toBe(2);
+    expect(native.timeline.tracks.length).toBe(2);
+    const mid = new AnimationRuntime(native).evaluate(500).drawItems.find((item) => item.nodeId === "dot");
+    expect(mid?.appearance.fill && mid.appearance.fill.type === "solid" ? mid.appearance.fill.r : undefined).toBeCloseTo(
+      0.5,
+      6,
+    );
+    expect(mid?.appearance.fill && mid.appearance.fill.type === "solid" ? mid.appearance.fill.b : undefined).toBeCloseTo(
+      0.5,
+      6,
+    );
+    expect(mid?.opacity).toBe(1);
+  });
+});
+
 describe("geometry.animatedTrim", () => {
   it("samples animated trim tracks over the composition", () => {
     const fill = { before: "none" as const, after: "forwards" as const };

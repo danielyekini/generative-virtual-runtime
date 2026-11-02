@@ -939,6 +939,20 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
     ensureCapability(session, "geometry.trimPath");
     ensureCapability(session, "geometry.animatedTrim");
   }
+  if (
+    resolved.target.kind === "node" &&
+    (resolved.target.channel === "fill.r" ||
+      resolved.target.channel === "fill.g" ||
+      resolved.target.channel === "fill.b" ||
+      resolved.target.channel === "fill.a" ||
+      resolved.target.channel === "stroke.r" ||
+      resolved.target.channel === "stroke.g" ||
+      resolved.target.channel === "stroke.b" ||
+      resolved.target.channel === "stroke.a" ||
+      resolved.target.channel === "stroke.width")
+  ) {
+    ensureCapability(session, "paint.animatedSolid");
+  }
   if (unit.timingScopeId) ensureCapability(session, "timing.localScopes");
   return {
     id,
