@@ -1,0 +1,156 @@
+[
+  {
+    "name": "seams-split",
+    "t": 0,
+    "order": [
+      "Drift",
+      "Flap",
+      "Under",
+      "Base",
+      "Blue",
+      "Red",
+      "Red",
+      "Blue"
+    ],
+    "diagnostics": [
+      "SPATIAL_SURFACES_SPLIT stage: Split intersecting surfaces Red and Blue along their plane intersection."
+    ],
+    "oracle": {
+      "checked": 1604,
+      "wrong": 0,
+      "misses": []
+    }
+  },
+  {
+    "name": "seams-unsplit",
+    "t": 0,
+    "order": [
+      "Drift",
+      "Flap",
+      "Under",
+      "Base",
+      "Red",
+      "Blue"
+    ],
+    "diagnostics": [
+      "SPATIAL_SURFACES_INTERSECT stage: Surfaces Red and Blue interpenetrate; painter order cannot be exact (no splitting)."
+    ],
+    "oracle": {
+      "checked": 1604,
+      "wrong": 586,
+      "misses": [
+        {
+          "x": 172,
+          "y": 96,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        },
+        {
+          "x": 172,
+          "y": 100,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        },
+        {
+          "x": 172,
+          "y": 104,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        },
+        {
+          "x": 172,
+          "y": 108,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        },
+        {
+          "x": 172,
+          "y": 112,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        },
+        {
+          "x": 172,
+          "y": 116,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        },
+        {
+          "x": 172,
+          "y": 120,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        },
+        {
+          "x": 172,
+          "y": 124,
+          "want": "Red",
+          "px": [
+            61,
+            107,
+            214,
+            255
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "seams-drift",
+    "t": 2000,
+    "order": [
+      "Drift",
+      "Flap",
+      "Under",
+      "Base",
+      "Blue",
+      "Red",
+      "Red",
+      "Blue"
+    ],
+    "diagnostics": [
+      "SPATIAL_SEAM_OPEN stage: Declared seam Under/Drift does not share an edge (tolerance 0.001); the surfaces have drifted apart.",
+      "SPATIAL_SURFACES_SPLIT stage: Split intersecting surfaces Red and Blue along their plane intersection."
+    ],
+    "oracle": {
+      "checked": 1604,
+      "wrong": 0,
+      "misses": []
+    }
+  }
+]

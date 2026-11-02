@@ -95,6 +95,35 @@ meshes, and animated spatial track channels already deferred from 0.12.0.
   top of `space.planar25d`, registry, conformance, runtime default or opt-in
   wiring, Studio counterexample sample.
 
+## Language wiring (E030, MotionScript / Scene IR 0.15.0)
+
+`space.planarSeams` landed as an opt-in `seams` object on a spatial layer
+(`docs/languages/scene-ir/versions/0.15.0.md`). The released semantics live in
+`projectSpatialFrame`, not in the `resolveSeams` prototype. Implementation
+evidence changed three prototype details:
+
+- **Exact cut, not a bisector.** The prototype split along the perpendicular
+  bisector of the two projected centroids. The release clips each surface's
+  item-space outline against the other surface's view-space plane. The signed
+  distance is affine in item space, so Sutherland–Hodgman clipping is exact.
+  Fragments then go back into the same plane-test topological sort. A pixel
+  oracle (nearest unprojected hit) and the production CanvasRenderer agree with
+  zero mismatches on the conformance scenes.
+- **Shared edges never suppress an intersection.** Two concave (L-shaped) panels
+  can share an outline edge and still cross along the rest of the plane line.
+  For convex panels a shared crease never straddles, so suppression bought
+  nothing and hid real crossings. Shared-edge detection now serves declared seam
+  integrity (`SPATIAL_SEAM_OPEN`) only. The contract bullet "shared-edge pairs
+  are not intersections" is superseded on this point.
+- **Budget and hairlines.** The cap is `maxFragments` extra draw items per layer
+  per frame (default 64), not per pair. Painted fragment outlines overlap the cut
+  by 0.5 logical px; ordering uses the exact clip. This removes anti-aliased
+  background hairlines along the cut.
+
+Animated order stays a host tie-break (`orderHint`). It applies to coplanar or
+undecided pairs only, and a contradicting hint reports
+`SPATIAL_ORDER_HINT_REJECTED`. No authored order channel shipped.
+
 ## Revisit
 
 - If fragment counts explode for teaching scenes, reconsider a software depth

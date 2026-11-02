@@ -1,6 +1,8 @@
 /**
  * E016 seam classification and intersection splitting prototype.
- * See docs/decisions/engine/seam-depth-order.md.
+ * See docs/decisions/engine/seam-depth-order.md. Superseded for scenes by the
+ * released space.planarSeams path in projectSpatialFrame (exact plane-line
+ * clipping); kept as a host helper for its existing callers.
  *
  * E010 plane-test order remains the occlusion authority. This module classifies
  * overlapping projected surfaces, suppresses false intersections at shared

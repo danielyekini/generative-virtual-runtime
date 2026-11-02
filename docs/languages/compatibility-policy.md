@@ -89,6 +89,10 @@ Landed in MotionScript / Scene IR **0.13.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.14.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `audio.generative` (and `audio.cues` whenever audio resources or cues are present). Audio resources may carry `source: { type: "generative", modality, prompt, … }`; cues stay the 0.11.0 shape. MotionScript adds `audio <id> = speech|effect "…"` and sugar `audio.narration` / `audio.effects`. No new reserved words. Hosts synthesise through `GenerativeAudioProvider` with duration revision (E032); the ElevenLabs adapter is a separate package (E034). See `docs/decisions/engine/generative-audio-contract.md`.
 
+### Decision for `space.planarSeams`
+
+Landed in MotionScript / Scene IR **0.15.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `space.planarSeams` (with `space.planar25d`). A `seams` block inside `spatialLayer` lowers to the layer's `seams` object (split, edge epsilon, fragment budget, declared seam edges). Layers without it project exactly as before, so older scenes do not change meaning. No new reserved word: `seams`, `split`, `epsilon`, `maxFragments` and `edge` match by spelling. Older readers reject the capability token and the unknown `seams` key. See `docs/decisions/engine/seam-depth-order.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

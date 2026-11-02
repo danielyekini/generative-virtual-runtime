@@ -90,10 +90,40 @@ export interface SpatialCamera {
   near?: number;
 }
 
+/**
+ * Opt-in seam/split compositing for one layer (space.planarSeams, Scene IR 0.15.0).
+ * Plane tests stay the occlusion authority; seams only remove false intersection
+ * reports at shared edges and split true intersections into ordered fragments.
+ */
+export interface SpatialSeams {
+  /** Split true intersections along the plane–plane line. Default true. */
+  split?: boolean;
+  /** View-space tolerance for shared (collinear, overlapping) outline edges. Default 1e-3. */
+  edgeEpsilon?: number;
+  /** Extra draw items splitting may add per layer per frame. Default 64. */
+  maxFragments?: number;
+  /** Declared seams: surface pairs that must share an outline edge in view space. */
+  edges?: ReadonlyArray<{ a: string; b: string }>;
+}
+
+export const DEFAULT_SEAM_EPSILON = 1e-3;
+export const DEFAULT_MAX_FRAGMENTS = 64;
+
 export interface SpatialLayer {
   id: string;
   camera: SpatialCamera;
   surfaces: readonly SpatialSurface[];
+  /** Seam/split compositing. Omitted: E010 report-only behaviour. */
+  seams?: SpatialSeams;
+}
+
+export interface SpatialProjectOptions {
+  /**
+   * Host tie-break hint (lower paints first). Applied only to coplanar or
+   * undecided overlapping pairs; a hint that contradicts a decided plane test
+   * is reported (SPATIAL_ORDER_HINT_REJECTED) and ignored.
+   */
+  orderHint?: (nodeId: string) => number | undefined;
 }
 
 export interface SpatialLimits {
@@ -129,7 +159,12 @@ export type SpatialDiagnosticCode =
   | "SPATIAL_SURFACES_INTERSECT"
   | "SPATIAL_ORDER_CYCLE"
   | "SPATIAL_AFFINE_APPROXIMATION"
-  | "SPATIAL_DEPTH_ONLY_SORT";
+  | "SPATIAL_DEPTH_ONLY_SORT"
+  | "SPATIAL_SURFACES_SPLIT"
+  | "SPATIAL_SPLIT_LIMIT"
+  | "SPATIAL_SPLIT_UNSUPPORTED"
+  | "SPATIAL_SEAM_OPEN"
+  | "SPATIAL_ORDER_HINT_REJECTED";
 
 export interface SpatialDiagnostic {
   code: SpatialDiagnosticCode;
@@ -497,6 +532,17 @@ interface Work {
   view: Vec3[];
   bounds: { minX: number; minY: number; maxX: number; maxY: number };
   output?: ResolvedDrawItem;
+  /** Local (item geometry space) outlines this entry covers; drives ordering. */
+  outlines: Outline[];
+  /** Painted outlines: equal to `outlines` until a split widens them across the cut. */
+  paintOutlines: Outline[];
+  toView: (p: Vec2) => Vec3;
+  /** Build an output item for clipped local rings; undefined when the item cannot be split. */
+  fragment?: (rings: Vec2[][]) => ResolvedDrawItem;
+  /** Why splitting is unavailable (stroke, text/image, open outline). */
+  unsplittable?: string;
+  /** 0 for an unsplit surface; fragments of one surface order by this as a last tie-break. */
+  fragmentIndex: number;
 }
 
 /**
@@ -507,6 +553,7 @@ export function projectSpatialFrame(
   frame: ResolvedFrame,
   layers: readonly SpatialLayer[],
   limits: Partial<SpatialLimits> = {},
+  options: SpatialProjectOptions = {},
 ): SpatialProjection {
   const bound: SpatialLimits = { ...DEFAULT_SPATIAL_LIMITS, ...limits };
   const diagnostics: SpatialDiagnostic[] = [];
@@ -542,7 +589,7 @@ export function projectSpatialFrame(
     });
     const hiddenIds = new Set(owner.keys());
     return {
-      frame: rebuild(frame, frame.drawItems.filter((item) => !hiddenIds.has(item.nodeId)), hiddenIds),
+      frame: rebuild(frame, frame.drawItems.map((item) => (hiddenIds.has(item.nodeId) ? [] : [item]))),
       diagnostics, surfaces, cameras,
     };
   }
@@ -647,6 +694,8 @@ export function projectSpatialFrame(
     const affine = cam.projection === "orthographic" || parallel;
     const keepsShape = item.geometry.kind === "text" || item.geometry.kind === "image";
     let output: ResolvedDrawItem;
+    let fragment: ((rings: Vec2[][]) => ResolvedDrawItem) | undefined;
+    const fragmentRule = item.geometry.kind === "path" ? item.geometry.fillRule : "nonzero";
     if (affine || keepsShape) {
       projected.mode = affine ? "affine-exact" : "affine-approx";
       if (!affine) {
@@ -658,6 +707,8 @@ export function projectSpatialFrame(
       const centre = outlineCentre(outlines);
       const matrix = tangentAffine(cam, toView, centre, Math.max(1, extentOf(outlines)));
       output = { ...item, appearance, logicalMatrix: matrix };
+      const base = output;
+      fragment = (rings) => ({ ...base, geometry: { kind: "path", commands: ringsToPath(rings), fillRule: fragmentRule } });
     } else {
       projected.mode = "projected";
       const centre = outlineCentre(outlines);
@@ -679,8 +730,23 @@ export function projectSpatialFrame(
         appearance: projectAppearance(appearance, project, areaScale, item.geometry.kind === "line"),
         logicalMatrix: IDENTITY,
       };
+      const base = output;
+      fragment = (rings) => ({
+        ...base,
+        geometry: { kind: "path", commands: ringsToPath(rings.map((ring) => ring.map(project))), fillRule: fragmentRule },
+      });
     }
-    work.push({ item, slot, layer, surface: projected, view, bounds, output });
+    const unsplittable = keepsShape
+      ? `${item.geometry.kind} items keep their shape`
+      : outlines.some((outline) => !outline.closed || outline.points.length < 3)
+        ? "open outlines cannot be split"
+        : appearance.stroke
+          ? "stroked outlines would draw the cut line"
+          : undefined;
+    work.push({
+      item, slot, layer, surface: projected, view, bounds, output, outlines, paintOutlines: outlines, toView, fragmentIndex: 0,
+      ...(unsplittable ? { unsplittable } : { fragment }),
+    });
   }
 
   // Resolve order inside each compositing scope; non-surfaces keep their slots.
@@ -692,18 +758,32 @@ export function projectSpatialFrame(
     list.push(entry);
     groups.set(key, list);
   }
-  const replacement = new Map<number, ResolvedDrawItem>();
+  checkDeclaredSeams(work, cameras, diagnostics);
+  const replacement = new Map<number, ResolvedDrawItem[]>();
+  const fragmentBudget = new Map<string, number>();
   for (const list of groups.values()) {
-    const ordered = depthOrder(list, cameras.get(list[0]!.layer.id)!, bound, diagnostics);
+    const layer = list[0]!.layer;
+    const ordered = depthOrder(list, cameras.get(layer.id)!, bound, diagnostics, fragmentBudget, options);
     const slots = list.map((entry) => entry.slot).sort((a, b) => a - b);
-    slots.forEach((slot, index) => replacement.set(slot, ordered[index]!.output!));
+    // Fragments (if any) extend the scope's last surface slot.
+    slots.forEach((slot, index) => {
+      const outputs = index < slots.length - 1 ? [ordered[index]!] : ordered.slice(index);
+      replacement.set(slot, outputs.map((entry) => entry.output!));
+    });
   }
-  const items: ResolvedDrawItem[] = [];
-  frame.drawItems.forEach((item, index) => {
-    if (removed.has(item.nodeId)) return;
-    items.push(replacement.get(index) ?? item);
-  });
-  return { frame: rebuild(frame, items, removed), diagnostics, surfaces, cameras };
+  const groupsBySlot: ResolvedDrawItem[][] = frame.drawItems.map((item, index) =>
+    removed.has(item.nodeId) ? [] : replacement.get(index) ?? [item],
+  );
+  return { frame: rebuild(frame, groupsBySlot), diagnostics, surfaces, cameras };
+}
+
+function ringsToPath(rings: Vec2[][]): PathCommand[] {
+  const commands: PathCommand[] = [];
+  for (const ring of rings) {
+    ring.forEach((p, index) => commands.push(index === 0 ? { cmd: "M", x: p.x, y: p.y } : { cmd: "L", x: p.x, y: p.y }));
+    commands.push({ cmd: "Z" });
+  }
+  return commands;
 }
 
 function outlineCentre(outlines: Outline[]): Vec2 {
@@ -800,8 +880,15 @@ function overlaps(a: Work, b: Work): boolean {
     && a.bounds.minY < b.bounds.maxY - eps && b.bounds.minY < a.bounds.maxY - eps;
 }
 
+interface PairResult {
+  order: -1 | 0 | 1;
+  intersect: boolean;
+  /** Plane tests decided the order (not a tie/undecided fallback). */
+  decided: boolean;
+}
+
 /** −1: a paints first; 1: b paints first; 0: either order (no occlusion / coplanar / undecided). */
-function pairOrder(a: Work, b: Work, cam: CameraModel): { order: -1 | 0 | 1; intersect: boolean } {
+function pairOrder(a: Work, b: Work, cam: CameraModel, hint?: (id: string) => number | undefined): PairResult {
   const aOfB = sideCounts(a.view, b.surface, cam);
   const bOfA = sideCounts(b.view, a.surface, cam);
   const votes = new Set<number>();
@@ -813,42 +900,286 @@ function pairOrder(a: Work, b: Work, cam: CameraModel): { order: -1 | 0 | 1; int
     if (bOfA.far > 0 && bOfA.near === 0) votes.add(1);
     else if (bOfA.near > 0 && bOfA.far === 0) votes.add(-1);
   }
+  const authored: -1 | 1 = a.slot < b.slot ? -1 : a.slot > b.slot ? 1 : a.fragmentIndex < b.fragmentIndex ? -1 : 1;
+  const hinted = (): -1 | 1 | undefined => {
+    if (!hint || a.item.nodeId === b.item.nodeId) return undefined;
+    const ha = hint(a.item.nodeId);
+    const hb = hint(b.item.nodeId);
+    if (ha === undefined || hb === undefined || ha === hb || !Number.isFinite(ha) || !Number.isFinite(hb)) return undefined;
+    return ha < hb ? -1 : 1;
+  };
   // Coplanar overlapping surfaces (decals, doors in walls, folded flaps) keep authored order.
   const flat = (counts?: { near: number; far: number }) => !!counts && counts.near === 0 && counts.far === 0;
-  if (flat(aOfB) && flat(bOfA)) return { order: a.slot < b.slot ? -1 : 1, intersect: false };
+  if (flat(aOfB) && flat(bOfA)) return { order: hinted() ?? authored, intersect: false, decided: false };
   const straddles = (counts?: { near: number; far: number }) => !!counts && counts.near > 0 && counts.far > 0;
+  // A shared outline edge does not rule out a crossing (concave outlines can share an
+  // edge and still interpenetrate), so contact is never suppressed here: splitting is exact.
   const intersect = straddles(aOfB) && straddles(bOfA);
-  if (votes.size !== 1) return { order: 0, intersect };
-  return { order: [...votes][0] as -1 | 1, intersect };
+  if (votes.size !== 1) return { order: intersect ? 0 : hinted() ?? 0, intersect, decided: false };
+  return { order: [...votes][0] as -1 | 1, intersect, decided: true };
 }
 
-function depthOrder(list: Work[], cam: CameraModel, limits: SpatialLimits, diagnostics: SpatialDiagnostic[]): Work[] {
+// ---------------------------------------------------------------------------
+// Seams: shared edges and intersection splitting (space.planarSeams)
+
+function viewRings(entry: Work): Vec3[][] {
+  return entry.outlines.filter((outline) => outline.closed).map((outline) => outline.points.map(entry.toView));
+}
+
+function segmentsOverlap(p0: Vec3, p1: Vec3, q0: Vec3, q1: Vec3, eps: number): boolean {
+  const d = sub(p1, p0);
+  const len = length(d);
+  if (!(len > eps)) return false;
+  const u = { x: d.x / len, y: d.y / len, z: d.z / len };
+  const off = (q: Vec3) => {
+    const r = sub(q, p0);
+    const t = dot(r, u);
+    const perp = length({ x: r.x - u.x * t, y: r.y - u.y * t, z: r.z - u.z * t });
+    return { t, perp };
+  };
+  const a = off(q0);
+  const b = off(q1);
+  if (a.perp > eps || b.perp > eps) return false;
+  const lo = Math.max(0, Math.min(a.t, b.t));
+  const hi = Math.min(len, Math.max(a.t, b.t));
+  return hi - lo > eps;
+}
+
+/** True when an outline edge of `a` and one of `b` are collinear and overlap in view space. */
+function shareEdge(a: Work, b: Work, eps: number): boolean {
+  const ar = viewRings(a);
+  const br = viewRings(b);
+  for (const ra of ar) {
+    for (let i = 0; i < ra.length; i += 1) {
+      const p0 = ra[i]!, p1 = ra[(i + 1) % ra.length]!;
+      for (const rb of br) {
+        for (let j = 0; j < rb.length; j += 1) {
+          if (segmentsOverlap(p0, p1, rb[j]!, rb[(j + 1) % rb.length]!, eps)) return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+/** Sutherland–Hodgman clip of a local ring against f(p) * side + slack >= 0 (f affine). */
+function clipRing(ring: Vec2[], f: (p: Vec2) => number, side: 1 | -1, slack = 0): Vec2[] {
+  const out: Vec2[] = [];
+  for (let i = 0; i < ring.length; i += 1) {
+    const cur = ring[i]!;
+    const prev = ring[(i + ring.length - 1) % ring.length]!;
+    const dc = f(cur) * side + slack;
+    const dp = f(prev) * side + slack;
+    if ((dc >= 0) !== (dp >= 0)) {
+      const t = dp / (dp - dc);
+      out.push({ x: prev.x + (cur.x - prev.x) * t, y: prev.y + (cur.y - prev.y) * t });
+    }
+    if (dc >= 0) out.push(cur);
+  }
+  return out;
+}
+
+function ringArea(ring: readonly Vec2[]): number {
+  let area = 0;
+  for (let i = 0; i < ring.length; i += 1) {
+    const p = ring[i]!, q = ring[(i + 1) % ring.length]!;
+    area += p.x * q.y - q.x * p.y;
+  }
+  return area / 2;
+}
+
+/** Paint overlap across a cut, in logical pixels, so abutting fragments leave no anti-aliased hairline. */
+const SPLIT_PAINT_OVERLAP = 0.5;
+
+/** Split `entry` by `plane` into the parts on either side; undefined if one side is empty. */
+function splitByPlane(entry: Work, plane: ProjectedSurface, cam: CameraModel): [Work, Work] | undefined {
+  if (!entry.fragment) return undefined;
+  const n = plane.normal;
+  const nl = length(n);
+  if (!(nl > 0)) return undefined;
+  const f = (p: Vec2) => dot(n, sub(entry.toView(p), plane.origin)) / nl;
+  // Widen only what is painted: SPLIT_PAINT_OVERLAP screen px along the surface,
+  // expressed as plane distance (× sin of the angle between the two planes).
+  const own = entry.surface.normal;
+  const sin = length(cross(own, n)) / ((length(own) || 1) * nl);
+  const perPixel = cam.projection === "perspective" ? Math.max(entry.surface.depth, cam.near) / cam.focal : 1 / cam.zoom;
+  const slack = SPLIT_PAINT_OVERLAP * perPixel * sin;
+  const scale = Math.max(1e-9, ...entry.outlines.flatMap((o) => o.points.map((p) => Math.abs(p.x) + Math.abs(p.y))));
+  const minArea = 1e-9 * scale * scale;
+  const parts: Work[] = [];
+  for (const side of [1, -1] as const) {
+    const outlines: Outline[] = [];
+    for (const outline of entry.outlines) {
+      const ring = clipRing(outline.points, f, side);
+      if (ring.length >= 3 && Math.abs(ringArea(ring)) > minArea) outlines.push({ points: ring, closed: true });
+    }
+    if (outlines.length === 0) return undefined;
+    const paintOutlines: Outline[] = [];
+    for (const outline of entry.paintOutlines) {
+      const ring = clipRing(outline.points, f, side, slack);
+      if (ring.length >= 3) paintOutlines.push({ points: ring, closed: true });
+    }
+    const view = outlines.flatMap((outline) => outline.points.map(entry.toView));
+    const screen = view.map((v) => projectView(cam, v));
+    const output = entry.fragment(paintOutlines.map((outline) => outline.points));
+    parts.push({
+      ...entry,
+      surface: { ...entry.surface, depth: view.reduce((sum, v) => sum + v.z, 0) / view.length },
+      view,
+      bounds: boundsOf(screen),
+      outlines,
+      paintOutlines,
+      output,
+      fragmentIndex: entry.fragmentIndex * 2 + (side === 1 ? 0 : 1),
+    });
+  }
+  return [parts[0]!, parts[1]!];
+}
+
+/**
+ * Split true intersections (seams.split) until none remain, the fragment budget
+ * is spent, or the remaining pairs cannot be split. Fragments keep the source
+ * node id, appearance and paint slot; their order comes from the same plane tests.
+ */
+function splitIntersections(
+  list: Work[],
+  cam: CameraModel,
+  seams: SpatialSeams,
+  budget: Map<string, number>,
+  diagnostics: SpatialDiagnostic[],
+): Work[] {
+  const layerId = list[0]!.layer.id;
+  const max = seams.maxFragments ?? DEFAULT_MAX_FRAGMENTS;
+  const skip = new Set<string>();
+  const ids = new WeakMap<Work, number>();
+  let nextId = 0;
+  const idOf = (entry: Work) => {
+    let id = ids.get(entry);
+    if (id === undefined) { id = nextId++; ids.set(entry, id); }
+    return id;
+  };
+  let current = list;
+  for (;;) {
+    let found: { i: number; j: number } | undefined;
+    search: for (let i = 0; i < current.length; i += 1) {
+      for (let j = i + 1; j < current.length; j += 1) {
+        const a = current[i]!, b = current[j]!;
+        if (a.item.nodeId === b.item.nodeId || !overlaps(a, b)) continue;
+        const key = `${idOf(a)}:${idOf(b)}`;
+        if (skip.has(key)) continue;
+        if (!pairOrder(a, b, cam).intersect) continue;
+        found = { i, j };
+        break search;
+      }
+    }
+    if (!found) return current;
+    const a = current[found.i]!, b = current[found.j]!;
+    const key = `${idOf(a)}:${idOf(b)}`;
+    const nodeIds = [a.item.nodeId, b.item.nodeId];
+    const used = budget.get(layerId) ?? 0;
+    if (a.unsplittable || b.unsplittable) {
+      skip.add(key);
+      diagnostics.push({
+        code: "SPATIAL_SPLIT_UNSUPPORTED", severity: "warning", layerId, nodeIds,
+        message: `Surfaces ${nodeIds[0]} and ${nodeIds[1]} intersect but cannot be split: ${a.unsplittable ?? b.unsplittable}.`,
+      });
+      continue;
+    }
+    if (used + 2 > max) {
+      skip.add(key);
+      diagnostics.push({
+        code: "SPATIAL_SPLIT_LIMIT", severity: "warning", layerId, nodeIds,
+        message: `Splitting ${nodeIds[0]}/${nodeIds[1]} would exceed ${max} fragments in layer ${layerId}; left unsplit.`,
+      });
+      continue;
+    }
+    const aParts = splitByPlane(a, b.surface, cam);
+    const bParts = splitByPlane(b, a.surface, cam);
+    if (!aParts || !bParts) {
+      skip.add(key);
+      continue;
+    }
+    budget.set(layerId, used + 2);
+    diagnostics.push({
+      code: "SPATIAL_SURFACES_SPLIT", severity: "info", layerId, nodeIds,
+      message: `Split intersecting surfaces ${nodeIds[0]} and ${nodeIds[1]} along their plane intersection.`,
+    });
+    const next: Work[] = [];
+    current.forEach((entry, index) => {
+      if (index === found!.i) next.push(...aParts);
+      else if (index === found!.j) next.push(...bParts);
+      else next.push(entry);
+    });
+    current = next;
+  }
+}
+
+/** Declared seams must share an outline edge in view space (no drift off the hinge). */
+function checkDeclaredSeams(work: Work[], cameras: ReadonlyMap<string, CameraModel>, diagnostics: SpatialDiagnostic[]): void {
+  const byNode = new Map(work.map((entry) => [entry.item.nodeId, entry]));
+  const layers = new Set(work.map((entry) => entry.layer));
+  for (const layer of layers) {
+    if (!cameras.has(layer.id)) continue;
+    const eps = layer.seams?.edgeEpsilon ?? DEFAULT_SEAM_EPSILON;
+    for (const edge of layer.seams?.edges ?? []) {
+      const a = byNode.get(edge.a);
+      const b = byNode.get(edge.b);
+      if (!a || !b || a.layer !== layer || b.layer !== layer) continue; // culled or not painted this frame
+      if (shareEdge(a, b, eps)) continue;
+      diagnostics.push({
+        code: "SPATIAL_SEAM_OPEN", severity: "warning", layerId: layer.id, nodeIds: [edge.a, edge.b],
+        message: `Declared seam ${edge.a}/${edge.b} does not share an edge (tolerance ${eps}); the surfaces have drifted apart.`,
+      });
+    }
+  }
+}
+
+function depthOrder(
+  input: Work[],
+  cam: CameraModel,
+  limits: SpatialLimits,
+  diagnostics: SpatialDiagnostic[],
+  budget: Map<string, number>,
+  options: SpatialProjectOptions,
+): Work[] {
   // Farther first; ties keep the original paint order (children after parents).
   const priority = (a: Work, b: Work) => {
     const scale = 1e-9 * Math.max(1, Math.abs(a.surface.depth), Math.abs(b.surface.depth));
     if (Math.abs(a.surface.depth - b.surface.depth) > scale) return b.surface.depth - a.surface.depth;
-    return a.slot - b.slot;
+    return a.slot - b.slot || a.fragmentIndex - b.fragmentIndex;
   };
-  const layerId = list[0]!.layer.id;
-  if (list.length > limits.maxPairwiseSort) {
+  const layer = input[0]!.layer;
+  const layerId = layer.id;
+  const seams = layer.seams;
+  if (input.length > limits.maxPairwiseSort) {
     diagnostics.push({
       code: "SPATIAL_DEPTH_ONLY_SORT", severity: "info", layerId, nodeIds: [],
-      message: `${list.length} surfaces in one scope exceed ${limits.maxPairwiseSort}; ordered by mean depth only.`,
+      message: `${input.length} surfaces in one scope exceed ${limits.maxPairwiseSort}; ordered by mean depth only.`,
     });
-    return [...list].sort(priority);
+    return [...input].sort(priority);
   }
+  const list = seams && seams.split !== false ? splitIntersections(input, cam, seams, budget, diagnostics) : input;
   const after = list.map(() => new Set<number>());
   const indegree = list.map(() => 0);
   for (let i = 0; i < list.length; i += 1) {
     for (let j = i + 1; j < list.length; j += 1) {
       const a = list[i]!, b = list[j]!;
       if (!overlaps(a, b)) continue;
-      const { order, intersect } = pairOrder(a, b, cam);
+      const { order, intersect, decided } = pairOrder(a, b, cam, options.orderHint);
       if (intersect) {
         diagnostics.push({
           code: "SPATIAL_SURFACES_INTERSECT", severity: "warning", layerId, nodeIds: [a.item.nodeId, b.item.nodeId],
           message: `Surfaces ${a.item.nodeId} and ${b.item.nodeId} interpenetrate; painter order cannot be exact (no splitting).`,
         });
+      }
+      if (decided && options.orderHint && a.item.nodeId !== b.item.nodeId) {
+        const ha = options.orderHint(a.item.nodeId), hb = options.orderHint(b.item.nodeId);
+        if (ha !== undefined && hb !== undefined && ha !== hb && (ha < hb ? -1 : 1) !== order) {
+          diagnostics.push({
+            code: "SPATIAL_ORDER_HINT_REJECTED", severity: "info", layerId, nodeIds: [a.item.nodeId, b.item.nodeId],
+            message: `Order hint for ${a.item.nodeId}/${b.item.nodeId} contradicts the plane test; occlusion order kept.`,
+          });
+        }
       }
       if (order === -1 && !after[i]!.has(j)) { after[i]!.add(j); indegree[j]! += 1; }
       if (order === 1 && !after[j]!.has(i)) { after[j]!.add(i); indegree[i]! += 1; }
@@ -894,20 +1225,21 @@ function scopeMembership(frame: ResolvedFrame): Map<string, string> {
   return out;
 }
 
-/** Keep renderTree leaves identical to drawItems (same order), so painting and hit-testing agree. */
-function rebuild(frame: ResolvedFrame, items: ResolvedDrawItem[], removed: ReadonlySet<string>): ResolvedFrame {
-  const out: ResolvedFrame = { ...frame, drawItems: items };
+/**
+ * Keep renderTree leaves identical to drawItems (same order), so painting and
+ * hit-testing agree. `bySlot[i]` replaces original draw item i: empty removes
+ * it; several entries (split fragments) expand its leaf in place.
+ */
+function rebuild(frame: ResolvedFrame, bySlot: ResolvedDrawItem[][]): ResolvedFrame {
+  const out: ResolvedFrame = { ...frame, drawItems: bySlot.flat() };
   if (!frame.renderTree) return out;
-  // Leaves are visited in drawItems order; refill them in the new order.
+  // Leaves are visited in original drawItems order.
   let cursor = 0;
-  const refill = (node: RenderTreeNode): RenderTreeNode | undefined => {
-    if (node.kind === "leaf") {
-      if (removed.has(node.item.nodeId)) return undefined;
-      return { kind: "leaf", item: items[cursor++]! };
-    }
-    return { ...node, children: node.children.map(refill).filter((child): child is RenderTreeNode => !!child) };
+  const refill = (node: RenderTreeNode): RenderTreeNode[] => {
+    if (node.kind === "leaf") return (bySlot[cursor++] ?? []).map((item) => ({ kind: "leaf", item }));
+    return [{ ...node, children: node.children.flatMap(refill) }];
   };
-  out.renderTree = refill(frame.renderTree)!;
+  out.renderTree = refill(frame.renderTree)[0]!;
   return out;
 }
 

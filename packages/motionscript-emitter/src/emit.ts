@@ -151,6 +151,15 @@ function emitSpatialLayer(layer: SpatialLayerDefinition): string[] {
   if (camera.near !== undefined) body.push(`    near ${formatNumber(camera.near)};`);
   body.push("  };");
   for (const surface of layer.surfaces) body.push(...emitSpatialSurface(surface));
+  if (layer.seams) {
+    const seams = layer.seams;
+    body.push("  seams {");
+    if (seams.split !== undefined) body.push(`    split ${seams.split ? "true" : "false"};`);
+    if (seams.edgeEpsilon !== undefined) body.push(`    epsilon ${formatNumber(seams.edgeEpsilon)};`);
+    if (seams.maxFragments !== undefined) body.push(`    maxFragments ${formatNumber(seams.maxFragments)};`);
+    for (const edge of seams.edges ?? []) body.push(`    edge ${edge.a} ${edge.b};`);
+    body.push("  };");
+  }
   return [`spatialLayer ${layer.id} {`, ...body, "};"];
 }
 
@@ -443,8 +452,9 @@ function formatAngle(radians: number): string {
   const degrees = (radians * 180) / Math.PI;
   for (const digits of [0, 1, 2, 3, 4, 5, 6, 8]) {
     const rounded = Number(degrees.toFixed(digits));
+    // Same arithmetic as the lexer's `deg` token: emit degrees only when they parse back exactly.
     const back = (rounded * Math.PI) / 180;
-    if (near(back, radians)) return `${trim(rounded)}deg`;
+    if (back === radians) return `${trim(rounded)}deg`;
   }
   return `${formatNumber(radians)}rad`;
 }

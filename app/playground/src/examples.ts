@@ -12,6 +12,7 @@ import physicsMarbleSource from "../../../fixtures/motionscript/physics-marble.m
 import spatialCraneSource from "../../../fixtures/motionscript/spatial-crane.ms?raw";
 import spatialEchoSource from "../../../fixtures/motionscript/spatial-echo.ms?raw";
 import spatialHomeSource from "../../../fixtures/motionscript/spatial-home.ms?raw";
+import spatialSeamsSource from "../../../fixtures/motionscript/spatial-seams.ms?raw";
 import cameraMappingSource from "../../../fixtures/motionscript/frames/camera-mapping.ms?raw";
 import hierarchyTransformSource from "../../../fixtures/motionscript/frames/hierarchy-transform.ms?raw";
 import opacitySource from "../../../fixtures/motionscript/frames/opacity.ms?raw";
@@ -119,6 +120,7 @@ export const motionExamples: MotionExample[] = [
   { id: "spatial-crane", label: "Spatial crane", caption: "A folded paper flap on a planar 2.5D layer (space.planar25d).", source: spatialCraneSource },
   { id: "spatial-home", label: "Spatial home", caption: "Orbiting walls and a door on planar surfaces (space.planar25d).", source: spatialHomeSource },
   { id: "spatial-echo", label: "Spatial echo", caption: "Receding type in perspective depth (space.planar25d).", source: spatialEchoSource },
+  { id: "spatial-seams", label: "Spatial seams", caption: "Crossing panels split along their intersection; a drifting flap opens its declared seam (space.planarSeams).", source: spatialSeamsSource },
   { id: "physics-marble", label: "Physics marble", caption: "A marble and block fall onto a floor (physics.planar2d).", source: physicsMarbleSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
   { id: "nested", label: "Nested", caption: "A wheel and its spoke rotate together.", source: nestedSource },

@@ -2137,6 +2137,7 @@ function readAudio(value: unknown, resources: ResourceFacts[], timeline: unknown
 
 /** Surfaces across all layers in one scene, matching the runtime projection default. */
 export const MAX_SPATIAL_SURFACES = 1024;
+export const MAX_SEAM_FRAGMENTS = 1024;
 export const MAX_PHYSICS_BODIES = 256;
 export const MAX_PHYSICS_JOINTS = 256;
 export const PHYSICS_OWNED_CHANNELS = [
@@ -2199,6 +2200,60 @@ function readSpatialTransform(value: unknown, path: string, diags: Diags): void 
 }
 
 /**
+ * space.planarSeams (Scene IR 0.15.0). Opt-in seam/split compositing for one
+ * layer; declared seam edges name two distinct surfaces of that layer.
+ */
+function readSpatialSeams(value: unknown, inLayer: Set<string>, path: string, required: unknown, diags: Diags): void {
+  if (!(Array.isArray(required) && required.includes("space.planarSeams"))) {
+    diags.add("MISSING_REQUIRED", "requiredCapabilities", "Spatial layer seams require space.planarSeams in requiredCapabilities.");
+  }
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "seams must be an object.");
+    return;
+  }
+  rejectUnknown(value, ["split", "edgeEpsilon", "maxFragments", "edges"], path, diags);
+  if (value.split !== undefined && typeof value.split !== "boolean") diags.add("INVALID_TYPE", `${path}.split`, "split must be a boolean.");
+  if (value.edgeEpsilon !== undefined) {
+    const n = readFinite(value.edgeEpsilon, `${path}.edgeEpsilon`, diags);
+    if (n !== undefined && !(n > 0)) diags.add("INVALID_TRACK_VALUE", `${path}.edgeEpsilon`, "edgeEpsilon must be greater than 0.");
+  }
+  if (value.maxFragments !== undefined) {
+    const n = readFinite(value.maxFragments, `${path}.maxFragments`, diags);
+    if (n !== undefined && !(Number.isInteger(n) && n >= 0 && n <= MAX_SEAM_FRAGMENTS)) {
+      diags.add("INVALID_TRACK_VALUE", `${path}.maxFragments`, `maxFragments must be an integer from 0 to ${MAX_SEAM_FRAGMENTS}.`);
+    }
+  }
+  if (value.edges === undefined) return;
+  if (!Array.isArray(value.edges)) {
+    diags.add("INVALID_TYPE", `${path}.edges`, "edges must be an array.");
+    return;
+  }
+  if (value.edges.length > MAX_SPATIAL_SURFACES) {
+    diags.add("RESOURCE_LIMIT", `${path}.edges`, `Seam edge count ${value.edges.length} exceeds ${MAX_SPATIAL_SURFACES}.`);
+  }
+  const seen = new Set<string>();
+  value.edges.forEach((edge, index) => {
+    const epath = `${path}.edges[${index}]`;
+    if (!isRecord(edge)) {
+      diags.add("INVALID_TYPE", epath, "A seam edge must be an object { a, b }.");
+      return;
+    }
+    rejectUnknown(edge, ["a", "b"], epath, diags);
+    for (const key of ["a", "b"] as const) {
+      if (typeof edge[key] !== "string" || !inLayer.has(edge[key] as string)) {
+        diags.add("UNKNOWN_TARGET", `${epath}.${key}`, "A seam edge names a surface of the same layer.");
+      }
+    }
+    if (typeof edge.a === "string" && edge.a === edge.b) diags.add("INVALID_TRACK_VALUE", epath, "A seam edge needs two different surfaces.");
+    if (typeof edge.a === "string" && typeof edge.b === "string") {
+      const key = [edge.a, edge.b].sort().join("\u0000");
+      if (seen.has(key)) diags.add("DUPLICATE_ID", epath, `Seam ${edge.a}/${edge.b} is declared twice.`);
+      seen.add(key);
+    }
+  });
+}
+
+/**
  * space.planar25d (Scene IR 0.12.0). Layers list their surfaces; each surface
  * names a root-scene node, appears once in the scene, and parents only within
  * its layer. Projection happens at frame resolution (runtime SpatialLayer).
@@ -2225,7 +2280,7 @@ function readSpatialLayers(value: unknown, nodeIds: Set<string>, required: unkno
       diags.add("INVALID_TYPE", path, "A spatial layer must be an object.");
       return;
     }
-    rejectUnknown(layer, ["id", "camera", "surfaces"], path, diags);
+    rejectUnknown(layer, ["id", "camera", "surfaces", "seams"], path, diags);
     const id = readIdent(layer.id, `${path}.id`, diags);
     if (id !== undefined) {
       if (layerIds.has(id)) diags.add("DUPLICATE_ID", `${path}.id`, `Duplicate spatial layer id ${id}.`);
@@ -2269,6 +2324,7 @@ function readSpatialLayers(value: unknown, nodeIds: Set<string>, required: unkno
         diags.add("INVALID_ENUM", `${spath}.backface`, 'backface must be "visible" or "hidden".');
       }
     });
+    if (layer.seams !== undefined) readSpatialSeams(layer.seams, inLayer, `${path}.seams`, required, diags);
     for (const start of parents.keys()) {
       const trail = new Set<string>([start]);
       for (let at = parents.get(start); at !== undefined; at = parents.get(at)) {

@@ -1,9 +1,9 @@
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import {
-  CURRENT_POINTER,
+  REPO_ROOT,
   checkReference,
   estimateTokensUtf16Div4,
   fingerprintAuthorities,
@@ -20,6 +20,19 @@ afterEach(() => {
     if (dir) rmSync(dir, { recursive: true, force: true });
   }
 });
+
+/**
+ * Copy the reference authorities into a scratch tree so write/check tests never
+ * rewrite the committed (immutable) snapshot or move the real pointer.
+ */
+function scratchRoot(): string {
+  const dir = mkdtempSync(join(tmpdir(), "gvr-ref-"));
+  scratchDirs.push(dir);
+  for (const rel of ["packages/schema/capabilities", "packages/schema/src", "packages/compiler/src", "docs/contracts", "docs/languages", "fixtures"]) {
+    cpSync(join(REPO_ROOT, rel), join(dir, rel), { recursive: true });
+  }
+  return dir;
+}
 
 describe("native reference generator", () => {
   it("builds a snapshot from released authorities with honest token estimate", () => {
@@ -49,27 +62,29 @@ describe("native reference generator", () => {
   });
 
   it("writes snapshot + pointer and passes check", () => {
-    const generated = generateReference({ generatedAt: "2026-11-02T23:30:00.000Z" });
-    writeReference(generated);
-    const pointer = JSON.parse(readFileSync(CURRENT_POINTER, "utf8")) as typeof generated.metadata;
+    const root = scratchRoot();
+    const generated = generateReference({ root, generatedAt: "2026-11-02T23:30:00.000Z" });
+    writeReference(generated, root);
+    const pointerPath = join(root, "docs/reference/motionscript-authoring/current.json");
+    const pointer = JSON.parse(readFileSync(pointerPath, "utf8")) as typeof generated.metadata;
     expect(pointer.fingerprint).toBe(generated.metadata.fingerprint);
-    const check = checkReference();
+    const check = checkReference(root);
     expect(check.ok).toBe(true);
   });
 
   it("fails check when the pointer fingerprint is tampered", () => {
-    const generated = generateReference({ generatedAt: "2026-11-02T23:30:00.000Z" });
-    writeReference(generated);
-    const pointer = JSON.parse(readFileSync(CURRENT_POINTER, "utf8")) as Record<string, unknown>;
+    const root = scratchRoot();
+    const generated = generateReference({ root, generatedAt: "2026-11-02T23:30:00.000Z" });
+    writeReference(generated, root);
+    const pointerPath = join(root, "docs/reference/motionscript-authoring/current.json");
+    const pointer = JSON.parse(readFileSync(pointerPath, "utf8")) as Record<string, unknown>;
     pointer.fingerprint = "deadbeef".repeat(8);
-    writeFileSync(CURRENT_POINTER, `${JSON.stringify(pointer, null, 2)}\n`);
-    const check = checkReference();
+    writeFileSync(pointerPath, `${JSON.stringify(pointer, null, 2)}\n`);
+    const check = checkReference(root);
     expect(check.ok).toBe(false);
     if (!check.ok) {
       expect(check.errors.some((error) => /fingerprint stale|Fingerprint/i.test(error))).toBe(true);
     }
-    // Restore a clean pointer for subsequent verify runs in the same process order.
-    writeReference(generated);
   });
 
   it("can stage an isolated tree copy for pointer absence", () => {
