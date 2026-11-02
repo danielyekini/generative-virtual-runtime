@@ -93,7 +93,12 @@ any unsaved edits.
 
 - A separate page with a grid of program cards. Each card has a **thumbnail**,
   title, collection, tags and favourite toggle. Hovering a card previews the
-  program inside it.
+  program inside it by **scrubbing**: the pointer's horizontal position in the
+  card maps to program time, and leaving restores the thumbnail (user decision
+  P015, 2 November 2026). It was chosen because it draws one frame per pointer
+  move, with no per-card animation loop or timers. A short loop around the
+  thumbnail frame is an acceptable alternative the user also approved, if
+  scrubbing proves worse in practice.
 - Thumbnails and previews are a **Studio feature, not a MotionScript feature**.
   There is no author-declared poster in the language. Studio code picks the
   frame statically (for example a fixed fraction of the duration, or a per-entry
@@ -141,17 +146,20 @@ Performance inspector placement and metrics (P003), agent-facing commands
 
 ## Open questions
 
-- Hover preview style is not yet confirmed. Default proposal: scrub through the
-  program by mouse position in the card (cheap) rather than autoplay. Ask before
-  building the Library page.
 - Exact preset rates and the Advanced control set are to be proposed with
   mockups in P002.
-- Frame-tape state mapping: the user asked for the same grey/orange/white system
-  as the source view, and for frames that are "resolved but greyed until
-  played". Proposed: no tile (sealed range not yet resolved), grey (resolved,
-  ahead of the playhead), normal (played), red gap (stall or rejected range).
-  Confirm whether orange should mean "sealed and queued but not yet rendered"
-  before building P016.
+
+## Frame-tape states (decided 2 November 2026)
+
+Build: **no tile** while the range is not resolved; **grey** tile once resolved
+but ahead of the playhead; **normal** tile once played; a **red gap** for a stall
+or rejected range. **No orange** on the frame tape.
+
+Stored alternative (the user may want to see it later; keep it easy to enable,
+for example behind a Studio setting or constant, but off by default): an
+**orange** tile state meaning "sealed and queued but not yet rendered/resolved",
+placed between "no tile" and grey. It would mirror the source view's orange
+(accepted and queued) for frames.
 
 ## UI generator prompt template
 
