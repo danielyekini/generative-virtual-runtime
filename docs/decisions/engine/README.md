@@ -4,3 +4,6 @@
   candidate validation, queued-state ownership and dependency-complete batches.
 - [Host streaming observation (E018)](streaming-observation-contract.md): typed
   host snapshot over compile/runtime/playback units, spans, seals and wait/cancel.
+- [Persistent entities (E002)](persistent-entities.md): revisioned immutable
+  entity patches, sealed left-limit topology, exclusive channel ownership and
+  named behaviours; language wiring deferred to E004/E005.
