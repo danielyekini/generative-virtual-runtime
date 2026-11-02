@@ -7,6 +7,7 @@ export default defineConfig({
       "evaluation/harness/**/*.test.ts",
       "app/playground/src/**/*.test.ts",
       "tools/native-reference/**/*.test.ts",
+      "tools/native-generation/**/*.test.ts",
     ],
   },
 });
