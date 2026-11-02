@@ -8,7 +8,10 @@ installation is neither necessary nor authorised by this repository setup.
 
 ## Dispatch
 
-Requires Python 3 and authenticated GitHub CLI with repository and Projects access.
+Requires Python 3 and either authenticated GitHub CLI with repository/Projects
+access or the [connected-tools dispatch path](tool-dispatch.md). When CLI access
+is blocked, use that path to collect fresh Project and issue observations; do not
+repeat device codes or invent state. Both paths run the same dispatcher rules.
 From repository root, generate a session UUID automatically (`python3 -c "import uuid; print(uuid.uuid4())"`)
 and keep it for the session; pass it using `--session-id` and a matching ignored
 `--receipt work/ops/<id>-intake.json` to the following calls:

@@ -34,3 +34,8 @@ and live updates use authorised tools; the reader does not claim work.
 Generate a session UUID automatically at startup (or use runner GVR_RUN_ID).
 Pass it and a transient work/ops intake receipt to route/context calls; follow
 inbox.md to return from completed intake without an accepted-blocker loop.
+
+If GitHub CLI access is unavailable, follow docs/operations/tool-dispatch.md
+using the connected issue/comment tools and authorised Project browser. Feed
+fresh observations to the same reader with --tool-snapshot; preserve all intake,
+review, claim, dependency, full-test and Git lifecycle gates.

@@ -101,13 +101,20 @@ def claims_and_handover(records,now=None,agent_id=None):
   recoverable=claim.get('status')=='interrupted' or expired or bool(agent_id and claim.get('agent_id')==agent_id)
  return {'claim':claim,'recoverable':recoverable,'latest_handover':handover}
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--config',default='docs/operations/config.json');ap.add_argument('--lane',choices=['engine','product'],required=True);ap.add_argument('--mode',choices=['route','context','inbox','intake-receipt'],default='route');ap.add_argument('--persona');ap.add_argument('--agent-id',default=os.getenv('GVR_AGENT_ID'));ap.add_argument('--session-id',default=os.getenv('GVR_RUN_ID'));ap.add_argument('--receipt');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--config',default='docs/operations/config.json');ap.add_argument('--lane',choices=['engine','product'],required=True);ap.add_argument('--mode',choices=['route','context','inbox','intake-receipt'],default='route');ap.add_argument('--persona');ap.add_argument('--agent-id',default=os.getenv('GVR_AGENT_ID'));ap.add_argument('--session-id',default=os.getenv('GVR_RUN_ID'));ap.add_argument('--receipt');ap.add_argument('--tool-snapshot');a=ap.parse_args()
  c=json.loads(Path(a.config).read_text())
  if not c.get('installed') or not c['project'].get('id'):raise SystemExit('Installation incomplete: verify live Project and routing config.')
- c['repository']=resolve_repository(c)
- items=[normalize(i) for i in fetch_items(c)]
- pages=gh(['api','--paginate','--slurp',f"repos/{c['repository']}/issues?state=open&labels=kind%3Arequest&per_page=100"])
- all_mail,mail=request_flags([x for p in pages for x in p if 'pull_request' not in x],a.lane)
+ if a.tool_snapshot:
+  from tool_source import load as load_tools,comments as tool_comments
+  source=load_tools(a.tool_snapshot,c);items=source['items'];requests=source['requests']
+  read_comments=lambda number:tool_comments(source,number)
+ else:
+  c['repository']=resolve_repository(c)
+  items=[normalize(i) for i in fetch_items(c)]
+  pages=gh(['api','--paginate','--slurp',f"repos/{c['repository']}/issues?state=open&labels=kind%3Arequest&per_page=100"])
+  requests=[x for p in pages for x in p if 'pull_request' not in x]
+  read_comments=lambda number:comments(c,number)
+ all_mail,mail=request_flags(requests,a.lane)
  if a.mode=='intake-receipt':
   if a.persona!=a.lane+'-orchestrator' or not a.session_id or not a.receipt:raise SystemExit('Require owning orchestrator, generated session ID and transient receipt path.')
   if any('triage:pending' in [x['name'] if isinstance(x,dict) else x for x in r.get('labels',[])] for r in mail):raise SystemExit('Disposition pending requests before acknowledging intake.')
@@ -118,7 +125,7 @@ def main():
  receipt=json.loads(Path(a.receipt).read_text()) if a.receipt and Path(a.receipt).is_file() else None
  mail=unacknowledged(mail,receipt,a.lane,a.session_id)
  number=c['clocks'][a.lane]['issue_number']
- state=clock(comments(c,number),a.lane,c['clocks'][a.lane]['review_every'])
+ state=clock(read_comments(number),a.lane,c['clocks'][a.lane]['review_every'])
  if a.mode=='inbox':
   if a.persona!=a.lane+'-orchestrator':raise SystemExit('Use owning orchestrator persona for inbox mode. This is routing, not security isolation.')
   print(json.dumps({'clock':state,'requests':all_mail},indent=2));return
@@ -127,9 +134,9 @@ def main():
  recovery=[]
  for i in items:
   if i and not i.get('isArchived') and i['state']=='OPEN' and i['fields'].get('Status')=='In progress' and i['fields'].get('Workstream','').lower()==a.lane and 'audience:orchestrator' not in i['labels']:
-   detail=claims_and_handover(comments(c,i['number']),agent_id=a.agent_id)
+   detail=claims_and_handover(read_comments(i['number']),agent_id=a.agent_id)
    if detail['recoverable'] or not detail['claim']:recovery.append({'issue':i,**detail})
  selected=None if recovery else select(items,a.lane)
- detail=claims_and_handover(comments(c,selected['number']),agent_id=a.agent_id) if selected else None
+ detail=claims_and_handover(read_comments(selected['number']),agent_id=a.agent_id) if selected else None
  print(json.dumps({'lane':a.lane,'recoverable_candidates':recovery,'reconcile_recovery_before_new_claim':bool(recovery),'selected_issue':selected,'selected_issue_context':detail,'dependency_and_claim_readback_required':True,'context_paths':[c['paths']['charter'],c['paths'][a.lane+'_direction']]},indent=2))
 if __name__=='__main__':main()

@@ -110,3 +110,33 @@ installation children of OPS001; lane work remains nested under M1–M6 goal iss
 with matching repository milestones for overarching goals. The remote repository now resolves to the intended identity by stable numeric ID
 1409281098. Current official descriptions state the product directly, without a
 rename announcement. Historical measured bytes remain immutable.
+
+## Connected-tools acceptance, 2 November 2026
+
+CLI device authorisation remains BLOCKED by the execution environment's API
+network policy; no CLI acceptance is claimed. The pack also permits available
+tools. The signed-in Project UI and connected issue/comment API now provide a
+second read-only input path to the same dispatcher, documented in tool-dispatch.md.
+Observations stay in ignored work/ops, expire after ten minutes, and fail closed
+on stale data, missing memberships/fields/clocks or conflicting authority.
+
+Fresh Project export plus direct issue-sidebar membership readbacks resolved
+49 members (48 stable keys plus existing Test 1, whose Todo was preserved).
+The complete issue feed exhausted at 124 records across repositories; 52 belong
+to GVR, including closed fixtures. Search alone omitted a newly reopened request,
+so the authoritative recent-issues REST feed, not search indexing, owns intake.
+
+Actual complete dispatcher runs selected E001 #20 and P001 #42 with their marked
+handovers and zero production clocks. Isolated fixture #64 was discovered outside
+the Project after one unreviewed fixture run, triggered Engine intake before five,
+cleared after same-session accepted intake, retriggered on an updated request and
+on a new session, and did not contaminate Product context. An actual temporary
+In Progress fixture #63 returned its interrupted claim/latest handover before new
+Ready work. Both fixtures were closed completed and #63's temporary membership
+removed afterwards. No feature or production terminal record was created.
+
+The Project numeric field write/readback round trip 39 -> 39.5 -> 39 was verified
+in the issue sidebar with a fresh reload; its original value is restored. Current
+code passes 221 repository tests and 29 operations tests plus the complete gate.
+Remote CI for the preceding saved commit is green. View/index reconciliation and
+final enabled configuration/integration are still in progress in this checkpoint.

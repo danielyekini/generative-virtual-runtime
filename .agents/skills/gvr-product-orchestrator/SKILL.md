@@ -28,3 +28,8 @@ unprompted approval. Mark any unavailable background runner honestly.
 For any PR, follow docs/operations/git.md: full tests/typechecks/required builds
 before submission, inherited failures repaired, final integration gate, authorised
 self-merge and safe deletion of own merged branches.
+
+If GitHub CLI access is unavailable, follow docs/operations/tool-dispatch.md
+using the connected issue/comment tools and authorised Project browser. Feed
+fresh observations to the same reader with --tool-snapshot; preserve all intake,
+review, claim, dependency, full-test and Git lifecycle gates.
