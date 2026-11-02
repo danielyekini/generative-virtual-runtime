@@ -20,3 +20,8 @@
   resolved frame, capture/hover/click/drag/wheel/focus routing, bounded actions
   on `input`-owned channels and deterministic replay; versioned as MotionScript /
   Scene IR 0.10.0 `input.bindings` by E025.
+- [Audible media clock (E008)](audible-media-clock.md): scene-time master clock,
+  pure audio schedule (narration/effects/music buses, loops, fades, ducking),
+  reconciling `AudioSession` with resync/drift correction, required-resource
+  hold, interaction one-shots and deterministic offline export; language
+  wiring and Studio backend deferred to E026.
