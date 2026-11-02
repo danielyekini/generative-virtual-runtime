@@ -23,6 +23,7 @@ Not yet in a published MotionScript version:
 `entities.drawableBindings` landed in MotionScript 0.7.0; declarative geometry/bind statements completed in 0.9.0.
 `paint.animatedSolid` landed in MotionScript 0.8.0 (requires token + `fill.*` / `stroke.*` / `stroke.width` tracks).
 Declarative entity sugar landed in MotionScript 0.9.0.
+`input.bindings` (interaction targets and bounded input actions) landed in MotionScript 0.10.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

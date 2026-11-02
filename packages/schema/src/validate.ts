@@ -157,7 +157,7 @@ export function validateSceneIR(
   const version = input.irVersion;
   const v02 = version === IR_VERSION_02;
   const sceneKeys = ["irVersion", "sceneId", "viewport", "background", "resources", "nodes", "cameras", "initialCameraId", "timeline"];
-  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators");
+  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions");
   rejectUnknown(input, sceneKeys, "", diags);
   if (version !== IR_VERSION && version !== IR_VERSION_02) {
     diags.add("UNSUPPORTED_IR_VERSION", "irVersion", `IR version must be ${IR_VERSION} or ${IR_VERSION_02}.`);
@@ -180,6 +180,7 @@ export function validateSceneIR(
     readOperators(input.geometryOperators, nodes, compositions, diags);
   }
   readTimeline(input.timeline, nodes, cameras, limits, diags, v02, scopes);
+  if (v02) readInteractions(input.interactions, nodes, input.timeline, input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
@@ -1468,7 +1469,7 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
         diags.add("INVALID_TYPE", `${path}.scene`, "CREATE_SCENE requires a scene header.");
       } else {
         const keys = ["irVersion", "sceneId", "viewport", "background", "resources", "cameras", "initialCameraId", "durationMs"];
-        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators");
+        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions");
         rejectUnknown(value.scene, keys, `${path}.scene`, diags);
         for (const list of ["resources", "cameras"]) {
           if (!Array.isArray(value.scene[list])) diags.add("INVALID_TYPE", `${path}.scene.${list}`, `${list} must be an array.`);
@@ -1931,6 +1932,182 @@ function readCapabilities(value: unknown, diags: Diags): void {
     if (seen.has(entry)) diags.add("INVALID_ENUM", `requiredCapabilities[${index}]`, `Duplicate capability ${entry}.`);
     seen.add(entry);
   });
+}
+
+const INTERACTION_CHANNELS = new Set([
+  "transform.position.x",
+  "transform.position.y",
+  "transform.rotation",
+  "transform.scale.x",
+  "transform.scale.y",
+  "opacity",
+]);
+const INTERACTION_TRIGGERS = new Set(["click", "activate", "drag", "wheel", "key"]);
+
+/**
+ * input.bindings (Scene IR 0.10.0). Targets name root-scene nodes; actions are
+ * bounded; every written (node, channel) is exclusively input-owned, so no
+ * timeline track may write the same scalar.
+ */
+function readInteractions(
+  value: unknown,
+  nodes: NodeDefinition[] | undefined,
+  timeline: unknown,
+  required: unknown,
+  diags: Diags,
+): void {
+  if (value === undefined) return;
+  if (!Array.isArray(value)) {
+    diags.add("INVALID_TYPE", "interactions", "interactions must be an array.");
+    return;
+  }
+  if (value.length > 0 && !(Array.isArray(required) && required.includes("input.bindings"))) {
+    diags.add("MISSING_REQUIRED", "requiredCapabilities", "interactions require input.bindings in requiredCapabilities.");
+  }
+  const ids = new Set((nodes ?? []).map((node) => node.id));
+  const seen = new Set<string>();
+  const owned = new Map<string, string>();
+  value.forEach((entry, index) => {
+    const path = `interactions[${index}]`;
+    if (!isRecord(entry)) {
+      diags.add("INVALID_TYPE", path, "An interaction target must be an object.");
+      return;
+    }
+    rejectUnknown(entry, ["nodeId", "pointer", "focusable", "tabIndex", "bindings"], path, diags);
+    const target = typeof entry.nodeId === "string" ? entry.nodeId : undefined;
+    if (target === undefined || !ids.has(target)) {
+      diags.add("UNKNOWN_TARGET", `${path}.nodeId`, "An interaction target names a node that does not exist.");
+    } else if (seen.has(target)) {
+      diags.add("DUPLICATE_ID", `${path}.nodeId`, `Node ${target} already has an interaction target.`);
+    } else seen.add(target);
+    if (entry.pointer !== undefined && entry.pointer !== "auto" && entry.pointer !== "none") {
+      diags.add("INVALID_ENUM", `${path}.pointer`, 'pointer must be "auto" or "none".');
+    }
+    if (entry.focusable !== undefined && typeof entry.focusable !== "boolean") {
+      diags.add("INVALID_TYPE", `${path}.focusable`, "focusable must be a boolean.");
+    }
+    if (entry.tabIndex !== undefined && !(typeof entry.tabIndex === "number" && Number.isInteger(entry.tabIndex))) {
+      diags.add("INVALID_TYPE", `${path}.tabIndex`, "tabIndex must be an integer.");
+    }
+    if (entry.bindings === undefined) return;
+    if (!Array.isArray(entry.bindings)) {
+      diags.add("INVALID_TYPE", `${path}.bindings`, "bindings must be an array.");
+      return;
+    }
+    entry.bindings.forEach((binding, bindingIndex) => {
+      const bpath = `${path}.bindings[${bindingIndex}]`;
+      if (!isRecord(binding)) {
+        diags.add("INVALID_TYPE", bpath, "A binding must be an object.");
+        return;
+      }
+      rejectUnknown(binding, ["on", "key", "nodeId", "action"], bpath, diags);
+      const on = binding.on;
+      if (typeof on !== "string" || !INTERACTION_TRIGGERS.has(on)) {
+        diags.add("INVALID_ENUM", `${bpath}.on`, "on must be click, activate, drag, wheel or key.");
+      }
+      if (on === "key" ? typeof binding.key !== "string" || binding.key.length === 0 : binding.key !== undefined) {
+        diags.add("INVALID_TYPE", `${bpath}.key`, "key is a non-empty string required only for on key.");
+      }
+      const writes = binding.nodeId === undefined ? target : typeof binding.nodeId === "string" ? binding.nodeId : undefined;
+      if (binding.nodeId !== undefined && (writes === undefined || !ids.has(writes))) {
+        diags.add("UNKNOWN_TARGET", `${bpath}.nodeId`, "A binding writes a node that does not exist.");
+      }
+      const channels = readInteractionAction(binding.action, `${bpath}.action`, on, diags);
+      if (writes !== undefined) for (const channel of channels) owned.set(`node:${writes}:${channel}`, `${bpath}.action`);
+    });
+  });
+  // Exclusive ownership: an input-owned scalar cannot also have a timeline writer.
+  const tracks = isRecord(timeline) && Array.isArray(timeline.tracks) ? timeline.tracks : [];
+  tracks.forEach((track, index) => {
+    if (!isRecord(track) || !isRecord(track.target) || track.target.kind !== "node") return;
+    let scalars: string[] = [];
+    try {
+      scalars = scalarWriters(track.target as unknown as Parameters<typeof scalarWriters>[0]);
+    } catch {
+      return;
+    }
+    for (const scalar of scalars) {
+      if (owned.has(scalar)) {
+        diags.add(
+          "OVERLAPPING_WRITERS",
+          `timeline.tracks[${index}]`,
+          `${scalar.slice(5)} is input-owned by ${owned.get(scalar)}; a track cannot also write it.`,
+        );
+      }
+    }
+  });
+}
+
+function readInteractionAction(value: unknown, path: string, on: unknown, diags: Diags): string[] {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "A binding needs an action object.");
+    return [];
+  }
+  const channel = (): string | undefined => {
+    if (typeof value.channel !== "string" || !INTERACTION_CHANNELS.has(value.channel)) {
+      diags.add("INVALID_TRACK_TARGET", `${path}.channel`, "Interaction channel must be position.x/y, rotation, scale.x/y or opacity.");
+      return undefined;
+    }
+    return value.channel;
+  };
+  const inRange = (name: string, numbers: (number | undefined)[]): void => {
+    if (name !== "opacity") return;
+    if (numbers.some((n) => n !== undefined && (n < 0 || n > 1))) diags.add("INVALID_OPACITY", path, "Opacity values must lie in [0, 1].");
+  };
+  if (value.kind === "dragTranslate" ? on !== "drag" : on === "drag") {
+    diags.add("INVALID_ENUM", `${path}.kind`, "dragTranslate is the only action for on drag, and only on drag.");
+  }
+  switch (value.kind) {
+    case "set": {
+      rejectUnknown(value, ["kind", "channel", "value"], path, diags);
+      const name = channel();
+      const v = readFinite(value.value, `${path}.value`, diags);
+      if (name) inRange(name, [v]);
+      return name ? [name] : [];
+    }
+    case "toggle": {
+      rejectUnknown(value, ["kind", "channel", "values"], path, diags);
+      const name = channel();
+      if (!Array.isArray(value.values) || value.values.length !== 2) {
+        diags.add("INVALID_TYPE", `${path}.values`, "toggle needs exactly two values.");
+        return name ? [name] : [];
+      }
+      const a = readFinite(value.values[0], `${path}.values[0]`, diags);
+      const b = readFinite(value.values[1], `${path}.values[1]`, diags);
+      if (name) inRange(name, [a, b]);
+      return name ? [name] : [];
+    }
+    case "step": {
+      rejectUnknown(value, ["kind", "channel", "delta", "min", "max"], path, diags);
+      const name = channel();
+      readFinite(value.delta, `${path}.delta`, diags);
+      const min = readFinite(value.min, `${path}.min`, diags);
+      const max = readFinite(value.max, `${path}.max`, diags);
+      if (min !== undefined && max !== undefined && min > max) diags.add("INVALID_TRACK_VALUE", path, "step min must not exceed max.");
+      if (name) inRange(name, [min, max]);
+      return name ? [name] : [];
+    }
+    case "dragTranslate": {
+      rejectUnknown(value, ["kind", "min", "max"], path, diags);
+      const vec = (v: unknown, p: string): Vec2 | undefined => {
+        if (!isRecord(v)) {
+          diags.add("INVALID_TYPE", p, "Expected a vec2.");
+          return undefined;
+        }
+        rejectUnknown(v, ["x", "y"], p, diags);
+        const x = readFinite(v.x, `${p}.x`, diags);
+        const y = readFinite(v.y, `${p}.y`, diags);
+        return x === undefined || y === undefined ? undefined : { x, y };
+      };
+      const min = vec(value.min, `${path}.min`);
+      const max = vec(value.max, `${path}.max`);
+      if (min && max && (min.x > max.x || min.y > max.y)) diags.add("INVALID_TRACK_VALUE", path, "dragTranslate min must not exceed max.");
+      return ["transform.position.x", "transform.position.y"];
+    }
+    default:
+      diags.add("INVALID_ENUM", `${path}.kind`, "Action kind must be set, toggle, step or dragTranslate.");
+      return [];
+  }
 }
 
 function readOperators(

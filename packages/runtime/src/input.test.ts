@@ -290,4 +290,17 @@ describe("InputSession demonstrator (E007)", () => {
     expect(frameAt(scene, 150, session).drawItems.find((item) => item.nodeId === "Glass")!.opacity).toBeCloseTo(0.3);
     expect(session.history()).toHaveLength(2);
   });
+
+  it("releases focus at either end of the order when wrapping is off", () => {
+    const store = new EntityRevisionStore();
+    grantInput(store);
+    const session = new InputSession({ ...demoOptions(store, KNOB_INITIAL), wrapFocus: false });
+    const tab = (shiftKey = false) => session.process({ type: "keydown", sceneTimeMs: 0, key: "Tab", shiftKey }, base);
+    expect(tab()).toEqual([{ type: "focus", entityId: "Knob", reason: "keyboard" }]);
+    tab();
+    expect(session.focusedEntity).toBe("Panel");
+    expect(tab()).toEqual([{ type: "blur", entityId: "Panel", reason: "keyboard" }]);
+    expect(session.focusedEntity).toBeUndefined();
+    expect(tab(true)).toEqual([{ type: "focus", entityId: "Panel", reason: "keyboard" }]);
+  });
 });

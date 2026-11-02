@@ -3,7 +3,7 @@
  * One loaded program; nothing runs until Run (or the Autoplay option).
  */
 import { CanvasRenderer } from "@gvr/canvas-renderer";
-import { AnimationRuntime, RuntimeClock } from "@gvr/runtime";
+import { AnimationRuntime, createSceneInputSession, logicalPointFromCss, RuntimeClock, type InputEvent, type InputSession } from "@gvr/runtime";
 import type { ResolvedFrame } from "@gvr/schema";
 import type { GvrBridge, PlayerProbe } from "../bridge";
 import { isTypingTarget } from "../bridge";
@@ -142,6 +142,8 @@ let comparisonRenderer: CanvasRenderer | null = null;
 let fileReadId = 0;
 let outcome: RunOutcome | null = null;
 let runtime: AnimationRuntime | null = null;
+/** Input session for scenes that declare `interact` targets (input.bindings). */
+let input: InputSession | null = null;
 let frame: ResolvedFrame | null = null;
 let fullscreen = false;
 let scrubbing = false;
@@ -212,6 +214,10 @@ function run(): void {
   // Failure preserves the previous successful scene and playhead, with a visible notice.
   if (outcome.scene) {
     runtime = new AnimationRuntime(outcome.scene, telemetry);
+    input?.dispose();
+    input = outcome.scene.interactions?.length ? createSceneInputSession(outcome.scene, { wrapFocus: false }) : null;
+    // Interactive scenes take keyboard focus for Tab / Enter / bound keys.
+    ui.canvas.tabIndex = input ? 0 : -1;
     clock.seek(0);
     refreshComparison();
     if (!isStill()) clock.play();
@@ -413,7 +419,7 @@ function paint(): void {
   const size = canvasSize();
   renderer.resize(Math.max(1, size.width), Math.max(1, size.height), dpr());
   const time = isStill() ? 0 : clampTime(clock.timeMs, durationMs());
-  frame = runtime ? runtime.evaluate(time) : null;
+  frame = runtime ? runtime.evaluate(time, inputOverlay()) : null;
   if (frame) renderer.render(frame);
   else clearCanvas(ui.canvas);
   if (split && ui.splitCompare.checked && !fullscreen) {
@@ -783,6 +789,64 @@ ui.splitCompare.addEventListener("change", () => { refreshComparison(); selectTa
 ui.fullscreen.addEventListener("click", enterFullscreen);
 ui.fsExit.addEventListener("click", exitFullscreen);
 ui.canvas.addEventListener("dblclick", () => (fullscreen ? exitFullscreen() : enterFullscreen()));
+
+function inputOverlay() {
+  return input ? input.applyTo.bind(input) : undefined;
+}
+
+/** Route one host event into the input session at the presented scene time. */
+function dispatchInput(build: (sceneTimeMs: number) => InputEvent): boolean {
+  if (!input || !runtime || libraryVisible) return false;
+  const time = isStill() ? 0 : clampTime(clock.timeMs, durationMs());
+  const signals = input.process(build(time), runtime.evaluate(time, inputOverlay()));
+  if (signals.length > 0) render();
+  return signals.length > 0;
+}
+
+function pointerAt(event: PointerEvent | WheelEvent): { x: number; y: number } {
+  const viewport = runtime?.scene.viewport ?? { width: 1, height: 1 };
+  return logicalPointFromCss(viewport, ui.canvas.clientWidth, ui.canvas.clientHeight, event.offsetX, event.offsetY);
+}
+
+for (const type of ["pointerdown", "pointermove", "pointerup"] as const) {
+  ui.canvas.addEventListener(type, (event) => {
+    if (!input) return;
+    const point = pointerAt(event);
+    dispatchInput((sceneTimeMs) => ({ type, sceneTimeMs, pointerId: event.pointerId, x: point.x, y: point.y }));
+    if (type === "pointerdown" && input.capturedEntity) ui.canvas.setPointerCapture?.(event.pointerId);
+  });
+}
+ui.canvas.addEventListener("pointercancel", (event) => {
+  dispatchInput((sceneTimeMs) => ({ type: "pointercancel", sceneTimeMs, pointerId: event.pointerId }));
+});
+ui.canvas.addEventListener(
+  "wheel",
+  (event) => {
+    if (!input) return;
+    const point = pointerAt(event);
+    const consumed = dispatchInput((sceneTimeMs) => ({
+      type: "wheel",
+      sceneTimeMs,
+      x: point.x,
+      y: point.y,
+      deltaY: event.deltaY,
+      ctrlKey: event.ctrlKey,
+    }));
+    if (consumed) event.preventDefault();
+  },
+  { passive: false },
+);
+ui.canvas.addEventListener("keydown", (event) => {
+  if (!input || event.metaKey || event.ctrlKey || event.altKey) return;
+  const consumed = dispatchInput((sceneTimeMs) => ({ type: "keydown", sceneTimeMs, key: event.key, shiftKey: event.shiftKey }));
+  // Tab past either end releases focus to the page instead of trapping it.
+  const leaving = event.key === "Tab" && !input.focusedEntity;
+  if (consumed && !leaving) {
+    // Interaction keys win over player shortcuts while the canvas has focus.
+    event.preventDefault();
+    event.stopPropagation();
+  }
+});
 
 let hoverTimer = 0;
 ui.canvasArea.addEventListener("pointermove", () => {

@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.9.0",
+      "current": "0.10.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.7"
+      "packageVersion": "0.1.8"
     },
     "scene-ir": {
-      "current": "0.9.0",
+      "current": "0.10.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.7"
+      "packageVersion": "0.1.8"
     }
   },
   "versions": [
@@ -76,6 +76,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.9.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.10.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.10.0.md"
     },
     {
       "language": "motionscript",
@@ -145,6 +152,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.9.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.10.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.10.0.md"
     },
     {
       "language": "scene-ir",
@@ -223,6 +237,13 @@
       "compiler": "0.1.6",
       "runtime": "0.1.7",
       "readers": "Wire stays 0.2. Declarative entity/geometry/bind/behaviour statements lower onto APPLY_ENTITY_PATCH; gate with entities.durableRevisions and entities.drawableBindings."
+    },
+    {
+      "motionscript": "0.10.0",
+      "sceneIr": "0.10.0",
+      "compiler": "0.1.7",
+      "runtime": "0.1.8",
+      "readers": "Wire stays 0.2. input.bindings is gated by requiredCapabilities / requires. Packages without the capability reject scenes and CREATE_SCENE headers carrying interactions."
     }
   ]
 }

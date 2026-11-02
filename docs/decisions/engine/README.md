@@ -18,4 +18,5 @@
   `paint.animatedSolid`.
 - [Native input (E007)](native-input.md): painted-geometry hit-testing over the
   resolved frame, capture/hover/click/drag/wheel/focus routing, bounded actions
-  on `input`-owned channels and deterministic replay; language wiring is E025.
+  on `input`-owned channels and deterministic replay; versioned as MotionScript /
+  Scene IR 0.10.0 `input.bindings` by E025.

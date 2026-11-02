@@ -23,6 +23,7 @@ Not yet in a published Scene IR version:
 `entities.drawableBindings` landed in Scene IR 0.7.0 (`REGISTER_GEOMETRY` / `BIND_GEOMETRY` on `APPLY_ENTITY_PATCH`).
 `paint.animatedSolid` landed in Scene IR 0.8.0 (`fill.*` / `stroke.*` / `stroke.width` channels).
 MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
+`input.bindings` (scene `interactions`) landed in Scene IR 0.10.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

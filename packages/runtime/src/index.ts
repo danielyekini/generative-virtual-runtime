@@ -23,7 +23,17 @@ export type {
   WriterClass,
 } from "./entities";
 export { buildResolvedFrame } from "./frame";
-export { hitTest, hitTestAll, INPUT_CHANNELS, InputSession, ownershipFromGrants, replayInput } from "./input";
+export {
+  createSceneInputSession,
+  declaredInputChannels,
+  hitTest,
+  hitTestAll,
+  INPUT_CHANNELS,
+  InputSession,
+  logicalPointFromCss,
+  ownershipFromGrants,
+  replayInput,
+} from "./input";
 export type {
   HitResult,
   HitTestOptions,
@@ -55,5 +65,6 @@ export { assessReadiness, PresentationController } from "./presentation";
 export type { GeneratedOffer, PresentationPhase, PresentationView, Readiness, SystemCatalogueEntry } from "./presentation";
 export type { PlaybackState } from "./playback";
 export { AnimationRuntime } from "./runtime";
+export type { SampleOverlay } from "./runtime";
 export { sampleScene } from "./sample";
 export { StreamingRuntime } from "./streaming";

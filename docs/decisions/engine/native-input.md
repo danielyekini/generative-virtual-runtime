@@ -86,9 +86,9 @@ Studio inspection and teaching transcripts.
 - **Bounded actions.** `set`, `toggle` (two values), `step` (delta clamped to
   `[min, max]`), `dragTranslate` (both position axes must be owned before either
   moves; clamped to bounds). No loops, expressions, cross-scene scripts or timers.
-  `dragTranslate` applies viewport deltas directly: correct for parents without
-  rotation/scale and camera zoom 1; a scaled parent needs the follow-up's
-  parent-space conversion.
+  `dragTranslate` converts viewport deltas into the target's parent space
+  through the optional `dragSpace` hook (E025 supplies it for scene-declared
+  interactions); without the hook deltas apply directly.
 - **Replay.** Output depends only on the event sequence, frames and options. The
   session keeps a bounded log (`maxLog`, default 4096, oldest dropped) and
   `replayInput` reproduces identical signals and state over equal frames.
@@ -116,6 +116,11 @@ Studio inspection and teaching transcripts.
   entry, host accessibility mirroring, and paint channels as input targets.
 
 ## Child work
+
+Landed: E025 ([#100](https://github.com/danielyekini/generative-virtual-runtime/issues/100))
+as MotionScript / Scene IR 0.10.0 `input.bindings` (`interact` declarations,
+scene `interactions`, `createSceneInputSession`, Studio player wiring with
+`wrapFocus: false` so Tab leaves the canvas at either end).
 
 - **E025** ([#100](https://github.com/danielyekini/generative-virtual-runtime/issues/100)): version interaction targets and bindings in
   MotionScript / Scene IR (new capability token, registry rows, conformance
