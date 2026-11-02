@@ -25,6 +25,7 @@
         </div>
       </div>
       <span class="spacer"></span>
+      <button id="toggle-split" type="button" aria-pressed="false" title="Paste and run beside the canvas">Split</button>
       <button id="toggle-source" type="button" aria-pressed="false" title="Source panel (E)">⟨/⟩ Source</button>
       <button id="fullscreen" type="button" disabled title="Fullscreen (F)">⛶ Fullscreen</button>
       <button id="options" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Run options" title="Run options">⚙</button>
@@ -39,8 +40,7 @@
           </select>
         </label>
         <hr />
-        <p class="menu-note">Temporary routes (until P002/P004)</p>
-        <a role="menuitem" href="/legacy.html#import/split">Import / Split workbench</a>
+        <p class="menu-note">Temporary routes (until P002)</p>
         <a role="menuitem" href="/legacy.html#stream">Stream workbench</a>
         <a role="menuitem" href="/legacy.html#stage">Stage demo</a>
       </div>
@@ -51,6 +51,11 @@
         <section id="viewer" aria-label="Player">
           <div id="canvas-area">
             <canvas id="view" aria-label="Program canvas"></canvas>
+        <section id="comparison" aria-label="MotionScript round-trip comparison" hidden>
+          <div class="panel-bar"><strong>MotionScript round-trip</strong><span class="meta">Same playhead</span></div>
+          <div id="comparison-area"><canvas id="compare-view" aria-label="MotionScript round-trip canvas"></canvas></div>
+          <p id="comparison-note" class="pane-note" role="status"></p>
+        </section>
             <div id="empty" class="overlay">
               <p class="overlay-title">No program loaded</p>
               <p class="overlay-note">Open a program from the Library, then press Run.</p>
@@ -114,6 +119,17 @@
             <button id="source-run" type="button" disabled title="Run (Ctrl/⌘+Enter)">▶ Run</button>
             <button id="source-close" type="button" aria-label="Close source panel">✕</button>
           </div>
+          <div id="split-controls" hidden>
+            <label>Format <select id="split-format" aria-label="Split format">
+              <option value="motionscript">MotionScript</option><option value="lottie">Lottie</option>
+              <option value="svg">SVG</option><option value="fixture">Fixture</option>
+            </select></label>
+            <label>Presets <select id="split-presets" aria-label="Split presets"></select></label>
+            <button id="split-open" type="button">Open file…</button>
+            <label class="check"><input id="split-compare" type="checkbox" /> Compare MotionScript round-trip</label>
+            <p class="meta">Separate drafts per format for this visit. Paste or open a file, then Run.</p>
+            <p id="split-error" role="alert" hidden></p>
+          </div>
           <textarea id="source" spellcheck="false" aria-label="Program source" disabled placeholder="Open a program to edit its source."></textarea>
         </aside>
       </div>
@@ -122,7 +138,7 @@
         <div class="panel-tabs" role="tablist" aria-label="Bottom panel">
           <button id="tab-diagnostics" type="button" role="tab" aria-selected="true">Diagnostics <span id="diag-count" class="count"></span></button>
           <button id="tab-scene" type="button" role="tab" aria-selected="false">Scene</button>
-          <button id="tab-report" type="button" role="tab" aria-selected="false">Report</button>
+          <button id="tab-report" type="button" role="tab" aria-selected="false">Report / Compare</button>
           <span class="spacer"></span>
           <button id="panel-toggle" type="button" aria-expanded="true" aria-label="Collapse panel">▾</button>
         </div>
@@ -167,6 +183,7 @@
       <p id="library-empty" class="meta" hidden>No matching programs. Try another search or collection, or create a program.</p>
       <div id="library-grid" role="list" aria-label="Programs"></div>
     </main>
+    <input id="split-file" type="file" hidden aria-label="Open Split source file" />
     <input id="library-file" type="file" hidden accept=".ms,.motionscript,.txt,.json,.svg,application/json,image/svg+xml,text/plain" aria-label="Upload a program file" />
     <script type="module" src="/src/player/main.ts"></script>
   </body>

@@ -293,6 +293,84 @@ try {
   await click(openRect.x, openRect.y);
   check("Open still works when clicking it blurs an edited tag field", (await player()).programKey === 'sample:ball' && await ev(`document.querySelector('#library').hidden`));
 
+  // P004. The same Player source drives explicit Split Run and optional comparison.
+  await ev("window.__gvr.open('sample:ball'); document.querySelector('#toggle-split').click()");
+  const splitOpened = await player();
+  check("Split expands the single Source editor with explicit formats", splitOpened.split && splitOpened.sourceOpen && await visible('#split-controls') && await ev(`document.querySelectorAll('#source').length === 1 && document.querySelector('#split-format').options.length === 4`));
+  check("Split comparison defaults off with no emitted script", !splitOpened.comparison && !splitOpened.comparisonSceneId && await ev(`window.__gvr.script === undefined && document.querySelector('#comparison').hidden`));
+  const setFormat = (format: string) => ev(`(() => { const s = document.querySelector('#split-format'); s.value = ${JSON.stringify(format)}; s.dispatchEvent(new Event('change')); })()`);
+  const setSource = (source: string) => ev(`(() => { const s = document.querySelector('#source'); s.value = ${JSON.stringify(source)}; s.dispatchEvent(new Event('input')); })()`);
+  const preset = (key: string) => ev(`(() => { const s = document.querySelector('#split-presets'); s.value = ${JSON.stringify(key)}; s.dispatchEvent(new Event('change')); })()`);
+  const nativeDraft = (await ev("document.querySelector('#source').value")) + '\n// draft kept across formats';
+  await setSource(nativeDraft);
+  await setFormat('svg');
+  await setSource('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="20" fill="red"/></svg>');
+  const svgDraft = await ev("document.querySelector('#source').value");
+  await setFormat('motionscript');
+  check("format switches restore separate native and SVG drafts", await ev(`document.querySelector('#source').value === ${JSON.stringify(nativeDraft)}`));
+  await setFormat('svg');
+  check("returning to SVG preserves its independent draft and waits for Run", (await player()).runState === 'not-run' && await ev(`document.querySelector('#source').value === ${JSON.stringify(svgDraft)}`));
+  await ev("document.querySelector('#run').click()");
+  check("pasted SVG runs through the existing importer", (await player()).format === 'svg' && (await player()).runState !== 'failed' && !!(await player()).sceneId);
+  await ev("document.querySelector('#split-compare').click()");
+  const compared = await player();
+  check("explicit comparison builds and displays the second scene", compared.comparison && !!compared.comparisonSceneId && await visible('#compare-view') && await ev(`window.__gvr.script.length > 0 && document.querySelector('#report').textContent.includes('not comparison with an original SVG/Lottie renderer')`), compared);
+  await shot('9-split-svg-compare');
+  await ev("document.querySelector('#split-compare').click()");
+  check("turning comparison off removes its runtime and emitted result", !(await player()).comparison && !(await player()).comparisonSceneId && await ev(`window.__gvr.script === undefined && document.querySelector('#comparison').hidden`));
+  for (const [format, key] of [['lottie','import:lottie:animated_position'], ['fixture','import:fixture:exact'], ['motionscript','sample:ball']]) {
+    await setFormat(format!);
+    await preset(key!);
+    check(`${format} preset loads without running`, (await player()).runState === 'not-run');
+    await ev("document.querySelector('#run').click()");
+    check(`${format} Split Run produces a real rendered frame`, (await player()).runState !== 'failed' && await ev(`window.__gvr.frame.drawItems.length > 0 && document.querySelector('#view').width > 1`));
+  }
+  await ev("window.__gvr.seek(500)");
+  await player();
+  await ev("document.querySelector('#split-compare').click()");
+  await player();
+  await ev("window.__gvr.seek(500)");
+  await player();
+  check("native comparison uses the same playhead and renders matching pixels", await ev(`document.querySelector('#view').toDataURL() === document.querySelector('#compare-view').toDataURL()`));
+  check("comparison canvases align vertically and use identical backing dimensions", await ev(`(() => { const a = document.querySelector('#view'), b = document.querySelector('#compare-view'); return a.width === b.width && a.height === b.height && Math.abs(a.getBoundingClientRect().top - b.getBoundingClientRect().top) < 1; })()`));
+  await shot('10-split-native-compare');
+  await ev("document.querySelector('#split-compare').click()");
+  await player();
+  const previousScene = (await player()).sceneId;
+  await setSource('this is not MotionScript');
+  await ev("document.querySelector('#run').click()");
+  const retained = await player();
+  check("failed Run retains previous successful scene and the rejected draft", retained.runState === 'failed' && retained.sceneId === previousScene && await ev(`document.querySelector('#source').value === 'this is not MotionScript' && !document.querySelector('#failed').hidden && document.querySelector('#failed-note').textContent.includes('previous successful scene')`), retained);
+  await shot('11-split-retained-failure');
+  await ev("document.querySelector('#toggle-split').click()");
+  await player();
+  await ev("document.querySelector('#toggle-split').click()");
+  check("closing/reopening Split keeps edits and comparison stays off", !(await player()).comparison && await ev(`document.querySelector('#source').value === 'this is not MotionScript'`));
+  await setFormat('svg');
+  await ev(`(() => { const input = document.querySelector('#split-file'); const dt = new DataTransfer(); dt.items.add(new File([${JSON.stringify(svgDraft)}], 'split-source.svg')); input.files = dt.files; input.dispatchEvent(new Event('change')); })()`);
+  await sleep(100);
+  check("Open file uses the selected format and waits for Run", (await player()).programName === 'split-source.svg' && (await player()).runState === 'not-run' && await ev(`document.querySelector('#source').value === ${JSON.stringify(svgDraft)}`));
+  await ev(`(() => { window.savedFileText = File.prototype.text; File.prototype.text = () => new Promise(resolve => { window.resolveSlowFile = resolve; }); const input = document.querySelector('#split-file'); const dt = new DataTransfer(); dt.items.add(new File(['stale'], 'slow.svg')); input.files = dt.files; input.dispatchEvent(new Event('change')); })()`);
+  await setFormat('motionscript');
+  await ev(`window.resolveSlowFile('stale'); File.prototype.text = window.savedFileText`);
+  await player();
+  check("late file reads cannot overwrite a newer format draft", (await player()).format === 'motionscript' && await ev(`document.querySelector('#source').value === 'this is not MotionScript'`));
+  await setFormat('svg');
+  await ev(`(() => { File.prototype.text = async () => { throw new Error('read denied'); }; const input = document.querySelector('#split-file'); const dt = new DataTransfer(); dt.items.add(new File([''], 'denied.svg')); input.files = dt.files; input.dispatchEvent(new Event('change')); })()`);
+  await sleep(100);
+  check("file read errors are visible and preserve the draft", await visible('#split-error') && await ev(`document.querySelector('#split-error').textContent.includes('read denied') && document.querySelector('#source').value === ${JSON.stringify(svgDraft)}`));
+  await ev(`File.prototype.text = window.savedFileText`);
+  await ev("document.querySelector('#open-library').click()");
+  await sleep(100);
+  await ev("document.querySelector('#library-player').click()");
+  check("Library navigation preserves the selected Split draft", (await player()).split && (await player()).format === 'svg' && await ev(`document.querySelector('#source').value === ${JSON.stringify(svgDraft)}`));
+
+  await cdp.send("Emulation.setDeviceMetricsOverride", {width:800, height:900, deviceScaleFactor:1, mobile:false}, sessionId);
+  await sleep(150);
+  check("Split controls fit the editor at a narrower viewport", await ev(`(() => { const a = document.querySelector('#split-controls'), b = document.querySelector('#source-panel'); return a.scrollWidth <= b.clientWidth && document.documentElement.scrollWidth <= document.documentElement.clientWidth; })()`));
+  await shot('12-split-narrow');
+  await cdp.send("Emulation.setDeviceMetricsOverride", {width:1440, height:900, deviceScaleFactor:1, mobile:false}, sessionId);
+
   // 9. Temporary legacy route keeps streaming working
   await navigate("/legacy.html#stream");
   await ev("(() => { const t = document.querySelector('#stream-toggle'); t.checked = true; t.dispatchEvent(new Event('change')); const p = document.querySelector('#stream-preset'); p.value = 'bunny'; p.dispatchEvent(new Event('change')); document.querySelector('#stream-run').click(); })()");
