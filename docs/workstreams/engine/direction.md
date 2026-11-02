@@ -49,30 +49,35 @@ Capacity-transactions evidence and PR #11 remain valid starting points; do not
 repeat their proofs without an affected failure. Product may adapt P002/P005 to
 the published observation snapshot; engine does not own Studio inspector UI.
 
-## Generative audio (user steering, 2 November 2026)
+## Generative audio (user steering + E031 design, 2 November 2026)
 
-Immediate engine priority: adopt **ElevenLabs** for generative narration and
-sound effects timed with visuals — first meaningful paid external dependency.
-Scene-time `audio.cues` (E008/E026) stays the playback foundation; generative
-prompts must resolve into that schedule (or a versioned extension) via a
-provider-abstracted adapter. Syntax intent
-(`audio.narration("…")` / `audio.effects("…")`) is not yet grammar.
-See [generative-audio-elevenlabs.md](../../decisions/engine/generative-audio-elevenlabs.md).
+Adopt **ElevenLabs** for generative narration and sound effects timed with
+visuals — first meaningful paid external dependency. Scene-time `audio.cues`
+(E008/E026) stays the playback foundation. E031 chose capability
+`audio.generative`: portable generative resources, unchanged cues, host
+`GenerativeAudioProvider`, duration revision, fixture tests, ElevenLabs
+with-timestamps TTS + SFX v3 behind the adapter
+([generative-audio-contract.md](../../decisions/engine/generative-audio-contract.md);
+steering [generative-audio-elevenlabs.md](../../decisions/engine/generative-audio-elevenlabs.md)).
+Syntax sugar is not grammar until E033.
 
 ## Next work
 
-1. E031 ([#119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)):
-   investigate ElevenLabs TTS + sound-generation APIs; design MotionScript /
-   Scene IR surface, duration-revision / readiness, secrets and host contract;
-   spawn implementation children. Ready, **P0**.
-2. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
+1. E032 ([#124](https://github.com/danielyekini/generative-virtual-runtime/issues/124)):
+   runtime duration revision + `GenerativeAudioProvider` + fixture provider
+   (no language claim). Ready, **P0**.
+2. E033 ([#125](https://github.com/danielyekini/generative-virtual-runtime/issues/125)):
+   version `audio.generative` in MotionScript / Scene IR. Ready after E032.
+3. E034 ([#126](https://github.com/danielyekini/generative-virtual-runtime/issues/126)):
+   ElevenLabs adapter package. Ready after E032; Studio credentials stay with
+   Product ([#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120) / P009).
+4. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
    version seam/split support (e.g. `space.planarSeams`) on top of
-   `space.planar25d`. Ready, after E031 unless E031 is Blocked.
-3. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+   `space.planar25d`. Ready after the generative-audio P0 slice unless that
+   slice is Blocked.
+5. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
-   sit with P009 (now also waiting on E031's host/credential contract via
-   product request [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120)).
-   E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
+   sit with P009. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105))
    remains a Candidate emitter round-trip bug (no language change).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
