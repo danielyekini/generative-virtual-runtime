@@ -13,6 +13,7 @@ export const CAPABILITIES = [
   "paint.linearGradient",
   "paint.radialGradient",
   "paint.gradientStroke",
+  "paint.animatedSolid",
   "text.basic",
   "resources.image",
   "svg.smilTimeBased",

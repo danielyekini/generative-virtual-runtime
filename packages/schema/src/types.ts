@@ -351,7 +351,16 @@ export type NodeAnimChannel =
   | "commands"
   | "trim.start"
   | "trim.end"
-  | "trim.offset";
+  | "trim.offset"
+  | "fill.r"
+  | "fill.g"
+  | "fill.b"
+  | "fill.a"
+  | "stroke.r"
+  | "stroke.g"
+  | "stroke.b"
+  | "stroke.a"
+  | "stroke.width";
 
 export type CameraAnimChannel =
   | "position"

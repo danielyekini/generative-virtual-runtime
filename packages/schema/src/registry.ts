@@ -114,6 +114,60 @@ export const NODE_CHANNELS: Record<NodeAnimChannel, ChannelSpec> = {
     animation: "track",
     scalars: ["trim.offset"],
   },
+  "fill.r": {
+    dslPath: "fill.r",
+    type: "number",
+    animation: "track",
+    scalars: ["fill.r"],
+  },
+  "fill.g": {
+    dslPath: "fill.g",
+    type: "number",
+    animation: "track",
+    scalars: ["fill.g"],
+  },
+  "fill.b": {
+    dslPath: "fill.b",
+    type: "number",
+    animation: "track",
+    scalars: ["fill.b"],
+  },
+  "fill.a": {
+    dslPath: "fill.a",
+    type: "number",
+    animation: "track",
+    scalars: ["fill.a"],
+  },
+  "stroke.r": {
+    dslPath: "stroke.r",
+    type: "number",
+    animation: "track",
+    scalars: ["stroke.r"],
+  },
+  "stroke.g": {
+    dslPath: "stroke.g",
+    type: "number",
+    animation: "track",
+    scalars: ["stroke.g"],
+  },
+  "stroke.b": {
+    dslPath: "stroke.b",
+    type: "number",
+    animation: "track",
+    scalars: ["stroke.b"],
+  },
+  "stroke.a": {
+    dslPath: "stroke.a",
+    type: "number",
+    animation: "track",
+    scalars: ["stroke.a"],
+  },
+  "stroke.width": {
+    dslPath: "stroke.width",
+    type: "number",
+    animation: "track",
+    scalars: ["stroke.width"],
+  },
 };
 
 export const CAMERA_CHANNELS: Record<CameraAnimChannel, ChannelSpec> = {
@@ -269,6 +323,19 @@ export function isValidSample(type: PropertyType, channel: string, value: unknow
   if (channel === "zoom" || channel.endsWith(".zoom")) return value > 0;
   if (channel === "trim.start" || channel === "trim.end") return value >= 0 && value <= 1;
   if (channel === "trim.offset") return Number.isFinite(value);
+  if (
+    channel === "fill.r" ||
+    channel === "fill.g" ||
+    channel === "fill.b" ||
+    channel === "fill.a" ||
+    channel === "stroke.r" ||
+    channel === "stroke.g" ||
+    channel === "stroke.b" ||
+    channel === "stroke.a"
+  ) {
+    return value >= 0 && value <= 1;
+  }
+  if (channel === "stroke.width") return value > 0;
   return true;
 }
 
