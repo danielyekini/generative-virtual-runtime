@@ -357,6 +357,58 @@ complete;
   });
 });
 
+describe("paint.animatedSolid", () => {
+  it("compiles animated solid paint channels with paint.animatedSolid", () => {
+    const compiled = compileMotionScript(`scene "paint" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+  requires "paint.animatedSolid";
+};
+circle Dot {
+  radius 10;
+  fill #ff0000;
+  stroke #00ff00 width 2;
+};
+keyframes Dot.fill.r {
+  start 0ms;
+  duration 1000ms;
+  0% 1;
+  100% 0;
+};
+keyframes Dot.fill.a {
+  start 0ms;
+  duration 1000ms;
+  0% 1;
+  100% 0.25;
+};
+keyframes Dot.stroke.b {
+  start 0ms;
+  duration 1000ms;
+  0% 0;
+  100% 1;
+};
+keyframes Dot.stroke.width {
+  start 0ms;
+  duration 1000ms;
+  0% 2;
+  100% 8;
+};
+complete;
+`);
+    expect(compiled.ok, compiled.diagnostics.map((item) => item.message).join("\n")).toBe(true);
+    expect(compiled.scene?.requiredCapabilities).toContain("paint.animatedSolid");
+    const channels = new Set(
+      (compiled.scene?.timeline.tracks ?? [])
+        .filter((item) => item.kind === "keyframe" && item.target.kind === "node")
+        .map((item) => (item.target.kind === "node" ? item.target.channel : "")),
+    );
+    expect(channels).toEqual(new Set(["fill.r", "fill.a", "stroke.b", "stroke.width"]));
+    expect(compiled.scene && validateSceneIR(compiled.scene).ok).toBe(true);
+  });
+});
+
 describe("paint.gradientStroke", () => {
   it("compiles gradient stroke with paint.gradientStroke", () => {
     const compiled = compileMotionScript(`scene "ring" {

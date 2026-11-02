@@ -21,27 +21,13 @@ Not yet in a published MotionScript version:
 `geometry.animatedTrim` landed in MotionScript 0.5.0.
 `entities.durableRevisions` landed in MotionScript 0.6.0 (requires token + compiler `emitEntityPatchDelta`; declarative entity/behaviour statements remain open).
 `entities.drawableBindings` landed in MotionScript 0.7.0 (requires token + `REGISTER_GEOMETRY` / `BIND_GEOMETRY` on `APPLY_ENTITY_PATCH`; declarative bind syntax remains open).
+`paint.animatedSolid` landed in MotionScript 0.8.0 (requires token + `fill.*` / `stroke.*` / `stroke.width` tracks).
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 
 ## Spatial Z representation audit
 
 The implementation accepts optional spatial tangent `z` and MotionScript `(x, y, z)` tangents, but the published 0.2.0 spatial-curve contract does not explicitly introduce either representation. Arc-length corrections to existing 2D curves are implementation fixes; accepting a third component is a new contract. A candidate minor release must document and gate this representation, including older-reader rejection and migration tests, before it is claimed as released. Current language pointers remain 0.6.0; no additional release is authorised for this audit in this run. Existing ungated acceptance is an unresolved compatibility issue.
-
-## Native animated paint candidate (E009; not implemented or released)
-
-[E009](https://github.com/danielyekini/generative-virtual-runtime/issues/28) owns
-the bounded native use case: animate authored fill/text/stroke colour or alpha
-and stroke width without unnecessary overlay-node expansion. Its live scope and
-design decide the initial channels and syntax; this note chooses neither.
-Verify interpolation, writer ownership, inheritance, streaming/seek behaviour,
-compiler/emitter equivalence and older-program compatibility for the selected
-native slice. Any new semantics need the normal version, registry and conformance
-change together. Preserve unsupported diagnostics until support is verified.
-
-The retired Lottie-originated proposal is provenance in Git history, linked from
-the scope decision above. It imposes no adapter lowering, Lottie compilation or
-external source-fidelity gate on E009. No capability or release is enabled here.
 
 ## Compatible assembled-delta validation repair (E001)
 

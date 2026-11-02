@@ -707,6 +707,34 @@
       }
     },
     {
+      "id": "paint.animatedSolid",
+      "summary": "Keyframe tracks may drive solid fill/stroke colour components and uniform stroke width on a node.",
+      "introducedIn": { "motionscript": "0.8.0", "sceneIr": "0.8.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing paint.animatedSolid.",
+        "Channels are fill.r/g/b/a, stroke.r/g/b/a (straight alpha in [0, 1]) and stroke.width (> 0).",
+        "Samples merge over authored solid fill/stroke bases. Gradient paints are unchanged when a track targets them.",
+        "Node opacity remains independent of fill.a / stroke.a. Gradients, dashes and non-uniform width are out of scope."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#compiles animated solid paint channels with paint.animatedSolid",
+        "packages/runtime/src/runtime.test.ts#samples animated solid fill stroke colour alpha and width",
+        "packages/runtime/src/runtime.test.ts#replaces overlay colour crossfade with one painted node"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native animated paint; Lottie fill/stroke animation lowering is not commissioned with this release."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native animated paint; SVG paint animation lowering is not commissioned with this release."
+        }
+      }
+    },
+    {
       "id": "compositing.matte",
       "summary": "A track matte would clip one layer by another.",
       "targets": [],

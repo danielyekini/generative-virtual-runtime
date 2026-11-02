@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.7.0",
+      "current": "0.8.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.5"
+      "packageVersion": "0.1.6"
     },
     "scene-ir": {
-      "current": "0.7.0",
+      "current": "0.8.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.5"
+      "packageVersion": "0.1.6"
     }
   },
   "versions": [
@@ -62,6 +62,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.7.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.8.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.8.0.md"
     },
     {
       "language": "motionscript",
@@ -117,6 +124,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.7.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.8.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.8.0.md"
     },
     {
       "language": "scene-ir",
@@ -181,6 +195,13 @@
       "compiler": "0.1.4",
       "runtime": "0.1.6",
       "readers": "Wire stays 0.2. entities.drawableBindings is gated by requiredCapabilities / requires. Packages without the capability reject REGISTER_GEOMETRY / BIND_GEOMETRY on APPLY_ENTITY_PATCH."
+    },
+    {
+      "motionscript": "0.8.0",
+      "sceneIr": "0.8.0",
+      "compiler": "0.1.5",
+      "runtime": "0.1.7",
+      "readers": "Wire stays 0.2. paint.animatedSolid is gated by requiredCapabilities / requires. Packages without the capability reject fill/stroke colour and stroke.width animation tracks."
     }
   ]
 }
