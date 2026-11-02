@@ -1,3 +1,35 @@
+export {
+  AUDIO_BUSES,
+  AudioSession,
+  audioReadiness,
+  cueSpanMs,
+  cueVoiceAt,
+  encodeWav,
+  isRequired,
+  mixAudio,
+  narrationActiveAt,
+  voicesAt,
+} from "./audio";
+export type {
+  AudioBackend,
+  AudioBus,
+  AudioCommand,
+  AudioCue,
+  AudioDiagnostic,
+  AudioDiagnosticCode,
+  AudioMixSettings,
+  AudioReadiness,
+  AudioResource,
+  AudioResourceState,
+  AudioSchedule,
+  AudioSessionOptions,
+  AudioStartCommand,
+  AudioSyncInput,
+  AudioTriggerRecord,
+  AudioVoice,
+  DecodedAudio,
+  MixOptions,
+} from "./audio";
 export { RuntimeClock } from "./clock";
 export { EntityRevisionStore } from "./entities";
 export type {

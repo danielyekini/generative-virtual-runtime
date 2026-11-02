@@ -16,7 +16,9 @@ E024 declarative entity statements (MotionScript / Scene IR 0.9.0),
 E007 native input decision/prototype (painted-geometry hit-testing,
 `InputSession` routing, bounded `input`-owned actions, replay), E025
 `input.bindings` (`interact` declarations, MotionScript / Scene IR 0.10.0,
-Studio player wiring),
+Studio player wiring), E008 audible media clock decision/prototype
+(scene-time master, pure audio schedule, reconciling `AudioSession`,
+required-resource hold, deterministic `mixAudio` export),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -26,6 +28,7 @@ and E003 immutable path/keyframe validation-fact reuse are merged
 `docs/decisions/engine/animated-paint-channels.md`,
 `docs/decisions/engine/immutable-validation-facts.md`,
 `docs/decisions/engine/native-input.md`,
+`docs/decisions/engine/audible-media-clock.md`,
 `observeStreamingExecution` / `EntityRevisionStore` / `APPLY_ENTITY_PATCH` /
 `REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection in
 `@gvr/runtime`, `emitEntityPatchDelta` in `@gvr/compiler`).
@@ -35,9 +38,10 @@ the published observation snapshot; engine does not own Studio inspector UI.
 
 ## Next work
 
-1. After E025 (`input.bindings` / language 0.10.0): replenish Ready from M4
-   Candidates (for example E008 audible media clock) with satisfied
-   dependencies. Native input decision, prototype and versioned bindings landed.
+1. E026 ([#103](https://github.com/danielyekini/generative-virtual-runtime/issues/103)):
+   version audio resources/cues (MotionScript / Scene IR) and the Studio Web
+   Audio backend per the E008 decision; host speech paths stay with P009.
+2. Then replenish Ready from remaining M4/M5 Candidates with satisfied dependencies.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
