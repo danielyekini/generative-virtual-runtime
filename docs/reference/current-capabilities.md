@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.13.0 | 0.2 |
-| scene-ir | 0.13.0 | 0.2 |
+| motionscript | 0.14.0 | 0.2 |
+| scene-ir | 0.14.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -50,6 +50,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | audio.cues | supported | supported | not-applicable | Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/audio.test.ts) |
 | space.planar25d | supported | supported | not-applicable | Scenes declare planar 2.5D layers: a camera and surfaces (root-scene nodes) with 3D placement, hinges and reverse-face control, projected at frame resolution. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/spatial.test.ts) |
 | physics.planar2d | supported | supported | not-applicable | Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/physics.test.ts) |
+| space.planarSeams | supported | supported | not-applicable | Planar 2.5D layers opt into seam/split compositing: true surface intersections are split along their plane intersection into ordered fragments, and declared seams are checked for a shared edge in view space. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/seams.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.mask | unsupported | unsupported | unsupported | A layer mask would clip geometry to a path. [registry](../../packages/schema/capabilities/registry.json) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
@@ -71,5 +72,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `c4f8fb8852b748a5a29ee3ccc0391560ed52b92f7f4136d2f19a030f09855f05`
-- `packages/schema/capabilities/registry.json` SHA-256 `5fb9317571310445be0841ee680cd80e987b29f812a22f2673853b57aa53a0ca`
+- `packages/schema/capabilities/releases.json` SHA-256 `9440b14e175338f8306d45cf3b00ddbdf2b837d79c4ca79cab11ad73e06ca04f`
+- `packages/schema/capabilities/registry.json` SHA-256 `3ddad083dd1cecc5d3eaa1f557ad72ee38f13247a7f365a87bbedf0c42eb4409`

@@ -29,6 +29,8 @@ E011 physics integration decision/prototype (planar fixed-step 2D session,
 E029 versioned `physics.planar2d` (Scene IR / MotionScript 0.13.0),
 E016 seam depth/paint-order decision/prototype
 (`docs/decisions/engine/seam-depth-order.md`),
+E030 versioned `space.planarSeams` (Scene IR / MotionScript 0.14.0: exact
+plane-line intersection splitting and declared seam checks in `projectSpatialFrame`),
 and E003 immutable path/keyframe validation-fact reuse are merged
 (`docs/decisions/engine/assembled-delta-validation.md`,
 `docs/decisions/engine/streaming-observation-contract.md`,
@@ -65,10 +67,7 @@ See [generative-audio-elevenlabs.md](../../decisions/engine/generative-audio-ele
    investigate ElevenLabs TTS + sound-generation APIs; design MotionScript /
    Scene IR surface, duration-revision / readiness, secrets and host contract;
    spawn implementation children. Ready, **P0**.
-2. E030 ([#112](https://github.com/danielyekini/generative-virtual-runtime/issues/112)):
-   version seam/split support (e.g. `space.planarSeams`) on top of
-   `space.planar25d`. Ready, after E031 unless E031 is Blocked.
-3. Replenish further from M4/M5 Candidates with satisfied dependencies as these
+2. Replenish further from M4/M5 Candidates with satisfied dependencies as these
    complete. Audible human judgement of E026 output and visible media controls
    sit with P009 (now also waiting on E031's host/credential contract via
    product request [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120)).

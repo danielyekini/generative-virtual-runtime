@@ -85,6 +85,10 @@ Landed in MotionScript / Scene IR **0.12.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.13.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `physics.planar2d`. `physics` declarations lower to scene `physics` (one world: dynamic bodies/joints or authored constraints), carried on `CREATE_SCENE` headers as a base definition frozen after the first seal. Physics exclusively owns `transform.position.x` / `transform.position.y` / `transform.rotation` for body entities (authored endpoints own position channels). Only `physics` became a reserved word; `mode`, `body`, `joint`, `constraint` and body words match by spelling. Older readers reject the capability token and the unknown `physics` key. See `docs/decisions/engine/physics-integration.md`.
 
+### Decision for `space.planarSeams`
+
+Landed in MotionScript / Scene IR **0.14.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `space.planarSeams` (with `space.planar25d`). A `seams` block inside `spatialLayer` lowers to the layer's `seams` object (split, edge epsilon, fragment budget, declared seam edges). Layers without it project exactly as before, so 0.12/0.13 scenes do not change meaning. No new reserved word: `seams`, `split`, `epsilon`, `maxFragments` and `edge` match by spelling. Older readers reject the capability token and the unknown `seams` key. See `docs/decisions/engine/seam-depth-order.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

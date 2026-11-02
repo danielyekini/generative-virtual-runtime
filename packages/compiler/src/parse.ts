@@ -1448,8 +1448,10 @@ function parseSpatialLayer(parser: Parser): SpatialLayerAst {
     } else if (key?.lexeme === "surface") {
       const surface = parseSpatialSurface(parser, node);
       if (surface) node.layer.surfaces.push(surface);
+    } else if (key?.lexeme === "seams") {
+      parseSpatialSeams(parser, node);
     } else {
-      note(node, parser, key ? `Unknown spatialLayer item ${key.lexeme}.` : "Expected camera or surface.");
+      note(node, parser, key ? `Unknown spatialLayer item ${key.lexeme}.` : "Expected camera, surface or seams.");
       skipSpatialBlock(parser);
     }
     expectSemi(parser);
@@ -1516,6 +1518,46 @@ function parseSpatialCamera(parser: Parser, node: SpatialLayerAst): void {
   eat(parser, "rbrace");
   if (projection) node.hasCamera = true;
   else note(node, parser, "camera needs a projection (perspective or orthographic).");
+}
+
+/**
+ * `seams { split true|false; epsilon n; maxFragments n; edge <a> <b>; };`
+ * (MotionScript 0.14 / space.planarSeams). Body words match by spelling.
+ */
+function parseSpatialSeams(parser: Parser, node: SpatialLayerAst): void {
+  if (node.layer.seams) note(node, parser, "A spatialLayer has at most one seams block.");
+  if (!eat(parser, "lbrace")) {
+    note(node, parser, "seams needs a { … } block.");
+    return;
+  }
+  const seams: NonNullable<SpatialLayerAst["layer"]["seams"]> = {};
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected a seams property.");
+      skipProperty(parser);
+    } else if (key.lexeme === "split") {
+      if (eat(parser, "keyword", "true")) seams.split = true;
+      else if (eat(parser, "keyword", "false")) seams.split = false;
+      else note(node, parser, "split needs true or false.");
+    } else if (key.lexeme === "epsilon" || key.lexeme === "maxFragments") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, `${key.lexeme} needs a number.`);
+      else if (key.lexeme === "epsilon") seams.edgeEpsilon = value;
+      else seams.maxFragments = value;
+    } else if (key.lexeme === "edge") {
+      const a = parseDotted(parser, false);
+      const b = a ? parseDotted(parser, false) : undefined;
+      if (a && b) (seams.edges ??= []).push({ a, b });
+      else note(node, parser, "edge needs two surface node ids.");
+    } else {
+      note(node, parser, `Unknown seams property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  node.layer.seams = seams;
 }
 
 function parseSpatialSurface(parser: Parser, node: SpatialLayerAst): SpatialSurfaceDefinition | undefined {

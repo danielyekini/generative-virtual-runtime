@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.13.0",
+      "current": "0.14.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.11"
+      "packageVersion": "0.1.12"
     },
     "scene-ir": {
-      "current": "0.13.0",
+      "current": "0.14.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.11"
+      "packageVersion": "0.1.12"
     }
   },
   "versions": [
@@ -104,6 +104,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.13.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.14.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.14.0.md"
     },
     {
       "language": "motionscript",
@@ -201,6 +208,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.13.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.14.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.14.0.md"
     },
     {
       "language": "scene-ir",
@@ -307,6 +321,13 @@
       "compiler": "0.1.10",
       "runtime": "0.1.14",
       "readers": "Wire stays 0.2. physics.planar2d is gated by requiredCapabilities / requires. Packages without the capability reject scenes and CREATE_SCENE headers carrying physics."
+    },
+    {
+      "motionscript": "0.14.0",
+      "sceneIr": "0.14.0",
+      "compiler": "0.1.11",
+      "runtime": "0.1.15",
+      "readers": "Wire stays 0.2. space.planarSeams is gated by requiredCapabilities / requires. Packages without the capability reject spatial layers carrying seams; older validators reject the unknown seams key."
     }
   ]
 }

@@ -50,6 +50,18 @@ describe("canonical emitter", () => {
     expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
   });
 
+  it("round-trips spatialLayer seams (space.planarSeams)", () => {
+    const source = readFileSync(resolve(motionDir, "spatial-seams.ms"), "utf8");
+    const scene = compile(source);
+    const { again } = roundTrip(scene);
+    expect(again.requiredCapabilities).toContain("space.planarSeams");
+    expect(again.spatialLayers).toEqual(scene.spatialLayers);
+    expect(again.spatialLayers![0]!.seams!.edges).toHaveLength(2);
+    for (const t of [0, 2000]) {
+      expect(sameFrame(new AnimationRuntime(scene).evaluate(t).drawItems, new AnimationRuntime(again).evaluate(t).drawItems)).toBe("");
+    }
+  });
+
   it("round-trips physics declarations (physics.planar2d)", () => {
     const source = readFileSync(resolve(motionDir, "physics-marble.ms"), "utf8");
     const scene = compile(source);

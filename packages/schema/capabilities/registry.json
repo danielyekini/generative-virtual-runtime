@@ -867,6 +867,45 @@
       }
     },
     {
+      "id": "space.planarSeams",
+      "summary": "Planar 2.5D layers opt into seam/split compositing: true surface intersections are split along their plane intersection into ordered fragments, and declared seams are checked for a shared edge in view space.",
+      "introducedIn": { "motionscript": "0.14.0", "sceneIr": "0.14.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. A spatial layer's seams object requires space.planarSeams (and space.planar25d) in requiredCapabilities / requires; without it the scene is rejected. Layers without seams keep the 0.12.0 report-only behaviour exactly.",
+        "seams: split (boolean, default true), edgeEpsilon (> 0, default 0.001 logical units), maxFragments (integer 0..1024, default 64 extra draw items per layer per frame), edges (pairs of distinct surfaces of the same layer, no duplicates).",
+        "Plane tests stay the occlusion authority. A pair whose outlines straddle each other's planes is clipped along the exact plane-plane line in item space; fragments keep node id, appearance and paint slot and are ordered by the same plane tests. Fragment paint outlines overlap the cut by 0.5 logical px to avoid anti-aliased hairlines. Text, image, open-outline and stroked surfaces are not split (SPATIAL_SPLIT_UNSUPPORTED) and over-budget pairs are left unsplit (SPATIAL_SPLIT_LIMIT); both keep SPATIAL_SURFACES_INTERSECT.",
+        "Declared seam edges report SPATIAL_SEAM_OPEN when the two projected outlines share no collinear overlapping edge within edgeEpsilon; geometric coincidence is required, not visual similarity. Shared edges never suppress an intersection. Order hints are a host option (projectSpatialFrame orderHint), applied to ties only; no authored or animated order channel is in this release."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/seams.test.ts#lowers a seams block into Scene IR and adds both capabilities",
+        "packages/compiler/src/seams.test.ts#rejects seams without the capability and enforces validation bounds",
+        "packages/compiler/src/seams.test.ts#reports compile diagnostics for malformed seams blocks",
+        "packages/compiler/src/seams.test.ts#keeps older identifiers spelled like seams body words compiling",
+        "packages/runtime/src/spatial-seams.test.ts#splits crossing panels along their plane intersection so every covered pixel shows the nearer panel",
+        "packages/runtime/src/spatial-seams.test.ts#splits under orthographic projection and keeps appearance and node identity",
+        "packages/runtime/src/spatial-seams.test.ts#splits concave panels that share an edge yet still cross",
+        "packages/runtime/src/spatial-seams.test.ts#keeps the E010 report path when splitting is off, unsupported or over budget",
+        "packages/runtime/src/spatial-seams.test.ts#leaves non-intersecting layers byte-identical and is deterministic",
+        "packages/runtime/src/spatial-seams.test.ts#accepts a hinge seam whose edges coincide in view space",
+        "packages/runtime/src/spatial-seams.test.ts#reports a drifted morph that only looks continuous across the fold",
+        "packages/runtime/src/spatial-seams.test.ts#applies order hints only to ties and rejects hints that contradict plane tests",
+        "packages/runtime/src/spatial-seams.test.ts#projects declared seams on AnimationRuntime evaluate",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips spatialLayer seams (space.planarSeams)"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native spatial compositing; Lottie 3D layers are not imported."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native spatial compositing; SVG has no 3D model to import."
+        }
+      }
+    },
+    {
       "id": "compositing.matte",
       "summary": "A track matte would clip one layer by another.",
       "targets": [],

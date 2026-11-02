@@ -9,6 +9,7 @@ import {
   type ResolvedFrame,
   type SceneIR,
   type SpatialLayerDefinition,
+  type SpatialSeamsDefinition,
   type SpatialSurfaceDefinition,
 } from "@gvr/schema";
 import {
@@ -16,6 +17,7 @@ import {
   type SpatialCamera,
   type SpatialDiagnostic,
   type SpatialLayer,
+  type SpatialSeams,
   type SpatialSurface,
   type SpatialTransform,
 } from "./spatial";
@@ -39,6 +41,16 @@ function toHostLayer(layer: SpatialLayerDefinition): SpatialLayer {
     id: layer.id,
     camera,
     surfaces: layer.surfaces.map(toHostSurface),
+    ...(layer.seams ? { seams: toHostSeams(layer.seams) } : {}),
+  };
+}
+
+function toHostSeams(seams: SpatialSeamsDefinition): SpatialSeams {
+  return {
+    ...(seams.split !== undefined ? { split: seams.split } : {}),
+    ...(seams.edgeEpsilon !== undefined ? { edgeEpsilon: seams.edgeEpsilon } : {}),
+    ...(seams.maxFragments !== undefined ? { maxFragments: seams.maxFragments } : {}),
+    ...(seams.edges ? { edges: seams.edges.map((edge) => ({ a: edge.a, b: edge.b })) } : {}),
   };
 }
 

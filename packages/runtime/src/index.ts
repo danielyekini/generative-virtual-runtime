@@ -155,6 +155,8 @@ export type {
 export { StreamingRuntime } from "./streaming";
 export {
   DEFAULT_FOCAL_LENGTH,
+  DEFAULT_MAX_FRAGMENTS,
+  DEFAULT_SEAM_EPSILON,
   DEFAULT_SPATIAL_LIMITS,
   hingeMatrix,
   multiplyMat4,
@@ -173,6 +175,8 @@ export type {
   SpatialDiagnostic,
   SpatialDiagnosticCode,
   SpatialHinge,
+  SpatialProjectOptions,
+  SpatialSeams,
   SpatialLayer,
   SpatialLimits,
   SpatialProjection,

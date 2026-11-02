@@ -627,10 +627,29 @@ export interface SpatialCameraDefinition {
   near?: number;
 }
 
+/** Declared seam: two surfaces of one layer that must share an outline edge. */
+export interface SpatialSeamEdgeDefinition {
+  a: string;
+  b: string;
+}
+
+/** Seam/split compositing for one layer (space.planarSeams, Scene IR 0.14.0). */
+export interface SpatialSeamsDefinition {
+  /** Split true intersections into ordered fragments. Default true. */
+  split?: boolean;
+  /** View-space shared-edge tolerance in logical units, > 0. Default 0.001. */
+  edgeEpsilon?: number;
+  /** Extra draw items splitting may add per frame, integer 0..1024. Default 64. */
+  maxFragments?: number;
+  edges?: SpatialSeamEdgeDefinition[];
+}
+
 export interface SpatialLayerDefinition {
   id: string;
   camera: SpatialCameraDefinition;
   surfaces: SpatialSurfaceDefinition[];
+  /** Requires space.planarSeams (Scene IR 0.14.0). */
+  seams?: SpatialSeamsDefinition;
 }
 
 /** Channels an interaction binding may write (Scene IR 0.10.0 input.bindings). */

@@ -195,7 +195,7 @@ cueItem        = ( ( "offset" | "duration" | "fadeIn" | "fadeOut" ) , duration ,
    plane and a rotation about it.
 *)
 spatialLayerDecl = "spatialLayer" , identifier , "{" , { spatialItem } , "}" , ";" ;
-spatialItem    = spatialCamera | spatialSurface ;
+spatialItem    = spatialCamera | spatialSurface | spatialSeams ;
 spatialCamera  = "camera" , "{" , { cameraItem3 } , "}" , ";" ;
 cameraItem3    = ( "projection" , ( "perspective" | "orthographic" ) , ";" )
                | ( "position" , vec3 , ";" )
@@ -209,6 +209,15 @@ surfaceItem    = ( "parent" , dottedId , ";" )
                | ( "backFill" , color , ";" ) ;
 vec3           = "(" , signedNumber , "," , signedNumber , "," , signedNumber , ")" ;
 angleOrNumber  = angle | signedNumber ;
+
+(* MotionScript 0.14 seam/split compositing (space.planarSeams). "seams" and its
+   body words match by spelling inside a spatialLayer only; no new reserved word.
+   At most one seams block per layer. Edges name two surfaces of the same layer.
+*)
+spatialSeams   = "seams" , "{" , { seamItem } , "}" , ";" ;
+seamItem       = ( "split" , boolean , ";" )
+               | ( ( "epsilon" | "maxFragments" ) , signedNumber , ";" )
+               | ( "edge" , dottedId , dottedId , ";" ) ;
 
 (* MotionScript 0.13 planar 2D physics (physics.planar2d). Only "physics" is
    reserved; mode/body/joint/constraint and every body word match by spelling.
