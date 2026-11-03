@@ -62,7 +62,7 @@ E047 merged as PR #210 (`4fa94ec`). The designated branch was then restarted fro
 
 ### E045 verification
 
-- New tests, 20 in total:
+- New tests, 18 in total:
   - compiler: 6 (lowering, capabilities, the frame track and grid rule, rejections, unreserved words, five fragmentations, a late frame writer reported as `SEALED_HISTORY_WRITE`);
   - schema: 4 (capability gates, domains, grid requirement);
   - runtime: 4 (even stepping with a hold, cyclic loop, static frame, clamping);
