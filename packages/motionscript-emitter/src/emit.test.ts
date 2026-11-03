@@ -352,7 +352,7 @@ function sameTrack(left: TrackDefinition, right: TrackDefinition): string {
     for (let index = 0; index < left.keyframes.length; index += 1) {
       const a = left.keyframes[index]!;
       const b = right.keyframes[index]!;
-      if (!near(a.offset, b.offset) || (a.easing ?? "linear") !== (b.easing ?? "linear")) return `keyframe ${id}`;
+      if (!near(a.offset, b.offset) || !sameEasing(a.easing, b.easing)) return `keyframe ${id}`;
       if (typeof a.value === "number" || typeof b.value === "number") {
         if (typeof a.value !== "number" || typeof b.value !== "number" || !near(a.value, b.value)) return `keyframe value ${id}`;
       } else if (Array.isArray(a.value) || Array.isArray(b.value)) {
@@ -381,6 +381,40 @@ function sameVec(left: { x: number; y: number }, right: { x: number; y: number }
   return near(left.x, right.x) && near(left.y, right.y);
 }
 
+/** Semantic easing equality: hold/cubic objects compare by value, not identity. */
+function sameEasing(left: unknown, right: unknown): boolean {
+  const a = left ?? "linear";
+  const b = right ?? "linear";
+  if (a === b) return true;
+  if (typeof a === "string" || typeof b === "string") return a === b;
+  if (!a || !b || typeof a !== "object" || typeof b !== "object") return false;
+  const leftEase = a as { type: string; x1?: number; y1?: number; x2?: number; y2?: number };
+  const rightEase = b as { type: string; x1?: number; y1?: number; x2?: number; y2?: number };
+  if (leftEase.type !== rightEase.type) return false;
+  if (leftEase.type === "hold") return true;
+  return (
+    near(leftEase.x1 ?? 0, rightEase.x1 ?? 0) &&
+    near(leftEase.y1 ?? 0, rightEase.y1 ?? 0) &&
+    near(leftEase.x2 ?? 0, rightEase.x2 ?? 0) &&
+    near(leftEase.y2 ?? 0, rightEase.y2 ?? 0)
+  );
+}
+
 function near(left: number, right: number): boolean {
   return Math.abs(left - right) <= 1e-4;
 }
+
+describe("E017 semantic easing equality", () => {
+  it("round-trips hold easing without object-identity comparison failures", () => {
+    const scene = compile(`scene "hold" {
+      version "0.2"; viewport (10, 10); background #000000; duration 1s;
+    };
+    rectangle box { size (1, 1); fill #ffffff; };
+    animate box.opacity { from 0; to 1; duration 1s; ease hold; };
+    complete;`);
+    expect(scene.requiredCapabilities).toContain("easing.hold");
+    const { again } = roundTrip(scene);
+    expect(again.timeline.tracks).toEqual(scene.timeline.tracks);
+    expect(sameTrack(scene.timeline.tracks[0]!, again.timeline.tracks[0]!)).toBe("");
+  });
+});

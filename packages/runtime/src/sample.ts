@@ -352,7 +352,8 @@ function sampleKeyframes(track: KeyframeTrack, progress: number): number | Vec2 
   const first = keys[0];
   const last = keys[keys.length - 1];
   if (!first || !last) return undefined;
-  if (progress >= 1) {
+  // Hold the last authored key once progress reaches or passes it (including early-ending lists).
+  if (progress >= 1 || progress >= last.offset) {
     return typeof last.value === "number" || (!Array.isArray(last.value) && "x" in last.value) ? last.value : undefined;
   }
   let segment = 0;
@@ -388,7 +389,7 @@ function samplePathKeyframes(track: KeyframeTrack, progress: number): PathComman
   const first = keys[0];
   const last = keys[keys.length - 1];
   if (!first || !last || !Array.isArray(first.value) || !Array.isArray(last.value)) return undefined;
-  if (progress >= 1) return last.value.map((command) => ({ ...command }));
+  if (progress >= 1 || progress >= last.offset) return last.value.map((command) => ({ ...command }));
   let segment = 0;
   for (let index = 0; index < keys.length - 1; index += 1) {
     const next = keys[index + 1];
