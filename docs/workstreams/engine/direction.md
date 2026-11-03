@@ -140,6 +140,16 @@ new engine tickets waits on Product P030 (#188). Holder:
    stay path-local. Replenish further from M2/M4/M5 Candidates. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
    `text.animators` stays pending (not the E013 content/format slice).
+3. E019 ([#38](https://github.com/danielyekini/generative-virtual-runtime/issues/38))
+   decided the image resource lifecycle
+   ([decision](../../decisions/engine/resource-lifecycle.md)). It covers host
+   loader states, a required-image startup hold, a scene-scoped renderer cache
+   with eviction and a decoded-bytes gauge, and a `pixelated` sampling recipe.
+   `resources.image` (0.2.0) is now supported for that scope. Next: E045
+   ([#204](https://github.com/danielyekini/generative-virtual-runtime/issues/204))
+   versions per-node sampling and atlas sprite frames, with the Studio
+   readiness surface. Image pattern paint waits on evidence as Candidate E046
+   ([#205](https://github.com/danielyekini/generative-virtual-runtime/issues/205)).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

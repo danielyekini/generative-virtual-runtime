@@ -216,3 +216,11 @@ export type {
   Vec3,
 } from "./spatial";
 export { layersFromScene, projectSceneSpatial } from "./spatial-scene";
+export {
+  sceneImageReadiness,
+  sceneImageRequirements,
+  type ImageReadiness,
+  type ImageResourceState,
+  type ImageStates,
+  type SceneImageRequirement,
+} from "./visual-resources";

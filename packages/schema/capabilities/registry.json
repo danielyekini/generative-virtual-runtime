@@ -548,9 +548,13 @@
       "summary": "An image node draws a declared image resource when that resource is ready.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["compiler", "renderer"],
-      "restrictions": ["Pending or failed readiness fails before playback. The renderer draws only a loaded image."],
-      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
-      "conformanceTests": [],
+      "restrictions": ["A drawn image whose host-reported (or declared) readiness is pending holds presentation startup; failed blocks it. Declared but undrawn images are not required. The renderer draws only a decoded image at the node size; pending or failed images draw nothing. Sampling control and sprite frames are not part of this claim (E019)."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/runtime/src/visual-resources.test.ts#compiles each image to a declared ready resource and resolves its href per frame",
+        "packages/runtime/src/visual-resources.test.ts#holds presentation startup on pending images and blocks on failed images",
+        "packages/canvas-renderer/src/images.test.ts#draws a loaded image at its declared size and nothing while pending"
+      ],
       "adapters": {
         "lottie": { "status": "untested", "scope": "Image layers can become image nodes. No conformance test pins the href." },
         "svg": { "status": "untested", "scope": "SVG image elements are not asserted." }
