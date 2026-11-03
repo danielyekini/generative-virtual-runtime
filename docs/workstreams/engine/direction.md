@@ -90,6 +90,14 @@ a user-focused test) when evidence suggests they harm variability, streaming, or
 delivery — record the change; do not treat them as frozen
 ([orchestrator process authority](../../operations/orchestrator.md)).
 
+## Generation / corpus ambition bar (Product #140, 3 November 2026)
+
+Story-complexity native programs (City, Blueprint/Home, Crane, Pixels,
+Copperleaf, Last Streetlight, Small Ideas, …) are the implementability and
+friction bar for engine corpus work — not Ball/Bunny/Diagram smoke. Director
+distillation remains Product’s quality gate (P019). No forced immediate
+reimplementation from this acknowledgement alone.
+
 ## Next work
 
 Engine review (2 November 2026, runs E029, E031, E032, E033/E034, E030): continue.
@@ -97,13 +105,15 @@ Engine review (2 November 2026, runs E029, E031, E032, E033/E034, E030): continu
 1. E035 ([#143](https://github.com/danielyekini/generative-virtual-runtime/issues/143)):
    rename/wrap `@gvr/audio-elevenlabs` to a vendor-neutral public package id;
    keep ElevenLabs as an internal backend. Ready / high priority housekeeping.
-2. E012 ([#31](https://github.com/danielyekini/generative-virtual-runtime/issues/31)):
+2. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105)):
+   emitter drops `interact` declarations (no language change). Ready / P1 —
+   ahead of unrelated lower-priority work so Product interactive demos are not
+   blocked on silent Scene IR → MotionScript interaction loss (#140).
+3. E012 ([#31](https://github.com/danielyekini/generative-virtual-runtime/issues/31)):
    clip-first scoped compositing (clips, then justified mattes). Native; design
    pass before syntax; a language claim takes the next minor (≥ 0.16.0). Ready.
-3. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
+4. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
    verify and fix native diagnostic and latent-correctness leads against 0.15.0. Ready.
-4. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105)):
-   emitter drops `interact` declarations (no language change). Ready.
 5. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
 

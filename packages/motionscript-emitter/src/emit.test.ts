@@ -94,6 +94,57 @@ complete;
     expect(again.audioCues).toEqual(scene.audioCues);
   });
 
+  it("round-trips interact declarations (input.bindings)", () => {
+    const source = `scene "panel" {
+  version "0.2";
+  viewport (400, 300);
+  background #ffffff;
+  duration 2s;
+};
+group Panel {
+  position (40, 40);
+  rectangle Button {
+    size (100, 40);
+    fill #3366ff;
+  };
+};
+circle Knob {
+  position (200, 150);
+  radius 12;
+  fill #ff8800;
+};
+rectangle Glass {
+  size (30, 40);
+  fill #ffffff;
+  opacity 0.3;
+};
+interact Knob {
+  focusable true;
+  tabIndex 2;
+  on drag dragTranslate (20, 20) (380, 280);
+  on wheel step scale.x 0.25 0.5 2;
+  on key "ArrowRight" step position.x 10 20 380;
+};
+interact Panel {
+  focusable true;
+  on click toggle Glass.opacity 0.3 0.9;
+  on activate set Panel.Button.rotation 0;
+};
+interact Glass {
+  pointer none;
+};
+complete;
+`;
+    const scene = compile(source);
+    expect(scene.requiredCapabilities).toContain("input.bindings");
+    const { again, source: emitted } = roundTrip(scene);
+    expect(emitted).toContain("interact Knob");
+    expect(emitted).toContain('on key "ArrowRight" step position.x 10 20 380');
+    expect(emitted).toContain("on click toggle Glass.opacity 0.3 0.9");
+    expect(emitted).toContain("on activate set Panel.Button.rotation 0");
+    expect(again.interactions).toEqual(scene.interactions);
+  });
+
   it("round-trips animated solid paint channels", () => {
     const source = `scene "paint" {
   version "0.2";
