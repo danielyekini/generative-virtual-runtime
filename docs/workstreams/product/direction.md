@@ -16,41 +16,34 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (2 November 2026, P005 not a P007 gate)
+## Queue (2 November 2026, after P007 Done)
 
 Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
 P017, P018 Done). P006 native authoring reference is **Done** (PR #130).
-Paused prototype history: PR #65 commit 2d08de0 (reuse helpers only).
+P007 real-model generation experiment is **Done** (PR #135; local Ollama
+`qwen2.5-coder:14b`). Paused prototype history: PR #65 commit 2d08de0.
 
-User steering (same day): agents already exercise Studio/engine tools in runs;
-[P005](https://github.com/danielyekini/generative-virtual-runtime/issues/46) is
-optional contract consolidation, **not** a prerequisite for generation
-experiments. Decision:
+User steering: [P005](https://github.com/danielyekini/generative-virtual-runtime/issues/46)
+remains optional consolidation, not a generation gate. Decision:
 [2026-11-02-p005-not-gate-for-p007.md](../../decisions/product/2026-11-02-p005-not-gate-for-p007.md).
 
-1. **P007 #48** real-model native generation experiment — **Ready** (depends on
-   P006 only).
-2. **P008 #49** director-script / next-corpus prep (#88 accepted) — after P007.
+1. **P008 #49** director-script / next-corpus prep (#88) — **Done** (this run;
+   prefer direct generation; director for corpus handoff —
+   [decision](../../decisions/product/2026-11-02-p008-direct-vs-director.md)).
+2. **P009 #50** push-to-talk / narration / SFX host — Candidate; engine deps
+   P007/E008/E031 Done on main. **Studio speech/media UX still undefined** in
+   `studio-ux.md` — ask user before Ready.
 3. **P003 #44** Performance tab — Candidate until user UX confirmation.
-4. **P005 #46** agent toolbox / shared host API — low-priority Candidate;
-   optional later consolidation; does not block P007/M3 generation.
-5. **P009 #50** push-to-talk / narration / SFX host — Candidate; depends on
-   P007, E008, **E031** (accepted #120). Promote after E031 Done on main.
-6. P010–P013 remain later Candidate work.
+4. **P005 #46** agent toolbox / shared host API — low-priority Candidate.
+5. P010–P013 remain later Candidate work.
 
 ## Next
 
-**Ordinary dispatch:** claim P007. Use the P006 reference and existing
-compile/runtime/Studio paths; pin local Ollama **`qwen2.5-coder:14b`**
-([provider decision](../../decisions/product/2026-11-02-p007-provider-pin.md));
-measure held-out validity, repairs, first useful motion and latency; support
-cancel/stale handling. Do not invent a new agent toolbox as part of P007.
-Fixture provider is CI-only and is not a model-speed claim.
+**Ordinary dispatch:** no Product Ready item until UX-gated work is confirmed.
+Ask the user for P009 speech/media Player surfaces (and/or P003 Performance)
+before promoting. Do not invent Studio chrome. P005 stays optional consolidation.
 
-**Still UX-gated (not blocking P007):** P003 Performance inspector. Ask before
-building. P005 needs no UX work unless later promoted with a concrete gap.
-
-Keep Studio delivery ahead of prospective corpus generation (P008).
+Keep Studio delivery ahead of prospective corpus generation.
 
 ## Generative audio provider (intake cleared, 2 November 2026)
 

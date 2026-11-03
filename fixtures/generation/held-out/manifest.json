@@ -1,25 +1,28 @@
 {
   "schemaVersion": 1,
   "split": "held-out",
-  "purpose": "P007 native MotionScript generation experiment — tiny frozen prompts; not training data.",
+  "purpose": "Held-out prompts for native MotionScript generation (P007/P008). Not training data.",
   "pinnedReference": "docs/reference/motionscript-authoring/current.json",
   "tasks": [
     {
       "id": "drop-seal",
       "prompt": "Write a MotionScript 0.2 scene (320x180, 3s) with a cyan rectangle that falls down, seal at 1s after the first animation, then fade opacity after the seal, seal at 2s, and complete. Progressive seals required.",
       "fixtureProgram": "drop-seal.ms",
+      "fixtureDirector": "drop-seal.director.json",
       "expected": { "progressiveOk": true, "offlineOk": true, "minSeals": 1 }
     },
     {
       "id": "static-badge",
       "prompt": "Write a MotionScript 0.2 scene (200x200, 2s) with a white circle (use id badge, not the word circle as the id) centered and a text label (id label) below it saying OK. No animation tracks. Offline-complete is enough; seals optional. Do not use markdown fences.",
       "fixtureProgram": "static-badge.ms",
+      "fixtureDirector": "static-badge.director.json",
       "expected": { "progressiveOk": false, "offlineOk": true }
     },
     {
       "id": "path-trim",
       "prompt": "Write a MotionScript 0.2 scene that draws a path named rail using move/line commands and stroke #rrggbb width N, then operators rail { trim 0, 0, 0; }, then animate rail.trim.end from 0 to 1 over 1500ms. Include requires \"geometry.trimPath\". Seal once useful, then complete. Do not invent points[] or strokeWidth or trimPath fields. Do not use markdown fences.",
       "fixtureProgram": "path-trim.ms",
+      "fixtureDirector": "path-trim.director.json",
       "expected": { "progressiveOk": true, "offlineOk": true, "minSeals": 1 }
     }
   ]

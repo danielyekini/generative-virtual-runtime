@@ -1,0 +1,30 @@
+{
+  "providerId": "ollama",
+  "modelId": "qwen2.5-coder:14b",
+  "taskId": "path-trim",
+  "approach": "director",
+  "promptChars": 360,
+  "referenceFingerprint": "07b8338207f98bacc520d18e9eda991cfe757d0bf2ebcff80743547b83fff723",
+  "referencePath": "docs/reference/motionscript-authoring/snapshots/ms-0.15.0_sir-0.15.0-07b83382.md",
+  "ttfbMs": 650.5260830000007,
+  "totalMs": 37196.201208,
+  "directorMs": 17917.639708,
+  "implementMs": 19277.895624999997,
+  "firstSealMs": 37196.197167,
+  "firstSealHorizonMs": 2000,
+  "firstSealBytes": 367,
+  "sourceChars": 367,
+  "estimatedTokensUtf16Div4": 92,
+  "offlineOk": true,
+  "progressiveOk": true,
+  "compileErrorCount": 0,
+  "runtimeRejectCount": 0,
+  "repairAttempts": 0,
+  "directorOk": true,
+  "cancelled": false,
+  "staleIgnored": false,
+  "status": "pass",
+  "notes": [
+    "director beats=7"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "intent": "Draw path rail with stroke, trim operators, animate trim.end 0 to 1",
+  "canvas": { "width": 320, "height": 180, "durationMs": 2000 },
+  "requires": ["geometry.trimPath"],
+  "beats": [
+    { "atMs": 0, "action": "declare", "notes": "path rail move/line; stroke #rrggbb width N; operators rail trim 0,0,0" },
+    { "atMs": 0, "action": "animate", "notes": "animate rail.trim.end from 0 to 1 duration 1500ms" },
+    { "atMs": 500, "action": "seal", "notes": "seal once useful" },
+    { "atMs": 2000, "action": "complete", "notes": "complete" }
+  ],
+  "constraints": ["requires geometry.trimPath", "no points[] or strokeWidth fields", "id rail not reserved path"]
+}

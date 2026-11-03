@@ -1,0 +1,13 @@
+{
+  "intent": "Cyan rectangle falls, seal, then fade opacity with progressive seals",
+  "canvas": { "width": 320, "height": 180, "durationMs": 3000 },
+  "requires": [],
+  "beats": [
+    { "atMs": 0, "action": "declare", "notes": "rect dropper cyan; animate position.y downward" },
+    { "atMs": 1000, "action": "seal", "notes": "seal after first animation useful" },
+    { "atMs": 1000, "action": "animate", "notes": "fade dropper.opacity after seal" },
+    { "atMs": 2000, "action": "seal", "notes": "second seal" },
+    { "atMs": 3000, "action": "complete", "notes": "complete" }
+  ],
+  "constraints": ["progressive seals required", "MotionScript 0.2", "no reserved node ids"]
+}
