@@ -38,6 +38,7 @@ export const CAPABILITIES = [
   "geometry.pathSpace",
   "text.dynamicContent",
   "text.layoutMetrics",
+  "timing.cyclicScopes",
 ] as const;
 
 export type CapabilityName = (typeof CAPABILITIES)[number];

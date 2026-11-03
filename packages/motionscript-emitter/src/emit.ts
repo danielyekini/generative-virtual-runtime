@@ -57,6 +57,8 @@ export function emitMotionScript(scene: SceneIR): string {
   for (const scope of scene.timingScopes ?? []) {
     const body = [`  offset ${formatDuration(scope.offsetMs)};`, `  stretch ${formatNumber(scope.stretch)};`];
     if (scope.parentId) body.unshift(`  parent ${scope.parentId};`);
+    if (scope.periodMs !== undefined) body.push(`  period ${formatDuration(scope.periodMs)};`);
+    if (scope.repeat !== undefined) body.push(`  repeat ${formatNumber(scope.repeat)};`);
     lines.push(`timing ${scope.id} {`, ...body, `};`);
   }
   for (const composition of scene.compositions ?? []) {
@@ -132,6 +134,7 @@ export function emitMotionScript(scene: SceneIR): string {
     const stepValue =
       typeof step.value === "string" ? quote(step.value) : step.value ? "true" : "false";
     lines.push(`  value ${stepValue};`);
+    if (step.timingScopeId) lines.push(`  timing ${step.timingScopeId};`);
     lines.push(`};`);
   }
   lines.push("complete;");

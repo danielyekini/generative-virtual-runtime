@@ -341,6 +341,15 @@ export interface TimingScope {
   parentId: string | null;
   offsetMs: number;
   stretch: number;
+  /**
+   * Requires timing.cyclicScopes (Scene IR 0.23.0). Finite and > 0. Local time
+   * wraps into [0, periodMs). Without `repeat` the cycle is unbounded and the
+   * offset is a phase; with `repeat` N the scope is entered at affine time 0,
+   * wraps N times and is then pinned at periodMs.
+   */
+  periodMs?: number;
+  /** Requires periodMs. Integer in 1..10 000. */
+  repeat?: number;
 }
 
 export interface CompositionDefinition {
@@ -573,9 +582,18 @@ export type TrackDefinition = KeyframeTrack | ExpressionTrack;
 export interface StepDefinition {
   id: string;
   target: { kind: "node"; nodeId: string; channel: "visible" | "content" };
-  /** Inclusive scene time. A step at H is excluded from the sealed left-limit state. */
+  /**
+   * Inclusive scene time, or scope-local time when timingScopeId is set.
+   * A step at H is excluded from the sealed left-limit state.
+   */
   timeMs: number;
   value: boolean | string;
+  /**
+   * Requires timing.cyclicScopes (Scene IR 0.23.0). The scope chain must
+   * contain a period; the step repeats every cycle and the previous cycle's
+   * final step carries over until a cycle's first step.
+   */
+  timingScopeId?: string;
 }
 
 export interface SceneIR {

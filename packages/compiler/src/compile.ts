@@ -8,7 +8,11 @@ import {
   diagnostic,
   estimateGenerativeAudioDurationMs,
   isKnownCapability,
+  chainIsCyclic,
+  cycleLocalSpan,
+  cyclicWriterAdmissible,
   localTimeMs,
+  MAX_CYCLIC_REPEAT,
   parseExpression,
   resolveAddress,
   secondsKeysToTrack,
@@ -320,7 +324,7 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       }
       continue;
     }
-    if ((unit.kind === "animate" || unit.kind === "keyframes") && unit.timingScopeId) {
+    if ((unit.kind === "animate" || unit.kind === "keyframes" || unit.kind === "step") && unit.timingScopeId) {
       if (!session.scene.timingScopes?.some((scope) => scope.id === unit.timingScopeId)) {
         session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved timing scope ${unit.timingScopeId}.`, unit.span));
         continue;
@@ -435,7 +439,6 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
   );
   const missingTarget = !resolved.ok && resolved.code === "UNKNOWN_TARGET";
   const missingScope =
-    (unit.kind === "animate" || unit.kind === "keyframes") &&
     Boolean(unit.timingScopeId) &&
     !session.scene.timingScopes?.some((scope) => scope.id === unit.timingScopeId);
   return missingTarget || missingScope || waitsForAttachment(session, unit);
@@ -994,13 +997,43 @@ function lower(session: Session, unit: UnitAst): void {
       }
       ensureCapability(session, "text.dynamicContent");
     }
-    if (unit.timeMs + 1e-9 < session.sealedThroughMs) {
-      session.diagnostics.push(problem("INVALID_TIMING", `${unit.target} steps at ${unit.timeMs}ms, before the seal at ${session.sealedThroughMs}ms.`, unit.span));
-      return;
-    }
-    if (unit.timeMs < 0 || unit.timeMs > session.scene.timeline.durationMs) {
-      session.diagnostics.push(problem("INVALID_TIMING", "A step must lie within the scene duration.", unit.span));
-      return;
+    if (unit.timingScopeId) {
+      const scopes = session.scene.timingScopes ?? [];
+      if (!scopes.some((scope) => scope.id === unit.timingScopeId)) {
+        session.diagnostics.push(problem("UNKNOWN_TARGET", `Timing scope ${unit.timingScopeId} does not exist.`, unit.span));
+        return;
+      }
+      if (!chainIsCyclic(scopes, unit.timingScopeId)) {
+        session.diagnostics.push(
+          problem("INVALID_TIMING", `A step can name timing ${unit.timingScopeId} only when that scope or a parent has a period.`, unit.span),
+        );
+        return;
+      }
+      if (!cyclicWriterAdmissible(scopes, unit.timingScopeId, session.sealedThroughMs > 0 ? session.sealedThroughMs : undefined)) {
+        session.diagnostics.push(
+          problem(
+            "INVALID_TIMING",
+            `${unit.target} joins cyclic scope ${unit.timingScopeId} after the seal at ${session.sealedThroughMs}ms; send every writer of a cycle before the seal reaches its entry.`,
+            unit.span,
+          ),
+        );
+        return;
+      }
+      const span = cycleLocalSpan(scopes, unit.timingScopeId, unit.timeMs, unit.timeMs);
+      if (!span || span.start < -1e-6 || span.start > span.periodMs + 1e-6) {
+        session.diagnostics.push(problem("INVALID_TIMING", `A step in ${unit.timingScopeId} must lie inside one period.`, unit.span));
+        return;
+      }
+      ensureCapability(session, "timing.cyclicScopes");
+    } else {
+      if (unit.timeMs + 1e-9 < session.sealedThroughMs) {
+        session.diagnostics.push(problem("INVALID_TIMING", `${unit.target} steps at ${unit.timeMs}ms, before the seal at ${session.sealedThroughMs}ms.`, unit.span));
+        return;
+      }
+      if (unit.timeMs < 0 || unit.timeMs > session.scene.timeline.durationMs) {
+        session.diagnostics.push(problem("INVALID_TIMING", "A step must lie within the scene duration.", unit.span));
+        return;
+      }
     }
     session.stepCount += 1;
     session.scene.timeline.steps.push({
@@ -1008,6 +1041,7 @@ function lower(session: Session, unit: UnitAst): void {
       target: { kind: "node", nodeId: stepTarget.nodeId, channel },
       timeMs: unit.timeMs,
       value: unit.value,
+      ...(unit.timingScopeId ? { timingScopeId: unit.timingScopeId } : {}),
     });
     return;
   }
@@ -1262,9 +1296,32 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
     session.diagnostics.push(problem("UNKNOWN_TARGET", `Timing scope ${unit.timingScopeId} does not exist.`, unit.span));
     return undefined;
   }
-  const sealLocal = unit.timingScopeId
-    ? localTimeMs(session.scene.timingScopes ?? [], unit.timingScopeId, session.sealedThroughMs)
-    : session.sealedThroughMs;
+  const scopes = session.scene.timingScopes ?? [];
+  const cyclic = unit.timingScopeId !== undefined && chainIsCyclic(scopes, unit.timingScopeId);
+  if (cyclic && !cyclicWriterAdmissible(scopes, unit.timingScopeId!, session.sealedThroughMs > 0 ? session.sealedThroughMs : undefined)) {
+    session.diagnostics.push(
+      problem(
+        "INVALID_TIMING",
+        `${unit.target} joins cyclic scope ${unit.timingScopeId} after the seal at ${session.sealedThroughMs}ms; send every writer of a cycle before the seal reaches its entry.`,
+        unit.span,
+      ),
+    );
+    return undefined;
+  }
+  if (cyclic && unit.durationMs !== undefined) {
+    const span = cycleLocalSpan(scopes, unit.timingScopeId!, startMs, startMs + unit.durationMs);
+    if (!span || span.start < -1e-6 || span.end > span.periodMs + 1e-6) {
+      session.diagnostics.push(
+        problem("INVALID_TIMING", `${unit.target} must lie inside one period of ${span?.cycleId ?? unit.timingScopeId}.`, unit.span),
+      );
+      return undefined;
+    }
+  }
+  const sealLocal = cyclic
+    ? undefined
+    : unit.timingScopeId
+      ? localTimeMs(scopes, unit.timingScopeId, session.sealedThroughMs)
+      : session.sealedThroughMs;
   if (sealLocal !== undefined && startMs + 1e-9 < sealLocal) {
     session.diagnostics.push(
       problem("INVALID_TIMING", `${unit.target} starts at ${startMs}ms, before the seal at ${session.sealedThroughMs}ms.`, unit.span),
@@ -1589,9 +1646,31 @@ function lowerTiming(session: Session, unit: Extract<UnitAst, { kind: "timing" }
     session.diagnostics.push(problem("INVALID_TIMING", "Timing stretch must be a non-zero finite number.", unit.span));
     return;
   }
-  scopes.push({ id: unit.name, parentId: unit.parent ?? null, offsetMs: unit.offsetMs ?? 0, stretch });
+  if (unit.repeat !== undefined && unit.periodMs === undefined) {
+    session.diagnostics.push(problem("INVALID_TIMING", "repeat needs a period.", unit.span));
+    return;
+  }
+  if (unit.periodMs !== undefined && (!Number.isFinite(unit.periodMs) || unit.periodMs <= 0)) {
+    session.diagnostics.push(problem("INVALID_TIMING", "A period must be a positive duration.", unit.span));
+    return;
+  }
+  if (unit.repeat !== undefined && (!Number.isInteger(unit.repeat) || unit.repeat < 1 || unit.repeat > MAX_CYCLIC_REPEAT)) {
+    session.diagnostics.push(
+      problem("INVALID_TIMING", `repeat must be a whole number from 1 to ${MAX_CYCLIC_REPEAT}. Use no repeat for an endless loop.`, unit.span),
+    );
+    return;
+  }
+  scopes.push({
+    id: unit.name,
+    parentId: unit.parent ?? null,
+    offsetMs: unit.offsetMs ?? 0,
+    stretch,
+    ...(unit.periodMs !== undefined ? { periodMs: unit.periodMs } : {}),
+    ...(unit.repeat !== undefined ? { repeat: unit.repeat } : {}),
+  });
   session.scene.timingScopes = scopes;
   ensureCapability(session, "timing.localScopes");
+  if (unit.periodMs !== undefined) ensureCapability(session, "timing.cyclicScopes");
 }
 
 function lowerComposition(session: Session, unit: Extract<UnitAst, { kind: "composition" }>): void {

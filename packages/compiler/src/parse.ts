@@ -885,6 +885,12 @@ function parseStep(parser: Parser): StepAst {
     else note(node, parser, "value needs true, false, or a string.");
   }
   expectSemi(parser);
+  if (eat(parser, "keyword", "timing")) {
+    const scope = eat(parser, "identifier");
+    if (scope) node.timingScopeId = scope.lexeme;
+    else note(node, parser, "timing needs a scope name.");
+    expectSemi(parser);
+  }
   eat(parser, "rbrace");
   expectSemi(parser);
   return node;
@@ -1252,9 +1258,18 @@ function parseTiming(parser: Parser): TimingAst {
   else note(node, parser, "timing needs a name.");
   if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
   while (!done(parser) && !at(parser, "rbrace")) {
-    const key = eat(parser, "keyword");
+    // period and repeat (timing.cyclicScopes) match by spelling; they are not reserved words.
+    const key = eatWord(parser);
     if (!key) break;
-    if (key.lexeme === "parent") {
+    if (key.lexeme === "period") {
+      const period = eat(parser, "duration");
+      if (period?.numberValue === undefined) note(node, parser, "period needs a duration with ms or s.");
+      else node.periodMs = period.numberValue;
+    } else if (key.lexeme === "repeat") {
+      const count = parseSignedNumber(parser);
+      if (count === undefined) note(node, parser, "repeat needs a whole number of cycles.");
+      else node.repeat = count;
+    } else if (key.lexeme === "parent") {
       const parent = eat(parser, "identifier");
       if (parent) node.parent = parent.lexeme;
       else note(node, parser, "parent needs a scope name.");

@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.23.0",
+      "current": "0.24.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.21"
+      "packageVersion": "0.1.22"
     },
     "scene-ir": {
-      "current": "0.22.0",
+      "current": "0.23.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.21"
+      "packageVersion": "0.1.22"
     }
   },
   "versions": [
@@ -177,6 +177,13 @@
     },
     {
       "language": "motionscript",
+      "version": "0.24.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.24.0.md"
+    },
+    {
+      "language": "motionscript",
       "version": "pending",
       "status": "draft",
       "file": "docs/languages/motionscript/versions/pending.md"
@@ -334,6 +341,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.22.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.23.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.23.0.md"
     },
     {
       "language": "scene-ir",
@@ -510,6 +524,13 @@
       "compiler": "0.1.19",
       "runtime": "0.1.24",
       "readers": "Wire stays 0.2. timing.timedKeys is MotionScript only: timed keys and beats lower onto existing track offsets, so compiled Scene IR is unchanged and readable by 0.22 runtimes. No requires token. Older compilers reject beat units and at keys as syntax errors."
+    },
+    {
+      "motionscript": "0.24.0",
+      "sceneIr": "0.23.0",
+      "compiler": "0.1.20",
+      "runtime": "0.1.25",
+      "readers": "Wire stays 0.2. timing.cyclicScopes is gated by requiredCapabilities / requires. Scopes without periodMs sample exactly as timing.localScopes. Older validators reject the unknown capability token and the periodMs, repeat and step timingScopeId keys. period and repeat are not reserved words."
     }
   ]
 }

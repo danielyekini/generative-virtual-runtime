@@ -255,6 +255,14 @@ capabilities.
   - validator ownership and seal rules;
   - registry and conformance;
   - a Studio test frame (a phased loop and a finite blink).
+
+  **Landed as MotionScript 0.24.0 / Scene IR 0.23.0.** `period` and `repeat`
+  match by spelling and are not reserved words. A step names its scope with a
+  trailing `timing <scope>;`, and the chain must contain a period. Release
+  tightening of the prototype: everything below an unentered finite repeat is
+  also unentered, so a nested cycle cannot wrap negative time back into
+  activity. Composition instances on cyclic scopes stay out. See
+  `docs/languages/scene-ir/versions/0.23.0.md`.
 - **E044 ([#197](https://github.com/danielyekini/generative-virtual-runtime/issues/197)): version `timing.timedKeys` and named beats.** Covers `at <time>` keys
   and `beat` constants. This is MotionScript syntax only, lowered to existing
   offsets, so Scene IR is unchanged. It needs a registry row, conformance, and
