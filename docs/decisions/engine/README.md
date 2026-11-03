@@ -60,3 +60,8 @@
   split content+format from layout metrics and per-glyph animators; schema
   `formatNumber` / `measureTextLine` prototype; language wiring in E040/E041;
   `text.animators` stays deferred.
+- [Local/named time, cycles and track composition (E014)](time-composition.md):
+  cyclic timing scopes (unbounded loop with phase vs finite `repeat`), timed
+  keys and named beats, the pinned gap/hold rule, unwrapped-degree rotation,
+  exclusive cyclic channel ownership and a cycle seal rule; schema prototype,
+  language wiring in E043/E044.
