@@ -77,11 +77,33 @@ acceptance evidence. No mandatory separate PR reviewer. Self-merge after final
 checks and actual repository protections/permissions allow it; never bypass them.
 When protections require unavailable review/action, report the exact blocker.
 
-Confirm PR is merged into main remotely and record merge SHA. Delete **that
-agent's own merged remote feature branch**, then remove its local branch/worktree
-once checked clean and no longer needed. Respect the chosen merge method: squash
-merges may require explicit local deletion after remote merged-state verification;
-git branch --merged alone is not sufficient. Never delete another agent's branch,
-unmerged work, main or an active shared worktree. If deletion permission fails,
-record a precise cleanup action without misreporting it as complete. Update main
-and issue/project/handover with final state; retain PR and evidence links.
+### Mandatory post-merge worktree cleanup (user steering, 3 November 2026)
+
+Leaving merged worktrees on disk repeatedly fills the machine (multi‑GB
+checkouts of `docs/evaluations` and `node_modules`). **A run is not complete
+until its own worktree is removed.** Do this in the same session as the merge
+— do not defer cleanup to a later agent.
+
+After the PR is **actually merged into `main` remotely**:
+
+1. Record the merge SHA / PR URL on the issue handover.
+2. From the **primary** repository checkout (not inside the doomed worktree):
+   - `git fetch origin main`
+   - Confirm the feature branch tip is on main (or the squash commit landed).
+3. Delete **only this run’s** remote feature branch:
+   `git push origin --delete <branch>` (skip if the host already deleted it).
+4. Remove **only this run’s** worktree and local branch:
+   - `git worktree remove <path>` (use `--force` only if the tree is clean of
+     needed work and removal otherwise fails on leftover ignored files)
+   - `git branch -D <branch>` if the local branch remains
+   - `git worktree prune` if a stale registration remains
+5. Confirm with `git worktree list` that the path is gone.
+6. State cleanup done (or the exact blocker) in the terminal handover. **Never
+   claim Done while your merged worktree still exists.**
+
+Respect squash merges: verify via the merged PR / `origin/main`, not
+`git branch --merged` alone. Never delete another agent’s branch, unmerged
+work, `main`, or an active shared worktree. If disk is already full, free only
+**your** merged/abandoned trees (and regenerable caches); do not wipe other
+agents’ in-flight worktrees. Update issue/project/handover with final state;
+retain PR and evidence links.

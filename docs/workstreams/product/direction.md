@@ -27,7 +27,9 @@ applicable technical contracts. Do not read every engine run or engine inbox.
 5. **Isolated git worktrees.** Every mutating product run uses its own worktree
    / issue branch before edits — never a shared checkout with another agent
    ([decision](../../decisions/2026-11-03-isolated-worktrees.md),
-   [git.md](../../operations/git.md)).
+   [git.md](../../operations/git.md)). After the PR merges, **same-session
+   cleanup** of that remote/local branch **and** the worktree is mandatory —
+   undeleted trees fill the disk and block later runs.
 
 **Orchestrator may revise any of the above** (and related operating principles)
 when evidence warrants — including designing a user-focused test instead of
@@ -48,44 +50,53 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (3 November 2026, after product review)
+**3 November 2026 player/Generate/transcript steering** is recorded in
+[decision](../../decisions/product/2026-11-03-studio-player-generate-transcripts.md)
+and folded into studio-ux (floating playback, Generate ⋯ tooling, transcripts,
+Stories vs Test frames).
+
+## Queue (3 November 2026, after studio UX intake)
 
 Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
 P017, P018 Done). P006 / P007 / P008 harness work is Done; **P008’s “prefer
 direct” product default is superseded** by the director-quality decision above.
 **P010 #51 Done** (Interactive Library collection + demos, PR #146). **P019 #139
-Done** (Studio Generate mode: header control, full-height transcript/composer,
-Director default, Ollama `qwen2.5-coder:14b`). Paused prototype history: PR #65
-commit 2d08de0.
+Done** (Studio Generate mode). **P020 #157 Done**. **P022 #165 Done** (Generate
+UX polish); residual streaming/detail bugs → **P028**.
 
-1. **P022 #165** — Generate UX polish from human quality pass (composer, detail
-   streaming/resize, copy chat, AI icon) — in flight / next Done.
-2. **P020 #157 Done** — story-complexity Generate quality judgment pack
-   (chips + checklist; human judgment still outstanding).
-3. **Customer animation-quality judgment** on Generate (Director vs Direct) —
-   do not close approach preference without that
-   ([director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md)).
-4. **P023 #166 Candidate** — waiting-state MotionScript loading-screen presets.
-5. **P024 #167 Candidate** — investigate Ollama/model serving optimisation under
-   disk/hardware pressure.
-6. **P009 #50** push-to-talk / narration / SFX — Candidate until speech/media UX
-   is confirmed in studio-ux; imports `@gvr/audio-provider` (E035 Done; #144
-   accepted).
-7. **P003 #44** Performance tab — Candidate until UX confirmation.
-8. **P021 #158 Candidate** — reserved-word node-id generation hardening.
-9. **P005 #46** / P011–P013 later; corpus prep under #88.
+1. **P028 #182** — Generate streaming / detail UX bugs (click during stream, view
+   selector stability, Director status truth, detail scroll, user-bubble
+   opacity) — **Ready / next**.
+2. **P025 #183** — Floating canvas playback controls + tape modes + speed — Ready.
+3. **P027 #184** — Generate panel ⋯ menu, copy granularity, system-prompt edit,
+   Library-load exits Generate, model-ready gate — Ready after P028 or
+   parallel if capacity.
+4. **P026 #185** — Corner dual-resize, larger settings icon, side-panel toggle,
+   favicon — Ready (smaller chrome).
+5. **P029 #186** — Transcripts collection + GVR transcript contract + playback —
+   Candidate until contract sketch accepted in-ticket; then Ready.
+6. **P031 #187** — Recategorise Test frames vs Stories (named probes) — Ready
+   (small).
+7. **P030 #188** — Project **Source** field / section for engine tickets + backfill
+   Candidate; Engine process via inbox request.
+8. **P023 #166** / **P024 #167** — remain Candidate (loading screens; model
+   serving under disk pressure — disk full blocked a full worktree this intake).
+9. **P009 #50** push-to-talk — Candidate until speech/media UX confirmed.
+10. **P003 #44**, **P021 #158**, **P005** / P011–P013 later; corpus under #88.
 
 ## Next
 
-1. Land **P022** Generate UX polish from the quality-pass findings.
-2. User: continue Generate quality judgment with the pack; keep Director default
+1. Product run: claim **P028** Generate streaming bugs (blocks human Generate
+   inspection).
+2. Then **P025** floating player chrome (studio-ux already confirms behaviour).
+3. User: continue Generate quality judgment with the pack; keep Director default
    until Direct is proven.
-3. Confirm **P009** speech/media UX (A mic-in-composer / B Speech mode / C
-   settings-only) → then Ready.
-4. Schedule **P023** loading screens and **P024** model-serving investigation.
+4. Confirm **P009** speech/media UX when ready → then Ready.
+5. Engine orchestrator: triage Source-on-tickets request when filed.
 
-Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
-generation, but do not skip interaction/generation Studio exercise.
+Do not invent Studio chrome beyond studio-ux. Keep Studio delivery ahead of
+prospective corpus generation, but do not skip interaction/generation Studio
+exercise.
 
 ## Generative audio provider (intake cleared, 2–3 November 2026)
 

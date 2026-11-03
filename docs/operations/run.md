@@ -51,6 +51,12 @@ or Product Review loop. Never bypass protections or close unfinished parent
 issues. If approval is externally required, report that exact blocker and
 continue independent work. Deployment/package publishing remains separate.
 
+**Immediately after remote merge:** delete this run’s remote/local feature
+branch and **remove its git worktree** (`git worktree remove` + prune) per
+[git.md](git.md). Same-session cleanup is mandatory — leftover worktrees fill
+the disk. Do not claim Done while your merged worktree still exists. Never
+remove another agent’s in-flight worktree.
+
 Append concise handover to the issue and link committed evidence. Evidence
 is captured from the measured revision; refresh only affected checks if code
 changes. Project status: Done only for accepted/merged work, Human verification

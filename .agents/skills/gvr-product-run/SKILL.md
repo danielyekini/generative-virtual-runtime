@@ -24,7 +24,9 @@ requires them. An explicit user steering change routes to gvr-direction-change.
 
 For any PR, follow docs/operations/git.md: full tests/typechecks/required builds
 before submission, inherited failures repaired, final integration gate, authorised
-self-merge and safe deletion of own merged branches.
+self-merge, then **mandatory same-session cleanup** of own merged remote/local
+branch **and** `git worktree remove` of this run’s worktree. Do not mark the run
+complete while a merged leftover worktree remains on disk.
 
 Read-only routing helper (from repo root):
 `python tools/gvr-ops/gh_context.py --lane product --mode route`

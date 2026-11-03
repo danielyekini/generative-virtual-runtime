@@ -12,4 +12,5 @@ historical contracts/results. Distinguish brainstorming from actual direction.
 
 For any PR, follow docs/operations/git.md: full tests/typechecks/required builds
 before submission, inherited failures repaired, final integration gate, authorised
-self-merge and safe deletion of own merged branches.
+self-merge, then **mandatory same-session cleanup** of own merged remote/local
+branch **and** `git worktree remove` of this run’s worktree.

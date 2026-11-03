@@ -26,3 +26,11 @@ isolated worktrees; record that in git instructions via direction-change.
 - After merge, delete only that agent's own merged remote/local branch and its
   worktree when clean — never another agent's tree.
 - Vision, language contracts and lane roadmaps are unchanged.
+
+## Amendment — mandatory cleanup (user steering, 3 November 2026)
+
+Undeleted worktrees after merge repeatedly exhausted host disk (~multi‑GB each
+via evaluation assets / installs). **Post-merge worktree removal is mandatory
+in the same session** and is part of Done. Concrete steps live in
+[git.md § Merge and cleanup](../operations/git.md). Skills and AGENTS.md restate
+the duty so workers cannot treat branch deletion alone as sufficient.
