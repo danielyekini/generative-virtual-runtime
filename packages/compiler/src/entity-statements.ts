@@ -22,6 +22,7 @@ import type {
   UnitAst,
 } from "./ast";
 import { emitEntityPatchDelta } from "./entity-patch";
+import { sealedHistoryWrite } from "./sealed-write";
 
 export type EntityStatementAst =
   | EntityDeclAst
@@ -74,9 +75,9 @@ export function lowerEntityStatement(
   if (unit.kind !== "cancelBehaviour" && "activationMs" in unit) {
     if (unit.activationMs < ctx.sealedThroughMs) {
       ctx.diagnostics.push(
-        issue(
-          "INVALID_TIMING",
+        sealedHistoryWrite(
           `Entity activation ${unit.activationMs}ms is before sealed horizon ${ctx.sealedThroughMs}ms.`,
+          ctx.sealedThroughMs,
           unit.span,
         ),
       );

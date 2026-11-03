@@ -8,6 +8,7 @@ import { DEFAULT_LIMITS, type SourceSpan } from "@gvr/schema";
 import type { ProgramAst, UnitAst } from "./ast";
 import { compileMotionScript } from "./compile";
 import { parseMotionScript } from "./parse";
+import { isSealedHistoryWrite } from "./sealed-write";
 
 export type StreamLintCode =
   | "OVERSIZED_UNIT"
@@ -114,7 +115,9 @@ export function lintStreamingAuthorship(source: string, options: StreamLintOptio
         message: diagnostic.message,
         sourceSpan: diagnostic.sourceSpan,
       });
-    } else if (diagnostic.code === "INVALID_TIMING") {
+    } else if (isSealedHistoryWrite(diagnostic)) {
+      // Only writes behind the sealed horizon (E047). Other INVALID_TIMING
+      // diagnostics are ordinary compile errors below.
       findings.push({
         code: "SEALED_HISTORY_WRITE",
         severity: "error",

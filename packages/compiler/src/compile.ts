@@ -1,3 +1,4 @@
+import { sealedHistoryWrite } from "./sealed-write";
 import {
   Telemetry,
   DEFAULT_LIMITS,
@@ -1011,9 +1012,9 @@ function lower(session: Session, unit: UnitAst): void {
       }
       if (!cyclicWriterAdmissible(scopes, unit.timingScopeId, session.sealedThroughMs > 0 ? session.sealedThroughMs : undefined)) {
         session.diagnostics.push(
-          problem(
-            "INVALID_TIMING",
+          sealedHistoryWrite(
             `${unit.target} joins cyclic scope ${unit.timingScopeId} after the seal at ${session.sealedThroughMs}ms; send every writer of a cycle before the seal reaches its entry.`,
+            session.sealedThroughMs,
             unit.span,
           ),
         );
@@ -1027,7 +1028,7 @@ function lower(session: Session, unit: UnitAst): void {
       ensureCapability(session, "timing.cyclicScopes");
     } else {
       if (unit.timeMs + 1e-9 < session.sealedThroughMs) {
-        session.diagnostics.push(problem("INVALID_TIMING", `${unit.target} steps at ${unit.timeMs}ms, before the seal at ${session.sealedThroughMs}ms.`, unit.span));
+        session.diagnostics.push(sealedHistoryWrite(`${unit.target} steps at ${unit.timeMs}ms, before the seal at ${session.sealedThroughMs}ms.`, session.sealedThroughMs, unit.span));
         return;
       }
       if (unit.timeMs < 0 || unit.timeMs > session.scene.timeline.durationMs) {
@@ -1300,9 +1301,9 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
   const cyclic = unit.timingScopeId !== undefined && chainIsCyclic(scopes, unit.timingScopeId);
   if (cyclic && !cyclicWriterAdmissible(scopes, unit.timingScopeId!, session.sealedThroughMs > 0 ? session.sealedThroughMs : undefined)) {
     session.diagnostics.push(
-      problem(
-        "INVALID_TIMING",
+      sealedHistoryWrite(
         `${unit.target} joins cyclic scope ${unit.timingScopeId} after the seal at ${session.sealedThroughMs}ms; send every writer of a cycle before the seal reaches its entry.`,
+        session.sealedThroughMs,
         unit.span,
       ),
     );
@@ -1324,7 +1325,7 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
       : session.sealedThroughMs;
   if (sealLocal !== undefined && startMs + 1e-9 < sealLocal) {
     session.diagnostics.push(
-      problem("INVALID_TIMING", `${unit.target} starts at ${startMs}ms, before the seal at ${session.sealedThroughMs}ms.`, unit.span),
+      sealedHistoryWrite(`${unit.target} starts at ${startMs}ms, before the seal at ${session.sealedThroughMs}ms.`, session.sealedThroughMs, unit.span),
     );
     return undefined;
   }
@@ -2000,7 +2001,7 @@ function lowerCue(session: Session, unit: Extract<UnitAst, { kind: "cue" }>): vo
   }
   if (unit.cue.startMs + 1e-9 < session.sealedThroughMs) {
     session.diagnostics.push(
-      problem("INVALID_TIMING", `Cue ${unit.cue.id} starts before the sealed horizon ${session.sealedThroughMs}ms.`, unit.span),
+      sealedHistoryWrite(`Cue ${unit.cue.id} starts before the sealed horizon ${session.sealedThroughMs}ms.`, session.sealedThroughMs, unit.span),
     );
     return;
   }

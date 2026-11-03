@@ -1,13 +1,13 @@
 {
   "generatorVersion": "0.1.0",
-  "generatedAt": "2026-11-03T19:05:47.895Z",
+  "generatedAt": "2026-11-03T19:36:18.735Z",
   "motionscript": "0.24.0",
   "sceneIr": "0.23.0",
   "wireVersion": "0.2",
   "packageVersion": "0.1.22",
   "releaseId": "ms-0.24.0_sir-0.23.0",
-  "fingerprint": "9f8765d242b435dd37994a0c376abde06ec00e3c0a8530c80b4168fc5257ac8b",
-  "fingerprint8": "9f8765d2",
+  "fingerprint": "93a226e2cf7ba511a7f5bc1bcf7269f6a21fcce15ec981e6163f3596877240ee",
+  "fingerprint8": "93a226e2",
   "estimatedTokensUtf16Div4": 4168,
   "byteLengthUtf8": 16680,
   "requiredCapabilities": [
@@ -77,13 +77,13 @@
     "docs/contracts/streaming-authorship.md": "7c5942c1a493c48d53309fdf007a132ed9085797f6a904664bfb01fab9afda7b",
     "docs/contracts/streaming-observation.md": "c6d66aecfb8b234ef877f12b9356781cba30c95c591dd839fd019591986de5f2",
     "docs/contracts/model-facing-reference.md": "c2733315cf6f9f1a56d687a66276b1798273c1431a237a9336c4a590d370db5e",
-    "packages/compiler/src/stream-lint.ts": "aef790d850754259b6b94a225eedc127b56926f2a84df8454698b441fa3b35e7",
+    "packages/compiler/src/stream-lint.ts": "2bf126093e539cfa63423c66006029482ccacade371a0da5eb201f01a40a8388",
     "packages/compiler/src/stream-lint.test.ts": "67fedc2610b9505afefa143cec0c98b482293a8a4f244e2eb7b8d0eebc3356be",
     "fixtures/motionscript/streaming/progressive-ok.ms": "27322f309a386e200a025d68172f0a632c0f9a0c308a53e46a861bad97cfcee3",
     "fixtures/motionscript/streaming/no-seal-offline.ms": "e53f40c070356a1f55b8a9d1882c1d7b9684a7cb8921f7929b437c178865c560",
     "fixtures/motionscript/streaming/sealed-history-bad.ms": "7e4a4f1b0110f0a8b74a660d32c5d1dbbb3edc73654016a1399174abbf4fbb91",
     "fixtures/motionscript/streaming/early-seal-empty.ms": "125d33eafbbc5393112e37a916a67b50707c5e12eee39fdf1a8a3abbbd616936"
   },
-  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.24.0_sir-0.23.0-9f8765d2.md",
-  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.24.0_sir-0.23.0-9f8765d2.json"
+  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.24.0_sir-0.23.0-93a226e2.md",
+  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.24.0_sir-0.23.0-93a226e2.json"
 }

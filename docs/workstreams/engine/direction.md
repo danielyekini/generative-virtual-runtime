@@ -151,6 +151,17 @@ new engine tickets waits on Product P030 (#188). Holder:
    readiness surface. Image pattern paint waits on evidence as Candidate E046
    ([#205](https://github.com/danielyekini/generative-virtual-runtime/issues/205)).
 
+4. Engine review (3 November 2026, evening) inspected runs `F61104F0` (E039),
+   `00f04d24` (E014), `5dc11099` (E044), `b2ff7b2a` (E043) and `8812fbed`
+   (E019). All five are Done. Ready order: E047
+   ([#207](https://github.com/danielyekini/generative-virtual-runtime/issues/207)),
+   a stream-linter diagnostic-truth bug in which every `INVALID_TIMING` was labelled
+   `SEALED_HISTORY_WRITE`; then E045 (#204). New Candidates: E048
+   ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208)),
+   because composition-instance `timingScopeId` is inert; and joint ops
+   [#209](https://github.com/danielyekini/generative-virtual-runtime/issues/209),
+   because routing and branch cleanup fail in cloud sessions.
+
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
 queue; old Lottie gaps do not add adapter lowering or source-fidelity acceptance.
