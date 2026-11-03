@@ -191,14 +191,14 @@ Library collections/tags must make those programs discoverable (for example an
 they do not skip the surface. Also in the [charter](../../project/charter.md)
 and [product direction](direction.md).
 
-## Library: Interactive collection (confirmed intent, 3 November 2026)
+## Library: Interactive collection (delivered P010, 3 November 2026)
 
-Add an **Interactive** library collection (filter chip alongside Stories /
-Runtime scenes / …) for installed programs that declare `interact` /
-`input.bindings`. Humans must be able to open them from the Library, run them
-in the Player, and exercise pointer/keyboard focus without hunting. Early
-runtime scenes (Ball, Bunny, Diagram, Caption, …) stay under Runtime scenes —
-they are not the interaction or generation quality baseline.
+**Interactive** library collection (filter chip alongside Stories /
+Runtime scenes / …) lists installed programs that declare `interact` /
+`input.bindings`. Humans open them from the Library, run them in the Player,
+and exercise pointer/keyboard focus without hunting. Early runtime scenes
+(Ball, Bunny, Diagram, Caption, …) stay under Runtime scenes — they are not
+the interaction or generation quality baseline.
 
 ## Generate / model testing (draft — confirm placement before building)
 

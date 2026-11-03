@@ -38,37 +38,37 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (3 November 2026, after quality/surfaces steering)
+## Queue (3 November 2026, after P010)
 
 Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
 P017, P018 Done). P006 / P007 / P008 harness work is Done; **P008’s “prefer
 direct” product default is superseded** by the director-quality decision above.
-Paused prototype history: PR #65 commit 2d08de0.
+**P010 #51 Done** (Interactive Library collection + demos, PR #146). Paused
+prototype history: PR #65 commit 2d08de0.
 
-1. **P010 #51** Interaction testing + **Interactive** Library demos — **Ready**
-   (deps **E007** only; P005 removed). Ship/categorise interactive programs for
-   human testing. Engine assist: [#140](https://github.com/danielyekini/generative-virtual-runtime/issues/140) / E027.
-2. **P019 #139** Studio native-generation testing surface (typed prompt +
+1. **P019 #139** Studio native-generation testing surface (typed prompt +
    transcript; director default; human quality judgment; Qwen pin) — Candidate
    until Generate placement is confirmed in studio-ux; then Ready. Blocks
    treating push-to-talk as next generation work.
-3. **X002 #56** Engine verification surfaces — advanced via P002 (shipped) +
-   P019/P010; keep those tasks visible.
-4. **P009 #50** push-to-talk / narration / SFX — Candidate after P019 is
+2. **X002 #56** Engine verification surfaces — advanced via P002 + P010
+   (shipped) + P019; keep those tasks visible.
+3. **P009 #50** push-to-talk / narration / SFX — Candidate after P019 is
    human-exerciseable; speech is an input method on top of generation.
-5. **P003 #44** Performance tab — Candidate until UX confirmation.
-6. **P005 #46** agent toolbox — low-priority optional consolidation.
-7. P011–P013 and corpus generation remain later; next-corpus prep continues
+4. **P003 #44** Performance tab — Candidate until UX confirmation.
+5. **P005 #46** agent toolbox — low-priority optional consolidation.
+6. P011–P013 and corpus generation remain later; next-corpus prep continues
    under #88 with director ownership and story-complexity baselines.
+7. Engine assist [#140](https://github.com/danielyekini/generative-virtual-runtime/issues/140) /
+   E027 remains for emitter round-trip of `interact` (not required for P010
+   compiler-path demos).
 
 ## Next
 
-**Ordinary dispatch (after this steering lands):**
-
-1. Claim **P010** (interactive demos + Library collection) — actionable now.
-2. User confirms Generate UX placement → promote/claim **P019 #139**.
-3. Solicit customer (user) animation-quality feedback once Generate exists;
+1. User confirms Generate UX placement (studio-ux Options A/B/C) → promote/claim
+   **P019 #139**.
+2. Solicit customer (user) animation-quality feedback once Generate exists;
    do not close generation approach choices without that.
+3. After P019 is human-exerciseable, P009 becomes the speech/audio host path.
 
 Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
 generation, but do not skip interaction/generation Studio exercise.
