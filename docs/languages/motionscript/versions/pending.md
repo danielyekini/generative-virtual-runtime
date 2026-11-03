@@ -13,9 +13,16 @@ Not yet in a published MotionScript version:
 - compositing.matte
 - transform.skew
 - transform.autoOrient
+- geometry.pathProgress
+- paint.strokeDash
 - geometry.repeater
 - geometry.mergePaths
 - text.animators
+
+`geometry.pathProgress` / `paint.strokeDash` are named by the E015 decision
+(`docs/decisions/engine/path-progress-geometry-authoring.md`); host/schema
+prototypes exist without a language claim. Variable width profiles stay outside
+this pending list until a separate decision.
 
 `geometry.animatedTrim` landed in MotionScript 0.5.0.
 `entities.durableRevisions` landed in MotionScript 0.6.0; declarative entity/behaviour statements completed in 0.9.0.
