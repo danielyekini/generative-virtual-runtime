@@ -58,8 +58,8 @@ Done** (Studio Generate mode: header control, full-height transcript/composer,
 Director default, Ollama `qwen2.5-coder:14b`). Paused prototype history: PR #65
 commit 2d08de0.
 
-1. **P020 #157 Ready** — story-complexity Generate quality judgment pack
-   (repeatable customer animation-quality exercise; no new chrome).
+1. **P020 #157 Done** — story-complexity Generate quality judgment pack
+   (chips + checklist; human judgment still outstanding).
 2. **Customer animation-quality judgment** on Generate (Director vs Direct) —
    solicit once P020 pack lands; do not close approach preference without that
    ([director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md)).
@@ -79,11 +79,12 @@ commit 2d08de0.
 
 ## Next
 
-1. Claim **P020 #157** — ship story-complexity Generate judgment pack.
-2. User: exercise Generate with that pack (`npm run dev` + local Ollama) and
-   judge animation quality; keep Director default until Direct is proven.
-3. Confirm **P009** speech/media UX (options below / studio-ux) → then Ready.
-4. Keep Performance / agent-toolbox Candidate until UX confirmation.
+1. User: exercise Generate with the P020 story pack (`npm run dev` + local
+   Ollama) and judge animation quality; keep Director default until Direct is
+   proven ([checklist](../../fixtures/generation/quality-judgment/CHECKLIST.md)).
+2. Confirm **P009** speech/media UX in studio-ux → then Ready.
+3. Keep Performance / agent-toolbox Candidate until UX confirmation.
+4. **P021 #158** Candidate — reserved-word generation hardening when capacity.
 
 Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
 generation, but do not skip interaction/generation Studio exercise.

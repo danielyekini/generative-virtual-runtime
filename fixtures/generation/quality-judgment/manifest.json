@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "split": "quality-judgment",
+  "purpose": "Story-complexity typed prompts for Studio Generate human animation-quality judgment (P020). Not held-out harness regression; not a corpus commission.",
+  "baselineDecision": "docs/decisions/product/2026-11-03-director-quality-gate.md",
+  "studioDefaultApproach": "director",
+  "pinnedModel": "qwen2.5-coder:14b",
+  "checklist": "fixtures/generation/quality-judgment/CHECKLIST.md",
+  "tasks": [
+    {
+      "id": "city-loop",
+      "title": "City loop",
+      "baseline": "The city comes around",
+      "prompt": "Create a looping city street animation: mustard car, walkers, a cyclist, and café shopfronts. The camera eases along the block and the loop should feel seamless when it repeats. Favour readable motion and atmosphere over tiny diagrams."
+    },
+    {
+      "id": "blueprint-home",
+      "title": "Blueprint → home",
+      "baseline": "From Blueprint to Home",
+      "prompt": "Animate a house assembling from blueprint linework into a warm finished home. Reveal rooms as walls rise; keep the camera purposeful so the build reads as a story, not a HUD."
+    },
+    {
+      "id": "crane-square",
+      "title": "Crane fold",
+      "baseline": "A crane then a square",
+      "prompt": "Show a paper square folding into a crane, hovering, then unfolding back to a square. Make crease timing and silhouette readable—even if the paper stays firmly 2D."
+    },
+    {
+      "id": "pixels-prediction",
+      "title": "Pixels → prediction",
+      "baseline": "From pixels to prediction",
+      "prompt": "Start from chunky pixels and resolve into a clearer predictive figure or chart. The transformation should feel intentional and watchable, not a single static slide."
+    },
+    {
+      "id": "copperleaf-run",
+      "title": "Copperleaf run",
+      "baseline": "Copperleaf",
+      "prompt": "A small character runs and jumps across platforms, collecting coins, then enters a cavern. Keep poses, jumps, and camera framing legible as a short adventure beat."
+    },
+    {
+      "id": "last-streetlight",
+      "title": "Streetlight",
+      "baseline": "The last Streetlight",
+      "prompt": "A noir streetlight scene: silhouetted figure under a warm lamp, soft smoke, and a camera that cranes or tilts with mood. Prioritise lighting and composition over UI chrome."
+    },
+    {
+      "id": "small-ideas",
+      "title": "Small ideas",
+      "baseline": "Small Ideas, Enormous Change",
+      "prompt": "Many tiny geometric ideas appear, combine, and grow into one larger transforming composition. Emphasise choreography and visual payoff, not a bullet list of shapes."
+    }
+  ]
+}

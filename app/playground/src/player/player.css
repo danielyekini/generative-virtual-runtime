@@ -292,6 +292,31 @@ button.primary:hover, button.run:hover:not(:disabled) { background: #2563eb; }
   gap: 6px;
   background: var(--panel);
 }
+.generate-quality-pack {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 2px 2px;
+  scrollbar-width: thin;
+}
+.generate-pack-chip {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: #252528;
+  color: var(--muted);
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+.generate-pack-chip:hover { color: var(--text); border-color: #52525b; }
+.generate-pack-chip.is-selected {
+  color: var(--text);
+  border-color: #3b82f6;
+  background: #1e3a5f;
+}
+.generate-pack-chip:disabled { opacity: 0.5; }
 #generate-prompt {
   width: 100%;
   resize: none;
