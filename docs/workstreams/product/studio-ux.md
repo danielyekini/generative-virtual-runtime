@@ -201,22 +201,58 @@ they are not the interaction or generation quality baseline.
 
 User intent (3 November 2026): expose Qwen/`tools/native-generation` in Studio
 **before** push-to-talk. Typed prompts are enough; a transcript panel is useful
-for typed turns as well as later speech. **Director is the default approach**;
-direct remains available for comparison. Human judges **animation quality** on
-the canvas (story-complexity expectations), not only compile success.
+for typed turns as well as later speech. Approach control offers **Director** and
+**Direct**; Studio defaults to Director until customer-judged proof shows Direct
+covers the director’s intended roles (see director quality decision). Human
+judges **animation quality** on the canvas (story-complexity expectations), not
+only compile success.
 
-Recommended layout (awaiting confirmation):
+### Option A — bottom-panel Generate tab (recommended)
 
-- Bottom-panel tab **Generate** (with Diagnostics / Stream / Scene / …).
-- Prompt + rolling **transcript** (user turns and brief status lines).
-- Approach control: **Director (default)** | Direct.
-- **Generate** runs the pinned local model into the loaded/new program path
-  with cancel; Stream mode may reuse arrival tooling for progressive apply.
-- Show secondary metrics (repairs, latency, tape red-gap downtime) without
-  treating them as the acceptance gate.
+```
+┌────────────────────────────────────────────────────────────┐
+│ program-name          ▶ Run   ≋ Stream ▾          Library  │
+├────────────────────────────────────────────────────────────┤
+│                                                            │
+│                         CANVAS                             │
+│              (judge animation quality here)                │
+│                                                            │
+├────────────────────────────────────────────────────────────┤
+│ ❚❚  ‹ ›  0:03.2                              ⛶             │
+│ TIME [▣▣▣▣▒▒░░░░]  tape  (red gap = stream wait)           │
+├────────────────────────────────────────────────────────────┤
+│ [Diagnostics][Stream][Scene][Generate][Perf…]           ▾  │
+├────────────────────────────────────────────────────────────┤
+│ Approach: (•) Director   ( ) Direct     model qwen-14b     │
+│ ┌─ transcript ───────────────────────────────────────────┐ │
+│ │ you: show a crane folding then a square landing        │ │
+│ │ sys: director ok · implement streaming… · seal 1.2s    │ │
+│ │ you: make the fold slower                              │ │
+│ └────────────────────────────────────────────────────────┘ │
+│ prompt> _________________________________  [Generate][Cancel]
+│ repairs 0 · 18s · tape wait 0.4s   (secondary; not the gate)│
+└────────────────────────────────────────────────────────────┘
+```
 
-Alternatives if rejected: (B) header split-button next to Stream; (C) Source
-panel compose mode. Do not build until the user picks or confirms (A).
+### Option B — header next to Stream (compact)
+
+```
+│ name │ ▶ Run │ ≋ Stream ▾ │ ✎ Generate ▾ │ Library │
+                         Generate ▾ opens popover:
+                         approach · prompt · Generate/Cancel
+                         transcript still lives in a bottom tab
+```
+
+### Option C — Source panel compose mode
+
+```
+│ CANVAS              │ Source / Generate          │
+│                     │ [Source] [Generate]        │
+│                     │ approach · transcript      │
+│                     │ prompt · Generate/Cancel   │
+```
+
+Do not build until the user confirms A, B, C, or a marked variant.
 
 ## Later sections (to be specified with the user before building)
 
