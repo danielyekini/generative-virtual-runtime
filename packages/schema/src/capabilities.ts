@@ -21,6 +21,7 @@ export const CAPABILITIES = [
   "compositing.isolatedOpacity",
   "compositing.blend",
   "compositing.mask",
+  "compositing.matte",
   "effects.blur",
   "effects.shadow",
   "geometry.pathMorph",

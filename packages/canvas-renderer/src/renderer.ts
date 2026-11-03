@@ -197,8 +197,16 @@ export class CanvasRenderer {
       this.drawItem(ctx, device, node.item);
       return;
     }
+    if (node.matte) {
+      this.drawMatted(ctx, device, node, node.matte);
+      return;
+    }
+    this.drawScope(ctx, device, node);
+  }
+
+  private drawScope(ctx: CanvasRenderingContext2D, device: Mat3, node: Extract<RenderTreeNode, { kind: "scope" }>): void {
     ctx.save();
-    if (node.blend) ctx.globalCompositeOperation = node.blend;
+    if (node.blend && !node.matte) ctx.globalCompositeOperation = node.blend;
     if (node.effect?.type === "blur") ctx.filter = `blur(${node.effect.radius}px)`;
     if (node.effect?.type === "shadow") {
       ctx.shadowOffsetX = node.effect.dx;
@@ -206,24 +214,82 @@ export class CanvasRenderer {
       ctx.shadowBlur = node.effect.blur;
       ctx.shadowColor = node.effect.color;
     }
-    if (node.clip) {
-      const matrix = multiplyMat3(device, node.clip.logicalMatrix);
-      ctx.setTransform(matrix[0], matrix[1], matrix[3], matrix[4], matrix[6], matrix[7]);
-      const rule = node.clip.geometry.kind === "path" ? node.clip.geometry.fillRule : "nonzero";
-      const path = this.compiledPath(node.clip.geometry);
-      if (path) ctx.clip(path, rule);
-      else {
-        ctx.beginPath();
-        traceGeometry(node.clip.geometry, ctx);
-        ctx.clip(rule);
-      }
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-    }
+    if (node.clip) this.applyClip(ctx, device, node.clip);
     const previous = this.scopeAlpha;
     if (node.isolated && node.id !== "root") this.scopeAlpha *= node.opacity;
     for (const child of node.children) this.drawTree(ctx, device, child);
     this.scopeAlpha = previous;
     ctx.restore();
+  }
+
+  /**
+   * Paint the scope into a buffer, keep pixels only where the matte source's
+   * alpha is, then blit. A missing buffer withholds the scope so it is not
+   * drawn unmasked. Fresh buffers keep nested mattes from clobbering each other.
+   */
+  private drawMatted(
+    ctx: CanvasRenderingContext2D,
+    device: Mat3,
+    node: Extract<RenderTreeNode, { kind: "scope" }>,
+    coverage: RenderTreeNode,
+  ): void {
+    const content = this.createLayer();
+    const matte = this.createLayer();
+    if (!content || !matte) return;
+    this.drawScope(content.ctx, device, node);
+    const saved = this.scopeAlpha;
+    this.scopeAlpha = 1;
+    this.drawTree(matte.ctx, device, coverage);
+    this.scopeAlpha = saved;
+    content.ctx.save();
+    content.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    content.ctx.globalAlpha = 1;
+    content.ctx.globalCompositeOperation = "destination-in";
+    content.ctx.filter = "none";
+    content.ctx.shadowColor = "transparent";
+    content.ctx.drawImage(matte.canvas, 0, 0);
+    content.ctx.restore();
+    ctx.save();
+    if (node.blend) ctx.globalCompositeOperation = node.blend;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalAlpha = 1;
+    ctx.drawImage(content.canvas, 0, 0);
+    ctx.restore();
+  }
+
+  private createLayer(): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D } | undefined {
+    const width = this.canvas.width;
+    const height = this.canvas.height;
+    const created = this.canvas.ownerDocument?.createElement?.("canvas");
+    if (!created || width <= 0 || height <= 0) return undefined;
+    const canvas = created as HTMLCanvasElement;
+    canvas.width = width;
+    canvas.height = height;
+    const layer = canvas.getContext("2d");
+    if (!layer) return undefined;
+    layer.setTransform(1, 0, 0, 1, 0, 0);
+    layer.globalAlpha = 1;
+    layer.globalCompositeOperation = "source-over";
+    layer.clearRect(0, 0, width, height);
+    return { canvas, ctx: layer };
+  }
+
+  private applyClip(
+    ctx: CanvasRenderingContext2D,
+    device: Mat3,
+    clip: { geometry: ResolvedGeometry; logicalMatrix: Mat3 },
+  ): void {
+    const matrix = multiplyMat3(device, clip.logicalMatrix);
+    ctx.setTransform(matrix[0], matrix[1], matrix[3], matrix[4], matrix[6], matrix[7]);
+    const rule = clip.geometry.kind === "path" ? clip.geometry.fillRule : "nonzero";
+    const path = this.compiledPath(clip.geometry);
+    if (path) ctx.clip(path, rule);
+    else {
+      ctx.beginPath();
+      traceGeometry(clip.geometry, ctx);
+      ctx.clip(rule);
+    }
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
   }
 
   private compiledPath(geometry: ResolvedGeometry): Path2D | undefined {
@@ -239,6 +305,6 @@ export class CanvasRenderer {
 
 function treeUsesScopes(node: RenderTreeNode): boolean {
   if (node.kind === "leaf") return false;
-  if (node.id !== "root" || node.isolated || node.blend || node.effect || node.clip) return true;
+  if (node.id !== "root" || node.isolated || node.blend || node.effect || node.clip || node.matte) return true;
   return node.children.some((child) => treeUsesScopes(child));
 }

@@ -1,5 +1,10 @@
 # @gvr/motionscript-emitter
 
+## 0.1.10
+
+Emit group `matte <nodeId>;` from Scene IR `compositing.matte`
+(MotionScript / Scene IR 0.19.0) so alpha track mattes round-trip.
+
 ## 0.1.9
 
 Emit text `number` / format fields and `content` steps from Scene IR numeric

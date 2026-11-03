@@ -48,8 +48,9 @@ cameraDecl     = "camera" , identifier , "{" , { cameraProperty } , "}" , ";" ;
 cameraProperty = "position" , vec2 , ";"
                | "zoom" , signedNumber , ";"
                | "rotation" , angle , ";" ;
-(* MotionScript 0.16 compositing.mask: group may carry clip <geometryId>; among
-   other compositing props parsed as common/group properties (see KEYWORDS). *)
+(* MotionScript 0.16 compositing.mask: group may carry clip <geometryId>.
+   MotionScript 0.19 compositing.matte: group may carry matte <nodeId>.
+   Both are parsed as group properties (see KEYWORDS). *)
 groupDecl      = "group" , identifier , "{" , { commonProperty } , { nodeOrGroup } , "}" , ";" ;
 nodeOrGroup    = nodeDecl | groupDecl ;
 nodeDecl       = rectangleDecl | circleDecl | ellipseDecl | lineDecl
@@ -465,6 +466,7 @@ export const KEYWORDS = [
   "blend",
   "blur",
   "clip",
+  "matte",
   "multiply",
   "screen",
   "overlay",

@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.18.0",
+      "current": "0.19.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.16"
+      "packageVersion": "0.1.17"
     },
     "scene-ir": {
-      "current": "0.18.0",
+      "current": "0.19.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.16"
+      "packageVersion": "0.1.17"
     }
   },
   "versions": [
@@ -139,6 +139,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.18.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.19.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.19.0.md"
     },
     {
       "language": "motionscript",
@@ -271,6 +278,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.18.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.19.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.19.0.md"
     },
     {
       "language": "scene-ir",
@@ -412,6 +426,13 @@
       "compiler": "0.1.15",
       "runtime": "0.1.20",
       "readers": "Wire stays 0.2. text.dynamicContent is gated by requiredCapabilities / requires. Packages without the capability reject text numeric bindings, content steps and text.number tracks; older validators reject the unknown numeric key and content/text.number channels."
+    },
+    {
+      "motionscript": "0.19.0",
+      "sceneIr": "0.19.0",
+      "compiler": "0.1.16",
+      "runtime": "0.1.21",
+      "readers": "Wire stays 0.2. compositing.matte is gated by requiredCapabilities / requires. Packages without the capability reject group compositing.matte; older validators reject the unknown matte key. matte is reserved."
     }
   ]
 }

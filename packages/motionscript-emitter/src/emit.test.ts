@@ -72,6 +72,16 @@ describe("canonical emitter", () => {
     expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
   });
 
+  it("round-trips group matte", () => {
+    const source = readFileSync(resolve(motionDir, "alpha-matte.ms"), "utf8");
+    const scene = compile(source);
+    const { again } = roundTrip(scene);
+    expect(again.requiredCapabilities).toContain("compositing.matte");
+    const card = again.nodes.find((node) => node.id === "Card");
+    expect(card).toMatchObject({ kind: "group", compositing: { matte: { nodeId: "Window" } } });
+    expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
+  });
+
   it("round-trips physics declarations (physics.planar2d)", () => {
     const source = readFileSync(resolve(motionDir, "physics-marble.ms"), "utf8");
     const scene = compile(source);

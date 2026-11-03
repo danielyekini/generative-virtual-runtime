@@ -10,7 +10,6 @@ See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md)
 
 Not yet in a published Scene IR version:
 
-- compositing.matte
 - transform.skew
 - transform.autoOrient
 - paint.strokeDash
@@ -43,6 +42,7 @@ MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
 `audio.generative` (generative audio resource `source` discriminant) landed in Scene IR 0.14.0.
 `space.planarSeams` (`seams` on spatial layers) landed in Scene IR 0.15.0.
 `compositing.mask` (`GroupCompositing.clip`) landed in Scene IR 0.16.0.
+`compositing.matte` (`GroupCompositing.matte`) landed in Scene IR 0.19.0.
 `geometry.pathProgress` (`pathAttachments` and the `path.progress` channel) landed in Scene IR 0.17.0.
 `text.dynamicContent` (text `numeric` bindings, `text.number` channel, content steps) landed in Scene IR 0.18.0.
 

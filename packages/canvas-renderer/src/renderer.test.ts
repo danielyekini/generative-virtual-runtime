@@ -24,7 +24,14 @@ class RecordingContext {
   fillStyle = "";
   strokeStyle = "";
   globalAlpha = 1;
-  globalCompositeOperation = "source-over";
+  private _composite = "source-over";
+  get globalCompositeOperation(): string {
+    return this._composite;
+  }
+  set globalCompositeOperation(value: string) {
+    this._composite = value;
+    this.note("composite", [value]);
+  }
   font = "";
   textAlign: CanvasTextAlign = "start";
   textBaseline: CanvasTextBaseline = "alphabetic";
@@ -60,6 +67,12 @@ class RecordingContext {
   }
   fillRect(...args: number[]): void {
     this.note("fillRect", args);
+  }
+  clearRect(...args: number[]): void {
+    this.note("clearRect", args);
+  }
+  drawImage(...args: unknown[]): void {
+    this.note("drawImage", args);
   }
   save(): void {
     this.note("save", []);
@@ -283,6 +296,57 @@ describe("group clip scopes through CanvasRenderer", () => {
     const frame = new AnimationRuntime(compiled.scene!).evaluate(0);
     const { ctx } = render(frame, 200, 200, 1);
     expect(ctx.calls.some((call) => call.name === "clip")).toBe(true);
+  });
+});
+
+describe("group matte scopes through CanvasRenderer", () => {
+  it("composites a matte with destination-in and withholds without a buffer", () => {
+    const source = `scene "matte" { version "0.2"; viewport (200, 100); background #000000; duration 1s; requires "compositing.matte"; requires "compositing.isolatedOpacity"; };
+      group Card { matte Hole;
+        rectangle Panel { size (200, 100); fill #ff0000; };
+      };
+      group Hole { visible false;
+        circle A { position (40, 50); radius 30; fill #ffffff; };
+      };
+      complete;`;
+    const compiled = compileMotionScript(source);
+    expect(compiled.diagnostics).toEqual([]);
+    const frame = new AnimationRuntime(compiled.scene!).evaluate(0);
+
+    const withheld = render(frame, 200, 100, 1);
+    expect(withheld.ctx.calls.some((call) => call.name === "fill")).toBe(false);
+    expect(withheld.ctx.calls.some((call) => call.name === "drawImage")).toBe(false);
+
+    const layers: RecordingContext[] = [];
+    const root = new RecordingContext();
+    const ownerDocument = {
+      createElement(): HTMLCanvasElement {
+        const ctx = new RecordingContext();
+        layers.push(ctx);
+        const canvas = {
+          width: 0,
+          height: 0,
+          style: {},
+          ownerDocument: undefined as { createElement(): HTMLCanvasElement } | undefined,
+          getContext: () => ctx,
+        };
+        canvas.ownerDocument = ownerDocument;
+        return canvas as unknown as HTMLCanvasElement;
+      },
+    };
+    const canvas = {
+      width: 0,
+      height: 0,
+      style: {} as CSSStyleDeclaration,
+      ownerDocument,
+      getContext: () => root,
+    };
+    const renderer = new CanvasRenderer(canvas as unknown as HTMLCanvasElement);
+    renderer.resize(200, 100, 1);
+    renderer.render(frame);
+    expect(root.calls.some((call) => call.name === "drawImage")).toBe(true);
+    expect(layers.some((ctx) => ctx.calls.some((call) => call.name === "composite" && call.args[0] === "destination-in"))).toBe(true);
+    expect(layers.some((ctx) => ctx.calls.some((call) => call.name === "fill"))).toBe(true);
   });
 });
 

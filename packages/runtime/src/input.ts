@@ -95,7 +95,7 @@ export function hitTest(frame: ResolvedFrame, point: Vec2, options: HitTestOptio
 
 function treeHasClip(node: RenderTreeNode): boolean {
   if (node.kind === "leaf") return false;
-  if (node.clip) return true;
+  if (node.clip || node.matte) return true;
   return node.children.some((child) => treeHasClip(child));
 }
 
@@ -120,6 +120,7 @@ function hitTestTree(
     return { nodeId: node.item.nodeId, paintIndex: paintIndex < 0 ? 0 : paintIndex, local: hit.local, part: hit.part };
   }
   if (node.clip && !pointInClip(node.clip, point)) return undefined;
+  if (node.matte && !paintsAt(node.matte, point)) return undefined;
   for (let index = node.children.length - 1; index >= 0; index -= 1) {
     const hit = hitTestTree(frame, node.children[index]!, point, options);
     if (hit) return hit;
@@ -143,9 +144,18 @@ function collectHits(
     return;
   }
   if (node.clip && !pointInClip(node.clip, point)) return;
+  if (node.matte && !paintsAt(node.matte, point)) return;
   for (let index = node.children.length - 1; index >= 0; index -= 1) {
     collectHits(frame, node.children[index]!, point, options, out);
   }
+}
+
+/** Painted-geometry coverage of a matte source. Partial alpha still counts as a hit. */
+function paintsAt(node: RenderTreeNode, point: Vec2): boolean {
+  if (node.kind === "leaf") return hitItem(node.item, point, {}) !== undefined;
+  if (node.clip && !pointInClip(node.clip, point)) return false;
+  if (node.matte && !paintsAt(node.matte, point)) return false;
+  return node.children.some((child) => paintsAt(child, point));
 }
 
 function invert(m: Mat3): Mat3 | undefined {

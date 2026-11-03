@@ -76,6 +76,7 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
 | `compositing.isolatedOpacity` | Isolated group opacity scopes — SVG exact; core targets untested |
 | `compositing.blend` | `source-over`, `multiply`, `screen`, `overlay` on isolated groups — untested |
 | `compositing.mask` | Group `clip` to a geometry outline — supported (0.16.0); Lottie/SVG adapters unsupported |
+| `compositing.matte` | Group `matte` keeps pixels where another node's painted alpha is — supported (0.19.0); Lottie/SVG adapters unsupported |
 | `geometry.pathProgress` | `attach` a node along a path at a progress, optional tangent orient and explicit rolling — supported (0.17.0); Lottie/SVG adapters unsupported |
 | `text.dynamicContent` | Numeric format bindings and discrete content steps on `text.basic` — supported (0.18.0); Lottie/SVG adapters unsupported |
 | `effects.blur` | Blur on a render scope — supported; Lottie static Gaussian blur exact |
@@ -104,7 +105,7 @@ Round-trip (`@gvr/round-trip`): import → emit MotionScript → compile → sam
 
 These ids are listed in `docs/languages/*/versions/pending.md` and are **unsupported** in compiler, runtime, and renderer until a version lands them:
 
-`compositing.matte`, `transform.skew`, `transform.autoOrient`, `geometry.repeater`, `geometry.mergePaths`, `text.animators`.
+`transform.skew`, `transform.autoOrient`, `geometry.repeater`, `geometry.mergePaths`, `text.animators`.
 
 Capability growth follows the adopted charter and live lane priorities. Pending registry rows are unsupported proposals, not an automatic parity queue or fixed language ceiling. Consequential new execution models require a recorded design decision.
 

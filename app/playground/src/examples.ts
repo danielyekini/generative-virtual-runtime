@@ -14,6 +14,7 @@ import spatialEchoSource from "../../../fixtures/motionscript/spatial-echo.ms?ra
 import spatialHomeSource from "../../../fixtures/motionscript/spatial-home.ms?raw";
 import spatialSeamsSource from "../../../fixtures/motionscript/spatial-seams.ms?raw";
 import clipMaskSource from "../../../fixtures/motionscript/clip-mask.ms?raw";
+import alphaMatteSource from "../../../fixtures/motionscript/alpha-matte.ms?raw";
 import pathProgressSource from "../../../fixtures/motionscript/path-progress.ms?raw";
 import dynamicTextSource from "../../../fixtures/motionscript/dynamic-text.ms?raw";
 import cameraMappingSource from "../../../fixtures/motionscript/frames/camera-mapping.ms?raw";
@@ -157,6 +158,7 @@ export const motionExamples: MotionExample[] = [
   { id: "spatial-echo", label: "Spatial echo", caption: "Receding type in perspective depth (space.planar25d).", source: spatialEchoSource },
   { id: "spatial-seams", label: "Spatial seams", caption: "Crossing panels split along their intersection; a drifting flap opens its declared seam (space.planarSeams).", source: spatialSeamsSource },
   { id: "clip-mask", label: "Clip mask", caption: "A rotating card is clipped to a circular window (compositing.mask).", source: clipMaskSource },
+  { id: "alpha-matte", label: "Alpha matte", caption: "A card shows through two circles and a word, and fades with the window's opacity (compositing.matte).", source: alphaMatteSource },
   { id: "path-progress", label: "Path progress", caption: "An arrow rides a growing stroke's tip and a wheel rolls along a bending track, with no baked keys (geometry.pathProgress).", source: pathProgressSource },
   { id: "dynamic-text", label: "Dynamic text", caption: "A live currency readout formats a number track, and a status label swaps discrete content steps (text.dynamicContent).", source: dynamicTextSource },
   { id: "physics-marble", label: "Physics marble", caption: "A marble and block fall onto a floor (physics.planar2d).", source: physicsMarbleSource },

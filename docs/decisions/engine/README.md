@@ -48,6 +48,10 @@
   shared arc-length metrics after morph/trim, host attach/orient/rolling/dash
   helpers; auto-orient ≠ rolling; uniform width stays `paint.animatedSolid`;
   width profiles deferred; language wiring in follow-up issues.
+- [Alpha track mattes (E036)](track-mattes.md): `matte <nodeId>` keeps a group's
+  pixels where another node's painted alpha is, including a group of shapes;
+  luma, invert and feather stay out; MotionScript / Scene IR 0.19.0
+  `compositing.matte`.
 - [Dynamic text / numeric format / metrics (E013)](dynamic-text-and-metrics.md):
   split content+format from layout metrics and per-glyph animators; schema
   `formatNumber` / `measureTextLine` prototype; language wiring in E040/E041;

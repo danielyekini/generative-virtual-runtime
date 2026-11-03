@@ -414,10 +414,10 @@ function parseNodeItem(parser: Parser, node: NodeAst, key: string): void {
     } else note(node, parser, "blend is sourceOver, multiply, screen, or overlay.");
     return;
   }
-  if (key === "clip") {
+  if (key === "clip" || key === "matte") {
     const target = parseDotted(parser, false);
-    if (!target) note(node, parser, "clip needs a geometry node id.");
-    else node.props.push({ name: "clip", text: target });
+    if (!target) note(node, parser, `${key} needs a node id.`);
+    else node.props.push({ name: key, text: target });
     return;
   }
   if (key === "stroke") {
