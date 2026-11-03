@@ -973,6 +973,12 @@ export interface ResolvedFrame {
    * Rasterisation still uses drawItems, so a missing tree does not change pixels.
    */
   renderTree?: RenderTreeNode;
+  /**
+   * Set when the scene requires `text.layoutMetrics` (Scene IR 0.20.0).
+   * Hit-testing and spatial text outlines then use builtin advances.
+   * Omitted frames keep the legacy 0.6em estimate.
+   */
+  textLayoutMetrics?: boolean;
 }
 
 export interface AnimationRuntime {

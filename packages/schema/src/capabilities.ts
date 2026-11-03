@@ -35,6 +35,7 @@ export const CAPABILITIES = [
   "space.planarSeams",
   "geometry.pathProgress",
   "text.dynamicContent",
+  "text.layoutMetrics",
 ] as const;
 
 export type CapabilityName = (typeof CAPABILITIES)[number];

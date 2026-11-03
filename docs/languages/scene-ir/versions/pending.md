@@ -15,7 +15,6 @@ Not yet in a published Scene IR version:
 - paint.strokeDash
 - geometry.repeater
 - geometry.mergePaths
-- text.layoutMetrics
 - text.animators
 
 `paint.strokeDash` is named by the E015 decision
@@ -25,10 +24,8 @@ as a standalone channel: orientation from the path tangent now exists only as
 the `orient` option of a path attachment (`geometry.pathProgress`). Variable width
 profiles stay outside this pending list until a separate decision.
 
-`text.layoutMetrics` is named by the E013 decision
-(`docs/decisions/engine/dynamic-text-and-metrics.md`); schema measure helpers
-exist without a language claim. `text.animators` (per-glyph transforms)
-stays pending and is **not** the content/format slice.
+`text.animators` (per-glyph transforms) stays pending and is **not** the
+content/format slice. `text.layoutMetrics` landed in Scene IR 0.20.0.
 
 `geometry.animatedTrim` landed in Scene IR 0.5.0.
 `entities.durableRevisions` landed in Scene IR 0.6.0 (`APPLY_ENTITY_PATCH`).
@@ -45,6 +42,7 @@ MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
 `compositing.matte` (`GroupCompositing.matte`) landed in Scene IR 0.19.0.
 `geometry.pathProgress` (`pathAttachments` and the `path.progress` channel) landed in Scene IR 0.17.0.
 `text.dynamicContent` (text `numeric` bindings, `text.number` channel, content steps) landed in Scene IR 0.18.0.
+`text.layoutMetrics` (`requiredCapabilities` token; builtin align/baseline boxes on resolved frames) landed in Scene IR 0.20.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

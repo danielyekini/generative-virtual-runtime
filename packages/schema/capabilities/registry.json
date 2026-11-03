@@ -1117,6 +1117,38 @@
       }
     },
     {
+      "id": "text.layoutMetrics",
+      "summary": "Builtin sans advances and align/baseline boxes for text hit-testing and spatial outlines. Host measureText remains an override.",
+      "introducedIn": { "motionscript": "0.20.0", "sceneIr": "0.20.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing text.layoutMetrics. Text without it keeps the legacy 0.6em box.",
+        "No new syntax or reserved words. Builtin family sans is ready in-process from the advance table. Other families use the 0.6em advance. Custom font URLs and load holds are outside this claim.",
+        "Hit-testing and spatial text outlines use measureTextLine for the sampled string, including align and baseline. A host measureText option overrides that box and is not required for sans conformance.",
+        "Per-glyph animators (text.animators), wrapping / multi-line, billboard labels and Lottie text import are outside this claim."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/layout-metrics.test.ts#accepts requires text.layoutMetrics and leaves other text programs unchanged",
+        "packages/compiler/src/layout-metrics.test.ts#is rejected by acceptScene unless text.layoutMetrics is enabled",
+        "packages/runtime/src/layout-metrics.test.ts#hit-tests align and baseline boxes from builtin sans metrics",
+        "packages/runtime/src/layout-metrics.test.ts#keeps the legacy em-box unless text.layoutMetrics is required",
+        "packages/runtime/src/layout-metrics.test.ts#lets host measureText override builtin metrics",
+        "packages/runtime/src/layout-metrics.test.ts#uses the measured box for spatial text outlines",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips text.layoutMetrics"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "untested",
+          "scope": "Native text boxes are measured from builtin advances; Lottie text document metrics are not imported."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native text boxes; SVG font metrics are not claimed."
+        }
+      }
+    },
+    {
       "id": "text.animators",
       "summary": "Per-character or range text animation.",
       "targets": [],

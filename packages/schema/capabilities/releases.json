@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.19.0",
+      "current": "0.20.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.17"
+      "packageVersion": "0.1.18"
     },
     "scene-ir": {
-      "current": "0.19.0",
+      "current": "0.20.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.17"
+      "packageVersion": "0.1.18"
     }
   },
   "versions": [
@@ -146,6 +146,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.19.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.20.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.20.0.md"
     },
     {
       "language": "motionscript",
@@ -285,6 +292,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.19.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.20.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.20.0.md"
     },
     {
       "language": "scene-ir",
@@ -433,6 +447,13 @@
       "compiler": "0.1.16",
       "runtime": "0.1.21",
       "readers": "Wire stays 0.2. compositing.matte is gated by requiredCapabilities / requires. Packages without the capability reject group compositing.matte; older validators reject the unknown matte key. matte is reserved."
+    },
+    {
+      "motionscript": "0.20.0",
+      "sceneIr": "0.20.0",
+      "compiler": "0.1.16",
+      "runtime": "0.1.22",
+      "readers": "Wire stays 0.2. text.layoutMetrics is gated by requiredCapabilities / requires. Packages without the capability keep the legacy 0.6em text box. A host measureText callback remains an override and is not required for builtin sans."
     }
   ]
 }

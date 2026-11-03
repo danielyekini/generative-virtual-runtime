@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.19.0 | 0.2 |
-| scene-ir | 0.19.0 | 0.2 |
+| motionscript | 0.20.0 | 0.2 |
+| scene-ir | 0.20.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -60,6 +60,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | geometry.repeater | unsupported | unsupported | unsupported | A repeater copies geometry with a transform per copy. [registry](../../packages/schema/capabilities/registry.json) |
 | geometry.mergePaths | unsupported | unsupported | unsupported | Boolean merge of paths. [registry](../../packages/schema/capabilities/registry.json) |
 | text.dynamicContent | supported | supported | not-applicable | Discrete content updates and numeric format bindings on text.basic nodes; display strings derive from formatNumber / resolveNumericContent. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/dynamic-text.test.ts) |
+| text.layoutMetrics | supported | supported | not-applicable | Builtin sans advances and align/baseline boxes for text hit-testing and spatial outlines. Host measureText remains an override. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/layout-metrics.test.ts) |
 | text.animators | unsupported | unsupported | unsupported | Per-character or range text animation. [registry](../../packages/schema/capabilities/registry.json) |
 
 Statuses are scoped claims, not an end-to-end visual certification. `untested`
@@ -75,5 +76,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `e2539d0b3ab07510d0f1e53f34f38e1134d3a8efeb00d23c6940ea25ed5bbe74`
-- `packages/schema/capabilities/registry.json` SHA-256 `16593d4498cc8de598cadd92c5fc98cac5aa29fc7ae84458f5f3cd73f1a595cb`
+- `packages/schema/capabilities/releases.json` SHA-256 `d26e3154a1212136d5477b178ea71e2cc80d7ef01d1ddfe743ab0e5ed746c58f`
+- `packages/schema/capabilities/registry.json` SHA-256 `15b95f5cee4dd4ebbba6f3a7c01dda88ee650c937fdf14e7d59a45344731cfe7`
