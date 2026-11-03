@@ -44,7 +44,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | compositing.isolatedOpacity | untested | untested | untested | A group can isolate opacity in its own render scope. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.blend | untested | untested | untested | An isolated group may use source-over, multiply, screen, or overlay. [registry](../../packages/schema/capabilities/registry.json) |
 | effects.blur | supported | supported | supported | A render scope can carry a blur effect. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-lottie/src/lottie.test.ts) |
-| effects.shadow | untested | untested | untested | A render scope can carry a shadow effect. [registry](../../packages/schema/capabilities/registry.json) |
+| effects.shadow | unsupported | supported | supported | A render scope can carry a shadow effect. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/canvas-renderer/src/renderer.test.ts) |
 | render.tree | not-applicable | supported | untested | The default tree is a non-isolated root of draw-item leaves. Compositing groups nest. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/canvas-renderer/src/renderer.test.ts) |
 | transform.parent | supported | supported | not-applicable | transformParentId selects the transform chain. inheritOpacity false skips one opacity ancestor. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/streaming-admission.test.ts) |
 | geometry.pathMorph | supported | supported | supported | Animated path vertices with a shared command topology. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/path-morph.test.ts) |
@@ -82,5 +82,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `ba501cfdf25487761f8de5020b21a89e3e12977c294485afd4468e5ebbb05be0`
-- `packages/schema/capabilities/registry.json` SHA-256 `b635898806abb78187570259a46ad92bfcaedcabd22f0712e20a50b55e072294`
+- `packages/schema/capabilities/releases.json` SHA-256 `b866d7b3b3a9f75a513392bbc9ea5d0e3b2ed91faefc6c37d452b689b0776838`
+- `packages/schema/capabilities/registry.json` SHA-256 `0598b650de5856a1ec43496c55a03f9dcb627eefaaf58b85cfdafbc72afe993e`

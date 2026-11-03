@@ -42,6 +42,9 @@ class RecordingContext {
   lineDash: number[] = [];
   lineDashOffset = 0;
   private _filter = "none";
+  shadowOffsetX = 0;
+  shadowOffsetY = 0;
+  shadowBlur = 0;
   shadowColor = "transparent";
 
   get filter(): string {
@@ -282,6 +285,36 @@ describe("CanvasRenderer", () => {
     };
     const { ctx } = render(frame, 1280, 720, 1);
     expect(ctx.calls.some((call) => call.name === "filter" && call.args[0] === "blur(6px)")).toBe(true);
+  });
+
+  it("applies shadow effect on an isolated render scope", () => {
+    const base = buildFrames().opacity!;
+    const leaf = base.drawItems[0];
+    expect(leaf).toBeDefined();
+    const frame: ResolvedFrame = {
+      ...base,
+      renderTree: {
+        kind: "scope",
+        id: "root",
+        isolated: false,
+        opacity: 1,
+        children: [
+          {
+            kind: "scope",
+            id: "shadowed",
+            isolated: true,
+            opacity: 1,
+            effect: { type: "shadow", dx: 4, dy: 6, blur: 8, color: "rgba(0,0,0,0.4)" },
+            children: [{ kind: "leaf", item: leaf! }],
+          },
+        ],
+      },
+    };
+    const { ctx } = render(frame, 1280, 720, 1);
+    expect(ctx.shadowOffsetX).toBe(4);
+    expect(ctx.shadowOffsetY).toBe(6);
+    expect(ctx.shadowBlur).toBe(8);
+    expect(ctx.shadowColor).toBe("rgba(0,0,0,0.4)");
   });
 });
 
