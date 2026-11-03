@@ -92,7 +92,9 @@ any unsaved edits.
   open/close** toggle.
 - **Side-panel toggle** (user steering, 3 November 2026): the header icon opens
   and closes the right side panel. It is **not** a Source-only control — the
-  panel may show Source or Generate chrome depending on mode.
+  panel may show Source or Generate chrome depending on mode. In Generate it
+  hides and re-shows the Generate panel without leaving Generate (P026); the
+  Generate button and the panel's ✕ still leave Generate. Shortcut: E.
 - **Opening a program** from the Library loads it into the player and waits for
   Run or Stream. Autoplay on open is a header run option (off by default).
   Loading a program from the Library while in **Generate** mode **exits
@@ -110,7 +112,10 @@ any unsaved edits.
   the Run prompt; nothing plays until Run.
 - **Corner resize** (user steering, 3 November 2026): the bottom dock and side
   panel remain independently resizable. Dragging the **corner where they meet**
-  resizes **both** at once so the canvas can be adjusted ad hoc.
+  resizes **both** at once so the canvas can be adjusted ad hoc (P026: a small
+  square handle on that junction, shown while both are open).
+- **Favicon** (user steering, 3 November 2026; P026): Studio pages use the GVR
+  mark (`app/playground/public/favicon.svg`) as the browser-tab icon.
 - **Fullscreen** presents the canvas only, using contain-fit on the logical
   viewport (no stretching, no change to authored coordinates). Esc or a visible
   exit control leaves it. The same floating playback-control behaviour and

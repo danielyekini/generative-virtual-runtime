@@ -91,7 +91,8 @@ const ui = {
   comparisonArea: $("comparison-area"),
   comparisonCanvas: $<HTMLCanvasElement>("compare-view"),
   comparisonNote: $("comparison-note"),
-  toggleSource: $<HTMLButtonElement>("toggle-source"),
+  toggleSidePanel: $<HTMLButtonElement>("toggle-side-panel"),
+  cornerResize: $("corner-resize"),
   generate: $<HTMLButtonElement>("generate"),
   generateClose: $<HTMLButtonElement>("generate-close"),
   sourceChrome: $("source-chrome"),
@@ -304,6 +305,10 @@ let ticksKey = "";
 let generateMode = false;
 /** Source-open preference restored when leaving Generate. */
 let sourceOpenBeforeGenerate = false;
+/** Header side-panel toggle closed the Generate panel without leaving Generate (P026). */
+let generatePanelHidden = false;
+/** Square size (px) of the dock/side-panel corner resize handle (P026). */
+const CORNER_HANDLE = 14;
 /** Re-probe an unavailable Generate model so Send unlocks once Ollama answers. */
 const MODEL_READINESS_POLL_MS = 5000;
 let modelReadinessTimer = 0;
@@ -581,11 +586,26 @@ function setSourceOpen(open: boolean): void {
   if (open) ui.source.focus({ preventScroll: true });
 }
 
+/** Whether the right side panel (Source or Generate chrome) is showing. */
+function sidePanelOpen(): boolean {
+  return generateMode ? !generatePanelHidden : settings.sourceOpen;
+}
+
+/** Header side-panel toggle (P026): opens/closes the panel in whichever mode is active. */
+function toggleSidePanel(): void {
+  if (!generateMode) { setSourceOpen(!settings.sourceOpen); return; }
+  generatePanelHidden = !generatePanelHidden;
+  if (generatePanelHidden) closeGenerateMenu(generateUi);
+  render();
+  if (!generatePanelHidden) generateUi.composer.focus({ preventScroll: true });
+}
+
 function enterGenerateMode(): void {
   if (generateMode) return;
   if (split) setSplit(false);
   sourceOpenBeforeGenerate = settings.sourceOpen;
   generateMode = true;
+  generatePanelHidden = false;
   settings.sourceOpen = true;
   saveSettings();
   render();
@@ -605,6 +625,7 @@ function leaveGenerateMode(openSource = sourceOpenBeforeGenerate): void {
   closeGenerateMenu(generateUi);
   window.clearInterval(modelReadinessTimer);
   generateMode = false;
+  generatePanelHidden = false;
   settings.sourceOpen = openSource;
   saveSettings();
   render();
@@ -772,7 +793,10 @@ function renderHeader(): void {
   ui.sourceRun.disabled = !loaded;
   ui.fullscreen.disabled = !runtime;
   ui.toggleSplit.setAttribute("aria-pressed", String(split));
-  ui.toggleSource.setAttribute("aria-pressed", String(settings.sourceOpen && !generateMode));
+  const sideOpen = sidePanelOpen();
+  ui.toggleSidePanel.setAttribute("aria-pressed", String(sideOpen));
+  ui.toggleSidePanel.setAttribute("aria-label", sideOpen ? "Close side panel" : "Open side panel");
+  ui.toggleSidePanel.title = `${sideOpen ? "Close" : "Open"} side panel (E)`;
   ui.generate.setAttribute("aria-pressed", String(generateMode));
   if (!libraryVisible) document.title = loaded ? `${loaded.label} · GVR Studio` : "GVR Studio";
 }
@@ -919,9 +943,12 @@ function renderTape(span: number, still: boolean, fraction: number): void {
 }
 
 function renderSource(): void {
-  const open = settings.sourceOpen || generateMode;
+  const open = sidePanelOpen();
   ui.sourcePanel.hidden = !open;
   ui.sourceResize.hidden = !open;
+  ui.cornerResize.hidden = !open || !settings.panelOpen;
+  // Centre the corner handle on the dock's top resize edge (4px bar above the dock).
+  ui.cornerResize.style.bottom = `${settings.panelHeight + 2 - CORNER_HANDLE / 2}px`;
   ui.sourcePanel.style.width = `${Math.min(settings.sourceWidth, window.innerWidth * (split ? .6 : .7))}px`;
   ui.sourcePanel.setAttribute("aria-label", generateMode ? "Generate" : "Source");
   document.body.classList.toggle("split-open", split);
@@ -1162,6 +1189,9 @@ function probe(): PlayerProbe {
     dirty: dirty(),
     fullscreen,
     sourceOpen: settings.sourceOpen && !generateMode,
+    sidePanelOpen: sidePanelOpen(),
+    sourceWidth: settings.sourceWidth,
+    panelHeight: settings.panelHeight,
     generateMode,
     generateRunning: generate.state.running,
     generateMessages: generate.state.messages.length,
@@ -1334,7 +1364,7 @@ ui.run.addEventListener("click", run);
 ui.readyRun.addEventListener("click", run);
 ui.sourceRun.addEventListener("click", run);
 ui.failedDiagnostics.addEventListener("click", () => selectTab("diagnostics", true));
-ui.toggleSource.addEventListener("click", () => setSourceOpen(!(settings.sourceOpen && !generateMode)));
+ui.toggleSidePanel.addEventListener("click", toggleSidePanel);
 ui.sourceClose.addEventListener("click", () => setSourceOpen(false));
 ui.generate.addEventListener("click", () => toggleGenerateMode());
 ui.generateClose.addEventListener("click", () => leaveGenerateMode());
@@ -1543,31 +1573,44 @@ ui.panelToggle.addEventListener("click", () => {
   render();
 });
 
-function dragResize(handle: HTMLElement, axis: "x" | "y", apply: (delta: number, start: number) => void, start: () => number): void {
+type DragStart = { width: number; height: number };
+function dragResize(handle: HTMLElement, apply: (dx: number, dy: number, start: DragStart) => void): void {
   handle.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
     event.preventDefault();
-    const origin = axis === "x" ? event.clientX : event.clientY;
-    const initial = start();
+    // The corner handle sits inside the side-panel edge; it must not also start that drag.
+    event.stopPropagation();
+    const originX = event.clientX;
+    const originY = event.clientY;
+    const initial = { width: settings.sourceWidth, height: settings.panelHeight };
     handle.setPointerCapture(event.pointerId);
+    document.body.classList.add("is-resizing");
     const move = (next: PointerEvent) => {
-      apply((axis === "x" ? next.clientX : next.clientY) - origin, initial);
+      apply(next.clientX - originX, next.clientY - originY, initial);
       render();
     };
     const up = () => {
       handle.removeEventListener("pointermove", move);
       handle.removeEventListener("pointerup", up);
+      handle.removeEventListener("pointercancel", up);
+      document.body.classList.remove("is-resizing");
       saveSettings();
     };
     handle.addEventListener("pointermove", move);
     handle.addEventListener("pointerup", up);
+    handle.addEventListener("pointercancel", up);
   });
 }
-dragResize(ui.sourceResize, "x", (delta, initial) => {
-  settings.sourceWidth = Math.round(Math.min(window.innerWidth * 0.7, Math.max(240, initial - delta)));
-}, () => settings.sourceWidth);
-dragResize(ui.panelResize, "y", (delta, initial) => {
-  settings.panelHeight = Math.round(Math.min(window.innerHeight * 0.7, Math.max(96, initial - delta)));
-}, () => settings.panelHeight);
+const resizeSidePanel = (dx: number, initial: DragStart) => {
+  settings.sourceWidth = Math.round(Math.min(window.innerWidth * 0.7, Math.max(240, initial.width - dx)));
+};
+const resizeDock = (dy: number, initial: DragStart) => {
+  settings.panelHeight = Math.round(Math.min(window.innerHeight * 0.7, Math.max(96, initial.height - dy)));
+};
+dragResize(ui.sourceResize, (dx, _dy, initial) => resizeSidePanel(dx, initial));
+dragResize(ui.panelResize, (_dx, dy, initial) => resizeDock(dy, initial));
+// P026: the corner where the bottom dock meets the side panel resizes both at once.
+dragResize(ui.cornerResize, (dx, dy, initial) => { resizeSidePanel(dx, initial); resizeDock(dy, initial); });
 
 window.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
@@ -1598,7 +1641,7 @@ window.addEventListener("keydown", (event) => {
     if (fullscreen) exitFullscreen();
     else enterFullscreen();
   } else if (key === "e") {
-    setSourceOpen(!settings.sourceOpen);
+    toggleSidePanel();
   } else if (key === "o") {
     event.preventDefault();
     openLibrary();
