@@ -53,9 +53,20 @@ Major capabilities need a Studio testing surface before the lane moves on
 standing rule, 3 November 2026). Generative audio host wiring remains that
 surface (P009).
 
+## Amendment: orchestrator may revise these criteria (same day)
+
+User steering (later 3 November 2026): orchestrator workflows have authority to
+modify **any** of these processes or principles when fit — e.g. if over-
+abstraction is suspected to reduce program variability, change the criterion or
+design a user-focused test for review. Record supersession; keep vision / paid-
+service / immutable-version boundaries. See
+[authority.md](../../operations/authority.md) and
+[orchestrator.md](../../operations/orchestrator.md).
+
 ## Acceptance
 
 - [x] Written decision from user steering.
 - [ ] Public package rename/wrap landed (engine task).
 - [x] Engine + Product direction updated; Product inbox notified.
 - [x] Charter principles note language friendliness and vendor-neutral hosts.
+- [x] Orchestrator revision authority over processes/principles made explicit.

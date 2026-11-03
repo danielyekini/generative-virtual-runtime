@@ -60,6 +60,20 @@ default to the existing agreed contract while independent work proceeds. Ask
 the user only for a genuinely material unresolved product choice outside
 delegation, with concrete alternatives and recommendation.
 
+### Process and principle revision (user steering, 3 November 2026)
+
+Orchestrators may **modify any standing process or operating principle** for
+their lane — including authoring/abstraction gates, Studio testing-surface
+criteria, review heuristics and related charter operating principles — when
+evidence or risk warrants it. Example: if over-abstraction may reduce program
+variability, revise the gate or design a **user-focused test** for human
+judgment rather than freezing the prior rule. Update direction/decision notes
+with the supersession. Do not treat user-steered principles as unchangeable
+liturgy. Still out of scope without the user: redefining product vision,
+new paid services, bypassing platform protections. Still out of scope without
+cross-lane agreement: rewriting the other lane's direction or contradictory
+public contract claims.
+
 Record reviewed run IDs and append a review record containing only the inspected run IDs.
 New outcomes arriving during review remain unreviewed for next time. A session
 may do review then ordinary work; only the ordinary outcome increments the clock.

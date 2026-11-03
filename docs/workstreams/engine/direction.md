@@ -85,6 +85,10 @@ design or version note):
 
 No single person is the optimisation authority; agents still choose bounded
 designs with evidence. Core syntax is never invented only in generation prompts.
+**The engine orchestrator may revise or suspend any of these gates** (or design
+a user-focused test) when evidence suggests they harm variability, streaming, or
+delivery — record the change; do not treat them as frozen
+([orchestrator process authority](../../operations/orchestrator.md)).
 
 ## Next work
 

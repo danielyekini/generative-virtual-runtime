@@ -51,6 +51,10 @@ arithmetic, low error rate), **generation creativity**, and **streaming safety**
 `docs/decisions/engine/2026-11-03-authoring-and-provider-abstraction.md`.
 Vendor backends stay behind provider-abstracted host packages; major
 capabilities need Studio testing surfaces before dependent work advances.
+**Orchestrators may revise any of these operating principles/processes** when
+evidence warrants (record supersession; user-focused tests allowed); they may
+not redefine vision or bypass platform constraints
+(`docs/operations/authority.md`, `docs/operations/orchestrator.md`).
 
 Current direction commissions no proactive Lottie/other-format adapter expansion
 or fidelity campaign. Historical gaps, draft proposals and unsupported registry

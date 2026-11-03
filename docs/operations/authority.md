@@ -11,6 +11,24 @@
 | What did one run demonstrate? | Immutable evidence + issue handover |
 | What should an authoring model receive? | Generated versioned native authoring reference; not historical plans |
 | How do I run autonomously? | Selected repo persona SKILL.md + docs/operations/run.md |
+| Who may revise standing processes / principles? | Owning **orchestrator** workflow within the charter (see below) |
+
+## Orchestrator revision of processes and principles
+
+User steering, 3 November 2026: orchestrator workflows have authority to modify
+**all** standing delivery processes and operating principles (authoring
+friendliness gates, vendor-abstraction criteria, Studio testing-surface rules,
+queue heuristics, review criteria, and similar) when they judge that the
+current rule harms the charter goal — for example if suspected **over-
+abstraction** would reduce program variability. They may change the criterion
+or commission a **user-focused test** for human review instead of treating the
+prior wording as frozen dogma.
+
+Record what changed, why, and what it supersedes. Cross-lane or shared-contract
+effects need the other orchestrator via inbox agreement. Immutable published
+language versions and historical evidence stay immutable; vision-level charter
+changes and new paid services still need the user. Details:
+[orchestrator.md](orchestrator.md).
 
 Do not promote planned functionality by editing a summary. Resolve any actual
 implementation/contract discrepancy as a work item; never invent support.
