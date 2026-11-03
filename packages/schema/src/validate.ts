@@ -40,6 +40,7 @@ import {
   type Camera2DDefinition,
   type Expr,
   type NodeDefinition,
+  type PathAttachment,
   type PathCommand,
   type ResolvedFrame,
   type SceneIR,
@@ -75,6 +76,7 @@ const NODE_CHANNELS = new Set([
   "trim.start",
   "trim.end",
   "trim.offset",
+  "path.progress",
   "fill.r",
   "fill.g",
   "fill.b",
@@ -158,7 +160,7 @@ export function validateSceneIR(
   const version = input.irVersion;
   const v02 = version === IR_VERSION_02;
   const sceneKeys = ["irVersion", "sceneId", "viewport", "background", "resources", "nodes", "cameras", "initialCameraId", "timeline"];
-  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "audioCues", "spatialLayers", "physics");
+  if (v02) sceneKeys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "audioCues", "spatialLayers", "physics", "pathAttachments");
   rejectUnknown(input, sceneKeys, "", diags);
   if (version !== IR_VERSION && version !== IR_VERSION_02) {
     diags.add("UNSUPPORTED_IR_VERSION", "irVersion", `IR version must be ${IR_VERSION} or ${IR_VERSION_02}.`);
@@ -185,6 +187,7 @@ export function validateSceneIR(
   if (v02) readAudio(input.audioCues, resources, input.timeline, input.requiredCapabilities, diags);
   if (v02) readSpatialLayers(input.spatialLayers, nodeIds, input.requiredCapabilities, diags);
   if (v02) readPhysics(input.physics, nodeIds, input.timeline, input.interactions, input.requiredCapabilities, diags);
+  if (v02) readPathAttachments(input.pathAttachments, nodes, input.timeline, input.interactions, input.physics, input.requiredCapabilities, diags);
   if (v02 && nodes) readClipTargets(nodes, compositions.flatMap((c) => c.nodes), input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
@@ -1593,7 +1596,7 @@ function readOperation(value: unknown, path: string, limits: ResourceLimits, dia
         diags.add("INVALID_TYPE", `${path}.scene`, "CREATE_SCENE requires a scene header.");
       } else {
         const keys = ["irVersion", "sceneId", "viewport", "background", "resources", "cameras", "initialCameraId", "durationMs"];
-        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "spatialLayers", "physics");
+        if (v02) keys.push("compositions", "instances", "timingScopes", "requiredCapabilities", "geometryOperators", "interactions", "spatialLayers", "physics", "pathAttachments");
         rejectUnknown(value.scene, keys, `${path}.scene`, diags);
         for (const list of ["resources", "cameras"]) {
           if (!Array.isArray(value.scene[list])) diags.add("INVALID_TYPE", `${path}.scene.${list}`, `${list} must be an array.`);
@@ -2803,6 +2806,179 @@ function readInteractions(
       }
     }
   });
+}
+
+/**
+ * Channels exclusively owned by a path attachment (geometry.pathProgress, Scene IR 0.17.0).
+ * Position is always owned. Rotation is owned when `orient` is true or `rollRadius`
+ * is set; a position-only attachment leaves `transform.rotation` free for tracks.
+ */
+export function pathAttachmentOwnedChannels(
+  attachment: Pick<PathAttachment, "orient" | "rollRadius">,
+): string[] {
+  const channels = ["transform.position.x", "transform.position.y"];
+  if (attachment.orient === true || attachment.rollRadius !== undefined) channels.push("transform.rotation");
+  return channels;
+}
+
+/**
+ * geometry.pathProgress (Scene IR 0.17.0). Each attachment places a root-scene
+ * node along a root-scene path node. Owned channels (see
+ * pathAttachmentOwnedChannels) reject timeline, input and physics writers;
+ * `path.progress` tracks are legal only on attached nodes because they feed the
+ * attachment sampler rather than a drawable channel.
+ */
+function readPathAttachments(
+  value: unknown,
+  nodes: NodeDefinition[] | undefined,
+  timeline: unknown,
+  interactions: unknown,
+  physics: unknown,
+  required: unknown,
+  diags: Diags,
+): void {
+  const tracks = isRecord(timeline) && Array.isArray(timeline.tracks) ? timeline.tracks : [];
+  const attached = new Set<string>();
+  const owned = new Map<string, string>();
+  if (value !== undefined) {
+    if (!Array.isArray(value)) {
+      diags.add("INVALID_TYPE", "pathAttachments", "pathAttachments must be an array.");
+      return;
+    }
+    if (value.length > 0 && !(Array.isArray(required) && required.includes("geometry.pathProgress"))) {
+      diags.add("MISSING_REQUIRED", "requiredCapabilities", "pathAttachments require geometry.pathProgress in requiredCapabilities.");
+    }
+    const byId = new Map<string, { kind?: unknown }>();
+    for (const node of nodes ?? []) if (typeof node.id === "string") byId.set(node.id, node);
+    value.forEach((entry, index) => {
+      const path = `pathAttachments[${index}]`;
+      if (!isRecord(entry)) {
+        diags.add("INVALID_TYPE", path, "A path attachment must be an object.");
+        return;
+      }
+      rejectUnknown(entry, ["nodeId", "pathId", "progress", "orient", "rollRadius"], path, diags);
+      const nodeId = typeof entry.nodeId === "string" ? entry.nodeId : undefined;
+      if (nodeId === undefined || !byId.has(nodeId)) {
+        diags.add("UNKNOWN_TARGET", `${path}.nodeId`, "A path attachment names a node that does not exist.");
+      } else if (attached.has(nodeId)) {
+        diags.add("DUPLICATE_ID", `${path}.nodeId`, `Node ${nodeId} already has a path attachment.`);
+      } else attached.add(nodeId);
+      const pathId = typeof entry.pathId === "string" ? entry.pathId : undefined;
+      const target = pathId === undefined ? undefined : byId.get(pathId);
+      if (pathId === undefined || target === undefined) {
+        diags.add("UNKNOWN_TARGET", `${path}.pathId`, "A path attachment names a path that does not exist.");
+      } else if (target.kind !== "path") {
+        diags.add("INVALID_GEOMETRY", `${path}.pathId`, "pathId must name a path node.");
+      } else if (pathId === nodeId) {
+        diags.add("INVALID_GEOMETRY", `${path}.pathId`, "A node cannot attach to its own path.");
+      }
+      const progress = readFinite(entry.progress, `${path}.progress`, diags);
+      if (progress !== undefined && (progress < 0 || progress > 1)) {
+        diags.add("INVALID_TRACK_VALUE", `${path}.progress`, "progress must be in [0, 1].");
+      }
+      if (entry.orient !== undefined && typeof entry.orient !== "boolean") {
+        diags.add("INVALID_TYPE", `${path}.orient`, "orient must be a boolean.");
+      }
+      if (entry.rollRadius !== undefined) {
+        const radius = readFinite(entry.rollRadius, `${path}.rollRadius`, diags);
+        if (radius !== undefined && !(radius > 0)) {
+          diags.add("INVALID_TRACK_VALUE", `${path}.rollRadius`, "rollRadius must be greater than 0.");
+        }
+      }
+      if (nodeId !== undefined) {
+        for (const channel of pathAttachmentOwnedChannels({
+          orient: entry.orient === true ? true : undefined,
+          rollRadius: typeof entry.rollRadius === "number" ? entry.rollRadius : undefined,
+        })) {
+          if (!owned.has(`node:${nodeId}:${channel}`)) owned.set(`node:${nodeId}:${channel}`, path);
+        }
+      }
+    });
+  }
+  tracks.forEach((track, index) => {
+    if (!isRecord(track) || !isRecord(track.target) || track.target.kind !== "node") return;
+    if (track.target.channel === "path.progress") {
+      const nodeId = typeof track.target.nodeId === "string" ? track.target.nodeId : undefined;
+      if (nodeId !== undefined && !attached.has(nodeId)) {
+        diags.add(
+          "INVALID_TRACK_TARGET",
+          `timeline.tracks[${index}]`,
+          `path.progress needs a path attachment on ${nodeId}.`,
+        );
+      }
+    }
+    if (owned.size === 0) return;
+    let scalars: string[] = [];
+    try {
+      scalars = scalarWriters(track.target as unknown as Parameters<typeof scalarWriters>[0]);
+    } catch {
+      return;
+    }
+    for (const scalar of scalars) {
+      if (owned.has(scalar)) {
+        diags.add(
+          "OVERLAPPING_WRITERS",
+          `timeline.tracks[${index}]`,
+          `${scalar.slice(5)} is path-attachment-owned by ${owned.get(scalar)}; a track cannot also write it.`,
+        );
+      }
+    }
+  });
+  if (owned.size === 0) return;
+  if (Array.isArray(interactions)) {
+    interactions.forEach((entry, index) => {
+      if (!isRecord(entry) || !Array.isArray(entry.bindings)) return;
+      const target = typeof entry.nodeId === "string" ? entry.nodeId : undefined;
+      entry.bindings.forEach((binding, bindingIndex) => {
+        if (!isRecord(binding) || !isRecord(binding.action)) return;
+        const writes = binding.nodeId === undefined ? target : typeof binding.nodeId === "string" ? binding.nodeId : undefined;
+        if (writes === undefined) return;
+        const channels =
+          binding.action.kind === "dragTranslate"
+            ? ["transform.position.x", "transform.position.y"]
+            : typeof binding.action.channel === "string"
+              ? [binding.action.channel]
+              : [];
+        for (const channel of channels) {
+          if (owned.has(`node:${writes}:${channel}`)) {
+            diags.add(
+              "OVERLAPPING_WRITERS",
+              `interactions[${index}].bindings[${bindingIndex}]`,
+              `${writes}.${channel} is path-attachment-owned by ${owned.get(`node:${writes}:${channel}`)}; input cannot also write it.`,
+            );
+          }
+        }
+      });
+    });
+  }
+  if (isRecord(physics)) {
+    const physical = new Set<string>();
+    if (Array.isArray(physics.bodies)) {
+      for (const body of physics.bodies) {
+        if (!isRecord(body) || typeof body.entityId !== "string") continue;
+        for (const channel of PHYSICS_OWNED_CHANNELS) physical.add(`node:${body.entityId}:${channel}`);
+      }
+    }
+    if (physics.mode === "authored" && Array.isArray(physics.constraints)) {
+      for (const constraint of physics.constraints) {
+        if (!isRecord(constraint)) continue;
+        for (const key of ["a", "b"] as const) {
+          if (typeof constraint[key] !== "string") continue;
+          physical.add(`node:${constraint[key]}:transform.position.x`);
+          physical.add(`node:${constraint[key]}:transform.position.y`);
+        }
+      }
+    }
+    for (const [key, at] of owned) {
+      if (physical.has(key)) {
+        diags.add(
+          "OVERLAPPING_WRITERS",
+          "physics",
+          `${key.slice(5)} is path-attachment-owned by ${at}; physics cannot also write it.`,
+        );
+      }
+    }
+  }
 }
 
 function readInteractionAction(value: unknown, path: string, on: unknown, diags: Diags): string[] {

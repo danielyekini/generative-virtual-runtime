@@ -8,6 +8,7 @@ import {
   type InteractionTarget,
   type KeyframeTrack,
   type NodeDefinition,
+  type PathAttachment,
   type PathCommand,
   type SceneIR,
   type Paint,
@@ -100,6 +101,8 @@ export function emitMotionScript(scene: SceneIR): string {
   }
   // input.bindings: interact declarations (after nodes so targets resolve).
   for (const target of scene.interactions ?? []) lines.push(...emitInteract(target));
+  // geometry.pathProgress: attach declarations (after nodes so traveller and path resolve).
+  for (const attachment of scene.pathAttachments ?? []) lines.push(...emitAttach(attachment));
   for (const track of scene.timeline.tracks) lines.push(...emitTrack(track));
   // audio.cues / audio.generative: resources then cues, all before completion.
   for (const resource of scene.resources) {
@@ -141,6 +144,14 @@ function emitCamera(camera: Camera2DDefinition): string[] {
     `  rotation ${formatAngle(camera.rotation)};`,
     "};",
   ];
+}
+
+/** Scene IR path attachments → MotionScript `attach` (geometry.pathProgress). */
+function emitAttach(attachment: PathAttachment): string[] {
+  const body = [`  progress ${formatNumber(attachment.progress)};`];
+  if (attachment.orient !== undefined) body.push(`  orient ${attachment.orient ? "true" : "false"};`);
+  if (attachment.rollRadius !== undefined) body.push(`  rollRadius ${formatNumber(attachment.rollRadius)};`);
+  return [`attach ${attachment.nodeId} along ${attachment.pathId} {`, ...body, "};"];
 }
 
 /** Scene IR interactions → MotionScript `interact` (input.bindings). */

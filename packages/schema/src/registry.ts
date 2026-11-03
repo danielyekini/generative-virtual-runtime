@@ -114,6 +114,12 @@ export const NODE_CHANNELS: Record<NodeAnimChannel, ChannelSpec> = {
     animation: "track",
     scalars: ["trim.offset"],
   },
+  "path.progress": {
+    dslPath: "path.progress",
+    type: "number",
+    animation: "track",
+    scalars: ["path.progress"],
+  },
   "fill.r": {
     dslPath: "fill.r",
     type: "number",
@@ -323,6 +329,7 @@ export function isValidSample(type: PropertyType, channel: string, value: unknow
   if (channel === "zoom" || channel.endsWith(".zoom")) return value > 0;
   if (channel === "trim.start" || channel === "trim.end") return value >= 0 && value <= 1;
   if (channel === "trim.offset") return Number.isFinite(value);
+  if (channel === "path.progress") return value >= 0 && value <= 1;
   if (
     channel === "fill.r" ||
     channel === "fill.g" ||

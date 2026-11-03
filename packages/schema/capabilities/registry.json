@@ -936,6 +936,41 @@
       }
     },
     {
+      "id": "geometry.pathProgress",
+      "summary": "A node attaches to a path node at a progress in [0, 1] along its resolved (morphed, then trimmed) outline, optionally oriented to the tangent and optionally rolling.",
+      "introducedIn": { "motionscript": "0.17.0", "sceneIr": "0.17.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing geometry.pathProgress; pathAttachments without it are rejected.",
+        "MotionScript `attach <node> along <path> { progress n; orient b; rollRadius r; }` lowers to Scene IR pathAttachments (base definitions on CREATE_SCENE, frozen after the first seal). progress is required and in [0, 1]; the path must be a path node in the root scene; a node has at most one attachment. attach and along are the only reserved words.",
+        "Sampling resolves the path commands after path morph (geometry.pathMorph) and then the same trim rules frame resolution uses (geometry.operators / geometry.animatedTrim), so late morph or trim changes move the node without re-baking progress. Progress is the base value unless a path.progress track on the attached node supplies it.",
+        "The sampled position is the path's local command space written directly to transform.position; place the node and the path in the same parent space with a neutral path transform. Distance and arc length use the 8-sample-per-curve table shared with geometry.trimPath, measured over the trimmed outline.",
+        "An attachment exclusively owns transform.position.x/y on its node. When orient is true or rollRadius is set it also owns transform.rotation, written as (orient ? tangent angle : 0) + (rollRadius ? distance / rollRadius : 0). orient alone is never rolling. Timeline tracks, interact bindings and physics writes on owned channels are rejected as OVERLAPPING_WRITERS. path.progress tracks (number in [0, 1]) are legal only on attached nodes.",
+        "Markers, arrowhead styling, stroke dash (paint.strokeDash), width profiles, composed path transforms and transform.autoOrient as a standalone channel are outside this claim. Lottie ks.ao and SVG path progress are not imported."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/path-progress.test.ts#lowers attach into Scene IR pathAttachments and gates geometry.pathProgress",
+        "packages/compiler/src/path-progress.test.ts#is rejected by acceptScene unless geometry.pathProgress is enabled",
+        "packages/compiler/src/path-progress.test.ts#owns position exclusively and rotation only for orient or rollRadius",
+        "packages/compiler/src/path-progress.test.ts#defers forward-declared travellers, paths and progress tracks until they resolve",
+        "packages/runtime/src/path-progress-bindings.test.ts#rollRadius alone writes distance / radius and orient alone is not rolling",
+        "packages/runtime/src/path-progress-bindings.test.ts#tracks a morphing path tip without rebaking attachment progress",
+        "packages/runtime/src/path-progress-bindings.test.ts#tracks a trimmed path tip (animated trim and static trim) after morph",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips path attachments (geometry.pathProgress)"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "untested",
+          "scope": "Native path attachment is authored, not imported; Lottie auto-orient (ks.ao) and motion-path position keyframes are not lowered to attachments, and no conformance test pins that."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native path attachment; SVG offset-path / animateMotion is not lowered to attachments."
+        }
+      }
+    },
+    {
       "id": "compositing.matte",
       "summary": "A track matte would clip one layer by another.",
       "targets": [],

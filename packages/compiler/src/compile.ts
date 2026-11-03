@@ -17,6 +17,7 @@ import {
   type Diagnostic,
   type Expr,
   type InteractionTarget,
+  type PathAttachment,
   type NodeDefinition,
   type PathCommand,
   type RuntimeOperation,
@@ -165,6 +166,11 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${unit.nodeId}.`, unit.span));
       continue;
     }
+    if (unit.kind === "attach") {
+      const missing = missingAttachNode(session, unit);
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${missing ?? unit.nodeId}.`, unit.span));
+      continue;
+    }
     if (unit.kind === "spatialLayer") {
       const missing = missingSurfaceNode(session, unit);
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved node ${missing ?? unit.layer.id}.`, unit.span));
@@ -197,6 +203,10 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       }
     }
     if (unit.kind !== "animate" && unit.kind !== "keyframes" && unit.kind !== "step") continue;
+    if (waitsForAttachment(session, unit)) {
+      session.diagnostics.push(problem("INVALID_TRACK_TARGET", `${unit.target} needs a path attachment on its node.`, unit.span));
+      continue;
+    }
     const resolved = resolveAddress(
       unit.target,
       session.scene.nodes.map((node) => node.id),
@@ -251,15 +261,21 @@ export function drainDeltas(session: Session): SceneIRDelta[] {
 
 function retryDeferred(session: Session): void {
   if (session.deferred.length === 0) return;
-  const pending = session.deferred;
-  session.deferred = [];
-  for (const unit of pending) {
-    if (isUnresolved(session, unit)) {
-      session.deferred.push(unit);
-    session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
-      continue;
+  // Repeat while a pass accepts a unit: a deferred unit (a path.progress track)
+  // may wait on another deferred unit (its attach) that sits later in the queue.
+  let accepted = true;
+  while (accepted && session.deferred.length > 0) {
+    accepted = false;
+    const pending = session.deferred;
+    session.deferred = [];
+    for (const unit of pending) {
+      if (isUnresolved(session, unit)) {
+        session.deferred.push(unit);
+        session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
+        continue;
+      }
+      if (applyUnit(session, unit, true)) accepted = true;
     }
-    applyUnit(session, unit, true);
   }
   session.telemetry?.gauge("compile.deferred_units", session.deferred.length);
 }
@@ -270,6 +286,7 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
     return !session.scene.compositions?.some((composition) => composition.id === unit.definition);
   }
   if (unit.kind === "operators") return !knownNodeIds(session).has(unit.nodeId);
+  if (unit.kind === "attach") return missingAttachNode(session, unit) !== undefined;
   if (unit.kind === "spatialLayer") return missingSurfaceNode(session, unit) !== undefined;
   if (unit.kind === "physics") return missingPhysicsEntity(session, unit) !== undefined;
   if (unit.kind === "cue") {
@@ -297,7 +314,7 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
     (unit.kind === "animate" || unit.kind === "keyframes") &&
     Boolean(unit.timingScopeId) &&
     !session.scene.timingScopes?.some((scope) => scope.id === unit.timingScopeId);
-  return missingTarget || missingScope;
+  return missingTarget || missingScope || waitsForAttachment(session, unit);
 }
 
 function blockSeal(session: Session, unit: Extract<UnitAst, { kind: "seal" }>, message: string): void {
@@ -347,6 +364,7 @@ function captureInner(session: Session): Capture {
       interactions: session.scene.interactions,
       spatialLayers: session.scene.spatialLayers,
       physics: session.scene.physics,
+      pathAttachments: session.scene.pathAttachments,
     }),
   };
 }
@@ -435,6 +453,7 @@ function sceneHeader(session: Session): SceneHeader {
     if (session.scene.interactions) header.interactions = [...session.scene.interactions];
     if (session.scene.spatialLayers) header.spatialLayers = [...session.scene.spatialLayers];
     if (session.scene.physics) header.physics = structuredClone(session.scene.physics);
+    if (session.scene.pathAttachments) header.pathAttachments = session.scene.pathAttachments.map((entry) => ({ ...entry }));
   }
   return header;
 }
@@ -548,6 +567,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       unit.kind === "timing" ||
       unit.kind === "operators" ||
       unit.kind === "interact" ||
+      unit.kind === "attach" ||
       unit.kind === "audio" ||
       unit.kind === "audioSugar" ||
       unit.kind === "spatialLayer" ||
@@ -681,10 +701,11 @@ function snapshotScene(scene: SceneIR): SceneIR {
     ...(scene.audioCues ? {audioCues: [...scene.audioCues]} : {}),
     ...(scene.spatialLayers ? {spatialLayers: [...scene.spatialLayers]} : {}),
     ...(scene.physics ? {physics: structuredClone(scene.physics)} : {}),
+    ...(scene.pathAttachments ? {pathAttachments: [...scene.pathAttachments]} : {}),
   };
 }
 
-function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators" | "interactions" | "audioCues" | "spatialLayers">(
+function restoreList<K extends "compositions" | "instances" | "timingScopes" | "requiredCapabilities" | "geometryOperators" | "interactions" | "audioCues" | "spatialLayers" | "pathAttachments">(
   scene: SceneIR,
   snapshot: SceneIR,
   key: K,
@@ -707,6 +728,7 @@ function restore(session: Session, snapshot: SceneIR, sealed: number, constants:
   restoreList(session.scene, snapshot, "interactions");
   restoreList(session.scene, snapshot, "audioCues");
   restoreList(session.scene, snapshot, "spatialLayers");
+  restoreList(session.scene, snapshot, "pathAttachments");
   if (snapshot.physics === undefined) delete session.scene.physics;
   else session.scene.physics = structuredClone(snapshot.physics);
   session.sealedThroughMs = sealed;
@@ -750,6 +772,14 @@ function lower(session: Session, unit: UnitAst): void {
       return;
     }
     lowerInteract(session, unit);
+    return;
+  }
+  if (unit.kind === "attach") {
+    if (session.scene.irVersion !== "0.2") {
+      session.diagnostics.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare path attachments.", unit.span));
+      return;
+    }
+    lowerAttach(session, unit);
     return;
   }
   if (unit.kind === "audio" || unit.kind === "audioSugar" || unit.kind === "cue") {
@@ -1121,6 +1151,9 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
     ensureCapability(session, "geometry.trimPath");
     ensureCapability(session, "geometry.animatedTrim");
   }
+  if (resolved.target.kind === "node" && resolved.target.channel === "path.progress") {
+    ensureCapability(session, "geometry.pathProgress");
+  }
   if (
     resolved.target.kind === "node" &&
     (resolved.target.channel === "fill.r" ||
@@ -1423,6 +1456,53 @@ function lowerInteract(session: Session, unit: Extract<UnitAst, { kind: "interac
   ensureCapability(session, "input.bindings");
 }
 
+/** First node of an attachment (traveller or path) that does not exist yet; declaration may precede it. */
+function missingAttachNode(session: Session, unit: Extract<UnitAst, { kind: "attach" }>): string | undefined {
+  const ids = new Set(session.scene.nodes.map((node) => node.id));
+  return [unit.nodeId, unit.pathId].find((id) => !ids.has(id));
+}
+
+/**
+ * A `path.progress` track feeds an attachment sampler, so it waits (like any
+ * forward reference) until the attachment on its node has been accepted.
+ */
+function waitsForAttachment(session: Session, unit: Extract<UnitAst, { kind: "animate" | "keyframes" | "step" }>): boolean {
+  if (unit.kind === "step") return false;
+  const resolved = resolveAddress(
+    unit.target,
+    session.scene.nodes.map((node) => node.id),
+    ["main"],
+  );
+  if (!resolved.ok || resolved.target.kind !== "node" || resolved.target.channel !== "path.progress") return false;
+  const nodeId = resolved.target.nodeId;
+  return !session.scene.pathAttachments?.some((entry) => entry.nodeId === nodeId);
+}
+
+function lowerAttach(session: Session, unit: Extract<UnitAst, { kind: "attach" }>): void {
+  const nodes = session.scene.nodes;
+  for (const id of [unit.nodeId, unit.pathId]) {
+    if (!nodes.some((node) => node.id === id)) {
+      session.diagnostics.push(problem("UNKNOWN_TARGET", `Node ${id} does not exist.`, unit.span));
+      return;
+    }
+  }
+  if (nodes.find((node) => node.id === unit.pathId)?.kind !== "path") {
+    session.diagnostics.push(problem("INVALID_GEOMETRY", `${unit.pathId} is not a path node; attach needs a path to travel along.`, unit.span));
+    return;
+  }
+  const list = session.scene.pathAttachments ?? [];
+  if (list.some((entry) => entry.nodeId === unit.nodeId)) {
+    session.diagnostics.push(problem("DUPLICATE_ID", `${unit.nodeId} already has an attach declaration.`, unit.span));
+    return;
+  }
+  const attachment: PathAttachment = { nodeId: unit.nodeId, pathId: unit.pathId, progress: unit.progress ?? 0 };
+  if (unit.orient !== undefined) attachment.orient = unit.orient;
+  if (unit.rollRadius !== undefined) attachment.rollRadius = unit.rollRadius;
+  // Replace the container so earlier emitted headers keep their own list.
+  session.scene.pathAttachments = [...list, attachment];
+  ensureCapability(session, "geometry.pathProgress");
+}
+
 /** First surface or parent node of a layer that does not exist yet (declaration may precede it). */
 function missingSurfaceNode(session: Session, unit: Extract<UnitAst, { kind: "spatialLayer" }>): string | undefined {
   const ids = new Set(session.scene.nodes.map((node) => node.id));
@@ -1681,6 +1761,9 @@ function unitHitsRejectedTarget(session: Session, unit: UnitAst): boolean {
   if (session.rejectedNodeIds.size === 0) return false;
   if (unit.kind === "operators" || unit.kind === "interact") {
     return session.rejectedNodeIds.has(unit.nodeId);
+  }
+  if (unit.kind === "attach") {
+    return session.rejectedNodeIds.has(unit.nodeId) || session.rejectedNodeIds.has(unit.pathId);
   }
   if (unit.kind === "animate" || unit.kind === "keyframes" || unit.kind === "step") {
     return addressHitsRejected(session, unit.target);

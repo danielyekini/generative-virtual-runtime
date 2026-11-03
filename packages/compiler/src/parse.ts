@@ -20,6 +20,7 @@ import {
 import type {
   AnimLiteral,
   AnimateAst,
+  AttachAst,
   BatchAst,
   BehaviourDeclAst,
   BindDeclAst,
@@ -186,6 +187,7 @@ function parseUnit(parser: Parser): UnitAst | undefined {
   if (token.lexeme === "instance") return parseInstance(parser);
   if (token.lexeme === "operators") return parseOperators(parser);
   if (token.lexeme === "interact") return parseInteract(parser);
+  if (token.lexeme === "attach") return parseAttach(parser);
   if (token.lexeme === "audio") return parseAudioUnit(parser);
   if (token.lexeme === "cue") return parseCueDecl(parser);
   if (token.lexeme === "spatialLayer") return parseSpatialLayer(parser);
@@ -1281,6 +1283,55 @@ function parseInteract(parser: Parser): InteractAst {
   }
   eat(parser, "rbrace");
   expectSemi(parser);
+  return node;
+}
+
+/**
+ * `attach <node> along <path> { progress n; orient true; rollRadius r; };`
+ * Only `attach` and `along` are reserved; body words match by spelling.
+ */
+function parseAttach(parser: Parser): AttachAst {
+  const start = eat(parser, "keyword", "attach");
+  const node: AttachAst = { kind: "attach", nodeId: "", pathId: "", span: start?.span ?? emptySpan(), errors: [] };
+  const nodeId = parseDotted(parser, false);
+  if (nodeId) node.nodeId = nodeId;
+  else note(node, parser, "attach needs a node id.");
+  if (!eat(parser, "keyword", "along")) note(node, parser, "attach needs 'along <path id>'.");
+  else {
+    const pathId = parseDotted(parser, false);
+    if (pathId) node.pathId = pathId;
+    else note(node, parser, "attach needs a path id after 'along'.");
+  }
+  if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
+  while (!done(parser) && !at(parser, "rbrace")) {
+    const key = eatWord(parser);
+    if (!key) {
+      note(node, parser, "Expected an attach property.");
+      skipProperty(parser);
+      expectSemi(parser);
+      continue;
+    }
+    if (key.lexeme === "progress") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, "progress needs a number.");
+      else node.progress = value;
+    } else if (key.lexeme === "orient") {
+      const value = parseBoolean(parser);
+      if (value === undefined) note(node, parser, "orient needs true or false.");
+      else node.orient = value;
+    } else if (key.lexeme === "rollRadius") {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, "rollRadius needs a number.");
+      else node.rollRadius = value;
+    } else {
+      note(node, parser, `Unknown attach property ${key.lexeme}.`);
+      skipProperty(parser);
+    }
+    expectSemi(parser);
+  }
+  eat(parser, "rbrace");
+  expectSemi(parser);
+  if (node.progress === undefined && node.errors.length === 0) note(node, parser, "attach needs progress.");
   return node;
 }
 

@@ -109,7 +109,8 @@ support until a follow-up ships a versioned capability.
 
 ## Child work
 
-- **E037** ([#169](https://github.com/danielyekini/generative-virtual-runtime/issues/169)):
+- **E037** ([#169](https://github.com/danielyekini/generative-virtual-runtime/issues/169),
+  landed in MotionScript / Scene IR 0.17.0 with `attach … along …`):
   version `geometry.pathProgress` — MotionScript/Scene IR syntax for
   sampling/attaching along a named path after morph/trim, optional orient mode,
   registry + conformance, Studio fixture. Rolling stays an explicit

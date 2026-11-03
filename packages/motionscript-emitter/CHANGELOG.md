@@ -1,5 +1,11 @@
 # @gvr/motionscript-emitter
 
+## 0.1.8
+
+Emit `attach … along …` declarations from Scene IR `pathAttachments`
+(`geometry.pathProgress`, MotionScript / Scene IR 0.17.0) so path attachments
+round-trip with their `path.progress` tracks.
+
 ## 0.1.6
 
 Emit `interact` declarations from Scene IR `interactions` so Scene IR → MotionScript

@@ -38,7 +38,8 @@ export interface AttachAlongPathOptions {
 
 /**
  * Host-level path attachment for travellers, arrowheads and contacts.
- * No Scene IR / MotionScript fields yet — follow-up versions the language surface.
+ * The language surface is Scene IR `pathAttachments` / MotionScript `attach`
+ * (`geometry.pathProgress`, 0.17.0); `sampleScene` applies them through this helper.
  */
 export function attachAlongPath(options: AttachAlongPathOptions): PathAttachment {
   const metrics = buildPathMetrics(options.commands);

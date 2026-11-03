@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.16.0 | 0.2 |
-| scene-ir | 0.16.0 | 0.2 |
+| motionscript | 0.17.0 | 0.2 |
+| scene-ir | 0.17.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -52,6 +52,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | space.planar25d | supported | supported | not-applicable | Scenes declare planar 2.5D layers: a camera and surfaces (root-scene nodes) with 3D placement, hinges and reverse-face control, projected at frame resolution. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/spatial.test.ts) |
 | physics.planar2d | supported | supported | not-applicable | Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/physics.test.ts) |
 | space.planarSeams | supported | supported | not-applicable | Planar 2.5D layers opt into seam/split compositing: true surface intersections are split along their plane intersection into ordered fragments, and declared seams are checked for a shared edge in view space. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/seams.test.ts) |
+| geometry.pathProgress | supported | supported | not-applicable | A node attaches to a path node at a progress in [0, 1] along its resolved (morphed, then trimmed) outline, optionally oriented to the tangent and optionally rolling. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/path-progress.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.mask | supported | supported | supported | A group render scope clips its descendants to another node's outline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/clip.test.ts) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
@@ -73,5 +74,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `db5482589ec2a0618eab5bc3667cf5f86579508a3954d1c11f99030869c7b52a`
-- `packages/schema/capabilities/registry.json` SHA-256 `0c4a35413f50a0f11cda53bac0ce41398a684c499a696db0643b6d96bdf59313`
+- `packages/schema/capabilities/releases.json` SHA-256 `7bd808692b31b76cd1099d8a3cee81fd9d497e329554296a35b12d38790266dd`
+- `packages/schema/capabilities/registry.json` SHA-256 `c2f39fa49360aeb154c268c49e69eda28dea7233c36e1a6dd635935b42cee516`

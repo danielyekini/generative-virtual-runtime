@@ -40,7 +40,7 @@ headerProperty = "version" , string , ";"
                | "requires" , string , ";" ;
 unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | step | seal
                | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
-               | audioDecl | audioSugar | cueDecl | spatialLayerDecl | physicsDecl
+               | audioDecl | audioSugar | cueDecl | spatialLayerDecl | physicsDecl | attachDecl
                | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
                | behaviourDecl | cancelBehaviour ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
@@ -177,6 +177,18 @@ interactAction = ( "set" , interactAddr , signedNumber )
                | ( "dragTranslate" , vec2 , vec2 ) ;
 interactAddr   = [ dottedId , "." ] , interactChannel ;
 interactChannel= "position.x" | "position.y" | "rotation" | "scale.x" | "scale.y" | "opacity" ;
+
+(* MotionScript 0.17 path attachments (geometry.pathProgress). Only "attach" and
+   "along" are reserved; progress/orient/rollRadius match by spelling. progress is
+   required and in [0, 1]. orient follows the path tangent; rollRadius adds
+   distance/radius rolling and is never implied by orient. The attachment
+   exclusively owns position.x/y (and rotation when orient or rollRadius is set).
+   Animate the base with: animate Tip.path.progress { from 0; to 1; duration 2s; };
+*)
+attachDecl     = "attach" , dottedId , "along" , dottedId , "{" , { attachItem } , "}" , ";" ;
+attachItem     = ( "progress" , signedNumber , ";" )
+               | ( "orient" , boolean , ";" )
+               | ( "rollRadius" , signedNumber , ";" ) ;
 
 (* MotionScript 0.11 audio resources and cues (audio.cues). Only "audio" and
    "cue" are reserved; bus and body words match by spelling. Cues use root
@@ -460,6 +472,8 @@ export const KEYWORDS = [
   "cue",
   "spatialLayer",
   "physics",
+  "attach",
+  "along",
 ] as const;
 
 export const KEYWORD_SET = new Set<string>(KEYWORDS);
