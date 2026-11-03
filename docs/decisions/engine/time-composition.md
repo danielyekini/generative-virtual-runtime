@@ -258,7 +258,12 @@ capabilities.
 - **E044 ([#197](https://github.com/danielyekini/generative-virtual-runtime/issues/197)): version `timing.timedKeys` and named beats.** Covers `at <time>` keys
   and `beat` constants. This is MotionScript syntax only, lowered to existing
   offsets, so Scene IR is unchanged. It needs a registry row, conformance, and
-  an update to the authoring reference used by generation.
+  an update to the authoring reference used by generation. **Landed as
+  MotionScript 0.23.0** (Scene IR stays 0.22.0). Beats bind when a unit is
+  pushed, so a deferred unit cannot read a later beat. Beats are accepted in
+  time positions only (`start`, key and step `at`, `seal`, `timing offset`,
+  `cue at`); `duration` stays a length. See
+  `docs/languages/motionscript/versions/0.23.0.md`.
 - **Deferred, no issue:** velocity-facing for keyed motion, shortest-arc
   rotation (rejected above), and scene-level loop playback, which is a host
   option.

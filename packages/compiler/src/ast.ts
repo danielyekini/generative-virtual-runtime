@@ -85,6 +85,37 @@ export interface CameraAst {
   errors: Diagnostic[];
 }
 
+/**
+ * A time position that names a beat (MotionScript 0.23 timing.timedKeys).
+ * The unit's numeric field holds the signed offset from the beat until the
+ * compiler binds it at push time (beats are compile-time constants and must
+ * be declared before the unit).
+ */
+export interface BeatRef {
+  field: "startMs" | "timeMs" | "offsetMs" | "cue.startMs";
+  beat: string;
+}
+
+/** `beat <name> at <time | beat ± time>;` (MotionScript 0.23). */
+export interface BeatAst {
+  kind: "beat";
+  name: string;
+  /** Absolute time, or the offset from `after`. */
+  atMs: number;
+  after?: string;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
+/** A keyframe written at a time instead of a percentage (MotionScript 0.23). */
+export interface TimedFrameAst {
+  atMs: number;
+  beat?: string;
+  value: AnimLiteral;
+  ease?: EaseAst;
+  spatial?: { out: Vec; in: Vec };
+}
+
 export interface AnimateAst {
   kind: "animate";
   target: string;
@@ -97,6 +128,7 @@ export interface AnimateAst {
   fill?: "none" | "forwards";
   timingScopeId?: string;
   order?: number;
+  beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];
 }
@@ -111,6 +143,9 @@ export interface KeyframeAst {
   timingScopeId?: string;
   order?: number;
   frames: { offset: number; value: AnimLiteral; ease?: EaseAst; spatial?: { out: Vec; in: Vec } }[];
+  /** Timed keys; lowered to `startMs` / `durationMs` / `frames` when beats are bound. */
+  timedFrames?: TimedFrameAst[];
+  beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];
 }
@@ -121,6 +156,7 @@ export interface TimingAst {
   parent?: string;
   offsetMs?: number;
   stretch?: number;
+  beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];
 }
@@ -221,6 +257,7 @@ export interface AudioSugarAst {
 export interface CueDeclAst {
   kind: "cue";
   cue: AudioCueDefinition;
+  beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];
 }
@@ -250,6 +287,7 @@ export interface StepAst {
   target: string;
   timeMs: number;
   value: boolean | string;
+  beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];
 }
@@ -264,6 +302,7 @@ export interface BatchAst {
 export interface SealAst {
   kind: "seal";
   timeMs: number;
+  beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];
 }
@@ -337,6 +376,7 @@ export interface CancelBehaviourAst {
 
 export type UnitAst =
   | ConstAst
+  | BeatAst
   | CameraAst
   | NodeAst
   | AnimateAst

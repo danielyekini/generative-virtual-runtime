@@ -5,7 +5,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.22.0 | 0.2 |
+| motionscript | 0.23.0 | 0.2 |
 | scene-ir | 0.22.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
@@ -22,6 +22,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | hierarchy.opacity | supported | supported | supported | Drawn opacity is the product of the node and its ancestors. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/runtime.test.ts) |
 | scene.migration | not-applicable | supported | not-applicable | A 0.2 consumer loads a 0.1 scene without changing its samples. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/runtime.test.ts) |
 | timing.localScopes | supported | supported | not-applicable | A timing scope shifts and stretches local track time. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
+| timing.timedKeys | supported | not-applicable | not-applicable | Keyframes written at times and named beats are compile-time lowerings onto ordinary track start, duration and offsets. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/timed-keys.test.ts) |
 | easing.cubicBezier | supported | supported | not-applicable | Cubic easing solves x for progress, then returns y. Y may leave 0..1. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/capability-02.test.ts) |
 | easing.hold | supported | supported | not-applicable | Hold easing stays on the segment start until the next key. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/capability-02.test.ts) |
 | composition.definitions | supported | supported | not-applicable | A composition definition and an instance record. Instances are not drawn a second time. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
@@ -78,5 +79,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `a01b97e4da16ff16601b535558b517e1e72a343164ccdae6a9ba378ce3148f06`
-- `packages/schema/capabilities/registry.json` SHA-256 `a3f0c6548bdb1b28295c4d7a2952b5ba2e3893b1f80cde64127d0e94c9e6ae48`
+- `packages/schema/capabilities/releases.json` SHA-256 `5d70cc9e61a3bcd13652001d78f5cfa27c71890d63eca015f099dd8ab2a87005`
+- `packages/schema/capabilities/registry.json` SHA-256 `c75f02e952156ba5e1990f78db70f38c0c71c151a1d31b5cfda7254bcbdd2398`

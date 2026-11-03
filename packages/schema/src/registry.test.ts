@@ -27,7 +27,8 @@ interface Mapping {
 
 interface Capability {
   id: string;
-  introducedIn?: { motionscript: string; sceneIr: string };
+  /** sceneIr is absent only for a MotionScript-only lowering (no Scene IR change). */
+  introducedIn?: { motionscript: string; sceneIr?: string };
   support: { compiler: string; runtime: string; renderer: string };
   conformanceTests: string[];
   adapters: { lottie: Mapping; svg: Mapping };
@@ -136,8 +137,15 @@ describe("capability registry", () => {
       if (layers.includes("supported")) expect(capability.conformanceTests.length, capability.id).toBeGreaterThan(0);
 
       if (capability.introducedIn) {
+        if (capability.introducedIn.sceneIr === undefined) {
+          // A MotionScript-only capability lowers onto existing Scene IR, so
+          // only the compiler layer can carry a claim.
+          expect(capability.support.runtime, capability.id).toBe("not-applicable");
+          expect(capability.support.renderer, capability.id).toBe("not-applicable");
+        }
         for (const language of ["motionscript", "scene-ir"] as const) {
           const version = language === "motionscript" ? capability.introducedIn.motionscript : capability.introducedIn.sceneIr;
+          if (version === undefined) continue;
           const record = releases.versions.find((item) => item.language === language && item.version === version && item.status === "released");
           expect(record, `${capability.id} ${language}`).toBeDefined();
           const notes = readFileSync(join(root, record!.file), "utf8");
