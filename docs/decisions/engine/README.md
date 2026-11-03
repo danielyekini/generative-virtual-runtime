@@ -81,3 +81,6 @@
 - [Procedural vs bounded expansion (E022)](procedural-vs-bounded-expansion.md):
   reject general loops/modules and compile-time repeater commissioning;
   drawable bindings + cyclic scopes + behaviours are enough; no version bump.
+- [Composition-instance timingScopeId (E048)](composition-instance-timing.md):
+  reject apply; forbid the inert field in a follow-up version bump (E050);
+  no bump in the decision change.

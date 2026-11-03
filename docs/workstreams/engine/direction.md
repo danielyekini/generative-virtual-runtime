@@ -185,10 +185,12 @@ new engine tickets waits on Product P030 (#188). Holder:
    `geometry.repeater` stays pending/unsupported. No version bump.
 8. Replenish after E022 (run `00790532-1a03-42a1-9059-3e48527f1b6a`): Ready was
    empty. Promoted E048 ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208))
-   on the diagnostic-truth trigger (apply instance `timingScopeId` or reject the
-   field). Filed E049 ([#218](https://github.com/danielyekini/generative-virtual-runtime/issues/218))
-   Ready — decide variable stroke width profiles vs stop (E015 child). E046 /
-   E042 stay Candidate (evidence / P030). Ready order: E048, then E049.
+   on the diagnostic-truth trigger. Filed E049 ([#218](https://github.com/danielyekini/generative-virtual-runtime/issues/218))
+   Ready — width-profile decide-or-stop. E046 / E042 stay Candidate.
+9. E048 ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208))
+   **rejected** applying instance timing; the field is an inert no-op on non-drawing
+   composition records ([decision](../../decisions/engine/composition-instance-timing.md)).
+   Child E050 versions the forbid/migrate-strip. Ready order: E050, then E049.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
