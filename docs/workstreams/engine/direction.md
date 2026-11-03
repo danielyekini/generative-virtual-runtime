@@ -191,6 +191,20 @@ new engine tickets waits on Product P030 (#188). Holder:
    **rejected** applying instance timing; the field is an inert no-op on non-drawing
    composition records ([decision](../../decisions/engine/composition-instance-timing.md)).
    Child E050 versions the forbid/migrate-strip. Ready order: E050, then E049.
+10. Engine review (3 November 2026, late evening, session
+    `552e4bd0-5e51-4cc3-ab9e-ce4a218586f3`) inspected runs `a130fd66` (E047+E045),
+    `6df61122` (E020 stop), `e4e4b92a` (E021), `00790532` (E022) and `d5a6c548`
+    (E048). All five complete. **Continue.** Ready order unchanged: E050
+    ([#221](https://github.com/danielyekini/generative-virtual-runtime/issues/221)),
+    then E049 ([#218](https://github.com/danielyekini/generative-virtual-runtime/issues/218)).
+    Outcome-mined Candidates: E051
+    ([#224](https://github.com/danielyekini/generative-virtual-runtime/issues/224))
+    MotionScript shadow sugar; E052
+    ([#225](https://github.com/danielyekini/generative-virtual-runtime/issues/225))
+    duplicate parse-time diagnostics; E053
+    ([#226](https://github.com/danielyekini/generative-virtual-runtime/issues/226))
+    animated blur (story-gated). E046 / E042 / joint [#209](https://github.com/danielyekini/generative-virtual-runtime/issues/209)
+    stay Candidate. No process change.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
