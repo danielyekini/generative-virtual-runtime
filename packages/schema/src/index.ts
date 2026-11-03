@@ -13,6 +13,7 @@ export * from "./migrate";
 export * from "./path-metrics";
 export * from "./path-space";
 export * from "./path-morph";
+export * from "./parametric-plot";
 export * from "./text-metrics";
 export * from "./registry";
 export * from "./spatial";
