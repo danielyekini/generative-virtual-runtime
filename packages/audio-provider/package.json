@@ -1,6 +1,6 @@
 {
-  "name": "@gvr/audio-elevenlabs",
-  "version": "0.1.0",
+  "name": "@gvr/audio-provider",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "exports": {
