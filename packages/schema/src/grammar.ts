@@ -200,6 +200,10 @@ interactChannel= "position.x" | "position.y" | "rotation" | "scale.x" | "scale.y
    distance/radius rolling and is never implied by orient. The attachment
    exclusively owns position.x/y (and rotation when orient or rollRadius is set).
    Animate the base with: animate Tip.path.progress { from 0; to 1; duration 2s; };
+   MotionScript 0.22 (geometry.pathSpace) keeps this syntax. The compiler adds
+   that capability beside geometry.pathProgress so the traveller follows the
+   path node's transform. Scenes that require only geometry.pathProgress stay
+   in path command space.
 *)
 attachDecl     = "attach" , dottedId , "along" , dottedId , "{" , { attachItem } , "}" , ";" ;
 attachItem     = ( "progress" , signedNumber , ";" )

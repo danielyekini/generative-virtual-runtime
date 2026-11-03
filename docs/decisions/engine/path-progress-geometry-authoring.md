@@ -123,6 +123,13 @@ support until a follow-up ships a versioned capability.
 - **Width profile (Candidate / later decision):** variable stroke width along arc
   length; requires normals/joins evidence beyond uniform `stroke.width`.
 
+## Supersession
+
+E039 ([path-attachment-space.md](path-attachment-space.md)) versions composed
+placement as `geometry.pathSpace` (MotionScript / Scene IR 0.22.0). Scenes that
+do not require that capability keep the path-local rule in this decision.
+The 0.17.0 version file is unchanged.
+
 ## Revisit
 
 - If Studio needs path-follow without a language bump for demos, keep using the

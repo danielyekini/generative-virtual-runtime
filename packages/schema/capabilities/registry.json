@@ -976,9 +976,9 @@
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing geometry.pathProgress; pathAttachments without it are rejected.",
         "MotionScript `attach <node> along <path> { progress n; orient b; rollRadius r; }` lowers to Scene IR pathAttachments (base definitions on CREATE_SCENE, frozen after the first seal). progress is required and in [0, 1]; the path must be a path node in the root scene; a node has at most one attachment. attach and along are the only reserved words.",
         "Sampling resolves the path commands after path morph (geometry.pathMorph) and then the same trim rules frame resolution uses (geometry.operators / geometry.animatedTrim), so late morph or trim changes move the node without re-baking progress. Progress is the base value unless a path.progress track on the attached node supplies it.",
-        "The sampled position is the path's local command space written directly to transform.position; place the node and the path in the same parent space with a neutral path transform. Distance and arc length use the 8-sample-per-curve table shared with geometry.trimPath, measured over the trimmed outline.",
+        "Without geometry.pathSpace, the sampled position is the path's local command space written directly to transform.position; place the node and the path in the same parent space with a neutral path transform. Distance and arc length use the 8-sample-per-curve table shared with geometry.trimPath, measured over the trimmed outline.",
         "An attachment exclusively owns transform.position.x/y on its node. When orient is true or rollRadius is set it also owns transform.rotation, written as (orient ? tangent angle : 0) + (rollRadius ? distance / rollRadius : 0). orient alone is never rolling. Timeline tracks, interact bindings and physics writes on owned channels are rejected as OVERLAPPING_WRITERS. path.progress tracks (number in [0, 1]) are legal only on attached nodes.",
-        "Markers, arrowhead styling, stroke dash (paint.strokeDash), width profiles, composed path transforms and transform.autoOrient as a standalone channel are outside this claim. Lottie ks.ao and SVG path progress are not imported."
+        "Markers, arrowhead styling, stroke dash (paint.strokeDash), width profiles and transform.autoOrient as a standalone channel are outside this claim. Composed path transforms are geometry.pathSpace. Lottie ks.ao and SVG path progress are not imported."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
@@ -999,6 +999,36 @@
         "svg": {
           "status": "not-applicable",
           "scope": "Native path attachment; SVG offset-path / animateMotion is not lowered to attachments."
+        }
+      }
+    },
+    {
+      "id": "geometry.pathSpace",
+      "summary": "A path attachment places its traveller on the path as drawn: the command point is mapped through the path node's sampled transform into the traveller's parent space.",
+      "introducedIn": { "motionscript": "0.22.0", "sceneIr": "0.22.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing geometry.pathSpace together with geometry.pathProgress. The compiler adds both when it lowers attach. No new syntax or reserved words.",
+        "Sampling maps the command point by inverse(traveller parent world) × path world, using the sampled local matrix (position, pivot, rotation, scale) and transformParentId when set, otherwise parentId. The camera is not part of that matrix. Rotation, when orient or rollRadius is set, uses the transformed tangent plus command-space distance/radius. rollRadius does not follow visual scale.",
+        "Scenes that require geometry.pathProgress and not geometry.pathSpace keep the 0.17 path-local write. Identity path transforms with a shared transform parent match that write.",
+        "The traveller and the path must resolve to the same root space (both world or both screen). A mismatch is SPACE_VIOLATION and the attachment is not applied. A singular parent transform or a degenerate oriented tangent is RUNTIME_DEGRADED and leaves the authored pose or rolling-only rotation. Attachment cycles are CYCLE and those poses stay authored.",
+        "The value written is transform.position, not a pivot-compensated local origin. A non-zero traveller pivot offsets the drawn origin the same way it does for any other node. Lottie and SVG are not imported."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/path-progress.test.ts#requires geometry.pathSpace alongside geometry.pathProgress and rejects mixed spaces",
+        "packages/runtime/src/path-progress-bindings.test.ts#places a traveller on a transformed rail, including a different parent",
+        "packages/runtime/src/path-progress-bindings.test.ts#keeps path-local placement when geometry.pathSpace is not required",
+        "packages/runtime/src/path-progress-bindings.test.ts#skips a singular parent, a space mismatch and an attachment cycle"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native path-space sampling; Lottie motion paths are not imported."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native path-space sampling; SVG offset-path is not imported."
         }
       }
     },

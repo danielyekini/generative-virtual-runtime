@@ -111,15 +111,16 @@ Engine review (3 November 2026, later the same day) inspected runs
 `cf452237` (E013), `3E1BDFB0` (E040, 0.18.0 `text.dynamicContent`),
 `0c5c5285` (E036, 0.19.0 `compositing.matte`), `7464705c` (E041, 0.20.0
 `text.layoutMetrics`) and `7d32a0ce` (E038, 0.21.0 `paint.strokeDash`).
-Those five are Done. Continue. No new capability was opened. Width profiles
+Those five are Done. E039 then landed `geometry.pathSpace` (0.22.0). Width profiles
 and standalone `transform.autoOrient` stay pending. Naming source stories on
 new engine tickets waits on Product P030 (#188). Holder:
 [E042](https://github.com/danielyekini/generative-virtual-runtime/issues/191)
 ([#189](https://github.com/danielyekini/generative-virtual-runtime/issues/189)).
 
-1. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173)):
-   Ready — decide whether path attachments compose the path node's transform.
-2. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
+1. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173))
+   landed MotionScript / Scene IR 0.22.0 `geometry.pathSpace`: `attach` follows
+   the path node's transform. Scenes that require only `geometry.pathProgress`
+   stay path-local. Replenish further from M2/M4/M5 Candidates. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
    `text.animators` stays pending (not the E013 content/format slice).
 

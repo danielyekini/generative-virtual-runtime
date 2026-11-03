@@ -78,6 +78,7 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
 | `compositing.mask` | Group `clip` to a geometry outline — supported (0.16.0); Lottie/SVG adapters unsupported |
 | `compositing.matte` | Group `matte` keeps pixels where another node's painted alpha is — supported (0.19.0); Lottie/SVG adapters unsupported |
 | `geometry.pathProgress` | `attach` a node along a path at a progress, optional tangent orient and explicit rolling — supported (0.17.0); Lottie/SVG adapters unsupported |
+| `geometry.pathSpace` | The same `attach` follows the path node's transform into the traveller's parent space — supported (0.22.0). Scenes without the capability stay path-local |
 | `text.dynamicContent` | Numeric format bindings and discrete content steps on `text.basic` — supported (0.18.0); Lottie/SVG adapters unsupported |
 | `effects.blur` | Blur on a render scope — supported; Lottie static Gaussian blur exact |
 | `effects.shadow` | Shadow on a render scope — schema present, untested |
