@@ -8,6 +8,7 @@ import {
   type GenerateMessage,
   type GenerateState,
 } from "./generate-session";
+import { loadQualityJudgmentPack } from "./generate-quality-pack";
 import { STUDIO_GENERATE_MODEL } from "./generate-reference";
 
 function put(element: HTMLElement, value: string): void {
@@ -23,6 +24,7 @@ function truncate(text: string, max = 280): string {
 export type GeneratePanelElements = {
   root: HTMLElement;
   transcript: HTMLElement;
+  pack: HTMLElement;
   composer: HTMLTextAreaElement;
   approach: HTMLSelectElement;
   model: HTMLSelectElement;
@@ -40,6 +42,7 @@ export function bindGeneratePanel(root: HTMLElement): GeneratePanelElements {
   return {
     root,
     transcript: must(root, "generate-transcript"),
+    pack: must(root, "generate-quality-pack"),
     composer: must(root, "generate-prompt") as HTMLTextAreaElement,
     approach: must(root, "generate-approach") as HTMLSelectElement,
     model: must(root, "generate-model") as HTMLSelectElement,
@@ -67,6 +70,8 @@ export function wireGeneratePanel(ui: GeneratePanelElements, controller: Generat
     // Keep pinned option; custom typed models stay as pinned id field via select change below.
     ui.model.value = STUDIO_GENERATE_MODEL;
   }
+
+  mountQualityPack(ui);
 
   ui.approach.addEventListener("change", () => {
     controller.setApproach(ui.approach.value as GenerationApproach);
@@ -96,6 +101,27 @@ export function wireGeneratePanel(ui: GeneratePanelElements, controller: Generat
   }
 }
 
+function mountQualityPack(ui: GeneratePanelElements): void {
+  const pack = loadQualityJudgmentPack();
+  ui.pack.replaceChildren();
+  for (const task of pack.tasks) {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "generate-pack-chip";
+    chip.dataset.taskId = task.id;
+    chip.title = `${task.baseline} — fills the composer; send when ready`;
+    put(chip, task.title);
+    chip.addEventListener("click", () => {
+      ui.composer.value = task.prompt;
+      ui.composer.focus();
+      for (const other of ui.pack.querySelectorAll(".generate-pack-chip")) {
+        other.classList.toggle("is-selected", other === chip);
+      }
+    });
+    ui.pack.append(chip);
+  }
+}
+
 export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateState): void {
   ui.approach.value = state.approach;
   if ([...ui.model.options].some((option) => option.value === state.modelId)) {
@@ -104,6 +130,9 @@ export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateSt
   ui.approach.disabled = state.running;
   ui.model.disabled = state.running;
   ui.composer.disabled = state.running;
+  for (const chip of ui.pack.querySelectorAll("button")) {
+    (chip as HTMLButtonElement).disabled = state.running;
+  }
   put(ui.send, state.running ? "■" : "↑");
   ui.send.title = state.running ? "Cancel generation" : "Send prompt";
   ui.send.setAttribute("aria-label", state.running ? "Cancel generation" : "Send prompt");

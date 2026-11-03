@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { FixtureGenerator } from "../../../../tools/native-generation/fixture-adapter";
 import { runGenerationPipeline } from "../../../../tools/native-generation/pipeline";
+import { loadQualityJudgmentPack } from "./generate-quality-pack";
 import { loadStudioReference, STUDIO_GENERATE_MODEL } from "./generate-reference";
 
 const root = resolve(import.meta.dirname, "../../../..");
@@ -18,6 +19,16 @@ describe("Studio Generate (P019)", () => {
     expect(reference.fingerprint).toHaveLength(64);
     expect(reference.markdown).toContain("MotionScript authoring reference");
     expect(reference.path).toContain(reference.fingerprint.slice(0, 8));
+  });
+
+  it("bundles the story-complexity quality judgment pack (P020)", () => {
+    const pack = loadQualityJudgmentPack();
+    expect(pack.split).toBe("quality-judgment");
+    expect(pack.studioDefaultApproach).toBe("director");
+    expect(pack.pinnedModel).toBe(STUDIO_GENERATE_MODEL);
+    expect(pack.tasks.length).toBeGreaterThanOrEqual(5);
+    expect(pack.tasks.every((task) => task.prompt.trim().length > 40 && task.title && task.baseline)).toBe(true);
+    expect(pack.tasks.map((task) => task.id)).toContain("city-loop");
   });
 
   it("pipelines a fixture with progress callbacks for the transcript", async () => {

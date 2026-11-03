@@ -142,6 +142,14 @@ try {
     return pr.top < dr.top && Math.abs(pr.bottom - document.querySelector('#status').getBoundingClientRect().top) < 8;
   })()`)), generateOpen);
   check("Generate composer defaults to Director + pinned qwen model", await ev(`document.querySelector('#generate-approach').value === 'director' && document.querySelector('#generate-model').value === 'qwen2.5-coder:14b'`));
+  check("Generate story quality pack chips fill the composer", await ev(`(() => {
+    const pack = document.querySelector('#generate-quality-pack');
+    const chips = [...(pack?.querySelectorAll('button.generate-pack-chip') ?? [])];
+    const composer = document.querySelector('#generate-prompt');
+    if (!pack || !composer || chips.length < 5) return false;
+    chips[0].click();
+    return composer.value.length > 40 && chips[0].classList.contains('is-selected');
+  })()`));
   await ev("document.querySelector('#generate-close').click()");
   await sleep(50);
   check("Leaving Generate closes the generate chrome", await ev(`!window.__gvr.player.generateMode && document.querySelector('#generate-chrome').hidden`));

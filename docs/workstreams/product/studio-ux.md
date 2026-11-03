@@ -245,6 +245,10 @@ In Generate mode the side panel is for **generation**, not script testing:
     settings as dropdowns/chips (same role as a model selector in the reference).
   - Send / cancel in the composer (send while idle; cancel while running).
   - Mic may appear later (P009); typed prompts are enough for P019.
+  - **Story quality pack (P020):** a horizontal row of starter chips above the
+    composer fills it with story-complexity prompts from
+    `fixtures/generation/quality-judgment/` (does not auto-send). Use these for
+    customer animation-quality judgment; checklist beside the manifest.
 - Secondary metrics (repairs, latency, tape wait) may appear as quiet status
   under the composer or on the bubble — never as the acceptance gate.
 
