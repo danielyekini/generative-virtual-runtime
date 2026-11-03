@@ -58,33 +58,31 @@ Done** (Studio Generate mode: header control, full-height transcript/composer,
 Director default, Ollama `qwen2.5-coder:14b`). Paused prototype history: PR #65
 commit 2d08de0.
 
-1. **P020 #157 Done** — story-complexity Generate quality judgment pack
+1. **P022 #165** — Generate UX polish from human quality pass (composer, detail
+   streaming/resize, copy chat, AI icon) — in flight / next Done.
+2. **P020 #157 Done** — story-complexity Generate quality judgment pack
    (chips + checklist; human judgment still outstanding).
-2. **Customer animation-quality judgment** on Generate (Director vs Direct) —
-   solicit once P020 pack lands; do not close approach preference without that
+3. **Customer animation-quality judgment** on Generate (Director vs Direct) —
+   do not close approach preference without that
    ([director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md)).
-3. **X002 #56** Engine verification surfaces — advanced via P002 + P010 + P019;
-   keep visible until accepted closed.
-4. **P009 #50** push-to-talk / narration / SFX — Candidate until speech/media UX
+4. **P023 #166 Candidate** — waiting-state MotionScript loading-screen presets.
+5. **P024 #167 Candidate** — investigate Ollama/model serving optimisation under
+   disk/hardware pressure.
+6. **P009 #50** push-to-talk / narration / SFX — Candidate until speech/media UX
    is confirmed in studio-ux; imports `@gvr/audio-provider` (E035 Done; #144
    accepted).
-5. **P003 #44** Performance tab — Candidate until UX confirmation.
-6. **P021 #158 Candidate** — reserved-word node-id generation hardening (P007
-   outcome mine).
-7. **P005 #46** agent toolbox — low-priority optional consolidation.
-8. P011–P013 and corpus generation remain later; next-corpus prep continues
-   under #88 with director ownership and story-complexity baselines.
-9. Engine assist [#140](https://github.com/danielyekini/generative-virtual-runtime/issues/140) /
-   E027 emitter interact — track separately from P010 compiler-path demos.
+7. **P003 #44** Performance tab — Candidate until UX confirmation.
+8. **P021 #158 Candidate** — reserved-word node-id generation hardening.
+9. **P005 #46** / P011–P013 later; corpus prep under #88.
 
 ## Next
 
-1. User: exercise Generate with the P020 story pack (`npm run dev` + local
-   Ollama) and judge animation quality; keep Director default until Direct is
-   proven ([checklist](../../fixtures/generation/quality-judgment/CHECKLIST.md)).
-2. Confirm **P009** speech/media UX in studio-ux → then Ready.
-3. Keep Performance / agent-toolbox Candidate until UX confirmation.
-4. **P021 #158** Candidate — reserved-word generation hardening when capacity.
+1. Land **P022** Generate UX polish from the quality-pass findings.
+2. User: continue Generate quality judgment with the pack; keep Director default
+   until Direct is proven.
+3. Confirm **P009** speech/media UX (A mic-in-composer / B Speech mode / C
+   settings-only) → then Ready.
+4. Schedule **P023** loading screens and **P024** model-serving investigation.
 
 Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
 generation, but do not skip interaction/generation Studio exercise.
