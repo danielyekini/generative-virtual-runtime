@@ -79,10 +79,10 @@ procedural modules that would expand definitions into draw lists.
 ## Child work
 
 - **E050** ([#221](https://github.com/danielyekini/generative-virtual-runtime/issues/221)):
-  version the reject — MotionScript / Scene IR minor bump, validator + compiler
-  diagnostics, migrate strip, emitter/tests, registry note on
-  `composition.definitions` restrictions. Studio only if a fixture already shows
-  instance `timing`.
+  **Shipped** as MotionScript 0.26.0 / Scene IR 0.25.0 — validator + compiler
+  diagnostics, `stripInstanceTimingScopeId` / `acceptScene` migrate strip,
+  emitter/tests, registry note on `composition.definitions` restrictions.
+  No Studio fixture change (none showed instance `timing`).
 
 ## Revisit
 

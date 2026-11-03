@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.25.0 | 0.2 |
-| scene-ir | 0.24.0 | 0.2 |
+| motionscript | 0.26.0 | 0.2 |
+| scene-ir | 0.25.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -82,5 +82,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `b866d7b3b3a9f75a513392bbc9ea5d0e3b2ed91faefc6c37d452b689b0776838`
-- `packages/schema/capabilities/registry.json` SHA-256 `0598b650de5856a1ec43496c55a03f9dcb627eefaaf58b85cfdafbc72afe993e`
+- `packages/schema/capabilities/releases.json` SHA-256 `bbea1bb2e61caf9626a02de3859a3cb19e10cf92800dc91817ba60753afb8926`
+- `packages/schema/capabilities/registry.json` SHA-256 `140d51b7c7ff8af78b0f1150467e89f969998e8c1fe0ab85b47a28707ed7c85c`

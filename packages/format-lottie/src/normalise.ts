@@ -311,8 +311,6 @@ function lowerPrecomp(ctx: LowerContext, layer: LottieLayer, parentId: string): 
   const duration = framesToMs(ctx.document.outFrame - ctx.document.inFrame, ctx.document.frameRate);
   const start = Math.max(0, Number.isFinite(offset) ? offset : 0);
   const definitionId = compositionIdFor(ctx, asset.id, layer.index);
-  const scopeId = claimIdent(ctx, `pre${layer.index}`);
-  ctx.timingScopes.push({ id: scopeId, parentId: null, offsetMs: start, stretch: 1 });
   ctx.instances.push({
     id: claimIdent(ctx, `inst${layer.index}`),
     definitionId,
@@ -322,9 +320,8 @@ function lowerPrecomp(ctx: LowerContext, layer: LottieLayer, parentId: string): 
     opacity: 1,
     visible: true,
     activation: { startMs: start, endMs: Math.max(start + 1, duration) },
-    timingScopeId: scopeId,
   });
-  ctx.capabilities.push("composition.definitions", "timing.localScopes");
+  ctx.capabilities.push("composition.definitions");
   ctx.notes.push({ feature: "precomp", level: "exact", message: `Expanded precomp ${asset.id}.`, target: layer.inventoryTarget });
 }
 

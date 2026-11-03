@@ -71,7 +71,6 @@ export function emitMotionScript(scene: SceneIR): string {
     const body = [
       `  start ${formatDuration(instance.activation.startMs)};`,
       `  end ${formatDuration(instance.activation.endMs)};`,
-      `  timing ${instance.timingScopeId};`,
     ];
     if (instance.parentId) body.push(`  parent ${instance.parentId};`);
     if (instance.transformParentId) body.push(`  transformParent ${instance.transformParentId};`);

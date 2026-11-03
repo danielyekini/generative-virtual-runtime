@@ -84,7 +84,6 @@ describe("scene ir 0.2", () => {
             opacity: 1,
             visible: true,
             activation: { startMs: 0, endMs: 1000 },
-            timingScopeId: "root",
           },
         ],
       }),

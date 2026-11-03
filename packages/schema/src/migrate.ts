@@ -1,4 +1,4 @@
-import type { SceneIR, TimingScope } from "./types";
+import type { CompositionInstance, SceneIR, TimingScope } from "./types";
 
 const ROOT_SCOPE: TimingScope = { id: "root", parentId: null, offsetMs: 0, stretch: 1 };
 
@@ -24,4 +24,21 @@ export function migrateSceneTo02(scene: SceneIR): SceneIR {
       steps: scene.timeline.steps.map((step) => ({ ...step })),
     },
   };
+}
+
+/**
+ * Scene IR 0.25.0: strip the inert composition-instance `timingScopeId`.
+ * Behaviour-preserving — the runtime never sampled it (E048 / E050).
+ */
+export function stripInstanceTimingScopeId(scene: SceneIR): SceneIR {
+  if (!scene.instances?.length) return scene;
+  let changed = false;
+  const instances: CompositionInstance[] = scene.instances.map((entry) => {
+    const record = entry as CompositionInstance & { timingScopeId?: unknown };
+    if (!("timingScopeId" in record)) return entry;
+    changed = true;
+    const { timingScopeId: _removed, ...rest } = record;
+    return rest;
+  });
+  return changed ? { ...scene, instances } : scene;
 }

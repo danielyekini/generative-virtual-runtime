@@ -44,6 +44,7 @@ MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
 `geometry.pathSpace` (path-attachment sampling through the path node's transform; no new IR field) landed in Scene IR 0.22.0.
 `timing.cyclicScopes` (`TimingScope.periodMs` / `repeat`, step `timingScopeId`, cyclic sampling and ownership) landed in Scene IR 0.23.0.
 `resources.imageSampling` / `resources.spriteFrames` (`ImageNode.sampling` / `frame`, `ImageResource.frames`, the `frame` channel) landed in Scene IR 0.24.0.
+Composition-instance `timingScopeId` forbid landed in Scene IR 0.25.0 (E050; no new capability token).
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

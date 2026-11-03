@@ -129,6 +129,10 @@ Landed in MotionScript **0.24.0** / Scene IR **0.23.0**. Wire stays `"0.2"`; sce
 
 Landed in MotionScript **0.25.0** / Scene IR **0.24.0**. Wire stays `"0.2"`. Scenes and programs gate with `requiredCapabilities` / `requires`. The compiler adds `resources.imageSampling` when an image declares `sampling`, and `resources.spriteFrames` when it declares `frames`. `sampling`, `frames`, `frame`, `smooth` and `pixelated` match by spelling and are not reserved words. Scene IR gains `ImageNode.sampling` / `frame`, `ImageResource.frames` and the `frame` track channel. A frame value is floored and clamped to the row-major grid, and the renderer derives cell rectangles from the decoded size. Images without the new fields draw exactly as `resources.image`, so no older program is reinterpreted. Older readers reject the capability tokens, keys and channel. See `docs/decisions/engine/resource-lifecycle.md`.
 
+### Decision for forbidding composition-instance timing
+
+Landed in MotionScript **0.26.0** / Scene IR **0.25.0**. Wire stays `"0.2"`. No new capability token. `CompositionInstance.timingScopeId` and MotionScript `instance { timing …; }` are forbidden (`UNSUPPORTED_PROPERTY`). `acceptScene` strips the inert field from older documents before validate; direct `validateSceneIR` rejects it. Sampling is unchanged because the field was never read. See `docs/decisions/engine/composition-instance-timing.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

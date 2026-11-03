@@ -268,7 +268,7 @@
         "A track or step in a cyclic chain lies inside one period of its innermost cycle, measured through affine scopes below it. Steps may name a scope only when its chain has a period. At local time L the step value is the last step at or before L; before a cycle's first step the previous cycle's final step carries over, except before the first cycle of a finite repeat.",
         "Exclusive ownership: a channel written inside a cyclic chain is owned by that chain. Root, affine-scoped, other-cycle tracks and root steps on the same scalar are OVERLAPPING_WRITERS. Writers in the same cycle are compared in that cycle's local frame.",
         "Streaming: a writer may join a cyclic chain only while the sealed frontier has not passed the chain's entry (cyclicWriterAdmissible). Unbounded cycles, and cycles under negative stretch, have entry -Infinity: all their writers must arrive before the first seal. The compiler reports INVALID_TIMING, the stream linter SEALED_HISTORY_WRITE, and delta admission rejects the delta.",
-        "Out of scope: composition instances on a cyclic scope (instance timing stays inert), loops, functions, timers, a scene-level loop flag (host playback), periods that change over time, shortest-arc rotation and velocity-facing. Lottie and SVG are not imported."
+        "Out of scope: composition-instance timing (forbidden since Scene IR 0.25.0 / MotionScript 0.26.0), loops, functions, timers, a scene-level loop flag (host playback), periods that change over time, shortest-arc rotation and velocity-facing. Lottie and SVG are not imported."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
@@ -343,10 +343,15 @@
       "summary": "A composition definition and an instance record. Instances are not drawn a second time.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["compiler", "runtime"],
-      "restrictions": ["The instance is validated. Pixels come from scene nodes, not from a second draw of the instance."],
+      "restrictions": [
+        "The instance is validated. Pixels come from scene nodes, not from a second draw of the instance.",
+        "Scene IR 0.25.0 / MotionScript 0.26.0: instance timingScopeId / timing is forbidden (E048/E050). acceptScene strips the inert field; validateSceneIR and the compiler reject it."
+      ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [
-        "packages/compiler/src/compiler.test.ts#compiles compositions, instances, scopes, and cubic easing"
+        "packages/compiler/src/compiler.test.ts#compiles compositions, instances, scopes, and cubic easing",
+        "packages/schema/src/instance-timing.test.ts#rejects timingScopeId on validateSceneIR",
+        "packages/schema/src/instance-timing.test.ts#strips timingScopeId and accepts the migrated scene"
       ],
       "adapters": {
         "lottie": {

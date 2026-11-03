@@ -331,7 +331,7 @@ timing local { offset 0ms; stretch 1; };
 composition chip {
   rectangle body { size (10, 10); fill #ffffff; };
 };
-instance one of chip { start 0ms; end 1s; timing local; };
+instance one of chip { start 0ms; end 1s; };
 rectangle box { size (4, 4); fill #ff0000; position (1, 2); };
 operators box { trim 0, 1, 0; round 2; };
 animate box.position.x { from 0; to 10; duration 1s; ease cubic(0.4, 0, 0.2, 1); timing local; };

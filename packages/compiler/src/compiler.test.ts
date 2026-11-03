@@ -259,7 +259,7 @@ const CAPABILITY = `scene "cap" {
   requires "geometry.operators";
 };
 timing local { offset 0ms; stretch 1; };
-instance one of chip { start 0ms; end 1s; timing local; };
+instance one of chip { start 0ms; end 1s; };
 operators box { trim 0, 1, 0; round 2; };
 composition chip {
   rectangle body { size (10, 10); fill #ffffff; };
@@ -304,7 +304,7 @@ complete;
   duration 1s;
 };
 timing local { offset 0ms; stretch 1; };
-instance one of gone { start 0ms; end 1s; timing local; };
+instance one of gone { start 0ms; end 1s; };
 complete;
 `);
     expect(missing.ok).toBe(false);
@@ -320,6 +320,25 @@ timing local { offset 0ms; stretch 0; };
 complete;
 `);
     expect(stretch.ok).toBe(false);
+  });
+
+  it("rejects instance timing as UNSUPPORTED_PROPERTY", () => {
+    const forbidden = compileMotionScript(`scene "no-inst-timing" {
+  version "0.2";
+  viewport (100, 100);
+  background #000000;
+  duration 1s;
+};
+timing local { offset 0ms; stretch 1; };
+composition chip {
+  rectangle body { size (10, 10); fill #ffffff; };
+};
+instance one of chip { start 0ms; end 1s; timing local; };
+complete;
+`);
+    expect(forbidden.ok).toBe(false);
+    expect(forbidden.diagnostics.some((item) => item.code === "UNSUPPORTED_PROPERTY" && /timing/.test(item.message))).toBe(true);
+    expect(forbidden.scene?.instances).toEqual([]);
   });
 });
 
