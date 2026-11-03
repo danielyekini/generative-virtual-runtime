@@ -6,10 +6,18 @@ the owning run verifies its own work, including the full repository test suite.
 
 ## Branch lifecycle
 
-- Fetch main and start from current main in an isolated checkout/worktree.
+- Fetch main and start from current main in an **isolated git worktree** (or an
+  equivalent dedicated checkout). Do **not** implement on a shared working tree
+  that another agent may also mutate. User steering 3 November 2026: concurrent
+  agents lose work when they share one checkout; every run that edits the repo
+  must use its own worktree/branch pair before coding
+  ([decision](../decisions/2026-11-03-isolated-worktrees.md)).
 - One coherent issue outcome per branch/PR. Use engine/<issue>-<short-slug>,
   product/<issue>-<short-slug>, or ops/<issue>-<short-slug>. Include run ID when
   needed to avoid collisions. Never develop directly on main.
+- Create the worktree from current `origin/main` (or resume the claimed issue
+  branch in its existing worktree). Move the agent root into that worktree
+  before edits. Leave other agents' worktrees untouched.
 - Make focused commits with meaningful intent and issue references. Don't mix
   secrets, caches, dependencies or unrelated generated outputs into commits.
 - Check status/diff, preserve others' work and use explicit file staging. Never

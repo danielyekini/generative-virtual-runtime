@@ -29,13 +29,16 @@ worker context. No background LLM wake is configured.
 
 ## Mandatory verification and Git lifecycle
 
-Follow [git.md](docs/operations/git.md). Use an isolated issue branch from current
-main. Run `npm run verify` (full tests, all existing typechecks, Studio build,
-operations acceptance and reference freshness) before PR submission and after
-final code/main integration. Repair inherited failures without weakening tests.
+Follow [git.md](docs/operations/git.md). Use an **isolated git worktree** plus
+issue branch from current main — never edit a checkout another agent may also
+be using ([decision](docs/decisions/2026-11-03-isolated-worktrees.md)). Run
+`npm run verify` (full tests, all existing typechecks, Studio build, operations
+acceptance and reference freshness) before PR submission and after final
+code/main integration. Repair inherited failures without weakening tests.
 No mandatory independent review. Self-merge only after acceptance and actual
 protection/check permissions; verify remote merge then delete only own merged
-remote/local feature branch. Keep external blockers explicit; never bypass gates.
+remote/local feature branch (and own worktree when clean). Keep external
+blockers explicit; never bypass gates.
 
 ## Aim
 
