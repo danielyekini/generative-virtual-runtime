@@ -1,6 +1,8 @@
 /**
- * ElevenLabs GenerativeAudioProvider (E034).
- * Endpoints and portable fields: docs/decisions/engine/generative-audio-contract.md.
+ * Host generative-audio provider package (public id `@gvr/audio-provider`).
+ * Default backend is ElevenLabs (authorised first provider); REST mapping stays
+ * an internal factory option. Portable fields:
+ * docs/decisions/engine/generative-audio-contract.md.
  *
  * Secrets stay with the host. Pass `apiKey` (or a getter) from Studio / env —
  * never from MotionScript, Scene IR, or the repository. Optional local probe:
@@ -113,9 +115,29 @@ async function readError(response: Response): Promise<string> {
   }
 }
 
+/** Options for the public host factory (vendor-neutral entry). */
+export type GenerativeAudioProviderOptions = ElevenLabsGenerativeAudioOptions & {
+  /** Authorised backends. Default `"elevenlabs"`. */
+  backend?: "elevenlabs";
+};
+
 /**
- * Create an ElevenLabs-backed generative audio provider. Does not import a
- * vendor SDK; uses fetch against the documented REST endpoints.
+ * Create a host generative audio provider. Primary public entry — does not
+ * hard-wire a vendor brand into the import path. Default backend is ElevenLabs.
+ */
+export function createGenerativeAudioProvider(
+  options: GenerativeAudioProviderOptions,
+): GenerativeAudioProvider {
+  const backend = options.backend ?? "elevenlabs";
+  if (backend !== "elevenlabs") {
+    throw new Error(`Unsupported generative audio backend "${String(backend)}".`);
+  }
+  return createElevenLabsGenerativeAudioProvider(options);
+}
+
+/**
+ * Explicit ElevenLabs backend factory (internal/backend option). Prefer
+ * `createGenerativeAudioProvider` for ordinary hosts.
  */
 export function createElevenLabsGenerativeAudioProvider(
   options: ElevenLabsGenerativeAudioOptions,

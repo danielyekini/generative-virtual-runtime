@@ -37,8 +37,8 @@ Product notified for host/Studio naming. Does not bump MotionScript / Scene IR.
 
 1. Rename (or wrap) the public npm package to a **vendor-neutral** id (proposed
    `@gvr/audio-provider`). ElevenLabs-specific REST mapping may remain an
-   internal module or factory option. Tracked as
-   [E035 #143](https://github.com/danielyekini/generative-virtual-runtime/issues/143).
+   internal module or factory option. **Done:** E035 (#143) shipped
+   `@gvr/audio-provider` with `createGenerativeAudioProvider`.
 2. When proposing or reviewing MotionScript / Scene IR changes, record how the
    choice reduces author/model error and mental arithmetic, and how it remains
    streaming-safe — not only how it maps a graphics concept.

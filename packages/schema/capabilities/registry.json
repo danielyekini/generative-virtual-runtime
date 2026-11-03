@@ -810,7 +810,7 @@
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing audio.generative; generative sources without it are rejected. Generative resources also require audio.cues.",
         "source.type generative carries modality speech|effect, non-empty prompt, optional voice/durationHintMs/loop/seed/style; no vendor endpoint, model id or API key on the wire. durationMs may be provisional while pending; ready generative resources need positive durationMs.",
         "MotionScript: audio <id> = speech|effect \"…\" [{…}]; and sugar audio.narration / audio.effects (comma args, optional at). Cues unchanged. Resources are base definitions frozen after the first seal.",
-        "Hosts synthesise through GenerativeAudioProvider; CI uses the fixture provider only. Export of required generative cues waits until those resources are ready. ElevenLabs adapter is a separate package (E034)."
+        "Hosts synthesise through GenerativeAudioProvider; CI uses the fixture provider only. Export of required generative cues waits until those resources are ready. Host adapter package is @gvr/audio-provider (ElevenLabs default backend; E034/E035)."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
       "conformanceTests": [

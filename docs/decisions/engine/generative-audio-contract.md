@@ -237,9 +237,9 @@ they must not silently substitute.
 
 ## Amendment (user steering, 3 November 2026)
 
-Public package and generation-facing names stay **vendor-neutral** (rename
-`@gvr/audio-elevenlabs`; keep ElevenLabs as an internal backend). Language
-authoring friendliness gate:
+Public package and generation-facing names stay **vendor-neutral**. E035 renamed
+the public id to `@gvr/audio-provider` (`createGenerativeAudioProvider`);
+ElevenLabs remains the default backend. Language authoring friendliness gate:
 [2026-11-03-authoring-and-provider-abstraction.md](2026-11-03-authoring-and-provider-abstraction.md).
 This amendment does not change Scene IR wire shape or the `audio.generative`
 capability.

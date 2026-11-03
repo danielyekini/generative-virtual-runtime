@@ -1,6 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 import { encodeWav, generativeCacheKey } from "@gvr/runtime";
-import { apiKeyFromEnv, createElevenLabsGenerativeAudioProvider } from "./provider";
+import {
+  apiKeyFromEnv,
+  createElevenLabsGenerativeAudioProvider,
+  createGenerativeAudioProvider,
+} from "./provider";
 import { durationMsFromWavOrPcm } from "./wav";
 
 function tinyWav(durationMs = 250): Uint8Array {
@@ -12,7 +16,27 @@ function b64(bytes: Uint8Array): string {
   return Buffer.from(bytes).toString("base64");
 }
 
-describe("@gvr/audio-elevenlabs", () => {
+describe("@gvr/audio-provider", () => {
+  it("exposes createGenerativeAudioProvider as the primary public factory", async () => {
+    const wav = tinyWav(100);
+    const fetchMock = vi.fn(async () =>
+      new Response(Buffer.from(wav), { status: 200, headers: { "Content-Type": "audio/wav" } }),
+    );
+    const provider = createGenerativeAudioProvider({
+      apiKey: "test-key",
+      fetch: fetchMock as typeof fetch,
+    });
+    expect(provider.providerId).toBe("elevenlabs");
+    const result = await provider.synthesize({
+      resourceId: "n0",
+      modality: "effect",
+      prompt: "click",
+    });
+    expect(result.durationMs).toBe(100);
+    expect(result.bytes.byteLength).toBe(wav.byteLength);
+    expect(fetchMock).toHaveBeenCalled();
+  });
+
   it("synthesises speech via with-timestamps and maps portable voices", async () => {
     const wav = tinyWav(400);
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {

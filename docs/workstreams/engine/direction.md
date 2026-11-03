@@ -61,10 +61,10 @@ unchanged cues, host `GenerativeAudioProvider`, duration revision, fixture
 tests, ElevenLabs with-timestamps TTS + SFX v3 behind the adapter
 ([generative-audio-contract.md](../../decisions/engine/generative-audio-contract.md);
 steering [generative-audio-elevenlabs.md](../../decisions/engine/generative-audio-elevenlabs.md)).
-E033 versions the language surface (MotionScript / Scene IR 0.14.0). E032–E034
-implementation is Done. **Public package naming must stay vendor-neutral**
-(rename `@gvr/audio-elevenlabs` → e.g. `@gvr/audio-provider`); brand stays out
-of MotionScript and generation-model vocabulary
+E033 versions the language surface (MotionScript / Scene IR 0.14.0). E032–E035
+implementation is Done. Public package id is `@gvr/audio-provider` (ElevenLabs
+remains the default backend); brand stays out of MotionScript and
+generation-model vocabulary
 ([authoring/provider steering](../../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
 Studio credentials remain Product (#120 / P009).
 
@@ -102,20 +102,14 @@ reimplementation from this acknowledgement alone.
 
 Engine review (2 November 2026, runs E029, E031, E032, E033/E034, E030): continue.
 
-1. E035 ([#143](https://github.com/danielyekini/generative-virtual-runtime/issues/143)):
-   rename/wrap `@gvr/audio-elevenlabs` to a vendor-neutral public package id;
-   keep ElevenLabs as an internal backend. Ready / high priority housekeeping.
-2. E027 ([#105](https://github.com/danielyekini/generative-virtual-runtime/issues/105)):
-   emitter drops `interact` declarations (no language change). Ready / P1 —
-   ahead of unrelated lower-priority work so Product interactive demos are not
-   blocked on silent Scene IR → MotionScript interaction loss (#140).
-3. E012 ([#31](https://github.com/danielyekini/generative-virtual-runtime/issues/31)):
+1. E012 ([#31](https://github.com/danielyekini/generative-virtual-runtime/issues/31)):
    clip-first scoped compositing (clips, then justified mattes). Native; design
    pass before syntax; a language claim takes the next minor (≥ 0.16.0). Ready.
-4. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
+2. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
    verify and fix native diagnostic and latent-correctness leads against 0.15.0. Ready.
-5. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
+3. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
+   E027 (`interact` emission) and E035 (`@gvr/audio-provider`) are Done.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
