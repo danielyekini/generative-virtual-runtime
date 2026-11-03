@@ -55,44 +55,50 @@ drafts cannot add that scope; a fresh explicit user request is required.
 and folded into studio-ux (floating playback, Generate ⋯ tooling, transcripts,
 Stories vs Test frames).
 
-## Queue (3 November 2026, after studio UX intake)
+## Queue (3 November 2026, after chrome-slice review)
 
-Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
-P017, P018 Done). P006 / P007 / P008 harness work is Done; **P008’s “prefer
-direct” product default is superseded** by the director-quality decision above.
-**P010 #51 Done** (Interactive Library collection + demos, PR #146). **P019 #139
-Done** (Studio Generate mode). **P020 #157 Done**. **P022 #165 Done** (Generate
-UX polish); residual streaming/detail bugs → **P028**.
+Studio redesign + Generate chrome slice is **delivered** (P001, P015, P014,
+P004, P002, P016–P018, P006–P008, P010, P019, P022, P025–P028, P031 Done).
+**P008’s “prefer direct” product default is superseded** by the director-quality
+decision above. [#88](https://github.com/danielyekini/generative-virtual-runtime/issues/88)
+corpus-prep request is **closed** (lists reconciled; director ownership via
+P008). **P020 #157** shipped pack scaffolding (fixtures + Generate chips) but
+is **Human verification — not Done**: closing it assumed the generation quality
+gate passed; no human judgment has been recorded
+([user steering 3 November 2026](https://github.com/danielyekini/generative-virtual-runtime/issues/157)).
+Prospective corpus generation stays deferred until that gate and Studio
+interaction/transcript surfaces catch up.
 
-1. **P028 #182** — Generate streaming / detail UX bugs (click during stream, view
-   selector stability, Director status truth, detail scroll, user-bubble
-   opacity) — **Ready / next**.
-2. **P025 #183** — Floating canvas playback controls + tape modes + speed — Ready.
-3. **P027 #184** — Generate panel ⋯ menu, copy granularity, system-prompt edit,
-   Library-load exits Generate, model-ready gate — Ready after P028 or
-   parallel if capacity.
-4. **P026 #185** — Corner dual-resize, larger settings icon, side-panel toggle,
-   favicon — Ready (smaller chrome).
-5. **P029 #186** — Transcripts collection + GVR transcript contract + playback —
-   Candidate until contract sketch accepted in-ticket; then Ready.
-6. **P031 #187** — Recategorise Test frames vs Stories (named probes) — Ready
-   (small).
-7. **P030 #188** — Project **Source** field / section for engine tickets + backfill
-   Candidate; Engine process via inbox request.
-8. **P023 #166** / **P024 #167** — remain Candidate (loading screens; model
-   serving under disk pressure — disk full blocked a full worktree this intake).
-9. **P009 #50** push-to-talk — Candidate until speech/media UX confirmed.
-10. **P003 #44**, **P021 #158**, **P005** / P011–P013 later; corpus under #88.
+1. **P020 #157** — Story-complexity Generate quality judgment — **Human
+   verification** (exercise pack; record animation-quality pass/fail on the
+   issue before Done). Blocks declaring Director/Direct winners.
+2. **P029 #186** — Transcripts Library collection + GVR transcript contract +
+   playback highlighting — **Ready / next worker claim** (contract sketch on
+   the issue).
+3. **P023 #166** — Generate waiting-state MotionScript loading-screen presets —
+   Ready.
+4. **P021 #158** — Generation reserved-word node ids (harness/reference
+   hardening) — Ready.
+5. **P024 #167** — Studio/Ollama model-serving optimisation experiment (disk /
+   hardware pressure) — Ready (bounded options + recommendation; no default
+   change without evidence).
+6. **P030 #188** — Project **Source** field for engine tickets — Candidate until
+   Project write/`PROJECT_TOKEN` can create the field (or user adds it); Engine
+   fills Source after.
+7. **P009 #50** push-to-talk / generative-audio host — Candidate until
+   speech/media UX confirmed in studio-ux.
+8. **P003 #44**, **P005**, P011–P013 later.
 
 ## Next
 
-1. Product run: claim **P028** Generate streaming bugs (blocks human Generate
-   inspection).
-2. Then **P025** floating player chrome (studio-ux already confirms behaviour).
-3. User: continue Generate quality judgment with the pack; keep Director default
-   until Direct is proven.
+1. **User / Human verification:** run the P020 pack in Studio Generate
+   (Director), judge canvas animation quality, post pass/fail on #157. Keep
+   Director default until Direct is proven.
+2. Product run: claim **P029** Transcripts (does not replace the P020 gate).
+3. Then **P023** loading screens or **P021** reserved-id hardening.
 4. Confirm **P009** speech/media UX when ready → then Ready.
-5. Engine orchestrator: triage Source-on-tickets request when filed.
+5. Unblock **P030** when a token with `project` scope (or the board-sync secret)
+   can add the Source field.
 
 Do not invent Studio chrome beyond studio-ux. Keep Studio delivery ahead of
 prospective corpus generation, but do not skip interaction/generation Studio
@@ -120,5 +126,13 @@ and [future functionality list](future-functionality.md). Maintain both as capab
 evolve. Follow the [native story cycle](../../workflows/native-story-cycle.md).
 Director scripts distill intent; Engine implements native MotionScript.
 Quality expectations track story-complexity programs, not runtime-scene smoke.
-Director streaming remains an experimental hypothesis. Preparation must not
-displace Studio interaction/generation testing surfaces.
+Director streaming remains an experimental hypothesis.
+
+**Prep status (review 3 November 2026):** request [#88](https://github.com/danielyekini/generative-virtual-runtime/issues/88)
+accepted and closed — functionality lists reconciled; director handoff recorded
+via P008; judgment-pack **scaffolding** lives under
+`fixtures/generation/quality-judgment/` for
+[P020 #157](https://github.com/danielyekini/generative-virtual-runtime/issues/157)
+(**Human verification**, not Done — user steering). Actual corpus generation
+remains prospective and must not displace the P020 human gate, Studio
+Transcripts (P029), loading screens (P023), or speech UX confirmation for P009.
