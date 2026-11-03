@@ -46,7 +46,7 @@ import {
 } from "./settings";
 import { playbackHotspotContains, PLAYBACK_IDLE_MS, showFrameTape } from "./playback-chrome";
 import { GenerateController } from "./generate-session";
-import { bindGeneratePanel, renderGeneratePanel, wireGeneratePanel } from "./generate-panel";
+import { bindGeneratePanel, closeGenerateMenu, renderGeneratePanel, wireGeneratePanel } from "./generate-panel";
 
 function $<T extends HTMLElement>(id: string): T {
   const element = document.getElementById(id);
@@ -304,6 +304,9 @@ let ticksKey = "";
 let generateMode = false;
 /** Source-open preference restored when leaving Generate. */
 let sourceOpenBeforeGenerate = false;
+/** Re-probe an unavailable Generate model so Send unlocks once Ollama answers. */
+const MODEL_READINESS_POLL_MS = 5000;
+let modelReadinessTimer = 0;
 
 const generateUi = bindGeneratePanel($("generate-chrome"));
 const generate = new GenerateController({
@@ -587,12 +590,20 @@ function enterGenerateMode(): void {
   saveSettings();
   render();
   generateUi.composer.focus({ preventScroll: true });
+  // Send stays inactive until the selected model answers; keep probing while it is not ready.
+  void generate.checkModel();
+  window.clearInterval(modelReadinessTimer);
+  modelReadinessTimer = window.setInterval(() => {
+    if (generateMode && !generate.state.running && generate.state.modelReadiness === "unavailable") void generate.checkModel();
+  }, MODEL_READINESS_POLL_MS);
 }
 
 function leaveGenerateMode(openSource = sourceOpenBeforeGenerate): void {
   if (!generateMode) return;
   if (generate.state.running) generate.cancel();
   generate.closeDetail();
+  closeGenerateMenu(generateUi);
+  window.clearInterval(modelReadinessTimer);
   generateMode = false;
   settings.sourceOpen = openSource;
   saveSettings();
@@ -648,6 +659,8 @@ function jumpTo(item: LocatedDiagnostic): void {
 const library = new LibraryPage(catalogue, {
   open: (entry) => {
     showPlayer();
+    // studio-ux P027: a Library load exits Generate and shows the program in Source.
+    if (generateMode) leaveGenerateMode(true);
     if (entry.key !== loaded?.key) openProgram(entry);
     else history.replaceState(null, "", `#p/${encodeURIComponent(entry.key)}`);
   },
@@ -922,7 +935,7 @@ function renderSource(): void {
   put(ui.sourceFormat, loaded ? FORMAT_LABELS[loaded.format] : "");
   ui.sourceDirty.hidden = !dirty();
   put(ui.sourceDirty, outcome ? "● edited since Run" : "● edited");
-  if (generateMode) renderGeneratePanel(generateUi, generate.state);
+  if (generateMode) renderGeneratePanel(generateUi, generate.state, (kind) => generate.systemPrompt(kind));
 }
 
 let diagKey = "";
@@ -1245,6 +1258,7 @@ function closeMenus(except?: HTMLElement): void {
     menu.hidden = true;
     button.setAttribute("aria-expanded", "false");
   }
+  closeGenerateMenu(generateUi);
 }
 
 function toggleMenu(menu: HTMLElement, button: HTMLButtonElement): void {

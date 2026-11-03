@@ -18,6 +18,8 @@ export type PipelineOptions = {
   prompt: string;
   generator: MotionScriptGenerator;
   system?: string;
+  /** Director planning system prompt; defaults to DIRECTOR_SYSTEM (Studio testers may override per session). */
+  directorSystem?: string;
   /** direct = one-shot MotionScript; director = plan JSON then implement. */
   approach?: GenerationApproach;
   signal?: AbortSignal;
@@ -141,7 +143,7 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
       try {
         await options.generator.stream(options.prompt, {
           signal: localController.signal,
-          system: DIRECTOR_SYSTEM,
+          system: options.directorSystem ?? DIRECTOR_SYSTEM,
           onChunk: (chunk) => {
             noteChunk(chunk);
             if (chunk.text && !sessionState.disposed) {

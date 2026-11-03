@@ -633,3 +633,34 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
   .run-actions .menu { left: auto; right: 8px; }
   .bar-end { margin-left: auto; }
 }
+
+/* P027 Generate tools: ⋯ menu, copy granularity, system prompts, model readiness. */
+.generate-menu-wrap { position: relative; }
+#generate-menu { padding: 2px 9px; font-size: 15px; line-height: 1; }
+#generate-menu[aria-expanded="true"] { background: var(--accent-soft); border-color: var(--accent); }
+.generate-menu { right: 0; min-width: 230px; color: var(--text); font-size: 13px; }
+.generate-menu-view { display: flex; flex-direction: column; gap: 6px; }
+.generate-menu-view[hidden] { display: none; }
+.generate-menu-view > button[role="menuitem"] { display: flex; justify-content: space-between; align-items: center; text-align: left; }
+.generate-menu-chevron { color: var(--muted); margin-left: 12px; }
+.generate-menu-heading { display: flex; align-items: center; gap: 8px; }
+.generate-menu-heading button { padding: 1px 7px; }
+.generate-copy-parts { display: flex; flex-direction: column; gap: 6px; }
+.generate-copy-run { background: #1d4ed8; border-color: #3b82f6; }
+.generate-copy-run:disabled { background: transparent; border-color: var(--line-strong); }
+.generate-prompts { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.generate-prompts[hidden], .generate-middle[hidden] { display: none; }
+.generate-prompts .panel-bar { flex-wrap: wrap; }
+#generate-prompts-text {
+  flex: 1;
+  min-height: 0;
+  resize: none;
+  border: 0;
+  padding: 8px 10px;
+  background: #18181b;
+  color: var(--text);
+  font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.generate-prompts-note { margin: 0; padding: 4px 8px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--line); }
+.generate-chip.is-unready { opacity: .45; }
+.generate-send:disabled { background: #252528; border-color: var(--line-strong); }
