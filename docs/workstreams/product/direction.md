@@ -79,8 +79,16 @@ transcript playback (P029) is delivered.
    Candidate (not Ready on the board).
 4. **P021 #158** — Generation reserved-word node ids (harness/reference
    hardening) — Ready (P2).
-5. **P024 #167** — Studio/Ollama model-serving optimisation experiment (disk /
-   hardware pressure) — Ready (P1; highest remaining Ready item).
+5. **P024 #167** — Studio/Ollama model-serving investigation — **Done**.
+   The 14B Q4_K_M pin stays. Weights are one shared `~/.ollama` blob, not a
+   per-worktree copy. Follow-ups are Candidate:
+   [P032 #234](https://github.com/danielyekini/generative-virtual-runtime/issues/234)
+   (unload after Generate),
+   [P033 #235](https://github.com/danielyekini/generative-virtual-runtime/issues/235)
+   (held-out lighter tag, default unchanged), and
+   [P034 #236](https://github.com/danielyekini/generative-virtual-runtime/issues/236)
+   (evaluation checkout bytes). Decision:
+   [2026-11-03-ollama-serving](../../decisions/product/2026-11-03-ollama-serving.md).
 6. **P030 #188** — Project **Source** field for engine tickets — Candidate until
    Project write/`PROJECT_TOKEN` can create the field (or user adds it); Engine
    fills Source after.
@@ -93,8 +101,9 @@ transcript playback (P029) is delivered.
 1. **User / Human verification:** run the P020 pack in Studio Generate
    (Director), judge canvas animation quality, post pass/fail on #157. Keep
    Director default until Direct is proven.
-2. Product run: claim **P024** (only remaining Ready P1). **P021** follows.
-   **P023** stays Candidate until its loading-screen scope is promoted.
+2. Product run: claim **P021** (Ready P2). **P023** stays Candidate until
+   its loading-screen scope is promoted. **P032** / **P033** / **P034** stay
+   Candidate; do not pull a second Ollama tag without the P033 disk gate.
 3. Confirm **P009** speech/media UX when ready → then Ready.
 4. Unblock **P030** when a token with `project` scope (or the board-sync secret)
    can add the Source field.
