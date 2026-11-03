@@ -67,7 +67,7 @@ any image behaviour.
 
 | Recipe | Authoring | Runtime cost | Decision |
 | --- | --- | --- | --- |
-| Sprite atlas frames (source-rect grid + integer `frame` channel) | Name a grid and a frame index; no pixel arithmetic | One draw per sprite; one decoded atlas | **Next** (E045) |
+| Sprite atlas frames (source-rect grid + integer `frame` channel) | Name a grid and a frame index; no pixel arithmetic | One draw per sprite; one decoded atlas | **Landed** (E045, MotionScript 0.25.0 / Scene IR 0.24.0 `resources.spriteFrames`) |
 | Grid tiling via drawable bindings (E005/E023) | Existing syntax; the compiler can derive positions | One draw item per tile | **Use today**, no new semantics |
 | Image pattern paint (`CanvasPattern`, repeat + phase) | Concise for large textured fills | One fill; pattern-space and clip/matte rules needed | **Deferred** to evidence (E046 #205) |
 | Procedural materials / shaders | High creativity, but unbounded | GPU / backend specific | Out of scope (E021 experiments) |
@@ -91,3 +91,12 @@ evidence.
   variants are not targeted.
 - Studio does not yet call `prepare` or feed `imageStates`. Its draws still
   acquire lazily, so behaviour is unchanged. E045 adds the Studio surface.
+
+## Implementation (E045, 3 November 2026)
+
+E045 landed both language surfaces as MotionScript 0.25.0 / Scene IR 0.24.0:
+
+- `resources.imageSampling`: per-node `sampling smooth|pixelated` overrides the host default.
+- `resources.spriteFrames`: a `frames (columns, rows)` grid on the image resource, a static `frame`, and a `frame` track channel. Sampled values are floored and clamped; cells are row-major and derived from the decoded size.
+
+The Studio player now calls `renderer.images.prepare(scene.resources)` on every run, holds a playing clock while a drawn image is pending ("holding for images"), blocks with a note when one failed, redraws on `images.onChange` while paused, and reports `images` in its probe. The test frame is "Sprite frames" (`fixtures/motionscript/frames/sprite-frames.ms`). Its atlas is `app/playground/public/images/walker-atlas.png`, a 4 × 2 grid of 8 × 8 cells.

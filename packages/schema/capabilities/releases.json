@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.24.0",
+      "current": "0.25.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.22"
+      "packageVersion": "0.1.23"
     },
     "scene-ir": {
-      "current": "0.23.0",
+      "current": "0.24.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.22"
+      "packageVersion": "0.1.23"
     }
   },
   "versions": [
@@ -184,6 +184,13 @@
     },
     {
       "language": "motionscript",
+      "version": "0.25.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.25.0.md"
+    },
+    {
+      "language": "motionscript",
       "version": "pending",
       "status": "draft",
       "file": "docs/languages/motionscript/versions/pending.md"
@@ -348,6 +355,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.23.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.24.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.24.0.md"
     },
     {
       "language": "scene-ir",
@@ -531,6 +545,13 @@
       "compiler": "0.1.20",
       "runtime": "0.1.25",
       "readers": "Wire stays 0.2. timing.cyclicScopes is gated by requiredCapabilities / requires. Scopes without periodMs sample exactly as timing.localScopes. Older validators reject the unknown capability token and the periodMs, repeat and step timingScopeId keys. period and repeat are not reserved words."
+    },
+    {
+      "motionscript": "0.25.0",
+      "sceneIr": "0.24.0",
+      "compiler": "0.1.21",
+      "runtime": "0.1.26",
+      "readers": "Wire stays 0.2. resources.imageSampling and resources.spriteFrames are gated by requiredCapabilities / requires. Images without sampling, frames or frame draw exactly as resources.image. Older validators reject the unknown capability tokens, the sampling / frame node keys, the resource frames key and the frame channel. sampling, frames, frame, smooth and pixelated are not reserved words."
     }
   ]
 }

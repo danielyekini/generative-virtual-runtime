@@ -328,6 +328,11 @@ function geometryLines(scene: SceneIR, node: NodeDefinition): string[] {
     const resource = scene.resources.find((entry) => entry.id === node.resourceId && entry.kind === "image");
     lines.push(`href ${quote(resource && resource.kind === "image" ? resource.href : "")};`);
     lines.push(`size ${formatVec(node.size)};`);
+    if (node.sampling) lines.push(`sampling ${node.sampling};`);
+    if (resource && resource.kind === "image" && resource.frames) {
+      lines.push(`frames (${resource.frames.columns}, ${resource.frames.rows});`);
+    }
+    if (node.frame !== undefined) lines.push(`frame ${node.frame};`);
   }
   if (node.kind === "circle") lines.push(`radius ${formatNumber(node.radius)};`);
   if (node.kind === "line") {

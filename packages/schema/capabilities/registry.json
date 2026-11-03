@@ -548,7 +548,7 @@
       "summary": "An image node draws a declared image resource when that resource is ready.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["compiler", "renderer"],
-      "restrictions": ["A drawn image whose host-reported (or declared) readiness is pending holds presentation startup; failed blocks it. Declared but undrawn images are not required. The renderer draws only a decoded image at the node size; pending or failed images draw nothing. Sampling control and sprite frames are not part of this claim (E019)."],
+      "restrictions": ["A drawn image whose host-reported (or declared) readiness is pending holds presentation startup; failed blocks it. Declared but undrawn images are not required. The renderer draws only a decoded image at the node size; pending or failed images draw nothing. Per-node sampling and sprite frames are separate claims: resources.imageSampling and resources.spriteFrames (E045)."],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [
         "packages/runtime/src/visual-resources.test.ts#compiles each image to a declared ready resource and resolves its href per frame",
@@ -558,6 +558,59 @@
       "adapters": {
         "lottie": { "status": "untested", "scope": "Image layers can become image nodes. No conformance test pins the href." },
         "svg": { "status": "untested", "scope": "SVG image elements are not asserted." }
+      }
+    },
+    {
+      "id": "resources.imageSampling",
+      "summary": "An image node may choose smooth or pixelated sampling; pixelated keeps hard texel edges when scaled.",
+      "introducedIn": { "motionscript": "0.25.0", "sceneIr": "0.24.0" },
+      "targets": ["compiler", "renderer"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing resources.imageSampling; the compiler adds it when an image declares sampling. ImageNode.sampling without the capability is MISSING_REQUIRED.",
+        "MotionScript `sampling smooth|pixelated;` on image nodes only; sampling, smooth and pixelated match by spelling and are not reserved words. Not animatable.",
+        "Renderer: the node's sampling overrides the host default (CanvasRenderer imageSampling / setImageSampling); omitted keeps the host default. pixelated sets imageSmoothingEnabled = false for that draw. Image pattern paint and vendor-prefixed smoothing are out of scope."
+      ],
+      "support": { "compiler": "supported", "runtime": "not-applicable", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/sprite-frames.test.ts#lowers sampling to the node and the grid to the image resource",
+        "packages/schema/src/sprite-frames.test.ts#gates sampling, grids, frames and frame tracks on their capabilities",
+        "packages/canvas-renderer/src/sprite-frames.test.ts#steps an animated frame and lets node sampling override the renderer default",
+        "packages/canvas-renderer/src/sprite-frames.test.ts#keeps a plain image a whole-image draw at the renderer default"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Native image sampling; Lottie image layers are not imported with a sampling mode." },
+        "svg": { "status": "not-applicable", "scope": "Native image sampling; SVG image-rendering is not imported." }
+      }
+    },
+    {
+      "id": "resources.spriteFrames",
+      "summary": "An image resource may be an atlas grid; an image node draws one row-major cell named by an integer frame, which may be animated.",
+      "introducedIn": { "motionscript": "0.25.0", "sceneIr": "0.24.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing resources.spriteFrames; the compiler adds it when an image declares frames. ImageResource.frames, ImageNode.frame and frame tracks without the capability are MISSING_REQUIRED.",
+        "MotionScript `frames (columns, rows);` lowers onto the node's image resource as { columns, rows } (whole numbers 1..1024). `frame <n>;` is a static row-major index 0 <= n < columns x rows and needs frames. frames and frame match by spelling and are not reserved words; they apply only to image nodes.",
+        "The `frame` node channel is a number track (animate / keyframes / timed keys, local and cyclic scopes) on an image whose resource has a grid. Sampled values are floored (with a 1e-9 tolerance), then clamped to [0, count - 1]; non-finite values show frame 0. So `from 0; to N; duration D` shows N frames for D/N each and holds the last. Seals and late writers follow the ordinary track rules.",
+        "Renderer: the cell rectangle is derived from the decoded image size (width / columns, height / rows), so programs never state source pixels; the cell is drawn at the node size. Uneven atlas sizes give fractional source rects. Per-cell sizes, padding, trimmed atlases, frame-rate sugar and pattern paint are out of scope."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/sprite-frames.test.ts#lowers sampling to the node and the grid to the image resource",
+        "packages/compiler/src/sprite-frames.test.ts#animates frame as a track and requires a grid for it",
+        "packages/compiler/src/sprite-frames.test.ts#rejects bad grids, out-of-range frames, unknown sampling and non-image use",
+        "packages/compiler/src/sprite-frames.test.ts#keeps sampling, frames, frame, smooth and pixelated unreserved",
+        "packages/compiler/src/sprite-frames.test.ts#streams the Studio test frame identically under every fragmentation and seals honestly",
+        "packages/schema/src/sprite-frames.test.ts#rejects bad grids, unknown sampling and out-of-range frames",
+        "packages/schema/src/sprite-frames.test.ts#requires a grid for a static frame and for frame tracks",
+        "packages/runtime/src/sprite-frames.test.ts#steps eight frames evenly over the track and holds the last cell",
+        "packages/runtime/src/sprite-frames.test.ts#loops under a cyclic scope",
+        "packages/runtime/src/sprite-frames.test.ts#clamps out-of-range and non-finite channel values",
+        "packages/canvas-renderer/src/sprite-frames.test.ts#draws the row-major atlas cell for the sampled frame",
+        "packages/motionscript-emitter/src/sprite-frames.test.ts#re-emits sampling, frames and frame with identical sampled cells"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Native sprite frames; Lottie image sequences are not imported as atlas frames." },
+        "svg": { "status": "not-applicable", "scope": "Native sprite frames; SVG sprite views are not imported." }
       }
     },
     {

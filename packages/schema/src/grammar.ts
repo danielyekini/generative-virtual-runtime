@@ -54,13 +54,14 @@ cameraProperty = "position" , vec2 , ";"
 groupDecl      = "group" , identifier , "{" , { commonProperty } , { nodeOrGroup } , "}" , ";" ;
 nodeOrGroup    = nodeDecl | groupDecl ;
 nodeDecl       = rectangleDecl | circleDecl | ellipseDecl | lineDecl
-               | polygonDecl | pathDecl | textDecl ;
+               | polygonDecl | pathDecl | imageDecl | textDecl ;
 rectangleDecl  = "rectangle" , identifier , "{" , { rectangleItem } , "}" , ";" ;
 circleDecl     = "circle" , identifier , "{" , { circleItem } , "}" , ";" ;
 ellipseDecl    = "ellipse" , identifier , "{" , { ellipseItem } , "}" , ";" ;
 lineDecl       = "line" , identifier , "{" , { lineItem } , "}" , ";" ;
 polygonDecl    = "polygon" , identifier , "{" , { polygonItem } , "}" , ";" ;
 pathDecl       = "path" , identifier , "{" , { pathItem } , "}" , ";" ;
+imageDecl      = "image" , identifier , "{" , { imageItem } , "}" , ";" ;
 textDecl       = "text" , identifier , "{" , { textItem } , "}" , ";" ;
 
 commonProperty = "position" , vec2 , ";"
@@ -88,6 +89,18 @@ join           = "miter" | "round" | "bevel" ;
 
 rectangleItem  = commonProperty | styleProperty | ( "size" , vec2 , ";" ) ;
 circleItem     = commonProperty | styleProperty | ( "radius" , signedNumber , ";" ) ;
+(* MotionScript 0.2 resources.image: href and size are required.
+   MotionScript 0.25 resources.imageSampling / resources.spriteFrames: sampling,
+   frames and frame match by spelling and are not reserved words. frames names
+   a (columns, rows) atlas grid of whole numbers 1..1024; frame is a row-major
+   cell index from 0 and needs frames. Animate it with: animate Walker.frame
+   { from 0; to 8; duration 800ms; }; sampled values are floored, then clamped. *)
+imageItem      = commonProperty
+               | ( "href" , string , ";" )
+               | ( "size" , vec2 , ";" )
+               | ( "sampling" , ( "smooth" | "pixelated" ) , ";" )
+               | ( "frames" , "(" , signedInteger , "," , signedInteger , ")" , ";" )
+               | ( "frame" , signedInteger , ";" ) ;
 ellipseItem    = commonProperty | styleProperty | ( "size" , vec2 , ";" ) ;
 lineItem       = commonProperty
                | ( "from" , vec2 , ";" )

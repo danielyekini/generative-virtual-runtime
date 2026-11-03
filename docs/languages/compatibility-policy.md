@@ -125,6 +125,10 @@ Landed in MotionScript **0.23.0** only; Scene IR stays **0.22.0**. Wire stays `"
 
 Landed in MotionScript **0.24.0** / Scene IR **0.23.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `timing.cyclicScopes`, which the compiler adds when a `timing` declares `period`. `period` and `repeat` match by spelling inside `timing` and are not reserved words; `step` takes an optional `timing <scope>;`. Scene IR `TimingScope` gains `periodMs` / `repeat` and `StepDefinition` gains `timingScopeId`. Scopes without a period sample exactly as `timing.localScopes`, so no older program is reinterpreted. A cyclic chain exclusively owns the channels it writes, and its writers must arrive before the seal passes the chain's entry (−∞ for unbounded cycles). Older readers reject the capability token and the new keys. See `docs/decisions/engine/time-composition.md`.
 
+### Decision for `resources.imageSampling` and `resources.spriteFrames`
+
+Landed in MotionScript **0.25.0** / Scene IR **0.24.0**. Wire stays `"0.2"`. Scenes and programs gate with `requiredCapabilities` / `requires`. The compiler adds `resources.imageSampling` when an image declares `sampling`, and `resources.spriteFrames` when it declares `frames`. `sampling`, `frames`, `frame`, `smooth` and `pixelated` match by spelling and are not reserved words. Scene IR gains `ImageNode.sampling` / `frame`, `ImageResource.frames` and the `frame` track channel. A frame value is floored and clamped to the row-major grid, and the renderer derives cell rectangles from the decoded size. Images without the new fields draw exactly as `resources.image`, so no older program is reinterpreted. Older readers reject the capability tokens, keys and channel. See `docs/decisions/engine/resource-lifecycle.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

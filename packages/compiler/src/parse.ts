@@ -356,6 +356,28 @@ function parseNodeItem(parser: Parser, node: NodeAst, key: string): void {
     } else node.props.push({ name: key, value });
     return;
   }
+  if (key === "sampling") {
+    // resources.imageSampling (0.25.0): words match by spelling, not reserved.
+    const value = eatWord(parser);
+    if (value?.lexeme === "smooth" || value?.lexeme === "pixelated") node.props.push({ name: "sampling", value: value.lexeme });
+    else note(node, parser, "sampling is smooth or pixelated.");
+    return;
+  }
+  if (key === "frames") {
+    // resources.spriteFrames (0.25.0): frames (columns, rows).
+    const vec = parseVec(parser);
+    if (!vec) note(node, parser, "frames needs (columns, rows).");
+    else node.props.push({ name: "frames", vec });
+    return;
+  }
+  if (key === "frame") {
+    const value = parseSignedInteger(parser);
+    if (value === undefined) {
+      note(node, parser, "frame needs a whole number.");
+      skipProperty(parser);
+    } else node.props.push({ name: "frame", value });
+    return;
+  }
   if (key === "sign") {
     const value = eatWord(parser);
     if (value?.lexeme === "auto" || value?.lexeme === "always" || value?.lexeme === "never") {

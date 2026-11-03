@@ -221,6 +221,12 @@ function compareGeometry(
   } else if (left.kind === "image" && right.kind === "image") {
     compareVec(mismatches, timeMs, nodeId, "size", left.size, right.size, tolerance);
     if (left.href !== right.href) mismatches.push({ timeMs, nodeId, property: "image.href", left: left.href, right: right.href });
+    if ((left.sampling ?? "") !== (right.sampling ?? "")) {
+      mismatches.push({ timeMs, nodeId, property: "image.sampling", left: left.sampling ?? "default", right: right.sampling ?? "default" });
+    }
+    const leftCell = left.frame ? `${left.frame.column},${left.frame.row}/${left.frame.columns}x${left.frame.rows}` : "none";
+    const rightCell = right.frame ? `${right.frame.column},${right.frame.row}/${right.frame.columns}x${right.frame.rows}` : "none";
+    if (leftCell !== rightCell) mismatches.push({ timeMs, nodeId, property: "image.frame", left: leftCell, right: rightCell });
   } else if (left.kind === "line" && right.kind === "line") {
     compareVec(mismatches, timeMs, nodeId, "from", left.from, right.from, tolerance);
     compareVec(mismatches, timeMs, nodeId, "to", left.to, right.to, tolerance);

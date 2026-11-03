@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.24.0 | 0.2 |
-| scene-ir | 0.23.0 | 0.2 |
+| motionscript | 0.25.0 | 0.2 |
+| scene-ir | 0.24.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -37,6 +37,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | paint.linearGradient | untested | not-applicable | untested | A fill may be a linear gradient with colour stops. [registry](../../packages/schema/capabilities/registry.json) |
 | paint.radialGradient | untested | not-applicable | untested | A fill may be a radial gradient with colour stops. [registry](../../packages/schema/capabilities/registry.json) |
 | resources.image | supported | supported | supported | An image node draws a declared image resource when that resource is ready. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/visual-resources.test.ts) |
+| resources.imageSampling | supported | not-applicable | supported | An image node may choose smooth or pixelated sampling; pixelated keeps hard texel edges when scaled. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/sprite-frames.test.ts) |
+| resources.spriteFrames | supported | supported | supported | An image resource may be an atlas grid; an image node draws one row-major cell named by an integer frame, which may be animated. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/sprite-frames.test.ts) |
 | svg.smilTimeBased | not-applicable | supported | not-applicable | SMIL animate and animateTransform become tracks. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-svg/src/svg.test.ts) |
 | svg.cssKeyframes | not-applicable | supported | not-applicable | An embedded opacity @keyframes rule plus an element animation duration becomes a track. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-svg/src/svg.test.ts) |
 | compositing.isolatedOpacity | untested | untested | untested | A group can isolate opacity in its own render scope. [registry](../../packages/schema/capabilities/registry.json) |
@@ -80,5 +82,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `0957f8d590ec6c4174547a3e91b6ddeb107a106b47d732843e2404ca5013ea7e`
-- `packages/schema/capabilities/registry.json` SHA-256 `30cb4358ad73a2ad3bba2500bfdf01c32b38500345c582f9b76845d0f4ce346a`
+- `packages/schema/capabilities/releases.json` SHA-256 `ba501cfdf25487761f8de5020b21a89e3e12977c294485afd4468e5ebbb05be0`
+- `packages/schema/capabilities/registry.json` SHA-256 `b635898806abb78187570259a46ad92bfcaedcabd22f0712e20a50b55e072294`

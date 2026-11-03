@@ -40,3 +40,42 @@ Worktree `gvr-e047`, branch `claude/kind-knuth-bx2lfv`.
   - a late track, step, cue and cyclic writer are labelled, each with `sceneTimeMs` set to the horizon;
   - the code stays `INVALID_TIMING`.
 - `npm run verify` exit 0: 97 test files and 640 tests, all typechecks, the Studio build, the IR manifest, 33 ops tests, the capability index, and `reference:check ok (ms-0.24.0_sir-0.23.0, 93a226e2)`.
+
+## E045 outcome (second ticket, same run)
+
+E047 merged as PR #210 (`4fa94ec`). The designated branch was then restarted from main for E045 ([#204](https://github.com/danielyekini/generative-virtual-runtime/issues/204)).
+
+- **Language:** MotionScript **0.25.0** / Scene IR **0.24.0**, capabilities `resources.imageSampling` and `resources.spriteFrames`, wire `"0.2"`.
+  - `sampling smooth|pixelated;` sets `ImageNode.sampling`, which overrides the host renderer default.
+  - `frames (columns, rows);` lowers onto `ImageResource.frames`.
+  - `frame <n>;` sets the static `ImageNode.frame`. The `frame` track channel supports animate, keyframes, timed keys and local and cyclic scopes.
+  - Sampling floors the value, then clamps it to the row-major grid. The renderer derives cell rectangles from the decoded size.
+  - None of the new words are reserved. The grammar now describes `image` nodes, which it never did before.
+- **Studio:** the player calls `renderer.images.prepare(scene.resources)` on run and stream start. Each frame it checks `sceneImageReadiness` against the cache states before the clock ticks:
+  - a pending image shows "holding for images";
+  - a failed image blocks playback with a note;
+  - `images.onChange` triggers a redraw while paused;
+  - the probe reports `images`.
+
+  The new test frame is "Sprite frames" (`fixtures/motionscript/frames/sprite-frames.ms`). Its atlas is `app/playground/public/images/walker-atlas.png`, generated as 4 × 2 cells of 8 × 8 texels.
+- **Files:** two registry rows, plus the `resources.image` restriction pointing at them; `releases.json` and the combination; version notes `motionscript/0.25.0.md` and `scene-ir/0.24.0.md`; both `pending.md` files; the compatibility policy; an implementation note in the resource-lifecycle decision; the reference snapshot `ms-0.25.0_sir-0.24.0-c769a558`; and patch bumps for the six affected packages.
+
+### E045 verification
+
+- New tests, 20 in total:
+  - compiler: 6 (lowering, capabilities, the frame track and grid rule, rejections, unreserved words, five fragmentations, a late frame writer reported as `SEALED_HISTORY_WRITE`);
+  - schema: 4 (capability gates, domains, grid requirement);
+  - runtime: 4 (even stepping with a hold, cyclic loop, static frame, clamping);
+  - renderer: 3 (row-major source rect, animated frames with the node sampling override, plain image unchanged);
+  - emitter: 1 round-trip test, comparing geometry every 50 ms over 0–4 s.
+- **Real Chromium**, built Studio with the production `CanvasRenderer` (`vite preview`):
+  - The poster `e045-sprite-frames-poster.png` shows smooth vs crisp texels and still frame 5.
+  - After Run, `images.states` are all `ready`, and sampled cells at 0 / 150 / 450 / 850 ms are 0 / 1 / 4 / 0 (looped).
+  - With the atlas response held, `holding: true`, `timeMs: 0` and the note "waiting for image …". Releasing it resumes playback.
+  - With the request aborted, the states are `failed` and the note reads "playback blocked".
+- `npm run verify` exit 0: 102 test files and 658 tests, all typechecks, the Studio build, the IR manifest, ops tests, the capability index, and `reference:check ok (ms-0.25.0_sir-0.24.0, c769a558)`.
+
+### Findings
+
+- Every parse-time node-property note (for example `sign bogus`) appears twice in compile diagnostics. This predates E045. The E045 test asserts on content only.
+- The Studio poster draws images through the lazy path before Run. That is intentional, and readiness gates only playback.

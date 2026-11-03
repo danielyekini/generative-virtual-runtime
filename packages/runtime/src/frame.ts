@@ -245,6 +245,19 @@ function appearanceOf(node: NodeDefinition): ResolvedAppearance {
   return appearance;
 }
 
+/**
+ * resources.spriteFrames: floor a (possibly animated) frame value, clamp it to
+ * the grid, and name its row-major cell. Non-finite values show frame 0.
+ */
+export function spriteCell(
+  grid: { columns: number; rows: number },
+  value: number,
+): { column: number; row: number; columns: number; rows: number } {
+  const count = grid.columns * grid.rows;
+  const index = Number.isFinite(value) ? Math.min(count - 1, Math.max(0, Math.floor(value + 1e-9))) : 0;
+  return { column: index % grid.columns, row: Math.floor(index / grid.columns), columns: grid.columns, rows: grid.rows };
+}
+
 function geometryOf(
   scene: SceneIR,
   node: NodeDefinition,
@@ -261,11 +274,14 @@ function geometryOf(
       };
     case "image": {
       const resource = scene.resources.find((entry) => entry.id === node.resourceId && entry.kind === "image");
+      const grid = resource && resource.kind === "image" ? resource.frames : undefined;
       return {
         kind: "image",
         resourceId: node.resourceId,
         href: resource && resource.kind === "image" ? resource.href : "",
         size: node.size,
+        ...(node.sampling ? { sampling: node.sampling } : {}),
+        ...(grid ? { frame: spriteCell(grid, node.frame ?? 0) } : {}),
       };
     }
     case "circle":
