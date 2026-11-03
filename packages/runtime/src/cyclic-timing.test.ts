@@ -9,6 +9,7 @@ import {
   type SceneIR,
   type SegmentEasing,
   type TrackDefinition,
+  type TrackFill,
 } from "@gvr/schema";
 import { AnimationRuntime } from "./runtime";
 
@@ -18,8 +19,8 @@ import { AnimationRuntime } from "./runtime";
  * with `cyclicLocalTimeMs` and asks the real runtime for that local instant.
  */
 
-const forwards = { before: "none" as const, after: "forwards" as const };
-const none = { before: "none" as const, after: "none" as const };
+const forwards: TrackFill = { before: "none", after: "forwards" };
+const none: TrackFill = { before: "none", after: "none" };
 
 function bare(tracks: TrackDefinition[], durationMs = 30_000): SceneIR {
   return {
@@ -99,9 +100,9 @@ describe("E014 cyclic timing through the production sampler", () => {
         startMs: 0,
         durationMs: 30_000,
         fill: forwards,
-        expression: CITY_VAN_X,
+        source: CITY_VAN_X,
         ast: parsed.ast,
-      } as TrackDefinition,
+      },
     ]);
     // Same route as eased keys. easeOut is c(2 - c); easeIn is c².
     const keyed = bare([

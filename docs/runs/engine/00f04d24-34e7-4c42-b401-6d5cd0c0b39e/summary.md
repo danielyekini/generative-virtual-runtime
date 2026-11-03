@@ -28,7 +28,7 @@ Decision: [time-composition.md](../../../decisions/engine/time-composition.md).
 
 ## Verification
 
-The full `npm run verify` result is recorded in the PR and the issue handover.
+`npm run verify` passed at the PR head: 88 test files and 573 tests, all typechecks, the Studio build, operations acceptance, and `reference:check ok (ms-0.22.0_sir-0.22.0)`. The first run caught three type errors in the new runtime test; they were fixed before submission.
 
 ## Findings
 
