@@ -76,6 +76,11 @@ export interface Session {
   headerSpan: SourceSpan;
   /** Counter for anonymous audio.narration / audio.effects sugar ids. */
   generativeSugarCount: number;
+  /**
+   * Node ids removed by a rejected unit/batch. Later UNKNOWN_TARGET diagnostics that
+   * only name these ids are cascade noise and are suppressed (E017 / A15).
+   */
+  rejectedNodeIds: Set<string>;
 }
 
 /** Compile one complete MotionScript file. A rejected unit leaves the accepted scene unchanged. */
@@ -129,6 +134,10 @@ export function pushUnit(session: Session, unit: UnitAst): void {
     return;
   }
   if (isUnresolved(session, unit)) {
+    if (unitHitsRejectedTarget(session, unit)) {
+      // Primary rejection already reported; do not cascade UNKNOWN_TARGET.
+      return;
+    }
     if (session.deferred.length >= DEFAULT_LIMITS.maxDeferredUnits) {
       session.telemetry?.count("compile.rejected_units");
       session.diagnostics.push(problem("RESOURCE_LIMIT", "Too many deferred units.", unit.span));
@@ -147,6 +156,7 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
   session.telemetry?.count("compile.unresolved_units", unresolved.length);
   session.telemetry?.count("compile.rejected_units", unresolved.length);
   for (const unit of unresolved) {
+    if (unitHitsRejectedTarget(session, unit)) continue;
     if (unit.kind === "instance") {
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved composition ${unit.definition}.`, unit.span));
       continue;
@@ -512,6 +522,7 @@ function createSession(header: HeaderAst, diagnostics: Diagnostic[]): Session {
     authoringComplete: false,
     headerSpan: header.span,
     generativeSugarCount: 0,
+    rejectedNodeIds: new Set(),
   };
 }
 
@@ -576,11 +587,14 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     if (!failed && emitDelta) {
       const validated = measured(session, 'compile.validate_ms', () => validateSceneIR(session.scene));
       if (!validated.ok) {
-        session.diagnostics.push(...validated.diagnostics.map((issue) => ({...issue, sourceSpan: unit.span})));
+        session.diagnostics.push(
+          ...validated.diagnostics.map((issue) => (issue.sourceSpan ? issue : { ...issue, sourceSpan: unit.span })),
+        );
         failed = true;
       }
     }
     if (failed) {
+      rememberRejectedNodes(session, snapshot);
       measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
       session.pendingEntityOps = priorPending;
       return false;
@@ -625,6 +639,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
   const before = capture(session);
   measured(session, 'compile.lower_ms', () => lower(session, unit));
   if (session.diagnostics.length > beforeDiag) {
+    rememberRejectedNodes(session, snapshot);
     measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
     return false;
   }
@@ -635,7 +650,10 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
       const priorKeys = new Set(!prior.ok ? prior.diagnostics.map((item) => `${item.code}:${item.message}`) : []);
       const fresh = validated.diagnostics.filter((item) => !priorKeys.has(`${item.code}:${item.message}`));
       if (fresh.length > 0) {
-        session.diagnostics.push(...fresh);
+        session.diagnostics.push(
+          ...fresh.map((issue) => (issue.sourceSpan ? issue : { ...issue, sourceSpan: unit.span })),
+        );
+        rememberRejectedNodes(session, snapshot);
         measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
         return false;
       }
@@ -1635,8 +1653,51 @@ function hasSpatial(unit: Extract<UnitAst, { kind: "animate" | "keyframes" }>): 
 }
 
 function noteEase(session: Session, ease: SegmentEasing | undefined): void {
-  if (!ease || typeof ease === "string") return;
+  if (!ease) return;
+  // Representation-independent: string "hold" and { type: "hold" } both claim easing.hold.
+  if (typeof ease === "string") {
+    if ((ease as string) === "hold") ensureCapability(session, "easing.hold");
+    return;
+  }
   ensureCapability(session, ease.type === "hold" ? "easing.hold" : "easing.cubicBezier");
+}
+
+/** Record node ids that a rejected unit added, so dependent UNKNOWN_TARGET noise can be dropped. */
+function rememberRejectedNodes(session: Session, snapshot: SceneIR): void {
+  const kept = new Set(snapshot.nodes.map((node) => node.id));
+  for (const node of session.scene.nodes) {
+    if (!kept.has(node.id)) session.rejectedNodeIds.add(node.id);
+  }
+}
+
+function addressHitsRejected(session: Session, address: string): boolean {
+  for (const id of session.rejectedNodeIds) {
+    if (address === id || address.startsWith(`${id}.`)) return true;
+  }
+  return false;
+}
+
+function unitHitsRejectedTarget(session: Session, unit: UnitAst): boolean {
+  if (session.rejectedNodeIds.size === 0) return false;
+  if (unit.kind === "operators" || unit.kind === "interact") {
+    return session.rejectedNodeIds.has(unit.nodeId);
+  }
+  if (unit.kind === "animate" || unit.kind === "keyframes" || unit.kind === "step") {
+    return addressHitsRejected(session, unit.target);
+  }
+  if (unit.kind === "node" && unit.shape === "group") {
+    const missing = missingClipTarget(session, unit);
+    return missing !== undefined && session.rejectedNodeIds.has(missing);
+  }
+  if (unit.kind === "spatialLayer") {
+    const missing = missingSurfaceNode(session, unit);
+    return missing !== undefined && session.rejectedNodeIds.has(missing);
+  }
+  if (unit.kind === "physics") {
+    const missing = missingPhysicsEntity(session, unit);
+    return missing !== undefined && session.rejectedNodeIds.has(missing);
+  }
+  return false;
 }
 
 function ensureStrokePaintCapability(session: Session, stroke: Stroke | undefined): void {

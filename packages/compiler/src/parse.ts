@@ -271,7 +271,11 @@ function parseNode(parser: Parser): NodeAst {
   };
   const name = eat(parser, "identifier");
   if (name) node.name = name.lexeme;
-  else note(node, parser, `${shape} needs a name.`);
+  else if (peek(parser)?.type === "keyword") {
+    const reserved = peek(parser)!;
+    note(node, parser, `\`${reserved.lexeme}\` is reserved; an identifier is required.`);
+    parser.index += 1;
+  } else note(node, parser, `${shape} needs a name.`);
   if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
   while (!done(parser) && !at(parser, "rbrace")) {
     if (shape === "group" && isNodeStart(parser)) {
