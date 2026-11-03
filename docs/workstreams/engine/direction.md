@@ -160,11 +160,20 @@ new engine tickets waits on Product P030 (#188). Holder:
    (PR #210), and E045 as MotionScript 0.25.0 / Scene IR 0.24.0
    `resources.imageSampling` + `resources.spriteFrames`, with Studio image
    readiness and a "Sprite frames" test frame. Image pattern paint stays
-   Candidate E046. The next replenish draws from M2/M4/M5 Candidates. New Candidates: E048
+   Candidate E046. New Candidates: E048
    ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208)),
    because composition-instance `timingScopeId` is inert; and joint ops
    [#209](https://github.com/danielyekini/generative-virtual-runtime/issues/209),
    because routing and branch cleanup fail in cloud sessions.
+
+5. Replenish (3 November 2026, evening, session
+   `6df61122-7db7-4332-be0d-286a31fb2864`): promoted executable M2/M5 Candidates
+   whose dependencies are completed — E020 (#39), E021 (#40), E022 (#41) — to
+   Ready. E020 measured midpoint chord-error adaptive plots against uniform
+   samples ([decision](../../decisions/engine/computed-curves-adaptive-geometry.md)):
+   design Bezier improves, held-out spiral fails error and eval-cost gates →
+   **stop** (host `plotUniform` / `plotAdaptive` only; no language bump). Next
+   Ready: E021 then E022. E046 / E048 / E042 stay Candidate.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

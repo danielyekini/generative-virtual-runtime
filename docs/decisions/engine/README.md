@@ -71,3 +71,7 @@
   required-image startup hold, scene-scoped renderer cache with eviction and a
   decoded-bytes gauge, a `pixelated` sampling recipe, and a texture/repetition
   comparison (sprite frames next in E045, pattern paint deferred in E046).
+- [Computed curves / adaptive geometry (E020)](computed-curves-adaptive-geometry.md):
+  midpoint chord-error `plotAdaptive` beats uniform on a design Bezier but
+  **loses** the held-out spiral on error and evaluation cost — **stop**; host
+  helpers only, no language plot or cone IR.
