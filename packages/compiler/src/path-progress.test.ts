@@ -19,6 +19,7 @@ animate Tip.path.progress { from 0; to 1; duration 2s; };`);
     expect(result.ok).toBe(true);
     const scene = result.scene!;
     expect(scene.requiredCapabilities).toContain("geometry.pathProgress");
+    expect(scene.requiredCapabilities).toContain("geometry.pathSpace");
     expect(scene.pathAttachments).toEqual([
       { nodeId: "Tip", pathId: "Rail", progress: 0.5, orient: true, rollRadius: 10 },
     ]);
@@ -44,7 +45,8 @@ animate Tip.path.progress { from 0; to 1; duration 2s; };`);
     const result = compile(`attach Tip along Rail { progress 0.25; };`);
     const scene = result.scene!;
     expect(acceptScene(scene, { consumer: "0.2", enabled: [] }).ok).toBe(false);
-    expect(acceptScene(scene, { consumer: "0.2", enabled: ["geometry.pathProgress"] }).ok).toBe(true);
+    expect(acceptScene(scene, { consumer: "0.2", enabled: ["geometry.pathProgress"] }).ok).toBe(false);
+    expect(acceptScene(scene, { consumer: "0.2", enabled: ["geometry.pathProgress", "geometry.pathSpace"] }).ok).toBe(true);
     const missing = validateSceneIR({ ...scene, requiredCapabilities: [] } as SceneIR);
     expect(missing.ok).toBe(false);
     if (!missing.ok) expect(missing.diagnostics.some((item) => item.message.includes("geometry.pathProgress"))).toBe(true);
@@ -61,6 +63,21 @@ animate Tip.path.progress { from 0; to 1; duration 2s; };`);
     const plain = compile("");
     expect(plain.scene!.pathAttachments).toBeUndefined();
     expect(plain.scene!.requiredCapabilities ?? []).not.toContain("geometry.pathProgress");
+    expect(plain.scene!.requiredCapabilities ?? []).not.toContain("geometry.pathSpace");
+  });
+
+  it("requires geometry.pathSpace alongside geometry.pathProgress and rejects mixed spaces", () => {
+    const result = compile(`attach Tip along Rail { progress 0.5; };`);
+    expect(result.ok).toBe(true);
+    expect(result.scene!.requiredCapabilities).toEqual(expect.arrayContaining(["geometry.pathProgress", "geometry.pathSpace"]));
+    const mixed = compileMotionScript(`${header}
+      path Rail { space screen; stroke #334155 width 2; move (0, 0); line (40, 0); };
+      circle Tip { radius 4; fill #000000; };
+      attach Tip along Rail { progress 1; };
+      complete;`);
+    expect(mixed.ok).toBe(false);
+    expect(mixed.diagnostics.map((item) => item.code)).toContain("SPACE_VIOLATION");
+    expect(mixed.scene!.pathAttachments).toBeUndefined();
   });
 
   it("defers forward-declared travellers, paths and progress tracks until they resolve", () => {

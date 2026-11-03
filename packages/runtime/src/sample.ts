@@ -5,18 +5,26 @@ import {
   channelSpec,
   diagnostic,
   evaluateExpression,
+  IDENTITY,
+  invertMat3,
   isValidSample,
   lerp,
   lerpPathCommands,
   lerpVec2,
+  localMatrix,
   localTimeMs,
+  multiplyMat3,
+  orderPathAttachments,
   resolveNumericContent,
   scalarWriters,
   spatialCubicPoint,
+  transformPoint,
   type Camera2DDefinition,
   type Diagnostic,
   type KeyframeTrack,
+  type Mat3,
   type NodeDefinition,
+  type PathAttachment,
   type PathCommand,
   type SceneIR,
   type TrackDefinition,
@@ -181,7 +189,7 @@ export function sampleScene(
     };
   }
 
-  applyPathAttachments(scene, nodePoses, trimOverrides);
+  applyPathAttachments(scene, nodePoses, trimOverrides, diagnostics, sceneTimeMs);
 
   return {
     nodes: scene.nodes.map((node) => applyNodePose(node, nodePoses.get(node.id) ?? nodePose(node))),
@@ -197,18 +205,27 @@ export function sampleScene(
  * same trim rules as frame resolution, so late morph/trim edits move the
  * attached node without re-baking progress. Position is always written;
  * rotation only when `orient` or `rollRadius` is set (orient alone is not rolling).
+ *
+ * geometry.pathSpace (Scene IR 0.22.0) maps that command point through the path
+ * node's sampled world matrix into the traveller's parent space. Scenes that
+ * do not require the capability keep the 0.17 path-local write.
  */
 function applyPathAttachments(
   scene: SceneIR,
   poses: Map<string, NodePose>,
   trimOverrides: Record<string, TrimOverride>,
+  diagnostics: Diagnostic[],
+  sceneTimeMs: number,
 ): void {
   if (!scene.pathAttachments?.length) return;
   const nodes = new Map(scene.nodes.map((node) => [node.id, node]));
-  for (const attachment of scene.pathAttachments) {
+  const compose = scene.requiredCapabilities?.includes("geometry.pathSpace") === true;
+  const attachments = compose ? attachmentsInOrder(scene.pathAttachments, nodes, diagnostics, sceneTimeMs) : scene.pathAttachments;
+  for (const attachment of attachments) {
     const pathNode = nodes.get(attachment.pathId);
     const pose = poses.get(attachment.nodeId);
-    if (!pose || !pathNode || pathNode.kind !== "path") continue;
+    const traveller = nodes.get(attachment.nodeId);
+    if (!pose || !pathNode || pathNode.kind !== "path" || !traveller) continue;
     const commands = trimmed(scene, pathNode.id, poses.get(pathNode.id)?.commands ?? pathNode.commands, trimOverrides);
     const placed = attachAlongPath({
       commands,
@@ -216,11 +233,166 @@ function applyPathAttachments(
       orient: attachment.orient,
       rollRadius: attachment.rollRadius,
     });
-    pose.position = { ...placed.position };
+    if (!compose) {
+      pose.position = { ...placed.position };
+      if (attachment.orient === true || attachment.rollRadius !== undefined) {
+        pose.rotation = (attachment.orient === true ? placed.rotation ?? 0 : 0) + (placed.rolling ?? 0);
+      }
+      continue;
+    }
+    const travellerSpace = hierarchySpace(nodes, traveller.id);
+    const pathSpace = hierarchySpace(nodes, pathNode.id);
+    if (travellerSpace === "missing" || pathSpace === "missing") continue;
+    if (travellerSpace === "cycle" || pathSpace === "cycle" || travellerSpace !== pathSpace) {
+      diagnostics.push(
+        attachmentDiagnostic(
+          travellerSpace === "cycle" || pathSpace === "cycle" ? "CYCLE" : "SPACE_VIOLATION",
+          travellerSpace === pathSpace
+            ? `Attachment ${attachment.nodeId} sits in a parent cycle.`
+            : `Attachment ${attachment.nodeId} cannot follow ${attachment.pathId} across world and screen space.`,
+          sceneTimeMs,
+        ),
+      );
+      continue;
+    }
+    const parentId = traveller.transformParentId !== undefined ? traveller.transformParentId : traveller.parentId;
+    const parentWorld = parentId ? worldMatrix(nodes, poses, parentId) : { matrix: IDENTITY };
+    if ("error" in parentWorld) {
+      if (parentWorld.error === "cycle") {
+        diagnostics.push(attachmentDiagnostic("CYCLE", `Attachment ${attachment.nodeId} sits in a transform cycle.`, sceneTimeMs));
+      }
+      continue;
+    }
+    const inverse = parentId ? invertMat3(parentWorld.matrix) : IDENTITY;
+    if (!inverse) {
+      diagnostics.push(
+        attachmentDiagnostic(
+          "RUNTIME_DEGRADED",
+          `Attachment ${attachment.nodeId} has a singular parent transform, so its path position was left authored.`,
+          sceneTimeMs,
+        ),
+      );
+      continue;
+    }
+    const pathWorld = worldMatrix(nodes, poses, pathNode.id);
+    if ("error" in pathWorld) {
+      if (pathWorld.error === "cycle") {
+        diagnostics.push(attachmentDiagnostic("CYCLE", `Path ${attachment.pathId} sits in a transform cycle.`, sceneTimeMs));
+      }
+      continue;
+    }
+    const intoParent = multiplyMat3(inverse, pathWorld.matrix);
+    const position = transformPoint(intoParent, placed.position.x, placed.position.y);
+    if (!Number.isFinite(position.x) || !Number.isFinite(position.y)) {
+      diagnostics.push(attachmentDiagnostic("RUNTIME_DEGRADED", `Attachment ${attachment.nodeId} sampled a non-finite position.`, sceneTimeMs));
+      continue;
+    }
+    pose.position = position;
     if (attachment.orient === true || attachment.rollRadius !== undefined) {
-      pose.rotation = (attachment.orient === true ? placed.rotation ?? 0 : 0) + (placed.rolling ?? 0);
+      const tangent = attachment.orient === true ? transformedTangent(intoParent, placed.position, placed.rotation ?? 0) : 0;
+      if (attachment.orient === true && tangent === undefined) {
+        diagnostics.push(
+          attachmentDiagnostic(
+            "RUNTIME_DEGRADED",
+            `Attachment ${attachment.nodeId} has a degenerate path tangent after scale, so orientation was left at rolling only.`,
+            sceneTimeMs,
+          ),
+        );
+      }
+      pose.rotation = (tangent ?? 0) + (placed.rolling ?? 0);
     }
   }
+}
+
+function attachmentsInOrder(
+  attachments: readonly PathAttachment[],
+  nodes: Map<string, NodeDefinition>,
+  diagnostics: Diagnostic[],
+  sceneTimeMs: number,
+): PathAttachment[] {
+  const byNode = new Map(attachments.map((entry) => [entry.nodeId, entry]));
+  const { ready, cyclic } = orderPathAttachments(attachments, (id) => {
+    const node = nodes.get(id);
+    if (!node) return null;
+    const parent = node.transformParentId !== undefined ? node.transformParentId : node.parentId;
+    return parent ?? null;
+  });
+  if (cyclic.length > 0) {
+    diagnostics.push(
+      attachmentDiagnostic(
+        "CYCLE",
+        `Path attachments ${cyclic.join(", ")} depend on each other's transforms and were left authored.`,
+        sceneTimeMs,
+      ),
+    );
+  }
+  return ready.flatMap((id) => {
+    const entry = byNode.get(id);
+    return entry ? [entry] : [];
+  });
+}
+
+function hierarchySpace(nodes: Map<string, NodeDefinition>, id: string): "world" | "screen" | "cycle" | "missing" {
+  const seen = new Set<string>();
+  let current = nodes.get(id);
+  if (!current) return "missing";
+  while (current) {
+    if (seen.has(current.id)) return "cycle";
+    seen.add(current.id);
+    if (!current.parentId) return current.space === "screen" ? "screen" : "world";
+    const parent = nodes.get(current.parentId);
+    if (!parent) return "missing";
+    current = parent;
+  }
+  return "missing";
+}
+
+function worldMatrix(
+  nodes: Map<string, NodeDefinition>,
+  poses: Map<string, NodePose>,
+  id: string,
+  stack: string[] = [],
+): { matrix: Mat3 } | { error: "missing" | "cycle" } {
+  if (stack.includes(id)) return { error: "cycle" };
+  const node = nodes.get(id);
+  const pose = poses.get(id);
+  if (!node || !pose) return { error: "missing" };
+  const parentId = node.transformParentId !== undefined ? node.transformParentId : node.parentId;
+  let parent: Mat3 = IDENTITY;
+  if (parentId) {
+    const resolved = worldMatrix(nodes, poses, parentId, [...stack, id]);
+    if ("error" in resolved) return resolved;
+    parent = resolved.matrix;
+  }
+  return {
+    matrix: multiplyMat3(
+      parent,
+      localMatrix({ position: pose.position, pivot: pose.pivot, rotation: pose.rotation, scale: pose.scale }),
+    ),
+  };
+}
+
+function transformedTangent(matrix: Mat3, origin: Vec2, angle: number): number | undefined {
+  const ahead = transformPoint(matrix, origin.x + Math.cos(angle), origin.y + Math.sin(angle));
+  const at = transformPoint(matrix, origin.x, origin.y);
+  const vx = ahead.x - at.x;
+  const vy = ahead.y - at.y;
+  if (!Number.isFinite(vx) || !Number.isFinite(vy) || Math.hypot(vx, vy) < 1e-8) return undefined;
+  return Math.atan2(vy, vx);
+}
+
+function attachmentDiagnostic(code: Diagnostic["code"], message: string, sceneTimeMs: number): Diagnostic {
+  return diagnostic({
+    code,
+    phase: "runtime",
+    category: code === "RUNTIME_DEGRADED" ? "runtime" : "reference",
+    severity: "warning",
+    effect: "RUNTIME_DEGRADED",
+    recovery: "Leave this traveller at its authored pose for this sample.",
+    message,
+    path: "pathAttachments",
+    sceneTimeMs,
+  });
 }
 
 function nodePose(node: NodeDefinition): NodePose {

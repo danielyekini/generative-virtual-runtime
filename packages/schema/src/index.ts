@@ -11,6 +11,7 @@ export * from "./limits";
 export * from "./math";
 export * from "./migrate";
 export * from "./path-metrics";
+export * from "./path-space";
 export * from "./path-morph";
 export * from "./text-metrics";
 export * from "./registry";

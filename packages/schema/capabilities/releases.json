@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.21.0",
+      "current": "0.22.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.19"
+      "packageVersion": "0.1.20"
     },
     "scene-ir": {
-      "current": "0.21.0",
+      "current": "0.22.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.19"
+      "packageVersion": "0.1.20"
     }
   },
   "versions": [
@@ -160,6 +160,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.21.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.22.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.22.0.md"
     },
     {
       "language": "motionscript",
@@ -313,6 +320,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.21.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.22.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.22.0.md"
     },
     {
       "language": "scene-ir",
@@ -475,6 +489,13 @@
       "compiler": "0.1.17",
       "runtime": "0.1.23",
       "readers": "Wire stays 0.2. paint.strokeDash is gated by requiredCapabilities / requires. Packages without the capability reject dash, phase and stroke.phase. Older validators reject the unknown dash and phase keys and the stroke.phase channel. Solid strokes stay unchanged."
+    },
+    {
+      "motionscript": "0.22.0",
+      "sceneIr": "0.22.0",
+      "compiler": "0.1.18",
+      "runtime": "0.1.24",
+      "readers": "Wire stays 0.2. geometry.pathSpace is gated by requiredCapabilities / requires together with geometry.pathProgress. Packages without it keep 0.17 path-local attachment placement. No new syntax. Older readers reject the unknown capability token."
     }
   ]
 }
