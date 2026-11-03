@@ -48,3 +48,7 @@
   shared arc-length metrics after morph/trim, host attach/orient/rolling/dash
   helpers; auto-orient ≠ rolling; uniform width stays `paint.animatedSolid`;
   width profiles deferred; language wiring in follow-up issues.
+- [Dynamic text / numeric format / metrics (E013)](dynamic-text-and-metrics.md):
+  split content+format from layout metrics and per-glyph animators; schema
+  `formatNumber` / `measureTextLine` prototype; language wiring in E040/E041;
+  `text.animators` stays deferred.

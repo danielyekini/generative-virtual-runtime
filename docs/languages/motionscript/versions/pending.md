@@ -16,6 +16,8 @@ Not yet in a published MotionScript version:
 - paint.strokeDash
 - geometry.repeater
 - geometry.mergePaths
+- text.dynamicContent
+- text.layoutMetrics
 - text.animators
 
 `paint.strokeDash` is named by the E015 decision
@@ -24,6 +26,11 @@ prototype exists without a language claim. `transform.autoOrient` stays pending
 as a standalone channel: orientation from the path tangent now exists only as
 the `orient` option of a path attachment (`geometry.pathProgress`). Variable width
 profiles stay outside this pending list until a separate decision.
+
+`text.dynamicContent` and `text.layoutMetrics` are named by the E013 decision
+(`docs/decisions/engine/dynamic-text-and-metrics.md`); schema format/measure
+helpers exist without a language claim. `text.animators` (per-glyph transforms)
+stays pending and is **not** the content/format slice.
 
 `geometry.animatedTrim` landed in MotionScript 0.5.0.
 `entities.durableRevisions` landed in MotionScript 0.6.0; declarative entity/behaviour statements completed in 0.9.0.
