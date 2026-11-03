@@ -1606,6 +1606,22 @@ function lowerAttach(session: Session, unit: Extract<UnitAst, { kind: "attach" }
     session.diagnostics.push(problem("INVALID_GEOMETRY", `${unit.pathId} is not a path node; attach needs a path to travel along.`, unit.span));
     return;
   }
+  const travellerSpace = rootSpace(nodes, unit.nodeId);
+  const pathSpace = rootSpace(nodes, unit.pathId);
+  if (travellerSpace === "cycle" || pathSpace === "cycle") {
+    session.diagnostics.push(problem("CYCLE", `${unit.nodeId} and ${unit.pathId} sit in a parent cycle.`, unit.span));
+    return;
+  }
+  if (travellerSpace !== pathSpace) {
+    session.diagnostics.push(
+      problem(
+        "SPACE_VIOLATION",
+        `${unit.nodeId} and ${unit.pathId} are in different spaces; attach follows a path only when both are world or both are screen.`,
+        unit.span,
+      ),
+    );
+    return;
+  }
   const list = session.scene.pathAttachments ?? [];
   if (list.some((entry) => entry.nodeId === unit.nodeId)) {
     session.diagnostics.push(problem("DUPLICATE_ID", `${unit.nodeId} already has an attach declaration.`, unit.span));
@@ -1617,6 +1633,21 @@ function lowerAttach(session: Session, unit: Extract<UnitAst, { kind: "attach" }
   // Replace the container so earlier emitted headers keep their own list.
   session.scene.pathAttachments = [...list, attachment];
   ensureCapability(session, "geometry.pathProgress");
+  ensureCapability(session, "geometry.pathSpace");
+}
+
+/** Root space, matching frame resolution: only the root's `space` counts. */
+function rootSpace(nodes: readonly { id: string; parentId: string | null; space?: "world" | "screen" }[], id: string): "world" | "screen" | "cycle" {
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const seen = new Set<string>();
+  let current = byId.get(id);
+  while (current) {
+    if (seen.has(current.id)) return "cycle";
+    seen.add(current.id);
+    if (!current.parentId) return current.space === "screen" ? "screen" : "world";
+    current = byId.get(current.parentId);
+  }
+  return "world";
 }
 
 /** First surface or parent node of a layer that does not exist yet (declaration may precede it). */

@@ -8,6 +8,7 @@ import { isKnownCapability } from "./capabilities";
 import { cubicControlsMonotonic } from "./easing";
 import { expressionComplexity, exprsEqual, parseExpression } from "./expr";
 import { indexNodes, nodeDepth } from "./graph";
+import { orderPathAttachments } from "./path-space";
 import { resolveLimits, type ResourceLimits } from "./limits";
 
 /**
@@ -3213,6 +3214,26 @@ function readPathAttachments(
         }
       }
     });
+    if (Array.isArray(required) && required.includes("geometry.pathSpace")) {
+      const nodeById = new Map((nodes ?? []).map((node) => [node.id, node]));
+      const listed = value.flatMap((entry) => {
+        if (!isRecord(entry) || typeof entry.nodeId !== "string" || typeof entry.pathId !== "string") return [];
+        return [{ nodeId: entry.nodeId, pathId: entry.pathId }];
+      });
+      const { cyclic } = orderPathAttachments(listed, (id) => {
+        const node = nodeById.get(id);
+        if (!node) return null;
+        const parent = node.transformParentId !== undefined ? node.transformParentId : node.parentId;
+        return parent ?? null;
+      });
+      if (cyclic.length > 0) {
+        diags.add(
+          "CYCLE",
+          "pathAttachments",
+          `Path attachments ${cyclic.join(", ")} depend on each other's transforms.`,
+        );
+      }
+    }
   }
   tracks.forEach((track, index) => {
     if (!isRecord(track) || !isRecord(track.target) || track.target.kind !== "node") return;

@@ -788,7 +788,10 @@ export interface InteractionTarget {
  * `pathId`. The attachment exclusively owns the node's transform.position.x/y,
  * and transform.rotation when `orient` is true or `rollRadius` is set. Rolling
  * (distance / radius) is never implied by `orient`. `path.progress` tracks on
- * the attached node override `progress` per sample.
+ * the attached node override `progress` per sample. When the scene also
+ * requires geometry.pathSpace (0.22.0), sampling maps that point through the
+ * path node's transform into the traveller's parent space. Without that
+ * capability the point stays in path command space.
  */
 export interface PathAttachment {
   nodeId: string;

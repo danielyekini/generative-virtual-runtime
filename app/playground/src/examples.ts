@@ -16,6 +16,7 @@ import spatialSeamsSource from "../../../fixtures/motionscript/spatial-seams.ms?
 import clipMaskSource from "../../../fixtures/motionscript/clip-mask.ms?raw";
 import alphaMatteSource from "../../../fixtures/motionscript/alpha-matte.ms?raw";
 import pathProgressSource from "../../../fixtures/motionscript/path-progress.ms?raw";
+import pathSpaceSource from "../../../fixtures/motionscript/path-space.ms?raw";
 import dynamicTextSource from "../../../fixtures/motionscript/dynamic-text.ms?raw";
 import textLayoutSource from "../../../fixtures/motionscript/text-layout.ms?raw";
 import strokeDashSource from "../../../fixtures/motionscript/stroke-dash.ms?raw";
@@ -162,6 +163,7 @@ export const motionExamples: MotionExample[] = [
   { id: "clip-mask", label: "Clip mask", caption: "A rotating card is clipped to a circular window (compositing.mask).", source: clipMaskSource },
   { id: "alpha-matte", label: "Alpha matte", caption: "A card shows through two circles and a word, and fades with the window's opacity (compositing.matte).", source: alphaMatteSource },
   { id: "path-progress", label: "Path progress", caption: "An arrow rides a growing stroke's tip and a wheel rolls along a bending track, with no baked keys (geometry.pathProgress).", source: pathProgressSource },
+  { id: "path-space", label: "Path space", caption: "An arrow stays on a rail while the rail's parent moves and the rail rotates (geometry.pathSpace).", source: pathSpaceSource },
   { id: "dynamic-text", label: "Dynamic text", caption: "A live currency readout formats a number track, and a status label swaps discrete content steps (text.dynamicContent).", source: dynamicTextSource },
   { id: "text-layout", label: "Text layout", caption: "Narrow III and wide WWW share a font size. Their boxes follow builtin advances (text.layoutMetrics).", source: textLayoutSource },
   { id: "stroke-dash", label: "Stroke dash", caption: "A line keeps a 18/10 dash while its phase runs along the stroke (paint.strokeDash).", source: strokeDashSource },

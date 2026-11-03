@@ -41,6 +41,7 @@ Declarative entity sugar landed in MotionScript 0.9.0.
 `text.dynamicContent` (numeric format bindings and discrete content steps) landed in MotionScript 0.18.0.
 `text.layoutMetrics` (`requires "text.layoutMetrics"`; builtin align/baseline boxes) landed in MotionScript 0.20.0.
 `paint.strokeDash` (`dash` and `phase` on a stroke; `stroke.phase` tracks) landed in MotionScript 0.21.0.
+`geometry.pathSpace` (same `attach` syntax; the traveller follows the path node's transform) landed in MotionScript 0.22.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

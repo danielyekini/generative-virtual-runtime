@@ -44,6 +44,10 @@
 - [Seam depth/paint order (E016)](seam-depth-order.md): plane-test occlusion
   stays authoritative; shared-edge seams, projected intersection splits and
   coplanar union helper; animated order is tie-break only; versioning child E030.
+- [Path attachment space (E039)](path-attachment-space.md):
+  `geometry.pathSpace` maps an attachment through the path node's transform
+  into the traveller's parent space; 0.17 path-local sampling remains when the
+  capability is absent. Versioned as MotionScript / Scene IR 0.22.0.
 - [Path progress / attachments / dashes (E015)](path-progress-geometry-authoring.md):
   shared arc-length metrics after morph/trim, host attach/orient/rolling/dash
   helpers; auto-orient ≠ rolling; uniform width stays `paint.animatedSolid`;

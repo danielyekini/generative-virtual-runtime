@@ -49,6 +49,23 @@ export function transformPoint(m: Mat3, x: number, y: number): Vec2 {
   };
 }
 
+/** Inverse of a 2D affine matrix. Undefined when the linear part is singular. */
+export function invertMat3(m: Mat3): Mat3 | undefined {
+  const a = m[0];
+  const b = m[1];
+  const c = m[3];
+  const d = m[4];
+  const e = m[6];
+  const f = m[7];
+  const det = a * d - b * c;
+  if (!Number.isFinite(det) || Math.abs(det) < 1e-12) return undefined;
+  const ia = d / det;
+  const ib = -b / det;
+  const ic = -c / det;
+  const id = a / det;
+  return [ia, ib, 0, ic, id, 0, -(ia * e + ic * f), -(ib * e + id * f), 1];
+}
+
 /**
  * Mlocal = T(position) × T(pivot) × R(rotation) × S(scale) × T(−pivot)
  * The pivot is a local geometry point. It stays at `position + pivot`

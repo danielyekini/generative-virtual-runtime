@@ -35,6 +35,7 @@ export const CAPABILITIES = [
   "physics.planar2d",
   "space.planarSeams",
   "geometry.pathProgress",
+  "geometry.pathSpace",
   "text.dynamicContent",
   "text.layoutMetrics",
 ] as const;

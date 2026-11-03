@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.21.0 | 0.2 |
-| scene-ir | 0.21.0 | 0.2 |
+| motionscript | 0.22.0 | 0.2 |
+| scene-ir | 0.22.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -54,6 +54,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | physics.planar2d | supported | supported | not-applicable | Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/physics.test.ts) |
 | space.planarSeams | supported | supported | not-applicable | Planar 2.5D layers opt into seam/split compositing: true surface intersections are split along their plane intersection into ordered fragments, and declared seams are checked for a shared edge in view space. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/seams.test.ts) |
 | geometry.pathProgress | supported | supported | not-applicable | A node attaches to a path node at a progress in [0, 1] along its resolved (morphed, then trimmed) outline, optionally oriented to the tangent and optionally rolling. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/path-progress.test.ts) |
+| geometry.pathSpace | supported | supported | not-applicable | A path attachment places its traveller on the path as drawn: the command point is mapped through the path node's sampled transform into the traveller's parent space. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/path-progress.test.ts) |
 | compositing.matte | supported | supported | supported | A group render scope keeps descendant pixels only where another node's painted alpha is. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/matte.test.ts) |
 | compositing.mask | supported | supported | supported | A group render scope clips its descendants to another node's outline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/clip.test.ts) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
@@ -77,5 +78,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `5abb812e0af70d5675494ad30360d5dee7f09e8a13784bb807ff761833b5a5d3`
-- `packages/schema/capabilities/registry.json` SHA-256 `95d69b3e7b0a4a2389c49415b3e1ab20eaf5ec5c7ddd78a2a8c9460ee3b8d7a1`
+- `packages/schema/capabilities/releases.json` SHA-256 `a01b97e4da16ff16601b535558b517e1e72a343164ccdae6a9ba378ce3148f06`
+- `packages/schema/capabilities/registry.json` SHA-256 `a3f0c6548bdb1b28295c4d7a2952b5ba2e3893b1f80cde64127d0e94c9e6ae48`
