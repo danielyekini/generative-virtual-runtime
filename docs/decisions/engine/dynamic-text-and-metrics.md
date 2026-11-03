@@ -127,9 +127,11 @@ multi-line / wrapping / textPath stay out of scope with `text.basic`.
   registry + conformance, Studio fixture `fixtures/motionscript/dynamic-text.ms`).
   No per-glyph animators. No Lottie text-animator campaign.
 - **E041** ([#176](https://github.com/danielyekini/generative-virtual-runtime/issues/176)): version `text.layoutMetrics` —
-  deterministic builtin metrics/readiness wiring into runtime hit-test / spatial
-  text boxes / optional camera-safe labels hook; conformance for align/baseline
-  boxes. Host `measureText` remains an override, not the sole truth for `sans`.
+  Landed as MotionScript / Scene IR **0.20.0**. Opt in with `requires "text.layoutMetrics"`.
+  Hit-testing and spatial text outlines use `measureTextLine` for builtin `sans`
+  (align/baseline local AABBs). Scenes without the capability keep the legacy 0.6em box.
+  Host `measureText` remains an override, not the sole truth for `sans`. No custom font
+  URLs, per-glyph animators, or billboard labels.
 - **`text.animators`**: remains pending Candidate until a kinetic-typography
   story justifies it; not a child of this content/format slice.
 - **Billboard / constant-screen-size labels (A25)**: separate later decision;

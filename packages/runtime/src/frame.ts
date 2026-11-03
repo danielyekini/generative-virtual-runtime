@@ -41,6 +41,7 @@ export function buildResolvedFrame(
     background: scene.background,
     drawItems,
     renderTree: renderTreeFromScene(scene, sampled, drawItems, graph),
+    ...(scene.requiredCapabilities?.includes("text.layoutMetrics") ? { textLayoutMetrics: true } : {}),
   };
 }
 

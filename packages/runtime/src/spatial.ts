@@ -15,6 +15,7 @@
  */
 import {
   IDENTITY,
+  measureTextLine,
   type Mat3,
   type Paint,
   type PathCommand,
@@ -389,7 +390,7 @@ interface Outline {
   closed: boolean;
 }
 
-function flatten(geometry: ResolvedGeometry, segments: number): Outline[] {
+function flatten(geometry: ResolvedGeometry, segments: number, layoutMetrics = false): Outline[] {
   switch (geometry.kind) {
     case "rectangle":
       return [{ points: roundRect(geometry.size.x, geometry.size.y, geometry.cornerRadius ?? 0, segments), closed: true }];
@@ -406,7 +407,7 @@ function flatten(geometry: ResolvedGeometry, segments: number): Outline[] {
     case "path":
       return flattenPath(geometry.commands, segments);
     case "text":
-      return [{ points: textBox(geometry), closed: true }];
+      return [{ points: textBox(geometry, layoutMetrics), closed: true }];
   }
 }
 
@@ -498,8 +499,17 @@ function flattenPath(commands: readonly PathCommand[], segments: number): Outlin
   return out.filter((outline) => outline.points.length > 0);
 }
 
-/** Conservative em-box estimate, as the hit-tester uses without host metrics. */
-function textBox(geometry: Extract<ResolvedGeometry, { kind: "text" }>): Vec2[] {
+/** Builtin line box when text.layoutMetrics is on; otherwise the legacy em estimate. */
+function textBox(geometry: Extract<ResolvedGeometry, { kind: "text" }>, layoutMetrics: boolean): Vec2[] {
+  if (layoutMetrics) {
+    const { min, max } = measureTextLine(geometry.content, geometry.font, geometry.align, geometry.baseline).box;
+    return [
+      { x: min.x, y: min.y },
+      { x: max.x, y: min.y },
+      { x: max.x, y: max.y },
+      { x: min.x, y: max.y },
+    ];
+  }
   const size = geometry.font.size;
   const width = 0.6 * size * Math.max(1, geometry.content.length);
   const x0 = geometry.align === "center" ? -width / 2 : geometry.align === "right" ? -width : 0;
@@ -650,7 +660,7 @@ export function projectSpatialFrame(
     const normal = cross(tx, ty);
     const facingDot = cam.projection === "perspective" ? dot(normal, origin) : normal.z;
     const facing: "front" | "back" = facingDot >= 0 ? "front" : "back";
-    const outlines = flatten(item.geometry, bound.curveSegments);
+    const outlines = flatten(item.geometry, bound.curveSegments, frame.textLayoutMetrics === true);
     const vertexCount = outlines.reduce((sum, outline) => sum + outline.points.length, 0);
     const projected: ProjectedSurface = {
       nodeId, layerId: layer.id, facing, mode: "affine-exact", depth: 0,

@@ -103,7 +103,11 @@ Landed in MotionScript / Scene IR **0.17.0**. Wire stays `"0.2"`; scenes and pro
 
 ### Decision for `text.dynamicContent`
 
-Landed in MotionScript / Scene IR **0.18.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `text.dynamicContent`. Text body fields `number` / format helpers lower to `TextNode.numeric`; `animate Node.number` writes the `text.number` channel; `step Node.content` writes discrete single-line strings. Sampling derives display content with `resolveNumericContent`. A numeric binding exclusively owns content on its node. No new reserved words. Older readers reject the capability token, the unknown `numeric` key and the `content` / `text.number` channels. `text.layoutMetrics` and `text.animators` remain pending. See `docs/decisions/engine/dynamic-text-and-metrics.md`.
+Landed in MotionScript / Scene IR **0.18.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `text.dynamicContent`. Text body fields `number` / format helpers lower to `TextNode.numeric`; `animate Node.number` writes the `text.number` channel; `step Node.content` writes discrete single-line strings. Sampling derives display content with `resolveNumericContent`. A numeric binding exclusively owns content on its node. No new reserved words. Older readers reject the capability token, the unknown `numeric` key and the `content` / `text.number` channels. `text.animators` stayed pending. `text.layoutMetrics` landed in 0.20.0. See `docs/decisions/engine/dynamic-text-and-metrics.md`.
+
+### Decision for `text.layoutMetrics`
+
+Landed in MotionScript / Scene IR **0.20.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `text.layoutMetrics`. No new syntax or reserved words. When the capability is required, hit-testing and spatial text outlines use `measureTextLine` (builtin `sans` advances, align and baseline). Scenes without it keep the legacy 0.6em box. A host `measureText` callback overrides the hit box and is not required for `sans` conformance. Builtin font resources stay ready in-process. Older readers reject the capability token. `text.animators`, wrapping and custom font URLs remain pending. See `docs/decisions/engine/dynamic-text-and-metrics.md`.
 
 ## Ordering and the current pointer
 

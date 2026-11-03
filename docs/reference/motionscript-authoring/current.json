@@ -1,15 +1,15 @@
 {
   "generatorVersion": "0.1.0",
-  "generatedAt": "2026-11-03T13:58:46.812Z",
-  "motionscript": "0.19.0",
-  "sceneIr": "0.19.0",
+  "generatedAt": "2026-11-03T14:37:02.175Z",
+  "motionscript": "0.20.0",
+  "sceneIr": "0.20.0",
   "wireVersion": "0.2",
-  "packageVersion": "0.1.17",
-  "releaseId": "ms-0.19.0_sir-0.19.0",
-  "fingerprint": "35bfd96ab9a136cd7dc138dfa8eb9a302bdaf49e051322f814c51f9acac8bf0b",
-  "fingerprint8": "35bfd96a",
-  "estimatedTokensUtf16Div4": 3727,
-  "byteLengthUtf8": 14915,
+  "packageVersion": "0.1.18",
+  "releaseId": "ms-0.20.0_sir-0.20.0",
+  "fingerprint": "c40f14494de3f7702fa237e755a6d9114f380ddb90c3cedf0841e5831cf719b8",
+  "fingerprint8": "c40f1449",
+  "estimatedTokensUtf16Div4": 3768,
+  "byteLengthUtf8": 15079,
   "requiredCapabilities": [
     "scene.camera",
     "scene.contain",
@@ -45,7 +45,8 @@
     "geometry.pathProgress",
     "compositing.matte",
     "compositing.mask",
-    "text.dynamicContent"
+    "text.dynamicContent",
+    "text.layoutMetrics"
   ],
   "unavailableCapabilities": [
     "transform.skew",
@@ -64,10 +65,10 @@
     "effects.shadow"
   ],
   "authorities": {
-    "packages/schema/capabilities/releases.json": "e2539d0b3ab07510d0f1e53f34f38e1134d3a8efeb00d23c6940ea25ed5bbe74",
-    "docs/languages/motionscript/versions/0.19.0.md": "e2bead7f992ce89ed9608048e2171dbf6be2089256f898c9947c7f305a08b607",
-    "docs/languages/scene-ir/versions/0.19.0.md": "4981bd62caffe5a42697aed91a4f83d264268eabf0a9b6a5e4f8aa2c668c11e7",
-    "packages/schema/capabilities/registry.json": "16593d4498cc8de598cadd92c5fc98cac5aa29fc7ae84458f5f3cd73f1a595cb",
+    "packages/schema/capabilities/releases.json": "d26e3154a1212136d5477b178ea71e2cc80d7ef01d1ddfe743ab0e5ed746c58f",
+    "docs/languages/motionscript/versions/0.20.0.md": "55314eb50296a6b5d142ff15a9f083ea02ab0d6466b58b73f4ccd4fa2dc929b8",
+    "docs/languages/scene-ir/versions/0.20.0.md": "fcc6b1fb2152d27928acda9d6c2cb9a53bab45bdfc3ee6d78ec954b6c57e91ca",
+    "packages/schema/capabilities/registry.json": "15b95f5cee4dd4ebbba6f3a7c01dda88ee650c937fdf14e7d59a45344731cfe7",
     "packages/schema/src/grammar.ts": "0b190a8565774ba6940a6eb42f8108bd201846c994f524ef284d914f749868bb",
     "docs/contracts/streaming-authorship.md": "7c5942c1a493c48d53309fdf007a132ed9085797f6a904664bfb01fab9afda7b",
     "docs/contracts/streaming-observation.md": "c6d66aecfb8b234ef877f12b9356781cba30c95c591dd839fd019591986de5f2",
@@ -79,6 +80,6 @@
     "fixtures/motionscript/streaming/sealed-history-bad.ms": "7e4a4f1b0110f0a8b74a660d32c5d1dbbb3edc73654016a1399174abbf4fbb91",
     "fixtures/motionscript/streaming/early-seal-empty.ms": "125d33eafbbc5393112e37a916a67b50707c5e12eee39fdf1a8a3abbbd616936"
   },
-  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.19.0_sir-0.19.0-35bfd96a.md",
-  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.19.0_sir-0.19.0-35bfd96a.json"
+  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.20.0_sir-0.20.0-c40f1449.md",
+  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.20.0_sir-0.20.0-c40f1449.json"
 }

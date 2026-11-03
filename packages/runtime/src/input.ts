@@ -1,6 +1,7 @@
 import {
   containFit,
   localMatrix,
+  measureTextLine,
   logicalMatrix,
   multiplyMat3,
   type InteractionTarget,
@@ -47,8 +48,13 @@ export interface HitTestOptions {
   strokeSlop?: number;
   /** Items at or below this resolved opacity are not hittable (default 0). */
   minOpacity?: number;
-  /** Host text measurement. Without it a conservative em-box estimate is used. */
+  /**
+   * Host text measurement. When set, it overrides both builtin layout metrics
+   * and the legacy em-box estimate. Builtin `sans` conformance does not need it.
+   */
   measureText?: (content: string, font: { family: string; size: number; weight: number; style: string }) => TextMetrics;
+  /** Stamped from the frame when the scene requires text.layoutMetrics. */
+  layoutMetrics?: boolean;
   /** Node ids that paint but never take or block pointer input. */
   passThrough?: ReadonlySet<string>;
 }
@@ -63,7 +69,12 @@ export interface HitResult {
 }
 
 /** All painted items under the point, topmost first. */
+function withLayoutMetrics(frame: ResolvedFrame, options: HitTestOptions): HitTestOptions {
+  return frame.textLayoutMetrics ? { ...options, layoutMetrics: true } : options;
+}
+
 export function hitTestAll(frame: ResolvedFrame, point: Vec2, options: HitTestOptions = {}): HitResult[] {
+  options = withLayoutMetrics(frame, options);
   if (frame.renderTree && treeHasClip(frame.renderTree)) {
     const out: HitResult[] = [];
     collectHits(frame, frame.renderTree, point, options, out);
@@ -81,6 +92,7 @@ export function hitTestAll(frame: ResolvedFrame, point: Vec2, options: HitTestOp
 
 /** Topmost painted item under the point, or undefined. */
 export function hitTest(frame: ResolvedFrame, point: Vec2, options: HitTestOptions = {}): HitResult | undefined {
+  options = withLayoutMetrics(frame, options);
   if (frame.renderTree && treeHasClip(frame.renderTree)) {
     return hitTestTree(frame, frame.renderTree, point, options);
   }
@@ -120,7 +132,7 @@ function hitTestTree(
     return { nodeId: node.item.nodeId, paintIndex: paintIndex < 0 ? 0 : paintIndex, local: hit.local, part: hit.part };
   }
   if (node.clip && !pointInClip(node.clip, point)) return undefined;
-  if (node.matte && !paintsAt(node.matte, point)) return undefined;
+  if (node.matte && !paintsAt(node.matte, point, options)) return undefined;
   for (let index = node.children.length - 1; index >= 0; index -= 1) {
     const hit = hitTestTree(frame, node.children[index]!, point, options);
     if (hit) return hit;
@@ -144,18 +156,18 @@ function collectHits(
     return;
   }
   if (node.clip && !pointInClip(node.clip, point)) return;
-  if (node.matte && !paintsAt(node.matte, point)) return;
+  if (node.matte && !paintsAt(node.matte, point, options)) return;
   for (let index = node.children.length - 1; index >= 0; index -= 1) {
     collectHits(frame, node.children[index]!, point, options, out);
   }
 }
 
 /** Painted-geometry coverage of a matte source. Partial alpha still counts as a hit. */
-function paintsAt(node: RenderTreeNode, point: Vec2): boolean {
-  if (node.kind === "leaf") return hitItem(node.item, point, {}) !== undefined;
+function paintsAt(node: RenderTreeNode, point: Vec2, options: HitTestOptions): boolean {
+  if (node.kind === "leaf") return hitItem(node.item, point, options) !== undefined;
   if (node.clip && !pointInClip(node.clip, point)) return false;
-  if (node.matte && !paintsAt(node.matte, point)) return false;
-  return node.children.some((child) => paintsAt(child, point));
+  if (node.matte && !paintsAt(node.matte, point, options)) return false;
+  return node.children.some((child) => paintsAt(child, point, options));
 }
 
 function invert(m: Mat3): Mat3 | undefined {
@@ -221,8 +233,14 @@ function containsGeometry(g: ResolvedGeometry, p: Vec2, options: HitTestOptions)
     case "path":
       return winding(flattenPath(g.commands).filter((ring) => ring.length > 2), p, g.fillRule);
     case "text": {
-      const metrics = options.measureText?.(g.content, g.font) ?? {
-        // Conservative em-box estimate when the host does not measure text.
+      const host = options.measureText?.(g.content, g.font);
+      if (!host && options.layoutMetrics) {
+        const box = measureTextLine(g.content, g.font, g.align, g.baseline).box;
+        return p.x >= box.min.x && p.x <= box.max.x && p.y >= box.min.y && p.y <= box.max.y;
+      }
+      const metrics = host ?? {
+        // Conservative em-box estimate when the host does not measure text
+        // and the scene does not require text.layoutMetrics.
         width: g.font.size * 0.6 * [...g.content].length,
         ascent: g.font.size * 0.8,
         descent: g.font.size * 0.2,

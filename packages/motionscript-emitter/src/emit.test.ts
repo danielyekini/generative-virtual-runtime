@@ -407,6 +407,33 @@ complete;
     expect(sameFrame(before.evaluate(500).drawItems, after.evaluate(500).drawItems)).toBe("");
     expect(sameFrame(before.evaluate(1600).drawItems, after.evaluate(1600).drawItems)).toBe("");
   });
+
+  it("round-trips text.layoutMetrics", () => {
+    const scene = compile(`scene "labels" {
+      version "0.2"; viewport (400, 300); background #0b1220; duration 1s;
+      requires "text.layoutMetrics";
+    };
+    text Title {
+      position (200, 140);
+      content "GO";
+      fontSize 48;
+      align center;
+      baseline middle;
+      fill #f8fafc;
+    };
+    complete;`);
+    expect(scene.requiredCapabilities).toContain("text.layoutMetrics");
+    const { source, again } = roundTrip(scene);
+    expect(source).toContain('requires "text.layoutMetrics";');
+    expect(again.requiredCapabilities).toContain("text.layoutMetrics");
+    const title = again.nodes.find((node) => node.id === "Title");
+    expect(title?.kind).toBe("text");
+    if (title?.kind === "text") {
+      expect(title.align).toBe("center");
+      expect(title.baseline).toBe("middle");
+      expect(title.content).toBe("GO");
+    }
+  });
 });
 
 function sampleTimes(durationMs: number): number[] {
