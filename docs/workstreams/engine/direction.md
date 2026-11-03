@@ -107,15 +107,13 @@ reimplementation from this acknowledgement alone.
 
 ## Next work
 
-Engine review (2–3 November 2026): E027/E035 Done; E012 clip-first landed as
-MotionScript / Scene IR 0.16.0 `compositing.mask`
-(`docs/decisions/engine/scoped-clip-compositing.md`). Continue.
+Engine replenish (3 November 2026): E017 Done ([#162](https://github.com/danielyekini/generative-virtual-runtime/pull/162));
+E012 clip-first remains MotionScript / Scene IR 0.16.0 `compositing.mask`. Continue.
 
-1. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
-   verify and fix native diagnostic and latent-correctness leads against 0.16.0. Ready.
-2. E036 ([#156](https://github.com/danielyekini/generative-virtual-runtime/issues/156)):
-   track mattes / `compositing.matte` (child of E012 decision). Candidate until
-   clip-first evidence and any offscreen-layer need are reviewed.
+1. E036 ([#156](https://github.com/danielyekini/generative-virtual-runtime/issues/156)):
+   track mattes / `compositing.matte` — design-first after clip-first evidence. Ready.
+2. E015 ([#34](https://github.com/danielyekini/generative-virtual-runtime/issues/34)):
+   path progress, attachments, dashes and geometric authoring decision. Ready.
 3. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
 
