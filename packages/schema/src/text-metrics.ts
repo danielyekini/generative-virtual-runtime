@@ -160,15 +160,15 @@ export function formatNumber(value: number, spec: NumericFormatSpec = {}): strin
       intPart = String(abs);
     } else {
       const raw = abs.toString();
-      const [i, f = ""] = raw.split(".");
-      intPart = i;
-      fracPart = f.replace(/0+$/, "");
+      const parts = raw.split(".");
+      intPart = parts[0] ?? "0";
+      fracPart = (parts[1] ?? "").replace(/0+$/, "");
     }
   } else {
     const fixed = abs.toFixed(fractionDigits);
-    const [i, f = ""] = fixed.split(".");
-    intPart = i;
-    fracPart = fractionDigits > 0 ? f : "";
+    const parts = fixed.split(".");
+    intPart = parts[0] ?? "0";
+    fracPart = fractionDigits > 0 ? (parts[1] ?? "") : "";
   }
 
   if (intPart.length < minIntegerDigits) {
