@@ -1157,6 +1157,37 @@ function probe(): PlayerProbe {
   };
 }
 
+/** Smoke/preview helper: one user turn plus an in-flight director model turn. */
+function seedGeneratePreview(user: string, director: string, output: string, expand = false): void {
+  if (!generateMode) enterGenerateMode();
+  const userMessage = generate.state.messages.find((message) => message.id === "seed-user") ?? {
+    id: "seed-user",
+    role: "user" as const,
+    text: user,
+  };
+  userMessage.text = user;
+  const model = generate.state.messages.find((message) => message.id === "seed-model") ?? {
+    id: "seed-model",
+    role: "model" as const,
+    text: "",
+    approach: "director" as const,
+  };
+  model.text = output;
+  model.pending = true;
+  model.phase = "implement";
+  model.approach = "director";
+  model.directorRaw = director;
+  model.source = output;
+  generate.state.messages = [userMessage, model];
+  generate.state.running = true;
+  generate.state.lastStatus = "Implementing MotionScript…";
+  if (expand) {
+    if (generate.state.detailId !== "seed-model" || generate.state.detailShare <= 0) generate.openDetail("seed-model");
+    generate.setDetailShare(1);
+  }
+  render();
+}
+
 function publish(): void {
   const bridge: GvrBridge = {
     activity: "player",
@@ -1180,6 +1211,7 @@ function publish(): void {
     run,
     open: openKey,
     exportAudio,
+    seedGeneratePreview,
   };
   window.__gvr = bridge;
 }
@@ -1271,15 +1303,21 @@ ui.toggleSource.addEventListener("click", () => setSourceOpen(!(settings.sourceO
 ui.sourceClose.addEventListener("click", () => setSourceOpen(false));
 ui.generate.addEventListener("click", () => toggleGenerateMode());
 ui.generateClose.addEventListener("click", () => leaveGenerateMode());
+generateUi.transcript.addEventListener("pointerdown", (event) => {
+  if (event.button !== 0) return;
+  openModelDetail(event.target);
+});
 generateUi.transcript.addEventListener("click", (event) => {
-  const target = event.target;
+  openModelDetail(event.target);
+});
+function openModelDetail(target: EventTarget | null): void {
   if (!(target instanceof Element)) return;
   const bubble = target.closest(".generate-bubble.is-model");
-  if (!(bubble instanceof HTMLButtonElement)) return;
+  if (!(bubble instanceof HTMLElement)) return;
   const row = bubble.closest(".generate-row");
   const id = row instanceof HTMLElement ? row.dataset.id : undefined;
   if (id) generate.openDetail(id);
-});
+}
 ui.source.addEventListener("input", () => { rememberDraft(); fileReadId++; render(); });
 ui.toggleSplit.addEventListener("click", () => { closeMenus(); setSplit(!split); });
 ui.splitFormat.addEventListener("change", () => selectFormat(ui.splitFormat.value as ProgramFormat));
