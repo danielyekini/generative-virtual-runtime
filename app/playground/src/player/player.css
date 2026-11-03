@@ -234,7 +234,20 @@ button.primary:hover, button.run:hover:not(:disabled) { background: #2563eb; }
 
 /* ---------- source side panel ---------- */
 .resize-x { width: 4px; flex: none; cursor: col-resize; background: var(--line); }
-.resize-x:hover, .resize-y:hover { background: var(--accent); }
+.resize-x:hover, .resize-y:hover, .resize-corner:hover { background: var(--accent); }
+/* P026: corner where the bottom dock meets the side panel resizes both at once. */
+#source-resize { position: relative; }
+.resize-corner {
+  position: absolute;
+  left: -5px;
+  width: 14px;
+  height: 14px;
+  z-index: 5;
+  cursor: move;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+body.is-resizing, body.is-resizing * { user-select: none; }
 #source-panel {
   flex: none;
   min-width: 240px;
@@ -527,7 +540,9 @@ body.has-comparison #view { right: 50%; }
 }
 #status-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 /* Settings lives at the far right of the status bar and opens upward. */
-#status #options { border: 0; background: transparent; color: inherit; padding: 0 8px; font-size: 15px; line-height: 20px; border-radius: 0; }
+/* P026: larger settings icon than the original 15px glyph. */
+#status #options { display: inline-flex; align-items: center; justify-content: center; border: 0; background: transparent; color: inherit; padding: 2px 8px; line-height: 20px; border-radius: 0; }
+#status #options svg { width: 18px; height: 18px; }
 #status #options:hover, #status #options[aria-expanded="true"] { background: rgb(255 255 255 / 0.12); }
 .menu.menu-up { top: auto; bottom: calc(100% + 4px); right: 4px; color: var(--text); font-size: 13px; white-space: normal; }
 .icon-button { display: inline-flex; align-items: center; justify-content: center; padding: 5px 7px; }
@@ -540,6 +555,7 @@ body.is-fullscreen #source-panel,
 body.is-fullscreen #source-resize,
 body.is-fullscreen #panel,
 body.is-fullscreen #panel-resize,
+body.is-fullscreen #corner-resize,
 body.is-fullscreen #status { display: none !important; }
 body.is-fullscreen #canvas-area { position: fixed; inset: 0; z-index: 50; min-height: 0; }
 #canvas-area:fullscreen { width: 100vw; height: 100vh; }
@@ -564,7 +580,7 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 
 @media (max-width: 900px) {
   .program .meta, #program-meta { display: none; }
-  #toggle-source { padding: 4px 6px; }
+  #toggle-side-panel { padding: 4px 6px; }
   .scene-cols { grid-template-columns: 1fr; }
 }
 
@@ -602,9 +618,9 @@ body.is-fullscreen .fs-bar:focus-within > * { opacity: 1; }
 
 #transport, #source-panel .panel-bar { flex-wrap: wrap; }
 
-/* The Source affordance is a bare right-panel icon, matching the user's reference. */
-#toggle-source { display: inline-flex; align-items: center; justify-content: center; padding: 3px 5px; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: var(--muted); }
-#toggle-source:hover:not(:disabled), #toggle-source[aria-pressed="true"] { background: transparent; color: var(--text); }
+/* The side-panel toggle is a bare right-panel icon, matching the user's reference. */
+#toggle-side-panel { display: inline-flex; align-items: center; justify-content: center; padding: 3px 5px; border: 0; border-radius: 0; background: transparent; box-shadow: none; color: var(--muted); }
+#toggle-side-panel:hover:not(:disabled), #toggle-side-panel[aria-pressed="true"] { background: transparent; color: var(--text); }
 
 /* Stream options live in the dropdown on the Stream split button. */
 .menu-row { display: flex; gap: 6px; }

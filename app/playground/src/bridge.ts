@@ -47,6 +47,10 @@ export interface PlayerProbe {
   dirty: boolean;
   fullscreen: boolean;
   sourceOpen: boolean;
+  /** Right side panel visible in either Source or Generate chrome (P026). */
+  sidePanelOpen: boolean;
+  sourceWidth: number;
+  panelHeight: number;
   /** P019 Generate mode: side panel shows transcript + composer. */
   generateMode?: boolean;
   generateRunning?: boolean;

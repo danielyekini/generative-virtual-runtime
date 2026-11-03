@@ -113,7 +113,7 @@ try {
   check("no horizontal page overflow", overflow[0] <= overflow[1], overflow);
   check("landing is an empty player with nothing loaded", landing.programKey === null && landing.runState === "not-run" && !(await ev("!!window.__gvr.frame")), landing);
   check("landing shows Open Library in the header and on the canvas", (await visible("#open-library")) && (await visible("#empty-library")));
-  check("Library is a blue text-only button just left of the Source toggle", await ev("(() => { const b = document.querySelector('#open-library'); const t = document.querySelector('#toggle-source'); return b.nextElementSibling === t && b.textContent.trim() === 'Library' && b.classList.contains('primary') && b.getBoundingClientRect().left > innerWidth / 2; })()"));
+  check("Library is a blue text-only button just left of the side-panel toggle", await ev("(() => { const b = document.querySelector('#open-library'); const t = document.querySelector('#toggle-side-panel'); return b.nextElementSibling === t && b.textContent.trim() === 'Library' && b.classList.contains('primary') && b.getBoundingClientRect().left > innerWidth / 2; })()"));
   check("Run is disabled until a program is loaded", await ev("document.querySelector('#run').disabled"));
   check("Source panel is closed by default", !landing.sourceOpen && !(await visible("#source-panel")), landing);
   check("old left rail and right dock are gone", await ev("!document.querySelector('#tools') && !document.querySelector('#dock')"));
@@ -241,6 +241,22 @@ try {
     streaming.scrolled === true && streaming.heldScroll === true && streaming.focused === true,
     streaming,
   );
+  // P026: the header icon toggles the side panel in Generate too, without leaving Generate.
+  const sideToggle = () => ev(`(() => { const t = document.querySelector('#toggle-side-panel'); return { pressed: t.getAttribute('aria-pressed'), label: t.getAttribute('aria-label'), title: t.title }; })()`);
+  const generateToggleBefore = await sideToggle();
+  await ev("document.querySelector('#toggle-side-panel').click()");
+  const generateHidden = await player();
+  const generateToggleClosed = await sideToggle();
+  check(
+    "Side-panel toggle closes the Generate panel without leaving Generate",
+    generateToggleBefore.pressed === "true" && generateToggleBefore.label === "Close side panel"
+      && generateHidden.generateMode && !generateHidden.sidePanelOpen && !(await visible("#source-panel"))
+      && generateToggleClosed.pressed === "false" && generateToggleClosed.label === "Open side panel" && !/source/i.test(generateToggleClosed.title),
+    { generateToggleBefore, generateHidden, generateToggleClosed },
+  );
+  await ev("document.querySelector('#toggle-side-panel').click()");
+  const generateShown = await player();
+  check("Side-panel toggle reopens the Generate chrome (not Source)", generateShown.generateMode && generateShown.sidePanelOpen && (await visible("#generate-chrome")) && !(await visible("#source-chrome")), generateShown);
   await ev("document.querySelector('#generate-close').click()");
   await sleep(50);
   check("Leaving Generate closes the generate chrome", await ev(`!window.__gvr.player.generateMode && document.querySelector('#generate-chrome').hidden`));
@@ -284,6 +300,8 @@ try {
   check("loaded program shows its Studio thumbnail on the canvas before Run", posterColours > 1 && !(await ev("!!window.__gvr.frame")), posterColours);
   check("Fullscreen sits icon-only at the right of the transport", await ev("(() => { const b = document.querySelector('#fullscreen'); return b.closest('#transport') !== null && b.textContent.trim() === '' && !!b.querySelector('svg') && b.getAttribute('aria-label') === 'Fullscreen' && !document.querySelector('#bar #fullscreen'); })()"));
   check("Settings lives at the far right of the status bar", await ev("(() => { const o = document.querySelector('#options'); const s = document.querySelector('#status').getBoundingClientRect(); return o.closest('#status') !== null && !document.querySelector('#bar #options') && s.right - o.getBoundingClientRect().right < 16; })()"));
+  check("Settings uses a larger status-bar icon (P026)", await ev("(() => { const i = document.querySelector('#options svg'); const r = i?.getBoundingClientRect(); return Boolean(r) && r.width >= 18 && r.height >= 18 && document.querySelector('#options').getAttribute('aria-label') === 'Settings'; })()"));
+  check("Studio pages declare the GVR favicon", await ev("(async () => { const l = document.querySelector('link[rel=icon]'); if (!l) return false; const r = await fetch(l.href); return r.ok && (await r.text()).includes('<svg'); })()"));
   await ev("document.querySelector('#options').click()");
   check("status-bar Settings menu opens upward inside the window", await ev("(() => { const r = document.querySelector('#options-pop').getBoundingClientRect(); return !document.querySelector('#options-pop').hidden && r.top >= 0 && r.bottom <= document.querySelector('#status').getBoundingClientRect().top + 1 && r.right <= innerWidth; })()"));
   await shot("2b-settings");
@@ -344,9 +362,38 @@ try {
   check("exit button leaves fullscreen", !(await player()).fullscreen);
 
   // 5. Source panel quick edit
-  await ev("document.querySelector('#toggle-source').click()");
+  await ev("document.querySelector('#toggle-side-panel').click()");
   await sleep(100);
   check("Source panel opens on the right with the loaded source", (await visible("#source-panel")) && (await ev("document.querySelector('#source').value.includes('bouncing-ball')")));
+  // P026: the dock/side-panel corner handle resizes both at once.
+  if (!(await player()).panelOpen) { await ev("document.querySelector('#panel-toggle').click()"); await sleep(50); }
+  const cornerBefore = await player();
+  const corner = await ev(`(() => {
+    const c = document.querySelector('#corner-resize').getBoundingClientRect();
+    const dock = document.querySelector('#panel-resize').getBoundingClientRect();
+    const edge = document.querySelector('#source-resize').getBoundingClientRect();
+    return { x: c.left + c.width / 2, y: c.top + c.height / 2, dockY: dock.top + dock.height / 2, edgeX: edge.left + edge.width / 2, cursor: getComputedStyle(document.querySelector('#corner-resize')).cursor };
+  })()`);
+  check("Corner handle sits where the bottom dock meets the side panel", (await visible("#corner-resize")) && Math.abs(corner.x - corner.edgeX) <= 2 && Math.abs(corner.y - corner.dockY) <= 2, corner);
+  await move(corner.x, corner.y);
+  await cdp.send("Input.dispatchMouseEvent", { type: "mousePressed", x: corner.x, y: corner.y, button: "left", clickCount: 1 }, sessionId);
+  await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: corner.x - 20, y: corner.y - 15, button: "left", buttons: 1 }, sessionId);
+  await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: corner.x - 40, y: corner.y - 30, button: "left", buttons: 1 }, sessionId);
+  await cdp.send("Input.dispatchMouseEvent", { type: "mouseReleased", x: corner.x - 40, y: corner.y - 30, button: "left", clickCount: 1 }, sessionId);
+  const cornerAfter = await player();
+  check(
+    "Dragging the corner resizes the side panel and bottom dock together",
+    cornerAfter.sourceWidth === cornerBefore.sourceWidth + 40 && cornerAfter.panelHeight === cornerBefore.panelHeight + 30,
+    { before: [cornerBefore.sourceWidth, cornerBefore.panelHeight], after: [cornerAfter.sourceWidth, cornerAfter.panelHeight] },
+  );
+  const cornerFollow = await ev(`(() => {
+    const c = document.querySelector('#corner-resize').getBoundingClientRect();
+    const dock = document.querySelector('#panel-resize').getBoundingClientRect();
+    const edge = document.querySelector('#source-resize').getBoundingClientRect();
+    return Math.abs(c.left + c.width / 2 - (edge.left + edge.width / 2)) <= 2 && Math.abs(c.top + c.height / 2 - (dock.top + dock.height / 2)) <= 2;
+  })()`);
+  check("Corner handle follows the resized edges", cornerFollow);
+  await shot("5a-corner-resize");
   await ev(`(() => { const box = document.querySelector('#source'); box.value += '\\n'; box.dispatchEvent(new Event('input')); })()`);
   const edited = await player();
   check("editing marks the program as edited since Run", edited.dirty && (await visible("#source-dirty")), edited);
