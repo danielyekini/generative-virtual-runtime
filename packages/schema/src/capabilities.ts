@@ -32,6 +32,7 @@ export const CAPABILITIES = [
   "space.planar25d",
   "physics.planar2d",
   "space.planarSeams",
+  "geometry.pathProgress",
 ] as const;
 
 export type CapabilityName = (typeof CAPABILITIES)[number];

@@ -155,6 +155,66 @@ complete;
     expect(again.interactions).toEqual(scene.interactions);
   });
 
+  it("round-trips path attachments (geometry.pathProgress)", () => {
+    const source = `scene "attach" {
+  version "0.2";
+  viewport (400, 300);
+  background #ffffff;
+  duration 2s;
+};
+path Rail {
+  stroke #334155 width 2;
+  move (0, 0);
+  line (200, 0);
+  line (200, 100);
+};
+circle Tip {
+  radius 6;
+  fill #f97316;
+};
+circle Wheel {
+  radius 8;
+  fill #111111;
+};
+rectangle Mark {
+  size (10, 10);
+  fill #000000;
+};
+attach Tip along Rail {
+  progress 0.5;
+  orient true;
+};
+attach Wheel along Rail {
+  progress 0;
+  orient false;
+  rollRadius 8;
+};
+attach Mark along Rail {
+  progress 1;
+};
+animate Tip.path.progress {
+  from 0;
+  to 1;
+  duration 2s;
+};
+complete;
+`;
+    const scene = compile(source);
+    expect(scene.requiredCapabilities).toContain("geometry.pathProgress");
+    const { again, source: emitted } = roundTrip(scene);
+    expect(emitted).toContain("attach Tip along Rail {");
+    expect(emitted).toContain("  orient true;");
+    expect(emitted).toContain("  rollRadius 8;");
+    expect(emitted).toContain("Tip.path.progress");
+    expect(again.pathAttachments).toEqual(scene.pathAttachments);
+    expect(again.pathAttachments).toEqual([
+      { nodeId: "Tip", pathId: "Rail", progress: 0.5, orient: true },
+      { nodeId: "Wheel", pathId: "Rail", progress: 0, orient: false, rollRadius: 8 },
+      { nodeId: "Mark", pathId: "Rail", progress: 1 },
+    ]);
+    expect(again.timeline.tracks).toEqual(scene.timeline.tracks);
+  });
+
   it("round-trips animated solid paint channels", () => {
     const source = `scene "paint" {
   version "0.2";

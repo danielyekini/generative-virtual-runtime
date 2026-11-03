@@ -76,6 +76,7 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
 | `compositing.isolatedOpacity` | Isolated group opacity scopes — SVG exact; core targets untested |
 | `compositing.blend` | `source-over`, `multiply`, `screen`, `overlay` on isolated groups — untested |
 | `compositing.mask` | Group `clip` to a geometry outline — supported (0.16.0); Lottie/SVG adapters unsupported |
+| `geometry.pathProgress` | `attach` a node along a path at a progress, optional tangent orient and explicit rolling — supported (0.17.0); Lottie/SVG adapters unsupported |
 | `effects.blur` | Blur on a render scope — supported; Lottie static Gaussian blur exact |
 | `effects.shadow` | Shadow on a render scope — schema present, untested |
 | `render.tree` | Nested render scopes for compositing groups — runtime supported; renderer untested |

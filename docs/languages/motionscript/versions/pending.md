@@ -13,16 +13,17 @@ Not yet in a published MotionScript version:
 - compositing.matte
 - transform.skew
 - transform.autoOrient
-- geometry.pathProgress
 - paint.strokeDash
 - geometry.repeater
 - geometry.mergePaths
 - text.animators
 
-`geometry.pathProgress` / `paint.strokeDash` are named by the E015 decision
-(`docs/decisions/engine/path-progress-geometry-authoring.md`); host/schema
-prototypes exist without a language claim. Variable width profiles stay outside
-this pending list until a separate decision.
+`paint.strokeDash` is named by the E015 decision
+(`docs/decisions/engine/path-progress-geometry-authoring.md`); its host/schema
+prototype exists without a language claim. `transform.autoOrient` stays pending
+as a standalone channel: orientation from the path tangent now exists only as
+the `orient` option of a path attachment (`geometry.pathProgress`). Variable width
+profiles stay outside this pending list until a separate decision.
 
 `geometry.animatedTrim` landed in MotionScript 0.5.0.
 `entities.durableRevisions` landed in MotionScript 0.6.0; declarative entity/behaviour statements completed in 0.9.0.
@@ -36,6 +37,7 @@ Declarative entity sugar landed in MotionScript 0.9.0.
 `audio.generative` (generative audio resources and `audio.narration` / `audio.effects` sugar) landed in MotionScript 0.14.0.
 `space.planarSeams` (`seams` blocks inside `spatialLayer`) landed in MotionScript 0.15.0.
 `compositing.mask` (`clip` on groups) landed in MotionScript 0.16.0.
+`geometry.pathProgress` (`attach … along …` path attachments) landed in MotionScript 0.17.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

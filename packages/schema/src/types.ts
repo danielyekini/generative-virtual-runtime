@@ -427,6 +427,7 @@ export type NodeAnimChannel =
   | "trim.start"
   | "trim.end"
   | "trim.offset"
+  | "path.progress"
   | "fill.r"
   | "fill.g"
   | "fill.b"
@@ -558,6 +559,8 @@ export interface SceneIR {
   spatialLayers?: SpatialLayerDefinition[];
   /** Requires physics.planar2d (Scene IR 0.13.0). One planar physics world per scene. */
   physics?: PhysicsWorldDefinition;
+  /** Requires geometry.pathProgress (Scene IR 0.17.0). Base definitions, frozen after the first seal. */
+  pathAttachments?: PathAttachment[];
 }
 
 /**
@@ -731,6 +734,25 @@ export interface InteractionTarget {
   bindings?: InteractionBinding[];
 }
 
+/**
+ * Path attachment (geometry.pathProgress, Scene IR 0.17.0). Places `nodeId` at
+ * `progress` along the resolved (morphed, then trimmed) outline of path node
+ * `pathId`. The attachment exclusively owns the node's transform.position.x/y,
+ * and transform.rotation when `orient` is true or `rollRadius` is set. Rolling
+ * (distance / radius) is never implied by `orient`. `path.progress` tracks on
+ * the attached node override `progress` per sample.
+ */
+export interface PathAttachment {
+  nodeId: string;
+  pathId: string;
+  /** Base progress in [0, 1]. */
+  progress: number;
+  /** Rotation follows the path tangent. */
+  orient?: boolean;
+  /** Radius > 0. Adds rolling = distance / radius to rotation. */
+  rollRadius?: number;
+}
+
 export interface SceneHeader {
   irVersion: IrVersion;
   sceneId: string;
@@ -750,6 +772,8 @@ export interface SceneHeader {
   spatialLayers?: SpatialLayerDefinition[];
   /** Requires physics.planar2d (Scene IR 0.13.0). Base definition, frozen after the first seal. */
   physics?: PhysicsWorldDefinition;
+  /** Requires geometry.pathProgress (Scene IR 0.17.0). Base definitions, frozen after the first seal. */
+  pathAttachments?: PathAttachment[];
 }
 
 /** Stable semantic entity identity for durable revisions (entities.durableRevisions). */

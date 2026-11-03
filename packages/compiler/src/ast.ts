@@ -165,6 +165,19 @@ export interface InteractAst {
   errors: Diagnostic[];
 }
 
+/** Path attachment (MotionScript 0.17 / geometry.pathProgress). */
+export interface AttachAst {
+  kind: "attach";
+  nodeId: string;
+  pathId: string;
+  /** Required; absent only on a rejected unit. */
+  progress?: number;
+  orient?: boolean;
+  rollRadius?: number;
+  span: SourceSpan;
+  errors: Diagnostic[];
+}
+
 /** Portable generative fields shared by explicit and sugar audio decls. */
 export interface AudioGenerativeFields {
   modality: AudioGenerativeModality;
@@ -334,6 +347,7 @@ export type UnitAst =
   | InstanceAst
   | OperatorsAst
   | InteractAst
+  | AttachAst
   | AudioDeclAst
   | AudioSugarAst
   | CueDeclAst

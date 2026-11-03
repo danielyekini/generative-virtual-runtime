@@ -1,3 +1,5 @@
+import { attachAlongPath } from "./path-progress";
+import { trimmed } from "./frame";
 import {
   applySegmentEasing,
   channelSpec,
@@ -32,6 +34,7 @@ interface NodePose {
   trimStart?: number;
   trimEnd?: number;
   trimOffset?: number;
+  pathProgress?: number;
   fillR?: number;
   fillG?: number;
   fillB?: number;
@@ -165,12 +168,46 @@ export function sampleScene(
     };
   }
 
+  applyPathAttachments(scene, nodePoses, trimOverrides);
+
   return {
     nodes: scene.nodes.map((node) => applyNodePose(node, nodePoses.get(node.id) ?? nodePose(node))),
     camera: { ...cameraSource, ...cameraPose, position: { ...cameraPose.position } },
     diagnostics,
     trimOverrides,
   };
+}
+
+/**
+ * geometry.pathProgress (Scene IR 0.17.0). Runs after track sampling and trim
+ * resolution: the path outline is the sampled (morphed) command list with the
+ * same trim rules as frame resolution, so late morph/trim edits move the
+ * attached node without re-baking progress. Position is always written;
+ * rotation only when `orient` or `rollRadius` is set (orient alone is not rolling).
+ */
+function applyPathAttachments(
+  scene: SceneIR,
+  poses: Map<string, NodePose>,
+  trimOverrides: Record<string, TrimOverride>,
+): void {
+  if (!scene.pathAttachments?.length) return;
+  const nodes = new Map(scene.nodes.map((node) => [node.id, node]));
+  for (const attachment of scene.pathAttachments) {
+    const pathNode = nodes.get(attachment.pathId);
+    const pose = poses.get(attachment.nodeId);
+    if (!pose || !pathNode || pathNode.kind !== "path") continue;
+    const commands = trimmed(scene, pathNode.id, poses.get(pathNode.id)?.commands ?? pathNode.commands, trimOverrides);
+    const placed = attachAlongPath({
+      commands,
+      progress: pose.pathProgress ?? attachment.progress,
+      orient: attachment.orient,
+      rollRadius: attachment.rollRadius,
+    });
+    pose.position = { ...placed.position };
+    if (attachment.orient === true || attachment.rollRadius !== undefined) {
+      pose.rotation = (attachment.orient === true ? placed.rotation ?? 0 : 0) + (placed.rolling ?? 0);
+    }
+  }
 }
 
 function nodePose(node: NodeDefinition): NodePose {
@@ -483,6 +520,9 @@ function writeNode(pose: NodePose, channel: string, value: number): void {
       break;
     case "trim.offset":
       pose.trimOffset = value;
+      break;
+    case "path.progress":
+      pose.pathProgress = value;
       break;
     case "fill.r":
       pose.fillR = value;

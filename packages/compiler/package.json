@@ -1,6 +1,6 @@
 {
   "name": "@gvr/compiler",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": true,
   "type": "module",
   "exports": {

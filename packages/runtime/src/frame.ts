@@ -217,7 +217,8 @@ function geometryOf(
   }
 }
 
-function trimmed(
+/** Resolved outline after static/animated trim; shared with path attachments (sample.ts). */
+export function trimmed(
   scene: SceneIR,
   nodeId: string,
   commands: readonly { cmd: string }[],
