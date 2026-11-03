@@ -195,16 +195,18 @@ new engine tickets waits on Product P030 (#188). Holder:
 10. Engine review (3 November 2026, late evening, session
     `552e4bd0-5e51-4cc3-ab9e-ce4a218586f3`) inspected runs `a130fd66` (E047+E045),
     `6df61122` (E020 stop), `e4e4b92a` (E021), `00790532` (E022) and `d5a6c548`
-    (E048). All five complete. **Continue.** Ready order unchanged: E050
-    ([#221](https://github.com/danielyekini/generative-virtual-runtime/issues/221)),
-    then E049 ([#218](https://github.com/danielyekini/generative-virtual-runtime/issues/218)).
+    (E048). All five complete. **Continue.** That session also shipped E050
+    (MotionScript 0.26.0 / Scene IR 0.25.0 forbid instance timing) and E049
+    **stop** on variable stroke width profiles
+    ([decision](../../decisions/engine/variable-stroke-width-profiles.md)).
     Outcome-mined Candidates: E051
     ([#224](https://github.com/danielyekini/generative-virtual-runtime/issues/224))
     MotionScript shadow sugar; E052
     ([#225](https://github.com/danielyekini/generative-virtual-runtime/issues/225))
     duplicate parse-time diagnostics; E053
     ([#226](https://github.com/danielyekini/generative-virtual-runtime/issues/226))
-    animated blur (story-gated). E046 / E042 / joint [#209](https://github.com/danielyekini/generative-virtual-runtime/issues/209)
+    animated blur (story-gated). After E049, Ready replenishes with E052.
+    E046 / E042 / E051 / E053 / joint [#209](https://github.com/danielyekini/generative-virtual-runtime/issues/209)
     stay Candidate. No process change.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.

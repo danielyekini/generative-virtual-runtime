@@ -69,9 +69,10 @@ streaming honest.
   phase shifts into the pattern. That helper stays geometry-only. The paint
   claim `paint.strokeDash` landed in MotionScript / Scene IR 0.21.0 and does
   not replace this helper or trim. Contours dash independently.
-- **Width profile.** Deferred. Uniform `stroke.width` animation remains
-  `paint.animatedSolid`. Arc-length width profiles (ribbons, cusps, joins) need
-  a later decision with fill-outline or variable-stroke evidence.
+- **Width profile.** **Stopped** by E049
+  ([variable-stroke-width-profiles.md](variable-stroke-width-profiles.md)).
+  Uniform `stroke.width` animation remains `paint.animatedSolid`. No language
+  width-profile capability without a new story + renderer design.
 - **Contacts / source size.** Progress samples agree across differently authored
   polylines that share the same drawn shape; authors do not duplicate contact
   coordinates when source command counts differ.
@@ -120,8 +121,8 @@ support until a follow-up ships a versioned capability.
   landed in MotionScript / Scene IR 0.21.0):
   version `paint.strokeDash` — dash array + phase on stroke, renderer
   `setLineDash`, animated phase optional; do not substitute dashes for trim.
-- **Width profile (Candidate / later decision):** variable stroke width along arc
-  length; requires normals/joins evidence beyond uniform `stroke.width`.
+- **Width profile:** E049 ([#218](https://github.com/danielyekini/generative-virtual-runtime/issues/218))
+  **stopped** — see [variable-stroke-width-profiles.md](variable-stroke-width-profiles.md).
 
 ## Supersession
 

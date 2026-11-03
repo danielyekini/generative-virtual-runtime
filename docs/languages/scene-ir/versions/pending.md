@@ -19,7 +19,8 @@ Not yet in a published Scene IR version:
 `paint.strokeDash` landed in Scene IR 0.21.0. `transform.autoOrient` stays pending
 as a standalone channel: orientation from the path tangent now exists only as
 the `orient` option of a path attachment (`geometry.pathProgress`). Variable width
-profiles stay outside this pending list until a separate decision.
+profiles were evaluated in E049 and **stopped** (uniform `stroke.width` only);
+they are not a pending language candidate.
 
 `text.animators` (per-glyph transforms) stays pending and is **not** the
 content/format slice. `text.layoutMetrics` landed in Scene IR 0.20.0.
