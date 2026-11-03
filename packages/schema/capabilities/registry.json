@@ -718,9 +718,14 @@
       "summary": "A render scope can carry a shadow effect.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },
       "targets": ["renderer"],
-      "restrictions": ["No importer maps a drop shadow into this effect."],
-      "support": { "compiler": "untested", "runtime": "untested", "renderer": "untested" },
-      "conformanceTests": [],
+      "restrictions": [
+        "Scene IR shadow is dx/dy/blur/color on an isolated render scope (canvas shadow* properties). Animated shadow channels are not track writers.",
+        "MotionScript has no shadow property yet; hosts and tests author the IR effect directly. No importer maps a drop shadow into this effect."
+      ],
+      "support": { "compiler": "unsupported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/canvas-renderer/src/renderer.test.ts#applies shadow effect on an isolated render scope"
+      ],
       "adapters": {
         "lottie": { "status": "untested", "scope": "Lottie drop shadows are not mapped. No conformance test pins that diagnostic." },
         "svg": { "status": "untested", "scope": "SVG drop-shadow filters are not covered by a fixture." }

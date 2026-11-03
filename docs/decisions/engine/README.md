@@ -75,3 +75,6 @@
   midpoint chord-error `plotAdaptive` beats uniform on a design Bezier but
   **loses** the held-out spiral on error and evaluation cost — **stop**; host
   helpers only, no language plot or cone IR.
+- [Bounded effects (E021)](bounded-effects.md): static `effects.blur` confirmed;
+  `effects.shadow` renderer/runtime pinned (MotionScript sugar deferred);
+  animated blur, reflections and PBR stay out — no version bump.

@@ -172,8 +172,12 @@ new engine tickets waits on Product P030 (#188). Holder:
    Ready. E020 measured midpoint chord-error adaptive plots against uniform
    samples ([decision](../../decisions/engine/computed-curves-adaptive-geometry.md)):
    design Bezier improves, held-out spiral fails error and eval-cost gates →
-   **stop** (host `plotUniform` / `plotAdaptive` only; no language bump). Next
-   Ready: E021 then E022. E046 / E048 / E042 stay Candidate.
+   **stop** (host `plotUniform` / `plotAdaptive` only; no language bump).
+6. E021 ([#40](https://github.com/danielyekini/generative-virtual-runtime/issues/40))
+   pinned static `effects.shadow` renderer/runtime conformance and confirmed
+   `effects.blur` ([decision](../../decisions/engine/bounded-effects.md)). No
+   version bump; MotionScript shadow sugar, animated blur and reflections stay
+   deferred. Next Ready: E022 (#41). E046 / E048 / E042 stay Candidate.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

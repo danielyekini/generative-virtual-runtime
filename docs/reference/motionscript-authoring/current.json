@@ -1,13 +1,13 @@
 {
   "generatorVersion": "0.1.0",
-  "generatedAt": "2026-11-03T20:46:09.447Z",
+  "generatedAt": "2026-11-03T21:31:15.684Z",
   "motionscript": "0.25.0",
   "sceneIr": "0.24.0",
   "wireVersion": "0.2",
-  "packageVersion": "0.1.23",
+  "packageVersion": "0.1.24",
   "releaseId": "ms-0.25.0_sir-0.24.0",
-  "fingerprint": "c769a558907bbec5961bfc582b4f3520d62cb02aca2b7fc59f549c8d1588f46b",
-  "fingerprint8": "c769a558",
+  "fingerprint": "0767e605933f91c2564ea9b0e15d870b62d999527e069ddda1e46a1bb1c1da92",
+  "fingerprint8": "0767e605",
   "estimatedTokensUtf16Div4": 4246,
   "byteLengthUtf8": 16991,
   "requiredCapabilities": [
@@ -56,6 +56,7 @@
     "text.layoutMetrics"
   ],
   "unavailableCapabilities": [
+    "effects.shadow",
     "transform.skew",
     "transform.autoOrient",
     "geometry.repeater",
@@ -67,14 +68,13 @@
     "paint.linearGradient",
     "paint.radialGradient",
     "compositing.isolatedOpacity",
-    "compositing.blend",
-    "effects.shadow"
+    "compositing.blend"
   ],
   "authorities": {
-    "packages/schema/capabilities/releases.json": "ba501cfdf25487761f8de5020b21a89e3e12977c294485afd4468e5ebbb05be0",
+    "packages/schema/capabilities/releases.json": "b866d7b3b3a9f75a513392bbc9ea5d0e3b2ed91faefc6c37d452b689b0776838",
     "docs/languages/motionscript/versions/0.25.0.md": "004ee1cc35120143f29ebc14b7b9f98eba0bdf59917e4747d0db2ce1f6c5e9c3",
     "docs/languages/scene-ir/versions/0.24.0.md": "b4fd6d06fda735904a32bcdecf86b1b24adbb19d6aed113d8d5ce3c72204362e",
-    "packages/schema/capabilities/registry.json": "b635898806abb78187570259a46ad92bfcaedcabd22f0712e20a50b55e072294",
+    "packages/schema/capabilities/registry.json": "0598b650de5856a1ec43496c55a03f9dcb627eefaaf58b85cfdafbc72afe993e",
     "packages/schema/src/grammar.ts": "0bf89b4f44d4d3846fea0e8c81b9c02207103ad487c705ccb763decca135ab0c",
     "docs/contracts/streaming-authorship.md": "7c5942c1a493c48d53309fdf007a132ed9085797f6a904664bfb01fab9afda7b",
     "docs/contracts/streaming-observation.md": "c6d66aecfb8b234ef877f12b9356781cba30c95c591dd839fd019591986de5f2",
@@ -86,6 +86,6 @@
     "fixtures/motionscript/streaming/sealed-history-bad.ms": "7e4a4f1b0110f0a8b74a660d32c5d1dbbb3edc73654016a1399174abbf4fbb91",
     "fixtures/motionscript/streaming/early-seal-empty.ms": "125d33eafbbc5393112e37a916a67b50707c5e12eee39fdf1a8a3abbbd616936"
   },
-  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.25.0_sir-0.24.0-c769a558.md",
-  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.25.0_sir-0.24.0-c769a558.json"
+  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.25.0_sir-0.24.0-0767e605.md",
+  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.25.0_sir-0.24.0-0767e605.json"
 }
