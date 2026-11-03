@@ -177,7 +177,7 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
     narratives). Misfiled capability probes under Stories (for example Clip
     mask, Dynamic text, Path progress, Physics marble, Spatial crane / echo /
     home / seams, and similar Alpha matte) move to Test frames. Done in P031:
-    the twelve `(capability.id)` probes (also Path space, Text layout, Stroke
+    the thirteen `(capability.id)` probes (also Path space, Timed keys, Text layout, Stroke
     dash) are `frame:<id>` entries; saved `story:<id>` favourites, tags,
     recents and links resolve to the new keys.
   - **Transcripts** — saved multi-turn Generate sessions (and importable GVR

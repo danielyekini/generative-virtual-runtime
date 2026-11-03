@@ -38,10 +38,11 @@ No language, registry or deployment change.
 Issue: [#187](https://github.com/danielyekini/generative-virtual-runtime/issues/187).
 Base: `7a693d8` (main after P026).
 
-The twelve MotionScript capability probes moved from Stories to Test frames:
+The thirteen MotionScript capability probes moved from Stories to Test frames:
 Spatial crane, Spatial home, Spatial echo, Spatial seams, Clip mask, Alpha
-matte, Path progress, Path space, Dynamic text, Text layout, Stroke dash and
-Physics marble. All twelve have captions ending in `(capability.id)`. Their
+matte, Path progress, Path space, Timed keys (added by Engine on main during
+this run and caught by the new test), Dynamic text, Text layout, Stroke dash
+and Physics marble. All twelve have captions ending in `(capability.id)`. Their
 keys changed from `story:<id>` to `frame:<id>`. The
 mapping lives in `app/playground/src/player/program-keys.ts`, and saved
 favourites/tags, recents and `#p/story:<id>` links resolve to the new keys
@@ -49,8 +50,10 @@ favourites/tags, recents and `#p/story:<id>` links resolve to the new keys
 metadata wins. Stories now holds only the narrative programs.
 
 Verification (exit 0):
-- `npm run verify`: 88 Vitest files / 583 tests (two new: the probe placement
-  and key migration), typechecks, Studio build, IR manifest, 33 operations
+- `npm run verify` after integrating main `05623b8`: 90 Vitest files / 597
+  tests (two new: the probe placement and key migration). The placement test
+  rejects any Stories caption ending in `(capability.id)`, so a later probe
+  added to the MotionScript examples must also be listed in `PROBE_IDS`, typechecks, Studio build, IR manifest, 33 operations
   tests, reference check.
 - `npm run smoke:studio`: 146/146. New checks: Test frames chip lists the
   probes, Stories chip lists none, and an old `story:clip-mask` link opens

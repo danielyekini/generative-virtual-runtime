@@ -15,6 +15,7 @@ export const PROBE_IDS: ReadonlySet<string> = new Set([
   "alpha-matte",
   "path-progress",
   "path-space",
+  "timed-keys",
   "dynamic-text",
   "text-layout",
   "stroke-dash",
