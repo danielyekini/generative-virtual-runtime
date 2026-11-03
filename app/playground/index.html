@@ -86,41 +86,34 @@
               <button id="failed-diagnostics" type="button">Show diagnostics</button>
             </div>
             <div id="fs-bar" class="fs-bar">
-              <button id="fs-play" type="button" aria-label="Play">▶</button>
-              <span id="fs-clock" class="clock"></span>
               <span class="spacer"></span>
               <button id="fs-exit" type="button">✕ Exit fullscreen (Esc)</button>
             </div>
-          </div>
-          <div id="transport" class="is-disabled">
-            <button id="play" type="button" title="Play / pause (Space)" aria-label="Play">▶</button>
-            <button id="frame-back" type="button" aria-label="Previous frame" title="Previous frame">−1f</button>
-            <button id="key-back" type="button" aria-label="Previous key time" title="Previous key time (←)">‹ key</button>
-            <button id="key-fwd" type="button" aria-label="Next key time" title="Next key time (→)">key ›</button>
-            <button id="frame-fwd" type="button" aria-label="Next frame" title="Next frame">+1f</button>
-            <span id="clock" class="clock">0:00.000 / 0:00.000</span>
-            <label class="field inline">Speed
-              <select id="speed" aria-label="Playback speed">
-                <option value="0.25">0.25×</option>
-                <option value="0.5">0.5×</option>
-                <option value="1" selected>1×</option>
-                <option value="2">2×</option>
-              </select>
-            </label>
-            <span class="spacer"></span>
-            <button id="fullscreen" class="icon-button" type="button" disabled aria-label="Fullscreen" title="Fullscreen (F)">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" /></svg>
-            </button>
-          </div>
-          <div id="tape" class="tape" role="group" aria-label="Tape">
-            <div class="track" data-track="time">
-              <span class="track-label">Time</span>
-              <div id="track-time" class="track-body" role="slider" tabindex="0" aria-label="Scene time" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
-                <canvas id="tape-frames" class="tape-frames" aria-hidden="true"></canvas>
-                <div id="tape-ahead" class="tape-ahead"></div>
-                <div id="tape-gap" class="tape-gap" hidden></div>
-                <div id="tape-ticks" class="tape-ticks"></div>
-                <div id="playhead" class="playhead"></div>
+            <div id="playback" class="playback is-line" aria-hidden="true">
+              <div id="tape" class="tape" role="group" aria-label="Tape">
+                <div class="track" data-track="time">
+                  <span class="track-label">Time</span>
+                  <div id="track-time" class="track-body" role="slider" tabindex="0" aria-label="Scene time" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+                    <div id="tape-progress" class="tape-progress"></div>
+                    <canvas id="tape-frames" class="tape-frames" aria-hidden="true"></canvas>
+                    <div id="tape-ahead" class="tape-ahead"></div>
+                    <div id="tape-gap" class="tape-gap" hidden></div>
+                    <div id="tape-ticks" class="tape-ticks"></div>
+                    <div id="playhead" class="playhead"></div>
+                  </div>
+                </div>
+              </div>
+              <div id="transport" class="is-disabled">
+                <button id="play" type="button" title="Play / pause (Space)" aria-label="Play">▶</button>
+                <button id="frame-back" type="button" aria-label="Previous frame" title="Previous frame">−1f</button>
+                <button id="key-back" type="button" aria-label="Previous key time" title="Previous key time (←)">‹ key</button>
+                <button id="key-fwd" type="button" aria-label="Next key time" title="Next key time (→)">key ›</button>
+                <button id="frame-fwd" type="button" aria-label="Next frame" title="Next frame">+1f</button>
+                <span id="clock" class="clock">0:00.000 / 0:00.000</span>
+                <span class="spacer"></span>
+                <button id="fullscreen" class="icon-button" type="button" disabled aria-label="Fullscreen" title="Fullscreen (F)">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" /></svg>
+                </button>
               </div>
             </div>
           </div>
@@ -256,6 +249,15 @@
             <option value="2">2×</option>
           </select>
         </label>
+        <label class="field">Playback speed
+          <select id="speed" aria-label="Playback speed">
+            <option value="0.25">0.25×</option>
+            <option value="0.5">0.5×</option>
+            <option value="1" selected>1×</option>
+            <option value="2">2×</option>
+          </select>
+        </label>
+        <label class="check"><input id="opt-full-tape" type="checkbox" /> Full frame tape</label>
         <hr />
         <p class="menu-note">Additional tools</p>
         <a role="menuitem" href="/legacy.html#stream">Legacy stream workbench</a>

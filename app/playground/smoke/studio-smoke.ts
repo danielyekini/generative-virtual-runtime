@@ -89,6 +89,9 @@ try {
     await cdp.send("Input.dispatchKeyEvent", { type: "keyDown", key: keyName, code, windowsVirtualKeyCode: vk, modifiers }, sessionId);
     await cdp.send("Input.dispatchKeyEvent", { type: "keyUp", key: keyName, code, windowsVirtualKeyCode: vk, modifiers }, sessionId);
   };
+  const move = async (x: number, y: number) => {
+    await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x, y }, sessionId);
+  };
   const click = async (x: number, y: number) => {
     for (const type of ["mousePressed", "mouseReleased"]) {
       await cdp.send("Input.dispatchMouseEvent", { type, x, y, button: "left", clickCount: 1 }, sessionId);
@@ -293,8 +296,25 @@ try {
   const ran = await player();
   check("Run compiles and plays the loaded program", ran.runState === "ok" && ran.sceneId === "bouncing-ball" && ran.playing && ran.timeMs > 0, ran);
   check("Fullscreen is enabled after Run", !(await ev("document.querySelector('#fullscreen').disabled")));
+  check("floating playback stays in the canvas until the pointer moves", await ev(`(() => {
+    const playback = document.querySelector('#playback');
+    const speed = document.querySelector('#speed');
+    const full = document.querySelector('#opt-full-tape');
+    const area = document.querySelector('#canvas-area').getBoundingClientRect();
+    const box = playback.getBoundingClientRect();
+    return playback.closest('#canvas-area')
+      && !playback.classList.contains('is-revealed')
+      && playback.classList.contains('is-line')
+      && box.bottom <= area.bottom + 1
+      && box.top > area.top
+      && speed.closest('#options-pop')
+      && full instanceof HTMLInputElement
+      && !full.checked;
+  })()`));
   await ev("document.querySelector('#play').click()");
   const track = await ev("(() => { const r = document.querySelector('#track-time').getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; })()");
+  await move(track.x + track.w * 0.5, track.y + track.h / 2);
+  await sleep(30);
   await click(track.x + track.w * 0.5, track.y + track.h / 2);
   const sought = await player();
   check("clicking the tape seeks to that fraction of the program", Math.abs(sought.timeMs - sought.durationMs * 0.5) < sought.durationMs * 0.02 && !sought.playing, sought);

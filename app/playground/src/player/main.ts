@@ -44,6 +44,7 @@ import {
   write,
   type PanelTab,
 } from "./settings";
+import { playbackHotspotContains, PLAYBACK_IDLE_MS, showFrameTape } from "./playback-chrome";
 import { GenerateController } from "./generate-session";
 import { bindGeneratePanel, renderGeneratePanel, wireGeneratePanel } from "./generate-panel";
 
@@ -109,9 +110,10 @@ const ui = {
   failed: $("failed"),
   failedNote: $("failed-note"),
   failedDiagnostics: $<HTMLButtonElement>("failed-diagnostics"),
-  fsPlay: $<HTMLButtonElement>("fs-play"),
-  fsClock: $("fs-clock"),
   fsExit: $<HTMLButtonElement>("fs-exit"),
+  playback: $("playback"),
+  fullTape: $<HTMLInputElement>("opt-full-tape"),
+  tapeProgress: $("tape-progress"),
   transport: $("transport"),
   play: $<HTMLButtonElement>("play"),
   frameBack: $<HTMLButtonElement>("frame-back"),
@@ -158,6 +160,11 @@ const settings = decodeSettings(read(SETTINGS_KEY));
 let recent = decodeRecent(read(RECENT_KEY));
 const renderer = new CanvasRenderer(ui.canvas, telemetry);
 const tape = new FrameTape(ui.tapeFrames);
+/** null follows the mode default: frames for Stream/Generate, a white line for Run. */
+let fullTapeOverride: boolean | null = null;
+/** Pointer is on the tape, so a white line expands to frame tiles for scrubbing. */
+let tapeScrub = false;
+let playbackIdle = 0;
 /** Bumped per Run/Stream so the tape never reuses another session's tiles. */
 let tapeSession = 0;
 /** Studio poster for a loaded, not-yet-run program (same policy as Library thumbnails). */
@@ -808,18 +815,24 @@ function renderTransport(): void {
   const still = isStill();
   const time = still ? 0 : clampTime(clock.timeMs, span);
   ui.transport.classList.toggle("is-disabled", still);
-  for (const control of [ui.play, ui.frameBack, ui.frameFwd, ui.keyBack, ui.keyFwd, ui.speed, ui.fsPlay]) control.disabled = still;
+  for (const control of [ui.play, ui.frameBack, ui.frameFwd, ui.keyBack, ui.keyFwd, ui.speed]) control.disabled = still;
   const label = clock.isPlaying ? "❚❚" : "▶";
   put(ui.play, label);
-  put(ui.fsPlay, label);
   ui.play.setAttribute("aria-label", clock.isPlaying ? "Pause" : "Play");
-  ui.fsPlay.setAttribute("aria-label", clock.isPlaying ? "Pause" : "Play");
   const text = runtime
     ? still ? `static · ${formatClock(0)}` : `${formatClock(time)} / ${formatClock(span)}`
     : "—";
   put(ui.clock, text);
-  put(ui.fsClock, text);
   const fraction = !still && span > 0 ? time / span : 0;
+  ui.tapeProgress.style.width = `${(fraction * 100).toFixed(3)}%`;
+  if (document.activeElement !== ui.fullTape) {
+    ui.fullTape.checked = showFrameTape({
+      stream: Boolean(stream),
+      generate: generateMode,
+      override: fullTapeOverride,
+      scrubbing: false,
+    });
+  }
   renderTape(span, still, fraction);
   ui.playhead.style.left = `${(fraction * 100).toFixed(3)}%`;
   ui.playhead.hidden = !runtime;
@@ -849,10 +862,18 @@ function resolvedThroughMs(span: number): number {
 }
 
 function renderTape(span: number, still: boolean, fraction: number): void {
+  const frames = showFrameTape({
+    stream: Boolean(stream),
+    generate: generateMode,
+    override: fullTapeOverride,
+    scrubbing: tapeScrub,
+  });
+  ui.playback.classList.toggle("is-line", !frames);
+  ui.playback.classList.toggle("is-frames", frames);
   const resolved = resolvedThroughMs(span);
   const resolvedFraction = !still && span > 0 ? Math.min(1, resolved / span) : 0;
-  if (!runtime || still || libraryVisible || fullscreen) {
-    if (!runtime || still) tape.clear();
+  if (!frames || !runtime || still || libraryVisible) {
+    if (!frames || !runtime || still) tape.clear();
   } else {
     const scene = runtime.scene;
     const evaluator = runtime;
@@ -1369,12 +1390,16 @@ function pointerAt(event: PointerEvent | WheelEvent): { x: number; y: number } {
   return logicalPointFromCss(viewport, ui.canvas.clientWidth, ui.canvas.clientHeight, event.offsetX, event.offsetY);
 }
 
+let canvasPointerConsumed = false;
 for (const type of ["pointerdown", "pointermove", "pointerup"] as const) {
   ui.canvas.addEventListener(type, (event) => {
     if (!input) return;
     const point = pointerAt(event);
-    dispatchInput((sceneTimeMs) => ({ type, sceneTimeMs, pointerId: event.pointerId, x: point.x, y: point.y }));
-    if (type === "pointerdown" && input.capturedEntity) ui.canvas.setPointerCapture?.(event.pointerId);
+    const consumed = dispatchInput((sceneTimeMs) => ({ type, sceneTimeMs, pointerId: event.pointerId, x: point.x, y: point.y }));
+    if (type === "pointerdown") {
+      canvasPointerConsumed = consumed;
+      if (input.capturedEntity) ui.canvas.setPointerCapture?.(event.pointerId);
+    }
   });
 }
 ui.canvas.addEventListener("pointercancel", (event) => {
@@ -1410,21 +1435,57 @@ ui.canvas.addEventListener("keydown", (event) => {
 });
 
 let hoverTimer = 0;
-ui.canvasArea.addEventListener("pointermove", () => {
+function sceneIsInteractive(): boolean {
+  return Boolean(runtime?.scene.interactions?.length);
+}
+function revealPlayback(point?: { x: number; y: number }): void {
+  if (libraryVisible) return;
+  if (sceneIsInteractive() && point) {
+    const box = ui.playback.getBoundingClientRect();
+    if (!playbackHotspotContains(true, point, box)) {
+      if (!ui.playback.contains(document.activeElement)) hidePlayback();
+      return;
+    }
+  }
+  ui.playback.classList.add("is-revealed");
+  ui.playback.setAttribute("aria-hidden", "false");
+  window.clearTimeout(playbackIdle);
+  playbackIdle = window.setTimeout(hidePlayback, PLAYBACK_IDLE_MS);
+}
+function hidePlayback(): void {
+  if (ui.playback.contains(document.activeElement)) {
+    playbackIdle = window.setTimeout(hidePlayback, PLAYBACK_IDLE_MS);
+    return;
+  }
+  ui.playback.classList.remove("is-revealed");
+  ui.playback.setAttribute("aria-hidden", "true");
+}
+ui.canvasArea.addEventListener("pointermove", (event) => {
+  revealPlayback({ x: event.clientX, y: event.clientY });
   if (!fullscreen) return;
   ui.canvasArea.classList.add("is-hover");
   window.clearTimeout(hoverTimer);
   hoverTimer = window.setTimeout(() => ui.canvasArea.classList.remove("is-hover"), 1800);
 });
+ui.playback.addEventListener("focusin", () => revealPlayback());
+ui.canvas.addEventListener("click", () => {
+  const consumed = canvasPointerConsumed;
+  canvasPointerConsumed = false;
+  if (consumed || libraryVisible) return;
+  togglePlay();
+});
 
 ui.play.addEventListener("click", togglePlay);
-ui.fsPlay.addEventListener("click", togglePlay);
 ui.frameBack.addEventListener("click", () => step("frame", -1));
 ui.frameFwd.addEventListener("click", () => step("frame", 1));
 ui.keyBack.addEventListener("click", () => step("key", -1));
 ui.keyFwd.addEventListener("click", () => step("key", 1));
 ui.speed.addEventListener("change", () => {
   clock.setRate(Number(ui.speed.value) || 1);
+  render();
+});
+ui.fullTape.addEventListener("change", () => {
+  fullTapeOverride = ui.fullTape.checked;
   render();
 });
 
@@ -1435,6 +1496,7 @@ function seekFromPointer(event: PointerEvent): void {
 }
 ui.track.addEventListener("pointerdown", (event) => {
   if (isStill()) return;
+  tapeScrub = true;
   scrubbing = true;
   ui.track.setPointerCapture(event.pointerId);
   seekFromPointer(event);
@@ -1444,6 +1506,11 @@ ui.track.addEventListener("pointermove", (event) => {
 });
 ui.track.addEventListener("pointerup", () => {
   scrubbing = false;
+});
+ui.track.addEventListener("pointerleave", () => {
+  if (scrubbing || !tapeScrub) return;
+  tapeScrub = false;
+  render();
 });
 ui.track.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
