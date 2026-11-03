@@ -89,6 +89,38 @@ export interface SourceExample {
 }
 
 import fourWorldsSource from "../../../fixtures/motionscript/stories/one-ball-four-worlds.ms?raw";
+import clickToggleSource from "../../../fixtures/motionscript/interactive/click-toggle.ms?raw";
+import dragZoomSource from "../../../fixtures/motionscript/interactive/drag-zoom.ms?raw";
+import keysFocusSource from "../../../fixtures/motionscript/interactive/keys-focus.ms?raw";
+import pointerPassSource from "../../../fixtures/motionscript/interactive/pointer-pass.ms?raw";
+
+/** Human-testable `interact` / `input.bindings` demos (Library Interactive collection). */
+export const interactiveExamples: MotionExample[] = [
+  {
+    id: "click-toggle",
+    label: "Click toggle",
+    caption: "Click the switch (or Tab then Enter/Space) to toggle the lamp. Covers click, focus and keyboard activation.",
+    source: clickToggleSource,
+  },
+  {
+    id: "drag-zoom",
+    label: "Drag and zoom",
+    caption: "Drag the knob within the pad. Scroll or Ctrl-scroll over it to step scale. Covers drag, scroll and zoom-style wheel.",
+    source: dragZoomSource,
+  },
+  {
+    id: "keys-focus",
+    label: "Keys and focus",
+    caption: "Tab between pads, nudge with arrow keys, Enter/click to pulse the glow. Covers tab order, keys and focus.",
+    source: keysFocusSource,
+  },
+  {
+    id: "pointer-pass",
+    label: "Pointer pass-through",
+    caption: "Frosted glass uses pointer none so hover and click reach the button beneath. Covers occlusion and pass-through.",
+    source: pointerPassSource,
+  },
+];
 
 export const motionExamples: MotionExample[] = [
   { id: "one-ball-four-worlds", label: "One Ball, Four Worlds", caption: "One vivid red ball carries its momentum across graphite, layered paper, pixels and a glowing neon valley.", source: fourWorldsSource },
