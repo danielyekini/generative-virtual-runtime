@@ -58,6 +58,8 @@ interface NodePose {
   strokeA?: number;
   strokeWidth?: number;
   strokePhase?: number;
+  /** Raw sampled `frame` channel value; geometry floors and clamps it (resources.spriteFrames). */
+  frame?: number;
 }
 
 export type TrimOverride = { start: number; end: number; offset: number };
@@ -430,6 +432,9 @@ function applyNodePose(node: NodeDefinition, pose: NodePose): NodeDefinition {
           commands: pose.commands.map((command) => ({ ...command })),
         }
       : { ...node, transform, opacity: pose.opacity, visible: pose.visible };
+  if (posed.kind === "image" && pose.frame !== undefined) {
+    posed = { ...posed, frame: pose.frame };
+  }
   if (posed.kind === "text") {
     if (posed.numeric) {
       const value = pose.textNumber ?? posed.numeric.value;
@@ -803,6 +808,9 @@ function writeNode(pose: NodePose, channel: string, value: number): void {
       break;
     case "stroke.phase":
       pose.strokePhase = value;
+      break;
+    case "frame":
+      pose.frame = value;
       break;
     default:
       break;

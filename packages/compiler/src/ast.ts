@@ -53,7 +53,10 @@ export type Prop =
   | { name: "baseline"; value: "alphabetic" | "middle" | "top" | "bottom" }
   | { name: "fillRule"; value: "nonzero" | "evenodd" }
   | { name: "number" | "fractionDigits" | "minIntegerDigits"; value: number }
-  | { name: "sign"; value: "auto" | "always" | "never" };
+  | { name: "sign"; value: "auto" | "always" | "never" }
+  | { name: "sampling"; value: "smooth" | "pixelated" }
+  | { name: "frames"; vec: Vec }
+  | { name: "frame"; value: number };
 
 export interface NodeAst {
   kind: "node";

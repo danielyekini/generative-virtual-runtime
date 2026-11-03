@@ -91,6 +91,7 @@ const NODE_CHANNELS = new Set([
   "stroke.a",
   "stroke.width",
   "stroke.phase",
+  "frame",
 ]);
 const CAMERA_CHANNELS = new Set(["position", "position.x", "position.y", "zoom", "rotation"]);
 const OPS = new Set([
@@ -199,6 +200,7 @@ export function validateSceneIR(
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   if (v02) {
     readStrokeDash([...(nodes ?? []), ...compositionNodes], input.timeline, input.requiredCapabilities, diags);
+    readImageSurface([...(nodes ?? []), ...compositionNodes], input.resources, input.timeline, input.requiredCapabilities, diags);
   }
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
@@ -914,7 +916,7 @@ function readNode(value: unknown, path: string, diags: Diags, limits: ResourceLi
     line: ["from", "to", "stroke"],
     polygon: ["points", "fill", "stroke"],
     path: ["commands", "fillRule", "fill", "stroke"],
-    image: ["resourceId", "size"],
+    image: v02 ? ["resourceId", "size", "sampling", "frame"] : ["resourceId", "size"],
     text: v02
       ? ["content", "font", "align", "baseline", "fill", "stroke", "numeric"]
       : ["content", "font", "align", "baseline", "fill", "stroke"],
@@ -1138,7 +1140,8 @@ function readResources(value: unknown, diags: Diags, v02 = false): ResourceFacts
     if (id) ids.add(id);
     if (entry.kind === "image") {
       if (!v02) diags.add("UNSUPPORTED_PROPERTY", path, "Image resources require Scene IR 0.2.");
-      rejectUnknown(entry, ["id", "kind", "href", "readiness"], path, diags);
+      rejectUnknown(entry, ["id", "kind", "href", "readiness", "frames"], path, diags);
+      if (entry.frames !== undefined) readFrameGrid(entry.frames, `${path}.frames`, diags);
       if (typeof entry.href !== "string" || entry.href.length === 0) {
         diags.add("MISSING_REQUIRED", `${path}.href`, "An image resource needs an href.");
       }
@@ -1626,6 +1629,95 @@ function readStrokeDash(
   });
 }
 
+/** Largest sprite atlas grid dimension (`resources.spriteFrames`). */
+export const MAX_SPRITE_GRID = 1024;
+
+function readFrameGrid(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "frames must be { columns, rows }.");
+    return;
+  }
+  rejectUnknown(value, ["columns", "rows"], path, diags);
+  for (const key of ["columns", "rows"] as const) {
+    const count = value[key];
+    if (typeof count !== "number" || !Number.isInteger(count) || count < 1 || count > MAX_SPRITE_GRID) {
+      diags.add("INVALID_GEOMETRY", `${path}.${key}`, `frames ${key} must be a whole number from 1 to ${MAX_SPRITE_GRID}.`);
+    }
+  }
+}
+
+/**
+ * resources.imageSampling / resources.spriteFrames (Scene IR 0.24.0). Per-node
+ * sampling, atlas grids, static frames and `frame` tracks require their
+ * capability. A frame needs a grid on the node's image resource and must name
+ * an existing cell. Animated frames are floored and clamped when sampled.
+ */
+function readImageSurface(
+  nodes: readonly NodeDefinition[],
+  resources: unknown,
+  timeline: unknown,
+  required: unknown,
+  diags: Diags,
+): void {
+  const has = (capability: string) => Array.isArray(required) && required.includes(capability);
+  const grids = new Map<string, { columns: number; rows: number }>();
+  if (Array.isArray(resources)) {
+    resources.forEach((entry, index) => {
+      if (!isRecord(entry) || entry.kind !== "image" || entry.frames === undefined) return;
+      if (!has("resources.spriteFrames")) {
+        diags.add("MISSING_REQUIRED", `resources[${index}].frames`, "An image frames grid requires resources.spriteFrames in requiredCapabilities.");
+      }
+      const frames = entry.frames;
+      if (typeof entry.id === "string" && isRecord(frames) && Number.isInteger(frames.columns) && Number.isInteger(frames.rows)) {
+        grids.set(entry.id, { columns: frames.columns as number, rows: frames.rows as number });
+      }
+    });
+  }
+  for (const node of nodes) {
+    if (node.kind !== "image") continue;
+    const raw = node as unknown as Record<string, unknown>;
+    if (raw.sampling !== undefined) {
+      if (raw.sampling !== "smooth" && raw.sampling !== "pixelated") {
+        diags.add("INVALID_ENUM", `${node.id}.sampling`, 'sampling must be "smooth" or "pixelated".', { target: node.id });
+      }
+      if (!has("resources.imageSampling")) {
+        diags.add("MISSING_REQUIRED", "requiredCapabilities", "Image sampling requires resources.imageSampling in requiredCapabilities.");
+      }
+    }
+    if (raw.frame === undefined) continue;
+    if (!has("resources.spriteFrames")) {
+      diags.add("MISSING_REQUIRED", "requiredCapabilities", "An image frame requires resources.spriteFrames in requiredCapabilities.");
+    }
+    const grid = grids.get(node.resourceId);
+    if (!grid) {
+      diags.add("INVALID_GEOMETRY", `${node.id}.frame`, `frame needs a frames grid on image resource ${node.resourceId}.`, { target: node.id });
+      continue;
+    }
+    const frame = raw.frame;
+    if (typeof frame !== "number" || !Number.isInteger(frame) || frame < 0 || frame >= grid.columns * grid.rows) {
+      diags.add(
+        "INVALID_GEOMETRY",
+        `${node.id}.frame`,
+        `frame must be a whole number from 0 to ${grid.columns * grid.rows - 1}.`,
+        { target: node.id },
+      );
+    }
+  }
+  const tracks = isRecord(timeline) && Array.isArray(timeline.tracks) ? timeline.tracks : [];
+  tracks.forEach((track, index) => {
+    if (!isRecord(track) || !isRecord(track.target) || track.target.kind !== "node") return;
+    if (track.target.channel !== "frame") return;
+    if (!has("resources.spriteFrames")) {
+      diags.add("MISSING_REQUIRED", "requiredCapabilities", "frame tracks require resources.spriteFrames in requiredCapabilities.");
+    }
+    const nodeId = typeof track.target.nodeId === "string" ? track.target.nodeId : undefined;
+    const node = nodeId === undefined ? undefined : nodes.find((entry) => entry.id === nodeId);
+    if (!node || node.kind !== "image" || !grids.has(node.resourceId)) {
+      diags.add("INVALID_TRACK_TARGET", `timeline.tracks[${index}]`, `frame needs an image node with a frames grid (${nodeId ?? "unknown"}).`);
+    }
+  });
+}
+
 function readVec(value: unknown, path: string, diags: Diags): Vec2 | undefined {
   if (!isRecord(value)) {
     diags.add("INVALID_TYPE", path, "Expected a vector { x, y }.");
@@ -1777,7 +1869,7 @@ function readResolvedGeometry(value: unknown, path: string, diags: Diags): void 
     return;
   }
   if (value.kind === "image") {
-    rejectUnknown(value, ["kind", "resourceId", "href", "size"], path, diags);
+    rejectUnknown(value, ["kind", "resourceId", "href", "size", "sampling", "frame"], path, diags);
     const size = readVec(value.size, `${path}.size`, diags);
     if (size && (size.x <= 0 || size.y <= 0)) diags.add("INVALID_GEOMETRY", `${path}.size`, "Size must be positive.");
     return;

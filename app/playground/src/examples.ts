@@ -29,6 +29,7 @@ import gallerySource from "../../../fixtures/motionscript/frames/primitive-galle
 import textSource from "../../../fixtures/motionscript/frames/text.ms?raw";
 import zOrderSource from "../../../fixtures/motionscript/frames/z-order.ms?raw";
 import cyclicScopesSource from "../../../fixtures/motionscript/frames/cyclic-scopes.ms?raw";
+import spriteFramesSource from "../../../fixtures/motionscript/frames/sprite-frames.ms?raw";
 import nestedSource from "../../../fixtures/motionscript/nested.ms?raw";
 import vectorsSource from "../../../fixtures/motionscript/stories/adding-two-vectors.ms?raw";
 import eclipseSource from "../../../fixtures/motionscript/stories/into-the-moons-shadow.ms?raw";
@@ -193,6 +194,7 @@ export const frameScripts: MotionExample[] = [
   { id: "text", label: "Text", caption: "Left sits on the alphabetic baseline, Middle is centered, Right ends on the bottom of the em box.", source: textSource },
   { id: "path-stress", label: "Path stress", caption: "Even-odd leaves a hole. Nonzero fills it. Below are a cubic and a quadratic.", source: pathStressSource },
   { id: "cyclic-scopes", label: "Cyclic scopes", caption: "Two dots share a 2s loop; the blue one is phased by 1s. The lamp blinks four times from 1s, then rests (timing.cyclicScopes).", source: cyclicScopesSource },
+  { id: "sprite-frames", label: "Sprite frames", caption: "One 4×2 atlas drawn smooth, pixelated, and as still frame 5. The first two step through eight frames every 800ms (resources.imageSampling, resources.spriteFrames). Playback holds until the atlas has loaded.", source: spriteFramesSource },
 ];
 
 export const testScripts: { group: string; items: MotionExample[] }[] = [

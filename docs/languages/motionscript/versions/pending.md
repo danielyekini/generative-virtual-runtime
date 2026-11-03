@@ -38,6 +38,7 @@ Declarative entity sugar landed in MotionScript 0.9.0.
 `compositing.mask` (`clip` on groups) landed in MotionScript 0.16.0.
 `compositing.matte` (`matte` on groups) landed in MotionScript 0.19.0.
 `geometry.pathProgress` (`attach … along …` path attachments) landed in MotionScript 0.17.0.
+`resources.imageSampling` and `resources.spriteFrames` (`sampling`, `frames`, `frame` on image nodes) landed in MotionScript 0.25.0. Image pattern paint stays a Candidate (E046).
 `timing.timedKeys` (`at` keys inside `keyframes` and `beat` declarations) landed in MotionScript 0.23.0 (MotionScript only).
 `timing.cyclicScopes` (`period` / `repeat` on `timing`, `timing` on `step`) landed in MotionScript 0.24.0.
 `text.dynamicContent` (numeric format bindings and discrete content steps) landed in MotionScript 0.18.0.

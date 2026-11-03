@@ -251,10 +251,24 @@ export interface PathNode extends NodeBase {
   stroke?: Stroke;
 }
 
+export type ImageSampling = "smooth" | "pixelated";
+
 export interface ImageNode extends NodeBase {
   kind: "image";
   resourceId: string;
   size: Vec2;
+  /**
+   * Per-node sampling (`resources.imageSampling`, Scene IR 0.24.0). `pixelated`
+   * keeps hard texel edges when scaled. Omitted means the host's renderer default.
+   */
+  sampling?: ImageSampling;
+  /**
+   * Atlas frame index (`resources.spriteFrames`, Scene IR 0.24.0). Requires a
+   * `frames` grid on the resource. Integer, 0 <= frame < columns × rows, counted
+   * row-major from the top-left cell. Omitted means 0. The `frame` track channel
+   * samples are floored, then clamped to the grid.
+   */
+  frame?: number;
 }
 
 export type TextAlign = "left" | "center" | "right";
@@ -334,6 +348,13 @@ export interface ImageResource {
   kind: "image";
   href: string;
   readiness?: "ready" | "pending" | "failed";
+  /**
+   * Sprite atlas grid (`resources.spriteFrames`, Scene IR 0.24.0): the decoded
+   * image is split into equal cells. Each count is an integer from 1 to 1024.
+   * Hosts derive cell rectangles from the decoded size, so programs never state
+   * source pixels.
+   */
+  frames?: { columns: number; rows: number };
 }
 
 export interface TimingScope {
@@ -489,7 +510,8 @@ export type NodeAnimChannel =
   | "stroke.b"
   | "stroke.a"
   | "stroke.width"
-  | "stroke.phase";
+  | "stroke.phase"
+  | "frame";
 
 export type CameraAnimChannel =
   | "position"
@@ -938,7 +960,16 @@ export interface SceneIRDelta {
 
 export type ResolvedGeometry =
   | { kind: "rectangle"; size: Vec2; cornerRadius?: number }
-  | { kind: "image"; resourceId: string; href: string; size: Vec2 }
+  | {
+      kind: "image";
+      resourceId: string;
+      href: string;
+      size: Vec2;
+      /** Per-node sampling; omitted uses the renderer default. */
+      sampling?: ImageSampling;
+      /** Resolved atlas cell (row-major), present only when the resource has a frames grid. */
+      frame?: { column: number; row: number; columns: number; rows: number };
+    }
   | { kind: "circle"; radius: number }
   | { kind: "ellipse"; size: Vec2 }
   | { kind: "line"; from: Vec2; to: Vec2 }

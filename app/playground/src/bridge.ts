@@ -74,6 +74,13 @@ export interface PlayerProbe {
     /** Bounded Web Audio backend command log. */
     log: string[];
   };
+  /** Required image readiness (E019/E045): renderer cache states fed to sceneImageReadiness. */
+  images?: {
+    required: string[];
+    states: Record<string, "pending" | "ready" | "failed">;
+    holding: boolean;
+    note: string;
+  };
 }
 
 export interface GvrBridge {

@@ -82,7 +82,7 @@ export type {
   OwnershipGrant,
   WriterClass,
 } from "./entities";
-export { buildResolvedFrame } from "./frame";
+export { buildResolvedFrame, spriteCell } from "./frame";
 export {
   createSceneInputSession,
   declaredInputChannels,

@@ -1073,6 +1073,10 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
   }
   const id = parentId ? `${parentId}.${ast.name}` : ast.name;
   const prop = indexProps(ast.props);
+  if (ast.shape !== "image" && (prop.sampling !== undefined || prop.frames !== undefined || prop.frame !== undefined)) {
+    session.diagnostics.push(problem("INVALID_TYPE", `${ast.name}: sampling, frames and frame apply only to image nodes.`, ast.span));
+    return undefined;
+  }
   if (parentId && prop.space) {
     session.diagnostics.push(problem("SPACE_VIOLATION", "Only a root may declare space.", ast.span));
     return undefined;
@@ -1204,15 +1208,38 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
       session.diagnostics.push(problem("MISSING_REQUIRED", `${ast.name} needs href and size.`, ast.span));
       return undefined;
     }
+    const frames = prop.frames;
+    if (frames && !(Number.isInteger(frames.x) && Number.isInteger(frames.y) && frames.x >= 1 && frames.y >= 1 && frames.x <= 1024 && frames.y <= 1024)) {
+      session.diagnostics.push(problem("INVALID_GEOMETRY", `${ast.name} frames needs whole column and row counts from 1 to 1024.`, ast.span));
+      return undefined;
+    }
+    if (prop.frame !== undefined && !frames) {
+      session.diagnostics.push(problem("INVALID_GEOMETRY", `${ast.name} frame needs frames (columns, rows).`, ast.span));
+      return undefined;
+    }
+    if (prop.frame !== undefined && frames && (prop.frame < 0 || prop.frame >= frames.x * frames.y)) {
+      session.diagnostics.push(problem("INVALID_GEOMETRY", `${ast.name} frame must be from 0 to ${frames.x * frames.y - 1}.`, ast.span));
+      return undefined;
+    }
     const resourceId = `image${session.scene.resources.length + 1}`;
-    session.scene.resources.push({ id: resourceId, kind: "image", href: prop.href, readiness: "ready" });
+    session.scene.resources.push({
+      id: resourceId,
+      kind: "image",
+      href: prop.href,
+      readiness: "ready",
+      ...(frames ? { frames: { columns: frames.x, rows: frames.y } } : {}),
+    });
     ensureCapability(session, "resources.image");
+    if (prop.sampling) ensureCapability(session, "resources.imageSampling");
+    if (frames) ensureCapability(session, "resources.spriteFrames");
     node = {
       ...base,
       ...(parentId ? {} : { space: prop.space ?? "world" }),
       kind: "image",
       resourceId,
       size: prop.size,
+      ...(prop.sampling ? { sampling: prop.sampling } : {}),
+      ...(prop.frame !== undefined ? { frame: prop.frame } : {}),
     };
   } else {
     if (!prop.content || prop.fontSize === undefined || !prop.fill || prop.fill.type !== "solid") {
@@ -1428,6 +1455,16 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
   ) {
     ensureCapability(session, "paint.animatedSolid");
   }
+  if (resolved.target.kind === "node" && resolved.target.channel === "frame") {
+    const nodeId = resolved.target.nodeId;
+    const node = session.scene.nodes.find((entry) => entry.id === nodeId);
+    const grid = node?.kind === "image" ? session.scene.resources.find((entry) => entry.id === node.resourceId) : undefined;
+    if (!grid || grid.kind !== "image" || !grid.frames) {
+      session.diagnostics.push(problem("INVALID_TRACK_TARGET", `${unit.target} needs an image with frames (columns, rows).`, unit.span));
+      return undefined;
+    }
+    ensureCapability(session, "resources.spriteFrames");
+  }
   if (resolved.target.kind === "node" && resolved.target.channel === "stroke.phase") {
     ensureCapability(session, "paint.strokeDash");
     const nodeId = resolved.target.nodeId;
@@ -1522,6 +1559,9 @@ interface IndexedProps {
   fractionDigits?: number;
   minIntegerDigits?: number;
   sign?: "auto" | "always" | "never";
+  sampling?: "smooth" | "pixelated";
+  frames?: Vec2;
+  frame?: number;
   group?: string;
   decimal?: string;
   prefix?: string;
@@ -1562,6 +1602,15 @@ function indexProps(props: Prop[]): IndexedProps {
         break;
       case "sign":
         indexed.sign = prop.value;
+        break;
+      case "sampling":
+        indexed.sampling = prop.value;
+        break;
+      case "frames":
+        indexed.frames = prop.vec as Vec2;
+        break;
+      case "frame":
+        indexed.frame = prop.value;
         break;
       case "inheritOpacity":
       case "isolated":

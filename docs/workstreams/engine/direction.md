@@ -156,7 +156,11 @@ new engine tickets waits on Product P030 (#188). Holder:
    (E019). All five are Done. Ready order: E047
    ([#207](https://github.com/danielyekini/generative-virtual-runtime/issues/207)),
    a stream-linter diagnostic-truth bug in which every `INVALID_TIMING` was labelled
-   `SEALED_HISTORY_WRITE`; then E045 (#204). New Candidates: E048
+   `SEALED_HISTORY_WRITE`; then E045 (#204). Both landed the same evening: E047
+   (PR #210), and E045 as MotionScript 0.25.0 / Scene IR 0.24.0
+   `resources.imageSampling` + `resources.spriteFrames`, with Studio image
+   readiness and a "Sprite frames" test frame. Image pattern paint stays
+   Candidate E046. The next replenish draws from M2/M4/M5 Candidates. New Candidates: E048
    ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208)),
    because composition-instance `timingScopeId` is inert; and joint ops
    [#209](https://github.com/danielyekini/generative-virtual-runtime/issues/209),

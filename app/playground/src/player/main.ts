@@ -12,6 +12,8 @@ import {
   mixAudio,
   RuntimeClock,
   sceneAudioResources,
+  sceneImageReadiness,
+  sceneImageRequirements,
   syncSceneAudioCues,
   type AudioSession,
   type InputEvent,
@@ -161,6 +163,8 @@ const catalogue = [...installedPrograms(), ...decodeMine(read(STORAGE_KEY))];
 const settings = decodeSettings(read(SETTINGS_KEY));
 let recent = decodeRecent(read(RECENT_KEY));
 const renderer = new CanvasRenderer(ui.canvas, telemetry);
+// E045: a paused player redraws when an image load settles.
+renderer.images.onChange(() => render());
 const tape = new FrameTape(ui.tapeFrames);
 /** null follows the mode default: frames for Stream/Generate, a white line for Run. */
 let fullTapeOverride: boolean | null = null;
@@ -255,6 +259,7 @@ function runStream(): void {
         input = scene.interactions?.length ? createSceneInputSession(scene, { wrapFocus: false }) : null;
         ui.canvas.tabIndex = input ? 0 : -1;
         startAudio(scene);
+        startImages(scene);
         servicesStarted = true;
       } else if (audio) syncSceneAudioCues(audio, scene);
     }
@@ -291,6 +296,9 @@ let audioSeeked = false;
 /** True while the required-audio gate (not the user) paused the clock. */
 let audioHold = false;
 let audioNote = "";
+/** True while the required-image gate (E045), not the user, paused the clock. */
+let imageHold = false;
+let imageNote = "";
 /** Required audio must be decoded this far ahead of the playhead. */
 const AUDIO_LOOKAHEAD_MS = 250;
 const EXPORT_SAMPLE_RATE = 44100;
@@ -422,6 +430,7 @@ function run(): void {
     // Interactive scenes take keyboard focus for Tab / Enter / bound keys.
     ui.canvas.tabIndex = input ? 0 : -1;
     startAudio(outcome.scene);
+    startImages(outcome.scene);
     clock.seek(0);
     refreshComparison();
     if (!isStill()) clock.play();
@@ -462,6 +471,49 @@ function stopAudio(): void {
 }
 
 /** Lower declared cues into a session and start decoding (readiness feeds the gate). */
+/**
+ * E045: start loading the scene's images before the first frame. Scenes the
+ * new scene does not declare are evicted. Readiness comes from the renderer
+ * cache and is checked each frame in syncImages.
+ */
+function startImages(scene: NonNullable<RunOutcome["scene"]>): void {
+  imageHold = false;
+  imageNote = "";
+  renderer.images.prepare(scene.resources);
+}
+
+/** Hold a playing clock while a drawn image is loading; block with a note when one failed. */
+function syncImages(): void {
+  if (!runtime) return;
+  const scene = runtime.scene;
+  if (sceneImageRequirements(scene).length === 0) {
+    if (imageHold) { imageHold = false; clock.play(); }
+    return;
+  }
+  const readiness = sceneImageReadiness(scene, renderer.images.statesFor(scene.resources));
+  const note = readiness.failed.length > 0
+    ? `required image ${readiness.failed.join(", ")} failed to load; playback blocked`
+    : readiness.waitingFor.length > 0 ? `waiting for image ${readiness.waitingFor.join(", ")}` : "";
+  if (!readiness.ready && clock.isPlaying) {
+    clock.pause();
+    imageHold = true;
+  } else if (readiness.ready && imageHold) {
+    imageHold = false;
+    clock.play();
+  }
+  if (note !== imageNote) {
+    imageNote = note;
+    render();
+  }
+}
+
+function imageProbe(): PlayerProbe["images"] {
+  if (!runtime) return undefined;
+  const required = sceneImageRequirements(runtime.scene).map((item) => item.resourceId);
+  if (required.length === 0) return undefined;
+  return { required, states: renderer.images.statesFor(runtime.scene.resources), holding: imageHold, note: imageNote };
+}
+
 function startAudio(scene: NonNullable<RunOutcome["scene"]>): void {
   stopAudio();
   const resources = sceneAudioResources(scene);
@@ -1155,8 +1207,9 @@ function renderStatus(): void {
     loaded ? loaded.label : "no program",
     outcome ? outcome.state : loaded ? "not run" : "",
     runtime ? runtime.scene.sceneId : "",
-    runtime && !isStill() ? (clock.isPlaying ? "playing" : audioHold ? "holding for audio" : "paused") : "",
+    runtime && !isStill() ? (clock.isPlaying ? "playing" : audioHold ? "holding for audio" : imageHold ? "holding for images" : "paused") : "",
     audioNote,
+    imageNote,
     `canvas ${Math.round(size.width)}×${Math.round(size.height)} css`,
     `dpr ${dpr()}`,
     fullscreen ? "fullscreen" : "",
@@ -1203,6 +1256,7 @@ function probe(): PlayerProbe {
     panelOpen: settings.panelOpen,
     panelTab: settings.panelTab,
     diagnostics: (outcome?.diagnostics ?? []).map((item) => item.text),
+    images: imageProbe(),
     audio: audio
       ? {
           voices: [...audio.runningVoices],
@@ -1679,6 +1733,8 @@ requestAnimationFrame(function loop(now: number) {
       if (stream.observation.waitingForContent && !scrubbing) stream.waitingMs += delta;
       needsDraw = true;
     }
+    // Required images gate the clock before it advances (E045 startup hold).
+    syncImages();
     if (!libraryVisible && clock.isPlaying && !scrubbing && runtime) {
       clock.tick(delta);
       if ((!stream || stream.done) && clock.timeMs >= durationMs()) {

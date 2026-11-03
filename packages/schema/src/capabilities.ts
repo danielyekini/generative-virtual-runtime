@@ -17,6 +17,8 @@ export const CAPABILITIES = [
   "paint.strokeDash",
   "text.basic",
   "resources.image",
+  "resources.imageSampling",
+  "resources.spriteFrames",
   "svg.smilTimeBased",
   "svg.cssKeyframes",
   "compositing.isolatedOpacity",

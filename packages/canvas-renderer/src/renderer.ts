@@ -214,7 +214,28 @@ export class CanvasRenderer {
     if (this.images.acquire(href) !== "ready") return;
     const image = this.images.get(href);
     if (!image) return;
-    ctx.imageSmoothingEnabled = this.imageSampling !== "pixelated";
+    // A node's own sampling (resources.imageSampling) overrides the host default.
+    const sampling = item.geometry.sampling ?? this.imageSampling;
+    ctx.imageSmoothingEnabled = sampling !== "pixelated";
+    const cell = item.geometry.frame;
+    if (cell) {
+      // resources.spriteFrames: draw one row-major atlas cell. Cell rectangles
+      // come from the decoded size, so programs never state source pixels.
+      const cellWidth = image.width / cell.columns;
+      const cellHeight = image.height / cell.rows;
+      ctx.drawImage(
+        image.source,
+        cell.column * cellWidth,
+        cell.row * cellHeight,
+        cellWidth,
+        cellHeight,
+        0,
+        0,
+        item.geometry.size.x,
+        item.geometry.size.y,
+      );
+      return;
+    }
     ctx.drawImage(image.source, 0, 0, item.geometry.size.x, item.geometry.size.y);
   }
 
