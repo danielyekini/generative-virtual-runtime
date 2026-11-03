@@ -323,6 +323,16 @@ function compareOptionalStroke(
   if (left.cap !== right.cap) mismatches.push({ timeMs, nodeId, property: "stroke.cap", left: left.cap, right: right.cap });
   if (left.join !== right.join) mismatches.push({ timeMs, nodeId, property: "stroke.join", left: left.join, right: right.join });
   compareNumber(mismatches, timeMs, nodeId, "stroke.miterLimit", left.miterLimit, right.miterLimit, tolerance.number);
+  const leftDash = left.dash ?? [];
+  const rightDash = right.dash ?? [];
+  if (leftDash.length !== rightDash.length) {
+    mismatches.push({ timeMs, nodeId, property: "stroke.dash", left: leftDash.join(","), right: rightDash.join(",") });
+  } else {
+    leftDash.forEach((length, index) => {
+      compareNumber(mismatches, timeMs, nodeId, `stroke.dash[${index}]`, length, rightDash[index] ?? length, tolerance.number);
+    });
+  }
+  compareNumber(mismatches, timeMs, nodeId, "stroke.phase", left.phase ?? 0, right.phase ?? 0, tolerance.number);
 }
 
 function compareOptionalColor(

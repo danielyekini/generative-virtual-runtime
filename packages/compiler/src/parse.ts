@@ -548,7 +548,45 @@ function parseStroke(parser: Parser, node: NodeAst): Stroke | undefined {
     if (value === undefined) note(node, parser, "miterLimit needs a number.");
     else miterLimit = value;
   }
-  return { color: paint, width, cap, join, miterLimit };
+  let dash: number[] | undefined;
+  let phase: number | undefined;
+  if (peek(parser)?.type === "identifier" && peek(parser)?.lexeme === "dash") {
+    eat(parser, "identifier", "dash");
+    if (!eat(parser, "lparen")) note(node, parser, "dash needs a parenthesised length list.");
+    const lengths: number[] = [];
+    const first = parseSignedNumber(parser);
+    if (first === undefined) note(node, parser, "dash needs at least one length.");
+    else lengths.push(first);
+    while (eat(parser, "comma")) {
+      const next = parseSignedNumber(parser);
+      if (next === undefined) {
+        note(node, parser, "dash lengths must be numbers.");
+        break;
+      }
+      lengths.push(next);
+    }
+    if (!eat(parser, "rparen")) note(node, parser, "Expected ')' after dash lengths.");
+    if (lengths.some((length) => !(length > 0))) note(node, parser, "dash lengths must be positive.");
+    dash = lengths;
+    if (eat(parser, "identifier", "phase")) {
+      const value = parseSignedNumber(parser);
+      if (value === undefined) note(node, parser, "phase needs a number.");
+      else phase = value;
+    }
+  } else if (peek(parser)?.type === "identifier" && peek(parser)?.lexeme === "phase") {
+    eat(parser, "identifier", "phase");
+    parseSignedNumber(parser);
+    note(node, parser, "phase requires a dash list.");
+  }
+  return {
+    color: paint,
+    width,
+    cap,
+    join,
+    miterLimit,
+    ...(dash ? { dash } : {}),
+    ...(phase !== undefined ? { phase } : {}),
+  };
 }
 
 function parsePointList(parser: Parser): Vec[] {
@@ -1034,6 +1072,7 @@ function splitEntityChannel(address: string): { entityId: string; channel: strin
     "transform.pivot.x",
     "transform.pivot.y",
     "transform.pivot",
+    "stroke.phase",
     "stroke.width",
     "stroke.r",
     "stroke.g",

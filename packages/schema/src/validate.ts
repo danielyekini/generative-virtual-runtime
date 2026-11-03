@@ -88,6 +88,7 @@ const NODE_CHANNELS = new Set([
   "stroke.b",
   "stroke.a",
   "stroke.width",
+  "stroke.phase",
 ]);
 const CAMERA_CHANNELS = new Set(["position", "position.x", "position.y", "zoom", "rotation"]);
 const OPS = new Set([
@@ -194,6 +195,9 @@ export function validateSceneIR(
   if (v02 && nodes) readMatteTargets(nodes, compositions.flatMap((c) => c.nodes), input.requiredCapabilities, diags);
   if (v02 && nodes) readDynamicText(nodes, input.timeline, input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
+  if (v02) {
+    readStrokeDash([...(nodes ?? []), ...compositionNodes], input.timeline, input.requiredCapabilities, diags);
+  }
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
     diags.add("RESOURCE_LIMIT", "nodes", `Node count ${nodeCount} exceeds ${limits.maxNodes}.`);
@@ -1460,7 +1464,7 @@ function readStroke(value: unknown, path: string, diags: Diags, allowGradient = 
     diags.add("INVALID_STROKE", path, "A stroke must be an object.");
     return undefined;
   }
-  rejectUnknown(value, ["color", "width", "cap", "join", "miterLimit"], path, diags);
+  rejectUnknown(value, ["color", "width", "cap", "join", "miterLimit", "dash", "phase"], path, diags);
   readPaint(value.color, `${path}.color`, diags, allowGradient);
   const width = readFinite(value.width, `${path}.width`, diags);
   if (width !== undefined && width <= 0) diags.add("INVALID_STROKE", `${path}.width`, "Stroke width must be positive.");
@@ -1472,7 +1476,71 @@ function readStroke(value: unknown, path: string, diags: Diags, allowGradient = 
   }
   const miter = readFinite(value.miterLimit, `${path}.miterLimit`, diags);
   if (miter !== undefined && miter < 1) diags.add("INVALID_STROKE", `${path}.miterLimit`, "miterLimit must be >= 1.");
+  if (value.dash !== undefined) {
+    if (!Array.isArray(value.dash) || value.dash.length === 0) {
+      diags.add("INVALID_STROKE", `${path}.dash`, "dash must be a non-empty list of lengths.");
+    } else {
+      value.dash.forEach((entry, index) => {
+        const length = readFinite(entry, `${path}.dash[${index}]`, diags);
+        if (length !== undefined && !(length > 0)) {
+          diags.add("INVALID_STROKE", `${path}.dash[${index}]`, "Dash lengths must be positive.");
+        }
+      });
+    }
+  }
+  if (value.phase !== undefined) {
+    readFinite(value.phase, `${path}.phase`, diags);
+    if (value.dash === undefined) {
+      diags.add("INVALID_STROKE", `${path}.phase`, "Stroke phase requires a dash array.");
+    }
+  }
   return value as unknown as Stroke;
+}
+
+/**
+ * paint.strokeDash (Scene IR 0.21.0): dashed strokes and stroke.phase tracks
+ * require the capability. Phase animation needs a dash on that node.
+ */
+function readStrokeDash(
+  nodes: readonly NodeDefinition[],
+  timeline: unknown,
+  required: unknown,
+  diags: Diags,
+): void {
+  const enabled = Array.isArray(required) && required.includes("paint.strokeDash");
+  for (const node of nodes) {
+    if (!("stroke" in node) || node.stroke?.dash === undefined) continue;
+    if (!enabled) {
+      diags.add(
+        "MISSING_REQUIRED",
+        "requiredCapabilities",
+        "A dashed stroke requires paint.strokeDash in requiredCapabilities.",
+      );
+    }
+  }
+  const tracks = isRecord(timeline) && Array.isArray(timeline.tracks) ? timeline.tracks : [];
+  tracks.forEach((track, index) => {
+    if (!isRecord(track) || !isRecord(track.target) || track.target.kind !== "node") return;
+    if (track.target.channel !== "stroke.phase") return;
+    if (!enabled) {
+      diags.add(
+        "MISSING_REQUIRED",
+        "requiredCapabilities",
+        "stroke.phase tracks require paint.strokeDash in requiredCapabilities.",
+      );
+    }
+    const nodeId = typeof track.target.nodeId === "string" ? track.target.nodeId : undefined;
+    if (nodeId === undefined) return;
+    const node = nodes.find((entry) => entry.id === nodeId);
+    const stroke = node && "stroke" in node ? node.stroke : undefined;
+    if (!stroke?.dash || stroke.dash.length === 0) {
+      diags.add(
+        "INVALID_TRACK_TARGET",
+        `timeline.tracks[${index}]`,
+        `stroke.phase needs a dashed stroke on ${nodeId}.`,
+      );
+    }
+  });
 }
 
 function readVec(value: unknown, path: string, diags: Diags): Vec2 | undefined {

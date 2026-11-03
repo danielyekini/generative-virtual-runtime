@@ -484,6 +484,10 @@ function formatStroke(stroke: Stroke): string {
   if (stroke.cap !== "butt") text += ` cap ${stroke.cap}`;
   if (stroke.join !== "miter") text += ` join ${stroke.join}`;
   if (!near(stroke.miterLimit, 4)) text += ` miterLimit ${formatNumber(stroke.miterLimit)}`;
+  if (stroke.dash && stroke.dash.length > 0) {
+    text += ` dash (${stroke.dash.map((length) => formatNumber(length)).join(", ")})`;
+    if (stroke.phase !== undefined && !near(stroke.phase, 0)) text += ` phase ${formatNumber(stroke.phase)}`;
+  }
   return text;
 }
 

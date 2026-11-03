@@ -97,7 +97,14 @@ export class CanvasRenderer {
     const matrix = multiplyMat3(device, item.logicalMatrix);
     ctx.setTransform(matrix[0], matrix[1], matrix[3], matrix[4], matrix[6], matrix[7]);
     ctx.globalAlpha = item.opacity * this.scopeAlpha;
-    ctx.setLineDash([]);
+    const dash = item.appearance.stroke?.dash;
+    if (dash && dash.length > 0) {
+      ctx.setLineDash(dash.slice());
+      ctx.lineDashOffset = item.appearance.stroke?.phase ?? 0;
+    } else {
+      ctx.setLineDash([]);
+      ctx.lineDashOffset = 0;
+    }
 
     if (item.geometry.kind === "text") this.drawText(ctx, item);
     else if (item.geometry.kind === "image") this.drawImage(ctx, item);

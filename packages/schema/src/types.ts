@@ -74,6 +74,16 @@ export interface Stroke {
   join: "miter" | "round" | "bevel";
   /** Used when join is "miter". Must be >= 1. */
   miterLimit: number;
+  /**
+   * Dash lengths in local geometry units, each finite and > 0
+   * (`paint.strokeDash`, Scene IR 0.21.0). Omitted strokes stay solid.
+   */
+  dash?: readonly number[];
+  /**
+   * Dash phase in the same units as `dash`. Positive phase advances into the
+   * pattern (Canvas `lineDashOffset`). Requires `dash`. Omitted means 0.
+   */
+  phase?: number;
 }
 
 export interface FontStyle {
@@ -469,7 +479,8 @@ export type NodeAnimChannel =
   | "stroke.g"
   | "stroke.b"
   | "stroke.a"
-  | "stroke.width";
+  | "stroke.width"
+  | "stroke.phase";
 
 export type CameraAnimChannel =
   | "position"

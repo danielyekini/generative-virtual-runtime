@@ -39,6 +39,8 @@ class RecordingContext {
   lineCap: CanvasLineCap = "butt";
   lineJoin: CanvasLineJoin = "miter";
   miterLimit = 10;
+  lineDash: number[] = [];
+  lineDashOffset = 0;
   private _filter = "none";
   shadowColor = "transparent";
 
@@ -101,7 +103,9 @@ class RecordingContext {
   strokeText(): void {
     this.note("strokeText", []);
   }
-  setLineDash(): void {}
+  setLineDash(segments: number[] = []): void {
+    this.lineDash = segments.slice();
+  }
   moveTo(): void {}
   lineTo(): void {}
   quadraticCurveTo(): void {}
@@ -373,5 +377,35 @@ describe("hierarchical paint ordering through CanvasRenderer", () => {
         "rgba(255, 255, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 0, 1)"
       ]);
     }
+  });
+});
+
+describe("paint.strokeDash", () => {
+  it("sets the canvas dash and phase for a dashed stroke", () => {
+    const dashed = compileMotionScript(`scene "marks" {
+      version "0.2"; viewport (640, 360); background #0b1220; duration 2s;
+    };
+    line Wire {
+      from (80, 180);
+      to (560, 180);
+      stroke #f8fafc width 6 dash (18, 10) phase 0;
+    };
+    keyframes Wire.stroke.phase { start 0ms; duration 2s; 0% 0; 100% 28; };
+    complete;`);
+    expect(dashed.diagnostics).toEqual([]);
+    const frame = new AnimationRuntime(dashed.scene!).evaluate(1000);
+    const { ctx } = render(frame, 640, 360, 1);
+    expect(ctx.lineDash).toEqual([18, 10]);
+    expect(ctx.lineDashOffset).toBeCloseTo(14);
+
+    const solid = compileMotionScript(`scene "marks" {
+      version "0.2"; viewport (640, 360); background #0b1220; duration 1s;
+    };
+    line Wire { from (0, 0); to (40, 0); stroke #ffffff width 2; };
+    complete;`);
+    const solidFrame = new AnimationRuntime(solid.scene!).evaluate(0);
+    const solidCtx = render(solidFrame, 640, 360, 1).ctx;
+    expect(solidCtx.lineDash).toEqual([]);
+    expect(solidCtx.lineDashOffset).toBe(0);
   });
 });

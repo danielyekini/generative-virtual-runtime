@@ -434,6 +434,25 @@ complete;
       expect(title.content).toBe("GO");
     }
   });
+
+  it("round-trips paint.strokeDash", () => {
+    const scene = compile(`scene "marks" {
+      version "0.2"; viewport (640, 360); background #0b1220; duration 2s;
+    };
+    line Wire {
+      from (80, 180);
+      to (560, 180);
+      stroke #f8fafc width 6 dash (18, 10) phase 4;
+    };
+    complete;`);
+    expect(scene.requiredCapabilities).toContain("paint.strokeDash");
+    const { source, again } = roundTrip(scene);
+    expect(source).toContain("dash (18, 10)");
+    expect(source).toContain("phase 4");
+    expect(again.requiredCapabilities).toContain("paint.strokeDash");
+    const wire = again.nodes.find((node) => node.id === "Wire");
+    expect(wire && "stroke" in wire && wire.stroke).toMatchObject({ dash: [18, 10], phase: 4 });
+  });
 });
 
 function sampleTimes(durationMs: number): number[] {

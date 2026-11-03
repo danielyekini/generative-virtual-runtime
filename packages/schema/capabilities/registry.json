@@ -738,6 +738,38 @@
       }
     },
     {
+      "id": "paint.strokeDash",
+      "summary": "A stroke may carry a dash array and phase. The renderer draws it with setLineDash. Phase may be animated.",
+      "introducedIn": { "motionscript": "0.21.0", "sceneIr": "0.21.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing paint.strokeDash.",
+        "dash is a non-empty list of positive finite lengths in local geometry units. phase is the Canvas line-dash offset and requires dash. Omitted phase is 0.",
+        "dash and phase are matched by spelling and are not reserved words. Syntax is stroke … dash (a, b) phase n. animate Node.stroke.phase writes the phase channel.",
+        "A stroke.phase track requires a dash on that node. Solid strokes without dash stay on the 0.20 reader behaviour.",
+        "Dashes do not replace trim. The geometry dashCommands helper is not this paint claim. Variable width profiles and Lottie dash import are out of scope."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/stroke-dash.test.ts#accepts a dashed stroke and requires paint.strokeDash",
+        "packages/compiler/src/stroke-dash.test.ts#rejects phase without a dash and a phase track on a solid stroke",
+        "packages/runtime/src/stroke-dash.test.ts#samples stroke.phase and keeps solid strokes undashed",
+        "packages/runtime/src/stroke-dash.test.ts#scales dash and phase with the projected stroke width",
+        "packages/canvas-renderer/src/renderer.test.ts#sets the canvas dash and phase for a dashed stroke",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips paint.strokeDash"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "not-applicable",
+          "scope": "Native stroke dash; Lottie dash lowering is not commissioned with this release."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native stroke dash; SVG stroke-dasharray lowering is not commissioned with this release."
+        }
+      }
+    },
+    {
       "id": "input.bindings",
       "summary": "Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation.",
       "introducedIn": { "motionscript": "0.10.0", "sceneIr": "0.10.0" },

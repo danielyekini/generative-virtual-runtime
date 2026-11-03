@@ -66,8 +66,9 @@ streaming honest.
   orientation solves rolling.
 - **Dash phase.** `dashCommands(commands, pattern, phase)` emits on-segments as
   open polylines for host/prototype use. Pattern units match path logical units;
-  phase shifts into the pattern. Not a stroke paint field yet; Canvas still
-  clears `setLineDash`. Contours dash independently.
+  phase shifts into the pattern. That helper stays geometry-only. The paint
+  claim `paint.strokeDash` landed in MotionScript / Scene IR 0.21.0 and does
+  not replace this helper or trim. Contours dash independently.
 - **Width profile.** Deferred. Uniform `stroke.width` animation remains
   `paint.animatedSolid`. Arc-length width profiles (ribbons, cusps, joins) need
   a later decision with fill-outline or variable-stroke evidence.
@@ -115,7 +116,8 @@ support until a follow-up ships a versioned capability.
   sampling/attaching along a named path after morph/trim, optional orient mode,
   registry + conformance, Studio fixture. Rolling stays an explicit
   distance/radius option, not implied by orient.
-- **E038** ([#170](https://github.com/danielyekini/generative-virtual-runtime/issues/170)):
+- **E038** ([#170](https://github.com/danielyekini/generative-virtual-runtime/issues/170),
+  landed in MotionScript / Scene IR 0.21.0):
   version `paint.strokeDash` — dash array + phase on stroke, renderer
   `setLineDash`, animated phase optional; do not substitute dashes for trim.
 - **Width profile (Candidate / later decision):** variable stroke width along arc
