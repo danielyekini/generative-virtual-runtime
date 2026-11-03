@@ -164,7 +164,7 @@ try {
     chips[0].click();
     return composer.value.length > 40 && chips[0].classList.contains('is-selected');
   })()`));
-  check("Generate offers copy-transcript and detail view dropdown", await ev(`Boolean(document.querySelector('#generate-copy-transcript')) && document.querySelector('#generate-detail-view') instanceof HTMLSelectElement`));
+  check("Generate offers the ⋯ tools menu and detail view dropdown", await ev(`Boolean(document.querySelector('#generate-menu')) && !document.querySelector('#generate-copy-transcript') && document.querySelector('#generate-detail-view') instanceof HTMLSelectElement`));
   const streaming = await ev(`(() => {
     const output = Array.from({ length: 80 }, (_, i) => "scene line " + i).join("\\n");
     const director = '{"beats":["greeting"]}';
@@ -634,6 +634,84 @@ try {
   check("Stream audio follows playback pause", (await player()).audio?.voices.length === 0);
   const exportedAudio = await ev("(() => { const wav = window.__gvr.exportAudio(); return wav && {bytes: wav.wav.length, durationMs: wav.durationMs}; })()");
   check("Stream audio retains the existing offline export path", exportedAudio?.bytes > 44 && exportedAudio?.durationMs === 2000, exportedAudio);
+
+  // 8b. Generate tools (P027): model gate, ⋯ copy granularity, system prompts, Library exit
+  await navigate("/");
+  await ev("document.querySelector('#generate').click()");
+  for (let i = 0; i < 50 && !(await ev("/not ready/.test(document.querySelector('#generate-model').title)")); i++) await sleep(100);
+  check("Generate greys the model and blocks Send until a model is ready", await ev(`(() => {
+    const model = document.querySelector('#generate-model');
+    const send = document.querySelector('#generate-send');
+    const prompt = document.querySelector('#generate-prompt');
+    prompt.value = 'kept while blocked';
+    send.click();
+    return model.disabled && send.disabled && model.closest('.generate-chip').classList.contains('is-unready')
+      && window.__gvr.player.generateMessages === 0 && prompt.value === 'kept while blocked';
+  })()`));
+  await ev(`(() => {
+    const real = window.fetch.bind(window);
+    window.fetch = (input, init) => String(input).endsWith('/api/tags')
+      ? Promise.resolve(new Response(JSON.stringify({ models: [{ name: 'qwen2.5-coder:14b' }] }), { headers: { 'Content-Type': 'application/json' } }))
+      : real(input, init);
+    return true;
+  })()`);
+  for (let i = 0; i < 80 && (await ev("document.querySelector('#generate-send').disabled")); i++) await sleep(100);
+  check("Send and the model selector unlock once the model answers ready", await ev(`!document.querySelector('#generate-send').disabled && !document.querySelector('#generate-model').disabled && !document.querySelector('#generate-model').closest('.generate-chip').classList.contains('is-unready')`));
+  await ev(`window.__gvr.seedGeneratePreview("tools prompt", '{"intent":"tools"}', 'scene "tools" {}')`);
+  await ev("document.querySelector('#generate-menu').click()");
+  const toolsMenu = await ev(`(() => {
+    const pop = document.querySelector('#generate-menu-pop');
+    const r = pop.getBoundingClientRect();
+    const items = [...pop.querySelectorAll('#generate-menu-main [role=menuitem]')].map((b) => b.textContent.replace('›', '').trim());
+    return { open: !pop.hidden, items, inside: r.left >= 0 && r.right <= innerWidth && r.top >= 0 };
+  })()`);
+  check("⋯ menu opens with Copy and System prompts inside the window", toolsMenu.open && JSON.stringify(toolsMenu.items) === JSON.stringify(["Copy", "System prompts…"]) && toolsMenu.inside, toolsMenu);
+  await ev("document.querySelector('#generate-menu-copy').click()");
+  const copyMenu = await ev(`(() => {
+    const boxes = [...document.querySelectorAll('#generate-copy-parts input')];
+    return { visible: !document.querySelector('#generate-copy-menu').hidden && document.querySelector('#generate-menu-main').hidden,
+      labels: boxes.map((b) => b.parentElement.textContent.trim()), checked: boxes.filter((b) => b.checked).map((b) => b.value) };
+  })()`);
+  check("Copy submenu offers six parts with prompts + MotionScript checked by default", copyMenu.visible && copyMenu.labels.length === 6 && JSON.stringify(copyMenu.checked) === JSON.stringify(["prompts", "motionscript"]), copyMenu);
+  await shot("16-generate-copy-menu");
+  const copied = await ev(`new Promise((done) => {
+    navigator.clipboard.writeText = (text) => { done(text); return Promise.resolve(); };
+    const director = document.querySelector('#generate-copy-parts input[value=director]');
+    director.checked = true; director.dispatchEvent(new Event('change'));
+    document.querySelector('#generate-copy-run').click();
+  })`);
+  check("Copy selected builds the chosen payload", copied.includes("## User\ntools prompt") && copied.includes("### Director response") && copied.includes('scene "tools" {}'), copied);
+  check("A successful copy closes the ⋯ menu", await ev("new Promise((done) => setTimeout(() => done(document.querySelector('#generate-menu-pop').hidden), 50))"));
+  await ev("document.querySelector('#generate-menu').click(); document.querySelector('#generate-menu-prompts').click()");
+  await player();
+  const prompts = await ev(`(() => {
+    const text = document.querySelector('#generate-prompts-text');
+    return { open: !document.querySelector('#generate-prompts').hidden, transcriptHidden: document.querySelector('#generate-middle').hidden,
+      kind: document.querySelector('#generate-prompts-kind').value, state: document.querySelector('#generate-prompts-state').textContent,
+      director: text.value.startsWith('You are a MotionScript director planner'), composer: !document.querySelector('.generate-composer').closest('[hidden]') };
+  })()`);
+  check("System prompts opens the Director prompt in an editor above the composer", prompts.open && prompts.transcriptHidden && prompts.kind === "director" && prompts.state === "default" && prompts.director && prompts.composer, prompts);
+  await ev(`(() => { const t = document.querySelector('#generate-prompts-text'); t.focus(); t.value = 'Plan in three beats.'; t.dispatchEvent(new Event('input')); })()`);
+  await player();
+  check("Editing marks the system prompt as a session-only edit", await ev(`document.querySelector('#generate-prompts-state').textContent.includes('edited') && !document.querySelector('#generate-prompts-reset').disabled`));
+  await shot("17-generate-system-prompts");
+  await ev(`(() => { const k = document.querySelector('#generate-prompts-kind'); k.value = 'motionscript'; k.dispatchEvent(new Event('change')); })()`);
+  await player();
+  check("MotionScript system prompt shows the bundled authoring reference", await ev(`document.querySelector('#generate-prompts-text').value.includes('MotionScript authoring reference') && document.querySelector('#generate-prompts-state').textContent === 'default'`));
+  await ev(`(() => { const k = document.querySelector('#generate-prompts-kind'); k.value = 'director'; k.dispatchEvent(new Event('change')); })()`);
+  await player();
+  await ev("document.querySelector('#generate-prompts-reset').click()");
+  await player();
+  check("Reset restores the default Director prompt", await ev(`document.querySelector('#generate-prompts-text').value.startsWith('You are a MotionScript director planner') && document.querySelector('#generate-prompts-state').textContent === 'default'`));
+  await ev("document.querySelector('#generate-prompts-close').click()");
+  await player();
+  check("Closing the editor returns to the transcript", await ev(`document.querySelector('#generate-prompts').hidden && !document.querySelector('#generate-middle').hidden`));
+  await ev("document.querySelector('#open-library').click()");
+  await sleep(150);
+  await ev(`(() => { const s = document.querySelector('#library-search'); s.value = 'ball expression'; s.dispatchEvent(new Event('input')); document.querySelector('#library-grid article[data-key="sample:ball"] .program-preview').click(); })()`);
+  await sleep(150);
+  const libraryExit = await player();
+  check("Library load while in Generate exits to the Source panel", !libraryExit.generateMode && libraryExit.sourceOpen && libraryExit.programKey === "sample:ball" && (await visible("#source-chrome")) && !(await visible("#generate-chrome")), libraryExit);
 
   // 9. Temporary legacy route keeps streaming working
   await navigate("/legacy.html#stream");

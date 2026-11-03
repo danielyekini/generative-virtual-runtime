@@ -187,7 +187,23 @@
               <strong>Generate</strong>
               <span class="meta">story pack · judge canvas quality</span>
               <span class="spacer"></span>
-              <button id="generate-copy-transcript" type="button" title="Copy full chat transcript">Copy chat</button>
+              <div class="generate-menu-wrap">
+                <button id="generate-menu" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="generate-menu-pop" aria-label="Generate tools" title="Generate tools">⋯</button>
+                <div id="generate-menu-pop" class="menu generate-menu" role="menu" hidden>
+                  <div id="generate-menu-main" class="generate-menu-view">
+                    <button id="generate-menu-copy" type="button" role="menuitem" aria-haspopup="menu">Copy<span class="generate-menu-chevron" aria-hidden="true">›</span></button>
+                    <button id="generate-menu-prompts" type="button" role="menuitem">System prompts…</button>
+                  </div>
+                  <div id="generate-copy-menu" class="generate-menu-view" role="group" aria-label="Copy granularity" hidden>
+                    <div class="generate-menu-heading">
+                      <button id="generate-copy-back" type="button" aria-label="Back to Generate tools">‹</button>
+                      <strong>Copy</strong>
+                    </div>
+                    <div id="generate-copy-parts" class="generate-copy-parts"></div>
+                    <button id="generate-copy-run" class="generate-copy-run" type="button">Copy selected</button>
+                  </div>
+                </div>
+              </div>
               <button id="generate-close" type="button" aria-label="Leave Generate mode">✕</button>
             </div>
             <div id="generate-middle" class="generate-middle">
@@ -207,6 +223,23 @@
                 </div>
                 <pre id="generate-detail-body" class="generate-detail-body"></pre>
               </div>
+            </div>
+            <div id="generate-prompts" class="generate-prompts" hidden>
+              <div class="panel-bar">
+                <strong>System prompts</strong>
+                <label class="generate-chip">Prompt
+                  <select id="generate-prompts-kind" aria-label="System prompt">
+                    <option value="director" selected>Director</option>
+                    <option value="motionscript">MotionScript</option>
+                  </select>
+                </label>
+                <span id="generate-prompts-state" class="meta"></span>
+                <span class="spacer"></span>
+                <button id="generate-prompts-reset" type="button" title="Restore the bundled default">Reset</button>
+                <button id="generate-prompts-close" type="button" aria-label="Close system prompts">✕</button>
+              </div>
+              <textarea id="generate-prompts-text" spellcheck="false" aria-label="System prompt text"></textarea>
+              <p class="generate-prompts-note">Session-local tester tooling: edits apply to the next prompt and reset when Studio reloads.</p>
             </div>
             <div class="generate-composer" aria-label="Prompt composer">
               <div id="generate-quality-pack" class="generate-quality-pack" role="list" aria-label="Story-complexity judgment prompts"></div>

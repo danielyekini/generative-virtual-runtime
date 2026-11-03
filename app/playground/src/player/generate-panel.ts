@@ -3,6 +3,7 @@
  */
 import type { GenerationApproach } from "../../../../tools/native-generation/types";
 import {
+  COPY_PARTS,
   DETAIL_SHARE_DEFAULT,
   detailBodyText,
   detailExpanded,
@@ -10,6 +11,7 @@ import {
   type GenerateController,
   type GenerateMessage,
   type GenerateState,
+  type SystemPromptKind,
 } from "./generate-session";
 import { loadQualityJudgmentPack } from "./generate-quality-pack";
 import { STUDIO_GENERATE_MODEL } from "./generate-reference";
@@ -34,7 +36,21 @@ export type GeneratePanelElements = {
   model: HTMLSelectElement;
   send: HTMLButtonElement;
   metrics: HTMLElement;
-  copyTranscript: HTMLButtonElement;
+  menu: HTMLButtonElement;
+  menuPop: HTMLElement;
+  menuMain: HTMLElement;
+  menuCopy: HTMLButtonElement;
+  menuPrompts: HTMLButtonElement;
+  copyMenu: HTMLElement;
+  copyBack: HTMLButtonElement;
+  copyParts: HTMLElement;
+  copyRun: HTMLButtonElement;
+  prompts: HTMLElement;
+  promptsKind: HTMLSelectElement;
+  promptsState: HTMLElement;
+  promptsText: HTMLTextAreaElement;
+  promptsReset: HTMLButtonElement;
+  promptsClose: HTMLButtonElement;
   detail: HTMLElement;
   detailResize: HTMLElement;
   detailTitle: HTMLElement;
@@ -54,7 +70,21 @@ export function bindGeneratePanel(root: HTMLElement): GeneratePanelElements {
     model: must(root, "generate-model") as HTMLSelectElement,
     send: must(root, "generate-send") as HTMLButtonElement,
     metrics: must(root, "generate-metrics"),
-    copyTranscript: must(root, "generate-copy-transcript") as HTMLButtonElement,
+    menu: must(root, "generate-menu") as HTMLButtonElement,
+    menuPop: must(root, "generate-menu-pop"),
+    menuMain: must(root, "generate-menu-main"),
+    menuCopy: must(root, "generate-menu-copy") as HTMLButtonElement,
+    menuPrompts: must(root, "generate-menu-prompts") as HTMLButtonElement,
+    copyMenu: must(root, "generate-copy-menu"),
+    copyBack: must(root, "generate-copy-back") as HTMLButtonElement,
+    copyParts: must(root, "generate-copy-parts"),
+    copyRun: must(root, "generate-copy-run") as HTMLButtonElement,
+    prompts: must(root, "generate-prompts"),
+    promptsKind: must(root, "generate-prompts-kind") as HTMLSelectElement,
+    promptsState: must(root, "generate-prompts-state"),
+    promptsText: must(root, "generate-prompts-text") as HTMLTextAreaElement,
+    promptsReset: must(root, "generate-prompts-reset") as HTMLButtonElement,
+    promptsClose: must(root, "generate-prompts-close") as HTMLButtonElement,
     detail: must(root, "generate-detail"),
     detailResize: must(root, "generate-detail-resize"),
     detailTitle: must(root, "generate-detail-title"),
@@ -93,7 +123,8 @@ export function wireGeneratePanel(ui: GeneratePanelElements, controller: Generat
       void submit();
     }
   });
-  ui.copyTranscript.addEventListener("click", () => void controller.copyTranscript());
+  wireToolsMenu(ui, controller);
+  wireSystemPrompts(ui, controller);
   ui.detailClose.addEventListener("click", () => {
     if (detailExpanded(controller.state)) controller.returnToTranscript();
     else controller.closeDetail();
@@ -107,10 +138,84 @@ export function wireGeneratePanel(ui: GeneratePanelElements, controller: Generat
       controller.cancel();
       return;
     }
+    // Keep the typed prompt until a model is confirmed ready to accept it.
+    if (!controller.canSend()) return;
     const prompt = ui.composer.value;
     ui.composer.value = "";
     await controller.send(prompt);
   }
+}
+
+/** Close the ⋯ menu and return it to its top level. */
+export function closeGenerateMenu(ui: GeneratePanelElements): void {
+  if (ui.menuPop.hidden) return;
+  ui.menuPop.hidden = true;
+  ui.menu.setAttribute("aria-expanded", "false");
+  ui.menuMain.hidden = false;
+  ui.copyMenu.hidden = true;
+}
+
+function wireToolsMenu(ui: GeneratePanelElements, controller: GenerateController): void {
+  ui.copyParts.replaceChildren(
+    ...COPY_PARTS.map((part) => {
+      const label = document.createElement("label");
+      label.className = "check";
+      const box = document.createElement("input");
+      box.type = "checkbox";
+      box.value = part.id;
+      box.checked = controller.state.copyParts.includes(part.id);
+      box.addEventListener("change", () => controller.setCopyPart(part.id, box.checked));
+      label.append(box, document.createTextNode(` ${part.label}`));
+      return label;
+    }),
+  );
+  ui.menu.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (!ui.menuPop.hidden) {
+      closeGenerateMenu(ui);
+      return;
+    }
+    ui.menuPop.hidden = false;
+    ui.menuMain.hidden = false;
+    ui.copyMenu.hidden = true;
+    ui.menu.setAttribute("aria-expanded", "true");
+  });
+  ui.menuCopy.addEventListener("click", () => {
+    ui.menuMain.hidden = true;
+    ui.copyMenu.hidden = false;
+    ui.copyRun.focus({ preventScroll: true });
+  });
+  ui.copyBack.addEventListener("click", () => {
+    ui.copyMenu.hidden = true;
+    ui.menuMain.hidden = false;
+    ui.menuCopy.focus({ preventScroll: true });
+  });
+  ui.copyRun.addEventListener("click", () => {
+    void controller.copySelection().then((ok) => {
+      if (ok) closeGenerateMenu(ui);
+    });
+  });
+  ui.menuPrompts.addEventListener("click", () => {
+    closeGenerateMenu(ui);
+    controller.openSystemPrompts();
+    ui.promptsText.focus({ preventScroll: true });
+  });
+  document.addEventListener("pointerdown", (event) => {
+    const target = event.target;
+    if (target instanceof Node && (ui.menuPop.contains(target) || ui.menu.contains(target))) return;
+    closeGenerateMenu(ui);
+  });
+}
+
+function wireSystemPrompts(ui: GeneratePanelElements, controller: GenerateController): void {
+  const kind = (): SystemPromptKind => (ui.promptsKind.value === "motionscript" ? "motionscript" : "director");
+  ui.promptsKind.addEventListener("change", () => controller.openSystemPrompts(kind()));
+  ui.promptsText.addEventListener("input", () => controller.setSystemPrompt(kind(), ui.promptsText.value));
+  ui.promptsReset.addEventListener("click", () => {
+    controller.resetSystemPrompt(kind());
+    ui.promptsText.value = controller.systemPrompt(kind());
+  });
+  ui.promptsClose.addEventListener("click", () => controller.closeSystemPrompts());
 }
 
 function mountQualityPack(ui: GeneratePanelElements): void {
@@ -165,7 +270,11 @@ function wireDetailResize(ui: GeneratePanelElements, controller: GenerateControl
   });
 }
 
-export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateState): void {
+export function renderGeneratePanel(
+  ui: GeneratePanelElements,
+  state: GenerateState,
+  systemPrompt: (kind: SystemPromptKind) => string = () => "",
+): void {
   if (document.activeElement !== ui.approach) ui.approach.value = state.approach;
   if (
     document.activeElement !== ui.model &&
@@ -173,16 +282,36 @@ export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateSt
   ) {
     ui.model.value = state.modelId;
   }
+  const ready = state.modelReadiness === "ready";
   ui.approach.disabled = state.running;
-  ui.model.disabled = state.running;
+  // studio-ux: grey the model selector and keep Send inactive until a model is confirmed ready.
+  ui.model.disabled = state.running || !ready;
+  ui.model.closest(".generate-chip")?.classList.toggle("is-unready", !ready);
+  ui.model.title =
+    state.modelReadiness === "checking"
+      ? "Checking whether the model is ready…"
+      : ready
+        ? "Model ready"
+        : "Model not ready — start Ollama and pull this model";
   ui.composer.disabled = state.running;
   for (const chip of ui.pack.querySelectorAll("button")) {
     (chip as HTMLButtonElement).disabled = state.running;
   }
+  ui.send.disabled = !state.running && !ready;
   put(ui.send, state.running ? "■" : "↑");
-  ui.send.title = state.running ? "Cancel generation" : "Send prompt";
-  ui.send.setAttribute("aria-label", state.running ? "Cancel generation" : "Send prompt");
+  const sendLabel = state.running ? "Cancel generation" : ready ? "Send prompt" : "Send unavailable until the model is ready";
+  ui.send.title = sendLabel;
+  ui.send.setAttribute("aria-label", sendLabel);
   put(ui.metrics, state.lastStatus);
+
+  for (const box of ui.copyParts.querySelectorAll("input")) {
+    const input = box as HTMLInputElement;
+    const on = state.copyParts.includes(input.value as (typeof state.copyParts)[number]);
+    if (input.checked !== on) input.checked = on;
+  }
+  ui.copyRun.disabled = state.copyParts.length === 0;
+
+  renderSystemPrompts(ui, state, systemPrompt);
 
   // Keep bubble nodes across tokens. Replacing them drops clicks that start
   // on one frame and finish on the next.
@@ -208,6 +337,30 @@ export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateSt
     );
   } else {
     ui.detail.style.flex = "";
+  }
+}
+
+function renderSystemPrompts(
+  ui: GeneratePanelElements,
+  state: GenerateState,
+  systemPrompt: (kind: SystemPromptKind) => string,
+): void {
+  const kind = state.promptsEditor;
+  ui.prompts.hidden = kind === null;
+  ui.middle.hidden = kind !== null;
+  if (kind === null) {
+    delete ui.promptsText.dataset.kind;
+    return;
+  }
+  if (document.activeElement !== ui.promptsKind && ui.promptsKind.value !== kind) ui.promptsKind.value = kind;
+  const edited = state.systemOverrides[kind] !== null;
+  put(ui.promptsState, edited ? "edited · session only" : "default");
+  ui.promptsReset.disabled = !edited;
+  // Load text when the editor opens or switches prompt; never rewrite it under the tester's cursor.
+  if (ui.promptsText.dataset.kind !== kind || document.activeElement !== ui.promptsText) {
+    ui.promptsText.dataset.kind = kind;
+    const text = systemPrompt(kind);
+    if (ui.promptsText.value !== text) ui.promptsText.value = text;
   }
 }
 
