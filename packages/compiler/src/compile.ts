@@ -1255,6 +1255,18 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
   ) {
     ensureCapability(session, "paint.animatedSolid");
   }
+  if (resolved.target.kind === "node" && resolved.target.channel === "stroke.phase") {
+    ensureCapability(session, "paint.strokeDash");
+    const nodeId = resolved.target.nodeId;
+    const node = session.scene.nodes.find((entry) => entry.id === nodeId);
+    const stroke = node && "stroke" in node ? node.stroke : undefined;
+    if (!stroke?.dash || stroke.dash.length === 0) {
+      session.diagnostics.push(
+        problem("INVALID_TRACK_TARGET", `${unit.target} needs a dashed stroke.`, unit.span),
+      );
+      return undefined;
+    }
+  }
   if (unit.timingScopeId) ensureCapability(session, "timing.localScopes");
   return {
     id,
@@ -1934,8 +1946,9 @@ function unitHitsRejectedTarget(session: Session, unit: UnitAst): boolean {
 }
 
 function ensureStrokePaintCapability(session: Session, stroke: Stroke | undefined): void {
-  if (!stroke || stroke.color.type === "solid") return;
-  ensureCapability(session, "paint.gradientStroke");
+  if (!stroke) return;
+  if (stroke.color.type !== "solid") ensureCapability(session, "paint.gradientStroke");
+  if (stroke.dash !== undefined) ensureCapability(session, "paint.strokeDash");
 }
 
 function ensureCapability(session: Session, name: string): void {

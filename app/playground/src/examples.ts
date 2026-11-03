@@ -18,6 +18,7 @@ import alphaMatteSource from "../../../fixtures/motionscript/alpha-matte.ms?raw"
 import pathProgressSource from "../../../fixtures/motionscript/path-progress.ms?raw";
 import dynamicTextSource from "../../../fixtures/motionscript/dynamic-text.ms?raw";
 import textLayoutSource from "../../../fixtures/motionscript/text-layout.ms?raw";
+import strokeDashSource from "../../../fixtures/motionscript/stroke-dash.ms?raw";
 import cameraMappingSource from "../../../fixtures/motionscript/frames/camera-mapping.ms?raw";
 import hierarchyTransformSource from "../../../fixtures/motionscript/frames/hierarchy-transform.ms?raw";
 import opacitySource from "../../../fixtures/motionscript/frames/opacity.ms?raw";
@@ -163,6 +164,7 @@ export const motionExamples: MotionExample[] = [
   { id: "path-progress", label: "Path progress", caption: "An arrow rides a growing stroke's tip and a wheel rolls along a bending track, with no baked keys (geometry.pathProgress).", source: pathProgressSource },
   { id: "dynamic-text", label: "Dynamic text", caption: "A live currency readout formats a number track, and a status label swaps discrete content steps (text.dynamicContent).", source: dynamicTextSource },
   { id: "text-layout", label: "Text layout", caption: "Narrow III and wide WWW share a font size. Their boxes follow builtin advances (text.layoutMetrics).", source: textLayoutSource },
+  { id: "stroke-dash", label: "Stroke dash", caption: "A line keeps a 18/10 dash while its phase runs along the stroke (paint.strokeDash).", source: strokeDashSource },
   { id: "physics-marble", label: "Physics marble", caption: "A marble and block fall onto a floor (physics.planar2d).", source: physicsMarbleSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
   { id: "nested", label: "Nested", caption: "A wheel and its spoke rotate together.", source: nestedSource },

@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.20.0 | 0.2 |
-| scene-ir | 0.20.0 | 0.2 |
+| motionscript | 0.21.0 | 0.2 |
+| scene-ir | 0.21.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -46,6 +46,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | geometry.pathMorph | supported | supported | supported | Animated path vertices with a shared command topology. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/path-morph.test.ts) |
 | paint.gradientStroke | supported | supported | supported | A stroke painted with a linear or radial gradient. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | paint.animatedSolid | supported | supported | supported | Keyframe tracks may drive solid fill/stroke colour components and uniform stroke width on a node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
+| paint.strokeDash | supported | supported | supported | A stroke may carry a dash array and phase. The renderer draws it with setLineDash. Phase may be animated. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/stroke-dash.test.ts) |
 | input.bindings | supported | supported | not-applicable | Scenes declare interaction targets and bounded input actions over painted-geometry hit-testing, capture, focus and keyboard activation. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/interact.test.ts) |
 | audio.cues | supported | supported | not-applicable | Scenes declare decoded audio resources and narration/effects/music cues on scene time; hosts play them through a reconciling AudioSession and export the same mix offline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/audio.test.ts) |
 | audio.generative | supported | supported | not-applicable | Scenes declare provider-abstracted generative audio resources (speech/effect prompts) that materialise into scene-time cues via a host GenerativeAudioProvider and duration revision. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/generative-audio.test.ts) |
@@ -76,5 +77,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `d26e3154a1212136d5477b178ea71e2cc80d7ef01d1ddfe743ab0e5ed746c58f`
-- `packages/schema/capabilities/registry.json` SHA-256 `15b95f5cee4dd4ebbba6f3a7c01dda88ee650c937fdf14e7d59a45344731cfe7`
+- `packages/schema/capabilities/releases.json` SHA-256 `5abb812e0af70d5675494ad30360d5dee7f09e8a13784bb807ff761833b5a5d3`
+- `packages/schema/capabilities/registry.json` SHA-256 `95d69b3e7b0a4a2389c49415b3e1ab20eaf5ec5c7ddd78a2a8c9460ee3b8d7a1`

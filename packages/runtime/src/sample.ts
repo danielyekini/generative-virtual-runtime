@@ -47,6 +47,7 @@ interface NodePose {
   strokeB?: number;
   strokeA?: number;
   strokeWidth?: number;
+  strokePhase?: number;
 }
 
 export type TrimOverride = { start: number; end: number; offset: number };
@@ -293,7 +294,8 @@ function applyPaintPose(node: NodeDefinition, pose: NodePose): NodeDefinition {
       pose.strokeB !== undefined ||
       pose.strokeA !== undefined;
     const hasWidth = pose.strokeWidth !== undefined;
-    if (hasStrokeColor || hasWidth) {
+    const hasPhase = pose.strokePhase !== undefined;
+    if (hasStrokeColor || hasWidth || hasPhase) {
       const color =
         hasStrokeColor && stroke.color.type === "solid"
           ? {
@@ -310,6 +312,7 @@ function applyPaintPose(node: NodeDefinition, pose: NodePose): NodeDefinition {
           ...stroke,
           color,
           width: pose.strokeWidth ?? stroke.width,
+          ...(hasPhase ? { phase: pose.strokePhase } : {}),
         },
       };
     }
@@ -576,6 +579,9 @@ function writeNode(pose: NodePose, channel: string, value: number): void {
       break;
     case "stroke.width":
       pose.strokeWidth = value;
+      break;
+    case "stroke.phase":
+      pose.strokePhase = value;
       break;
     default:
       break;

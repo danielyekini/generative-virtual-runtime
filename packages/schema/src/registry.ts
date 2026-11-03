@@ -187,6 +187,12 @@ export const NODE_CHANNELS: Record<NodeAnimChannel, ChannelSpec> = {
     animation: "track",
     scalars: ["stroke.width"],
   },
+  "stroke.phase": {
+    dslPath: "stroke.phase",
+    type: "number",
+    animation: "track",
+    scalars: ["stroke.phase"],
+  },
 };
 
 export const CAMERA_CHANNELS: Record<CameraAnimChannel, ChannelSpec> = {

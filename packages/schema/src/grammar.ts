@@ -77,8 +77,12 @@ paint          = color | gradientPaint ;
 gradientPaint  = "linear" , vec2 , vec2 , { stop }
                | "radial" , vec2 , signedNumber , { stop } ;
 stop           = signedNumber , color ;
+(* MotionScript 0.21 paint.strokeDash: dash and phase match by spelling.
+   They are not reserved words. Phase is legal only after a dash list. *)
 strokeValue    = paint , [ "width" , signedNumber ] , [ "cap" , cap ] ,
-                 [ "join" , join ] , [ "miterLimit" , signedNumber ] ;
+                 [ "join" , join ] , [ "miterLimit" , signedNumber ] ,
+                 [ "dash" , "(" , signedNumber , { "," , signedNumber } , ")" ,
+                   [ "phase" , signedNumber ] ] ;
 cap            = "butt" | "round" | "square" ;
 join           = "miter" | "round" | "bevel" ;
 

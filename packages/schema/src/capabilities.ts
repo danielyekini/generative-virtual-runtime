@@ -14,6 +14,7 @@ export const CAPABILITIES = [
   "paint.radialGradient",
   "paint.gradientStroke",
   "paint.animatedSolid",
+  "paint.strokeDash",
   "text.basic",
   "resources.image",
   "svg.smilTimeBased",

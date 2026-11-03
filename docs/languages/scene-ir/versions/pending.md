@@ -12,14 +12,11 @@ Not yet in a published Scene IR version:
 
 - transform.skew
 - transform.autoOrient
-- paint.strokeDash
 - geometry.repeater
 - geometry.mergePaths
 - text.animators
 
-`paint.strokeDash` is named by the E015 decision
-(`docs/decisions/engine/path-progress-geometry-authoring.md`); its host/schema
-prototype exists without a language claim. `transform.autoOrient` stays pending
+`paint.strokeDash` landed in Scene IR 0.21.0. `transform.autoOrient` stays pending
 as a standalone channel: orientation from the path tangent now exists only as
 the `orient` option of a path attachment (`geometry.pathProgress`). Variable width
 profiles stay outside this pending list until a separate decision.
@@ -43,6 +40,7 @@ MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
 `geometry.pathProgress` (`pathAttachments` and the `path.progress` channel) landed in Scene IR 0.17.0.
 `text.dynamicContent` (text `numeric` bindings, `text.number` channel, content steps) landed in Scene IR 0.18.0.
 `text.layoutMetrics` (`requiredCapabilities` token; builtin align/baseline boxes on resolved frames) landed in Scene IR 0.20.0.
+`paint.strokeDash` (`Stroke.dash` / `Stroke.phase` and the `stroke.phase` channel) landed in Scene IR 0.21.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

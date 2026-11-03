@@ -845,6 +845,12 @@ function projectAppearance(
       ...appearance.stroke,
       color: projectPaint(appearance.stroke.color, project, areaScale),
       width: appearance.stroke.width * areaScale,
+      ...(appearance.stroke.dash
+        ? {
+            dash: appearance.stroke.dash.map((length) => length * areaScale),
+            ...(appearance.stroke.phase !== undefined ? { phase: appearance.stroke.phase * areaScale } : {}),
+          }
+        : {}),
     };
   }
   return out;

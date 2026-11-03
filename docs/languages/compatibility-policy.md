@@ -109,6 +109,10 @@ Landed in MotionScript / Scene IR **0.18.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.20.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `text.layoutMetrics`. No new syntax or reserved words. When the capability is required, hit-testing and spatial text outlines use `measureTextLine` (builtin `sans` advances, align and baseline). Scenes without it keep the legacy 0.6em box. A host `measureText` callback overrides the hit box and is not required for `sans` conformance. Builtin font resources stay ready in-process. Older readers reject the capability token. `text.animators`, wrapping and custom font URLs remain pending. See `docs/decisions/engine/dynamic-text-and-metrics.md`.
 
+### Decision for `paint.strokeDash`
+
+Landed in MotionScript / Scene IR **0.21.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `paint.strokeDash`. `dash` and `phase` match by spelling on an existing stroke and are not reserved words. `dash` is a non-empty list of positive lengths. `phase` requires that list and defaults to 0. `Node.stroke.phase` animates the offset and needs a dash on the node. The renderer uses `setLineDash` and `lineDashOffset`. Spatial projection scales the dash and phase with stroke width. Solid strokes stay unchanged. Dashes do not replace trim. The geometry `dashCommands` helper is not this paint claim. Older readers reject the capability token, the `dash` and `phase` keys, and the `stroke.phase` channel. Variable width profiles and Lottie/SVG dash import stay out. See `docs/decisions/engine/path-progress-geometry-authoring.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.
