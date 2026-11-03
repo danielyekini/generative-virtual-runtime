@@ -109,19 +109,23 @@ reimplementation from this acknowledgement alone.
 
 Engine review (3 November 2026) inspected runs CEAB345F / d71677a0 / 7413cf17 /
 83199A7A / D5CBE033. E027/E035, E012 (0.16.0 `compositing.mask`), E017, E015
-decision/prototype, and E037 (0.17.0 `geometry.pathProgress`) are Done. Continue.
+decision/prototype, E037 (0.17.0 `geometry.pathProgress`), and E013
+(dynamic text / metrics decision + schema prototype) are Done. Continue.
 
 1. E036 ([#156](https://github.com/danielyekini/generative-virtual-runtime/issues/156)):
    track mattes / `compositing.matte` — In progress (design after clip-first).
 2. E038 ([#170](https://github.com/danielyekini/generative-virtual-runtime/issues/170)):
    version `paint.strokeDash`. Ready. Width profiles stay deferred; standalone
    `transform.autoOrient` stays pending.
-3. E013 ([#32](https://github.com/danielyekini/generative-virtual-runtime/issues/32)):
-   dynamic text / metrics decision. Ready (second Ready slot after review).
-4. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173)):
+3. E040 ([#175](https://github.com/danielyekini/generative-virtual-runtime/issues/175)):
+   version `text.dynamicContent` (child of E013). Ready.
+4. E041 ([#176](https://github.com/danielyekini/generative-virtual-runtime/issues/176)):
+   version `text.layoutMetrics` (child of E013). Ready.
+5. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173)):
    Candidate — compose pathAttachments through path transforms (mined from E037).
-5. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
+6. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
+   `text.animators` stays pending (not the E013 content/format slice).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
