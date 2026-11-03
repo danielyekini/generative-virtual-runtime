@@ -243,6 +243,12 @@ Essentials:
   \`duration\` stays a length. Declare a beat before any unit that uses it.
   Prefer per-beat \`animate\` blocks with \`fill forwards\` over full-length
   percentage tracks (\`timing.timedKeys\`).
+- **0.24 cycles:** \`timing loop { offset 1s; period 2s; };\` repeats local time
+  every period (the offset is the phase); add \`repeat 4;\` for a finite run.
+  Write one cycle's keys inside \`[0, period]\` with \`timing loop;\`, and add
+  \`timing loop;\` after \`value\` to repeat a step. A cycle owns its channels:
+  no other writer may touch them. Send every writer of a loop before the first
+  seal. Prefer this over \`t % P\` expressions (\`timing.cyclicScopes\`).
 
 Hard excludes for generation: invented loops/functions/packages; \`pending.md\`
 constructs; Lottie/SVG adapter expansion guidance; unsupported registry rows as

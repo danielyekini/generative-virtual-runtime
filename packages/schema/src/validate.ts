@@ -35,6 +35,7 @@ export function resetImmutableValidationFactStats(): void {
 import { channelSpec, isValidSample, scalarWriters } from "./registry";
 import { pathsShareTopology } from "./spatial";
 import { rootTimeMs } from "./timing";
+import { chainIsCyclic, cycleLocalSpan, cyclicOwnershipConflicts, validateCyclicScope, type ScopedWriter } from "./cyclic-timing";
 import {
   IR_VERSION,
   IR_VERSION_02,
@@ -180,7 +181,7 @@ export function validateSceneIR(
   }
   const nodeIds = new Set((nodes ?? []).map((node) => node.id));
   const compositions = v02 ? readCompositions(input.compositions, diags, limits, nodeIds) : [];
-  const scopes = v02 ? readTimingScopes(input.timingScopes, diags) : [];
+  const scopes = v02 ? readTimingScopes(input.timingScopes, input.requiredCapabilities, diags) : [];
   if (v02) {
     readInstances(input.instances, nodes, compositions, scopes, input.timeline, diags);
     readCapabilities(input.requiredCapabilities, diags);
@@ -357,10 +358,12 @@ function readTimeline(
     diags.add("RESOURCE_LIMIT", "timeline.steps", `Step count ${steps.length} exceeds ${limits.maxSteps}.`);
   } else if (duration !== undefined) {
     const seen = new Map<string, Set<number>>();
+    const parsedSteps: StepDefinition[] = [];
     steps.forEach((step, index) => {
-      const item = readStep(step, `timeline.steps[${index}]`, duration, nodeIds, diags);
+      const item = readStep(step, `timeline.steps[${index}]`, duration, nodeIds, diags, v02, scopes);
       if (!item) return;
-      const key = `${item.target.nodeId}.${item.target.channel}`;
+      parsedSteps.push(item);
+      const key = `${item.target.nodeId}.${item.target.channel}${item.timingScopeId ? `@${item.timingScopeId}` : ""}`;
       const times = seen.get(key) ?? new Set<number>();
       if (times.has(item.timeMs)) {
         diags.add(
@@ -373,6 +376,53 @@ function readTimeline(
       times.add(item.timeMs);
       seen.set(key, times);
     });
+    if (scopes.some((scope) => scope.periodMs !== undefined)) {
+      checkCyclicOwnership(Array.isArray(tracks) ? tracks : [], parsedSteps, scopes, diags);
+    }
+  }
+}
+
+/**
+ * timing.cyclicScopes: a channel written inside a cyclic chain is owned by
+ * that chain. Root writers, affine-scoped writers and writers in another
+ * cycle on the same scalar are OVERLAPPING_WRITERS.
+ */
+function checkCyclicOwnership(tracks: unknown[], steps: StepDefinition[], scopes: TimingScope[], diags: Diags): void {
+  const writers: ScopedWriter[] = [];
+  tracks.forEach((track, index) => {
+    if (!isRecord(track) || !isRecord(track.target)) return;
+    const target = track.target as unknown as TrackDefinition["target"];
+    let scalars: string[];
+    try {
+      scalars = scalarWriters(target);
+    } catch {
+      return;
+    }
+    if (scalars.length === 0 && target.kind === "node" && target.channel === "commands") {
+      scalars = [`node:${target.nodeId}:commands`];
+    }
+    const id = typeof track.id === "string" ? track.id : `timeline.tracks[${index}]`;
+    const scopeId = typeof track.timingScopeId === "string" ? track.timingScopeId : undefined;
+    for (const scalar of scalars) writers.push({ id, scalar, ...(scopeId ? { scopeId } : {}) });
+  });
+  for (const step of steps) {
+    writers.push({
+      id: step.id,
+      scalar: `node:${step.target.nodeId}:${step.target.channel}`,
+      ...(step.timingScopeId ? { scopeId: step.timingScopeId } : {}),
+    });
+  }
+  const reported = new Set<string>();
+  for (const conflict of cyclicOwnershipConflicts(scopes, writers)) {
+    const key = `${conflict.scalar}|${conflict.other}`;
+    if (reported.has(key)) continue;
+    reported.add(key);
+    diags.add(
+      "OVERLAPPING_WRITERS",
+      "timeline",
+      `${conflict.other} writes ${conflict.scalar}, which cyclic writer ${conflict.owner} owns.`,
+      { target: conflict.scalar },
+    );
   }
 }
 
@@ -427,6 +477,11 @@ function readTrack(
       }
       if (start + length > durationMs + 1e-6) {
         diags.add("INVALID_TIMING", path, "A track cannot extend past the scene duration.");
+      }
+    } else if (scopes.some((scope) => scope.id === scopeId) && chainIsCyclic(scopes, scopeId)) {
+      const span = cycleLocalSpan(scopes, scopeId, start, start + length);
+      if (!span || span.start < -1e-6 || span.end > span.periodMs + 1e-6) {
+        diags.add("INVALID_TIMING", path, `A track in cyclic scope ${span?.cycleId ?? scopeId} must lie inside one period.`);
       }
     } else if (scopes.some((scope) => scope.id === scopeId)) {
       const span = rootSpan(scopes, scopeId, start, length);
@@ -601,15 +656,35 @@ function readStep(
   durationMs: number,
   nodeIds: Set<string>,
   diags: Diags,
+  v02 = false,
+  scopes: TimingScope[] = [],
 ): StepDefinition | undefined {
   if (!isRecord(value)) {
     diags.add("INVALID_TYPE", path, "A step must be an object.");
     return undefined;
   }
-  rejectUnknown(value, ["id", "target", "timeMs", "value"], path, diags);
+  rejectUnknown(value, v02 ? ["id", "target", "timeMs", "value", "timingScopeId"] : ["id", "target", "timeMs", "value"], path, diags);
   readIdent(value.id, `${path}.id`, diags);
   const time = readFinite(value.timeMs, `${path}.timeMs`, diags);
-  if (time !== undefined && (time < 0 || time > durationMs)) {
+  if (value.timingScopeId !== undefined) {
+    const scopeId = value.timingScopeId;
+    if (typeof scopeId !== "string") {
+      diags.add("INVALID_TYPE", `${path}.timingScopeId`, "timingScopeId must be a string.");
+      return undefined;
+    }
+    if (!scopes.some((scope) => scope.id === scopeId)) {
+      diags.add("UNKNOWN_TARGET", `${path}.timingScopeId`, `Timing scope ${scopeId} does not exist.`);
+      return undefined;
+    }
+    if (!chainIsCyclic(scopes, scopeId)) {
+      diags.add("INVALID_TIMING", `${path}.timingScopeId`, "A scoped step needs a scope chain with a period (timing.cyclicScopes).");
+      return undefined;
+    }
+    const span = time === undefined ? undefined : cycleLocalSpan(scopes, scopeId, time, time);
+    if (time !== undefined && (!span || span.start < -1e-6 || span.start > span.periodMs + 1e-6)) {
+      diags.add("INVALID_TIMING", `${path}.timeMs`, "A cyclic step must lie inside one period.");
+    }
+  } else if (time !== undefined && (time < 0 || time > durationMs)) {
     diags.add("INVALID_TIMING", `${path}.timeMs`, "A step must lie within the scene duration.");
   }
   if (!isRecord(value.target)) {
@@ -689,9 +764,14 @@ function readTarget(
 function checkOverlap(tracks: TrackDefinition[], scopes: TimingScope[], diags: Diags): void {
   const writers = new Map<string, { start: number; end: number; id: string; path: string }[]>();
   tracks.forEach((track, index) => {
-    const span = track.timingScopeId
-      ? rootSpan(scopes, track.timingScopeId, track.startMs, track.durationMs)
-      : { start: track.startMs, end: track.startMs + track.durationMs };
+    const cyclic = track.timingScopeId
+      ? cycleLocalSpan(scopes, track.timingScopeId, track.startMs, track.startMs + track.durationMs)
+      : undefined;
+    const span = cyclic
+      ? { start: cyclic.start, end: cyclic.end }
+      : track.timingScopeId
+        ? rootSpan(scopes, track.timingScopeId, track.startMs, track.durationMs)
+        : { start: track.startMs, end: track.startMs + track.durationMs };
     if (!span) return;
     const scalars = scalarWriters(track.target);
     const keys =
@@ -701,14 +781,16 @@ function checkOverlap(tracks: TrackDefinition[], scopes: TimingScope[], diags: D
           ? [`node:${track.target.nodeId}:commands`]
           : [];
     for (const scalar of keys) {
-      const list = writers.get(scalar) ?? [];
+      // Cyclic writers compare inside their cycle's local frame (timing.cyclicScopes).
+      const key = cyclic ? `${scalar}@${cyclic.cycleId}` : scalar;
+      const list = writers.get(key) ?? [];
       list.push({
         start: span.start,
         end: span.end,
         id: track.id,
         path: `timeline.tracks[${index}]`,
       });
-      writers.set(scalar, list);
+      writers.set(key, list);
     }
   });
   for (const [scalar, list] of writers) {
@@ -2069,7 +2151,8 @@ function readCompositions(
   return compositions;
 }
 
-function readTimingScopes(value: unknown, diags: Diags): TimingScope[] {
+function readTimingScopes(value: unknown, required: unknown, diags: Diags): TimingScope[] {
+  const cyclicEnabled = Array.isArray(required) && required.includes("timing.cyclicScopes");
   if (value === undefined) return [];
   if (!Array.isArray(value)) {
     diags.add("INVALID_TYPE", "timingScopes", "timingScopes must be an array.");
@@ -2083,7 +2166,39 @@ function readTimingScopes(value: unknown, diags: Diags): TimingScope[] {
       diags.add("INVALID_TYPE", path, "A timing scope must be an object.");
       return;
     }
-    rejectUnknown(entry, ["id", "parentId", "offsetMs", "stretch"], path, diags);
+    rejectUnknown(entry, ["id", "parentId", "offsetMs", "stretch", "periodMs", "repeat"], path, diags);
+    const cyclicKeys = entry.periodMs !== undefined || entry.repeat !== undefined;
+    if (cyclicKeys && !cyclicEnabled) {
+      diags.add(
+        "MISSING_REQUIRED",
+        "requiredCapabilities",
+        `${path}: periodMs and repeat require timing.cyclicScopes in requiredCapabilities.`,
+      );
+    }
+    let periodMs: number | undefined;
+    let repeat: number | undefined;
+    if (cyclicKeys) {
+      if (entry.periodMs !== undefined && typeof entry.periodMs !== "number") {
+        diags.add("INVALID_TYPE", `${path}.periodMs`, "periodMs must be a number.");
+      } else if (entry.repeat !== undefined && typeof entry.repeat !== "number") {
+        diags.add("INVALID_TYPE", `${path}.repeat`, "repeat must be a number.");
+      } else {
+        const candidate = {
+          id: typeof entry.id === "string" ? entry.id : "",
+          parentId: null,
+          offsetMs: 0,
+          stretch: 1,
+          ...(entry.periodMs !== undefined ? { periodMs: entry.periodMs as number } : {}),
+          ...(entry.repeat !== undefined ? { repeat: entry.repeat as number } : {}),
+        };
+        const problems = validateCyclicScope(candidate, path);
+        for (const problem of problems) diags.add(problem.code, problem.path ?? path, problem.message);
+        if (problems.length === 0) {
+          periodMs = candidate.periodMs;
+          repeat = candidate.repeat;
+        }
+      }
+    }
     const id = readIdent(entry.id, `${path}.id`, diags);
     if (id && ids.has(id)) diags.add("DUPLICATE_ID", `${path}.id`, `Duplicate timing scope ${id}.`);
     if (id) ids.add(id);
@@ -2099,6 +2214,8 @@ function readTimingScopes(value: unknown, diags: Diags): TimingScope[] {
       parentId: typeof entry.parentId === "string" ? entry.parentId : null,
       offsetMs: offset,
       stretch,
+      ...(periodMs !== undefined ? { periodMs } : {}),
+      ...(repeat !== undefined ? { repeat } : {}),
     });
   });
   const byId = new Map(scopes.map((scope) => [scope.id, scope]));

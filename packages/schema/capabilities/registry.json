@@ -257,6 +257,40 @@
       }
     },
     {
+      "id": "timing.cyclicScopes",
+      "summary": "A timing scope may wrap its local time with a period, optionally a finite repeat count; steps may follow a cyclic scope.",
+      "introducedIn": { "motionscript": "0.24.0", "sceneIr": "0.23.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing timing.cyclicScopes; the compiler adds it when a timing declares a period. periodMs / repeat / step timingScopeId without the capability are rejected. Scopes without a period map exactly as timing.localScopes.",
+        "MotionScript `timing <id> { period <duration>; repeat <n>; }`. period is a positive length (no beat); repeat is an integer in 1..10000 and requires a period. period and repeat match by spelling inside timing and are not reserved words.",
+        "Unbounded cycle: local = wrap((parent - offset) / stretch, period), non-negative on both sides of the offset, so the offset is a phase. Cycles are half-open: local is never the period itself. Finite repeat: negative (not entered) before affine time 0, wraps for N periods, then pinned at the period. Anything below an unentered finite repeat is not entered either. Nesting under or over affine scopes applies root to leaf (cyclicLocalTimeMs). Expressions see local_t and progress from the cyclic local time; t stays absolute.",
+        "A track or step in a cyclic chain lies inside one period of its innermost cycle, measured through affine scopes below it. Steps may name a scope only when its chain has a period. At local time L the step value is the last step at or before L; before a cycle's first step the previous cycle's final step carries over, except before the first cycle of a finite repeat.",
+        "Exclusive ownership: a channel written inside a cyclic chain is owned by that chain. Root, affine-scoped, other-cycle tracks and root steps on the same scalar are OVERLAPPING_WRITERS. Writers in the same cycle are compared in that cycle's local frame.",
+        "Streaming: a writer may join a cyclic chain only while the sealed frontier has not passed the chain's entry (cyclicWriterAdmissible). Unbounded cycles, and cycles under negative stretch, have entry -Infinity: all their writers must arrive before the first seal. The compiler reports INVALID_TIMING, the stream linter SEALED_HISTORY_WRITE, and delta admission rejects the delta.",
+        "Out of scope: composition instances on a cyclic scope (instance timing stays inert), loops, functions, timers, a scene-level loop flag (host playback), periods that change over time, shortest-arc rotation and velocity-facing. Lottie and SVG are not imported."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/cyclic-scopes.test.ts#lowers period and repeat onto Scene IR timing scopes and requires the capability",
+        "packages/compiler/src/cyclic-scopes.test.ts#does not reserve period or repeat, and adds nothing to programs without a period",
+        "packages/compiler/src/cyclic-scopes.test.ts#requires every writer of an unbounded cycle before the first seal, and the stream linter reports it",
+        "packages/compiler/src/cyclic-scopes.test.ts#admits a finite repetition's writers until the seal reaches the repetition's entry",
+        "packages/schema/src/cyclic-scopes.test.ts#gives the cyclic chain exclusive ownership of each channel it writes",
+        "packages/schema/src/cyclic-scopes.test.ts#requires a cyclic track to lie inside one period, through affine child scopes",
+        "packages/runtime/src/cyclic-scopes.test.ts#plays City's van route as nine timed keys in a 30s period, matching the t % 30 expression",
+        "packages/runtime/src/cyclic-scopes.test.ts#carries Circle's fall across the 30s seam as one eased segment in a phased cycle",
+        "packages/runtime/src/cyclic-scopes.test.ts#keeps a finite repeat unentered before its first cycle and pinned after its last",
+        "packages/runtime/src/cyclic-scopes.test.ts#carries the final step of an unbounded cycle into the next cycle before its first step",
+        "packages/runtime/src/cyclic-scopes.test.ts#rejects a writer joining an unbounded cycle after the first seal, even at a later local time",
+        "packages/motionscript-emitter/src/cyclic-scopes.test.ts#round-trips the cyclic test frame with identical timing scopes, steps and samples"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Native cyclic timing; Lottie loops and time remaps are not imported as cycles." },
+        "svg": { "status": "not-applicable", "scope": "Native cyclic timing; SMIL repeatCount and CSS iteration counts are not imported as cycles." }
+      }
+    },
+    {
       "id": "easing.cubicBezier",
       "summary": "Cubic easing solves x for progress, then returns y. Y may leave 0..1.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },

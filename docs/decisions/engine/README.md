@@ -65,4 +65,5 @@
   keys and named beats, the pinned gap/hold rule, unwrapped-degree rotation,
   exclusive cyclic channel ownership and a cycle seal rule; schema prototype,
   language wiring in E043/E044. E044 landed `timing.timedKeys` as MotionScript
-  0.23.0 (MotionScript only; Scene IR unchanged).
+  0.23.0 (MotionScript only; Scene IR unchanged). E043 landed
+  `timing.cyclicScopes` as MotionScript 0.24.0 / Scene IR 0.23.0.

@@ -4,6 +4,8 @@ import {
   diagnostic,
   validateDelta,
   validateSceneIR,
+  chainIsCyclic,
+  cyclicWriterAdmissible,
   rootTimeMs,
   type ApplyResult,
   type Diagnostic,
@@ -12,6 +14,7 @@ import {
   type ResolvedFrame,
   type SceneIR,
   type SceneIRDelta,
+  type StepDefinition,
 } from "@gvr/schema";
 import { EntityRevisionStore, type EntityStoreSnapshot } from "./entities";
 import { buildResolvedFrame } from "./frame";
@@ -301,13 +304,19 @@ function assemble(base: CandidateState, delta: SceneIRDelta, store: EntityRevisi
     if (operation.op === "SEAL_TIMELINE") frontier = operation.horizonMs;
     if (operation.op === "ADD_TRACKS") {
       for (const track of operation.tracks) {
+        if (track.timingScopeId && chainIsCyclic(scene.timingScopes ?? [], track.timingScopeId)) {
+          if (!cyclicWriterAdmissible(scene.timingScopes ?? [], track.timingScopeId, frontier > 0 ? frontier : undefined)) {
+            return fail("INVALID_TIMING", `Track ${track.id} joins cyclic scope ${track.timingScopeId} after the seal at ${frontier}ms reached its entry.`, `operations[${index}].tracks`);
+          }
+          continue;
+        }
         const start = track.timingScopeId ? rootTimeMs(scene.timingScopes ?? [], track.timingScopeId, track.startMs) : track.startMs;
         const end = track.timingScopeId ? rootTimeMs(scene.timingScopes ?? [], track.timingScopeId, track.startMs + track.durationMs) : track.startMs + track.durationMs;
         if (Math.min(start!, end!) + 1e-9 < frontier) {
           return fail("INVALID_TIMING", `Track ${track.id} writes before the seal at ${frontier}ms.`, `operations[${index}].tracks`);
         }
       }
-    } else if (operation.op === "ADD_STEPS" && operation.steps.some((step) => step.timeMs + 1e-9 < frontier)) {
+    } else if (operation.op === "ADD_STEPS" && operation.steps.some((step) => !stepAdmissible(scene!, step, frontier))) {
       return fail("INVALID_TIMING", `A step writes before the seal at ${frontier}ms.`, `operations[${index}].steps`);
     } else if (operation.op === "ADD_AUDIO_CUES" && operation.cues.some((cue) => cue.startMs + 1e-9 < frontier)) {
       return fail("INVALID_TIMING", `An audio cue starts before the seal at ${frontier}ms.`, `operations[${index}].cues`);
@@ -384,4 +393,12 @@ function projectScene(
     }
   }
   return { ...scene, nodes };
+}
+
+/** Root steps keep the per-instant seal rule; cyclic steps use the cyclic entry rule (timing.cyclicScopes). */
+function stepAdmissible(scene: SceneIR, step: StepDefinition, frontier: number): boolean {
+  if (step.timingScopeId) {
+    return cyclicWriterAdmissible(scene.timingScopes ?? [], step.timingScopeId, frontier > 0 ? frontier : undefined);
+  }
+  return step.timeMs + 1e-9 >= frontier;
 }

@@ -163,7 +163,11 @@ easing         = segmentEase ;
 animValue      = signedNumber | vec2 | pathLiteral ;
 pathLiteral    = "path" , "{" , { pathCommand } , "}" ;
 (* value is boolean for visible; string for content (text.dynamicContent, 0.18.0). *)
-step           = "step" , target , "{" , "at" , timeRef , ";" , "value" , ( boolean | string ) , ";" , "}" , ";" ;
+(* MotionScript 0.24 timing.cyclicScopes: an optional trailing timing names a
+   scope whose chain has a period; at is then cycle-local and the step repeats
+   every cycle. *)
+step           = "step" , target , "{" , "at" , timeRef , ";" , "value" , ( boolean | string ) , ";" ,
+                 [ "timing" , identifier , ";" ] , "}" , ";" ;
 seal           = "seal" , timeRef , ";" ;
 complete       = "complete" , ";" ;
 
@@ -179,7 +183,17 @@ complete       = "complete" , ";" ;
 timingDecl     = "timing" , identifier , "{" , { timingProperty } , "}" , ";" ;
 timingProperty = "parent" , identifier , ";"
                | "offset" , timeRef , ";"
-               | "stretch" , signedNumber , ";" ;
+               | "stretch" , signedNumber , ";"
+               | "period" , duration , ";"
+               | "repeat" , signedNumber , ";" ;
+(* MotionScript 0.24 timing.cyclicScopes. period and repeat match by spelling
+   and are not reserved words. period is a positive length (no beat); repeat
+   is an integer in 1..10000 and requires a period. Local time wraps into
+   [0, period): without repeat the cycle is unbounded and the offset is a
+   phase; with repeat n the scope is not entered before its first cycle and is
+   pinned at the period after its last. A cyclic chain owns the channels it
+   writes, and all of a cycle's writers must arrive before the seal reaches its
+   entry (before the first seal for an unbounded cycle). *)
 compositionDecl = "composition" , identifier , "{" , { nodeOrGroup } , "}" , ";" ;
 instanceDecl   = "instance" , identifier , "of" , identifier , "{" , { instanceProperty } , "}" , ";" ;
 instanceProperty = "start" , duration , ";"

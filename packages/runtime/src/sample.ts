@@ -12,7 +12,9 @@ import {
   lerpPathCommands,
   lerpVec2,
   localMatrix,
-  localTimeMs,
+  cyclicLocalTimeMs,
+  innermostCycle,
+  resolveCyclicStep,
   multiplyMat3,
   orderPathAttachments,
   resolveNumericContent,
@@ -149,8 +151,9 @@ export function sampleScene(
   const steps = [...scene.timeline.steps].sort((a, b) => a.timeMs - b.timeMs);
   const visible = new Map<string, boolean>();
   const contents = new Map<string, string>();
+  const holdFrontier = options?.excludeStartsAtMs === sceneTimeMs;
   for (const step of steps) {
-    const holdFrontier = options?.excludeStartsAtMs === sceneTimeMs;
+    if (step.timingScopeId) continue;
     if (step.timeMs < sceneTimeMs || (step.timeMs === sceneTimeMs && !holdFrontier)) {
       if (step.target.channel === "visible" && typeof step.value === "boolean") {
         visible.set(step.target.nodeId, step.value);
@@ -158,6 +161,10 @@ export function sampleScene(
         contents.set(step.target.nodeId, step.value);
       }
     }
+  }
+  for (const step of cyclicStepValues(scene, steps, sceneTimeMs, holdFrontier)) {
+    if (step.channel === "visible" && typeof step.value === "boolean") visible.set(step.nodeId, step.value);
+    else if (step.channel === "content" && typeof step.value === "string") contents.set(step.nodeId, step.value);
   }
   for (const [id, value] of visible) {
     const pose = nodePoses.get(id);
@@ -535,9 +542,51 @@ function writerOrder(writer: Writer): number {
   return writer.track.kind === "keyframe" && writer.track.composition ? writer.track.composition.order : writer.index;
 }
 
+/**
+ * Scope-local time of a track. Affine scopes map exactly as timing.localScopes;
+ * cyclic scopes (timing.cyclicScopes) wrap or pin it. A chain not yet entered
+ * returns -Infinity, so the track is neither active nor holding.
+ */
 function trackLocalTime(scene: SceneIR, track: TrackDefinition, rootMs: number): number | undefined {
   if (!track.timingScopeId) return rootMs;
-  return localTimeMs(scene.timingScopes ?? [], track.timingScopeId, rootMs);
+  return cyclicLocalTimeMs(scene.timingScopes ?? [], track.timingScopeId, rootMs);
+}
+
+/** Value of each node/channel written by steps inside a cyclic scope (timing.cyclicScopes). */
+function cyclicStepValues(
+  scene: SceneIR,
+  steps: SceneIR["timeline"]["steps"],
+  sceneTimeMs: number,
+  holdFrontier: boolean,
+): { nodeId: string; channel: "visible" | "content"; value: boolean | string }[] {
+  const scopes = scene.timingScopes ?? [];
+  const groups = new Map<string, SceneIR["timeline"]["steps"]>();
+  for (const step of steps) {
+    if (!step.timingScopeId) continue;
+    const key = `${step.target.nodeId}\u0000${step.target.channel}\u0000${step.timingScopeId}`;
+    const list = groups.get(key) ?? [];
+    list.push(step);
+    groups.set(key, list);
+  }
+  const values: { nodeId: string; channel: "visible" | "content"; value: boolean | string }[] = [];
+  for (const list of groups.values()) {
+    const first = list[0]!;
+    const scopeId = first.timingScopeId!;
+    const local = cyclicLocalTimeMs(scopes, scopeId, sceneTimeMs);
+    const cycle = innermostCycle(scopes, scopeId, sceneTimeMs);
+    if (local === undefined || !Number.isFinite(local) || !cycle) continue;
+    // At a held seal frontier the left limit excludes a step exactly at that instant.
+    const visible = holdFrontier ? list.filter((step) => step.timeMs !== local) : list;
+    const value = resolveCyclicStep(
+      visible.map((step) => ({ localMs: step.timeMs, value: step.value })),
+      local,
+      cycle.cycle,
+      cycle.finite,
+    );
+    if (value === undefined) continue;
+    values.push({ nodeId: first.target.nodeId, channel: first.target.channel, value });
+  }
+  return values;
 }
 
 function sampleTrack(

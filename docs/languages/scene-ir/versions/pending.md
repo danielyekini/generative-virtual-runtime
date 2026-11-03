@@ -42,6 +42,7 @@ MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
 `text.layoutMetrics` (`requiredCapabilities` token; builtin align/baseline boxes on resolved frames) landed in Scene IR 0.20.0.
 `paint.strokeDash` (`Stroke.dash` / `Stroke.phase` and the `stroke.phase` channel) landed in Scene IR 0.21.0.
 `geometry.pathSpace` (path-attachment sampling through the path node's transform; no new IR field) landed in Scene IR 0.22.0.
+`timing.cyclicScopes` (`TimingScope.periodMs` / `repeat`, step `timingScopeId`, cyclic sampling and ownership) landed in Scene IR 0.23.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

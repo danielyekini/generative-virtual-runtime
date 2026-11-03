@@ -156,6 +156,10 @@ export interface TimingAst {
   parent?: string;
   offsetMs?: number;
   stretch?: number;
+  /** timing.cyclicScopes (MotionScript 0.24.0). */
+  periodMs?: number;
+  /** timing.cyclicScopes; requires periodMs. */
+  repeat?: number;
   beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];
@@ -287,6 +291,8 @@ export interface StepAst {
   target: string;
   timeMs: number;
   value: boolean | string;
+  /** timing.cyclicScopes (MotionScript 0.24.0): a scope whose chain has a period. */
+  timingScopeId?: string;
   beatRefs?: BeatRef[];
   span: SourceSpan;
   errors: Diagnostic[];

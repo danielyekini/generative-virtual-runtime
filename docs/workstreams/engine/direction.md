@@ -130,8 +130,10 @@ new engine tickets waits on Product P030 (#188). Holder:
    ([#197](https://github.com/danielyekini/generative-virtual-runtime/issues/197),
    `timing.timedKeys` + beats). They are independent, so either can go first.
    E044 landed `timing.timedKeys` as MotionScript 0.23.0 (MotionScript only;
-   Scene IR stays 0.22.0). E043 is the remaining Ready item and takes the next
-   free minors (MotionScript 0.24.0 / Scene IR 0.23.0).
+   Scene IR stays 0.22.0). E043 landed `timing.cyclicScopes` as MotionScript
+   0.24.0 / Scene IR 0.23.0 (`period` / `repeat`, scoped steps, exclusive
+   cyclic ownership, cycle seal rule; Studio test frame "Cyclic scopes").
+   Both E014 children are Done.
 2. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173))
    landed MotionScript / Scene IR 0.22.0 `geometry.pathSpace`: `attach` follows
    the path node's transform. Scenes that require only `geometry.pathProgress`

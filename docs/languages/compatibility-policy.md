@@ -121,6 +121,10 @@ Landed in MotionScript / Scene IR **0.22.0**. Wire stays `"0.2"`. No new syntax.
 
 Landed in MotionScript **0.23.0** only; Scene IR stays **0.22.0**. Wire stays `"0.2"` and there is no `requires` token, because the compiler lowers `at` keys and `beat` declarations onto the track `startMs`, `durationMs` and keyframe offsets that Scene IR already stores. Compiled scenes are unchanged for every 0.22 reader, and the emitter writes the percentage form. Older compilers reject the new syntax as syntax errors. `beat` matches by spelling and is not reserved. A registry row for a MotionScript-only capability names only `introducedIn.motionscript` and claims the compiler layer only. See `docs/decisions/engine/time-composition.md`.
 
+### Decision for `timing.cyclicScopes`
+
+Landed in MotionScript **0.24.0** / Scene IR **0.23.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `timing.cyclicScopes`, which the compiler adds when a `timing` declares `period`. `period` and `repeat` match by spelling inside `timing` and are not reserved words; `step` takes an optional `timing <scope>;`. Scene IR `TimingScope` gains `periodMs` / `repeat` and `StepDefinition` gains `timingScopeId`. Scopes without a period sample exactly as `timing.localScopes`, so no older program is reinterpreted. A cyclic chain exclusively owns the channels it writes, and its writers must arrive before the seal passes the chain's entry (−∞ for unbounded cycles). Older readers reject the capability token and the new keys. See `docs/decisions/engine/time-composition.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

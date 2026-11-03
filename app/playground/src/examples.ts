@@ -28,6 +28,7 @@ import pathStressSource from "../../../fixtures/motionscript/frames/path-stress.
 import gallerySource from "../../../fixtures/motionscript/frames/primitive-gallery.ms?raw";
 import textSource from "../../../fixtures/motionscript/frames/text.ms?raw";
 import zOrderSource from "../../../fixtures/motionscript/frames/z-order.ms?raw";
+import cyclicScopesSource from "../../../fixtures/motionscript/frames/cyclic-scopes.ms?raw";
 import nestedSource from "../../../fixtures/motionscript/nested.ms?raw";
 import vectorsSource from "../../../fixtures/motionscript/stories/adding-two-vectors.ms?raw";
 import eclipseSource from "../../../fixtures/motionscript/stories/into-the-moons-shadow.ms?raw";
@@ -191,6 +192,7 @@ export const frameScripts: MotionExample[] = [
   { id: "opacity", label: "Opacity", caption: "The same red at opacity 1, 0.5, and 0.25.", source: opacitySource },
   { id: "text", label: "Text", caption: "Left sits on the alphabetic baseline, Middle is centered, Right ends on the bottom of the em box.", source: textSource },
   { id: "path-stress", label: "Path stress", caption: "Even-odd leaves a hole. Nonzero fills it. Below are a cubic and a quadratic.", source: pathStressSource },
+  { id: "cyclic-scopes", label: "Cyclic scopes", caption: "Two dots share a 2s loop; the blue one is phased by 1s. The lamp blinks four times from 1s, then rests (timing.cyclicScopes).", source: cyclicScopesSource },
 ];
 
 export const testScripts: { group: string; items: MotionExample[] }[] = [

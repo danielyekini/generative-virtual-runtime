@@ -6,15 +6,15 @@ function issue(code: DiagnosticCode, path: string, message: string): Diagnostic 
 }
 
 /**
- * E014 prototype (decision docs/decisions/engine/time-composition.md).
+ * Cyclic timing scopes, named beats and keyframes written in seconds
+ * (decision docs/decisions/engine/time-composition.md, E014).
  *
- * Host/schema helpers for cyclic timing scopes, named beats and keyframes
- * written in seconds. `secondsKeysToTrack` is the compiler's lowering for
- * MotionScript 0.23.0 timed keys (`timing.timedKeys`, E044); the compiler
- * resolves `beat` declarations incrementally with the same rules as
- * `resolveBeats`. Cyclic scopes are not on the wire yet: Scene IR
- * `TimingScope` still has only offset/stretch and MotionScript has no
- * `period` or `repeat` (E043).
+ * `timing.cyclicScopes` (Scene IR / MotionScript 0.23.0 / 0.24.0, E043) puts
+ * `periodMs` / `repeat` on `TimingScope` and lets steps name a cyclic scope.
+ * The runtime sampler, validator, delta admission and compiler all use these
+ * helpers. `secondsKeysToTrack` is the compiler's lowering for MotionScript
+ * 0.23.0 timed keys (`timing.timedKeys`, E044); the compiler resolves `beat`
+ * declarations incrementally with the same rules as `resolveBeats`.
  */
 
 /** Upper bound on a finite repeat count. Larger counts are a loop, not a repetition. */
@@ -32,9 +32,11 @@ export const MAX_CYCLIC_REPEAT = 10_000;
  *   N periods it wraps; afterwards local time is pinned at `periodMs`, so
  *   tracks follow the ordinary end/fill rules of the last cycle.
  */
-export interface CyclicTimingScope extends TimingScope {
-  periodMs?: number;
-  repeat?: number;
+export type CyclicTimingScope = TimingScope;
+
+/** True when the scope chain from root to `scopeId` contains a period. */
+export function chainIsCyclic(scopes: readonly CyclicTimingScope[], scopeId: string): boolean {
+  return cyclicScopeChain(scopes, scopeId)?.some((scope) => scope.periodMs !== undefined) ?? false;
 }
 
 /** Non-negative modulo in [0, period). Guards the floating-point edge where the result rounds up to period. */
@@ -93,7 +95,13 @@ export function cycleIndex(scope: CyclicTimingScope, parentMs: number): number |
   return Math.min(index, scope.repeat);
 }
 
-/** Root → leaf, as `localTimeMs`, but honouring cyclic scopes. Cycles or missing ids return undefined. */
+/**
+ * Root → leaf, as `localTimeMs`, but honouring cyclic scopes. Cycles or missing
+ * ids return undefined. A finite repetition that has not been entered keeps
+ * its own negative local time when it is the leaf. Below it, the whole chain
+ * is not entered either: the result is -Infinity, so no descendant cycle wraps
+ * negative time back into an active cycle.
+ */
 export function cyclicLocalTimeMs(
   scopes: readonly CyclicTimingScope[],
   scopeId: string,
@@ -102,12 +110,70 @@ export function cyclicLocalTimeMs(
   const chain = cyclicScopeChain(scopes, scopeId);
   if (!chain) return undefined;
   let time = rootMs;
-  for (const scope of chain) {
+  for (const [index, scope] of chain.entries()) {
     const next = applyCyclicScope(scope, time);
     if (next === undefined) return undefined;
+    if (scope.periodMs !== undefined && scope.repeat !== undefined && next < 0 && index < chain.length - 1) {
+      return Number.NEGATIVE_INFINITY;
+    }
     time = next;
   }
   return time;
+}
+
+/**
+ * The innermost cyclic scope of a chain at one root instant: its cycle number
+ * (see `cycleIndex`) and whether it is a finite repetition. Undefined for an
+ * affine-only chain, a missing scope, or a chain not entered above that cycle.
+ */
+export function innermostCycle(
+  scopes: readonly CyclicTimingScope[],
+  scopeId: string,
+  rootMs: number,
+): { scopeId: string; cycle: number; finite: boolean } | undefined {
+  const chain = cyclicScopeChain(scopes, scopeId);
+  if (!chain) return undefined;
+  let innermost = -1;
+  chain.forEach((scope, index) => {
+    if (scope.periodMs !== undefined) innermost = index;
+  });
+  if (innermost < 0) return undefined;
+  if (cyclicLocalTimeMs(scopes, scopeId, rootMs) === Number.NEGATIVE_INFINITY) return undefined;
+  const cyclic = chain[innermost]!;
+  const parentId = cyclic.parentId;
+  const parentMs = parentId === null ? rootMs : cyclicLocalTimeMs(scopes, parentId, rootMs);
+  if (parentMs === undefined || !Number.isFinite(parentMs)) return undefined;
+  const cycle = cycleIndex(cyclic, parentMs);
+  if (cycle === undefined) return undefined;
+  return { scopeId: cyclic.id, cycle, finite: cyclic.repeat !== undefined };
+}
+
+/**
+ * Map a scope-local interval of `scopeId` into the local time of its innermost
+ * cyclic scope (applying the affine scopes below that cycle, leaf to root).
+ * The validator requires the result to lie inside [0, period]. Undefined for
+ * an affine-only chain or a degenerate stretch.
+ */
+export function cycleLocalSpan(
+  scopes: readonly CyclicTimingScope[],
+  scopeId: string,
+  startMs: number,
+  endMs: number,
+): { cycleId: string; periodMs: number; start: number; end: number } | undefined {
+  const chain = cyclicScopeChain(scopes, scopeId);
+  if (!chain) return undefined;
+  let a = startMs;
+  let b = endMs;
+  for (let index = chain.length - 1; index >= 0; index -= 1) {
+    const scope = chain[index]!;
+    if (scope.periodMs !== undefined) {
+      return { cycleId: scope.id, periodMs: scope.periodMs, start: Math.min(a, b), end: Math.max(a, b) };
+    }
+    if (!(scope.stretch !== 0) || !Number.isFinite(scope.stretch)) return undefined;
+    a = a * scope.stretch + scope.offsetMs;
+    b = b * scope.stretch + scope.offsetMs;
+  }
+  return undefined;
 }
 
 export function cyclicScopeChain(
