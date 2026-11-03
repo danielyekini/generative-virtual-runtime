@@ -35,8 +35,12 @@ work already resolved in PR #11. Design interaction/audio/spatial ownership earl
 is P0 engine work for M4; do not hard-wire vendor APIs into Scene IR.
 
 Product: bounded Studio workflow alternatives -> implement library/editor/
-execution/fullscreen slice -> truthful streaming inspector and agent adapter ->
-runtime generation -> speech and audiovisual/customer teaching workflows.
+execution/fullscreen slice -> truthful streaming inspector -> **Studio testing
+surfaces for interactions and native generation (human quality judgment;
+director distillation)** -> speech/audiovisual host paths -> customer teaching
+workflows. Every product run prioritises actionable Engine→Product requests that
+assist verification. Animation quality dominates generation acceptance; latency
+and failure rate are secondary optimisations.
 
 These are coordinated lanes, not a single waterfall. Product can start on Studio
 while engine repairs delta validation. Design contracts early where lanes meet;

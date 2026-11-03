@@ -3,7 +3,26 @@
 Read charter, this direction, selected live issue/latest relevant handover and
 applicable technical contracts. Do not read every engine run or engine inbox.
 
-## Studio UX authority (user steering, 2 November 2026)
+## Standing product rules (user steering, 3 November 2026)
+
+1. **Customer perspective.** Product builds for a customer. Use the available
+   user for human judgment on animation quality and Studio workflows. Do not
+   declare human-facing winners from pass-rate/latency alone.
+2. **Testing surface before moving on.** Major functionality (interactions,
+   model/native generation, audiovisual host paths, and similar milestone
+   capabilities) must have a Studio testing surface/workflow and be exerciseable
+   by humans before the lane advances to dependent work. Generalise this to
+   future capabilities.
+3. **Engine-assisting requests first.** Every product run checks open
+   `request-to:product` items that unblock or assist Engine (for example
+   verification surfaces). Address or advance those before new product-only
+   queue work when they are actionable.
+4. **Animation quality gate for generation.** Director distillation remains
+   central; story-complexity programs are the quality baseline — see
+   [director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md).
+   Secondary metrics: failures, latency, streaming tape downtime.
+
+## Studio UX authority (user steering, 2–3 November 2026)
 
 [studio-ux.md](studio-ux.md) is the user-confirmed Studio specification:
 a **full redesign** with separate Library and Player pages, not features added
@@ -16,51 +35,56 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (2 November 2026, after P007 Done)
+## Queue (3 November 2026, after quality/surfaces steering)
 
 Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
-P017, P018 Done). P006 native authoring reference is **Done** (PR #130).
-P007 real-model generation experiment is **Done** (PR #135; local Ollama
-`qwen2.5-coder:14b`). Paused prototype history: PR #65 commit 2d08de0.
+P017, P018 Done). P006 / P007 / P008 harness work is Done; **P008’s “prefer
+direct” product default is superseded** by the director-quality decision above.
+Paused prototype history: PR #65 commit 2d08de0.
 
-User steering: [P005](https://github.com/danielyekini/generative-virtual-runtime/issues/46)
-remains optional consolidation, not a generation gate. Decision:
-[2026-11-02-p005-not-gate-for-p007.md](../../decisions/product/2026-11-02-p005-not-gate-for-p007.md).
-
-1. **P008 #49** director-script / next-corpus prep (#88) — **Done** (this run;
-   prefer direct generation; director for corpus handoff —
-   [decision](../../decisions/product/2026-11-02-p008-direct-vs-director.md)).
-2. **P009 #50** push-to-talk / narration / SFX host — Candidate; engine deps
-   P007/E008/E031 Done on main. **Studio speech/media UX still undefined** in
-   `studio-ux.md` — ask user before Ready.
-3. **P003 #44** Performance tab — Candidate until user UX confirmation.
-4. **P005 #46** agent toolbox / shared host API — low-priority Candidate.
-5. P010–P013 remain later Candidate work.
+1. **P010 #51** Interaction testing + **Interactive** Library demos — **Ready**
+   (deps **E007** only; P005 removed). Ship/categorise interactive programs for
+   human testing. Engine assist: [#140](https://github.com/danielyekini/generative-virtual-runtime/issues/140) / E027.
+2. **P019 #139** Studio native-generation testing surface (typed prompt +
+   transcript; director default; human quality judgment; Qwen pin) — Candidate
+   until Generate placement is confirmed in studio-ux; then Ready. Blocks
+   treating push-to-talk as next generation work.
+3. **X002 #56** Engine verification surfaces — advanced via P002 (shipped) +
+   P019/P010; keep those tasks visible.
+4. **P009 #50** push-to-talk / narration / SFX — Candidate after P019 is
+   human-exerciseable; speech is an input method on top of generation.
+5. **P003 #44** Performance tab — Candidate until UX confirmation.
+6. **P005 #46** agent toolbox — low-priority optional consolidation.
+7. P011–P013 and corpus generation remain later; next-corpus prep continues
+   under #88 with director ownership and story-complexity baselines.
 
 ## Next
 
-**Ordinary dispatch:** no Product Ready item until UX-gated work is confirmed.
-Ask the user for P009 speech/media Player surfaces (and/or P003 Performance)
-before promoting. Do not invent Studio chrome. P005 stays optional consolidation.
+**Ordinary dispatch (after this steering lands):**
 
-Keep Studio delivery ahead of prospective corpus generation.
+1. Claim **P010** (interactive demos + Library collection) — actionable now.
+2. User confirms Generate UX placement → promote/claim **P019 #139**.
+3. Solicit customer (user) animation-quality feedback once Generate exists;
+   do not close generation approach choices without that.
+
+Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
+generation, but do not skip interaction/generation Studio exercise.
 
 ## Generative audio provider (intake cleared, 2 November 2026)
 
 Engine owns ElevenLabs design/implementation ([E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)
-and children E032–E034). Product accepted [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120):
-P009 carries the E031 host/provider contract dependency (credentials, synthesis
-readiness into `AudioSession`, required-narration vs optional-effects failure UX,
-offline fixtures). Do not invent MotionScript generative-audio syntax in Studio.
-Existing `href` audio + E026 Web Audio remain the fallback until E031 lands.
+and children E032–E034 — Done on main). Product accepted [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120):
+P009 carries the host/provider contract dependency. Existing `href` audio +
+E026 Web Audio remain the fallback until P009 ships. P019 does not require
+live ElevenLabs.
 
-## Corpus inputs (prospective direction, 2 November 2026)
+## Corpus inputs (prospective direction, 2–3 November 2026)
 
 Product owns realistic single-turn prompts and multi-turn conversations with
 production expectations, derived from the [established functionality index](functionality.md)
 and [future functionality list](future-functionality.md). Maintain both as capabilities
-evolve. Follow the [native story cycle](../../workflows/native-story-cycle.md);
-coordinate director-script ownership/generation procedure with Engine through P008
-before the next corpus. Include persistent canvas edits, continuing loops, extended
-explanations and architectural micro-prompts. Director streaming is an experiment
-hypothesis. This adds future iteration preparation without displacing current Studio work.
+evolve. Follow the [native story cycle](../../workflows/native-story-cycle.md).
+Director scripts distill intent; Engine implements native MotionScript.
+Quality expectations track story-complexity programs, not runtime-scene smoke.
+Director streaming remains an experimental hypothesis. Preparation must not
+displace Studio interaction/generation testing surfaces.

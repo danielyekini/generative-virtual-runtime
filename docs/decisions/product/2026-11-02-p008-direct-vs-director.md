@@ -1,20 +1,20 @@
 # P008: Prefer direct MotionScript generation; director as corpus handoff
 
-Status/date/owner/work item: adopted Product experiment, 2 November 2026,
+Status/date/owner/work item: **superseded** 3 November 2026 by user steering —
+see [2026-11-03-director-quality-gate.md](2026-11-03-director-quality-gate.md).
+Original experiment: 2 November 2026, Product,
 [P008 #49](https://github.com/danielyekini/generative-virtual-runtime/issues/49).
 
-## Decision
+## Historical decision (no longer product default)
 
 For the pinned local Ollama model **`qwen2.5-coder:14b`** and the frozen
-held-out tasks, keep **direct** user-prompt → MotionScript as the default
-generation path. Treat a **director-script** pass as an optional Product
-planning/handoff artifact for next-corpus work, not as the default online
-generation pipeline.
+held-out tasks, the P008 run preferred **direct** user-prompt → MotionScript
+and treated director-script as optional corpus handoff.
 
-Stop gates used here: equal or better offline/progressive pass rate; no large
-latency regression without a quality gain. Director matched direct at 3/3 pass
-but added roughly 1.1–2.0× wall time (extra model call) with no repair or
-validity improvement on this set.
+Stop gates used in that run: equal or better offline/progressive pass rate; no
+large latency regression without a quality gain. Director matched direct at 3/3
+pass but added roughly 1.1–2.0× wall time with no repair/validity improvement
+on that small held-out set. Those metrics remain secondary evidence only.
 
 ## Ownership (Product ↔ Engine)
 
@@ -24,8 +24,8 @@ Recorded for [native story cycle](../../workflows/native-story-cycle.md) / #88:
 | --- | --- |
 | Realistic prompts/threads, expected responses/canvas, director-script validation of user intent | **Product** |
 | Native MotionScript implementation of accepted scripts, friction/reimplementation evidence | **Engine** |
-| Default single-turn generation in Studio/tools | **Direct** path (`tools/native-generation` `--approach direct`) |
-| Optional `--approach director` | Available for experiments; not default |
+| Default generation path (superseded) | Was direct; **now director-first** per 2026-11-03 decision |
+| Direct approach | Retained for A/B and latency experiments, not the quality gate |
 
 Generation/review procedure before a corpus: Product authors or validates
 director scripts against functionality lists; Engine implements from those
@@ -40,6 +40,6 @@ Run `be1a2edc-d1cb-4563-8f92-010bd05a0e03` summary under
 
 ## Revisit
 
-Re-open if multi-turn / longer stories show direct failing more often than
-director, or if a cheaper planner model makes the extra pass free relative to
-repair cost.
+**Done (user steering 3 November 2026):** animation quality and director
+distillation supersede this default. Keep the measured table as secondary-metric
+evidence under `docs/runs/product/be1a2edc-d1cb-4563-8f92-010bd05a0e03/`.
