@@ -25,6 +25,32 @@ experiments. Judge progress against charter/milestone gates, not token counts
 or number of commits. Evaluate Candidate ideas in bounded batches (default top
 ten relevant, not the full historical archive every review).
 
+### Outcome mining (required on every review)
+
+Ordinary runs are ticket-focused and often omit follow-ups. The orchestrator
+**must** actively mine reviewed outcomes for gaps that would otherwise slip —
+do not wait for a worker Findings ticket. For each inspected run, skim the
+clock summary, linked `docs/runs/<lane>/<run-id>/` notes, and issue handover
+for:
+
+- failure modes, flaky gates, honest Blocked/partial causes
+- repair patterns, missing prompts/fixtures, weak verification
+- research or design questions opened by the result
+- bounded future experiments or capability expansions suggested by evidence
+- cross-lane contract impacts (file an inbox request; do not silently rewrite
+  the other lane)
+
+When something warrants more work and no suitable open item exists: **create**
+a same-lane Candidate (`kind:bug`, `kind:idea`, `kind:experiment`, or
+`kind:decision` as fits), link the run evidence, state the question/outcome
+sought, and leave it Candidate unless Ready gates are already satisfied. Prefer
+updating an existing Candidate with new evidence over duplicates. Defer or
+close with reason when the signal is noise. Record created/updated follow-up
+issue numbers in the review comment (in addition to inspected run IDs).
+
+This duty exists so research direction and expansion stay grounded in measured
+runs, not only in whatever workers remembered to file.
+
 Decide continue, revise, split, stop, adopt or defer, with brief evidence. Revise
 own direction and live queue; keep at least two executable Ready items where
 possible. Sequence bounded design/research before implementation where needed.
