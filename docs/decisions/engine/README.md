@@ -78,3 +78,6 @@
 - [Bounded effects (E021)](bounded-effects.md): static `effects.blur` confirmed;
   `effects.shadow` renderer/runtime pinned (MotionScript sugar deferred);
   animated blur, reflections and PBR stay out — no version bump.
+- [Procedural vs bounded expansion (E022)](procedural-vs-bounded-expansion.md):
+  reject general loops/modules and compile-time repeater commissioning;
+  drawable bindings + cyclic scopes + behaviours are enough; no version bump.

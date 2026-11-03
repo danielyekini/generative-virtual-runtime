@@ -177,7 +177,13 @@ new engine tickets waits on Product P030 (#188). Holder:
    pinned static `effects.shadow` renderer/runtime conformance and confirmed
    `effects.blur` ([decision](../../decisions/engine/bounded-effects.md)). No
    version bump; MotionScript shadow sugar, animated blur and reflections stay
-   deferred. Next Ready: E022 (#41). E046 / E048 / E042 stay Candidate.
+   deferred.
+7. E022 ([#41](https://github.com/danielyekini/generative-virtual-runtime/issues/41))
+   rejected a procedural/module language and declined to commission compile-time
+   repeaters ([decision](../../decisions/engine/procedural-vs-bounded-expansion.md)).
+   Drawable bindings, cyclic scopes and behaviours are the M2 expansion path;
+   `geometry.repeater` stays pending/unsupported. No version bump. Replenish
+   further from M2/M4/M5 Candidates (E046 / E048 / E042 stay Candidate).
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

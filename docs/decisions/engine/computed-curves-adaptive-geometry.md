@@ -83,7 +83,8 @@ out of scope (E015 pending notes).
   alone.
 - Non-dyadic folds densify under binary subdivision; that is a known limitation
   of this sampler, not a reason to add cone IR.
-- Expression languages and compile-time repeaters remain E022.
+- Expression languages and compile-time repeaters were deferred to E022; E022
+  rejected them ([procedural-vs-bounded-expansion.md](procedural-vs-bounded-expansion.md)).
 
 ## Child work
 
