@@ -9,7 +9,7 @@
  */
 import { createServer } from "vite";
 import { spawn } from "node:child_process";
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { Cdp } from "../../../evaluation/harness/cdp";
 import { resolveChromeBinary } from "../../../evaluation/harness/chrome";
@@ -767,7 +767,61 @@ try {
   const libraryExit = await player();
   check("Library load while in Generate exits to the Source panel", !libraryExit.generateMode && libraryExit.sourceOpen && libraryExit.programKey === "sample:ball" && (await visible("#source-chrome")) && !(await visible("#generate-chrome")), libraryExit);
 
-  // 9. Temporary legacy route keeps streaming working
+  // 9. Transcript import and playback (P029)
+  await ev("document.querySelector('#open-library').click()");
+  await sleep(200);
+  const transcriptFile = readFileSync(resolve(root, "app/playground/fixtures/gvr-transcript-sample.json"), "utf8");
+  await ev(`(() => {
+    const input = document.querySelector('#library-file');
+    const file = new File([${JSON.stringify(transcriptFile)}], 'sample.gvr.json', { type: 'application/json' });
+    const transfer = new DataTransfer();
+    transfer.items.add(file);
+    input.files = transfer.files;
+    input.dispatchEvent(new Event('change'));
+    return true;
+  })()`);
+  let transcriptCard = false;
+  for (let i = 0; i < 40 && !transcriptCard; i++) {
+    await sleep(100);
+    transcriptCard = await ev(`!!document.querySelector('#library-grid article[data-key="transcript:sample-baseline"]')`);
+  }
+  const transcriptLibrary = await ev(`(() => {
+    const card = document.querySelector('#library-grid article[data-key="transcript:sample-baseline"]');
+    const chip = [...document.querySelectorAll('#library-collections button')].find((button) => button.textContent.startsWith('Transcripts'));
+    return {
+      card: !!card,
+      caption: card?.querySelector('.card-caption')?.textContent ?? '',
+      kind: card?.querySelector('.program-card-body .meta')?.textContent ?? '',
+      pressed: chip?.getAttribute('aria-pressed') === 'true',
+      stored: (localStorage.getItem('gvr.studio.transcripts.v1') ?? '').includes('sample-baseline'),
+    };
+  })()`);
+  check("Uploading a GVR transcript saves it under Transcripts", transcriptCard && transcriptLibrary.card && transcriptLibrary.pressed && transcriptLibrary.stored && transcriptLibrary.caption === "2 turns · director" && transcriptLibrary.kind.includes("Transcript"), transcriptLibrary);
+  if (transcriptCard) {
+    await ev(`document.querySelector('#library-grid article[data-key="transcript:sample-baseline"] .program-preview').click()`);
+    let playing = null;
+    for (let i = 0; i < 40; i++) {
+      await sleep(100);
+      playing = await player();
+      if (playing?.transcriptPlayback && playing.sceneId === "transcript-a") break;
+    }
+    const highlighted = await ev(`(() => [...document.querySelectorAll('.generate-bubble.is-rendering')].map((node) => node.textContent.trim()))()`);
+    check("Transcript playback enters Generate and highlights the rendering pair", Boolean(playing?.generateMode) && playing.sceneId === "transcript-a" && playing.transcriptPlayback && JSON.stringify(playing.transcriptRendering) === JSON.stringify(["u1", "a1"]) && highlighted.length === 2 && highlighted[0].includes("Move a circle") && !(await visible("#source-chrome")), { playing, highlighted });
+    let returned = playing;
+    for (let i = 0; i < 80; i++) {
+      await sleep(100);
+      returned = await player();
+      if (returned?.sceneId === "transcript-b") break;
+    }
+    const highlightedReturn = await ev(`(() => [...document.querySelectorAll('.generate-bubble.is-rendering')].map((node) => node.textContent.trim()))()`);
+    check("Transcript playback advances to the next recorded turn", returned?.sceneId === "transcript-b" && JSON.stringify(returned.transcriptRendering) === JSON.stringify(["u2", "a2"]) && highlightedReturn.some((text: string) => text.includes("send it back")), { returned, highlightedReturn });
+    await shot("18-transcript-playback");
+  } else {
+    check("Transcript playback enters Generate and highlights the rendering pair", false, transcriptLibrary);
+    check("Transcript playback advances to the next recorded turn", false, transcriptLibrary);
+  }
+
+  // 10. Temporary legacy route keeps streaming working
   await navigate("/legacy.html#stream");
   await ev("(() => { const t = document.querySelector('#stream-toggle'); t.checked = true; t.dispatchEvent(new Event('change')); const p = document.querySelector('#stream-preset'); p.value = 'bunny'; p.dispatchEvent(new Event('change')); document.querySelector('#stream-run').click(); })()");
   await sleep(2500);

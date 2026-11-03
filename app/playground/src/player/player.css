@@ -325,6 +325,7 @@ body.is-resizing, body.is-resizing * { user-select: none; }
 .generate-bubble.is-model.is-pending { color: var(--muted); }
 .generate-bubble.is-error { border-color: #991b1b; color: #fecaca; }
 .generate-bubble.is-selected { outline: 2px solid var(--accent); outline-offset: 1px; }
+.generate-bubble.is-rendering { outline: 2px solid #fbbf24; outline-offset: 2px; }
 .generate-meta { color: var(--muted); font-size: 11px; padding: 0 4px; }
 .generate-detail-resize {
   flex: none;

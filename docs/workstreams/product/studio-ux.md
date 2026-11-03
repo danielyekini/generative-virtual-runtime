@@ -180,10 +180,13 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
     the thirteen `(capability.id)` probes (also Path space, Timed keys, Text layout, Stroke
     dash) are `frame:<id>` entries; saved `story:<id>` favourites, tags,
     recents and links resolve to the new keys.
-  - **Transcripts** — saved multi-turn Generate sessions (and importable GVR
-    transcript documents) for playback; not single-program My programs saves.
+- **Transcripts** — saved multi-turn Generate sessions (and importable GVR
+  transcript documents) for playback; not single-program My programs saves.
+  Contract `0.1` is `app/playground/src/player/gvr-transcript.ts`. A sample
+  document is `app/playground/fixtures/gvr-transcript-sample.json`.
 - **New / Paste / Upload** use a full editor on the Library page. The result
-  goes into My programs and opens in the player.
+  goes into My programs and opens in the player. A file whose JSON is a GVR
+  transcript is saved under Transcripts instead of the program editor.
 - Editing is available in both places: the Library editor for creating and
   authoring, and the player's Source panel for quick test edits.
 
@@ -350,10 +353,12 @@ In Generate mode the side panel is for **generation**, not script testing:
 - Library gains a **Transcripts** collection. Multi-turn Generate sessions must
   be recoverable as transcripts (not only the last MotionScript under My
   programs).
-- Define a **GVR transcript contract** (versioned document) so external sample
-  transcripts (for example flagship-model baselines) can be imported and played
-  in Studio. Product owns the Studio-facing contract; coordinate with Engine if
-  a shared schema package is required.
+- The GVR transcript contract is version `0.1`
+  (`app/playground/src/player/gvr-transcript.ts`, sample
+  `app/playground/fixtures/gvr-transcript-sample.json`). External sample
+  transcripts can be imported and played in Studio. Product owns this
+  Studio-facing contract; coordinate with Engine if a shared schema package
+  is required.
 - **Transcript playback** puts Studio into **Generate** mode and advances the
   recorded turns. Highlight the **currently rendering** user prompt bubble and
   the corresponding model response bubble.

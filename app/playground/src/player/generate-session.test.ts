@@ -13,6 +13,7 @@ import {
   noteGenerationProgress,
   type GenerateMessage,
 } from "./generate-session";
+import { parseGvrTranscript } from "./gvr-transcript";
 import { loadQualityJudgmentPack } from "./generate-quality-pack";
 import { loadStudioReference, STUDIO_GENERATE_MODEL } from "./generate-reference";
 
@@ -246,5 +247,44 @@ describe("Studio Generate (P019 / P022 / P028)", () => {
       expect(systems[0]).toBe("EDITED DIRECTOR");
       expect(systems[1]).toBe("MS SYS");
     });
+  });
+});
+
+describe("Transcript playback (P029)", () => {
+  it("loads a transcript into Generate and steps the highlighted pair", () => {
+    const parsed = parseGvrTranscript(readFileSync(resolve(import.meta.dirname, "../../fixtures/gvr-transcript-sample.json"), "utf8"));
+    expect(parsed.ok).toBe(true);
+    if (!parsed.ok) return;
+    const controller = new GenerateController({ onChange: () => undefined, acceptProgram: () => undefined });
+    const first = controller.loadTranscript(parsed.transcript);
+    expect(first).toMatchObject({ userId: "u1", assistantId: "a1" });
+    expect(controller.playbackActive()).toBe(true);
+    expect(controller.state.renderingIds).toEqual(["u1", "a1"]);
+    expect(controller.state.approach).toBe("director");
+    expect(controller.advancePlayback()).toMatchObject({ userId: "u2", assistantId: "a2" });
+    expect(controller.state.renderingIds).toEqual(["u2", "a2"]);
+    expect(controller.advancePlayback()).toBeNull();
+    expect(controller.state.renderingIds).toEqual([]);
+    expect(controller.transcriptId()).toBe("sample-baseline");
+  });
+
+  it("captures a finished session once and keeps its id", () => {
+    const saved: string[] = [];
+    const controller = new GenerateController({
+      onChange: () => undefined,
+      acceptProgram: () => undefined,
+      onTranscript: (doc) => saved.push(doc.id),
+    });
+    controller.state.messages.push(
+      { id: "user-1", role: "user", text: "Draw a square" },
+      { id: "model-1", role: "model", text: "square", source: 'scene "s" { version "0.1"; };', approach: "director" },
+    );
+    const doc = controller.captureTranscript();
+    expect(doc?.title).toBe("Draw a square");
+    expect(doc?.turns.map((turn) => turn.role)).toEqual(["user", "assistant"]);
+    expect(doc?.turns[1]?.motionScript).toContain('scene "s"');
+    expect(controller.captureTranscript()?.id).toBe(doc?.id);
+    controller.cancel();
+    expect(saved).toEqual([doc?.id]);
   });
 });

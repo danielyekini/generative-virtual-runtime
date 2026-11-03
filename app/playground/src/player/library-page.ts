@@ -2,6 +2,7 @@ import { CanvasRenderer } from "@gvr/canvas-renderer";
 import { AnimationRuntime } from "@gvr/runtime";
 import type { SceneIR } from "@gvr/schema";
 import { decodeMine, encodeMine, filterLibrary, mineEntry, programNameFromFile, STORAGE_KEY, type ProgramEntry, type ProgramFormat } from "../library";
+import { transcriptIdFromKey } from "./gvr-transcript";
 import { FORMAT_LABELS, formatForFile } from "./programs";
 import { runProgram } from "./run";
 import { decodeRecent, read, RECENT_KEY } from "./settings";
@@ -13,7 +14,7 @@ const el = <K extends keyof HTMLElementTagNameMap>(tag: K, text?: string) => {
   if (text !== undefined) node.textContent = text;
   return node;
 };
-const COLLECTIONS = ["Stories", "Test frames", "Runtime scenes", "Interactive", "My programs", "Imports"];
+const COLLECTIONS = ["Stories", "Test frames", "Runtime scenes", "Interactive", "My programs", "Imports", "Transcripts"];
 // Studio poster policy: 35% of duration. This is deliberately outside MotionScript.
 const POSTER = 0.35;
 
@@ -29,7 +30,14 @@ export class LibraryPage {
   private scheduled = false;
   private sorting = false;
 
-  constructor(private catalogue: ProgramEntry[], private actions: { open(entry: ProgramEntry): void; back(): void }) {
+  constructor(
+    private catalogue: ProgramEntry[],
+    private actions: {
+      open(entry: ProgramEntry): void;
+      back(): void;
+      importTranscript?(source: string): { status: "not-transcript" } | { status: "invalid"; message: string } | { status: "imported" };
+    },
+  ) {
     this.observer = new IntersectionObserver((entries) => {
       for (const entry of entries) if (entry.isIntersecting) {
         this.observer.unobserve(entry.target);
@@ -57,8 +65,23 @@ export class LibraryPage {
       const input = $<HTMLInputElement>("library-file");
       const file = input.files?.[0]; input.value = "";
       if (!file) return;
-      void file.text().then((source) => this.editor(source, programNameFromFile(file.name), formatForFile(file.name, source)))
-        .catch(() => this.error("Could not read that file. Your editor text is unchanged."));
+      void file.text().then((source) => {
+        const imported = this.actions.importTranscript?.(source);
+        if (imported?.status === "imported") {
+          this.error("");
+          this.collection = "Transcripts";
+          this.favourites = false;
+          $("library-favourites").setAttribute("aria-pressed", "false");
+          $<HTMLInputElement>("library-search").value = "";
+          this.render();
+          return;
+        }
+        if (imported?.status === "invalid") {
+          this.error(imported.message);
+          return;
+        }
+        this.editor(source, programNameFromFile(file.name), formatForFile(file.name, source));
+      }).catch(() => this.error("Could not read that file. Your editor text is unchanged."));
     };
     $("library-save").onclick = () => this.save();
   }
@@ -216,7 +239,8 @@ export class LibraryPage {
     star.setAttribute("aria-label", `Favourite ${entry.label}`); star.setAttribute("aria-pressed", String(!!this.meta[entry.key]?.favourite));
     star.onclick = () => { if (this.updateMeta(entry.key, { favourite: !this.meta[entry.key]?.favourite })) this.render(); };
     heading.append(title, star);
-    const collection = el("p", `${entry.collection} · ${FORMAT_LABELS[entry.format]}`); collection.className = "meta";
+    const kind = transcriptIdFromKey(entry.key) ? "Transcript" : FORMAT_LABELS[entry.format];
+    const collection = el("p", `${entry.collection} · ${kind}`); collection.className = "meta";
     const caption = el("p", entry.caption); caption.className = "card-caption";
     const tags = el("input"); tags.value = (entry.tags ?? []).join(", "); tags.placeholder = "Add tags, comma separated";
     tags.setAttribute("aria-label", `Tags for ${entry.label}`);
