@@ -92,6 +92,21 @@ export interface Session {
   rejectedNodeIds: Set<string>;
 }
 
+/**
+ * `note()` stores one diagnostic on the AST node and again on the parser list.
+ * Compile emits both. Keep each object once so a parse-time property note is
+ * not reported twice (E052). A repeated note still rejects the unit: the
+ * lowering path sets `loweredParseRejection` when the object was already
+ * recorded and the diagnostic count therefore does not grow.
+ */
+const loweredParseRejection = new WeakSet<Session>();
+
+function appendUniqueDiagnostics(target: Diagnostic[], items: readonly Diagnostic[]): void {
+  for (const item of items) {
+    if (!target.includes(item)) target.push(item);
+  }
+}
+
 /** Compile one complete MotionScript file. A rejected unit leaves the accepted scene unchanged. */
 export function compileMotionScript(source: string, telemetry?: Telemetry): CompileResult {
   const run = () => {
@@ -177,7 +192,7 @@ function declareBeat(session: Session, unit: BeatAst): void {
   };
   if (unit.errors.length > 0) {
     session.telemetry?.count("compile.rejected_units");
-    session.diagnostics.push(...unit.errors);
+    appendUniqueDiagnostics(session.diagnostics, unit.errors);
     return;
   }
   if (session.scene.irVersion !== "0.2") return reject("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare beats.");
@@ -717,7 +732,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
   }
   if (unit.kind === "batch") {
     if (unit.errors.length > 0) {
-      session.diagnostics.push(...unit.errors);
+      appendUniqueDiagnostics(session.diagnostics, unit.errors);
       return false;
     }
     const snapshot = measured(session, 'compile.snapshot_ms', () => snapshotScene(session.scene));
@@ -758,7 +773,7 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
     return true;
   }
   if (unit.errors.length > 0) {
-    session.diagnostics.push(...unit.errors);
+    appendUniqueDiagnostics(session.diagnostics, unit.errors);
     return false;
   }
   if (isEntityStatement(unit)) {
@@ -786,8 +801,10 @@ function applyUnitInner(session: Session, unit: UnitAst, emitDelta: boolean): bo
   const constants = new Map(session.constants);
   const beforeDiag = session.diagnostics.length;
   const before = capture(session);
+  loweredParseRejection.delete(session);
   measured(session, 'compile.lower_ms', () => lower(session, unit));
-  if (session.diagnostics.length > beforeDiag) {
+  if (loweredParseRejection.has(session) || session.diagnostics.length > beforeDiag) {
+    loweredParseRejection.delete(session);
     rememberRejectedNodes(session, snapshot);
     measured(session, 'compile.rollback_ms', () => restore(session, snapshot, sealed, constants, state));
     return false;
@@ -1068,7 +1085,8 @@ function lower(session: Session, unit: UnitAst): void {
 
 function lowerNode(session: Session, ast: NodeAst, parentId: string | null): NodeDefinition[] | undefined {
   if (ast.errors.length > 0) {
-    session.diagnostics.push(...ast.errors);
+    appendUniqueDiagnostics(session.diagnostics, ast.errors);
+    loweredParseRejection.add(session);
     return undefined;
   }
   const id = parentId ? `${parentId}.${ast.name}` : ast.name;
