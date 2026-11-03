@@ -180,10 +180,48 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
   (sound, narration, events) are added as those capabilities land. Counters
   always state their unit (characters, units, ms).
 
+## Standing rule: testing surfaces (user steering, 3 November 2026)
+
+Major Studio/engine capabilities must ship with a **human-testable workflow**
+in Studio before Product moves on (interactions, native model generation,
+audiovisual host paths, and later milestones). Library collections/tags must
+make those programs discoverable (for example an **Interactive** collection).
+Agents stop and ask when the surface is undefined; they do not skip the surface.
+
+## Library: Interactive collection (confirmed intent, 3 November 2026)
+
+Add an **Interactive** library collection (filter chip alongside Stories /
+Runtime scenes / …) for installed programs that declare `interact` /
+`input.bindings`. Humans must be able to open them from the Library, run them
+in the Player, and exercise pointer/keyboard focus without hunting. Early
+runtime scenes (Ball, Bunny, Diagram, Caption, …) stay under Runtime scenes —
+they are not the interaction or generation quality baseline.
+
+## Generate / model testing (draft — confirm placement before building)
+
+User intent (3 November 2026): expose Qwen/`tools/native-generation` in Studio
+**before** push-to-talk. Typed prompts are enough; a transcript panel is useful
+for typed turns as well as later speech. **Director is the default approach**;
+direct remains available for comparison. Human judges **animation quality** on
+the canvas (story-complexity expectations), not only compile success.
+
+Recommended layout (awaiting confirmation):
+
+- Bottom-panel tab **Generate** (with Diagnostics / Stream / Scene / …).
+- Prompt + rolling **transcript** (user turns and brief status lines).
+- Approach control: **Director (default)** | Direct.
+- **Generate** runs the pinned local model into the loaded/new program path
+  with cancel; Stream mode may reuse arrival tooling for progressive apply.
+- Show secondary metrics (repairs, latency, tape red-gap downtime) without
+  treating them as the acceptance gate.
+
+Alternatives if rejected: (B) header split-button next to Stream; (C) Source
+panel compose mode. Do not build until the user picks or confirms (A).
+
 ## Later sections (to be specified with the user before building)
 
 Performance inspector placement and metrics (P003), agent-facing commands
-(P005), speech/media surfaces.
+(P005), speech/media / push-to-talk surfaces (after Generate testing exists).
 
 ## Open questions
 
