@@ -25,8 +25,10 @@ Set In progress, agent/run ID, branch and claim expiry (default two hours,
 renew at progress checkpoints). Re-read claim before mutation; GitHub issue
 comments alone are not an atomic distributed lock. Prefer the actual runner's
 single-writer/claim mechanism. If competing claims are detected, one yields
-and selects independent work. Use isolated branches/worktrees. Never infer
-an expired claim means its files or branch can be deleted.
+and selects independent work. **Before any file edits**, create or enter an
+isolated git worktree for the claimed issue branch (see [git.md](git.md)); do
+not share a working tree with another active agent. Never infer an expired
+claim means its files or branch can be deleted.
 
 ## Design and verification
 

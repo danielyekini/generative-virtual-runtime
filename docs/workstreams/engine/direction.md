@@ -68,6 +68,13 @@ of MotionScript and generation-model vocabulary
 ([authoring/provider steering](../../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
 Studio credentials remain Product (#120 / P009).
 
+## Isolated git worktrees (user steering, 3 November 2026)
+
+Every mutating engine run uses its **own git worktree** bound to the issue
+branch before any edits. Do not share a working tree with a concurrent product
+or ops agent. Authority: [git.md](../../operations/git.md),
+[decision](../../decisions/2026-11-03-isolated-worktrees.md).
+
 ## Language change gate (user steering, 3 November 2026)
 
 For every MotionScript / Scene IR proposal, assess (and briefly record in the

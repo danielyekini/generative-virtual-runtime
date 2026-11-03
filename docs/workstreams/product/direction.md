@@ -24,6 +24,10 @@ applicable technical contracts. Do not read every engine run or engine inbox.
    [director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md).
    Secondary metrics: failures, latency, streaming tape downtime. Director is
    not an automatic permanent preference over a proven Direct path.
+5. **Isolated git worktrees.** Every mutating product run uses its own worktree
+   / issue branch before edits — never a shared checkout with another agent
+   ([decision](../../decisions/2026-11-03-isolated-worktrees.md),
+   [git.md](../../operations/git.md)).
 
 **Orchestrator may revise any of the above** (and related operating principles)
 when evidence warrants — including designing a user-focused test instead of
