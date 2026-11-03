@@ -4,6 +4,12 @@ Status: adopted user steering, 2 November 2026. Owner: Engine.
 Work item: [E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119).
 Product notify: [X #120](https://github.com/danielyekini/generative-virtual-runtime/issues/120).
 
+## Amendment (3 November 2026)
+
+Public package / generation-facing names stay vendor-neutral (E035 / `#143`).
+ElevenLabs remains the authorised backend; see
+[authoring-and-provider-abstraction.md](2026-11-03-authoring-and-provider-abstraction.md).
+
 ## Requirement
 
 The user commits GVR to **ElevenLabs** for AI-generated narration and sound

@@ -35,6 +35,23 @@ General creative/technical outputs remain useful engine capability tests.
 - Agents choose bounded designs/experiments and meaningful verification gates.
 - Reuse prior evidence; do not rerun old certification by default.
 - Keep planning/admin concise, searchable and authoritative; do not duplicate active tickets in repo docs.
+- **Studio testing surfaces:** major functionality (interactions, model/native
+  generation, audiovisual host paths, and similar) must be human-exerciseable in
+  Studio before the owning lane advances dependent work
+  ([studio-ux standing rule](../workstreams/product/studio-ux.md)).
+- **MotionScript authoring friendliness (user steering, 3 November 2026):**
+  optimise language changes for implementation simplicity and low error rate
+  while preserving generation creativity/variability and streaming compatibility.
+  Prefer high-level logical authoring; if a human would need a calculator for
+  paths, timings or layout that the system can derive, the surface is too low-
+  level. Assess each language decision against generation smoothness,
+  expressiveness, authoring errors and seamless streaming — without treating any
+  single person as the final optimisation authority
+  ([decision](../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
+- **Vendor-neutral hosts:** authorised external backends (e.g. ElevenLabs audio)
+  stay behind provider-abstracted packages and host settings. Public package
+  names and MotionScript/generation-facing vocabulary must not hard-wire a
+  replaceable vendor brand.
 
 ## Explicit strategic boundaries
 
@@ -57,8 +74,9 @@ first meaningful paid external dependency. Engine designs a provider-abstracted
 integration ([E031](https://github.com/danielyekini/generative-virtual-runtime/issues/119);
 [steering decision](../decisions/engine/generative-audio-elevenlabs.md)). Do not
 treat this as a licence to add other paid services or hard-wire vendor APIs into
-MotionScript / Scene IR. Eventual in-house audio generation remains a distant
-aspiration, not current work.
+MotionScript / Scene IR. Public package/import names stay vendor-neutral
+([3 November authoring/provider steering](../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
+Eventual in-house audio generation remains a distant aspiration, not current work.
 
 The user delegates roadmap/task/design choices, issue management and creation
 and merging of passing PRs to agents. No mandatory independent review stage.

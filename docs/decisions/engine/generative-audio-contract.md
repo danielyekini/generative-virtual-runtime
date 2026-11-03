@@ -234,3 +234,12 @@ they must not silently substitute.
   time-to-first-audio without breaking duration revision.
 - Add alignment-driven caption or lip-sync tracks only under a fresh issue.
 - Music generation remains out of scope until explicitly commissioned.
+
+## Amendment (user steering, 3 November 2026)
+
+Public package and generation-facing names stay **vendor-neutral** (rename
+`@gvr/audio-elevenlabs`; keep ElevenLabs as an internal backend). Language
+authoring friendliness gate:
+[2026-11-03-authoring-and-provider-abstraction.md](2026-11-03-authoring-and-provider-abstraction.md).
+This amendment does not change Scene IR wire shape or the `audio.generative`
+capability.

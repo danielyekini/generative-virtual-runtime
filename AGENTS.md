@@ -45,6 +45,13 @@ apply when an issue changes their claims; they are not the universal mission or
 an entry gate for native functionality. Compare consequential alternatives with
 bounded designs and preserve released semantics/diagnostic truth.
 
+MotionScript / Scene IR changes also weigh **authoring friendliness** (low mental
+arithmetic, low error rate), **generation creativity**, and **streaming safety**
+— see charter principles and
+`docs/decisions/engine/2026-11-03-authoring-and-provider-abstraction.md`.
+Vendor backends stay behind provider-abstracted host packages; major
+capabilities need Studio testing surfaces before dependent work advances.
+
 Current direction commissions no proactive Lottie/other-format adapter expansion
 or fidelity campaign. Historical gaps, draft proposals and unsupported registry
 rows do not authorise that work; require a fresh explicit user request. Keep

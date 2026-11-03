@@ -11,8 +11,9 @@ applicable technical contracts. Do not read every engine run or engine inbox.
 2. **Testing surface before moving on.** Major functionality (interactions,
    model/native generation, audiovisual host paths, and similar milestone
    capabilities) must have a Studio testing surface/workflow and be exerciseable
-   by humans before the lane advances to dependent work. Generalise this to
-   future capabilities.
+   by humans before the lane advances to dependent work. **Generalise to every
+   future major capability** — not a one-off for generation or audio. Charter and
+   [studio-ux standing rule](studio-ux.md) restate this for all lanes.
 3. **Engine-assisting requests first.** Every product run checks open
    `request-to:product` items that unblock or assist Engine (for example
    verification surfaces). Address or advance those before new product-only
@@ -72,13 +73,17 @@ Paused prototype history: PR #65 commit 2d08de0.
 Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
 generation, but do not skip interaction/generation Studio exercise.
 
-## Generative audio provider (intake cleared, 2 November 2026)
+## Generative audio provider (intake cleared, 2–3 November 2026)
 
-Engine owns ElevenLabs design/implementation ([E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)
+Engine owns generative-audio design/implementation ([E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)
 and children E032–E034 — Done on main). Product accepted [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120):
 P009 carries the host/provider contract dependency. Existing `href` audio +
 E026 Web Audio remain the fallback until P009 ships. P019 does not require
-live ElevenLabs.
+live ElevenLabs. **User steering 3 November 2026:** keep vendor brand out of
+Studio/generation-facing vocabulary where a neutral “audio provider” /
+“generative audio” label suffices; credential settings may name the funded
+backend. Engine will rename `@gvr/audio-elevenlabs` to a vendor-neutral package
+id ([decision](../../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
 
 ## Corpus inputs (prospective direction, 2–3 November 2026)
 
