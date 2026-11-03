@@ -182,8 +182,13 @@ new engine tickets waits on Product P030 (#188). Holder:
    rejected a procedural/module language and declined to commission compile-time
    repeaters ([decision](../../decisions/engine/procedural-vs-bounded-expansion.md)).
    Drawable bindings, cyclic scopes and behaviours are the M2 expansion path;
-   `geometry.repeater` stays pending/unsupported. No version bump. Replenish
-   further from M2/M4/M5 Candidates (E046 / E048 / E042 stay Candidate).
+   `geometry.repeater` stays pending/unsupported. No version bump.
+8. Replenish after E022 (run `00790532-1a03-42a1-9059-3e48527f1b6a`): Ready was
+   empty. Promoted E048 ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208))
+   on the diagnostic-truth trigger (apply instance `timingScopeId` or reject the
+   field). Filed E049 ([#218](https://github.com/danielyekini/generative-virtual-runtime/issues/218))
+   Ready — decide variable stroke width profiles vs stop (E015 child). E046 /
+   E042 stay Candidate (evidence / P030). Ready order: E048, then E049.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

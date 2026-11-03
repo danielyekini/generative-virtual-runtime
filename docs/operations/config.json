@@ -406,6 +406,14 @@
     "E044": {
       "number": 197,
       "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/197"
+    },
+    "E048": {
+      "number": 208,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/208"
+    },
+    "E049": {
+      "number": 218,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/218"
     }
   },
   "features": {
