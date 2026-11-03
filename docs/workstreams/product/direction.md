@@ -58,37 +58,44 @@ Stories vs Test frames).
 ## Queue (3 November 2026, after chrome-slice review)
 
 Studio redesign + Generate chrome slice is **delivered** (P001, P015, P014,
-P004, P002, P016–P018, P006–P008, P010, P019, P020, P022, P025–P028, P031 Done).
+P004, P002, P016–P018, P006–P008, P010, P019, P022, P025–P028, P031 Done).
 **P008’s “prefer direct” product default is superseded** by the director-quality
 decision above. [#88](https://github.com/danielyekini/generative-virtual-runtime/issues/88)
 corpus-prep request is **closed** (lists reconciled; director ownership via
-P008; quality pack via P020 #157). Prospective corpus generation stays deferred
-until Studio interaction/transcript surfaces catch up — not a Ready item.
+P008). **P020 #157** shipped pack scaffolding (fixtures + Generate chips) but
+is **Human verification — not Done**: closing it assumed the generation quality
+gate passed; no human judgment has been recorded
+([user steering 3 November 2026](https://github.com/danielyekini/generative-virtual-runtime/issues/157)).
+Prospective corpus generation stays deferred until that gate and Studio
+interaction/transcript surfaces catch up.
 
-1. **P029 #186** — Transcripts Library collection + GVR transcript contract +
-   playback highlighting — **Ready / next** (contract sketch on the issue).
-2. **P023 #166** — Generate waiting-state MotionScript loading-screen presets —
+1. **P020 #157** — Story-complexity Generate quality judgment — **Human
+   verification** (exercise pack; record animation-quality pass/fail on the
+   issue before Done). Blocks declaring Director/Direct winners.
+2. **P029 #186** — Transcripts Library collection + GVR transcript contract +
+   playback highlighting — **Ready / next worker claim** (contract sketch on
+   the issue).
+3. **P023 #166** — Generate waiting-state MotionScript loading-screen presets —
    Ready.
-3. **P021 #158** — Generation reserved-word node ids (harness/reference
+4. **P021 #158** — Generation reserved-word node ids (harness/reference
    hardening) — Ready.
-4. **P024 #167** — Studio/Ollama model-serving optimisation experiment (disk /
+5. **P024 #167** — Studio/Ollama model-serving optimisation experiment (disk /
    hardware pressure) — Ready (bounded options + recommendation; no default
    change without evidence).
-5. **P030 #188** — Project **Source** field for engine tickets — Candidate until
+6. **P030 #188** — Project **Source** field for engine tickets — Candidate until
    Project write/`PROJECT_TOKEN` can create the field (or user adds it); Engine
    fills Source after.
-6. **P009 #50** push-to-talk / generative-audio host — Candidate until
+7. **P009 #50** push-to-talk / generative-audio host — Candidate until
    speech/media UX confirmed in studio-ux.
-7. **P003 #44**, **P005**, P011–P013 later.
+8. **P003 #44**, **P005**, P011–P013 later.
 
 ## Next
 
-1. Product run: claim **P029** Transcripts (studio-ux confirmed; contract sketch
-   posted).
-2. Then **P023** loading screens or **P021** reserved-id hardening in parallel
-   capacity.
-3. User: continue Generate quality judgment with the P020 pack; keep Director
-   default until Direct is proven.
+1. **User / Human verification:** run the P020 pack in Studio Generate
+   (Director), judge canvas animation quality, post pass/fail on #157. Keep
+   Director default until Direct is proven.
+2. Product run: claim **P029** Transcripts (does not replace the P020 gate).
+3. Then **P023** loading screens or **P021** reserved-id hardening.
 4. Confirm **P009** speech/media UX when ready → then Ready.
 5. Unblock **P030** when a token with `project` scope (or the board-sync secret)
    can add the Source field.
@@ -122,9 +129,10 @@ Quality expectations track story-complexity programs, not runtime-scene smoke.
 Director streaming remains an experimental hypothesis.
 
 **Prep status (review 3 November 2026):** request [#88](https://github.com/danielyekini/generative-virtual-runtime/issues/88)
-accepted and closed — functionality lists reconciled, director handoff recorded
-via P008, and story-complexity Generate judgment pack shipped as
+accepted and closed — functionality lists reconciled; director handoff recorded
+via P008; judgment-pack **scaffolding** lives under
+`fixtures/generation/quality-judgment/` for
 [P020 #157](https://github.com/danielyekini/generative-virtual-runtime/issues/157)
-(Done). Actual corpus generation remains prospective and must not displace
-Studio Transcripts (P029), loading screens (P023), or speech UX confirmation
-for P009.
+(**Human verification**, not Done — user steering). Actual corpus generation
+remains prospective and must not displace the P020 human gate, Studio
+Transcripts (P029), loading screens (P023), or speech UX confirmation for P009.
