@@ -12,6 +12,7 @@ import {
   type SourceExample,
 } from "../examples";
 import type { ProgramEntry, ProgramFormat } from "../library";
+import { PROBE_IDS } from "./program-keys";
 
 /** Short behaviour samples among the MotionScript examples (not stories). */
 const SAMPLE_IDS = new Set(["bunny", "ball", "caption", "nested", "diagram", "camera", "audio-lesson"]);
@@ -38,7 +39,7 @@ function imports(format: Exclude<ProgramFormat, "motionscript">, items: readonly
 
 export function installedPrograms(): ProgramEntry[] {
   return [
-    ...motionExamples.filter((item) => !SAMPLE_IDS.has(item.id)).map((item): ProgramEntry => ({
+    ...motionExamples.filter((item) => !SAMPLE_IDS.has(item.id) && !PROBE_IDS.has(item.id)).map((item): ProgramEntry => ({
       key: `story:${item.id}`, label: item.label, caption: item.caption, collection: "Stories", origin: "installed", format: "motionscript", source: item.source,
     })),
     ...motionExamples.filter((item) => SAMPLE_IDS.has(item.id)).map((item): ProgramEntry => ({
@@ -56,6 +57,10 @@ export function installedPrograms(): ProgramEntry[] {
       format: "motionscript",
       source: item.source,
       tags: ["interact", "input.bindings"],
+    })),
+    // Capability probes (P031) join the frame scripts as Test frames.
+    ...motionExamples.filter((item) => PROBE_IDS.has(item.id)).map((item): ProgramEntry => ({
+      key: `frame:${item.id}`, label: item.label, caption: item.caption, collection: "Test frames", origin: "installed", format: "motionscript", source: item.source,
     })),
     ...frameScripts.map((item): ProgramEntry => ({
       key: `frame:${item.id}`, label: item.label, caption: item.caption, collection: "Test frames", origin: "installed", format: "motionscript", source: item.source,

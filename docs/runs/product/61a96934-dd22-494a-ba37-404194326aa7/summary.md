@@ -32,3 +32,28 @@ Verification (exit 0):
 
 Not done here: a human look at the handle's discoverability and the favicon.
 No language, registry or deployment change.
+
+# P031 Test frames taxonomy (same run, second ticket)
+
+Issue: [#187](https://github.com/danielyekini/generative-virtual-runtime/issues/187).
+Base: `7a693d8` (main after P026).
+
+The twelve MotionScript capability probes moved from Stories to Test frames:
+Spatial crane, Spatial home, Spatial echo, Spatial seams, Clip mask, Alpha
+matte, Path progress, Path space, Dynamic text, Text layout, Stroke dash and
+Physics marble. All twelve have captions ending in `(capability.id)`. Their
+keys changed from `story:<id>` to `frame:<id>`. The
+mapping lives in `app/playground/src/player/program-keys.ts`, and saved
+favourites/tags, recents and `#p/story:<id>` links resolve to the new keys
+(the URL is rewritten). If metadata exists under both keys, the new key's
+metadata wins. Stories now holds only the narrative programs.
+
+Verification (exit 0):
+- `npm run verify`: 88 Vitest files / 583 tests (two new: the probe placement
+  and key migration), typechecks, Studio build, IR manifest, 33 operations
+  tests, reference check.
+- `npm run smoke:studio`: 146/146. New checks: Test frames chip lists the
+  probes, Stories chip lists none, and an old `story:clip-mask` link opens
+  `frame:clip-mask`.
+
+No program bytes, language, registry or deployment change.

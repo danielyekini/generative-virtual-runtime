@@ -47,6 +47,7 @@ import {
 import { playbackHotspotContains, PLAYBACK_IDLE_MS, showFrameTape } from "./playback-chrome";
 import { GenerateController } from "./generate-session";
 import { bindGeneratePanel, closeGenerateMenu, renderGeneratePanel, wireGeneratePanel } from "./generate-panel";
+import { canonicalProgramKey } from "./program-keys";
 
 function $<T extends HTMLElement>(id: string): T {
   const element = document.getElementById(id);
@@ -399,7 +400,8 @@ function posterFor(entry: ProgramEntry): typeof poster {
 }
 
 function openKey(key: string): boolean {
-  const entry = catalogue.find((item) => item.key === key);
+  const current = canonicalProgramKey(key);
+  const entry = catalogue.find((item) => item.key === current);
   if (!entry) return false;
   openProgram(entry);
   return true;
@@ -1655,6 +1657,9 @@ function readHash(): void {
   if (!match?.[1]) return;
   let key: string;
   try { key = decodeURIComponent(match[1]); } catch { return; }
+  key = canonicalProgramKey(key);
+  // A pre-P031 link (story:<probe>) is rewritten to the program's current key.
+  if (location.hash !== `#p/${encodeURIComponent(key)}`) history.replaceState(null, "", `#p/${encodeURIComponent(key)}`);
   if (key === loaded?.key) return;
   const entry = catalogue.find((item) => item.key === key);
   if (entry) openProgram(entry, { fromHash: true });
