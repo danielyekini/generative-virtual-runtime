@@ -142,6 +142,17 @@ try {
     return pr.top < dr.top && Math.abs(pr.bottom - document.querySelector('#status').getBoundingClientRect().top) < 8;
   })()`)), generateOpen);
   check("Generate composer defaults to Director + pinned qwen model", await ev(`document.querySelector('#generate-approach').value === 'director' && document.querySelector('#generate-model').value === 'qwen2.5-coder:14b'`));
+  check("Generate header uses the sparkle AI icon", await ev(`Boolean(document.querySelector('#generate .generate-ai-icon'))`));
+  check("Generate composer toolbar sits inside the prompt shell", await ev(`(() => {
+    const shell = document.querySelector('.generate-prompt-shell');
+    const toolbar = document.querySelector('.generate-toolbar');
+    const send = document.querySelector('#generate-send');
+    if (!(shell instanceof HTMLElement) || !(toolbar instanceof HTMLElement) || !(send instanceof HTMLElement)) return false;
+    const s = shell.getBoundingClientRect();
+    const t = toolbar.getBoundingClientRect();
+    const b = send.getBoundingClientRect();
+    return t.top >= s.top - 1 && t.bottom <= s.bottom + 1 && b.bottom <= s.bottom + 1 && b.top >= s.top - 1;
+  })()`));
   check("Generate story quality pack chips fill the composer", await ev(`(() => {
     const pack = document.querySelector('#generate-quality-pack');
     const chips = [...(pack?.querySelectorAll('button.generate-pack-chip') ?? [])];
@@ -150,6 +161,7 @@ try {
     chips[0].click();
     return composer.value.length > 40 && chips[0].classList.contains('is-selected');
   })()`));
+  check("Generate offers copy-transcript and detail view dropdown", await ev(`Boolean(document.querySelector('#generate-copy-transcript')) && document.querySelector('#generate-detail-view') instanceof HTMLSelectElement`));
   await ev("document.querySelector('#generate-close').click()");
   await sleep(50);
   check("Leaving Generate closes the generate chrome", await ev(`!window.__gvr.player.generateMode && document.querySelector('#generate-chrome').hidden`));

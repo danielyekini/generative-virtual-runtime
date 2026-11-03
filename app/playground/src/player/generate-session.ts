@@ -1,5 +1,5 @@
 /**
- * Studio Generate session (P019): transcript turns + P007/P008 pipeline.
+ * Studio Generate session (P019 / P022): transcript turns + P007/P008 pipeline.
  */
 import {
   disposeGenerationSession,
@@ -27,6 +27,11 @@ export type GenerateMessage = {
   error?: string;
 };
 
+/** Detail share of the Generate middle column; 0 means closed. */
+export const DETAIL_SHARE_DEFAULT = 0.42;
+export const DETAIL_SHARE_EXPAND = 0.92;
+export const DETAIL_SHARE_CLOSE = 0.08;
+
 export type GenerateState = {
   approach: GenerationApproach;
   modelId: string;
@@ -36,6 +41,8 @@ export type GenerateState = {
   detailId: string | null;
   /** When detail is open, show director JSON instead of MotionScript. */
   detailView: "output" | "director";
+  /** Fraction of middle column height for the detail pane (0 = closed). */
+  detailShare: number;
   lastStatus: string;
 };
 
@@ -53,6 +60,7 @@ export function createGenerateState(): GenerateState {
     messages: [],
     detailId: null,
     detailView: "output",
+    detailShare: 0,
     lastStatus: "Typed prompts · Ollama qwen2.5-coder:14b · Director default",
   };
 }
@@ -88,18 +96,74 @@ export class GenerateController {
   openDetail(id: string): void {
     this.state.detailId = id;
     this.state.detailView = "output";
+    if (this.state.detailShare <= 0) this.state.detailShare = DETAIL_SHARE_DEFAULT;
     this.host.onChange();
   }
 
   closeDetail(): void {
     this.state.detailId = null;
     this.state.detailView = "output";
+    this.state.detailShare = 0;
+    this.host.onChange();
+  }
+
+  /** Fully expanded detail: return to transcript (keep selection closed). */
+  returnToTranscript(): void {
+    this.state.detailId = null;
+    this.state.detailView = "output";
+    this.state.detailShare = 0;
     this.host.onChange();
   }
 
   setDetailView(view: "output" | "director"): void {
     this.state.detailView = view;
     this.host.onChange();
+  }
+
+  setDetailShare(share: number): void {
+    const clamped = Math.min(1, Math.max(0, share));
+    if (clamped <= DETAIL_SHARE_CLOSE) {
+      this.closeDetail();
+      return;
+    }
+    this.state.detailShare = clamped >= DETAIL_SHARE_EXPAND ? 1 : clamped;
+    if (!this.state.detailId) {
+      const latest = [...this.state.messages].reverse().find((message) => message.role === "model");
+      if (latest) this.state.detailId = latest.id;
+    }
+    this.host.onChange();
+  }
+
+  formatTranscript(): string {
+    const lines: string[] = [];
+    for (const message of this.state.messages) {
+      const role = message.role === "user" ? "User" : "Model";
+      const body =
+        message.role === "model"
+          ? message.source?.trim() || message.text || message.error || ""
+          : message.text;
+      lines.push(`## ${role}\n${body.trim()}`);
+    }
+    return lines.join("\n\n");
+  }
+
+  async copyTranscript(): Promise<boolean> {
+    const text = this.formatTranscript();
+    if (!text.trim()) {
+      this.state.lastStatus = "Transcript is empty";
+      this.host.onChange();
+      return false;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      this.state.lastStatus = "Copied full chat transcript";
+      this.host.onChange();
+      return true;
+    } catch {
+      this.state.lastStatus = "Clipboard copy failed";
+      this.host.onChange();
+      return false;
+    }
   }
 
   cancel(): void {
@@ -241,4 +305,8 @@ function labelForPrompt(prompt: string): string {
 export function detailMessage(state: GenerateState): GenerateMessage | null {
   if (!state.detailId) return null;
   return state.messages.find((message) => message.id === state.detailId) ?? null;
+}
+
+export function detailExpanded(state: GenerateState): boolean {
+  return Boolean(state.detailId) && state.detailShare >= DETAIL_SHARE_EXPAND;
 }

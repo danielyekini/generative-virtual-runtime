@@ -234,23 +234,33 @@ In Generate mode the side panel is for **generation**, not script testing:
   - **Model** messages: left-aligned, neutral colour.
   - While a model reply is in flight: show a **truncated preview** of arriving
     text and/or a **⋯** pending state in the bubble.
-  - **Click** a model bubble to open a **stream-like detail view** of that
-    generation’s output (reuse Stream source-view conventions where they fit).
-  - In that detail view, offer a control to **view the director response** for
-    the same prompt (when approach was Director; hidden or disabled for Direct).
+  - **Click** a model bubble to open a **stream-like detail view** as soon as the
+    bubble exists (including while still generating); the open detail streams
+    arriving text. Reuse Stream source-view conventions where they fit.
+  - Detail **View** is a **dropdown** under the panel title (Output | Director),
+    not a button cluster. Prefer dropdowns when there are multiple view modes.
+  - Detail is **resizable** in the middle of the side panel: drag the handle to
+    expand/shrink; drag fully toward the transcript closes detail; drag fully
+    the other way expands detail over the transcript. When fully expanded, **X**
+    returns to the transcript.
+  - **Copy chat** copies the full transcript from the Generate panel bar.
 - **Bottom of side panel:** compact **prompt composer** (chat-input pattern —
   rounded field with placeholder and an in-field toolbar; visual reference:
   [generate-prompt-composer-reference.png](assets/generate-prompt-composer-reference.png)).
+  - Approach / Model / Send sit **fully inside** the prompt shell (not on the
+    border) with enough bottom padding that long prompts are not covered.
   - Inside the composer toolbar: **Approach** (Director | Direct) and **model**
     settings as dropdowns/chips (same role as a model selector in the reference).
   - Send / cancel in the composer (send while idle; cancel while running).
   - Mic may appear later (P009); typed prompts are enough for P019.
   - **Story quality pack (P020):** a horizontal row of starter chips above the
     composer fills it with story-complexity prompts from
-    `fixtures/generation/quality-judgment/` (does not auto-send). Use these for
-    customer animation-quality judgment; checklist beside the manifest.
+    `fixtures/generation/quality-judgment/` (does not auto-send). Horizontal
+    scroll is fine; the scrollbar must not cover chip labels.
+- Header **Generate** uses the two-sparkle / diamond AI icon (not a pencil).
 - Secondary metrics (repairs, latency, tape wait) may appear as quiet status
   under the composer or on the bubble — never as the acceptance gate.
+- Waiting-state MotionScript loading screens are tracked separately (P023).
 
 ```
 │ CANVAS (+ transport/tape/dock under canvas) │  GENERATE PANEL (full height)   │

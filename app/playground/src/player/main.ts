@@ -1275,7 +1275,7 @@ generateUi.transcript.addEventListener("click", (event) => {
   const target = event.target;
   if (!(target instanceof Element)) return;
   const bubble = target.closest(".generate-bubble.is-model");
-  if (!(bubble instanceof HTMLButtonElement) || bubble.disabled) return;
+  if (!(bubble instanceof HTMLButtonElement)) return;
   const row = bubble.closest(".generate-row");
   const id = row instanceof HTMLElement ? row.dataset.id : undefined;
   if (id) generate.openDetail(id);
