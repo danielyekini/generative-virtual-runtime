@@ -111,14 +111,17 @@ export function parseLeadingSlice(tokens: Token[]):
     const header = parseHeader(parser);
     if (!done(parser)) fail(parser, "Tokens follow the scene header.");
     if (parser.diagnostics.length > 0 || header.errors.length > 0) {
-      return { kind: "invalid", diagnostics: [...parser.diagnostics, ...header.errors] };
+      const diagnostics: Diagnostic[] = [];
+      appendUniqueDiagnostics(diagnostics, parser.diagnostics);
+      appendUniqueDiagnostics(diagnostics, header.errors);
+      return { kind: "invalid", diagnostics };
     }
     return { kind: "header", header };
   }
   const unit = parseUnit(parser);
   if (!unit) return { kind: "invalid", diagnostics: parser.diagnostics };
   if (!done(parser)) fail(parser, "Tokens follow the declaration.");
-  if (parser.diagnostics.length > 0) unit.errors.push(...parser.diagnostics);
+  if (parser.diagnostics.length > 0) appendUniqueDiagnostics(unit.errors, parser.diagnostics);
   return { kind: "unit", unit };
 }
 
@@ -2412,6 +2415,12 @@ function prev(parser: Parser): Token | undefined {
 
 function done(parser: Parser): boolean {
   return parser.index >= parser.tokens.length;
+}
+
+function appendUniqueDiagnostics(target: Diagnostic[], items: readonly Diagnostic[]): void {
+  for (const item of items) {
+    if (!target.includes(item)) target.push(item);
+  }
 }
 
 function fail(parser: Parser, message: string): void {

@@ -41,10 +41,7 @@ animate Hero.frame { from 0; to 4; duration 1s; };`);
     expect(messages(compile(`image A { href "a.png"; size (8, 8); frames (2.5, 2); position (0, 0); };`))).toEqual([expect.stringContaining("whole column and row counts")]);
     expect(messages(compile(`image A { href "a.png"; size (8, 8); frames (2, 2); frame 4; position (0, 0); };`))).toEqual([expect.stringContaining("from 0 to 3")]);
     expect(messages(compile(`image A { href "a.png"; size (8, 8); frame 1; position (0, 0); };`))).toEqual([expect.stringContaining("needs frames")]);
-    // Parse notes are currently reported twice for every node property (pre-existing); assert content only.
-    const sampling = messages(compile(`image A { href "a.png"; size (8, 8); sampling blurry; position (0, 0); };`));
-    expect(sampling.length).toBeGreaterThan(0);
-    expect(sampling.every((message) => message === "sampling is smooth or pixelated.")).toBe(true);
+    expect(messages(compile(`image A { href "a.png"; size (8, 8); sampling blurry; position (0, 0); };`))).toEqual(["sampling is smooth or pixelated."]);
     expect(messages(compile(`rectangle R { size (8, 8); fill #ff0000; sampling pixelated; position (0, 0); };`))).toEqual([expect.stringContaining("apply only to image nodes")]);
   });
 

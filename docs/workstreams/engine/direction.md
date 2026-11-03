@@ -208,6 +208,12 @@ new engine tickets waits on Product P030 (#188). Holder:
     animated blur (story-gated). After E049, Ready replenishes with E052.
     E046 / E042 / E051 / E053 / joint [#209](https://github.com/danielyekini/generative-virtual-runtime/issues/209)
     stay Candidate. No process change.
+11. E052 ([#225](https://github.com/danielyekini/generative-virtual-runtime/issues/225))
+    emits each parse-time node-property note once (whole file and streamed
+    slice, including a nested note beside its parent). No language bump.
+    The note remains on the AST node and the parser list; compile keeps one
+    object and still rejects the unit. Ready is empty after E052.
+    E046 / E042 / E051 / E053 / joint #209 stay Candidate.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
