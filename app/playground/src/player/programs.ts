@@ -4,6 +4,7 @@
 import {
   fixtureExamples,
   frameScripts,
+  interactiveExamples,
   lottieExamples,
   motionExamples,
   sceneScripts,
@@ -21,7 +22,7 @@ const IMPORT_LABELS: Record<Exclude<ProgramFormat, "motionscript">, string> = {
   svg: "SVG",
 };
 
-export const COLLECTIONS = ["Stories", "Runtime scenes", "Test frames", "Imports"] as const;
+export const COLLECTIONS = ["Stories", "Runtime scenes", "Interactive", "Test frames", "Imports"] as const;
 
 function imports(format: Exclude<ProgramFormat, "motionscript">, items: readonly SourceExample[]): ProgramEntry[] {
   return items.map((item) => ({
@@ -45,6 +46,16 @@ export function installedPrograms(): ProgramEntry[] {
     })),
     ...sceneScripts.map((item): ProgramEntry => ({
       key: `scene:${item.id}`, label: item.label, caption: item.caption, collection: "Runtime scenes", origin: "installed", format: "motionscript", source: item.source,
+    })),
+    ...interactiveExamples.map((item): ProgramEntry => ({
+      key: `interactive:${item.id}`,
+      label: item.label,
+      caption: item.caption,
+      collection: "Interactive",
+      origin: "installed",
+      format: "motionscript",
+      source: item.source,
+      tags: ["interact", "input.bindings"],
     })),
     ...frameScripts.map((item): ProgramEntry => ({
       key: `frame:${item.id}`, label: item.label, caption: item.caption, collection: "Test frames", origin: "installed", format: "motionscript", source: item.source,

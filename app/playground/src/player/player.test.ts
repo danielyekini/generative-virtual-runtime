@@ -25,6 +25,22 @@ describe("installed programs", () => {
     expect(hits.map((entry) => entry.key)).toContain("story:into-the-moons-shadow");
   });
 
+  it("lists Interactive demos with input.bindings after compile", () => {
+    const interactive = programs.filter((entry) => entry.collection === "Interactive");
+    expect(interactive.map((entry) => entry.key)).toEqual([
+      "interactive:click-toggle",
+      "interactive:drag-zoom",
+      "interactive:keys-focus",
+      "interactive:pointer-pass",
+    ]);
+    for (const entry of interactive) {
+      expect(entry.tags).toContain("interact");
+      const outcome = runProgram(entry.source, entry.format, entry.label);
+      expect(outcome.scene?.interactions?.length, entry.key).toBeGreaterThan(0);
+      expect(outcome.scene?.requiredCapabilities, entry.key).toContain("input.bindings");
+    }
+  });
+
   it("picks a format for opened files", () => {
     expect(formatForFile("a.svg", "<svg/>")).toBe("svg");
     expect(formatForFile("a.json", '{"v":"5","fr":30,"layers":[]}')).toBe("lottie");

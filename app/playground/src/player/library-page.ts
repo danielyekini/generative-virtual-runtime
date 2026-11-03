@@ -13,7 +13,7 @@ const el = <K extends keyof HTMLElementTagNameMap>(tag: K, text?: string) => {
   if (text !== undefined) node.textContent = text;
   return node;
 };
-const COLLECTIONS = ["Stories", "Test frames", "Runtime scenes", "My programs", "Imports"];
+const COLLECTIONS = ["Stories", "Test frames", "Runtime scenes", "Interactive", "My programs", "Imports"];
 // Studio poster policy: 35% of duration. This is deliberately outside MotionScript.
 const POSTER = 0.35;
 
