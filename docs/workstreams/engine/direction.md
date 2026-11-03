@@ -107,17 +107,18 @@ reimplementation from this acknowledgement alone.
 
 ## Next work
 
-Engine review (3 November 2026) inspected runs CEAB345F / d71677a0 / 7413cf17 /
-83199A7A / D5CBE033. E027/E035, E012 (0.16.0 `compositing.mask`), E017, E015
-decision/prototype, E037 (0.17.0 `geometry.pathProgress`), E013
-(dynamic text / metrics decision + schema prototype), E040
-(0.18.0 `text.dynamicContent`), E036 (0.19.0 `compositing.matte`), E041
-(0.20.0 `text.layoutMetrics`), and E038 (0.21.0 `paint.strokeDash`) are Done.
-Continue.
+Engine review (3 November 2026, later the same day) inspected runs
+`cf452237` (E013), `3E1BDFB0` (E040, 0.18.0 `text.dynamicContent`),
+`0c5c5285` (E036, 0.19.0 `compositing.matte`), `7464705c` (E041, 0.20.0
+`text.layoutMetrics`) and `7d32a0ce` (E038, 0.21.0 `paint.strokeDash`).
+Those five are Done. Continue. No new capability was opened. Width profiles
+and standalone `transform.autoOrient` stay pending. Naming source stories on
+new engine tickets waits on Product P030 (#188). Holder:
+[E042](https://github.com/danielyekini/generative-virtual-runtime/issues/191)
+([#189](https://github.com/danielyekini/generative-virtual-runtime/issues/189)).
 
 1. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173)):
-   Candidate — compose pathAttachments through path transforms (mined from E037).
-   Width profiles stay deferred; standalone `transform.autoOrient` stays pending.
+   Ready — decide whether path attachments compose the path node's transform.
 2. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
    `text.animators` stays pending (not the E013 content/format slice).
