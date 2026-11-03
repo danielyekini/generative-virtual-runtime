@@ -22,7 +22,9 @@ export type GenerateMessage = {
   approach?: GenerationApproach;
   modelId?: string;
   metrics?: GenerationMetrics;
+  /** MotionScript stream. Empty while the director phase is still running. */
   source?: string;
+  /** Director script captured during the director phase; kept after output starts. */
   directorRaw?: string | null;
   error?: string;
 };
@@ -94,8 +96,9 @@ export class GenerateController {
   }
 
   openDetail(id: string): void {
+    const switching = this.state.detailId !== id;
     this.state.detailId = id;
-    this.state.detailView = "output";
+    if (switching) this.state.detailView = "output";
     if (this.state.detailShare <= 0) this.state.detailShare = DETAIL_SHARE_DEFAULT;
     this.host.onChange();
   }
@@ -246,8 +249,7 @@ export class GenerateController {
         signal: abort.signal,
         onProgress: (event) => {
           if (myGeneration !== this.generation || this.sessionId !== sessionId) return;
-          model.phase = event.phase;
-          model.text = event.text;
+          noteGenerationProgress(model, event);
           this.state.lastStatus =
             event.phase === "director"
               ? "Director planning…"
@@ -272,7 +274,7 @@ export class GenerateController {
 
     model.pending = false;
     model.metrics = result.metrics;
-    model.directorRaw = result.directorRaw;
+    if (result.directorRaw != null) model.directorRaw = result.directorRaw;
     model.source = result.source;
     if (result.metrics.cancelled) {
       model.error = "Cancelled";
@@ -300,6 +302,37 @@ export class GenerateController {
 function labelForPrompt(prompt: string): string {
   const compact = prompt.replace(/\s+/g, " ").trim();
   return compact.length <= 48 ? compact : `${compact.slice(0, 45)}…`;
+}
+
+/** Keep the director script when the pipeline moves on to MotionScript. */
+export function noteGenerationProgress(
+  message: GenerateMessage,
+  event: { phase: "director" | "implement"; text: string },
+): void {
+  message.phase = event.phase;
+  if (event.phase === "director") {
+    message.directorRaw = event.text;
+    message.text = event.text;
+    return;
+  }
+  message.text = event.text;
+  message.source = event.text;
+}
+
+/** Detail body for the selected view only — never the other phase's live stream. */
+export function detailBodyText(message: GenerateMessage, view: "output" | "director"): string {
+  if (view === "director") {
+    if (message.approach !== "director") return "(direct approach — no director script)";
+    const raw = message.directorRaw?.trim();
+    if (raw) return raw;
+    if (message.pending && message.phase === "director") return "Director planning…";
+    return "(no director response)";
+  }
+  const output = message.source?.trim() ?? "";
+  if (output) return output;
+  if (message.pending && message.phase === "implement") return "Implementing MotionScript…";
+  if (message.pending && message.phase === "director") return "Output has not started.";
+  return message.text.trim() || message.error || "";
 }
 
 export function detailMessage(state: GenerateState): GenerateMessage | null {

@@ -3,14 +3,19 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { FixtureGenerator } from "../../../../tools/native-generation/fixture-adapter";
 import { runGenerationPipeline } from "../../../../tools/native-generation/pipeline";
-import { GenerateController } from "./generate-session";
+import {
+  detailBodyText,
+  GenerateController,
+  noteGenerationProgress,
+  type GenerateMessage,
+} from "./generate-session";
 import { loadQualityJudgmentPack } from "./generate-quality-pack";
 import { loadStudioReference, STUDIO_GENERATE_MODEL } from "./generate-reference";
 
 const root = resolve(import.meta.dirname, "../../../..");
 const heldOut = resolve(root, "fixtures/generation/held-out");
 
-describe("Studio Generate (P019 / P022)", () => {
+describe("Studio Generate (P019 / P022 / P028)", () => {
   it("pins the same Ollama model as P007", () => {
     expect(STUDIO_GENERATE_MODEL).toBe("qwen2.5-coder:14b");
   });
@@ -48,6 +53,44 @@ describe("Studio Generate (P019 / P022)", () => {
     expect(controller.formatTranscript()).toContain("partial…");
     controller.setDetailShare(0.05);
     expect(controller.state.detailId).toBeNull();
+  });
+
+  it("keeps the director script when output starts streaming (P028)", () => {
+    const message: GenerateMessage = {
+      id: "m1",
+      role: "model",
+      text: "",
+      pending: true,
+      phase: "director",
+      approach: "director",
+    };
+    noteGenerationProgress(message, { phase: "director", text: '{"beats":[1]}' });
+    expect(detailBodyText(message, "output")).toBe("Output has not started.");
+    expect(detailBodyText(message, "director")).toBe('{"beats":[1]}');
+    noteGenerationProgress(message, { phase: "implement", text: 'scene "greeting" { version "0.2"; }' });
+    expect(message.directorRaw).toBe('{"beats":[1]}');
+    expect(detailBodyText(message, "director")).toBe('{"beats":[1]}');
+    expect(detailBodyText(message, "output")).toBe('scene "greeting" { version "0.2"; }');
+    expect(detailBodyText(message, "director")).not.toContain("pending");
+  });
+
+  it("does not reset the selected detail view when the same bubble is opened again", () => {
+    const controller = new GenerateController({
+      onChange: () => undefined,
+      acceptProgram: () => undefined,
+    });
+    controller.state.messages.push({
+      id: "m1",
+      role: "model",
+      text: "partial",
+      pending: true,
+      approach: "director",
+    });
+    controller.openDetail("m1");
+    controller.setDetailView("director");
+    controller.openDetail("m1");
+    expect(controller.state.detailView).toBe("director");
+    expect(controller.state.detailId).toBe("m1");
   });
 
   it("pipelines a fixture with progress callbacks for the transcript", async () => {

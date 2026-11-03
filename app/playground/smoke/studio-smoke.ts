@@ -162,6 +162,82 @@ try {
     return composer.value.length > 40 && chips[0].classList.contains('is-selected');
   })()`));
   check("Generate offers copy-transcript and detail view dropdown", await ev(`Boolean(document.querySelector('#generate-copy-transcript')) && document.querySelector('#generate-detail-view') instanceof HTMLSelectElement`));
+  const streaming = await ev(`(() => {
+    const output = Array.from({ length: 80 }, (_, i) => "scene line " + i).join("\\n");
+    const director = '{"beats":["greeting"]}';
+    const frames = () => new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done)));
+    const bubble = () => document.querySelector(".generate-bubble.is-model");
+    window.__gvr.seedGeneratePreview("hi", director, output);
+    return frames().then(() => {
+      const first = bubble();
+      window.__gvr.seedGeneratePreview("hi", director, output + "\\nscene line 80");
+      return frames().then(() => {
+        const second = bubble();
+        second.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true, button: 0 }));
+        return frames().then(() => {
+          const body = document.querySelector("#generate-detail-body");
+          const select = document.querySelector("#generate-detail-view");
+          const user = document.querySelector(".generate-bubble.is-user");
+          window.__gvr.seedGeneratePreview("hi", director, output, true);
+          return frames().then(() => {
+            const outputText = body.textContent || "";
+            const scrolled = body.scrollHeight > body.clientHeight + 8 && body.clientHeight > 40;
+            body.scrollTop = 12;
+            window.__gvr.seedGeneratePreview("hi", director, output + "\\nscene line extra", true);
+            return frames().then(() => {
+              const heldScroll = Math.abs(body.scrollTop - 12) < 4;
+              select.value = "director";
+              select.dispatchEvent(new Event("change", { bubbles: true }));
+              return frames().then(() => {
+                const directorText = body.textContent || "";
+                select.focus();
+                window.__gvr.seedGeneratePreview("hi", director, output + "\\nscene line extra", true);
+                return frames().then(() => ({
+                  sameNode: first === second && second instanceof HTMLButtonElement,
+                  userTag: user && user.tagName,
+                  userOpacity: user ? getComputedStyle(user).opacity : null,
+                  detailOpen: !document.querySelector("#generate-detail").hidden,
+                  outputHasScene: outputText.includes("scene line 0") && !outputText.includes("beats"),
+                  directorLabel: select.querySelector('option[value="director"]').textContent,
+                  directorEnabled: !select.querySelector('option[value="director"]').disabled,
+                  directorBody: directorText,
+                  focused: document.activeElement === select,
+                  scrolled,
+                  heldScroll,
+                  box: { client: body.clientHeight, scroll: body.scrollHeight, top: body.scrollTop },
+                }));
+              });
+            });
+          });
+        });
+      });
+    });
+  })()`);
+  check(
+    "Generate streaming keeps the model bubble and opens detail on press",
+    streaming.sameNode === true && streaming.detailOpen === true,
+    streaming,
+  );
+  check(
+    "Generate user bubbles stay full opacity",
+    streaming.userTag === "DIV" && streaming.userOpacity === "1",
+    streaming,
+  );
+  check(
+    "Generate detail shows the selected stream and a stable Director option",
+    streaming.outputHasScene === true &&
+      streaming.directorLabel === "Director" &&
+      streaming.directorEnabled === true &&
+      streaming.directorBody.includes("beats") &&
+      !streaming.directorBody.includes("pending") &&
+      !streaming.directorBody.includes("scene line"),
+    streaming,
+  );
+  check(
+    "Fully expanded generation detail scrolls and keeps the reader's place",
+    streaming.scrolled === true && streaming.heldScroll === true && streaming.focused === true,
+    streaming,
+  );
   await ev("document.querySelector('#generate-close').click()");
   await sleep(50);
   check("Leaving Generate closes the generate chrome", await ev(`!window.__gvr.player.generateMode && document.querySelector('#generate-chrome').hidden`));

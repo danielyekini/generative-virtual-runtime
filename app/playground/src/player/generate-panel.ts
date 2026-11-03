@@ -4,6 +4,7 @@
 import type { GenerationApproach } from "../../../../tools/native-generation/types";
 import {
   DETAIL_SHARE_DEFAULT,
+  detailBodyText,
   detailExpanded,
   detailMessage,
   type GenerateController,
@@ -165,8 +166,11 @@ function wireDetailResize(ui: GeneratePanelElements, controller: GenerateControl
 }
 
 export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateState): void {
-  ui.approach.value = state.approach;
-  if ([...ui.model.options].some((option) => option.value === state.modelId)) {
+  if (document.activeElement !== ui.approach) ui.approach.value = state.approach;
+  if (
+    document.activeElement !== ui.model &&
+    [...ui.model.options].some((option) => option.value === state.modelId)
+  ) {
     ui.model.value = state.modelId;
   }
   ui.approach.disabled = state.running;
@@ -180,21 +184,9 @@ export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateSt
   ui.send.setAttribute("aria-label", state.running ? "Cancel generation" : "Send prompt");
   put(ui.metrics, state.lastStatus);
 
-  const key = state.messages
-    .map((message) => `${message.id}:${message.text.length}:${message.pending ? 1 : 0}:${message.error ?? ""}`)
-    .join("|");
-  if (ui.transcript.dataset.key !== key) {
-    ui.transcript.dataset.key = key;
-    ui.transcript.replaceChildren(...state.messages.map((message) => bubble(message, state.detailId)));
-    ui.transcript.scrollTop = ui.transcript.scrollHeight;
-  } else {
-    for (const row of ui.transcript.querySelectorAll(".generate-row")) {
-      if (!(row instanceof HTMLElement)) continue;
-      const bubbleEl = row.querySelector(".generate-bubble");
-      if (!(bubbleEl instanceof HTMLElement)) continue;
-      bubbleEl.classList.toggle("is-selected", row.dataset.id === state.detailId);
-    }
-  }
+  // Keep bubble nodes across tokens. Replacing them drops clicks that start
+  // on one frame and finish on the next.
+  syncTranscript(ui.transcript, state.messages, state.detailId);
 
   const detail = detailMessage(state);
   const open = Boolean(detail) && state.detailShare > 0;
@@ -203,73 +195,117 @@ export function renderGeneratePanel(ui: GeneratePanelElements, state: GenerateSt
   ui.detailResize.hidden = !open;
   ui.transcript.classList.toggle("is-collapsed", expanded);
   ui.detail.classList.toggle("is-expanded", expanded);
-  if (open) {
-    ui.detail.style.flexBasis = expanded ? "auto" : `${Math.round(state.detailShare * 100)}%`;
-    ui.detail.style.flexGrow = expanded ? "1" : "0";
-    ui.detail.style.flexShrink = "0";
-    const hasDirector = detail!.approach === "director";
-    const directorReady = Boolean(detail!.directorRaw);
-    ui.detailView.value = state.detailView === "director" && hasDirector ? "director" : "output";
-    const directorOption = ui.detailView.querySelector('option[value="director"]');
-    if (directorOption instanceof HTMLOptionElement) {
-      directorOption.disabled = !hasDirector;
-      directorOption.hidden = !hasDirector;
-      directorOption.textContent = directorReady ? "Director" : "Director (pending)";
-    }
+  if (open && detail) {
+    // 0% basis lets the expanded pane fill the middle and shrink, so the body
+    // scrolls instead of growing past the panel.
+    ui.detail.style.flex = expanded ? "1 1 0%" : `0 1 ${Math.round(state.detailShare * 100)}%`;
+    syncDetailView(ui.detailView, state.detailView);
     put(ui.detailTitle, "Generation detail");
-    const body =
-      state.detailView === "director"
-        ? detail!.directorRaw?.trim() ||
-          (detail!.pending && detail!.phase === "director"
-            ? detail!.text || "Director planning…"
-            : detail!.pending
-              ? "(director response pending)"
-              : "(no director response)")
-        : detail!.source?.trim() || detail!.text || detail!.error || "";
-    put(ui.detailBody, body);
-    ui.detailBody.scrollTop = ui.detailBody.scrollHeight;
+    writeStream(
+      ui.detailBody,
+      detailBodyText(detail, state.detailView),
+      `${detail.id}:${state.detailView}`,
+    );
   } else {
-    ui.detail.style.flexBasis = "";
-    ui.detail.style.flexGrow = "";
-    ui.detail.style.flexShrink = "";
+    ui.detail.style.flex = "";
   }
 }
 
-function bubble(message: GenerateMessage, detailId: string | null): HTMLElement {
+/** Leave an open native menu alone. Rewriting options while it is open closes or traps it. */
+function syncDetailView(select: HTMLSelectElement, view: "output" | "director"): void {
+  if (document.activeElement === select) return;
+  if (select.value !== view) select.value = view;
+  for (const option of select.options) {
+    if (option.disabled) option.disabled = false;
+    if (option.hidden) option.hidden = false;
+    const label = option.value === "director" ? "Director" : "Output";
+    if (option.textContent !== label) option.textContent = label;
+  }
+}
+
+function writeStream(element: HTMLElement, value: string, streamKey: string): void {
+  const switched = element.dataset.stream !== streamKey;
+  if (switched || element.clientHeight === 0) element.dataset.follow = "1";
+  else {
+    const distance = element.scrollHeight - element.scrollTop - element.clientHeight;
+    element.dataset.follow = distance < 32 ? "1" : "0";
+  }
+  element.dataset.stream = streamKey;
+  const kept = element.scrollTop;
+  put(element, value);
+  // Replacing text resets scroll. Follow the live end unless the reader moved up.
+  element.scrollTop = element.dataset.follow === "1" ? element.scrollHeight : kept;
+}
+
+function syncTranscript(transcript: HTMLElement, messages: GenerateMessage[], detailId: string | null): void {
+  if (transcript.clientHeight === 0) transcript.dataset.follow = "1";
+  else {
+    const distance = transcript.scrollHeight - transcript.scrollTop - transcript.clientHeight;
+    transcript.dataset.follow = distance < 48 ? "1" : "0";
+  }
+  const kept = transcript.scrollTop;
+  const rows = new Map<string, HTMLElement>();
+  for (const node of transcript.querySelectorAll(".generate-row")) {
+    if (node instanceof HTMLElement && node.dataset.id) rows.set(node.dataset.id, node);
+  }
+  const keep = new Set<string>();
+  let cursor: ChildNode | null = transcript.firstChild;
+  for (const message of messages) {
+    keep.add(message.id);
+    let row = rows.get(message.id);
+    if (!row) row = createRow(message);
+    paintBubble(row, message, detailId);
+    if (row !== cursor) transcript.insertBefore(row, cursor);
+    cursor = row.nextSibling;
+  }
+  for (const [id, row] of rows) {
+    if (!keep.has(id)) row.remove();
+  }
+  transcript.scrollTop = transcript.dataset.follow === "1" ? transcript.scrollHeight : kept;
+}
+
+function createRow(message: GenerateMessage): HTMLElement {
   const row = document.createElement("div");
   row.className = `generate-row is-${message.role}`;
   row.dataset.id = message.id;
+  if (message.role === "model") {
+    const bubble = document.createElement("button");
+    bubble.type = "button";
+    bubble.className = "generate-bubble is-model";
+    row.append(bubble);
+  } else {
+    const bubble = document.createElement("div");
+    bubble.className = "generate-bubble is-user";
+    row.append(bubble);
+  }
+  return row;
+}
 
-  const bubble = document.createElement("button");
-  bubble.type = "button";
-  bubble.className = `generate-bubble is-${message.role}`;
-  if (message.id === detailId) bubble.classList.add("is-selected");
-  bubble.disabled = message.role !== "model";
+function paintBubble(row: HTMLElement, message: GenerateMessage, detailId: string | null): void {
+  const bubble = row.querySelector(".generate-bubble");
+  if (!(bubble instanceof HTMLElement)) return;
+  bubble.classList.toggle("is-selected", message.id === detailId);
+  bubble.classList.toggle("is-pending", Boolean(message.pending));
+  bubble.classList.toggle("is-error", Boolean(message.error) && !message.pending);
+  const preview =
+    message.pending && !message.text.trim() ? "⋯" : truncate(message.text || message.error || "", 220);
+  put(bubble, preview);
   if (message.role === "model") {
     bubble.title = message.pending ? "Open live generation detail" : "Open generation detail";
   }
 
-  if (message.pending && !message.text.trim()) {
-    put(bubble, "⋯");
-    bubble.classList.add("is-pending");
-  } else if (message.pending) {
-    put(bubble, truncate(message.text, 220));
-    bubble.classList.add("is-pending");
-  } else {
-    put(bubble, truncate(message.text || message.error || "", 220));
-  }
-  if (message.error && !message.pending) bubble.classList.add("is-error");
-
+  const meta = row.querySelector(".generate-meta");
   if (message.metrics && !message.pending) {
-    const meta = document.createElement("span");
-    meta.className = "generate-meta";
+    const node = meta instanceof HTMLElement ? meta : document.createElement("span");
+    if (!(meta instanceof HTMLElement)) {
+      node.className = "generate-meta";
+      row.append(node);
+    }
     put(
-      meta,
+      node,
       `${message.metrics.status} · ${Math.round(message.metrics.totalMs)} ms · repairs ${message.metrics.repairAttempts}`,
     );
-    row.append(bubble, meta);
-  } else {
-    row.append(bubble);
+  } else if (meta) {
+    meta.remove();
   }
-  return row;
 }

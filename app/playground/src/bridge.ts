@@ -111,6 +111,11 @@ export interface GvrBridge {
   open?: (key: string) => boolean;
   /** Offline WAV export of the declared audio schedule (mixAudio + encodeWav). */
   exportAudio?: () => { wav: Uint8Array; sampleRate: number; channels: number; durationMs: number } | null;
+  /**
+   * Studio smoke helper (P028). Seeds one user turn and one in-flight director
+   * model turn without calling a model. Pass expand to open the detail pane fully.
+   */
+  seedGeneratePreview?: (user: string, director: string, output: string, expand?: boolean) => void;
 }
 
 export function button(label: string, pressed: boolean, onClick: () => void): HTMLButtonElement {
