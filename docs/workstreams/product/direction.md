@@ -17,10 +17,12 @@ applicable technical contracts. Do not read every engine run or engine inbox.
    `request-to:product` items that unblock or assist Engine (for example
    verification surfaces). Address or advance those before new product-only
    queue work when they are actionable.
-4. **Animation quality gate for generation.** Director distillation remains
-   central; story-complexity programs are the quality baseline — see
+4. **Animation quality gate for generation.** Intent distillation remains
+   central (director path until Direct is *proven* equivalent for those roles);
+   story-complexity programs are the quality baseline — see
    [director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md).
-   Secondary metrics: failures, latency, streaming tape downtime.
+   Secondary metrics: failures, latency, streaming tape downtime. Director is
+   not an automatic permanent preference over a proven Direct path.
 
 ## Studio UX authority (user steering, 2–3 November 2026)
 

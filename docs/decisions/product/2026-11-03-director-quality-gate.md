@@ -18,6 +18,14 @@ instructions, response creativity/variability, and (later) retrieval /
 multi-turn context and curriculum knowledge. It is not optional “corpus
 paperwork” after a direct path “wins” on tiny held-out tasks.
 
+**Director is not automatically preferred forever.** If **direct** generation is
+**proven** (Studio-visible, customer-judged, against story-complexity baselines)
+to capture the same intent distillation, instruction adherence, creativity
+control, and future multi-turn / retrieval roles the director is meant to hold —
+with equal or better animation quality — Product may adopt direct as the default
+path. Until that proof exists, keep director available as the structured
+distillation path and do not retire it on harness pass-rate/latency alone.
+
 **Complexity baseline:** rich story programs (for example *The city comes
 around*, *From Blueprint to Home*, *A crane then a square*, *From pixels to
 prediction*, *Copperleaf*, *The last Streetlight*, *Small Ideas, Enormous
@@ -30,13 +38,14 @@ not authorise preferring direct generation for customer-facing quality.
 
 ## Optimisation order
 
-1. Capture and distill user intent accurately (director + system context).
+1. Capture and distill user intent accurately (director and/or proven-equivalent
+   direct + system context).
 2. Maximise animation quality against story-complexity baselines (human judgment).
 3. Then reduce failures, latency, and streaming downtime.
 
 Experimentation and tweaking for seamless generation belong on that stack —
-especially director ↔ implement coupling — not on declaring victory from
-offlineOk alone.
+especially director ↔ implement coupling and honest A/B against the director’s
+intended roles — not on declaring victory from offlineOk alone.
 
 ## Studio and customer feedback
 
