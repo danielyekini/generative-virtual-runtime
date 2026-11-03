@@ -272,6 +272,10 @@ try {
   await ev(`(() => { const s = document.querySelector('#library-search'); s.value = ''; s.dispatchEvent(new Event('input')); [...document.querySelectorAll('#library-collections button')].find(b => b.textContent.startsWith('Test frames')).click(); })()`);
   const frames = await ev("[...document.querySelectorAll('#library-grid article')].map(b => b.dataset.key)");
   check("collection chip narrows the picker", frames.length > 0 && frames.every((item: string) => item.startsWith("frame:")), frames);
+  check("Test frames holds the capability probes (P031)", ["frame:clip-mask", "frame:dynamic-text", "frame:path-progress", "frame:physics-marble", "frame:spatial-crane", "frame:spatial-echo", "frame:spatial-home", "frame:spatial-seams", "frame:alpha-matte"].every((key) => frames.includes(key)), frames);
+  await ev(`[...document.querySelectorAll('#library-collections button')].find(b => b.textContent.startsWith('Stories')).click()`);
+  const storyKeys = await ev("[...document.querySelectorAll('#library-grid article')].map(b => b.dataset.key)");
+  check("Stories no longer lists capability probes", storyKeys.length > 10 && storyKeys.every((item: string) => item.startsWith("story:")) && !storyKeys.includes("story:clip-mask"), storyKeys);
   await ev(`[...document.querySelectorAll('#library-collections button')].find(b => b.textContent.startsWith('All')).click()`);
   await sleep(1500);
   await shot("1-library");
@@ -449,6 +453,9 @@ try {
   await navigate("/");
   const recent = await ev("[...document.querySelectorAll('#recent-list button')].map(b => b.textContent)");
   check("landing lists recent programs", recent[0] === "Through the Blue" && recent.includes("Ball"), recent);
+  await navigate("/#p/story%3Aclip-mask");
+  const movedProbe = await player();
+  check("a pre-P031 Stories link opens the probe under its Test frames key", movedProbe.programKey === "frame:clip-mask" && (await ev("location.hash")) === "#p/frame%3Aclip-mask", { key: movedProbe.programKey, hash: await ev("location.hash") });
 
   await navigate("/#library");
   check("Library route restores saved favourites and tags", await ev(`document.querySelector('article[data-key="sample:ball"] .favourite').getAttribute('aria-pressed') === 'true' && document.querySelector('article[data-key="sample:ball"] input').value.includes('smoke-tag')`));

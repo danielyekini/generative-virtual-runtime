@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { collectionsOf, filterLibrary } from "../library";
 import { COLLECTIONS, formatForFile, installedPrograms } from "./programs";
+import { decodeMeta } from "./library-state";
+import { canonicalProgramKey, PROBE_IDS } from "./program-keys";
 import { runProgram } from "./run";
 import { describeSceneSummary } from "./scene-summary";
 import { DEFAULT_SETTINGS, decodeRecent, decodeSettings, pushRecent } from "./settings";
@@ -18,6 +20,33 @@ describe("installed programs", () => {
       if (entry.collection === "Imports") expect(entry.format).not.toBe("motionscript");
       else expect(entry.format).toBe("motionscript");
     }
+  });
+
+  it("files capability probes under Test frames, not Stories (P031)", () => {
+    const stories = programs.filter((entry) => entry.collection === "Stories");
+    const frames = programs.filter((entry) => entry.collection === "Test frames");
+    for (const id of PROBE_IDS) {
+      expect(frames.map((entry) => entry.key), id).toContain(`frame:${id}`);
+      expect(programs.some((entry) => entry.key === `story:${id}`), id).toBe(false);
+    }
+    // Stories keep the elaborate narratives; no story caption is a "(capability.id)" probe note.
+    expect(stories.length).toBeGreaterThan(10);
+    for (const entry of stories) expect(entry.caption, entry.key).not.toMatch(/\([a-z]+\.[A-Za-z0-9]+\)\.?$/);
+    for (const label of ["Clip mask", "Dynamic text", "Path progress", "Physics marble", "Spatial crane", "Spatial echo", "Spatial home", "Spatial seams", "Alpha matte"]) {
+      expect(frames.map((entry) => entry.label), label).toContain(label);
+    }
+  });
+
+  it("resolves pre-P031 probe keys and leaves other keys alone", () => {
+    expect(canonicalProgramKey("story:clip-mask")).toBe("frame:clip-mask");
+    expect(canonicalProgramKey("story:into-the-moons-shadow")).toBe("story:into-the-moons-shadow");
+    expect(canonicalProgramKey("sample:ball")).toBe("sample:ball");
+    expect(decodeRecent(JSON.stringify(["story:clip-mask", "frame:clip-mask", "sample:ball"]))).toEqual(["frame:clip-mask", "sample:ball"]);
+    const meta = decodeMeta(JSON.stringify({ "story:dynamic-text": { favourite: true, tags: ["probe"] }, "story:alpha-matte": { favourite: true }, "frame:alpha-matte": { favourite: false } }));
+    expect(meta["frame:dynamic-text"]?.favourite).toBe(true);
+    expect(meta["frame:dynamic-text"]?.tags).toEqual(["probe"]);
+    expect(meta["story:dynamic-text"]).toBeUndefined();
+    expect(meta["frame:alpha-matte"]?.favourite).toBe(false);
   });
 
   it("finds a story by caption words", () => {
