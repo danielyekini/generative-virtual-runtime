@@ -55,6 +55,10 @@ export interface PlayerProbe {
   generateMode?: boolean;
   generateRunning?: boolean;
   generateMessages?: number;
+  /** P029: a saved transcript is playing back inside Generate. */
+  transcriptPlayback?: boolean;
+  /** Bubble ids highlighted for the turn currently on the canvas. */
+  transcriptRendering?: string[];
   split: boolean;
   comparison: boolean;
   comparisonSceneId: string;

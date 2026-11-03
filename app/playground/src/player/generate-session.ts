@@ -9,6 +9,13 @@ import {
 import { DIRECTOR_SYSTEM } from "../../../../tools/native-generation/director";
 import type { GenerationApproach, GenerationMetrics } from "../../../../tools/native-generation/types";
 import { loadStudioReference, STUDIO_GENERATE_MODEL } from "./generate-reference";
+import {
+  messagesFromTranscript,
+  playbackCues,
+  transcriptFromMessages,
+  type GvrTranscript,
+  type PlaybackCue,
+} from "./gvr-transcript";
 import { StudioOllamaGenerator, studioOllamaAvailable } from "./studio-ollama";
 
 export type GenerateRole = "user" | "model";
@@ -34,6 +41,10 @@ export type GenerateMessage = {
   log?: string[];
   /** System prompts this turn was generated with. */
   systems?: SystemPrompts;
+  /** When this bubble was created, as ISO-8601. */
+  startedAt?: string;
+  /** Contract metrics restored from a saved transcript (repairs and latency only). */
+  turnMetrics?: { repairs: number; latencyMs: number };
 };
 
 export type SystemPromptKind = "director" | "motionscript";
@@ -78,6 +89,8 @@ export type GenerateState = {
   systemOverrides: Record<SystemPromptKind, string | null>;
   /** System prompt open in the editor, or null when the editor is closed. */
   promptsEditor: SystemPromptKind | null;
+  /** User and model bubble ids for the turn currently on the canvas. */
+  renderingIds: string[];
 };
 
 let seq = 0;
@@ -100,6 +113,7 @@ export function createGenerateState(): GenerateState {
     copyParts: [...COPY_DEFAULT],
     systemOverrides: { director: null, motionscript: null },
     promptsEditor: null,
+    renderingIds: [],
   };
 }
 
@@ -109,6 +123,8 @@ export type GenerateHost = {
   modelAvailable?: (modelId: string) => Promise<boolean>;
   /** Load a generated MotionScript into the Player and run it. */
   acceptProgram: (label: string, source: string) => void;
+  /** Persist a finished multi-turn session as a GVR transcript. */
+  onTranscript?: (doc: GvrTranscript) => void;
 };
 
 export class GenerateController {
@@ -118,6 +134,9 @@ export class GenerateController {
   private sessionId: string | null = null;
   private generation = 0;
   private readinessCheck = 0;
+  private transcriptMeta: { id: string; title: string; createdAt: string } | null = null;
+  private playbackIndex = -1;
+  private cues: PlaybackCue[] = [];
 
   constructor(host: GenerateHost, state = createGenerateState()) {
     this.host = host;
@@ -291,6 +310,109 @@ export class GenerateController {
     }
   }
 
+  /** Replace the session with a saved transcript and highlight the first playable pair. */
+  loadTranscript(doc: GvrTranscript): PlaybackCue | null {
+    if (this.state.running) this.cancel();
+    else this.publishTranscript();
+    this.stopPlayback();
+    this.transcriptMeta = { id: doc.id, title: doc.title, createdAt: doc.createdAt };
+    const modelChanged = Boolean(doc.model) && doc.model !== this.state.modelId;
+    this.state.approach = doc.approach;
+    if (doc.model) this.state.modelId = doc.model;
+    this.state.messages = messagesFromTranscript(doc);
+    this.state.detailId = null;
+    this.state.detailView = "output";
+    this.state.detailShare = 0;
+    this.state.promptsEditor = null;
+    this.state.running = false;
+    const cue = this.beginPlayback();
+    this.host.onChange();
+    if (modelChanged) void this.checkModel();
+    return cue;
+  }
+
+  playbackActive(): boolean {
+    return this.playbackIndex >= 0;
+  }
+
+  transcriptId(): string | null {
+    return this.transcriptMeta?.id ?? null;
+  }
+
+  /** Advance to the next recorded program. Null when playback is finished. */
+  advancePlayback(): PlaybackCue | null {
+    if (this.playbackIndex < 0) return null;
+    const next = this.playbackIndex + 1;
+    if (next >= this.cues.length) {
+      this.stopPlayback();
+      this.state.lastStatus = "Transcript playback finished";
+      this.host.onChange();
+      return null;
+    }
+    this.playbackIndex = next;
+    const cue = this.applyCue();
+    this.host.onChange();
+    return cue;
+  }
+
+  stopPlayback(): void {
+    this.playbackIndex = -1;
+    this.cues = [];
+    this.state.renderingIds = [];
+  }
+
+  /** Finished turns of the current session, or null when no model turn has settled. */
+  captureTranscript(): GvrTranscript | null {
+    const draft = transcriptFromMessages(this.metaForCapture(), this.state.messages);
+    if (!draft) return null;
+    if (!this.transcriptMeta) {
+      const first = this.state.messages.find((message) => message.role === "user");
+      this.transcriptMeta = {
+        id: crypto.randomUUID(),
+        title: labelForPrompt(first?.text || "Generate session"),
+        createdAt: new Date().toISOString(),
+      };
+    }
+    return transcriptFromMessages(
+      { ...this.transcriptMeta, approach: this.state.approach, model: this.state.modelId },
+      this.state.messages,
+    );
+  }
+
+  private metaForCapture(): { id: string; title: string; createdAt: string; approach: "director" | "direct"; model: string } {
+    return {
+      id: this.transcriptMeta?.id ?? "pending",
+      title: this.transcriptMeta?.title ?? "Generate session",
+      createdAt: this.transcriptMeta?.createdAt ?? new Date().toISOString(),
+      approach: this.state.approach,
+      model: this.state.modelId,
+    };
+  }
+
+  private publishTranscript(): void {
+    const doc = this.captureTranscript();
+    if (doc) this.host.onTranscript?.(doc);
+  }
+
+  private beginPlayback(): PlaybackCue | null {
+    this.cues = playbackCues(this.state.messages);
+    if (!this.cues.length) {
+      this.playbackIndex = -1;
+      this.state.renderingIds = [];
+      this.state.lastStatus = `“${this.transcriptMeta?.title ?? "Transcript"}” has no MotionScript to play`;
+      return null;
+    }
+    this.playbackIndex = 0;
+    return this.applyCue();
+  }
+
+  private applyCue(): PlaybackCue {
+    const cue = this.cues[this.playbackIndex]!;
+    this.state.renderingIds = [cue.userId, cue.assistantId];
+    this.state.lastStatus = `Playing transcript ${this.playbackIndex + 1} of ${this.cues.length}`;
+    return cue;
+  }
+
   cancel(): void {
     this.abort?.abort();
     if (this.sessionId) disposeGenerationSession(this.sessionId);
@@ -303,23 +425,27 @@ export class GenerateController {
       if (!pending.text.trim()) pending.text = "⋯ cancelled";
     }
     this.state.lastStatus = "Generation cancelled";
+    this.publishTranscript();
     this.host.onChange();
   }
 
   async send(prompt: string): Promise<void> {
     const trimmed = prompt.trim();
     if (!trimmed || this.state.running || this.state.modelReadiness !== "ready") return;
+    this.stopPlayback();
     const systems: SystemPrompts = {
       director: this.systemPrompt("director"),
       motionscript: this.systemPrompt("motionscript"),
     };
 
-    const user: GenerateMessage = { id: nextId("user"), role: "user", text: trimmed };
+    const startedAt = new Date().toISOString();
+    const user: GenerateMessage = { id: nextId("user"), role: "user", text: trimmed, startedAt };
     const model: GenerateMessage = {
       id: nextId("model"),
       role: "model",
       text: "",
       pending: true,
+      startedAt,
       phase: this.state.approach === "director" ? "director" : "implement",
       approach: this.state.approach,
       modelId: this.state.modelId,
@@ -356,6 +482,7 @@ export class GenerateController {
       log(`reference load failed: ${model.error}`);
       this.state.running = false;
       this.state.lastStatus = "Reference load failed";
+      this.publishTranscript();
       this.host.onChange();
       return;
     }
@@ -371,6 +498,7 @@ export class GenerateController {
       this.state.running = false;
       this.state.modelReadiness = "unavailable";
       this.state.lastStatus = "Ollama unavailable";
+      this.publishTranscript();
       this.host.onChange();
       return;
     }
@@ -415,6 +543,7 @@ export class GenerateController {
       log(`failed: ${model.error}`);
       this.state.running = false;
       this.state.lastStatus = "Generation failed";
+      this.publishTranscript();
       this.host.onChange();
       return;
     }
@@ -446,6 +575,7 @@ export class GenerateController {
 
     this.state.running = false;
     this.abort = null;
+    this.publishTranscript();
     this.host.onChange();
   }
 }

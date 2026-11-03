@@ -24,6 +24,18 @@ import type { GvrBridge, PlayerProbe } from "../bridge";
 import { isTypingTarget } from "../bridge";
 import { clearCanvas, describeFrame } from "../describe";
 import { decodeMine, encodeMine, STORAGE_KEY, selectionFor, type LocatedDiagnostic, type ProgramEntry, type ProgramFormat } from "../library";
+import {
+  decodeTranscriptStore,
+  encodeTranscriptStore,
+  entryForTranscript,
+  parseGvrTranscript,
+  transcriptIdFromKey,
+  TRANSCRIPT_COLLECTION,
+  TRANSCRIPTS_KEY,
+  upsertTranscript,
+  type GvrTranscript,
+  type PlaybackCue,
+} from "./gvr-transcript";
 import { frameTelemetry, telemetry } from "../telemetry";
 import { clampTime, collectKeyTimes, formatClock, isStaticScene, stepKey } from "../timeline";
 import { FORMAT_LABELS, installedPrograms } from "./programs";
@@ -159,7 +171,11 @@ const tabs = new Map<PanelTab, { tab: HTMLButtonElement; pane: HTMLElement }>(
   PANEL_TABS.map((id) => [id, { tab: $<HTMLButtonElement>(`tab-${id}`), pane: $(`pane-${id}`) }]),
 );
 
-const catalogue = [...installedPrograms(), ...decodeMine(read(STORAGE_KEY))];
+const catalogue = [
+  ...installedPrograms(),
+  ...decodeMine(read(STORAGE_KEY)),
+  ...decodeTranscriptStore(read(TRANSCRIPTS_KEY)).map(entryForTranscript),
+];
 const settings = decodeSettings(read(SETTINGS_KEY));
 let recent = decodeRecent(read(RECENT_KEY));
 const renderer = new CanvasRenderer(ui.canvas, telemetry);
@@ -278,6 +294,8 @@ function runStream(): void {
 
 
 let loaded: ProgramEntry | null = null;
+/** Transcript playback must not replace the visit's MotionScript draft. */
+let ephemeralLoaded = false;
 // Drafts live only in this visit; explicit Library/preset/file loads replace that format's draft.
 const drafts = new Map<ProgramFormat, ProgramEntry>();
 let split = false;
@@ -325,6 +343,9 @@ let modelReadinessTimer = 0;
 const generateUi = bindGeneratePanel($("generate-chrome"));
 const generate = new GenerateController({
   onChange: () => render(),
+  onTranscript: (doc) => {
+    persistTranscripts(upsertTranscript(decodeTranscriptStore(read(TRANSCRIPTS_KEY)), doc));
+  },
   acceptProgram: (label, source) => {
     const key = `mine:generated-${Date.now().toString(36)}`;
     const entry: ProgramEntry = {
@@ -366,12 +387,13 @@ function isStill(): boolean {
   return stream ? !runtime || durationMs() <= 0 : !runtime || isStaticScene(runtime.scene) || durationMs() <= 0;
 }
 
-function openProgram(entry: ProgramEntry, options: { fromHash?: boolean; waitForRun?: boolean } = {}): void {
+function openProgram(entry: ProgramEntry, options: { fromHash?: boolean; waitForRun?: boolean; ephemeral?: boolean } = {}): void {
   stopStream();
-  rememberDraft();
+  if (!options.ephemeral) rememberDraft();
   fileReadId++;
   loaded = { ...entry };
-  drafts.set(entry.format, loaded);
+  ephemeralLoaded = Boolean(options.ephemeral);
+  if (!options.ephemeral) drafts.set(entry.format, loaded);
   comparison = null;
   comparisonRuntime = null;
   ui.splitError.hidden = true;
@@ -579,7 +601,8 @@ function step(kind: "frame" | "key", direction: -1 | 1): void {
 // ---------------------------------------------------------------- Split
 
 function rememberDraft(): void {
-  if (loaded) drafts.set(loaded.format, { ...loaded, source: ui.source.value });
+  if (ephemeralLoaded || !loaded) return;
+  drafts.set(loaded.format, { ...loaded, source: ui.source.value });
 }
 
 function refreshPresets(): void {
@@ -676,6 +699,7 @@ function leaveGenerateMode(openSource = sourceOpenBeforeGenerate): void {
   if (!generateMode) return;
   if (generate.state.running) generate.cancel();
   generate.closeDetail();
+  generate.stopPlayback();
   closeGenerateMenu(generateUi);
   window.clearInterval(modelReadinessTimer);
   generateMode = false;
@@ -733,6 +757,10 @@ function jumpTo(item: LocatedDiagnostic): void {
 // Library and Player are separate routes in one document so navigation preserves drafts.
 const library = new LibraryPage(catalogue, {
   open: (entry) => {
+    if (transcriptIdFromKey(entry.key)) {
+      openTranscript(entry);
+      return;
+    }
     showPlayer();
     // studio-ux P027: a Library load exits Generate and shows the program in Source.
     if (generateMode) leaveGenerateMode(true);
@@ -743,7 +771,61 @@ const library = new LibraryPage(catalogue, {
     showPlayer();
     history.replaceState(null, "", loaded ? `#p/${encodeURIComponent(loaded.key)}` : location.pathname + location.search);
   },
+  importTranscript: (source) => {
+    const parsed = parseGvrTranscript(source);
+    if (!parsed.ok) return parsed.reason === "not-transcript" ? { status: "not-transcript" } : { status: "invalid", message: parsed.message };
+    const docs = upsertTranscript(decodeTranscriptStore(read(TRANSCRIPTS_KEY)), parsed.transcript);
+    if (!persistTranscripts(docs)) return { status: "invalid", message: "Browser storage is unavailable or full. The transcript was not saved." };
+    return { status: "imported" };
+  },
 });
+function persistTranscripts(docs: readonly GvrTranscript[]): boolean {
+  try {
+    localStorage.setItem(TRANSCRIPTS_KEY, encodeTranscriptStore(docs));
+  } catch {
+    return false;
+  }
+  refreshTranscriptCatalogue();
+  return true;
+}
+function refreshTranscriptCatalogue(): void {
+  const kept = catalogue.filter((item) => !transcriptIdFromKey(item.key));
+  catalogue.splice(0, catalogue.length, ...kept, ...decodeTranscriptStore(read(TRANSCRIPTS_KEY)).map(entryForTranscript));
+}
+function openTranscript(entry: ProgramEntry, options: { fromHash?: boolean } = {}): void {
+  const id = transcriptIdFromKey(entry.key);
+  const doc = decodeTranscriptStore(read(TRANSCRIPTS_KEY)).find((item) => item.id === id);
+  if (!doc) return;
+  showPlayer();
+  const hash = `#p/${encodeURIComponent(entry.key)}`;
+  if (!options.fromHash && location.hash !== hash) history.replaceState(null, "", hash);
+  generatePanelHidden = false;
+  enterGenerateMode();
+  const cue = generate.loadTranscript(doc);
+  if (cue) playTranscriptCue(cue, true);
+}
+function playTranscriptCue(cue: PlaybackCue, first = false): void {
+  const id = generate.transcriptId();
+  if (!id) return;
+  if (first) rememberDraft();
+  openProgram({
+    key: `transcript:${id}`,
+    label: cue.label,
+    caption: "Transcript playback",
+    collection: TRANSCRIPT_COLLECTION,
+    origin: "mine",
+    format: "motionscript",
+    source: cue.source,
+  }, { waitForRun: true, fromHash: true, ephemeral: true });
+  run();
+  if (generate.playbackActive() && isStill()) {
+    window.setTimeout(() => {
+      if (!generate.playbackActive() || !isStill()) return;
+      const next = generate.advancePlayback();
+      if (next) playTranscriptCue(next);
+    }, 700);
+  }
+}
 function showPlayer(): void {
   libraryVisible = false;
   document.body.classList.remove("library-open");
@@ -828,7 +910,7 @@ function stateBadge(): { text: string; tone: string } {
 
 function renderHeader(): void {
   put(ui.programName, loaded ? loaded.label : "No program loaded");
-  put(ui.programMeta, loaded ? `${loaded.collection} · ${FORMAT_LABELS[loaded.format]}` : "");
+  put(ui.programMeta, loaded ? `${loaded.collection} · ${transcriptIdFromKey(loaded.key) ? "Transcript" : FORMAT_LABELS[loaded.format]}` : "");
   const badge = stateBadge();
   ui.programState.hidden = !badge.text;
   put(ui.programState, badge.text);
@@ -1250,6 +1332,8 @@ function probe(): PlayerProbe {
     generateMode,
     generateRunning: generate.state.running,
     generateMessages: generate.state.messages.length,
+    transcriptPlayback: generate.playbackActive(),
+    transcriptRendering: [...generate.state.renderingIds],
     split,
     comparison: split && ui.splitCompare.checked,
     comparisonSceneId: comparisonRuntime?.scene.sceneId ?? "",
@@ -1716,6 +1800,10 @@ function readHash(): void {
   if (location.hash !== `#p/${encodeURIComponent(key)}`) history.replaceState(null, "", `#p/${encodeURIComponent(key)}`);
   if (key === loaded?.key) return;
   const entry = catalogue.find((item) => item.key === key);
+  if (entry && transcriptIdFromKey(entry.key)) {
+    openTranscript(entry, { fromHash: true });
+    return;
+  }
   if (entry) openProgram(entry, { fromHash: true });
 }
 window.addEventListener("hashchange", readHash);
@@ -1740,6 +1828,10 @@ requestAnimationFrame(function loop(now: number) {
       if ((!stream || stream.done) && clock.timeMs >= durationMs()) {
         clock.seek(durationMs());
         clock.pause();
+        if (generate.playbackActive()) {
+          const next = generate.advancePlayback();
+          if (next) playTranscriptCue(next);
+        }
       }
       needsDraw = true;
     }
