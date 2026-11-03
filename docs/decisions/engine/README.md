@@ -82,5 +82,6 @@
   reject general loops/modules and compile-time repeater commissioning;
   drawable bindings + cyclic scopes + behaviours are enough; no version bump.
 - [Composition-instance timingScopeId (E048)](composition-instance-timing.md):
-  reject apply; forbid the inert field in a follow-up version bump (E050);
-  no bump in the decision change.
+  reject apply; E050 shipped MotionScript 0.26.0 / Scene IR 0.25.0 forbid + strip.
+- [Variable stroke width profiles (E049)](variable-stroke-width-profiles.md):
+  **stop** — keep uniform `stroke.width`; no language width-profile capability.
