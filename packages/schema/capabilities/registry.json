@@ -229,6 +229,34 @@
       }
     },
     {
+      "id": "timing.timedKeys",
+      "summary": "Keyframes written at times and named beats are compile-time lowerings onto ordinary track start, duration and offsets.",
+      "introducedIn": { "motionscript": "0.23.0" },
+      "targets": ["compiler"],
+      "restrictions": [
+        "MotionScript only: Scene IR is unchanged, no requires token is added and the emitter writes the percentage form. Wire stays 0.2; MotionScript 0.1 programs reject beats and timed keys.",
+        "keyframes accepts `at <time> <value> [ease …] [spatial …];`. The track starts at the first key and lasts until the last; offsets are exact quotients (secondsKeysToTrack). Keys strictly increase, at least two are required, and start / duration headers are rejected with timed keys. Mixing percentage and timed keys in one track is rejected. Times are in the track's own domain (scope-local under timing).",
+        "`beat <name> at <time | beat ± time>;` is a compile-time constant time. A reference names an earlier beat only (forward references are rejected even when the unit waits for a node), names are unique, and results are finite and >= 0. Beats add nothing to Scene IR, may follow a seal, and cannot appear inside a batch. `beat` matches by spelling and is not a reserved word.",
+        "Time positions that may name a beat: animate / keyframes start, timed key at, step at, seal, timing offset and cue at. Lengths (duration, cue offset/duration/fades) do not take a beat. Beats do not create scopes; a beat-local track uses an affine timing scope whose offset is the beat.",
+        "Gaps between per-beat tracks follow the pinned E014 rule: the later track owns a shared boundary, the latest-ended fill forwards writer holds in a gap, otherwise the authored base applies, and there is no backwards fill."
+      ],
+      "support": { "compiler": "supported", "runtime": "not-applicable", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/timed-keys.test.ts#lowers at-keys to start, duration and exact offsets, equal to the percentage form",
+        "packages/compiler/src/timed-keys.test.ts#rejects mixed forms, explicit start/duration, too few keys and non-increasing times",
+        "packages/compiler/src/timed-keys.test.ts#resolves absolute and relative beats in start, step at, seal, timing offset, cue at and key times",
+        "packages/compiler/src/timed-keys.test.ts#rejects forward references even when the referencing unit waits for its node",
+        "packages/compiler/src/timed-keys.test.ts#rejects duplicate names, unknown bases and negative results",
+        "packages/compiler/src/timed-keys.test.ts#streams identically under every fragmentation",
+        "packages/motionscript-emitter/src/timed-keys.test.ts#holds the latest-ended fill forwards writer in a gap, and shows the base otherwise",
+        "packages/motionscript-emitter/src/timed-keys.test.ts#samples the same values at every 50ms step"
+      ],
+      "adapters": {
+        "lottie": { "status": "not-applicable", "scope": "Authoring sugar; importers emit resolved track offsets." },
+        "svg": { "status": "not-applicable", "scope": "Authoring sugar; importers emit resolved track offsets." }
+      }
+    },
+    {
       "id": "easing.cubicBezier",
       "summary": "Cubic easing solves x for progress, then returns y. Y may leave 0..1.",
       "introducedIn": { "motionscript": "0.2.0", "sceneIr": "0.2.0" },

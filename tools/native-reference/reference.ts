@@ -236,6 +236,13 @@ Essentials:
   Speech synthesis is a **host** service, not MotionScript syntax.
 - **0.12 space:** \`spatialLayer\` planar 2.5D (\`space.planar25d\`).
 - **0.13 physics:** planar 2D world (\`physics.planar2d\`).
+- **0.23 timed keys (MotionScript only):** \`beat cross at intro + 1.5s;\` names a
+  time; \`keyframes\` may use \`at <time | beat ± time> <value>;\` keys instead of
+  percentages (no start/duration header; never mix the two forms). \`start\`,
+  \`step at\`, \`seal\`, \`timing offset\` and \`cue at\` may name a beat;
+  \`duration\` stays a length. Declare a beat before any unit that uses it.
+  Prefer per-beat \`animate\` blocks with \`fill forwards\` over full-length
+  percentage tracks (\`timing.timedKeys\`).
 
 Hard excludes for generation: invented loops/functions/packages; \`pending.md\`
 constructs; Lottie/SVG adapter expansion guidance; unsupported registry rows as

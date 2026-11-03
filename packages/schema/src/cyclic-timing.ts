@@ -9,10 +9,12 @@ function issue(code: DiagnosticCode, path: string, message: string): Diagnostic 
  * E014 prototype (decision docs/decisions/engine/time-composition.md).
  *
  * Host/schema helpers for cyclic timing scopes, named beats and keyframes
- * written in seconds. Nothing here is on the wire: Scene IR `TimingScope`
- * still has only offset/stretch, MotionScript has no `period`, `repeat`,
- * `beat` or `at` keyframe syntax, and the registry claims nothing new. The
- * language follow-up is a separate versioned issue.
+ * written in seconds. `secondsKeysToTrack` is the compiler's lowering for
+ * MotionScript 0.23.0 timed keys (`timing.timedKeys`, E044); the compiler
+ * resolves `beat` declarations incrementally with the same rules as
+ * `resolveBeats`. Cyclic scopes are not on the wire yet: Scene IR
+ * `TimingScope` still has only offset/stretch and MotionScript has no
+ * `period` or `repeat` (E043).
  */
 
 /** Upper bound on a finite repeat count. Larger counts are a loop, not a repetition. */

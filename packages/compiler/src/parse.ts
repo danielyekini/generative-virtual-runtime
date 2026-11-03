@@ -22,6 +22,8 @@ import type {
   AnimateAst,
   AttachAst,
   BatchAst,
+  BeatAst,
+  BeatRef,
   BehaviourDeclAst,
   BindDeclAst,
   CameraAst,
@@ -49,6 +51,7 @@ import type {
   ReparentDeclAst,
   SealAst,
   StepAst,
+  TimedFrameAst,
   TimingAst,
   UnitAst,
   Vec,
@@ -169,6 +172,8 @@ function parseHeader(parser: Parser): HeaderAst {
 
 function parseUnit(parser: Parser): UnitAst | undefined {
   const token = peek(parser);
+  // `beat` matches by spelling (MotionScript 0.23), so it is not a reserved word.
+  if (token?.type === "identifier" && token.lexeme === "beat") return parseBeat(parser);
   if (!token || token.type !== "keyword") {
     fail(parser, "Expected a declaration.");
     skipUnit(parser);
@@ -647,6 +652,11 @@ function parseBatch(parser: Parser): BatchAst {
   if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
   while (!done(parser) && !at(parser, "rbrace")) {
     const token = peek(parser);
+    if (token?.type === "identifier" && token.lexeme === "beat") {
+      note(node, parser, "beat cannot appear inside a batch.");
+      skipUnit(parser);
+      continue;
+    }
     if (!token || token.type !== "keyword") break;
     if (token.lexeme === "seal" || token.lexeme === "const" || token.lexeme === "camera" || token.lexeme === "batch") {
       note(node, parser, `${token.lexeme} cannot appear inside a batch.`);
@@ -675,10 +685,13 @@ function parseAnimate(parser: Parser): AnimateAst {
       const value = parseAnimValue(parser);
       if (!value) note(node, parser, `${key.lexeme} needs a number or vector.`);
       else node[key.lexeme] = value;
-    } else if (key.lexeme === "start" || key.lexeme === "duration") {
+    } else if (key.lexeme === "start") {
+      const time = parseUnitTime(parser, node, "startMs");
+      if (time === undefined) note(node, parser, "start needs a time with ms or s, or a beat.");
+      else node.startMs = time;
+    } else if (key.lexeme === "duration") {
       const time = eat(parser, "duration");
-      if (time?.numberValue === undefined) note(node, parser, `${key.lexeme} needs a time with ms or s.`);
-      else if (key.lexeme === "start") node.startMs = time.numberValue;
+      if (time?.numberValue === undefined) note(node, parser, durationMessage(parser));
       else node.durationMs = time.numberValue;
     } else if (key.lexeme === "ease") {
       const ease = parseEasing(parser);
@@ -720,13 +733,16 @@ function parseKeyframes(parser: Parser): KeyframeAst {
   node.target = parseTarget(parser) ?? "";
   if (!node.target) note(node, parser, "keyframes needs a target.");
   if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
-  while (!done(parser) && !at(parser, "rbrace") && !at(parser, "percentage")) {
+  while (!done(parser) && !at(parser, "rbrace") && !at(parser, "percentage") && !at(parser, "keyword", "at")) {
     const key = eat(parser, "keyword");
     if (!key) break;
-    if (key.lexeme === "start" || key.lexeme === "duration") {
+    if (key.lexeme === "start") {
+      const time = parseUnitTime(parser, node, "startMs");
+      if (time === undefined) note(node, parser, "start needs a time with ms or s, or a beat.");
+      else node.startMs = time;
+    } else if (key.lexeme === "duration") {
       const time = eat(parser, "duration");
-      if (time?.numberValue === undefined) note(node, parser, `${key.lexeme} needs a time with ms or s.`);
-      else if (key.lexeme === "start") node.startMs = time.numberValue;
+      if (time?.numberValue === undefined) note(node, parser, durationMessage(parser));
       else node.durationMs = time.numberValue;
     } else if (key.lexeme === "ease") {
       const ease = parseEasing(parser);
@@ -749,8 +765,12 @@ function parseKeyframes(parser: Parser): KeyframeAst {
     }
     expectSemi(parser);
   }
-  while (at(parser, "percentage")) {
-    const offset = eat(parser, "percentage");
+  let mixed = false;
+  while (at(parser, "percentage") || at(parser, "keyword", "at")) {
+    const timed = Boolean(eat(parser, "keyword", "at"));
+    const offset = timed ? undefined : eat(parser, "percentage");
+    const time = timed ? parseTimeRef(parser) : undefined;
+    if (timed && !time) note(node, parser, "at needs a time with ms or s, or a beat.");
     const value = parseAnimValue(parser);
     let ease: KeyframeAst["ease"];
     if (eat(parser, "keyword", "ease")) {
@@ -765,11 +785,82 @@ function parseKeyframes(parser: Parser): KeyframeAst {
       else spatial = { out, in: incoming };
     }
     expectSemi(parser);
-    if (offset?.numberValue === undefined || !value) note(node, parser, "A keyframe needs an offset and a value.");
+    if ((timed ? node.frames.length > 0 : (node.timedFrames?.length ?? 0) > 0) && !mixed) {
+      mixed = true;
+      note(node, parser, "A keyframe track uses percentage keys or timed (at) keys, not both.");
+    }
+    if (timed) {
+      if (!time) continue;
+      if (!value) note(node, parser, "A timed key needs a value.");
+      else {
+        const frame: TimedFrameAst = { atMs: time.ms, value, ...(time.beat ? { beat: time.beat } : {}) };
+        if (ease) frame.ease = ease;
+        if (spatial) frame.spatial = spatial;
+        (node.timedFrames ??= []).push(frame);
+      }
+    } else if (offset?.numberValue === undefined || !value) note(node, parser, "A keyframe needs an offset and a value.");
     else node.frames.push({ offset: offset.numberValue, value, ...(ease ? { ease } : {}), ...(spatial ? { spatial } : {}) });
   }
-  if (node.frames.length < 2) note(node, parser, "A keyframe track needs at least two samples.");
+  if (node.timedFrames) {
+    if (node.startMs !== undefined || node.durationMs !== undefined || node.beatRefs?.length) {
+      note(node, parser, "Timed keys set the track's start and duration; remove start and duration.");
+    }
+  }
+  if (node.frames.length + (node.timedFrames?.length ?? 0) < 2) note(node, parser, "A keyframe track needs at least two samples.");
   eat(parser, "rbrace");
+  expectSemi(parser);
+  return node;
+}
+
+/**
+ * A time position (MotionScript 0.23 timing.timedKeys): a literal duration,
+ * a beat name, or a beat name plus or minus a duration. A sign followed by
+ * anything other than a duration is left for the caller (a key value may be
+ * a signed number).
+ */
+function parseTimeRef(parser: Parser): { ms: number; beat?: string } | undefined {
+  const literal = eat(parser, "duration");
+  if (literal) return literal.numberValue === undefined ? undefined : { ms: literal.numberValue };
+  const name = eat(parser, "identifier");
+  if (!name) return undefined;
+  const sign = peek(parser);
+  const amount = parser.tokens[parser.index + 1];
+  if (sign && (sign.type === "plus" || sign.type === "minus") && amount?.type === "duration" && amount.numberValue !== undefined) {
+    parser.index += 2;
+    return { ms: sign.type === "minus" ? -amount.numberValue : amount.numberValue, beat: name.lexeme };
+  }
+  return { ms: 0, beat: name.lexeme };
+}
+
+/** Parse a time position into `field`; a named beat is recorded for binding at push time. */
+function parseUnitTime(parser: Parser, node: { beatRefs?: BeatRef[] }, field: BeatRef["field"]): number | undefined {
+  const ref = parseTimeRef(parser);
+  if (!ref) return undefined;
+  if (ref.beat) (node.beatRefs ??= []).push({ field, beat: ref.beat });
+  return ref.ms;
+}
+
+/** `duration` is a length, so it never names a beat (a beat is a point in time). */
+function durationMessage(parser: Parser): string {
+  return peek(parser)?.type === "identifier"
+    ? "duration needs a length with ms or s; a beat is a point in time (use timed keys to end at a beat)."
+    : "duration needs a time with ms or s.";
+}
+
+/** `beat <name> at <time | beat ± time>;` — a compile-time constant time (MotionScript 0.23). */
+function parseBeat(parser: Parser): BeatAst {
+  const start = eat(parser, "identifier", "beat");
+  const node: BeatAst = { kind: "beat", name: "", atMs: 0, span: start?.span ?? emptySpan(), errors: [] };
+  const name = eat(parser, "identifier");
+  if (name) node.name = name.lexeme;
+  else note(node, parser, "beat needs a name.");
+  if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
+  const time = parseTimeRef(parser);
+  if (!time) note(node, parser, "at needs a time with ms or s, or an earlier beat.");
+  else {
+    node.atMs = time.ms;
+    if (time.beat) node.after = time.beat;
+  }
   expectSemi(parser);
   return node;
 }
@@ -780,9 +871,9 @@ function parseStep(parser: Parser): StepAst {
   node.target = parseTarget(parser) ?? "";
   if (!eat(parser, "lbrace")) note(node, parser, "Expected '{'.");
   if (!eat(parser, "keyword", "at")) note(node, parser, 'A step needs at.');
-  const time = eat(parser, "duration");
-  if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
-  else node.timeMs = time.numberValue;
+  const time = parseUnitTime(parser, node, "timeMs");
+  if (time === undefined) note(node, parser, "at needs a time with ms or s, or a beat.");
+  else node.timeMs = time;
   expectSemi(parser);
   if (!eat(parser, "keyword", "value")) note(node, parser, "A step needs value.");
   const asBool = parseBoolean(parser);
@@ -802,9 +893,9 @@ function parseStep(parser: Parser): StepAst {
 function parseSeal(parser: Parser): SealAst {
   const start = eat(parser, "keyword", "seal");
   const node: SealAst = { kind: "seal", timeMs: 0, span: start?.span ?? emptySpan(), errors: [] };
-  const time = eat(parser, "duration");
-  if (time?.numberValue === undefined) note(node, parser, "seal needs a time with ms or s.");
-  else node.timeMs = time.numberValue;
+  const time = parseUnitTime(parser, node, "timeMs");
+  if (time === undefined) note(node, parser, "seal needs a time with ms or s, or a beat.");
+  else node.timeMs = time;
   expectSemi(parser);
   return node;
 }
@@ -1168,9 +1259,9 @@ function parseTiming(parser: Parser): TimingAst {
       if (parent) node.parent = parent.lexeme;
       else note(node, parser, "parent needs a scope name.");
     } else if (key.lexeme === "offset") {
-      const offset = eat(parser, "duration");
-      if (offset?.numberValue === undefined) note(node, parser, "offset needs a time with ms or s.");
-      else node.offsetMs = offset.numberValue;
+      const offset = parseUnitTime(parser, node, "offsetMs");
+      if (offset === undefined) note(node, parser, "offset needs a time with ms or s, or a beat.");
+      else node.offsetMs = offset;
     } else if (key.lexeme === "stretch") {
       const stretch = parseSignedNumber(parser);
       if (stretch === undefined) note(node, parser, "stretch needs a number.");
@@ -1616,9 +1707,9 @@ function parseCueDecl(parser: Parser): CueDeclAst {
   if (resource) node.cue.resourceId = resource.lexeme;
   else note(node, parser, "cue needs an audio resource id.");
   if (!eat(parser, "keyword", "at")) note(node, parser, "Expected 'at'.");
-  const time = eat(parser, "duration");
-  if (time?.numberValue === undefined) note(node, parser, "at needs a time with ms or s.");
-  else node.cue.startMs = time.numberValue;
+  const time = parseUnitTime(parser, node, "cue.startMs");
+  if (time === undefined) note(node, parser, "at needs a time with ms or s, or a beat.");
+  else node.cue.startMs = time;
   if (eat(parser, "lbrace")) {
     while (!done(parser) && !at(parser, "rbrace")) {
       const key = eatWord(parser);
