@@ -41,6 +41,7 @@ Declarative entity sugar landed in MotionScript 0.9.0.
 `resources.imageSampling` and `resources.spriteFrames` (`sampling`, `frames`, `frame` on image nodes) landed in MotionScript 0.25.0. Image pattern paint stays a Candidate (E046).
 `timing.timedKeys` (`at` keys inside `keyframes` and `beat` declarations) landed in MotionScript 0.23.0 (MotionScript only).
 `timing.cyclicScopes` (`period` / `repeat` on `timing`, `timing` on `step`) landed in MotionScript 0.24.0.
+Composition-instance `timing` forbid landed in MotionScript 0.26.0 (E050; no new capability token).
 `text.dynamicContent` (numeric format bindings and discrete content steps) landed in MotionScript 0.18.0.
 `text.layoutMetrics` (`requires "text.layoutMetrics"`; builtin align/baseline boxes) landed in MotionScript 0.20.0.
 `paint.strokeDash` (`dash` and `phase` on a stroke; `stroke.phase` tracks) landed in MotionScript 0.21.0.

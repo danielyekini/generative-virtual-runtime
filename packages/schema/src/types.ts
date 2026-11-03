@@ -387,7 +387,6 @@ export interface CompositionInstance {
   opacity: number;
   visible: boolean;
   activation: { startMs: number; endMs: number };
-  timingScopeId: string;
 }
 
 export type GeometryOperator =

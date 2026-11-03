@@ -46,7 +46,7 @@ const CAPABILITY = `scene "cap" {
   requires "composition.definitions";
 };
 timing local { offset 0ms; stretch 1; };
-instance one of chip { start 0ms; end 1s; timing local; };
+instance one of chip { start 0ms; end 1s; };
 composition chip {
   rectangle body { size (10, 10); fill #ffffff; };
 };

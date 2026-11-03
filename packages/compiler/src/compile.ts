@@ -1754,8 +1754,14 @@ function lowerInstance(session: Session, unit: Extract<UnitAst, { kind: "instanc
     session.diagnostics.push(problem("MISSING_REQUIRED", `${unit.name} needs an end time.`, unit.span));
     return;
   }
-  if (!unit.timing || !session.scene.timingScopes?.some((scope) => scope.id === unit.timing)) {
-    session.diagnostics.push(problem("UNKNOWN_TARGET", `Timing scope ${unit.timing ?? ""} does not exist.`, unit.span));
+  if (unit.timing !== undefined) {
+    session.diagnostics.push(
+      problem(
+        "UNSUPPORTED_PROPERTY",
+        `Instance ${unit.name} cannot declare timing; composition instances are non-drawing records and never sample a timing scope.`,
+        unit.span,
+      ),
+    );
     return;
   }
   instances.push({
@@ -1772,7 +1778,6 @@ function lowerInstance(session: Session, unit: Extract<UnitAst, { kind: "instanc
     opacity: 1,
     visible: true,
     activation: { startMs: unit.startMs ?? 0, endMs: unit.endMs },
-    timingScopeId: unit.timing,
   });
   session.scene.instances = instances;
   ensureCapability(session, "composition.definitions");

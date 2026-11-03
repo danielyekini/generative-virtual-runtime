@@ -209,6 +209,9 @@ timingProperty = "parent" , identifier , ";"
    entry (before the first seal for an unbounded cycle). *)
 compositionDecl = "composition" , identifier , "{" , { nodeOrGroup } , "}" , ";" ;
 instanceDecl   = "instance" , identifier , "of" , identifier , "{" , { instanceProperty } , "}" , ";" ;
+(* MotionScript 0.26.0 / Scene IR 0.25.0: instance timing is forbidden (E050).
+   The parser still recognises "timing" so the compiler can emit
+   UNSUPPORTED_PROPERTY rather than a bare syntax error. *)
 instanceProperty = "start" , duration , ";"
                | "end" , duration , ";"
                | "timing" , identifier , ";"

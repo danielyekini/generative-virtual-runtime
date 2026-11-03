@@ -190,7 +190,8 @@ new engine tickets waits on Product P030 (#188). Holder:
 9. E048 ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208))
    **rejected** applying instance timing; the field is an inert no-op on non-drawing
    composition records ([decision](../../decisions/engine/composition-instance-timing.md)).
-   Child E050 versions the forbid/migrate-strip. Ready order: E050, then E049.
+   Child E050 shipped MotionScript 0.26.0 / Scene IR 0.25.0 forbid + migrate strip.
+   Next Ready: E049.
 10. Engine review (3 November 2026, late evening, session
     `552e4bd0-5e51-4cc3-ab9e-ce4a218586f3`) inspected runs `a130fd66` (E047+E045),
     `6df61122` (E020 stop), `e4e4b92a` (E021), `00790532` (E022) and `d5a6c548`

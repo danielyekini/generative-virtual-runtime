@@ -184,7 +184,7 @@ export function validateSceneIR(
   const compositions = v02 ? readCompositions(input.compositions, diags, limits, nodeIds) : [];
   const scopes = v02 ? readTimingScopes(input.timingScopes, input.requiredCapabilities, diags) : [];
   if (v02) {
-    readInstances(input.instances, nodes, compositions, scopes, input.timeline, diags);
+    readInstances(input.instances, nodes, compositions, input.timeline, diags);
     readCapabilities(input.requiredCapabilities, diags);
     readOperators(input.geometryOperators, nodes, compositions, diags);
   }
@@ -2340,7 +2340,6 @@ function readInstances(
   value: unknown,
   nodes: NodeDefinition[] | undefined,
   compositions: { id: string; nodes: NodeDefinition[] }[],
-  scopes: TimingScope[],
   timeline: unknown,
   diags: Diags,
 ): void {
@@ -2351,7 +2350,6 @@ function readInstances(
   }
   const nodeIds = new Set((nodes ?? []).map((node) => node.id));
   const definitions = new Set(compositions.map((composition) => composition.id));
-  const scopeIds = new Set(scopes.map((scope) => scope.id));
   const duration = isRecord(timeline) && typeof timeline.durationMs === "number" ? timeline.durationMs : undefined;
   const instances: { id: string; parentId: string | null; transformParentId: string | null }[] = [];
   const ids = new Set<string>();
@@ -2363,7 +2361,7 @@ function readInstances(
     }
     rejectUnknown(
       entry,
-      ["id", "definitionId", "parentId", "transformParentId", "transform", "opacity", "visible", "activation", "timingScopeId"],
+      ["id", "definitionId", "parentId", "transformParentId", "transform", "opacity", "visible", "activation"],
       path,
       diags,
     );
@@ -2390,9 +2388,6 @@ function readInstances(
       if (duration !== undefined && start !== undefined && end !== undefined && (start < 0 || end > duration + 1e-6)) {
         diags.add("INVALID_TIMING", `${path}.activation`, "Instance activation must lie inside the scene duration.");
       }
-    }
-    if (typeof entry.timingScopeId !== "string" || !scopeIds.has(entry.timingScopeId)) {
-      diags.add("UNKNOWN_TARGET", `${path}.timingScopeId`, "Instance timing scope does not exist.");
     }
     if (id) instances.push({ id, parentId: parentId ?? null, transformParentId: transformParentId ?? null });
   });

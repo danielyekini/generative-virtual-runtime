@@ -1,6 +1,6 @@
 import { isKnownCapability } from "./capabilities";
 import { diagnostic, type Diagnostic } from "./diagnostics";
-import { migrateSceneTo02 } from "./migrate";
+import { migrateSceneTo02, stripInstanceTimingScopeId } from "./migrate";
 import type { SceneIR } from "./types";
 import { validateSceneIR, type ValidateResult } from "./validate";
 
@@ -8,12 +8,14 @@ import { validateSceneIR, type ValidateResult } from "./validate";
  * A 0.2 consumer loads 0.1 through migration.
  * A 0.1 consumer rejects 0.2.
  * Missing capabilities and unready resources reject the scene before playback.
+ * Inert instance `timingScopeId` is stripped before validation (Scene IR 0.25.0).
  */
 export function acceptScene(
   scene: SceneIR,
   options: { consumer: "0.1" | "0.2"; enabled: readonly string[] },
 ): ValidateResult<SceneIR> {
-  const validated = validateSceneIR(scene);
+  const prepared = options.consumer === "0.2" ? stripInstanceTimingScopeId(scene) : scene;
+  const validated = validateSceneIR(prepared);
   if (!validated.ok) return validated;
   if (options.consumer === "0.1") {
     if (validated.value.irVersion !== "0.1") {
