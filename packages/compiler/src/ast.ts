@@ -47,11 +47,13 @@ export type Prop =
   | { name: "inheritOpacity" | "isolated"; value: boolean }
   | { name: "transformParent" | "href" | "clip"; text: string }
   | { name: "blend"; value: "source-over" | "multiply" | "screen" | "overlay" }
-  | { name: "content" | "fontFamily"; text: string }
+  | { name: "content" | "fontFamily" | "group" | "decimal" | "prefix" | "suffix"; text: string }
   | { name: "fontStyle"; value: "normal" | "italic" }
   | { name: "align"; value: "left" | "center" | "right" }
   | { name: "baseline"; value: "alphabetic" | "middle" | "top" | "bottom" }
-  | { name: "fillRule"; value: "nonzero" | "evenodd" };
+  | { name: "fillRule"; value: "nonzero" | "evenodd" }
+  | { name: "number" | "fractionDigits" | "minIntegerDigits"; value: number }
+  | { name: "sign"; value: "auto" | "always" | "never" };
 
 export interface NodeAst {
   kind: "node";
@@ -247,7 +249,7 @@ export interface StepAst {
   kind: "step";
   target: string;
   timeMs: number;
-  value: boolean;
+  value: boolean | string;
   span: SourceSpan;
   errors: Diagnostic[];
 }

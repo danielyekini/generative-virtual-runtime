@@ -122,10 +122,10 @@ multi-line / wrapping / textPath stay out of scope with `text.basic`.
 ## Child work
 
 - **E040** ([#175](https://github.com/danielyekini/generative-virtual-runtime/issues/175)): version `text.dynamicContent` —
-  MotionScript / Scene IR syntax for discrete content updates and numeric format
-  bindings, registry + conformance, Studio readout fixture. Reuse
-  `formatNumber` / `resolveNumericContent`. No per-glyph animators. No Lottie
-  text-animator campaign.
+  Landed as MotionScript / Scene IR **0.18.0** (discrete content steps, text
+  `numeric` / `number` bindings via `formatNumber` / `resolveNumericContent`,
+  registry + conformance, Studio fixture `fixtures/motionscript/dynamic-text.ms`).
+  No per-glyph animators. No Lottie text-animator campaign.
 - **E041** ([#176](https://github.com/danielyekini/generative-virtual-runtime/issues/176)): version `text.layoutMetrics` —
   deterministic builtin metrics/readiness wiring into runtime hit-test / spatial
   text boxes / optional camera-safe labels hook; conformance for align/baseline

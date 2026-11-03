@@ -828,8 +828,46 @@ function lower(session: Session, unit: UnitAst): void {
     const nodeIds = session.scene.nodes.map((node) => node.id);
     const resolved = resolveAddress(unit.target, nodeIds, ["main"]);
     if (!resolved.ok || resolved.animation !== "step" || resolved.target.kind !== "node") {
-      session.diagnostics.push(problem("INVALID_TRACK_TARGET", "A step can write only a node's visible property.", unit.span));
+      session.diagnostics.push(
+        problem("INVALID_TRACK_TARGET", "A step can write a node's visible or content property.", unit.span),
+      );
       return;
+    }
+    const stepTarget = resolved.target;
+    const channel = stepTarget.channel;
+    if (channel !== "visible" && channel !== "content") {
+      session.diagnostics.push(
+        problem("INVALID_TRACK_TARGET", "A step can write a node's visible or content property.", unit.span),
+      );
+      return;
+    }
+    if (channel === "visible" && typeof unit.value !== "boolean") {
+      session.diagnostics.push(problem("INVALID_TRACK_VALUE", "visible steps require a boolean value.", unit.span));
+      return;
+    }
+    if (channel === "content") {
+      if (typeof unit.value !== "string") {
+        session.diagnostics.push(problem("INVALID_TRACK_VALUE", "content steps require a string value.", unit.span));
+        return;
+      }
+      const target = session.scene.nodes.find((node) => node.id === stepTarget.nodeId);
+      if (!target || target.kind !== "text") {
+        session.diagnostics.push(
+          problem("INVALID_TRACK_TARGET", "content steps require a text node.", unit.span),
+        );
+        return;
+      }
+      if (target.numeric) {
+        session.diagnostics.push(
+          problem(
+            "OVERLAPPING_WRITERS",
+            `${stepTarget.nodeId}.content is owned by its numeric binding.`,
+            unit.span,
+          ),
+        );
+        return;
+      }
+      ensureCapability(session, "text.dynamicContent");
     }
     if (unit.timeMs + 1e-9 < session.sealedThroughMs) {
       session.diagnostics.push(problem("INVALID_TIMING", `${unit.target} steps at ${unit.timeMs}ms, before the seal at ${session.sealedThroughMs}ms.`, unit.span));
@@ -842,7 +880,7 @@ function lower(session: Session, unit: UnitAst): void {
     session.stepCount += 1;
     session.scene.timeline.steps.push({
       id: `step${session.stepCount}`,
-      target: { kind: "node", nodeId: resolved.target.nodeId, channel: "visible" },
+      target: { kind: "node", nodeId: stepTarget.nodeId, channel },
       timeMs: unit.timeMs,
       value: unit.value,
     });
@@ -1022,6 +1060,25 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
     }
     const family = prop.fontFamily ?? "sans";
     ensureFont(session, family);
+    const formatFields = {
+      ...(prop.fractionDigits !== undefined ? { fractionDigits: prop.fractionDigits } : {}),
+      ...(prop.minIntegerDigits !== undefined ? { minIntegerDigits: prop.minIntegerDigits } : {}),
+      ...(prop.sign !== undefined ? { sign: prop.sign } : {}),
+      ...(prop.group !== undefined ? { group: prop.group } : {}),
+      ...(prop.decimal !== undefined ? { decimal: prop.decimal } : {}),
+      ...(prop.prefix !== undefined ? { prefix: prop.prefix } : {}),
+      ...(prop.suffix !== undefined ? { suffix: prop.suffix } : {}),
+    };
+    const hasFormat = Object.keys(formatFields).length > 0;
+    if (hasFormat && prop.number === undefined) {
+      session.diagnostics.push(
+        problem("MISSING_REQUIRED", `${ast.name} format fields require number.`, ast.span),
+      );
+      return undefined;
+    }
+    if (prop.number !== undefined) {
+      ensureCapability(session, "text.dynamicContent");
+    }
     node = {
       ...base,
       ...(parentId ? {} : { space: prop.space ?? "world" }),
@@ -1037,6 +1094,14 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
       baseline: prop.baseline ?? "alphabetic",
       fill: prop.fill,
       ...(prop.stroke ? { stroke: prop.stroke } : {}),
+      ...(prop.number !== undefined
+        ? {
+            numeric: {
+              value: prop.number,
+              ...(hasFormat ? { format: formatFields } : {}),
+            },
+          }
+        : {}),
     };
     ensureStrokePaintCapability(session, prop.stroke);
   }
@@ -1154,6 +1219,17 @@ function lowerTrack(session: Session, unit: Extract<UnitAst, { kind: "animate" |
   if (resolved.target.kind === "node" && resolved.target.channel === "path.progress") {
     ensureCapability(session, "geometry.pathProgress");
   }
+  if (resolved.target.kind === "node" && resolved.target.channel === "text.number") {
+    ensureCapability(session, "text.dynamicContent");
+    const nodeId = resolved.target.nodeId;
+    const target = session.scene.nodes.find((node) => node.id === nodeId);
+    if (!target || target.kind !== "text" || target.numeric === undefined) {
+      session.diagnostics.push(
+        problem("INVALID_TRACK_TARGET", `${unit.target} needs a numeric binding on its text node.`, unit.span),
+      );
+      return undefined;
+    }
+  }
   if (
     resolved.target.kind === "node" &&
     (resolved.target.channel === "fill.r" ||
@@ -1245,6 +1321,14 @@ interface IndexedProps {
   align?: "left" | "center" | "right";
   baseline?: "alphabetic" | "middle" | "top" | "bottom";
   fillRule?: "nonzero" | "evenodd";
+  number?: number;
+  fractionDigits?: number;
+  minIntegerDigits?: number;
+  sign?: "auto" | "always" | "never";
+  group?: string;
+  decimal?: string;
+  prefix?: string;
+  suffix?: string;
 }
 
 function indexProps(props: Prop[]): IndexedProps {
@@ -1272,7 +1356,14 @@ function indexProps(props: Prop[]): IndexedProps {
       case "transformParent":
       case "href":
       case "clip":
+      case "group":
+      case "decimal":
+      case "prefix":
+      case "suffix":
         indexed[prop.name] = prop.text;
+        break;
+      case "sign":
+        indexed.sign = prop.value;
         break;
       case "inheritOpacity":
       case "isolated":

@@ -10,6 +10,7 @@ import {
   lerpPathCommands,
   lerpVec2,
   localTimeMs,
+  resolveNumericContent,
   scalarWriters,
   spatialCubicPoint,
   type Camera2DDefinition,
@@ -30,6 +31,8 @@ interface NodePose {
   scale: Vec2;
   opacity: number;
   visible: boolean;
+  content?: string;
+  textNumber?: number;
   commands?: PathCommand[];
   trimStart?: number;
   trimEnd?: number;
@@ -136,15 +139,24 @@ export function sampleScene(
 
   const steps = [...scene.timeline.steps].sort((a, b) => a.timeMs - b.timeMs);
   const visible = new Map<string, boolean>();
+  const contents = new Map<string, string>();
   for (const step of steps) {
     const holdFrontier = options?.excludeStartsAtMs === sceneTimeMs;
     if (step.timeMs < sceneTimeMs || (step.timeMs === sceneTimeMs && !holdFrontier)) {
-      visible.set(step.target.nodeId, step.value);
+      if (step.target.channel === "visible" && typeof step.value === "boolean") {
+        visible.set(step.target.nodeId, step.value);
+      } else if (step.target.channel === "content" && typeof step.value === "string") {
+        contents.set(step.target.nodeId, step.value);
+      }
     }
   }
   for (const [id, value] of visible) {
     const pose = nodePoses.get(id);
     if (pose) pose.visible = value;
+  }
+  for (const [id, value] of contents) {
+    const pose = nodePoses.get(id);
+    if (pose) pose.content = value;
   }
 
   const trimOverrides: Record<string, TrimOverride> = {};
@@ -228,7 +240,7 @@ function applyNodePose(node: NodeDefinition, pose: NodePose): NodeDefinition {
     rotation: pose.rotation,
     scale: { ...pose.scale },
   };
-  const posed: NodeDefinition =
+  let posed: NodeDefinition =
     node.kind === "path" && pose.commands
       ? {
           ...node,
@@ -238,6 +250,17 @@ function applyNodePose(node: NodeDefinition, pose: NodePose): NodeDefinition {
           commands: pose.commands.map((command) => ({ ...command })),
         }
       : { ...node, transform, opacity: pose.opacity, visible: pose.visible };
+  if (posed.kind === "text") {
+    if (posed.numeric) {
+      const value = pose.textNumber ?? posed.numeric.value;
+      posed = {
+        ...posed,
+        content: resolveNumericContent(value, posed.numeric.format),
+      };
+    } else if (pose.content !== undefined) {
+      posed = { ...posed, content: pose.content };
+    }
+  }
   return applyPaintPose(posed, pose);
 }
 
@@ -523,6 +546,9 @@ function writeNode(pose: NodePose, channel: string, value: number): void {
       break;
     case "path.progress":
       pose.pathProgress = value;
+      break;
+    case "text.number":
+      pose.textNumber = value;
       break;
     case "fill.r":
       pose.fillR = value;

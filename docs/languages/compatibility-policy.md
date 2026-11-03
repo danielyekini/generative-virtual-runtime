@@ -101,6 +101,10 @@ Landed in MotionScript / Scene IR **0.16.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.17.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `geometry.pathProgress`. `attach <node> along <path> { progress n; orient b; rollRadius r; };` lowers to Scene IR `pathAttachments` (base definitions on `CREATE_SCENE`, frozen after the first seal); a new `path.progress` number channel in `[0, 1]` animates the base progress on attached nodes. Sampling places the node on the path after morph and then trim, so late geometry edits move it without re-baking progress. An attachment exclusively owns `transform.position.x/y`, plus `transform.rotation` when `orient` or `rollRadius` is set; rolling (distance / radius) is explicit and never implied by `orient`. Only `attach` and `along` became reserved words; `progress`, `orient` and `rollRadius` match by spelling. Older readers reject the capability token, the unknown `pathAttachments` key and the `path.progress` channel. `transform.autoOrient` as a standalone channel and `paint.strokeDash` remain pending. See `docs/decisions/engine/path-progress-geometry-authoring.md`.
 
+### Decision for `text.dynamicContent`
+
+Landed in MotionScript / Scene IR **0.18.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `text.dynamicContent`. Text body fields `number` / format helpers lower to `TextNode.numeric`; `animate Node.number` writes the `text.number` channel; `step Node.content` writes discrete single-line strings. Sampling derives display content with `resolveNumericContent`. A numeric binding exclusively owns content on its node. No new reserved words. Older readers reject the capability token, the unknown `numeric` key and the `content` / `text.number` channels. `text.layoutMetrics` and `text.animators` remain pending. See `docs/decisions/engine/dynamic-text-and-metrics.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

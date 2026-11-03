@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.17.0 | 0.2 |
-| scene-ir | 0.17.0 | 0.2 |
+| motionscript | 0.18.0 | 0.2 |
+| scene-ir | 0.18.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -59,6 +59,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | transform.autoOrient | unsupported | unsupported | unsupported | Rotation follows the position tangent. [registry](../../packages/schema/capabilities/registry.json) |
 | geometry.repeater | unsupported | unsupported | unsupported | A repeater copies geometry with a transform per copy. [registry](../../packages/schema/capabilities/registry.json) |
 | geometry.mergePaths | unsupported | unsupported | unsupported | Boolean merge of paths. [registry](../../packages/schema/capabilities/registry.json) |
+| text.dynamicContent | supported | supported | not-applicable | Discrete content updates and numeric format bindings on text.basic nodes; display strings derive from formatNumber / resolveNumericContent. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/dynamic-text.test.ts) |
 | text.animators | unsupported | unsupported | unsupported | Per-character or range text animation. [registry](../../packages/schema/capabilities/registry.json) |
 
 Statuses are scoped claims, not an end-to-end visual certification. `untested`
@@ -74,5 +75,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `7bd808692b31b76cd1099d8a3cee81fd9d497e329554296a35b12d38790266dd`
-- `packages/schema/capabilities/registry.json` SHA-256 `c2f39fa49360aeb154c268c49e69eda28dea7233c36e1a6dd635935b42cee516`
+- `packages/schema/capabilities/releases.json` SHA-256 `8c2ac6965cf7c6477ff137e1cc890b01b7e4ed8fa0fc155a53a9e749284416bb`
+- `packages/schema/capabilities/registry.json` SHA-256 `2201585e0983e7033d1412c93c55789fd9e632f718fd51f2b6de340e725c1ccb`

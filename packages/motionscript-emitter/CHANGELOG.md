@@ -1,5 +1,11 @@
 # @gvr/motionscript-emitter
 
+## 0.1.9
+
+Emit text `number` / format fields and `content` steps from Scene IR numeric
+bindings and content steps (`text.dynamicContent`, MotionScript / Scene IR
+0.18.0) so dynamic text round-trips with `text.number` tracks.
+
 ## 0.1.8
 
 Emit `attach … along …` declarations from Scene IR `pathAttachments`

@@ -289,7 +289,9 @@ function parseNode(parser: Parser): NodeAst {
       if (command) node.commands.push(command);
       continue;
     }
-    const key = eat(parser, "keyword");
+    // Body words match by spelling (keyword or identifier) so additive fields
+    // like text.dynamicContent `number` / `fractionDigits` need no new reserved words.
+    const key = eatWord(parser);
     if (!key) {
       note(node, parser, `Unexpected token in ${shape}.`);
       skipProperty(parser);
@@ -332,12 +334,28 @@ function parseNodeItem(parser: Parser, node: NodeAst, key: string): void {
     else node.props.push({ name: "rotation", value });
     return;
   }
-  if (key === "opacity" || key === "radius" || key === "fontSize" || key === "fontWeight" || key === "zIndex") {
+  if (
+    key === "opacity" ||
+    key === "radius" ||
+    key === "fontSize" ||
+    key === "fontWeight" ||
+    key === "zIndex" ||
+    key === "number" ||
+    key === "fractionDigits" ||
+    key === "minIntegerDigits"
+  ) {
     const value = key === "zIndex" ? parseSignedInteger(parser) : parseSignedNumber(parser);
     if (value === undefined) {
       note(node, parser, `${key} needs a number.`);
       skipProperty(parser);
     } else node.props.push({ name: key, value });
+    return;
+  }
+  if (key === "sign") {
+    const value = eatWord(parser);
+    if (value?.lexeme === "auto" || value?.lexeme === "always" || value?.lexeme === "never") {
+      node.props.push({ name: "sign", value: value.lexeme });
+    } else note(node, parser, 'sign is "auto", "always", or "never".');
     return;
   }
   if (key === "visible") {
@@ -407,7 +425,7 @@ function parseNodeItem(parser: Parser, node: NodeAst, key: string): void {
     if (stroke) node.props.push({ name: "stroke", stroke });
     return;
   }
-  if (key === "content" || key === "fontFamily") {
+  if (key === "content" || key === "fontFamily" || key === "group" || key === "decimal" || key === "prefix" || key === "suffix") {
     const text = eat(parser, "string");
     if (!text?.stringValue && text?.stringValue !== "") note(node, parser, `${key} needs a string.`);
     else node.props.push({ name: key, text: text?.stringValue ?? "" });
@@ -729,9 +747,14 @@ function parseStep(parser: Parser): StepAst {
   else node.timeMs = time.numberValue;
   expectSemi(parser);
   if (!eat(parser, "keyword", "value")) note(node, parser, "A step needs value.");
-  const value = parseBoolean(parser);
-  if (value === undefined) note(node, parser, "value needs true or false.");
-  else node.value = value;
+  const asBool = parseBoolean(parser);
+  if (asBool !== undefined) {
+    node.value = asBool;
+  } else {
+    const asString = eat(parser, "string");
+    if (asString?.stringValue !== undefined) node.value = asString.stringValue;
+    else note(node, parser, "value needs true, false, or a string.");
+  }
   expectSemi(parser);
   eat(parser, "rbrace");
   expectSemi(parser);

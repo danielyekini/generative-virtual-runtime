@@ -106,7 +106,17 @@ textItem       = commonProperty
                | ( "align" , ( "left" | "center" | "right" ) , ";" )
                | ( "baseline" , ( "alphabetic" | "middle" | "top" | "bottom" ) , ";" )
                | ( "fill" , color , ";" )
-               | ( "stroke" , strokeValue , ";" ) ;
+               | ( "stroke" , strokeValue , ";" )
+               (* MotionScript 0.18 text.dynamicContent: numeric binding fields.
+                  No new reserved words; body words match by spelling. *)
+               | ( "number" , signedNumber , ";" )
+               | ( "fractionDigits" , signedNumber , ";" )
+               | ( "minIntegerDigits" , signedNumber , ";" )
+               | ( "sign" , ( "auto" | "always" | "never" ) , ";" )
+               | ( "group" , string , ";" )
+               | ( "decimal" , string , ";" )
+               | ( "prefix" , string , ";" )
+               | ( "suffix" , string , ";" ) ;
 
 batch          = "batch" , "{" , { nodeDecl | groupDecl | track | step } , "}" , ";" ;
 track          = animateTrack | keyframeTrack ;
@@ -134,7 +144,8 @@ fillMode       = "none" | "forwards" ;
 easing         = segmentEase ;
 animValue      = signedNumber | vec2 | pathLiteral ;
 pathLiteral    = "path" , "{" , { pathCommand } , "}" ;
-step           = "step" , target , "{" , "at" , duration , ";" , "value" , boolean , ";" , "}" , ";" ;
+(* value is boolean for visible; string for content (text.dynamicContent, 0.18.0). *)
+step           = "step" , target , "{" , "at" , duration , ";" , "value" , ( boolean | string ) , ";" , "}" , ";" ;
 seal           = "seal" , duration , ";" ;
 complete       = "complete" , ";" ;
 

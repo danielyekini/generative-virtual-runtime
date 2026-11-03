@@ -245,6 +245,26 @@ export interface ImageNode extends NodeBase {
 export type TextAlign = "left" | "center" | "right";
 export type TextBaseline = "alphabetic" | "middle" | "top" | "bottom";
 
+/**
+ * Numeric format binding for `text.dynamicContent` (Scene IR 0.18.0).
+ * Display content is `resolveNumericContent(value, format)` at sample time.
+ */
+export interface TextNumericFormat {
+  fractionDigits?: number;
+  minIntegerDigits?: number;
+  sign?: "auto" | "always" | "never";
+  group?: string;
+  decimal?: string;
+  prefix?: string;
+  suffix?: string;
+}
+
+export interface TextNumericContent {
+  /** Base number; overridden by an active `text.number` track while it runs. */
+  value: number;
+  format?: TextNumericFormat;
+}
+
 export interface TextNode extends NodeBase {
   kind: "text";
   /** Single line. The transform position is the anchor described by align and baseline. */
@@ -254,6 +274,12 @@ export interface TextNode extends NodeBase {
   baseline: TextBaseline;
   fill: Paint;
   stroke?: Stroke;
+  /**
+   * Requires text.dynamicContent (Scene IR 0.18.0). When set, sampled content is
+   * derived from the number (and optional format); the authored `content` string
+   * is the pre-sample fallback only.
+   */
+  numeric?: TextNumericContent;
 }
 
 export type NodeDefinition =
@@ -428,6 +454,8 @@ export type NodeAnimChannel =
   | "trim.end"
   | "trim.offset"
   | "path.progress"
+  | "content"
+  | "text.number"
   | "fill.r"
   | "fill.g"
   | "fill.b"
@@ -449,7 +477,7 @@ export type PropertyTarget =
   | { kind: "node"; nodeId: string; channel: NodeAnimChannel }
   | { kind: "camera"; cameraId: string; channel: CameraAnimChannel };
 
-export type PropertyType = "number" | "vec2" | "angle" | "boolean" | "path";
+export type PropertyType = "number" | "vec2" | "angle" | "boolean" | "path" | "string";
 
 /**
  * Before the track starts, the sampled value is the authored base.
@@ -521,13 +549,17 @@ export interface ExpressionTrack {
 
 export type TrackDefinition = KeyframeTrack | ExpressionTrack;
 
-/** Discrete change. V1 steps write `visible` only. The value holds until the next step. */
+/**
+ * Discrete change. Holds until the next step on the same channel.
+ * `visible` (boolean) is available from 0.1; `content` (string) requires
+ * text.dynamicContent (Scene IR 0.18.0). Continuous string interpolation is not offered.
+ */
 export interface StepDefinition {
   id: string;
-  target: { kind: "node"; nodeId: string; channel: "visible" };
+  target: { kind: "node"; nodeId: string; channel: "visible" | "content" };
   /** Inclusive scene time. A step at H is excluded from the sealed left-limit state. */
   timeMs: number;
-  value: boolean;
+  value: boolean | string;
 }
 
 export interface SceneIR {

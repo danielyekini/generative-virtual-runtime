@@ -1072,6 +1072,38 @@
       }
     },
     {
+      "id": "text.dynamicContent",
+      "summary": "Discrete content updates and numeric format bindings on text.basic nodes; display strings derive from formatNumber / resolveNumericContent.",
+      "introducedIn": { "motionscript": "0.18.0", "sceneIr": "0.18.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing text.dynamicContent; text numeric bindings, content steps and text.number tracks without it are rejected.",
+        "MotionScript text body fields number / fractionDigits / minIntegerDigits / sign / group / decimal / prefix / suffix lower to TextNode.numeric. Format fields require number. No new reserved words.",
+        "animate Node.number writes the text.number channel and is legal only on a text node with a numeric binding. Sampling sets content via resolveNumericContent(sampledNumber, format).",
+        "step Node.content { at t; value \"…\"; } writes discrete single-line string content. Continuous string interpolation is not offered. Content steps require a text node and cannot share a node with a numeric binding (OVERLAPPING_WRITERS).",
+        "Layout metrics / font readiness (text.layoutMetrics), per-glyph animators (text.animators), wrapping / multi-line and Lottie text-animator import are outside this claim."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/compiler/src/dynamic-text.test.ts#lowers numeric format bindings and gates text.dynamicContent",
+        "packages/compiler/src/dynamic-text.test.ts#is rejected by acceptScene unless text.dynamicContent is enabled",
+        "packages/compiler/src/dynamic-text.test.ts#lowers discrete content steps and rejects them on numeric nodes",
+        "packages/runtime/src/dynamic-text.test.ts#formats a live number into text content",
+        "packages/runtime/src/dynamic-text.test.ts#applies discrete content steps",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips numeric text bindings (text.dynamicContent)"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "untested",
+          "scope": "Native dynamic text is authored, not imported; Lottie text document / animator layers are not lowered to numeric bindings or content steps."
+        },
+        "svg": {
+          "status": "not-applicable",
+          "scope": "Native dynamic text; SVG tspan / animated text content is not lowered to this capability."
+        }
+      }
+    },
+    {
       "id": "text.animators",
       "summary": "Per-character or range text animation.",
       "targets": [],
