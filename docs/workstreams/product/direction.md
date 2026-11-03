@@ -66,22 +66,21 @@ P008). **P020 #157** shipped pack scaffolding (fixtures + Generate chips) but
 is **Human verification — not Done**: closing it assumed the generation quality
 gate passed; no human judgment has been recorded
 ([user steering 3 November 2026](https://github.com/danielyekini/generative-virtual-runtime/issues/157)).
-Prospective corpus generation stays deferred until that gate and Studio
-interaction/transcript surfaces catch up.
+Prospective corpus generation stays deferred until that gate. Studio
+transcript playback (P029) is delivered.
 
 1. **P020 #157** — Story-complexity Generate quality judgment — **Human
    verification** (exercise pack; record animation-quality pass/fail on the
    issue before Done). Blocks declaring Director/Direct winners.
 2. **P029 #186** — Transcripts Library collection + GVR transcript contract +
-   playback highlighting — **Ready / next worker claim** (contract sketch on
-   the issue).
+   playback highlighting — **Done** (contract `0.1`, Library import, Generate
+   playback).
 3. **P023 #166** — Generate waiting-state MotionScript loading-screen presets —
-   Ready.
+   Candidate (not Ready on the board).
 4. **P021 #158** — Generation reserved-word node ids (harness/reference
-   hardening) — Ready.
+   hardening) — Ready (P2).
 5. **P024 #167** — Studio/Ollama model-serving optimisation experiment (disk /
-   hardware pressure) — Ready (bounded options + recommendation; no default
-   change without evidence).
+   hardware pressure) — Ready (P1; highest remaining Ready item).
 6. **P030 #188** — Project **Source** field for engine tickets — Candidate until
    Project write/`PROJECT_TOKEN` can create the field (or user adds it); Engine
    fills Source after.
@@ -94,10 +93,10 @@ interaction/transcript surfaces catch up.
 1. **User / Human verification:** run the P020 pack in Studio Generate
    (Director), judge canvas animation quality, post pass/fail on #157. Keep
    Director default until Direct is proven.
-2. Product run: claim **P029** Transcripts (does not replace the P020 gate).
-3. Then **P023** loading screens or **P021** reserved-id hardening.
-4. Confirm **P009** speech/media UX when ready → then Ready.
-5. Unblock **P030** when a token with `project` scope (or the board-sync secret)
+2. Product run: claim **P024** (only remaining Ready P1). **P021** follows.
+   **P023** stays Candidate until its loading-screen scope is promoted.
+3. Confirm **P009** speech/media UX when ready → then Ready.
+4. Unblock **P030** when a token with `project` scope (or the board-sync secret)
    can add the Source field.
 
 Do not invent Studio chrome beyond studio-ux. Keep Studio delivery ahead of
@@ -134,5 +133,5 @@ via P008; judgment-pack **scaffolding** lives under
 `fixtures/generation/quality-judgment/` for
 [P020 #157](https://github.com/danielyekini/generative-virtual-runtime/issues/157)
 (**Human verification**, not Done — user steering). Actual corpus generation
-remains prospective and must not displace the P020 human gate, Studio
-Transcripts (P029), loading screens (P023), or speech UX confirmation for P009.
+remains prospective and must not displace the P020 human gate, loading screens
+(P023), or speech UX confirmation for P009. Transcript playback (P029) is delivered.

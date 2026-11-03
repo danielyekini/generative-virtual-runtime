@@ -315,7 +315,7 @@ export function renderGeneratePanel(
 
   // Keep bubble nodes across tokens. Replacing them drops clicks that start
   // on one frame and finish on the next.
-  syncTranscript(ui.transcript, state.messages, state.detailId);
+  syncTranscript(ui.transcript, state.messages, state.detailId, state.renderingIds);
 
   const detail = detailMessage(state);
   const open = Boolean(detail) && state.detailShare > 0;
@@ -390,7 +390,12 @@ function writeStream(element: HTMLElement, value: string, streamKey: string): vo
   element.scrollTop = element.dataset.follow === "1" ? element.scrollHeight : kept;
 }
 
-function syncTranscript(transcript: HTMLElement, messages: GenerateMessage[], detailId: string | null): void {
+function syncTranscript(
+  transcript: HTMLElement,
+  messages: GenerateMessage[],
+  detailId: string | null,
+  renderingIds: readonly string[] = [],
+): void {
   if (transcript.clientHeight === 0) transcript.dataset.follow = "1";
   else {
     const distance = transcript.scrollHeight - transcript.scrollTop - transcript.clientHeight;
@@ -402,19 +407,29 @@ function syncTranscript(transcript: HTMLElement, messages: GenerateMessage[], de
     if (node instanceof HTMLElement && node.dataset.id) rows.set(node.dataset.id, node);
   }
   const keep = new Set<string>();
+  const rendering = new Set(renderingIds);
   let cursor: ChildNode | null = transcript.firstChild;
+  let renderingRow: HTMLElement | null = null;
   for (const message of messages) {
     keep.add(message.id);
     let row = rows.get(message.id);
     if (!row) row = createRow(message);
-    paintBubble(row, message, detailId);
+    paintBubble(row, message, detailId, rendering.has(message.id));
+    if (rendering.has(message.id)) renderingRow = row;
     if (row !== cursor) transcript.insertBefore(row, cursor);
     cursor = row.nextSibling;
   }
   for (const [id, row] of rows) {
     if (!keep.has(id)) row.remove();
   }
-  transcript.scrollTop = transcript.dataset.follow === "1" ? transcript.scrollHeight : kept;
+  const renderingKey = renderingIds.join(" ");
+  const renderingChanged = transcript.dataset.rendering !== renderingKey;
+  if (renderingChanged) {
+    transcript.dataset.rendering = renderingKey;
+    renderingRow?.scrollIntoView({ block: "nearest" });
+  } else {
+    transcript.scrollTop = transcript.dataset.follow === "1" ? transcript.scrollHeight : kept;
+  }
 }
 
 function createRow(message: GenerateMessage): HTMLElement {
@@ -434,9 +449,13 @@ function createRow(message: GenerateMessage): HTMLElement {
   return row;
 }
 
-function paintBubble(row: HTMLElement, message: GenerateMessage, detailId: string | null): void {
+function paintBubble(row: HTMLElement, message: GenerateMessage, detailId: string | null, rendering = false): void {
   const bubble = row.querySelector(".generate-bubble");
   if (!(bubble instanceof HTMLElement)) return;
+  row.classList.toggle("is-rendering", rendering);
+  bubble.classList.toggle("is-rendering", rendering);
+  if (rendering) bubble.setAttribute("aria-current", "true");
+  else bubble.removeAttribute("aria-current");
   bubble.classList.toggle("is-selected", message.id === detailId);
   bubble.classList.toggle("is-pending", Boolean(message.pending));
   bubble.classList.toggle("is-error", Boolean(message.error) && !message.pending);
@@ -448,16 +467,18 @@ function paintBubble(row: HTMLElement, message: GenerateMessage, detailId: strin
   }
 
   const meta = row.querySelector(".generate-meta");
-  if (message.metrics && !message.pending) {
+  const metaText = !message.pending && message.metrics
+    ? `${message.metrics.status} · ${Math.round(message.metrics.totalMs)} ms · repairs ${message.metrics.repairAttempts}`
+    : !message.pending && message.turnMetrics
+      ? `${Math.round(message.turnMetrics.latencyMs)} ms · repairs ${message.turnMetrics.repairs}`
+      : "";
+  if (metaText) {
     const node = meta instanceof HTMLElement ? meta : document.createElement("span");
     if (!(meta instanceof HTMLElement)) {
       node.className = "generate-meta";
       row.append(node);
     }
-    put(
-      node,
-      `${message.metrics.status} · ${Math.round(message.metrics.totalMs)} ms · repairs ${message.metrics.repairAttempts}`,
-    );
+    put(node, metaText);
   } else if (meta) {
     meta.remove();
   }

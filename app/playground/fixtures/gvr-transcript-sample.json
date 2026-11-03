@@ -1,0 +1,40 @@
+{
+  "gvrTranscript": "0.1",
+  "id": "sample-baseline",
+  "title": "Sample baseline transcript",
+  "createdAt": "2026-11-03T12:00:00.000Z",
+  "approach": "director",
+  "model": "qwen2.5-coder:14b",
+  "turns": [
+    {
+      "id": "u1",
+      "role": "user",
+      "text": "Move a circle across the frame.",
+      "startedAt": "2026-11-03T12:00:01.000Z"
+    },
+    {
+      "id": "a1",
+      "role": "assistant",
+      "text": "A circle travels to the right.",
+      "directorScript": "{\"intent\":\"travel\"}",
+      "motionScript": "scene \"transcript-a\" {\n  version \"0.1\";\n  viewport (400, 300);\n  background #101014;\n  duration 1s;\n};\ncircle c { radius 16; fill #38bdf8; };\nanimate c.position.x { from 40; to 320; duration 1s; };\ncomplete;\n",
+      "startedAt": "2026-11-03T12:00:02.000Z",
+      "metrics": { "repairs": 0, "latencyMs": 1200 }
+    },
+    {
+      "id": "u2",
+      "role": "user",
+      "text": "Now send it back.",
+      "startedAt": "2026-11-03T12:00:04.000Z"
+    },
+    {
+      "id": "a2",
+      "role": "assistant",
+      "text": "The circle returns.",
+      "directorScript": "{\"intent\":\"return\"}",
+      "motionScript": "scene \"transcript-b\" {\n  version \"0.1\";\n  viewport (400, 300);\n  background #101014;\n  duration 1s;\n};\ncircle c { radius 16; fill #fbbf24; };\nanimate c.position.x { from 320; to 40; duration 1s; };\ncomplete;\n",
+      "startedAt": "2026-11-03T12:00:05.000Z",
+      "metrics": { "repairs": 1, "latencyMs": 800 }
+    }
+  ]
+}
