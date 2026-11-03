@@ -42,7 +42,7 @@ unit           = constant | cameraDecl | nodeDecl | groupDecl | batch | track | 
                | timingDecl | compositionDecl | instanceDecl | operatorsDecl | interactDecl
                | audioDecl | audioSugar | cueDecl | spatialLayerDecl | physicsDecl | attachDecl
                | entityDecl | geometryDecl | bindDecl | removeEntity | reparentDecl
-               | behaviourDecl | cancelBehaviour ;
+               | behaviourDecl | cancelBehaviour | beatDecl ;
 constant       = "const" , identifier , "=" , signedNumber , ";" ;
 cameraDecl     = "camera" , identifier , "{" , { cameraProperty } , "}" , ";" ;
 cameraProperty = "position" , vec2 , ";"
@@ -127,17 +127,18 @@ batch          = "batch" , "{" , { nodeDecl | groupDecl | track | step } , "}" ,
 track          = animateTrack | keyframeTrack ;
 animateTrack   = "animate" , target , "{" , { animateProperty } , "}" , ";" ;
 keyframeTrack  = "keyframes" , target , "{" , { keyframeHeader } ,
-                 keyframeValue , keyframeValue , { keyframeValue } , "}" , ";" ;
+                 ( keyframeValue , keyframeValue , { keyframeValue }
+                 | timedKey , timedKey , { timedKey } ) , "}" , ";" ;
 animateProperty= ( "from" , animValue , ";" )
                | ( "to" , animValue , ";" )
-               | ( "start" , duration , ";" )
+               | ( "start" , timeRef , ";" )
                | ( "duration" , duration , ";" )
                | ( "ease" , easing , ";" )
                | ( "expression" , string , ";" )
                | ( "fill" , fillMode , ";" )
                | ( "timing" , identifier , ";" )
                | ( "order" , signedInteger , ";" ) ;
-keyframeHeader = ( "start" , duration , ";" )
+keyframeHeader = ( "start" , timeRef , ";" )
                | ( "duration" , duration , ";" )
                | ( "ease" , easing , ";" )
                | ( "fill" , fillMode , ";" )
@@ -145,13 +146,25 @@ keyframeHeader = ( "start" , duration , ";" )
                | ( "order" , signedInteger , ";" ) ;
 keyframeValue  = percentage , animValue , [ "ease" , easing ] , ";" ;
 percentage     = number , "%" ;
+(* MotionScript 0.23 timing.timedKeys. A timed track has no start or duration
+   header: it starts at its first key and lasts until its last key, and key
+   times strictly increase. Percentage and timed keys never mix in one track.
+   timeRef is a duration, a beat, or a beat plus or minus a duration. After a
+   beat, + or - followed by a duration is the offset; any other sign belongs to
+   the key value. "beat" matches by spelling and is not a reserved word. A beat
+   names an earlier beat only; it resolves to a finite time >= 0. Lengths
+   (duration, cue offset/duration/fades) never take a beat. *)
+timedKey       = "at" , timeRef , animValue , [ "ease" , easing ] ,
+                 [ "spatial" , vec2 , vec2 ] , ";" ;
+beatDecl       = "beat" , identifier , "at" , timeRef , ";" ;
+timeRef        = duration | identifier , [ ( "+" | "-" ) , duration ] ;
 fillMode       = "none" | "forwards" ;
 easing         = segmentEase ;
 animValue      = signedNumber | vec2 | pathLiteral ;
 pathLiteral    = "path" , "{" , { pathCommand } , "}" ;
 (* value is boolean for visible; string for content (text.dynamicContent, 0.18.0). *)
-step           = "step" , target , "{" , "at" , duration , ";" , "value" , ( boolean | string ) , ";" , "}" , ";" ;
-seal           = "seal" , duration , ";" ;
+step           = "step" , target , "{" , "at" , timeRef , ";" , "value" , ( boolean | string ) , ";" , "}" , ";" ;
+seal           = "seal" , timeRef , ";" ;
 complete       = "complete" , ";" ;
 
 (* MotionScript 0.2. A 0.1 program rejects these units.
@@ -165,7 +178,7 @@ complete       = "complete" , ";" ;
 *)
 timingDecl     = "timing" , identifier , "{" , { timingProperty } , "}" , ";" ;
 timingProperty = "parent" , identifier , ";"
-               | "offset" , duration , ";"
+               | "offset" , timeRef , ";"
                | "stretch" , signedNumber , ";" ;
 compositionDecl = "composition" , identifier , "{" , { nodeOrGroup } , "}" , ";" ;
 instanceDecl   = "instance" , identifier , "of" , identifier , "{" , { instanceProperty } , "}" , ";" ;
@@ -233,7 +246,7 @@ sugarArg       = ( "duration" , duration )
                | ( "loop" , [ boolean ] )
                | ( "seed" , signedNumber )
                | ( ( "stability" | "similarity" | "speed" ) , signedNumber ) ;
-cueDecl        = "cue" , identifier , bus , identifier , "at" , duration ,
+cueDecl        = "cue" , identifier , bus , identifier , "at" , timeRef ,
                  [ "{" , { cueItem } , "}" ] , ";" ;
 bus            = "narration" | "effects" | "music" ;
 cueItem        = ( ( "offset" | "duration" | "fadeIn" | "fadeOut" ) , duration , ";" )

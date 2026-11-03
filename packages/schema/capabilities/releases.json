@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.22.0",
+      "current": "0.23.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.20"
+      "packageVersion": "0.1.21"
     },
     "scene-ir": {
       "current": "0.22.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.20"
+      "packageVersion": "0.1.21"
     }
   },
   "versions": [
@@ -167,6 +167,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.22.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.23.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.23.0.md"
     },
     {
       "language": "motionscript",
@@ -496,6 +503,13 @@
       "compiler": "0.1.18",
       "runtime": "0.1.24",
       "readers": "Wire stays 0.2. geometry.pathSpace is gated by requiredCapabilities / requires together with geometry.pathProgress. Packages without it keep 0.17 path-local attachment placement. No new syntax. Older readers reject the unknown capability token."
+    },
+    {
+      "motionscript": "0.23.0",
+      "sceneIr": "0.22.0",
+      "compiler": "0.1.19",
+      "runtime": "0.1.24",
+      "readers": "Wire stays 0.2. timing.timedKeys is MotionScript only: timed keys and beats lower onto existing track offsets, so compiled Scene IR is unchanged and readable by 0.22 runtimes. No requires token. Older compilers reject beat units and at keys as syntax errors."
     }
   ]
 }

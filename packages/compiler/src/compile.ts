@@ -11,6 +11,7 @@ import {
   localTimeMs,
   parseExpression,
   resolveAddress,
+  secondsKeysToTrack,
   validateSceneIR,
   type AudioGenerativeSource,
   type AudioResourceDefinition,
@@ -32,7 +33,7 @@ import {
   type Transform,
   type Vec2,
 } from "@gvr/schema";
-import type { AnimLiteral, AudioDeclAst, AudioGenerativeFields, AudioSugarAst, EaseAst, HeaderAst, NodeAst, ProgramAst, Prop, UnitAst } from "./ast";
+import type { AnimLiteral, AudioDeclAst, AudioGenerativeFields, AudioSugarAst, BeatAst, EaseAst, HeaderAst, NodeAst, ProgramAst, Prop, UnitAst } from "./ast";
 import type { EntityPatchOp } from "@gvr/schema";
 import {
   emitEntityStatementDelta,
@@ -56,6 +57,8 @@ export interface Session {
   telemetry?: Telemetry;
   scene: SceneIR;
   constants: Map<string, number>;
+  /** Named beats (MotionScript 0.23): compile-time times, bound when a unit is pushed. */
+  beats: Map<string, number>;
   sealedThroughMs: number;
   trackCount: number;
   stepCount: number;
@@ -129,6 +132,11 @@ export function pushUnit(session: Session, unit: UnitAst): void {
     session.diagnostics.push(problem("INVALID_TYPE", "Units cannot follow complete;.", unit.span));
     return;
   }
+  if (unit.kind === "beat") {
+    declareBeat(session, unit);
+    return;
+  }
+  bindBeats(session, unit);
   if (session.deferred.length > 0 && unit.kind === "seal") {
     session.telemetry?.count("compile.rejected_units");
     blockSeal(session, unit, `Seal at ${unit.timeMs}ms is blocked by an unresolved reference.`);
@@ -149,6 +157,112 @@ export function pushUnit(session: Session, unit: UnitAst): void {
     return;
   }
   if (applyUnit(session, unit, true)) retryDeferred(session);
+}
+
+/**
+ * MotionScript 0.23 `beat`: a compile-time constant time. References name an
+ * earlier beat only, names are unique and results are finite and >= 0, so a
+ * beat a streamed unit has read never changes. Beats add nothing to Scene IR
+ * and may be declared after a seal.
+ */
+function declareBeat(session: Session, unit: BeatAst): void {
+  const reject = (code: Diagnostic["code"], message: string) => {
+    session.telemetry?.count("compile.rejected_units");
+    session.diagnostics.push(code === "INVALID_TIMING" ? timingProblem(message, unit.span) : problem(code, message, unit.span));
+  };
+  if (unit.errors.length > 0) {
+    session.telemetry?.count("compile.rejected_units");
+    session.diagnostics.push(...unit.errors);
+    return;
+  }
+  if (session.scene.irVersion !== "0.2") return reject("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot declare beats.");
+  if (session.beats.has(unit.name)) return reject("DUPLICATE_ID", `Beat ${unit.name} is already declared.`);
+  let time = unit.atMs;
+  if (unit.after !== undefined) {
+    const base = session.beats.get(unit.after);
+    if (base === undefined) {
+      return reject("UNKNOWN_TARGET", `Beat ${unit.name} refers to ${unit.after}, which is not declared before it.`);
+    }
+    time = base + unit.atMs;
+  }
+  if (!Number.isFinite(time) || time < 0) return reject("INVALID_TIMING", `Beat ${unit.name} must resolve to a time >= 0.`);
+  session.beats.set(unit.name, time);
+  session.telemetry?.count("compile.accepted_units");
+}
+
+/**
+ * Replace beat references in a pushed unit (and batch items) with their times,
+ * and lower timed keys to the ordinary start/duration/offset form. Binding at
+ * push time, before any deferral, keeps forward references rejected even when
+ * the unit waits for a node. Problems become unit errors, so the unit is
+ * rejected through the ordinary path.
+ */
+function bindBeats(session: Session, unit: UnitAst): void {
+  if (unit.kind === "batch") {
+    for (const item of unit.items) bindBeats(session, item);
+    return;
+  }
+  if (!("beatRefs" in unit) && !(unit.kind === "keyframes" && unit.timedFrames)) return;
+  const usesBeats = ("beatRefs" in unit && (unit.beatRefs?.length ?? 0) > 0) || (unit.kind === "keyframes" && unit.timedFrames !== undefined);
+  if (!usesBeats) return;
+  if (session.scene.irVersion !== "0.2") {
+    unit.errors.push(problem("UNSUPPORTED_IR_VERSION", "MotionScript 0.1 cannot use beats or timed keys.", unit.span));
+    return;
+  }
+  const beatTime = (name: string): number | undefined => {
+    const time = session.beats.get(name);
+    if (time === undefined) {
+      unit.errors.push(problem("UNKNOWN_TARGET", `Beat ${name} is not declared before this unit.`, unit.span));
+    }
+    return time;
+  };
+  for (const ref of ("beatRefs" in unit ? unit.beatRefs : undefined) ?? []) {
+    const base = beatTime(ref.beat);
+    if (base === undefined) continue;
+    let resolved: number;
+    if (ref.field === "cue.startMs" && unit.kind === "cue") resolved = unit.cue.startMs = base + unit.cue.startMs;
+    else if (ref.field === "startMs" && (unit.kind === "animate" || unit.kind === "keyframes")) resolved = unit.startMs = base + (unit.startMs ?? 0);
+    else if (ref.field === "timeMs" && (unit.kind === "step" || unit.kind === "seal")) resolved = unit.timeMs = base + unit.timeMs;
+    else if (ref.field === "offsetMs" && unit.kind === "timing") resolved = unit.offsetMs = base + (unit.offsetMs ?? 0);
+    else continue;
+    if (!Number.isFinite(resolved) || resolved < 0) {
+      unit.errors.push(timingProblem(`${ref.beat} resolves to a negative time here.`, unit.span));
+    }
+  }
+  if ("beatRefs" in unit) delete unit.beatRefs;
+  if (unit.kind === "keyframes" && unit.timedFrames) {
+    const timed = unit.timedFrames;
+    delete unit.timedFrames;
+    const keys = [];
+    for (const frame of timed) {
+      const base = frame.beat === undefined ? 0 : beatTime(frame.beat);
+      if (base === undefined) return;
+      keys.push({ atMs: base + frame.atMs, value: frame });
+    }
+    if (keys.some((key) => !Number.isFinite(key.atMs) || key.atMs < 0)) {
+      unit.errors.push(timingProblem("Timed keys must resolve to times >= 0.", unit.span));
+      return;
+    }
+    const track = secondsKeysToTrack(keys);
+    if (!track.ok) {
+      unit.errors.push(
+        ...track.diagnostics.map((item) => ({ ...item, phase: "compile" as const, effect: "UNIT_REJECTED" as const, sourceSpan: unit.span })),
+      );
+      return;
+    }
+    unit.startMs = track.startMs;
+    unit.durationMs = track.durationMs;
+    unit.frames = track.keyframes.map((key) => ({
+      offset: key.offset,
+      value: key.value.value,
+      ...(key.value.ease ? { ease: key.value.ease } : {}),
+      ...(key.value.spatial ? { spatial: key.value.spatial } : {}),
+    }));
+  }
+}
+
+function timingProblem(message: string, sourceSpan?: SourceSpan): Diagnostic {
+  return diagnostic({ code: "INVALID_TIMING", phase: "compile", category: "temporal", effect: "UNIT_REJECTED", message, sourceSpan });
 }
 
 export function finishSession(session: Session, sourceCompleted: boolean, span?: SourceSpan): CompileResult {
@@ -534,6 +648,7 @@ function createSession(header: HeaderAst, diagnostics: Diagnostic[]): Session {
   return {
     scene,
     constants: new Map(),
+    beats: new Map(),
     sealedThroughMs: 0,
     trackCount: 0,
     stepCount: 0,

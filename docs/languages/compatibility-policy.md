@@ -117,6 +117,10 @@ Landed in MotionScript / Scene IR **0.21.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.22.0**. Wire stays `"0.2"`. No new syntax. The compiler adds `geometry.pathSpace` beside `geometry.pathProgress` when it lowers `attach`. Sampling then maps the command point through the path node's sampled transform into the traveller's parent space (`inverse(parent world) × path world × point`), using `localMatrix` and `transformParentId ?? parentId`, without the camera. `orient` uses the transformed tangent. `rollRadius` stays command-space arc length. Scenes that require only `geometry.pathProgress` keep the 0.17 path-local write. Mixed root spaces, singular parents and attachment cycles fail closed. Older readers reject the unknown capability token. See `docs/decisions/engine/path-attachment-space.md`.
 
+### Decision for `timing.timedKeys`
+
+Landed in MotionScript **0.23.0** only; Scene IR stays **0.22.0**. Wire stays `"0.2"` and there is no `requires` token, because the compiler lowers `at` keys and `beat` declarations onto the track `startMs`, `durationMs` and keyframe offsets that Scene IR already stores. Compiled scenes are unchanged for every 0.22 reader, and the emitter writes the percentage form. Older compilers reject the new syntax as syntax errors. `beat` matches by spelling and is not reserved. A registry row for a MotionScript-only capability names only `introducedIn.motionscript` and claims the compiler layer only. See `docs/decisions/engine/time-composition.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.
