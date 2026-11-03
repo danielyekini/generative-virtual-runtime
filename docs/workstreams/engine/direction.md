@@ -107,16 +107,17 @@ reimplementation from this acknowledgement alone.
 
 ## Next work
 
-Engine review (2 November 2026, runs E029, E031, E032, E033/E034, E030): continue.
+Engine review (2–3 November 2026): E027/E035 Done; E012 clip-first landed as
+MotionScript / Scene IR 0.16.0 `compositing.mask`
+(`docs/decisions/engine/scoped-clip-compositing.md`). Continue.
 
-1. E012 ([#31](https://github.com/danielyekini/generative-virtual-runtime/issues/31)):
-   clip-first scoped compositing (clips, then justified mattes). Native; design
-   pass before syntax; a language claim takes the next minor (≥ 0.16.0). Ready.
-2. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
-   verify and fix native diagnostic and latent-correctness leads against 0.15.0. Ready.
+1. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
+   verify and fix native diagnostic and latent-correctness leads against 0.16.0. Ready.
+2. E036 ([#156](https://github.com/danielyekini/generative-virtual-runtime/issues/156)):
+   track mattes / `compositing.matte` (child of E012 decision). Candidate until
+   clip-first evidence and any offscreen-layer need are reviewed.
 3. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
-   E027 (`interact` emission) and E035 (`@gvr/audio-provider`) are Done.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

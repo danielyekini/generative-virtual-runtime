@@ -270,6 +270,22 @@ describe("CanvasRenderer", () => {
 
 // The recorder observes actual CanvasRenderer calls on both routing branches.
 
+describe("group clip scopes through CanvasRenderer", () => {
+  it("applies clip on compositing scopes", () => {
+    const source = `scene "clip" { version "0.2"; viewport (200, 200); background #000000; duration 1s; requires "compositing.mask"; requires "compositing.isolatedOpacity"; };
+      group Card { clip Hole;
+        rectangle Panel { size (100, 100); fill #ff0000; };
+      };
+      circle Hole { position (50, 50); radius 30; visible false; fill #000000; };
+      complete;`;
+    const compiled = compileMotionScript(source);
+    expect(compiled.diagnostics).toEqual([]);
+    const frame = new AnimationRuntime(compiled.scene!).evaluate(0);
+    const { ctx } = render(frame, 200, 200, 1);
+    expect(ctx.calls.some((call) => call.name === "clip")).toBe(true);
+  });
+});
+
 describe("hierarchical paint ordering through CanvasRenderer", () => {
   it("preserves hierarchical sibling order through CanvasRenderer", () => {
     for (const scope of ["", "isolated true;"]) {

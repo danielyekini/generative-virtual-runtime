@@ -93,6 +93,10 @@ Landed in MotionScript / Scene IR **0.14.0**. Wire stays `"0.2"`; scenes and pro
 
 Landed in MotionScript / Scene IR **0.15.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `space.planarSeams` (with `space.planar25d`). A `seams` block inside `spatialLayer` lowers to the layer's `seams` object (split, edge epsilon, fragment budget, declared seam edges). Layers without it project exactly as before, so older scenes do not change meaning. No new reserved word: `seams`, `split`, `epsilon`, `maxFragments` and `edge` match by spelling. Older readers reject the capability token and the unknown `seams` key. See `docs/decisions/engine/seam-depth-order.md`.
 
+### Decision for `compositing.mask`
+
+Landed in MotionScript / Scene IR **0.16.0**. Wire stays `"0.2"`; scenes and programs gate with `requiredCapabilities` / `requires` containing `compositing.mask`. A group property `clip <geometryNodeId>` lowers to `GroupCompositing.clip`; the render-tree scope carries the resolved outline for Canvas `clip()` and hit-testing. `clip` is reserved. Track mattes remain pending. See `docs/decisions/engine/scoped-clip-compositing.md`.
+
 ## Ordering and the current pointer
 
 Compare versions numerically: `0.10.0` is newer than `0.9.0`. Do not use filename or string sort.

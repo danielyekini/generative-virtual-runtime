@@ -161,6 +161,12 @@ export interface GroupCompositing {
   effect?:
     | { type: "blur"; radius: number }
     | { type: "shadow"; dx: number; dy: number; blur: number; color: string };
+  /**
+   * Clip this group's render scope to another node's resolved outline
+   * (`compositing.mask`, Scene IR 0.16.0). geometryId names a rectangle,
+   * circle, ellipse, polygon or path in the same scene.
+   */
+  clip?: { geometryId: string };
 }
 
 export interface GroupNode extends NodeBase {
@@ -880,6 +886,8 @@ export type RenderTreeNode =
       opacity: number;
       blend?: "source-over" | "multiply" | "screen" | "overlay";
       effect?: GroupCompositing["effect"];
+      /** Viewport-space clip outline for this scope (`compositing.mask`). */
+      clip?: { geometry: ResolvedGeometry; logicalMatrix: Mat3 };
       children: RenderTreeNode[];
     }
   | { kind: "leaf"; item: ResolvedDrawItem };

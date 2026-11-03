@@ -9,8 +9,10 @@ import {
   type SceneIR,
   type Viewport,
   type PathCommand,
+  type RenderTreeNode,
   type ResolvedDrawItem,
   type ResolvedFrame,
+  type ResolvedGeometry,
   type Vec2,
 } from "@gvr/schema";
 import { buildResolvedFrame } from "./frame";
@@ -62,6 +64,11 @@ export interface HitResult {
 
 /** All painted items under the point, topmost first. */
 export function hitTestAll(frame: ResolvedFrame, point: Vec2, options: HitTestOptions = {}): HitResult[] {
+  if (frame.renderTree && treeHasClip(frame.renderTree)) {
+    const out: HitResult[] = [];
+    collectHits(frame, frame.renderTree, point, options, out);
+    return out;
+  }
   const out: HitResult[] = [];
   for (let index = frame.drawItems.length - 1; index >= 0; index -= 1) {
     const item = frame.drawItems[index]!;
@@ -74,6 +81,9 @@ export function hitTestAll(frame: ResolvedFrame, point: Vec2, options: HitTestOp
 
 /** Topmost painted item under the point, or undefined. */
 export function hitTest(frame: ResolvedFrame, point: Vec2, options: HitTestOptions = {}): HitResult | undefined {
+  if (frame.renderTree && treeHasClip(frame.renderTree)) {
+    return hitTestTree(frame, frame.renderTree, point, options);
+  }
   for (let index = frame.drawItems.length - 1; index >= 0; index -= 1) {
     const item = frame.drawItems[index]!;
     if (options.passThrough?.has(item.nodeId)) continue;
@@ -81,6 +91,61 @@ export function hitTest(frame: ResolvedFrame, point: Vec2, options: HitTestOptio
     if (hit) return { nodeId: item.nodeId, paintIndex: index, local: hit.local, part: hit.part };
   }
   return undefined;
+}
+
+function treeHasClip(node: RenderTreeNode): boolean {
+  if (node.kind === "leaf") return false;
+  if (node.clip) return true;
+  return node.children.some((child) => treeHasClip(child));
+}
+
+function pointInClip(clip: { geometry: ResolvedGeometry; logicalMatrix: Mat3 }, point: Vec2): boolean {
+  const inverse = invert(clip.logicalMatrix);
+  if (!inverse) return false;
+  const local = apply(inverse, point);
+  return containsGeometry(clip.geometry, local, {});
+}
+
+function hitTestTree(
+  frame: ResolvedFrame,
+  node: RenderTreeNode,
+  point: Vec2,
+  options: HitTestOptions,
+): HitResult | undefined {
+  if (node.kind === "leaf") {
+    if (options.passThrough?.has(node.item.nodeId)) return undefined;
+    const hit = hitItem(node.item, point, options);
+    if (!hit) return undefined;
+    const paintIndex = frame.drawItems.indexOf(node.item);
+    return { nodeId: node.item.nodeId, paintIndex: paintIndex < 0 ? 0 : paintIndex, local: hit.local, part: hit.part };
+  }
+  if (node.clip && !pointInClip(node.clip, point)) return undefined;
+  for (let index = node.children.length - 1; index >= 0; index -= 1) {
+    const hit = hitTestTree(frame, node.children[index]!, point, options);
+    if (hit) return hit;
+  }
+  return undefined;
+}
+
+function collectHits(
+  frame: ResolvedFrame,
+  node: RenderTreeNode,
+  point: Vec2,
+  options: HitTestOptions,
+  out: HitResult[],
+): void {
+  if (node.kind === "leaf") {
+    if (options.passThrough?.has(node.item.nodeId)) return;
+    const hit = hitItem(node.item, point, options);
+    if (!hit) return;
+    const paintIndex = frame.drawItems.indexOf(node.item);
+    out.push({ nodeId: node.item.nodeId, paintIndex: paintIndex < 0 ? 0 : paintIndex, local: hit.local, part: hit.part });
+    return;
+  }
+  if (node.clip && !pointInClip(node.clip, point)) return;
+  for (let index = node.children.length - 1; index >= 0; index -= 1) {
+    collectHits(frame, node.children[index]!, point, options, out);
+  }
 }
 
 function invert(m: Mat3): Mat3 | undefined {
@@ -122,7 +187,10 @@ function hitItem(
 }
 
 function containsFill(item: ResolvedDrawItem, p: Vec2, options: HitTestOptions): boolean {
-  const g = item.geometry;
+  return containsGeometry(item.geometry, p, options);
+}
+
+function containsGeometry(g: ResolvedGeometry, p: Vec2, options: HitTestOptions): boolean {
   switch (g.kind) {
     case "rectangle":
       return insideRoundRect(p, g.size.x, g.size.y, g.cornerRadius ?? 0);

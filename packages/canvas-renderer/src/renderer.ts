@@ -206,6 +206,19 @@ export class CanvasRenderer {
       ctx.shadowBlur = node.effect.blur;
       ctx.shadowColor = node.effect.color;
     }
+    if (node.clip) {
+      const matrix = multiplyMat3(device, node.clip.logicalMatrix);
+      ctx.setTransform(matrix[0], matrix[1], matrix[3], matrix[4], matrix[6], matrix[7]);
+      const rule = node.clip.geometry.kind === "path" ? node.clip.geometry.fillRule : "nonzero";
+      const path = this.compiledPath(node.clip.geometry);
+      if (path) ctx.clip(path, rule);
+      else {
+        ctx.beginPath();
+        traceGeometry(node.clip.geometry, ctx);
+        ctx.clip(rule);
+      }
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+    }
     const previous = this.scopeAlpha;
     if (node.isolated && node.id !== "root") this.scopeAlpha *= node.opacity;
     for (const child of node.children) this.drawTree(ctx, device, child);
@@ -226,6 +239,6 @@ export class CanvasRenderer {
 
 function treeUsesScopes(node: RenderTreeNode): boolean {
   if (node.kind === "leaf") return false;
-  if (node.id !== "root" || node.isolated || node.blend || node.effect) return true;
+  if (node.id !== "root" || node.isolated || node.blend || node.effect || node.clip) return true;
   return node.children.some((child) => treeUsesScopes(child));
 }

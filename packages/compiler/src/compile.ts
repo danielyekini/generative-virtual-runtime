@@ -173,6 +173,13 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved timing parent ${unit.parent ?? ""}.`, unit.span));
       continue;
     }
+    if (unit.kind === "node" && unit.shape === "group") {
+      const missing = missingClipTarget(session, unit);
+      if (missing !== undefined) {
+        session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved clip geometry ${missing}.`, unit.span));
+      }
+      continue;
+    }
     if ((unit.kind === "animate" || unit.kind === "keyframes") && unit.timingScopeId) {
       if (!session.scene.timingScopes?.some((scope) => scope.id === unit.timingScopeId)) {
         session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved timing scope ${unit.timingScopeId}.`, unit.span));
@@ -264,6 +271,10 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
   }
   if (unit.kind === "timing") {
     return Boolean(unit.parent) && !session.scene.timingScopes?.some((scope) => scope.id === unit.parent);
+  }
+  if (unit.kind === "node" && unit.shape === "group") {
+    const clipId = missingClipTarget(session, unit);
+    if (clipId !== undefined) return true;
   }
   if (unit.kind !== "animate" && unit.kind !== "keyframes" && unit.kind !== "step") return false;
   const resolved = resolveAddress(
@@ -845,10 +856,11 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
   if (prop.transformParent || prop.inheritOpacity === false) ensureCapability(session, "transform.parent");
   let node: NodeDefinition;
   if (ast.shape === "group") {
-    const compositing = groupCompositing(prop);
+    const compositing = groupCompositing(prop, id, ast, knownNodeIds(session));
     if (compositing?.isolated) ensureCapability(session, "compositing.isolatedOpacity");
     if (compositing?.blend) ensureCapability(session, "compositing.blend");
     if (compositing?.effect?.type === "blur") ensureCapability(session, "effects.blur");
+    if (compositing?.clip) ensureCapability(session, "compositing.mask");
     node = {
       ...base,
       ...(parentId ? {} : { space: prop.space ?? "world" }),
@@ -1169,6 +1181,7 @@ interface IndexedProps {
   inheritOpacity?: boolean;
   transformParent?: string;
   href?: string;
+  clip?: string;
   isolated?: boolean;
   blend?: "source-over" | "multiply" | "screen" | "overlay";
   blur?: number;
@@ -1207,6 +1220,7 @@ function indexProps(props: Prop[]): IndexedProps {
       case "fontFamily":
       case "transformParent":
       case "href":
+      case "clip":
         indexed[prop.name] = prop.text;
         break;
       case "inheritOpacity":
@@ -1564,6 +1578,16 @@ function knownNodeIds(session: Session): Set<string> {
   return ids;
 }
 
+/** Forward clip refs defer until the geometry node exists; same-unit children are resolved. */
+function missingClipTarget(session: Session, unit: Extract<UnitAst, { kind: "node" }>): string | undefined {
+  const clipProp = unit.props.find((prop) => prop.name === "clip");
+  if (!clipProp || clipProp.name !== "clip") return undefined;
+  const id = clipProp.text;
+  if (knownNodeIds(session).has(id)) return undefined;
+  if (unit.children.some((child) => child.name === id)) return undefined;
+  return id;
+}
+
 function easeIsNew(unit: Extract<UnitAst, { kind: "animate" | "keyframes" }>): boolean {
   if (isAdvancedEase(unit.ease)) return true;
   return unit.kind === "keyframes" && unit.frames.some((frame) => isAdvancedEase(frame.ease));
@@ -1581,17 +1605,28 @@ function needsProfile(prop: IndexedProps): boolean {
     prop.isolated === true ||
     prop.blur !== undefined ||
     prop.blend !== undefined ||
+    prop.clip !== undefined ||
     prop.href !== undefined ||
     (prop.fill !== undefined && prop.fill.type !== "solid")
   );
 }
 
-function groupCompositing(prop: IndexedProps): NodeDefinition extends infer _ ? Extract<NodeDefinition, { kind: "group" }>["compositing"] : never {
-  if (!prop.isolated && !prop.blend && prop.blur === undefined) return undefined;
+function groupCompositing(
+  prop: IndexedProps,
+  groupId: string,
+  ast: NodeAst,
+  known: Set<string>,
+): NodeDefinition extends infer _ ? Extract<NodeDefinition, { kind: "group" }>["compositing"] : never {
+  if (!prop.isolated && !prop.blend && prop.blur === undefined && !prop.clip) return undefined;
+  let clipId = prop.clip;
+  if (clipId && !known.has(clipId) && ast.children.some((child) => child.name === clipId)) {
+    clipId = `${groupId}.${clipId}`;
+  }
   return {
-    isolated: prop.isolated ?? Boolean(prop.blend || prop.blur !== undefined),
+    isolated: prop.isolated ?? Boolean(prop.blend || prop.blur !== undefined || prop.clip),
     ...(prop.blend ? { blend: prop.blend } : {}),
     ...(prop.blur !== undefined ? { effect: { type: "blur" as const, radius: prop.blur } } : {}),
+    ...(clipId ? { clip: { geometryId: clipId } } : {}),
   };
 }
 

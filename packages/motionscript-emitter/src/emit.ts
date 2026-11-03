@@ -354,6 +354,9 @@ function transformLines(node: NodeDefinition): string[] {
   if (node.kind === "group" && node.compositing?.effect?.type === "blur") {
     lines.push(`blur ${formatNumber(node.compositing.effect.radius)};`);
   }
+  if (node.kind === "group" && node.compositing?.clip) {
+    lines.push(`clip ${node.compositing.clip.geometryId};`);
+  }
   if (!node.visible) lines.push("visible false;");
   if (node.parentId === null && node.space === "screen") lines.push("space screen;");
   if (node.zIndex !== 0) lines.push(`zIndex ${formatInteger(node.zIndex)};`);

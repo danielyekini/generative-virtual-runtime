@@ -40,11 +40,18 @@ export function buildResolvedFrame(
     viewport: scene.viewport,
     background: scene.background,
     drawItems,
-    renderTree: renderTreeFromScene(sampled.nodes, drawItems, graph.children),
+    renderTree: renderTreeFromScene(scene, sampled, drawItems, graph),
   };
 }
 
-function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDrawItem[], children: Map<string | null, NodeDefinition[]>): RenderTreeNode {
+function renderTreeFromScene(
+  scene: SceneIR,
+  sampled: SampledScene,
+  items: ResolvedDrawItem[],
+  graph: ReturnType<typeof resolveGraph>,
+): RenderTreeNode {
+  const nodes = sampled.nodes;
+  const children = graph.children;
   const flat = {
     kind: "scope" as const,
     id: "root",
@@ -54,8 +61,10 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
   };
   if (!nodes.some((node) => node.kind === "group" && node.compositing)) return flat;
   const byId = new Map(items.map((item) => [item.nodeId, item]));
+  const nodesById = new Map(nodes.map((node) => [node.id, node]));
   const place = (node: NodeDefinition): RenderTreeNode[] => {
     if (node.kind === "group" && node.compositing) {
+      const clip = resolveClip(scene, node, nodesById, graph, sampled.trimOverrides);
       return [
         {
           kind: "scope",
@@ -64,6 +73,7 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
           opacity: node.opacity,
           ...(node.compositing.blend ? { blend: node.compositing.blend } : {}),
           ...(node.compositing.effect ? { effect: node.compositing.effect } : {}),
+          ...(clip ? { clip } : {}),
           children: (children.get(node.id) ?? []).flatMap(place),
         },
       ];
@@ -79,6 +89,24 @@ function renderTreeFromScene(nodes: readonly NodeDefinition[], items: ResolvedDr
     opacity: 1,
     children: (children.get(null) ?? []).flatMap(place),
   };
+}
+
+const CLIP_KINDS = new Set(["rectangle", "circle", "ellipse", "polygon", "path"]);
+
+function resolveClip(
+  scene: SceneIR,
+  group: NodeDefinition & { kind: "group" },
+  nodesById: Map<string, NodeDefinition>,
+  graph: ReturnType<typeof resolveGraph>,
+  trimOverrides?: SampledScene["trimOverrides"],
+): { geometry: ResolvedGeometry; logicalMatrix: Mat3 } | undefined {
+  const geometryId = group.compositing?.clip?.geometryId;
+  if (!geometryId) return undefined;
+  const target = nodesById.get(geometryId);
+  if (!target || !CLIP_KINDS.has(target.kind)) return undefined;
+  const geometry = geometryOf(scene, target, trimOverrides);
+  if (!geometry) return undefined;
+  return { geometry, logicalMatrix: graph.logical(target) };
 }
 
 /** All indexes and derived values belong to this sample, never to a scene revision.

@@ -185,6 +185,7 @@ export function validateSceneIR(
   if (v02) readAudio(input.audioCues, resources, input.timeline, input.requiredCapabilities, diags);
   if (v02) readSpatialLayers(input.spatialLayers, nodeIds, input.requiredCapabilities, diags);
   if (v02) readPhysics(input.physics, nodeIds, input.timeline, input.interactions, input.requiredCapabilities, diags);
+  if (v02 && nodes) readClipTargets(nodes, compositions.flatMap((c) => c.nodes), input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
@@ -1242,10 +1243,20 @@ function readCompositing(value: unknown, path: string, diags: Diags): void {
     diags.add("INVALID_TYPE", path, "compositing must be an object.");
     return;
   }
-  rejectUnknown(value, ["isolated", "blend", "effect"], path, diags);
+  rejectUnknown(value, ["isolated", "blend", "effect", "clip"], path, diags);
   if (typeof value.isolated !== "boolean") diags.add("INVALID_TYPE", `${path}.isolated`, "isolated must be a boolean.");
   if (value.blend !== undefined && value.blend !== "source-over" && value.blend !== "multiply" && value.blend !== "screen" && value.blend !== "overlay") {
     diags.add("INVALID_ENUM", `${path}.blend`, "Unknown blend mode.");
+  }
+  if (value.clip !== undefined) {
+    if (!isRecord(value.clip)) {
+      diags.add("INVALID_TYPE", `${path}.clip`, "clip must be an object.");
+    } else {
+      rejectUnknown(value.clip, ["geometryId"], `${path}.clip`, diags);
+      if (typeof value.clip.geometryId !== "string" || value.clip.geometryId.length === 0) {
+        diags.add("INVALID_ID", `${path}.clip.geometryId`, "clip.geometryId must be a non-empty node id.");
+      }
+    }
   }
   if (value.effect === undefined) return;
   if (!isRecord(value.effect)) {
@@ -1267,6 +1278,67 @@ function readCompositing(value: unknown, path: string, diags: Diags): void {
     return;
   }
   diags.add("INVALID_ENUM", `${path}.effect.type`, 'effect.type must be "blur" or "shadow".');
+}
+
+const CLIP_GEOMETRY_KINDS = new Set(["rectangle", "circle", "ellipse", "polygon", "path"]);
+
+/** compositing.mask (0.16.0): every clip.geometryId must name drawable outline geometry and require the capability. */
+function readClipTargets(
+  rootNodes: readonly { id?: unknown; kind?: unknown; compositing?: unknown }[],
+  compositionNodes: readonly { id?: unknown; kind?: unknown; compositing?: unknown }[],
+  required: unknown,
+  diags: Diags,
+): void {
+  const caps = Array.isArray(required) ? required : [];
+  const hasMask = caps.includes("compositing.mask");
+  const byId = new Map<string, { kind?: unknown }>();
+  for (const node of [...rootNodes, ...compositionNodes]) {
+    if (typeof node.id === "string") byId.set(node.id, node);
+  }
+  let index = 0;
+  for (const node of [...rootNodes, ...compositionNodes]) {
+    const path = `nodes[${index}]`;
+    index += 1;
+    if (!isRecord(node) || node.kind !== "group" || !isRecord(node.compositing) || node.compositing.clip === undefined) continue;
+    if (!hasMask) {
+      diags.add("MISSING_REQUIRED", "requiredCapabilities", "Group clip requires compositing.mask in requiredCapabilities.");
+    }
+    const clip = node.compositing.clip;
+    if (!isRecord(clip) || typeof clip.geometryId !== "string") continue;
+    const target = byId.get(clip.geometryId);
+    if (!target) {
+      diags.add("UNKNOWN_TARGET", `${path}.compositing.clip.geometryId`, `Clip geometry ${clip.geometryId} does not exist.`);
+      continue;
+    }
+    if (typeof target.kind !== "string" || !CLIP_GEOMETRY_KINDS.has(target.kind)) {
+      diags.add(
+        "INVALID_GEOMETRY",
+        `${path}.compositing.clip.geometryId`,
+        "Clip geometry must be a rectangle, circle, ellipse, polygon or path.",
+      );
+    }
+  }
+}
+
+function readResolvedClip(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "clip must be an object.");
+    return;
+  }
+  rejectUnknown(value, ["geometry", "logicalMatrix"], path, diags);
+  if (!Array.isArray(value.logicalMatrix) || value.logicalMatrix.length !== 9) {
+    diags.add("INVALID_TYPE", `${path}.logicalMatrix`, "logicalMatrix is a column-major 3×3 matrix of 9 numbers.");
+  } else {
+    value.logicalMatrix.forEach((entry, index) => {
+      if (typeof entry !== "number" || !Number.isFinite(entry)) {
+        diags.add("NON_FINITE", `${path}.logicalMatrix[${index}]`, "Matrix components must be finite.");
+      }
+    });
+  }
+  readResolvedGeometry(value.geometry, `${path}.geometry`, diags);
+  if (isRecord(value.geometry) && typeof value.geometry.kind === "string" && !CLIP_GEOMETRY_KINDS.has(value.geometry.kind)) {
+    diags.add("INVALID_GEOMETRY", `${path}.geometry`, "Clip geometry must be a rectangle, circle, ellipse, polygon or path.");
+  }
 }
 
 function readStroke(value: unknown, path: string, diags: Diags, allowGradient = false): Stroke | undefined {
@@ -2900,11 +2972,12 @@ function readRenderTree(value: unknown, path: string, diags: Diags, seen: Set<ob
     return;
   }
   if (value.kind === "scope") {
-    rejectUnknown(value, ["kind", "id", "isolated", "opacity", "blend", "effect", "children"], path, diags);
+    rejectUnknown(value, ["kind", "id", "isolated", "opacity", "blend", "effect", "clip", "children"], path, diags);
     if (value.blend !== undefined && value.blend !== "source-over" && value.blend !== "multiply" && value.blend !== "screen" && value.blend !== "overlay") {
       diags.add("INVALID_ENUM", `${path}.blend`, "Unknown blend mode.");
     }
     if (value.effect !== undefined) readCompositing({ isolated: true, effect: value.effect }, `${path}.effect`, diags);
+    if (value.clip !== undefined) readResolvedClip(value.clip, `${path}.clip`, diags);
     if (typeof value.id !== "string" || value.id.length === 0) diags.add("INVALID_ID", `${path}.id`, "A render scope needs an id.");
     if (typeof value.isolated !== "boolean") diags.add("INVALID_TYPE", `${path}.isolated`, "isolated must be a boolean.");
     readOpacity(value.opacity, `${path}.opacity`, diags);

@@ -62,6 +62,16 @@ describe("canonical emitter", () => {
     }
   });
 
+  it("round-trips group clip", () => {
+    const source = readFileSync(resolve(motionDir, "clip-mask.ms"), "utf8");
+    const scene = compile(source);
+    const { again } = roundTrip(scene);
+    expect(again.requiredCapabilities).toContain("compositing.mask");
+    const card = again.nodes.find((node) => node.id === "Card");
+    expect(card).toMatchObject({ kind: "group", compositing: { clip: { geometryId: "Window" } } });
+    expect(sameFrame(new AnimationRuntime(scene).evaluate(0).drawItems, new AnimationRuntime(again).evaluate(0).drawItems)).toBe("");
+  });
+
   it("round-trips physics declarations (physics.planar2d)", () => {
     const source = readFileSync(resolve(motionDir, "physics-marble.ms"), "utf8");
     const scene = compile(source);

@@ -20,6 +20,7 @@ export const CAPABILITIES = [
   "svg.cssKeyframes",
   "compositing.isolatedOpacity",
   "compositing.blend",
+  "compositing.mask",
   "effects.blur",
   "effects.shadow",
   "geometry.pathMorph",
