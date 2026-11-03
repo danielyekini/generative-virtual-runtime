@@ -319,9 +319,21 @@
       "number": 139,
       "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/139"
     },
+    "P020": {
+      "number": 157,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/157"
+    },
+    "P021": {
+      "number": 158,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/158"
+    },
     "X-INTERACT-GEN-BASELINE-20261103": {
       "number": 140,
       "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/140"
+    },
+    "X-AUDIO-PROVIDER-NAMING-20261103": {
+      "number": 144,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/144"
     }
   },
   "features": {

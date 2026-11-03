@@ -48,7 +48,7 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (3 November 2026, after P019)
+## Queue (3 November 2026, after product review)
 
 Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
 P017, P018 Done). P006 / P007 / P008 harness work is Done; **P008’s “prefer
@@ -58,27 +58,32 @@ Done** (Studio Generate mode: header control, full-height transcript/composer,
 Director default, Ollama `qwen2.5-coder:14b`). Paused prototype history: PR #65
 commit 2d08de0.
 
-1. **Customer animation-quality judgment** on Generate (Director vs Direct) —
-   solicit explicitly; do not close approach preference without that
+1. **P020 #157 Ready** — story-complexity Generate quality judgment pack
+   (repeatable customer animation-quality exercise; no new chrome).
+2. **Customer animation-quality judgment** on Generate (Director vs Direct) —
+   solicit once P020 pack lands; do not close approach preference without that
    ([director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md)).
-2. **X002 #56** Engine verification surfaces — advanced via P002 + P010 + P019;
+3. **X002 #56** Engine verification surfaces — advanced via P002 + P010 + P019;
    keep visible until accepted closed.
-3. **P009 #50** push-to-talk / narration / SFX — Candidate now that Generate is
-   human-exerciseable; speech is an input method on top of generation.
-4. **P003 #44** Performance tab — Candidate until UX confirmation.
-5. **P005 #46** agent toolbox — low-priority optional consolidation.
-6. P011–P013 and corpus generation remain later; next-corpus prep continues
+4. **P009 #50** push-to-talk / narration / SFX — Candidate until speech/media UX
+   is confirmed in studio-ux; imports `@gvr/audio-provider` (E035 Done; #144
+   accepted).
+5. **P003 #44** Performance tab — Candidate until UX confirmation.
+6. **P021 #158 Candidate** — reserved-word node-id generation hardening (P007
+   outcome mine).
+7. **P005 #46** agent toolbox — low-priority optional consolidation.
+8. P011–P013 and corpus generation remain later; next-corpus prep continues
    under #88 with director ownership and story-complexity baselines.
-7. Engine assist [#140](https://github.com/danielyekini/generative-virtual-runtime/issues/140) /
-   E027 remains for emitter round-trip of `interact` (not required for P010
-   compiler-path demos).
+9. Engine assist [#140](https://github.com/danielyekini/generative-virtual-runtime/issues/140) /
+   E027 emitter interact — track separately from P010 compiler-path demos.
 
 ## Next
 
-1. User: exercise Generate in Studio (`npm run dev` + local Ollama) and judge
-   animation quality; keep Director default until Direct is proven.
-2. Claim **P009 #50** when Ready (speech/audio host path on top of Generate).
-3. Keep Performance / agent-toolbox Candidate until UX confirmation.
+1. Claim **P020 #157** — ship story-complexity Generate judgment pack.
+2. User: exercise Generate with that pack (`npm run dev` + local Ollama) and
+   judge animation quality; keep Director default until Direct is proven.
+3. Confirm **P009** speech/media UX (options below / studio-ux) → then Ready.
+4. Keep Performance / agent-toolbox Candidate until UX confirmation.
 
 Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
 generation, but do not skip interaction/generation Studio exercise.
@@ -86,14 +91,16 @@ generation, but do not skip interaction/generation Studio exercise.
 ## Generative audio provider (intake cleared, 2–3 November 2026)
 
 Engine owns generative-audio design/implementation ([E031 #119](https://github.com/danielyekini/generative-virtual-runtime/issues/119)
-and children E032–E034 — Done on main). Product accepted [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120):
-P009 carries the host/provider contract dependency. Existing `href` audio +
-E026 Web Audio remain the fallback until P009 ships. P019 does not require
-live ElevenLabs. **User steering 3 November 2026:** keep vendor brand out of
-Studio/generation-facing vocabulary where a neutral “audio provider” /
-“generative audio” label suffices; credential settings may name the funded
-backend. Engine will rename `@gvr/audio-elevenlabs` to a vendor-neutral package
-id ([decision](../../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
+and children E032–E034 — Done on main). **E035 Done:** package is
+`@gvr/audio-provider`. Product accepted [#120](https://github.com/danielyekini/generative-virtual-runtime/issues/120)
+and [#144](https://github.com/danielyekini/generative-virtual-runtime/issues/144):
+P009 carries the host/provider contract dependency and must import the neutral
+package. Existing `href` audio + E026 Web Audio remain the fallback until P009
+ships. P019 does not require live generative audio. **User steering 3 November
+2026:** keep vendor brand out of Studio/generation-facing vocabulary where a
+neutral “audio provider” / “generative audio” label suffices; credential
+settings may name the funded backend
+([decision](../../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
 
 ## Corpus inputs (prospective direction, 2–3 November 2026)
 
