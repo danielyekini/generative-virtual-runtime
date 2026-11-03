@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.15.0 | 0.2 |
-| scene-ir | 0.15.0 | 0.2 |
+| motionscript | 0.16.0 | 0.2 |
+| scene-ir | 0.16.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | physics.planar2d | supported | supported | not-applicable | Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/physics.test.ts) |
 | space.planarSeams | supported | supported | not-applicable | Planar 2.5D layers opt into seam/split compositing: true surface intersections are split along their plane intersection into ordered fragments, and declared seams are checked for a shared edge in view space. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/seams.test.ts) |
 | compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
-| compositing.mask | unsupported | unsupported | unsupported | A layer mask would clip geometry to a path. [registry](../../packages/schema/capabilities/registry.json) |
+| compositing.mask | supported | supported | supported | A group render scope clips its descendants to another node's outline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/clip.test.ts) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
 | transform.autoOrient | unsupported | unsupported | unsupported | Rotation follows the position tangent. [registry](../../packages/schema/capabilities/registry.json) |
 | geometry.repeater | unsupported | unsupported | unsupported | A repeater copies geometry with a transform per copy. [registry](../../packages/schema/capabilities/registry.json) |
@@ -73,5 +73,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `ec2df499af45a1aee03afdceb68170c3c1abaea772c3c3b1a6d59f0014d921f6`
-- `packages/schema/capabilities/registry.json` SHA-256 `d3d8c82b4e0f6987a423667c919bec39ad4e30462d4e2070dcef775a9696f204`
+- `packages/schema/capabilities/releases.json` SHA-256 `db5482589ec2a0618eab5bc3667cf5f86579508a3954d1c11f99030869c7b52a`
+- `packages/schema/capabilities/registry.json` SHA-256 `0c4a35413f50a0f11cda53bac0ce41398a684c499a696db0643b6d96bdf59313`

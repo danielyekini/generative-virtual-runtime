@@ -75,6 +75,7 @@ Default logical size is 1280×720. Time is milliseconds; angles are radians, clo
 | `composition.definitions` | Definitions and instances; Lottie precomps exact (expanded into nodes) |
 | `compositing.isolatedOpacity` | Isolated group opacity scopes — SVG exact; core targets untested |
 | `compositing.blend` | `source-over`, `multiply`, `screen`, `overlay` on isolated groups — untested |
+| `compositing.mask` | Group `clip` to a geometry outline — supported (0.16.0); Lottie/SVG adapters unsupported |
 | `effects.blur` | Blur on a render scope — supported; Lottie static Gaussian blur exact |
 | `effects.shadow` | Shadow on a render scope — schema present, untested |
 | `render.tree` | Nested render scopes for compositing groups — runtime supported; renderer untested |
@@ -101,7 +102,7 @@ Round-trip (`@gvr/round-trip`): import → emit MotionScript → compile → sam
 
 These ids are listed in `docs/languages/*/versions/pending.md` and are **unsupported** in compiler, runtime, and renderer until a version lands them:
 
-`compositing.matte`, `compositing.mask`, `transform.skew`, `transform.autoOrient`, `geometry.repeater`, `geometry.mergePaths`, `text.animators`.
+`compositing.matte`, `transform.skew`, `transform.autoOrient`, `geometry.repeater`, `geometry.mergePaths`, `text.animators`.
 
 Capability growth follows the adopted charter and live lane priorities. Pending registry rows are unsupported proposals, not an automatic parity queue or fixed language ceiling. Consequential new execution models require a recorded design decision.
 

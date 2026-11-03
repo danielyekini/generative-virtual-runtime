@@ -11,7 +11,6 @@ See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md)
 Not yet in a published Scene IR version:
 
 - compositing.matte
-- compositing.mask
 - transform.skew
 - transform.autoOrient
 - geometry.repeater
@@ -29,6 +28,7 @@ MotionScript declarative entity sugar paired as Scene IR 0.9.0 (no new IR ops).
 `physics.planar2d` (`physics` world on scenes and `CREATE_SCENE` headers) landed in Scene IR 0.13.0.
 `audio.generative` (generative audio resource `source` discriminant) landed in Scene IR 0.14.0.
 `space.planarSeams` (`seams` on spatial layers) landed in Scene IR 0.15.0.
+`compositing.mask` (`GroupCompositing.clip`) landed in Scene IR 0.16.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

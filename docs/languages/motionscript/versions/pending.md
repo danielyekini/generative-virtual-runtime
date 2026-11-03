@@ -11,7 +11,6 @@ See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md)
 Not yet in a published MotionScript version:
 
 - compositing.matte
-- compositing.mask
 - transform.skew
 - transform.autoOrient
 - geometry.repeater
@@ -29,6 +28,7 @@ Declarative entity sugar landed in MotionScript 0.9.0.
 `physics.planar2d` (`physics` world: bodies/joints/authored constraints) landed in MotionScript 0.13.0.
 `audio.generative` (generative audio resources and `audio.narration` / `audio.effects` sugar) landed in MotionScript 0.14.0.
 `space.planarSeams` (`seams` blocks inside `spatialLayer`) landed in MotionScript 0.15.0.
+`compositing.mask` (`clip` on groups) landed in MotionScript 0.16.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 
