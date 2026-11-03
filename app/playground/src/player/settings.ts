@@ -1,4 +1,5 @@
 /** Player preferences and recent programs. Storage can be blocked; every read falls back. */
+import { canonicalProgramKey } from "./program-keys";
 export interface PlayerSettings {
   /** Run as soon as a program is opened. Off by default (studio-ux.md). */
   autoplay: boolean;
@@ -57,7 +58,9 @@ export function decodeRecent(raw: string | null | undefined): string[] {
   if (!raw) return [];
   try {
     const data = JSON.parse(raw) as unknown;
-    return Array.isArray(data) ? data.filter((item): item is string => typeof item === "string").slice(0, RECENT_LIMIT) : [];
+    if (!Array.isArray(data)) return [];
+    const keys = data.filter((item): item is string => typeof item === "string").map(canonicalProgramKey);
+    return [...new Set(keys)].slice(0, RECENT_LIMIT);
   } catch {
     return [];
   }
