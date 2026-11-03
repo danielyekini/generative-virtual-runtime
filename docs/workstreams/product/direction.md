@@ -46,10 +46,10 @@ direct” product default is superseded** by the director-quality decision above
 **P010 #51 Done** (Interactive Library collection + demos, PR #146). Paused
 prototype history: PR #65 commit 2d08de0.
 
-1. **P019 #139** Studio native-generation testing surface (typed prompt +
-   transcript; director default; human quality judgment; Qwen pin) — Candidate
-   until Generate placement is confirmed in studio-ux; then Ready. Blocks
-   treating push-to-talk as next generation work.
+1. **P019 #139** Studio **Generate mode** (header mode; side-panel transcript +
+   composer; director/direct in prompt box; human quality judgment; Qwen pin) —
+   **Ready** (UX confirmed 3 November 2026 in studio-ux). Blocks treating
+   push-to-talk as next generation work.
 2. **X002 #56** Engine verification surfaces — advanced via P002 + P010
    (shipped) + P019; keep those tasks visible.
 3. **P009 #50** push-to-talk / narration / SFX — Candidate after P019 is
@@ -64,8 +64,7 @@ prototype history: PR #65 commit 2d08de0.
 
 ## Next
 
-1. User confirms Generate UX placement (studio-ux Options A/B/C) → promote/claim
-   **P019 #139**.
+1. Claim **P019 #139** — implement confirmed Generate mode from studio-ux.
 2. Solicit customer (user) animation-quality feedback once Generate exists;
    do not close generation approach choices without that.
 3. After P019 is human-exerciseable, P009 becomes the speech/audio host path.

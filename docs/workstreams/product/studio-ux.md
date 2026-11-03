@@ -55,25 +55,32 @@ any unsaved edits.
   Scene, Performance (later), Compare/Report.
 
 ```
-┌────────────────────────────────────────┐
-│ program-name │ ▶ Run │ ≋ Stream ▾ │   Library ▯ │  header
-├──────────────────────────────┬─────────┤
-│                              │ Source  │
-│           CANVAS             │ (opt.)  │
-├──────────────────────────────┴─────────┤
-│ ❚❚ −1f ‹key key› +1f 0:03.2 Speed    ⛶ │  transport
-│ TIME [▣▣▣▣▣▣▒▒▒▒░░░░]           frame tape │
-├────────────────────────────────────────┤
-│ [Diagnostics][Stream][Scene][Perf]  ▾  │
-├────────────────────────────────────────┤
-│ status text …                       ⚙ │  status bar
-└────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────┐
+│ program-name     ▶ Run   ≋ Stream ▾   ✎ Generate      Library │
+│                  └──── centered run controls ────┘             │
+├──────────────────────────────────────┬─────────────────────┤
+│                                      │ Source / Generate   │
+│                CANVAS                │ (full height when   │
+│                                      │  open — see dock)   │
+├──────────────────────────────────────┤                     │
+│ ❚❚ ‹ › 0:03.2 Speed            ⛶   │                     │
+│ TIME [▣▣▣▣▒▒░░░░] tape             │                     │
+├──────────────────────────────────────┤                     │
+│ [Diagnostics][Stream][Scene]…     ▾  │                     │
+│ (bottom dock under canvas only)      │                     │
+├──────────────────────────────────────┴─────────────────────┤
+│ status …                                                ⚙  │
+└────────────────────────────────────────────────────────────┘
 ```
 
-- **Header run actions** (user direction, 2 November 2026): **Run** executes the
-  loaded program in instant mode. **Stream** runs it in stream mode and adds the
-  stream monitoring tools (Stream tab, frame-tape states) to the layout; leaving
-  stream mode removes them again.
+- **Header run actions** (user direction, 2 November 2026; Generate + centering,
+  3 November 2026): **Run**, **Stream**, and **Generate** are **centered as a
+  group** in the header. **Generate** sits gapped to the right of Run/Stream
+  (same control family, visually separated). **Run** executes the loaded program
+  in instant mode. **Stream** runs it in stream mode and adds the stream
+  monitoring tools (Stream tab, frame-tape states) to the layout; leaving stream
+  mode removes them again. **Generate** is a distinct playback/authoring mode
+  (see Generate section) — not a bottom-panel tab.
 - **Stream dropdown** (user steering, 2 November 2026, P018): Stream is a split
   button. Its ▾ dropdown holds every stream control: the rate preset (settable
   before streaming), Pause/Resume arrival and Step chunk (shown only while
@@ -200,62 +207,67 @@ and exercise pointer/keyboard focus without hunting. Early runtime scenes
 (Ball, Bunny, Diagram, Caption, …) stay under Runtime scenes — they are not
 the interaction or generation quality baseline.
 
-## Generate / model testing (draft — confirm placement before building)
+## Generate mode (user-confirmed, 3 November 2026)
 
-User intent (3 November 2026): expose Qwen/`tools/native-generation` in Studio
-**before** push-to-talk. Typed prompts are enough; a transcript panel is useful
-for typed turns as well as later speech. Approach control offers **Director** and
-**Direct**; Studio defaults to Director until customer-judged proof shows Direct
-covers the director’s intended roles (see director quality decision). Human
-judges **animation quality** on the canvas (story-complexity expectations), not
-only compile success.
+**Generate** is treated almost as a **separate playback mode** (alongside Run and
+Stream), not as a Diagnostics-style bottom tab. Purpose: exercise pinned native
+generation (Ollama `qwen2.5-coder:14b`) with typed prompts **before** push-to-talk.
+Human judges **animation quality** on the canvas. Approach offers **Director** and
+**Direct**; Studio defaults to Director until Direct is customer-proven equivalent
+for the director’s intended roles ([decision](../../decisions/product/2026-11-03-director-quality-gate.md)).
 
-### Option A — bottom-panel Generate tab (recommended)
+### Header
 
-```
-┌────────────────────────────────────────────────────────────┐
-│ program-name          ▶ Run   ≋ Stream ▾          Library  │
-├────────────────────────────────────────────────────────────┤
-│                                                            │
-│                         CANVAS                             │
-│              (judge animation quality here)                │
-│                                                            │
-├────────────────────────────────────────────────────────────┤
-│ ❚❚  ‹ ›  0:03.2                              ⛶             │
-│ TIME [▣▣▣▣▒▒░░░░]  tape  (red gap = stream wait)           │
-├────────────────────────────────────────────────────────────┤
-│ [Diagnostics][Stream][Scene][Generate][Perf…]           ▾  │
-├────────────────────────────────────────────────────────────┤
-│ Approach: (•) Director   ( ) Direct     model qwen-14b     │
-│ ┌─ transcript ───────────────────────────────────────────┐ │
-│ │ you: show a crane folding then a square landing        │ │
-│ │ sys: director ok · implement streaming… · seal 1.2s    │ │
-│ │ you: make the fold slower                              │ │
-│ └────────────────────────────────────────────────────────┘ │
-│ prompt> _________________________________  [Generate][Cancel]
-│ repairs 0 · 18s · tape wait 0.4s   (secondary; not the gate)│
-└────────────────────────────────────────────────────────────┘
-```
+- **Generate** control in the header, **gapped to the right** of the Run / Stream
+  group; the Run / Stream / Generate cluster is **centered** in the header.
+- Entering Generate opens the side panel in Generate chrome (below). Leaving
+  Generate restores Source (or closed) as before.
 
-### Option B — header next to Stream (compact)
+### Side panel (Generate chrome)
 
-```
-│ name │ ▶ Run │ ≋ Stream ▾ │ ✎ Generate ▾ │ Library │
-                         Generate ▾ opens popover:
-                         approach · prompt · Generate/Cancel
-                         transcript still lives in a bottom tab
-```
+In Generate mode the side panel is for **generation**, not script testing:
 
-### Option C — Source panel compose mode
+- **Middle (primary):** scrolling **transcript**.
+  - **User** messages: right-aligned, blue.
+  - **Model** messages: left-aligned, neutral colour.
+  - While a model reply is in flight: show a **truncated preview** of arriving
+    text and/or a **⋯** pending state in the bubble.
+  - **Click** a model bubble to open a **stream-like detail view** of that
+    generation’s output (reuse Stream source-view conventions where they fit).
+  - In that detail view, offer a control to **view the director response** for
+    the same prompt (when approach was Director; hidden or disabled for Direct).
+- **Bottom of side panel:** compact **prompt composer** (chat-input pattern —
+  rounded field with placeholder and an in-field toolbar; visual reference:
+  [generate-prompt-composer-reference.png](assets/generate-prompt-composer-reference.png)).
+  - Inside the composer toolbar: **Approach** (Director | Direct) and **model**
+    settings as dropdowns/chips (same role as a model selector in the reference).
+  - Send / cancel in the composer (send while idle; cancel while running).
+  - Mic may appear later (P009); typed prompts are enough for P019.
+- Secondary metrics (repairs, latency, tape wait) may appear as quiet status
+  under the composer or on the bubble — never as the acceptance gate.
 
 ```
-│ CANVAS              │ Source / Generate          │
-│                     │ [Source] [Generate]        │
-│                     │ approach · transcript      │
-│                     │ prompt · Generate/Cancel   │
+│ CANVAS (+ transport/tape/dock under canvas) │  GENERATE PANEL (full height)   │
+│                                             │  ┌─ transcript ───────────────┐ │
+│                                             │  │ [model …]                  │ │
+│                                             │  │          [user · blue]     │ │
+│                                             │  │ [model truncated / ⋯]      │ │
+│                                             │  └────────────────────────────┘ │
+│                                             │  ┌─ prompt composer ──────────┐ │
+│                                             │  │ Ask for follow-up…         │ │
+│                                             │  │ +  Approach ▾  model ▾   ⬆ │ │
+│                                             │  └────────────────────────────┘ │
 ```
 
-Do not build until the user confirms A, B, C, or a marked variant.
+### Side panel vs bottom dock placement (confirmed, 3 November 2026)
+
+Today the bottom log dock spans the **full window width**, which shortens the
+side panel vertically and stacks it above the dock. **Desired:** when the side
+panel is open (especially Generate), it may use **full vertical height** beside
+the canvas column; the **bottom dock is truncated** to the canvas column width
+(it no longer cuts under the side panel). Provide **user controls** to adjust
+side-panel and bottom-dock placement/size (resize and/or layout preference)
+without inventing a second workbench. Status bar may remain full width.
 
 ## Later sections (to be specified with the user before building)
 
