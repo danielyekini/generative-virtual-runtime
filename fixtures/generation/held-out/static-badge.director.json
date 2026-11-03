@@ -1,0 +1,10 @@
+{
+  "intent": "Static white circle badge with OK label; offline-complete; seals optional",
+  "canvas": { "width": 200, "height": 200, "durationMs": 2000 },
+  "requires": [],
+  "beats": [
+    { "atMs": 0, "action": "declare", "notes": "circle id badge centered; text id label content OK below" },
+    { "atMs": 2000, "action": "complete", "notes": "complete; no animation tracks" }
+  ],
+  "constraints": ["offline-complete enough", "no markdown fences", "ids badge and label"]
+}

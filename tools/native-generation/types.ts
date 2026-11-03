@@ -18,15 +18,20 @@ export interface MotionScriptGenerator {
   stream(prompt: string, options?: StreamGenerationOptions): Promise<string>;
 }
 
+export type GenerationApproach = "direct" | "director";
+
 export type GenerationMetrics = {
   providerId: string;
   modelId: string;
   taskId: string;
+  approach: GenerationApproach;
   promptChars: number;
   referenceFingerprint: string | null;
   referencePath: string | null;
   ttfbMs: number | null;
   totalMs: number;
+  directorMs: number | null;
+  implementMs: number | null;
   firstSealMs: number | null;
   firstSealHorizonMs: number | null;
   firstSealBytes: number | null;
@@ -37,6 +42,7 @@ export type GenerationMetrics = {
   compileErrorCount: number;
   runtimeRejectCount: number;
   repairAttempts: number;
+  directorOk: boolean | null;
   cancelled: boolean;
   staleIgnored: boolean;
   status: "pass" | "fail" | "blocked" | "cancelled";

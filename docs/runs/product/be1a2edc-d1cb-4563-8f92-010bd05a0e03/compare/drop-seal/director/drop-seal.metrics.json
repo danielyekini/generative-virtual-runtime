@@ -1,0 +1,30 @@
+{
+  "providerId": "ollama",
+  "modelId": "qwen2.5-coder:14b",
+  "taskId": "drop-seal",
+  "approach": "director",
+  "promptChars": 209,
+  "referenceFingerprint": "07b8338207f98bacc520d18e9eda991cfe757d0bf2ebcff80743547b83fff723",
+  "referencePath": "docs/reference/motionscript-authoring/snapshots/ms-0.15.0_sir-0.15.0-07b83382.md",
+  "ttfbMs": 1526.2459579999995,
+  "totalMs": 46410.291917,
+  "directorMs": 20791.095291999998,
+  "implementMs": 25613.801375000003,
+  "firstSealMs": 46410.288792,
+  "firstSealHorizonMs": 1000,
+  "firstSealBytes": 336,
+  "sourceChars": 385,
+  "estimatedTokensUtf16Div4": 97,
+  "offlineOk": true,
+  "progressiveOk": true,
+  "compileErrorCount": 0,
+  "runtimeRejectCount": 0,
+  "repairAttempts": 0,
+  "directorOk": true,
+  "cancelled": false,
+  "staleIgnored": false,
+  "status": "pass",
+  "notes": [
+    "director beats=6"
+  ]
+}
