@@ -33,7 +33,8 @@ unprompted approval. Mark any unavailable background runner honestly.
 
 For any PR, follow docs/operations/git.md: full tests/typechecks/required builds
 before submission, inherited failures repaired, final integration gate, authorised
-self-merge and safe deletion of own merged branches.
+self-merge, then **mandatory same-session cleanup** of own merged remote/local
+branch **and** `git worktree remove` of this run’s worktree.
 
 If GitHub CLI access is unavailable, follow docs/operations/tool-dispatch.md
 using the connected issue/comment tools and authorised Project browser. Feed

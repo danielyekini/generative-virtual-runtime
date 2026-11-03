@@ -36,9 +36,10 @@ be using ([decision](docs/decisions/2026-11-03-isolated-worktrees.md)). Run
 acceptance and reference freshness) before PR submission and after final
 code/main integration. Repair inherited failures without weakening tests.
 No mandatory independent review. Self-merge only after acceptance and actual
-protection/check permissions; verify remote merge then delete only own merged
-remote/local feature branch (and own worktree when clean). Keep external
-blockers explicit; never bypass gates.
+protection/check permissions; verify remote merge then **immediately** delete
+only own merged remote/local feature branch **and remove own worktree**
+(`git worktree remove` + prune) — a merged leftover worktree is a failed exit
+and fills the disk. Keep external blockers explicit; never bypass gates.
 
 ## Aim
 

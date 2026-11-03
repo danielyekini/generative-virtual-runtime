@@ -1,8 +1,10 @@
 # Studio UX specification
 
-Status: user-confirmed, 2 November 2026. Owner: Product orchestrator. This is
+Status: user-confirmed, 2–3 November 2026. Owner: Product orchestrator. This is
 the authority for Studio workflows; implementation items cite the sections they
 deliver. Change it only after the user confirms (see "Open questions").
+3 November player/Generate/transcript steering:
+[decision](../../decisions/product/2026-11-03-studio-player-generate-transcripts.md).
 
 Studio's motto is **reduce friction between functionality and testing**. It is
 not a video editor. Every capability that reaches the engine should be exposed
@@ -49,22 +51,21 @@ any unsaved edits.
   prominent prompt (plus recent programs if any). Nothing auto-loads.
 - Layout follows VS Code. A **header bar** (like VS Code's title and run bar)
   holds the program name, **Open Library**, the run actions and run options.
-  The canvas fills the main area, with an optional **Source** side panel on the
-  right (closed by default). Under the canvas sit the transport and the **tape**.
-  Below that is a collapsible, tabbed **bottom panel**: Diagnostics, Stream,
-  Scene, Performance (later), Compare/Report.
+  The canvas fills the main area, with an optional side panel on the right
+  (closed by default; Source or Generate chrome). **Playback controls float
+  over the canvas** (not a dedicated strip under it) so the canvas area is
+  maximised. Below the canvas column is a collapsible, tabbed **bottom
+  panel**: Diagnostics, Stream, Scene, Performance (later), Compare/Report.
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│ program-name     ▶ Run   ≋ Stream ▾   ✎ Generate      Library │
+│ program-name     ▶ Run   ≋ Stream ▾   ✦ Generate  Library  ⊞ │
 │                  └──── centered run controls ────┘             │
 ├──────────────────────────────────────┬─────────────────────┤
-│                                      │ Source / Generate   │
-│                CANVAS                │ (full height when   │
-│                                      │  open — see dock)   │
-├──────────────────────────────────────┤                     │
-│ ❚❚ ‹ › 0:03.2 Speed            ⛶   │                     │
-│ TIME [▣▣▣▣▒▒░░░░] tape             │                     │
+│                                      │ Side panel          │
+│                CANVAS                │ (Source / Generate) │
+│   (floating transport + tape on      │                     │
+│    hover — see Playback controls)    │                     │
 ├──────────────────────────────────────┤                     │
 │ [Diagnostics][Stream][Scene]…     ▾  │                     │
 │ (bottom dock under canvas only)      │                     │
@@ -87,22 +88,33 @@ any unsaved edits.
   streaming), and the Advanced arrival fields. Nothing stream-specific sits
   inline in the header.
 - **Library button** (user steering, P018): a blue (accent) text-only "Library"
-  button at the right of the header, immediately left of the Source panel
-  toggle.
+  button at the right of the header, immediately left of the **side-panel
+  open/close** toggle.
+- **Side-panel toggle** (user steering, 3 November 2026): the header icon opens
+  and closes the right side panel. It is **not** a Source-only control — the
+  panel may show Source or Generate chrome depending on mode.
 - **Opening a program** from the Library loads it into the player and waits for
   Run or Stream. Autoplay on open is a header run option (off by default).
+  Loading a program from the Library while in **Generate** mode **exits
+  Generate** and resolves the side panel to **Source** (user steering,
+  3 November 2026).
 - There is exactly one loaded program. Stream, Scene and Diagnostics always
   refer to it; there is no second source selector anywhere.
-- **Chrome placement** (user steering, 2 November 2026, P017): the Fullscreen
-  control is an icon-only button at the far right of the transport row above the
-  tape. **Settings** (⚙: Split, Autoplay, canvas size, DPR, additional tools) is
-  at the far right of the blue status bar and opens upward. Neither is in the
-  header. When a program is loaded but not run, the canvas shows its Studio
-  thumbnail (the Library poster policy, 35% of duration) under the Run prompt;
-  nothing plays until Run.
+- **Chrome placement** (user steering, 2–3 November 2026): Fullscreen sits in
+  the floating transport (far right). **Settings** (⚙: Split, Autoplay, canvas
+  size, DPR, **playback speed**, full-frame tape toggle, additional tools) is at
+  the far right of the blue status bar, opens upward, and uses a **larger**
+  settings icon than the previous status-bar control. Neither Fullscreen nor
+  Settings lives in the header. When a program is loaded but not run, the canvas
+  shows its Studio thumbnail (the Library poster policy, 35% of duration) under
+  the Run prompt; nothing plays until Run.
+- **Corner resize** (user steering, 3 November 2026): the bottom dock and side
+  panel remain independently resizable. Dragging the **corner where they meet**
+  resizes **both** at once so the canvas can be adjusted ad hoc.
 - **Fullscreen** presents the canvas only, using contain-fit on the logical
   viewport (no stretching, no change to authored coordinates). Esc or a visible
-  exit control leaves it. Transport may appear on hover.
+  exit control leaves it. The same floating playback-control behaviour and
+  layout apply in fullscreen.
 - **Source panel**: quick edit and re-Run of the loaded program. Compile errors
   list line, column, code, message and recovery; selecting one jumps to the
   span. Source is never replaced on failure.
@@ -116,8 +128,8 @@ any unsaved edits.
 #### Split details (confirmed 2 November 2026, P004)
 
 The Split toggle lives in the Settings menu (user steering, 2 November 2026; Settings moved to the status bar by P017).
-The header Source control is a borderless right-panel outline icon, with an
-accessible name and tooltip. Split expands the existing Source editor beside the canvas, with
+The header side-panel toggle is a borderless right-panel outline icon, with an
+accessible name and tooltip for open/close (not “Source”). Split expands the existing Source editor beside the canvas, with
 explicit MotionScript/Lottie/SVG/Fixture format selection, a format-filtered
 Presets selector and Open file. Files and presets load into the selected draft
 and wait for Run. Format selection does not convert source. Each format retains
@@ -145,10 +157,23 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
   There is no author-declared poster in the language. Studio code picks the
   frame statically (for example a fixed fraction of the duration, or a per-entry
   value in Studio's own catalogue).
-- Organisation: **collections** (Stories, Test frames, Runtime scenes, My
-  programs, Imports) plus editable **tags**. **Search** covers title, caption
-  and tags. **Sort** by name, recently opened, recently added/modified and
-  duration. **Favourites** and a **Recent** strip.
+- Organisation: **collections** (Stories, Test frames, Runtime scenes,
+  Interactive, My programs, Imports, **Transcripts**) plus editable **tags**.
+  **Search** covers title, caption and tags. **Sort** by name, recently opened,
+  recently added/modified and duration. **Favourites** and a **Recent** strip.
+- **Collection meanings** (user steering, 3 November 2026):
+  - **Stories** — elaborate, complex programs that push system boundaries and
+    surface break points / inefficiencies in processing and language↔system
+    capabilities. After gaps are filled they are rewritten in up-to-date
+    MotionScript and treated as samples of the best implementations to date;
+    versioning may later feed examples into model system prompts.
+  - **Test frames** — short scripts produced as experiments or validation
+    during engine/product runs (capability probes, not boundary-pushing
+    narratives). Misfiled capability probes under Stories (for example Clip
+    mask, Dynamic text, Path progress, Physics marble, Spatial crane / echo /
+    home / seams, and similar Alpha matte) move to Test frames.
+  - **Transcripts** — saved multi-turn Generate sessions (and importable GVR
+    transcript documents) for playback; not single-program My programs saves.
 - **New / Paste / Upload** use a full editor on the Library page. The result
   goes into My programs and opens in the player.
 - Editing is available in both places: the Library editor for creating and
@@ -177,15 +202,45 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
     shows the same icons, colours and legend as the tab.
   - Stream controls live in the Stream button's dropdown (P018, resolved by the
     user).
-- **Frame tape** (user direction, 2 November 2026): a video-editor style track of
-  frame thumbnails instead of a plain line, with a vertical playhead line at the
-  current time. In stream mode, frames are added to the tape as they are
-  resolved and stay **greyed out until played**, then show normally once the
-  playhead has passed them. This shows at a glance whether resolved content
-  stays ahead of playback, along with waiting and stall gaps. In instant mode the
-  whole tape is available at once. The tape is a track system: further tracks
-  (sound, narration, events) are added as those capabilities land. Counters
-  always state their unit (characters, units, ms).
+- **Frame tape** (user direction, 2–3 November 2026): see **Playback controls
+  and tape** below. Stream / Generate modes default to **full frame-tape
+  rendering** with streaming colouring and frame-load semantics. Regular Run of
+  a loaded program defaults to a **minimal white-line** tape; full frame tiles
+  appear on hover intent to scrub, and remain toggleable in playback settings
+  for every mode. The tape is a track system: further tracks (sound, narration,
+  events) are added as those capabilities land. Counters always state their
+  unit (characters, units, ms).
+
+## Playback controls and tape (user-confirmed, 3 November 2026)
+
+Reference: [floating-playback-controls-reference.png](assets/floating-playback-controls-reference.png)
+(YouTube-style floating overlay).
+
+- **Placement:** transport + tape float **inside the canvas bounds**, over the
+  picture — not a permanent footer under the canvas. Same layout in fullscreen.
+- **Visibility:** hidden by default. Shown when the pointer **enters the canvas
+  bounds**. After the pointer is **stationary**, controls stay visible for
+  **5 seconds**, then hide again. Motion restarts the hide timer.
+- **Interactive programs:** if the loaded program has interactive components,
+  controls appear only when the pointer moves within a **smaller hotspot**
+  around the control cluster (so canvas interactions are not stolen by a
+  full-canvas reveal).
+- **Transport:** play/pause, seek, time readout, fullscreen (and later volume /
+  related host controls as they exist). **Click the canvas** or press
+  **Space** toggles play/pause (needed once chrome can disappear).
+- **Tape modes:**
+  - **Minimal (white line):** default for ordinary Run of a loaded program — a
+    thin white progress line across the control width with a playhead.
+  - **Full frame tape:** video-editor-style frame thumbnails with playhead.
+    Default **on** for Stream and Generate. Toggleable in playback Settings for
+    **all** modes (default **off** for regular Run).
+  - Hovering the white-line tape in an attempt to move the playhead **expands**
+    to full frame-tape rendering for scrubbing; leaving restores the mode’s
+    default presentation.
+  - Stream/Generate full tape keeps existing colouring / frame-load semantics
+    (grey until played, red gap at wait frontier, etc. — see Frame-tape states).
+- **Playback speed** lives in playback Settings (status-bar ⚙), not as a
+  permanent transport chrome requirement.
 
 ## Standing rule: testing surfaces (user steering, 3 November 2026)
 
@@ -230,20 +285,37 @@ for the director’s intended roles ([decision](../../decisions/product/2026-11-
 In Generate mode the side panel is for **generation**, not script testing:
 
 - **Middle (primary):** scrolling **transcript**.
-  - **User** messages: right-aligned, blue.
+  - **User** messages: right-aligned, blue, **full opacity** (not greyed /
+    muted — they are ordinary messages).
   - **Model** messages: left-aligned, neutral colour.
   - While a model reply is in flight: show a **truncated preview** of arriving
     text and/or a **⋯** pending state in the bubble.
   - **Click** a model bubble to open a **stream-like detail view** as soon as the
     bubble exists (including while still generating); the open detail streams
-    arriving text. Reuse Stream source-view conventions where they fit.
-  - Detail **View** is a **dropdown** under the panel title (Output | Director),
-    not a button cluster. Prefer dropdowns when there are multiple view modes.
+    arriving text. Clicks must register during streaming — generation rerenders
+    must not swallow pointer events or prevent opening detail mid-stream.
+  - Detail **View** is a **stable dropdown** under the panel title
+    (Output | Director), not a button cluster. While text is streaming the
+    selector must remain clickable and must **not** remount/disappear in a way
+    that drops clicks or traps the open picker.
+  - The detail body shows the **selected** stream only. Director content must
+    not appear under Output (or vice versa). When Output is generating, Director
+    is **complete** (not “pending”); status labels must match pipeline reality
+    (see bug reference
+    [generate-detail-director-pending-bug.png](assets/generate-detail-director-pending-bug.png)).
   - Detail is **resizable** in the middle of the side panel: drag the handle to
     expand/shrink; drag fully toward the transcript closes detail; drag fully
     the other way expands detail over the transcript. When fully expanded, **X**
-    returns to the transcript.
-  - **Copy chat** copies the full transcript from the Generate panel bar.
+    returns to the transcript. **Fullscreen / fully expanded detail must
+    scroll** (overflow is not clipped without a scroll container).
+  - **Panel menu (⋯):** a three-dot menu on the Generate side panel.
+    - **Copy** with a **granularity** submenu: at minimum human prompts +
+      MotionScript programs (current default), plus optional director responses,
+      system prompts, transcript/retry details, and log specifics — each
+      selectable so testers can build the clipboard payload they need.
+    - **System prompts:** view and edit the Director and MotionScript generation
+      system prompts (tester tooling; changes are session-local unless a later
+      ticket defines persistence).
 - **Bottom of side panel:** compact **prompt composer** (chat-input pattern —
   rounded field with placeholder and an in-field toolbar; visual reference:
   [generate-prompt-composer-reference.png](assets/generate-prompt-composer-reference.png)).
@@ -251,6 +323,9 @@ In Generate mode the side panel is for **generation**, not script testing:
     border) with enough bottom padding that long prompts are not covered.
   - Inside the composer toolbar: **Approach** (Director | Direct) and **model**
     settings as dropdowns/chips (same role as a model selector in the reference).
+  - **Model readiness:** when no model is loaded/ready, the model selector is
+    **greyed out**, Send stays inactive, and testers cannot send messages until
+    a model is confirmed ready to accept prompts.
   - Send / cancel in the composer (send while idle; cancel while running).
   - Mic may appear later (P009); typed prompts are enough for P019.
   - **Story quality pack (P020):** a horizontal row of starter chips above the
@@ -261,6 +336,19 @@ In Generate mode the side panel is for **generation**, not script testing:
 - Secondary metrics (repairs, latency, tape wait) may appear as quiet status
   under the composer or on the bubble — never as the acceptance gate.
 - Waiting-state MotionScript loading screens are tracked separately (P023).
+
+### Transcripts (user-confirmed, 3 November 2026)
+
+- Library gains a **Transcripts** collection. Multi-turn Generate sessions must
+  be recoverable as transcripts (not only the last MotionScript under My
+  programs).
+- Define a **GVR transcript contract** (versioned document) so external sample
+  transcripts (for example flagship-model baselines) can be imported and played
+  in Studio. Product owns the Studio-facing contract; coordinate with Engine if
+  a shared schema package is required.
+- **Transcript playback** puts Studio into **Generate** mode and advances the
+  recorded turns. Highlight the **currently rendering** user prompt bubble and
+  the corresponding model response bubble.
 
 ```
 │ CANVAS (+ transport/tape/dock under canvas) │  GENERATE PANEL (full height)   │
