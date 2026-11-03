@@ -1,7 +1,7 @@
 # P027 Generate panel tooling
 
 Run: `3772eb1b-1d1f-48fb-95a0-44c727f31e53`. Issue: [#184](https://github.com/danielyekini/generative-virtual-runtime/issues/184).
-Base: `deff11e` (main after P025).
+Base: `deff11e` (main after P025); integrated with main `98086cb` and re-verified.
 
 The Generate side panel's "Copy chat" button is replaced by a ⋯ menu with two
 entries. **Copy ›** opens a granularity submenu: human prompts, MotionScript
@@ -21,7 +21,7 @@ selected model answers the readiness probe; Studio re-probes every 5 s while
 the model is unavailable. A typed prompt is kept while Send is blocked.
 
 Verification (exit 0):
-- `npm run verify`: 86 Vitest files / 567 tests, typechecks, Studio build, IR
+- `npm run verify`: 88 Vitest files / 581 tests after integration, typechecks, Studio build, IR
   manifest, 33 operations tests, capability reference `ms-0.22.0_sir-0.22.0`.
 - `npm run smoke:studio`: 136/136, including the blocked→ready model gate (with
   a stubbed tags response), menu placement, default copy parts, copied payload,
