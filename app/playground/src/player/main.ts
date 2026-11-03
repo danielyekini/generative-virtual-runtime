@@ -21,7 +21,7 @@ import type { ResolvedFrame } from "@gvr/schema";
 import type { GvrBridge, PlayerProbe } from "../bridge";
 import { isTypingTarget } from "../bridge";
 import { clearCanvas, describeFrame } from "../describe";
-import { decodeMine, STORAGE_KEY, selectionFor, type LocatedDiagnostic, type ProgramEntry, type ProgramFormat } from "../library";
+import { decodeMine, encodeMine, STORAGE_KEY, selectionFor, type LocatedDiagnostic, type ProgramEntry, type ProgramFormat } from "../library";
 import { frameTelemetry, telemetry } from "../telemetry";
 import { clampTime, collectKeyTimes, formatClock, isStaticScene, stepKey } from "../timeline";
 import { FORMAT_LABELS, installedPrograms } from "./programs";
@@ -44,6 +44,8 @@ import {
   write,
   type PanelTab,
 } from "./settings";
+import { GenerateController } from "./generate-session";
+import { bindGeneratePanel, renderGeneratePanel, wireGeneratePanel } from "./generate-panel";
 
 function $<T extends HTMLElement>(id: string): T {
   const element = document.getElementById(id);
@@ -89,6 +91,10 @@ const ui = {
   comparisonCanvas: $<HTMLCanvasElement>("compare-view"),
   comparisonNote: $("comparison-note"),
   toggleSource: $<HTMLButtonElement>("toggle-source"),
+  generate: $<HTMLButtonElement>("generate"),
+  generateClose: $<HTMLButtonElement>("generate-close"),
+  sourceChrome: $("source-chrome"),
+  generateChrome: $("generate-chrome"),
   fullscreen: $<HTMLButtonElement>("fullscreen"),
   canvasArea: $("canvas-area"),
   canvas: $<HTMLCanvasElement>("view"),
@@ -287,6 +293,35 @@ let needsDraw = true;
 let libraryVisible = false;
 let lastWall = performance.now();
 let ticksKey = "";
+/** Generate mode (P019): side panel shows transcript + composer instead of Source. */
+let generateMode = false;
+/** Source-open preference restored when leaving Generate. */
+let sourceOpenBeforeGenerate = false;
+
+const generateUi = bindGeneratePanel($("generate-chrome"));
+const generate = new GenerateController({
+  onChange: () => render(),
+  acceptProgram: (label, source) => {
+    const key = `mine:generated-${Date.now().toString(36)}`;
+    const entry: ProgramEntry = {
+      key,
+      label,
+      caption: "Studio Generate",
+      collection: "My programs",
+      origin: "mine",
+      format: "motionscript",
+      source,
+    };
+    const mine = [...decodeMine(read(STORAGE_KEY)).filter((item) => item.key !== key), entry];
+    write(STORAGE_KEY, encodeMine(mine));
+    const existing = catalogue.findIndex((item) => item.key === key);
+    if (existing >= 0) catalogue[existing] = entry;
+    else catalogue.push(entry);
+    openProgram(entry);
+    run();
+  },
+});
+wireGeneratePanel(generateUi, generate);
 
 function saveSettings(): void {
   write(SETTINGS_KEY, JSON.stringify(settings));
@@ -487,6 +522,7 @@ function refreshPresets(): void {
 }
 
 function setSplit(open: boolean): void {
+  if (open && generateMode) leaveGenerateMode(true);
   split = open;
   settings.sourceOpen = open;
   if (open) {
@@ -524,10 +560,42 @@ function refreshComparison(): void {
 
 function setSourceOpen(open: boolean): void {
   if (!open && split) { setSplit(false); return; }
+  if (generateMode) {
+    // Source toggle leaves Generate and restores ordinary Source chrome.
+    leaveGenerateMode(open);
+    return;
+  }
   settings.sourceOpen = open;
   saveSettings();
   render();
   if (open) ui.source.focus({ preventScroll: true });
+}
+
+function enterGenerateMode(): void {
+  if (generateMode) return;
+  if (split) setSplit(false);
+  sourceOpenBeforeGenerate = settings.sourceOpen;
+  generateMode = true;
+  settings.sourceOpen = true;
+  saveSettings();
+  render();
+  generateUi.composer.focus({ preventScroll: true });
+}
+
+function leaveGenerateMode(openSource = sourceOpenBeforeGenerate): void {
+  if (!generateMode) return;
+  if (generate.state.running) generate.cancel();
+  generate.closeDetail();
+  generateMode = false;
+  settings.sourceOpen = openSource;
+  saveSettings();
+  render();
+  if (openSource) ui.source.focus({ preventScroll: true });
+}
+
+function toggleGenerateMode(): void {
+  if (generateMode) leaveGenerateMode();
+  else enterGenerateMode();
 }
 
 function selectTab(tab: PanelTab, open = true): void {
@@ -684,7 +752,8 @@ function renderHeader(): void {
   ui.sourceRun.disabled = !loaded;
   ui.fullscreen.disabled = !runtime;
   ui.toggleSplit.setAttribute("aria-pressed", String(split));
-  ui.toggleSource.setAttribute("aria-pressed", String(settings.sourceOpen));
+  ui.toggleSource.setAttribute("aria-pressed", String(settings.sourceOpen && !generateMode));
+  ui.generate.setAttribute("aria-pressed", String(generateMode));
   if (!libraryVisible) document.title = loaded ? `${loaded.label} · GVR Studio` : "GVR Studio";
 }
 
@@ -816,17 +885,23 @@ function renderTape(span: number, still: boolean, fraction: number): void {
 }
 
 function renderSource(): void {
-  ui.sourcePanel.hidden = !settings.sourceOpen;
-  ui.sourceResize.hidden = !settings.sourceOpen;
+  const open = settings.sourceOpen || generateMode;
+  ui.sourcePanel.hidden = !open;
+  ui.sourceResize.hidden = !open;
   ui.sourcePanel.style.width = `${Math.min(settings.sourceWidth, window.innerWidth * (split ? .6 : .7))}px`;
+  ui.sourcePanel.setAttribute("aria-label", generateMode ? "Generate" : "Source");
   document.body.classList.toggle("split-open", split);
   document.body.classList.toggle("has-comparison", split && ui.splitCompare.checked && !fullscreen);
-  ui.splitControls.hidden = !split;
-  ui.comparison.hidden = !split || !ui.splitCompare.checked || fullscreen;
+  document.body.classList.toggle("generate-mode", generateMode);
+  ui.sourceChrome.hidden = generateMode;
+  ui.generateChrome.hidden = !generateMode;
+  ui.splitControls.hidden = !split || generateMode;
+  ui.comparison.hidden = !split || !ui.splitCompare.checked || fullscreen || generateMode;
   put(ui.comparisonNote, comparison ? comparison.outcome?.scene ? "Emitted/recompiled Scene IR; inspect Report / Compare for scope." : comparison.report : "Run a playable program to compare it.");
   put(ui.sourceFormat, loaded ? FORMAT_LABELS[loaded.format] : "");
   ui.sourceDirty.hidden = !dirty();
   put(ui.sourceDirty, outcome ? "● edited since Run" : "● edited");
+  if (generateMode) renderGeneratePanel(generateUi, generate.state);
 }
 
 let diagKey = "";
@@ -1052,7 +1127,10 @@ function probe(): PlayerProbe {
     playing: clock.isPlaying,
     dirty: dirty(),
     fullscreen,
-    sourceOpen: settings.sourceOpen,
+    sourceOpen: settings.sourceOpen && !generateMode,
+    generateMode,
+    generateRunning: generate.state.running,
+    generateMessages: generate.state.messages.length,
     split,
     comparison: split && ui.splitCompare.checked,
     comparisonSceneId: comparisonRuntime?.scene.sceneId ?? "",
@@ -1189,8 +1267,19 @@ ui.run.addEventListener("click", run);
 ui.readyRun.addEventListener("click", run);
 ui.sourceRun.addEventListener("click", run);
 ui.failedDiagnostics.addEventListener("click", () => selectTab("diagnostics", true));
-ui.toggleSource.addEventListener("click", () => setSourceOpen(!settings.sourceOpen));
+ui.toggleSource.addEventListener("click", () => setSourceOpen(!(settings.sourceOpen && !generateMode)));
 ui.sourceClose.addEventListener("click", () => setSourceOpen(false));
+ui.generate.addEventListener("click", () => toggleGenerateMode());
+ui.generateClose.addEventListener("click", () => leaveGenerateMode());
+generateUi.transcript.addEventListener("click", (event) => {
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const bubble = target.closest(".generate-bubble.is-model");
+  if (!(bubble instanceof HTMLButtonElement) || bubble.disabled) return;
+  const row = bubble.closest(".generate-row");
+  const id = row instanceof HTMLElement ? row.dataset.id : undefined;
+  if (id) generate.openDetail(id);
+});
 ui.source.addEventListener("input", () => { rememberDraft(); fileReadId++; render(); });
 ui.toggleSplit.addEventListener("click", () => { closeMenus(); setSplit(!split); });
 ui.splitFormat.addEventListener("change", () => selectFormat(ui.splitFormat.value as ProgramFormat));

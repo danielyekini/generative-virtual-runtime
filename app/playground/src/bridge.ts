@@ -47,6 +47,10 @@ export interface PlayerProbe {
   dirty: boolean;
   fullscreen: boolean;
   sourceOpen: boolean;
+  /** P019 Generate mode: side panel shows transcript + composer. */
+  generateMode?: boolean;
+  generateRunning?: boolean;
+  generateMessages?: number;
   split: boolean;
   comparison: boolean;
   comparisonSceneId: string;

@@ -19,5 +19,24 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     fs: { allow: [repo] },
+    // Studio Generate (P019) reaches local Ollama without browser CORS.
+    proxy: {
+      "/ollama": {
+        target: "http://127.0.0.1:11434",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/ollama/, ""),
+      },
+    },
+  },
+  preview: {
+    port: 5173,
+    strictPort: true,
+    proxy: {
+      "/ollama": {
+        target: "http://127.0.0.1:11434",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/ollama/, ""),
+      },
+    },
   },
 });
