@@ -44,7 +44,9 @@ and decisions resolved. Claim -> In progress -> self-merge/verify -> Done, or
 explicit Blocked/Human verification/Deferred outcome. A parent remains open until
 its own gate passes, irrespective of child count. Use closing keywords only for
 the completed scope. Ideas are evaluated in regular orchestrator intake/review,
-not hidden in run prose. Closed items retain evidence and reasoning.
+not hidden in run prose. Orchestrator periodic review also outcome-mines run
+summaries and may create Candidate follow-ups itself when workers omit them
+(orchestrator.md). Closed items retain evidence and reasoning.
 
 ## Seeds
 

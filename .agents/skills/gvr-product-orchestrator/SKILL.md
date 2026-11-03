@@ -13,8 +13,11 @@ missing setup and complete independent reviewable work; do not invent task IDs.
 Follow docs/operations/orchestrator.md and inbox.md. Use mode intake for new
 requests between reviews; it does not advance/reset the review clock. For due
 or explicit strategic review, assess only unreviewed product outcomes and relevant
-ideas, decide the bounded next direction, update GitHub priorities/dependencies
-and own direction, then append a review record naming exactly the inspected run IDs.
+ideas, **outcome-mine** those runs for failure points and research/expansion
+follow-ups (create or update Candidate issues when warranted; do not depend on
+workers having filed Findings), decide the bounded next direction, update GitHub
+priorities/dependencies and own direction, then append a review record naming
+exactly the inspected run IDs and any follow-ups opened.
 
 Maintain ready work; resolve incoming requests into visible execution items
 without exposing raw negotiations to ordinary runs. Coordinate shared contracts

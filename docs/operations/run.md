@@ -68,6 +68,11 @@ when applicable. Local same-lane suggestions become Candidate issues; cross-lane
 requests use inbox.md. Do not silently expand the active task. Store Studio
 suggestions in GitHub, not an additional live Markdown backlog.
 
+Worker Findings are helpful but incomplete: ticket-focused runs often miss
+research gaps. Periodic orchestrator review **outcome-mines** run summaries and
+may create Candidate follow-ups itself (see orchestrator.md). Still file clear
+findings when you see them — do not rely on review alone.
+
 ## Mandatory submission gate
 
 Follow git.md: full repository tests, typechecks and required builds must pass
