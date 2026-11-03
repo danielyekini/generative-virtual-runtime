@@ -184,9 +184,12 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
 
 Major Studio/engine capabilities must ship with a **human-testable workflow**
 in Studio before Product moves on (interactions, native model generation,
-audiovisual host paths, and later milestones). Library collections/tags must
-make those programs discoverable (for example an **Interactive** collection).
-Agents stop and ask when the surface is undefined; they do not skip the surface.
+audiovisual host paths, provider-backed generative audio, and later milestones).
+**Apply this to every future major capability**, not only the current queue.
+Library collections/tags must make those programs discoverable (for example an
+**Interactive** collection). Agents stop and ask when the surface is undefined;
+they do not skip the surface. Also in the [charter](../../project/charter.md)
+and [product direction](direction.md).
 
 ## Library: Interactive collection (confirmed intent, 3 November 2026)
 

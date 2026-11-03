@@ -30,6 +30,9 @@
   user-adopted paid provider for timed narration/SFX; provider-abstracted
   design commissioned as E031; builds on `audio.cues` without replacing the
   scene-time clock.
+- [Authoring friendliness + provider-brand abstraction (3 Nov 2026)](2026-11-03-authoring-and-provider-abstraction.md):
+  vendor-neutral public package names; MotionScript language-change gate for
+  human/generation/streaming-friendly authoring.
 - [Bounded spatial graphics (E010)](spatial-graphics.md): planar 2.5D layers
   (rigid 3D surface placement, hinges, perspective/orthographic camera) projected
   into ordinary draw items; two-sided faces, plane-test depth order, fail-closed
