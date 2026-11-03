@@ -16,7 +16,6 @@ Not yet in a published MotionScript version:
 - paint.strokeDash
 - geometry.repeater
 - geometry.mergePaths
-- text.dynamicContent
 - text.layoutMetrics
 - text.animators
 
@@ -27,9 +26,9 @@ as a standalone channel: orientation from the path tangent now exists only as
 the `orient` option of a path attachment (`geometry.pathProgress`). Variable width
 profiles stay outside this pending list until a separate decision.
 
-`text.dynamicContent` and `text.layoutMetrics` are named by the E013 decision
-(`docs/decisions/engine/dynamic-text-and-metrics.md`); schema format/measure
-helpers exist without a language claim. `text.animators` (per-glyph transforms)
+`text.layoutMetrics` is named by the E013 decision
+(`docs/decisions/engine/dynamic-text-and-metrics.md`); schema measure helpers
+exist without a language claim. `text.animators` (per-glyph transforms)
 stays pending and is **not** the content/format slice.
 
 `geometry.animatedTrim` landed in MotionScript 0.5.0.
@@ -45,6 +44,7 @@ Declarative entity sugar landed in MotionScript 0.9.0.
 `space.planarSeams` (`seams` blocks inside `spatialLayer`) landed in MotionScript 0.15.0.
 `compositing.mask` (`clip` on groups) landed in MotionScript 0.16.0.
 `geometry.pathProgress` (`attach … along …` path attachments) landed in MotionScript 0.17.0.
+`text.dynamicContent` (numeric format bindings and discrete content steps) landed in MotionScript 0.18.0.
 
 Promoting one of them is a new version file, a registry update, and conformance tests in the same change. This note stops being the place those ids live once that version is released.
 

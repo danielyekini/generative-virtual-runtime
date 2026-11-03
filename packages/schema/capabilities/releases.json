@@ -3,14 +3,14 @@
   "belowOneBreakingBoundary": "minor",
   "languages": {
     "motionscript": {
-      "current": "0.17.0",
+      "current": "0.18.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.15"
+      "packageVersion": "0.1.16"
     },
     "scene-ir": {
-      "current": "0.17.0",
+      "current": "0.18.0",
       "wireVersion": "0.2",
-      "packageVersion": "0.1.15"
+      "packageVersion": "0.1.16"
     }
   },
   "versions": [
@@ -132,6 +132,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/motionscript/versions/0.17.0.md"
+    },
+    {
+      "language": "motionscript",
+      "version": "0.18.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/motionscript/versions/0.18.0.md"
     },
     {
       "language": "motionscript",
@@ -257,6 +264,13 @@
       "status": "released",
       "wireVersion": "0.2",
       "file": "docs/languages/scene-ir/versions/0.17.0.md"
+    },
+    {
+      "language": "scene-ir",
+      "version": "0.18.0",
+      "status": "released",
+      "wireVersion": "0.2",
+      "file": "docs/languages/scene-ir/versions/0.18.0.md"
     },
     {
       "language": "scene-ir",
@@ -391,6 +405,13 @@
       "compiler": "0.1.14",
       "runtime": "0.1.19",
       "readers": "Wire stays 0.2. geometry.pathProgress is gated by requiredCapabilities / requires. Packages without the capability reject scenes and CREATE_SCENE headers carrying pathAttachments and path.progress tracks; older validators reject the unknown pathAttachments key and path.progress channel."
+    },
+    {
+      "motionscript": "0.18.0",
+      "sceneIr": "0.18.0",
+      "compiler": "0.1.15",
+      "runtime": "0.1.20",
+      "readers": "Wire stays 0.2. text.dynamicContent is gated by requiredCapabilities / requires. Packages without the capability reject text numeric bindings, content steps and text.number tracks; older validators reject the unknown numeric key and content/text.number channels."
     }
   ]
 }

@@ -127,9 +127,11 @@ export function emitMotionScript(scene: SceneIR): string {
     lines.push(body.length > 0 ? `${head} { ${body.join(" ")} };` : `${head};`);
   }
   for (const step of scene.timeline.steps) {
-    lines.push(`step ${step.target.nodeId}.visible {`);
+    lines.push(`step ${step.target.nodeId}.${step.target.channel} {`);
     lines.push(`  at ${formatDuration(step.timeMs)};`);
-    lines.push(`  value ${step.value ? "true" : "false"};`);
+    const stepValue =
+      typeof step.value === "string" ? quote(step.value) : step.value ? "true" : "false";
+    lines.push(`  value ${stepValue};`);
     lines.push(`};`);
   }
   lines.push("complete;");
@@ -338,6 +340,19 @@ function geometryLines(scene: SceneIR, node: NodeDefinition): string[] {
     if (node.font.style !== "normal") lines.push(`fontStyle ${node.font.style};`);
     if (node.align !== "left") lines.push(`align ${node.align};`);
     if (node.baseline !== "alphabetic") lines.push(`baseline ${node.baseline};`);
+    if (node.numeric) {
+      lines.push(`number ${formatNumber(node.numeric.value)};`);
+      const format = node.numeric.format;
+      if (format?.fractionDigits !== undefined) lines.push(`fractionDigits ${formatNumber(format.fractionDigits)};`);
+      if (format?.minIntegerDigits !== undefined) {
+        lines.push(`minIntegerDigits ${formatNumber(format.minIntegerDigits)};`);
+      }
+      if (format?.sign !== undefined && format.sign !== "auto") lines.push(`sign ${format.sign};`);
+      if (format?.group !== undefined) lines.push(`group ${quote(format.group)};`);
+      if (format?.decimal !== undefined && format.decimal !== ".") lines.push(`decimal ${quote(format.decimal)};`);
+      if (format?.prefix !== undefined && format.prefix !== "") lines.push(`prefix ${quote(format.prefix)};`);
+      if (format?.suffix !== undefined && format.suffix !== "") lines.push(`suffix ${quote(format.suffix)};`);
+    }
   }
   if (node.kind === "path" && node.fillRule !== "nonzero") lines.push(`fillRule ${node.fillRule};`);
   if (node.kind !== "group" && node.kind !== "line" && node.kind !== "image" && node.fill) lines.push(`fill ${formatPaint(node.fill)};`);

@@ -155,6 +155,58 @@ complete;
     expect(again.interactions).toEqual(scene.interactions);
   });
 
+  it("round-trips numeric text bindings (text.dynamicContent)", () => {
+    const source = `scene "readout" {
+  version "0.2";
+  viewport (320, 180);
+  background #0b1220;
+  duration 2s;
+};
+text Price {
+  content "0.00";
+  fontSize 24;
+  fill #22c55e;
+  align center;
+  number 42.5;
+  fractionDigits 2;
+  group ",";
+  prefix "$";
+};
+text Status {
+  content "Ready";
+  fontSize 18;
+  fill #f8fafc;
+};
+animate Price.number {
+  from 10;
+  to 99.5;
+  duration 2s;
+};
+step Status.content {
+  at 1s;
+  value "Go";
+};
+complete;
+`;
+    const scene = compile(source);
+    expect(scene.requiredCapabilities).toContain("text.dynamicContent");
+    const { again, source: emitted } = roundTrip(scene);
+    expect(emitted).toContain("number 42.5;");
+    expect(emitted).toContain("fractionDigits 2;");
+    expect(emitted).toContain('prefix "$";');
+    expect(emitted).toContain("Price.number");
+    expect(emitted).toContain("step Status.content");
+    const price = again.nodes.find((node) => node.id === "Price");
+    expect(price?.kind).toBe("text");
+    if (price?.kind === "text") {
+      expect(price.numeric).toEqual({
+        value: 42.5,
+        format: { fractionDigits: 2, group: ",", prefix: "$" },
+      });
+    }
+    expect(again.timeline.steps).toEqual(scene.timeline.steps);
+  });
+
   it("round-trips path attachments (geometry.pathProgress)", () => {
     const source = `scene "attach" {
   version "0.2";

@@ -15,6 +15,7 @@ import spatialHomeSource from "../../../fixtures/motionscript/spatial-home.ms?ra
 import spatialSeamsSource from "../../../fixtures/motionscript/spatial-seams.ms?raw";
 import clipMaskSource from "../../../fixtures/motionscript/clip-mask.ms?raw";
 import pathProgressSource from "../../../fixtures/motionscript/path-progress.ms?raw";
+import dynamicTextSource from "../../../fixtures/motionscript/dynamic-text.ms?raw";
 import cameraMappingSource from "../../../fixtures/motionscript/frames/camera-mapping.ms?raw";
 import hierarchyTransformSource from "../../../fixtures/motionscript/frames/hierarchy-transform.ms?raw";
 import opacitySource from "../../../fixtures/motionscript/frames/opacity.ms?raw";
@@ -157,6 +158,7 @@ export const motionExamples: MotionExample[] = [
   { id: "spatial-seams", label: "Spatial seams", caption: "Crossing panels split along their intersection; a drifting flap opens its declared seam (space.planarSeams).", source: spatialSeamsSource },
   { id: "clip-mask", label: "Clip mask", caption: "A rotating card is clipped to a circular window (compositing.mask).", source: clipMaskSource },
   { id: "path-progress", label: "Path progress", caption: "An arrow rides a growing stroke's tip and a wheel rolls along a bending track, with no baked keys (geometry.pathProgress).", source: pathProgressSource },
+  { id: "dynamic-text", label: "Dynamic text", caption: "A live currency readout formats a number track, and a status label swaps discrete content steps (text.dynamicContent).", source: dynamicTextSource },
   { id: "physics-marble", label: "Physics marble", caption: "A marble and block fall onto a floor (physics.planar2d).", source: physicsMarbleSource },
   { id: "caption", label: "Caption", caption: "A caption rises and fades in.", source: captionSource },
   { id: "nested", label: "Nested", caption: "A wheel and its spoke rotate together.", source: nestedSource },

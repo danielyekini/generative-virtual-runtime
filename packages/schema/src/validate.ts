@@ -77,6 +77,8 @@ const NODE_CHANNELS = new Set([
   "trim.end",
   "trim.offset",
   "path.progress",
+  "content",
+  "text.number",
   "fill.r",
   "fill.g",
   "fill.b",
@@ -189,6 +191,7 @@ export function validateSceneIR(
   if (v02) readPhysics(input.physics, nodeIds, input.timeline, input.interactions, input.requiredCapabilities, diags);
   if (v02) readPathAttachments(input.pathAttachments, nodes, input.timeline, input.interactions, input.physics, input.requiredCapabilities, diags);
   if (v02 && nodes) readClipTargets(nodes, compositions.flatMap((c) => c.nodes), input.requiredCapabilities, diags);
+  if (v02 && nodes) readDynamicText(nodes, input.timeline, input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
   if (nodeCount > limits.maxNodes) {
@@ -351,14 +354,14 @@ function readTimeline(
     steps.forEach((step, index) => {
       const item = readStep(step, `timeline.steps[${index}]`, duration, nodeIds, diags);
       if (!item) return;
-      const key = item.target.nodeId;
+      const key = `${item.target.nodeId}.${item.target.channel}`;
       const times = seen.get(key) ?? new Set<number>();
       if (times.has(item.timeMs)) {
         diags.add(
           "OVERLAPPING_WRITERS",
           `timeline.steps[${index}]`,
-          `Two steps write ${key}.visible at ${item.timeMs}ms.`,
-          { target: `${key}.visible`, sceneTimeMs: item.timeMs },
+          `Two steps write ${key} at ${item.timeMs}ms.`,
+          { target: key, sceneTimeMs: item.timeMs },
         );
       }
       times.add(item.timeMs);
@@ -608,16 +611,29 @@ function readStep(
     return undefined;
   }
   rejectUnknown(value.target, ["kind", "nodeId", "channel"], `${path}.target`, diags);
-  if (value.target.kind !== "node" || value.target.channel !== "visible") {
-    diags.add("INVALID_TRACK_TARGET", `${path}.target`, "V1 steps can write only node visible.");
+  const channel = value.target.channel;
+  if (value.target.kind !== "node" || (channel !== "visible" && channel !== "content")) {
+    diags.add(
+      "INVALID_TRACK_TARGET",
+      `${path}.target`,
+      'Steps can write node "visible" or "content" (content requires text.dynamicContent).',
+    );
     return undefined;
   }
   if (typeof value.target.nodeId !== "string" || !nodeIds.has(value.target.nodeId)) {
     diags.add("UNKNOWN_TARGET", `${path}.target.nodeId`, "Step target node does not exist.");
     return undefined;
   }
-  if (typeof value.value !== "boolean") {
-    diags.add("INVALID_TRACK_VALUE", `${path}.value`, "visible steps require a boolean.");
+  if (channel === "visible") {
+    if (typeof value.value !== "boolean") {
+      diags.add("INVALID_TRACK_VALUE", `${path}.value`, "visible steps require a boolean.");
+      return undefined;
+    }
+  } else if (typeof value.value !== "string") {
+    diags.add("INVALID_TRACK_VALUE", `${path}.value`, "content steps require a string.");
+    return undefined;
+  } else if (/[\r\n]/.test(value.value)) {
+    diags.add("INVALID_GEOMETRY", `${path}.value`, "V1 text is a single line.");
     return undefined;
   }
   return value as unknown as StepDefinition;
@@ -811,7 +827,9 @@ function readNode(value: unknown, path: string, diags: Diags, limits: ResourceLi
     polygon: ["points", "fill", "stroke"],
     path: ["commands", "fillRule", "fill", "stroke"],
     image: ["resourceId", "size"],
-    text: ["content", "font", "align", "baseline", "fill", "stroke"],
+    text: v02
+      ? ["content", "font", "align", "baseline", "fill", "stroke", "numeric"]
+      : ["content", "font", "align", "baseline", "fill", "stroke"],
   };
   rejectUnknown(value, [...common, ...(extra[kind] ?? [])], path, diags);
   readIdent(value.name, `${path}.name`, diags);
@@ -899,6 +917,7 @@ function readGeometry(
       diags.add("INVALID_ENUM", `${path}.baseline`, "Unknown text baseline.");
     }
     if (value.fill === undefined) diags.add("MISSING_REQUIRED", `${path}.fill`, "Text requires a fill.");
+    if (value.numeric !== undefined) readTextNumeric(value.numeric, `${path}.numeric`, diags);
   }
   if (value.fill !== undefined && kind !== "group" && kind !== "line" && kind !== "image") {
     readPaint(value.fill, `${path}.fill`, diags, v02);
@@ -1845,8 +1864,17 @@ function readFinite(value: unknown, path: string, diags: Diags): number | undefi
 }
 
 function sampleOk(type: string, channel: string, value: unknown): boolean {
-  if (type !== "number" && type !== "vec2" && type !== "angle" && type !== "boolean" && type !== "path") return false;
-  return isValidSample(type as "number" | "vec2" | "angle" | "boolean" | "path", channel, value);
+  if (
+    type !== "number" &&
+    type !== "vec2" &&
+    type !== "angle" &&
+    type !== "boolean" &&
+    type !== "path" &&
+    type !== "string"
+  ) {
+    return false;
+  }
+  return isValidSample(type as "number" | "vec2" | "angle" | "boolean" | "path" | "string", channel, value);
 }
 
 function readCompositions(
@@ -2804,6 +2832,137 @@ function readInteractions(
           `${scalar.slice(5)} is input-owned by ${owned.get(scalar)}; a track cannot also write it.`,
         );
       }
+    }
+  });
+}
+
+function readTextNumeric(value: unknown, path: string, diags: Diags): void {
+  if (!isRecord(value)) {
+    diags.add("INVALID_TYPE", path, "numeric must be an object.");
+    return;
+  }
+  rejectUnknown(
+    value,
+    ["value", "format"],
+    path,
+    diags,
+  );
+  const number = readFinite(value.value, `${path}.value`, diags);
+  if (number === undefined) {
+    // readFinite already diagnosed
+  }
+  if (value.format === undefined) return;
+  if (!isRecord(value.format)) {
+    diags.add("INVALID_TYPE", `${path}.format`, "format must be an object.");
+    return;
+  }
+  rejectUnknown(
+    value.format,
+    ["fractionDigits", "minIntegerDigits", "sign", "group", "decimal", "prefix", "suffix"],
+    `${path}.format`,
+    diags,
+  );
+  if (value.format.fractionDigits !== undefined) {
+    const digits = readFinite(value.format.fractionDigits, `${path}.format.fractionDigits`, diags);
+    if (digits !== undefined && (digits < 0 || !Number.isInteger(digits))) {
+      diags.add("INVALID_TRACK_VALUE", `${path}.format.fractionDigits`, "fractionDigits must be an integer >= 0.");
+    }
+  }
+  if (value.format.minIntegerDigits !== undefined) {
+    const digits = readFinite(value.format.minIntegerDigits, `${path}.format.minIntegerDigits`, diags);
+    if (digits !== undefined && (digits < 1 || !Number.isInteger(digits))) {
+      diags.add("INVALID_TRACK_VALUE", `${path}.format.minIntegerDigits`, "minIntegerDigits must be an integer >= 1.");
+    }
+  }
+  if (
+    value.format.sign !== undefined &&
+    value.format.sign !== "auto" &&
+    value.format.sign !== "always" &&
+    value.format.sign !== "never"
+  ) {
+    diags.add("INVALID_ENUM", `${path}.format.sign`, 'sign must be "auto", "always", or "never".');
+  }
+  for (const key of ["group", "decimal", "prefix", "suffix"] as const) {
+    if (value.format[key] !== undefined && typeof value.format[key] !== "string") {
+      diags.add("INVALID_TYPE", `${path}.format.${key}`, `${key} must be a string.`);
+    }
+  }
+}
+
+/**
+ * text.dynamicContent (Scene IR 0.18.0): numeric bindings and discrete content steps.
+ * A numeric binding exclusively owns content on its text node.
+ */
+function readDynamicText(
+  nodes: readonly NodeDefinition[],
+  timeline: unknown,
+  required: unknown,
+  diags: Diags,
+): void {
+  const caps = Array.isArray(required) ? required : [];
+  const hasDynamic = caps.includes("text.dynamicContent");
+  const numericOwners = new Set<string>();
+  for (const [index, node] of nodes.entries()) {
+    if (node.kind !== "text" || node.numeric === undefined) continue;
+    if (!hasDynamic) {
+      diags.add(
+        "MISSING_REQUIRED",
+        "requiredCapabilities",
+        "Text numeric bindings require text.dynamicContent in requiredCapabilities.",
+      );
+    }
+    numericOwners.add(node.id);
+    void index;
+  }
+  const tracks = isRecord(timeline) && Array.isArray(timeline.tracks) ? timeline.tracks : [];
+  const steps = isRecord(timeline) && Array.isArray(timeline.steps) ? timeline.steps : [];
+  tracks.forEach((track, index) => {
+    if (!isRecord(track) || !isRecord(track.target) || track.target.kind !== "node") return;
+    if (track.target.channel !== "text.number") return;
+    const nodeId = typeof track.target.nodeId === "string" ? track.target.nodeId : undefined;
+    if (nodeId === undefined) return;
+    if (!hasDynamic) {
+      diags.add(
+        "MISSING_REQUIRED",
+        "requiredCapabilities",
+        "text.number tracks require text.dynamicContent in requiredCapabilities.",
+      );
+    }
+    const node = nodes.find((entry) => entry.id === nodeId);
+    if (!node || node.kind !== "text" || node.numeric === undefined) {
+      diags.add(
+        "INVALID_TRACK_TARGET",
+        `timeline.tracks[${index}]`,
+        `text.number needs a numeric binding on text node ${nodeId}.`,
+      );
+    }
+  });
+  steps.forEach((step, index) => {
+    if (!isRecord(step) || !isRecord(step.target) || step.target.channel !== "content") return;
+    if (!hasDynamic) {
+      diags.add(
+        "MISSING_REQUIRED",
+        "requiredCapabilities",
+        "content steps require text.dynamicContent in requiredCapabilities.",
+      );
+    }
+    const nodeId = typeof step.target.nodeId === "string" ? step.target.nodeId : undefined;
+    if (nodeId === undefined) return;
+    const node = nodes.find((entry) => entry.id === nodeId);
+    if (!node || node.kind !== "text") {
+      diags.add(
+        "INVALID_TRACK_TARGET",
+        `timeline.steps[${index}]`,
+        `content steps require a text node; ${nodeId} is not text.`,
+      );
+      return;
+    }
+    if (numericOwners.has(nodeId)) {
+      diags.add(
+        "OVERLAPPING_WRITERS",
+        `timeline.steps[${index}]`,
+        `${nodeId}.content is owned by its numeric binding; a content step cannot also write it.`,
+      );
     }
   });
 }

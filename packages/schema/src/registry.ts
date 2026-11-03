@@ -120,6 +120,19 @@ export const NODE_CHANNELS: Record<NodeAnimChannel, ChannelSpec> = {
     animation: "track",
     scalars: ["path.progress"],
   },
+  content: {
+    dslPath: "content",
+    type: "string",
+    animation: "step",
+    /** Content steps are applied as whole strings, not scalar writers. */
+    scalars: [],
+  },
+  "text.number": {
+    dslPath: "number",
+    type: "number",
+    animation: "track",
+    scalars: ["text.number"],
+  },
   "fill.r": {
     dslPath: "fill.r",
     type: "number",
@@ -319,6 +332,7 @@ export function scalarWriters(target: PropertyTarget): string[] {
 /** Keyframe and base-value constraint. Expression samples use the same rule at runtime. */
 export function isValidSample(type: PropertyType, channel: string, value: unknown): boolean {
   if (type === "boolean") return typeof value === "boolean";
+  if (type === "string") return typeof value === "string" && !/[\r\n]/.test(value);
   if (type === "path") return isPathSample(value);
   if (type === "vec2") {
     if (!isVec(value)) return false;
