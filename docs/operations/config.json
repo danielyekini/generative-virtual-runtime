@@ -398,6 +398,14 @@
     "X-ENGINE-TICKET-SOURCE-STORIES-20261103": {
       "number": 189,
       "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/189"
+    },
+    "E043": {
+      "number": 196,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/196"
+    },
+    "E044": {
+      "number": 197,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/197"
     }
   },
   "features": {

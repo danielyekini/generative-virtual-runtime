@@ -117,7 +117,19 @@ new engine tickets waits on Product P030 (#188). Holder:
 [E042](https://github.com/danielyekini/generative-virtual-runtime/issues/191)
 ([#189](https://github.com/danielyekini/generative-virtual-runtime/issues/189)).
 
-1. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173))
+1. E014 ([#33](https://github.com/danielyekini/generative-virtual-runtime/issues/33))
+   decided local/named time and cycles
+   ([decision](../../decisions/engine/time-composition.md)). Cyclic timing
+   scopes separate an unbounded loop with a phase from a finite `repeat`.
+   Timed keys and named beats replace percentage arithmetic. The gap/hold
+   rule is now pinned, rotation stays unwrapped degrees, cyclic chains own
+   their channels exclusively, and every writer for a cycle arrives before
+   its first seal. Next Ready work:
+   E043 ([#196](https://github.com/danielyekini/generative-virtual-runtime/issues/196),
+   `timing.cyclicScopes`) and E044
+   ([#197](https://github.com/danielyekini/generative-virtual-runtime/issues/197),
+   `timing.timedKeys` + beats). They are independent, so either can go first.
+2. E039 ([#173](https://github.com/danielyekini/generative-virtual-runtime/issues/173))
    landed MotionScript / Scene IR 0.22.0 `geometry.pathSpace`: `attach` follows
    the path node's transform. Scenes that require only `geometry.pathProgress`
    stay path-local. Replenish further from M2/M4/M5 Candidates. Audible human
