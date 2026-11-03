@@ -18,3 +18,4 @@ mandatory fidelity/review routing no longer governs unrelated native work.
 
 - [2026-11-02 (product): P002 current-program Stream mode and truthful source states](product/2026-11-02-player-stream-mode.md).
 - [2026-11-02 (product): P002 integration with released input/audio](product/2026-11-02-player-stream-integration.md).
+- [2026-11-03 (product): keep the Ollama 14B pin; unload and a held-out lighter tag](product/2026-11-03-ollama-serving.md).
