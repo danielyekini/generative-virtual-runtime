@@ -25,6 +25,12 @@ applicable technical contracts. Do not read every engine run or engine inbox.
    Secondary metrics: failures, latency, streaming tape downtime. Director is
    not an automatic permanent preference over a proven Direct path.
 
+**Orchestrator may revise any of the above** (and related operating principles)
+when evidence warrants — including designing a user-focused test instead of
+keeping a harmful gate. Record supersession. Vision / paid-service / platform
+boundaries unchanged ([authority](../../operations/authority.md),
+[orchestrator](../../operations/orchestrator.md)).
+
 ## Studio UX authority (user steering, 2–3 November 2026)
 
 [studio-ux.md](studio-ux.md) is the user-confirmed Studio specification:

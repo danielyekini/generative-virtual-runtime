@@ -196,7 +196,9 @@ audiovisual host paths, provider-backed generative audio, and later milestones).
 Library collections/tags must make those programs discoverable (for example an
 **Interactive** collection). Agents stop and ask when the surface is undefined;
 they do not skip the surface. Also in the [charter](../../project/charter.md)
-and [product direction](direction.md).
+and [product direction](direction.md). The **product orchestrator** may revise
+this rule (or substitute a user-focused test) if it becomes harmful; record the
+change ([orchestrator process authority](../../operations/orchestrator.md)).
 
 ## Library: Interactive collection (delivered P010, 3 November 2026)
 

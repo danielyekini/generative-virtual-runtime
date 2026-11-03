@@ -84,3 +84,15 @@ Repository protections and platform permission boundaries still apply. Deploymen
 package publication, new paid services or fundamental changes to this vision
 need separate authorisation (ElevenLabs audio generation is already authorised
 above); ordinary technical decisions do not.
+
+**Orchestrator process authority (user steering, 3 November 2026):** lane
+orchestrator workflows may revise **any** standing process, delivery principle,
+authoring/abstraction gate, or Studio-testing criterion in this charter's
+operating layer and in workstream direction when evidence or risk warrants it
+(for example, if over-abstraction appears to reduce program variability, they
+may relax or reshape the criterion, or design a **user-focused test** for human
+judgment). Record the change, what it supersedes, and the trigger. They still
+must not silently redefine the product vision, bypass platform protections,
+or rewrite the other lane's direction without agreement — see
+[authority](../operations/authority.md) and
+[orchestrator](../operations/orchestrator.md).
