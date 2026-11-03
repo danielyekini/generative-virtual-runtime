@@ -6,6 +6,7 @@ import {
 } from "@gvr/schema";
 import { sceneAudioReadiness, type AudioStates } from "./audio";
 import { PlaybackClock } from "./playback";
+import { sceneImageReadiness, type ImageStates } from "./visual-resources";
 import { AnimationRuntime } from "./runtime";
 
 export type PresentationPhase =
@@ -29,6 +30,8 @@ export interface GeneratedOffer {
   resourcesReady?: boolean;
   /** Host loader states for audio.cues resources; required audio in the startup window must be ready. */
   audioStates?: AudioStates;
+  /** Host loader states for drawn image resources (E019); pending holds, failed blocks. */
+  imageStates?: ImageStates;
 }
 
 export interface Readiness {
@@ -264,6 +267,9 @@ export function assessReadiness(offer: GeneratedOffer, startupBufferMs: number):
     if (audio.failed.length > 0) return { ok: false, reason: `Required audio ${audio.failed[0]} failed to load.` };
     if (audio.waitingFor.length > 0) return { ok: false, reason: `Required audio ${audio.waitingFor[0]} is still loading.` };
   }
+  const images = sceneImageReadiness(validated.value, offer.imageStates);
+  if (images.failed.length > 0) return { ok: false, reason: `Required image ${images.failed[0]} failed to load.` };
+  if (images.waitingFor.length > 0) return { ok: false, reason: `Required image ${images.waitingFor[0]} is still loading.` };
   if (!(offer.sealedThroughMs >= neededMs - 1e-9)) {
     return { ok: false, reason: `Sealed coverage is ${offer.sealedThroughMs}ms; playback needs ${neededMs}ms.` };
   }

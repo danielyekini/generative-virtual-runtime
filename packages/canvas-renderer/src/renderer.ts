@@ -11,6 +11,22 @@ import {
   type ResolvedGeometry,
 } from "@gvr/schema";
 import { cssColor, cssFont, traceGeometry, type PathSink } from "./draw";
+import { ImageResourceCache, type ImageLoader } from "./images";
+
+/**
+ * Image sampling recipe. `smooth` keeps canvas bilinear filtering (default).
+ * `pixelated` disables smoothing so scaled pixel art stays crisp. Host-level
+ * prototype (E019); not a Scene IR property.
+ */
+export type ImageSampling = "smooth" | "pixelated";
+
+export interface CanvasRendererOptions {
+  /** Shared decoded-image cache; created per renderer when omitted. */
+  images?: ImageResourceCache;
+  /** Loader for a renderer-owned cache (ignored when `images` is given). */
+  imageLoader?: ImageLoader;
+  imageSampling?: ImageSampling;
+}
 
 const LETTERBOX = "#000000";
 
@@ -27,12 +43,21 @@ export class CanvasRenderer {
   private devicePixelRatio = 1;
   private disposed = false;
   private paths = new WeakMap<object, Path2D>();
-  private readonly images = new Map<string, HTMLImageElement>();
+  readonly images: ImageResourceCache;
+  private readonly ownsImages: boolean;
+  private imageSampling: ImageSampling;
   private scopeAlpha = 1;
 
-  constructor(canvas: HTMLCanvasElement, private readonly telemetry?: Telemetry) {
+  constructor(canvas: HTMLCanvasElement, private readonly telemetry?: Telemetry, options: CanvasRendererOptions = {}) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
+    this.ownsImages = !options.images;
+    this.images = options.images ?? new ImageResourceCache({ loader: options.imageLoader, telemetry });
+    this.imageSampling = options.imageSampling ?? "smooth";
+  }
+
+  setImageSampling(sampling: ImageSampling): void {
+    this.imageSampling = sampling;
   }
 
   resize(cssWidth: number, cssHeight: number, devicePixelRatio: number): void {
@@ -87,9 +112,8 @@ export class CanvasRenderer {
   dispose(): void {
     this.disposed = true;
     this.ctx = null;
-    this.images.clear();
+    if (this.ownsImages) this.images.clear();
     this.paths = new WeakMap<object, Path2D>();
-    this.telemetry?.gauge("renderer.image_cache_entries", 0);
   }
 
   private drawItem(ctx: CanvasRenderingContext2D, device: Mat3, item: ResolvedDrawItem): void {
@@ -183,20 +207,15 @@ export class CanvasRenderer {
 
   private drawImage(ctx: CanvasRenderingContext2D, item: ResolvedDrawItem): void {
     if (item.geometry.kind !== "image" || typeof ctx.drawImage !== "function") return;
-    const image = this.imageFor(item.geometry.href);
-    if (!image || image.naturalWidth <= 0) return;
-    ctx.drawImage(image, 0, 0, item.geometry.size.x, item.geometry.size.y);
-  }
-
-  private imageFor(href: string): HTMLImageElement | undefined {
-    if (!href || typeof Image === "undefined") return undefined;
-    const cached = this.images.get(href);
-    if (cached) return cached;
-    const image = new Image();
-    image.src = href;
-    this.images.set(href, image);
-    this.telemetry?.gauge("renderer.image_cache_entries", this.images.size);
-    return image;
+    const href = item.geometry.href;
+    if (!href) return;
+    // Lazily start a load for hosts that never called images.prepare(); a
+    // pending or failed image draws nothing (no placeholder pixels).
+    if (this.images.acquire(href) !== "ready") return;
+    const image = this.images.get(href);
+    if (!image) return;
+    ctx.imageSmoothingEnabled = this.imageSampling !== "pixelated";
+    ctx.drawImage(image.source, 0, 0, item.geometry.size.x, item.geometry.size.y);
   }
 
   private drawTree(ctx: CanvasRenderingContext2D, device: Mat3, node: RenderTreeNode): void {

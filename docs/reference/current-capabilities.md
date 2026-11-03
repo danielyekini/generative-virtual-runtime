@@ -36,7 +36,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | geometry.spatialCurve | supported | supported | not-applicable | A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic (After Effects / lottie-web), not by the raw bezier parameter. Optional tangent Z participates in length only and is not drawn. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/spatial.test.ts) |
 | paint.linearGradient | untested | not-applicable | untested | A fill may be a linear gradient with colour stops. [registry](../../packages/schema/capabilities/registry.json) |
 | paint.radialGradient | untested | not-applicable | untested | A fill may be a radial gradient with colour stops. [registry](../../packages/schema/capabilities/registry.json) |
-| resources.image | untested | untested | untested | An image node draws a declared image resource when that resource is ready. [registry](../../packages/schema/capabilities/registry.json) |
+| resources.image | supported | supported | supported | An image node draws a declared image resource when that resource is ready. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/visual-resources.test.ts) |
 | svg.smilTimeBased | not-applicable | supported | not-applicable | SMIL animate and animateTransform become tracks. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-svg/src/svg.test.ts) |
 | svg.cssKeyframes | not-applicable | supported | not-applicable | An embedded opacity @keyframes rule plus an element animation duration becomes a track. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-svg/src/svg.test.ts) |
 | compositing.isolatedOpacity | untested | untested | untested | A group can isolate opacity in its own render scope. [registry](../../packages/schema/capabilities/registry.json) |
@@ -81,4 +81,4 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 ## Input identity
 
 - `packages/schema/capabilities/releases.json` SHA-256 `0957f8d590ec6c4174547a3e91b6ddeb107a106b47d732843e2404ca5013ea7e`
-- `packages/schema/capabilities/registry.json` SHA-256 `ffdc7e2767c62fe9fe584aced018bce6db16715deb0f22627def907a858d49bf`
+- `packages/schema/capabilities/registry.json` SHA-256 `30cb4358ad73a2ad3bba2500bfdf01c32b38500345c582f9b76845d0f4ce346a`

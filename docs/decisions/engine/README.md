@@ -67,3 +67,7 @@
   language wiring in E043/E044. E044 landed `timing.timedKeys` as MotionScript
   0.23.0 (MotionScript only; Scene IR unchanged). E043 landed
   `timing.cyclicScopes` as MotionScript 0.24.0 / Scene IR 0.23.0.
+- [Image resource lifecycle (E019)](resource-lifecycle.md): host loader states +
+  required-image startup hold, scene-scoped renderer cache with eviction and a
+  decoded-bytes gauge, a `pixelated` sampling recipe, and a texture/repetition
+  comparison (sprite frames next in E045, pattern paint deferred in E046).
