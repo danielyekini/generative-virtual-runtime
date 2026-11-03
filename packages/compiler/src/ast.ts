@@ -45,7 +45,7 @@ export type Prop =
   | { name: "stroke"; stroke: Stroke }
   | { name: "cornerRadius" | "blur"; value: number }
   | { name: "inheritOpacity" | "isolated"; value: boolean }
-  | { name: "transformParent" | "href" | "clip"; text: string }
+  | { name: "transformParent" | "href" | "clip" | "matte"; text: string }
   | { name: "blend"; value: "source-over" | "multiply" | "screen" | "overlay" }
   | { name: "content" | "fontFamily" | "group" | "decimal" | "prefix" | "suffix"; text: string }
   | { name: "fontStyle"; value: "normal" | "italic" }

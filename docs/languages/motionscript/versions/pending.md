@@ -10,7 +10,6 @@ See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md)
 
 Not yet in a published MotionScript version:
 
-- compositing.matte
 - transform.skew
 - transform.autoOrient
 - paint.strokeDash
@@ -43,6 +42,7 @@ Declarative entity sugar landed in MotionScript 0.9.0.
 `audio.generative` (generative audio resources and `audio.narration` / `audio.effects` sugar) landed in MotionScript 0.14.0.
 `space.planarSeams` (`seams` blocks inside `spatialLayer`) landed in MotionScript 0.15.0.
 `compositing.mask` (`clip` on groups) landed in MotionScript 0.16.0.
+`compositing.matte` (`matte` on groups) landed in MotionScript 0.19.0.
 `geometry.pathProgress` (`attach … along …` path attachments) landed in MotionScript 0.17.0.
 `text.dynamicContent` (numeric format bindings and discrete content steps) landed in MotionScript 0.18.0.
 

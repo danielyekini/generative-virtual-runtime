@@ -65,6 +65,7 @@ function renderTreeFromScene(
   const place = (node: NodeDefinition): RenderTreeNode[] => {
     if (node.kind === "group" && node.compositing) {
       const clip = resolveClip(scene, node, nodesById, graph, sampled.trimOverrides);
+      const matte = resolveMatte(scene, node, nodesById, children, graph, sampled.trimOverrides, new Set());
       return [
         {
           kind: "scope",
@@ -74,6 +75,7 @@ function renderTreeFromScene(
           ...(node.compositing.blend ? { blend: node.compositing.blend } : {}),
           ...(node.compositing.effect ? { effect: node.compositing.effect } : {}),
           ...(clip ? { clip } : {}),
+          ...(matte ? { matte } : {}),
           children: (children.get(node.id) ?? []).flatMap(place),
         },
       ];
@@ -107,6 +109,75 @@ function resolveClip(
   const geometry = geometryOf(scene, target, trimOverrides);
   if (!geometry) return undefined;
   return { geometry, logicalMatrix: graph.logical(target) };
+}
+
+function resolveMatte(
+  scene: SceneIR,
+  group: NodeDefinition & { kind: "group" },
+  nodesById: Map<string, NodeDefinition>,
+  children: Map<string | null, NodeDefinition[]>,
+  graph: ReturnType<typeof resolveGraph>,
+  trimOverrides: SampledScene["trimOverrides"] | undefined,
+  stack: Set<string>,
+): RenderTreeNode | undefined {
+  const nodeId = group.compositing?.matte?.nodeId;
+  if (!nodeId || stack.has(nodeId)) return undefined;
+  const target = nodesById.get(nodeId);
+  if (!target) return undefined;
+  const next = new Set(stack);
+  next.add(nodeId);
+  return placeCoverage(scene, target, true, nodesById, children, graph, trimOverrides, next, new Set());
+}
+
+function placeCoverage(
+  scene: SceneIR,
+  node: NodeDefinition,
+  isRoot: boolean,
+  nodesById: Map<string, NodeDefinition>,
+  children: Map<string | null, NodeDefinition[]>,
+  graph: ReturnType<typeof resolveGraph>,
+  trimOverrides: SampledScene["trimOverrides"] | undefined,
+  matteStack: Set<string>,
+  walking: Set<string>,
+): RenderTreeNode | undefined {
+  if (walking.has(node.id)) return undefined;
+  if (!isRoot && !node.visible) return undefined;
+  const nextWalk = new Set(walking);
+  nextWalk.add(node.id);
+  if (node.kind === "group") {
+    const kids = (children.get(node.id) ?? []).flatMap((child) => {
+      const placed = placeCoverage(scene, child, false, nodesById, children, graph, trimOverrides, matteStack, nextWalk);
+      return placed ? [placed] : [];
+    });
+    const clip = node.compositing ? resolveClip(scene, node, nodesById, graph, trimOverrides) : undefined;
+    const nested = node.compositing?.matte
+      ? resolveMatte(scene, node, nodesById, children, graph, trimOverrides, matteStack)
+      : undefined;
+    if (!node.compositing && !isRoot && kids.length === 1 && !nested) return kids[0];
+    return {
+      kind: "scope",
+      id: node.id,
+      isolated: node.compositing?.isolated ?? false,
+      opacity: node.opacity,
+      ...(node.compositing?.blend ? { blend: node.compositing.blend } : {}),
+      ...(node.compositing?.effect ? { effect: node.compositing.effect } : {}),
+      ...(clip ? { clip } : {}),
+      ...(nested ? { matte: nested } : {}),
+      children: kids,
+    };
+  }
+  const geometry = geometryOf(scene, node, trimOverrides);
+  if (!geometry) return undefined;
+  return {
+    kind: "leaf",
+    item: {
+      nodeId: node.id,
+      geometry,
+      appearance: appearanceOf(node),
+      logicalMatrix: graph.logical(node),
+      opacity: graph.opacity(node),
+    },
+  };
 }
 
 /** All indexes and derived values belong to this sample, never to a scene revision.

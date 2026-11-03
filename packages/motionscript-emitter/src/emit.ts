@@ -383,6 +383,9 @@ function transformLines(node: NodeDefinition): string[] {
   if (node.kind === "group" && node.compositing?.clip) {
     lines.push(`clip ${node.compositing.clip.geometryId};`);
   }
+  if (node.kind === "group" && node.compositing?.matte) {
+    lines.push(`matte ${node.compositing.matte.nodeId};`);
+  }
   if (!node.visible) lines.push("visible false;");
   if (node.parentId === null && node.space === "screen") lines.push("space screen;");
   if (node.zIndex !== 0) lines.push(`zIndex ${formatInteger(node.zIndex)};`);

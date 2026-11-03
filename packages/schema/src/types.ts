@@ -167,6 +167,11 @@ export interface GroupCompositing {
    * circle, ellipse, polygon or path in the same scene.
    */
   clip?: { geometryId: string };
+  /**
+   * Keep this group's painted pixels only where another node's painted alpha
+   * is (`compositing.matte`, Scene IR 0.19.0). nodeId is outside this group.
+   */
+  matte?: { nodeId: string };
 }
 
 export interface GroupNode extends NodeBase {
@@ -944,6 +949,11 @@ export type RenderTreeNode =
       effect?: GroupCompositing["effect"];
       /** Viewport-space clip outline for this scope (`compositing.mask`). */
       clip?: { geometry: ResolvedGeometry; logicalMatrix: Mat3 };
+      /**
+       * Painted coverage sampled as this scope's alpha matte
+       * (`compositing.matte`). Drawn into an offscreen buffer, not the parent.
+       */
+      matte?: RenderTreeNode;
       children: RenderTreeNode[];
     }
   | { kind: "leaf"; item: ResolvedDrawItem };

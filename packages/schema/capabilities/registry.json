@@ -972,15 +972,28 @@
     },
     {
       "id": "compositing.matte",
-      "summary": "A track matte would clip one layer by another.",
-      "targets": [],
-      "restrictions": ["Mattes are withheld so the content is not drawn unmasked. That is not a matte."],
-      "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
-      "conformanceTests": [],
+      "summary": "A group render scope keeps descendant pixels only where another node's painted alpha is.",
+      "introducedIn": { "motionscript": "0.19.0", "sceneIr": "0.19.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": [
+        "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing compositing.matte.",
+        "Group compositing.matte.nodeId names any node outside that group: not itself, an ancestor, or a descendant. Matte cycles are rejected.",
+        "The source may be hidden with visible false and is still sampled. A visible source also paints in order. Alpha is the painted result of that node and its subtree, including opacity, text, images, gradients and existing blur.",
+        "The renderer composites with a content buffer and a coverage buffer per matted scope (destination-in) and withholds the scope when a buffer cannot be allocated.",
+        "Hit-testing uses painted-geometry coverage of the matte source (opacity greater than zero). It does not sample partial fill alpha. Luma, inverted mattes and a feather property are outside this claim.",
+        "Lottie track mattes (tt) stay unsupported and withheld. SVG masks stay untested."
+      ],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/matte.test.ts#lowers matte onto group compositing and gates compositing.matte",
+        "packages/runtime/src/matte.test.ts#samples group-matte coverage and rejects hits in the gap",
+        "packages/canvas-renderer/src/renderer.test.ts#composites a matte with destination-in and withholds without a buffer",
+        "packages/motionscript-emitter/src/emit.test.ts#round-trips group matte"
+      ],
       "adapters": {
         "lottie": {
           "status": "unsupported",
-          "scope": "A non-zero tt is reported and the matted content is withheld.",
+          "scope": "A non-zero tt is reported and the matted content is withheld. Native mattes are authored, not imported.",
           "conformanceTests": [
             "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering"
           ]
@@ -997,7 +1010,7 @@
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing compositing.mask.",
         "Group compositing.clip.geometryId names a rectangle, circle, ellipse, polygon or path in the same scene. Text, image, line and group targets are rejected.",
         "Clip implies an isolated render scope. The clip outline uses the target node's viewport logicalMatrix; nested clips intersect. Dedicated clip shapes typically set visible false; a visible source still paints.",
-        "Hit-testing requires the pointer to lie inside every ancestor clip. Track mattes, alpha/luma masks, feathering and inverted clips are outside this claim. Lottie masksProperties and SVG clipPath stay unsupported / untested."
+        "Hit-testing requires the pointer to lie inside every ancestor clip. Alpha track mattes are compositing.matte. Luma masks, feathering and inverted clips are outside both claims. Lottie masksProperties and SVG clipPath stay unsupported / untested."
       ],
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [

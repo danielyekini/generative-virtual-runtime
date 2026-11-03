@@ -5,8 +5,8 @@ Index only: status/scope remain owned by the linked registry and conformance.
 
 | Language | Current release | Wire |
 | --- | --- | --- |
-| motionscript | 0.18.0 | 0.2 |
-| scene-ir | 0.18.0 | 0.2 |
+| motionscript | 0.19.0 | 0.2 |
+| scene-ir | 0.19.0 | 0.2 |
 
 | Capability | Compiler | Runtime | Renderer | Scope / evidence |
 | --- | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | physics.planar2d | supported | supported | not-applicable | Scenes declare one planar 2D physics world: dynamic rigid bodies/colliders/joints or authored distance constraints, with exclusive physics ownership of transform channels. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/physics.test.ts) |
 | space.planarSeams | supported | supported | not-applicable | Planar 2.5D layers opt into seam/split compositing: true surface intersections are split along their plane intersection into ordered fragments, and declared seams are checked for a shared edge in view space. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/seams.test.ts) |
 | geometry.pathProgress | supported | supported | not-applicable | A node attaches to a path node at a progress in [0, 1] along its resolved (morphed, then trimmed) outline, optionally oriented to the tangent and optionally rolling. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/path-progress.test.ts) |
-| compositing.matte | unsupported | unsupported | unsupported | A track matte would clip one layer by another. [registry](../../packages/schema/capabilities/registry.json) |
+| compositing.matte | supported | supported | supported | A group render scope keeps descendant pixels only where another node's painted alpha is. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/matte.test.ts) |
 | compositing.mask | supported | supported | supported | A group render scope clips its descendants to another node's outline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/clip.test.ts) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
 | transform.autoOrient | unsupported | unsupported | unsupported | Rotation follows the position tangent. [registry](../../packages/schema/capabilities/registry.json) |
@@ -75,5 +75,5 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 
 ## Input identity
 
-- `packages/schema/capabilities/releases.json` SHA-256 `8c2ac6965cf7c6477ff137e1cc890b01b7e4ed8fa0fc155a53a9e749284416bb`
-- `packages/schema/capabilities/registry.json` SHA-256 `2201585e0983e7033d1412c93c55789fd9e632f718fd51f2b6de340e725c1ccb`
+- `packages/schema/capabilities/releases.json` SHA-256 `e2539d0b3ab07510d0f1e53f34f38e1134d3a8efeb00d23c6940ea25ed5bbe74`
+- `packages/schema/capabilities/registry.json` SHA-256 `16593d4498cc8de598cadd92c5fc98cac5aa29fc7ae84458f5f3cd73f1a595cb`

@@ -190,9 +190,19 @@ export function finishSession(session: Session, sourceCompleted: boolean, span?:
       continue;
     }
     if (unit.kind === "node" && unit.shape === "group") {
-      const missing = missingClipTarget(session, unit);
-      if (missing !== undefined) {
-        session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved clip geometry ${missing}.`, unit.span));
+      const missingClip = missingClipTarget(session, unit);
+      const missingMatte = missingMatteTarget(session, unit);
+      if (missingClip !== undefined) {
+        session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved clip geometry ${missingClip}.`, unit.span));
+      }
+      if (missingMatte !== undefined) {
+        const cycle = deferredMatteCycle(unresolved);
+        const inCycle = Boolean(cycle?.includes(unit.name) && cycle.includes(missingMatte));
+        if (inCycle && cycle && unit.name === cycle[0]) {
+          session.diagnostics.push(problem("CYCLE", `Matte sources cycle: ${cycle.join(" → ")}.`, unit.span));
+        } else if (!inCycle) {
+          session.diagnostics.push(problem("UNKNOWN_TARGET", `Unresolved matte source ${missingMatte}.`, unit.span));
+        }
       }
       continue;
     }
@@ -300,8 +310,8 @@ function isUnresolved(session: Session, unit: UnitAst): boolean {
     return Boolean(unit.parent) && !session.scene.timingScopes?.some((scope) => scope.id === unit.parent);
   }
   if (unit.kind === "node" && unit.shape === "group") {
-    const clipId = missingClipTarget(session, unit);
-    if (clipId !== undefined) return true;
+    if (missingClipTarget(session, unit) !== undefined) return true;
+    if (missingMatteTarget(session, unit) !== undefined) return true;
   }
   if (unit.kind !== "animate" && unit.kind !== "keyframes" && unit.kind !== "step") return false;
   const resolved = resolveAddress(
@@ -947,6 +957,7 @@ function lowerNode(session: Session, ast: NodeAst, parentId: string | null): Nod
     if (compositing?.blend) ensureCapability(session, "compositing.blend");
     if (compositing?.effect?.type === "blur") ensureCapability(session, "effects.blur");
     if (compositing?.clip) ensureCapability(session, "compositing.mask");
+    if (compositing?.matte) ensureCapability(session, "compositing.matte");
     node = {
       ...base,
       ...(parentId ? {} : { space: prop.space ?? "world" }),
@@ -1309,6 +1320,7 @@ interface IndexedProps {
   transformParent?: string;
   href?: string;
   clip?: string;
+  matte?: string;
   isolated?: boolean;
   blend?: "source-over" | "multiply" | "screen" | "overlay";
   blur?: number;
@@ -1356,6 +1368,7 @@ function indexProps(props: Prop[]): IndexedProps {
       case "transformParent":
       case "href":
       case "clip":
+      case "matte":
       case "group":
       case "decimal":
       case "prefix":
@@ -1769,9 +1782,45 @@ function knownNodeIds(session: Session): Set<string> {
 
 /** Forward clip refs defer until the geometry node exists; same-unit children are resolved. */
 function missingClipTarget(session: Session, unit: Extract<UnitAst, { kind: "node" }>): string | undefined {
-  const clipProp = unit.props.find((prop) => prop.name === "clip");
-  if (!clipProp || clipProp.name !== "clip") return undefined;
-  const id = clipProp.text;
+  return missingNodeRef(session, unit, "clip");
+}
+
+/** Forward matte refs defer until the source node exists; same-unit children are resolved. */
+function missingMatteTarget(session: Session, unit: Extract<UnitAst, { kind: "node" }>): string | undefined {
+  return missingNodeRef(session, unit, "matte");
+}
+
+/** Cycles among groups that never admit because each mattes another deferred group. */
+function deferredMatteCycle(units: UnitAst[]): string[] | undefined {
+  const matteOf = new Map<string, string>();
+  for (const unit of units) {
+    if (unit.kind !== "node" || unit.shape !== "group") continue;
+    const prop = unit.props.find((item) => item.name === "matte");
+    if (!prop || prop.name !== "matte") continue;
+    matteOf.set(unit.name, prop.text);
+  }
+  for (const start of matteOf.keys()) {
+    const path = [start];
+    const seen = new Set<string>([start]);
+    let current = matteOf.get(start);
+    while (current) {
+      path.push(current);
+      if (current === start || seen.has(current)) return path;
+      seen.add(current);
+      current = matteOf.get(current);
+    }
+  }
+  return undefined;
+}
+
+function missingNodeRef(
+  session: Session,
+  unit: Extract<UnitAst, { kind: "node" }>,
+  name: "clip" | "matte",
+): string | undefined {
+  const prop = unit.props.find((item) => item.name === name);
+  if (!prop || prop.name !== name) return undefined;
+  const id = prop.text;
   if (knownNodeIds(session).has(id)) return undefined;
   if (unit.children.some((child) => child.name === id)) return undefined;
   return id;
@@ -1795,6 +1844,7 @@ function needsProfile(prop: IndexedProps): boolean {
     prop.blur !== undefined ||
     prop.blend !== undefined ||
     prop.clip !== undefined ||
+    prop.matte !== undefined ||
     prop.href !== undefined ||
     (prop.fill !== undefined && prop.fill.type !== "solid")
   );
@@ -1806,17 +1856,22 @@ function groupCompositing(
   ast: NodeAst,
   known: Set<string>,
 ): NodeDefinition extends infer _ ? Extract<NodeDefinition, { kind: "group" }>["compositing"] : never {
-  if (!prop.isolated && !prop.blend && prop.blur === undefined && !prop.clip) return undefined;
-  let clipId = prop.clip;
-  if (clipId && !known.has(clipId) && ast.children.some((child) => child.name === clipId)) {
-    clipId = `${groupId}.${clipId}`;
-  }
+  if (!prop.isolated && !prop.blend && prop.blur === undefined && !prop.clip && !prop.matte) return undefined;
+  const clipId = qualifyLocal(prop.clip, groupId, ast, known);
+  const matteId = qualifyLocal(prop.matte, groupId, ast, known);
   return {
-    isolated: prop.isolated ?? Boolean(prop.blend || prop.blur !== undefined || prop.clip),
+    isolated: prop.isolated ?? Boolean(prop.blend || prop.blur !== undefined || prop.clip || prop.matte),
     ...(prop.blend ? { blend: prop.blend } : {}),
     ...(prop.blur !== undefined ? { effect: { type: "blur" as const, radius: prop.blur } } : {}),
     ...(clipId ? { clip: { geometryId: clipId } } : {}),
+    ...(matteId ? { matte: { nodeId: matteId } } : {}),
   };
+}
+
+function qualifyLocal(id: string | undefined, groupId: string, ast: NodeAst, known: Set<string>): string | undefined {
+  if (!id) return undefined;
+  if (!known.has(id) && ast.children.some((child) => child.name === id)) return `${groupId}.${id}`;
+  return id;
 }
 
 function hasSpatial(unit: Extract<UnitAst, { kind: "animate" | "keyframes" }>): boolean {
@@ -1860,8 +1915,12 @@ function unitHitsRejectedTarget(session: Session, unit: UnitAst): boolean {
     return addressHitsRejected(session, unit.target);
   }
   if (unit.kind === "node" && unit.shape === "group") {
-    const missing = missingClipTarget(session, unit);
-    return missing !== undefined && session.rejectedNodeIds.has(missing);
+    const missingClip = missingClipTarget(session, unit);
+    const missingMatte = missingMatteTarget(session, unit);
+    return (
+      (missingClip !== undefined && session.rejectedNodeIds.has(missingClip)) ||
+      (missingMatte !== undefined && session.rejectedNodeIds.has(missingMatte))
+    );
   }
   if (unit.kind === "spatialLayer") {
     const missing = missingSurfaceNode(session, unit);

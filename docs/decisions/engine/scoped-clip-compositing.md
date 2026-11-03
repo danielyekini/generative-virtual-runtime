@@ -76,6 +76,8 @@ geometry; keep generation and streaming honest.
 
 - **E036** (filed with this decision): justified track mattes
   (`compositing.matte`) after clip-first evidence and any offscreen-layer need.
+  Accepted 3 November 2026 as a bounded alpha matte (MotionScript / Scene IR
+  0.19.0). See [track-mattes.md](track-mattes.md). The clip contract above is unchanged.
 
 ## Language wiring (this change, 0.16.0)
 

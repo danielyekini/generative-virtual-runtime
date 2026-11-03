@@ -191,6 +191,7 @@ export function validateSceneIR(
   if (v02) readPhysics(input.physics, nodeIds, input.timeline, input.interactions, input.requiredCapabilities, diags);
   if (v02) readPathAttachments(input.pathAttachments, nodes, input.timeline, input.interactions, input.physics, input.requiredCapabilities, diags);
   if (v02 && nodes) readClipTargets(nodes, compositions.flatMap((c) => c.nodes), input.requiredCapabilities, diags);
+  if (v02 && nodes) readMatteTargets(nodes, compositions.flatMap((c) => c.nodes), input.requiredCapabilities, diags);
   if (v02 && nodes) readDynamicText(nodes, input.timeline, input.requiredCapabilities, diags);
   const compositionNodes = compositions.flatMap((composition) => composition.nodes);
   const nodeCount = (nodes?.length ?? 0) + compositionNodes.length;
@@ -1265,7 +1266,7 @@ function readCompositing(value: unknown, path: string, diags: Diags): void {
     diags.add("INVALID_TYPE", path, "compositing must be an object.");
     return;
   }
-  rejectUnknown(value, ["isolated", "blend", "effect", "clip"], path, diags);
+  rejectUnknown(value, ["isolated", "blend", "effect", "clip", "matte"], path, diags);
   if (typeof value.isolated !== "boolean") diags.add("INVALID_TYPE", `${path}.isolated`, "isolated must be a boolean.");
   if (value.blend !== undefined && value.blend !== "source-over" && value.blend !== "multiply" && value.blend !== "screen" && value.blend !== "overlay") {
     diags.add("INVALID_ENUM", `${path}.blend`, "Unknown blend mode.");
@@ -1277,6 +1278,16 @@ function readCompositing(value: unknown, path: string, diags: Diags): void {
       rejectUnknown(value.clip, ["geometryId"], `${path}.clip`, diags);
       if (typeof value.clip.geometryId !== "string" || value.clip.geometryId.length === 0) {
         diags.add("INVALID_ID", `${path}.clip.geometryId`, "clip.geometryId must be a non-empty node id.");
+      }
+    }
+  }
+  if (value.matte !== undefined) {
+    if (!isRecord(value.matte)) {
+      diags.add("INVALID_TYPE", `${path}.matte`, "matte must be an object.");
+    } else {
+      rejectUnknown(value.matte, ["nodeId"], `${path}.matte`, diags);
+      if (typeof value.matte.nodeId !== "string" || value.matte.nodeId.length === 0) {
+        diags.add("INVALID_ID", `${path}.matte.nodeId`, "matte.nodeId must be a non-empty node id.");
       }
     }
   }
@@ -1340,6 +1351,87 @@ function readClipTargets(
       );
     }
   }
+}
+
+type MatteNode = { id?: unknown; parentId?: unknown; kind?: unknown; compositing?: unknown };
+
+/** compositing.matte (0.19.0): matte.nodeId names a node outside the group, with no matte cycles. */
+function readMatteTargets(
+  rootNodes: readonly MatteNode[],
+  compositionNodes: readonly MatteNode[],
+  required: unknown,
+  diags: Diags,
+): void {
+  const caps = Array.isArray(required) ? required : [];
+  const hasMatte = caps.includes("compositing.matte");
+  const all = [...rootNodes, ...compositionNodes];
+  const byId = new Map<string, MatteNode>();
+  const parents = new Map<string, string | null>();
+  for (const node of all) {
+    if (typeof node.id !== "string") continue;
+    byId.set(node.id, node);
+    parents.set(node.id, typeof node.parentId === "string" ? node.parentId : null);
+  }
+  const matteOf = new Map<string, string>();
+  let index = 0;
+  for (const node of all) {
+    const path = `nodes[${index}]`;
+    index += 1;
+    if (!isRecord(node) || node.kind !== "group" || !isRecord(node.compositing) || node.compositing.matte === undefined) continue;
+    if (!hasMatte) {
+      diags.add("MISSING_REQUIRED", "requiredCapabilities", "Group matte requires compositing.matte in requiredCapabilities.");
+    }
+    const matte = node.compositing.matte;
+    if (!isRecord(matte) || typeof matte.nodeId !== "string" || typeof node.id !== "string") continue;
+    const sourceId = matte.nodeId;
+    matteOf.set(node.id, sourceId);
+    const target = byId.get(sourceId);
+    if (!target) {
+      diags.add("UNKNOWN_TARGET", `${path}.compositing.matte.nodeId`, `Matte source ${sourceId} does not exist.`);
+      continue;
+    }
+    if (sourceId === node.id || reaches(sourceId, node.id, parents) || reaches(node.id, sourceId, parents)) {
+      diags.add(
+        "INVALID_PARENT",
+        `${path}.compositing.matte.nodeId`,
+        `Matte source ${sourceId} must sit outside ${node.id}.`,
+      );
+    }
+  }
+  const reported = new Set<string>();
+  for (const start of matteOf.keys()) {
+    const cycle = matteCycle(start, matteOf);
+    if (!cycle) continue;
+    const key = [...new Set(cycle)].sort().join(">");
+    if (reported.has(key)) continue;
+    reported.add(key);
+    diags.add("CYCLE", `nodes`, `Matte sources cycle: ${cycle.join(" → ")}.`);
+  }
+}
+
+function reaches(start: string, goal: string, parents: Map<string, string | null>): boolean {
+  const seen = new Set<string>();
+  let current: string | null = parents.get(start) ?? null;
+  while (current && !seen.has(current)) {
+    if (current === goal) return true;
+    seen.add(current);
+    current = parents.get(current) ?? null;
+  }
+  return false;
+}
+
+function matteCycle(start: string, matteOf: Map<string, string>): string[] | undefined {
+  const path = [start];
+  const seen = new Set<string>([start]);
+  let current = matteOf.get(start);
+  while (current) {
+    path.push(current);
+    if (current === start) return path;
+    if (seen.has(current)) return path;
+    seen.add(current);
+    current = matteOf.get(current);
+  }
+  return undefined;
 }
 
 function readResolvedClip(value: unknown, path: string, diags: Diags): void {
@@ -3307,12 +3399,13 @@ function readRenderTree(value: unknown, path: string, diags: Diags, seen: Set<ob
     return;
   }
   if (value.kind === "scope") {
-    rejectUnknown(value, ["kind", "id", "isolated", "opacity", "blend", "effect", "clip", "children"], path, diags);
+    rejectUnknown(value, ["kind", "id", "isolated", "opacity", "blend", "effect", "clip", "matte", "children"], path, diags);
     if (value.blend !== undefined && value.blend !== "source-over" && value.blend !== "multiply" && value.blend !== "screen" && value.blend !== "overlay") {
       diags.add("INVALID_ENUM", `${path}.blend`, "Unknown blend mode.");
     }
     if (value.effect !== undefined) readCompositing({ isolated: true, effect: value.effect }, `${path}.effect`, diags);
     if (value.clip !== undefined) readResolvedClip(value.clip, `${path}.clip`, diags);
+    if (value.matte !== undefined) readRenderTree(value.matte, `${path}.matte`, diags, seen);
     if (typeof value.id !== "string" || value.id.length === 0) diags.add("INVALID_ID", `${path}.id`, "A render scope needs an id.");
     if (typeof value.isolated !== "boolean") diags.add("INVALID_TYPE", `${path}.isolated`, "isolated must be a boolean.");
     readOpacity(value.opacity, `${path}.opacity`, diags);
