@@ -44,3 +44,7 @@
 - [Seam depth/paint order (E016)](seam-depth-order.md): plane-test occlusion
   stays authoritative; shared-edge seams, projected intersection splits and
   coplanar union helper; animated order is tie-break only; versioning child E030.
+- [Path progress / attachments / dashes (E015)](path-progress-geometry-authoring.md):
+  shared arc-length metrics after morph/trim, host attach/orient/rolling/dash
+  helpers; auto-orient ≠ rolling; uniform width stays `paint.animatedSolid`;
+  width profiles deferred; language wiring in follow-up issues.

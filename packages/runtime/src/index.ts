@@ -122,6 +122,15 @@ export type {
 } from "./observation";
 export { PlaybackClock } from "./playback";
 export {
+  attachAlongPath,
+  buildPathMetrics,
+  pathDashCommands,
+  pathMarkers,
+  rollingAngle,
+  sampleAtProgress,
+} from "./path-progress";
+export type { AttachAlongPathOptions, PathAttachment, PathMetrics, PathSample } from "./path-progress";
+export {
   PHYSICS_CHANNELS,
   PhysicsSession,
   solveAuthoredConstraints,

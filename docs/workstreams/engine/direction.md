@@ -107,16 +107,20 @@ reimplementation from this acknowledgement alone.
 
 ## Next work
 
-Engine review (2–3 November 2026): E027/E035 Done; E012 clip-first landed as
-MotionScript / Scene IR 0.16.0 `compositing.mask`
-(`docs/decisions/engine/scoped-clip-compositing.md`). Continue.
+E012 clip-first remains MotionScript / Scene IR 0.16.0 `compositing.mask`.
+E015 path-progress decision + prototype recorded
+([path-progress-geometry-authoring.md](../../decisions/engine/path-progress-geometry-authoring.md)).
+Continue.
 
-1. E017 ([#36](https://github.com/danielyekini/generative-virtual-runtime/issues/36)):
-   verify and fix native diagnostic and latent-correctness leads against 0.16.0. Ready.
-2. E036 ([#156](https://github.com/danielyekini/generative-virtual-runtime/issues/156)):
-   track mattes / `compositing.matte` (child of E012 decision). Candidate until
-   clip-first evidence and any offscreen-layer need are reviewed.
-3. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
+1. E036 ([#156](https://github.com/danielyekini/generative-virtual-runtime/issues/156)):
+   track mattes / `compositing.matte` — design-first after clip-first evidence.
+2. E037 ([#169](https://github.com/danielyekini/generative-virtual-runtime/issues/169)):
+   version `geometry.pathProgress` (attachments + optional auto-orient; rolling
+   explicit). Ready after E015 closes.
+3. E038 ([#170](https://github.com/danielyekini/generative-virtual-runtime/issues/170)):
+   version `paint.strokeDash`. Ready after E015 closes. Width profiles stay
+   deferred.
+4. Replenish further from M2/M4/M5 Candidates as these complete. Audible human
    judgement of E026/E033 output and visible media controls sit with P009.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.

@@ -13,9 +13,16 @@ Not yet in a published Scene IR version:
 - compositing.matte
 - transform.skew
 - transform.autoOrient
+- geometry.pathProgress
+- paint.strokeDash
 - geometry.repeater
 - geometry.mergePaths
 - text.animators
+
+`geometry.pathProgress` / `paint.strokeDash` are named by the E015 decision
+(`docs/decisions/engine/path-progress-geometry-authoring.md`); host/schema
+prototypes exist without a language claim. Variable width profiles stay outside
+this pending list until a separate decision.
 
 `geometry.animatedTrim` landed in Scene IR 0.5.0.
 `entities.durableRevisions` landed in Scene IR 0.6.0 (`APPLY_ENTITY_PATCH`).
