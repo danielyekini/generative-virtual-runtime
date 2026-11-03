@@ -1,5 +1,11 @@
 # @gvr/motionscript-emitter
 
+## 0.1.6
+
+Emit `interact` declarations from Scene IR `interactions` so Scene IR → MotionScript
+round-trips preserve `input.bindings` (focusable, tabIndex, pointer, and every
+binding/action). No language change.
+
 ## 0.1.1
 
 Preserve exact temporal doubles when writing scene duration, track start/duration,

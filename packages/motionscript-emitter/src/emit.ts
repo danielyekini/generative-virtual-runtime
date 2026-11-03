@@ -3,6 +3,9 @@ import {
   NODE_CHANNELS,
   type AudioResourceDefinition,
   type Camera2DDefinition,
+  type InteractionBinding,
+  type InteractionChannel,
+  type InteractionTarget,
   type KeyframeTrack,
   type NodeDefinition,
   type PathCommand,
@@ -95,6 +98,8 @@ export function emitMotionScript(scene: SceneIR): string {
     );
     lines.push(`operators ${list.nodeId} {`, ...body, `};`);
   }
+  // input.bindings: interact declarations (after nodes so targets resolve).
+  for (const target of scene.interactions ?? []) lines.push(...emitInteract(target));
   for (const track of scene.timeline.tracks) lines.push(...emitTrack(track));
   // audio.cues / audio.generative: resources then cues, all before completion.
   for (const resource of scene.resources) {
@@ -136,6 +141,39 @@ function emitCamera(camera: Camera2DDefinition): string[] {
     `  rotation ${formatAngle(camera.rotation)};`,
     "};",
   ];
+}
+
+/** Scene IR interactions → MotionScript `interact` (input.bindings). */
+function emitInteract(target: InteractionTarget): string[] {
+  const body: string[] = [];
+  if (target.focusable !== undefined) body.push(`  focusable ${target.focusable ? "true" : "false"};`);
+  if (target.tabIndex !== undefined) body.push(`  tabIndex ${formatInteger(target.tabIndex)};`);
+  if (target.pointer !== undefined) body.push(`  pointer ${target.pointer};`);
+  for (const binding of target.bindings ?? []) body.push(`  ${formatInteractBinding(binding)};`);
+  return [`interact ${target.nodeId} {`, ...body, "};"];
+}
+
+function formatInteractBinding(binding: InteractionBinding): string {
+  const trigger = binding.on === "key" ? `on key ${quote(binding.key ?? "")}` : `on ${binding.on}`;
+  return `${trigger} ${formatInteractAction(binding)}`;
+}
+
+function formatInteractAction(binding: InteractionBinding): string {
+  const action = binding.action;
+  if (action.kind === "dragTranslate") {
+    return `dragTranslate ${formatVec(action.min)} ${formatVec(action.max)}`;
+  }
+  const addr = formatInteractAddress(binding.nodeId, action.channel);
+  if (action.kind === "set") return `set ${addr} ${formatNumber(action.value)}`;
+  if (action.kind === "toggle") {
+    return `toggle ${addr} ${formatNumber(action.values[0])} ${formatNumber(action.values[1])}`;
+  }
+  return `step ${addr} ${formatNumber(action.delta)} ${formatNumber(action.min)} ${formatNumber(action.max)}`;
+}
+
+function formatInteractAddress(nodeId: string | undefined, channel: InteractionChannel): string {
+  const path = NODE_CHANNELS[channel]?.dslPath ?? channel;
+  return nodeId ? `${nodeId}.${path}` : path;
 }
 
 function emitSpatialLayer(layer: SpatialLayerDefinition): string[] {
