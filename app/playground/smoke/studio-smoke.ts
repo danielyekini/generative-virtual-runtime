@@ -118,6 +118,33 @@ try {
   check("bottom panel has Diagnostics, Stream, Scene and Report tabs", JSON.stringify(tabs) === JSON.stringify(["Diagnostics", "Stream", "Scene", "Report"]), tabs);
   const stream = await ev("({ disabled: document.querySelector('#stream').disabled, title: document.querySelector('#stream').title })");
   check("Stream action is disabled until a native program is loaded", stream.disabled && /MotionScript/.test(stream.title), stream);
+  check("Generate sits gapped right of the centered Run/Stream group", await ev(`(() => {
+    const run = document.querySelector('#run');
+    const stream = document.querySelector('#stream');
+    const generate = document.querySelector('#generate');
+    const actions = document.querySelector('.run-actions');
+    if (!run || !stream || !generate || !actions) return false;
+    const mid = actions.getBoundingClientRect();
+    const pageMid = innerWidth / 2;
+    return generate.previousElementSibling?.classList.contains('run-group')
+      && Math.abs((mid.left + mid.right) / 2 - pageMid) < 80
+      && generate.getBoundingClientRect().left > stream.getBoundingClientRect().right + 4;
+  })()`));
+  await ev("document.querySelector('#generate').click()");
+  await sleep(100);
+  const generateOpen = await player();
+  check("Generate opens the full-height side panel with transcript + composer", Boolean(generateOpen.generateMode) && (await visible("#generate-chrome")) && (await visible("#generate-prompt")) && !(await visible("#source-chrome")) && (await ev(`(() => {
+    const panel = document.querySelector('#source-panel');
+    const dock = document.querySelector('#panel');
+    if (!panel || !dock) return false;
+    const pr = panel.getBoundingClientRect();
+    const dr = dock.getBoundingClientRect();
+    return pr.top < dr.top && Math.abs(pr.bottom - document.querySelector('#status').getBoundingClientRect().top) < 8;
+  })()`)), generateOpen);
+  check("Generate composer defaults to Director + pinned qwen model", await ev(`document.querySelector('#generate-approach').value === 'director' && document.querySelector('#generate-model').value === 'qwen2.5-coder:14b'`));
+  await ev("document.querySelector('#generate-close').click()");
+  await sleep(50);
+  check("Leaving Generate closes the generate chrome", await ev(`!window.__gvr.player.generateMode && document.querySelector('#generate-chrome').hidden`));
   await shot("0-landing");
 
   // 2. Library page

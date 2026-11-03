@@ -4,6 +4,15 @@ import { DIRECTOR_SYSTEM, directorToImplementPrompt, parseDirectorScript } from 
 import { stripModelFences } from "./text.js";
 import type { GenerationApproach, GenerationMetrics, MotionScriptGenerator } from "./types.js";
 
+export type PipelineProgress = {
+  phase: "director" | "implement";
+  /** Fresh chunk text for this callback. */
+  chunk: string;
+  /** Cumulative text for the current phase attempt. */
+  text: string;
+  attempt: number;
+};
+
 export type PipelineOptions = {
   taskId: string;
   prompt: string;
@@ -17,12 +26,16 @@ export type PipelineOptions = {
   referenceFingerprint?: string | null;
   referencePath?: string | null;
   maxRepairs?: number;
+  /** Host UI progress (Studio Generate transcript). */
+  onProgress?: (event: PipelineProgress) => void;
 };
 
 export type PipelineResult = {
   source: string;
   metrics: GenerationMetrics;
   disposed: boolean;
+  /** Raw director JSON text when approach was director. */
+  directorRaw: string | null;
 };
 
 const activeSessions = new Map<string, { disposed: boolean }>();
@@ -93,6 +106,7 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
   let directorMs: number | null = null;
   let implementMs: number | null = null;
   let directorOk: boolean | null = approach === "director" ? false : null;
+  let directorRaw: string | null = null;
   let cancelled = false;
   let staleIgnored = false;
   let repairAttempts = 0;
@@ -110,7 +124,7 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
     cancelTimer = setTimeout(() => localController.abort(), options.cancelAfterMs);
   }
 
-  const onChunk = (chunk: { text?: string }) => {
+  const noteChunk = (chunk: { text?: string }) => {
     if (sessionState.disposed) {
       staleIgnored = true;
       return;
@@ -123,14 +137,17 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
   try {
     if (approach === "director") {
       const directorStarted = performance.now();
-      let directorRaw = "";
+      let rawDirector = "";
       try {
         await options.generator.stream(options.prompt, {
           signal: localController.signal,
           system: DIRECTOR_SYSTEM,
           onChunk: (chunk) => {
-            onChunk(chunk);
-            if (chunk.text && !sessionState.disposed) directorRaw += chunk.text;
+            noteChunk(chunk);
+            if (chunk.text && !sessionState.disposed) {
+              rawDirector += chunk.text;
+              options.onProgress?.({ phase: "director", chunk: chunk.text, text: rawDirector, attempt: 0 });
+            }
           },
         });
       } catch (error) {
@@ -138,9 +155,10 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
         if (!cancelled) throw error;
         notes.push("director generation aborted");
       }
+      directorRaw = rawDirector;
       directorMs = performance.now() - directorStarted;
       if (!cancelled) {
-        const parsed = parseDirectorScript(directorRaw);
+        const parsed = parseDirectorScript(rawDirector);
         if (!parsed.ok) {
           notes.push(`director parse failed: ${parsed.error}`);
           directorOk = false;
@@ -183,6 +201,7 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
             notes,
           },
           disposed: true,
+          directorRaw,
         };
       }
     }
@@ -197,8 +216,11 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
           signal: localController.signal,
           system: options.system,
           onChunk: (chunk) => {
-            onChunk(chunk);
-            if (chunk.text && !sessionState.disposed) raw += chunk.text;
+            noteChunk(chunk);
+            if (chunk.text && !sessionState.disposed) {
+              raw += chunk.text;
+              options.onProgress?.({ phase: "implement", chunk: chunk.text, text: raw, attempt });
+            }
           },
         });
       } catch (error) {
@@ -295,5 +317,6 @@ export async function runGenerationPipeline(options: PipelineOptions): Promise<P
       notes,
     },
     disposed: true,
+    directorRaw,
   };
 }

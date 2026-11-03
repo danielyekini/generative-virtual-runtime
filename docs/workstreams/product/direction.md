@@ -44,21 +44,22 @@ P004's confirmed Split flow reuses existing supported importers. It does not
 commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
 drafts cannot add that scope; a fresh explicit user request is required.
 
-## Queue (3 November 2026, after P010)
+## Queue (3 November 2026, after P019)
 
 Studio redesign slice is **delivered** (P001, P015, P014, P004, P002, P016,
 P017, P018 Done). P006 / P007 / P008 harness work is Done; **P008’s “prefer
 direct” product default is superseded** by the director-quality decision above.
-**P010 #51 Done** (Interactive Library collection + demos, PR #146). Paused
-prototype history: PR #65 commit 2d08de0.
+**P010 #51 Done** (Interactive Library collection + demos, PR #146). **P019 #139
+Done** (Studio Generate mode: header control, full-height transcript/composer,
+Director default, Ollama `qwen2.5-coder:14b`). Paused prototype history: PR #65
+commit 2d08de0.
 
-1. **P019 #139** Studio **Generate mode** (header mode; side-panel transcript +
-   composer; director/direct in prompt box; human quality judgment; Qwen pin) —
-   **Ready** (UX confirmed 3 November 2026 in studio-ux). Blocks treating
-   push-to-talk as next generation work.
-2. **X002 #56** Engine verification surfaces — advanced via P002 + P010
-   (shipped) + P019; keep those tasks visible.
-3. **P009 #50** push-to-talk / narration / SFX — Candidate after P019 is
+1. **Customer animation-quality judgment** on Generate (Director vs Direct) —
+   solicit explicitly; do not close approach preference without that
+   ([director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md)).
+2. **X002 #56** Engine verification surfaces — advanced via P002 + P010 + P019;
+   keep visible until accepted closed.
+3. **P009 #50** push-to-talk / narration / SFX — Candidate now that Generate is
    human-exerciseable; speech is an input method on top of generation.
 4. **P003 #44** Performance tab — Candidate until UX confirmation.
 5. **P005 #46** agent toolbox — low-priority optional consolidation.
@@ -70,10 +71,10 @@ prototype history: PR #65 commit 2d08de0.
 
 ## Next
 
-1. Claim **P019 #139** — implement confirmed Generate mode from studio-ux.
-2. Solicit customer (user) animation-quality feedback once Generate exists;
-   do not close generation approach choices without that.
-3. After P019 is human-exerciseable, P009 becomes the speech/audio host path.
+1. User: exercise Generate in Studio (`npm run dev` + local Ollama) and judge
+   animation quality; keep Director default until Direct is proven.
+2. Claim **P009 #50** when Ready (speech/audio host path on top of Generate).
+3. Keep Performance / agent-toolbox Candidate until UX confirmation.
 
 Do not invent Studio chrome. Keep Studio delivery ahead of prospective corpus
 generation, but do not skip interaction/generation Studio exercise.

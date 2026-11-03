@@ -8,43 +8,50 @@
   </head>
   <body data-surface="player">
     <header id="bar">
-      <a class="mark" href="/" title="GVR Studio Player">GVR</a>
-      <div id="program" class="program" aria-live="polite">
-        <span id="program-name">No program loaded</span>
-        <span id="program-meta" class="meta"></span>
-        <span id="program-state" class="badge" hidden></span>
-      </div>
-      <div class="run-actions" role="group" aria-label="Run actions">
-        <button id="run" class="run" type="button" disabled title="Run the loaded program (Ctrl/⌘+Enter)">▶ Run</button>
-        <button id="stream" type="button" disabled title="Simulate arrival of the loaded MotionScript">≋ Stream</button>
-        <button id="stream-menu" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Stream options" title="Stream options" disabled>▾</button>
-        <div id="stream-pop" class="menu" hidden>
-          <label class="field">Rate <select id="arrival-rate" aria-label="Simulated arrival rate"><option value="20">Slow · 20 estimated tokens/s</option><option value="60" selected>Medium · 60 estimated tokens/s</option><option value="200">Fast · 200 estimated tokens/s</option><option value="0">Instant</option></select></label>
-          <div id="stream-controls" class="menu-row" hidden>
-            <button id="arrival-pause" type="button">Pause arrival</button>
-            <button id="arrival-step" type="button">Step chunk</button>
-          </div>
-          <hr />
-          <p class="menu-note"><strong>Advanced</strong> · Simulated arrival. One estimated token = 4 UTF-16 characters; not model speed. Rate and Advanced changes apply on the next Stream.</p>
-          <label class="field">Chunking <select id="arrival-mode"><option value="tokens">Estimated tokens</option><option value="characters">Characters</option><option value="lines">Lines</option><option value="random">Random characters</option></select></label>
-          <label class="field">Chunk size <input id="arrival-size" type="number" min="1" max="4096" value="4"></label>
-          <label class="field">Random min <input id="arrival-min" type="number" min="1" max="16384" value="4"></label>
-          <label class="field">Random max <input id="arrival-max" type="number" min="1" max="16384" value="32"></label>
-          <label class="field">Timing jitter % <input id="arrival-jitter" type="number" min="0" max="100" value="0"></label>
-          <label class="field">Stall every N chunks (0 = off) <input id="arrival-stall-every" type="number" min="0" max="10000" value="0"></label>
-          <label class="field">Stall duration ms <input id="arrival-stall-ms" type="number" min="0" max="60000" value="1000"></label>
-          <label class="field">Random seed <input id="arrival-seed" type="number" min="0" max="4294967295" value="1"></label>
+      <div class="bar-start">
+        <a class="mark" href="/" title="GVR Studio Player">GVR</a>
+        <div id="program" class="program" aria-live="polite">
+          <span id="program-name">No program loaded</span>
+          <span id="program-meta" class="meta"></span>
+          <span id="program-state" class="badge" hidden></span>
         </div>
       </div>
-      <span class="spacer"></span>
-      <button id="open-library" class="primary" type="button" title="Open Library (O)">Library</button>
-      <button id="toggle-source" type="button" aria-label="Source panel" aria-pressed="false" title="Source panel (E)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5" /><path d="M16.5 4.5v15" /></svg>
-      </button>
+      <div class="run-actions" role="group" aria-label="Run actions">
+        <div class="run-group">
+          <button id="run" class="run" type="button" disabled title="Run the loaded program (Ctrl/⌘+Enter)">▶ Run</button>
+          <button id="stream" type="button" disabled title="Simulate arrival of the loaded MotionScript">≋ Stream</button>
+          <button id="stream-menu" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Stream options" title="Stream options" disabled>▾</button>
+          <div id="stream-pop" class="menu" hidden>
+            <label class="field">Rate <select id="arrival-rate" aria-label="Simulated arrival rate"><option value="20">Slow · 20 estimated tokens/s</option><option value="60" selected>Medium · 60 estimated tokens/s</option><option value="200">Fast · 200 estimated tokens/s</option><option value="0">Instant</option></select></label>
+            <div id="stream-controls" class="menu-row" hidden>
+              <button id="arrival-pause" type="button">Pause arrival</button>
+              <button id="arrival-step" type="button">Step chunk</button>
+            </div>
+            <hr />
+            <p class="menu-note"><strong>Advanced</strong> · Simulated arrival. One estimated token = 4 UTF-16 characters; not model speed. Rate and Advanced changes apply on the next Stream.</p>
+            <label class="field">Chunking <select id="arrival-mode"><option value="tokens">Estimated tokens</option><option value="characters">Characters</option><option value="lines">Lines</option><option value="random">Random characters</option></select></label>
+            <label class="field">Chunk size <input id="arrival-size" type="number" min="1" max="4096" value="4"></label>
+            <label class="field">Random min <input id="arrival-min" type="number" min="1" max="16384" value="4"></label>
+            <label class="field">Random max <input id="arrival-max" type="number" min="1" max="16384" value="32"></label>
+            <label class="field">Timing jitter % <input id="arrival-jitter" type="number" min="0" max="100" value="0"></label>
+            <label class="field">Stall every N chunks (0 = off) <input id="arrival-stall-every" type="number" min="0" max="10000" value="0"></label>
+            <label class="field">Stall duration ms <input id="arrival-stall-ms" type="number" min="0" max="60000" value="1000"></label>
+            <label class="field">Random seed <input id="arrival-seed" type="number" min="0" max="4294967295" value="1"></label>
+          </div>
+        </div>
+        <button id="generate" type="button" aria-pressed="false" title="Generate MotionScript from a typed prompt">✎ Generate</button>
+      </div>
+      <div class="bar-end">
+        <button id="open-library" class="primary" type="button" title="Open Library (O)">Library</button>
+        <button id="toggle-source" type="button" aria-label="Source panel" aria-pressed="false" title="Source panel (E)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="1.5" /><path d="M16.5 4.5v15" /></svg>
+        </button>
+      </div>
     </header>
 
     <main id="player">
       <div id="main-row">
+        <div id="canvas-column">
         <section id="viewer" aria-label="Player">
           <div id="canvas-area">
             <canvas id="view" aria-label="Program canvas"></canvas>
@@ -112,69 +119,110 @@
             </div>
           </div>
         </section>
+        <div id="panel-resize" class="resize-y" aria-hidden="true"></div>
+        <section id="panel" aria-label="Bottom panel">
+          <div class="panel-tabs" role="tablist" aria-label="Bottom panel">
+            <button id="tab-diagnostics" type="button" role="tab" aria-selected="true">Diagnostics <span id="diag-count" class="count"></span></button>
+            <button id="tab-stream" type="button" role="tab" aria-selected="false" hidden>Stream</button>
+            <button id="tab-scene" type="button" role="tab" aria-selected="false">Scene</button>
+            <button id="tab-report" type="button" role="tab" aria-selected="false">Report / Compare</button>
+            <span class="spacer"></span>
+            <button id="panel-toggle" type="button" aria-expanded="true" aria-label="Collapse panel">▾</button>
+          </div>
+          <div id="pane-diagnostics" class="pane" role="tabpanel">
+            <p id="diag-note" class="pane-note">Run a program to see diagnostics.</p>
+            <ol id="diag-list" class="diag-list"></ol>
+          </div>
+          <div id="pane-stream" class="pane" role="tabpanel" hidden>
+            <p id="stream-summary" class="pane-note" role="status"></p>
+            <div class="stream-head">
+              <p id="stream-legend" class="pane-note">◌ arrived · ▷ accepted / queued ahead of playhead · ✓ resolved at playhead · ✕ rejected. Highlights follow declaration spans, not frames.</p>
+              <button id="stream-popout" type="button">Pop out source</button>
+            </div>
+            <div class="stream-body">
+              <div id="stream-scroll" class="stream-scroll" tabindex="0" aria-label="Arrived source, scroll up to pause following">
+                <pre id="stream-source" aria-label="Arrived source"></pre>
+              </div>
+              <button id="stream-follow" class="stream-follow" type="button" hidden title="Return to the latest arrived text and resume following">↓ Jump to latest</button>
+            </div>
+          </div>
+          <div id="pane-scene" class="pane" role="tabpanel" hidden>
+            <p id="scene-note" class="pane-note">Run a program to inspect its Scene IR.</p>
+            <div class="scene-cols">
+              <pre id="scene-summary"></pre>
+              <pre id="scene-frame"></pre>
+            </div>
+          </div>
+          <div id="pane-report" class="pane" role="tabpanel" hidden>
+            <p id="report-summary" class="pane-note">Run a program to see its report.</p>
+            <pre id="report"></pre>
+          </div>
+        </section>
+        </div>
         <div id="source-resize" class="resize-x" hidden aria-hidden="true"></div>
         <aside id="source-panel" aria-label="Source" hidden>
-          <div class="panel-bar">
-            <strong>Source</strong>
-            <span id="source-format" class="meta"></span>
-            <span id="source-dirty" class="badge is-warn" hidden>● edited since Run</span>
-            <span class="spacer"></span>
-            <button id="source-run" type="button" disabled title="Run (Ctrl/⌘+Enter)">▶ Run</button>
-            <button id="source-close" type="button" aria-label="Close source panel">✕</button>
+          <div id="source-chrome">
+            <div class="panel-bar">
+              <strong>Source</strong>
+              <span id="source-format" class="meta"></span>
+              <span id="source-dirty" class="badge is-warn" hidden>● edited since Run</span>
+              <span class="spacer"></span>
+              <button id="source-run" type="button" disabled title="Run (Ctrl/⌘+Enter)">▶ Run</button>
+              <button id="source-close" type="button" aria-label="Close source panel">✕</button>
+            </div>
+            <div id="split-controls" hidden>
+              <label>Format <select id="split-format" aria-label="Split format">
+                <option value="motionscript">MotionScript</option><option value="lottie">Lottie</option>
+                <option value="svg">SVG</option><option value="fixture">Fixture</option>
+              </select></label>
+              <label>Presets <select id="split-presets" aria-label="Split presets"></select></label>
+              <button id="split-open" type="button">Open file…</button>
+              <label class="check"><input id="split-compare" type="checkbox" /> Compare MotionScript round-trip</label>
+              <p class="meta">Separate drafts per format for this visit. Paste or open a file, then Run.</p>
+              <p id="split-error" role="alert" hidden></p>
+            </div>
+            <textarea id="source" spellcheck="false" aria-label="Program source" disabled placeholder="Open a program to edit its source."></textarea>
           </div>
-          <div id="split-controls" hidden>
-            <label>Format <select id="split-format" aria-label="Split format">
-              <option value="motionscript">MotionScript</option><option value="lottie">Lottie</option>
-              <option value="svg">SVG</option><option value="fixture">Fixture</option>
-            </select></label>
-            <label>Presets <select id="split-presets" aria-label="Split presets"></select></label>
-            <button id="split-open" type="button">Open file…</button>
-            <label class="check"><input id="split-compare" type="checkbox" /> Compare MotionScript round-trip</label>
-            <p class="meta">Separate drafts per format for this visit. Paste or open a file, then Run.</p>
-            <p id="split-error" role="alert" hidden></p>
+          <div id="generate-chrome" hidden>
+            <div class="panel-bar">
+              <strong>Generate</strong>
+              <span class="meta">typed prompts · judge canvas quality</span>
+              <span class="spacer"></span>
+              <button id="generate-close" type="button" aria-label="Leave Generate mode">✕</button>
+            </div>
+            <div id="generate-transcript" class="generate-transcript" aria-live="polite"></div>
+            <div id="generate-detail" class="generate-detail" hidden>
+              <div class="panel-bar">
+                <strong id="generate-detail-title">Generation output</strong>
+                <span class="spacer"></span>
+                <button id="generate-detail-output" type="button" aria-pressed="true">Output</button>
+                <button id="generate-detail-director" type="button" aria-pressed="false">Director</button>
+                <button id="generate-detail-close" type="button" aria-label="Close detail">✕</button>
+              </div>
+              <pre id="generate-detail-body" class="generate-detail-body"></pre>
+            </div>
+            <div class="generate-composer" aria-label="Prompt composer">
+              <textarea id="generate-prompt" rows="2" placeholder="Ask for an animation…" aria-label="Generation prompt"></textarea>
+              <div class="generate-toolbar">
+                <label class="generate-chip">Approach
+                  <select id="generate-approach" aria-label="Generation approach">
+                    <option value="director" selected>Director</option>
+                    <option value="direct">Direct</option>
+                  </select>
+                </label>
+                <label class="generate-chip">Model
+                  <select id="generate-model" aria-label="Generation model">
+                    <option value="qwen2.5-coder:14b" selected>qwen2.5-coder:14b</option>
+                  </select>
+                </label>
+                <span class="spacer"></span>
+                <button id="generate-send" class="generate-send" type="button" title="Send prompt" aria-label="Send prompt">↑</button>
+              </div>
+              <p id="generate-metrics" class="generate-metrics" role="status"></p>
+            </div>
           </div>
-          <textarea id="source" spellcheck="false" aria-label="Program source" disabled placeholder="Open a program to edit its source."></textarea>
         </aside>
       </div>
-      <div id="panel-resize" class="resize-y" aria-hidden="true"></div>
-      <section id="panel" aria-label="Bottom panel">
-        <div class="panel-tabs" role="tablist" aria-label="Bottom panel">
-          <button id="tab-diagnostics" type="button" role="tab" aria-selected="true">Diagnostics <span id="diag-count" class="count"></span></button>
-          <button id="tab-stream" type="button" role="tab" aria-selected="false" hidden>Stream</button>
-          <button id="tab-scene" type="button" role="tab" aria-selected="false">Scene</button>
-          <button id="tab-report" type="button" role="tab" aria-selected="false">Report / Compare</button>
-          <span class="spacer"></span>
-          <button id="panel-toggle" type="button" aria-expanded="true" aria-label="Collapse panel">▾</button>
-        </div>
-        <div id="pane-diagnostics" class="pane" role="tabpanel">
-          <p id="diag-note" class="pane-note">Run a program to see diagnostics.</p>
-          <ol id="diag-list" class="diag-list"></ol>
-        </div>
-        <div id="pane-stream" class="pane" role="tabpanel" hidden>
-          <p id="stream-summary" class="pane-note" role="status"></p>
-          <div class="stream-head">
-            <p id="stream-legend" class="pane-note">◌ arrived · ▷ accepted / queued ahead of playhead · ✓ resolved at playhead · ✕ rejected. Highlights follow declaration spans, not frames.</p>
-            <button id="stream-popout" type="button">Pop out source</button>
-          </div>
-          <div class="stream-body">
-            <div id="stream-scroll" class="stream-scroll" tabindex="0" aria-label="Arrived source, scroll up to pause following">
-              <pre id="stream-source" aria-label="Arrived source"></pre>
-            </div>
-            <button id="stream-follow" class="stream-follow" type="button" hidden title="Return to the latest arrived text and resume following">↓ Jump to latest</button>
-          </div>
-        </div>
-        <div id="pane-scene" class="pane" role="tabpanel" hidden>
-          <p id="scene-note" class="pane-note">Run a program to inspect its Scene IR.</p>
-          <div class="scene-cols">
-            <pre id="scene-summary"></pre>
-            <pre id="scene-frame"></pre>
-          </div>
-        </div>
-        <div id="pane-report" class="pane" role="tabpanel" hidden>
-          <p id="report-summary" class="pane-note">Run a program to see its report.</p>
-          <pre id="report"></pre>
-        </div>
-      </section>
     </main>
     <footer id="status">
       <span id="status-text"></span>
