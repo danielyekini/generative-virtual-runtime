@@ -346,7 +346,11 @@ In Generate mode the side panel is for **generation**, not script testing:
 - Header **Generate** uses the two-sparkle / diamond AI icon (not a pencil).
 - Secondary metrics (repairs, latency, tape wait) may appear as quiet status
   under the composer or on the bubble — never as the acceptance gate.
-- Waiting-state MotionScript loading screens are tracked separately (P023).
+- Waiting-state MotionScript loading screens (P023): while Generate is waiting
+  for the first renderable program, the canvas plays a random packaged
+  MotionScript preset (`fixtures/generation/loading-screens/`). Samples for now;
+  replace with human-verified programs later. Do **not** show these for
+  mid-stream hangs after rendering has begun.
 
 ### Transcripts (user-confirmed, 3 November 2026)
 

@@ -19,6 +19,7 @@ describe("native generation pipeline", () => {
     const reference = loadAuthoringReference(root);
     expect(reference.metadata.fingerprint).toHaveLength(64);
     expect(reference.markdown).toContain("MotionScript authoring reference");
+    expect(reference.markdown).toContain("Node ids must not be reserved words");
   });
 
   it("parses a bounded director script JSON", () => {
@@ -61,6 +62,44 @@ describe("native generation pipeline", () => {
     expect(result.metrics.status).toBe("pass");
     expect(result.metrics.directorMs).not.toBeNull();
     expect(result.metrics.implementMs).not.toBeNull();
+  });
+
+  it("repairs reserved-word node ids on a second implement attempt (P021)", async () => {
+    const good = readFileSync(resolve(heldOut, "static-badge.ms"), "utf8");
+    const reservedIds = `scene "reserved-ids" {
+  version "0.2";
+  viewport (200, 200);
+  background #0b0b10;
+  duration 2s;
+};
+
+circle circle {
+  radius 32;
+  fill #ffffff;
+  position (100, 80);
+};
+
+path line {
+  move (20, 20);
+  line (180, 180);
+  stroke #cfd8dc width 2;
+};
+
+complete;
+`;
+    const generator = new FixtureGenerator(good, { sequence: [reservedIds, good], chunkChars: 64 });
+    const result = await runGenerationPipeline({
+      taskId: "reserved-node-ids",
+      prompt: "fixture reserved ids",
+      generator,
+      maxRepairs: 1,
+    });
+    expect(result.metrics.status).toBe("pass");
+    expect(result.metrics.repairAttempts).toBe(1);
+    expect(result.metrics.compileErrorCount).toBe(0);
+    expect(result.source).toContain("circle badge");
+    expect(result.source).not.toMatch(/circle\s+circle\b/);
+    expect(result.metrics.notes.some((note) => note.startsWith("repair 1:"))).toBe(true);
   });
 
   it("honours cancel-after and AbortError without claiming model speed", async () => {

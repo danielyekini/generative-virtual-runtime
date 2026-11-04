@@ -1,6 +1,6 @@
 {
   "generatorVersion": "0.1.0",
-  "generatedAt": "2026-11-04T06:59:17.533Z",
+  "generatedAt": "2026-11-04T07:02:01.014Z",
   "motionscript": "0.26.0",
   "sceneIr": "0.25.0",
   "wireVersion": "0.2",
@@ -8,8 +8,8 @@
   "releaseId": "ms-0.26.0_sir-0.25.0",
   "fingerprint": "0e062ce23a63fd5c631dac54b3768b5741534b5638bbb9a8c6a5bd06146c918d",
   "fingerprint8": "0e062ce2",
-  "estimatedTokensUtf16Div4": 4246,
-  "byteLengthUtf8": 16991,
+  "estimatedTokensUtf16Div4": 4433,
+  "byteLengthUtf8": 17745,
   "requiredCapabilities": [
     "scene.camera",
     "scene.contain",

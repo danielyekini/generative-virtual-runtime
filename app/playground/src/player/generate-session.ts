@@ -16,6 +16,7 @@ import {
   type GvrTranscript,
   type PlaybackCue,
 } from "./gvr-transcript";
+import { pickLoadingScreen } from "./loading-screens";
 import { StudioOllamaGenerator, studioOllamaAvailable } from "./studio-ollama";
 
 export type GenerateRole = "user" | "model";
@@ -123,6 +124,14 @@ export type GenerateHost = {
   modelAvailable?: (modelId: string) => Promise<boolean>;
   /** Load a generated MotionScript into the Player and run it. */
   acceptProgram: (label: string, source: string) => void;
+  /**
+   * Play an ephemeral waiting-state MotionScript on the canvas (P023).
+   * Only while Generate is waiting for the first renderable result — not for
+   * mid-stream hangs after rendering has begun.
+   */
+  playWaitingScreen?: (label: string, source: string) => void;
+  /** Clear an ephemeral waiting screen when generation fails or is cancelled. */
+  clearWaitingScreen?: () => void;
   /** Persist a finished multi-turn session as a GVR transcript. */
   onTranscript?: (doc: GvrTranscript) => void;
 };
@@ -137,10 +146,34 @@ export class GenerateController {
   private transcriptMeta: { id: string; title: string; createdAt: string } | null = null;
   private playbackIndex = -1;
   private cues: PlaybackCue[] = [];
+  /** True while an ephemeral P023 loading screen is on the canvas. */
+  private waitingScreenActive = false;
 
   constructor(host: GenerateHost, state = createGenerateState()) {
     this.host = host;
     this.state = state;
+  }
+
+  private beginWaitingScreen(): void {
+    if (!this.host.playWaitingScreen) return;
+    try {
+      const preset = pickLoadingScreen();
+      this.host.playWaitingScreen(preset.caption, preset.source);
+      this.waitingScreenActive = true;
+    } catch {
+      this.waitingScreenActive = false;
+    }
+  }
+
+  private endWaitingScreen(): void {
+    if (!this.waitingScreenActive) return;
+    this.waitingScreenActive = false;
+    this.host.clearWaitingScreen?.();
+  }
+
+  /** Test helper: whether a waiting-state loading screen is considered active. */
+  waitingScreenShowing(): boolean {
+    return this.waitingScreenActive;
   }
 
   setApproach(approach: GenerationApproach): void {
@@ -424,6 +457,7 @@ export class GenerateController {
       pending.error = pending.error ?? "Cancelled";
       if (!pending.text.trim()) pending.text = "⋯ cancelled";
     }
+    this.endWaitingScreen();
     this.state.lastStatus = "Generation cancelled";
     this.publishTranscript();
     this.host.onChange();
@@ -464,6 +498,7 @@ export class GenerateController {
     this.state.messages.push(user, model);
     this.state.running = true;
     this.state.lastStatus = "Generating…";
+    this.beginWaitingScreen();
     this.host.onChange();
 
     const myGeneration = ++this.generation;
@@ -481,6 +516,7 @@ export class GenerateController {
       model.text = model.error;
       log(`reference load failed: ${model.error}`);
       this.state.running = false;
+      this.endWaitingScreen();
       this.state.lastStatus = "Reference load failed";
       this.publishTranscript();
       this.host.onChange();
@@ -496,6 +532,7 @@ export class GenerateController {
       model.text = model.error;
       log("model unavailable at send");
       this.state.running = false;
+      this.endWaitingScreen();
       this.state.modelReadiness = "unavailable";
       this.state.lastStatus = "Ollama unavailable";
       this.publishTranscript();
@@ -542,6 +579,7 @@ export class GenerateController {
       model.text = model.text || model.error;
       log(`failed: ${model.error}`);
       this.state.running = false;
+      this.endWaitingScreen();
       this.state.lastStatus = "Generation failed";
       this.publishTranscript();
       this.host.onChange();
@@ -559,6 +597,7 @@ export class GenerateController {
     if (result.metrics.cancelled) {
       model.error = "Cancelled";
       if (!model.text.trim()) model.text = "⋯ cancelled";
+      this.endWaitingScreen();
       this.state.lastStatus = "Cancelled";
     } else if (result.metrics.status === "pass" && result.source.trim()) {
       const preview = result.source.trim().split("\n").slice(0, 6).join("\n");
@@ -566,10 +605,13 @@ export class GenerateController {
       const repairs = result.metrics.repairAttempts;
       const latency = Math.round(result.metrics.totalMs);
       this.state.lastStatus = `Pass · ${latency} ms · repairs ${repairs} · judge animation on canvas`;
+      // acceptProgram replaces the canvas; drop the waiting flag without clearing first.
+      this.waitingScreenActive = false;
       this.host.acceptProgram(labelForPrompt(trimmed), result.source);
     } else {
       model.error = result.metrics.notes.slice(-1)[0] ?? `status ${result.metrics.status}`;
       model.text = model.text.trim() || model.error;
+      this.endWaitingScreen();
       this.state.lastStatus = `Fail · repairs ${result.metrics.repairAttempts} · ${Math.round(result.metrics.totalMs)} ms`;
     }
 

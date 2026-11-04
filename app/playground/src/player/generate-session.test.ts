@@ -250,6 +250,31 @@ describe("Studio Generate (P019 / P022 / P028)", () => {
   });
 });
 
+describe("Generate waiting screens (P023)", () => {
+  it("plays a loading screen while waiting, then clears when the model is unavailable", async () => {
+    const events: string[] = [];
+    const controller = new GenerateController({
+      onChange: () => undefined,
+      acceptProgram: () => {
+        events.push("accept");
+      },
+      modelAvailable: async () => false,
+      playWaitingScreen: (label) => {
+        events.push(`play:${label}`);
+      },
+      clearWaitingScreen: () => {
+        events.push("clear");
+      },
+    });
+    controller.state.modelReadiness = "ready";
+    await controller.send("show a loading screen while we wait");
+    expect(controller.waitingScreenShowing()).toBe(false);
+    expect(events[0]?.startsWith("play:")).toBe(true);
+    expect(events).toContain("clear");
+    expect(events).not.toContain("accept");
+  });
+});
+
 describe("Transcript playback (P029)", () => {
   it("loads a transcript into Generate and steps the highlighted pair", () => {
     const parsed = parseGvrTranscript(readFileSync(resolve(import.meta.dirname, "../../fixtures/gvr-transcript-sample.json"), "utf8"));

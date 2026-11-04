@@ -61,6 +61,7 @@ import {
 import { playbackHotspotContains, PLAYBACK_IDLE_MS, showFrameTape } from "./playback-chrome";
 import { GenerateController } from "./generate-session";
 import { bindGeneratePanel, closeGenerateMenu, renderGeneratePanel, wireGeneratePanel } from "./generate-panel";
+import { pickLoadingScreen } from "./loading-screens";
 import { canonicalProgramKey } from "./program-keys";
 
 function $<T extends HTMLElement>(id: string): T {
@@ -341,12 +342,57 @@ const MODEL_READINESS_POLL_MS = 5000;
 let modelReadinessTimer = 0;
 
 const generateUi = bindGeneratePanel($("generate-chrome"));
+/** Program restored when a Generate waiting screen ends without a new result. */
+let waitingRestore: ProgramEntry | null = null;
+
 const generate = new GenerateController({
   onChange: () => render(),
   onTranscript: (doc) => {
     persistTranscripts(upsertTranscript(decodeTranscriptStore(read(TRANSCRIPTS_KEY)), doc));
   },
+  playWaitingScreen: (label, source) => {
+    waitingRestore = loaded && !ephemeralLoaded ? { ...loaded, source: ui.source.value } : null;
+    openProgram(
+      {
+        key: `waiting:${Date.now().toString(36)}`,
+        label,
+        caption: "Generate waiting",
+        collection: "Generate",
+        origin: "installed",
+        format: "motionscript",
+        source,
+      },
+      { ephemeral: true, waitForRun: true },
+    );
+    run();
+  },
+  clearWaitingScreen: () => {
+    if (!ephemeralLoaded || !loaded?.key.startsWith("waiting:")) {
+      waitingRestore = null;
+      return;
+    }
+    const restore = waitingRestore;
+    waitingRestore = null;
+    if (restore) {
+      openProgram(restore, { waitForRun: true });
+      run();
+      return;
+    }
+    stopStream();
+    loaded = null;
+    ephemeralLoaded = false;
+    outcome = null;
+    runtime = null;
+    frame = null;
+    stopAudio();
+    clock.pause();
+    clock.seek(0);
+    ui.source.value = "";
+    poster = null;
+    render();
+  },
   acceptProgram: (label, source) => {
+    waitingRestore = null;
     const key = `mine:generated-${Date.now().toString(36)}`;
     const entry: ProgramEntry = {
       key,
@@ -1392,6 +1438,30 @@ function seedGeneratePreview(user: string, director: string, output: string, exp
   render();
 }
 
+/** Smoke helper (P023): play one waiting-state loading screen on the canvas. */
+function seedGenerateWaiting(): { label: string; key: string } | null {
+  if (!generateMode) enterGenerateMode();
+  const preset = pickLoadingScreen(() => 0);
+  const host = generate as unknown as { beginWaitingScreen?: () => void; waitingScreenActive?: boolean };
+  // Drive the same host hooks send() uses, without calling a model.
+  generate.state.running = true;
+  generate.state.lastStatus = "Generating…";
+  (generate as unknown as { beginWaitingScreen: () => void }).beginWaitingScreen();
+  if (!loaded?.key.startsWith("waiting:")) {
+    // Fallback if host hook missing in a partial bind.
+    void host;
+    return null;
+  }
+  return { label: preset.caption, key: loaded.key };
+}
+
+function clearGenerateWaiting(): void {
+  (generate as unknown as { endWaitingScreen: () => void }).endWaitingScreen();
+  generate.state.running = false;
+  generate.state.lastStatus = "Waiting screen cleared";
+  render();
+}
+
 function publish(): void {
   const bridge: GvrBridge = {
     activity: "player",
@@ -1826,11 +1896,17 @@ requestAnimationFrame(function loop(now: number) {
     if (!libraryVisible && clock.isPlaying && !scrubbing && runtime) {
       clock.tick(delta);
       if ((!stream || stream.done) && clock.timeMs >= durationMs()) {
-        clock.seek(durationMs());
-        clock.pause();
-        if (generate.playbackActive()) {
-          const next = generate.advancePlayback();
-          if (next) playTranscriptCue(next);
+        // Loop Generate waiting screens until a real program replaces them (P023).
+        if (generate.waitingScreenShowing() && ephemeralLoaded && loaded?.key.startsWith("waiting:")) {
+          clock.seek(0);
+          clock.play();
+        } else {
+          clock.seek(durationMs());
+          clock.pause();
+          if (generate.playbackActive()) {
+            const next = generate.advancePlayback();
+            if (next) playTranscriptCue(next);
+          }
         }
       }
       needsDraw = true;

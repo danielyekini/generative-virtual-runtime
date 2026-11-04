@@ -1,0 +1,9 @@
+{
+  "id": "generate-loading-screens",
+  "purpose": "P023 waiting-state MotionScript presets shown on the Studio canvas while Generate waits for the first renderable program. Samples only; replace with human-verified programs later.",
+  "presets": [
+    { "id": "pulse-dot", "file": "pulse-dot.ms", "caption": "Pulsing centre dot" },
+    { "id": "orbit-ring", "file": "orbit-ring.ms", "caption": "Orbiting accent" },
+    { "id": "sweep-bar", "file": "sweep-bar.ms", "caption": "Horizontal sweep" }
+  ]
+}
