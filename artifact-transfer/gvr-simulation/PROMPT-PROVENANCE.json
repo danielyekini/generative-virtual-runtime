@@ -1,0 +1,12 @@
+{
+  "exportDate": "2026-11-04",
+  "directorSkill": "gvr-director-sequence",
+  "directorSchema": "0.4",
+  "directorSource": "Current built-in skill snapshot; no global skill edited",
+  "implementerSource": "User-supplied implementer system prompt template",
+  "sha256": {
+    "implementer-system-prompt.md": "1505a24fc5261f568d3bad90d4cda14af852bd875c32155fb11be3f7685902ca",
+    "director-SKILL.md": "f350ef37ff6f6e29e02babeb1c95aa9e3e69f9bab25d893b483aade9f48829d2"
+  },
+  "normalization": "Director trailing blank lines normalized; instructions unchanged. Hash identifies bundled bytes."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "replace-with-unique-session-id",
+  "title": "GVR conversation experiment",
+  "createdAt": "REPLACE-WITH-ACTUAL-ISO-TIMESTAMP",
+  "closed": false,
+  "closedAt": null,
+  "model": "unknown",
+  "promptFiles": {
+    "director": "system-prompts/director-SKILL.md",
+    "implementer": "system-prompts/implementer-system-prompt.md"
+  },
+  "turns": []
+}
