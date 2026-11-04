@@ -1,0 +1,785 @@
+[@skill-creator](browser-skill:///system_699a14cbc6e4819181b9a89478de1733?accountId=19c5ab6d-e01c-42b2-a719-35f75723557c&userId=user-ZcpPXuD3xIDBJuickgb2sqSh) Create the following skill where given a user prompt, the agent generates the defined prompt. The agent should act as a director in a runtime environment communicating with a user. The aim is impressively animated responses
+
+---
+name: gvr-director-sequence
+description: Turn a user prompt/request into a structured GVR director JSON plan with timed choreography, camera direction, continuity, sound and visual effects. Use to test the experimental rich director contract. Output JSON rather than executable animation code.
+---
+
+# GVR Director Sequence
+
+Act as an animation director and choreographer for GVR. Translate the user's request into a complete, visually readable animation plan conforming to the schema below.
+
+This is an experimental director contract. It is not yet compatible with the repository's existing director parser.
+
+## Inputs
+
+Accept a natural-language animation request.
+
+Honor the requested duration, style, subjects and constraints. Unless specified, use:
+- Duration: 30000 milliseconds.
+- Canvas: 1280 × 720.
+- Style: simple 2D animation.
+
+Make reasonable creative decisions for unspecified details. Do not ask the user to fill out a template.
+
+Treat capability availability as a development concern, not content to emit in the plan. Populate `requires` only with released capability IDs supplied in context or verified from the repository. Otherwise use an empty array. Do not invent IDs or add capability-needs, fallback, availability or implementation-status fields.
+
+Sound cues describe intended sound direction; their presence does not certify current audio integration.
+
+## Direction
+
+Establish the setting, subjects, initial positions, visual style and tone.
+
+Divide the full duration into readable beats. Describe observable actions with concrete verbs. Translate emotions into visible poses, expressions and movement.
+
+For major actions, specify anticipation, execution, contact or climax, follow-through and recovery where relevant. Do not manufacture phases for actions that do not need them.
+
+Make trajectories, direction, speed changes, pauses and important poses clear. Give impacts and reactions enough time to read.
+
+Define camera framing, angle and movement for every beat. Explicitly represent a stationary camera with a hold movement.
+
+Preserve subject identity, appearance, spatial continuity and screen direction. Explain changes through visible movement or an explicit cut.
+
+Use sound and visual effects where they strengthen the sequence. Use empty arrays when none are needed.
+
+Give the sequence a clear beginning, development and ending.
+
+## Output
+
+Return ONLY one valid JSON object:
+- No Markdown fences, introduction, explanation or implementation code.
+- Follow the schema exactly; do not add fields.
+- All fields are required except those marked optional.
+- Omit unused optional fields; do not emit null.
+- Use concise, production-ready language.
+- Describe each fact in its most relevant field. Avoid repeating whole descriptions across fields.
+- Scale detail to the request. Do not add shots, phases, poses or effects merely to populate the schema.
+
+The schema notation below is a specification; emit JSON, not TypeScript.
+
+```ts
+type DirectorScript = {
+  directorVersion: "0.2";
+  title: string;
+  intent: string;
+
+  canvas: {
+    width: number;
+    height: number;
+    durationMs: number;
+    background: string;
+  };
+
+  style: {
+    medium: string;
+    visualDescription: string;
+    tone: string;
+    palette: string[];
+  };
+
+  setting: {
+    description: string;
+    initialComposition: string;
+    coordinateSpace: "canvas-pixels";
+  };
+
+  subjects: {
+    id: string;
+    kind: "character" | "object" | "environment" | "graphic";
+    description: string;
+    appearance: string;
+    movementCharacteristics: string;
+    initialState: {
+      position: Point;
+      orientation: string;
+      pose: string;
+      visible: boolean;
+    };
+    continuityRules: string[];
+  }[];
+
+  requires: string[];
+
+  beats: {
+    id: string;
+    name: string;
+    atMs: number;
+    durationMs: number;
+    purpose: string;
+
+    camera: {
+      framing: "wide" | "full" | "medium" | "close-up" | "detail";
+      angle: "front" | "side" | "overhead" | "low" | "high" | "custom";
+      angleNotes?: string;
+      subjectIds: string[];
+      movement: {
+        kind: "hold" | "pan" | "tilt" | "zoom" | "track" | "custom";
+        offsetMs: number;
+        durationMs: number;
+        description: string;
+        easing: string;
+        fromView: View;
+        toView: View;
+      }[];
+      screenDirection: string;
+    };
+
+    choreography: {
+      id: string;
+      subjectIds: string[];
+      offsetMs: number;
+      durationMs: number;
+      action: string;
+
+      phases: {
+        kind:
+          | "anticipation"
+          | "execution"
+          | "contact"
+          | "climax"
+          | "follow-through"
+          | "recovery"
+          | "hold";
+        offsetMs: number;
+        durationMs: number;
+        movement: string;
+
+        keyPoses: {
+          atMs: number;
+          subjectId: string;
+          pose: string;
+          expression?: string;
+          position?: Point;
+          orientation?: string;
+        }[];
+
+        trajectory?: {
+          description: string;
+          points: Point[];
+        };
+
+        timing: {
+          easing: string;
+          speedDescription: string;
+          emphasis: string;
+        };
+      }[];
+
+      interactions: {
+        withSubjectId: string;
+        atMs: number;
+        kind: "contact" | "release" | "look-at" | "other";
+        description: string;
+      }[];
+
+      synchronization: {
+        actionId: string;
+        relationship: "start-together" | "end-together" | "after";
+        offsetMs: number;
+      }[];
+    }[];
+
+    soundCues: {
+      id: string;
+      offsetMs: number;
+      durationMs: number;
+      kind: "music" | "ambience" | "effect" | "voice";
+      description: string;
+      sourceSubjectId?: string;
+      syncActionId?: string;
+      assetRef?: string;
+    }[];
+
+    visualEffects: {
+      id: string;
+      offsetMs: number;
+      durationMs: number;
+      kind: string;
+      description: string;
+      subjectIds: string[];
+      syncActionId?: string;
+    }[];
+
+    transition: {
+      kind: "continuous" | "cut" | "dissolve" | "fade";
+      durationMs: number;
+      notes: string;
+    };
+
+    resultingState: {
+      composition: string;
+      subjects: {
+        subjectId: string;
+        position: Point;
+        orientation: string;
+        pose: string;
+        visible: boolean;
+      }[];
+    };
+
+    notes: string;
+  }[];
+
+  ending: {
+    mode: "hold" | "cut" | "fade" | "loop";
+    finalComposition: string;
+    holdMs: number;
+    loopContinuity?: string;
+  };
+
+  delivery: {
+    seals: {
+      throughMs: number;
+      notes: string;
+    }[];
+    completeAtMs: number;
+  };
+
+  constraints: string[];
+};
+
+type Point = { x: number; y: number };
+type View = { x: number; y: number; width: number; height: number };
+```
+
+## Timing and coordinates
+
+All times are finite, nonnegative integer milliseconds. Durations are positive except instantaneous events, cuts and zero-length ending holds.
+
+- Beat `atMs` is absolute sequence time.
+- Choreography, camera, sound and effect `offsetMs` are relative to beat start.
+- Phase `offsetMs` is relative to action start.
+- Key-pose `atMs` is relative to phase start.
+- Interaction `atMs` is relative to action start.
+
+Beats must be ordered, contiguous and cover exactly `canvas.durationMs`. Represent simultaneous action with overlapping action intervals inside a beat.
+
+Every nested interval must fit inside its parent. Phases cover their action's duration; use a hold where a pause matters. Key poses must fit inside their phase.
+
+Canvas coordinates use top-left origin, +x right and +y down. Subject positions refer to their visual center unless a constraint explicitly defines another anchor. View rectangles describe the camera's visible region in the same coordinate space. A camera hold has identical fromView and toView.
+
+Camera movements must cover the beat, including explicit holds between moves.
+
+Transitions lead into the next beat. Dissolves and fades occupy the end of the current beat; they do not add time. Continuous transitions and cuts have durationMs 0.
+
+Ending holds and fades are included in the total duration. `ending.holdMs` describes the final hold already present in the beats.
+
+## Identity, continuity and synchronization
+
+Use globally unique IDs. Avoid reserved subject identifiers:
+path, line, circle, text, stroke, fill, animate, seal.
+
+All references must resolve.
+
+Declare initial state once. In each resultingState, record subjects whose state changes or whose state is necessary to understand the final composition. Unlisted subjects retain their previous state.
+
+The next beat starts from the preceding state unless an explicit transition explains a change.
+
+Absolute action times govern simultaneity. Add synchronization entries only when the relationship is important beyond coincidental overlap.
+
+For an action A referencing B:
+- start-together: start(A) = start(B) + offset
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worked for 7m 11s
+
+
+
+
+
+
+
+Created and installed gvr-director-sequence.
+
+It preserves your full JSON contract and adds runtime direction for expressive, readable animated responses. Structure validation and a six-second sample passed.
+
+Invoke it with @gvr-director-sequence followed by your request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I’d revise the skill around an inferred response experience, a persistent result, and optional timed sequences. Duration would belong to a sequence when needed, rather than to every director response.
+
+Recommendation: keep the animation skill’s directing standards, but make their expression flexible. Anticipation, continuity, framing and pacing can be described precisely in natural language without separate objects for every phase.
+1. Infer what this turn needs
+The director should consider the request and the existing application state. A follow-up like “change the colour scheme” should produce a small update plan, rather than redescribe the application.
+
+Use a small experience contract:
+experience: {
+  form: "surface" | "explanation" | "animation";
+  operation: "create" | "update";
+  presentation: "immediate" | "transition" | "overview" | "guided";
+}
+These describe different decisions:
+- Form: what the user receives.
+- Operation: whether this creates something or changes the current result.
+- Presentation: how this turn introduces that result.
+A landing page could be surface/create/overview: build a usable page, reveal its assembly, scroll through it, then leave it available for editing. A colour change could be surface/update/transition, with a brief diffusion effect.
+
+The director infers these values; the user does not need to choose them.
+2. Remove global duration and its default
+Keep timing where it provides value:
+Request	Timing treatment
+Static content correction	No timed sequence necessary
+Colour or logo change	Optional brief transition
+New website prototype	Assembly and overview sequence, followed by a persistent surface
+Visual explanation	Content-driven sequence, potentially several minutes
+Explicitly timed animation	Honour the requested duration
+
+
+For explanations without a supplied duration, the director should estimate time from the explanation’s content, narration and reading needs. It should never stretch or compress everything into a preset length.
+
+Your preference becomes a directing instruction:
+Prefer purposeful introductory motion when it helps reveal a new result. Use restrained transitions for local changes. Omit motion when it adds delay without improving understanding.
+
+That preserves taste without making every turn a performance.
+3. Separate the result from how it appears
+This is how I’d express page behaviour versus presentation motion:
+{
+  "experience": {
+    "form": "surface",
+    "operation": "create",
+    "presentation": "overview"
+  },
+  "result": {
+    "description": "A sales SaaS landing page connecting field territory management with a broader CRM proposition.",
+    "behaviour": [
+      "Navigation links move to their corresponding sections.",
+      "The page remains freely scrollable.",
+      "Stack the hero columns on narrow screens."
+    ]
+  },
+  "sequences": [
+    {
+      "id": "introduction",
+      "purpose": "Reveal the assembled design and show the page's full structure before editing.",
+      "trigger": "on-result-ready",
+      "onEnd": "Return to the hero and leave the page available for interaction.",
+      "beats": []
+    }
+  ]
+}
+The surface continues to exist after its introduction ends. Presentation scrolling should yield to user input, and reduced-motion behaviour should preserve the complete result.
+4. Use prose-rich beats with a compact structure
+The common beat should be closer to this:
+{
+  "atMs": 0,
+  "durationMs": 1000,
+  "targets": ["hero", "productPreview"],
+  "direction": "Reveal the headline first. Assemble the phone and CRM panel beside it with a gentle upward settle, keeping the copy stationary and readable.",
+  "easing": "ease-out"
+}
+Optional fields can add camera changes, sound, effects or important poses.
+
+For a complex action, direction might describe anticipation, execution and recovery in several sentences. Only add structured sub-timing when synchronization materially affects the result.
+
+The skill should explicitly say:
+Detail should follow creative difficulty. A complex explanation may need substantial direction; a simple edit should produce a small plan. Do not expand the schema merely to demonstrate completeness.
+
+5. Inherit state and spend detail on changes
+Declare subjects, composition and camera once when creating a result. During updates, reference existing IDs and describe only additions or changes.
+
+I would remove mandatory:
+- Phase arrays.
+- Repeated stationary camera descriptions.
+- Beat-end snapshots.
+- Empty sound, effect and synchronization arrays.
+- Timing commentary that repeats the action.
+- Global metadata already established in prior turns.
+Keep explicit end-state information when it resolves ambiguity—for example, where an object lands after a complicated exchange.
+
+This requires the implementing model to receive the current state and stable identifiers. The skill cannot reliably produce incremental plans from conversation alone if that context is missing.
+6. Preserve the original skill’s creative checks
+The revised skill should still silently check:
+- Are actions observable and visually specific?
+- Do important movements have readable preparation, execution and consequence?
+- Does the explanation develop in an understandable order?
+- Are simultaneous events unambiguous?
+- Does framing direct attention appropriately?
+- Is continuity preserved?
+- Does the result finish in a useful state?
+Those checks generate richness. They do not all need corresponding output fields.
+
+I’d also move seal placement to the implementation stage by default. The director can identify a useful first reveal or important progression boundary; the implementing model can translate those into valid streaming checkpoints. That keeps runtime mechanics from dominating creative planning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worked for 6m 43s
+
+
+
+
+
+
+
+Updated gvr-director-sequence to contract 0.3.
+
+It now infers the experience, separates persistent results from optional presentation sequences, and uses prose-rich beats. Updates inherit existing state; durations belong only to sequences, and seal placement moves to implementation.
+
+Validated a new landing page, an immediate text correction and a missing-state request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+the stateRequest is a failure of the boundary we gave the director. We asked it to plan updates using implementation identifiers, so it treated missing runtime state as a reason to stop responding.
+
+clearer model: the director owns the meaning and presentation of the response; GVR and the implementing model own its reconciliation with the running application.
+
+The director should receive its system prompt and conversation history, then respond in the director schema. It should not request runtime IDs, geometry dumps or context retrieval.
+Separate conversational context from runtime state
+The director needs to understand what the user is changing, using the conversation. The implementing model needs to know how that change applies to the current program, using runtime state.
+
+For the house follow-up, the director already knows enough to say:
+- Revise the existing house concept.
+- Provide two storeys and five bedrooms.
+- Put the master downstairs and four bedrooms upstairs.
+- Introduce a coherent staircase and landing.
+- Preserve the established visual style and footprint assumption unless revision becomes necessary.
+It does not need wall IDs to express any of that.
+
+The processing flow should be:
+User request + conversation history
+                 ↓
+              Director
+   User-facing response + authoring intent
+                 ↓
+           GVR interprets
+                 ↓
+   If update: obtain current runtime state
+                 ↓
+ Implementing model receives director output
+       + current program/runtime context
+                 ↓
+       Reconcile, validate and render
+operation: "update" therefore becomes a host routing signal. GVR performs the context fetch automatically. It is not an instruction for the director to ask the user for state.
+Make updates semantic
+I would remove the requirement for the director to reference existing element IDs. Update targets should use meaningful descriptions, such as “the ground-floor bedroom arrangement” or “the existing colour palette.”
+
+The director can still assign local names to subjects within a complex sequence when that makes choreography unambiguous. Those names are authoring references, not claims about live runtime identifiers. The implementation stage resolves them.
+
+For your follow-up, an appropriate response could look like this:
+{
+  "directorVersion": "0.3",
+  "response": "I’ll revise the concept into a two-storey, five-bedroom home, with the master bedroom downstairs and four bedrooms upstairs. I’ll retain the assumed 12 × 10 metre footprint and introduce a connecting staircase and upstairs landing.",
+  "experience": {
+    "form": "surface",
+    "operation": "update",
+    "presentation": "overview"
+  },
+  "changes": [
+    {
+      "target": "Ground-floor layout",
+      "direction": "Retain one master bedroom downstairs. Reorganise the two former secondary bedrooms to accommodate a staircase and useful supporting space, while preserving a coherent entrance, bathroom and living arrangement."
+    },
+    {
+      "target": "New upper-floor layout",
+      "direction": "Arrange four bedrooms around a landing connected to the ground-floor staircase. Include an upstairs bathroom. Keep the stair opening aligned between floors and give every room clear access."
+    },
+    {
+      "target": "Blueprint workspace",
+      "direction": "Show clearly labelled ground-floor and first-floor plans side by side on wide screens and stacked on narrow screens. Retain room selection, dimensions, furniture visibility and zoom controls."
+    }
+  ],
+  "preserve": [
+    "The assumed 12 × 10 metre external footprint.",
+    "The established blueprint styling and metre-based dimensions.",
+    "The concept status and visible design assumptions."
+  ],
+  "sequences": [
+    {
+      "purpose": "Make the revised two-floor arrangement easy to inspect.",
+      "trigger": "When the revised plans are ready.",
+      "onEnd": "Leave both floor plans available for inspection.",
+      "onInterrupt": "Reveal the completed plans immediately and preserve the user's chosen view.",
+      "reducedMotion": "Show both completed plans immediately.",
+      "beats": [
+        {
+          "atMs": 0,
+          "durationMs": 700,
+          "targets": ["Ground-floor plan"],
+          "direction": "Crossfade into the revised ground-floor arrangement, briefly emphasising the master bedroom and staircase."
+        },
+        {
+          "atMs": 700,
+          "durationMs": 900,
+          "targets": ["First-floor plan"],
+          "direction": "Reveal the upper floor beside the ground floor. Briefly highlight the four bedrooms and connecting landing, then settle."
+        }
+      ]
+    }
+  ],
+  "constraints": [
+    "Five bedrooms in total: one master downstairs and four bedrooms upstairs.",
+    "Resolve room dimensions, openings and circulation consistently within the retained footprint.",
+    "Keep the result explicitly identified as a concept design."
+  ]
+}
+The upstairs bathroom is a design assumption here; it could be stated in the visible assumptions rather than presented as something the user requested.
+Give the schema room for ordinary conversation
+Your description also means the director cannot require a renderable plan on every turn. A user might ask, “Why did you put the stairs there?” The director should answer without generating a new layout.
+
+I’d add:
+response: string;
+
+experience: {
+  form: "conversation" | "surface" | "explanation" | "animation";
+  operation: "none" | "create" | "update";
+  presentation: "immediate" | "transition" | "overview" | "guided";
+};
+Then make the authoring sections conditional:
+Operation	Expected content
+none	A direct conversational response; no program mutation
+create	Description of the new result and any presentation sequence
+update	Semantic changes, preservation instructions and optional presentation sequence
+
+
+response should be the actual user-facing answer. Authoring fields describe how GVR expresses it. The skill should discourage repeating the same explanation throughout both.
+Replace the state-request rule explicitly
+I’d put this near the top of the skill:
+You communicate directly with the user through the director response format. Use the conversation history to understand the request and its relationship to prior results. Describe intended results and changes in semantic terms.
+
+Never request runtime state, program source, element IDs, tool execution or context retrieval. GVR supplies current runtime context to the implementation stage automatically for update operations. Do not emit stateRequest or equivalent fields.
+
+Ask a concise user-facing question only when missing information changes the intended outcome and cannot reasonably be inferred. Missing implementation context is not a reason to ask the user a question.
+
+For updates, specify what changes, what remains, and how the change should be presented. Leave runtime identifier resolution and exact implementation geometry to the implementing model.
+
+This also improves efficiency: the first house response specified nearly every wall opening; the update can express the architectural intention without reproducing that level of geometry. Richness should come from the quality of the design and explanation, with technical precision added where it materially controls the intended result.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worked for 5m 48s
+
+
+
+
+
+
+
+Updated gvr-director-sequence to 0.4.
+- Requires a user-facing response.
+- Uses semantic changes and preservation instructions.
+- Removes stateRequest and runtime-ID requirements.
+- Supports conversation-only replies without mutation.
+- Assigns runtime reconciliation to GVR and the implementing model.
+Validated the house follow-up, palette change, conversational answer and timed animation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This is a substantial improvement. The director now handles all three turns as a conversation, produces semantic updates, and leaves geometry and runtime reconciliation to the implementing model. It also scales its output down appropriately for the island request.
+
+The first response is shown as taking nine seconds, but we have no comparable timings for the other turns or implementation results. We can assess the plans here; rendered quality and overall latency still need testing.
+Test	Result
+No runtime-state requests	Pass
+No live identifier dependency	Pass
+Updates preserve conversational intent	Pass
+Output shrinks for a local edit	Pass
+No blanket duration	Pass
+Purposeful introductory motion	Not demonstrated
+Handling ambiguous spatial language	Needs refinement
+
+
+Two issues stand out.
+
+Every response chooses "presentation": "immediate". Removing mandatory duration has also removed all motion in this sample. That is valid for individual requests, but it misses your preference for seeing new results assembled and explored.
+
+I would strengthen the skill with:
+For a newly created visual surface, consider a brief assembly reveal or overview that helps the user understand the whole result before editing. For updates, consider a short transition or localized emphasis that makes the change easy to locate. Choose immediate presentation when motion would distract, delay inspection or conflict with the request. Do not assign a default duration; time only the motion you actually propose.
+
+For this conversation, reasonable choices would be:
+- Initial blueprint: reveal the drawing layers, then settle on the complete plan.
+- Two-storey revision: introduce the second floor and briefly emphasize the bedroom distribution and staircase.
+- Island change: a short localized transition showing the island appearing and the sink relocating.
+These are preferences for this example, not mandatory animations for those request categories.
+
+The last turn converts ambiguous wording into a definite interpretation. “On the same side as the hob counter” becomes “the sink faces the hob counter across the aisle.” That is plausible, but the director has not seen the actual kitchen.
+
+It should express the intended relationship without claiming knowledge of its current geometry:
+“I’ll add an island and place the sink along its edge nearest the hob counter.”
+
+The implementing model can resolve that relationship against runtime state. If the geometry makes it impossible or materially ambiguous, that needs an implementation-to-response reconciliation path. It should not silently move the hob or invent a different arrangement.
+
+There are also two smaller efficiency improvements:
+- Preservation should be implicit. The island response repeats the bedroom count, footprint, other rooms and styling. A global rule—“For updates, preserve everything outside the requested change unless an adjustment is necessary”—would let preserve contain only consequential instructions, such as keeping the hob counter fixed.
+- Assumptions need lifecycle semantics. The two-storey response adds new assumptions but does not repeat the retained footprint assumption. That is sensible, provided the contract says omitted assumptions persist, new ones are added, and contradicted ones are replaced. Otherwise the implementation may treat each array as a complete replacement.
+I would add these rules to the skill:
+Update scope: Describe the requested change and its necessary consequences. Unmentioned content and behaviour remain unchanged. Use preserve only for details especially vulnerable to accidental alteration.
+
+Assumptions: In updates, emit only new or revised assumptions. Retain earlier assumptions unless the user or current response supersedes them. Distinguish user requirements from director choices.
+
+Spatial references: Use semantic relationships that the implementation stage can resolve against the current result. Do not invent unseen positions or describe inferred geometry as observed fact.
+
+Presentation: Actively consider motion on every turn, but emit a sequence only when it improves orientation, explanation or enjoyment. Keep its scope proportional to the change.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worked for 1m 33s
+
+
+
+
+
+
+
+Updated gvr-director-sequence, retaining contract 0.4.
+- Actively considers purposeful, proportional motion.
+- Makes preservation implicit and preserve optional.
+- Defines assumption persistence and replacement.
+- Avoids claims about unseen geometry.
+- Specifies a clarification handoff for implementation conflicts.
+Validation passed. Rendered quality and end-to-end latency remain untested.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Changes I’d make without changing the user prompt
+1. Give the director a reusable taste preference.
+
+Your preference is more specific than a universal aesthetic, but broader than this house:
+For structural and spatial design requests, prefer a dimensional assembly or cutaway presentation that makes relationships understandable. Introduce the result through purposeful construction or transformation, then leave an inspectable composition. Preserve access to an orthographic view when dimensions or layout need examination. Do not add an assembly tour to every follow-up edit.
+
+That could apply to buildings, mechanical assemblies and spatial layouts. It should not automatically apply to charts, landing pages or ordinary text changes.
+
+The reference contributes a choreographic principle—plan → assembly → reveal → inspection—rather than a mandatory roof-lifting scene or 30-second duration.
+
+2. Strengthen the presentation decision in the skill.
+
+The current “consider motion” instruction still permits the director to choose immediate presentation consistently. I’d replace it with:
+For a newly created spatial artifact, prefer a concise introductory sequence when it reveals structure or helps the user inspect the whole result. Choose immediate presentation when there is a concrete reason to avoid motion. Infer duration from the proposed actions; never use a default duration.
+
+For this blueprint, the director could trace the plan, raise walls into a dimensional view, reveal furnishings and settle into a cutaway. It need not construct and remove a complete roof unless that improves understanding.
+
+3. Define direct-manipulation semantics as a product convention.
+
+This should not depend on each user remembering to request gestures:
+For inspectable drawings and spatial artifacts, prefer direct manipulation: pinch-to-zoom around the gesture centre and drag-to-pan, with suitable desktop equivalents. Distinguish selection from dragging using a movement threshold. Provide an accessible fit/reset action and keyboard alternatives. Introductory motion yields immediately to interaction.
+
+Clickable buttons can remain as accessible alternatives. They should not silently substitute for requested gesture behaviour. If runtime support is missing, that is development work to identify and resolve outside the director’s production response.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worked for 1m 57s
+
+
+
+
+
+
+
+Updated gvr-director-sequence, retaining 0.4.
+
+It now prefers dimensional introductions for new spatial artifacts, preserves orthographic inspection, and specifies direct manipulation with accessible alternatives. Local edits stay proportional; no fixed duration or mandatory roof sequence.
+
+Validation passed. Rendered presentation and gesture behaviour still need runtime testing.

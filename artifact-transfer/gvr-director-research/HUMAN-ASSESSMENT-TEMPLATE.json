@@ -1,0 +1,18 @@
+{
+  "assessmentId": "REPLACE",
+  "sceneId": "REPLACE",
+  "sessionId": null,
+  "turn": null,
+  "assessor": "human",
+  "recordedAt": null,
+  "artifactSha256": null,
+  "directorPromptSha256": null,
+  "repositoryRevision": null,
+  "viewport": null,
+  "playbackOrInteraction": null,
+  "rawFeedback": "",
+  "observations": [],
+  "candidateLayerAttribution": [],
+  "followUpExperiment": null,
+  "humanReassessment": null
+}

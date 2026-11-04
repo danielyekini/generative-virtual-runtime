@@ -1,0 +1,1 @@
+Packaging helper smoke test: closed conversation-only session packages a two-turn transcript; unclosed session is rejected. No full 0.4 schema validator, renderer integration or end-to-end simulation run was performed. Existing house transcript parser checks were completed separately. Prompt snapshots and ZIP CRCs are checked during delivery packaging.

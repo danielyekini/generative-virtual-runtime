@@ -1,0 +1,10 @@
+{
+  "user": "turns/001/user.txt",
+  "director": "turns/001/director-script.json",
+  "program": "turns/001/program.ms",
+  "proposals": "turns/001/proposals.md",
+  "verification": "turns/001/verification.json",
+  "review": "turns/001/review.md",
+  "status": "verified",
+  "baseProgramSha256": null
+}
