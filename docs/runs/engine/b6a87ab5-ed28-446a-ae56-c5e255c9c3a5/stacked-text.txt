@@ -1,0 +1,24 @@
+a-circle-in-motion.ms	text=6	stackedGroups=0	stackedNodes=0	maxWidthPx=325	
+a-crane-then-a-square.ms	text=0	stackedGroups=0	stackedNodes=0	maxWidthPx=0	
+adding-two-vectors.ms	text=29	stackedGroups=1	stackedNodes=4	maxWidthPx=497	eqLine1@324:"a + b = (3, 1) + (1, 2)" / eqLine2@372:"      = (3 + 1, 1 + 2)" / eqLine3@420:"      = (4, 3)"
+clockwork.ms	text=29	stackedGroups=3	stackedNodes=17	maxWidthPx=179	titleMat@132:"BRASS AND STEEL" / titlebarrel@154:"BARREL   18   CCW" / titlecentre@170:"CENTRE   14   CW" | labelbarrel@550.74:"BARREL" / labelcentre@574.74:"CENTRE" / labelthird@598.74:"THIRD"
+copperleaf-run.ms	text=0	stackedGroups=0	stackedNodes=0	maxWidthPx=0	
+counter.ms	text=0	stackedGroups=0	stackedNodes=0	maxWidthPx=0	
+echo-canyon.ms	text=0	stackedGroups=0	stackedNodes=0	maxWidthPx=0	
+from-blueprint-to-home.ms	text=7	stackedGroups=0	stackedNodes=0	maxWidthPx=405	
+from-pixels-to-prediction.ms	text=82	stackedGroups=1	stackedNodes=2	maxWidthPx=413	f1@194:"z = Σᵢ wᵢ xᵢ + b" / f2@212:"a = max(0, z)"
+inside-an-order-book.ms	text=80	stackedGroups=0	stackedNodes=0	maxWidthPx=544	
+into-the-moons-shadow.ms	text=16	stackedGroups=2	stackedNodes=4	maxWidthPx=380	name@-108:"Sun" / name@-68:"Moon" | umbraLine@74:"Inside umbra → total eclipse" / penumbraLine@98:"Inside penumbra → partial eclipse"
+motionscript-to-motion.ms	text=56	stackedGroups=1	stackedNodes=3	maxWidthPx=995	sub@-70:"parse · check · lower" / label@-54:"Animation" / label2@-37:"tracks"
+one-ball-four-worlds.ms	text=5	stackedGroups=0	stackedNodes=0	maxWidthPx=172	
+packet-journey.ms	text=67	stackedGroups=2	stackedNodes=4	maxWidthPx=244	name@-26:"SENDER" / name@0:"RECEIVER" | awaiting@508:"3 — awaiting acknowledgement" / retx@534:"3 — retransmission"
+small-ideas-enormous-change.ms	text=0	stackedGroups=0	stackedNodes=0	maxWidthPx=0	
+square-wave-from-sine-waves.ms	text=123	stackedGroups=10	stackedNodes=34	maxWidthPx=712	num@-15:"4" / den@17:"π" | num@-15:"sin 3x" / den@17:"3" / num@-15:"sin 3x"
+the-city-comes-around.ms	text=12	stackedGroups=0	stackedNodes=0	maxWidthPx=486	
+the-last-streetlight.ms	text=0	stackedGroups=0	stackedNodes=0	maxWidthPx=0	
+the-marble-machine.ms	text=9	stackedGroups=0	stackedNodes=0	maxWidthPx=512	
+threads-into-motion.ms	text=7	stackedGroups=0	stackedNodes=0	maxWidthPx=289	
+through-the-blue.ms	text=0	stackedGroups=0	stackedNodes=0	maxWidthPx=0	
+through-the-mountain.ms	text=7	stackedGroups=0	stackedNodes=0	maxWidthPx=223	
+two-ways-through-a-binary-tree.ms	text=149	stackedGroups=1	stackedNodes=50	maxWidthPx=465	entry0@529:"A" / entry0@529:"A" / entry0@529:"A"
+TOTAL files=23 text=684 groups=21 stackedNodes=118

@@ -132,6 +132,8 @@ multi-line / wrapping / textPath stay out of scope with `text.basic`.
   (align/baseline local AABBs). Scenes without the capability keep the legacy 0.6em box.
   Host `measureText` remains an override, not the sole truth for `sans`. No custom font
   URLs, per-glyph animators, or billboard labels.
+- **E055** ([#239](https://github.com/danielyekini/generative-virtual-runtime/issues/239)): multi-line
+  wrapping — **stop** ([decision](multi-line-text-wrapping.md)); `text.basic` stays one line.
 - **`text.animators`**: remains pending Candidate until a kinetic-typography
   story justifies it; not a child of this content/format slice.
 - **Billboard / constant-screen-size labels (A25)**: separate later decision;
