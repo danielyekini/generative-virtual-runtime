@@ -33,3 +33,16 @@ Base: `9e84e96`. Branch: `claude/gvr-engine-run-uolcwb` (session-assigned).
 ## Findings
 
 None new. The revisit triggers are recorded in the decision.
+
+## Second ticket: E054 standalone transform.autoOrient — stop
+
+[Issue #238](https://github.com/danielyekini/generative-virtual-runtime/issues/238). Base `5cde92e`.
+The claim from `2d0db181` had expired with no branch, PR or handover, so this run adopted it as a recovery.
+
+- **Decision: stop** ([standalone-auto-orient.md](../../../decisions/engine/standalone-auto-orient.md)).
+  There is no language bump. `transform.autoOrient` stays `unsupported` and is removed from both `pending.md` lists.
+- New conformance test: `packages/compiler/src/auto-orient-stop.test.ts`, linked from the registry row.
+- Evidence: `node --import tsx docs/runs/engine/b6a87ab5-ed28-446a-ae56-c5e255c9c3a5/velocity-facing.ts fixtures/motionscript/stories`
+  → [velocity-facing.txt](velocity-facing.txt). 263 nodes move in 2-D on keyed position, 40 have rotation
+  tracks and 35 have `scale.x` tracks. Two face their velocity: Through the Blue `jelly`, and Echo Canyon `w4`,
+  which is generator-sampled. City faces travel by `scale.x` flip over a static isometric rotation.

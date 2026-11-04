@@ -11,14 +11,15 @@ See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md)
 Not yet in a published MotionScript version:
 
 - transform.skew
-- transform.autoOrient
 - geometry.repeater
 - geometry.mergePaths
 - text.animators
 
-`paint.strokeDash` landed in MotionScript 0.21.0. `transform.autoOrient` stays pending
-as a standalone channel: orientation from the path tangent now exists only as
-the `orient` option of a path attachment (`geometry.pathProgress`). Variable width
+`paint.strokeDash` landed in MotionScript 0.21.0. Standalone `transform.autoOrient`
+was evaluated in E054 and **stopped**: orientation from the path tangent exists
+only as the `orient` option of a path attachment (`geometry.pathProgress`), and
+other facing stays an explicit rotation or scale writer. It is not a pending
+language candidate. Variable width
 profiles were evaluated in E049 and **stopped** (uniform `stroke.width` only);
 they are not a pending language candidate.
 

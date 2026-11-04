@@ -62,7 +62,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | compositing.matte | supported | supported | supported | A group render scope keeps descendant pixels only where another node's painted alpha is. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/matte.test.ts) |
 | compositing.mask | supported | supported | supported | A group render scope clips its descendants to another node's outline. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/clip.test.ts) |
 | transform.skew | unsupported | unsupported | unsupported | A skew component on the local transform. [registry](../../packages/schema/capabilities/registry.json) |
-| transform.autoOrient | unsupported | unsupported | unsupported | Rotation follows the position tangent. [registry](../../packages/schema/capabilities/registry.json) |
+| transform.autoOrient | unsupported | unsupported | unsupported | Rotation follows the position tangent. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/auto-orient-stop.test.ts) |
 | geometry.repeater | unsupported | unsupported | unsupported | A repeater copies geometry with a transform per copy. [registry](../../packages/schema/capabilities/registry.json) |
 | geometry.mergePaths | unsupported | unsupported | unsupported | Boolean merge of paths. [registry](../../packages/schema/capabilities/registry.json) |
 | text.dynamicContent | supported | supported | not-applicable | Discrete content updates and numeric format bindings on text.basic nodes; display strings derive from formatNumber / resolveNumericContent. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/dynamic-text.test.ts) |
@@ -83,4 +83,4 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 ## Input identity
 
 - `packages/schema/capabilities/releases.json` SHA-256 `bbea1bb2e61caf9626a02de3859a3cb19e10cf92800dc91817ba60753afb8926`
-- `packages/schema/capabilities/registry.json` SHA-256 `de44a856fa8a64130c49608cfb1930fbb943c498606e14cf283e9199ab64729a`
+- `packages/schema/capabilities/registry.json` SHA-256 `d30936bbf0f7deed68da7bfe3a1c3223d577fda48fecc20733c47c0c8abe718c`

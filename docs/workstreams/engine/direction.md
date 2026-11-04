@@ -221,6 +221,14 @@ new engine tickets waits on Product P030 (#188). Holder:
     and style. Builtin advances differ from drawn `sans-serif` glyphs by −13 % to
     +24 %. Revisit with an explicit line list once same-style paragraphs or a
     bundled font appear. E054 (#238) remains Ready.
+13. E054 ([#238](https://github.com/danielyekini/generative-virtual-runtime/issues/238))
+    **stop** on standalone `transform.autoOrient`
+    ([decision](../../decisions/engine/standalone-auto-orient.md)). There is no
+    language bump, and the item is removed from the pending lists. Only 2 of 263
+    keyed 2-D story movers face their velocity, and one of those is
+    generator-sampled. Routes use `attach … { orient true; }`. City faces travel
+    with `scale.x` flips. Ready is empty after E054. E046 / E042 / E051 / E053 /
+    joint #209 stay Candidate.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a

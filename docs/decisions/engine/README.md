@@ -88,3 +88,6 @@
 - [Multi-line text wrapping (E055)](multi-line-text-wrapping.md): **stop** —
   `text.basic` stays one line; corpus stacked lines need per-line timing/style
   and builtin advances miss host glyphs by up to 24 %; no version bump.
+- [Standalone transform.autoOrient (E054)](standalone-auto-orient.md): **stop** —
+  2 of 263 keyed 2-D story movers face velocity (one generator-sampled); routes use
+  `attach … { orient true; }`; City faces by `scale.x` flip; no version bump.
