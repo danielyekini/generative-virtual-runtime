@@ -83,4 +83,4 @@ P006/E006 own the later tested versioned model-facing syntax reference.
 ## Input identity
 
 - `packages/schema/capabilities/releases.json` SHA-256 `bbea1bb2e61caf9626a02de3859a3cb19e10cf92800dc91817ba60753afb8926`
-- `packages/schema/capabilities/registry.json` SHA-256 `140d51b7c7ff8af78b0f1150467e89f969998e8c1fe0ab85b47a28707ed7c85c`
+- `packages/schema/capabilities/registry.json` SHA-256 `de44a856fa8a64130c49608cfb1930fbb943c498606e14cf283e9199ab64729a`

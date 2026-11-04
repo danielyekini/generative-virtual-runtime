@@ -91,7 +91,8 @@
       "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
       "conformanceTests": [
         "packages/compiler/src/compiler.test.ts#lowers a header, a constant, every primitive, and a nested group",
-        "packages/canvas-renderer/src/renderer.test.ts#draws text from its anchor with the requested alignment"
+        "packages/canvas-renderer/src/renderer.test.ts#draws text from its anchor with the requested alignment",
+        "packages/compiler/src/text-single-line.test.ts#rejects a line break in a content step"
       ],
       "adapters": {
         "lottie": { "status": "untested", "scope": "A text layer with document text can be lowered, but no conformance test pins the string." },

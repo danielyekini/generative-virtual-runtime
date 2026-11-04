@@ -85,3 +85,6 @@
   reject apply; E050 shipped MotionScript 0.26.0 / Scene IR 0.25.0 forbid + strip.
 - [Variable stroke width profiles (E049)](variable-stroke-width-profiles.md):
   **stop** — keep uniform `stroke.width`; no language width-profile capability.
+- [Multi-line text wrapping (E055)](multi-line-text-wrapping.md): **stop** —
+  `text.basic` stays one line; corpus stacked lines need per-line timing/style
+  and builtin advances miss host glyphs by up to 24 %; no version bump.

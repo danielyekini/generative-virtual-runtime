@@ -1,0 +1,2 @@
+strings=182 table/real ratio min=0.871 p10=0.967 median=1.005 p90=1.056 max=1.242 font=16px sans-serif
+over 5% error: 30; over 10%: 3

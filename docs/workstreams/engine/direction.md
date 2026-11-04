@@ -214,6 +214,13 @@ new engine tickets waits on Product P030 (#188). Holder:
     The note remains on the AST node and the parser list; compile keeps one
     object and still rejects the unit. Ready is empty after E052.
     E046 / E042 / E051 / E053 / joint #209 stay Candidate.
+12. E055 ([#239](https://github.com/danielyekini/generative-virtual-runtime/issues/239))
+    **stop** on multi-line text wrapping
+    ([decision](../../decisions/engine/multi-line-text-wrapping.md)). `text.basic`
+    stays one line. No language bump. The stacked story lines need per-line timing
+    and style. Builtin advances differ from drawn `sans-serif` glyphs by −13 % to
+    +24 %. Revisit with an explicit line list once same-style paragraphs or a
+    bundled font appear. E054 (#238) remains Ready.
 
 No Lottie-wide certification gate; legacy regressions checked when relevant.
 Pending language candidates are not a
