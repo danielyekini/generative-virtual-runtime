@@ -1244,9 +1244,9 @@
       "id": "transform.autoOrient",
       "summary": "Rotation follows the position tangent.",
       "targets": [],
-      "restrictions": ["Auto-orient is not a rotation track."],
+      "restrictions": ["Auto-orient is not a rotation track.", "Stopped by E054 (docs/decisions/engine/standalone-auto-orient.md): face a route with attach … along … { orient true; } (geometry.pathProgress); other facing is an explicit rotation or scale.x writer."],
       "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
-      "conformanceTests": [],
+      "conformanceTests": ["packages/compiler/src/auto-orient-stop.test.ts#rejects an autoOrient node property and an autoOrient track", "packages/compiler/src/auto-orient-stop.test.ts#rejects a Scene IR track on a transform.autoOrient channel"],
       "adapters": {
         "lottie": { "status": "untested", "scope": "ks.ao is reported. No conformance test pins that diagnostic." },
         "svg": { "status": "not-applicable", "scope": "SVG has no auto-orient flag." }

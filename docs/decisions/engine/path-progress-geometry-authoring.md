@@ -60,7 +60,8 @@ streaming honest.
   orient.
 - **Auto-orient.** `orientAngleAtProgress` / `attachAlongPath({ orient: true })`
   set rotation from the path tangent. This is **not** a rotation track and is
-  **not** rolling.
+  **not** rolling. Standalone `transform.autoOrient` from keyed velocity was
+  **stopped** by E054 ([standalone-auto-orient.md](standalone-auto-orient.md)).
 - **Rolling.** `rollingAngle(distance, radius)` and `attachAlongPath({
   rollRadius })` are explicit and independent of orient. Do not assume
   orientation solves rolling.
