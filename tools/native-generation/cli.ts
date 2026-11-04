@@ -60,6 +60,7 @@ async function main(): Promise<void> {
       "",
       "Output ONLY raw MotionScript ending with complete;",
       "Never use markdown fences or commentary.",
+      "Never name nodes with reserved words (circle, path, line, text, stroke, fill, animate, seal, …); use ids like badge, rail, label.",
     ].join("\n");
   }
 

@@ -280,6 +280,18 @@ entity-patch activations require \`activationMs >= sealedThroughMs\`.
 Idioms: stable ids; time-local writers (cast + early intervals, seal, then later
 intervals); exclusive writers per channel; named behaviours and geometry binds
 attach on the **instance** entity, never by mutating a shared geometry asset.
+
+### Node ids must not be reserved words
+
+Grammar keywords are reserved and **cannot** be node ids. Emitting
+\`circle circle { … }\` or \`path line { … }\` fails compile with
+\`<word> is reserved; an identifier is required.\` Prefer descriptive ids
+(\`badge\`, \`rail\`, \`label\`, \`drop\`). High-risk reserved words models reuse
+as ids: \`circle\`, \`ellipse\`, \`rectangle\`, \`line\`, \`path\`, \`text\`,
+\`group\`, \`camera\`, \`stroke\`, \`fill\`, \`animate\`, \`keyframes\`, \`step\`,
+\`seal\`, \`complete\`, \`batch\`, \`scene\`, \`const\`, \`interact\`, \`audio\`,
+\`cue\`, \`clip\`, \`hold\`. Shape keywords introduce the node; the id that follows
+must be an ordinary identifier.
 `;
 
 const ERRORS = `## Errors and repair signals
@@ -294,6 +306,7 @@ const ERRORS = `## Errors and repair signals
 | Stale or conflicting entity patch | entity-patch diagnostic; keep last accepted revision |
 | Unknown / colliding geometry bind | \`GEOMETRY_*\` / \`BIND_*\` rejection |
 | Compile failure in a unit | \`COMPILE_ERROR\` |
+| Reserved word used as a node id | compile error: \`<word> is reserved; an identifier is required.\` — rename the id |
 
 Stream linter codes: \`OVERSIZED_UNIT\`, \`EARLY_SEAL\`, \`LATE_FIRST_SEAL\`,
 \`SETUP_BEFORE_USEFUL\`, \`NO_SEAL\`, \`SEALED_HISTORY_WRITE\`,
