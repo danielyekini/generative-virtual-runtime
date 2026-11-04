@@ -25,3 +25,7 @@ No default duration, forced 2D style, mandatory phase arrays, empty optional col
 ## Future decision template
 
 Decision ID/date; source user intent; observed failure and artifact hashes; hypothesis; affected layer; exact prompt/schema delta; matched test set; measured results; regressions; adopted/deferred/rejected; rationale; rollback trigger. Published historical snapshots remain immutable; a new experiment gets a new prompt hash even if directorVersion stays 0.4.
+
+## Human assessment steering — 4 November 2026
+
+User distinguishes good captured intent from poor spatial execution in the cutaway; do not conflate these. Full-stage themed backing with no unintended bars is an application requirement; implementation approach remains research. Focus-stage minimalism and audio-first explanatory delivery are reusable taste directions, with website and dense-notation exceptions. Human rendered/interaction assessment is the primary experience-quality signal; automated checks remain necessary. See the assessment and supporting documents. No new schema version or global skill edit was made.

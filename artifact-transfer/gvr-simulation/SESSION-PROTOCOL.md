@@ -34,3 +34,7 @@ Set closed=true, record closedAt, complete final review, then run:
 python tools/package_session.py /absolute/session/folder /absolute/destination/conversation.zip
 
 The helper rejects unclosed sessions, missing visual-turn artifacts and inconsistent successful turn pairings. It preserves exact director text in transcript fields and records file hashes. It does not compile or render MotionScript. Review README warnings before using a partially verified archive for evaluation.
+
+## Optional human rendering feedback
+
+When a user supplies rendering/interaction feedback, preserve it with scene/source and turn references using ../gvr-director-research/HUMAN-ASSESSMENT-PROTOCOL.md. Record unknown playback/device details as unknown. Human assessment is the primary perceived-quality signal; keep compiler and functional evidence separate. Do not turn assessment text into a requested design mutation unless the user asks for a revision. Keep active prompt snapshots frozen; propose new variants in the final review.

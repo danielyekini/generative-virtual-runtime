@@ -41,3 +41,11 @@ R15 — Sound integration. Sound remains creative intent, not certified support.
 ## Promotion criteria
 
 Adopt a prompt change only after matched trials show improved intent/fidelity without unacceptable latency or regressions across unrelated requests. Record prompt hash, before/after examples, failure cases, decision and rollback condition. Prefer prose changes before schema expansion. Required missing runtime capability becomes development work, never a production capabilityNeeds field.
+
+## Human-assessment additions
+
+R16 — Projection/proportion fidelity: ground-plane continuity, plausible wall rise, aligned openings and coherent storeys; compare reference with observed near-vertical and floating-shape failures.
+R17 — Focus-stage taste and speech/text allocation: minimal themed stage across structural, origami and conversational presence tasks; website counterexamples; retain meaningful dimensions/notation and accessible captions.
+R18 — Deterministic full-stage backing: trace CSS/canvas clearing and test background fill without crop, distortion, stale state or generative extrapolation.
+R19 — Human assessment collection and decision provenance: formalize per-turn observations, independent intent/execution judgments, cross-domain trials and reassessment.
+R20 — Conversational presence ownership: host-owned audio-reactive avatar vs authored greeting; reconcile current none/no-mutation rule and verify actual speech synchronization.

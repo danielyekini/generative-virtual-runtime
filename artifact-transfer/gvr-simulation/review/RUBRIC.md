@@ -14,3 +14,5 @@ Review against the user's actual words and established preferences, not only aga
 - Performance: measured director/implementation/first-render times, source and output bytes, repair count; unavailable values remain unknown. Distinguish playback duration from generation latency.
 
 Final review: concrete strengths and failures, repeated patterns, layer attribution, generalizable prompt proposals, schema proposals only when prose cannot resolve the problem, bounded next experiments, and implementation capability gaps outside production director output. Do not change the prompt silently while reviewing.
+
+Prefer actual human rendering/interaction assessment over agent aesthetic self-scoring. Report captured intent independently from execution quality. Check coherent perspective, clutter and text necessity, themed full-stage backing, and whether dragging really rotates/pans as promised. User-reported black bars are evidence; host root cause requires reproduction. See the separate human-assessment protocol.
