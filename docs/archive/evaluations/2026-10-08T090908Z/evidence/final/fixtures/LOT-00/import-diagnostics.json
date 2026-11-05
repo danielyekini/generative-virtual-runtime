@@ -1,0 +1,249 @@
+{
+  "ok": true,
+  "fidelity": "exact",
+  "counts": {
+    "exact": 33,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 0
+  },
+  "groups": [
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_100.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_100.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_100.layer_1.Tree1CanopyEllipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_100.layer_2.Tree1TrunkRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_100.layer_3.Tree2CanopyEllipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_100.layer_4.Tree2TrunkRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_100.layer_5.Tree3CanopyEllipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_100.layer_6.Tree3TrunkRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_100.layer_7.Tree4CanopyEllipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_100.layer_8.Tree4TrunkRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_100.layer_9.Tree5CanopyEllipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_100.layer_10.Tree5TrunkRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_100.layer_11.Tree6CanopyEllipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_100.layer_12.Tree6TrunkRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_100.layer_13.ForegroundGroundRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_200.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_200.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_200.layer_14.MidHill1Ellipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_200.layer_15.MidHill2Ellipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_200.layer_16.MidHill3Ellipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_300.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_300.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_300.layer_17.Cloud1Ellipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_300.layer_18.Cloud2Ellipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_300.layer_19.Cloud3Ellipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_300.layer_20.Cloud4Ellipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_300.layer_21.Mountain1Path.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_300.layer_22.Mountain2Path.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_300.layer_23.Mountain3Path.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_300.layer_24.Mountain4Path.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_300.layer_25.SunEllipse.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_26.SkyRect.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–240 at 30fps to 8000ms.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 41712,
+    "name": "MotionScript V1 Compatible Panning Landscape"
+  }
+}

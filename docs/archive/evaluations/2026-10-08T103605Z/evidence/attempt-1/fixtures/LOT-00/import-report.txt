@@ -1,0 +1,68 @@
+STATUS	exact
+COUNTS	conversion	exact	33	approximated	0	dropped	0	unsupported	0
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_100.transform.position.x.
+LOC	layer_100
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_100.transform.position.y.
+LOC	layer_100
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_100.layer_1.Tree1CanopyEllipse.
+LOC	layer_100.layer_1.Tree1CanopyEllipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_100.layer_2.Tree1TrunkRect.
+LOC	layer_100.layer_2.Tree1TrunkRect
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_100.layer_3.Tree2CanopyEllipse.
+LOC	layer_100.layer_3.Tree2CanopyEllipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_100.layer_4.Tree2TrunkRect.
+LOC	layer_100.layer_4.Tree2TrunkRect
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_100.layer_5.Tree3CanopyEllipse.
+LOC	layer_100.layer_5.Tree3CanopyEllipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_100.layer_6.Tree3TrunkRect.
+LOC	layer_100.layer_6.Tree3TrunkRect
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_100.layer_7.Tree4CanopyEllipse.
+LOC	layer_100.layer_7.Tree4CanopyEllipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_100.layer_8.Tree4TrunkRect.
+LOC	layer_100.layer_8.Tree4TrunkRect
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_100.layer_9.Tree5CanopyEllipse.
+LOC	layer_100.layer_9.Tree5CanopyEllipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_100.layer_10.Tree5TrunkRect.
+LOC	layer_100.layer_10.Tree5TrunkRect
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_100.layer_11.Tree6CanopyEllipse.
+LOC	layer_100.layer_11.Tree6CanopyEllipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_100.layer_12.Tree6TrunkRect.
+LOC	layer_100.layer_12.Tree6TrunkRect
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_100.layer_13.ForegroundGroundRect.
+LOC	layer_100.layer_13.ForegroundGroundRect
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_200.transform.position.x.
+LOC	layer_200
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_200.transform.position.y.
+LOC	layer_200
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_200.layer_14.MidHill1Ellipse.
+LOC	layer_200.layer_14.MidHill1Ellipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_200.layer_15.MidHill2Ellipse.
+LOC	layer_200.layer_15.MidHill2Ellipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_200.layer_16.MidHill3Ellipse.
+LOC	layer_200.layer_16.MidHill3Ellipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_300.transform.position.x.
+LOC	layer_300
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_300.transform.position.y.
+LOC	layer_300
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_300.layer_17.Cloud1Ellipse.
+LOC	layer_300.layer_17.Cloud1Ellipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_300.layer_18.Cloud2Ellipse.
+LOC	layer_300.layer_18.Cloud2Ellipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_300.layer_19.Cloud3Ellipse.
+LOC	layer_300.layer_19.Cloud3Ellipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_300.layer_20.Cloud4Ellipse.
+LOC	layer_300.layer_20.Cloud4Ellipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_300.layer_21.Mountain1Path.
+LOC	layer_300.layer_21.Mountain1Path
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_300.layer_22.Mountain2Path.
+LOC	layer_300.layer_22.Mountain2Path
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_300.layer_23.Mountain3Path.
+LOC	layer_300.layer_23.Mountain3Path
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_300.layer_24.Mountain4Path.
+LOC	layer_300.layer_24.Mountain4Path
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_300.layer_25.SunEllipse.
+LOC	layer_300.layer_25.SunEllipse
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_26.SkyRect.
+LOC	layer_26.SkyRect
+GROUP	IMPORT_EXACT	info	exact	1	Converted composition frames 0–240 at 30fps to 8000ms.
+LOC	

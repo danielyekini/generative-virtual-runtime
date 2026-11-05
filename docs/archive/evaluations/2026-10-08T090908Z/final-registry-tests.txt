@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 /workspace/generative-visual-runtime
+
+ ✓ packages/schema/src/registry.test.ts (3 tests) 30ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  09:33:43
+   Duration  500ms (transform 116ms, setup 0ms, collect 124ms, tests 30ms, environment 0ms, prepare 100ms)
+

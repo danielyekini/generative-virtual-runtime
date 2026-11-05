@@ -1,0 +1,17 @@
+{
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "node": "v24.19.0",
+  "browserBinary": "/usr/bin/chromium",
+  "browserVersion": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+  "lottieWeb": "5.13.0",
+  "dpr": 1,
+  "subframe": true,
+  "fit": "contain/xMidYMid meet",
+  "background": "#101014",
+  "referenceEffects": "lottie-web canvas native support; unsupported effects are not assumed faithful",
+  "assetsFonts": "Per-job DOMLoaded/native renderer.ready; reference errors or timeout quarantine comparisons",
+  "lockfiles": {
+    "package-lock.json": "dc8bd92339eccc44e91f96b03384f319a55c6b4821ec0c7087e000233e12fcb5",
+    "evaluation/package-lock.json": "9b39a5768e693a4969030064d68565ad7c4a71b3d952cf623e9997ca22e1e99b"
+  }
+}

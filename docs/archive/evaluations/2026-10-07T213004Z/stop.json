@@ -1,0 +1,50 @@
+{
+  "runId": "2026-10-07T213004Z",
+  "stoppedAt": "2026-10-07T21:45:58Z",
+  "status": "budget-exhausted",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "visualGate": "VISUAL_UNVERIFIED",
+  "reason": "Phase B cause visual.midCycle.residual improved via geometry.animatedTrim (0.5.0): animated Lottie tm now lowers to trim.start/end tracks; scalar array unwrap fixed static end=1 bake. LOT-01 q75 fractionBeyond 0.00426→0.00026 and content area ratio 4.68→0.90; q25/q50 also improved. Residual confetti mismatch remains. Absolute aggregate visual acceptance thresholds are not documented, so the profile cannot be certified PASS. npm test 168 and typecheck passed. Invocation wall budget used for one implement cycle plus verify/evidence.",
+  "implementCyclesUsed": 1,
+  "causes": [
+    {
+      "id": "visual.midCycle.residual",
+      "attempts": 1,
+      "outcome": "improved",
+      "fixtures": ["LOT-01"],
+      "rootCause": "Animated trim imported as static full path (scalar s:[n] fallback to end=100); reference trims the stroke away by mid/late cycle",
+      "measurement": {
+        "before": {
+          "q25": { "meanDistance": 1.789, "fractionBeyond": 0.01066 },
+          "q50": { "meanDistance": 2.181, "fractionBeyond": 0.01098 },
+          "q75": { "meanDistance": 0.800, "fractionBeyond": 0.00426 },
+          "q75AreaRatio": 4.678
+        },
+        "after": {
+          "q25": { "meanDistance": 1.204, "fractionBeyond": 0.00763 },
+          "q50": { "meanDistance": 1.418, "fractionBeyond": 0.00698 },
+          "q75": { "meanDistance": 0.037, "fractionBeyond": 0.00026 },
+          "q75AreaRatio": 0.9
+        }
+      }
+    }
+  ],
+  "nextAction": {
+    "cause": "visual.midCycle.confetti",
+    "fixtures": ["LOT-01"],
+    "alternate": "LOT-07 mid-window residual, LOT-06 pose residual, compositing.matte, or visual gate calibration",
+    "evidenceNeeded": "Classify remaining LOT-01 mid-cycle error without the trim stroke (spatial/parenting/AA); denser samples optional"
+  },
+  "implementation": {
+    "gitHead": "441e2048e79ca94e668beec6e8e9c69cf4ed0b3a",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T213004Z/source-snapshot/",
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wireVersion": "0.2"
+    },
+    "languageBump": "0.5.0 — geometry.animatedTrim (trim.start/end/offset tracks); wire stays 0.2"
+  }
+}

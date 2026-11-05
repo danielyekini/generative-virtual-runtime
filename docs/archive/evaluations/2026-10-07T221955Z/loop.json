@@ -1,0 +1,267 @@
+{
+  "runId": "2026-10-07T221955Z",
+  "startedAt": "2026-10-07T22:19:55.750446+00:00",
+  "stoppedAt": "2026-10-07T22:22:46.295321+00:00",
+  "stage": "stop",
+  "comparedWith": "2026-10-07T220358Z",
+  "profile": "original Lottie corpus LOT-00 through LOT-07",
+  "budgets": {
+    "wallTimeBudgetMinutes": 60,
+    "maxImplementCycles": 8,
+    "implementCyclesUsed": 0,
+    "maxAttemptsPerCause": 3,
+    "unchangedMeasurementStop": 2
+  },
+  "causes": [
+    {
+      "id": "infrastructure.originalCorpusMissing",
+      "phase": "Baseline",
+      "fixtures": [
+        "LOT-00",
+        "LOT-01",
+        "LOT-02",
+        "LOT-03",
+        "LOT-04",
+        "LOT-05",
+        "LOT-06",
+        "LOT-07"
+      ],
+      "hypothesis": "Original macOS Downloads corpus is not retained by checkout",
+      "ownerBoundary": "source fixture provisioning",
+      "status": "BLOCKED",
+      "attempts": 0,
+      "expectedResult": "All eight files present with pinned byte hashes",
+      "measurement": {
+        "available": 0,
+        "required": 8
+      }
+    },
+    {
+      "id": "acceptance.visualGateUndefined",
+      "phase": "C",
+      "fixtures": [
+        "LOT-00",
+        "LOT-01",
+        "LOT-02",
+        "LOT-03",
+        "LOT-04",
+        "LOT-05",
+        "LOT-06",
+        "LOT-07"
+      ],
+      "hypothesis": "Only RGB inspection threshold 24 exists; aggregate/local-region/alpha/content gate undefined",
+      "ownerBoundary": "acceptance policy",
+      "status": "design-escalation",
+      "attempts": 0,
+      "expectedResult": "Approved fixed gate before inspecting new outcomes",
+      "measurement": {
+        "calibratedGateAvailable": false
+      }
+    },
+    {
+      "id": "infrastructure.browserPath",
+      "phase": "Baseline",
+      "fixtures": [
+        "LOT-00",
+        "LOT-01",
+        "LOT-02",
+        "LOT-03",
+        "LOT-04",
+        "LOT-05",
+        "LOT-06",
+        "LOT-07"
+      ],
+      "hypothesis": "Harness spawns fixed macOS Chrome path on Linux",
+      "ownerBoundary": "evaluation harness",
+      "status": "BLOCKED",
+      "attempts": 0,
+      "expectedResult": "Pinned runnable Linux reference and environment validation",
+      "measurement": {
+        "exitCode": 1,
+        "error": "ENOENT",
+        "availableChromium": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)"
+      }
+    }
+  ],
+  "carriedAttemptHistory": [
+    {
+      "id": "visual.midCycle.confetti.spatialZ",
+      "phase": "A",
+      "fixtures": [
+        "LOT-01"
+      ],
+      "attempts": 1,
+      "hypothesis": "lottie-web 3D spatial length vs GVR 2D; stroke caps; first-key base",
+      "ownerBoundary": "schema+runtime+format-lottie+compiler+emitter",
+      "status": "improved",
+      "measurements": {
+        "beforeFractionBeyondStart": 0.00375,
+        "afterFractionBeyondStart": 0.00048,
+        "beforeFractionBeyondQ25": 0.00614,
+        "afterFractionBeyondQ25": 0.00309,
+        "beforeFractionBeyondQ50": 0.00561,
+        "afterFractionBeyondQ50": 0.00456
+      }
+    }
+  ],
+  "lineageAttemptHistory": {
+    "2026-10-07T183125Z": [],
+    "2026-10-07T194646Z": [],
+    "2026-10-07T210442Z": [
+      {
+        "id": "paint.gradientStroke",
+        "phase": "B",
+        "fixtures": [
+          "LOT-07"
+        ],
+        "attempts": 1,
+        "hypothesis": "Lottie gs lowered as fill gradient",
+        "ownerBoundary": "schema+compiler+emitter+format-lottie",
+        "expectedResult": "stroke rings not filled blobs",
+        "status": "improved",
+        "measurements": {
+          "beforeFractionBeyondQ50": 0.55139,
+          "afterFractionBeyondQ50": 0.14551
+        }
+      },
+      {
+        "id": "lottie.solidPlacement",
+        "phase": "A",
+        "fixtures": [
+          "LOT-06"
+        ],
+        "attempts": 1,
+        "hypothesis": "Solid rect offset -sw/2 under cancelled pivot",
+        "ownerBoundary": "format-lottie",
+        "expectedResult": "full-frame #f5f5f5 background",
+        "status": "improved",
+        "measurements": {
+          "beforeFractionBeyondQ50": 0.68549,
+          "afterFractionBeyondQ50": 0.0296
+        }
+      },
+      {
+        "id": "visual.midCycle",
+        "phase": "A",
+        "fixtures": [
+          "LOT-01"
+        ],
+        "attempts": 0,
+        "hypothesis": "Celebrations mid-cycle confetti mismatch",
+        "status": "deferred"
+      }
+    ],
+    "2026-10-07T211534Z": [
+      {
+        "id": "visual.midCycle",
+        "phase": "A",
+        "fixtures": [
+          "LOT-01"
+        ],
+        "attempts": 1,
+        "hypothesis": "Spatial position keys sampled by bezier parameter instead of arc length (AE/lottie-web)",
+        "ownerBoundary": "schema+runtime",
+        "expectedResult": "LOT-01 mid-cycle confetti positions closer to reference; fractionBeyond q25/q50 drop",
+        "status": "improved",
+        "measurements": {
+          "beforeFractionBeyondQ25": 0.03295,
+          "beforeFractionBeyondQ50": 0.02162,
+          "beforeMeanDistanceQ25": 7.025,
+          "afterFractionBeyondQ25": 0.01066,
+          "afterFractionBeyondQ50": 0.01098,
+          "afterMeanDistanceQ25": 1.789
+        }
+      }
+    ],
+    "2026-10-07T213004Z": [
+      {
+        "id": "visual.midCycle.residual",
+        "phase": "B",
+        "fixtures": [
+          "LOT-01"
+        ],
+        "attempts": 1,
+        "hypothesis": "Animated trim path kept fully visible because importer baked end=1 from scalar array fallback; reference trims it away",
+        "ownerBoundary": "format-lottie+schema+runtime+compiler",
+        "expectedResult": "LOT-01 late-cycle red stroke matches reference (absent); q75 fractionBeyond and area ratio drop",
+        "status": "improved",
+        "measurements": {
+          "beforeFractionBeyondQ75": 0.00426,
+          "afterFractionBeyondQ75": 0.00026,
+          "beforeAreaRatioQ75": 4.678,
+          "afterAreaRatioQ75": 0.9,
+          "beforeFractionBeyondQ25": 0.01066,
+          "afterFractionBeyondQ25": 0.00763
+        }
+      }
+    ],
+    "2026-10-07T215328Z": [
+      {
+        "id": "visual.midCycle.confetti",
+        "phase": "A",
+        "fixtures": [
+          "LOT-01"
+        ],
+        "attempts": 1,
+        "hypothesis": "easingFromHandles treated mild AE easings near (0.167,0.167)-(0.833,0.833) as linear when y\u2260x (17 Celebrations keys, err up to 0.049); mid-cycle confetti pose drifted",
+        "ownerBoundary": "format-lottie",
+        "expectedResult": "LOT-01 q25/q50 fractionBeyond drop vs 2026-10-07T213004Z (0.00763 / 0.00698)",
+        "status": "improved",
+        "measurements": {
+          "beforeFractionBeyondQ25": 0.00763,
+          "afterFractionBeyondQ25": 0.00614,
+          "beforeFractionBeyondQ50": 0.00698,
+          "afterFractionBeyondQ50": 0.00561,
+          "afterQ25CentroidDeltaPx": [
+            -0.3,
+            0.25
+          ],
+          "afterQ50CentroidDeltaPx": [
+            -2.9,
+            -5.5
+          ]
+        }
+      }
+    ],
+    "2026-10-07T220358Z": [
+      {
+        "id": "visual.midCycle.confetti.spatialZ",
+        "phase": "A",
+        "fixtures": [
+          "LOT-01"
+        ],
+        "attempts": 1,
+        "hypothesis": "lottie-web 3D spatial length vs GVR 2D; stroke caps; first-key base",
+        "ownerBoundary": "schema+runtime+format-lottie+compiler+emitter",
+        "status": "improved",
+        "measurements": {
+          "beforeFractionBeyondStart": 0.00375,
+          "afterFractionBeyondStart": 0.00048,
+          "beforeFractionBeyondQ25": 0.00614,
+          "afterFractionBeyondQ25": 0.00309,
+          "beforeFractionBeyondQ50": 0.00561,
+          "afterFractionBeyondQ50": 0.00456
+        }
+      }
+    ]
+  },
+  "inheritedQuarantines": [
+    {
+      "fixture": "LOT-03",
+      "reason": "Production 512 KiB ceiling; prior reference exception/empty frames; diagnostic parse is not a pass.",
+      "inheritedFrom": "2026-10-07T215328Z/loop.json and baseline report",
+      "notNewExclusion": true
+    }
+  ],
+  "nextImplementationCause": {
+    "id": "visual.midCycle.confetti.q50",
+    "fixtures": [
+      "LOT-01"
+    ],
+    "attemptsSoFar": 0,
+    "note": "After spatial-Z + stroke + first-key + AE-easing: start/q25 near-matched; q50 beyond 0.00456 with ~3\u20136px centroid drift. Alternates: LOT-07, LOT-06, compositing.matte, visual gate calibration."
+  },
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "visualGate": "VISUAL_UNVERIFIED"
+}

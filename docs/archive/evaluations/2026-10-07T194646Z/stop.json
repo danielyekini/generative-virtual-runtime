@@ -1,0 +1,39 @@
+{
+  "status": "blocker",
+  "reason": "Profile not yet a pass. geometry.pathMorph landed (MotionScript/Scene IR 0.3.0); LOT-06 and LOT-07 are import-exact. Remaining in-scope gaps: compositing.matte (LOT-02, LOT-05), effect.gaussianBlur.animated (LOT-04), LOT-03 size ceiling, and visual disagreement on LOT-01/LOT-06/LOT-07.",
+  "completedCauses": [
+    "geometry.pathMorph"
+  ],
+  "nextCause": {
+    "id": "compositing.matte",
+    "fixtures": ["LOT-02", "LOT-05"],
+    "attempts": 0,
+    "notes": [
+      "LOT-02: 9 unsupported matte diagnostics; LOT-05: 12 unsupported matte diagnostics.",
+      "compositing.matte is in pending.md — publish a new language version entry (expected 0.4.0) with registry + conformance, then lower tt/td."
+    ]
+  },
+  "alsoQueued": [
+    "effect.gaussianBlur.animated (LOT-04 residual 17)",
+    "paint.gradientStroke (LOT-07 visual: fills vs stroke rings)",
+    "visual.letterboxOrFit (LOT-06 high fractionBeyond despite morph drawing)",
+    "size.ceiling.512KiB (LOT-03 quarantined; policy change only)"
+  ],
+  "implementCyclesUsed": 1,
+  "maxImplementCycles": 8,
+  "exactFixturesNow": ["LOT-00", "LOT-01", "LOT-06", "LOT-07"],
+  "evidence": "evidence/",
+  "comparedWith": "2026-10-07T183125Z",
+  "implementationPinForNext": "docs/evaluations/implementation-pin.json",
+  "versionDecisionForNextCause": "compositing.matte is not in published 0.3.0; publish a new language version entry (expected 0.4.0). Wire stays 0.2 only if that version file says so and requiredCapabilities gates the feature. See docs/languages/compatibility-policy.md.",
+  "visualFidelity": {
+    "LOT-00": "confirmed — all samples fractionBeyond <= 0.000201",
+    "LOT-01": "import exact only — mid-cycle fractionBeyond up to 0.033; not a visual pass",
+    "LOT-06": "import exact only — fractionBeyond ~0.68; not a visual pass",
+    "LOT-07": "import exact only — fractionBeyond ~0.55–0.63; not a visual pass"
+  },
+  "languagesAfterRun": {
+    "motionscript": { "current": "0.3.0", "wireVersion": "0.2" },
+    "sceneIr": { "current": "0.3.0", "wireVersion": "0.2" }
+  }
+}

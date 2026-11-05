@@ -1,0 +1,390 @@
+STATUS	exact
+COUNTS	conversion	exact	194	approximated	0	dropped	0	unsupported	0
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_1.Shape1.Path1.
+LOC	layer_1.layer_1.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_3.
+LOC	layer_1.layer_2.layer_3
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_2.layer_3.Shape1.Path1.
+LOC	layer_1.layer_2.layer_3.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_4.
+LOC	layer_1.layer_2.layer_4
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_4.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_4.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_5.
+LOC	layer_1.layer_2.layer_5
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_5.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_5.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_8.
+LOC	layer_1.layer_7.layer_8
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_8.Shape1.Path1.
+LOC	layer_1.layer_7.layer_8.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_9.
+LOC	layer_1.layer_7.layer_9
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_9.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_9.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_10.
+LOC	layer_1.layer_7.layer_10
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_10.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_10.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_11.
+LOC	layer_1.layer_7.layer_11
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_11.Shape1.Path1.
+LOC	layer_1.layer_7.layer_11.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_12.
+LOC	layer_1.layer_7.layer_12
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_12.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_12.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_13.
+LOC	layer_1.layer_7.layer_13
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_13.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_13.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_14.
+LOC	layer_1.layer_7.layer_14
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_14.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_14.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_15.
+LOC	layer_1.layer_7.layer_15
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_15.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_15.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_16.
+LOC	layer_1.layer_7.layer_16
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_16.Shape1.Path1.
+LOC	layer_1.layer_7.layer_16.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_17.
+LOC	layer_1.layer_7.layer_17
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_17.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_17.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_18.
+LOC	layer_1.layer_7.layer_18
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_18.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_18.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_19.
+LOC	layer_1.layer_7.layer_19
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_19.Shape1.Path1.
+LOC	layer_1.layer_7.layer_19.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_20.
+LOC	layer_1.layer_7.layer_20
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_20.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_20.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_21.
+LOC	layer_1.layer_7.layer_21
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_21.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_21.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_22.
+LOC	layer_1.layer_7.layer_22
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_22.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_22.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_23.
+LOC	layer_1.layer_7.layer_23
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_23.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_23.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_24.
+LOC	layer_1.layer_7.layer_24
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_24.Shape1.Path1.
+LOC	layer_1.layer_7.layer_24.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_25.
+LOC	layer_1.layer_7.layer_25
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_25.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_25.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_26.
+LOC	layer_1.layer_7.layer_26
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_26.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_26.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_27.
+LOC	layer_1.layer_7.layer_27
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_27.Shape1.Path1.
+LOC	layer_1.layer_7.layer_27.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_28.
+LOC	layer_1.layer_7.layer_28
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_28.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_28.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_29.
+LOC	layer_1.layer_7.layer_29
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_29.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_29.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_30.
+LOC	layer_1.layer_7.layer_30
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_30.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_30.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_31.
+LOC	layer_1.layer_7.layer_31
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_31.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_31.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_32.
+LOC	layer_1.layer_7.layer_32
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_32.Shape1.Path1.
+LOC	layer_1.layer_7.layer_32.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_33.
+LOC	layer_1.layer_7.layer_33
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_33.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_33.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_34.
+LOC	layer_1.layer_7.layer_34
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_34.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_34.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_35.
+LOC	layer_1.layer_7.layer_35
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_7.layer_35.Shape1.Path1.
+LOC	layer_1.layer_7.layer_35.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_36.
+LOC	layer_1.layer_7.layer_36
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_36.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_36.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_37.
+LOC	layer_1.layer_7.layer_37
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_37.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_37.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_38.
+LOC	layer_1.layer_7.layer_38
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_38.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_38.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_7.layer_39.
+LOC	layer_1.layer_7.layer_39
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_7.layer_39.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_7.layer_39.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_40.
+LOC	layer_1.layer_6.layer_40
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_40.Shape1.Path1.
+LOC	layer_1.layer_6.layer_40.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_41.
+LOC	layer_1.layer_6.layer_41
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_41.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_41.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_42.
+LOC	layer_1.layer_6.layer_42
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_42.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_42.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_43.
+LOC	layer_1.layer_6.layer_43
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_43.Shape1.Path1.
+LOC	layer_1.layer_6.layer_43.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_44.
+LOC	layer_1.layer_6.layer_44
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_44.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_44.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_45.
+LOC	layer_1.layer_6.layer_45
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_45.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_45.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_46.
+LOC	layer_1.layer_6.layer_46
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_46.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_46.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_47.
+LOC	layer_1.layer_6.layer_47
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_47.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_47.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_48.
+LOC	layer_1.layer_6.layer_48
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_48.Shape1.Path1.
+LOC	layer_1.layer_6.layer_48.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_49.
+LOC	layer_1.layer_6.layer_49
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_49.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_49.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_50.
+LOC	layer_1.layer_6.layer_50
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_50.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_50.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_51.
+LOC	layer_1.layer_6.layer_51
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_51.Shape1.Path1.
+LOC	layer_1.layer_6.layer_51.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_52.
+LOC	layer_1.layer_6.layer_52
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_52.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_52.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_53.
+LOC	layer_1.layer_6.layer_53
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_53.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_53.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_54.
+LOC	layer_1.layer_6.layer_54
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_54.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_54.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_55.
+LOC	layer_1.layer_6.layer_55
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_55.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_55.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_56.
+LOC	layer_1.layer_6.layer_56
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_56.Shape1.Path1.
+LOC	layer_1.layer_6.layer_56.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_57.
+LOC	layer_1.layer_6.layer_57
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_57.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_57.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_58.
+LOC	layer_1.layer_6.layer_58
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_58.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_58.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_59.
+LOC	layer_1.layer_6.layer_59
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_59.Shape1.Path1.
+LOC	layer_1.layer_6.layer_59.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_60.
+LOC	layer_1.layer_6.layer_60
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_60.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_60.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_61.
+LOC	layer_1.layer_6.layer_61
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_61.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_61.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_62.
+LOC	layer_1.layer_6.layer_62
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_62.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_62.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_63.
+LOC	layer_1.layer_6.layer_63
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_63.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_63.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_64.
+LOC	layer_1.layer_6.layer_64
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_64.Shape1.Path1.
+LOC	layer_1.layer_6.layer_64.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_65.
+LOC	layer_1.layer_6.layer_65
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_65.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_65.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_66.
+LOC	layer_1.layer_6.layer_66
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_66.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_66.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_67.
+LOC	layer_1.layer_6.layer_67
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_6.layer_67.Shape1.Path1.
+LOC	layer_1.layer_6.layer_67.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_68.
+LOC	layer_1.layer_6.layer_68
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_68.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_68.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_69.
+LOC	layer_1.layer_6.layer_69
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_69.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_69.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_70.
+LOC	layer_1.layer_6.layer_70
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_70.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_70.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_6.layer_71.
+LOC	layer_1.layer_6.layer_71
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_6.layer_71.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_6.layer_71.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_72.
+LOC	layer_1.layer_2.layer_72
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_2.layer_72.Shape1.Path1.
+LOC	layer_1.layer_2.layer_72.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_73.
+LOC	layer_1.layer_2.layer_73
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_73.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_73.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_74.
+LOC	layer_1.layer_2.layer_74
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_74.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_74.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_75.
+LOC	layer_1.layer_2.layer_75
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_75.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_75.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_76.
+LOC	layer_1.layer_76
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_76.Shape1.Path1.
+LOC	layer_1.layer_76.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_77.
+LOC	layer_1.layer_77
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_77.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_77.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_78.
+LOC	layer_1.layer_78
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_78.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_78.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_79.
+LOC	layer_1.layer_79
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_79.Shape1.Path1.
+LOC	layer_1.layer_79.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_80.
+LOC	layer_1.layer_80
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_80.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_80.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_81.
+LOC	layer_1.layer_81
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_81.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_81.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_82.
+LOC	layer_1.layer_82
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_82.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_82.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_83.
+LOC	layer_1.layer_83
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_83.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_83.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_84.
+LOC	layer_1.layer_2.layer_84
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_2.layer_84.Shape1.Path1.
+LOC	layer_1.layer_2.layer_84.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_85.
+LOC	layer_1.layer_2.layer_85
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_85.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_85.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_86.
+LOC	layer_1.layer_2.layer_86
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_86.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_86.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_87.
+LOC	layer_1.layer_2.layer_87
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_2.layer_87.Shape1.Path1.
+LOC	layer_1.layer_2.layer_87.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_88.
+LOC	layer_1.layer_2.layer_88
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_88.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_88.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_89.
+LOC	layer_1.layer_2.layer_89
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_89.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_89.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_90.
+LOC	layer_1.layer_2.layer_90
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_90.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_90.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_2.layer_91.
+LOC	layer_1.layer_2.layer_91
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_2.layer_91.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_2.layer_91.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_92.
+LOC	layer_1.layer_92
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_92.Shape1.Path1.
+LOC	layer_1.layer_92.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_93.
+LOC	layer_1.layer_93
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_93.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_93.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_94.
+LOC	layer_1.layer_94
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_94.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_94.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_95.
+LOC	layer_1.layer_95
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_1.layer_95.Shape1.Path1.
+LOC	layer_1.layer_95.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_96.
+LOC	layer_1.layer_96
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_96.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_96.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_97.
+LOC	layer_1.layer_97
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_97.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_97.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_98.
+LOC	layer_1.layer_98
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_98.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_98.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_1.layer_99.
+LOC	layer_1.layer_99
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_1.layer_99.Rectangle1.RectanglePath1.
+LOC	layer_1.layer_99.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported solid layer layer_1.layer_100.
+LOC	layer_1.layer_100
+GROUP	IMPORT_EXACT	info	exact	1	Expanded precomp comp_0.
+LOC	layer_1
+GROUP	IMPORT_EXACT	info	exact	1	Converted composition frames 0–121 at 30fps to 4033.333333333333ms.
+LOC	

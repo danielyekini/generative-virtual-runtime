@@ -1,0 +1,165 @@
+{
+  "runId": "2026-10-08T123430Z",
+  "gateSettings": {
+    "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+    "numberTolerance": 0.001,
+    "colorTolerance": "1/255",
+    "pixel": {
+      "metric": "euclidean-rgb",
+      "inspectionThreshold": 24,
+      "role": "inspection",
+      "notes": [
+        "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+        "This alone is not a complete PASS rule for the declared profile."
+      ]
+    },
+    "visualCertification": {
+      "status": "DEFINED",
+      "policyVersion": "1.0",
+      "authority": "Operator delegated gate definition in chat on 2026-10-08; these rules are frozen before new implementation attempts. Approval is of the policy, not existing output.",
+      "document": "docs/evaluations/visual-acceptance-policy.md",
+      "aggregate": {
+        "maxFrameFractionBeyond": 0.005,
+        "maxWindowMeanFractionBeyond": 0.002,
+        "weighting": "Arithmetic mean of equally weighted scheduled full-window frames; extra boundary/subframe samples must pass per-frame rules but do not change the window mean."
+      },
+      "localRegions": {
+        "tileSizePx": 32,
+        "gridOffsetsPx": [
+          0,
+          16
+        ],
+        "maxForegroundFractionBeyond": 0.1,
+        "minForegroundDenominatorPx": 64,
+        "foregroundThreshold": 24,
+        "backgroundRgb": [
+          16,
+          16,
+          20
+        ],
+        "definition": "For each tile on both grids, hot pixels / max(64, pixels whose reference OR native RGB differs from the declared background by more than 24). Count all hot pixels, including unexpected background content."
+      },
+      "materialReview": {
+        "required": true,
+        "reject": [
+          "Missing or extra subject/detail, stroke/fill, clipping or mask contribution",
+          "Wrong paint, geometry, stacking or scope semantics",
+          "Visible pose displacement, timing/visibility error or animated flicker"
+        ],
+        "reviewCoverage": "Review every automatic failure and start, end, key boundaries, segment midpoints, worst frames and a full-window contact sheet/sequence for each fixture and both native routes. Unreviewed fixtures remain VISUAL_UNVERIFIED.",
+        "independentOfMetrics": true
+      },
+      "alpha": {
+        "profile": "opaque-composite",
+        "background": "#101014",
+        "requiredByte": 255,
+        "rule": "Both reference and native PNGs must be opaque after compositing onto the declared background. No standalone transparent-alpha fidelity is claimed; such a profile needs separate rules."
+      },
+      "coverage": {
+        "required": "full-window",
+        "requireBothNativeRoutes": true,
+        "requireMatchedTimestamps": true,
+        "missingCapture": "NOT_RUN or BLOCKED, never zero error or PASS",
+        "numericRoutes": {
+          "numberTolerance": 0.001,
+          "colorTolerance": "1/255"
+        }
+      },
+      "referenceControls": {
+        "requireTimeControlWorks": true,
+        "requireNoReferenceErrors": true,
+        "requireRepeatCaptureIdentity": true,
+        "environment": "Matched viewport, fit, DPR 1, explicitly pinned subframe mode and fonts/assets/effect profile. Incomplete readiness or unreliable control quarantines comparison."
+      },
+      "passRule": "All conversion, round-trip, full-window aggregate/local/alpha, reference-control, material-review and regression/resource gates must pass. No implicit PASS from capture execution labels."
+    },
+    "reference": {
+      "lottieWeb": "5.13.0",
+      "seek": "goToAndStop(frame, true)",
+      "devicePixelRatio": 1,
+      "lottieBackground": "#101014",
+      "svgBackground": "#000000",
+      "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+    },
+    "corpus": {
+      "root": "fixtures/corpus",
+      "checksums": "fixtures/corpus/SHA256SUMS",
+      "readme": "fixtures/corpus/README.md"
+    }
+  },
+  "wallTimeBudgetMinutes": 60,
+  "implementationCyclesThisInvocation": 2,
+  "causes": [
+    {
+      "id": "visual.wave.gradientCoordinateSpace",
+      "phase": "A",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "linkedFinding": "visual.wave.residualPaintAndGeometry",
+      "expectedEvidence": "Use confirmed real createLinearGradient endpoint/context-matrix and caching observations to isolate remaining early-frame paint residuals. Compare evaluated source/direct/compiled matrices/paints; assess narrow existing-language lowering first. Reverify original full windows before any language representation decision. Do not repurpose or reset retained stroke attempts.",
+      "status": "prior gradient attribution not reproduced; retain as investigated finding",
+      "measurements": {
+        "creationMatrixControl": "native pixels identical at nine seeks",
+        "fixedLayerEndpointControl": "worse at frame 30: hot fraction 0.0002 to 0.029675",
+        "evidence": [
+          "gradient-diagnostic/records.json",
+          "gradient-diagnostic/measurements.json",
+          "gradient-endpoint-diagnostic/records.json",
+          "gradient-endpoint-diagnostic/measurements.json"
+        ]
+      }
+    },
+    {
+      "id": "visual.wave.multipleStrokeLoss",
+      "attempts": 2,
+      "remainingAttempts": 1,
+      "status": "ordered stroke correction measured; fixture not yet fidelity-certified"
+    },
+    {
+      "id": "visual.wave.clippedCubicMorph",
+      "phase": "A",
+      "attempts": 2,
+      "remainingAttempts": 1,
+      "status": "target correction verified; corpus Phase C incomplete",
+      "affectedFixtures": [
+        "LOT-07",
+        "LOT-01"
+      ],
+      "owner": "format-lottie composition-window track clipping",
+      "hypothesis": "negative-start morph is linearly sampled at the new start and reuses the unsplit cubic easing; layer isolation localizes residual to layers 2 and 5 with frame -0.368 keys",
+      "expectedResult": "in-window values and cubic subsegments match original unbounded source; full native windows and regressions",
+      "before": {
+        "frame2HotFraction": 0.005275,
+        "layer2Frame2": 0.003825,
+        "layer5Frame0": 0.0035125
+      },
+      "evidence": [
+        "layer-diagnostic/records.json",
+        "layer-diagnostic/measurements.json"
+      ],
+      "regressionEvidence": "before-after-program-identity.json: LOT-01 scalar clips change; LOT-03 diagnostic-only change remains quarantined; all other scene/program bytes identical",
+      "attemptHistory": [
+        {
+          "attempt": 1,
+          "phaseC": "185 tests + targeted conformance + semantic routes PASS; Wave complete original windows captured; source audit found shared clip helper modifies spatial control curves without a spatial subcurve lowering",
+          "snapshot": "attempt-1-implementation.tar.gz",
+          "evidence": "attempt-1/evidence/"
+        },
+        {
+          "attempt": 2,
+          "status": "186 tests/typechecks and 7 nonquarantined semantic routes PASS; Wave full windows numeric PASS; corpus incomplete",
+          "hypothesis": "retain legacy spatial lowering and report its approximation; scalar/morph cubic slicing remains corrected",
+          "expectedResult": "Wave improvement preserved; no spatial geometry drift from initial implementation; source loss not mislabeled exact"
+        }
+      ]
+    }
+  ],
+  "nextCause": {
+    "id": "verification.fullCorpusNativeCoverage",
+    "phase": "C",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "expectedEvidence": "Finish unchanged full-render-jobs.json on final pinned bytes, reference repeats and material review for every fixture; retain LOT-03 quarantine. Then isolate LOT-06 Punches source-state geometry/matrices before implementing an unconfirmed stacking theory."
+  },
+  "stopReason": "budget-exhausted"
+}

@@ -1,0 +1,31 @@
+{
+  "runId": "2026-10-07T230859Z",
+  "status": "design-escalation",
+  "stoppedAt": "2026-10-07T23:15:23.757523+00:00",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "reason": "Visual gate remains explicitly uncalibrated in fetched gate-settings.json; significant residuals and known multiple-stroke loss prevent a fidelity pass. Full corpus window not captured.",
+  "nextCause": {
+    "id": "visual.wave.residualPaintAndGeometry",
+    "fixtures": [
+      "LOT-07"
+    ],
+    "attempts": 0,
+    "confirmed": "Source layers 1/2 have solid+gradient strokes; layer 3 has two gradient strokes. Parser retains one stroke on the path.",
+    "suspected": "Additional residual geometry/timing differences; not yet isolated against lottie-web evaluated state.",
+    "followedBy": [
+      "LOT-06 pose/detail discrepancy",
+      "LOT-01 midcycle confetti"
+    ]
+  },
+  "implementation": {
+    "head": "8b052901d4a9399104be6d1376dc7468197f97ab",
+    "finalSnapshot": "source-snapshot/final-source.tar"
+  },
+  "budgets": {
+    "minutes": 60,
+    "implementationCycles": 2,
+    "maxCycles": 8,
+    "attemptsPerNewCause": 1
+  }
+}

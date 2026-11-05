@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-08T13:19:13.297815+00:00",
+  "authoritativeSchedule": "full-render-jobs.json",
+  "sourceImplementationUnchanged": true,
+  "plan": [
+    {
+      "id": "LOT-07-imported",
+      "completedSamples": 155,
+      "remainingSamples": 0,
+      "reason": "complete original window retained; no scope exclusion"
+    },
+    {
+      "id": "LOT-07-compiled",
+      "completedSamples": 155,
+      "remainingSamples": 0,
+      "reason": "complete original window retained; no scope exclusion"
+    },
+    {
+      "id": "LOT-00-imported",
+      "completedSamples": 178,
+      "remainingSamples": 65,
+      "repeatSample": "frame_00177"
+    },
+    {
+      "id": "LOT-00-compiled",
+      "completedSamples": 0,
+      "remainingSamples": 243
+    },
+    {
+      "id": "LOT-06-imported",
+      "completedSamples": 0,
+      "remainingSamples": 27
+    },
+    {
+      "id": "LOT-06-compiled",
+      "completedSamples": 0,
+      "remainingSamples": 27
+    },
+    {
+      "id": "LOT-01-imported",
+      "completedSamples": 0,
+      "remainingSamples": 127
+    },
+    {
+      "id": "LOT-01-compiled",
+      "completedSamples": 0,
+      "remainingSamples": 127
+    },
+    {
+      "id": "LOT-02-imported",
+      "completedSamples": 0,
+      "remainingSamples": 231
+    },
+    {
+      "id": "LOT-02-compiled",
+      "completedSamples": 0,
+      "remainingSamples": 231
+    },
+    {
+      "id": "LOT-03-reference",
+      "completedSamples": 0,
+      "remainingSamples": 433
+    },
+    {
+      "id": "LOT-04-imported",
+      "completedSamples": 0,
+      "remainingSamples": 681
+    },
+    {
+      "id": "LOT-04-compiled",
+      "completedSamples": 0,
+      "remainingSamples": 681
+    },
+    {
+      "id": "LOT-05-imported",
+      "completedSamples": 0,
+      "remainingSamples": 247
+    },
+    {
+      "id": "LOT-05-compiled",
+      "completedSamples": 0,
+      "remainingSamples": 247
+    }
+  ],
+  "priority": [
+    "LOT-01",
+    "LOT-06",
+    "LOT-00",
+    "LOT-02",
+    "LOT-03",
+    "LOT-04",
+    "LOT-05"
+  ],
+  "noFixtureExcluded": "Complete route windows already captured are retained; every original expected sample remains in combined coverage. Duplicate boundary samples must match decoded pixels.",
+  "stage": "capture-segment-2a/"
+}

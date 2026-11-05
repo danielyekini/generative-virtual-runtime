@@ -1,0 +1,376 @@
+{
+  "id": "SVG-02",
+  "role": "pack",
+  "format": "svg",
+  "fileName": "Jumping Jack.svg",
+  "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+  "sourceBytes": 270580,
+  "sha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+  "provenance": {
+    "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+    "sourceSha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+    "programPath": null,
+    "programSha256": null,
+    "importedSceneSha256": null,
+    "compiledSceneSha256": null,
+    "revisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "lineageStatus": "UNREGISTERED_SCRATCH",
+    "verificationStatus": "UNVERIFIED",
+    "evidenceAssociation": {
+      "stage": "generation",
+      "resultPath": "fixtures/SVG-02/result.json",
+      "implementationEnvironmentPath": "environment.json",
+      "implementationEnvironmentSha256": "e22f1e91bacdfa7105e9be7f6caadd916f1f981e975c0f7d757653cec3261221",
+      "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+    }
+  },
+  "inventory": {
+    "root": "<svg fill=\"none\" height=\"100%\" width=\"100%\" viewBox=\"0 0 720 720\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\">",
+    "percentSize": true,
+    "tags": {
+      "svg": 1,
+      "defs": 1,
+      "clippath": 1,
+      "rect": 4,
+      "g": 327,
+      "animatetransform": 106,
+      "path": 75,
+      "animate": 37,
+      "image": 5
+    },
+    "smil": {
+      "animate": 37,
+      "animateTransform": 106,
+      "animateMotion": 0,
+      "set": 0
+    },
+    "durations": [
+      "1s"
+    ],
+    "repeatCounts": [
+      "indefinite"
+    ],
+    "attributeNames": {
+      "transform": 106,
+      "d": 35,
+      "width": 2
+    },
+    "calcModes": {
+      "spline": 143
+    },
+    "keyTimeSamples": [
+      0,
+      1,
+      0,
+      0.4,
+      0.6,
+      0.64,
+      0.84,
+      1
+    ],
+    "styleBlocks": 0,
+    "inlineStyleAttrs": 0,
+    "scripts": 0,
+    "eventAttrs": 0,
+    "foreignObjects": 0,
+    "images": [
+      {
+        "embedded": true,
+        "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+      },
+      {
+        "embedded": true,
+        "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+      },
+      {
+        "embedded": true,
+        "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+      },
+      {
+        "embedded": true,
+        "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+      },
+      {
+        "embedded": true,
+        "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+      }
+    ],
+    "externalHrefs": [],
+    "clipPaths": 1,
+    "masks": 0,
+    "gradients": 0,
+    "filters": 0,
+    "textNodes": 0,
+    "fonts": [],
+    "viewBox": "0 0 720 720",
+    "widthAttr": "100%",
+    "heightAttr": "100%",
+    "observationWindowSec": 1
+  },
+  "timingsMs": {
+    "import": 7.1679910000002565,
+    "emit": 0,
+    "compile": 0
+  },
+  "complexity": {
+    "nodes": 185,
+    "tracks": 46,
+    "steps": 0,
+    "geometryItems": 365,
+    "depth": 20,
+    "durationMs": 1000,
+    "viewport": {
+      "width": 720,
+      "height": 720,
+      "fit": "contain"
+    },
+    "background": {
+      "type": "solid",
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0
+    },
+    "diagnostic": true
+  },
+  "production": {
+    "ok": false,
+    "fidelity": "failed",
+    "counts": {
+      "exact": 48,
+      "approximated": 63,
+      "dropped": 1,
+      "unsupported": 4
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_APPROXIMATED",
+        "feature": "smil",
+        "severity": "warning",
+        "message": "Indefinite repeat is previewed for one cycle.",
+        "count": 63
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "smil",
+        "severity": "info",
+        "message": "Time-based transform.position.x on i41.",
+        "count": 26
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "smil",
+        "severity": "info",
+        "message": "Time-based transform.rotation on i41.",
+        "count": 20
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "feature": "image",
+        "severity": "error",
+        "message": "<image> is outside the SVG subset.",
+        "count": 2
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "viewBox",
+        "severity": "info",
+        "message": "viewBox is the Scene IR viewport, with minX/minY translated to the origin.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_DROPPED",
+        "feature": "defs",
+        "severity": "warning",
+        "message": "<defs> has no painted result.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "feature": "rect",
+        "severity": "error",
+        "message": "<rect> could not be converted.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "svg-motion",
+        "severity": "info",
+        "message": "SVG motion uses a 1000ms preview duration.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_INVALID_IR",
+        "feature": "source",
+        "severity": "fatal",
+        "message": "svg2 overlaps svg1 on node:i41:transform.position.x.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": {
+    "fidelity": "partial",
+    "complexity": {
+      "nodes": 185,
+      "tracks": 46,
+      "steps": 0,
+      "geometryItems": 365,
+      "depth": 20,
+      "durationMs": 1000,
+      "viewport": {
+        "width": 720,
+        "height": 720,
+        "fit": "contain"
+      },
+      "background": {
+        "type": "solid",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 0
+      }
+    },
+    "validation": {
+      "ok": false,
+      "diagnostics": [
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg2 overlaps svg1 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg4 overlaps svg2 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg5 overlaps svg4 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg6 overlaps svg5 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg8 overlaps svg6 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg9 overlaps svg8 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg11 overlaps svg9 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg12 overlaps svg11 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg13 overlaps svg12 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg15 overlaps svg13 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg16 overlaps svg15 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg17 overlaps svg16 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg20 overlaps svg17 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg22 overlaps svg20 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg24 overlaps svg22 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg27 overlaps svg24 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg29 overlaps svg27 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg31 overlaps svg29 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg32 overlaps svg31 on node:i41:transform.position.x."
+        },
+        {
+          "code": "OVERLAPPING_WRITERS",
+          "message": "svg35 overlaps svg32 on node:i41:transform.position.x."
+        }
+      ]
+    }
+  },
+  "motionScript": null,
+  "compile": null,
+  "runtime": {
+    "kind": "none",
+    "samples": []
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "SVG document located by lexical scan; production XML parse follows import"
+    },
+    {
+      "name": "import",
+      "status": "FAIL",
+      "detail": "fidelity failed; exact 48; approximated 63; dropped 1; unsupported 4; scene no"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "NOT_REACHED",
+      "detail": "Production import produced no scene."
+    },
+    {
+      "name": "compile",
+      "status": "NOT_REACHED",
+      "detail": "No MotionScript from the production scene."
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "NOT_REACHED",
+      "detail": "Compile did not run."
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "FAIL",
+      "detail": "No accepted Scene IR from importSource."
+    },
+    {
+      "name": "runtime",
+      "status": "NOT_REACHED",
+      "detail": "No accepted scene to evaluate."
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": "import",
+  "evidence": {
+    "importReport": "fixtures/SVG-02/import-report.txt",
+    "importedScene": null,
+    "compiledScene": null,
+    "motion": null
+  }
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "index": 0,
+    "mode": "baseline",
+    "reference": "0-baseline-reference.png",
+    "native": "0-baseline-native.png",
+    "fractionBeyond": 0.0040625,
+    "meanDistance": 0.5251168989276085
+  },
+  {
+    "index": 0,
+    "mode": "counterfactual",
+    "reference": "0-counterfactual-reference.png",
+    "native": "0-counterfactual-native.png",
+    "fractionBeyond": 0.0040375,
+    "meanDistance": 0.5401394473654978
+  },
+  {
+    "index": 1,
+    "mode": "baseline",
+    "reference": "1-baseline-reference.png",
+    "native": "1-baseline-native.png",
+    "fractionBeyond": 0.0043,
+    "meanDistance": 0.536715316293463
+  },
+  {
+    "index": 1,
+    "mode": "counterfactual",
+    "reference": "1-counterfactual-reference.png",
+    "native": "1-counterfactual-native.png",
+    "fractionBeyond": 0.00434375,
+    "meanDistance": 0.5963487101005074
+  },
+  {
+    "index": 2,
+    "mode": "baseline",
+    "reference": "2-baseline-reference.png",
+    "native": "2-baseline-native.png",
+    "fractionBeyond": 0.005275,
+    "meanDistance": 0.5638940740555678
+  },
+  {
+    "index": 2,
+    "mode": "counterfactual",
+    "reference": "2-counterfactual-reference.png",
+    "native": "2-counterfactual-native.png",
+    "fractionBeyond": 0.0053125,
+    "meanDistance": 0.6923932929614851
+  },
+  {
+    "index": 5,
+    "mode": "baseline",
+    "reference": "5-baseline-reference.png",
+    "native": "5-baseline-native.png",
+    "fractionBeyond": 0.0019125,
+    "meanDistance": 0.4303060232437388
+  },
+  {
+    "index": 5,
+    "mode": "counterfactual",
+    "reference": "5-counterfactual-reference.png",
+    "native": "5-counterfactual-native.png",
+    "fractionBeyond": 0.00433125,
+    "meanDistance": 0.7768728421054452
+  },
+  {
+    "index": 15,
+    "mode": "baseline",
+    "reference": "15-baseline-reference.png",
+    "native": "15-baseline-native.png",
+    "fractionBeyond": 0.000025,
+    "meanDistance": 0.30123847286407235
+  },
+  {
+    "index": 15,
+    "mode": "counterfactual",
+    "reference": "15-counterfactual-reference.png",
+    "native": "15-counterfactual-native.png",
+    "fractionBeyond": 0.013475,
+    "meanDistance": 1.25570759714959
+  },
+  {
+    "index": 30,
+    "mode": "baseline",
+    "reference": "30-baseline-reference.png",
+    "native": "30-baseline-native.png",
+    "fractionBeyond": 0.0002,
+    "meanDistance": 0.31621680008048675
+  },
+  {
+    "index": 30,
+    "mode": "counterfactual",
+    "reference": "30-counterfactual-reference.png",
+    "native": "30-counterfactual-native.png",
+    "fractionBeyond": 0.029675,
+    "meanDistance": 1.6529240243561198
+  },
+  {
+    "index": 75,
+    "mode": "baseline",
+    "reference": "75-baseline-reference.png",
+    "native": "75-baseline-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.272393232847242
+  },
+  {
+    "index": 75,
+    "mode": "counterfactual",
+    "reference": "75-counterfactual-reference.png",
+    "native": "75-counterfactual-native.png",
+    "fractionBeyond": 0.00346875,
+    "meanDistance": 0.4684277768130983
+  },
+  {
+    "index": 149,
+    "mode": "baseline",
+    "reference": "149-baseline-reference.png",
+    "native": "149-baseline-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.30844795854973345
+  },
+  {
+    "index": 149,
+    "mode": "counterfactual",
+    "reference": "149-counterfactual-reference.png",
+    "native": "149-counterfactual-native.png",
+    "fractionBeyond": 0,
+    "meanDistance": 0.37058024770142245
+  },
+  {
+    "index": 0,
+    "mode": "baseline",
+    "reference": "0-baseline-reference.png",
+    "native": "0-baseline-native.png",
+    "fractionBeyond": 0.0040625,
+    "meanDistance": 0.5251168989276085
+  },
+  {
+    "index": 0,
+    "mode": "counterfactual",
+    "reference": "0-counterfactual-reference.png",
+    "native": "0-counterfactual-native.png",
+    "fractionBeyond": 0.0040375,
+    "meanDistance": 0.5401394473654978
+  }
+]

@@ -1,0 +1,414 @@
+{
+  "runId": "2026-10-08T090908Z",
+  "comparedWith": "2026-10-08T012312Z",
+  "startedAt": "2026-10-08T09:09:10.554429+00:00",
+  "wallTimeBudgetMinutes": 60,
+  "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+  "initialStatus": "?? docs/evaluations/2026-10-08T090908Z/\n?? work/\n",
+  "gateSettings": {
+    "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+    "numberTolerance": 0.001,
+    "colorTolerance": "1/255",
+    "pixel": {
+      "metric": "euclidean-rgb",
+      "inspectionThreshold": 24,
+      "role": "inspection",
+      "notes": [
+        "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+        "This alone is not a complete PASS rule for the declared profile."
+      ]
+    },
+    "visualCertification": {
+      "status": "DEFINED",
+      "policyVersion": "1.0",
+      "authority": "Operator delegated gate definition in chat on 2026-10-08; these rules are frozen before new implementation attempts. Approval is of the policy, not existing output.",
+      "document": "docs/evaluations/visual-acceptance-policy.md",
+      "aggregate": {
+        "maxFrameFractionBeyond": 0.005,
+        "maxWindowMeanFractionBeyond": 0.002,
+        "weighting": "Arithmetic mean of equally weighted scheduled full-window frames; extra boundary/subframe samples must pass per-frame rules but do not change the window mean."
+      },
+      "localRegions": {
+        "tileSizePx": 32,
+        "gridOffsetsPx": [
+          0,
+          16
+        ],
+        "maxForegroundFractionBeyond": 0.1,
+        "minForegroundDenominatorPx": 64,
+        "foregroundThreshold": 24,
+        "backgroundRgb": [
+          16,
+          16,
+          20
+        ],
+        "definition": "For each tile on both grids, hot pixels / max(64, pixels whose reference OR native RGB differs from the declared background by more than 24). Count all hot pixels, including unexpected background content."
+      },
+      "materialReview": {
+        "required": true,
+        "reject": [
+          "Missing or extra subject/detail, stroke/fill, clipping or mask contribution",
+          "Wrong paint, geometry, stacking or scope semantics",
+          "Visible pose displacement, timing/visibility error or animated flicker"
+        ],
+        "reviewCoverage": "Review every automatic failure and start, end, key boundaries, segment midpoints, worst frames and a full-window contact sheet/sequence for each fixture and both native routes. Unreviewed fixtures remain VISUAL_UNVERIFIED.",
+        "independentOfMetrics": true
+      },
+      "alpha": {
+        "profile": "opaque-composite",
+        "background": "#101014",
+        "requiredByte": 255,
+        "rule": "Both reference and native PNGs must be opaque after compositing onto the declared background. No standalone transparent-alpha fidelity is claimed; such a profile needs separate rules."
+      },
+      "coverage": {
+        "required": "full-window",
+        "requireBothNativeRoutes": true,
+        "requireMatchedTimestamps": true,
+        "missingCapture": "NOT_RUN or BLOCKED, never zero error or PASS",
+        "numericRoutes": {
+          "numberTolerance": 0.001,
+          "colorTolerance": "1/255"
+        }
+      },
+      "referenceControls": {
+        "requireTimeControlWorks": true,
+        "requireNoReferenceErrors": true,
+        "requireRepeatCaptureIdentity": true,
+        "environment": "Matched viewport, fit, DPR 1, explicitly pinned subframe mode and fonts/assets/effect profile. Incomplete readiness or unreliable control quarantines comparison."
+      },
+      "passRule": "All conversion, round-trip, full-window aggregate/local/alpha, reference-control, material-review and regression/resource gates must pass. No implicit PASS from capture execution labels."
+    },
+    "reference": {
+      "lottieWeb": "5.13.0",
+      "seek": "goToAndStop(frame, true)",
+      "devicePixelRatio": 1,
+      "lottieBackground": "#101014",
+      "svgBackground": "#000000",
+      "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+    },
+    "corpus": {
+      "root": "fixtures/corpus",
+      "checksums": "fixtures/corpus/SHA256SUMS",
+      "readme": "fixtures/corpus/README.md"
+    }
+  },
+  "gateSha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+  "languages": {
+    "motionscript": "0.5.0",
+    "sceneIr": "0.5.0",
+    "wire": "0.2"
+  },
+  "corpus": "LOT-00\u202607; LOT-03 inherited 512KiB quarantine; SVG excluded",
+  "workMode": "fidelity implementation and LOT-00 qualification; no broad abstraction",
+  "observationWindow": "original [ip,op), source fr, both native routes, boundaries/subframes",
+  "initialSnapshot": "source-snapshot/tree/initial-source.tar.gz",
+  "baselineEnvironment": {
+    "capturedAt": "2026-10-08T09:09:12.779Z",
+    "repository": "/workspace/generative-visual-runtime",
+    "gitHead": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+    "gitStatus": "## work\n?? docs/evaluations/2026-10-08T090908Z/\n?? work/",
+    "gitLog": "11d783e Pin continuation to verified fidelity implementation",
+    "node": "v24.19.0",
+    "platform": "linux x64",
+    "npm": "11.9.0",
+    "chromeBinary": "/usr/bin/chromium",
+    "chrome": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "gateSettings": {
+      "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+      "numberTolerance": 0.001,
+      "colorTolerance": "1/255",
+      "pixel": {
+        "metric": "euclidean-rgb",
+        "inspectionThreshold": 24,
+        "role": "inspection",
+        "notes": [
+          "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+          "This alone is not a complete PASS rule for the declared profile."
+        ]
+      },
+      "visualCertification": {
+        "status": "DEFINED",
+        "policyVersion": "1.0",
+        "authority": "Operator delegated gate definition in chat on 2026-10-08; these rules are frozen before new implementation attempts. Approval is of the policy, not existing output.",
+        "document": "docs/evaluations/visual-acceptance-policy.md",
+        "aggregate": {
+          "maxFrameFractionBeyond": 0.005,
+          "maxWindowMeanFractionBeyond": 0.002,
+          "weighting": "Arithmetic mean of equally weighted scheduled full-window frames; extra boundary/subframe samples must pass per-frame rules but do not change the window mean."
+        },
+        "localRegions": {
+          "tileSizePx": 32,
+          "gridOffsetsPx": [
+            0,
+            16
+          ],
+          "maxForegroundFractionBeyond": 0.1,
+          "minForegroundDenominatorPx": 64,
+          "foregroundThreshold": 24,
+          "backgroundRgb": [
+            16,
+            16,
+            20
+          ],
+          "definition": "For each tile on both grids, hot pixels / max(64, pixels whose reference OR native RGB differs from the declared background by more than 24). Count all hot pixels, including unexpected background content."
+        },
+        "materialReview": {
+          "required": true,
+          "reject": [
+            "Missing or extra subject/detail, stroke/fill, clipping or mask contribution",
+            "Wrong paint, geometry, stacking or scope semantics",
+            "Visible pose displacement, timing/visibility error or animated flicker"
+          ],
+          "reviewCoverage": "Review every automatic failure and start, end, key boundaries, segment midpoints, worst frames and a full-window contact sheet/sequence for each fixture and both native routes. Unreviewed fixtures remain VISUAL_UNVERIFIED.",
+          "independentOfMetrics": true
+        },
+        "alpha": {
+          "profile": "opaque-composite",
+          "background": "#101014",
+          "requiredByte": 255,
+          "rule": "Both reference and native PNGs must be opaque after compositing onto the declared background. No standalone transparent-alpha fidelity is claimed; such a profile needs separate rules."
+        },
+        "coverage": {
+          "required": "full-window",
+          "requireBothNativeRoutes": true,
+          "requireMatchedTimestamps": true,
+          "missingCapture": "NOT_RUN or BLOCKED, never zero error or PASS",
+          "numericRoutes": {
+            "numberTolerance": 0.001,
+            "colorTolerance": "1/255"
+          }
+        },
+        "referenceControls": {
+          "requireTimeControlWorks": true,
+          "requireNoReferenceErrors": true,
+          "requireRepeatCaptureIdentity": true,
+          "environment": "Matched viewport, fit, DPR 1, explicitly pinned subframe mode and fonts/assets/effect profile. Incomplete readiness or unreliable control quarantines comparison."
+        },
+        "passRule": "All conversion, round-trip, full-window aggregate/local/alpha, reference-control, material-review and regression/resource gates must pass. No implicit PASS from capture execution labels."
+      },
+      "reference": {
+        "lottieWeb": "5.13.0",
+        "seek": "goToAndStop(frame, true)",
+        "devicePixelRatio": 1,
+        "lottieBackground": "#101014",
+        "svgBackground": "#000000",
+        "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+      },
+      "corpus": {
+        "root": "fixtures/corpus",
+        "checksums": "fixtures/corpus/SHA256SUMS",
+        "readme": "fixtures/corpus/README.md"
+      }
+    },
+    "languages": {
+      "motionscript": {
+        "current": "0.5.0",
+        "wireVersion": "0.2",
+        "packageVersion": "0.1.0"
+      },
+      "scene-ir": {
+        "current": "0.5.0",
+        "wireVersion": "0.2",
+        "packageVersion": "0.1.0"
+      }
+    },
+    "lottieWeb": "5.13.0",
+    "versions": {
+      "importCore": "0.1.0",
+      "lottieAdapter": "0.1.0",
+      "svgAdapter": "0.1.0",
+      "emitter": "0.1.1",
+      "legacyIrDefault": "0.1",
+      "legacyDslDefault": "0.1",
+      "svgStaticDurationMs": 1000
+    },
+    "commands": [
+      "npx tsx evaluation/harness/run-pipeline.ts",
+      "npx tsx evaluation/harness/drive-browser.ts",
+      "node evaluation/harness/write-report.mjs"
+    ]
+  },
+  "sourceHashes": {
+    "packRoots": [
+      "fixtures/corpus/lottie",
+      "fixtures/corpus/svg"
+    ],
+    "corpusRoot": "fixtures/corpus",
+    "checksums": "fixtures/corpus/SHA256SUMS",
+    "archives": [],
+    "svgFilesDiscovered": 2,
+    "lottieFilesDiscovered": 8,
+    "note": "Canonical corpus lives under fixtures/corpus/ (committed). Scratch copies are written to evaluation/evidence/sources/.",
+    "fixtures": [
+      {
+        "id": "LOT-00",
+        "role": "baseline",
+        "format": "lottie",
+        "fileName": "panning_landscape_motionscript_v1_compatible.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+        "evidenceSource": "sources/LOT-00.json",
+        "bytes": 41712,
+        "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+        "width": 1280,
+        "height": 720,
+        "durationMs": 8000,
+        "frameRate": 30
+      },
+      {
+        "id": "LOT-01",
+        "role": "pack",
+        "format": "lottie",
+        "fileName": "Celebrations Begin.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+        "evidenceSource": "sources/LOT-01.json",
+        "bytes": 139337,
+        "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+        "width": 400,
+        "height": 400,
+        "durationMs": 4033.333333333333,
+        "frameRate": 30
+      },
+      {
+        "id": "LOT-02",
+        "role": "pack",
+        "format": "lottie",
+        "fileName": "Hover Button.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+        "evidenceSource": "sources/LOT-02.json",
+        "bytes": 127633,
+        "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+        "width": 1920,
+        "height": 1080,
+        "durationMs": 7533.333333333333,
+        "frameRate": 30
+      },
+      {
+        "id": "LOT-03",
+        "role": "pack",
+        "format": "lottie",
+        "fileName": "lottie_ex1.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+        "evidenceSource": "sources/LOT-03.json",
+        "bytes": 877884,
+        "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+        "width": 1080,
+        "height": 689,
+        "durationMs": 7116.666666666666,
+        "frameRate": 60
+      },
+      {
+        "id": "LOT-04",
+        "role": "pack",
+        "format": "lottie",
+        "fileName": "lottie_ex2.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+        "evidenceSource": "sources/LOT-04.json",
+        "bytes": 512240,
+        "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+        "width": 500,
+        "height": 888.89,
+        "durationMs": 11250,
+        "frameRate": 60
+      },
+      {
+        "id": "LOT-05",
+        "role": "pack",
+        "format": "lottie",
+        "fileName": "lottie_simple_ex1.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+        "evidenceSource": "sources/LOT-05.json",
+        "bytes": 191525,
+        "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+        "width": 1080,
+        "height": 1080,
+        "durationMs": 4016.6666666666665,
+        "frameRate": 60
+      },
+      {
+        "id": "LOT-06",
+        "role": "pack",
+        "format": "lottie",
+        "fileName": "Punches.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+        "evidenceSource": "sources/LOT-06.json",
+        "bytes": 112565,
+        "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+        "width": 720,
+        "height": 720,
+        "durationMs": 960,
+        "frameRate": 25
+      },
+      {
+        "id": "LOT-07",
+        "role": "pack",
+        "format": "lottie",
+        "fileName": "Wave Animation.json",
+        "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+        "evidenceSource": "sources/LOT-07.json",
+        "bytes": 31682,
+        "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+        "width": 400,
+        "height": 400,
+        "durationMs": 5000,
+        "frameRate": 30
+      },
+      {
+        "id": "SVG-01",
+        "role": "pack",
+        "format": "svg",
+        "fileName": "Celebrations Begin.svg",
+        "sourcePath": "fixtures/corpus/svg/SVG-01.svg",
+        "evidenceSource": "sources/SVG-01.svg",
+        "bytes": 183327,
+        "sha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d",
+        "width": 400,
+        "height": 400,
+        "durationMs": 4033.0000000000005,
+        "frameRate": null
+      },
+      {
+        "id": "SVG-02",
+        "role": "pack",
+        "format": "svg",
+        "fileName": "Jumping Jack.svg",
+        "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+        "evidenceSource": "sources/SVG-02.svg",
+        "bytes": 270580,
+        "sha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+        "width": 720,
+        "height": 720,
+        "durationMs": 1000,
+        "frameRate": null
+      }
+    ]
+  },
+  "initialRegistrySha256": "6ffe899ff012af8e8f4360d5b316a5b99cf77d4d7ee6b74aed46b6389da6697e",
+  "finalRegistrySha256": "1818c63772beec4b1fa4d559e6bdbb9085f2e282c179524174751de3d2a7b653",
+  "implementationAttemptsThisInvocation": 1,
+  "cumulativeStrokeAttempts": 2,
+  "authoringRegistrationContract": {
+    "path": "docs/authoring/sample-registry-spec.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "7c3cf732d56ae9c191972dae80955b1ad0cdae89978a298a69bf1594dd40cb7e"
+  },
+  "note": "User supplied current authoring contract links during execution; exact missing documents imported from the named remote commit, with authority hashes recorded. Execution/harness source was not advanced to remote main during the run.",
+  "stoppedAt": "2026-10-08T10:05:25.725844+00:00",
+  "finalSourceArchive": {
+    "path": "source-snapshot/tree/final-source.tar.gz",
+    "sha256": "1b931e535f284de38c1a0b9fe70cf042a026ab4383b80b3430bac0f20ae23b47"
+  },
+  "finalSourceManifestSha256": "2f40c0203d852b10dd84e7c8e4d65491bb05a5dd380f9192ec87f545d68b4877",
+  "finalHead": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+  "finalTreeClean": false,
+  "elapsedMinutes": 56.252856916666666,
+  "checks": {
+    "tests": 184,
+    "typecheck": "PASS",
+    "strictHarnessTypecheck": "PASS",
+    "registryConformance": "PASS",
+    "registryIntegrity": "PASS",
+    "corpusHashes": "PASS"
+  },
+  "recordingFinishedAt": "2026-10-08T10:06:10.287208+00:00",
+  "elapsedIncludingRecordingMinutes": 56.99554631666667
+}

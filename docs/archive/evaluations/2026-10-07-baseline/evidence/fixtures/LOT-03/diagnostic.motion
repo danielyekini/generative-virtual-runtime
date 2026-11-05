@@ -1,0 +1,127 @@
+scene "MainScene" {
+  version "0.1";
+  viewport (1080, 689);
+  background #101014;
+  duration 7116.66667ms;
+};
+camera main {
+  position (540, 344.5);
+  zoom 1;
+  rotation 0deg;
+};
+group layer_8 {
+  position (538.863, 345.304);
+  zIndex 80;
+  rectangle RectShape2 {
+    position (-557.1855, -356.5985);
+    zIndex 81;
+    size (1114.371, 713.197);
+    fill #ffffff;
+  };
+};
+group layer_9 {
+  position (540, 209.667);
+  scale (0.88, 0.88);
+  zIndex 70;
+  ellipse EllipseShape1 {
+    zIndex 71;
+    size (126.197, 128.325);
+    fill #b2b6b7;
+  };
+};
+group layer_10 {
+  position (672.953, 262.67);
+  scale (0.88, 0.88);
+  zIndex 60;
+  ellipse EllipseShape1 {
+    zIndex 61;
+    size (126.197, 128.325);
+    fill #b2b6b7;
+  };
+};
+group layer_11 {
+  position (708.288, 374.985);
+  scale (0.88, 0.88);
+  zIndex 50;
+  ellipse EllipseShape1 {
+    zIndex 51;
+    size (126.197, 128.325);
+    fill #b2b6b7;
+  };
+};
+group layer_12 {
+  position (667.905, 486.038);
+  scale (0.88, 0.88);
+  zIndex 40;
+  ellipse EllipseShape1 {
+    zIndex 41;
+    size (126.197, 128.325);
+    fill #b2b6b7;
+  };
+};
+group layer_13 {
+  position (414.249, 480.991);
+  scale (0.88, 0.88);
+  zIndex 30;
+  ellipse EllipseShape1 {
+    zIndex 31;
+    size (126.197, 128.325);
+    fill #b2b6b7;
+  };
+};
+group layer_14 {
+  position (370.08, 373.723);
+  scale (0.88, 0.88);
+  zIndex 20;
+  ellipse EllipseShape1 {
+    zIndex 21;
+    size (126.197, 128.325);
+    fill #b2b6b7;
+  };
+};
+group layer_15 {
+  position (415.511, 267.718);
+  scale (0.88, 0.88);
+  zIndex 10;
+  ellipse EllipseShape1 {
+    zIndex 11;
+    size (126.197, 128.325);
+    fill #b2b6b7;
+  };
+};
+group layer_16 {
+  pivot (540, 344.5);
+};
+step layer_8.visible {
+  at 7116.66667ms;
+  value false;
+};
+step layer_9.visible {
+  at 7116.66667ms;
+  value false;
+};
+step layer_10.visible {
+  at 7116.66667ms;
+  value false;
+};
+step layer_11.visible {
+  at 7116.66667ms;
+  value false;
+};
+step layer_12.visible {
+  at 7116.66667ms;
+  value false;
+};
+step layer_13.visible {
+  at 7116.66667ms;
+  value false;
+};
+step layer_14.visible {
+  at 7116.66667ms;
+  value false;
+};
+step layer_15.visible {
+  at 7116.66667ms;
+  value false;
+};
+complete;

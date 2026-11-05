@@ -1,0 +1,2309 @@
+{
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+      "productionImport": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 33,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_100.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_100.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_1.Tree1CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_2.Tree1TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_3.Tree2CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_4.Tree2TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_5.Tree3CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_6.Tree3TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_7.Tree4CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_8.Tree4TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_9.Tree5CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_10.Tree5TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_11.Tree6CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_12.Tree6TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_13.ForegroundGroundRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_200.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_200.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_200.layer_14.MidHill1Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_200.layer_15.MidHill2Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_200.layer_16.MidHill3Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_300.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_300.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_17.Cloud1Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_18.Cloud2Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_19.Cloud3Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_20.Cloud4Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_21.Mountain1Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_22.Mountain2Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_23.Mountain3Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_24.Mountain4Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_25.SunEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_26.SkyRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "frame-timing",
+            "severity": "info",
+            "message": "Converted composition frames 0\u2013240 at 30fps to 8000ms.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-00-imported",
+          "sceneKind": "imported",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "VISUAL_UNVERIFIED",
+            "numericPass": true,
+            "complete": true,
+            "meanFractionBeyond": 0.00012606698495370365,
+            "capturedScheduled": 240,
+            "expectedScheduled": 240,
+            "capturedExtra": 3,
+            "expectedExtra": 3,
+            "materialReview": "NOT_RUN"
+          }
+        },
+        {
+          "id": "LOT-00-compiled",
+          "sceneKind": "compiled",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "VISUAL_UNVERIFIED",
+            "numericPass": true,
+            "complete": true,
+            "meanFractionBeyond": 0.00012606698495370365,
+            "capturedScheduled": 240,
+            "expectedScheduled": 240,
+            "capturedExtra": 3,
+            "expectedExtra": 3,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "FULL_SCHEDULED_PLUS_SELECTED_SUBFRAMES",
+      "materialReview": "NOT_RUN"
+    },
+    {
+      "id": "LOT-01",
+      "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+      "productionImport": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 197,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.Shape1.Path1.trim.start.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.Shape1.Path1.trim.end.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Animated trim on layer_1.layer_1.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_1.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_2.layer_3.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_2.layer_3.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_2.layer_4.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_2.layer_4.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_2.layer_5.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_2.layer_5.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_8.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_8.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_9.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_9.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_10.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_10.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_11.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_11.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_12.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_12.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_13.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_13.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_14.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_14.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_15.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_15.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_16.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_16.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_17.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_17.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_18.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_18.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_19.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_19.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_20.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_20.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_21.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_21.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_22.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_22.Rectangle1.RectanglePath1.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-01-imported",
+          "sceneKind": "imported",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": true,
+            "meanFractionBeyond": 0.002259710743801654,
+            "capturedScheduled": 121,
+            "expectedScheduled": 121,
+            "capturedExtra": 6,
+            "expectedExtra": 6,
+            "materialReview": "NOT_RUN"
+          }
+        },
+        {
+          "id": "LOT-01-compiled",
+          "sceneKind": "compiled",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": true,
+            "meanFractionBeyond": 0.002259710743801654,
+            "capturedScheduled": 121,
+            "expectedScheduled": 121,
+            "capturedExtra": 6,
+            "expectedExtra": 6,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "FULL_SCHEDULED_PLUS_SELECTED_SUBFRAMES",
+      "materialReview": "NOT_RUN"
+    },
+    {
+      "id": "LOT-02",
+      "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+      "productionImport": {
+        "ok": true,
+        "fidelity": "partial",
+        "counts": {
+          "exact": 54,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 9
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Matte source layer was inventoried and not lowered.",
+            "count": 3
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte type 1 was inventoried and not lowered.",
+            "count": 3
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte content is withheld so it is not drawn unmasked.",
+            "count": 3
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_1.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_1.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_18.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_3.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_3.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_3.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Imported motion on layer_3.layer_2.Shape1.Path1.trim.start.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Animated trim on layer_3.layer_2.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_3.layer_2.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_4.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_4.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_4.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_5.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_6.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_6.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_6.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_7.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_7.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_7.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_8.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_8.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_18.layer_8.layer_1.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_18.layer_8.layer_1.Group2.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_18.layer_8.layer_1.Group3.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_18.layer_8.layer_2.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp comp_0_5f05577e-a470-4015-b9ac-8bcc9073c734.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "effect",
+            "severity": "info",
+            "message": "Imported static Gaussian Blur on layer_18.layer_9.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.layer_9.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.layer_10.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_18.layer_11.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.layer_12.Rectangle1.RectanglePath1.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-02-imported",
+          "sceneKind": "imported",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": false,
+            "meanFractionBeyond": null,
+            "capturedScheduled": 0,
+            "expectedScheduled": 0,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        },
+        {
+          "id": "LOT-02-compiled",
+          "sceneKind": "compiled",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": false,
+            "meanFractionBeyond": null,
+            "capturedScheduled": 0,
+            "expectedScheduled": 0,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "SAMPLED_OR_QUARANTINED",
+      "materialReview": "NOT_RUN"
+    },
+    {
+      "id": "LOT-03",
+      "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "productionImport": {
+        "ok": false,
+        "fidelity": "failed",
+        "counts": {
+          "exact": 0,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 1
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_LIMIT",
+            "feature": "source",
+            "severity": "fatal",
+            "message": "Source exceeds the import size limit.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "failed",
+      "roundTripStatus": "QUARANTINED",
+      "routes": [
+        {
+          "id": "LOT-03-reference",
+          "sceneKind": "none",
+          "executionRoute": "production",
+          "referenceStatus": "UNVERIFIED",
+          "nativeStatus": "NOT_REACHED",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "BLOCKED",
+            "numericPass": false,
+            "complete": false,
+            "meanFractionBeyond": null,
+            "capturedScheduled": 0,
+            "expectedScheduled": 0,
+            "capturedExtra": 0,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "SAMPLED_OR_QUARANTINED",
+      "materialReview": "NOT_RUN"
+    },
+    {
+      "id": "LOT-04",
+      "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+      "productionImport": {
+        "ok": true,
+        "fidelity": "partial",
+        "counts": {
+          "exact": 88,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 17
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "effect",
+            "severity": "error",
+            "message": "Effect stack (Gaussian Blur) was inventoried and not lowered.",
+            "count": 17
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 3_1_fb1bd2a1-c6e6-4692-973c-3b7e599e1893_f4f4b94b-1333-44fc-9090-e591b212d28a_c956a65a-56fb-4812-be57-7853697392f6_faaff553-ece8-49cf-a63a-aeea1b97a3ba.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 8_20a068bd-1627-45d1-9fc1-6c0dd1edb071_b8bb3f38-71d7-45ae-9514-748895d30e77_53691f11-1982-4128-abeb-496536b15029_57fffcad-16fd-4b71-8db4-ebb5bab1259b.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 9_05dccb6e-a756-4d59-a31b-3886ed787fdb_508afacf-a4f5-4781-9201-7f7de8e816b6_e31e82c3-9243-4114-a5d6-dc5b505a4d2e_08f9da21-67c4-443a-90ae-014596343022.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 10_c22c32e7-7d8e-4718-9424-49d4db3bc1fd_3c76b710-dc20-4026-aa67-6803d0cc7570_cb558703-2130-416c-a41b-3330a6df72a9_6e6e6bc1-18c5-41da-999e-05de02a03b5f.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 11_dd0a4b42-c486-48b8-bd1d-dadb6e5dedbd_6a2a01da-2b48-4444-acf1-23ffe3733ac1_db01c5f9-e9fa-43be-b211-118e1ccb862a_2d214dd2-0db3-4e15-a399-981b11e5f05e.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 12_1dc8739e-e317-43d9-bf86-a7dc1caae315_4f4ebd26-30d3-4b14-89ff-29abaa79d9d2_8d382218-647b-439a-b933-2e1c513838d5_3df2de07-59f0-4c3f-ac24-4a57b4e366a0.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 13_c4759f01-4a38-4bdb-9dba-a2043fdbf0de_dc57c493-adf6-4e9c-94c9-5e68f8859a42_5acd88ea-6848-4011-b9ea-0c72d7e6dc6f_9bb4b6f4-0d05-428e-b0e7-7ee3c8b17ec0.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 14_435fd567-ec85-4551-9688-448d95e580d7_0d101e0e-c401-4030-9c95-0d1cdcb7962b_dc1f6768-3c21-4f5f-a2e0-8ae0b1a70844_f80446e6-9871-4c04-bb26-5b0517977c0f.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 15_0227a47c-0b38-44ae-b9f5-bf4a5a410ee7_c15c4cc8-ef22-421e-bc6a-b680785bcff6_47ccf672-9f88-4402-b92f-72ced0651797_da4ca336-ba2d-49e7-bcbc-5495df457173.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 16_9e52ff08-3487-46a5-8fb2-a58337812916_45403d48-4374-4641-bd3e-3e58d624ff21_9b7b4928-d4a9-4737-89d5-4489af549f74_918dc700-22db-439f-9cf2-eae42f34f3b6.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 17_9123cdf0-9e2f-439f-ac7d-cd0f59dc8e52_031009a1-b201-49de-86b2-f88eb547c6aa_0d26a2c7-afd7-4db2-83a2-6d2a151b5aef_f9719b26-ca9a-47d9-8438-a1f0eb73c0eb.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 18_479f7889-3321-4302-a753-a739c6f46a30_049ff83d-5392-4dae-91cf-80eed1bb5414_7d0ebefb-becc-4c32-ba67-4b4097141b4d_092b060b-2e1f-4c8b-b17d-2d35b15a5f90.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 19_a1a568cc-a22f-44fd-bfb5-546d3e9046a8_b8694f5b-733a-42c0-afc2-7b57af8d1226_826bbc6b-4d28-4c89-8dfb-88211e82fbb3_e0ffd248-c593-417c-b579-a24f0214944d.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "effect",
+            "severity": "info",
+            "message": "Imported static Gaussian Blur on layer_1.layer_1.layer_2.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_2.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_2.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_3.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_3.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_4.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_4.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_5.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_5.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_6.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_6.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_7.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_7.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_8.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_8.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_9.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_9.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_10.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_10.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_11.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_11.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_12.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_12.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_13.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_13.layer_1.textNode.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-04-imported",
+          "sceneKind": "imported",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": false,
+            "meanFractionBeyond": null,
+            "capturedScheduled": 0,
+            "expectedScheduled": 0,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        },
+        {
+          "id": "LOT-04-compiled",
+          "sceneKind": "compiled",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": false,
+            "meanFractionBeyond": null,
+            "capturedScheduled": 0,
+            "expectedScheduled": 0,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "SAMPLED_OR_QUARANTINED",
+      "materialReview": "NOT_RUN"
+    },
+    {
+      "id": "LOT-05",
+      "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+      "productionImport": {
+        "ok": true,
+        "fidelity": "partial",
+        "counts": {
+          "exact": 25,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 12
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Matte source layer was inventoried and not lowered.",
+            "count": 4
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte type 1 was inventoried and not lowered.",
+            "count": 4
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte content is withheld so it is not drawn unmasked.",
+            "count": 4
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_1.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_1.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_1.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_2.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_3.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_4.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_4.Group2.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_5.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_6.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_8.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_9.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_9.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_10.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_10.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_1.layer_10.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_12.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_13.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_13.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_14.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_14.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_1.layer_14.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp comp_1_b5ecb9f2-c646-427e-b2f5-78b5e5fc1843_e1a8e115-295d-4b29-a956-cd76d94085fc_a396d872-917c-4cf4-b58d-d3ec7f1d3528_3d3fc3d7-2daf-413c-9036-1daf216a30ee_b3b1b0de-23a3-4bd2-92b1-7ade8497a042.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_2.RectShape1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "frame-timing",
+            "severity": "info",
+            "message": "Converted composition frames 0\u2013241 at 60fps to 4016.6666666666665ms.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-05-imported",
+          "sceneKind": "imported",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": false,
+          "visualWindow": {
+            "status": "BLOCKED",
+            "numericPass": false,
+            "complete": false,
+            "meanFractionBeyond": null,
+            "capturedScheduled": 0,
+            "expectedScheduled": 0,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        },
+        {
+          "id": "LOT-05-compiled",
+          "sceneKind": "compiled",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": false,
+          "visualWindow": {
+            "status": "BLOCKED",
+            "numericPass": false,
+            "complete": false,
+            "meanFractionBeyond": null,
+            "capturedScheduled": 0,
+            "expectedScheduled": 0,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "SAMPLED_OR_QUARANTINED",
+      "materialReview": "NOT_RUN"
+    },
+    {
+      "id": "LOT-06",
+      "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+      "productionImport": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 67,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.layer_3.layer_2.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.layer_2.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.layer_3.layer_2.layer_1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.layer_2.layer_1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group4.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group3.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_5.Group1.Group1.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_5.Group1.Group1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_17.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_17.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_17.layer_18.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_17.layer_18.layer_19.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path2.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_7.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_7.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_8.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_8.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_9.Group1.Path1.commands.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-06-imported",
+          "sceneKind": "imported",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": true,
+            "meanFractionBeyond": 0.019119325488683125,
+            "capturedScheduled": 24,
+            "expectedScheduled": 24,
+            "capturedExtra": 3,
+            "expectedExtra": 3,
+            "materialReview": "NOT_RUN"
+          }
+        },
+        {
+          "id": "LOT-06-compiled",
+          "sceneKind": "compiled",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": true,
+            "meanFractionBeyond": 0.019119325488683125,
+            "capturedScheduled": 24,
+            "expectedScheduled": 24,
+            "capturedExtra": 3,
+            "expectedExtra": 3,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "FULL_SCHEDULED_PLUS_SELECTED_SUBFRAMES",
+      "materialReview": "NOT_RUN"
+    },
+    {
+      "id": "LOT-07",
+      "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+      "productionImport": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 49,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_1.Shape_5.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_1.Shape_5.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_1.Shape_5.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_2.Shape_55.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_2.Shape_55.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_2.Shape_55.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_3.Shape_6.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_3.Shape_6.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_3.Shape_6.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.Shape1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.Shape1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_5.Shape_1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_5.Shape_1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_5.Shape_1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group1.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group2.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group2.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group3.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group3.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group4.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group4.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group5.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group5.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group6.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group6.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group7.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group7.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group8.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group8.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group9.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group9.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group10.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group10.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group11.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group11.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group12.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group12.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group13.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group13.Path1.",
+            "count": 1
+          }
+        ]
+      },
+      "conversionStatus": "KNOWN_LOSS",
+      "roundTripStatus": "PASS",
+      "routes": [
+        {
+          "id": "LOT-07-imported",
+          "sceneKind": "imported",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": true,
+            "meanFractionBeyond": 0.05307370833333333,
+            "capturedScheduled": 150,
+            "expectedScheduled": 150,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        },
+        {
+          "id": "LOT-07-compiled",
+          "sceneKind": "compiled",
+          "executionRoute": "production",
+          "referenceStatus": "PASS",
+          "nativeStatus": "PASS",
+          "referenceRepeatIdentical": true,
+          "visualWindow": {
+            "status": "FAIL",
+            "numericPass": false,
+            "complete": true,
+            "meanFractionBeyond": 0.05307370833333333,
+            "capturedScheduled": 150,
+            "expectedScheduled": 150,
+            "capturedExtra": 5,
+            "expectedExtra": 5,
+            "materialReview": "NOT_RUN"
+          }
+        }
+      ],
+      "coverageStatus": "FULL_SCHEDULED_PLUS_SELECTED_SUBFRAMES",
+      "materialReview": "FAIL: visible stroke/paint differences across reviewed full-window contact sheets"
+    }
+  ]
+}

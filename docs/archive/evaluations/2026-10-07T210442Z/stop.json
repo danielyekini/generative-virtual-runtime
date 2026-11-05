@@ -1,0 +1,54 @@
+{
+  "runId": "2026-10-07T210442Z",
+  "stoppedAt": "2026-10-07T21:15:00Z",
+  "status": "budget-exhausted",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "reason": "Operator-named visual causes for Wave and Punches improved materially in two implement cycles. Celebrations mid-cycle and residual LOT-06/LOT-07 morph/pose mismatches remain. Profile gate not met; wall/cycle budget used for two verified causes.",
+  "implementCyclesUsed": 2,
+  "causes": [
+    {
+      "id": "paint.gradientStroke",
+      "attempts": 1,
+      "outcome": "improved",
+      "fixtures": ["LOT-07"],
+      "measurement": {
+        "before": { "q50": { "meanDistance": 102.624, "fractionBeyond": 0.55139 } },
+        "after": { "q50": { "meanDistance": 19.476, "fractionBeyond": 0.14551 } }
+      }
+    },
+    {
+      "id": "lottie.solidPlacement",
+      "attempts": 1,
+      "outcome": "improved",
+      "fixtures": ["LOT-06"],
+      "measurement": {
+        "before": { "q50": { "meanDistance": 264.291, "fractionBeyond": 0.68549 } },
+        "after": { "q50": { "meanDistance": 3.206, "fractionBeyond": 0.02960 } }
+      }
+    }
+  ],
+  "notAttempted": [
+    {
+      "id": "visual.midCycle",
+      "fixtures": ["LOT-01"],
+      "note": "Operator-named Celebrations mid-cycle discrepancy; deferred after two visual cycles."
+    }
+  ],
+  "nextAction": {
+    "cause": "visual.midCycle",
+    "fixtures": ["LOT-01"],
+    "alternate": "Residual LOT-06 pose mismatch or LOT-07 mid-window morph; or compositing.matte for LOT-02/LOT-05 if operator restores that priority.",
+    "evidenceNeeded": "Full-window or denser mid-cycle samples for LOT-01; diagnose confetti transform/timing vs paint AA."
+  },
+  "implementation": {
+    "gitHead": "797a4301656d3382296f208823cf2acf18bcb48f",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T210442Z/source-snapshot/",
+    "languages": {
+      "motionscript": "0.4.0",
+      "sceneIr": "0.4.0",
+      "wireVersion": "0.2"
+    }
+  }
+}

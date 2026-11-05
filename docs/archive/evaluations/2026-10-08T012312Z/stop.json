@@ -1,0 +1,24 @@
+{
+  "runId": "2026-10-08T012312Z",
+  "status": "budget-exhausted",
+  "stoppedAt": "2026-10-08T07:15:47.602552+00:00",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "reason": "60-minute bound expired; restored last browser-verified source checkpoint before finalisation. Time discontinuity/overrun retained explicitly.",
+  "nextCause": {
+    "id": "visual.wave.multipleStrokeLoss",
+    "phase": "A",
+    "attempts": 1,
+    "remainingAttempts": 2,
+    "linkedFinding": "visual.wave.residualPaintAndGeometry",
+    "expectedEvidence": "Both stroke passes in source order; source/direct/compiled full-window captures and regression checks. Diagnose transformed gradient coordinate space separately; no unverified language change."
+  },
+  "attemptHistory": "loop.json; history is not reset",
+  "implementation": {
+    "head": "65c04025082f8f88ae6e7af7f39427c585064745",
+    "finalSnapshot": "source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "source-snapshot/final-files.json",
+    "browserTestedSnapshot": "source-snapshot/tree/emitter-verified-source.tar.gz",
+    "unverifiedAttemptReverted": true
+  }
+}

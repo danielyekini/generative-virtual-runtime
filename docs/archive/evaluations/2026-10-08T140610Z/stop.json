@@ -1,0 +1,33 @@
+{
+  "runId": "2026-10-08T140610Z",
+  "status": "budget-exhausted",
+  "stoppedAt": "2026-10-08T15:08:19.064275+00:00",
+  "elapsedMinutes": 65.30340746666667,
+  "deadline": "2026-10-08T15:06:10.808327+00:00",
+  "budgetOverrun": true,
+  "reason": "The 60-minute hard stop was missed while capture and final evidence recording were in progress. All native windows completed, but this invocation fails its wall-time budget. No further implementation was attempted.",
+  "nextCause": {
+    "id": "visual.layerPaintOrder",
+    "phase": "A",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "affectedFixtures": [
+      "LOT-01"
+    ],
+    "ownerBoundary": "format-lottie paint parent versus transform parent lowering",
+    "expectedEvidence": "Use published transform.parent to retain global source layer paint order independently of transform hierarchy; preserve precomp opacity/timing and actual source matrices. Verify remaining contours, source/direct/compiled routes and all original windows. Do not treat sampled reordering as resolved."
+  },
+  "implementation": {
+    "head": "a850d655dc702ed15b03e931947022e15f5b760c",
+    "finalSnapshot": "source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "source-snapshot/final-files.json",
+    "uncommitted": true
+  },
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL",
+  "coverageStatus": "FULL_NATIVE_CAPTURE_NON_QUARANTINED; LOT03_NATIVE_QUARANTINED; LOT05_REFERENCE_BLOCKED",
+  "finalizedAt": "2026-10-08T15:11:29.012775+00:00",
+  "captureCompletedAt": "2026-10-08T15:07:04.702748+00:00"
+}

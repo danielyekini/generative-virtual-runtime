@@ -1,0 +1,31 @@
+STATUS	partial
+COUNTS	exact	18	approximated	0	dropped	0	unsupported	11
+IMPORT_UNSUPPORTED	error	unsupported	layer_1.Shape_5	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_1.Shape_5	Shape item gs is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_2.Shape_55	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_2.Shape_55	Shape item gs is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_3.Shape_6	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_3.Shape_6	Shape item gs is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_3.Shape_6	Shape item gs is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.Shape1	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_4.Group1	Shape item gs is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_5.Shape_1	Animated path geometry is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	error	unsupported	layer_5.Shape_1	Shape item gs is outside the v0.1 subset.
+IMPORT_EXACT	info	exact	layer_6.Group1.Path1	Imported path layer_6.Group1.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group2.Path1	Imported path layer_6.Group2.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group3.Path1	Imported path layer_6.Group3.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group4.Path1	Imported path layer_6.Group4.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group5.Path1	Imported path layer_6.Group5.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group6.Path1	Imported path layer_6.Group6.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group7.Path1	Imported path layer_6.Group7.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group8.Path1	Imported path layer_6.Group8.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group9.Path1	Imported path layer_6.Group9.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group10.Path1	Imported path layer_6.Group10.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group11.Path1	Imported path layer_6.Group11.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group12.Path1	Imported path layer_6.Group12.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group13.Path1	Imported path layer_6.Group13.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group14.Path1	Imported path layer_6.Group14.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group15.Path1	Imported path layer_6.Group15.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group16.Path1	Imported path layer_6.Group16.Path1.
+IMPORT_EXACT	info	exact	layer_6.Group17.Path1	Imported path layer_6.Group17.Path1.
+IMPORT_EXACT	info	exact		Converted composition frames 0–150 at 30fps to 5000ms.

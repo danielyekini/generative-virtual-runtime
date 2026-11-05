@@ -1,0 +1,312 @@
+{
+  "ok": true,
+  "fidelity": "partial",
+  "counts": {
+    "exact": 20,
+    "approximated": 16,
+    "dropped": 0,
+    "unsupported": 18
+  },
+  "groups": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "rc.r",
+      "severity": "error",
+      "message": "Rounded rectangle corners are outside the v0.1 subset.",
+      "count": 9
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "tm",
+      "severity": "error",
+      "message": "Shape item tm is outside the v0.1 subset.",
+      "count": 4
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "gf",
+      "severity": "error",
+      "message": "Shape item gf is outside the v0.1 subset.",
+      "count": 2
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "layer",
+      "severity": "error",
+      "message": "Layer type 5 is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "layer",
+      "severity": "error",
+      "message": "Layer type 0 is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_3.transform.scale.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_3.transform.scale.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_3.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_3.layer_2.Shape1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_4.transform.position.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_4.transform.position.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_4.transform.scale.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_4.transform.scale.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_4.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_5.transform.position.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_5.transform.position.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_5.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_6.transform.position.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_6.transform.position.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_6.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_7.transform.position.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_7.transform.position.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_7.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_18.transform.scale.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_18.transform.scale.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_18.layer_11.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_18.layer_11.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_18.layer_13.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_18.layer_13.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_18.layer_15.transform.position.x was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_APPROXIMATED",
+      "feature": "easing",
+      "severity": "warning",
+      "message": "Bezier easing on layer_18.layer_15.transform.position.y was mapped to Scene IR easing names.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_18.layer_15.Ellipse2.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_18.layer_15.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "gs",
+      "severity": "error",
+      "message": "Shape item gs is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_19.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_19.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_19.Ellipse2.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_20.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_20.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_20.Ellipse1.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_21.Rectangle1.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–226 at 30fps to 7533.333333333333ms.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 127633,
+    "name": "Main Scene"
+  }
+}

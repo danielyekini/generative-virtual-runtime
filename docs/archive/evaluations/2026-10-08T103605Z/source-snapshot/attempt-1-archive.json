@@ -1,0 +1,14 @@
+{
+  "path": "tree/attempt-1-source.tar.gz",
+  "sha256": "0287d090b1159bf2fc5fbbf2e07623716b39729224d3b09360bcf13a2504a7ad",
+  "files": 1713,
+  "exclusions": [
+    "credentials",
+    "disposable dependencies/build/caches",
+    "work scratch",
+    "evaluation/evidence scratch",
+    "current run to avoid recursion",
+    "recursive bulk source archives"
+  ],
+  "trackedDeleted": []
+}

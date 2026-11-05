@@ -1,0 +1,4 @@
+STATUS	failed
+COUNTS	conversion	exact	0	approximated	0	dropped	0	unsupported	1
+GROUP	IMPORT_LIMIT	fatal	unsupported	1	Source exceeds the import size limit.
+LOC	1:1

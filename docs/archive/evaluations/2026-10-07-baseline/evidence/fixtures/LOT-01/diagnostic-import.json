@@ -1,0 +1,22 @@
+{
+  "note": "Not the production importSource route. Used only because production returned no Scene IR, so later stages could be inspected. Outcomes from this object are not a native pass.",
+  "fidelity": "failed",
+  "diagnostics": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "layer",
+      "severity": "fatal",
+      "message": "Layer type 0 is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "scene",
+      "severity": "fatal",
+      "message": "No supported layers were found.",
+      "count": 1
+    }
+  ],
+  "sceneProduced": false,
+  "validation": null
+}

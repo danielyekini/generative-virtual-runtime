@@ -1,0 +1,14 @@
+{
+  "archive": "tree/final-source.tar.gz",
+  "sha256": "e54894ac392cf4788b67033c7ad7859213b416e7ecb5f040ccb6cbf8f4ed10e7",
+  "files": 1458,
+  "createdAt": "2026-10-08T15:08:35.938601+00:00",
+  "exclusions": [
+    "credentials",
+    "disposable dependencies/builds",
+    "capture evidence (retained separately)",
+    "historical and current recursive snapshots",
+    "current reporting directory"
+  ],
+  "initialNote": null
+}

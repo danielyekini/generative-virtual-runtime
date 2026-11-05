@@ -1,0 +1,576 @@
+{
+  "note": "Not the production importSource route. Used only because production returned no Scene IR, so later stages could be inspected. Outcomes from this object are not a native pass.",
+  "fidelity": "partial",
+  "diagnostics": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "mm",
+      "severity": "error",
+      "message": "Shape item mm is outside the supported subset.",
+      "count": 42
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "matte",
+      "severity": "error",
+      "message": "Track matte type 1 was inventoried and not lowered.",
+      "count": 18
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "matte",
+      "severity": "error",
+      "message": "Track matte content is withheld so it is not drawn unmasked.",
+      "count": 18
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "animated-fill-color",
+      "severity": "error",
+      "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+      "count": 14
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "matte",
+      "severity": "error",
+      "message": "Matte source layer was inventoried and not lowered.",
+      "count": 14
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "effect",
+      "severity": "error",
+      "message": "Effect stack (Drop Shadow) was inventoried and not lowered.",
+      "count": 7
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_2.transform.scale.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_2.transform.scale.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_2.Rectangle9.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_2.layer_1.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_2.layer_1.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_3.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_3.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_3.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_3.layer_1.A.A.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_3.layer_1.A.A2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "text",
+      "severity": "info",
+      "message": "Imported text layer_1.layer_3.layer_2.textNode.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_3.layer_3.Frame8.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_3.layer_4.Frame9.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "precomp",
+      "severity": "info",
+      "message": "Expanded precomp 2_b865fdf4-d5ab-4627-9e33-ef9999c49dc9_141b3ba0-9ba4-41ed-b7c7-de567012b47c_008c7713-2134-42bd-a222-ed1be898c001.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_5.Rectangle8.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_5.layer_4.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_7.Rectangle7.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_6.Vector.Path3.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_6.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_7.layer_6.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_9.Rectangle13.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_9.layer_8.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_9.layer_8.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_11.Rectangle10.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_11.layer_10.Vector.Path6.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_11.layer_10.Vector.Path5.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_11.layer_10.Vector.Path4.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_11.layer_10.Vector.Path3.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_11.layer_10.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_11.layer_10.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_13.Rectangle11.RectanglePath1_strokes.pass_1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_13.Rectangle11.RectanglePath1_strokes.pass_2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_13.layer_12.Vector.Path4.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_13.layer_12.Vector.Path3.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_13.layer_12.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_13.layer_12.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_1.layer_15.Rectangle12.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_15.layer_14.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_1.layer_15.layer_14.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_1.layer_16.Ellipse4.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_1.layer_17.Ellipse3.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "effect",
+      "severity": "info",
+      "message": "Imported static Gaussian Blur on layer_1.layer_22.layer_18.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_22.layer_18.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_1.layer_19.Ellipse3.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_20.transform.scale.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_1.layer_20.transform.scale.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "ellipse",
+      "severity": "info",
+      "message": "Imported ellipse layer_1.layer_20.Ellipse3.EllipsePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "precomp",
+      "severity": "info",
+      "message": "Expanded precomp 1_a5967794-43e2-4c90-9a79-8826454e1ffa_03741665-aea9-43ab-9e5c-0fcfcbcf19e5_f2506e68-c75f-412f-b51d-ad8d047dc282.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.layer_2.Rectangle9.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_2.layer_1.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_2.layer_1.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_2.layer_4.transform.scale.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "scale",
+      "severity": "info",
+      "message": "Imported motion on layer_2.layer_4.transform.scale.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.layer_4.Rectangle8.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_4.layer_3.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_2.layer_5.transform.position.x.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "position",
+      "severity": "info",
+      "message": "Imported motion on layer_2.layer_5.transform.position.y.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_2.layer_5.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "text",
+      "severity": "info",
+      "message": "Imported text layer_2.layer_5.layer_1.textNode.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_5.layer_2.T.T.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.layer_5.layer_3.Frame8.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.layer_5.layer_4.Frame8.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "precomp",
+      "severity": "info",
+      "message": "Expanded precomp 4_42f1dbb0-907e-4322-b3cf-3b191b3151c2_37feb155-9c08-4ae2-92c9-28b0bb8a896e_310215ef-8093-43bc-8f19-034e0c05bcb4.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.layer_7.Rectangle7.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_7.layer_6.Vector.Path3.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_7.layer_6.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_7.layer_6.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.layer_9.Rectangle13.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_9.layer_8.Vector.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_9.layer_8.Vector.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rectangle",
+      "severity": "info",
+      "message": "Imported rectangle layer_2.layer_11.Rectangle10.RectanglePath1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_11.layer_10.Vector.Path6.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_11.layer_10.Vector.Path5.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.layer_11.layer_10.Vector.Path4.",
+      "count": 1
+    }
+  ],
+  "sceneProduced": true,
+  "validation": {
+    "ok": false,
+    "diagnostics": [
+      {
+        "code": "RESOURCE_LIMIT",
+        "message": "Node count 620 exceeds 500."
+      }
+    ]
+  }
+}

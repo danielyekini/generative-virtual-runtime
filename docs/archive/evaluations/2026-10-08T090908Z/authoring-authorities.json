@@ -1,0 +1,67 @@
+[
+  {
+    "path": "docs/authoring/README.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "ef1ef89e852db7ef442c8b44e4a9edc87ccc2f54bde9581bbb28d5801f1c258d"
+  },
+  {
+    "path": "docs/authoring/sample-registry-spec.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "7c3cf732d56ae9c191972dae80955b1ad0cdae89978a298a69bf1594dd40cb7e"
+  },
+  {
+    "path": "docs/workflows/authoring-loop.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "e46036674c9077adcd5f8ce2b34945fcf2deb6e9735ce32d39389547a29546dc"
+  },
+  {
+    "path": "docs/authoring/documentation-policy.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "4cc421d925a37621acc8610cb35ddeb534b885552c1263a5ea7dfe5559979abb"
+  },
+  {
+    "path": "docs/authoring/evaluation-spec.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "a1dc5750daa80e9774e3f3e9f54ee7a9214ae4fee3cb9e1421c66e5c5ef7b57a"
+  },
+  {
+    "path": "docs/languages/design-goals.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "aa650b8de6a31ecc8f5afe514966e278786c8f70164d509e0b9fe23e28091cdf"
+  },
+  {
+    "path": "docs/languages/authoring-guide.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "0ea49b23f841501a180468c4af8b504144d2e29f1654e49a5fdb714fee8823ad"
+  },
+  {
+    "path": "docs/languages/evolution-policy.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "0c1f77ec9be989e4ad4838afa38fda419ddfa5ff5c2696486f4f601400ce9dd2"
+  },
+  {
+    "path": "docs/evaluations/templates/fidelity-report.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "12cf85def19178bb4012597d18c1ff9e9b487c41328772d66172d4c0fa291438"
+  },
+  {
+    "path": "samples/motionscript/README.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "67d8b1eb85c6605213c7762cc0ae97257df76b6ba58900bbc5d26319b3e61931"
+  },
+  {
+    "path": "samples/motionscript/candidate-inventory.json",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "86f91e6b6bfbd7df60848f9d40e6c133027a6fdb54a8b1e8bc14c90597c7cf81"
+  },
+  {
+    "path": "evaluation/authoring/README.md",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "c7e3010dc1dae9722453b485fe9be8e8bcb25d31e9c7413ee3d0aa93f66a52a9"
+  },
+  {
+    "path": "evaluation/authoring/manifests/samples.json",
+    "originCommit": "41b76e558bd38e422b6f0133e322c530da26d218",
+    "sha256": "95ebdc30299a92326a05e7945f06924c4306cbdc8051186e373bcc5f7fdc3c22"
+  }
+]

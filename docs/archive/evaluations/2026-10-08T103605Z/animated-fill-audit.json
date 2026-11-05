@@ -1,0 +1,123 @@
+[
+  {
+    "id": "LOT-00",
+    "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+    "productionOk": true,
+    "fidelity": "exact",
+    "animatedFillLoss": []
+  },
+  {
+    "id": "LOT-01",
+    "sourceSha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+    "productionOk": true,
+    "fidelity": "exact",
+    "animatedFillLoss": []
+  },
+  {
+    "id": "LOT-02",
+    "sourceSha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+    "productionOk": true,
+    "fidelity": "partial",
+    "animatedFillLoss": []
+  },
+  {
+    "id": "LOT-03",
+    "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+    "productionOk": false,
+    "fidelity": "failed",
+    "animatedFillLoss": []
+  },
+  {
+    "id": "LOT-04",
+    "sourceSha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+    "productionOk": true,
+    "fidelity": "partial",
+    "animatedFillLoss": []
+  },
+  {
+    "id": "LOT-05",
+    "sourceSha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+    "productionOk": true,
+    "fidelity": "partial",
+    "animatedFillLoss": []
+  },
+  {
+    "id": "LOT-06",
+    "sourceSha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+    "productionOk": true,
+    "fidelity": "partial",
+    "animatedFillLoss": [
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_3.shapes[0].it[1].c"
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_4.shapes[0].it[1].c"
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_6.shapes[0].it[0].it[2].c"
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_6.shapes[0].it[1].it[1].c"
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_6.shapes[1].it[1].c"
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_17.shapes[0].it[1].c"
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_18.shapes[0].it[1].c"
+      },
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "severity": "error",
+        "fidelity": "unsupported",
+        "feature": "animated-fill-color",
+        "message": "Animated solid fill colour is not represented by the current language channels; its paint is not lowered.",
+        "target": "layer_19.shapes[0].it[1].c"
+      }
+    ]
+  },
+  {
+    "id": "LOT-07",
+    "sourceSha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+    "productionOk": true,
+    "fidelity": "exact",
+    "animatedFillLoss": []
+  }
+]

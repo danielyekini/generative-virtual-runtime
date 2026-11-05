@@ -1,0 +1,190 @@
+{
+  "runId": "2026-10-07T194646Z",
+  "startedAt": "2026-10-07T19:46:46Z",
+  "stage": "stop",
+  "comparedWith": "2026-10-07T183125Z",
+  "profile": "every Lottie construct in the corpus representable with nodes, paints, tracks, operators, timing scopes, and render scopes",
+  "budgets": {
+    "maxAttemptsPerCause": 3,
+    "maxImplementCycles": 8,
+    "implementCyclesUsed": 1,
+    "unchangedMeasurementStop": 2
+  },
+  "implementation": {
+    "gitHead": "71f6e95100a773373e5cf1064a38eff48ab29a5f",
+    "gitShort": "71f6e95",
+    "gitSubject": "Allow evaluation pins to match ancestor commits.",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T194646Z/source-snapshot/",
+    "pinAncestorCheck": {
+      "pin": "920f1e29684861e1d1c085ec083ccbeb4a1e8867",
+      "isAncestorOfHead": true
+    }
+  },
+  "languages": {
+    "motionscript": {
+      "current": "0.3.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    },
+    "sceneIr": {
+      "current": "0.3.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    }
+  },
+  "packages": {
+    "@gvr/schema": "0.1.0",
+    "@gvr/compiler": "0.1.0",
+    "@gvr/runtime": "0.1.0",
+    "@gvr/canvas-renderer": "0.1.0",
+    "@gvr/motionscript-emitter": "0.1.0",
+    "@gvr/format-lottie": "0.1.0",
+    "@gvr/format-import-core": "0.1.0"
+  },
+  "referencePlayer": {
+    "lottieWeb": "5.13.0",
+    "seek": "goToAndStop(frame, true)",
+    "dpr": 1,
+    "background": "#101014",
+    "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "chromeVersion": "Google Chrome 154.0.8037.98"
+  },
+  "tolerances": {
+    "number": 0.001,
+    "color": 0.00392156862745098,
+    "colorNote": "1/255",
+    "pixel": {
+      "euclideanRgbBeyond": 24,
+      "note": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule."
+    }
+  },
+  "corpus": [
+    {
+      "id": "LOT-00",
+      "path": "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "bytes": 41712,
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9"
+    },
+    {
+      "id": "LOT-01",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+      "fileName": "Celebrations Begin.json",
+      "bytes": 139337,
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d"
+    },
+    {
+      "id": "LOT-02",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
+      "fileName": "Hover Button.json",
+      "bytes": 127633,
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e"
+    },
+    {
+      "id": "LOT-03",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
+      "fileName": "lottie_ex1.json",
+      "bytes": 877884,
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "quarantine": "Production 512 KiB ceiling. Diagnostic parse is not a pass."
+    },
+    {
+      "id": "LOT-04",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+      "fileName": "lottie_ex2.json",
+      "bytes": 512240,
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601"
+    },
+    {
+      "id": "LOT-05",
+      "path": "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
+      "fileName": "lottie_simple_ex1.json",
+      "bytes": 191525,
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2"
+    },
+    {
+      "id": "LOT-06",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+      "fileName": "Punches.json",
+      "bytes": 112565,
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1"
+    },
+    {
+      "id": "LOT-07",
+      "path": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+      "fileName": "Wave Animation.json",
+      "bytes": 31682,
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e"
+    },
+    {
+      "id": "SVG-01",
+      "path": "/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg",
+      "fileName": "Celebrations Begin.svg",
+      "bytes": 183327,
+      "sha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d"
+    },
+    {
+      "id": "SVG-02",
+      "path": "/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg",
+      "fileName": "Jumping Jack.svg",
+      "bytes": 270580,
+      "sha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18"
+    }
+  ],
+  "diagnosedCauses": [
+    {
+      "id": "geometry.pathMorph",
+      "fixtures": ["LOT-06", "LOT-07"],
+      "rank": 1,
+      "notes": [
+        "LOT-06: 24 unsupported sh.animated (false topology mismatch; keys are frame.s[0].v)",
+        "LOT-07: 5 unsupported sh.animated (same)",
+        "Needs Scene IR path track valueType + new language version 0.3.0"
+      ]
+    },
+    {
+      "id": "compositing.matte",
+      "fixtures": ["LOT-02", "LOT-05"],
+      "rank": 2,
+      "notes": ["LOT-02: 9 unsupported mattes; LOT-05: 12 unsupported mattes"]
+    },
+    {
+      "id": "effect.gaussianBlur.animated",
+      "fixtures": ["LOT-04"],
+      "rank": 3,
+      "notes": ["LOT-04: 17 unsupported animated Gaussian Blur"]
+    },
+    {
+      "id": "size.ceiling.512KiB",
+      "fixtures": ["LOT-03"],
+      "rank": 4,
+      "notes": ["Quarantined; policy change only"]
+    }
+  ],
+  "cause": {
+    "id": "geometry.pathMorph",
+    "fixtures": ["LOT-06", "LOT-07"],
+    "attempts": 1,
+    "versionDecision": "Publish MotionScript/Scene IR 0.3.0; wire stays 0.2 gated by requiredCapabilities geometry.pathMorph"
+  },
+  "attempts": [
+    {
+      "cause": "geometry.pathMorph",
+      "attempt": 1,
+      "summary": "Publish 0.3.0 path track valueType; fix Lottie s[0] topology; lower matching animated sh to path.commands tracks",
+      "result": "improved",
+      "afterCounts": {
+        "LOT-06": { "status": "exact", "exact": 67, "unsupported": 0 },
+        "LOT-07": { "status": "exact", "exact": 23, "unsupported": 0 }
+      }
+    }
+  ],
+  "stop": {
+    "status": "blocker",
+    "nextCause": "compositing.matte",
+    "implementCyclesUsed": 1,
+    "exactFixturesNow": ["LOT-00", "LOT-01", "LOT-06", "LOT-07"]
+  }
+}
+

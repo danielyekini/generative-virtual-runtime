@@ -1,0 +1,46 @@
+{
+  "runId": "2026-10-07T211534Z",
+  "stoppedAt": "2026-10-07T21:25:15Z",
+  "status": "blocker",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "visualGate": "VISUAL_UNVERIFIED",
+  "reason": "Phase A cause visual.midCycle improved: geometry.spatialCurve now samples by arc length (AE/lottie-web). LOT-01 q25 fractionBeyond 0.033→0.011 and meanDistance 7.0→1.8. Residual mid-cycle mismatch remains (native-heavier halos / subpixel). Absolute aggregate visual acceptance thresholds are not documented, so the profile cannot be certified PASS. LOT-06/07 residuals unchanged. npm test 164 and typecheck passed.",
+  "implementCyclesUsed": 1,
+  "causes": [
+    {
+      "id": "visual.midCycle",
+      "attempts": 1,
+      "outcome": "improved",
+      "fixtures": ["LOT-01"],
+      "rootCause": "spatialCubicPoint used bezier parameter; After Effects / lottie-web advance by arc length",
+      "measurement": {
+        "before": {
+          "q25": { "meanDistance": 7.025, "fractionBeyond": 0.03295 },
+          "q50": { "meanDistance": 4.764, "fractionBeyond": 0.02162 }
+        },
+        "after": {
+          "q25": { "meanDistance": 1.789, "fractionBeyond": 0.01066 },
+          "q50": { "meanDistance": 2.181, "fractionBeyond": 0.01098 }
+        }
+      }
+    }
+  ],
+  "nextAction": {
+    "cause": "visual.midCycle.residual",
+    "fixtures": ["LOT-01"],
+    "alternate": "LOT-07 mid-window morph/colour residual, or LOT-06 pose residual, or compositing.matte for LOT-02/LOT-05; or design decision on aggregate visual gate thresholds",
+    "evidenceNeeded": "Classify residual as AA/stroke vs remaining transform error; denser mid-cycle samples; optional gate calibration (aggregate/local-region thresholds)"
+  },
+  "implementation": {
+    "gitHead": "441e2048e79ca94e668beec6e8e9c69cf4ed0b3a",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T211534Z/source-snapshot/",
+    "languages": {
+      "motionscript": "0.4.0",
+      "sceneIr": "0.4.0",
+      "wireVersion": "0.2"
+    },
+    "languageBump": "none — completing published geometry.spatialCurve sampling (0.2.0 contract)"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-07T22:20:06.213Z",
+  "repository": "/workspace/generative-visual-runtime",
+  "gitHead": "f609273cea310b64733a535642e9e7f17d22a88a",
+  "gitStatus": "## work\n?? docs/evaluations/2026-10-07T221955Z/",
+  "gitLog": "f609273 Improve LOT-01 mid-cycle fidelity with spatial-Z arc-length and importer fixes.",
+  "node": "v24.19.0",
+  "platform": "linux x64",
+  "npm": "11.9.0",
+  "chrome": "Command failed: \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --version",
+  "lottieWeb": "5.13.0",
+  "versions": {
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0",
+    "ir": "0.1",
+    "dsl": "0.1",
+    "svgStaticDurationMs": 1000
+  },
+  "commands": [
+    "npx tsx evaluation/harness/run-pipeline.ts",
+    "npx tsx evaluation/harness/drive-browser.ts",
+    "node evaluation/harness/write-report.mjs"
+  ]
+}

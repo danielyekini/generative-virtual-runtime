@@ -1,0 +1,267 @@
+{
+  "runId": "2026-10-08T010229Z",
+  "startedAt": "2026-10-08T01:02:29.896931+00:00",
+  "stoppedAt": "2026-10-08T01:06:59.053118+00:00",
+  "comparedWith": "2026-10-07T230859Z",
+  "implementation": {
+    "head": "65c04025082f8f88ae6e7af7f39427c585064745",
+    "ancestorPin": "d492dcbc50d55cad22b8c3a43b9f5cbcfd783a81",
+    "ancestorVerified": true,
+    "initialTreeClean": true,
+    "finalTreeClean": false,
+    "initialSnapshot": "source-snapshot/tree/initial-source.tar.gz",
+    "finalSnapshot": "source-snapshot/tree/final-source.tar.gz",
+    "snapshotManifest": "source-snapshot/final-files.json",
+    "executionSourcesChanged": false
+  },
+  "languages": {
+    "motionscript": {
+      "current": "0.5.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    },
+    "scene-ir": {
+      "current": "0.5.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    }
+  },
+  "packageVersions": {
+    "packages/canvas-renderer": "0.1.0",
+    "packages/compiler": "0.1.0",
+    "packages/format-import-core": "0.1.0",
+    "packages/format-lottie": "0.1.1",
+    "packages/format-svg": "0.1.0",
+    "packages/motionscript-emitter": "0.1.0",
+    "packages/round-trip": "0.1.0",
+    "packages/runtime": "0.1.0",
+    "packages/schema": "0.1.0"
+  },
+  "registrySha256": "f2dfebfb62c6e71a2a3a0135670401e76ae95884dde13c4953fd37ee07c44954",
+  "gateSettings": {
+    "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+    "numberTolerance": 0.001,
+    "colorTolerance": "1/255",
+    "pixel": {
+      "metric": "euclidean-rgb",
+      "inspectionThreshold": 24,
+      "role": "inspection",
+      "notes": [
+        "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+        "This alone is not a complete PASS rule for the declared profile."
+      ]
+    },
+    "visualCertification": {
+      "status": "VISUAL_UNVERIFIED",
+      "requiredForProfilePass": [
+        "Documented aggregate fractionBeyond (or equivalent) acceptance bound for the declared observation window",
+        "Documented local-region / material-content review rule (missing subject, wrong paint, large pose drift cannot pass on low aggregate alone)",
+        "Alpha / background compositing rules (declared backgrounds #101014 Lottie, #000000 SVG)",
+        "Operator approval of the above bounds"
+      ],
+      "whileUnverified": [
+        "Continue diagnose/implement against inspection metrics and human strip review",
+        "Report VISUAL_UNVERIFIED; do not claim profile visual PASS",
+        "Do not widen inspectionThreshold or invent aggregate bounds after seeing diffs"
+      ]
+    },
+    "reference": {
+      "lottieWeb": "5.13.0",
+      "seek": "goToAndStop(frame, true)",
+      "devicePixelRatio": 1,
+      "lottieBackground": "#101014",
+      "svgBackground": "#000000",
+      "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+    },
+    "corpus": {
+      "root": "fixtures/corpus",
+      "checksums": "fixtures/corpus/SHA256SUMS",
+      "readme": "fixtures/corpus/README.md"
+    }
+  },
+  "profile": {
+    "acceptedFixtures": [
+      "LOT-00",
+      "LOT-01",
+      "LOT-02",
+      "LOT-03",
+      "LOT-04",
+      "LOT-05",
+      "LOT-06",
+      "LOT-07"
+    ],
+    "exclusions": [
+      "SVG-01",
+      "SVG-02"
+    ],
+    "quarantines": [
+      {
+        "id": "LOT-03",
+        "reason": "Inherited production 512 KiB source-size ceiling; not malformed-source evidence"
+      }
+    ],
+    "observationWindow": "Each finite Lottie composition: [ip,op) at source fr, one cycle; boundary/subframe checks required for final gate. Baseline harness sampled only.",
+    "workMode": "Native fidelity then authoring; stop for uncalibrated visual gate as requested"
+  },
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "inScope": true,
+      "quarantined": false,
+      "source": "fixtures/corpus/lottie/LOT-00.json",
+      "bytes": 41712,
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+      "expectedFullWindowFrames": 240
+    },
+    {
+      "id": "LOT-01",
+      "inScope": true,
+      "quarantined": false,
+      "source": "fixtures/corpus/lottie/LOT-01.json",
+      "bytes": 139337,
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+      "expectedFullWindowFrames": 121
+    },
+    {
+      "id": "LOT-02",
+      "inScope": true,
+      "quarantined": false,
+      "source": "fixtures/corpus/lottie/LOT-02.json",
+      "bytes": 127633,
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+      "expectedFullWindowFrames": 226
+    },
+    {
+      "id": "LOT-03",
+      "inScope": true,
+      "quarantined": true,
+      "source": "fixtures/corpus/lottie/LOT-03.json",
+      "bytes": 877884,
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "expectedFullWindowFrames": 427
+    },
+    {
+      "id": "LOT-04",
+      "inScope": true,
+      "quarantined": false,
+      "source": "fixtures/corpus/lottie/LOT-04.json",
+      "bytes": 512240,
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+      "expectedFullWindowFrames": 675
+    },
+    {
+      "id": "LOT-05",
+      "inScope": true,
+      "quarantined": false,
+      "source": "fixtures/corpus/lottie/LOT-05.json",
+      "bytes": 191525,
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+      "expectedFullWindowFrames": 241
+    },
+    {
+      "id": "LOT-06",
+      "inScope": true,
+      "quarantined": false,
+      "source": "fixtures/corpus/lottie/LOT-06.json",
+      "bytes": 112565,
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+      "expectedFullWindowFrames": 24
+    },
+    {
+      "id": "LOT-07",
+      "inScope": true,
+      "quarantined": false,
+      "source": "fixtures/corpus/lottie/LOT-07.json",
+      "bytes": 31682,
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+      "expectedFullWindowFrames": 150
+    },
+    {
+      "id": "SVG-01",
+      "inScope": false,
+      "quarantined": false,
+      "source": "fixtures/corpus/svg/SVG-01.svg",
+      "bytes": 183327,
+      "sha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d",
+      "expectedFullWindowFrames": null
+    },
+    {
+      "id": "SVG-02",
+      "inScope": false,
+      "quarantined": false,
+      "source": "fixtures/corpus/svg/SVG-02.svg",
+      "bytes": 270580,
+      "sha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+      "expectedFullWindowFrames": null
+    }
+  ],
+  "reference": {
+    "browser": "/usr/bin/chromium",
+    "version": "Chromium 151.0.7922.173 (Debian 13)",
+    "lottieWeb": "5.13.0",
+    "DPR": 1,
+    "background": "#101014",
+    "fit": "xMidYMid meet / contain",
+    "seek": "goToAndStop(frame,true)",
+    "subframes": "Pinned lottie-web default; not explicitly overridden by harness",
+    "assetsFonts": "Resource preparation uses DOMLoaded/data_failed and 8-second timeout; full readiness not certified",
+    "controls": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+      "deviceScaleFactor": 1,
+      "lottieWeb": "5.13.0 canvas renderer, loop false, autoplay false, goToAndStop(frame, true)",
+      "lottieControl": {
+        "note": "100x100",
+        "fractionBeyond": 0.08,
+        "timeControlWorks": true
+      },
+      "svgControl": {
+        "method": "SVGSVGElement.setCurrentTime on an inline SMIL fixture, then Page.captureScreenshot",
+        "fractionBeyond": 1,
+        "timeControlWorks": true
+      }
+    },
+    "routes": "Direct IR for LOT-07; compiled IR for other accepted production imports; diagnostic route for refused fixtures; no direct-route PNG set for compiled fixtures"
+  },
+  "validation": {
+    "tests": {
+      "passed": 174,
+      "failed": 0,
+      "log": "evidence/tests-unsandboxed.log"
+    },
+    "typecheck": "PASS",
+    "registry": "PASS (three registry tests in full suite)",
+    "semanticRoutes": "evidence/semantic-routes.json",
+    "initialSandboxFailure": "tsx CLI local socket EPERM; CLI test passed with local IPC. Node --import tsx pipeline succeeded; raw environment subprocess fields EPERM, superseded by independently verified metadata here."
+  },
+  "commands": [
+    "npx tsx evaluation/harness/run-pipeline.ts (sandbox EPERM)",
+    "node --import tsx evaluation/harness/run-pipeline.ts (exit 0)",
+    "npx tsx evaluation/harness/drive-browser.ts (captures complete; lingering driver/Vite processes terminated afterward)",
+    "npm test (sandbox CLI test failed)",
+    "npm test (local IPC: 174 PASS)",
+    "npm run typecheck (exit 0)",
+    "node --import tsx work/check-routes.ts"
+  ],
+  "contractContradictions": [
+    {
+      "artifact": "evaluation/gate-settings.json",
+      "resolution": "whileUnverified permits implementation; current user explicitly requires stop for gate calibration. User instruction takes precedence."
+    },
+    {
+      "artifact": "packages/schema/capabilities/registry.json#paint.gradientStroke",
+      "resolution": "Exact scope expressly drops sibling solid st when gs present; this restricted claim cannot establish whole-fixture no-known-loss conversion for Wave."
+    },
+    {
+      "artifact": "evaluation/evidence/environment.json",
+      "resolution": "Legacy ir/dsl constants report 0.1; authoritative releases are 0.5.0 with wire 0.2. Raw constants are not current language-version metadata."
+    },
+    {
+      "artifact": "docs/evaluations/README.md",
+      "resolution": "Old evidence-location prose points at 220358Z despite newest run 230859Z; use newest linked report and matching implementation pin."
+    },
+    {
+      "artifact": "latest report/stop vs implementation pin",
+      "resolution": "Report retains pre-commit dirty snapshot HEAD 8b052901; next pin names tested committed d492dcb. Current HEAD descends from that pin; intervening changes are evaluation evidence/metadata only."
+    }
+  ]
+}

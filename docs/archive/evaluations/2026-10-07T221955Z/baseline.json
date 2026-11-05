@@ -1,0 +1,340 @@
+{
+  "runId": "2026-10-07T221955Z",
+  "startedAt": "2026-10-07T22:19:55.750446+00:00",
+  "comparedWith": "2026-10-07T220358Z",
+  "head": "f609273cea310b64733a535642e9e7f17d22a88a",
+  "initialTreeClean": true,
+  "invocationTimeBudgetMinutes": 60,
+  "maxImplementationCycles": 8,
+  "maxAttemptsPerCause": 3,
+  "workMode": "native Lottie fidelity then authoring only after fidelity gate",
+  "profile": "original Lottie corpus LOT-00 through LOT-07",
+  "excludedFormats": [
+    "svg"
+  ],
+  "quarantines": [
+    {
+      "fixture": "LOT-03",
+      "reason": "Production 512 KiB ceiling; prior reference exception/empty frames; diagnostic parse is not a pass.",
+      "inheritedFrom": "2026-10-07T215328Z/loop.json and baseline report",
+      "notNewExclusion": true
+    }
+  ],
+  "observationWindow": "one composition cycle at source frame rate, plus boundary/subframe samples",
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "role": "baseline",
+      "format": "lottie",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
+      "evidenceSource": "sources/LOT-00.json",
+      "bytes": 41712,
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+      "width": 1280,
+      "height": 720,
+      "durationMs": 8000,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 240,
+      "capturedFrames": 0
+    },
+    {
+      "id": "LOT-01",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Celebrations Begin.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+      "evidenceSource": "sources/LOT-01.json",
+      "bytes": 139337,
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+      "width": 400,
+      "height": 400,
+      "durationMs": 4033.333333333333,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 121,
+      "capturedFrames": 0
+    },
+    {
+      "id": "LOT-02",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Hover Button.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
+      "evidenceSource": "sources/LOT-02.json",
+      "bytes": 127633,
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+      "width": 1920,
+      "height": 1080,
+      "durationMs": 7533.333333333333,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 226,
+      "capturedFrames": 0
+    },
+    {
+      "id": "LOT-03",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
+      "evidenceSource": "sources/LOT-03.json",
+      "bytes": 877884,
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "width": 1080,
+      "height": 689,
+      "durationMs": 7116.666666666666,
+      "frameRate": 60,
+      "sourceAvailable": false,
+      "scheduledFrames": 427,
+      "capturedFrames": 0
+    },
+    {
+      "id": "LOT-04",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex2.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+      "evidenceSource": "sources/LOT-04.json",
+      "bytes": 512240,
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+      "width": 500,
+      "height": 888.89,
+      "durationMs": 11250,
+      "frameRate": 60,
+      "sourceAvailable": false,
+      "scheduledFrames": 675,
+      "capturedFrames": 0
+    },
+    {
+      "id": "LOT-05",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_simple_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
+      "evidenceSource": "sources/LOT-05.json",
+      "bytes": 191525,
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+      "width": 1080,
+      "height": 1080,
+      "durationMs": 4016.6666666666665,
+      "frameRate": 60,
+      "sourceAvailable": false,
+      "scheduledFrames": 241,
+      "capturedFrames": 0
+    },
+    {
+      "id": "LOT-06",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Punches.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+      "evidenceSource": "sources/LOT-06.json",
+      "bytes": 112565,
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+      "width": 720,
+      "height": 720,
+      "durationMs": 960,
+      "frameRate": 25,
+      "sourceAvailable": false,
+      "scheduledFrames": 24,
+      "capturedFrames": 0
+    },
+    {
+      "id": "LOT-07",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Wave Animation.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+      "evidenceSource": "sources/LOT-07.json",
+      "bytes": 31682,
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+      "width": 400,
+      "height": 400,
+      "durationMs": 5000,
+      "frameRate": 30,
+      "sourceAvailable": false,
+      "scheduledFrames": 150,
+      "capturedFrames": 0
+    }
+  ],
+  "languages": {
+    "motionscript": {
+      "current": "0.5.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    },
+    "scene-ir": {
+      "current": "0.5.0",
+      "wireVersion": "0.2",
+      "packageVersion": "0.1.0"
+    }
+  },
+  "registrySha256": "e144e06199790c213a9eec8b1c143849c65911651e93b3279891b607cc99944b",
+  "priorSnapshotComparison": {
+    "packages/schema/src/types.ts": {
+      "expected": "8817e5e6e97b833915b71e6ca66c14feea93962daefc4865c7dbd368dd8c389b",
+      "actual": "8817e5e6e97b833915b71e6ca66c14feea93962daefc4865c7dbd368dd8c389b",
+      "matches": true
+    },
+    "packages/schema/src/spatial.ts": {
+      "expected": "f4866e9465f687371d5c97dce6fa11098b5c0b09c3cca517c18ea9feef725565",
+      "actual": "f4866e9465f687371d5c97dce6fa11098b5c0b09c3cca517c18ea9feef725565",
+      "matches": true
+    },
+    "packages/schema/src/spatial.test.ts": {
+      "expected": "3c5b68554e9f28dbb8462b014dc99d2fa2a5a4c059aabaa5309047421afa76df",
+      "actual": "3c5b68554e9f28dbb8462b014dc99d2fa2a5a4c059aabaa5309047421afa76df",
+      "matches": true
+    },
+    "packages/schema/src/validate.ts": {
+      "expected": "01712f78a07c34ad7cc9757d2ece70b022b8d238d639862a46e8007167256cf9",
+      "actual": "01712f78a07c34ad7cc9757d2ece70b022b8d238d639862a46e8007167256cf9",
+      "matches": true
+    },
+    "packages/schema/capabilities/registry.json": {
+      "expected": "e144e06199790c213a9eec8b1c143849c65911651e93b3279891b607cc99944b",
+      "actual": "e144e06199790c213a9eec8b1c143849c65911651e93b3279891b607cc99944b",
+      "matches": true
+    },
+    "packages/runtime/src/sample.ts": {
+      "expected": "cf24a40f13643e4200651717aee874f815426d3ed59dc29b4435c93691067a55",
+      "actual": "cf24a40f13643e4200651717aee874f815426d3ed59dc29b4435c93691067a55",
+      "matches": true
+    },
+    "packages/format-lottie/src/property.ts": {
+      "expected": "36cd15271c4a4904073143d0066040a2e9d0a58c75c80bb312f26d50c884732a",
+      "actual": "36cd15271c4a4904073143d0066040a2e9d0a58c75c80bb312f26d50c884732a",
+      "matches": true
+    },
+    "packages/format-lottie/src/model.ts": {
+      "expected": "166e40cd196e9d52a168bd16f32f899f574611a474f81b0cbc6b10dab669d20d",
+      "actual": "166e40cd196e9d52a168bd16f32f899f574611a474f81b0cbc6b10dab669d20d",
+      "matches": true
+    },
+    "packages/format-lottie/src/parse-shapes.ts": {
+      "expected": "3f28af18915e59b2cc051a1f5951623c0610a7b8047a5f40498082e5b4434385",
+      "actual": "3f28af18915e59b2cc051a1f5951623c0610a7b8047a5f40498082e5b4434385",
+      "matches": true
+    },
+    "packages/format-lottie/src/normalise.ts": {
+      "expected": "0c490cb4a51c5be5d348b7fbe150fca2b577bb484e80ba1640b2e31bfa8088b6",
+      "actual": "0c490cb4a51c5be5d348b7fbe150fca2b577bb484e80ba1640b2e31bfa8088b6",
+      "matches": true
+    },
+    "packages/format-lottie/src/lottie.test.ts": {
+      "expected": "4e79703ae0ba351bd347802c3acf1103d71d63bf7edc32c98aca3b823f8e8904",
+      "actual": "4e79703ae0ba351bd347802c3acf1103d71d63bf7edc32c98aca3b823f8e8904",
+      "matches": true
+    },
+    "packages/compiler/src/ast.ts": {
+      "expected": "9a45e1f7490331e26c806aadfe3d2ea78040c9f0d15b67a10439689c6d7819be",
+      "actual": "9a45e1f7490331e26c806aadfe3d2ea78040c9f0d15b67a10439689c6d7819be",
+      "matches": true
+    },
+    "packages/compiler/src/parse.ts": {
+      "expected": "2ee253df22ec1303d47fa99deca3eb2d54bee2d92ab6dd5a3f80b19ddb4c0ee0",
+      "actual": "2ee253df22ec1303d47fa99deca3eb2d54bee2d92ab6dd5a3f80b19ddb4c0ee0",
+      "matches": true
+    },
+    "packages/motionscript-emitter/src/emit.ts": {
+      "expected": "357703bbdf04dc9c5dd674058fe682c44902ecea14c4377c3a7249ea1611f29c",
+      "actual": "357703bbdf04dc9c5dd674058fe682c44902ecea14c4377c3a7249ea1611f29c",
+      "matches": true
+    },
+    "fixtures/import/lottie/easing_ae_near_linear.json": {
+      "expected": "c6bf499dfd7b494c7cba3650cc28e2b58c47dff841489e8c4dcb515db384c1b5",
+      "actual": "c6bf499dfd7b494c7cba3650cc28e2b58c47dff841489e8c4dcb515db384c1b5",
+      "matches": true
+    },
+    "fixtures/import/lottie/spatial_tangent_z.json": {
+      "expected": "b22e53ba37be9696b045ec648e85cde225bf315ccccfbc0113495984640b6b04",
+      "actual": "b22e53ba37be9696b045ec648e85cde225bf315ccccfbc0113495984640b6b04",
+      "matches": true
+    },
+    "fixtures/import/lottie/stroke_round_cap.json": {
+      "expected": "76edf9b610570f68cd179ed597e3aa0f5200a827046ef70ecc7c1e9f9c25a3ae",
+      "actual": "76edf9b610570f68cd179ed597e3aa0f5200a827046ef70ecc7c1e9f9c25a3ae",
+      "matches": true
+    }
+  },
+  "ancestorCheck": 0,
+  "numericTolerance": 0.001,
+  "colorTolerance": 0.00392156862745098,
+  "visualGate": {
+    "status": "VISUAL_UNVERIFIED",
+    "rgbInspectionThreshold": 24,
+    "aggregateThreshold": null,
+    "localRegionThreshold": null,
+    "alphaAcceptanceRule": null,
+    "materialContentReviewRule": null
+  },
+  "reference": {
+    "lottieWeb": "5.13.0",
+    "availableBrowser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "priorBrowser": "Chrome 154.0.8037.98",
+    "harnessBrowserPath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "dpr": 1,
+    "background": "#101014",
+    "seek": "goToAndStop(frame, true)",
+    "subframe": "not independently validated this run",
+    "fontsAssetsEffects": "not independently validated this run"
+  },
+  "priorPin": {
+    "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
+    "pinnedAt": "2026-10-07T22:07:09Z",
+    "afterRun": "2026-10-07T220358Z",
+    "comparedWithForNextBaseline": "2026-10-07T220358Z",
+    "git": {
+      "head": "f9ec51e02d10786210f13285b983ef6db8290b53",
+      "short": "f9ec51e",
+      "subject": "Point the evaluation pin at the clean animated-trim commit.",
+      "treeCleanAtPin": false,
+      "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
+      "note": "Dirty tree: spatial tangent Z arc-length, stroke caps/joins, first-key position base, AE-near easing diagonal fix on top of animatedTrim 0.5.0."
+    },
+    "snapshot": {
+      "requiredWhenDirty": true,
+      "path": "docs/evaluations/2026-10-07T220358Z/source-snapshot/",
+      "how": "If git status --short is non-empty, write docs/evaluations/<run-id>/source-snapshot/ with: the short status, git rev-parse HEAD (if any), and SHA-256 of every file under packages/, fixtures/import/, evaluation/harness/, and docs/languages/ that differs from HEAD or is untracked and included. Set manifest.implementation.snapshot to that directory. Do not claim a commit-only pin for a dirty tree. Do not commit working-tree.patch or full tree copies."
+    },
+    "languages": {
+      "motionscript": {
+        "current": "0.5.0",
+        "wireVersion": "0.2"
+      },
+      "sceneIr": {
+        "current": "0.5.0",
+        "wireVersion": "0.2"
+      }
+    },
+    "nextCause": {
+      "id": "visual.midCycle.confetti.q50",
+      "fixtures": [
+        "LOT-01"
+      ],
+      "attemptsSoFar": 0,
+      "note": "After spatial-Z + stroke + first-key + AE-easing: start/q25 near-matched; q50 beyond 0.00456 with ~3\u20136px centroid drift. Alternates: LOT-07, LOT-06, compositing.matte, visual gate calibration."
+    },
+    "exactFixturesAtPin": [
+      "LOT-00",
+      "LOT-01",
+      "LOT-06",
+      "LOT-07"
+    ],
+    "visualNote": "Import exact is not visual pass. LOT-00 confirmed. LOT-01 improved (start/q25 strong; q50 residual). LOT-06/07 not visual passes. Absolute PASS is VISUAL_UNVERIFIED."
+  },
+  "operatorFollowup": {
+    "instruction": "Check the previous run before that",
+    "reviewed": [
+      "2026-10-07T215328Z/report.md",
+      "2026-10-07T215328Z/manifest.json",
+      "2026-10-07T215328Z/stop.json",
+      "2026-10-07T215328Z/loop.json",
+      "2026-10-07T213004Z/report.md",
+      "2026-10-07-baseline/report.md#visual-quality-gate"
+    ],
+    "finding": "Preceding run explicitly says inspection only; no aggregate acceptance rule. Baseline manual scores do not establish aggregate/local-region/full-window acceptance criteria."
+  }
+}

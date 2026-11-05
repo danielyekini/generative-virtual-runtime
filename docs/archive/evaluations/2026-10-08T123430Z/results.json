@@ -1,0 +1,39 @@
+{
+  "runId": "2026-10-08T123430Z",
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL",
+  "coverageStatus": "INCOMPLETE_BUDGET",
+  "stopReason": "budget-exhausted",
+  "checks": {
+    "tests": 186,
+    "packageTypecheck": "PASS",
+    "harnessTypecheck": "PASS",
+    "registry": "PASS",
+    "roundTripFixtures": 7
+  },
+  "wave": {
+    "fullWindowScheduledPerRoute": 150,
+    "extrasPerRoute": 5,
+    "hotPixelFractionMean": 0,
+    "numericFailures": 0,
+    "numericStatus": "PASS",
+    "materialReview": "review/final-wave-material.json",
+    "referenceControls": "final-wave-route-pixel-identity.json",
+    "status": "PASS",
+    "limitations": "Opaque composite profile only; no general transparent-alpha claim"
+  },
+  "coverage": "capture-counts.json",
+  "numericMeasurements": "final-evidence/numeric-coverage.json",
+  "identities": "source-program-ledger.json",
+  "implementation": "source-snapshot/final-source.tar.gz",
+  "nextCause": {
+    "id": "verification.fullCorpusNativeCoverage",
+    "phase": "C",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "expectedEvidence": "Finish unchanged full-render-jobs.json on final pinned bytes, reference repeats and material review for every fixture; retain LOT-03 quarantine. Then isolate LOT-06 Punches source-state geometry/matrices before implementing an unconfirmed stacking theory."
+  },
+  "unregisteredPrograms": "No canonical revisions assigned; original generated programs retained; no promotion/publication."
+}

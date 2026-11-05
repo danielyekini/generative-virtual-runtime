@@ -1,0 +1,521 @@
+{
+  "id": "LOT-06",
+  "role": "pack",
+  "format": "lottie",
+  "fileName": "Punches.json",
+  "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+  "sourceBytes": 112565,
+  "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+  "inventory": {
+    "topLevelKeys": [
+      "v",
+      "fr",
+      "ip",
+      "op",
+      "w",
+      "h",
+      "nm",
+      "ddd",
+      "assets",
+      "layers",
+      "markers"
+    ],
+    "markers": [
+      "1"
+    ],
+    "fonts": [],
+    "chars": 0,
+    "rootLayerTypes": {
+      "shape": 22,
+      "solid": 1
+    },
+    "assetLayerTypes": {},
+    "shapeTypes": {
+      "gr": 43,
+      "sh": 37,
+      "fl": 37,
+      "tr": 43
+    },
+    "masks": 0,
+    "mattes": 0,
+    "effects": 0,
+    "blendModes": 0,
+    "skew": 0,
+    "autoOrient": 0,
+    "spatialTangents": 47,
+    "textLayers": 0,
+    "hiddenLayers": 0,
+    "parenting": 7,
+    "ddd": 0,
+    "animatedProperties": 56,
+    "expressions": 0,
+    "holdKeyframes": 2,
+    "easingHandles": 214,
+    "roundedRects": 0,
+    "animatedRoundedRects": 0,
+    "images": [],
+    "precompAssets": [],
+    "missingAssets": [],
+    "examples": [
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[0].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[0].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[0].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[1].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[1].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[1].ks.p"
+      }
+    ],
+    "name": "punches",
+    "version": "5.7.12",
+    "frameRate": 25,
+    "inFrame": 0,
+    "outFrame": 24,
+    "width": 720,
+    "height": 720,
+    "durationMs": 960
+  },
+  "timingsMs": {
+    "import": 1.8441669999999704,
+    "emit": 1.1407500000000255,
+    "compile": 25.497292000000016
+  },
+  "complexity": {
+    "nodes": 80,
+    "tracks": 28,
+    "steps": 0,
+    "geometryItems": 167,
+    "depth": 7,
+    "durationMs": 960,
+    "viewport": {
+      "width": 720,
+      "height": 720,
+      "fit": "contain"
+    },
+    "background": {
+      "type": "solid",
+      "r": 0.06274509803921569,
+      "g": 0.06274509803921569,
+      "b": 0.0784313725490196,
+      "a": 1
+    }
+  },
+  "production": {
+    "ok": true,
+    "fidelity": "partial",
+    "counts": {
+      "exact": 43,
+      "approximated": 0,
+      "dropped": 0,
+      "unsupported": 24
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_UNSUPPORTED",
+        "feature": "sh.animated",
+        "severity": "error",
+        "message": "Animated path command topology does not match, so it was not resampled.",
+        "count": 24
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_4.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_4.layer_3.layer_2.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.layer_2.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_4.layer_3.layer_2.layer_1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.layer_2.layer_1.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_5.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_5.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_17.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_17.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_17.layer_18.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_17.layer_18.layer_19.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path2.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_7.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_7.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_8.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_10.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_12.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_12.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_13.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_13.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_15.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_15.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_20.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_20.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_21.Group1.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_21.Group1.Group2.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_21.Group1.Group3.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_21.Group2.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_22.Group1.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_22.Group1.Group2.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_22.Group1.Group3.Path1.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": null,
+  "motionScript": {
+    "chars": 24848,
+    "bytes": 24848,
+    "path": "fixtures/LOT-06/generated.motion"
+  },
+  "compile": {
+    "ok": true,
+    "diagnostics": 0,
+    "scene": true
+  },
+  "runtime": {
+    "kind": "compiled",
+    "samples": [
+      {
+        "id": "start",
+        "requestedMs": 0,
+        "evaluatedMs": 0,
+        "clampedToDuration": false,
+        "drawItems": 14,
+        "diagnostics": 0,
+        "ms": 0.7696670000000267
+      },
+      {
+        "id": "q25",
+        "requestedMs": 240,
+        "evaluatedMs": 240,
+        "clampedToDuration": false,
+        "drawItems": 14,
+        "diagnostics": 0,
+        "ms": 0.7287919999998849
+      },
+      {
+        "id": "q50",
+        "requestedMs": 480,
+        "evaluatedMs": 480,
+        "clampedToDuration": false,
+        "drawItems": 14,
+        "diagnostics": 0,
+        "ms": 0.6872499999999491
+      },
+      {
+        "id": "q75",
+        "requestedMs": 720,
+        "evaluatedMs": 720,
+        "clampedToDuration": false,
+        "drawItems": 14,
+        "diagnostics": 0,
+        "ms": 0.7051669999998467
+      },
+      {
+        "id": "near_end",
+        "requestedMs": 955.2,
+        "evaluatedMs": 955.2,
+        "clampedToDuration": false,
+        "drawItems": 14,
+        "diagnostics": 0,
+        "ms": 0.6371670000000904
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "JSON object, 112565 bytes"
+    },
+    {
+      "name": "import",
+      "status": "PARTIAL",
+      "detail": "fidelity partial; exact 43; approximated 0; dropped 0; unsupported 24; scene yes"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "PASS",
+      "detail": "24848 chars in 1.1 ms"
+    },
+    {
+      "name": "compile",
+      "status": "PASS",
+      "detail": "ok true; diagnostics 0; 25.5 ms"
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "PASS",
+      "detail": "compileMotionScript accepted the scene"
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "PASS",
+      "detail": "importSource returns a scene only after validateSceneIR succeeds"
+    },
+    {
+      "name": "runtime",
+      "status": "PASS",
+      "detail": "compiled scene; 5 samples; draw items 14,14,14,14,14"
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": null,
+  "evidence": {
+    "importReport": "fixtures/LOT-06/import-report.txt",
+    "importedScene": "fixtures/LOT-06/imported-scene.json",
+    "compiledScene": "fixtures/LOT-06/compiled-scene.json",
+    "motion": "fixtures/LOT-06/generated.motion"
+  }
+}

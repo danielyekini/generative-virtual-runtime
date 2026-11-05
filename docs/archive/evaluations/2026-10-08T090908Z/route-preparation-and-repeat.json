@@ -1,0 +1,628 @@
+{
+  "outcomes": [
+    {
+      "id": "LOT-07-imported",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        154,
+        77,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 149.5",
+          "sourceTimeMs": 4983.333333333333,
+          "lottieFrame": 149.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00077",
+          "label": "source frame 77",
+          "sourceTimeMs": 2566.6666666666665,
+          "lottieFrame": 77,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 33.10000000009313,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 9.299999999813735,
+          "note": "lottie frame 149.5"
+        },
+        {
+          "ok": true,
+          "ms": 16.5,
+          "note": "lottie frame 77"
+        },
+        {
+          "ok": true,
+          "ms": 20.5,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "e1f5e9d3c03a2b9a154d442ce9109782987265ebe76005838eb16f4dc331b62c",
+      "firstReferencePixelSha256": "b53278bba23218fd5b9aaf3f9fb2a910940d63fa337f7ffbef5c2527e63b88e0",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-07-imported/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    },
+    {
+      "id": "LOT-07-compiled",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        154,
+        77,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 149.5",
+          "sourceTimeMs": 4983.333333333333,
+          "lottieFrame": 149.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00077",
+          "label": "source frame 77",
+          "sourceTimeMs": 2566.6666666666665,
+          "lottieFrame": 77,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 17.100000000093132,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 21.299999999813735,
+          "note": "lottie frame 149.5"
+        },
+        {
+          "ok": true,
+          "ms": 19,
+          "note": "lottie frame 77"
+        },
+        {
+          "ok": true,
+          "ms": 8.199999999720603,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "e1f5e9d3c03a2b9a154d442ce9109782987265ebe76005838eb16f4dc331b62c",
+      "firstReferencePixelSha256": "b53278bba23218fd5b9aaf3f9fb2a910940d63fa337f7ffbef5c2527e63b88e0",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-07-compiled/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    },
+    {
+      "id": "LOT-00-imported",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        242,
+        121,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 239.5",
+          "sourceTimeMs": 7983.333333333333,
+          "lottieFrame": 239.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00121",
+          "label": "source frame 121",
+          "sourceTimeMs": 4033.3333333333335,
+          "lottieFrame": 121,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 21.200000000186265,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 15.800000000279397,
+          "note": "lottie frame 239.5"
+        },
+        {
+          "ok": true,
+          "ms": 13.399999999906868,
+          "note": "lottie frame 121"
+        },
+        {
+          "ok": true,
+          "ms": 10.600000000093132,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "53260f059609ec3ec3b91d34a34903d3d58ac837dd3af71fe41b4cf48c38d3c0",
+      "firstReferencePixelSha256": "3efaddedbef1fc745a6f877b407a6149a72f0d81044d8450c864f3c24e92b200",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-00-imported/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    },
+    {
+      "id": "LOT-00-compiled",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        242,
+        121,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 239.5",
+          "sourceTimeMs": 7983.333333333333,
+          "lottieFrame": 239.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00121",
+          "label": "source frame 121",
+          "sourceTimeMs": 4033.3333333333335,
+          "lottieFrame": 121,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 13.100000000093132,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 12.200000000186265,
+          "note": "lottie frame 239.5"
+        },
+        {
+          "ok": true,
+          "ms": 15,
+          "note": "lottie frame 121"
+        },
+        {
+          "ok": true,
+          "ms": 10.600000000093132,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "53260f059609ec3ec3b91d34a34903d3d58ac837dd3af71fe41b4cf48c38d3c0",
+      "firstReferencePixelSha256": "3efaddedbef1fc745a6f877b407a6149a72f0d81044d8450c864f3c24e92b200",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-00-compiled/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    },
+    {
+      "id": "LOT-06-imported",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        26,
+        13,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 23.5",
+          "sourceTimeMs": 940,
+          "lottieFrame": 23.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00013",
+          "label": "source frame 13",
+          "sourceTimeMs": 520,
+          "lottieFrame": 13,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 25,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 17.399999999906868,
+          "note": "lottie frame 23.5"
+        },
+        {
+          "ok": true,
+          "ms": 19.300000000279397,
+          "note": "lottie frame 13"
+        },
+        {
+          "ok": true,
+          "ms": 18.5,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "b6a1c403a6b86b0fa1dd928e34c2f8e48f85e8e42775203508abd9147d54937f",
+      "firstReferencePixelSha256": "914463326a0f79ad16174c2bbccb09333bd43fb7501b6f93928ff9d55c0eff83",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-06-imported/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    },
+    {
+      "id": "LOT-06-compiled",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        26,
+        13,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 23.5",
+          "sourceTimeMs": 940,
+          "lottieFrame": 23.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00013",
+          "label": "source frame 13",
+          "sourceTimeMs": 520,
+          "lottieFrame": 13,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 0.39999999990686774,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 19.299999999813735,
+          "note": "lottie frame 23.5"
+        },
+        {
+          "ok": true,
+          "ms": 19.399999999906868,
+          "note": "lottie frame 13"
+        },
+        {
+          "ok": true,
+          "ms": 7.7000000001862645,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "b6a1c403a6b86b0fa1dd928e34c2f8e48f85e8e42775203508abd9147d54937f",
+      "firstReferencePixelSha256": "914463326a0f79ad16174c2bbccb09333bd43fb7501b6f93928ff9d55c0eff83",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-06-compiled/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    },
+    {
+      "id": "LOT-01-imported",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        126,
+        63,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 120.5",
+          "sourceTimeMs": 4016.6666666666665,
+          "lottieFrame": 120.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00063",
+          "label": "source frame 63",
+          "sourceTimeMs": 2100,
+          "lottieFrame": 63,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 27.799999999813735,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 24.399999999906868,
+          "note": "lottie frame 120.5"
+        },
+        {
+          "ok": true,
+          "ms": 18.299999999813735,
+          "note": "lottie frame 63"
+        },
+        {
+          "ok": true,
+          "ms": 24,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "1b9e5a29cdd91e5ba09d90dbf92478d341c4c5d9f463556c9c653462424a57da",
+      "firstReferencePixelSha256": "a268cff50ecc6c580fa213d9d7acdc2cda58edb1fc275b25ba59028031fc75a5",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-01-imported/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    },
+    {
+      "id": "LOT-01-compiled",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "sequence": [
+        0,
+        126,
+        63,
+        0
+      ],
+      "matchedSamples": [
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        },
+        {
+          "id": "subframe_1",
+          "label": "boundary subframe 120.5",
+          "sourceTimeMs": 4016.6666666666665,
+          "lottieFrame": 120.5,
+          "scheduled": false
+        },
+        {
+          "id": "frame_00063",
+          "label": "source frame 63",
+          "sourceTimeMs": 2100,
+          "lottieFrame": 63,
+          "scheduled": true
+        },
+        {
+          "id": "frame_00000",
+          "label": "source frame 0",
+          "sourceTimeMs": 0,
+          "lottieFrame": 0,
+          "scheduled": true
+        }
+      ],
+      "seeks": [
+        {
+          "ok": true,
+          "ms": 16.799999999813735,
+          "note": "lottie frame 0"
+        },
+        {
+          "ok": true,
+          "ms": 29,
+          "note": "lottie frame 120.5"
+        },
+        {
+          "ok": true,
+          "ms": 25.90000000037253,
+          "note": "lottie frame 63"
+        },
+        {
+          "ok": true,
+          "ms": 26,
+          "note": "lottie frame 0"
+        }
+      ],
+      "referenceRepeatIdentical": true,
+      "firstReferenceSha256": "1b9e5a29cdd91e5ba09d90dbf92478d341c4c5d9f463556c9c653462424a57da",
+      "firstReferencePixelSha256": "a268cff50ecc6c580fa213d9d7acdc2cda58edb1fc275b25ba59028031fc75a5",
+      "comparison": "Exact decoded RGBA pixels; browser and pngjs use different PNG encodings",
+      "matchedPrimaryCapture": "evaluation/evidence/captures/LOT-01-compiled/frame_00000-reference.png",
+      "identicalToPrimary": true,
+      "logs": [],
+      "method": "Separate CDP target in the same pinned browser; prepare production route, boundary/midpoint/shuffled seeks, repeat first frame, exact identity with primary full-window first capture",
+      "browser": "Chromium 151.0.7922.173",
+      "lottieWeb": "5.13.0",
+      "dpr": 1
+    }
+  ]
+}

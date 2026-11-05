@@ -1,0 +1,122 @@
+STATUS	partial
+COUNTS	conversion	exact	54	approximated	0	dropped	0	unsupported	9
+GROUP	IMPORT_UNSUPPORTED	error	unsupported	3	Matte source layer was inventoried and not lowered.
+LOC	layer_10
+LOC	layer_12
+LOC	layer_14
+GROUP	IMPORT_UNSUPPORTED	error	unsupported	3	Track matte type 1 was inventoried and not lowered.
+LOC	layer_11
+LOC	layer_13
+LOC	layer_15
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.transform.scale.x.
+LOC	layer_18
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.transform.scale.y.
+LOC	layer_18
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_18.Rectangle1.RectanglePath1.
+LOC	layer_18.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.layer_1.transform.scale.x.
+LOC	layer_18.layer_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.layer_1.transform.scale.y.
+LOC	layer_18.layer_1
+GROUP	IMPORT_EXACT	info	exact	1	Imported text layer_18.layer_1.textNode.
+LOC	layer_18.layer_1.textNode
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_3.transform.scale.x.
+LOC	layer_3
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_3.transform.scale.y.
+LOC	layer_3
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_3.Ellipse1.EllipsePath1.
+LOC	layer_3.Ellipse1.EllipsePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_3.layer_2.Shape1.Path1.trim.start.
+LOC	layer_3.layer_2.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Animated trim on layer_3.layer_2.Shape1.Path1.
+LOC	layer_3.layer_2.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_3.layer_2.Shape1.Path1.
+LOC	layer_3.layer_2.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_4.
+LOC	layer_4
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_4.transform.scale.x.
+LOC	layer_4
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_4.transform.scale.y.
+LOC	layer_4
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_4.Group1.Path1.
+LOC	layer_4.Group1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_5.transform.position.x.
+LOC	layer_5
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_5.transform.position.y.
+LOC	layer_5
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_5.Ellipse1.EllipsePath1.
+LOC	layer_5.Ellipse1.EllipsePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.transform.position.x.
+LOC	layer_6
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_6.transform.position.y.
+LOC	layer_6
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_6.Ellipse1.EllipsePath1.
+LOC	layer_6.Ellipse1.EllipsePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_7.transform.position.x.
+LOC	layer_7
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_7.transform.position.y.
+LOC	layer_7
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_7.Ellipse1.EllipsePath1.
+LOC	layer_7.Ellipse1.EllipsePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.layer_8.transform.scale.x.
+LOC	layer_18.layer_8
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.layer_8.transform.scale.y.
+LOC	layer_18.layer_8
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_18.layer_8.layer_1.Group1.Path1.
+LOC	layer_18.layer_8.layer_1.Group1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_18.layer_8.layer_1.Group2.Path1.
+LOC	layer_18.layer_8.layer_1.Group2.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_18.layer_8.layer_1.Group3.Path1.
+LOC	layer_18.layer_8.layer_1.Group3.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported text layer_18.layer_8.layer_2.textNode.
+LOC	layer_18.layer_8.layer_2.textNode
+GROUP	IMPORT_EXACT	info	exact	1	Expanded precomp comp_0_5f05577e-a470-4015-b9ac-8bcc9073c734.
+LOC	layer_8
+GROUP	IMPORT_EXACT	info	exact	1	Imported static Gaussian Blur on layer_18.layer_9.
+LOC	layer_9
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_18.layer_9.Rectangle1.RectanglePath1.
+LOC	layer_18.layer_9.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_18.layer_10.Rectangle1.RectanglePath1.
+LOC	layer_18.layer_10.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_18.layer_11.
+LOC	layer_18.layer_11
+GROUP	IMPORT_UNSUPPORTED	error	unsupported	3	Track matte content is withheld so it is not drawn unmasked.
+LOC	layer_11
+LOC	layer_13
+LOC	layer_15
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_18.layer_12.Rectangle1.RectanglePath1.
+LOC	layer_18.layer_12.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_18.layer_13.
+LOC	layer_18.layer_13
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_18.layer_14.Rectangle1.RectanglePath1.
+LOC	layer_18.layer_14.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported static Gaussian Blur on layer_18.layer_15.
+LOC	layer_15
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.layer_15.transform.position.x.
+LOC	layer_18.layer_15
+GROUP	IMPORT_EXACT	info	exact	1	Imported motion on layer_18.layer_15.transform.position.y.
+LOC	layer_18.layer_15
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_18.layer_16.Rectangle1.RectanglePath1.
+LOC	layer_18.layer_16.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported gradient stroke on layer_18.layer_17.Rectangle1.RectanglePath1.
+LOC	layer_18.layer_17.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_18.layer_17.Rectangle1.RectanglePath1.
+LOC	layer_18.layer_17.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported static Gaussian Blur on layer_19.
+LOC	layer_19
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_19.
+LOC	layer_19
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_19.Ellipse2.EllipsePath1.
+LOC	layer_19.Ellipse2.EllipsePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported static Gaussian Blur on layer_20.
+LOC	layer_20
+GROUP	IMPORT_EXACT	info	exact	1	Spatial curve on layer_20.
+LOC	layer_20
+GROUP	IMPORT_EXACT	info	exact	1	Imported ellipse layer_20.Ellipse1.EllipsePath1.
+LOC	layer_20.Ellipse1.EllipsePath1
+GROUP	IMPORT_EXACT	info	exact	1	Imported static Gaussian Blur on layer_21.
+LOC	layer_21
+GROUP	IMPORT_EXACT	info	exact	1	Imported rectangle layer_21.Rectangle1.RectanglePath1.
+LOC	layer_21.Rectangle1.RectanglePath1
+GROUP	IMPORT_EXACT	info	exact	1	Converted composition frames 0–226 at 30fps to 7533.333333333333ms.
+LOC	

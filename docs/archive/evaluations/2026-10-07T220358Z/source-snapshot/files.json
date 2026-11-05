@@ -1,0 +1,70 @@
+{
+  "packages/schema/src/types.ts": {
+    "sha256": "8817e5e6e97b833915b71e6ca66c14feea93962daefc4865c7dbd368dd8c389b",
+    "bytes": 15279
+  },
+  "packages/schema/src/spatial.ts": {
+    "sha256": "f4866e9465f687371d5c97dce6fa11098b5c0b09c3cca517c18ea9feef725565",
+    "bytes": 3888
+  },
+  "packages/schema/src/spatial.test.ts": {
+    "sha256": "3c5b68554e9f28dbb8462b014dc99d2fa2a5a4c059aabaa5309047421afa76df",
+    "bytes": 1761
+  },
+  "packages/schema/src/validate.ts": {
+    "sha256": "01712f78a07c34ad7cc9757d2ece70b022b8d238d639862a46e8007167256cf9",
+    "bytes": 76340
+  },
+  "packages/schema/capabilities/registry.json": {
+    "sha256": "e144e06199790c213a9eec8b1c143849c65911651e93b3279891b607cc99944b",
+    "bytes": 39057
+  },
+  "packages/runtime/src/sample.ts": {
+    "sha256": "cf24a40f13643e4200651717aee874f815426d3ed59dc29b4435c93691067a55",
+    "bytes": 15199
+  },
+  "packages/format-lottie/src/property.ts": {
+    "sha256": "36cd15271c4a4904073143d0066040a2e9d0a58c75c80bb312f26d50c884732a",
+    "bytes": 7568
+  },
+  "packages/format-lottie/src/model.ts": {
+    "sha256": "166e40cd196e9d52a168bd16f32f899f574611a474f81b0cbc6b10dab669d20d",
+    "bytes": 5015
+  },
+  "packages/format-lottie/src/parse-shapes.ts": {
+    "sha256": "3f28af18915e59b2cc051a1f5951623c0610a7b8047a5f40498082e5b4434385",
+    "bytes": 14628
+  },
+  "packages/format-lottie/src/normalise.ts": {
+    "sha256": "0c490cb4a51c5be5d348b7fbe150fca2b577bb484e80ba1640b2e31bfa8088b6",
+    "bytes": 44000
+  },
+  "packages/format-lottie/src/lottie.test.ts": {
+    "sha256": "4e79703ae0ba351bd347802c3acf1103d71d63bf7edc32c98aca3b823f8e8904",
+    "bytes": 23072
+  },
+  "packages/compiler/src/ast.ts": {
+    "sha256": "9a45e1f7490331e26c806aadfe3d2ea78040c9f0d15b67a10439689c6d7819be",
+    "bytes": 4490
+  },
+  "packages/compiler/src/parse.ts": {
+    "sha256": "2ee253df22ec1303d47fa99deca3eb2d54bee2d92ab6dd5a3f80b19ddb4c0ee0",
+    "bytes": 40519
+  },
+  "packages/motionscript-emitter/src/emit.ts": {
+    "sha256": "357703bbdf04dc9c5dd674058fe682c44902ecea14c4377c3a7249ea1611f29c",
+    "bytes": 15491
+  },
+  "fixtures/import/lottie/easing_ae_near_linear.json": {
+    "sha256": "c6bf499dfd7b494c7cba3650cc28e2b58c47dff841489e8c4dcb515db384c1b5",
+    "bytes": 2460
+  },
+  "fixtures/import/lottie/spatial_tangent_z.json": {
+    "sha256": "b22e53ba37be9696b045ec648e85cde225bf315ccccfbc0113495984640b6b04",
+    "bytes": 1286
+  },
+  "fixtures/import/lottie/stroke_round_cap.json": {
+    "sha256": "76edf9b610570f68cd179ed597e3aa0f5200a827046ef70ecc7c1e9f9c25a3ae",
+    "bytes": 1352
+  }
+}

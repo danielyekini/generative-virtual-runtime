@@ -1,0 +1,8487 @@
+{
+  "irVersion": "0.2",
+  "sceneId": "MainScene",
+  "viewport": {
+    "width": 500,
+    "height": 888.89,
+    "fit": "contain"
+  },
+  "background": {
+    "type": "solid",
+    "r": 0.06274509803921569,
+    "g": 0.06274509803921569,
+    "b": 0.0784313725490196,
+    "a": 1
+  },
+  "resources": [
+    {
+      "id": "font1",
+      "kind": "font",
+      "family": "InterTight-Medium",
+      "source": "builtin"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "layer_1",
+      "name": "layer_1",
+      "parentId": null,
+      "zIndex": 20,
+      "transform": {
+        "position": {
+          "x": -88.07072758,
+          "y": -192.02606952
+        },
+        "pivot": {
+          "x": 250,
+          "y": 150
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1.6518543565,
+          "y": 1.6518543565
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1",
+      "zIndex": 260,
+      "transform": {
+        "position": {
+          "x": -84.389,
+          "y": 395.226
+        },
+        "pivot": {
+          "x": 50,
+          "y": 50
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_2",
+      "name": "layer_2",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 250,
+      "transform": {
+        "position": {
+          "x": 299.75,
+          "y": 3.772
+        },
+        "pivot": {
+          "x": -249.75,
+          "y": 46.228
+        },
+        "rotation": 1.7627825445142729,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group",
+      "compositing": {
+        "isolated": true,
+        "effect": {
+          "type": "blur",
+          "radius": 2.4
+        }
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_2.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_2",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 33.57738817,
+          "y": -9.16429293
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_2.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_2.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "UI/UX",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_3",
+      "name": "layer_3",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 240,
+      "transform": {
+        "position": {
+          "x": 298.25,
+          "y": 2.407
+        },
+        "pivot": {
+          "x": -248.25,
+          "y": 47.593
+        },
+        "rotation": 1.6755160819145563,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_3.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_3",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 85.9340751,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_3.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_3.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "ILLUSTRATION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_4",
+      "name": "layer_4",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 230,
+      "transform": {
+        "position": {
+          "x": 299.25,
+          "y": 0.496
+        },
+        "pivot": {
+          "x": -249.25,
+          "y": 49.504
+        },
+        "rotation": 1.5882496193148399,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_4.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_4",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 97.11401321,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_4.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_4.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "DESIGN SYSTEM",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_5",
+      "name": "layer_5",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 220,
+      "transform": {
+        "position": {
+          "x": 301,
+          "y": -4.782
+        },
+        "pivot": {
+          "x": -251,
+          "y": 54.782
+        },
+        "rotation": 1.509709802975095,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_5.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_5",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 90.59759029,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_5.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_5.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "ART DIRECTION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_6",
+      "name": "layer_6",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 210,
+      "transform": {
+        "position": {
+          "x": 301.25,
+          "y": 2.134
+        },
+        "pivot": {
+          "x": -251.25,
+          "y": 47.866
+        },
+        "rotation": 1.3962634015954636,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_6.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_6",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 71.718145,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_6.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_6.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "PACKAGING",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_7",
+      "name": "layer_7",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 200,
+      "transform": {
+        "position": {
+          "x": 301.75,
+          "y": 4.227
+        },
+        "pivot": {
+          "x": -251.75,
+          "y": 45.773
+        },
+        "rotation": 1.2915436464758039,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_7.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_7",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 49.37703535,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_7.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_7.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "MOTION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_8",
+      "name": "layer_8",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 190,
+      "transform": {
+        "position": {
+          "x": 301.5,
+          "y": 2.771
+        },
+        "pivot": {
+          "x": -251.5,
+          "y": 47.229
+        },
+        "rotation": 1.2042771838760873,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_8.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_8",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 63.03583663,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_8.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_8.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "BRANDING",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_9",
+      "name": "layer_9",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 180,
+      "transform": {
+        "position": {
+          "x": 303.25,
+          "y": 0.951
+        },
+        "pivot": {
+          "x": -253.25,
+          "y": 49.049
+        },
+        "rotation": 1.117010721276371,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_9.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_9",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 55.31755336,
+          "y": -10.12829422
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_9.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_9.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "IDENTITY",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_10",
+      "name": "layer_10",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 170,
+      "transform": {
+        "position": {
+          "x": 302.5,
+          "y": 3.226
+        },
+        "pivot": {
+          "x": -252.5,
+          "y": 46.774
+        },
+        "rotation": 1.0122909661567112,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_10.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_10",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 68.175108,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_10.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_10.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "ANIMATION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_11",
+      "name": "layer_11",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 160,
+      "transform": {
+        "position": {
+          "x": 302.5,
+          "y": 1.133
+        },
+        "pivot": {
+          "x": -252.5,
+          "y": 48.867
+        },
+        "rotation": 0.9250245035569946,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_11.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_11",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 56.97013039,
+          "y": -10.12829422
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_11.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_11.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "REBRAND",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_12",
+      "name": "layer_12",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 150,
+      "transform": {
+        "position": {
+          "x": 300.75,
+          "y": 2.589
+        },
+        "pivot": {
+          "x": -250.75,
+          "y": 47.411
+        },
+        "rotation": 0.8203047484373349,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_12.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_12",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 73.18918172,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_12.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_12.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "CAMPAIGNS",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_13",
+      "name": "layer_13",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 140,
+      "transform": {
+        "position": {
+          "x": 300.25,
+          "y": 2.771
+        },
+        "pivot": {
+          "x": -250.25,
+          "y": 47.229
+        },
+        "rotation": 0.7330382858376184,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_13.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_13",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 83.32374833,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_13.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_13.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "TYPOGRAPHY",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_14",
+      "name": "layer_14",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 130,
+      "transform": {
+        "position": {
+          "x": 301.5,
+          "y": 2.771
+        },
+        "pivot": {
+          "x": -251.5,
+          "y": 47.229
+        },
+        "rotation": 0.6457718232379019,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_14.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_14",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 52.17514923,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_14.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_14.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "WEBSITE",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_15",
+      "name": "layer_15",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 120,
+      "transform": {
+        "position": {
+          "x": 299.75,
+          "y": 3.772
+        },
+        "pivot": {
+          "x": -249.75,
+          "y": 46.228
+        },
+        "rotation": 0.5585053606381855,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_15.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_15",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 33.57738817,
+          "y": -9.16429293
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_15.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_15.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "UI/UX",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_16",
+      "name": "layer_16",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 110,
+      "transform": {
+        "position": {
+          "x": 298.25,
+          "y": 2.407
+        },
+        "pivot": {
+          "x": -248.25,
+          "y": 47.593
+        },
+        "rotation": 0.47123889803846897,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_16.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_16",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 85.9340751,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_16.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_16.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "ILLUSTRATION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_17",
+      "name": "layer_17",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 100,
+      "transform": {
+        "position": {
+          "x": 299.25,
+          "y": 0.496
+        },
+        "pivot": {
+          "x": -249.25,
+          "y": 49.504
+        },
+        "rotation": 0.3839724354387525,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_17.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_17",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 97.11401321,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_17.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_17.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "DESIGN SYSTEM",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_18",
+      "name": "layer_18",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 90,
+      "transform": {
+        "position": {
+          "x": 300.123,
+          "y": -1.913
+        },
+        "pivot": {
+          "x": -251,
+          "y": 54.782
+        },
+        "rotation": 0.29670597283903605,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_18.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_18",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 90.59759029,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_18.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_18.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "ART DIRECTION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_19",
+      "name": "layer_19",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 80,
+      "transform": {
+        "position": {
+          "x": 301.25,
+          "y": 2.134
+        },
+        "pivot": {
+          "x": -251.25,
+          "y": 47.866
+        },
+        "rotation": 0.19198621771937624,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_19.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_19",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 71.718145,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_19.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_19.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "PACKAGING",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_20",
+      "name": "layer_20",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 70,
+      "transform": {
+        "position": {
+          "x": 301.75,
+          "y": 4.227
+        },
+        "pivot": {
+          "x": -251.75,
+          "y": 45.773
+        },
+        "rotation": 0.08726646259971647,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_20.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_20",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 49.37703535,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_20.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_20.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "MOTION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_21",
+      "name": "layer_21",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 60,
+      "transform": {
+        "position": {
+          "x": 301.5,
+          "y": 2.771
+        },
+        "pivot": {
+          "x": -251.5,
+          "y": 47.229
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_21.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_21",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 63.03583663,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_21.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_21.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "BRANDING",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_22",
+      "name": "layer_22",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 50,
+      "transform": {
+        "position": {
+          "x": 303.25,
+          "y": 0.951
+        },
+        "pivot": {
+          "x": -253.25,
+          "y": 49.049
+        },
+        "rotation": -0.08726646259971647,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_22.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_22",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 55.31755336,
+          "y": -10.12829422
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_22.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_22.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "IDENTITY",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_23",
+      "name": "layer_23",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 40,
+      "transform": {
+        "position": {
+          "x": 302.5,
+          "y": 3.226
+        },
+        "pivot": {
+          "x": -252.5,
+          "y": 46.774
+        },
+        "rotation": -0.19198621771937624,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_23.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_23",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 68.175108,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_23.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_23.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "ANIMATION",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_24",
+      "name": "layer_24",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 30,
+      "transform": {
+        "position": {
+          "x": 302.5,
+          "y": 1.133
+        },
+        "pivot": {
+          "x": -252.5,
+          "y": 48.867
+        },
+        "rotation": -0.2792526803190927,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group",
+      "compositing": {
+        "isolated": true,
+        "effect": {
+          "type": "blur",
+          "radius": 0.9
+        }
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_24.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_24",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 56.97013039,
+          "y": -10.12829422
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_24.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_24.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "REBRAND",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_25",
+      "name": "layer_25",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 20,
+      "transform": {
+        "position": {
+          "x": 300.75,
+          "y": 2.589
+        },
+        "pivot": {
+          "x": -250.75,
+          "y": 47.411
+        },
+        "rotation": -0.3839724354387525,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group",
+      "compositing": {
+        "isolated": true,
+        "effect": {
+          "type": "blur",
+          "radius": 1.2
+        }
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_25.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_25",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 73.18918172,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_25.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_25.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "CAMPAIGNS",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_26",
+      "name": "layer_26",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": 300.25,
+          "y": 2.771
+        },
+        "pivot": {
+          "x": -250.25,
+          "y": 47.229
+        },
+        "rotation": -0.47123889803846897,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group",
+      "compositing": {
+        "isolated": true,
+        "effect": {
+          "type": "blur",
+          "radius": 1.8
+        }
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_26.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_26",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 83.32374833,
+          "y": -10.12829898
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_26.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_26.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "TYPOGRAPHY",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_27",
+      "name": "layer_27",
+      "parentId": "layer_1.layer_1",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 301.5,
+          "y": 2.771
+        },
+        "pivot": {
+          "x": -251.5,
+          "y": 47.229
+        },
+        "rotation": -0.5585053606381855,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "transformParentId": "layer_1.layer_1",
+      "inheritOpacity": false,
+      "kind": "group",
+      "compositing": {
+        "isolated": true,
+        "effect": {
+          "type": "blur",
+          "radius": 2.4
+        }
+      }
+    },
+    {
+      "id": "layer_1.layer_1.layer_27.layer_1",
+      "name": "layer_1",
+      "parentId": "layer_1.layer_1.layer_27",
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 28.246,
+          "y": 54.827
+        },
+        "pivot": {
+          "x": 52.17514923,
+          "y": -10.10325943
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_1.layer_1.layer_27.layer_1.textNode",
+      "name": "textNode",
+      "parentId": "layer_1.layer_1.layer_27.layer_1",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "text",
+      "content": "WEBSITE",
+      "font": {
+        "family": "InterTight-Medium",
+        "size": 25.64,
+        "weight": 400,
+        "style": "normal"
+      },
+      "align": "left",
+      "baseline": "alphabetic",
+      "fill": {
+        "type": "solid",
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    },
+    {
+      "id": "layer_2",
+      "name": "layer_2",
+      "parentId": null,
+      "zIndex": 10,
+      "transform": {
+        "position": {
+          "x": -123.48106139,
+          "y": 293.161652
+        },
+        "pivot": {
+          "x": 207,
+          "y": 149
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1.8234961349,
+          "y": 1.8234961349
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Group1",
+      "name": "Group1",
+      "parentId": "layer_2",
+      "zIndex": 11,
+      "transform": {
+        "position": {
+          "x": 207,
+          "y": 149
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Group1.Group1",
+      "name": "Group1",
+      "parentId": "layer_2.Group1",
+      "zIndex": 12,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_2.Group1.Group1.Path2",
+      "name": "Path2",
+      "parentId": "layer_2.Group1.Group1",
+      "zIndex": 13,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -10,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": -10,
+          "c1y": 5.523,
+          "c2x": -5.522,
+          "c2y": 10,
+          "x": 0,
+          "y": 10
+        },
+        {
+          "cmd": "C",
+          "c1x": 5.523,
+          "c1y": 10,
+          "c2x": 10,
+          "c2y": 5.523,
+          "x": 10,
+          "y": 0
+        },
+        {
+          "cmd": "C",
+          "c1x": 10,
+          "c1y": -5.523,
+          "c2x": 5.523,
+          "c2y": -10,
+          "x": 0,
+          "y": -10
+        },
+        {
+          "cmd": "C",
+          "c1x": -5.522,
+          "c1y": -10,
+          "c2x": -10,
+          "c2y": -5.523,
+          "x": -10,
+          "y": 0
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "linear",
+        "x1": 0,
+        "y1": -10,
+        "x2": 0,
+        "y2": 10,
+        "stops": [
+          {
+            "offset": 0,
+            "color": {
+              "type": "solid",
+              "r": 0.9921568627450981,
+              "g": 0.9647058823529412,
+              "b": 0.7843137254901961,
+              "a": 1
+            }
+          },
+          {
+            "offset": 0.5,
+            "color": {
+              "type": "solid",
+              "r": 0.996078431372549,
+              "g": 0.6588235294117647,
+              "b": 0.39215686274509803,
+              "a": 1
+            }
+          },
+          {
+            "offset": 1,
+            "color": {
+              "type": "solid",
+              "r": 1,
+              "g": 0.34901960784313724,
+              "b": 0,
+              "a": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layer_3",
+      "name": "layer_3",
+      "parentId": null,
+      "zIndex": 0,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 294.445
+        },
+        "pivot": {
+          "x": 250,
+          "y": 150
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 3.0897753958
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "space": "world",
+      "kind": "group"
+    },
+    {
+      "id": "layer_3.Group1",
+      "name": "Group1",
+      "parentId": "layer_3",
+      "zIndex": 1,
+      "transform": {
+        "position": {
+          "x": 250,
+          "y": 150
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "group"
+    },
+    {
+      "id": "layer_3.Group1.Path1",
+      "name": "Path1",
+      "parentId": "layer_3.Group1",
+      "zIndex": 2,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "kind": "path",
+      "commands": [
+        {
+          "cmd": "M",
+          "x": -250,
+          "y": 150
+        },
+        {
+          "cmd": "C",
+          "c1x": -250,
+          "c1y": 150,
+          "c2x": 250,
+          "c2y": 150,
+          "x": 250,
+          "y": 150
+        },
+        {
+          "cmd": "C",
+          "c1x": 250,
+          "c1y": 150,
+          "c2x": 250,
+          "c2y": -150,
+          "x": 250,
+          "y": -150
+        },
+        {
+          "cmd": "C",
+          "c1x": 250,
+          "c1y": -150,
+          "c2x": -250,
+          "c2y": -150,
+          "x": -250,
+          "y": -150
+        },
+        {
+          "cmd": "C",
+          "c1x": -250,
+          "c1y": -150,
+          "c2x": -250,
+          "c2y": 150,
+          "x": -250,
+          "y": 150
+        },
+        {
+          "cmd": "Z"
+        }
+      ],
+      "fillRule": "nonzero",
+      "fill": {
+        "type": "solid",
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      }
+    }
+  ],
+  "cameras": [
+    {
+      "id": "main",
+      "position": {
+        "x": 250,
+        "y": 444.445
+      },
+      "zoom": 1,
+      "rotation": 0
+    }
+  ],
+  "initialCameraId": "main",
+  "timeline": {
+    "durationMs": 11250,
+    "tracks": [
+      {
+        "id": "track1",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1",
+          "channel": "transform.rotation"
+        },
+        "valueType": "angle",
+        "startMs": 0,
+        "durationMs": 10999.916666666668,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.382,
+              "y1": 0,
+              "x2": 0.272,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.04545489,
+            "value": -0.08726646259971647,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.272,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0787884757,
+            "value": -0.08726646259971647,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.434,
+              "y1": 0,
+              "x2": 0.36,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12424185,
+            "value": -0.19198621771937624,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.36,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1590906,
+            "value": -0.19198621771937624,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.485,
+              "y1": 0,
+              "x2": 0.248,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.204545489,
+            "value": -0.29670597283903605,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.248,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2393942378,
+            "value": -0.29670597283903605,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.513,
+              "y1": 0,
+              "x2": 0.234,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.28636429,
+            "value": -0.3839724354387525,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.234,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3181811983,
+            "value": -0.3839724354387525,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.479,
+              "y1": 0,
+              "x2": 0.26,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.36363608820000004,
+            "value": -0.47123889803846897,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.26,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.396969674,
+            "value": -0.47123889803846897,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.533,
+              "y1": 0,
+              "x2": 0.35,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4424245638,
+            "value": -0.5585053606381855,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.35,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4772717975,
+            "value": -0.5585053606381855,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.451,
+              "y1": 0,
+              "x2": 0.269,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5227266873,
+            "value": -0.6457718232379019,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.269,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5590906,
+            "value": -0.6457718232379019,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.482,
+              "y1": 0,
+              "x2": 0.291,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6030303260000001,
+            "value": -0.7330382858376184,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6363639118,
+            "value": -0.7330382858376184,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.494,
+              "y1": 0,
+              "x2": 0.275,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6818172865,
+            "value": -0.8203047484373349,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7151508724,
+            "value": -0.8203047484373349,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.526,
+              "y1": 0,
+              "x2": 0.27,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7606057622,
+            "value": -0.9250245035569946,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.795454511,
+            "value": -0.9250245035569946,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.48,
+              "y1": 0,
+              "x2": 0.134,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8409094,
+            "value": -1.0122909661567112,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8742414715,
+            "value": -1.0122909661567112,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.556,
+              "y1": 0,
+              "x2": 0.301,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9196963613,
+            "value": -1.117010721276371,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.95454511,
+            "value": -1.117010721276371,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.532,
+              "y1": 0,
+              "x2": 0.258,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": -1.2042771838760873
+          }
+        ]
+      },
+      {
+        "id": "track2",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_2",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 10499.916666666668,
+        "durationMs": 500,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.1
+          }
+        ]
+      },
+      {
+        "id": "track3",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_3",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 9616.583333333332,
+        "durationMs": 1383.3333333333358,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3614457831,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6385542169,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.2
+          }
+        ]
+      },
+      {
+        "id": "track4",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_4",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 8749.933333333332,
+        "durationMs": 2249.9833333333354,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.22222386830000002,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.38518062999999997,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6074045,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7777761316999999,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.3
+          }
+        ]
+      },
+      {
+        "id": "track5",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_5",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 7866.6,
+        "durationMs": 3133.3166666666675,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.15957531689999999,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2819163932,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.44149171000000004,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.55850829,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7180836068,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8404246831000001,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.4
+          }
+        ]
+      },
+      {
+        "id": "track6",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_6",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 6999.95,
+        "durationMs": 3999.966666666668,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12499687500000001,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.21666430550000002,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3416653472,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.43749948000000005,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.56250052,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6541637847,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7791648264,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8749989583,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.5
+          }
+        ]
+      },
+      {
+        "id": "track7",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_7",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 6149.950000000001,
+        "durationMs": 4849.966666666667,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0996570423,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.17525893650000002,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.27834899209999997,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3539508863,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.45704437830000005,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5360827222000001,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6391762142999999,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7147746720000001,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8178681640000001,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8969065079,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.7
+          }
+        ]
+      },
+      {
+        "id": "track8",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_8",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 5249.95,
+        "durationMs": 5749.966666666668,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0869570258,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1565226465,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2405811048,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.30434959,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.39130371770000005,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.45507220330000003,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.54202923,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6086962823,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6956533081,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7594188952,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.846375921,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9130429742,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 1
+          }
+        ]
+      },
+      {
+        "id": "track9",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_9",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 4366.633333333333,
+        "durationMs": 6633.283333333335,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0753774526,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.13316432,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.20854177289999998,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.268843735,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3417086058,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3969854044,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.47236034439999997,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.527637143,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6030145955999999,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6608039759000001,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7361814285,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7914557145000001,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8668331671,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9246225474,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.7
+          }
+        ]
+      },
+      {
+        "id": "track10",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_10",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 3499.9666666666662,
+        "durationMs": 7499.950000000002,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0666671111,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1155563259,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.182223437,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2333326667,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2999997778,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3533334667,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.41777833999999997,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4666675556,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5333324444,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.58222166,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6488887699999999,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7000002222,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7666673333,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8155543259,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.882221437,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9333328889000001,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.5
+          }
+        ]
+      },
+      {
+        "id": "track11",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_11",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 2633.3166666666666,
+        "durationMs": 8366.600000000002,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.06175348,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.10358449,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1633459231,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2071709735,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2669324058,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3127475119,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.37250894430000003,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.42031809000000003,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4780874748,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5219125252,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5816719655,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6254970159,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6852584482999999,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7310755464,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7908369788,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8346600370999999,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.89442147,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9402385676,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.4
+          }
+        ]
+      },
+      {
+        "id": "track12",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_12",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 1749.9833333333331,
+        "durationMs": 9249.933333333334,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.054054443599999995,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0954961838,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1513524422,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.18918875,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2432431945,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.28288312,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.33693756350000004,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3783775018,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.43243194549999997,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4756755,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.52792813,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5675680545,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6216206964,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6612606217,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7153150653,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7567568054999999,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.81081125,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8504493726,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9045038162,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9459455564,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.3
+          }
+        ]
+      },
+      {
+        "id": "track13",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_13",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 866.6666666666667,
+        "durationMs": 10133.250000000002,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0493408663,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0871701248,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1365126358,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1743418943,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2253291557,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.25986726860000003,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.30920978,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.34539428780000003,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3947367988,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4325644125,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4819069236,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5213809324,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5690786931,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6052632012,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6546040675,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6907885756000001,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7401310866,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7779603451,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8273028561,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.86348572,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9128282299999999,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.950657489,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.2
+          }
+        ]
+      },
+      {
+        "id": "track14",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_14",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 10999.916666666668,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.04545489,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.667,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0787884757,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12424185,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1590906,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.204545489,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2393942378,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.28636429,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3181811983,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.36363608820000004,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.396969674,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4424245638,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4772717975,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5227266873,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5590906,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6030303260000001,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6363639118,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6818172865,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7151508724,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7606057622,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.795454511,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8409094,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8742414715,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9196963613,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.95454511,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0.1
+          }
+        ]
+      },
+      {
+        "id": "track15",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_15",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 10999.916666666668,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.04545489,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0787884757,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.12424185,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1590906,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.204545489,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2393942378,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.28636429,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3181811983,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.36363608820000004,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.396969674,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4424245638,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4772717975,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5227266873,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5590906,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6030303260000001,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6363639118,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6818172865,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7151508724,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7606057622,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.795454511,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8409094,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8742414715,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9196963613,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.95454511,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track16",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_16",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 10116.583333333332,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0494238,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0856679215,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1350900749,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1729816555,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2224054564,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.260297037,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3113682979,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3459633111,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.39538711190000003,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.43163123249999996,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4810550334,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5189449666,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5683687675,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6079078081,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6556841489999999,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6919282699999999,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.741350423,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7775945436,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8270183445000001,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8649099251,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.914333726,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9505762,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track17",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_17",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 9249.933333333332,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.054054443599999995,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.093694369,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.14774701,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.18918875,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2432431945,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2846849347,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3405411931,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3783775018,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.43243194549999997,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.47207186999999995,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5261263144,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5675662527,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6216206964,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6648642513,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.71711688,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7567568054999999,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8108094473,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8504493726,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9045038162,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9459455564,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track18",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_18",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 8366.6,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0597614324,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1035864828,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1633459231,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.20916302120000002,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2689244536,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3147415517,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.37649503180000005,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.41832604240000004,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4780874748,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5219125252,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5816739576,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6274890637,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6872504960000001,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7350596419,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7928290265,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8366540768999999,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8964135172000001,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9402385676,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track19",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_19",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 7499.9333333333325,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.06666725999999999,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.11555658270000001,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.18222162,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2333331852,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3000004444,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.35111201000000003,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.42000151109999995,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.46666637,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.53333363,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5822229531,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6488902124,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6999995556,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7666668148,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8200006222,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.88444564,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.933334963,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track20",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_20",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 6633.283333333334,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.0753774526,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.13065425120000002,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2060291912,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2638185715,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.33919602410000005,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3969854044,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4748754388,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.527637143,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6030145955999999,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6582913942,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7336688468,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7914557145000001,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8668331671,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.92713513,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track21",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_21",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 5749.95,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.08695727789999999,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1507259483,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.23768032770000003,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.304347574,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.39130485190000003,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4579720983,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5478279521,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6086951481,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6956524260000001,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7594210964,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8463783743000001,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.9130427220999999,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track22",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_22",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 4866.633333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.7,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.10274043000000001,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1780834115,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.2808204166,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.35958808,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.46232850999999997,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.5410961719,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6472612825999999,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7191761587000001,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8219165884999999,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8972595699999999,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track23",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_23",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 3999.9666666666662,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.5,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1250010417,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.21666847220000002,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3416653472,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.43749948000000005,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.56250052,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6583346528,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7875023959,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8749989583,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track24",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_24",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 3149.983333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.4,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.1587309986,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.27513373,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.4338594384,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.555553204,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7142842025999999,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.8359779681,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track25",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_25",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 2249.983333333333,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.3,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.22222386830000002,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.3851880384,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.6074045,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.7777761316999999,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track26",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_26",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 1366.6499999999999,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.2,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.36585811999999995,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 0.634154075,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.167,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "track27",
+        "kind": "keyframe",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_27",
+          "channel": "opacity"
+        },
+        "valueType": "number",
+        "startMs": 0,
+        "durationMs": 500,
+        "fill": {
+          "before": "none",
+          "after": "forwards"
+        },
+        "keyframes": [
+          {
+            "offset": 0,
+            "value": 0.1,
+            "easing": {
+              "type": "cubic",
+              "x1": 0.333,
+              "y1": 0,
+              "x2": 0.833,
+              "y2": 1
+            }
+          },
+          {
+            "offset": 1,
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "id": "step1",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_15",
+          "channel": "visible"
+        },
+        "timeMs": 11000,
+        "value": false
+      },
+      {
+        "id": "step2",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_16",
+          "channel": "visible"
+        },
+        "timeMs": 10116.666666666668,
+        "value": false
+      },
+      {
+        "id": "step3",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_17",
+          "channel": "visible"
+        },
+        "timeMs": 9250,
+        "value": false
+      },
+      {
+        "id": "step4",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_18",
+          "channel": "visible"
+        },
+        "timeMs": 8366.666666666668,
+        "value": false
+      },
+      {
+        "id": "step5",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_19",
+          "channel": "visible"
+        },
+        "timeMs": 7500,
+        "value": false
+      },
+      {
+        "id": "step6",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_20",
+          "channel": "visible"
+        },
+        "timeMs": 6633.333333333334,
+        "value": false
+      },
+      {
+        "id": "step7",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_21",
+          "channel": "visible"
+        },
+        "timeMs": 5750,
+        "value": false
+      },
+      {
+        "id": "step8",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_22",
+          "channel": "visible"
+        },
+        "timeMs": 4866.666666666666,
+        "value": false
+      },
+      {
+        "id": "step9",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_23",
+          "channel": "visible"
+        },
+        "timeMs": 4000,
+        "value": false
+      },
+      {
+        "id": "step10",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_24",
+          "channel": "visible"
+        },
+        "timeMs": 3150,
+        "value": false
+      },
+      {
+        "id": "step11",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_25",
+          "channel": "visible"
+        },
+        "timeMs": 2250,
+        "value": false
+      },
+      {
+        "id": "step12",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_26",
+          "channel": "visible"
+        },
+        "timeMs": 1366.6666666666667,
+        "value": false
+      },
+      {
+        "id": "step13",
+        "target": {
+          "kind": "node",
+          "nodeId": "layer_1.layer_1.layer_27",
+          "channel": "visible"
+        },
+        "timeMs": 500,
+        "value": false
+      }
+    ]
+  },
+  "compositions": [
+    {
+      "id": "comp2",
+      "nodes": []
+    },
+    {
+      "id": "comp3",
+      "nodes": []
+    },
+    {
+      "id": "comp4",
+      "nodes": []
+    },
+    {
+      "id": "comp5",
+      "nodes": []
+    },
+    {
+      "id": "comp6",
+      "nodes": []
+    },
+    {
+      "id": "comp7",
+      "nodes": []
+    },
+    {
+      "id": "comp8",
+      "nodes": []
+    },
+    {
+      "id": "comp9",
+      "nodes": []
+    },
+    {
+      "id": "comp10",
+      "nodes": []
+    },
+    {
+      "id": "comp11",
+      "nodes": []
+    },
+    {
+      "id": "comp12",
+      "nodes": []
+    },
+    {
+      "id": "comp13",
+      "nodes": []
+    },
+    {
+      "id": "comp14",
+      "nodes": []
+    },
+    {
+      "id": "comp1",
+      "nodes": []
+    }
+  ],
+  "instances": [
+    {
+      "id": "inst2",
+      "definitionId": "comp2",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre2"
+    },
+    {
+      "id": "inst3",
+      "definitionId": "comp3",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre3"
+    },
+    {
+      "id": "inst4",
+      "definitionId": "comp4",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre4"
+    },
+    {
+      "id": "inst5",
+      "definitionId": "comp5",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre5"
+    },
+    {
+      "id": "inst6",
+      "definitionId": "comp6",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre6"
+    },
+    {
+      "id": "inst7",
+      "definitionId": "comp7",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre7"
+    },
+    {
+      "id": "inst8",
+      "definitionId": "comp8",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre8"
+    },
+    {
+      "id": "inst9",
+      "definitionId": "comp9",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre9"
+    },
+    {
+      "id": "inst10",
+      "definitionId": "comp10",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre10"
+    },
+    {
+      "id": "inst11",
+      "definitionId": "comp11",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre11"
+    },
+    {
+      "id": "inst12",
+      "definitionId": "comp12",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre12"
+    },
+    {
+      "id": "inst13",
+      "definitionId": "comp13",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre13"
+    },
+    {
+      "id": "inst14",
+      "definitionId": "comp14",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre14"
+    },
+    {
+      "id": "inst15",
+      "definitionId": "comp2",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre15"
+    },
+    {
+      "id": "inst16",
+      "definitionId": "comp3",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre16"
+    },
+    {
+      "id": "inst17",
+      "definitionId": "comp4",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre17"
+    },
+    {
+      "id": "inst18",
+      "definitionId": "comp5",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre18"
+    },
+    {
+      "id": "inst19",
+      "definitionId": "comp6",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre19"
+    },
+    {
+      "id": "inst20",
+      "definitionId": "comp7",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre20"
+    },
+    {
+      "id": "inst21",
+      "definitionId": "comp8",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre21"
+    },
+    {
+      "id": "inst22",
+      "definitionId": "comp9",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre22"
+    },
+    {
+      "id": "inst23",
+      "definitionId": "comp10",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre23"
+    },
+    {
+      "id": "inst24",
+      "definitionId": "comp11",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre24"
+    },
+    {
+      "id": "inst25",
+      "definitionId": "comp12",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre25"
+    },
+    {
+      "id": "inst26",
+      "definitionId": "comp13",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre26"
+    },
+    {
+      "id": "inst27",
+      "definitionId": "comp14",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre27"
+    },
+    {
+      "id": "inst1",
+      "definitionId": "comp1",
+      "parentId": null,
+      "transformParentId": null,
+      "transform": {
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "pivot": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "scale": {
+          "x": 1,
+          "y": 1
+        }
+      },
+      "opacity": 1,
+      "visible": true,
+      "activation": {
+        "startMs": 0,
+        "endMs": 11250
+      },
+      "timingScopeId": "pre1"
+    }
+  ],
+  "timingScopes": [
+    {
+      "id": "pre2",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre3",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre4",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre5",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre6",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre7",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre8",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre9",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre10",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre11",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre12",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre13",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre14",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre15",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre16",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre17",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre18",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre19",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre20",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre21",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre22",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre23",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre24",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre25",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre26",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre27",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    },
+    {
+      "id": "pre1",
+      "parentId": null,
+      "offsetMs": 0,
+      "stretch": 1
+    }
+  ],
+  "requiredCapabilities": [
+    "easing.cubicBezier",
+    "transform.parent",
+    "effects.blur",
+    "compositing.isolatedOpacity",
+    "text.basic",
+    "composition.definitions",
+    "timing.localScopes",
+    "paint.linearGradient"
+  ],
+  "geometryOperators": []
+}

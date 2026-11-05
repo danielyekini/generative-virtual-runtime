@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "fidelity": "partial",
+  "counts": {
+    "exact": 3,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 2
+  },
+  "groups": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "layer",
+      "severity": "error",
+      "message": "Layer type 0 is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_2.Group1.Group1.Path2.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "gf",
+      "severity": "error",
+      "message": "Shape item gf is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_3.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–675 at 60fps to 11250ms.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 512240,
+    "name": "Main Scene"
+  }
+}

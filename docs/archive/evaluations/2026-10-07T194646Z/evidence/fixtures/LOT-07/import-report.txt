@@ -1,0 +1,48 @@
+STATUS	exact
+COUNTS	conversion	exact	23	approximated	0	dropped	0	unsupported	0
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_1.Shape_5.Path1.commands.
+LOC	layer_1.Shape_5.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_2.Shape_55.Path1.commands.
+LOC	layer_2.Shape_55.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_3.Shape_6.Path1.commands.
+LOC	layer_3.Shape_6.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_4.Shape1.Path1.commands.
+LOC	layer_4.Shape1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported animated path morph on layer_5.Shape_1.Path1.commands.
+LOC	layer_5.Shape_1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group1.Path1.
+LOC	layer_6.Group1.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group2.Path1.
+LOC	layer_6.Group2.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group3.Path1.
+LOC	layer_6.Group3.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group4.Path1.
+LOC	layer_6.Group4.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group5.Path1.
+LOC	layer_6.Group5.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group6.Path1.
+LOC	layer_6.Group6.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group7.Path1.
+LOC	layer_6.Group7.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group8.Path1.
+LOC	layer_6.Group8.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group9.Path1.
+LOC	layer_6.Group9.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group10.Path1.
+LOC	layer_6.Group10.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group11.Path1.
+LOC	layer_6.Group11.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group12.Path1.
+LOC	layer_6.Group12.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group13.Path1.
+LOC	layer_6.Group13.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group14.Path1.
+LOC	layer_6.Group14.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group15.Path1.
+LOC	layer_6.Group15.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group16.Path1.
+LOC	layer_6.Group16.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Imported path layer_6.Group17.Path1.
+LOC	layer_6.Group17.Path1
+GROUP	IMPORT_EXACT	info	exact	1	Converted composition frames 0–150 at 30fps to 5000ms.
+LOC	

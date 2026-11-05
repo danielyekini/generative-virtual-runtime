@@ -1,0 +1,59 @@
+ M docs/languages/compatibility-policy.md
+ M docs/languages/motionscript/versions/pending.md
+ M docs/languages/scene-ir/versions/pending.md
+ M packages/compiler/src/compile.ts
+ M packages/compiler/src/compiler.test.ts
+ M packages/format-lottie/src/lottie.test.ts
+ M packages/format-lottie/src/model.ts
+ M packages/format-lottie/src/normalise.ts
+ M packages/format-lottie/src/parse-shapes.ts
+ M packages/format-lottie/src/property.ts
+ M packages/runtime/src/frame.ts
+ M packages/runtime/src/runtime.test.ts
+ M packages/runtime/src/sample.ts
+ M packages/schema/capabilities/registry.json
+ M packages/schema/capabilities/releases.json
+ M packages/schema/src/capabilities.ts
+ M packages/schema/src/registry.ts
+ M packages/schema/src/trim.ts
+ M packages/schema/src/types.ts
+ M packages/schema/src/validate.ts
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q25-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-q25-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q25-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q25-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/source-snapshot/
+?? docs/languages/motionscript/versions/0.5.0.md
+?? docs/languages/scene-ir/versions/0.5.0.md
+?? fixtures/import/lottie/animated_trim.json

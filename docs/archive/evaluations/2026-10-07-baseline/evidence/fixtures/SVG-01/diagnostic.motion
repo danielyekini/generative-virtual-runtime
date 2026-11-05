@@ -1,0 +1,2409 @@
+scene "svg" {
+  version "0.1";
+  viewport (400, 400);
+  background #00000000;
+  duration 1s;
+};
+camera main {
+  position (200, 200);
+  zoom 1;
+  rotation 0deg;
+};
+group i104 {
+  position (-15.04, -15.04);
+  scale (0.16, 0.16);
+  group groupNode {
+    zIndex 1;
+    group g {
+      position (723, 0);
+      visible false;
+      rectangle rect {
+        visible false;
+        zIndex 1;
+        size (1242, 2688);
+        fill #272d41;
+      };
+    };
+    group groupNode {
+      zIndex 1;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-132.24, 289.56);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (116, -254);
+            rectangle rect {
+              position (-13, -28);
+              size (26, 56);
+              fill #fe8c01;
+            };
+          };
+        };
+      };
+    };
+    group groupNode2 {
+      zIndex 2;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-136.8, 161.88);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (120, -142);
+            rectangle rect {
+              position (-16, -22);
+              size (32, 44);
+              fill #7fd04f;
+            };
+          };
+        };
+      };
+    };
+    group groupNode3 {
+      zIndex 3;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-265.05, 678.87);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (232.5, -595.5);
+            rectangle rect {
+              position (-5.5, -33.5);
+              size (11, 67);
+              fill #3497fd;
+            };
+          };
+        };
+      };
+    };
+    group groupNode4 {
+      zIndex 4;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (51.3, 686.28);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (-45, -602);
+            rectangle rect {
+              position (-20, -20);
+              size (40, 40);
+              fill #3497fd;
+            };
+          };
+        };
+      };
+    };
+    group groupNode5 {
+      zIndex 5;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (206.24538, 657.78);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group groupNode {
+            path pathNode {
+              fill #000000;
+              stroke #fec456 width 14;
+              move (-161, -650);
+              cubic (-161, -650) (-157, -530) (-193, -562);
+              cubic (-229, -594) (-139, -608) (-165, -504);
+            };
+          };
+        };
+      };
+    };
+    group groupNode6 {
+      zIndex 6;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-16.53, 493.62);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (14.5, -433);
+            rectangle rect {
+              position (-13.5, -48);
+              size (27, 96);
+              fill #bd75ee;
+            };
+          };
+        };
+      };
+    };
+    group groupNode7 {
+      zIndex 7;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (298.68, 495.9);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (-262, -435);
+            rectangle rect {
+              position (-23, -27);
+              size (46, 54);
+              fill #fbc817;
+            };
+          };
+        };
+      };
+    };
+    group groupNode8 {
+      zIndex 8;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-63.9312, 325.53612);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group groupNode {
+            path pathNode {
+              fill #f94eff;
+              move (72, -317);
+              cubic (65, -290) (39, -272) (4, -279);
+              cubic (36, -252) (49.094, -230.305) (91, -263.167);
+              cubic (114.167, -281.334) (107.167, -289.667) (107.167, -289.667);
+              cubic (107.167, -289.667) (79, -344) (72, -317);
+              close;
+            };
+          };
+        };
+      };
+    };
+    group g2 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 9;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-132.24, 289.56);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g3 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 10;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-136.8, 161.88);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g4 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 11;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-265.05, 678.87);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g5 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 12;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (51.3, 686.28);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g6 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 13;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (206.24538, 657.78);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g7 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 14;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-16.53, 493.62);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g8 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 15;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (298.68, 495.9);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #fbc817;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g9 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 16;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-63.9312, 325.53612);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #fbc817;
+                move (84.659, -333.362);
+                cubic (84.659, -333.362) (4, -279) (4, -279);
+                cubic (4, -279) (45.665, -243.617) (45.665, -243.617);
+                cubic (45.665, -243.617) (119.735, -297.935) (119.735, -297.935);
+                cubic (119.735, -297.935) (84.659, -333.362) (84.659, -333.362);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group groupNode9 {
+      zIndex 17;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-132.24, 289.56);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (116, -254);
+            rectangle rect {
+              position (-13, -28);
+              size (26, 56);
+              fill #fe8c01;
+            };
+          };
+        };
+      };
+    };
+    group groupNode10 {
+      zIndex 18;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-136.8, 161.88);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (120, -142);
+            rectangle rect {
+              position (-16, -22);
+              size (32, 44);
+              fill #7fd04f;
+            };
+          };
+        };
+      };
+    };
+    group groupNode11 {
+      zIndex 19;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-265.05, 678.87);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (232.5, -595.5);
+            rectangle rect {
+              position (-5.5, -33.5);
+              size (11, 67);
+              fill #3497fd;
+            };
+          };
+        };
+      };
+    };
+    group groupNode12 {
+      zIndex 20;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (51.3, 686.28);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (-45, -602);
+            rectangle rect {
+              position (-20, -20);
+              size (40, 40);
+              fill #3497fd;
+            };
+          };
+        };
+      };
+    };
+    group groupNode13 {
+      zIndex 21;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (206.24538, 657.78);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group groupNode {
+            path pathNode {
+              fill #000000;
+              stroke #fec456 width 14;
+              move (-161, -650);
+              cubic (-161, -650) (-157, -530) (-193, -562);
+              cubic (-229, -594) (-139, -608) (-165, -504);
+            };
+          };
+        };
+      };
+    };
+    group groupNode14 {
+      zIndex 22;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-16.53, 493.62);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (14.5, -433);
+            rectangle rect {
+              position (-13.5, -48);
+              size (27, 96);
+              fill #bd75ee;
+            };
+          };
+        };
+      };
+    };
+    group groupNode15 {
+      zIndex 23;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (298.68, 495.9);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group g {
+            position (-262, -435);
+            rectangle rect {
+              position (-23, -27);
+              size (46, 54);
+              fill #fbc817;
+            };
+          };
+        };
+      };
+    };
+    group groupNode16 {
+      zIndex 24;
+      group g {
+        position (1350.395, 1155.993);
+        zIndex 1;
+        group g {
+          position (-63.9312, 325.53612);
+          scale (1.14, 1.14);
+          zIndex 1;
+          group groupNode {
+            path pathNode {
+              fill #bd75ee;
+              move (72, -317);
+              cubic (72, -317) (4, -279) (4, -279);
+              cubic (4, -279) (24.151, -217.936) (24.151, -217.936);
+              cubic (24.151, -217.936) (91.751, -259.86) (88.307, -269.617);
+              cubic (83.366, -283.617) (72, -317) (72, -317);
+              close;
+            };
+          };
+        };
+      };
+    };
+    group g10 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 25;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-136.8, 161.88);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g11 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 26;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-265.05, 678.87);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g12 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 27;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (51.3, 686.28);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g13 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 28;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (206.24538, 657.78);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g14 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 29;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-90.48, 198.12);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g15 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 30;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-93.6, 110.76);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g16 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 31;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-181.35, 464.49);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g17 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 32;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (35.1, 469.56);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g18 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 33;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (141.11526, 450.06);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g19 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 34;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-11.31, 337.74);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g20 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 35;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (204.36, 339.3);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #fbc817;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g21 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 36;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-43.7424, 222.73524);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #fb174c;
+                move (72, -317);
+                cubic (65, -290) (39, -272) (4, -279);
+                cubic (36, -252) (49.094, -230.305) (91, -263.167);
+                cubic (114.167, -281.334) (107.167, -289.667) (107.167, -289.667);
+                cubic (107.167, -289.667) (79, -344) (72, -317);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g22 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 37;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-90.48, 198.12);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g23 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 38;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-93.6, 110.76);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g24 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 39;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-181.35, 464.49);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g25 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 40;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (35.1, 469.56);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g26 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 41;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (141.11526, 450.06);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g27 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 42;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-11.31, 337.74);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g28 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 43;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (204.36, 339.3);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #fb174c;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g29 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 44;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-43.7424, 222.73524);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #fbc817;
+                move (84.659, -333.362);
+                cubic (84.659, -333.362) (4, -279) (4, -279);
+                cubic (4, -279) (45.665, -243.617) (45.665, -243.617);
+                cubic (45.665, -243.617) (119.735, -297.935) (119.735, -297.935);
+                cubic (119.735, -297.935) (84.659, -333.362) (84.659, -333.362);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g30 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 45;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-90.48, 198.12);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g31 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 46;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-93.6, 110.76);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g32 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 47;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-181.35, 464.49);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g33 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 48;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (35.1, 469.56);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g34 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 49;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (141.11526, 450.06);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g35 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 50;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-11.31, 337.74);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g36 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 51;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (204.36, 339.3);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #fb174c;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g37 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 52;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-43.7424, 222.73524);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #fbc817;
+                move (72, -317);
+                cubic (72, -317) (4, -279) (4, -279);
+                cubic (4, -279) (24.151, -217.936) (24.151, -217.936);
+                cubic (24.151, -217.936) (91.751, -259.86) (88.307, -269.617);
+                cubic (83.366, -283.617) (72, -317) (72, -317);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g38 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 53;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-90.48, 198.12);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g39 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 54;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-93.6, 110.76);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g40 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 55;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-181.35, 464.49);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g41 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 56;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (35.1, 469.56);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g42 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 57;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (141.11526, 450.06);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g43 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 58;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-11.31, 337.74);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g44 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 59;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (204.36, 339.3);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #fb174c;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g45 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      zIndex 60;
+      group groupNode {
+        group g {
+          position (18.288, -165.578);
+          zIndex 1;
+          group g {
+            position (-43.7424, 222.73524);
+            scale (0.78, 0.78);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #f94eff;
+                move (72, -317);
+                cubic (65, -290) (39, -272) (4, -279);
+                cubic (36, -252) (49.094, -230.305) (91, -263.167);
+                cubic (114.167, -281.334) (107.167, -289.667) (107.167, -289.667);
+                cubic (107.167, -289.667) (79, -344) (72, -317);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g46 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 61;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-75.4, 165.1);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g47 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 62;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-78, 92.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g48 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 63;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-151.125, 387.075);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g49 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 64;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (29.25, 391.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g50 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 65;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (117.59605, 375.05);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g51 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 66;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-9.425, 281.45);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g52 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 67;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (170.3, 282.75);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #fb174c;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g53 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 68;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-36.452, 185.6127);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #fb174c;
+                move (72, -317);
+                cubic (65, -290) (39, -272) (4, -279);
+                cubic (36, -252) (49.094, -230.305) (91, -263.167);
+                cubic (114.167, -281.334) (107.167, -289.667) (107.167, -289.667);
+                cubic (107.167, -289.667) (79, -344) (72, -317);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g54 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 69;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-75.4, 165.1);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g55 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 70;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-78, 92.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g56 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 71;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-151.125, 387.075);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g57 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 72;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (29.25, 391.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g58 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 73;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (117.59605, 375.05);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g59 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 74;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-9.425, 281.45);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g60 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 75;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (170.3, 282.75);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #ee75ca;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g61 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 76;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-36.452, 185.6127);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #ee75ca;
+                move (84.659, -333.362);
+                cubic (84.659, -333.362) (4, -279) (4, -279);
+                cubic (4, -279) (45.665, -243.617) (45.665, -243.617);
+                cubic (45.665, -243.617) (119.735, -297.935) (119.735, -297.935);
+                cubic (119.735, -297.935) (84.659, -333.362) (84.659, -333.362);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g62 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 77;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-75.4, 165.1);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g63 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 78;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-78, 92.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g64 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 79;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-151.125, 387.075);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g65 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 80;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (29.25, 391.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g66 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 81;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (117.59605, 375.05);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g67 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 82;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-9.425, 281.45);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g68 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 83;
+      group groupNode {
+        group g {
+          position (-89.038, -0.153);
+          zIndex 1;
+          group g {
+            position (170.3, 282.75);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #ee75ca;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g69 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 84;
+      group groupNode {
+        group g {
+          position (-137.695, -128.17);
+          zIndex 1;
+          group g {
+            position (-36.452, 185.6127);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #fbc817;
+                move (72, -317);
+                cubic (72, -317) (4, -279) (4, -279);
+                cubic (4, -279) (24.151, -217.936) (24.151, -217.936);
+                cubic (24.151, -217.936) (91.751, -259.86) (88.307, -269.617);
+                cubic (83.366, -283.617) (72, -317) (72, -317);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g70 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 85;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-75.4, 165.1);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (116, -254);
+              rectangle rect {
+                position (-13, -28);
+                size (26, 56);
+                fill #fe8c01;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g71 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 86;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-78, 92.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (120, -142);
+              rectangle rect {
+                position (-16, -22);
+                size (32, 44);
+                fill #7fd04f;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g72 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 87;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-151.125, 387.075);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (232.5, -595.5);
+              rectangle rect {
+                position (-5.5, -33.5);
+                size (11, 67);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g73 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 88;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (29.25, 391.3);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-45, -602);
+              rectangle rect {
+                position (-20, -20);
+                size (40, 40);
+                fill #3497fd;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g74 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 89;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (117.59605, 375.05);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #000000;
+                stroke #fec456 width 14;
+                move (-161, -650);
+                cubic (-161, -650) (-157, -530) (-193, -562);
+                cubic (-229, -594) (-139, -608) (-165, -504);
+              };
+            };
+          };
+        };
+      };
+    };
+    group g75 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 90;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-9.425, 281.45);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #ee75ca;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g76 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 91;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (170.3, 282.75);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #ee75ca;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g77 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      zIndex 92;
+      group groupNode {
+        group g {
+          position (-112.965, -122.431);
+          zIndex 1;
+          group g {
+            position (-36.452, 185.6127);
+            scale (0.65, 0.65);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #ee75ca;
+                move (72, -317);
+                cubic (65, -290) (39, -272) (4, -279);
+                cubic (36, -252) (49.094, -230.305) (91, -263.167);
+                cubic (114.167, -281.334) (107.167, -289.667) (107.167, -289.667);
+                cubic (107.167, -289.667) (79, -344) (72, -317);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g78 {
+      position (1344, 1344);
+      rotation 81.9836078deg;
+      scale (1.14014122, 1.14014122);
+      opacity 0;
+      zIndex 93;
+    };
+    group g79 {
+      position (1344, 1344);
+      rotation -48.984316deg;
+      scale (1.1397824354, 1.1397824354);
+      opacity 0;
+      zIndex 94;
+    };
+    group g80 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 95;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-16.53, 493.62);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (14.5, -433);
+              rectangle rect {
+                position (-13.5, -48);
+                size (27, 96);
+                fill #bd75ee;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g81 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 96;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (298.68, 495.9);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group g {
+              position (-262, -435);
+              rectangle rect {
+                position (-23, -27);
+                size (46, 54);
+                fill #f94eff;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g82 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      zIndex 97;
+      group groupNode {
+        group g {
+          position (6.395, -188.007);
+          zIndex 1;
+          group g {
+            position (-63.9312, 325.53612);
+            scale (1.14, 1.14);
+            zIndex 1;
+            group groupNode {
+              path pathNode {
+                fill #f94eff;
+                move (72, -317);
+                cubic (65, -290) (39, -272) (4, -279);
+                cubic (36, -252) (49.094, -230.305) (91, -263.167);
+                cubic (114.167, -281.334) (107.167, -289.667) (107.167, -289.667);
+                cubic (107.167, -289.667) (79, -344) (72, -317);
+                close;
+              };
+            };
+          };
+        };
+      };
+    };
+    group g83 {
+      position (1385.392, 963.784);
+      rotation -175.97526757deg;
+      scale (1.13981095, 1.13981095);
+      opacity 0;
+      zIndex 98;
+    };
+    group g84 {
+      position (1338.4, 1365.42);
+      scale (1.14, 1.14);
+      visible false;
+      zIndex 99;
+      group groupNode {
+        visible false;
+        zIndex 1;
+        path pathNode {
+          visible false;
+          fill #000000;
+          stroke #ff4242 width 14;
+          move (40, -153);
+        };
+      };
+    };
+  };
+};
+complete;

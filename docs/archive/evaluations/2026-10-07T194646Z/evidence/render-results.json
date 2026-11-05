@@ -1,0 +1,1931 @@
+{
+  "controls": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "deviceScaleFactor": 1,
+    "lottieWeb": "5.13.0 canvas renderer, loop false, autoplay false, goToAndStop(frame, true)",
+    "lottieControl": {
+      "note": "100x100",
+      "fractionBeyond": 0,
+      "timeControlWorks": false
+    },
+    "svgControl": {
+      "method": "SVGSVGElement.setCurrentTime on an inline SMIL fixture, then Page.captureScreenshot",
+      "fractionBeyond": 1,
+      "timeControlWorks": true
+    }
+  },
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "sceneKind": "compiled",
+      "executionRoute": "production",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "PASS",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 18.200000002980232,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 2.2999999970197678,
+            "note": "native 0 ms of scene duration 8000 ms"
+          },
+          "native": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/start-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.0926711632474857,
+            "fractionBeyond": 0.00010199652777777778,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-00/start-diff.png",
+            "stripPath": "captures/LOT-00/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 2.100000001490116,
+            "note": "lottie frame 60"
+          },
+          "reference": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1,
+            "note": "native 2000 ms of scene duration 8000 ms"
+          },
+          "native": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/q25-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.0776044860489686,
+            "fractionBeyond": 0.00006510416666666667,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-00/q25-diff.png",
+            "stripPath": "captures/LOT-00/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 14.799999997019768,
+            "note": "lottie frame 120"
+          },
+          "reference": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.7000000029802322,
+            "note": "native 4000 ms of scene duration 8000 ms"
+          },
+          "native": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/q50-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.0733863002944946,
+            "fractionBeyond": 0.00014322916666666667,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-00/q50-diff.png",
+            "stripPath": "captures/LOT-00/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 5.799999997019768,
+            "note": "lottie frame 180"
+          },
+          "reference": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.5999999940395355,
+            "note": "native 6000 ms of scene duration 8000 ms"
+          },
+          "native": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/q75-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.0742914289239514,
+            "fractionBeyond": 0.00011610243055555556,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-00/q75-diff.png",
+            "stripPath": "captures/LOT-00/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 3.899999998509884,
+            "note": "lottie frame 238.8"
+          },
+          "reference": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.5,
+            "note": "native 7960 ms of scene duration 8000 ms"
+          },
+          "native": {
+            "width": 1280,
+            "height": 720,
+            "path": "captures/LOT-00/near_end-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.080063906169059,
+            "fractionBeyond": 0.00020073784722222221,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-00/near_end-diff.png",
+            "stripPath": "captures/LOT-00/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-01",
+      "sceneKind": "compiled",
+      "executionRoute": "production",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "PASS",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 33.20000000298023,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 8.799999997019768,
+            "note": "native 0 ms of scene duration 4033.33333 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/start-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 0.8401543013941426,
+            "fractionBeyond": 0.00375,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-01/start-diff.png",
+            "stripPath": "captures/LOT-01/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 29.69999999552965,
+            "note": "lottie frame 30.25"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 6.899999998509884,
+            "note": "native 1008.3333333333333 ms of scene duration 4033.33333 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/q25-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 7.02500521797971,
+            "fractionBeyond": 0.03295,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-01/q25-diff.png",
+            "stripPath": "captures/LOT-01/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 24.399999998509884,
+            "note": "lottie frame 60.5"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 6.399999998509884,
+            "note": "native 2016.6666666666665 ms of scene duration 4033.33333 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/q50-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 4.7637494084287155,
+            "fractionBeyond": 0.021625,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-01/q50-diff.png",
+            "stripPath": "captures/LOT-01/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 26.100000001490116,
+            "note": "lottie frame 90.75"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 6.299999997019768,
+            "note": "native 3025 ms of scene duration 4033.33333 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/q75-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.2176906066428934,
+            "fractionBeyond": 0.0058,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-01/q75-diff.png",
+            "stripPath": "captures/LOT-01/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 33.29999999701977,
+            "note": "lottie frame 120.395"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 3.6999999955296516,
+            "note": "native 4013.1666666666665 ms of scene duration 4033.33333 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-01/near_end-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 0,
+            "fractionBeyond": 0,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-01/near_end-diff.png",
+            "stripPath": "captures/LOT-01/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-02",
+      "sceneKind": "compiled",
+      "executionRoute": "production",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "PASS",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 26.19999999552965,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 4,
+            "note": "native 0 ms of scene duration 7533.33333 ms"
+          },
+          "native": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/start-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 45.67126918665868,
+            "fractionBeyond": 0.2650950038580247,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-02/start-diff.png",
+            "stripPath": "captures/LOT-02/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 31.100000001490116,
+            "note": "lottie frame 56.5"
+          },
+          "reference": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.8000000044703484,
+            "note": "native 1883.3333333333333 ms of scene duration 7533.33333 ms"
+          },
+          "native": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/q25-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 54.97005689210235,
+            "fractionBeyond": 0.30514515817901233,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-02/q25-diff.png",
+            "stripPath": "captures/LOT-02/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 22.899999998509884,
+            "note": "lottie frame 113"
+          },
+          "reference": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.7000000029802322,
+            "note": "native 3766.6666666666665 ms of scene duration 7533.33333 ms"
+          },
+          "native": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/q50-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 49.40869913962359,
+            "fractionBeyond": 0.2771310763888889,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-02/q50-diff.png",
+            "stripPath": "captures/LOT-02/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 10.299999997019768,
+            "note": "lottie frame 169.5"
+          },
+          "reference": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.5999999940395355,
+            "note": "native 5650 ms of scene duration 7533.33333 ms"
+          },
+          "native": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/q75-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 56.469459370368575,
+            "fractionBeyond": 0.3230536265432099,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-02/q75-diff.png",
+            "stripPath": "captures/LOT-02/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 12.300000004470348,
+            "note": "lottie frame 224.87"
+          },
+          "reference": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.7000000029802322,
+            "note": "native 7495.666666666666 ms of scene duration 7533.33333 ms"
+          },
+          "native": {
+            "width": 1920,
+            "height": 1080,
+            "path": "captures/LOT-02/near_end-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 45.76675144366264,
+            "fractionBeyond": 0.2648750964506173,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-02/near_end-diff.png",
+            "stripPath": "captures/LOT-02/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-03",
+      "sceneKind": "diagnostic_not_production",
+      "executionRoute": "diagnostic-continuation",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "UNVERIFIED",
+      "nativeStatus": "DIAGNOSTIC",
+      "logs": [
+        "error: Uncaught TypeError: Cannot read properties of undefined (reading 's')"
+      ],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 18.799999997019768,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 24.200000002980232,
+            "note": "native 0 ms of scene duration 7116.666666666666 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/start-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 400.92000736777936,
+            "fractionBeyond": 1,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-03/start-diff.png",
+            "stripPath": "captures/LOT-03/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 1.5,
+            "note": "lottie frame 106.75"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 20,
+            "note": "native 1779.1666666666665 ms of scene duration 7116.666666666666 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/q25-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 400.92000736777936,
+            "fractionBeyond": 1,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-03/q25-diff.png",
+            "stripPath": "captures/LOT-03/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 17.69999999552965,
+            "note": "lottie frame 213.5"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 16.69999999552965,
+            "note": "native 3558.333333333333 ms of scene duration 7116.666666666666 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/q50-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 400.92000736777936,
+            "fractionBeyond": 1,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-03/q50-diff.png",
+            "stripPath": "captures/LOT-03/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 1.0999999940395355,
+            "note": "lottie frame 320.25"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 18.5,
+            "note": "native 5337.5 ms of scene duration 7116.666666666666 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/q75-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 400.92000736777936,
+            "fractionBeyond": 1,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-03/q75-diff.png",
+            "stripPath": "captures/LOT-03/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 14.5,
+            "note": "lottie frame 424.865"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 16.5,
+            "note": "native 7081.083333333333 ms of scene duration 7116.666666666666 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 689,
+            "path": "captures/LOT-03/near_end-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 400.92000736777936,
+            "fractionBeyond": 1,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-03/near_end-diff.png",
+            "stripPath": "captures/LOT-03/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-04",
+      "sceneKind": "compiled",
+      "executionRoute": "production",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "PASS",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 21.299999997019768,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.9000000059604645,
+            "note": "native 0 ms of scene duration 11250 ms"
+          },
+          "native": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/start-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 8.332548931383577,
+            "fractionBeyond": 0.08440044994375703,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-04/start-diff.png",
+            "stripPath": "captures/LOT-04/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 9.399999998509884,
+            "note": "lottie frame 168.75"
+          },
+          "reference": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.8000000044703484,
+            "note": "native 2812.5 ms of scene duration 11250 ms"
+          },
+          "native": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/q25-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 8.862105736782903,
+            "fractionBeyond": 0.07999775028121485,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-04/q25-diff.png",
+            "stripPath": "captures/LOT-04/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 8.399999998509884,
+            "note": "lottie frame 337.5"
+          },
+          "reference": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.6999999955296516,
+            "note": "native 5625 ms of scene duration 11250 ms"
+          },
+          "native": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/q50-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 8.144575928008999,
+            "fractionBeyond": 0.07941732283464567,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-04/q50-diff.png",
+            "stripPath": "captures/LOT-04/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 6.100000001490116,
+            "note": "lottie frame 506.25"
+          },
+          "reference": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.7000000029802322,
+            "note": "native 8437.5 ms of scene duration 11250 ms"
+          },
+          "native": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/q75-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 8.083154105736783,
+            "fractionBeyond": 0.08199325084364455,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-04/q75-diff.png",
+            "stripPath": "captures/LOT-04/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 12,
+            "note": "lottie frame 671.625"
+          },
+          "reference": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.7999999970197678,
+            "note": "native 11193.75 ms of scene duration 11250 ms"
+          },
+          "native": {
+            "width": 500,
+            "height": 889,
+            "path": "captures/LOT-04/near_end-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 8.330929133858268,
+            "fractionBeyond": 0.08442744656917885,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-04/near_end-diff.png",
+            "stripPath": "captures/LOT-04/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-05",
+      "sceneKind": "compiled",
+      "executionRoute": "production",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "PASS",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 18.5,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.4000000059604645,
+            "note": "native 0 ms of scene duration 4016.66667 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/start-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 23.81263550612081,
+            "fractionBeyond": 0.1602366255144033,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-05/start-diff.png",
+            "stripPath": "captures/LOT-05/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 18.399999998509884,
+            "note": "lottie frame 60.25"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.3999999985098839,
+            "note": "native 1004.1666666666666 ms of scene duration 4016.66667 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/q25-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 30.20086820263703,
+            "fractionBeyond": 0.1465869341563786,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-05/q25-diff.png",
+            "stripPath": "captures/LOT-05/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 20,
+            "note": "lottie frame 120.5"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.30000000447034836,
+            "note": "native 2008.3333333333333 ms of scene duration 4016.66667 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/q50-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 93.36237871974103,
+            "fractionBeyond": 0.36491598079561044,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-05/q50-diff.png",
+            "stripPath": "captures/LOT-05/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 19.899999998509884,
+            "note": "lottie frame 180.75"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.29999999701976776,
+            "note": "native 3012.5 ms of scene duration 4016.66667 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/q75-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 34.23315923573021,
+            "fractionBeyond": 0.15856481481481483,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-05/q75-diff.png",
+            "stripPath": "captures/LOT-05/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 9.900000005960464,
+            "note": "lottie frame 239.795"
+          },
+          "reference": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.29999999701976776,
+            "note": "native 3996.583333333333 ms of scene duration 4016.66667 ms"
+          },
+          "native": {
+            "width": 1080,
+            "height": 1080,
+            "path": "captures/LOT-05/near_end-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 92.73045240245865,
+            "fractionBeyond": 0.3627049039780521,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-05/near_end-diff.png",
+            "stripPath": "captures/LOT-05/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-06",
+      "sceneKind": "compiled",
+      "executionRoute": "production",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "PASS",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 18.299999997019768,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.7000000029802322,
+            "note": "native 0 ms of scene duration 960 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/start-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 264.18591101588913,
+            "fractionBeyond": 0.6818364197530864,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-06/start-diff.png",
+            "stripPath": "captures/LOT-06/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 16.80000000447035,
+            "note": "lottie frame 6"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.1999999955296516,
+            "note": "native 240 ms of scene duration 960 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/q25-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 265.35026738042154,
+            "fractionBeyond": 0.6877064043209876,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-06/q25-diff.png",
+            "stripPath": "captures/LOT-06/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 4.4000000059604645,
+            "note": "lottie frame 12"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.2999999970197678,
+            "note": "native 480 ms of scene duration 960 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/q50-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 264.290764344114,
+            "fractionBeyond": 0.6854861111111111,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-06/q50-diff.png",
+            "stripPath": "captures/LOT-06/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 3,
+            "note": "lottie frame 18"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.1000000014901161,
+            "note": "native 720 ms of scene duration 960 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/q75-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 265.4528933528311,
+            "fractionBeyond": 0.6894077932098766,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-06/q75-diff.png",
+            "stripPath": "captures/LOT-06/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 4,
+            "note": "lottie frame 23.88"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1,
+            "note": "native 955.2 ms of scene duration 960 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/LOT-06/near_end-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 264.18591101588913,
+            "fractionBeyond": 0.6818364197530864,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-06/near_end-diff.png",
+            "stripPath": "captures/LOT-06/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "LOT-07",
+      "sceneKind": "compiled",
+      "executionRoute": "production",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "canvas",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "PASS",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 29.30000000447035,
+            "note": "lottie frame 0"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.5,
+            "note": "native 0 ms of scene duration 5000 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/start-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 121.17894966232646,
+            "fractionBeyond": 0.6296,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-07/start-diff.png",
+            "stripPath": "captures/LOT-07/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 19.600000001490116,
+            "note": "lottie frame 37.5"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.6000000014901161,
+            "note": "native 1250 ms of scene duration 5000 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/q25-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 111.2063645945422,
+            "fractionBeyond": 0.59351875,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-07/q25-diff.png",
+            "stripPath": "captures/LOT-07/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 22.299999997019768,
+            "note": "lottie frame 75"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.29999999701976776,
+            "note": "native 2500 ms of scene duration 5000 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/q50-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 102.62428819778945,
+            "fractionBeyond": 0.55139375,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-07/q50-diff.png",
+            "stripPath": "captures/LOT-07/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 22.600000001490116,
+            "note": "lottie frame 112.5"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.3999999985098839,
+            "note": "native 3750 ms of scene duration 5000 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/q75-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 111.4438472277123,
+            "fractionBeyond": 0.594525,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-07/q75-diff.png",
+            "stripPath": "captures/LOT-07/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 23.200000002980232,
+            "note": "lottie frame 149.25"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 0.3999999985098839,
+            "note": "native 4975 ms of scene duration 5000 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/LOT-07/near_end-native.png",
+            "sceneKind": "compiled"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 120.62718347399533,
+            "fractionBeyond": 0.6292625,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/LOT-07/near_end-diff.png",
+            "stripPath": "captures/LOT-07/near_end-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SVG-01",
+      "sceneKind": "diagnostic_not_production",
+      "executionRoute": "diagnostic-continuation",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "screenshot",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "DIAGNOSTIC",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 26.399999998509884,
+            "note": "svg time 0"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 19.299999997019768,
+            "note": "native 0 ms of scene duration 4033.0000000000005 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/start-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 2.1838863443189855,
+            "fractionBeyond": 0.00831875,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-01/start-diff.png",
+            "stripPath": "captures/SVG-01/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 2.7999999970197678,
+            "note": "svg time 1.00825"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 17.5,
+            "note": "native 1008.2500000000001 ms of scene duration 4033.0000000000005 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/q25-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 6.965717806659566,
+            "fractionBeyond": 0.0272375,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-01/q25-diff.png",
+            "stripPath": "captures/SVG-01/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 6.700000002980232,
+            "note": "svg time 2.0165"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 18.399999998509884,
+            "note": "native 2016.5000000000002 ms of scene duration 4033.0000000000005 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/q50-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 4.173631943738044,
+            "fractionBeyond": 0.015525,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-01/q50-diff.png",
+            "stripPath": "captures/SVG-01/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 5,
+            "note": "svg time 3.02475"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 17,
+            "note": "native 3024.7500000000005 ms of scene duration 4033.0000000000005 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/q75-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.8499045243721677,
+            "fractionBeyond": 0.00625625,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-01/q75-diff.png",
+            "stripPath": "captures/SVG-01/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end of one cycle",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 8.700000002980232,
+            "note": "svg time 4.012835"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 17,
+            "note": "native 4012.8350000000005 ms of scene duration 4033.0000000000005 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/near_end-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.6593247571123377,
+            "fractionBeyond": 0.00549375,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-01/near_end-diff.png",
+            "stripPath": "captures/SVG-01/near_end-strip.png"
+          }
+        },
+        {
+          "id": "key_0.926",
+          "label": "SMIL key fraction 0.926",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 8.199999995529652,
+            "note": "svg time 3.7345580000000007"
+          },
+          "reference": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/key_0.926-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 17.099999994039536,
+            "note": "native 3734.5580000000004 ms of scene duration 4033.0000000000005 ms"
+          },
+          "native": {
+            "width": 400,
+            "height": 400,
+            "path": "captures/SVG-01/key_0.926-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.6593247571123377,
+            "fractionBeyond": 0.00549375,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-01/key_0.926-diff.png",
+            "stripPath": "captures/SVG-01/key_0.926-strip.png"
+          }
+        }
+      ]
+    },
+    {
+      "id": "SVG-02",
+      "sceneKind": "diagnostic_not_production",
+      "executionRoute": "diagnostic-continuation",
+      "prepared": {
+        "ok": true,
+        "notes": [],
+        "reference": "screenshot",
+        "native": true
+      },
+      "referenceStatus": "PASS",
+      "nativeStatus": "DIAGNOSTIC",
+      "logs": [],
+      "frames": [
+        {
+          "id": "start",
+          "label": "start",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 29.299999997019768,
+            "note": "svg time 0"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/start-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 2.1999999955296516,
+            "note": "native 0 ms of scene duration 1000 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/start-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 1.3753373834856373,
+            "fractionBeyond": 0.005655864197530864,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-02/start-diff.png",
+            "stripPath": "captures/SVG-02/start-strip.png"
+          }
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 15.700000002980232,
+            "note": "svg time 0.25"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/q25-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.8999999985098839,
+            "note": "native 250 ms of scene duration 1000 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/q25-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 12.118822394653026,
+            "fractionBeyond": 0.07899691358024691,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-02/q25-diff.png",
+            "stripPath": "captures/SVG-02/q25-strip.png"
+          }
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 1.1999999955296516,
+            "note": "svg time 0.5"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/q50-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.7999999970197678,
+            "note": "native 500 ms of scene duration 1000 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/q50-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 12.53495878718539,
+            "fractionBeyond": 0.08499421296296296,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-02/q50-diff.png",
+            "stripPath": "captures/SVG-02/q50-strip.png"
+          }
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 19.200000002980232,
+            "note": "svg time 0.75"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/q75-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.6000000014901161,
+            "note": "native 750 ms of scene duration 1000 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/q75-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 12.468942229742966,
+            "fractionBeyond": 0.0845775462962963,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-02/q75-diff.png",
+            "stripPath": "captures/SVG-02/q75-strip.png"
+          }
+        },
+        {
+          "id": "near_end",
+          "label": "near end of one cycle",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 2.1999999955296516,
+            "note": "svg time 0.995"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/near_end-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.7999999970197678,
+            "note": "native 995 ms of scene duration 1000 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/near_end-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 2.7857138367589718,
+            "fractionBeyond": 0.01986496913580247,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-02/near_end-diff.png",
+            "stripPath": "captures/SVG-02/near_end-strip.png"
+          }
+        },
+        {
+          "id": "key_0.600",
+          "label": "SMIL key fraction 0.600",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 16,
+            "note": "svg time 0.6"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/key_0.600-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.7999999970197678,
+            "note": "native 600 ms of scene duration 1000 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/key_0.600-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 13.219688314193734,
+            "fractionBeyond": 0.0872337962962963,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-02/key_0.600-diff.png",
+            "stripPath": "captures/SVG-02/key_0.600-strip.png"
+          }
+        },
+        {
+          "id": "key_0.640",
+          "label": "SMIL key fraction 0.640",
+          "referenceSeek": {
+            "ok": true,
+            "ms": 19,
+            "note": "svg time 0.64"
+          },
+          "reference": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/key_0.640-reference.png"
+          },
+          "nativeSeek": {
+            "ok": true,
+            "ms": 1.6999999955296516,
+            "note": "native 640 ms of scene duration 1000 ms"
+          },
+          "native": {
+            "width": 720,
+            "height": 720,
+            "path": "captures/SVG-02/key_0.640-native.png",
+            "sceneKind": "diagnostic_not_production"
+          },
+          "diff": {
+            "comparable": true,
+            "meanDistance": 13.21864862310009,
+            "fractionBeyond": 0.0871508487654321,
+            "threshold": "Euclidean RGB distance > 24 counts as a differing pixel. This threshold is for inspection, not a pass rule.",
+            "diffPath": "captures/SVG-02/key_0.640-diff.png",
+            "stripPath": "captures/SVG-02/key_0.640-strip.png"
+          }
+        }
+      ]
+    }
+  ],
+  "viteLogTail": "\u001b[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.\u001b[39m\n\n  VITE v5.4.21  ready in 166 ms\n\n  ➜  Local:   http://127.0.0.1:5199/\n"
+}

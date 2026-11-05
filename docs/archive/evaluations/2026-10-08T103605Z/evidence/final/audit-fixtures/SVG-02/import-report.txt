@@ -1,0 +1,127 @@
+STATUS	failed
+COUNTS	conversion	exact	48	approximated	63	dropped	1	unsupported	4
+GROUP	IMPORT_EXACT	info	exact	1	viewBox is the Scene IR viewport, with minX/minY translated to the origin.
+LOC	
+GROUP	IMPORT_DROPPED	warning	dropped	1	<defs> has no painted result.
+LOC	
+GROUP	IMPORT_UNSUPPORTED	error	unsupported	1	<rect> could not be converted.
+LOC	
+GROUP	IMPORT_UNSUPPORTED	error	unsupported	2	<image> is outside the SVG subset.
+LOC	
+LOC	
+GROUP	IMPORT_APPROXIMATED	warning	approximated	63	Indefinite repeat is previewed for one cycle.
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+GROUP	IMPORT_EXACT	info	exact	26	Time-based transform.position.x on i41.
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+GROUP	IMPORT_EXACT	info	exact	20	Time-based transform.rotation on i41.
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+LOC	i41
+GROUP	IMPORT_EXACT	info	exact	1	SVG motion uses a 1000ms preview duration.
+LOC	
+GROUP	IMPORT_INVALID_IR	fatal	unsupported	1	svg2 overlaps svg1 on node:i41:transform.position.x.
+LOC	

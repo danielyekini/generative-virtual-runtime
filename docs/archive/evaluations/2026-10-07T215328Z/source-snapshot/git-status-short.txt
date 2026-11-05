@@ -1,0 +1,37 @@
+ M docs/evaluations/MotionScript_Fidelity_and_Authoring_Loop.md
+ M packages/format-lottie/src/lottie.test.ts
+ M packages/format-lottie/src/property.ts
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q25-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q25-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-near_end-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q25-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-start-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-strip.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-diff.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-nat.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-ref.png
+?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-strip.png
+?? docs/evaluations/2026-10-07T215328Z/
+?? fixtures/import/lottie/easing_ae_near_linear.json

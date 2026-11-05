@@ -1,0 +1,231 @@
+diff --git a/docs/evaluations/README.md b/docs/evaluations/README.md
+index ac742fb..29e5515 100644
+--- a/docs/evaluations/README.md
++++ b/docs/evaluations/README.md
+@@ -2,12 +2,13 @@
+ 
+ An evaluation run records what one implementation revision reproduced. It is not the specification. Support claims live in `packages/schema/capabilities/registry.json`. Language changes live in `docs/languages/`.
+ 
+-The newest run is [2026-10-08T103605Z](2026-10-08T103605Z/report.md).
++The newest run is [2026-10-08T140610Z](2026-10-08T140610Z/report.md).
+ 
+-Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T103605Z`. Continue with animated solid fill design (phase B, 0/3 attempts); preserve all retained cause budgets. Corpus remains FAIL. No new canonical sample promotion.
++Next Baseline reads [implementation-pin.json](implementation-pin.json), pinned to the final dirty snapshot in `2026-10-08T140610Z`. Continue phase A global layer paint order on LOT01 (0/3 attempts); spatial clipping correction retains 1/3 history and animated fill remains queued at 0/3. Corpus remains FAIL. No canonical promotion.
+ 
+ | Run | Captured | Languages under test | Result |
+ | --- | --- | --- | --- |
++| [2026-10-08T140610Z](2026-10-08T140610Z/report.md) | 2026-10-08T15:08:19.064275+00:00 | MotionScript / Scene IR 0.5.0 | 194 tests + typechecks PASS; spatial cuts corrected; LOT01 local visual FAIL; phase A paint order next; budget-exhausted |
+ | [2026-10-08T103605Z](2026-10-08T103605Z/report.md) | 2026-10-08T12:17:22.256060+00:00 | MotionScript / Scene IR 0.5.0 | 191 tests + typechecks PASS; clipping and shape order corrected; animated fill loss explicit; corpus FAIL; full native capture with reference blockers; budget overrun |
+ | [2026-10-08T090908Z](2026-10-08T090908Z/report.md) | 2026-10-08T10:05:25.725844+00:00 | MotionScript / Scene IR 0.5.0 | 184 tests + typechecks PASS; Wave stroke loss corrected, gradient residual FAIL; LOT-00 local quality PASS/r000001; budget-exhausted |
+ | [2026-10-08T012312Z](2026-10-08T012312Z/report.md) | 2026-10-08T07:15:47.602552+00:00 | MotionScript / Scene IR 0.5.0 | 181 tests + typechecks PASS; Wave timing fixed; corpus visual FAIL; budget-exhausted |
+diff --git a/docs/evaluations/implementation-pin.json b/docs/evaluations/implementation-pin.json
+index d4ed59b..002e098 100644
+--- a/docs/evaluations/implementation-pin.json
++++ b/docs/evaluations/implementation-pin.json
+@@ -1,22 +1,22 @@
+ {
+   "purpose": "Next Lottie fidelity Baseline must pin to this implementation. Update this file whenever a run stops or the operator names a new starting revision.",
+-  "pinnedAt": "2026-10-08T12:17:22.256060+00:00",
+-  "afterRun": "2026-10-08T103605Z",
+-  "comparedWithForNextBaseline": "2026-10-08T103605Z",
++  "pinnedAt": "2026-10-08T15:08:19.064275+00:00",
++  "afterRun": "2026-10-08T140610Z",
++  "comparedWithForNextBaseline": "2026-10-08T140610Z",
+   "git": {
+-    "head": "a72beab23bbd74c114cf931d0fc42eb385e8e4bf",
+-    "short": "a72beab",
+-    "subject": "Merge main into work, preserving historical fidelity evidence",
++    "head": "a850d655dc702ed15b03e931947022e15f5b760c",
++    "short": "a850d65",
++    "subject": "Fix Lottie clipped easing and shape paint order; record fidelity evaluation",
+     "treeCleanAtPin": false,
+     "matchRule": "HEAD must equal git.head, or git.head must be an ancestor of HEAD (git merge-base --is-ancestor <pin> HEAD). Working tree must be clean for a commit pin; otherwise write a source-snapshot/.",
+-    "note": "Final tested local edits; complete dirty snapshot required. No commit/push in this fidelity run."
++    "note": "Final tested local importer correction; restore complete dirty source snapshot. No commit/push."
+   },
+   "snapshot": {
+     "requiredWhenDirty": true,
+-    "path": "docs/evaluations/2026-10-08T103605Z/source-snapshot/",
++    "path": "docs/evaluations/2026-10-08T140610Z/source-snapshot/",
+     "finalArchive": "tree/final-source.tar.gz",
+     "manifest": "final-files.json",
+-    "how": "Full source bytes excluding credentials, disposable dependencies and recursive snapshots. Archive contents are hashed by final-files.json."
++    "how": "Complete source bytes excluding credentials, disposable dependencies, bulk capture evidence retained separately and recursive snapshots."
+   },
+   "languages": {
+     "motionscript": {
+@@ -29,24 +29,24 @@
+     }
+   },
+   "nextCause": {
+-    "id": "paint.animatedSolidFill",
+-    "phase": "B",
++    "id": "visual.layerPaintOrder",
++    "phase": "A",
+     "attempts": 0,
+     "remainingAttempts": 3,
+     "affectedFixtures": [
+-      "LOT-06"
++      "LOT-01"
+     ],
+-    "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
+-    "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
++    "ownerBoundary": "format-lottie paint parent versus transform parent lowering",
++    "expectedEvidence": "Use published transform.parent to retain global source layer paint order independently of transform hierarchy; preserve precomp opacity/timing and actual source matrices. Verify remaining contours, source/direct/compiled routes and all original windows. Do not treat sampled reordering as resolved."
+   },
+   "exactFixturesAtPin": [
+     "LOT-00",
+     "LOT-01",
+     "LOT-07"
+   ],
+-  "visualNote": "Corpus FAIL; LOT00 and LOT07 full-window visual PASS for both native routes, LOT06 partial/visual FAIL due eight animated fill losses; LOT05 repeat reference BLOCKED. No canonical promotion.",
+-  "attemptHistoryRun": "docs/evaluations/2026-10-08T103605Z/loop.json",
+-  "commitReproduction": "Start with git.head, restore final-source.tar.gz and verify final-files.json; base commit alone omits these local corrections.",
++  "visualNote": "LOT01 spatial cuts improved and semantic gate PASS, visual local FAIL. LOT00/07 reviewed native/reference bytes unchanged. Whole corpus FAIL; see current results for full-window coverage/reference readiness.",
++  "attemptHistoryRun": "docs/evaluations/2026-10-08T140610Z/loop.json",
++  "commitReproduction": "Restore final source archive over git.head and verify final-files.json; commit alone omits local changes.",
+   "retainedCauses": [
+     {
+       "id": "visual.wave.multipleStrokeLoss",
+@@ -70,7 +70,13 @@
+       "id": "visual.layerPaintOrder",
+       "attempts": 0,
+       "remainingAttempts": 3,
+-      "status": "STRUCTURAL_DIAGNOSTIC; counterfactual not a material root-cause correction; no implementation"
++      "status": "REOPENED_DIAGNOSTIC_CONFIRMED_LOT01_EARLY_OVERLAP",
++      "affectedFixtures": [
++        "LOT-01"
++      ],
++      "phase": "A",
++      "newEvidence": "evidence/paint-order-counterfactual/results.json; pinned-original raster matches at all five probed frames. Source global order improves frame03 hot .0034\u2192.00055/local .35475\u2192.05464; other residuals remain. No shared implementation edited; attempts remain 0.",
++      "previousScope": "LOT06 structural counterfactual was not causal; history preserved."
+     },
+     {
+       "id": "visual.shapeGroupPaintOrder",
+@@ -83,6 +89,12 @@
+       "attempts": 1,
+       "remainingAttempts": 2,
+       "status": "INVENTORY_DIAGNOSTIC_CORRECTION; paint capability remains unimplemented"
++    },
++    {
++      "id": "timing.spatialCompositionClip",
++      "attempts": 1,
++      "remainingAttempts": 2,
++      "status": "MEASURED_CORRECTION; fixture fidelity still FAIL; next independent layer paint-order finding retained"
+     }
+   ],
+   "productionExactLabelsAtPin": [
+@@ -92,5 +104,18 @@
+   ],
+   "knownSourceLossOverrides": {
+     "LOT-06": "Eight animated fill colors unsupported; explicitly diagnosed partial."
+-  }
++  },
++  "queuedCauses": [
++    {
++      "id": "paint.animatedSolidFill",
++      "phase": "B",
++      "attempts": 0,
++      "remainingAttempts": 3,
++      "affectedFixtures": [
++        "LOT-06"
++      ],
++      "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
++      "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
++    }
++  ]
+ }
+diff --git a/package-lock.json b/package-lock.json
+index aa169cc..81b221b 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -2672,7 +2672,7 @@
+     },
+     "packages/format-lottie": {
+       "name": "@gvr/format-lottie",
+-      "version": "0.1.3",
++      "version": "0.1.4",
+       "dependencies": {
+         "@gvr/format-import-core": "*",
+         "@gvr/schema": "*"
+diff --git a/packages/format-lottie/CHANGELOG.md b/packages/format-lottie/CHANGELOG.md
+index 59428d3..7b5446d 100644
+--- a/packages/format-lottie/CHANGELOG.md
++++ b/packages/format-lottie/CHANGELOG.md
+@@ -1,5 +1,9 @@
+ # @gvr/format-lottie
+ 
++## 0.1.4
++
++Preserve clipped spatial motion with existing vec2 keyframes and restricted temporal easing over the original arc-length polyline. Covered temporal curves are monotonic with cubic Y controls in [0,1]; holds and named easing retain their existing meanings. No language or wire change. Non-monotonic spatial clipping remains outside this correction.
++
+ ## 0.1.3
+ 
+ Inventory animated solid fill colours recursively, including precomp shape trees, before lowering. Missing animated paints now report partial conversion rather than an exact label. The animated paint capability remains unimplemented.
+diff --git a/packages/format-lottie/package.json b/packages/format-lottie/package.json
+index 99c00eb..f1e1066 100644
+--- a/packages/format-lottie/package.json
++++ b/packages/format-lottie/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "@gvr/format-lottie",
+-  "version": "0.1.3",
++  "version": "0.1.4",
+   "private": true,
+   "type": "module",
+   "exports": {
+diff --git a/packages/format-lottie/src/model.ts b/packages/format-lottie/src/model.ts
+index 5ef4499..6e048a3 100644
+--- a/packages/format-lottie/src/model.ts
++++ b/packages/format-lottie/src/model.ts
+@@ -3,7 +3,7 @@ import type { SegmentEasing, Vec2 } from "@gvr/schema";
+ export type LottieEasing = SegmentEasing | "bezier-approx";
+ import type { InventoryFinding } from "./inventory";
+ 
+-export const LOTTIE_ADAPTER_VERSION = "0.1.3";
++export const LOTTIE_ADAPTER_VERSION = "0.1.4";
+ 
+ export interface LottieDocument {
+   frameRate: number;
+diff --git a/packages/format-lottie/src/normalise.ts b/packages/format-lottie/src/normalise.ts
+index 781459a..6438043 100644
+--- a/packages/format-lottie/src/normalise.ts
++++ b/packages/format-lottie/src/normalise.ts
+@@ -39,6 +39,7 @@ import type {
+ } from "./model";
+ import { LOTTIE_ADAPTER_VERSION } from "./model";
+ import { clipKeyframes } from "./clip-keyframes";
++import { clipSpatialKeyframes } from "./clip-spatial-keyframes";
+ 
+ interface LowerContext {
+   document: LottieDocument;
+@@ -895,6 +896,9 @@ function clampTrackToScene(
+     return clipped ? { ...clipped, keyframes: dedupeKeyframeOffsets(clipped.keyframes) } : undefined;
+   }
+ 
++  const spatialClip = clipSpatialKeyframes(startMs, durationMs, keyframes, sceneDurationMs);
++  if (spatialClip) return { ...spatialClip, keyframes: dedupeKeyframeOffsets(spatialClip.keyframes) };
++
+   const span = hi - lo;
+   const samples: Keyframe[] = [];
+   const startValue = sampleTrackValue(startMs, durationMs, keyframes, lo);
+diff --git a/packages/schema/capabilities/registry.json b/packages/schema/capabilities/registry.json
+index 391722f..2f262fc 100644
+--- a/packages/schema/capabilities/registry.json
++++ b/packages/schema/capabilities/registry.json
+@@ -386,12 +386,13 @@
+       "conformanceTests": [
+         "packages/schema/src/spatial.test.ts#samples spatial cubics by arc length",
+         "packages/schema/src/spatial.test.ts#includes Z in arc length like lottie-web when tangents carry depth",
+-        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length"
++        "packages/runtime/src/runtime.test.ts#samples spatial position keys by arc length",
++        "packages/format-lottie/src/clip-spatial-keyframes.test.ts#preserves uncut arc-length motion through both cuts and shuffled seeks"
+       ],
+       "adapters": {
+         "lottie": {
+           "status": "exact",
+-          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present.",
++          "scope": "Spatial tangents on position tracks keep optional Z; runtime samples arc length in XYZ when Z is present. Composition-window cuts with monotonic temporal curves (cubic Y controls in [0,1], named easing or holds) preserve the original arc-length polyline using existing vec2 keys; non-monotonic spatial cuts are outside the verified clipping scope.",
+           "conformanceTests": [
+             "packages/format-lottie/src/lottie.test.ts#inventories omitted constructs before lowering",
+             "packages/format-lottie/src/lottie.test.ts#preserves spatial tangent Z for arc-length sampling",

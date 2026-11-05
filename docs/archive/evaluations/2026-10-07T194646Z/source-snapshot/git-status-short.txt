@@ -1,0 +1,29 @@
+ M docs/languages/compatibility-policy.md
+ M docs/languages/motionscript/versions/pending.md
+ M docs/languages/scene-ir/versions/pending.md
+ M packages/compiler/src/ast.ts
+ M packages/compiler/src/compile.ts
+ M packages/compiler/src/compiler.test.ts
+ M packages/compiler/src/parse.ts
+ M packages/format-lottie/src/lottie.test.ts
+ M packages/format-lottie/src/model.ts
+ M packages/format-lottie/src/normalise.ts
+ M packages/format-lottie/src/parse-shapes.ts
+ M packages/format-lottie/src/property.ts
+ M packages/motionscript-emitter/src/emit.test.ts
+ M packages/motionscript-emitter/src/emit.ts
+ M packages/runtime/src/runtime.test.ts
+ M packages/runtime/src/sample.ts
+ M packages/schema/capabilities/registry.json
+ M packages/schema/capabilities/releases.json
+ M packages/schema/src/capabilities.ts
+ M packages/schema/src/grammar.ts
+ M packages/schema/src/index.ts
+ M packages/schema/src/registry.ts
+ M packages/schema/src/types.ts
+ M packages/schema/src/validate.ts
+?? docs/languages/motionscript/versions/0.3.0.md
+?? docs/languages/scene-ir/versions/0.3.0.md
+?? fixtures/import/lottie/animated_path_morph.json
+?? packages/schema/src/path-morph.test.ts
+?? packages/schema/src/path-morph.ts

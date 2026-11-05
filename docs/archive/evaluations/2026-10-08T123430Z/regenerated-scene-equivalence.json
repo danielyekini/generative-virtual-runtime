@@ -1,0 +1,30 @@
+{
+  "reason": "Importer package release metadata updated after the prior pipeline process loaded; regeneration must preserve exact scene/program bytes before associating semantic results with final source snapshot.",
+  "changedSceneOrProgramPaths": [],
+  "sha256": {
+    "fixtures/LOT-00/imported-scene.json": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd",
+    "fixtures/LOT-00/generated.motion": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+    "fixtures/LOT-00/compiled-scene.json": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d",
+    "fixtures/LOT-01/imported-scene.json": "94611e760ed6933a3a410285f54289b406d456976748e85c908dd2143f31fe35",
+    "fixtures/LOT-01/generated.motion": "d3eeb0513d80775254ba03596ff4f72997236f922ed862bcf784be2f508a2476",
+    "fixtures/LOT-01/compiled-scene.json": "53426758179807adc92ed1ef2763ba6818178f0853d0fc0f16e6b57093ae0ac1",
+    "fixtures/LOT-02/imported-scene.json": "4bf4386c6c006437781640f14e35b43e6f1f7bf02d5655175a982fa4f1dc6a51",
+    "fixtures/LOT-02/generated.motion": "c2ff4d9d09fa488c5c8b52f0bc7f3beef1b8e7194a0664b49787dba0bfa306ba",
+    "fixtures/LOT-02/compiled-scene.json": "a0869adaed0da84f46110f064a5326f588f53ac5e8e592a634381b6a0f392057",
+    "fixtures/LOT-03/diagnostic-scene.json": "038f6db9e9b691bbb9631304216aaf88f66a53100eeef8b882167f2ff2baa0cf",
+    "fixtures/LOT-04/imported-scene.json": "7460ecc821d0e6d1088254c1719b1115ac78f940657e06eafc513985e86a477c",
+    "fixtures/LOT-04/generated.motion": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31",
+    "fixtures/LOT-04/compiled-scene.json": "db4367d5ff9c56225bfaa8dc8b8d514e94b72210aa27f8a1c38b482f9806ec9f",
+    "fixtures/LOT-05/imported-scene.json": "b2de36ef8f754e0a7eb8f9c7d6da75c793652e6f274ede4441ab054c73c8cd93",
+    "fixtures/LOT-05/generated.motion": "7534a2dfc20ebcbeb53c2c1f77aa43af0225ff9bba8dea6e7f6eda06718a04eb",
+    "fixtures/LOT-05/compiled-scene.json": "be2966c8ca912bedb877af3929292f11ae17af3b7af75f6e9b75727fb1a8251a",
+    "fixtures/LOT-06/imported-scene.json": "4b9a8b943615c4605fffeadd34cfec4e21d4b6fc8fe5b14e09f47d277af72bdf",
+    "fixtures/LOT-06/generated.motion": "b9f848cb242c10982f43279833c654fd55669413a353d60fedc62970f8544c23",
+    "fixtures/LOT-06/compiled-scene.json": "97b88b5f6f8123931918156d5d67efeed1e292fe184ef5b56c9665d026cbd9bc",
+    "fixtures/LOT-07/imported-scene.json": "76a3d9de69271f8da0fa4019b61d6c89b62958d7d0f1e79e2e6f9e8b3b7a4071",
+    "fixtures/LOT-07/generated.motion": "abdd10db4679bbf309f4f228659c0057ae3e9325dff85008c8c57ad15d31a458",
+    "fixtures/LOT-07/compiled-scene.json": "392cf645a45d316664f44760fe649ee29e90c6f51885ff47fb104c2d8c035923",
+    "fixtures/SVG-01/diagnostic-scene.json": "1ee366f1fe506effc0a494dffdd420f8bd7f6ef306b08e779d3704b7c03393db",
+    "fixtures/SVG-02/diagnostic-scene.json": "8482e4c9ba71603a91aa810f1e34a93cf158efb70521d946848e790a38981c3f"
+  }
+}

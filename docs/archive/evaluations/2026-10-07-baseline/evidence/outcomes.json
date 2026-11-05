@@ -1,0 +1,108 @@
+{
+  "judgedAt": "2026-10-07T14:37:34.514Z",
+  "fixtureCount": 10,
+  "overall": {
+    "PASS": 0,
+    "PARTIAL": 6,
+    "FAIL": 4,
+    "BLOCKED": 0
+  },
+  "reference": {
+    "PASS": 9,
+    "FAIL": 1,
+    "BLOCKED": 0
+  },
+  "rule": "Overall PASS/PARTIAL/FAIL/BLOCKED follows inspection of production playback. A diagnostic scene is not a pass. Pixel fractions do not decide the outcome.",
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "overall": "PARTIAL",
+      "reference": "PASS",
+      "render": "PARTIAL",
+      "summary": "Full pipeline. Endpoints and midpoint match. Quarter-cycle pan is visibly offset.",
+      "productionFidelity": "degraded",
+      "earliestBlockingStage": null
+    },
+    {
+      "id": "LOT-01",
+      "overall": "FAIL",
+      "reference": "PASS",
+      "render": "NOT_REACHED",
+      "summary": "Root composition is one precomp. Production import returns no scene.",
+      "productionFidelity": "failed",
+      "earliestBlockingStage": "import"
+    },
+    {
+      "id": "LOT-02",
+      "overall": "PARTIAL",
+      "reference": "PASS",
+      "render": "PARTIAL",
+      "summary": "Pipeline plays a remnant. Button, text, gradient, and trim are missing.",
+      "productionFidelity": "partial",
+      "earliestBlockingStage": null
+    },
+    {
+      "id": "LOT-03",
+      "overall": "FAIL",
+      "reference": "FAIL",
+      "render": "NOT_REACHED",
+      "summary": "Production import stops on the 512 KiB limit. Reference canvas stayed empty after a player exception.",
+      "productionFidelity": "failed",
+      "earliestBlockingStage": "import"
+    },
+    {
+      "id": "LOT-04",
+      "overall": "PARTIAL",
+      "reference": "PASS",
+      "render": "PARTIAL",
+      "summary": "Pipeline plays two static paths. The moving type is inside a precomp and is absent.",
+      "productionFidelity": "partial",
+      "earliestBlockingStage": null
+    },
+    {
+      "id": "LOT-05",
+      "overall": "PARTIAL",
+      "reference": "PASS",
+      "render": "PARTIAL",
+      "summary": "Pipeline plays one white rectangle. The play-button artwork is a precomp.",
+      "productionFidelity": "partial",
+      "earliestBlockingStage": null
+    },
+    {
+      "id": "LOT-06",
+      "overall": "PARTIAL",
+      "reference": "PASS",
+      "render": "PARTIAL",
+      "summary": "Pipeline plays a broken figure. Animated paths and the hex solid background are lost.",
+      "productionFidelity": "partial",
+      "earliestBlockingStage": null
+    },
+    {
+      "id": "LOT-07",
+      "overall": "PARTIAL",
+      "reference": "PASS",
+      "render": "PARTIAL",
+      "summary": "Pipeline plays static dots. Gradient strokes and animated wave paths are absent, and there are no tracks.",
+      "productionFidelity": "partial",
+      "earliestBlockingStage": null
+    },
+    {
+      "id": "SVG-01",
+      "overall": "FAIL",
+      "reference": "PASS",
+      "render": "NOT_REACHED",
+      "summary": "SMIL confetti is not imported. Validation then rejects 564 nodes, so production returns no scene.",
+      "productionFidelity": "failed",
+      "earliestBlockingStage": "import"
+    },
+    {
+      "id": "SVG-02",
+      "overall": "FAIL",
+      "reference": "PASS",
+      "render": "NOT_REACHED",
+      "summary": "SMIL jump is not imported. Validation then rejects depth 20, so production returns no scene.",
+      "productionFidelity": "failed",
+      "earliestBlockingStage": "import"
+    }
+  ]
+}

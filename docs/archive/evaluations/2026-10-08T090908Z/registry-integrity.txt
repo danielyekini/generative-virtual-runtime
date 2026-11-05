@@ -1,0 +1,10 @@
+[
+  {
+    sampleId: 'LOT-00',
+    revisionId: 'r000001',
+    programSha256: '1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd',
+    status: 'PASS',
+    canonicalEligibility: 'PENDING_DURABLE_EVIDENCE',
+    productionEligibility: 'PENDING_DURABLE_EVIDENCE'
+  }
+]

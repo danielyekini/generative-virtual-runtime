@@ -1,0 +1,20 @@
+ M docs/evaluations/README.md
+ M docs/evaluations/implementation-pin.json
+ M package-lock.json
+ M packages/format-lottie/CHANGELOG.md
+ M packages/format-lottie/package.json
+ M packages/format-lottie/src/lottie.test.ts
+ M packages/format-lottie/src/model.ts
+ M packages/format-lottie/src/normalise.ts
+ M packages/format-lottie/src/parse-shapes.ts
+ M packages/schema/capabilities/registry.json
+?? docs/authoring/
+?? docs/evaluations/2026-10-08T090908Z/
+?? docs/evaluations/templates/
+?? docs/languages/authoring-guide.md
+?? docs/languages/design-goals.md
+?? docs/languages/evolution-policy.md
+?? docs/workflows/
+?? evaluation/authoring/
+?? fixtures/import/lottie/multiple_stroke_morph_trim.json
+?? samples/

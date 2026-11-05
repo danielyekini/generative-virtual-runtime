@@ -1,0 +1,542 @@
+{
+  "id": "LOT-06",
+  "role": "pack",
+  "format": "lottie",
+  "fileName": "Punches.json",
+  "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+  "sourceBytes": 112565,
+  "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+  "provenance": {
+    "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+    "sourceSha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+    "programPath": "fixtures/LOT-06/generated.motion",
+    "programSha256": "b9f848cb242c10982f43279833c654fd55669413a353d60fedc62970f8544c23",
+    "importedSceneSha256": "4b9a8b943615c4605fffeadd34cfec4e21d4b6fc8fe5b14e09f47d277af72bdf",
+    "compiledSceneSha256": "97b88b5f6f8123931918156d5d67efeed1e292fe184ef5b56c9665d026cbd9bc",
+    "revisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "lineageStatus": "UNREGISTERED_SCRATCH",
+    "verificationStatus": "UNVERIFIED",
+    "evidenceAssociation": {
+      "stage": "generation",
+      "resultPath": "fixtures/LOT-06/result.json",
+      "implementationEnvironmentPath": "environment.json",
+      "implementationEnvironmentSha256": "955a29afdde562738ba81e722c7855cf0d30313857cff3753964f0b2bedd5dd2",
+      "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+    }
+  },
+  "inventory": {
+    "topLevelKeys": [
+      "v",
+      "fr",
+      "ip",
+      "op",
+      "w",
+      "h",
+      "nm",
+      "ddd",
+      "assets",
+      "layers",
+      "markers"
+    ],
+    "markers": [
+      "1"
+    ],
+    "fonts": [],
+    "chars": 0,
+    "rootLayerTypes": {
+      "shape": 22,
+      "solid": 1
+    },
+    "assetLayerTypes": {},
+    "shapeTypes": {
+      "gr": 43,
+      "sh": 37,
+      "fl": 37,
+      "tr": 43
+    },
+    "masks": 0,
+    "mattes": 0,
+    "effects": 0,
+    "blendModes": 0,
+    "skew": 0,
+    "autoOrient": 0,
+    "spatialTangents": 47,
+    "textLayers": 0,
+    "hiddenLayers": 0,
+    "parenting": 7,
+    "ddd": 0,
+    "animatedProperties": 56,
+    "expressions": 0,
+    "holdKeyframes": 2,
+    "easingHandles": 214,
+    "roundedRects": 0,
+    "animatedRoundedRects": 0,
+    "images": [],
+    "precompAssets": [],
+    "missingAssets": [],
+    "examples": [
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[0].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[0].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[0].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[1].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[1].ks.p"
+      },
+      {
+        "feature": "spatial-tangent",
+        "path": "$.layers[1].ks.p"
+      }
+    ],
+    "name": "punches",
+    "version": "5.7.12",
+    "frameRate": 25,
+    "inFrame": 0,
+    "outFrame": 24,
+    "width": 720,
+    "height": 720,
+    "durationMs": 960
+  },
+  "timingsMs": {
+    "import": 49.58275600000343,
+    "emit": 179.74210099999618,
+    "compile": 3750.0968240000075
+  },
+  "complexity": {
+    "nodes": 104,
+    "tracks": 52,
+    "steps": 0,
+    "geometryItems": 430,
+    "depth": 7,
+    "durationMs": 960,
+    "viewport": {
+      "width": 720,
+      "height": 720,
+      "fit": "contain"
+    },
+    "background": {
+      "type": "solid",
+      "r": 0.06274509803921569,
+      "g": 0.06274509803921569,
+      "b": 0.0784313725490196,
+      "a": 1
+    }
+  },
+  "production": {
+    "ok": true,
+    "fidelity": "exact",
+    "counts": {
+      "exact": 67,
+      "approximated": 0,
+      "dropped": 0,
+      "unsupported": 0
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_4.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.layer_3.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_4.layer_3.layer_2.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.layer_2.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.layer_3.layer_2.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_4.layer_3.layer_2.layer_1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_4.layer_3.layer_2.layer_1.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group4.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group2.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group3.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group2.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_5.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_5.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_5.Group1.Group1.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_5.Group1.Group1.Group2.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_17.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_17.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_17.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_17.layer_18.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_17.layer_18.layer_19.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_17.layer_18.layer_19.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.x.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "position",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.y.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "rotation",
+        "severity": "info",
+        "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.rotation.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path2.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group1.Group2.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group2.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_7.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_7.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "spatial-tangent",
+        "severity": "info",
+        "message": "Spatial curve on layer_8.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_8.Group1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_9.Group1.Path1.commands.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": null,
+  "motionScript": {
+    "chars": 128500,
+    "bytes": 128500,
+    "path": "fixtures/LOT-06/generated.motion",
+    "sha256": "b9f848cb242c10982f43279833c654fd55669413a353d60fedc62970f8544c23"
+  },
+  "compile": {
+    "ok": true,
+    "diagnostics": 0,
+    "scene": true
+  },
+  "runtime": {
+    "kind": "compiled",
+    "samples": [
+      {
+        "id": "start",
+        "requestedMs": 0,
+        "evaluatedMs": 0,
+        "clampedToDuration": false,
+        "drawItems": 38,
+        "diagnostics": 0,
+        "ms": 10.600628999993205
+      },
+      {
+        "id": "q25",
+        "requestedMs": 240,
+        "evaluatedMs": 240,
+        "clampedToDuration": false,
+        "drawItems": 38,
+        "diagnostics": 0,
+        "ms": 15.99481500001275
+      },
+      {
+        "id": "q50",
+        "requestedMs": 480,
+        "evaluatedMs": 480,
+        "clampedToDuration": false,
+        "drawItems": 38,
+        "diagnostics": 0,
+        "ms": 10.100623999998788
+      },
+      {
+        "id": "q75",
+        "requestedMs": 720,
+        "evaluatedMs": 720,
+        "clampedToDuration": false,
+        "drawItems": 38,
+        "diagnostics": 0,
+        "ms": 14.814655000009225
+      },
+      {
+        "id": "near_end",
+        "requestedMs": 955.2,
+        "evaluatedMs": 955.2,
+        "clampedToDuration": false,
+        "drawItems": 38,
+        "diagnostics": 0,
+        "ms": 37.70515399999567
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "JSON object, 112565 bytes"
+    },
+    {
+      "name": "import",
+      "status": "PASS",
+      "detail": "fidelity exact; exact 67; approximated 0; dropped 0; unsupported 0; scene yes"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "PASS",
+      "detail": "128500 chars in 179.7 ms"
+    },
+    {
+      "name": "compile",
+      "status": "PASS",
+      "detail": "ok true; diagnostics 0; 3750.1 ms"
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "PASS",
+      "detail": "compileMotionScript accepted the scene"
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "PASS",
+      "detail": "importSource returns a scene only after validateSceneIR succeeds"
+    },
+    {
+      "name": "runtime",
+      "status": "PASS",
+      "detail": "compiled scene; 5 samples; draw items 38,38,38,38,38"
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": null,
+  "evidence": {
+    "importReport": "fixtures/LOT-06/import-report.txt",
+    "importedScene": "fixtures/LOT-06/imported-scene.json",
+    "compiledScene": "fixtures/LOT-06/compiled-scene.json",
+    "motion": "fixtures/LOT-06/generated.motion"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "generatedAt": "2026-10-07T21:45:58.638Z",
+  "count": 22,
+  "files": [
+    {
+      "path": "docs/languages/motionscript/versions/0.5.0.md",
+      "sha256": "afe19e7684d23d891bf9b6fa7fb67d79fb2432c3dfcccc1603423cca905cf69c",
+      "bytes": 1126
+    },
+    {
+      "path": "docs/languages/motionscript/versions/pending.md",
+      "sha256": "f315c7b2dd798db208a1b0e50128ac4df7cf1aeea14f1f86feeec822209d5d56",
+      "bytes": 705
+    },
+    {
+      "path": "docs/languages/scene-ir/versions/0.5.0.md",
+      "sha256": "48a9681b7a215920bb2c9e7d1a20ab1a882d1f779f214f10abfe8b94f3ce1ada",
+      "bytes": 1023
+    },
+    {
+      "path": "docs/languages/scene-ir/versions/pending.md",
+      "sha256": "846d12b363fdb588c1e70160d94ad61e0086dff29b3a010067c9ba58f8d9c3f4",
+      "bytes": 717
+    },
+    {
+      "path": "fixtures/import/lottie/animated_trim.json",
+      "sha256": "eb7bbbfa61c7be2234ff3faf7ed359b46b7b8a548bbe5a00b01fec8280b03338",
+      "bytes": 1974
+    },
+    {
+      "path": "packages/compiler/src/compile.ts",
+      "sha256": "f840d8bfd593414de5801aa21fe395378f89f09201626d5d6580b87d9abaed4f",
+      "bytes": 43149
+    },
+    {
+      "path": "packages/compiler/src/compiler.test.ts",
+      "sha256": "0d0ec17db86d9f2b7036d4fe625e93b4a8a4d847854eca4d7b7517344bc963f5",
+      "bytes": 16192
+    },
+    {
+      "path": "packages/format-lottie/src/lottie.test.ts",
+      "sha256": "8fb0fca6aa8fdf8dd5bddb1fdb0c9aa6068be054221e4e5eeac29313b4e95da6",
+      "bytes": 20691
+    },
+    {
+      "path": "packages/format-lottie/src/model.ts",
+      "sha256": "b41bce9fd1cea15e301090b02efa5909da158e21861dfab59d79af416c7fd503",
+      "bytes": 4832
+    },
+    {
+      "path": "packages/format-lottie/src/normalise.ts",
+      "sha256": "b8b902fea7367a4ae1cf68d4986fc7e31696670f2763d46ee60eafbd3e76f10d",
+      "bytes": 43814
+    },
+    {
+      "path": "packages/format-lottie/src/parse-shapes.ts",
+      "sha256": "c6aacba3ae122a737178c3f9f431638aada185f4fa7935dc5f4a6b2cfbd1a41a",
+      "bytes": 14449
+    },
+    {
+      "path": "packages/format-lottie/src/property.ts",
+      "sha256": "af11b65af6e0d5301efc7d4252322f55a70e5858db506ae79f9870e4134be3b7",
+      "bytes": 7373
+    },
+    {
+      "path": "packages/runtime/src/frame.ts",
+      "sha256": "d8d6d7f41ba5f831197d47b46268a0d2673fb0b966b9ee009840634f1e4fd49f",
+      "bytes": 6087
+    },
+    {
+      "path": "packages/runtime/src/runtime.test.ts",
+      "sha256": "0d562ffa2bc1dc587f66a02835462057360f35a80098f2b12f2f8cf24018e5c5",
+      "bytes": 33698
+    },
+    {
+      "path": "packages/runtime/src/sample.ts",
+      "sha256": "9d8b12ce13a9327410f662f07d52796327b7b9c71dbdcfe693145ce5381aab1e",
+      "bytes": 15108
+    },
+    {
+      "path": "packages/schema/capabilities/registry.json",
+      "sha256": "cfccbd88fc7e81aef053b7a432e4f10e8cdf3462617f2c3f3ac5a07296fceefd",
+      "bytes": 38627
+    },
+    {
+      "path": "packages/schema/capabilities/releases.json",
+      "sha256": "10f8a19a02cb284f9a0fc59c65f1015edb4eb30731db8da27e991666f8026ab2",
+      "bytes": 3821
+    },
+    {
+      "path": "packages/schema/src/capabilities.ts",
+      "sha256": "57fc72914163d0858cd209e73be79efa38344f54e9a83b1dac043133aa639b63",
+      "bytes": 808
+    },
+    {
+      "path": "packages/schema/src/registry.ts",
+      "sha256": "18278c275d32102cb49558f6c1599c761917ca2115b7990ee1706d72c8f42602",
+      "bytes": 8897
+    },
+    {
+      "path": "packages/schema/src/trim.ts",
+      "sha256": "8a27a542b5ae6f241d21b57e0dcfe30bfdbd5b2fd9c2842c985b67f1e3fb11b8",
+      "bytes": 4541
+    },
+    {
+      "path": "packages/schema/src/types.ts",
+      "sha256": "ad3b0ffaf552bc34c686d69de5e5450a5f2d2c41e2d245cf075e65271618b519",
+      "bytes": 15001
+    },
+    {
+      "path": "packages/schema/src/validate.ts",
+      "sha256": "9784c1f3a929a3b6c450fd94b0f2568f92957a4659f9ff8c5cd8a24be3c98683",
+      "bytes": 75822
+    }
+  ]
+}

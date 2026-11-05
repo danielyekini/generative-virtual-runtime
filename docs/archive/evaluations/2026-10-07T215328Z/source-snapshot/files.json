@@ -1,0 +1,14 @@
+{
+  "packages/format-lottie/src/property.ts": {
+    "sha256": "d9b2fe51293c55aba065411ad832d044c09680e8f50a678bb1563a1d4dbbf695",
+    "bytes": 7312
+  },
+  "packages/format-lottie/src/lottie.test.ts": {
+    "sha256": "ecb4527bf4f00eaba2f53ce321cd0287b2a50462823c561d493d8412ede6fb66",
+    "bytes": 21769
+  },
+  "fixtures/import/lottie/easing_ae_near_linear.json": {
+    "sha256": "c6bf499dfd7b494c7cba3650cc28e2b58c47dff841489e8c4dcb515db384c1b5",
+    "bytes": 2460
+  }
+}

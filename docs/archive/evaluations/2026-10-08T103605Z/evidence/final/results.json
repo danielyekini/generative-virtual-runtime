@@ -1,0 +1,5048 @@
+{
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "role": "baseline",
+      "format": "lottie",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+      "sourceBytes": 41712,
+      "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+        "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+        "programPath": "fixtures/LOT-00/generated.motion",
+        "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+        "importedSceneSha256": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd",
+        "compiledSceneSha256": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-00/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "v",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "layers"
+        ],
+        "markers": [],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "shape": 26,
+          "null": 3
+        },
+        "assetLayerTypes": {},
+        "shapeTypes": {
+          "el": 14,
+          "fl": 26,
+          "rc": 8,
+          "sh": 4
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 25,
+        "ddd": 0,
+        "animatedProperties": 3,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 3,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [],
+        "missingAssets": [],
+        "examples": [],
+        "name": "MotionScript V1 Compatible Panning Landscape",
+        "version": "5.7.0",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 240,
+        "width": 1280,
+        "height": 720,
+        "durationMs": 8000
+      },
+      "timingsMs": {
+        "import": 10.767286000000013,
+        "emit": 3.44764600000002,
+        "compile": 44.299441
+      },
+      "complexity": {
+        "nodes": 55,
+        "tracks": 6,
+        "steps": 29,
+        "geometryItems": 20,
+        "depth": 3,
+        "durationMs": 8000,
+        "viewport": {
+          "width": 1280,
+          "height": 720,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        }
+      },
+      "production": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 33,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_100.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_100.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_1.Tree1CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_2.Tree1TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_3.Tree2CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_4.Tree2TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_5.Tree3CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_6.Tree3TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_7.Tree4CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_8.Tree4TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_9.Tree5CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_10.Tree5TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_100.layer_11.Tree6CanopyEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_12.Tree6TrunkRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_100.layer_13.ForegroundGroundRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_200.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_200.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_200.layer_14.MidHill1Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_200.layer_15.MidHill2Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_200.layer_16.MidHill3Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_300.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_300.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_17.Cloud1Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_18.Cloud2Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_19.Cloud3Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_20.Cloud4Ellipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_21.Mountain1Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_22.Mountain2Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_23.Mountain3Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_300.layer_24.Mountain4Path.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_300.layer_25.SunEllipse.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_26.SkyRect.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "frame-timing",
+            "severity": "info",
+            "message": "Converted composition frames 0–240 at 30fps to 8000ms.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": null,
+      "motionScript": {
+        "chars": 8880,
+        "bytes": 8880,
+        "path": "fixtures/LOT-00/generated.motion",
+        "sha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd"
+      },
+      "compile": {
+        "ok": true,
+        "diagnostics": 0,
+        "scene": true
+      },
+      "runtime": {
+        "kind": "compiled",
+        "samples": [
+          {
+            "id": "start",
+            "requestedMs": 0,
+            "evaluatedMs": 0,
+            "clampedToDuration": false,
+            "drawItems": 26,
+            "diagnostics": 0,
+            "ms": 3.397490000000005
+          },
+          {
+            "id": "q25",
+            "requestedMs": 2000,
+            "evaluatedMs": 2000,
+            "clampedToDuration": false,
+            "drawItems": 26,
+            "diagnostics": 0,
+            "ms": 1.3740969999999493
+          },
+          {
+            "id": "q50",
+            "requestedMs": 4000,
+            "evaluatedMs": 4000,
+            "clampedToDuration": false,
+            "drawItems": 26,
+            "diagnostics": 0,
+            "ms": 1.1676259999999843
+          },
+          {
+            "id": "q75",
+            "requestedMs": 6000,
+            "evaluatedMs": 6000,
+            "clampedToDuration": false,
+            "drawItems": 26,
+            "diagnostics": 0,
+            "ms": 1.7607780000000162
+          },
+          {
+            "id": "near_end",
+            "requestedMs": 7960,
+            "evaluatedMs": 7960,
+            "clampedToDuration": false,
+            "drawItems": 26,
+            "diagnostics": 0,
+            "ms": 1.1130440000000021
+          }
+        ]
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 41712 bytes"
+        },
+        {
+          "name": "import",
+          "status": "PASS",
+          "detail": "fidelity exact; exact 33; approximated 0; dropped 0; unsupported 0; scene yes"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "PASS",
+          "detail": "8880 chars in 3.4 ms"
+        },
+        {
+          "name": "compile",
+          "status": "PASS",
+          "detail": "ok true; diagnostics 0; 44.3 ms"
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "PASS",
+          "detail": "compileMotionScript accepted the scene"
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "PASS",
+          "detail": "importSource returns a scene only after validateSceneIR succeeds"
+        },
+        {
+          "name": "runtime",
+          "status": "PASS",
+          "detail": "compiled scene; 5 samples; draw items 26,26,26,26,26"
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": null,
+      "evidence": {
+        "importReport": "fixtures/LOT-00/import-report.txt",
+        "importedScene": "fixtures/LOT-00/imported-scene.json",
+        "compiledScene": "fixtures/LOT-00/compiled-scene.json",
+        "motion": "fixtures/LOT-00/generated.motion"
+      }
+    },
+    {
+      "id": "LOT-01",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Celebrations Begin.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+      "sourceBytes": 139337,
+      "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+        "sourceSha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+        "programPath": "fixtures/LOT-01/generated.motion",
+        "programSha256": "d2ab8f45bbfb12a0ef1ee2b647c70ff135e84d2cc7562120ac2280937281e7de",
+        "importedSceneSha256": "6a93392186ed4ce3f4972887ed793174a233dfaeb4317159278a9ddb1b0fc3ac",
+        "compiledSceneSha256": "bef1f5e68cc9136934843b04e8d7e1fbfdd1035e9a1fd4dc980d6f6f89b42f60",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-01/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "v",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "assets",
+          "layers",
+          "markers"
+        ],
+        "markers": [],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "precomp": 1
+        },
+        "assetLayerTypes": {
+          "shape": 96,
+          "null": 3,
+          "solid": 1
+        },
+        "shapeTypes": {
+          "gr": 96,
+          "sh": 25,
+          "st": 96,
+          "tr": 96,
+          "tm": 1,
+          "fl": 83,
+          "rc": 71
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 133,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 79,
+        "ddd": 0,
+        "animatedProperties": 96,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 134,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "comp_0",
+            "layers": 100
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "tm",
+            "path": "$.assets[0].layers[0].shapes[1]"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[2].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[4].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[7].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[8].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.assets[0].layers[9].ks.p"
+          }
+        ],
+        "name": "Comp 1",
+        "version": "5.9.2",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 121,
+        "width": 400,
+        "height": 400,
+        "durationMs": 4033.333333333333
+      },
+      "timingsMs": {
+        "import": 27.253277000000026,
+        "emit": 6.859687000000008,
+        "compile": 2500.129504
+      },
+      "complexity": {
+        "nodes": 294,
+        "tracks": 97,
+        "steps": 101,
+        "geometryItems": 116,
+        "depth": 5,
+        "durationMs": 4033.333333333333,
+        "viewport": {
+          "width": 400,
+          "height": 400,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        }
+      },
+      "production": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 197,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.Shape1.Path1.trim.start.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.Shape1.Path1.trim.end.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Animated trim on layer_1.layer_1.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_1.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_2.layer_3.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_2.layer_3.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_2.layer_4.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_2.layer_4.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_2.layer_5.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_2.layer_5.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_8.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_8.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_9.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_9.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_10.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_10.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_11.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_11.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_12.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_12.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_13.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_13.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_14.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_14.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_15.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_15.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_16.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_16.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_17.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_17.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_18.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_18.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_19.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.layer_19.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_20.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_20.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_21.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_21.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_1.layer_7.layer_22.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_1.layer_7.layer_22.Rectangle1.RectanglePath1.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": null,
+      "motionScript": {
+        "chars": 80827,
+        "bytes": 80827,
+        "path": "fixtures/LOT-01/generated.motion",
+        "sha256": "d2ab8f45bbfb12a0ef1ee2b647c70ff135e84d2cc7562120ac2280937281e7de"
+      },
+      "compile": {
+        "ok": true,
+        "diagnostics": 0,
+        "scene": true
+      },
+      "runtime": {
+        "kind": "compiled",
+        "samples": [
+          {
+            "id": "start",
+            "requestedMs": 0,
+            "evaluatedMs": 0,
+            "clampedToDuration": false,
+            "drawItems": 95,
+            "diagnostics": 0,
+            "ms": 22.937039999999797
+          },
+          {
+            "id": "q25",
+            "requestedMs": 1008.3333333333333,
+            "evaluatedMs": 1008.3333333333333,
+            "clampedToDuration": false,
+            "drawItems": 96,
+            "diagnostics": 0,
+            "ms": 55.506789000000026
+          },
+          {
+            "id": "q50",
+            "requestedMs": 2016.6666666666665,
+            "evaluatedMs": 2016.6666666666665,
+            "clampedToDuration": false,
+            "drawItems": 96,
+            "diagnostics": 0,
+            "ms": 33.25799400000005
+          },
+          {
+            "id": "q75",
+            "requestedMs": 3025,
+            "evaluatedMs": 3025,
+            "clampedToDuration": false,
+            "drawItems": 96,
+            "diagnostics": 0,
+            "ms": 28.51711400000022
+          },
+          {
+            "id": "near_end",
+            "requestedMs": 4013.1666666666665,
+            "evaluatedMs": 4013.1666666666665,
+            "clampedToDuration": false,
+            "drawItems": 0,
+            "diagnostics": 0,
+            "ms": 20.439312999999856
+          }
+        ]
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 139337 bytes"
+        },
+        {
+          "name": "import",
+          "status": "PASS",
+          "detail": "fidelity exact; exact 197; approximated 0; dropped 0; unsupported 0; scene yes"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "PASS",
+          "detail": "80827 chars in 6.9 ms"
+        },
+        {
+          "name": "compile",
+          "status": "PASS",
+          "detail": "ok true; diagnostics 0; 2500.1 ms"
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "PASS",
+          "detail": "compileMotionScript accepted the scene"
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "PASS",
+          "detail": "importSource returns a scene only after validateSceneIR succeeds"
+        },
+        {
+          "name": "runtime",
+          "status": "PASS",
+          "detail": "compiled scene; 5 samples; draw items 95,96,96,96,0"
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": null,
+      "evidence": {
+        "importReport": "fixtures/LOT-01/import-report.txt",
+        "importedScene": "fixtures/LOT-01/imported-scene.json",
+        "compiledScene": "fixtures/LOT-01/compiled-scene.json",
+        "motion": "fixtures/LOT-01/generated.motion"
+      }
+    },
+    {
+      "id": "LOT-02",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Hover Button.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+      "sourceBytes": 127633,
+      "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+        "sourceSha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+        "programPath": "fixtures/LOT-02/generated.motion",
+        "programSha256": "2360bd2951015f3bdd00b4b6532143602bf73631fd43e09c516e9825a6770b7a",
+        "importedSceneSha256": "0fed7ab48343d37582d3da618225a3ed7111f5c148a1ac805d151a834c81b686",
+        "compiledSceneSha256": "a153a7b2e72675cb97a3b8d65a4cb08f48080de068f62ef8962e26f3f17ea41b",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-02/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "chars",
+          "assets",
+          "slots"
+        ],
+        "markers": [],
+        "fonts": [
+          "Host Grotesk",
+          "HostGrotesk-Bold"
+        ],
+        "chars": 10,
+        "rootLayerTypes": {
+          "text": 1,
+          "shape": 19,
+          "precomp": 1
+        },
+        "assetLayerTypes": {
+          "shape": 1,
+          "text": 1
+        },
+        "shapeTypes": {
+          "gr": 23,
+          "sh": 5,
+          "st": 4,
+          "tr": 23,
+          "tm": 4,
+          "el": 8,
+          "fl": 16,
+          "rc": 10,
+          "gf": 2,
+          "gs": 1
+        },
+        "masks": 0,
+        "mattes": 3,
+        "effects": 5,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 47,
+        "textLayers": 2,
+        "hiddenLayers": 0,
+        "parenting": 12,
+        "ddd": 0,
+        "animatedProperties": 15,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 59,
+        "roundedRects": 9,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "comp_0_5f05577e-a470-4015-b9ac-8bcc9073c734",
+            "layers": 2
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "text-layer",
+            "path": "$.layers[0]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[1].shapes[1]"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[3].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[4].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[4].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[4].ks.p"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[8].ef"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[8].shapes[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[9].shapes[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.layers[10].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[10].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.layers[11].shapes[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.layers[12].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[12].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.layers[14].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[14].ef"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[16].shapes[0].it[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[18].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[19].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.layers[20].ef"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[1]"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 226,
+        "width": 1920,
+        "height": 1080,
+        "durationMs": 7533.333333333333
+      },
+      "timingsMs": {
+        "import": 4.10722799999985,
+        "emit": 1.531945000000178,
+        "compile": 58.698349000000235
+      },
+      "complexity": {
+        "nodes": 63,
+        "tracks": 24,
+        "steps": 32,
+        "geometryItems": 72,
+        "depth": 5,
+        "durationMs": 7533.333333333333,
+        "viewport": {
+          "width": 1920,
+          "height": 1080,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        }
+      },
+      "production": {
+        "ok": true,
+        "fidelity": "partial",
+        "counts": {
+          "exact": 54,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 9
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Matte source layer was inventoried and not lowered.",
+            "count": 3
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte type 1 was inventoried and not lowered.",
+            "count": 3
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte content is withheld so it is not drawn unmasked.",
+            "count": 3
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_1.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_1.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_18.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_3.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_3.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_3.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Imported motion on layer_3.layer_2.Shape1.Path1.trim.start.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "tm",
+            "severity": "info",
+            "message": "Animated trim on layer_3.layer_2.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_3.layer_2.Shape1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_4.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_4.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_4.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_5.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_6.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_6.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_6.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_7.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_7.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_7.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_8.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_18.layer_8.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_18.layer_8.layer_1.Group3.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_18.layer_8.layer_1.Group2.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_18.layer_8.layer_1.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_18.layer_8.layer_2.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp comp_0_5f05577e-a470-4015-b9ac-8bcc9073c734.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "effect",
+            "severity": "info",
+            "message": "Imported static Gaussian Blur on layer_18.layer_9.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.layer_9.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.layer_10.Rectangle1.RectanglePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_18.layer_11.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_18.layer_12.Rectangle1.RectanglePath1.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": null,
+      "motionScript": {
+        "chars": 21927,
+        "bytes": 21927,
+        "path": "fixtures/LOT-02/generated.motion",
+        "sha256": "2360bd2951015f3bdd00b4b6532143602bf73631fd43e09c516e9825a6770b7a"
+      },
+      "compile": {
+        "ok": true,
+        "diagnostics": 0,
+        "scene": true
+      },
+      "runtime": {
+        "kind": "compiled",
+        "samples": [
+          {
+            "id": "start",
+            "requestedMs": 0,
+            "evaluatedMs": 0,
+            "clampedToDuration": false,
+            "drawItems": 14,
+            "diagnostics": 0,
+            "ms": 2.161090999999942
+          },
+          {
+            "id": "q25",
+            "requestedMs": 1883.3333333333333,
+            "evaluatedMs": 1883.3333333333333,
+            "clampedToDuration": false,
+            "drawItems": 15,
+            "diagnostics": 0,
+            "ms": 0.9174400000001697
+          },
+          {
+            "id": "q50",
+            "requestedMs": 3766.6666666666665,
+            "evaluatedMs": 3766.6666666666665,
+            "clampedToDuration": false,
+            "drawItems": 18,
+            "diagnostics": 0,
+            "ms": 0.9970399999997426
+          },
+          {
+            "id": "q75",
+            "requestedMs": 5650,
+            "evaluatedMs": 5650,
+            "clampedToDuration": false,
+            "drawItems": 17,
+            "diagnostics": 0,
+            "ms": 0.8218959999999242
+          },
+          {
+            "id": "near_end",
+            "requestedMs": 7495.666666666666,
+            "evaluatedMs": 7495.666666666666,
+            "clampedToDuration": false,
+            "drawItems": 17,
+            "diagnostics": 0,
+            "ms": 0.8499480000000403
+          }
+        ]
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 127633 bytes"
+        },
+        {
+          "name": "import",
+          "status": "PARTIAL",
+          "detail": "fidelity partial; exact 54; approximated 0; dropped 0; unsupported 9; scene yes"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "PASS",
+          "detail": "21927 chars in 1.5 ms"
+        },
+        {
+          "name": "compile",
+          "status": "PASS",
+          "detail": "ok true; diagnostics 0; 58.7 ms"
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "PASS",
+          "detail": "compileMotionScript accepted the scene"
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "PASS",
+          "detail": "importSource returns a scene only after validateSceneIR succeeds"
+        },
+        {
+          "name": "runtime",
+          "status": "PASS",
+          "detail": "compiled scene; 5 samples; draw items 14,15,18,17,17"
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": null,
+      "evidence": {
+        "importReport": "fixtures/LOT-02/import-report.txt",
+        "importedScene": "fixtures/LOT-02/imported-scene.json",
+        "compiledScene": "fixtures/LOT-02/compiled-scene.json",
+        "motion": "fixtures/LOT-02/generated.motion"
+      }
+    },
+    {
+      "id": "LOT-03",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex1.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+      "sourceBytes": 877884,
+      "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+        "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+        "programPath": null,
+        "programSha256": null,
+        "importedSceneSha256": null,
+        "compiledSceneSha256": null,
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-03/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "assets",
+          "slots",
+          "markers"
+        ],
+        "markers": [
+          "Comment",
+          "Object",
+          "Frame",
+          "Move",
+          "Pen",
+          "Text",
+          "Action",
+          "Idle"
+        ],
+        "fonts": [
+          "Inter",
+          "Inter Regular"
+        ],
+        "chars": 0,
+        "rootLayerTypes": {
+          "precomp": 7,
+          "shape": 8,
+          "solid": 1
+        },
+        "assetLayerTypes": {
+          "shape": 168,
+          "precomp": 7,
+          "text": 7
+        },
+        "shapeTypes": {
+          "rc": 64,
+          "fl": 141,
+          "el": 49,
+          "gr": 168,
+          "sh": 157,
+          "mm": 42,
+          "tr": 168,
+          "st": 77,
+          "gf": 7,
+          "gs": 7,
+          "tm": 7
+        },
+        "masks": 0,
+        "mattes": 18,
+        "effects": 14,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 7,
+        "hiddenLayers": 7,
+        "parenting": 62,
+        "ddd": 0,
+        "animatedProperties": 56,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 806,
+        "roundedRects": 63,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "1_a5967794-43e2-4c90-9a79-8826454e1ffa_03741665-aea9-43ab-9e5c-0fcfcbcf19e5_f2506e68-c75f-412f-b51d-ad8d047dc282",
+            "layers": 22
+          },
+          {
+            "id": "2_b865fdf4-d5ab-4627-9e33-ef9999c49dc9_141b3ba0-9ba4-41ed-b7c7-de567012b47c_008c7713-2134-42bd-a222-ed1be898c001",
+            "layers": 4
+          },
+          {
+            "id": "3_3d627ace-e6bb-49d8-a14d-4a1e19c6503b_14cd365f-ca0f-4039-861d-6a744b4eab9a_a7ccba1d-fd97-4e7a-8ef3-31aa5afc74be",
+            "layers": 22
+          },
+          {
+            "id": "4_42f1dbb0-907e-4322-b3cf-3b191b3151c2_37feb155-9c08-4ae2-92c9-28b0bb8a896e_310215ef-8093-43bc-8f19-034e0c05bcb4",
+            "layers": 4
+          },
+          {
+            "id": "5_25009ace-ed5b-4cf5-bd97-9d5cbb0df208_4b2793a8-13a9-4ea5-891b-b0fa97186a72_94292ade-04e5-48b2-afc9-1dded9a5fead",
+            "layers": 22
+          },
+          {
+            "id": "6_5fb44a8f-9146-46b7-8839-7f9d562472ef_d5e9f81c-1367-401f-9dca-a16275f88ff0_de2a21bd-0dbf-451c-b7ff-e099da4c3400",
+            "layers": 4
+          },
+          {
+            "id": "7_70ba6da1-47a0-4590-a16d-cc1ed95eb12c_e5b1e444-3e73-4322-a23c-5013c0946cd2_20b0f0f3-0e36-4682-a3d1-71b53fb476be",
+            "layers": 22
+          },
+          {
+            "id": "8_bb3a4af6-5d3f-40af-a841-246f73e22926_5ef320d9-ae53-4af9-b8eb-2c8eedaafdaa_82bd8703-f05a-4279-89d6-8e1ea12e439b",
+            "layers": 4
+          },
+          {
+            "id": "9_8409119d-cd8a-4514-bdc8-1436437b9e18_d04085d0-b11d-45de-88fc-cb6901cca9b7_23a10df5-c8dd-4020-b7f4-c5c529c02a79",
+            "layers": 22
+          },
+          {
+            "id": "10_7f07de5d-729f-4e09-a8d7-918c90a36d05_4df069e2-43e8-4d51-b1e9-7cd3e149a5b9_871a8ccb-4209-4f5f-97a1-fc8d4043de62",
+            "layers": 4
+          },
+          {
+            "id": "11_169c87be-c4f0-437e-bf02-5dd264cfcecc_de78854f-3f2a-401c-ad9b-916ab1c78a43_8a086c25-0f9b-48a5-9612-da8d586030b8",
+            "layers": 22
+          },
+          {
+            "id": "12_f906003f-8746-4a37-9d28-75eba34222b3_caad884b-014d-4063-927a-b38c260e4516_aeb7d184-1cee-4863-b733-0166ade5db93",
+            "layers": 4
+          },
+          {
+            "id": "13_be4612e9-32ba-4d4d-ad70-df74dbc4b6e6_a6264503-0405-4e16-b8e4-9361dc2bc4c4_602cf019-b34a-4fbe-a8c9-aed6a96a0246",
+            "layers": 22
+          },
+          {
+            "id": "14_ec04e82c-4e8c-4e0a-97e1-6cab65960b35_0191e134-164c-44f7-9949-54d0bc3774fb_9ef2a0e9-8a71-4899-ae0c-e1860c05183f",
+            "layers": 4
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[0].shapes[0].it[2]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[5].shapes[0].it[3]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[7].shapes[0].it[2]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[9].shapes[0].it[6]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[11].shapes[0].it[4]"
+          },
+          {
+            "feature": "mm",
+            "path": "$.assets[0].layers[13].shapes[0].it[2]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[17].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[17].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[20].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[20].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[21].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[21].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[0].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[1].layers[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[1].layers[3].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[2].layers[17].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[2].layers[17].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[2].layers[20].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[2].layers[20].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[2].layers[21].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[2].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[3].layers[0]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[3].layers[3].ef"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[4].layers[17].tt"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[4].layers[17].ef"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[4].layers[20].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[4].layers[21].shapes[0].it[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[4].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[5].layers[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[5].layers[3].ef"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[6].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[7].layers[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[8].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[9].layers[1]"
+          },
+          {
+            "feature": "tm",
+            "path": "$.assets[10].layers[21].shapes[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[11].layers[0]"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 60,
+        "inFrame": 0,
+        "outFrame": 427,
+        "width": 1080,
+        "height": 689,
+        "durationMs": 7116.666666666666
+      },
+      "timingsMs": {
+        "import": 0.48627200000009907,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": {
+        "nodes": 620,
+        "tracks": 56,
+        "steps": 105,
+        "geometryItems": 2528,
+        "depth": 5,
+        "durationMs": 7116.666666666666,
+        "viewport": {
+          "width": 1080,
+          "height": 689,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        },
+        "diagnostic": true
+      },
+      "production": {
+        "ok": false,
+        "fidelity": "failed",
+        "counts": {
+          "exact": 0,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 1
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_LIMIT",
+            "feature": "source",
+            "severity": "fatal",
+            "message": "Source exceeds the import size limit.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": {
+        "fidelity": "partial",
+        "complexity": {
+          "nodes": 620,
+          "tracks": 56,
+          "steps": 105,
+          "geometryItems": 2528,
+          "depth": 5,
+          "durationMs": 7116.666666666666,
+          "viewport": {
+            "width": 1080,
+            "height": 689,
+            "fit": "contain"
+          },
+          "background": {
+            "type": "solid",
+            "r": 0.06274509803921569,
+            "g": 0.06274509803921569,
+            "b": 0.0784313725490196,
+            "a": 1
+          }
+        },
+        "validation": {
+          "ok": false,
+          "diagnostics": [
+            {
+              "code": "RESOURCE_LIMIT",
+              "message": "Node count 620 exceeds 500."
+            }
+          ]
+        }
+      },
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 877884 bytes"
+        },
+        {
+          "name": "import",
+          "status": "FAIL",
+          "detail": "fidelity failed; exact 0; approximated 0; dropped 0; unsupported 1; scene no"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "FAIL",
+          "detail": "No accepted Scene IR from importSource."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "import",
+      "evidence": {
+        "importReport": "fixtures/LOT-03/import-report.txt",
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "LOT-04",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex2.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+      "sourceBytes": 512240,
+      "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+        "sourceSha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+        "programPath": "fixtures/LOT-04/generated.motion",
+        "programSha256": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31",
+        "importedSceneSha256": "7460ecc821d0e6d1088254c1719b1115ac78f940657e06eafc513985e86a477c",
+        "compiledSceneSha256": "db4367d5ff9c56225bfaa8dc8b8d514e94b72210aa27f8a1c38b482f9806ec9f",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-04/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "chars",
+          "assets",
+          "slots"
+        ],
+        "markers": [],
+        "fonts": [
+          "Inter Tight",
+          "InterTight-Medium"
+        ],
+        "chars": 23,
+        "rootLayerTypes": {
+          "precomp": 1,
+          "shape": 2
+        },
+        "assetLayerTypes": {
+          "null": 1,
+          "precomp": 26,
+          "text": 13
+        },
+        "shapeTypes": {
+          "gr": 3,
+          "sh": 2,
+          "tr": 3,
+          "gf": 1,
+          "fl": 1
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 22,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 13,
+        "hiddenLayers": 0,
+        "parenting": 26,
+        "ddd": 0,
+        "animatedProperties": 27,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 363,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d",
+            "layers": 27
+          },
+          {
+            "id": "3_1_fb1bd2a1-c6e6-4692-973c-3b7e599e1893_f4f4b94b-1333-44fc-9090-e591b212d28a_c956a65a-56fb-4812-be57-7853697392f6_faaff553-ece8-49cf-a63a-aeea1b97a3ba",
+            "layers": 1
+          },
+          {
+            "id": "8_20a068bd-1627-45d1-9fc1-6c0dd1edb071_b8bb3f38-71d7-45ae-9514-748895d30e77_53691f11-1982-4128-abeb-496536b15029_57fffcad-16fd-4b71-8db4-ebb5bab1259b",
+            "layers": 1
+          },
+          {
+            "id": "9_05dccb6e-a756-4d59-a31b-3886ed787fdb_508afacf-a4f5-4781-9201-7f7de8e816b6_e31e82c3-9243-4114-a5d6-dc5b505a4d2e_08f9da21-67c4-443a-90ae-014596343022",
+            "layers": 1
+          },
+          {
+            "id": "10_c22c32e7-7d8e-4718-9424-49d4db3bc1fd_3c76b710-dc20-4026-aa67-6803d0cc7570_cb558703-2130-416c-a41b-3330a6df72a9_6e6e6bc1-18c5-41da-999e-05de02a03b5f",
+            "layers": 1
+          },
+          {
+            "id": "11_dd0a4b42-c486-48b8-bd1d-dadb6e5dedbd_6a2a01da-2b48-4444-acf1-23ffe3733ac1_db01c5f9-e9fa-43be-b211-118e1ccb862a_2d214dd2-0db3-4e15-a399-981b11e5f05e",
+            "layers": 1
+          },
+          {
+            "id": "12_1dc8739e-e317-43d9-bf86-a7dc1caae315_4f4ebd26-30d3-4b14-89ff-29abaa79d9d2_8d382218-647b-439a-b933-2e1c513838d5_3df2de07-59f0-4c3f-ac24-4a57b4e366a0",
+            "layers": 1
+          },
+          {
+            "id": "13_c4759f01-4a38-4bdb-9dba-a2043fdbf0de_dc57c493-adf6-4e9c-94c9-5e68f8859a42_5acd88ea-6848-4011-b9ea-0c72d7e6dc6f_9bb4b6f4-0d05-428e-b0e7-7ee3c8b17ec0",
+            "layers": 1
+          },
+          {
+            "id": "14_435fd567-ec85-4551-9688-448d95e580d7_0d101e0e-c401-4030-9c95-0d1cdcb7962b_dc1f6768-3c21-4f5f-a2e0-8ae0b1a70844_f80446e6-9871-4c04-bb26-5b0517977c0f",
+            "layers": 1
+          },
+          {
+            "id": "15_0227a47c-0b38-44ae-b9f5-bf4a5a410ee7_c15c4cc8-ef22-421e-bc6a-b680785bcff6_47ccf672-9f88-4402-b92f-72ced0651797_da4ca336-ba2d-49e7-bcbc-5495df457173",
+            "layers": 1
+          },
+          {
+            "id": "16_9e52ff08-3487-46a5-8fb2-a58337812916_45403d48-4374-4641-bd3e-3e58d624ff21_9b7b4928-d4a9-4737-89d5-4489af549f74_918dc700-22db-439f-9cf2-eae42f34f3b6",
+            "layers": 1
+          },
+          {
+            "id": "17_9123cdf0-9e2f-439f-ac7d-cd0f59dc8e52_031009a1-b201-49de-86b2-f88eb547c6aa_0d26a2c7-afd7-4db2-83a2-6d2a151b5aef_f9719b26-ca9a-47d9-8438-a1f0eb73c0eb",
+            "layers": 1
+          },
+          {
+            "id": "18_479f7889-3321-4302-a753-a739c6f46a30_049ff83d-5392-4dae-91cf-80eed1bb5414_7d0ebefb-becc-4c32-ba67-4b4097141b4d_092b060b-2e1f-4c8b-b17d-2d35b15a5f90",
+            "layers": 1
+          },
+          {
+            "id": "19_a1a568cc-a22f-44fd-bfb5-546d3e9046a8_b8694f5b-733a-42c0-afc2-7b57af8d1226_826bbc6b-4d28-4c89-8dfb-88211e82fbb3_e0ffd248-c593-417c-b579-a24f0214944d",
+            "layers": 1
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "gradient",
+            "path": "$.layers[1].shapes[0].it[1]"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[1].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[2].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[3].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[4].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[5].ef"
+          },
+          {
+            "feature": "effect",
+            "path": "$.assets[0].layers[6].ef"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[1].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[2].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[3].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[4].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[5].layers[0]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[6].layers[0]"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 60,
+        "inFrame": 0,
+        "outFrame": 675,
+        "width": 500,
+        "height": 888.89,
+        "durationMs": 11250
+      },
+      "timingsMs": {
+        "import": 5.740343999999823,
+        "emit": 3.1635089999999764,
+        "compile": 99.62324600000011
+      },
+      "complexity": {
+        "nodes": 87,
+        "tracks": 27,
+        "steps": 13,
+        "geometryItems": 12,
+        "depth": 5,
+        "durationMs": 11250,
+        "viewport": {
+          "width": 500,
+          "height": 888.89,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        }
+      },
+      "production": {
+        "ok": true,
+        "fidelity": "partial",
+        "counts": {
+          "exact": 88,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 17
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "effect",
+            "severity": "error",
+            "message": "Effect stack (Gaussian Blur) was inventoried and not lowered.",
+            "count": 17
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 3_1_fb1bd2a1-c6e6-4692-973c-3b7e599e1893_f4f4b94b-1333-44fc-9090-e591b212d28a_c956a65a-56fb-4812-be57-7853697392f6_faaff553-ece8-49cf-a63a-aeea1b97a3ba.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 8_20a068bd-1627-45d1-9fc1-6c0dd1edb071_b8bb3f38-71d7-45ae-9514-748895d30e77_53691f11-1982-4128-abeb-496536b15029_57fffcad-16fd-4b71-8db4-ebb5bab1259b.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 9_05dccb6e-a756-4d59-a31b-3886ed787fdb_508afacf-a4f5-4781-9201-7f7de8e816b6_e31e82c3-9243-4114-a5d6-dc5b505a4d2e_08f9da21-67c4-443a-90ae-014596343022.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 10_c22c32e7-7d8e-4718-9424-49d4db3bc1fd_3c76b710-dc20-4026-aa67-6803d0cc7570_cb558703-2130-416c-a41b-3330a6df72a9_6e6e6bc1-18c5-41da-999e-05de02a03b5f.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 11_dd0a4b42-c486-48b8-bd1d-dadb6e5dedbd_6a2a01da-2b48-4444-acf1-23ffe3733ac1_db01c5f9-e9fa-43be-b211-118e1ccb862a_2d214dd2-0db3-4e15-a399-981b11e5f05e.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 12_1dc8739e-e317-43d9-bf86-a7dc1caae315_4f4ebd26-30d3-4b14-89ff-29abaa79d9d2_8d382218-647b-439a-b933-2e1c513838d5_3df2de07-59f0-4c3f-ac24-4a57b4e366a0.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 13_c4759f01-4a38-4bdb-9dba-a2043fdbf0de_dc57c493-adf6-4e9c-94c9-5e68f8859a42_5acd88ea-6848-4011-b9ea-0c72d7e6dc6f_9bb4b6f4-0d05-428e-b0e7-7ee3c8b17ec0.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 14_435fd567-ec85-4551-9688-448d95e580d7_0d101e0e-c401-4030-9c95-0d1cdcb7962b_dc1f6768-3c21-4f5f-a2e0-8ae0b1a70844_f80446e6-9871-4c04-bb26-5b0517977c0f.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 15_0227a47c-0b38-44ae-b9f5-bf4a5a410ee7_c15c4cc8-ef22-421e-bc6a-b680785bcff6_47ccf672-9f88-4402-b92f-72ced0651797_da4ca336-ba2d-49e7-bcbc-5495df457173.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 16_9e52ff08-3487-46a5-8fb2-a58337812916_45403d48-4374-4641-bd3e-3e58d624ff21_9b7b4928-d4a9-4737-89d5-4489af549f74_918dc700-22db-439f-9cf2-eae42f34f3b6.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 17_9123cdf0-9e2f-439f-ac7d-cd0f59dc8e52_031009a1-b201-49de-86b2-f88eb547c6aa_0d26a2c7-afd7-4db2-83a2-6d2a151b5aef_f9719b26-ca9a-47d9-8438-a1f0eb73c0eb.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 18_479f7889-3321-4302-a753-a739c6f46a30_049ff83d-5392-4dae-91cf-80eed1bb5414_7d0ebefb-becc-4c32-ba67-4b4097141b4d_092b060b-2e1f-4c8b-b17d-2d35b15a5f90.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp 19_a1a568cc-a22f-44fd-bfb5-546d3e9046a8_b8694f5b-733a-42c0-afc2-7b57af8d1226_826bbc6b-4d28-4c89-8dfb-88211e82fbb3_e0ffd248-c593-417c-b579-a24f0214944d.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "effect",
+            "severity": "info",
+            "message": "Imported static Gaussian Blur on layer_1.layer_1.layer_2.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_2.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_2.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_3.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_3.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_4.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_4.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_5.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_5.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_6.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_6.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_7.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_7.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_8.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_8.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_9.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_9.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_10.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_10.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_11.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_11.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_12.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_12.layer_1.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_1.layer_13.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_1.layer_13.layer_1.textNode.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": null,
+      "motionScript": {
+        "chars": 39802,
+        "bytes": 39802,
+        "path": "fixtures/LOT-04/generated.motion",
+        "sha256": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31"
+      },
+      "compile": {
+        "ok": true,
+        "diagnostics": 0,
+        "scene": true
+      },
+      "runtime": {
+        "kind": "compiled",
+        "samples": [
+          {
+            "id": "start",
+            "requestedMs": 0,
+            "evaluatedMs": 0,
+            "clampedToDuration": false,
+            "drawItems": 28,
+            "diagnostics": 0,
+            "ms": 2.458027000000129
+          },
+          {
+            "id": "q25",
+            "requestedMs": 2812.5,
+            "evaluatedMs": 2812.5,
+            "clampedToDuration": false,
+            "drawItems": 25,
+            "diagnostics": 0,
+            "ms": 1.9403889999998682
+          },
+          {
+            "id": "q50",
+            "requestedMs": 5625,
+            "evaluatedMs": 5625,
+            "clampedToDuration": false,
+            "drawItems": 22,
+            "diagnostics": 0,
+            "ms": 1.7644640000003164
+          },
+          {
+            "id": "q75",
+            "requestedMs": 8437.5,
+            "evaluatedMs": 8437.5,
+            "clampedToDuration": false,
+            "drawItems": 18,
+            "diagnostics": 0,
+            "ms": 1.5038110000000415
+          },
+          {
+            "id": "near_end",
+            "requestedMs": 11193.75,
+            "evaluatedMs": 11193.75,
+            "clampedToDuration": false,
+            "drawItems": 15,
+            "diagnostics": 0,
+            "ms": 1.4807869999999639
+          }
+        ]
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 512240 bytes"
+        },
+        {
+          "name": "import",
+          "status": "PARTIAL",
+          "detail": "fidelity partial; exact 88; approximated 0; dropped 0; unsupported 17; scene yes"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "PASS",
+          "detail": "39802 chars in 3.2 ms"
+        },
+        {
+          "name": "compile",
+          "status": "PASS",
+          "detail": "ok true; diagnostics 0; 99.6 ms"
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "PASS",
+          "detail": "compileMotionScript accepted the scene"
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "PASS",
+          "detail": "importSource returns a scene only after validateSceneIR succeeds"
+        },
+        {
+          "name": "runtime",
+          "status": "PASS",
+          "detail": "compiled scene; 5 samples; draw items 28,25,22,18,15"
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": null,
+      "evidence": {
+        "importReport": "fixtures/LOT-04/import-report.txt",
+        "importedScene": "fixtures/LOT-04/imported-scene.json",
+        "compiledScene": "fixtures/LOT-04/compiled-scene.json",
+        "motion": "fixtures/LOT-04/generated.motion"
+      }
+    },
+    {
+      "id": "LOT-05",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_simple_ex1.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+      "sourceBytes": 191525,
+      "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+        "sourceSha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+        "programPath": "fixtures/LOT-05/generated.motion",
+        "programSha256": "49c7bfcaac1390b0f12299f2da26ee20ef310b9651522f25ac0801ba1be83f97",
+        "importedSceneSha256": "4e12d4da5f22c84dc427f1e85a6153bea24d6135ae2842284a574abf5cc182fe",
+        "compiledSceneSha256": "f5b8c815021d9d7d7537946c58423909159519ada62ca6502d2701466c3dd894",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-05/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "nm",
+          "ddd",
+          "h",
+          "w",
+          "meta",
+          "layers",
+          "v",
+          "fr",
+          "op",
+          "ip",
+          "fonts",
+          "assets",
+          "slots",
+          "markers"
+        ],
+        "markers": [
+          "Click play to pause",
+          "Play idle",
+          "Pause Idle",
+          "Click pause to play",
+          "Play idle 2"
+        ],
+        "fonts": [
+          "Haskoy",
+          "Haskoy Regular"
+        ],
+        "chars": 0,
+        "rootLayerTypes": {
+          "precomp": 1,
+          "shape": 1
+        },
+        "assetLayerTypes": {
+          "shape": 12,
+          "text": 3
+        },
+        "shapeTypes": {
+          "rc": 1,
+          "fl": 4,
+          "gr": 13,
+          "sh": 9,
+          "st": 6,
+          "tr": 13,
+          "el": 4,
+          "gf": 4
+        },
+        "masks": 0,
+        "mattes": 4,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 3,
+        "hiddenLayers": 0,
+        "parenting": 0,
+        "ddd": 0,
+        "animatedProperties": 5,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 37,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [
+          {
+            "id": "comp_1_b5ecb9f2-c646-427e-b2f5-78b5e5fc1843_e1a8e115-295d-4b29-a956-cd76d94085fc_a396d872-917c-4cf4-b58d-d3ec7f1d3528_3d3fc3d7-2daf-413c-9036-1daf216a30ee_b3b1b0de-23a3-4bd2-92b1-7ade8497a042",
+            "layers": 15
+          }
+        ],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[1]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[2]"
+          },
+          {
+            "feature": "text-layer",
+            "path": "$.assets[0].layers[5]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[8].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[8].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[9].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[10].tt"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[12].tt"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[12].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.assets[0].layers[13].shapes[0].it[1]"
+          },
+          {
+            "feature": "matte",
+            "path": "$.assets[0].layers[14].tt"
+          }
+        ],
+        "name": "Main Scene",
+        "version": "5.7.0",
+        "frameRate": 60,
+        "inFrame": 0,
+        "outFrame": 241,
+        "width": 1080,
+        "height": 1080,
+        "durationMs": 4016.6666666666665
+      },
+      "timingsMs": {
+        "import": 2.9357350000000224,
+        "emit": 0.6212539999996807,
+        "compile": 17.098928000000342
+      },
+      "complexity": {
+        "nodes": 39,
+        "tracks": 10,
+        "steps": 19,
+        "geometryItems": 44,
+        "depth": 4,
+        "durationMs": 4016.6666666666665,
+        "viewport": {
+          "width": 1080,
+          "height": 1080,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        }
+      },
+      "production": {
+        "ok": true,
+        "fidelity": "partial",
+        "counts": {
+          "exact": 25,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 12
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Matte source layer was inventoried and not lowered.",
+            "count": 4
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte type 1 was inventoried and not lowered.",
+            "count": 4
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "matte",
+            "severity": "error",
+            "message": "Track matte content is withheld so it is not drawn unmasked.",
+            "count": 4
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_1.transform.scale.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "scale",
+            "severity": "info",
+            "message": "Imported motion on layer_1.transform.scale.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_1.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_2.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_3.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_4.Group2.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_4.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_5.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "text",
+            "severity": "info",
+            "message": "Imported text layer_1.layer_6.textNode.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_7.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_8.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_9.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_9.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_10.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_10.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_1.layer_10.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_1.layer_12.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_13.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_13.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_14.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_1.layer_14.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "ellipse",
+            "severity": "info",
+            "message": "Imported ellipse layer_1.layer_14.Ellipse1.EllipsePath1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "precomp",
+            "severity": "info",
+            "message": "Expanded precomp comp_1_b5ecb9f2-c646-427e-b2f5-78b5e5fc1843_e1a8e115-295d-4b29-a956-cd76d94085fc_a396d872-917c-4cf4-b58d-d3ec7f1d3528_3d3fc3d7-2daf-413c-9036-1daf216a30ee_b3b1b0de-23a3-4bd2-92b1-7ade8497a042.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rectangle",
+            "severity": "info",
+            "message": "Imported rectangle layer_2.RectShape1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "frame-timing",
+            "severity": "info",
+            "message": "Converted composition frames 0–241 at 60fps to 4016.6666666666665ms.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": null,
+      "motionScript": {
+        "chars": 10247,
+        "bytes": 10247,
+        "path": "fixtures/LOT-05/generated.motion",
+        "sha256": "49c7bfcaac1390b0f12299f2da26ee20ef310b9651522f25ac0801ba1be83f97"
+      },
+      "compile": {
+        "ok": true,
+        "diagnostics": 0,
+        "scene": true
+      },
+      "runtime": {
+        "kind": "compiled",
+        "samples": [
+          {
+            "id": "start",
+            "requestedMs": 0,
+            "evaluatedMs": 0,
+            "clampedToDuration": false,
+            "drawItems": 8,
+            "diagnostics": 0,
+            "ms": 0.4685939999999391
+          },
+          {
+            "id": "q25",
+            "requestedMs": 1004.1666666666666,
+            "evaluatedMs": 1004.1666666666666,
+            "clampedToDuration": false,
+            "drawItems": 9,
+            "diagnostics": 0,
+            "ms": 0.4084539999998924
+          },
+          {
+            "id": "q50",
+            "requestedMs": 2008.3333333333333,
+            "evaluatedMs": 2008.3333333333333,
+            "clampedToDuration": false,
+            "drawItems": 9,
+            "diagnostics": 0,
+            "ms": 0.3654999999998836
+          },
+          {
+            "id": "q75",
+            "requestedMs": 3012.5,
+            "evaluatedMs": 3012.5,
+            "clampedToDuration": false,
+            "drawItems": 8,
+            "diagnostics": 0,
+            "ms": 0.3413439999999355
+          },
+          {
+            "id": "near_end",
+            "requestedMs": 3996.583333333333,
+            "evaluatedMs": 3996.583333333333,
+            "clampedToDuration": false,
+            "drawItems": 8,
+            "diagnostics": 0,
+            "ms": 0.316045000000031
+          }
+        ]
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 191525 bytes"
+        },
+        {
+          "name": "import",
+          "status": "PARTIAL",
+          "detail": "fidelity partial; exact 25; approximated 0; dropped 0; unsupported 12; scene yes"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "PASS",
+          "detail": "10247 chars in 0.6 ms"
+        },
+        {
+          "name": "compile",
+          "status": "PASS",
+          "detail": "ok true; diagnostics 0; 17.1 ms"
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "PASS",
+          "detail": "compileMotionScript accepted the scene"
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "PASS",
+          "detail": "importSource returns a scene only after validateSceneIR succeeds"
+        },
+        {
+          "name": "runtime",
+          "status": "PASS",
+          "detail": "compiled scene; 5 samples; draw items 8,9,9,8,8"
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": null,
+      "evidence": {
+        "importReport": "fixtures/LOT-05/import-report.txt",
+        "importedScene": "fixtures/LOT-05/imported-scene.json",
+        "compiledScene": "fixtures/LOT-05/compiled-scene.json",
+        "motion": "fixtures/LOT-05/generated.motion"
+      }
+    },
+    {
+      "id": "LOT-06",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Punches.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+      "sourceBytes": 112565,
+      "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+        "sourceSha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+        "programPath": "fixtures/LOT-06/generated.motion",
+        "programSha256": "98a170c91a5822ec18f0ba55e42538d81145bedd6a06a8b6b8bdf80b1c0abf14",
+        "importedSceneSha256": "47f061756bb9950ab49951405db196f24c6873491de48768297fce31813838f6",
+        "compiledSceneSha256": "db00cab3229588224b2127a9b01ca772209cab57b1bcaaa30548ffa84883cb21",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-06/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "v",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "assets",
+          "layers",
+          "markers"
+        ],
+        "markers": [
+          "1"
+        ],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "shape": 22,
+          "solid": 1
+        },
+        "assetLayerTypes": {},
+        "shapeTypes": {
+          "gr": 43,
+          "sh": 37,
+          "fl": 37,
+          "tr": 43
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 47,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 7,
+        "ddd": 0,
+        "animatedProperties": 56,
+        "expressions": 0,
+        "holdKeyframes": 2,
+        "easingHandles": 214,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[0].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[0].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[0].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[1].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[1].ks.p"
+          },
+          {
+            "feature": "spatial-tangent",
+            "path": "$.layers[1].ks.p"
+          }
+        ],
+        "name": "punches",
+        "version": "5.7.12",
+        "frameRate": 25,
+        "inFrame": 0,
+        "outFrame": 24,
+        "width": 720,
+        "height": 720,
+        "durationMs": 960
+      },
+      "timingsMs": {
+        "import": 6.589261000000079,
+        "emit": 32.39097999999967,
+        "compile": 189.33183800000006
+      },
+      "complexity": {
+        "nodes": 104,
+        "tracks": 52,
+        "steps": 0,
+        "geometryItems": 430,
+        "depth": 7,
+        "durationMs": 960,
+        "viewport": {
+          "width": 720,
+          "height": 720,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        }
+      },
+      "production": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 67,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.layer_3.layer_2.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.layer_2.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_4.layer_3.layer_2.layer_1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.layer_3.layer_2.layer_1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group3.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.layer_3.layer_2.layer_1.Group1.Group4.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_5.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_5.Group1.Group1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_5.Group1.Group1.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_17.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_17.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_17.layer_18.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_17.layer_18.layer_19.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.x.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "position",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.position.y.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_17.layer_18.layer_19.layer_6.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group1.Group2.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path2.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_17.layer_18.layer_19.layer_6.Group1.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_7.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_7.Group1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "spatial-tangent",
+            "severity": "info",
+            "message": "Spatial curve on layer_8.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_8.Group1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_9.Group1.Path1.commands.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": null,
+      "motionScript": {
+        "chars": 128500,
+        "bytes": 128500,
+        "path": "fixtures/LOT-06/generated.motion",
+        "sha256": "98a170c91a5822ec18f0ba55e42538d81145bedd6a06a8b6b8bdf80b1c0abf14"
+      },
+      "compile": {
+        "ok": true,
+        "diagnostics": 0,
+        "scene": true
+      },
+      "runtime": {
+        "kind": "compiled",
+        "samples": [
+          {
+            "id": "start",
+            "requestedMs": 0,
+            "evaluatedMs": 0,
+            "clampedToDuration": false,
+            "drawItems": 38,
+            "diagnostics": 0,
+            "ms": 3.717090999999982
+          },
+          {
+            "id": "q25",
+            "requestedMs": 240,
+            "evaluatedMs": 240,
+            "clampedToDuration": false,
+            "drawItems": 38,
+            "diagnostics": 0,
+            "ms": 3.639875000000302
+          },
+          {
+            "id": "q50",
+            "requestedMs": 480,
+            "evaluatedMs": 480,
+            "clampedToDuration": false,
+            "drawItems": 38,
+            "diagnostics": 0,
+            "ms": 2.6880630000000565
+          },
+          {
+            "id": "q75",
+            "requestedMs": 720,
+            "evaluatedMs": 720,
+            "clampedToDuration": false,
+            "drawItems": 38,
+            "diagnostics": 0,
+            "ms": 2.691898999999921
+          },
+          {
+            "id": "near_end",
+            "requestedMs": 955.2,
+            "evaluatedMs": 955.2,
+            "clampedToDuration": false,
+            "drawItems": 38,
+            "diagnostics": 0,
+            "ms": 2.414741999999933
+          }
+        ]
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 112565 bytes"
+        },
+        {
+          "name": "import",
+          "status": "PASS",
+          "detail": "fidelity exact; exact 67; approximated 0; dropped 0; unsupported 0; scene yes"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "PASS",
+          "detail": "128500 chars in 32.4 ms"
+        },
+        {
+          "name": "compile",
+          "status": "PASS",
+          "detail": "ok true; diagnostics 0; 189.3 ms"
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "PASS",
+          "detail": "compileMotionScript accepted the scene"
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "PASS",
+          "detail": "importSource returns a scene only after validateSceneIR succeeds"
+        },
+        {
+          "name": "runtime",
+          "status": "PASS",
+          "detail": "compiled scene; 5 samples; draw items 38,38,38,38,38"
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": null,
+      "evidence": {
+        "importReport": "fixtures/LOT-06/import-report.txt",
+        "importedScene": "fixtures/LOT-06/imported-scene.json",
+        "compiledScene": "fixtures/LOT-06/compiled-scene.json",
+        "motion": "fixtures/LOT-06/generated.motion"
+      }
+    },
+    {
+      "id": "LOT-07",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Wave Animation.json",
+      "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+      "sourceBytes": 31682,
+      "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+        "sourceSha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+        "programPath": "fixtures/LOT-07/generated.motion",
+        "programSha256": "8a35e17170c0c33da0f7261462f536ee0654ac6a165c1266dc1a24cf84059745",
+        "importedSceneSha256": "905ced10428d291f4362de4aa991a1f30f3bbc7c11b122ccf316f9428e364ae0",
+        "compiledSceneSha256": "aa0e2b9f6116d08ed690ba2ff491ad2b7b18df04689493216c65e01d63cae602",
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/LOT-07/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "topLevelKeys": [
+          "v",
+          "meta",
+          "fr",
+          "ip",
+          "op",
+          "w",
+          "h",
+          "nm",
+          "ddd",
+          "assets",
+          "layers",
+          "markers"
+        ],
+        "markers": [],
+        "fonts": [],
+        "chars": 0,
+        "rootLayerTypes": {
+          "shape": 6
+        },
+        "assetLayerTypes": {},
+        "shapeTypes": {
+          "gr": 23,
+          "sh": 22,
+          "st": 3,
+          "gs": 6,
+          "tr": 23,
+          "fl": 17
+        },
+        "masks": 0,
+        "mattes": 0,
+        "effects": 0,
+        "blendModes": 0,
+        "skew": 0,
+        "autoOrient": 0,
+        "spatialTangents": 0,
+        "textLayers": 0,
+        "hiddenLayers": 0,
+        "parenting": 0,
+        "ddd": 0,
+        "animatedProperties": 27,
+        "expressions": 0,
+        "holdKeyframes": 0,
+        "easingHandles": 106,
+        "roundedRects": 0,
+        "animatedRoundedRects": 0,
+        "images": [],
+        "precompAssets": [],
+        "missingAssets": [],
+        "examples": [
+          {
+            "feature": "gradient",
+            "path": "$.layers[0].shapes[0].it[2]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[1].shapes[0].it[2]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[2].shapes[0].it[1]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[2].shapes[0].it[2]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[3].shapes[1].it[0]"
+          },
+          {
+            "feature": "gradient",
+            "path": "$.layers[4].shapes[0].it[1]"
+          }
+        ],
+        "name": "Radio_02",
+        "version": "4.8.0",
+        "frameRate": 30,
+        "inFrame": 0,
+        "outFrame": 150,
+        "width": 400,
+        "height": 400,
+        "durationMs": 5000
+      },
+      "timingsMs": {
+        "import": 5.250958000000082,
+        "emit": 2.1024720000000343,
+        "compile": 43.960451999999805
+      },
+      "complexity": {
+        "nodes": 57,
+        "tracks": 30,
+        "steps": 0,
+        "geometryItems": 150,
+        "depth": 4,
+        "durationMs": 5000,
+        "viewport": {
+          "width": 400,
+          "height": 400,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0.06274509803921569,
+          "g": 0.06274509803921569,
+          "b": 0.0784313725490196,
+          "a": 1
+        }
+      },
+      "production": {
+        "ok": true,
+        "fidelity": "exact",
+        "counts": {
+          "exact": 53,
+          "approximated": 0,
+          "dropped": 0,
+          "unsupported": 0
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_1.Shape_5.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_1.Shape_5.Path1_strokes.pass_1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_1.Shape_5.Path1_strokes.pass_1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_1.Shape_5.Path1_strokes.pass_2.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_2.Shape_55.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_2.Shape_55.Path1_strokes.pass_1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_2.Shape_55.Path1_strokes.pass_1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_2.Shape_55.Path1_strokes.pass_2.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_3.Shape_6.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_3.Shape_6.Path1_strokes.pass_1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_3.Shape_6.Path1_strokes.pass_1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_3.Shape_6.Path1_strokes.pass_2.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_3.Shape_6.Path1_strokes.pass_2.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_4.Shape1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_4.Shape1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "rotation",
+            "severity": "info",
+            "message": "Imported motion on layer_5.Shape_1.transform.rotation.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "gs",
+            "severity": "info",
+            "message": "Imported gradient stroke on layer_5.Shape_1.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path-morph",
+            "severity": "info",
+            "message": "Imported animated path morph on layer_5.Shape_1.Path1.commands.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group17.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group17.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group16.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group16.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group15.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group15.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group14.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group14.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group13.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group13.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group12.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group12.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group11.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group11.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group10.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group10.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group9.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group9.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group8.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group8.Path1.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "opacity",
+            "severity": "info",
+            "message": "Imported motion on layer_6.Group7.opacity.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "path",
+            "severity": "info",
+            "message": "Imported path layer_6.Group7.Path1.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": null,
+      "motionScript": {
+        "chars": 26726,
+        "bytes": 26726,
+        "path": "fixtures/LOT-07/generated.motion",
+        "sha256": "8a35e17170c0c33da0f7261462f536ee0654ac6a165c1266dc1a24cf84059745"
+      },
+      "compile": {
+        "ok": true,
+        "diagnostics": 0,
+        "scene": true
+      },
+      "runtime": {
+        "kind": "compiled",
+        "samples": [
+          {
+            "id": "start",
+            "requestedMs": 0,
+            "evaluatedMs": 0,
+            "clampedToDuration": false,
+            "drawItems": 25,
+            "diagnostics": 0,
+            "ms": 20.111851000000115
+          },
+          {
+            "id": "q25",
+            "requestedMs": 1250,
+            "evaluatedMs": 1250,
+            "clampedToDuration": false,
+            "drawItems": 25,
+            "diagnostics": 0,
+            "ms": 1.532915999999659
+          },
+          {
+            "id": "q50",
+            "requestedMs": 2500,
+            "evaluatedMs": 2500,
+            "clampedToDuration": false,
+            "drawItems": 25,
+            "diagnostics": 0,
+            "ms": 1.2946270000002187
+          },
+          {
+            "id": "q75",
+            "requestedMs": 3750,
+            "evaluatedMs": 3750,
+            "clampedToDuration": false,
+            "drawItems": 25,
+            "diagnostics": 0,
+            "ms": 1.1281970000000001
+          },
+          {
+            "id": "near_end",
+            "requestedMs": 4975,
+            "evaluatedMs": 4975,
+            "clampedToDuration": false,
+            "drawItems": 25,
+            "diagnostics": 0,
+            "ms": 1.40176799999972
+          }
+        ]
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "JSON object, 31682 bytes"
+        },
+        {
+          "name": "import",
+          "status": "PASS",
+          "detail": "fidelity exact; exact 53; approximated 0; dropped 0; unsupported 0; scene yes"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "PASS",
+          "detail": "26726 chars in 2.1 ms"
+        },
+        {
+          "name": "compile",
+          "status": "PASS",
+          "detail": "ok true; diagnostics 0; 44.0 ms"
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "PASS",
+          "detail": "compileMotionScript accepted the scene"
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "PASS",
+          "detail": "importSource returns a scene only after validateSceneIR succeeds"
+        },
+        {
+          "name": "runtime",
+          "status": "PASS",
+          "detail": "compiled scene; 5 samples; draw items 25,25,25,25,25"
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": null,
+      "evidence": {
+        "importReport": "fixtures/LOT-07/import-report.txt",
+        "importedScene": "fixtures/LOT-07/imported-scene.json",
+        "compiledScene": "fixtures/LOT-07/compiled-scene.json",
+        "motion": "fixtures/LOT-07/generated.motion"
+      }
+    },
+    {
+      "id": "SVG-01",
+      "role": "pack",
+      "format": "svg",
+      "fileName": "Celebrations Begin.svg",
+      "sourcePath": "fixtures/corpus/svg/SVG-01.svg",
+      "sourceBytes": 183327,
+      "sha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/svg/SVG-01.svg",
+        "sourceSha256": "36e6e1749264375b68e55c7f72fa4cada03fbf3fc696d6c6185e9048854e405d",
+        "programPath": null,
+        "programSha256": null,
+        "importedSceneSha256": null,
+        "compiledSceneSha256": null,
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/SVG-01/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "root": "<svg fill=\"none\" height=\"100%\" width=\"100%\" viewBox=\"0 0 400 400\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\">",
+        "percentSize": true,
+        "tags": {
+          "svg": 1,
+          "defs": 1,
+          "clippath": 1,
+          "rect": 145,
+          "g": 933,
+          "animate": 201,
+          "animatetransform": 136,
+          "path": 50,
+          "animatemotion": 54,
+          "set": 74
+        },
+        "smil": {
+          "animate": 201,
+          "animateTransform": 136,
+          "animateMotion": 54,
+          "set": 74
+        },
+        "durations": [
+          "4.033s",
+          "0.033s"
+        ],
+        "repeatCounts": [
+          "indefinite"
+        ],
+        "attributeNames": {
+          "visibility": 201,
+          "transform": 136,
+          "d": 74
+        },
+        "calcModes": {
+          "discrete": 201,
+          "spline": 190
+        },
+        "keyTimeSamples": [
+          0,
+          0.925923,
+          0.925923,
+          0.999917,
+          1,
+          0,
+          0.925923,
+          0.999917,
+          1
+        ],
+        "styleBlocks": 0,
+        "inlineStyleAttrs": 0,
+        "scripts": 0,
+        "eventAttrs": 0,
+        "foreignObjects": 0,
+        "images": [],
+        "externalHrefs": [],
+        "clipPaths": 1,
+        "masks": 0,
+        "gradients": 0,
+        "filters": 0,
+        "textNodes": 0,
+        "fonts": [],
+        "viewBox": "0 0 400 400",
+        "widthAttr": "100%",
+        "heightAttr": "100%",
+        "observationWindowSec": 4.033
+      },
+      "timingsMs": {
+        "import": 91.27257599999984,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": {
+        "nodes": 564,
+        "tracks": 68,
+        "steps": 0,
+        "geometryItems": 109,
+        "depth": 8,
+        "durationMs": 4033.0000000000005,
+        "viewport": {
+          "width": 400,
+          "height": 400,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0
+        },
+        "diagnostic": true
+      },
+      "production": {
+        "ok": false,
+        "fidelity": "failed",
+        "counts": {
+          "exact": 73,
+          "approximated": 169,
+          "dropped": 1,
+          "unsupported": 28
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_APPROXIMATED",
+            "feature": "smil",
+            "severity": "warning",
+            "message": "Indefinite repeat is previewed for one cycle.",
+            "count": 169
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "smil",
+            "severity": "info",
+            "message": "Time-based transform.position.x on i104.",
+            "count": 68
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "animateMotion",
+            "severity": "error",
+            "message": "<animateMotion> is outside the SVG subset.",
+            "count": 27
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "group-opacity",
+            "severity": "info",
+            "message": "Group opacity is an isolated render scope.",
+            "count": 3
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "viewBox",
+            "severity": "info",
+            "message": "viewBox is the Scene IR viewport, with minX/minY translated to the origin.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_DROPPED",
+            "feature": "defs",
+            "severity": "warning",
+            "message": "<defs> has no painted result.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "svg-motion",
+            "severity": "info",
+            "message": "SVG motion uses a 4033.0000000000005ms preview duration.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_INVALID_IR",
+            "feature": "source",
+            "severity": "fatal",
+            "message": "svg2 overlaps svg1 on node:i104:transform.position.x.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": {
+        "fidelity": "partial",
+        "complexity": {
+          "nodes": 564,
+          "tracks": 68,
+          "steps": 0,
+          "geometryItems": 109,
+          "depth": 8,
+          "durationMs": 4033.0000000000005,
+          "viewport": {
+            "width": 400,
+            "height": 400,
+            "fit": "contain"
+          },
+          "background": {
+            "type": "solid",
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0
+          }
+        },
+        "validation": {
+          "ok": false,
+          "diagnostics": [
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg2 overlaps svg1 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg3 overlaps svg2 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg4 overlaps svg3 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg5 overlaps svg4 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg6 overlaps svg5 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg7 overlaps svg6 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg8 overlaps svg7 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg9 overlaps svg8 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg10 overlaps svg9 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg11 overlaps svg10 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg12 overlaps svg11 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg13 overlaps svg12 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg14 overlaps svg13 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg15 overlaps svg14 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg16 overlaps svg15 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg17 overlaps svg16 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg18 overlaps svg17 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg19 overlaps svg18 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg20 overlaps svg19 on node:i104:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg21 overlaps svg20 on node:i104:transform.position.x."
+            }
+          ]
+        }
+      },
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "SVG document located by lexical scan; production XML parse follows import"
+        },
+        {
+          "name": "import",
+          "status": "FAIL",
+          "detail": "fidelity failed; exact 73; approximated 169; dropped 1; unsupported 28; scene no"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "FAIL",
+          "detail": "No accepted Scene IR from importSource."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "import",
+      "evidence": {
+        "importReport": "fixtures/SVG-01/import-report.txt",
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    },
+    {
+      "id": "SVG-02",
+      "role": "pack",
+      "format": "svg",
+      "fileName": "Jumping Jack.svg",
+      "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+      "sourceBytes": 270580,
+      "sha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+      "provenance": {
+        "sourcePath": "fixtures/corpus/svg/SVG-02.svg",
+        "sourceSha256": "033daa6991a4c701ac23b4a5fdae0989cee2f52cbb0f4b422661d3f7a2507a18",
+        "programPath": null,
+        "programSha256": null,
+        "importedSceneSha256": null,
+        "compiledSceneSha256": null,
+        "revisionId": null,
+        "parentRevisionId": null,
+        "parentProgramSha256": null,
+        "lineageStatus": "UNREGISTERED_SCRATCH",
+        "verificationStatus": "UNVERIFIED",
+        "evidenceAssociation": {
+          "stage": "generation",
+          "resultPath": "fixtures/SVG-02/result.json",
+          "implementationEnvironmentPath": "environment.json",
+          "implementationEnvironmentSha256": "d7d0dee3a30411fddff76b9fdf8bf76ac0f1c4f9cbe36ceab0d2286c1921d1d6",
+          "note": "Freeze these files and their hashes in an actual run. Later quality evidence must name this exact source/program pair and tested implementation; generation does not certify it."
+        }
+      },
+      "inventory": {
+        "root": "<svg fill=\"none\" height=\"100%\" width=\"100%\" viewBox=\"0 0 720 720\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns=\"http://www.w3.org/2000/svg\">",
+        "percentSize": true,
+        "tags": {
+          "svg": 1,
+          "defs": 1,
+          "clippath": 1,
+          "rect": 4,
+          "g": 327,
+          "animatetransform": 106,
+          "path": 75,
+          "animate": 37,
+          "image": 5
+        },
+        "smil": {
+          "animate": 37,
+          "animateTransform": 106,
+          "animateMotion": 0,
+          "set": 0
+        },
+        "durations": [
+          "1s"
+        ],
+        "repeatCounts": [
+          "indefinite"
+        ],
+        "attributeNames": {
+          "transform": 106,
+          "d": 35,
+          "width": 2
+        },
+        "calcModes": {
+          "spline": 143
+        },
+        "keyTimeSamples": [
+          0,
+          1,
+          0,
+          0.4,
+          0.6,
+          0.64,
+          0.84,
+          1
+        ],
+        "styleBlocks": 0,
+        "inlineStyleAttrs": 0,
+        "scripts": 0,
+        "eventAttrs": 0,
+        "foreignObjects": 0,
+        "images": [
+          {
+            "embedded": true,
+            "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+          },
+          {
+            "embedded": true,
+            "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+          },
+          {
+            "embedded": true,
+            "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+          },
+          {
+            "embedded": true,
+            "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+          },
+          {
+            "embedded": true,
+            "hrefPrefix": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC"
+          }
+        ],
+        "externalHrefs": [],
+        "clipPaths": 1,
+        "masks": 0,
+        "gradients": 0,
+        "filters": 0,
+        "textNodes": 0,
+        "fonts": [],
+        "viewBox": "0 0 720 720",
+        "widthAttr": "100%",
+        "heightAttr": "100%",
+        "observationWindowSec": 1
+      },
+      "timingsMs": {
+        "import": 8.955981000000065,
+        "emit": 0,
+        "compile": 0
+      },
+      "complexity": {
+        "nodes": 185,
+        "tracks": 46,
+        "steps": 0,
+        "geometryItems": 365,
+        "depth": 20,
+        "durationMs": 1000,
+        "viewport": {
+          "width": 720,
+          "height": 720,
+          "fit": "contain"
+        },
+        "background": {
+          "type": "solid",
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 0
+        },
+        "diagnostic": true
+      },
+      "production": {
+        "ok": false,
+        "fidelity": "failed",
+        "counts": {
+          "exact": 48,
+          "approximated": 63,
+          "dropped": 1,
+          "unsupported": 4
+        },
+        "diagnosticGroups": [
+          {
+            "code": "IMPORT_APPROXIMATED",
+            "feature": "smil",
+            "severity": "warning",
+            "message": "Indefinite repeat is previewed for one cycle.",
+            "count": 63
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "smil",
+            "severity": "info",
+            "message": "Time-based transform.position.x on i41.",
+            "count": 26
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "smil",
+            "severity": "info",
+            "message": "Time-based transform.rotation on i41.",
+            "count": 20
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "image",
+            "severity": "error",
+            "message": "<image> is outside the SVG subset.",
+            "count": 2
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "viewBox",
+            "severity": "info",
+            "message": "viewBox is the Scene IR viewport, with minX/minY translated to the origin.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_DROPPED",
+            "feature": "defs",
+            "severity": "warning",
+            "message": "<defs> has no painted result.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_UNSUPPORTED",
+            "feature": "rect",
+            "severity": "error",
+            "message": "<rect> could not be converted.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_EXACT",
+            "feature": "svg-motion",
+            "severity": "info",
+            "message": "SVG motion uses a 1000ms preview duration.",
+            "count": 1
+          },
+          {
+            "code": "IMPORT_INVALID_IR",
+            "feature": "source",
+            "severity": "fatal",
+            "message": "svg2 overlaps svg1 on node:i41:transform.position.x.",
+            "count": 1
+          }
+        ]
+      },
+      "diagnostic": {
+        "fidelity": "partial",
+        "complexity": {
+          "nodes": 185,
+          "tracks": 46,
+          "steps": 0,
+          "geometryItems": 365,
+          "depth": 20,
+          "durationMs": 1000,
+          "viewport": {
+            "width": 720,
+            "height": 720,
+            "fit": "contain"
+          },
+          "background": {
+            "type": "solid",
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0
+          }
+        },
+        "validation": {
+          "ok": false,
+          "diagnostics": [
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg2 overlaps svg1 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg4 overlaps svg2 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg5 overlaps svg4 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg6 overlaps svg5 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg8 overlaps svg6 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg9 overlaps svg8 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg11 overlaps svg9 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg12 overlaps svg11 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg13 overlaps svg12 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg15 overlaps svg13 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg16 overlaps svg15 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg17 overlaps svg16 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg20 overlaps svg17 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg22 overlaps svg20 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg24 overlaps svg22 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg27 overlaps svg24 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg29 overlaps svg27 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg31 overlaps svg29 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg32 overlaps svg31 on node:i41:transform.position.x."
+            },
+            {
+              "code": "OVERLAPPING_WRITERS",
+              "message": "svg35 overlaps svg32 on node:i41:transform.position.x."
+            }
+          ]
+        }
+      },
+      "motionScript": null,
+      "compile": null,
+      "runtime": {
+        "kind": "none",
+        "samples": []
+      },
+      "stages": [
+        {
+          "name": "source_parse",
+          "status": "PASS",
+          "detail": "SVG document located by lexical scan; production XML parse follows import"
+        },
+        {
+          "name": "import",
+          "status": "FAIL",
+          "detail": "fidelity failed; exact 48; approximated 63; dropped 1; unsupported 4; scene no"
+        },
+        {
+          "name": "motionscript_emit",
+          "status": "NOT_REACHED",
+          "detail": "Production import produced no scene."
+        },
+        {
+          "name": "compile",
+          "status": "NOT_REACHED",
+          "detail": "No MotionScript from the production scene."
+        },
+        {
+          "name": "ir_validate_compiled",
+          "status": "NOT_REACHED",
+          "detail": "Compile did not run."
+        },
+        {
+          "name": "ir_validate_import",
+          "status": "FAIL",
+          "detail": "No accepted Scene IR from importSource."
+        },
+        {
+          "name": "runtime",
+          "status": "NOT_REACHED",
+          "detail": "No accepted scene to evaluate."
+        },
+        {
+          "name": "render",
+          "status": "NOT_REACHED",
+          "detail": "Browser render is a later harness step."
+        }
+      ],
+      "earliestBlockingStage": "import",
+      "evidence": {
+        "importReport": "fixtures/SVG-02/import-report.txt",
+        "importedScene": null,
+        "compiledScene": null,
+        "motion": null
+      }
+    }
+  ]
+}

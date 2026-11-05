@@ -1,0 +1,158 @@
+{
+  "ok": true,
+  "fidelity": "partial",
+  "counts": {
+    "exact": 18,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 11
+  },
+  "groups": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "gs",
+      "severity": "error",
+      "message": "Shape item gs is outside the v0.1 subset.",
+      "count": 6
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "sh.animated",
+      "severity": "error",
+      "message": "Animated path geometry is outside the v0.1 subset.",
+      "count": 5
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group2.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group3.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group4.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group5.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group6.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group7.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group8.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group9.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group10.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group11.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group12.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group13.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group14.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group15.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group16.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group17.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–150 at 30fps to 5000ms.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 31682,
+    "name": "Radio_02"
+  }
+}

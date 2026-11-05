@@ -1,0 +1,12 @@
+{
+  "baseHead": "65c04025082f8f88ae6e7af7f39427c585064745",
+  "deletions": [],
+  "excluded": [
+    "credentials (none configured)",
+    "dependencies/caches/builds",
+    "recursive source snapshots",
+    "work temporary files; verification script copied to evidence"
+  ],
+  "initial": "All tracked source bytes before run metadata",
+  "final": "All tracked and nonignored untracked source bytes plus raw evaluation evidence; snapshot metadata excluded to avoid recursion"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "LOT-07-imported",
+    "expectedScheduled": 150,
+    "capturedScheduled": 150,
+    "expectedExtras": 5,
+    "capturedExtras": 5,
+    "complete": true
+  },
+  {
+    "id": "LOT-07-compiled",
+    "expectedScheduled": 150,
+    "capturedScheduled": 150,
+    "expectedExtras": 5,
+    "capturedExtras": 5,
+    "complete": true
+  },
+  {
+    "id": "LOT-00-imported",
+    "expectedScheduled": 240,
+    "capturedScheduled": 239,
+    "expectedExtras": 3,
+    "capturedExtras": 3,
+    "complete": false
+  },
+  {
+    "id": "LOT-00-compiled",
+    "expectedScheduled": 240,
+    "capturedScheduled": 87,
+    "expectedExtras": 3,
+    "capturedExtras": 0,
+    "complete": false
+  },
+  {
+    "id": "LOT-06-imported",
+    "expectedScheduled": 24,
+    "capturedScheduled": 24,
+    "expectedExtras": 3,
+    "capturedExtras": 3,
+    "complete": true
+  },
+  {
+    "id": "LOT-06-compiled",
+    "expectedScheduled": 24,
+    "capturedScheduled": 24,
+    "expectedExtras": 3,
+    "capturedExtras": 3,
+    "complete": true
+  },
+  {
+    "id": "LOT-01-imported",
+    "expectedScheduled": 121,
+    "capturedScheduled": 121,
+    "expectedExtras": 6,
+    "capturedExtras": 6,
+    "complete": true
+  },
+  {
+    "id": "LOT-01-compiled",
+    "expectedScheduled": 121,
+    "capturedScheduled": 121,
+    "expectedExtras": 6,
+    "capturedExtras": 6,
+    "complete": true
+  },
+  {
+    "id": "LOT-02-imported",
+    "expectedScheduled": 226,
+    "capturedScheduled": 0,
+    "expectedExtras": 5,
+    "capturedExtras": 0,
+    "complete": false
+  },
+  {
+    "id": "LOT-02-compiled",
+    "expectedScheduled": 226,
+    "capturedScheduled": 0,
+    "expectedExtras": 5,
+    "capturedExtras": 0,
+    "complete": false
+  },
+  {
+    "id": "LOT-03-reference",
+    "expectedScheduled": 427,
+    "capturedScheduled": 0,
+    "expectedExtras": 6,
+    "capturedExtras": 0,
+    "complete": false
+  },
+  {
+    "id": "LOT-04-imported",
+    "expectedScheduled": 675,
+    "capturedScheduled": 0,
+    "expectedExtras": 6,
+    "capturedExtras": 0,
+    "complete": false
+  },
+  {
+    "id": "LOT-04-compiled",
+    "expectedScheduled": 675,
+    "capturedScheduled": 0,
+    "expectedExtras": 6,
+    "capturedExtras": 0,
+    "complete": false
+  },
+  {
+    "id": "LOT-05-imported",
+    "expectedScheduled": 241,
+    "capturedScheduled": 0,
+    "expectedExtras": 6,
+    "capturedExtras": 0,
+    "complete": false
+  },
+  {
+    "id": "LOT-05-compiled",
+    "expectedScheduled": 241,
+    "capturedScheduled": 0,
+    "expectedExtras": 6,
+    "capturedExtras": 0,
+    "complete": false
+  }
+]

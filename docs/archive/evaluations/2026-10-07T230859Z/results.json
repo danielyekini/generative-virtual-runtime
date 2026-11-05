@@ -1,0 +1,92 @@
+{
+  "runId": "2026-10-07T230859Z",
+  "checks": {
+    "testsPassed": 174,
+    "registry": "PASS",
+    "typecheck": "PASS",
+    "timingControl": "PASS",
+    "corpusChecksums": "10/10 PASS"
+  },
+  "measurements": {
+    "LOT-00": {
+      "worstBefore": {
+        "frame": "near_end",
+        "fractionBeyond": 0.00020073784722222221
+      },
+      "worstAfter": {
+        "frame": "near_end",
+        "fractionBeyond": 0.00020073784722222221
+      },
+      "q50Before": 0.00014322916666666667,
+      "q50After": 0.00014322916666666667,
+      "routeImageComparison": {
+        "pairs": 5,
+        "identicalNativePNGs": 5,
+        "identicalReferencePNGs": 5
+      }
+    },
+    "LOT-01": {
+      "worstBefore": {
+        "frame": "q50",
+        "fractionBeyond": 0.0043625
+      },
+      "worstAfter": {
+        "frame": "q50",
+        "fractionBeyond": 0.0043625
+      },
+      "q50Before": 0.0043625,
+      "q50After": 0.0043625,
+      "routeImageComparison": {
+        "pairs": 5,
+        "identicalNativePNGs": 5,
+        "identicalReferencePNGs": 5
+      }
+    },
+    "LOT-06": {
+      "worstBefore": {
+        "frame": "q75",
+        "fractionBeyond": 0.01974729938271605
+      },
+      "worstAfter": {
+        "frame": "q75",
+        "fractionBeyond": 0.01974729938271605
+      },
+      "q50Before": 0.01931905864197531,
+      "q50After": 0.01931905864197531,
+      "routeImageComparison": {
+        "pairs": 5,
+        "identicalNativePNGs": 5,
+        "identicalReferencePNGs": 5
+      }
+    },
+    "LOT-07": {
+      "worstBefore": {
+        "frame": "frame_0016",
+        "fractionBeyond": 0.15135625
+      },
+      "worstAfter": {
+        "frame": "frame_0002",
+        "fractionBeyond": 0.06108125
+      },
+      "q50Before": 0.145475,
+      "q50After": 0.0516125,
+      "routeImageComparison": {
+        "pairs": 155,
+        "identicalNativePNGs": 155,
+        "identicalReferencePNGs": 155
+      }
+    }
+  },
+  "nativeRouteImages": {
+    "pairs": 170,
+    "identical": 170
+  },
+  "repeatReferenceImages": {
+    "pairs": 170,
+    "identical": 170,
+    "scope": "separate preparations in same pinned browser session; not a cross-rasteriser calibration"
+  },
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "visualStatus": "VISUAL_UNVERIFIED"
+}

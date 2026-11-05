@@ -1,0 +1,102 @@
+
+=== LOT-00 panning_landscape_motionscript_v1_compatible.json ===
+  source_parse: PASS
+  import: PASS
+  motionscript_emit: PASS
+  compile: PASS
+  ir_validate_compiled: PASS
+  ir_validate_import: PASS
+  runtime: PASS
+  render: NOT_REACHED
+
+=== LOT-01 Celebrations Begin.json ===
+  source_parse: PASS
+  import: PASS
+  motionscript_emit: PASS
+  compile: PASS
+  ir_validate_compiled: PASS
+  ir_validate_import: PASS
+  runtime: PASS
+  render: NOT_REACHED
+
+=== LOT-02 Hover Button.json ===
+  source_parse: PASS
+  import: PARTIAL
+  motionscript_emit: PASS
+  compile: PASS
+  ir_validate_compiled: PASS
+  ir_validate_import: PASS
+  runtime: PASS
+  render: NOT_REACHED
+
+=== LOT-03 lottie_ex1.json ===
+  source_parse: PASS
+  import: FAIL
+  motionscript_emit: NOT_REACHED
+  compile: NOT_REACHED
+  ir_validate_compiled: NOT_REACHED
+  ir_validate_import: FAIL
+  runtime: NOT_REACHED
+  render: NOT_REACHED
+
+=== LOT-04 lottie_ex2.json ===
+  source_parse: PASS
+  import: PARTIAL
+  motionscript_emit: PASS
+  compile: PASS
+  ir_validate_compiled: PASS
+  ir_validate_import: PASS
+  runtime: PASS
+  render: NOT_REACHED
+
+=== LOT-05 lottie_simple_ex1.json ===
+  source_parse: PASS
+  import: PARTIAL
+  motionscript_emit: PASS
+  compile: PASS
+  ir_validate_compiled: PASS
+  ir_validate_import: PASS
+  runtime: PASS
+  render: NOT_REACHED
+
+=== LOT-06 Punches.json ===
+  source_parse: PASS
+  import: PASS
+  motionscript_emit: PASS
+  compile: PASS
+  ir_validate_compiled: PASS
+  ir_validate_import: PASS
+  runtime: PASS
+  render: NOT_REACHED
+
+=== LOT-07 Wave Animation.json ===
+  source_parse: PASS
+  import: PASS
+  motionscript_emit: PASS
+  compile: PASS
+  ir_validate_compiled: PASS
+  ir_validate_import: PASS
+  runtime: PASS
+  render: NOT_REACHED
+
+=== SVG-01 Celebrations Begin.svg ===
+  source_parse: PASS
+  import: FAIL
+  motionscript_emit: NOT_REACHED
+  compile: NOT_REACHED
+  ir_validate_compiled: NOT_REACHED
+  ir_validate_import: FAIL
+  runtime: NOT_REACHED
+  render: NOT_REACHED
+
+=== SVG-02 Jumping Jack.svg ===
+  source_parse: PASS
+  import: FAIL
+  motionscript_emit: NOT_REACHED
+  compile: NOT_REACHED
+  ir_validate_compiled: NOT_REACHED
+  ir_validate_import: FAIL
+  runtime: NOT_REACHED
+  render: NOT_REACHED
+
+Wrote 10 fixture results and 10 render jobs.

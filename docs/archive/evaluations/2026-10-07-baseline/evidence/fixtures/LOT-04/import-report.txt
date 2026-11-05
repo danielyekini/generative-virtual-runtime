@@ -1,0 +1,7 @@
+STATUS	partial
+COUNTS	exact	3	approximated	0	dropped	0	unsupported	2
+IMPORT_UNSUPPORTED	error	unsupported	layer_1	Layer type 0 is outside the v0.1 subset.
+IMPORT_EXACT	info	exact	layer_2.Group1.Group1.Path2	Imported path layer_2.Group1.Group1.Path2.
+IMPORT_UNSUPPORTED	error	unsupported	layer_2.Group1	Shape item gf is outside the v0.1 subset.
+IMPORT_EXACT	info	exact	layer_3.Group1.Path1	Imported path layer_3.Group1.Path1.
+IMPORT_EXACT	info	exact		Converted composition frames 0–675 at 60fps to 11250ms.

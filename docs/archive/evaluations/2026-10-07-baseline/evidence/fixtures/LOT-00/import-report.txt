@@ -1,0 +1,35 @@
+STATUS	degraded
+COUNTS	exact	27	approximated	6	dropped	0	unsupported	0
+IMPORT_APPROXIMATED	warning	approximated	layer_100	Bezier easing on layer_100.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_100	Bezier easing on layer_100.transform.position.y was mapped to Scene IR easing names.
+IMPORT_EXACT	info	exact	layer_100.layer_1.Tree1CanopyEllipse	Imported ellipse layer_100.layer_1.Tree1CanopyEllipse.
+IMPORT_EXACT	info	exact	layer_100.layer_2.Tree1TrunkRect	Imported rectangle layer_100.layer_2.Tree1TrunkRect.
+IMPORT_EXACT	info	exact	layer_100.layer_3.Tree2CanopyEllipse	Imported ellipse layer_100.layer_3.Tree2CanopyEllipse.
+IMPORT_EXACT	info	exact	layer_100.layer_4.Tree2TrunkRect	Imported rectangle layer_100.layer_4.Tree2TrunkRect.
+IMPORT_EXACT	info	exact	layer_100.layer_5.Tree3CanopyEllipse	Imported ellipse layer_100.layer_5.Tree3CanopyEllipse.
+IMPORT_EXACT	info	exact	layer_100.layer_6.Tree3TrunkRect	Imported rectangle layer_100.layer_6.Tree3TrunkRect.
+IMPORT_EXACT	info	exact	layer_100.layer_7.Tree4CanopyEllipse	Imported ellipse layer_100.layer_7.Tree4CanopyEllipse.
+IMPORT_EXACT	info	exact	layer_100.layer_8.Tree4TrunkRect	Imported rectangle layer_100.layer_8.Tree4TrunkRect.
+IMPORT_EXACT	info	exact	layer_100.layer_9.Tree5CanopyEllipse	Imported ellipse layer_100.layer_9.Tree5CanopyEllipse.
+IMPORT_EXACT	info	exact	layer_100.layer_10.Tree5TrunkRect	Imported rectangle layer_100.layer_10.Tree5TrunkRect.
+IMPORT_EXACT	info	exact	layer_100.layer_11.Tree6CanopyEllipse	Imported ellipse layer_100.layer_11.Tree6CanopyEllipse.
+IMPORT_EXACT	info	exact	layer_100.layer_12.Tree6TrunkRect	Imported rectangle layer_100.layer_12.Tree6TrunkRect.
+IMPORT_EXACT	info	exact	layer_100.layer_13.ForegroundGroundRect	Imported rectangle layer_100.layer_13.ForegroundGroundRect.
+IMPORT_APPROXIMATED	warning	approximated	layer_200	Bezier easing on layer_200.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_200	Bezier easing on layer_200.transform.position.y was mapped to Scene IR easing names.
+IMPORT_EXACT	info	exact	layer_200.layer_14.MidHill1Ellipse	Imported ellipse layer_200.layer_14.MidHill1Ellipse.
+IMPORT_EXACT	info	exact	layer_200.layer_15.MidHill2Ellipse	Imported ellipse layer_200.layer_15.MidHill2Ellipse.
+IMPORT_EXACT	info	exact	layer_200.layer_16.MidHill3Ellipse	Imported ellipse layer_200.layer_16.MidHill3Ellipse.
+IMPORT_APPROXIMATED	warning	approximated	layer_300	Bezier easing on layer_300.transform.position.x was mapped to Scene IR easing names.
+IMPORT_APPROXIMATED	warning	approximated	layer_300	Bezier easing on layer_300.transform.position.y was mapped to Scene IR easing names.
+IMPORT_EXACT	info	exact	layer_300.layer_17.Cloud1Ellipse	Imported ellipse layer_300.layer_17.Cloud1Ellipse.
+IMPORT_EXACT	info	exact	layer_300.layer_18.Cloud2Ellipse	Imported ellipse layer_300.layer_18.Cloud2Ellipse.
+IMPORT_EXACT	info	exact	layer_300.layer_19.Cloud3Ellipse	Imported ellipse layer_300.layer_19.Cloud3Ellipse.
+IMPORT_EXACT	info	exact	layer_300.layer_20.Cloud4Ellipse	Imported ellipse layer_300.layer_20.Cloud4Ellipse.
+IMPORT_EXACT	info	exact	layer_300.layer_21.Mountain1Path	Imported path layer_300.layer_21.Mountain1Path.
+IMPORT_EXACT	info	exact	layer_300.layer_22.Mountain2Path	Imported path layer_300.layer_22.Mountain2Path.
+IMPORT_EXACT	info	exact	layer_300.layer_23.Mountain3Path	Imported path layer_300.layer_23.Mountain3Path.
+IMPORT_EXACT	info	exact	layer_300.layer_24.Mountain4Path	Imported path layer_300.layer_24.Mountain4Path.
+IMPORT_EXACT	info	exact	layer_300.layer_25.SunEllipse	Imported ellipse layer_300.layer_25.SunEllipse.
+IMPORT_EXACT	info	exact	layer_26.SkyRect	Imported rectangle layer_26.SkyRect.
+IMPORT_EXACT	info	exact		Converted composition frames 0–240 at 30fps to 8000ms.

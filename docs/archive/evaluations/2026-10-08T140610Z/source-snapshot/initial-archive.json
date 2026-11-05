@@ -1,0 +1,14 @@
+{
+  "archive": "tree/initial-source.tar.gz",
+  "sha256": "089a13d2c3d81b4a53cde7ab6d2df0a2480e0e44c4c457113160480aa0bc58c2",
+  "files": 2191,
+  "createdAt": "2026-10-08T14:19:12.233612+00:00",
+  "exclusions": [
+    "credentials",
+    "disposable dependencies/builds",
+    "capture evidence (retained separately)",
+    "historical and current recursive snapshots",
+    "current reporting directory"
+  ],
+  "initialNote": "Initial tracked source matches clean HEAD; measurement scripts retained separately in evidence."
+}

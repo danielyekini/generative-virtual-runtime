@@ -1,0 +1,46 @@
+{
+  "runId": "2026-10-07T215328Z",
+  "stoppedAt": "2026-10-07T22:01:15Z",
+  "status": "budget-exhausted",
+  "fidelityPassed": false,
+  "authoringPassed": "not-evaluated",
+  "visualGate": "VISUAL_UNVERIFIED",
+  "reason": "Phase A cause visual.midCycle.confetti improved: easingFromHandles no longer collapses mild AE easings near (0.167,0.167)-(0.833,0.833) to linear when y≠x. LOT-01 q25 fractionBeyond 0.00763→0.00614 and q50 0.00698→0.00561; q25 centroid ~0.3px. Residual AA at q25 and mild q50 pose remain. Absolute aggregate visual acceptance thresholds are not documented, so the profile cannot be certified PASS. npm test 169 and typecheck passed. One implement cycle used; further Celebrations easing collapses are exhausted (7 linear diagonal / 128 cubic).",
+  "implementCyclesUsed": 1,
+  "causes": [
+    {
+      "id": "visual.midCycle.confetti",
+      "attempts": 1,
+      "outcome": "improved",
+      "fixtures": ["LOT-01"],
+      "rootCause": "Mild AE temporal easings with y≠x were classified as linear by absolute proximity to 0.167/0.833 handles",
+      "measurement": {
+        "before": {
+          "q25": { "meanDistance": 1.204, "fractionBeyond": 0.00763 },
+          "q50": { "meanDistance": 1.418, "fractionBeyond": 0.00698 }
+        },
+        "after": {
+          "q25": { "meanDistance": 0.97, "fractionBeyond": 0.00614, "centroidDeltaPx": [-0.3, 0.25], "areaRatio": 0.999 },
+          "q50": { "meanDistance": 1.114, "fractionBeyond": 0.00561, "centroidDeltaPx": [-2.9, -5.5], "areaRatio": 0.93 }
+        }
+      }
+    }
+  ],
+  "nextAction": {
+    "cause": "visual.midCycle.confetti.q50",
+    "fixtures": ["LOT-01"],
+    "alternate": "LOT-07 mid-window residual, LOT-06 pose residual, compositing.matte, or visual gate calibration",
+    "evidenceNeeded": "Classify remaining q50 pose drift (~3–5px centroid); q25 residual is largely AA once pose matched"
+  },
+  "implementation": {
+    "gitHead": "f9ec51e02d10786210f13285b983ef6db8290b53",
+    "treeClean": false,
+    "snapshot": "docs/evaluations/2026-10-07T215328Z/source-snapshot/",
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wireVersion": "0.2"
+    },
+    "languageBump": "none — importer easing classification fix only"
+  }
+}

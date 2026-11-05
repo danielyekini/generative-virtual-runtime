@@ -1,0 +1,8 @@
+{
+  "comparedVisibleStates": 593,
+  "maxPosition": 0.0004800832208059502,
+  "maxScale": 4.046097460814049e-8,
+  "maxRotation": 4.440892098500626e-16,
+  "method": "Actual pinned lottie-web property values vs sampled native local node pose; Exclude source out-of-range and transparent composition-ancestor cached states, preserving independent transform-parent opacity behavior",
+  "outcomes": []
+}

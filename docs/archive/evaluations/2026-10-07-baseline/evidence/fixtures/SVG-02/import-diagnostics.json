@@ -1,0 +1,67 @@
+{
+  "ok": false,
+  "fidelity": "failed",
+  "counts": {
+    "exact": 2,
+    "approximated": 0,
+    "dropped": 1,
+    "unsupported": 50
+  },
+  "groups": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "animateTransform",
+      "severity": "error",
+      "message": "<animateTransform> is outside the SVG subset.",
+      "count": 46
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "image",
+      "severity": "error",
+      "message": "<image> is outside the SVG subset.",
+      "count": 2
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "viewBox",
+      "severity": "info",
+      "message": "viewBox is the Scene IR viewport, with minX/minY translated to the origin.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_DROPPED",
+      "feature": "defs",
+      "severity": "warning",
+      "message": "<defs> has no painted result.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "rect",
+      "severity": "error",
+      "message": "<rect> could not be converted.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "static-duration",
+      "severity": "info",
+      "message": "Static SVG uses a 1000ms duration so the runtime can seek it.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_INVALID_IR",
+      "feature": "source",
+      "severity": "fatal",
+      "message": "Hierarchy depth 20 exceeds 16.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "svg",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 270580,
+    "name": "Jumping Jack.svg"
+  }
+}

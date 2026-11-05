@@ -1,0 +1,16 @@
+[
+  {
+    "fixture": "LOT-00",
+    "currentNativePngs": 486,
+    "priorHashedPngs": 486,
+    "byteIdenticalToPreviouslyReviewed": 486,
+    "priorReviewRun": "2026-10-08T103605Z"
+  },
+  {
+    "fixture": "LOT-07",
+    "currentNativePngs": 310,
+    "priorHashedPngs": 310,
+    "byteIdenticalToPreviouslyReviewed": 310,
+    "priorReviewRun": "2026-10-08T103605Z"
+  }
+]

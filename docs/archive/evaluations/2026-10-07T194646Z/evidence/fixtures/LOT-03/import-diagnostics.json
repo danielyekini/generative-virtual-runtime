@@ -1,0 +1,25 @@
+{
+  "ok": false,
+  "fidelity": "failed",
+  "counts": {
+    "exact": 0,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 1
+  },
+  "groups": [
+    {
+      "code": "IMPORT_LIMIT",
+      "feature": "source",
+      "severity": "fatal",
+      "message": "Source exceeds the import size limit.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 877884,
+    "name": "lottie_ex1.json"
+  }
+}

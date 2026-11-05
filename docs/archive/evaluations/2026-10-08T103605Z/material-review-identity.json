@@ -1,0 +1,20 @@
+[
+  {
+    "fixture": "LOT-07",
+    "nativeRoutesDecodedPixelIdentical": true,
+    "identicalToReviewedAttempt1": true,
+    "frames": 155
+  },
+  {
+    "fixture": "LOT-00",
+    "nativeRoutesDecodedPixelIdentical": true,
+    "identicalToReviewedAttempt1": null,
+    "frames": 243
+  },
+  {
+    "fixture": "LOT-06",
+    "nativeRoutesDecodedPixelIdentical": true,
+    "identicalToReviewedAttempt1": null,
+    "frames": 27
+  }
+]

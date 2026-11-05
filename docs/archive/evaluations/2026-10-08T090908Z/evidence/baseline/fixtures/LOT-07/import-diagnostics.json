@@ -1,0 +1,361 @@
+{
+  "ok": true,
+  "fidelity": "exact",
+  "counts": {
+    "exact": 49,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 0
+  },
+  "groups": [
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rotation",
+      "severity": "info",
+      "message": "Imported motion on layer_1.Shape_5.transform.rotation.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "gs",
+      "severity": "info",
+      "message": "Imported gradient stroke on layer_1.Shape_5.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path-morph",
+      "severity": "info",
+      "message": "Imported animated path morph on layer_1.Shape_5.Path1.commands.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rotation",
+      "severity": "info",
+      "message": "Imported motion on layer_2.Shape_55.transform.rotation.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "gs",
+      "severity": "info",
+      "message": "Imported gradient stroke on layer_2.Shape_55.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path-morph",
+      "severity": "info",
+      "message": "Imported animated path morph on layer_2.Shape_55.Path1.commands.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rotation",
+      "severity": "info",
+      "message": "Imported motion on layer_3.Shape_6.transform.rotation.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "gs",
+      "severity": "info",
+      "message": "Imported gradient stroke on layer_3.Shape_6.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path-morph",
+      "severity": "info",
+      "message": "Imported animated path morph on layer_3.Shape_6.Path1.commands.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rotation",
+      "severity": "info",
+      "message": "Imported motion on layer_4.Shape1.transform.rotation.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path-morph",
+      "severity": "info",
+      "message": "Imported animated path morph on layer_4.Shape1.Path1.commands.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "rotation",
+      "severity": "info",
+      "message": "Imported motion on layer_5.Shape_1.transform.rotation.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "gs",
+      "severity": "info",
+      "message": "Imported gradient stroke on layer_5.Shape_1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path-morph",
+      "severity": "info",
+      "message": "Imported animated path morph on layer_5.Shape_1.Path1.commands.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group1.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group1.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group2.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group2.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group3.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group3.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group4.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group4.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group5.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group5.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group6.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group6.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group7.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group7.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group8.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group8.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group9.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group9.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group10.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group10.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group11.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group11.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group12.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group12.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group13.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group13.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group14.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group14.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group15.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group15.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group16.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group16.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "opacity",
+      "severity": "info",
+      "message": "Imported motion on layer_6.Group17.opacity.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "path",
+      "severity": "info",
+      "message": "Imported path layer_6.Group17.Path1.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_EXACT",
+      "feature": "frame-timing",
+      "severity": "info",
+      "message": "Converted composition frames 0–150 at 30fps to 5000ms.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 31682,
+    "name": "Radio_02"
+  }
+}

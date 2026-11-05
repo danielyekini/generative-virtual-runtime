@@ -1,0 +1,14 @@
+{
+  "path": "tree/inventory-correction-source.tar.gz",
+  "sha256": "6d3ba5a91e002992e381cd4b2d91b91d11dad14623ea1c7432f3584d140b6956",
+  "files": 1713,
+  "exclusions": [
+    "credentials",
+    "disposable dependencies/build/caches",
+    "work scratch",
+    "evaluation/evidence scratch",
+    "current run to avoid recursion",
+    "recursive bulk source archives"
+  ],
+  "trackedDeleted": []
+}

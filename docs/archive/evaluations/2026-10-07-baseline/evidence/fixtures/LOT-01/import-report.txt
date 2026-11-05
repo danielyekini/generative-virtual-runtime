@@ -1,0 +1,4 @@
+STATUS	failed
+COUNTS	exact	0	approximated	0	dropped	0	unsupported	2
+IMPORT_UNSUPPORTED	fatal	unsupported	layer_1	Layer type 0 is outside the v0.1 subset.
+IMPORT_UNSUPPORTED	fatal	unsupported		No supported layers were found.

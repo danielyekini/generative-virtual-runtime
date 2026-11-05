@@ -1,0 +1,555 @@
+{
+  "jobs": [
+    {
+      "id": "LOT-00",
+      "format": "lottie",
+      "role": "baseline",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "sourceUrl": "/sources/LOT-00.json",
+      "sceneUrl": "/fixtures/LOT-00/compiled-scene.json",
+      "sceneKind": "compiled",
+      "cssWidth": 1280,
+      "cssHeight": 720,
+      "logicalWidth": 1280,
+      "logicalHeight": 720,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 2000,
+          "lottieFrame": 60
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 4000,
+          "lottieFrame": 120
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 6000,
+          "lottieFrame": 180
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 7960,
+          "lottieFrame": 238.8
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 240 at 30 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "LOT-01",
+      "format": "lottie",
+      "role": "pack",
+      "fileName": "Celebrations Begin.json",
+      "sourceUrl": "/sources/LOT-01.json",
+      "sceneUrl": null,
+      "sceneKind": "none",
+      "cssWidth": 400,
+      "cssHeight": 400,
+      "logicalWidth": 400,
+      "logicalHeight": 400,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1008.3333333333333,
+          "lottieFrame": 30.25
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 2016.6666666666665,
+          "lottieFrame": 60.5
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 3025,
+          "lottieFrame": 90.75
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 4013.1666666666665,
+          "lottieFrame": 120.395
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 121 at 30 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "LOT-02",
+      "format": "lottie",
+      "role": "pack",
+      "fileName": "Hover Button.json",
+      "sourceUrl": "/sources/LOT-02.json",
+      "sceneUrl": "/fixtures/LOT-02/compiled-scene.json",
+      "sceneKind": "compiled",
+      "cssWidth": 1920,
+      "cssHeight": 1080,
+      "logicalWidth": 1920,
+      "logicalHeight": 1080,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1883.3333333333333,
+          "lottieFrame": 56.5
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 3766.6666666666665,
+          "lottieFrame": 113
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 5650,
+          "lottieFrame": 169.5
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 7495.666666666666,
+          "lottieFrame": 224.87
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 226 at 30 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "LOT-03",
+      "format": "lottie",
+      "role": "pack",
+      "fileName": "lottie_ex1.json",
+      "sourceUrl": "/sources/LOT-03.json",
+      "sceneUrl": "/fixtures/LOT-03/diagnostic-scene.json",
+      "sceneKind": "diagnostic_not_production",
+      "cssWidth": 1080,
+      "cssHeight": 689,
+      "logicalWidth": 1080,
+      "logicalHeight": 689,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour. This scene is the adapter normalise output after production importSource returned no scene. It is not a production playback pass.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1779.1666666666665,
+          "lottieFrame": 106.75
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 3558.333333333333,
+          "lottieFrame": 213.5
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 5337.5,
+          "lottieFrame": 320.25
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 7081.083333333333,
+          "lottieFrame": 424.865
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 427 at 60 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "LOT-04",
+      "format": "lottie",
+      "role": "pack",
+      "fileName": "lottie_ex2.json",
+      "sourceUrl": "/sources/LOT-04.json",
+      "sceneUrl": "/fixtures/LOT-04/compiled-scene.json",
+      "sceneKind": "compiled",
+      "cssWidth": 500,
+      "cssHeight": 889,
+      "logicalWidth": 500,
+      "logicalHeight": 888.89,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 2812.5,
+          "lottieFrame": 168.75
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 5625,
+          "lottieFrame": 337.5
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 8437.5,
+          "lottieFrame": 506.25
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 11193.75,
+          "lottieFrame": 671.625
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 675 at 60 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "LOT-05",
+      "format": "lottie",
+      "role": "pack",
+      "fileName": "lottie_simple_ex1.json",
+      "sourceUrl": "/sources/LOT-05.json",
+      "sceneUrl": "/fixtures/LOT-05/compiled-scene.json",
+      "sceneKind": "compiled",
+      "cssWidth": 1080,
+      "cssHeight": 1080,
+      "logicalWidth": 1080,
+      "logicalHeight": 1080,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1004.1666666666666,
+          "lottieFrame": 60.25
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 2008.3333333333333,
+          "lottieFrame": 120.5
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 3012.5,
+          "lottieFrame": 180.75
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 3996.583333333333,
+          "lottieFrame": 239.795
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 241 at 60 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "LOT-06",
+      "format": "lottie",
+      "role": "pack",
+      "fileName": "Punches.json",
+      "sourceUrl": "/sources/LOT-06.json",
+      "sceneUrl": "/fixtures/LOT-06/compiled-scene.json",
+      "sceneKind": "compiled",
+      "cssWidth": 720,
+      "cssHeight": 720,
+      "logicalWidth": 720,
+      "logicalHeight": 720,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 240,
+          "lottieFrame": 6
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 480,
+          "lottieFrame": 12
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 720,
+          "lottieFrame": 18
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 955.2,
+          "lottieFrame": 23.88
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 24 at 25 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "LOT-07",
+      "format": "lottie",
+      "role": "pack",
+      "fileName": "Wave Animation.json",
+      "sourceUrl": "/sources/LOT-07.json",
+      "sceneUrl": "/fixtures/LOT-07/compiled-scene.json",
+      "sceneKind": "compiled",
+      "cssWidth": 400,
+      "cssHeight": 400,
+      "logicalWidth": 400,
+      "logicalHeight": 400,
+      "background": "#101014",
+      "backgroundReason": "Importer writes opaque #101014 when the scene is accepted. Reference frames are composited on the same colour.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "lottieFrame": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1250,
+          "lottieFrame": 37.5
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 2500,
+          "lottieFrame": 75
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 3750,
+          "lottieFrame": 112.5
+        },
+        {
+          "id": "near_end",
+          "label": "near end (before out point)",
+          "fraction": 0.995,
+          "sourceTimeMs": 4975,
+          "lottieFrame": 149.25
+        }
+      ],
+      "observation": "One composition cycle from ip 0 to op 150 at 30 fps. The file is not an infinite timeline; loop is a player behaviour. Near-end is 99.5% of the way from ip to op so the out-point does not blank the frame. No interactive input is encoded in the JSON."
+    },
+    {
+      "id": "SVG-01",
+      "format": "svg",
+      "role": "pack",
+      "fileName": "Celebrations Begin.svg",
+      "sourceUrl": "/sources/SVG-01.svg",
+      "sceneUrl": "/fixtures/SVG-01/diagnostic-scene.json",
+      "sceneKind": "diagnostic_not_production",
+      "cssWidth": 400,
+      "cssHeight": 400,
+      "logicalWidth": 400,
+      "logicalHeight": 400,
+      "background": "#000000",
+      "backgroundReason": "SVG import background is transparent. The canvas renderer paints black letterbox first, so a transparent background stays black. Reference frames use the same black. This scene is the adapter normalise output after production importSource returned no scene. It is not a production playback pass.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "svgTimeSec": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 1008.2500000000001,
+          "svgTimeSec": 1.00825
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 2016.5000000000002,
+          "svgTimeSec": 2.0165
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 3024.7500000000005,
+          "svgTimeSec": 3.02475
+        },
+        {
+          "id": "near_end",
+          "label": "near end of one cycle",
+          "fraction": 0.995,
+          "sourceTimeMs": 4012.8350000000005,
+          "svgTimeSec": 4.012835
+        },
+        {
+          "id": "key_0.926",
+          "label": "SMIL key fraction 0.926",
+          "fraction": 0.926,
+          "sourceTimeMs": 3734.5580000000004,
+          "svgTimeSec": 3.7345580000000007
+        }
+      ],
+      "observation": "SMIL repeatCount is indefinite. Observation window is one cycle of 4.033 seconds, sampled with SVGSVGElement.setCurrentTime. No pointer input."
+    },
+    {
+      "id": "SVG-02",
+      "format": "svg",
+      "role": "pack",
+      "fileName": "Jumping Jack.svg",
+      "sourceUrl": "/sources/SVG-02.svg",
+      "sceneUrl": "/fixtures/SVG-02/diagnostic-scene.json",
+      "sceneKind": "diagnostic_not_production",
+      "cssWidth": 720,
+      "cssHeight": 720,
+      "logicalWidth": 720,
+      "logicalHeight": 720,
+      "background": "#000000",
+      "backgroundReason": "SVG import background is transparent. The canvas renderer paints black letterbox first, so a transparent background stays black. Reference frames use the same black. This scene is the adapter normalise output after production importSource returned no scene. It is not a production playback pass.",
+      "samples": [
+        {
+          "id": "start",
+          "label": "start",
+          "fraction": 0,
+          "sourceTimeMs": 0,
+          "svgTimeSec": 0
+        },
+        {
+          "id": "q25",
+          "label": "25%",
+          "fraction": 0.25,
+          "sourceTimeMs": 250,
+          "svgTimeSec": 0.25
+        },
+        {
+          "id": "q50",
+          "label": "50%",
+          "fraction": 0.5,
+          "sourceTimeMs": 500,
+          "svgTimeSec": 0.5
+        },
+        {
+          "id": "q75",
+          "label": "75%",
+          "fraction": 0.75,
+          "sourceTimeMs": 750,
+          "svgTimeSec": 0.75
+        },
+        {
+          "id": "near_end",
+          "label": "near end of one cycle",
+          "fraction": 0.995,
+          "sourceTimeMs": 995,
+          "svgTimeSec": 0.995
+        },
+        {
+          "id": "key_0.600",
+          "label": "SMIL key fraction 0.600",
+          "fraction": 0.6,
+          "sourceTimeMs": 600,
+          "svgTimeSec": 0.6
+        },
+        {
+          "id": "key_0.640",
+          "label": "SMIL key fraction 0.640",
+          "fraction": 0.64,
+          "sourceTimeMs": 640,
+          "svgTimeSec": 0.64
+        }
+      ],
+      "observation": "SMIL repeatCount is indefinite. Observation window is one cycle of 1 seconds, sampled with SVGSVGElement.setCurrentTime. No pointer input."
+    }
+  ]
+}

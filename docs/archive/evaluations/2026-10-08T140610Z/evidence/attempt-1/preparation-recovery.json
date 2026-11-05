@@ -1,0 +1,7 @@
+{
+  "reason": "A queued redundant prepare ran after the independent prepare completed. prepare-fidelity is not idempotent on expanded route jobs; rerun failed before writing render-jobs.json.",
+  "validScheduleUnchanged": true,
+  "scheduleSha256": "ec671f4302c7bc1823a003182ca96bde07cd1887e472798c806058be0c4f00cc",
+  "recovery": "Restored default source-job backup from baseline; live full-window route schedule was never replaced. Original immutable fixture paths and policy match.",
+  "validPrepareLog": "work/prepare-final.log"
+}

@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-07T21:58:48.556Z",
+  "repository": "/Users/daniel.yekini/Projects/generative-visual-runtime",
+  "gitHead": "f9ec51e02d10786210f13285b983ef6db8290b53",
+  "gitStatus": "## main...origin/main\n M docs/evaluations/MotionScript_Fidelity_and_Authoring_Loop.md\n M packages/format-lottie/src/lottie.test.ts\n M packages/format-lottie/src/property.ts\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-near_end-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q25-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q50-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-q75-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-00-start-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-near_end-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-01-start-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-near_end-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q25-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q50-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-q75-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-06-start-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-near_end-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q25-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q50-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-q75-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/LOT-07-start-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q25-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q50-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/q75-strip.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-diff.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-nat.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-ref.png\n?? docs/evaluations/2026-10-07T213004Z/evidence/failure-samples/start-strip.png\n?? docs/evaluations/2026-10-07T215328Z/\n?? fixtures/import/lottie/easing_ae_near_linear.json",
+  "gitLog": "f9ec51e Point the evaluation pin at the clean animated-trim commit.",
+  "node": "v24.10.0",
+  "platform": "darwin arm64",
+  "npm": "11.6.0",
+  "chrome": "Google Chrome 154.0.8037.98",
+  "lottieWeb": "5.13.0",
+  "versions": {
+    "importCore": "0.1.0",
+    "lottieAdapter": "0.1.0",
+    "svgAdapter": "0.1.0",
+    "emitter": "0.1.0",
+    "ir": "0.1",
+    "dsl": "0.1",
+    "svgStaticDurationMs": 1000
+  },
+  "commands": [
+    "npx tsx evaluation/harness/run-pipeline.ts",
+    "npx tsx evaluation/harness/drive-browser.ts",
+    "node evaluation/harness/write-report.mjs"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "packRoots": [
+    "/Users/daniel.yekini/Downloads/lottie",
+    "/Users/daniel.yekini/Downloads/svg",
+    "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json"
+  ],
+  "archives": [],
+  "svgFilesDiscovered": 2,
+  "lottieFilesDiscovered": 8,
+  "note": "The lottie directory contained seven JSON files and no SVG or archives. The svg directory contained two SVG files and no archives. The panning landscape file was supplied separately as the baseline.",
+  "fixtures": [
+    {
+      "id": "LOT-00",
+      "role": "baseline",
+      "format": "lottie",
+      "fileName": "panning_landscape_motionscript_v1_compatible.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/panning_landscape_motionscript_v1_compatible.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "LOT-01",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Celebrations Begin.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Celebrations Begin.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "LOT-02",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Hover Button.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Hover Button.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "LOT-03",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex1.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "LOT-04",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_ex2.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_ex2.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "LOT-05",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "lottie_simple_ex1.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/lottie_simple_ex1.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "LOT-06",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Punches.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Punches.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "LOT-07",
+      "role": "pack",
+      "format": "lottie",
+      "fileName": "Wave Animation.json",
+      "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "SVG-01",
+      "role": "pack",
+      "format": "svg",
+      "fileName": "Celebrations Begin.svg",
+      "sourcePath": "/Users/daniel.yekini/Downloads/svg/Celebrations Begin.svg",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    },
+    {
+      "id": "SVG-02",
+      "role": "pack",
+      "format": "svg",
+      "fileName": "Jumping Jack.svg",
+      "sourcePath": "/Users/daniel.yekini/Downloads/svg/Jumping Jack.svg",
+      "evidenceSource": null,
+      "bytes": 0,
+      "sha256": "",
+      "durationMs": null,
+      "frameRate": null
+    }
+  ]
+}

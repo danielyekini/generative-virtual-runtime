@@ -1,0 +1,14 @@
+{
+  "registry": {
+    "command": "npx vitest run packages/schema/src/registry.test.ts",
+    "exitCode": 0
+  },
+  "tests": {
+    "command": "npm test",
+    "exitCode": 0
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ok": false,
+  "fidelity": "failed",
+  "counts": {
+    "exact": 0,
+    "approximated": 0,
+    "dropped": 0,
+    "unsupported": 2
+  },
+  "groups": [
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "layer",
+      "severity": "fatal",
+      "message": "Layer type 0 is outside the v0.1 subset.",
+      "count": 1
+    },
+    {
+      "code": "IMPORT_UNSUPPORTED",
+      "feature": "scene",
+      "severity": "fatal",
+      "message": "No supported layers were found.",
+      "count": 1
+    }
+  ],
+  "sourceMetadata": {
+    "formatId": "lottie",
+    "adapterVersion": "0.1.0",
+    "sourceBytes": 139337,
+    "name": "Comp 1"
+  }
+}

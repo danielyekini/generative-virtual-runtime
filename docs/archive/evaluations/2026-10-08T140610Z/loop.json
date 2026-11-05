@@ -1,0 +1,208 @@
+{
+  "runId": "2026-10-08T140610Z",
+  "settings": {
+    "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+    "numberTolerance": 0.001,
+    "colorTolerance": "1/255",
+    "pixel": {
+      "metric": "euclidean-rgb",
+      "inspectionThreshold": 24,
+      "role": "inspection",
+      "notes": [
+        "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+        "This alone is not a complete PASS rule for the declared profile."
+      ]
+    },
+    "visualCertification": {
+      "status": "DEFINED",
+      "policyVersion": "1.0",
+      "authority": "Operator delegated gate definition in chat on 2026-10-08; these rules are frozen before new implementation attempts. Approval is of the policy, not existing output.",
+      "document": "docs/evaluations/visual-acceptance-policy.md",
+      "aggregate": {
+        "maxFrameFractionBeyond": 0.005,
+        "maxWindowMeanFractionBeyond": 0.002,
+        "weighting": "Arithmetic mean of equally weighted scheduled full-window frames; extra boundary/subframe samples must pass per-frame rules but do not change the window mean."
+      },
+      "localRegions": {
+        "tileSizePx": 32,
+        "gridOffsetsPx": [
+          0,
+          16
+        ],
+        "maxForegroundFractionBeyond": 0.1,
+        "minForegroundDenominatorPx": 64,
+        "foregroundThreshold": 24,
+        "backgroundRgb": [
+          16,
+          16,
+          20
+        ],
+        "definition": "For each tile on both grids, hot pixels / max(64, pixels whose reference OR native RGB differs from the declared background by more than 24). Count all hot pixels, including unexpected background content."
+      },
+      "materialReview": {
+        "required": true,
+        "reject": [
+          "Missing or extra subject/detail, stroke/fill, clipping or mask contribution",
+          "Wrong paint, geometry, stacking or scope semantics",
+          "Visible pose displacement, timing/visibility error or animated flicker"
+        ],
+        "reviewCoverage": "Review every automatic failure and start, end, key boundaries, segment midpoints, worst frames and a full-window contact sheet/sequence for each fixture and both native routes. Unreviewed fixtures remain VISUAL_UNVERIFIED.",
+        "independentOfMetrics": true
+      },
+      "alpha": {
+        "profile": "opaque-composite",
+        "background": "#101014",
+        "requiredByte": 255,
+        "rule": "Both reference and native PNGs must be opaque after compositing onto the declared background. No standalone transparent-alpha fidelity is claimed; such a profile needs separate rules."
+      },
+      "coverage": {
+        "required": "full-window",
+        "requireBothNativeRoutes": true,
+        "requireMatchedTimestamps": true,
+        "missingCapture": "NOT_RUN or BLOCKED, never zero error or PASS",
+        "numericRoutes": {
+          "numberTolerance": 0.001,
+          "colorTolerance": "1/255"
+        }
+      },
+      "referenceControls": {
+        "requireTimeControlWorks": true,
+        "requireNoReferenceErrors": true,
+        "requireRepeatCaptureIdentity": true,
+        "environment": "Matched viewport, fit, DPR 1, explicitly pinned subframe mode and fonts/assets/effect profile. Incomplete readiness or unreliable control quarantines comparison."
+      },
+      "passRule": "All conversion, round-trip, full-window aggregate/local/alpha, reference-control, material-review and regression/resource gates must pass. No implicit PASS from capture execution labels."
+    },
+    "reference": {
+      "lottieWeb": "5.13.0",
+      "seek": "goToAndStop(frame, true)",
+      "devicePixelRatio": 1,
+      "lottieBackground": "#101014",
+      "svgBackground": "#000000",
+      "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+    },
+    "corpus": {
+      "root": "fixtures/corpus",
+      "checksums": "fixtures/corpus/SHA256SUMS",
+      "readme": "fixtures/corpus/README.md"
+    }
+  },
+  "cycles": [
+    {
+      "id": "timing.spatialCompositionClip",
+      "phase": "A",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "affectedFixtures": [
+        "LOT-01"
+      ],
+      "hypothesis": "Spatial cuts sample linear endpoints and retain unsliced tangents, changing source arc-length motion",
+      "ownerBoundary": "format-lottie composition-window clipping",
+      "expectedResult": "Original source spatial motion under existing vec2 keyframes within 0.001; full corpus regression gate",
+      "baselineMeasurements": "Seven cut tracks differ 8.4755\u2013240.6121 logical units from uncut source sampling; counterfactual all below 0.001",
+      "status": "MEASURED_CORRECTION; LOT01_FIDELITY_FAIL; NEXT_PHASE_A",
+      "linkedFinding": "LOT-01 confetti residual; new cause, not reset of retained stroke/paint budgets",
+      "semanticMeasurement": {
+        "originalMaxLogicalError": 240.6120671351874,
+        "finalMaxLogicalError": 0.0008531521160927599,
+        "numberTolerance": 0.001,
+        "roundTrip": "PASS_NON_QUARANTINED",
+        "tests": "194 PASS",
+        "typecheck": "PASS"
+      },
+      "finalVisualEvidence": "evidence/final/render-results.json",
+      "finalVisualMeasurement": {
+        "baselineFailingComparisons": 97,
+        "finalFailingComparisons": 80,
+        "comparedFramesPerRoute": 127,
+        "meanHotFraction": 0.0006219008264462804,
+        "numericPass": false
+      }
+    }
+  ],
+  "nextCause": {
+    "id": "visual.layerPaintOrder",
+    "phase": "A",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "affectedFixtures": [
+      "LOT-01"
+    ],
+    "ownerBoundary": "format-lottie paint parent versus transform parent lowering",
+    "expectedEvidence": "Use published transform.parent to retain global source layer paint order independently of transform hierarchy; preserve precomp opacity/timing and actual source matrices. Verify remaining contours, source/direct/compiled routes and all original windows. Do not treat sampled reordering as resolved."
+  },
+  "retainedCauses": [
+    {
+      "id": "visual.wave.multipleStrokeLoss",
+      "attempts": 2,
+      "remainingAttempts": 1,
+      "status": "ordered stroke correction measured; fixture not yet fidelity-certified"
+    },
+    {
+      "id": "visual.wave.gradientCoordinateSpace",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "status": "DIAGNOSIS_NOT_CAUSAL"
+    },
+    {
+      "id": "timing.compositionClipEasing",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "IMPLEMENTED; LOT-07 full numerical PASS; material review separately recorded"
+    },
+    {
+      "id": "visual.layerPaintOrder",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "status": "REOPENED_DIAGNOSTIC_CONFIRMED_LOT01_EARLY_OVERLAP",
+      "affectedFixtures": [
+        "LOT-01"
+      ],
+      "phase": "A",
+      "newEvidence": "evidence/paint-order-counterfactual/results.json; pinned-original raster matches at all five probed frames. Source global order improves frame03 hot .0034\u2192.00055/local .35475\u2192.05464; other residuals remain. No shared implementation edited; attempts remain 0.",
+      "previousScope": "LOT06 structural counterfactual was not causal; history preserved."
+    },
+    {
+      "id": "visual.shapeGroupPaintOrder",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "IMPLEMENTED; details restored; LOT-06 still FAIL due omitted animated fills"
+    },
+    {
+      "id": "conversion.silentAnimatedFill",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "INVENTORY_DIAGNOSTIC_CORRECTION; paint capability remains unimplemented"
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "visual.confetti.trimContour",
+      "status": "DIAGNOSIS_NOT_CAUSAL",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "evidence": "evidence/trim-counterfactual/results.json; dense tessellation mixed changes, not a justified correction"
+    },
+    {
+      "id": "visual.confetti.localPose",
+      "status": "VISIBLE_POSES_MATCH_REFERENCE_WITHIN_TOLERANCE",
+      "evidence": "evidence/source-state/comparison.json; 593 actual reference states compared. Transparent composition ancestor caches excluded using actual reference visibility; transform-parent opacity is not treated as inherited paint opacity."
+    }
+  ],
+  "completedCycles": 1,
+  "stoppedAt": "2026-10-08T15:08:19.064275+00:00",
+  "stopStatus": "budget-exhausted",
+  "deferredCapabilities": [
+    {
+      "id": "paint.animatedSolidFill",
+      "phase": "B",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "affectedFixtures": [
+        "LOT-06"
+      ],
+      "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
+      "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "id": "LOT-07",
+  "role": "pack",
+  "format": "lottie",
+  "fileName": "Wave Animation.json",
+  "sourcePath": "/Users/daniel.yekini/Downloads/lottie/Wave Animation.json",
+  "sourceBytes": 31682,
+  "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+  "inventory": {
+    "topLevelKeys": [
+      "v",
+      "meta",
+      "fr",
+      "ip",
+      "op",
+      "w",
+      "h",
+      "nm",
+      "ddd",
+      "assets",
+      "layers",
+      "markers"
+    ],
+    "markers": [],
+    "fonts": [],
+    "chars": 0,
+    "rootLayerTypes": {
+      "shape": 6
+    },
+    "assetLayerTypes": {},
+    "shapeTypes": {
+      "gr": 23,
+      "sh": 22,
+      "st": 3,
+      "gs": 6,
+      "tr": 23,
+      "fl": 17
+    },
+    "masks": 0,
+    "mattes": 0,
+    "effects": 0,
+    "blendModes": 0,
+    "skew": 0,
+    "autoOrient": 0,
+    "spatialTangents": 0,
+    "textLayers": 0,
+    "hiddenLayers": 0,
+    "parenting": 0,
+    "ddd": 0,
+    "animatedProperties": 27,
+    "expressions": 0,
+    "holdKeyframes": 0,
+    "easingHandles": 106,
+    "roundedRects": 0,
+    "animatedRoundedRects": 0,
+    "images": [],
+    "precompAssets": [],
+    "missingAssets": [],
+    "examples": [
+      {
+        "feature": "gradient",
+        "path": "$.layers[0].shapes[0].it[2]"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.layers[1].shapes[0].it[2]"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.layers[2].shapes[0].it[1]"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.layers[2].shapes[0].it[2]"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.layers[3].shapes[1].it[0]"
+      },
+      {
+        "feature": "gradient",
+        "path": "$.layers[4].shapes[0].it[1]"
+      }
+    ],
+    "name": "Radio_02",
+    "version": "4.8.0",
+    "frameRate": 30,
+    "inFrame": 0,
+    "outFrame": 150,
+    "width": 400,
+    "height": 400,
+    "durationMs": 5000
+  },
+  "timingsMs": {
+    "import": 0.913665999999921,
+    "emit": 0.6155830000000151,
+    "compile": 3.464582999999948
+  },
+  "complexity": {
+    "nodes": 51,
+    "tracks": 5,
+    "steps": 0,
+    "geometryItems": 132,
+    "depth": 3,
+    "durationMs": 5000,
+    "viewport": {
+      "width": 400,
+      "height": 400,
+      "fit": "contain"
+    },
+    "background": {
+      "type": "solid",
+      "r": 0.06274509803921569,
+      "g": 0.06274509803921569,
+      "b": 0.0784313725490196,
+      "a": 1
+    }
+  },
+  "production": {
+    "ok": true,
+    "fidelity": "exact",
+    "counts": {
+      "exact": 27,
+      "approximated": 0,
+      "dropped": 0,
+      "unsupported": 0
+    },
+    "diagnosticGroups": [
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "gs",
+        "severity": "info",
+        "message": "Imported gradient stroke on layer_1.Shape_5.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_1.Shape_5.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "gs",
+        "severity": "info",
+        "message": "Imported gradient stroke on layer_2.Shape_55.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_2.Shape_55.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "gs",
+        "severity": "info",
+        "message": "Imported gradient stroke on layer_3.Shape_6.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_3.Shape_6.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_4.Shape1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "gs",
+        "severity": "info",
+        "message": "Imported gradient stroke on layer_5.Shape_1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path-morph",
+        "severity": "info",
+        "message": "Imported animated path morph on layer_5.Shape_1.Path1.commands.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group1.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group2.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group3.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group4.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group5.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group6.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group7.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group8.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group9.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group10.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group11.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group12.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group13.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group14.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group15.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group16.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "path",
+        "severity": "info",
+        "message": "Imported path layer_6.Group17.Path1.",
+        "count": 1
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "feature": "frame-timing",
+        "severity": "info",
+        "message": "Converted composition frames 0–150 at 30fps to 5000ms.",
+        "count": 1
+      }
+    ]
+  },
+  "diagnostic": null,
+  "motionScript": {
+    "chars": 15203,
+    "bytes": 15203,
+    "path": "fixtures/LOT-07/generated.motion"
+  },
+  "compile": {
+    "ok": true,
+    "diagnostics": 0,
+    "scene": true
+  },
+  "runtime": {
+    "kind": "compiled",
+    "samples": [
+      {
+        "id": "start",
+        "requestedMs": 0,
+        "evaluatedMs": 0,
+        "clampedToDuration": false,
+        "drawItems": 22,
+        "diagnostics": 0,
+        "ms": 0.44812499999989086
+      },
+      {
+        "id": "q25",
+        "requestedMs": 1250,
+        "evaluatedMs": 1250,
+        "clampedToDuration": false,
+        "drawItems": 22,
+        "diagnostics": 0,
+        "ms": 0.38845900000001166
+      },
+      {
+        "id": "q50",
+        "requestedMs": 2500,
+        "evaluatedMs": 2500,
+        "clampedToDuration": false,
+        "drawItems": 22,
+        "diagnostics": 0,
+        "ms": 0.3949169999998503
+      },
+      {
+        "id": "q75",
+        "requestedMs": 3750,
+        "evaluatedMs": 3750,
+        "clampedToDuration": false,
+        "drawItems": 22,
+        "diagnostics": 0,
+        "ms": 0.38741699999991397
+      },
+      {
+        "id": "near_end",
+        "requestedMs": 4975,
+        "evaluatedMs": 4975,
+        "clampedToDuration": false,
+        "drawItems": 22,
+        "diagnostics": 0,
+        "ms": 0.3686250000000655
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "source_parse",
+      "status": "PASS",
+      "detail": "JSON object, 31682 bytes"
+    },
+    {
+      "name": "import",
+      "status": "PASS",
+      "detail": "fidelity exact; exact 27; approximated 0; dropped 0; unsupported 0; scene yes"
+    },
+    {
+      "name": "motionscript_emit",
+      "status": "PASS",
+      "detail": "15203 chars in 0.6 ms"
+    },
+    {
+      "name": "compile",
+      "status": "PASS",
+      "detail": "ok true; diagnostics 0; 3.5 ms"
+    },
+    {
+      "name": "ir_validate_compiled",
+      "status": "PASS",
+      "detail": "compileMotionScript accepted the scene"
+    },
+    {
+      "name": "ir_validate_import",
+      "status": "PASS",
+      "detail": "importSource returns a scene only after validateSceneIR succeeds"
+    },
+    {
+      "name": "runtime",
+      "status": "PASS",
+      "detail": "compiled scene; 5 samples; draw items 22,22,22,22,22"
+    },
+    {
+      "name": "render",
+      "status": "NOT_REACHED",
+      "detail": "Browser render is a later harness step."
+    }
+  ],
+  "earliestBlockingStage": null,
+  "evidence": {
+    "importReport": "fixtures/LOT-07/import-report.txt",
+    "importedScene": "fixtures/LOT-07/imported-scene.json",
+    "compiledScene": "fixtures/LOT-07/compiled-scene.json",
+    "motion": "fixtures/LOT-07/generated.motion"
+  }
+}

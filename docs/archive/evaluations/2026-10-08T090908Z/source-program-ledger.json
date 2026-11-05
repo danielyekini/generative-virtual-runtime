@@ -1,0 +1,301 @@
+[
+  {
+    "fixtureId": "LOT-00",
+    "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+    "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+    "sourceBytes": 41712,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-00/generated.motion",
+      "sha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+      "bytes": 8880
+    },
+    "directIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-00/imported-scene.json",
+      "sha256": "d0f8c23f5579a0ec530945cf84019815575220c9ff00f051c6a1689aaed6adfd",
+      "bytes": 44716
+    },
+    "compiledIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-00/compiled-scene.json",
+      "sha256": "4efc2955f79f22a29623e4c2063a342c022f443dc203599d7058c0e8f4b89b8d",
+      "bytes": 45701
+    },
+    "requiredCapabilities": [
+      "transform.parent"
+    ],
+    "canonicalPromotion": "samples/motionscript/LOT-00/faithful/r000001/manifest.json"
+  },
+  {
+    "fixtureId": "LOT-01",
+    "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+    "sourceSha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d",
+    "sourceBytes": 139337,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-01/generated.motion",
+      "sha256": "d2ab8f45bbfb12a0ef1ee2b647c70ff135e84d2cc7562120ac2280937281e7de",
+      "bytes": 80827
+    },
+    "directIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-01/imported-scene.json",
+      "sha256": "6a93392186ed4ce3f4972887ed793174a233dfaeb4317159278a9ddb1b0fc3ac",
+      "bytes": 349487
+    },
+    "compiledIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-01/compiled-scene.json",
+      "sha256": "bef1f5e68cc9136934843b04e8d7e1fbfdd1035e9a1fd4dc980d6f6f89b42f60",
+      "bytes": 348669
+    },
+    "requiredCapabilities": [
+      "geometry.trimPath",
+      "geometry.animatedTrim",
+      "transform.parent",
+      "easing.cubicBezier",
+      "geometry.spatialCurve",
+      "composition.definitions",
+      "timing.localScopes"
+    ],
+    "canonicalPromotion": null
+  },
+  {
+    "fixtureId": "LOT-02",
+    "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+    "sourceSha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e",
+    "sourceBytes": 127633,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-02/generated.motion",
+      "sha256": "c2ff4d9d09fa488c5c8b52f0bc7f3beef1b8e7194a0664b49787dba0bfa306ba",
+      "bytes": 21927
+    },
+    "directIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-02/imported-scene.json",
+      "sha256": "4bf4386c6c006437781640f14e35b43e6f1f7bf02d5655175a982fa4f1dc6a51",
+      "bytes": 98525
+    },
+    "compiledIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-02/compiled-scene.json",
+      "sha256": "a0869adaed0da84f46110f064a5326f588f53ac5e8e592a634381b6a0f392057",
+      "bytes": 97138
+    },
+    "requiredCapabilities": [
+      "easing.cubicBezier",
+      "geometry.roundedRect",
+      "transform.parent",
+      "text.basic",
+      "geometry.trimPath",
+      "geometry.animatedTrim",
+      "geometry.spatialCurve",
+      "composition.definitions",
+      "timing.localScopes",
+      "effects.blur",
+      "compositing.isolatedOpacity",
+      "paint.gradientStroke"
+    ],
+    "canonicalPromotion": null
+  },
+  {
+    "fixtureId": "LOT-03",
+    "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+    "sourceSha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551",
+    "sourceBytes": 877884,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": null,
+    "directIr": null,
+    "compiledIr": null,
+    "canonicalPromotion": null
+  },
+  {
+    "fixtureId": "LOT-04",
+    "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+    "sourceSha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601",
+    "sourceBytes": 512240,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-04/generated.motion",
+      "sha256": "c1ceeda3e4e5404c4a013965a53f7cce01fce59b219c686037a2c6d92fc99a31",
+      "bytes": 39802
+    },
+    "directIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-04/imported-scene.json",
+      "sha256": "7460ecc821d0e6d1088254c1719b1115ac78f940657e06eafc513985e86a477c",
+      "bytes": 190895
+    },
+    "compiledIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-04/compiled-scene.json",
+      "sha256": "db4367d5ff9c56225bfaa8dc8b8d514e94b72210aa27f8a1c38b482f9806ec9f",
+      "bytes": 184239
+    },
+    "requiredCapabilities": [
+      "easing.cubicBezier",
+      "transform.parent",
+      "effects.blur",
+      "compositing.isolatedOpacity",
+      "text.basic",
+      "composition.definitions",
+      "timing.localScopes",
+      "paint.linearGradient"
+    ],
+    "canonicalPromotion": null
+  },
+  {
+    "fixtureId": "LOT-05",
+    "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+    "sourceSha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2",
+    "sourceBytes": 191525,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-05/generated.motion",
+      "sha256": "7534a2dfc20ebcbeb53c2c1f77aa43af0225ff9bba8dea6e7f6eda06718a04eb",
+      "bytes": 10247
+    },
+    "directIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-05/imported-scene.json",
+      "sha256": "b2de36ef8f754e0a7eb8f9c7d6da75c793652e6f274ede4441ab054c73c8cd93",
+      "bytes": 47497
+    },
+    "compiledIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-05/compiled-scene.json",
+      "sha256": "be2966c8ca912bedb877af3929292f11ae17af3b7af75f6e9b75727fb1a8251a",
+      "bytes": 46801
+    },
+    "requiredCapabilities": [
+      "easing.cubicBezier",
+      "text.basic",
+      "paint.radialGradient",
+      "composition.definitions",
+      "timing.localScopes"
+    ],
+    "canonicalPromotion": null
+  },
+  {
+    "fixtureId": "LOT-06",
+    "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+    "sourceSha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1",
+    "sourceBytes": 112565,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-06/generated.motion",
+      "sha256": "b9f848cb242c10982f43279833c654fd55669413a353d60fedc62970f8544c23",
+      "bytes": 128500
+    },
+    "directIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-06/imported-scene.json",
+      "sha256": "4b9a8b943615c4605fffeadd34cfec4e21d4b6fc8fe5b14e09f47d277af72bdf",
+      "bytes": 558176
+    },
+    "compiledIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-06/compiled-scene.json",
+      "sha256": "97b88b5f6f8123931918156d5d67efeed1e292fe184ef5b56c9665d026cbd9bc",
+      "bytes": 538921
+    },
+    "requiredCapabilities": [
+      "easing.cubicBezier",
+      "geometry.spatialCurve",
+      "geometry.pathMorph",
+      "transform.parent",
+      "easing.hold"
+    ],
+    "canonicalPromotion": null
+  },
+  {
+    "fixtureId": "LOT-07",
+    "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+    "sourceSha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e",
+    "sourceBytes": 31682,
+    "scratchProgramRevisionId": null,
+    "parentRevisionId": null,
+    "parentProgramSha256": null,
+    "languages": {
+      "motionscript": "0.5.0",
+      "sceneIr": "0.5.0",
+      "wire": "0.2"
+    },
+    "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+    "implementationSnapshot": "source-snapshot/tree/attempt-2-source.tar.gz",
+    "program": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-07/generated.motion",
+      "sha256": "a42a6374ae2e5097302e961a6d5c5de1301c968b2c2684cc7739fd256699929a",
+      "bytes": 26323
+    },
+    "directIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-07/imported-scene.json",
+      "sha256": "6b66e93dfecdda61867ee9b1c744cef048e47c9264ba62b77ab1ed2cae487084",
+      "bytes": 131765
+    },
+    "compiledIr": {
+      "path": "docs/evaluations/2026-10-08T090908Z/evidence/final/fixtures/LOT-07/compiled-scene.json",
+      "sha256": "434d43af24ead024979eeb2f9ad2bdf93ebcbeb226a3724a914e65005dbfd0e5",
+      "bytes": 130553
+    },
+    "requiredCapabilities": [
+      "paint.gradientStroke",
+      "easing.cubicBezier",
+      "geometry.pathMorph"
+    ],
+    "canonicalPromotion": null
+  }
+]
