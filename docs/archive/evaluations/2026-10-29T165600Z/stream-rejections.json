@@ -1,0 +1,235 @@
+{
+  "revision": 2,
+  "rejections": [
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[45].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[52].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[59].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[4].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[4].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[4].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[5].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[6].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[1].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[5].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[11].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[17].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[21].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[33].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[2].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[5].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[8].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[11].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[14].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[17].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[1].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[3].cornerRadius"
+    },
+    {
+      "severity": "error",
+      "effect": "UNIT_REJECTED",
+      "recovery": "Reject this unit atomically. Keep the last accepted scene unchanged.",
+      "code": "UNSUPPORTED_PROPERTY",
+      "phase": "validate",
+      "category": "type",
+      "message": "Property cornerRadius is not part of V1.",
+      "path": "nodes[1].cornerRadius"
+    }
+  ]
+}

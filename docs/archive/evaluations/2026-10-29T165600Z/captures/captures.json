@@ -1,0 +1,1752 @@
+[
+  {
+    "name": "paint-order",
+    "sourceSha256": "52f6796f7fc8538762a6c175868d3955f67acb05dc422612e11e4099976f7a95",
+    "ok": true,
+    "compile": {
+      "capacity": 32,
+      "distributions": {
+        "compile.lex_parse_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 1.3999999985098839,
+          "max": 1.3999999985098839,
+          "p50": 1.3999999985098839,
+          "p95": 1.3999999985098839,
+          "p99": 1.3999999985098839
+        },
+        "compile.snapshot_ms": {
+          "count": 2,
+          "retained": 2,
+          "mean": 0.09999999962747097,
+          "max": 0.09999999962747097,
+          "p50": 0.09999999962747097,
+          "p95": 0.09999999962747097,
+          "p99": 0.09999999962747097
+        },
+        "compile.capture_ms": {
+          "count": 4,
+          "retained": 4,
+          "mean": 0.049999999813735485,
+          "max": 0.09999999962747097,
+          "p50": 0,
+          "p95": 0.09999999962747097,
+          "p99": 0.09999999962747097
+        },
+        "compile.lower_ms": {
+          "count": 2,
+          "retained": 2,
+          "mean": 0.25,
+          "max": 0.5,
+          "p50": 0,
+          "p95": 0.5,
+          "p99": 0.5
+        },
+        "compile.validate_ms": {
+          "count": 3,
+          "retained": 3,
+          "mean": 0.6999999998758236,
+          "max": 1.700000001117587,
+          "p50": 0.19999999925494194,
+          "p95": 1.700000001117587,
+          "p99": 1.700000001117587
+        },
+        "compile.total_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 23.699999999254942,
+          "max": 23.699999999254942,
+          "p50": 23.699999999254942,
+          "p95": 23.699999999254942,
+          "p99": 23.699999999254942
+        }
+      },
+      "counters": {
+        "compile.source_bytes": 294,
+        "compile.units_seen": 2,
+        "compile.accepted_units": 2,
+        "compile.unresolved_units": 0,
+        "compile.rejected_units": 0
+      },
+      "gauges": {
+        "compile.pending_deltas": {
+          "value": 4,
+          "highWater": 4
+        },
+        "compile.deferred_units": {
+          "value": 0,
+          "highWater": 0
+        }
+      },
+      "events": []
+    },
+    "counts": {
+      "nodes": 3,
+      "tracks": 0,
+      "steps": 0
+    },
+    "frames": [
+      {
+        "time": 0,
+        "changedPixels": 10000,
+        "hotPixels": 10000,
+        "totalPixels": 921600,
+        "fractionBeyond": 0.010850694444444444,
+        "before": "paint-order-0-before.png",
+        "after": "paint-order-0-after.png"
+      }
+    ]
+  },
+  {
+    "name": "compound-trim",
+    "sourceSha256": "5a3d7a9c5a1f664306620dee56ffdc820d90086d6c7159254399a82447d0ed42",
+    "ok": true,
+    "compile": {
+      "capacity": 32,
+      "distributions": {
+        "compile.lex_parse_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 0.6999999992549419,
+          "max": 0.6999999992549419,
+          "p50": 0.6999999992549419,
+          "p95": 0.6999999992549419,
+          "p99": 0.6999999992549419
+        },
+        "compile.snapshot_ms": {
+          "count": 2,
+          "retained": 2,
+          "mean": 0,
+          "max": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0
+        },
+        "compile.capture_ms": {
+          "count": 4,
+          "retained": 4,
+          "mean": 0.049999999813735485,
+          "max": 0.09999999962747097,
+          "p50": 0,
+          "p95": 0.09999999962747097,
+          "p99": 0.09999999962747097
+        },
+        "compile.lower_ms": {
+          "count": 2,
+          "retained": 2,
+          "mean": 0,
+          "max": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0
+        },
+        "compile.validate_ms": {
+          "count": 3,
+          "retained": 3,
+          "mean": 0.16666666604578495,
+          "max": 0.2999999988824129,
+          "p50": 0.09999999962747097,
+          "p95": 0.2999999988824129,
+          "p99": 0.2999999988824129
+        },
+        "compile.total_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 1.799999998882413,
+          "max": 1.799999998882413,
+          "p50": 1.799999998882413,
+          "p95": 1.799999998882413,
+          "p99": 1.799999998882413
+        }
+      },
+      "counters": {
+        "compile.source_bytes": 255,
+        "compile.units_seen": 2,
+        "compile.accepted_units": 2,
+        "compile.unresolved_units": 0,
+        "compile.rejected_units": 0
+      },
+      "gauges": {
+        "compile.pending_deltas": {
+          "value": 4,
+          "highWater": 4
+        },
+        "compile.deferred_units": {
+          "value": 0,
+          "highWater": 0
+        }
+      },
+      "events": []
+    },
+    "counts": {
+      "nodes": 1,
+      "tracks": 0,
+      "steps": 0
+    },
+    "frames": [
+      {
+        "time": 0,
+        "changedPixels": 2400,
+        "hotPixels": 2400,
+        "totalPixels": 921600,
+        "fractionBeyond": 0.0026041666666666665,
+        "before": "compound-trim-0-before.png",
+        "after": "compound-trim-0-after.png"
+      }
+    ]
+  },
+  {
+    "name": "adding-two-vectors",
+    "sourceSha256": "2601487342974c9ef7ff071326f77e8add87d6a806618ea99b597b6894bf8c6d",
+    "ok": true,
+    "compile": {
+      "capacity": 32,
+      "distributions": {
+        "compile.lex_parse_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 9.699999999254942,
+          "max": 9.699999999254942,
+          "p50": 9.699999999254942,
+          "p95": 9.699999999254942,
+          "p99": 9.699999999254942
+        },
+        "compile.snapshot_ms": {
+          "count": 72,
+          "retained": 32,
+          "mean": 0.456944444268528,
+          "max": 1,
+          "p50": 0.5,
+          "p95": 0.900000000372529,
+          "p99": 1
+        },
+        "compile.capture_ms": {
+          "count": 142,
+          "retained": 32,
+          "mean": 0.0028169014241913675,
+          "max": 0.10000000149011612,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0.10000000149011612
+        },
+        "compile.lower_ms": {
+          "count": 72,
+          "retained": 32,
+          "mean": 0.03611111113180717,
+          "max": 0.40000000037252903,
+          "p50": 0,
+          "p95": 0.10000000149011612,
+          "p99": 0.10000000149011612
+        },
+        "compile.validate_ms": {
+          "count": 73,
+          "retained": 32,
+          "mean": 0.7260273973113054,
+          "max": 1.5,
+          "p50": 0.7999999988824129,
+          "p95": 1.299999998882413,
+          "p99": 1.5
+        },
+        "compile.total_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 100.89999999850988,
+          "max": 100.89999999850988,
+          "p50": 100.89999999850988,
+          "p95": 100.89999999850988,
+          "p99": 100.89999999850988
+        }
+      },
+      "counters": {
+        "compile.source_bytes": 19873,
+        "compile.units_seen": 72,
+        "compile.accepted_units": 72,
+        "compile.unresolved_units": 0,
+        "compile.rejected_units": 0
+      },
+      "gauges": {
+        "compile.pending_deltas": {
+          "value": 73,
+          "highWater": 73
+        },
+        "compile.deferred_units": {
+          "value": 0,
+          "highWater": 0
+        }
+      },
+      "events": []
+    },
+    "counts": {
+      "nodes": 72,
+      "tracks": 41,
+      "steps": 0
+    },
+    "frames": [
+      {
+        "time": 0,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "adding-two-vectors-0-before.png",
+        "after": "adding-two-vectors-0-after.png"
+      },
+      {
+        "time": 15000,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "adding-two-vectors-15000-before.png",
+        "after": "adding-two-vectors-15000-after.png"
+      },
+      {
+        "time": 29999,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "adding-two-vectors-29999-before.png",
+        "after": "adding-two-vectors-29999-after.png"
+      }
+    ]
+  },
+  {
+    "name": "from-pixels-to-prediction",
+    "sourceSha256": "a7ae6b6d2b6c888a8f133f74d0e6d3eef46af909b044931178b19fb747b5c3dc",
+    "ok": true,
+    "compile": {
+      "capacity": 32,
+      "distributions": {
+        "compile.lex_parse_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 28,
+          "max": 28,
+          "p50": 28,
+          "p95": 28,
+          "p99": 28
+        },
+        "compile.snapshot_ms": {
+          "count": 306,
+          "retained": 32,
+          "mean": 2.928758169877422,
+          "max": 7,
+          "p50": 3.5,
+          "p95": 6.599999999627471,
+          "p99": 7
+        },
+        "compile.capture_ms": {
+          "count": 610,
+          "retained": 32,
+          "mean": 0.010491803264031645,
+          "max": 0.10000000149011612,
+          "p50": 0,
+          "p95": 0.09999999962747097,
+          "p99": 0.09999999962747097
+        },
+        "compile.lower_ms": {
+          "count": 306,
+          "retained": 32,
+          "mean": 0.04477124183980468,
+          "max": 0.6999999992549419,
+          "p50": 0,
+          "p95": 0.09999999962747097,
+          "p99": 0.10000000149011612
+        },
+        "compile.validate_ms": {
+          "count": 307,
+          "retained": 32,
+          "mean": 9.393811074962251,
+          "max": 32.30000000074506,
+          "p50": 9.300000000745058,
+          "p95": 10.300000000745058,
+          "p99": 10.5
+        },
+        "compile.total_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 3848.5999999996275,
+          "max": 3848.5999999996275,
+          "p50": 3848.5999999996275,
+          "p95": 3848.5999999996275,
+          "p99": 3848.5999999996275
+        }
+      },
+      "counters": {
+        "compile.source_bytes": 107977,
+        "compile.units_seen": 306,
+        "compile.accepted_units": 306,
+        "compile.unresolved_units": 0,
+        "compile.rejected_units": 0
+      },
+      "gauges": {
+        "compile.pending_deltas": {
+          "value": 308,
+          "highWater": 308
+        },
+        "compile.deferred_units": {
+          "value": 0,
+          "highWater": 0
+        }
+      },
+      "events": []
+    },
+    "counts": {
+      "nodes": 390,
+      "tracks": 280,
+      "steps": 0
+    },
+    "frames": [
+      {
+        "time": 0,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "from-pixels-to-prediction-0-before.png",
+        "after": "from-pixels-to-prediction-0-after.png"
+      },
+      {
+        "time": 15000,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "from-pixels-to-prediction-15000-before.png",
+        "after": "from-pixels-to-prediction-15000-after.png"
+      },
+      {
+        "time": 29999,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "from-pixels-to-prediction-29999-before.png",
+        "after": "from-pixels-to-prediction-29999-after.png"
+      }
+    ]
+  },
+  {
+    "name": "square-wave-from-sine-waves",
+    "sourceSha256": "d7df7f4030ba0db58510f47ada3107939bfefbaf7c9cf75648e79ee102e52a84",
+    "ok": true,
+    "compile": {
+      "capacity": 32,
+      "distributions": {
+        "compile.lex_parse_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 81.5,
+          "max": 81.5,
+          "p50": 81.5,
+          "p95": 81.5,
+          "p99": 81.5
+        },
+        "compile.snapshot_ms": {
+          "count": 162,
+          "retained": 32,
+          "mean": 5.500000000022996,
+          "max": 12.699999999254942,
+          "p50": 6.899999998509884,
+          "p95": 11.700000001117587,
+          "p99": 12.699999999254942
+        },
+        "compile.capture_ms": {
+          "count": 322,
+          "retained": 32,
+          "mean": 0.007453416138656021,
+          "max": 0.10000000149011612,
+          "p50": 0,
+          "p95": 0.09999999962747097,
+          "p99": 0.09999999962747097
+        },
+        "compile.lower_ms": {
+          "count": 162,
+          "retained": 32,
+          "mean": 0.04444444438235627,
+          "max": 1.199999999254942,
+          "p50": 0,
+          "p95": 0.09999999962747097,
+          "p99": 0.10000000149011612
+        },
+        "compile.validate_ms": {
+          "count": 163,
+          "retained": 32,
+          "mean": 4.207361963229037,
+          "max": 11.900000000372529,
+          "p50": 4.799999998882413,
+          "p95": 6.800000000745058,
+          "p99": 8.400000000372529
+        },
+        "compile.total_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 1684.6000000014901,
+          "max": 1684.6000000014901,
+          "p50": 1684.6000000014901,
+          "p95": 1684.6000000014901,
+          "p99": 1684.6000000014901
+        }
+      },
+      "counters": {
+        "compile.source_bytes": 417381,
+        "compile.units_seen": 162,
+        "compile.accepted_units": 162,
+        "compile.unresolved_units": 0,
+        "compile.rejected_units": 0
+      },
+      "gauges": {
+        "compile.pending_deltas": {
+          "value": 163,
+          "highWater": 163
+        },
+        "compile.deferred_units": {
+          "value": 0,
+          "highWater": 0
+        }
+      },
+      "events": []
+    },
+    "counts": {
+      "nodes": 249,
+      "tracks": 62,
+      "steps": 67
+    },
+    "frames": [
+      {
+        "time": 0,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "square-wave-from-sine-waves-0-before.png",
+        "after": "square-wave-from-sine-waves-0-after.png"
+      },
+      {
+        "time": 15000,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "square-wave-from-sine-waves-15000-before.png",
+        "after": "square-wave-from-sine-waves-15000-after.png"
+      },
+      {
+        "time": 29999,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "square-wave-from-sine-waves-29999-before.png",
+        "after": "square-wave-from-sine-waves-29999-after.png"
+      }
+    ]
+  },
+  {
+    "name": "the-city-comes-around",
+    "sourceSha256": "f43623cdc4a6ff95f66652446e0914c00c8f2be3d3d87497ef340b340aa80c72",
+    "ok": true,
+    "compile": {
+      "capacity": 32,
+      "distributions": {
+        "compile.lex_parse_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 35.90000000037253,
+          "max": 35.90000000037253,
+          "p50": 35.90000000037253,
+          "p95": 35.90000000037253,
+          "p99": 35.90000000037253
+        },
+        "compile.snapshot_ms": {
+          "count": 351,
+          "retained": 32,
+          "mean": 6.456125356113682,
+          "max": 17.199999999254942,
+          "p50": 11,
+          "p95": 15.5,
+          "p99": 16.700000001117587
+        },
+        "compile.capture_ms": {
+          "count": 700,
+          "retained": 32,
+          "mean": 0.007285714290503944,
+          "max": 0.10000000149011612,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0.09999999962747097
+        },
+        "compile.lower_ms": {
+          "count": 351,
+          "retained": 32,
+          "mean": 0.08660968657360117,
+          "max": 0.8999999985098839,
+          "p50": 0.09999999962747097,
+          "p95": 0.2000000011175871,
+          "p99": 0.2999999988824129
+        },
+        "compile.validate_ms": {
+          "count": 352,
+          "retained": 32,
+          "mean": 10.711079545477828,
+          "max": 26.799999998882413,
+          "p50": 18.09999999962747,
+          "p95": 22.300000000745058,
+          "p99": 22.700000001117587
+        },
+        "compile.total_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 6141.5,
+          "max": 6141.5,
+          "p50": 6141.5,
+          "p95": 6141.5,
+          "p99": 6141.5
+        }
+      },
+      "counters": {
+        "compile.source_bytes": 232949,
+        "compile.units_seen": 351,
+        "compile.accepted_units": 351,
+        "compile.unresolved_units": 0,
+        "compile.rejected_units": 0
+      },
+      "gauges": {
+        "compile.pending_deltas": {
+          "value": 353,
+          "highWater": 353
+        },
+        "compile.deferred_units": {
+          "value": 0,
+          "highWater": 0
+        }
+      },
+      "events": []
+    },
+    "counts": {
+      "nodes": 482,
+      "tracks": 185,
+      "steps": 12
+    },
+    "frames": [
+      {
+        "time": 0,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "the-city-comes-around-0-before.png",
+        "after": "the-city-comes-around-0-after.png"
+      },
+      {
+        "time": 15000,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "the-city-comes-around-15000-before.png",
+        "after": "the-city-comes-around-15000-after.png"
+      },
+      {
+        "time": 29999,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "the-city-comes-around-29999-before.png",
+        "after": "the-city-comes-around-29999-after.png"
+      }
+    ]
+  },
+  {
+    "name": "a-crane-then-a-square",
+    "sourceSha256": "7d1743a1f514e7b2b23d02cc3558c04b1a36f1590349be85ce2fb95e1c06a326",
+    "ok": true,
+    "compile": {
+      "capacity": 32,
+      "distributions": {
+        "compile.lex_parse_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 261.90000000037253,
+          "max": 261.90000000037253,
+          "p50": 261.90000000037253,
+          "p95": 261.90000000037253,
+          "p99": 261.90000000037253
+        },
+        "compile.snapshot_ms": {
+          "count": 912,
+          "retained": 32,
+          "mean": 44.00855263158998,
+          "max": 225.19999999925494,
+          "p50": 52.5,
+          "p95": 69.20000000111759,
+          "p99": 73
+        },
+        "compile.capture_ms": {
+          "count": 1824,
+          "retained": 32,
+          "mean": 0.012445175439209203,
+          "max": 2.800000000745058,
+          "p50": 0,
+          "p95": 0.09999999962747097,
+          "p99": 0.10000000149011612
+        },
+        "compile.lower_ms": {
+          "count": 912,
+          "retained": 32,
+          "mean": 0.04835526314318964,
+          "max": 2.5,
+          "p50": 0,
+          "p95": 0.10000000149011612,
+          "p99": 0.10000000149011612
+        },
+        "compile.validate_ms": {
+          "count": 913,
+          "retained": 32,
+          "mean": 9.796166484086058,
+          "max": 43.59999999962747,
+          "p50": 11.199999999254942,
+          "p95": 19.799999998882413,
+          "p99": 21.799999998882413
+        },
+        "compile.total_ms": {
+          "count": 1,
+          "retained": 1,
+          "mean": 49780.59999999963,
+          "max": 49780.59999999963,
+          "p50": 49780.59999999963,
+          "p95": 49780.59999999963,
+          "p99": 49780.59999999963
+        }
+      },
+      "counters": {
+        "compile.source_bytes": 1934979,
+        "compile.units_seen": 912,
+        "compile.accepted_units": 912,
+        "compile.unresolved_units": 0,
+        "compile.rejected_units": 0
+      },
+      "gauges": {
+        "compile.pending_deltas": {
+          "value": 913,
+          "highWater": 913
+        },
+        "compile.deferred_units": {
+          "value": 0,
+          "highWater": 0
+        }
+      },
+      "events": []
+    },
+    "counts": {
+      "nodes": 112,
+      "tracks": 123,
+      "steps": 676
+    },
+    "frames": [
+      {
+        "time": 0,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "a-crane-then-a-square-0-before.png",
+        "after": "a-crane-then-a-square-0-after.png"
+      },
+      {
+        "time": 15000,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "a-crane-then-a-square-15000-before.png",
+        "after": "a-crane-then-a-square-15000-after.png"
+      },
+      {
+        "time": 29999,
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0,
+        "before": "a-crane-then-a-square-29999-before.png",
+        "after": "a-crane-then-a-square-29999-after.png"
+      }
+    ]
+  },
+  {
+    "name": "lottie-trim",
+    "sourceSha256": "9d787ba03a31c6167b573a295288d91aba2ba1219ba94a712d26d9686581c342",
+    "ok": true,
+    "diagnostics": [
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "tm",
+        "message": "Imported motion on layer_1.group0.pathNode.trim.start.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "tm",
+        "message": "Imported motion on layer_1.group0.pathNode.trim.end.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "tm",
+        "message": "Animated trim on layer_1.group0.pathNode.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "path",
+        "message": "Imported path layer_1.group0.pathNode.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "frame-timing",
+        "message": "Converted composition frames 0–60 at 30fps to 2000ms."
+      }
+    ],
+    "controls": {
+      "sameTimeRepeat": {
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0
+      },
+      "motion": {
+        "changedPixels": 17280,
+        "hotPixels": 17280,
+        "totalPixels": 921600,
+        "fractionBeyond": 0.01875
+      },
+      "subframe": true,
+      "player": "lottie-web 5.13.0 canvas",
+      "coverage": "sampled; no full-window certification"
+    },
+    "frames": [
+      {
+        "time": 0,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsDirect": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-trim-0-reference.png",
+        "direct": "lottie-trim-0-direct.png",
+        "compiled": "lottie-trim-0-compiled.png"
+      },
+      {
+        "time": 500,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsDirect": {
+          "changedPixels": 8640,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-trim-500-reference.png",
+        "direct": "lottie-trim-500-direct.png",
+        "compiled": "lottie-trim-500-compiled.png"
+      },
+      {
+        "time": 1000,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsDirect": {
+          "changedPixels": 17280,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-trim-1000-reference.png",
+        "direct": "lottie-trim-1000-direct.png",
+        "compiled": "lottie-trim-1000-compiled.png"
+      },
+      {
+        "time": 1999,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsDirect": {
+          "changedPixels": 17280,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-trim-1999-reference.png",
+        "direct": "lottie-trim-1999-direct.png",
+        "compiled": "lottie-trim-1999-compiled.png"
+      }
+    ]
+  },
+  {
+    "name": "lottie-offset",
+    "sourceSha256": "e9ab37e4c8511ffb43b21ad22396a032a8ddc6c0ee705420b76e9c94bc582b22",
+    "ok": true,
+    "diagnostics": [
+      {
+        "code": "IMPORT_APPROXIMATED",
+        "severity": "warning",
+        "fidelity": "approximated",
+        "feature": "tm",
+        "message": "Offset units are converted from degrees, but native windows clip at one rather than retaining the wrapped tail.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "tm",
+        "message": "Imported motion on layer_1.group0.pathNode.trim.start.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "tm",
+        "message": "Imported motion on layer_1.group0.pathNode.trim.end.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "tm",
+        "message": "Animated trim on layer_1.group0.pathNode.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "path",
+        "message": "Imported path layer_1.group0.pathNode.",
+        "target": "layer_1.group0.pathNode"
+      },
+      {
+        "code": "IMPORT_EXACT",
+        "severity": "info",
+        "fidelity": "exact",
+        "feature": "frame-timing",
+        "message": "Converted composition frames 0–60 at 30fps to 2000ms."
+      }
+    ],
+    "controls": {
+      "sameTimeRepeat": {
+        "changedPixels": 0,
+        "hotPixels": 0,
+        "totalPixels": 921600,
+        "fractionBeyond": 0
+      },
+      "motion": {
+        "changedPixels": 17280,
+        "hotPixels": 17280,
+        "totalPixels": 921600,
+        "fractionBeyond": 0.01875
+      },
+      "subframe": true,
+      "player": "lottie-web 5.13.0 canvas",
+      "coverage": "sampled; no full-window certification"
+    },
+    "frames": [
+      {
+        "time": 0,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsDirect": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-offset-0-reference.png",
+        "direct": "lottie-offset-0-direct.png",
+        "compiled": "lottie-offset-0-compiled.png"
+      },
+      {
+        "time": 500,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": true,
+          "fractionBeyond": 0,
+          "maxLocalFractionBeyond": 0,
+          "alphaFailures": 0,
+          "failedRegions": []
+        },
+        "referenceVsDirect": {
+          "changedPixels": 8696,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-offset-500-reference.png",
+        "direct": "lottie-offset-500-direct.png",
+        "compiled": "lottie-offset-500-compiled.png"
+      },
+      {
+        "time": 1000,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": false,
+          "fractionBeyond": 0.0046875,
+          "maxLocalFractionBeyond": 1,
+          "alphaFailures": 0,
+          "failedRegions": [
+            {
+              "x": 352,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 320,
+              "hot": 112,
+              "foreground": 224,
+              "fraction": 0.5
+            },
+            {
+              "x": 352,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 352,
+              "hot": 368,
+              "foreground": 736,
+              "fraction": 0.5
+            },
+            {
+              "x": 336,
+              "y": 336,
+              "hot": 368,
+              "foreground": 368,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 336,
+              "y": 368,
+              "hot": 112,
+              "foreground": 112,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            }
+          ]
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": false,
+          "fractionBeyond": 0.0046875,
+          "maxLocalFractionBeyond": 1,
+          "alphaFailures": 0,
+          "failedRegions": [
+            {
+              "x": 352,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 320,
+              "hot": 112,
+              "foreground": 224,
+              "fraction": 0.5
+            },
+            {
+              "x": 352,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 352,
+              "hot": 368,
+              "foreground": 736,
+              "fraction": 0.5
+            },
+            {
+              "x": 336,
+              "y": 336,
+              "hot": 368,
+              "foreground": 368,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 336,
+              "y": 368,
+              "hot": 112,
+              "foreground": 112,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            }
+          ]
+        },
+        "referenceVsDirect": {
+          "changedPixels": 17280,
+          "hotPixels": 4320,
+          "totalPixels": 921600,
+          "fractionBeyond": 0.0046875
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-offset-1000-reference.png",
+        "direct": "lottie-offset-1000-direct.png",
+        "compiled": "lottie-offset-1000-compiled.png"
+      },
+      {
+        "time": 1999,
+        "referenceVsDirectGate": {
+          "comparable": true,
+          "passed": false,
+          "fractionBeyond": 0.0046875,
+          "maxLocalFractionBeyond": 1,
+          "alphaFailures": 0,
+          "failedRegions": [
+            {
+              "x": 352,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 320,
+              "hot": 112,
+              "foreground": 224,
+              "fraction": 0.5
+            },
+            {
+              "x": 352,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 352,
+              "hot": 368,
+              "foreground": 736,
+              "fraction": 0.5
+            },
+            {
+              "x": 336,
+              "y": 336,
+              "hot": 368,
+              "foreground": 368,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 336,
+              "y": 368,
+              "hot": 112,
+              "foreground": 112,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            }
+          ]
+        },
+        "referenceVsCompiledGate": {
+          "comparable": true,
+          "passed": false,
+          "fractionBeyond": 0.0046875,
+          "maxLocalFractionBeyond": 1,
+          "alphaFailures": 0,
+          "failedRegions": [
+            {
+              "x": 352,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 320,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 320,
+              "hot": 112,
+              "foreground": 224,
+              "fraction": 0.5
+            },
+            {
+              "x": 352,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 384,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 416,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 448,
+              "y": 352,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 480,
+              "y": 352,
+              "hot": 368,
+              "foreground": 736,
+              "fraction": 0.5
+            },
+            {
+              "x": 336,
+              "y": 336,
+              "hot": 368,
+              "foreground": 368,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 336,
+              "hot": 736,
+              "foreground": 736,
+              "fraction": 1
+            },
+            {
+              "x": 336,
+              "y": 368,
+              "hot": 112,
+              "foreground": 112,
+              "fraction": 1
+            },
+            {
+              "x": 368,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 400,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 432,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            },
+            {
+              "x": 464,
+              "y": 368,
+              "hot": 224,
+              "foreground": 224,
+              "fraction": 1
+            }
+          ]
+        },
+        "referenceVsDirect": {
+          "changedPixels": 17280,
+          "hotPixels": 4320,
+          "totalPixels": 921600,
+          "fractionBeyond": 0.0046875
+        },
+        "directVsCompiled": {
+          "changedPixels": 0,
+          "hotPixels": 0,
+          "totalPixels": 921600,
+          "fractionBeyond": 0
+        },
+        "reference": "lottie-offset-1999-reference.png",
+        "direct": "lottie-offset-1999-direct.png",
+        "compiled": "lottie-offset-1999-compiled.png"
+      }
+    ]
+  }
+]

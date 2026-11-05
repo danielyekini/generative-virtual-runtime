@@ -1,0 +1,388 @@
+{
+  "runId": "2026-10-09T115503Z",
+  "fidelityPassed": false,
+  "conversionStatus": "FAIL_KNOWN_LOSS",
+  "roundTripStatus": "PASS_NON_QUARANTINED",
+  "visualStatus": "FAIL; REFERENCE_QUARANTINES; MATERIAL_REVIEW_INCOMPLETE",
+  "coverageStatus": "PARTIAL_FINAL_CAPTURE",
+  "fixtures": [
+    {
+      "fixture": "LOT-00",
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "visualStatus": "PASS_ORIGINAL_REVIEWED_BYTES; EXTRA_REVIEW_RECORDED",
+      "coverage": [
+        {
+          "route": "imported",
+          "capturedScheduled": 240,
+          "expectedScheduled": 240,
+          "capturedExtra": 3,
+          "expectedExtra": 3
+        },
+        {
+          "route": "compiled",
+          "capturedScheduled": 240,
+          "expectedScheduled": 240,
+          "capturedExtra": 3,
+          "expectedExtra": 3
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/fixtures/LOT-00/generated.motion",
+          "bytes": 7440,
+          "sha256": "b7e747d107d3165d95e69222e0bb694790f454bff00428d72cb1e73b6c835e12",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-00/imported-scene.json",
+          "bytes": 43362,
+          "sha256": "6a27615044544ec20972cd2c994c65dcf631cdb7e65c044521fb3f428cde1882",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-00/compiled-scene.json",
+          "bytes": 44347,
+          "sha256": "90e7662d2a20c941672b08d4bf9597fe7945b43900e30c13dba859471bbfe0b6",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/sources/LOT-00.json",
+          "bytes": 41712,
+          "sha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9"
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-01",
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL_NUMERIC",
+      "coverage": [
+        {
+          "route": "imported",
+          "capturedScheduled": 121,
+          "expectedScheduled": 121,
+          "capturedExtra": 96,
+          "expectedExtra": 96
+        },
+        {
+          "route": "compiled",
+          "capturedScheduled": 121,
+          "expectedScheduled": 121,
+          "capturedExtra": 96,
+          "expectedExtra": 96
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/fixtures/LOT-01/generated.motion",
+          "bytes": 254422,
+          "sha256": "3d1b8f7e12a675b2658f0b1fa9744326143ec4a2ff17672a1970f2fed9ee253b",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-01/imported-scene.json",
+          "bytes": 1032620,
+          "sha256": "dd24440ae512ca8532cb3c82ff43c7d8f4299bca9330fb0544a7da9b6ec83937",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-01/compiled-scene.json",
+          "bytes": 954677,
+          "sha256": "e5ea1f8471cfbc3c8ee81d5d816db86fd198e6cf8a913985f49a1a456cfaa6ee",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/sources/LOT-01.json",
+          "bytes": 139337,
+          "sha256": "e226bf89fb6daeb72a7f2d9574fdc036c247c59d452957c75e009cb10b96017d"
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-02",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "BLOCKED_REFERENCE_EFFECTS",
+      "coverage": [
+        {
+          "route": "imported",
+          "capturedScheduled": 226,
+          "expectedScheduled": 226,
+          "capturedExtra": 40,
+          "expectedExtra": 40
+        },
+        {
+          "route": "compiled",
+          "capturedScheduled": 226,
+          "expectedScheduled": 226,
+          "capturedExtra": 40,
+          "expectedExtra": 40
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/fixtures/LOT-02/generated.motion",
+          "bytes": 20859,
+          "sha256": "17ab0b6801c06155567382998cc2d108257ca12c3a95f205a42add1432b8a018",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-02/imported-scene.json",
+          "bytes": 97575,
+          "sha256": "d4047927be5dc8a697562075ea939f320c3cb3a05b68b39961e0f2f4de016282",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-02/compiled-scene.json",
+          "bytes": 96188,
+          "sha256": "87f4735b412dc8be0c5614ce0dfe813b9eea13a23bb31b4b3fa63c0086c67f9d",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/sources/LOT-02.json",
+          "bytes": 127633,
+          "sha256": "e65bb5bb0e7fc2f7dee4483e62ba469b59fbb75e3638eec2ae4ed37bf0c44c7e"
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-03",
+      "conversionStatus": "failed",
+      "roundTripStatus": "QUARANTINED",
+      "visualStatus": "QUARANTINED_SOURCE_CEILING",
+      "coverage": [
+        {
+          "route": "none",
+          "capturedScheduled": 0,
+          "expectedScheduled": 427,
+          "capturedExtra": 0,
+          "expectedExtra": 6
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/sources/LOT-03.json",
+          "bytes": 877884,
+          "sha256": "71ace8816997393496592feda711a6998fcaa8576f42d2fe260267772e988551"
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-04",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "BLOCKED_REFERENCE_EFFECTS",
+      "coverage": [
+        {
+          "route": "imported",
+          "capturedScheduled": 675,
+          "expectedScheduled": 675,
+          "capturedExtra": 2,
+          "expectedExtra": 58
+        },
+        {
+          "route": "compiled",
+          "capturedScheduled": 0,
+          "expectedScheduled": 675,
+          "capturedExtra": 0,
+          "expectedExtra": 58
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/fixtures/LOT-04/generated.motion",
+          "bytes": 37810,
+          "sha256": "784c7e3ae10b7e45162e7633eb0ee230cfc9f98a0fdec76345a70b48ffe2e665",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-04/imported-scene.json",
+          "bytes": 188529,
+          "sha256": "b7ff439184b4ca4431999e37aaad95096519309f18d6faa972921fa2b91d9498",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-04/compiled-scene.json",
+          "bytes": 181873,
+          "sha256": "98a89e708a53f62d9e36e0d017345f0988f34c836109e32a3cf5a07b90c991eb",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/sources/LOT-04.json",
+          "bytes": 512240,
+          "sha256": "85bf9bedf34366f165be86acf9ca7a076ebb0c42581472e4b0723eca62333601"
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-05",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "BLOCKED_REFERENCE",
+      "coverage": [
+        {
+          "route": "imported",
+          "capturedScheduled": 241,
+          "expectedScheduled": 241,
+          "capturedExtra": 6,
+          "expectedExtra": 10
+        },
+        {
+          "route": "compiled",
+          "capturedScheduled": 241,
+          "expectedScheduled": 241,
+          "capturedExtra": 6,
+          "expectedExtra": 10
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/fixtures/LOT-05/generated.motion",
+          "bytes": 10247,
+          "sha256": "682c641da3e1e4367a4dde6696f52820296df4bf056960e3c9356acb63c140bd",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-05/imported-scene.json",
+          "bytes": 47519,
+          "sha256": "e6d93446acb4755825470332482b11c6053299b6c19c4175337279daa2700c2f",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-05/compiled-scene.json",
+          "bytes": 46801,
+          "sha256": "e48e5db4566331f835b2aa6533ae3878d139aba367ea82e3936cc416f9a7a479",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/sources/LOT-05.json",
+          "bytes": 191525,
+          "sha256": "2891a929c3c3f0402e8fd2c749c498152fc7d5daba6454bd11888b650a4757d2"
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-06",
+      "conversionStatus": "partial",
+      "roundTripStatus": "PASS",
+      "visualStatus": "FAIL_NUMERIC",
+      "coverage": [
+        {
+          "route": "imported",
+          "capturedScheduled": 24,
+          "expectedScheduled": 24,
+          "capturedExtra": 17,
+          "expectedExtra": 17
+        },
+        {
+          "route": "compiled",
+          "capturedScheduled": 24,
+          "expectedScheduled": 24,
+          "capturedExtra": 17,
+          "expectedExtra": 17
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/fixtures/LOT-06/generated.motion",
+          "bytes": 126358,
+          "sha256": "e62ed8696e6f497ab232b53e251f4d38b4c4deb95d616d2066d013079d82eeef",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-06/imported-scene.json",
+          "bytes": 556174,
+          "sha256": "ed0d233f33712c6aa84f54c015a00ffe6108309b8697ba4f206f2e44825befee",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-06/compiled-scene.json",
+          "bytes": 536919,
+          "sha256": "3d35029e0f79f41b8ff25fe065b36b9450c5bd40af705e210042f5dbc39f5182",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/sources/LOT-06.json",
+          "bytes": 112565,
+          "sha256": "111f7aff92691d80a9e344dabd823ea2441f9245d23c5de02ee867c979fa29c1"
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-07",
+      "conversionStatus": "exact",
+      "roundTripStatus": "PASS",
+      "visualStatus": "PASS_ORIGINAL_REVIEWED_BYTES; EXTRA_REVIEW_RECORDED",
+      "coverage": [
+        {
+          "route": "imported",
+          "capturedScheduled": 150,
+          "expectedScheduled": 150,
+          "capturedExtra": 25,
+          "expectedExtra": 25
+        },
+        {
+          "route": "compiled",
+          "capturedScheduled": 150,
+          "expectedScheduled": 150,
+          "capturedExtra": 25,
+          "expectedExtra": 25
+        }
+      ],
+      "identities": [
+        {
+          "path": "evidence/final/fixtures/LOT-07/generated.motion",
+          "bytes": 26726,
+          "sha256": "d1bbba4ed0023349e98357174f4f53411a8f0fb4473fd077b4d90d54413bbc3b",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-07/imported-scene.json",
+          "bytes": 132501,
+          "sha256": "665ddcf5df20e437747e3b6ccaf43166925b06791330c916e0493bd22c259c55",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/fixtures/LOT-07/compiled-scene.json",
+          "bytes": 130956,
+          "sha256": "c70921b840d3e9d1a157766ca36ff052607e7c205a0befd656848ff2f94db15c",
+          "revision": null,
+          "parent": null
+        },
+        {
+          "path": "evidence/final/sources/LOT-07.json",
+          "bytes": 31682,
+          "sha256": "e461983577f8950b13ab288fdaa6863f058ded84b86d5740c700fb1725e2036e"
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "passed": 202,
+    "typecheck": "PASS",
+    "registry": "PASS"
+  },
+  "noPreviouslyAcceptedVisualInputRegression": "LOT00/07 exact renderer-input equality and prior reviewed frame bytes; this does not certify other fixtures"
+}

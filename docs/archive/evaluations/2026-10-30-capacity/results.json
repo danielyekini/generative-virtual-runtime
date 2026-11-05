@@ -1,0 +1,51 @@
+{
+  "implementation": "94d6dd6a9c379b920d349b424a1f14379fca2586",
+  "baseline": "775892ba3316077a59ea24d30eab16313b3b99b3",
+  "status": {
+    "offlineCompilation": "IMPROVED",
+    "incrementalReplay": "PASS",
+    "usefulPreCompletionMotion": "PASS_UNDER_DECLARED_SIMULATIONS",
+    "tests": {
+      "passed": 221,
+      "files": 31
+    },
+    "typecheck": "PASS",
+    "build": "PASS_WITH_EXISTING_BUNDLE_WARNING",
+    "historicalCorpus": "NOT_RUN"
+  },
+  "browserComparison": [
+    {
+      "story": "adding-two-vectors",
+      "compileP50BeforeMs": 79.69999999998254,
+      "compileP50AfterMs": 24.0999999998603,
+      "evaluationP50BeforeMs": 2.2000000000116415,
+      "evaluationP50AfterMs": 0.5
+    },
+    {
+      "story": "from-pixels-to-prediction",
+      "compileP50BeforeMs": 3612.5,
+      "compileP50AfterMs": 299.9000000001397,
+      "evaluationP50BeforeMs": 39.30000000001746,
+      "evaluationP50AfterMs": 1.6999999999534339
+    },
+    {
+      "story": "square-wave-from-sine-waves",
+      "compileP50BeforeMs": 1798.899999999965,
+      "compileP50AfterMs": 272.10000000009313,
+      "evaluationP50BeforeMs": 14.700000000011642,
+      "evaluationP50AfterMs": 1.3999999999068677
+    }
+  ],
+  "progressiveVerification": {
+    "completedSamples": 450,
+    "rendererSamples": 16,
+    "prefixSamples": 105,
+    "allPass": true
+  },
+  "nodeLimit": {
+    "before": 500,
+    "after": 2000
+  },
+  "decisions": "docs/design/capacity-transactions.md",
+  "nextTask": "Atomic assembled-scene delta validation; then cached immutable geometry/keyframe validation on Crane"
+}

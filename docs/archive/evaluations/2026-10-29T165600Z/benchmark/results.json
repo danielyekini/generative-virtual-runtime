@@ -1,0 +1,2408 @@
+{
+  "status": "complete",
+  "environment": {
+    "node": "v24.19.0",
+    "npm": "11.9.0",
+    "browser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "binary": "/usr/bin/chromium",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 3,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "commit": "5a4ea16a76d35aa328e29983943c4a056358b15e",
+    "workingTree": "?? docs/evaluations/2026-10-29T165600Z/\n",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1
+    },
+    "options": {
+      "samples": 120,
+      "warmup": 30,
+      "compileSamples": 3,
+      "cycles": 10
+    }
+  },
+  "results": [
+    {
+      "name": "adding-two-vectors",
+      "path": "fixtures/motionscript/stories/adding-two-vectors.ms",
+      "sha256": "2601487342974c9ef7ff071326f77e8add87d6a806618ea99b597b6894bf8c6d",
+      "bytes": 19873,
+      "runs": [
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 72,
+            "tracks": 41,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 120,
+            "warmup": 30,
+            "compileSamples": 3,
+            "cycles": 10,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 66.16666666728754,
+                "max": 68.80000000074506,
+                "p50": 67.60000000149012,
+                "p95": 68.80000000074506,
+                "p99": 68.80000000074506
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 2.770000000003104,
+                "max": 16.09999999962747,
+                "p50": 2.5,
+                "p95": 3.5,
+                "p99": 6.599999999627471
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 16.665546218487396,
+                "max": 16.799999999999727,
+                "p50": 16.699999999999818,
+                "p95": 16.700000000000273,
+                "p99": 16.700000000000273
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 87.59999999962747,
+            "revision": 73,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 8095473,
+              "totalJSHeapSize": 16775849,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 35558326,
+              "totalJSHeapSize": 62699662,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 10158027,
+                  "totalJSHeapSize": 25453391,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 10208874,
+                  "totalJSHeapSize": 25461838,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 10278269,
+                  "totalJSHeapSize": 25994573,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 3,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 10315156,
+                  "totalJSHeapSize": 26265164,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 4,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 26994935,
+                  "totalJSHeapSize": 37402443,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 5,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 36159494,
+                  "totalJSHeapSize": 45840458,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 6,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 35962121,
+                  "totalJSHeapSize": 55596433,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 7,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 35874960,
+                  "totalJSHeapSize": 62682768,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 8,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 35723635,
+                  "totalJSHeapSize": 62691215,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 9,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 35525702,
+                  "totalJSHeapSize": 62699662,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 72,
+            "tracks": 41,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 120,
+            "warmup": 30,
+            "compileSamples": 3,
+            "cycles": 10,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 59.80000000012418,
+                "max": 60.5,
+                "p50": 60.09999999962747,
+                "p95": 60.5,
+                "p99": 60.5
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 2.4583333333333335,
+                "max": 4.399999998509884,
+                "p50": 2.400000000372529,
+                "p95": 2.900000000372529,
+                "p99": 4.100000001490116
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 16.66638655462185,
+                "max": 16.800000000000182,
+                "p50": 16.699999999999818,
+                "p95": 16.700000000000728,
+                "p99": 16.800000000000182
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 1.2666666662941377,
+                "max": 1.3999999985098839,
+                "p50": 1.200000001117587,
+                "p95": 1.3999999985098839,
+                "p99": 1.3999999985098839
+              },
+              "compile.snapshot_ms": {
+                "count": 216,
+                "retained": 216,
+                "mean": 0.3759259258621131,
+                "max": 1,
+                "p50": 0.40000000037252903,
+                "p95": 0.599999999627471,
+                "p99": 0.7999999988824129
+              },
+              "compile.capture_ms": {
+                "count": 426,
+                "retained": 256,
+                "mean": 0.002112676061584916,
+                "max": 0.10000000149011612,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.09999999962747097
+              },
+              "compile.lower_ms": {
+                "count": 216,
+                "retained": 216,
+                "mean": 0.006944444444444444,
+                "max": 0.10000000149011612,
+                "p50": 0,
+                "p95": 0.09999999962747097,
+                "p99": 0.10000000149011612
+              },
+              "compile.validate_ms": {
+                "count": 219,
+                "retained": 219,
+                "mean": 0.4031963470778917,
+                "max": 1.199999999254942,
+                "p50": 0.40000000037252903,
+                "p95": 0.6999999992549419,
+                "p99": 0.900000000372529
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 59.80000000012418,
+                "max": 60.5,
+                "p50": 60.09999999962747,
+                "p95": 60.5,
+                "p99": 60.5
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 59619,
+              "compile.units_seen": 216,
+              "compile.accepted_units": 216,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 73,
+                "highWater": 73
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 1.9883333332991848,
+                "max": 3.899999998509884,
+                "p50": 1.900000000372529,
+                "p95": 2.400000000372529,
+                "p99": 3.700000001117587
+              },
+              "frame.renderer_call_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 0.4533333333364377,
+                "max": 0.8000000007450581,
+                "p50": 0.40000000037252903,
+                "p95": 0.6999999992549419,
+                "p99": 0.7000000011175871
+              },
+              "frame.application_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 2.447499999978269,
+                "max": 4.399999998509884,
+                "p50": 2.400000000372529,
+                "p95": 2.900000000372529,
+                "p99": 4.100000001490116
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 16.66638655462185,
+                "max": 16.800000000000182,
+                "p50": 16.699999999999818,
+                "p95": 16.700000000000728,
+                "p99": 16.800000000000182
+              }
+            },
+            "counters": {},
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 10,
+                "retained": 10,
+                "mean": 0.7900000000372529,
+                "max": 1.800000000745058,
+                "p50": 0.599999999627471,
+                "p95": 1.800000000745058,
+                "p99": 1.800000000745058
+              },
+              "compile.parse_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 0.009999999993791182,
+                "max": 0.19999999925494194,
+                "p50": 0,
+                "p95": 0.09999999962747097,
+                "p99": 0.19999999925494194
+              },
+              "compile.snapshot_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 0.15399999998509883,
+                "max": 0.599999999627471,
+                "p50": 0.09999999962747097,
+                "p95": 0.3999999985098839,
+                "p99": 0.599999999627471
+              },
+              "compile.capture_ms": {
+                "count": 90,
+                "retained": 90,
+                "mean": 0.003333333320915699,
+                "max": 0.09999999962747097,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.09999999962747097
+              },
+              "compile.lower_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 0.025999999977648257,
+                "max": 0.19999999925494194,
+                "p50": 0,
+                "p95": 0.10000000149011612,
+                "p99": 0.19999999925494194
+              },
+              "compile.validate_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 0.15400000002235173,
+                "max": 0.5,
+                "p50": 0.09999999962747097,
+                "p95": 0.5,
+                "p99": 0.5
+              },
+              "runtime.queue_wait_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 0.06200000002980232,
+                "max": 0.2000000011175871,
+                "p50": 0,
+                "p95": 0.2000000011175871,
+                "p99": 0.2000000011175871
+              },
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 2.309999999962747,
+                "max": 13.300000000745058,
+                "p50": 1.900000000372529,
+                "p95": 5.800000000745058,
+                "p99": 13.300000000745058
+              },
+              "frame.renderer_call_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 0.3199999999627471,
+                "max": 0.6000000014901161,
+                "p50": 0.30000000074505806,
+                "p95": 0.5,
+                "p99": 0.6000000014901161
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 81920,
+              "compile.units_seen": 50,
+              "compile.accepted_units": 50,
+              "runtime.accepted_deltas": 50
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 2184
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 5
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 255
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 0
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 2184
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 5
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 37
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 87.09999999962747,
+            "revision": 73,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 5,
+                  "retained": 5,
+                  "mean": 0.44000000022351743,
+                  "max": 0.599999999627471,
+                  "p50": 0.40000000037252903,
+                  "p95": 0.599999999627471,
+                  "p99": 0.599999999627471
+                },
+                "compile.parse_ms": {
+                  "count": 74,
+                  "retained": 74,
+                  "mean": 0.005405405385268701,
+                  "max": 0.09999999962747097,
+                  "p50": 0,
+                  "p95": 0.09999999962747097,
+                  "p99": 0.09999999962747097
+                },
+                "compile.snapshot_ms": {
+                  "count": 72,
+                  "retained": 72,
+                  "mean": 0.4555555555659036,
+                  "max": 1.1000000014901161,
+                  "p50": 0.40000000037252903,
+                  "p95": 0.6999999992549419,
+                  "p99": 1.1000000014901161
+                },
+                "compile.capture_ms": {
+                  "count": 142,
+                  "retained": 142,
+                  "mean": 0.004929577472659064,
+                  "max": 0.10000000149011612,
+                  "p50": 0,
+                  "p95": 0,
+                  "p99": 0.10000000149011612
+                },
+                "compile.lower_ms": {
+                  "count": 72,
+                  "retained": 72,
+                  "mean": 0.013888888940629032,
+                  "max": 0.10000000149011612,
+                  "p50": 0,
+                  "p95": 0.10000000149011612,
+                  "p99": 0.10000000149011612
+                },
+                "compile.validate_ms": {
+                  "count": 73,
+                  "retained": 73,
+                  "mean": 0.472602739674996,
+                  "max": 1.599999999627471,
+                  "p50": 0.5,
+                  "p95": 1,
+                  "p99": 1.599999999627471
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 73,
+                  "retained": 73,
+                  "mean": 0.11917808205399612,
+                  "max": 0.19999999925494194,
+                  "p50": 0.10000000149011612,
+                  "p95": 0.19999999925494194,
+                  "p99": 0.19999999925494194
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 2.0333333325882754,
+                  "max": 2.199999999254942,
+                  "p50": 2.099999999627471,
+                  "p95": 2.199999999254942,
+                  "p99": 2.199999999254942
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 19873,
+                "compile.units_seen": 72,
+                "compile.accepted_units": 72,
+                "runtime.accepted_deltas": 73,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 1300
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 31
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 255
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 1
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 4879,
+                  "highWater": 4879
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 31
+                },
+                "runtime.retained_nodes": {
+                  "value": 72,
+                  "highWater": 72
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 37185450,
+              "totalJSHeapSize": 64089874,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 37096351,
+              "totalJSHeapSize": 56896583,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 20027656,
+                  "totalJSHeapSize": 56386384,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 19750447,
+                  "totalJSHeapSize": 56394831,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 19494354,
+                  "totalJSHeapSize": 56403278,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 3,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 19223929,
+                  "totalJSHeapSize": 56411725,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 4,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 18757364,
+                  "totalJSHeapSize": 56420172,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 5,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 18276155,
+                  "totalJSHeapSize": 56428619,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 6,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 17802670,
+                  "totalJSHeapSize": 56437066,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 7,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 17368685,
+                  "totalJSHeapSize": 56445513,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 8,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 33601880,
+                  "totalJSHeapSize": 64990024,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 9,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 36407311,
+                  "totalJSHeapSize": 56896583,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "from-pixels-to-prediction",
+      "path": "fixtures/motionscript/stories/from-pixels-to-prediction.ms",
+      "sha256": "a7ae6b6d2b6c888a8f133f74d0e6d3eef46af909b044931178b19fb747b5c3dc",
+      "bytes": 107977,
+      "runs": [
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 390,
+            "tracks": 280,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 120,
+            "warmup": 30,
+            "compileSamples": 3,
+            "cycles": 10,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 3823.3000000001243,
+                "max": 4002.2999999988824,
+                "p50": 3781.5,
+                "p95": 4002.2999999988824,
+                "p99": 4002.2999999988824
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 40.669999999925494,
+                "max": 47.80000000074506,
+                "p50": 40,
+                "p95": 45.69999999925494,
+                "p99": 46.90000000037253
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 47.336974789915985,
+                "max": 66.70000000000073,
+                "p50": 50,
+                "p95": 66.70000000000073,
+                "p99": 66.70000000000073
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 15.566666667039195,
+                "max": 18.800000000745058,
+                "p50": 16.40000000037253,
+                "p95": 18.800000000745058,
+                "p99": 18.800000000745058
+              },
+              "compile.snapshot_ms": {
+                "count": 918,
+                "retained": 256,
+                "mean": 2.9759259259080704,
+                "max": 9.800000000745058,
+                "p50": 3.100000001490116,
+                "p95": 4.5,
+                "p99": 8.400000000372529
+              },
+              "compile.capture_ms": {
+                "count": 1830,
+                "retained": 256,
+                "mean": 0.008797814216607256,
+                "max": 0.2000000011175871,
+                "p50": 0,
+                "p95": 0.09999999962747097,
+                "p99": 0.10000000149011612
+              },
+              "compile.lower_ms": {
+                "count": 918,
+                "retained": 256,
+                "mean": 0.04858387799929495,
+                "max": 0.40000000037252903,
+                "p50": 0,
+                "p95": 0.10000000149011612,
+                "p99": 0.2000000011175871
+              },
+              "compile.validate_ms": {
+                "count": 921,
+                "retained": 256,
+                "mean": 9.295005428884886,
+                "max": 25.699999999254942,
+                "p50": 9.400000000372529,
+                "p95": 12.299999998882413,
+                "p99": 20.199999999254942
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 3823.3000000001243,
+                "max": 4002.2999999988824,
+                "p50": 3781.5,
+                "p95": 4002.2999999988824,
+                "p99": 4002.2999999988824
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 323931,
+              "compile.units_seen": 918,
+              "compile.accepted_units": 918,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 308,
+                "highWater": 308
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 38.83833333331471,
+                "max": 45.90000000037253,
+                "p50": 38.09999999962747,
+                "p95": 43.69999999925494,
+                "p99": 45.09999999962747
+              },
+              "frame.renderer_call_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 1.809166666616996,
+                "max": 2.5,
+                "p50": 1.799999998882413,
+                "p95": 2.300000000745058,
+                "p99": 2.400000000372529
+              },
+              "frame.application_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 40.658333333271244,
+                "max": 47.80000000074506,
+                "p50": 40,
+                "p95": 45.69999999925494,
+                "p99": 46.90000000037253
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 47.336974789915985,
+                "max": 66.70000000000073,
+                "p50": 50,
+                "p95": 66.70000000000073,
+                "p99": 66.70000000000073
+              }
+            },
+            "counters": {
+              "frame.missed_intervals": 119,
+              "frame.long_intervals": 20
+            },
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 10,
+                "retained": 10,
+                "mean": 1.0100000001490117,
+                "max": 2.200000001117587,
+                "p50": 0.8000000007450581,
+                "p95": 2.200000001117587,
+                "p99": 2.200000001117587
+              },
+              "compile.parse_ms": {
+                "count": 20,
+                "retained": 20,
+                "mean": 0.004999999981373548,
+                "max": 0.09999999962747097,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.09999999962747097
+              },
+              "compile.snapshot_ms": {
+                "count": 10,
+                "retained": 10,
+                "mean": 0.05,
+                "max": 0.10000000149011612,
+                "p50": 0,
+                "p95": 0.10000000149011612,
+                "p99": 0.10000000149011612
+              },
+              "compile.capture_ms": {
+                "count": 10,
+                "retained": 10,
+                "mean": 0.019999999925494193,
+                "max": 0.09999999962747097,
+                "p50": 0,
+                "p95": 0.09999999962747097,
+                "p99": 0.09999999962747097
+              },
+              "compile.lower_ms": {
+                "count": 10,
+                "retained": 10,
+                "mean": 0,
+                "max": 0,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0
+              },
+              "compile.validate_ms": {
+                "count": 10,
+                "retained": 10,
+                "mean": 0.019999999925494193,
+                "max": 0.09999999962747097,
+                "p50": 0,
+                "p95": 0.09999999962747097,
+                "p99": 0.09999999962747097
+              },
+              "runtime.queue_wait_ms": {
+                "count": 20,
+                "retained": 20,
+                "mean": 0.004999999981373548,
+                "max": 0.09999999962747097,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.09999999962747097
+              },
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 34.65999999999379,
+                "max": 51.59999999962747,
+                "p50": 40.600000001490116,
+                "p95": 45.600000001490116,
+                "p99": 51.59999999962747
+              },
+              "frame.renderer_call_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 1.636000000052154,
+                "max": 2.300000000745058,
+                "p50": 1.599999999627471,
+                "p95": 2.199999999254942,
+                "p99": 2.300000000745058
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 81930,
+              "compile.units_seen": 10,
+              "compile.accepted_units": 10,
+              "runtime.accepted_deltas": 20
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 2985
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 2
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 5792
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 0
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 2985
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 2
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 0
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 4197.39999999851,
+            "revision": 308,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 27,
+                  "retained": 27,
+                  "mean": 0.2444444443616602,
+                  "max": 0.5,
+                  "p50": 0.19999999925494194,
+                  "p95": 0.5,
+                  "p99": 0.5
+                },
+                "compile.parse_ms": {
+                  "count": 308,
+                  "retained": 256,
+                  "mean": 0.018506493504074486,
+                  "max": 0.2999999988824129,
+                  "p50": 0,
+                  "p95": 0.09999999962747097,
+                  "p99": 0.10000000149011612
+                },
+                "compile.snapshot_ms": {
+                  "count": 306,
+                  "retained": 256,
+                  "mean": 3.098366013070678,
+                  "max": 9.200000001117587,
+                  "p50": 3.099999999627471,
+                  "p95": 4.400000000372529,
+                  "p99": 6.799999998882413
+                },
+                "compile.capture_ms": {
+                  "count": 610,
+                  "retained": 256,
+                  "mean": 0.011311475413500286,
+                  "max": 1.400000000372529,
+                  "p50": 0,
+                  "p95": 0.09999999962747097,
+                  "p99": 0.10000000149011612
+                },
+                "compile.lower_ms": {
+                  "count": 306,
+                  "retained": 256,
+                  "mean": 0.03921568623798735,
+                  "max": 0.40000000037252903,
+                  "p50": 0,
+                  "p95": 0.10000000149011612,
+                  "p99": 0.19999999925494194
+                },
+                "compile.validate_ms": {
+                  "count": 307,
+                  "retained": 256,
+                  "mean": 9.564495113978605,
+                  "max": 18.40000000037253,
+                  "p50": 9.5,
+                  "p95": 11.099999999627471,
+                  "p99": 13.199999999254942
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 308,
+                  "retained": 256,
+                  "mean": 0.06266233796713414,
+                  "max": 0.2000000011175871,
+                  "p50": 0,
+                  "p95": 0.10000000149011612,
+                  "p99": 0.2000000011175871
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 41.533333333830036,
+                  "max": 46.5,
+                  "p50": 39.90000000037253,
+                  "p95": 46.5,
+                  "p99": 46.5
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 107977,
+                "compile.units_seen": 306,
+                "compile.accepted_units": 306,
+                "runtime.accepted_deltas": 308,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 6925
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 28
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 10912
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 7
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 30489,
+                  "highWater": 30489
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 28
+                },
+                "runtime.retained_nodes": {
+                  "value": 390,
+                  "highWater": 390
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 30865404,
+              "totalJSHeapSize": 77589024,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 42876747,
+              "totalJSHeapSize": 86479623,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 16916324,
+                  "totalJSHeapSize": 83247024,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 32541276,
+                  "totalJSHeapSize": 83523168,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 48147949,
+                  "totalJSHeapSize": 83799297,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 3,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 30087542,
+                  "totalJSHeapSize": 84337570,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 4,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 45531127,
+                  "totalJSHeapSize": 84875843,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 5,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 27609016,
+                  "totalJSHeapSize": 85151972,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 6,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 43113069,
+                  "totalJSHeapSize": 85690245,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 7,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 25267398,
+                  "totalJSHeapSize": 86228518,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 8,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 40794711,
+                  "totalJSHeapSize": 86766791,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 9,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 42673811,
+                  "totalJSHeapSize": 86479623,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 390,
+            "tracks": 280,
+            "steps": 0
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 120,
+            "warmup": 30,
+            "compileSamples": 3,
+            "cycles": 10,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 3754.8666666665426,
+                "max": 3910.2999999988824,
+                "p50": 3776.7000000011176,
+                "p95": 3910.2999999988824,
+                "p99": 3910.2999999988824
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 42.532500000220416,
+                "max": 81.09999999962747,
+                "p50": 41.20000000111759,
+                "p95": 50.90000000037253,
+                "p99": 58.5
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 49.29747899159665,
+                "max": 83.40000000000146,
+                "p50": 50,
+                "p95": 66.69999999999709,
+                "p99": 66.70000000000437
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 3959.2000000011176,
+            "revision": 308,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 35997158,
+              "totalJSHeapSize": 78076454,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 38150613,
+              "totalJSHeapSize": 83849289,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 45714469,
+                  "totalJSHeapSize": 83210161,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 27152310,
+                  "totalJSHeapSize": 83224146,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 42102367,
+                  "totalJSHeapSize": 84286707,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 3,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 23698968,
+                  "totalJSHeapSize": 84824980,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 4,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 38684981,
+                  "totalJSHeapSize": 85101109,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 5,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 20237298,
+                  "totalJSHeapSize": 85639382,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 6,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 34884387,
+                  "totalJSHeapSize": 86177655,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 7,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 49232380,
+                  "totalJSHeapSize": 86715928,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 8,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 23259712,
+                  "totalJSHeapSize": 83835304,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 9,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 38123833,
+                  "totalJSHeapSize": 83849289,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    },
+    {
+      "name": "square-wave-from-sine-waves",
+      "path": "fixtures/motionscript/stories/square-wave-from-sine-waves.ms",
+      "sha256": "d7df7f4030ba0db58510f47ada3107939bfefbaf7c9cf75648e79ee102e52a84",
+      "bytes": 417381,
+      "runs": [
+        {
+          "enabled": false,
+          "ok": true,
+          "counts": {
+            "nodes": 249,
+            "tracks": 62,
+            "steps": 67
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 120,
+            "warmup": 30,
+            "compileSamples": 3,
+            "cycles": 10,
+            "enabled": false
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 1666.4333333329607,
+                "max": 1713.5,
+                "p50": 1649.7999999988824,
+                "p95": 1713.5,
+                "p99": 1713.5
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 16.564166666691502,
+                "max": 23.90000000037253,
+                "p50": 16,
+                "p95": 21.199999999254942,
+                "p99": 22.90000000037253
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 19.326890756302593,
+                "max": 33.40000000000873,
+                "p50": 16.69999999999709,
+                "p95": 33.39999999999418,
+                "p99": 33.40000000000873
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "status": "disabled"
+          },
+          "frameTelemetry": {
+            "status": "disabled"
+          },
+          "lifecycleTelemetry": {
+            "status": "disabled"
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 1888.300000000745,
+            "revision": 163,
+            "telemetry": {
+              "status": "disabled"
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 16377955,
+              "totalJSHeapSize": 82221119,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 30254090,
+              "totalJSHeapSize": 96387750,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 57848630,
+                  "totalJSHeapSize": 96312330,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 36464178,
+                  "totalJSHeapSize": 96320710,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 48440326,
+                  "totalJSHeapSize": 96329090,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 3,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 60380634,
+                  "totalJSHeapSize": 96337470,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 4,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 38928322,
+                  "totalJSHeapSize": 96345850,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 5,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 50591802,
+                  "totalJSHeapSize": 96354230,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 6,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 28839262,
+                  "totalJSHeapSize": 96362610,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 7,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 40426982,
+                  "totalJSHeapSize": 96370990,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 8,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 52003446,
+                  "totalJSHeapSize": 96379370,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 9,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 30227534,
+                  "totalJSHeapSize": 96387750,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        },
+        {
+          "enabled": true,
+          "ok": true,
+          "counts": {
+            "nodes": 249,
+            "tracks": 62,
+            "steps": 67
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720,
+            "dpr": 1
+          },
+          "options": {
+            "samples": 120,
+            "warmup": 30,
+            "compileSamples": 3,
+            "cycles": 10,
+            "enabled": true
+          },
+          "compile": {
+            "capacity": 256,
+            "distributions": {
+              "compile.wall_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 1918.1333333334576,
+                "max": 2249.9000000003725,
+                "p50": 1769.5999999996275,
+                "p95": 2249.9000000003725,
+                "p99": 2249.9000000003725
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "frames": {
+            "capacity": 256,
+            "distributions": {
+              "frame.wall_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 17.9958333333799,
+                "max": 67.5,
+                "p50": 16.700000001117587,
+                "p95": 23.5,
+                "p99": 35.80000000074506
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 21.147058823529413,
+                "max": 83.30000000000291,
+                "p50": 16.69999999999709,
+                "p95": 33.40000000000873,
+                "p99": 50.10000000000582
+              }
+            },
+            "counters": {},
+            "gauges": {},
+            "events": []
+          },
+          "telemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_parse_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 29.066666666418314,
+                "max": 32,
+                "p50": 31.09999999962747,
+                "p95": 32,
+                "p99": 32
+              },
+              "compile.snapshot_ms": {
+                "count": 486,
+                "retained": 256,
+                "mean": 6.456378600774754,
+                "max": 26.59999999962747,
+                "p50": 7.300000000745058,
+                "p95": 11.699999999254942,
+                "p99": 21.59999999962747
+              },
+              "compile.capture_ms": {
+                "count": 966,
+                "retained": 256,
+                "mean": 0.0119047619028337,
+                "max": 0.30000000074505806,
+                "p50": 0,
+                "p95": 0.09999999962747097,
+                "p99": 0.19999999925494194
+              },
+              "compile.lower_ms": {
+                "count": 486,
+                "retained": 256,
+                "mean": 0.08744855965928408,
+                "max": 23.299999998882413,
+                "p50": 0,
+                "p95": 0.19999999925494194,
+                "p99": 0.2999999988824129
+              },
+              "compile.validate_ms": {
+                "count": 489,
+                "retained": 256,
+                "mean": 4.954805726044505,
+                "max": 48.5,
+                "p50": 5.300000000745058,
+                "p95": 9.800000000745058,
+                "p99": 25.09999999962747
+              },
+              "compile.total_ms": {
+                "count": 3,
+                "retained": 3,
+                "mean": 1918.1333333334576,
+                "max": 2249.9000000003725,
+                "p50": 1769.5999999996275,
+                "p95": 2249.9000000003725,
+                "p99": 2249.9000000003725
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 1252143,
+              "compile.units_seen": 486,
+              "compile.accepted_units": 486,
+              "compile.unresolved_units": 0,
+              "compile.rejected_units": 0
+            },
+            "gauges": {
+              "compile.pending_deltas": {
+                "value": 163,
+                "highWater": 163
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "frameTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "frame.evaluate_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 16.395833333255723,
+                "max": 59.80000000074506,
+                "p50": 15.200000001117587,
+                "p95": 21.399999998509884,
+                "p99": 34.30000000074506
+              },
+              "frame.renderer_call_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 1.578333333445092,
+                "max": 7.699999999254942,
+                "p50": 1.400000000372529,
+                "p95": 2.899999998509884,
+                "p99": 4.5
+              },
+              "frame.application_ms": {
+                "count": 120,
+                "retained": 120,
+                "mean": 17.985833333370586,
+                "max": 67.5,
+                "p50": 16.700000001117587,
+                "p95": 23.5,
+                "p99": 35.80000000074506
+              },
+              "frame.interval_ms": {
+                "count": 119,
+                "retained": 119,
+                "mean": 21.147058823529413,
+                "max": 83.30000000000291,
+                "p50": 16.69999999999709,
+                "p95": 33.40000000000873,
+                "p99": 50.10000000000582
+              }
+            },
+            "counters": {
+              "frame.missed_intervals": 27,
+              "frame.long_intervals": 2
+            },
+            "gauges": {
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "lifecycleTelemetry": {
+            "capacity": 256,
+            "distributions": {
+              "compile.lex_ms": {
+                "count": 10,
+                "retained": 10,
+                "mean": 0.4900000002235174,
+                "max": 0.6000000014901161,
+                "p50": 0.5,
+                "p95": 0.6000000014901161,
+                "p99": 0.6000000014901161
+              },
+              "compile.parse_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 0.020000000037252903,
+                "max": 0.10000000149011612,
+                "p50": 0,
+                "p95": 0.10000000149011612,
+                "p99": 0.10000000149011612
+              },
+              "compile.snapshot_ms": {
+                "count": 40,
+                "retained": 40,
+                "mean": 0.09749999991618097,
+                "max": 0.40000000037252903,
+                "p50": 0.09999999962747097,
+                "p95": 0.2000000011175871,
+                "p99": 0.40000000037252903
+              },
+              "compile.capture_ms": {
+                "count": 70,
+                "retained": 70,
+                "mean": 0.0028571428464991707,
+                "max": 0.09999999962747097,
+                "p50": 0,
+                "p95": 0,
+                "p99": 0.09999999962747097
+              },
+              "compile.lower_ms": {
+                "count": 40,
+                "retained": 40,
+                "mean": 0.017500000074505806,
+                "max": 0.10000000149011612,
+                "p50": 0,
+                "p95": 0.10000000149011612,
+                "p99": 0.10000000149011612
+              },
+              "compile.validate_ms": {
+                "count": 40,
+                "retained": 40,
+                "mean": 0.04000000008381903,
+                "max": 0.2000000011175871,
+                "p50": 0,
+                "p95": 0.10000000149011612,
+                "p99": 0.2000000011175871
+              },
+              "runtime.queue_wait_ms": {
+                "count": 40,
+                "retained": 40,
+                "mean": 0.009999999962747096,
+                "max": 0.09999999962747097,
+                "p50": 0,
+                "p95": 0.09999999962747097,
+                "p99": 0.09999999962747097
+              },
+              "frame.evaluate_ms": {
+                "count": 60,
+                "retained": 60,
+                "mean": 11.614999999882032,
+                "max": 23.700000001117587,
+                "p50": 13.299999998882413,
+                "p95": 16.90000000037253,
+                "p99": 23.700000001117587
+              },
+              "frame.renderer_call_ms": {
+                "count": 50,
+                "retained": 50,
+                "mean": 0.9380000000447035,
+                "max": 2.200000001117587,
+                "p50": 0.8999999985098839,
+                "p95": 1.400000000372529,
+                "p99": 2.200000001117587
+              }
+            },
+            "counters": {
+              "compile.source_bytes": 82070,
+              "compile.units_seen": 40,
+              "compile.accepted_units": 40,
+              "runtime.accepted_deltas": 40
+            },
+            "gauges": {
+              "compile.buffered_tokens": {
+                "value": 0,
+                "highWater": 2633
+              },
+              "compile.pending_deltas": {
+                "value": 0,
+                "highWater": 4
+              },
+              "compile.buffered_lexeme_bytes": {
+                "value": 0,
+                "highWater": 173
+              },
+              "compile.lexer_pending_bytes": {
+                "value": 0,
+                "highWater": 1
+              },
+              "compile.lexer_retained_tokens": {
+                "value": 0,
+                "highWater": 2633
+              },
+              "runtime.queue_deltas": {
+                "value": 0,
+                "highWater": 4
+              },
+              "runtime.retained_nodes": {
+                "value": 0,
+                "highWater": 22
+              },
+              "compile.deferred_units": {
+                "value": 0,
+                "highWater": 0
+              },
+              "renderer.image_cache_entries": {
+                "value": 0,
+                "highWater": 0
+              }
+            },
+            "events": []
+          },
+          "streaming": {
+            "ok": true,
+            "replayMatches": true,
+            "runtimeDiagnostics": [],
+            "diagnostics": [],
+            "durationMs": 1984.800000000745,
+            "revision": 163,
+            "telemetry": {
+              "capacity": 256,
+              "distributions": {
+                "compile.lex_ms": {
+                  "count": 102,
+                  "retained": 102,
+                  "mean": 0.23921568620511713,
+                  "max": 0.599999999627471,
+                  "p50": 0.2000000011175871,
+                  "p95": 0.40000000037252903,
+                  "p99": 0.599999999627471
+                },
+                "compile.parse_ms": {
+                  "count": 164,
+                  "retained": 164,
+                  "mean": 0.027439024447031866,
+                  "max": 2.300000000745058,
+                  "p50": 0,
+                  "p95": 0.10000000149011612,
+                  "p99": 0.2000000011175871
+                },
+                "compile.snapshot_ms": {
+                  "count": 162,
+                  "retained": 162,
+                  "mean": 5.490123456746431,
+                  "max": 15,
+                  "p50": 6.300000000745058,
+                  "p95": 7.699999999254942,
+                  "p99": 14
+                },
+                "compile.capture_ms": {
+                  "count": 322,
+                  "retained": 256,
+                  "mean": 0.010248447218852014,
+                  "max": 0.2000000011175871,
+                  "p50": 0,
+                  "p95": 0.09999999962747097,
+                  "p99": 0.10000000149011612
+                },
+                "compile.lower_ms": {
+                  "count": 162,
+                  "retained": 162,
+                  "mean": 0.036419753100217125,
+                  "max": 0.30000000074505806,
+                  "p50": 0,
+                  "p95": 0.10000000149011612,
+                  "p99": 0.2000000011175871
+                },
+                "compile.validate_ms": {
+                  "count": 163,
+                  "retained": 163,
+                  "mean": 4.309202453955733,
+                  "max": 30.300000000745058,
+                  "p50": 4.400000000372529,
+                  "p95": 6,
+                  "p99": 11.900000000372529
+                },
+                "runtime.queue_wait_ms": {
+                  "count": 163,
+                  "retained": 163,
+                  "mean": 0.03006134961554609,
+                  "max": 0.10000000149011612,
+                  "p50": 0,
+                  "p95": 0.09999999962747097,
+                  "p99": 0.10000000149011612
+                },
+                "frame.evaluate_ms": {
+                  "count": 3,
+                  "retained": 3,
+                  "mean": 13.900000000372529,
+                  "max": 14.599999999627471,
+                  "p50": 14.300000000745058,
+                  "p95": 14.599999999627471,
+                  "p99": 14.599999999627471
+                }
+              },
+              "counters": {
+                "compile.source_bytes": 417381,
+                "compile.units_seen": 162,
+                "compile.accepted_units": 162,
+                "runtime.accepted_deltas": 163,
+                "compile.unresolved_units": 0,
+                "compile.rejected_units": 0
+              },
+              "gauges": {
+                "compile.buffered_tokens": {
+                  "value": 0,
+                  "highWater": 92962
+                },
+                "compile.pending_deltas": {
+                  "value": 0,
+                  "highWater": 57
+                },
+                "compile.buffered_lexeme_bytes": {
+                  "value": 0,
+                  "highWater": 238500
+                },
+                "compile.lexer_pending_bytes": {
+                  "value": 0,
+                  "highWater": 6
+                },
+                "compile.lexer_retained_tokens": {
+                  "value": 135073,
+                  "highWater": 135073
+                },
+                "runtime.queue_deltas": {
+                  "value": 0,
+                  "highWater": 57
+                },
+                "runtime.retained_nodes": {
+                  "value": 249,
+                  "highWater": 249
+                },
+                "compile.deferred_units": {
+                  "value": 0,
+                  "highWater": 0
+                }
+              },
+              "events": []
+            },
+            "feeding": "simulated 4096 UTF16-code-unit chunks; synchronous drain after each push"
+          },
+          "memory": {
+            "before": {
+              "status": "measured",
+              "usedJSHeapSize": 20521348,
+              "totalJSHeapSize": 82012228,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "after": {
+              "status": "measured",
+              "usedJSHeapSize": 42345571,
+              "totalJSHeapSize": 98022239,
+              "jsHeapSizeLimit": 4395630592
+            },
+            "lifecycle": [
+              {
+                "cycle": 0,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 35580286,
+                  "totalJSHeapSize": 97946810,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 1,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 47674663,
+                  "totalJSHeapSize": 97955191,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 2,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 59818680,
+                  "totalJSHeapSize": 97963572,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 3,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 38619149,
+                  "totalJSHeapSize": 97971953,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 4,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 50696662,
+                  "totalJSHeapSize": 97980334,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 5,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 29230795,
+                  "totalJSHeapSize": 97988715,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 6,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 40822900,
+                  "totalJSHeapSize": 97997096,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 7,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 52423585,
+                  "totalJSHeapSize": 98005477,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 8,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 30593866,
+                  "totalJSHeapSize": 98013858,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              },
+              {
+                "cycle": 9,
+                "heap": {
+                  "status": "measured",
+                  "usedJSHeapSize": 42164563,
+                  "totalJSHeapSize": 98022239,
+                  "jsHeapSizeLimit": 4395630592
+                }
+              }
+            ],
+            "canvasBackingBytes": {
+              "status": "estimated",
+              "bytes": 3686400
+            },
+            "gpu": {
+              "status": "unsupported"
+            },
+            "weakPathCacheRetainedEntries": {
+              "status": "not-measured"
+            },
+            "offscreenSurfaces": {
+              "status": "unsupported",
+              "reason": "CanvasRenderer draws scopes synchronously into the target context; no offscreen allocator exists"
+            }
+          },
+          "transport": {
+            "status": "unsupported",
+            "reason": "No model/network transport in this benchmark"
+          }
+        }
+      ]
+    }
+  ]
+}

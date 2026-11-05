@@ -1,0 +1,20 @@
+{
+  "mergedCommit": "391ac449a75d69a5b5a3086c9eb5fd520d3b282c",
+  "remoteBase": "a850d655dc702ed15b03e931947022e15f5b760c",
+  "request": "push to remote work and main",
+  "visualStatus": "VISUAL_UNVERIFIED",
+  "history": "Both evaluation directories preserved. Source captures/archives retained locally; machine-readable measurements, reports and hash manifests committed. No historical certification transferred to merged source.",
+  "verification": {
+    "tests": {
+      "passed": 193,
+      "failed": 0,
+      "files": 25,
+      "logSha256": "6779b750e59e6e266303e8a353f963504444868aa104ed15ba6b69849f4b75cf"
+    },
+    "typecheck": "PASS: full chain passed through format-import-core; after type-only fix format-lottie, round-trip and format-svg each exit 0",
+    "visualStatus": "VISUAL_UNVERIFIED",
+    "diffCheck": "PASS for implementation and integration documents; original generated reports/logs retained verbatim",
+    "correction": "Initial e004097 push record incorrectly claimed typecheck PASS before its exit status was checked. Remaining union type error corrected in cfb6d27; no runtime behavior change; all 193 runtime tests remain applicable."
+  },
+  "testedExecutionCommit": "cfb6d2749435f3cb0381480b96458044775b1164"
+}

@@ -1,0 +1,46 @@
+{
+  "buttonEnabled": true,
+  "firstMotion": {
+    "wallMs": 1591.800048828125,
+    "bytes": 19006,
+    "generatedBytes": 19006,
+    "sceneTimeMs": 114,
+    "sourceComplete": false
+  },
+  "disposed": {
+    "compilerSceneAbsent": true,
+    "runtimeSceneAbsent": true
+  },
+  "events": [
+    {
+      "wallMs": 1.89990234375,
+      "state": "WAITING FOR EXECUTABLE PREFIX",
+      "playbackMs": 0
+    },
+    {
+      "wallMs": 1481,
+      "state": "BUFFERED",
+      "playbackMs": 0
+    },
+    {
+      "wallMs": 1491.800048828125,
+      "state": "PLAYING",
+      "playbackMs": 0
+    },
+    {
+      "wallMs": 1648.60009765625,
+      "state": "BUFFERED",
+      "playbackMs": 164.300048828125
+    },
+    {
+      "wallMs": 2275.699951171875,
+      "state": "BUFFERED",
+      "playbackMs": 780.599853515625
+    },
+    {
+      "wallMs": 2402.60009765625,
+      "state": "CANCELLED: generation and playback stopped",
+      "playbackMs": 914
+    }
+  ]
+}

@@ -1,0 +1,2375 @@
+{
+  "ok": true,
+  "states": [
+    {
+      "t": 0,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 0.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 1,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 100,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 500,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1000,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1449.989,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1449.99,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 1449.991,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1499.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 1500,
+      "baselineMaxAbsoluteError": 4.440892098500626e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 1500.001,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1749.989,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 1749.99,
+      "baselineMaxAbsoluteError": 1.1102230246251565e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 1749.991,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1799.999,
+      "baselineMaxAbsoluteError": 7.105427357601002e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 1800,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1800.001,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1899.989,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1899.99,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1899.991,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 1999.999,
+      "baselineMaxAbsoluteError": 2.6645352591003757e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 2000,
+      "baselineMaxAbsoluteError": 1.9539925233402755e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 2000.001,
+      "baselineMaxAbsoluteError": 1.5987211554602254e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 2150.0089999999996,
+      "baselineMaxAbsoluteError": 7.105427357601002e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 2150.0099999999998,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 2150.011,
+      "baselineMaxAbsoluteError": 7.105427357601002e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 2450.009,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 2450.01,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 2450.0110000000004,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 3299.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 3300,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 3300.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 4250.009,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 4250.01,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 4250.011,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 4599.989,
+      "baselineMaxAbsoluteError": 1.1102230246251565e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 4599.99,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 4599.991,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 4999.999,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 5000,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 5000.001,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 5000.008999999999,
+      "baselineMaxAbsoluteError": 7.105427357601002e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 5000.009999999999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 5000.0109999999995,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 5199.9890000000005,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 5199.990000000001,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 5199.991000000001,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 5549.999,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 5550,
+      "baselineMaxAbsoluteError": 7.105427357601002e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 5550.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 7499.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7500,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7500.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7599.9890000000005,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7599.990000000001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7599.991000000001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7700.008999999999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7700.009999999999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7700.0109999999995,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7799.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7800,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7800.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7899.989000000001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7899.990000000002,
+      "baselineMaxAbsoluteError": 4.263256414560601e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 7899.991000000002,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8000.008999999999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8000.009999999999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8000.0109999999995,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8099.999000000001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8100.000000000001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8100.001000000001,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8199.989,
+      "baselineMaxAbsoluteError": 8.526512829121202e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8199.99,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8199.991,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8300.009,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8300.01,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8300.011,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 8399.999,
+      "baselineMaxAbsoluteError": 4.263256414560601e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8400,
+      "baselineMaxAbsoluteError": 1.2789769243681803e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 8400.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8499.989,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8499.99,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8499.991,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8600.009,
+      "baselineMaxAbsoluteError": 8.526512829121202e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8600.01,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8600.011,
+      "baselineMaxAbsoluteError": 8.526512829121202e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8699.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8700,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8700.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8799.989,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8799.99,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8799.991,
+      "baselineMaxAbsoluteError": 4.263256414560601e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8900.009,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8900.01,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8900.011,
+      "baselineMaxAbsoluteError": 4.263256414560601e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 8999.999,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 9000,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 9000.001,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 9099.989,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 9099.99,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 9099.991,
+      "baselineMaxAbsoluteError": 7.105427357601002e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 9200.008999999998,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 9200.009999999998,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 9200.010999999999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9299.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9300,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9300.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9449.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9450,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9450.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9500.008999999998,
+      "baselineMaxAbsoluteError": 2.220446049250313e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 9500.009999999998,
+      "baselineMaxAbsoluteError": 5.551115123125783e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 9500.010999999999,
+      "baselineMaxAbsoluteError": 2.220446049250313e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 9800.009,
+      "baselineMaxAbsoluteError": 4.884981308350689e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 9800.01,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9800.011,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9999.989,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9999.99,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 9999.991,
+      "baselineMaxAbsoluteError": 1.2677155194898894e-20,
+      "incrementalExact": true
+    },
+    {
+      "t": 10000,
+      "baselineMaxAbsoluteError": 8.43604283615268e-20,
+      "incrementalExact": true
+    },
+    {
+      "t": 10199.999,
+      "baselineMaxAbsoluteError": 3.885780586188048e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 10200,
+      "baselineMaxAbsoluteError": 2.6645352591003757e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 10200.001,
+      "baselineMaxAbsoluteError": 4.218847493575595e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 10550.009,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 10550.01,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 10550.011,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11000.008999999998,
+      "baselineMaxAbsoluteError": 1.6653345369377348e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 11000.009999999998,
+      "baselineMaxAbsoluteError": 1.6653345369377348e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 11000.010999999999,
+      "baselineMaxAbsoluteError": 2.4424906541753444e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 11199.989000000001,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11199.990000000002,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11199.991000000002,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11259.989,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11259.99,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11259.991,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11319.989,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11319.99,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11319.991,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11379.989000000001,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11379.990000000002,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11379.991000000002,
+      "baselineMaxAbsoluteError": 2.1316282072803006e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11399.999,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11400,
+      "baselineMaxAbsoluteError": 1.8474111129762605e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11400.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11439.989,
+      "baselineMaxAbsoluteError": 2.8421709430404007e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11439.99,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11439.991,
+      "baselineMaxAbsoluteError": 3.268496584496461e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11499.989000000001,
+      "baselineMaxAbsoluteError": 2.6290081223123707e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11499.990000000002,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11499.991000000002,
+      "baselineMaxAbsoluteError": 3.694822225952521e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11559.989,
+      "baselineMaxAbsoluteError": 2.7000623958883807e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11559.99,
+      "baselineMaxAbsoluteError": 4.263256414560601e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11559.991,
+      "baselineMaxAbsoluteError": 3.410605131648481e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11600.009,
+      "baselineMaxAbsoluteError": 1.2789769243681803e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11600.01,
+      "baselineMaxAbsoluteError": 1.5631940186722204e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11600.011,
+      "baselineMaxAbsoluteError": 1.9895196601282805e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11619.989,
+      "baselineMaxAbsoluteError": 2.8421709430404007e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11619.99,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11619.991,
+      "baselineMaxAbsoluteError": 3.410605131648481e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11679.989000000001,
+      "baselineMaxAbsoluteError": 2.913225216616411e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11679.990000000002,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11679.991000000002,
+      "baselineMaxAbsoluteError": 3.694822225952521e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11739.989,
+      "baselineMaxAbsoluteError": 2.5579538487363607e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11739.99,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11739.991,
+      "baselineMaxAbsoluteError": 3.410605131648481e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11799.989,
+      "baselineMaxAbsoluteError": 2.913225216616411e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11799.99,
+      "baselineMaxAbsoluteError": 4.263256414560601e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11799.991,
+      "baselineMaxAbsoluteError": 3.907985046680551e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11859.989,
+      "baselineMaxAbsoluteError": 2.6290081223123707e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11859.99,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11859.991,
+      "baselineMaxAbsoluteError": 3.197442310920451e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11900.009,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11900.01,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11900.011,
+      "baselineMaxAbsoluteError": 1.8474111129762605e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11919.989,
+      "baselineMaxAbsoluteError": 2.7000623958883807e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11919.99,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11919.991,
+      "baselineMaxAbsoluteError": 2.7000623958883807e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11979.989000000001,
+      "baselineMaxAbsoluteError": 2.4158453015843406e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 11979.990000000002,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 11979.991000000002,
+      "baselineMaxAbsoluteError": 3.126388037344441e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12039.989,
+      "baselineMaxAbsoluteError": 2.913225216616411e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12039.99,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12039.991,
+      "baselineMaxAbsoluteError": 2.913225216616411e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12099.989,
+      "baselineMaxAbsoluteError": 3.268496584496461e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12099.99,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12099.991,
+      "baselineMaxAbsoluteError": 2.7000623958883807e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12159.988999999998,
+      "baselineMaxAbsoluteError": 2.984279490192421e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12159.989999999998,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12159.990999999998,
+      "baselineMaxAbsoluteError": 2.2026824808563106e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12219.989,
+      "baselineMaxAbsoluteError": 2.984279490192421e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12219.99,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12219.991,
+      "baselineMaxAbsoluteError": 2.4158453015843406e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12279.989,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12279.99,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12279.991,
+      "baselineMaxAbsoluteError": 1.8474111129762605e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12339.989,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12339.99,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12339.991,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12399.989,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12399.99,
+      "baselineMaxAbsoluteError": 4.440892098500626e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 12399.991,
+      "baselineMaxAbsoluteError": 7.105427357601002e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12459.988999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 12459.989999999998,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12459.990999999998,
+      "baselineMaxAbsoluteError": 2.220446049250313e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 12500,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 12500.009,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12500.01,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 12500.011,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 12599.999,
+      "baselineMaxAbsoluteError": 4.796163466380676e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12600,
+      "baselineMaxAbsoluteError": 8.171241461241152e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12600.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12699.989,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 12699.99,
+      "baselineMaxAbsoluteError": 2.8421709430404007e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12699.991,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12800.008999999998,
+      "baselineMaxAbsoluteError": 3.2862601528904634e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12800.009999999998,
+      "baselineMaxAbsoluteError": 4.192202140984591e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 12800.010999999999,
+      "baselineMaxAbsoluteError": 2.611244553918368e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13299.989000000001,
+      "baselineMaxAbsoluteError": 3.410605131648481e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13299.990000000002,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 13299.991000000002,
+      "baselineMaxAbsoluteError": 4.405364961712621e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13499.999,
+      "baselineMaxAbsoluteError": 1.0800249583553523e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 13500,
+      "baselineMaxAbsoluteError": 5.684341886080801e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13500.001,
+      "baselineMaxAbsoluteError": 7.958078640513122e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13700.009,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13700.01,
+      "baselineMaxAbsoluteError": 6.750155989720952e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13700.011,
+      "baselineMaxAbsoluteError": 4.511946372076636e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13799.999,
+      "baselineMaxAbsoluteError": 1.9895196601282805e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13800,
+      "baselineMaxAbsoluteError": 4.121147867408581e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 13800.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14000.009,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14000.01,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14000.011,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14450.009,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14450.01,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14450.011,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14799.989,
+      "baselineMaxAbsoluteError": 3.552713678800501e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 14799.99,
+      "baselineMaxAbsoluteError": 9.547918011776346e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 14799.991,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 14999.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 15000,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 15000.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15200.009,
+      "baselineMaxAbsoluteError": 1.942890293094024e-16,
+      "incrementalExact": true
+    },
+    {
+      "t": 15200.01,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15200.011,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15249.989000000001,
+      "baselineMaxAbsoluteError": 4.6629367034256575e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 15249.990000000002,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15249.991000000002,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15500.009,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15500.01,
+      "baselineMaxAbsoluteError": 3.410605131648481e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15500.011,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15549.989000000001,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15549.990000000002,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15549.991000000002,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15599.999,
+      "baselineMaxAbsoluteError": 2.8421709430404007e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15600,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15600.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15749.999,
+      "baselineMaxAbsoluteError": 6.252776074688882e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15750,
+      "baselineMaxAbsoluteError": 3.694822225952521e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15750.001,
+      "baselineMaxAbsoluteError": 3.410605131648481e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15999.989000000001,
+      "baselineMaxAbsoluteError": 4.476419235288631e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 15999.990000000002,
+      "baselineMaxAbsoluteError": 1.1084466677857563e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 15999.991000000002,
+      "baselineMaxAbsoluteError": 2.1600499167107046e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16250.009,
+      "baselineMaxAbsoluteError": 8.526512829121202e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 16250.01,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 16250.011,
+      "baselineMaxAbsoluteError": 1.5063505998114124e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16299.989000000001,
+      "baselineMaxAbsoluteError": 1.1937117960769683e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16299.990000000002,
+      "baselineMaxAbsoluteError": 5.258016244624741e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 16299.991000000002,
+      "baselineMaxAbsoluteError": 1.0658141036401503e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16499.999,
+      "baselineMaxAbsoluteError": 1.5916157281026244e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16500,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16500.001,
+      "baselineMaxAbsoluteError": 1.5916157281026244e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16599.988999999998,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16599.989999999998,
+      "baselineMaxAbsoluteError": 1.2505552149377763e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16599.990999999998,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 16749.988999999998,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16749.989999999998,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 16749.990999999998,
+      "baselineMaxAbsoluteError": 6.821210263296962e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 17000.009000000002,
+      "baselineMaxAbsoluteError": 1.3642420526593924e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17000.010000000002,
+      "baselineMaxAbsoluteError": 1.5916157281026244e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17000.011000000002,
+      "baselineMaxAbsoluteError": 2.7284841053187847e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17249.999,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17250,
+      "baselineMaxAbsoluteError": 1.3642420526593924e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17250.001,
+      "baselineMaxAbsoluteError": 2.0463630789890885e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17300.009000000002,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 17300.010000000002,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 17300.011000000002,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 17499.988999999998,
+      "baselineMaxAbsoluteError": 2.0463630789890885e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17499.989999999998,
+      "baselineMaxAbsoluteError": 2.5011104298755527e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17499.990999999998,
+      "baselineMaxAbsoluteError": 3.410605131648481e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17500,
+      "baselineMaxAbsoluteError": 3.410605131648481e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17750.009,
+      "baselineMaxAbsoluteError": 3.637978807091713e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17750.01,
+      "baselineMaxAbsoluteError": 1.8189894035458565e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 17750.011,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 17999.999,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18000,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18000.001,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 18200.009,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 18200.01,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18200.011,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18249.989,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18249.99,
+      "baselineMaxAbsoluteError": 9.094947017729282e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18249.991,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-12,
+      "incrementalExact": true
+    },
+    {
+      "t": 18500.009,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18500.01,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 18500.011,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18599.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18600,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18600.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18749.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18750,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18750.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18899.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18900,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 18900.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 19449.988999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 19449.989999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 19449.990999999998,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 19799.999,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 19800,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 19800.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 19899.988999999998,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 19899.989999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 19899.990999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 20000,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 20199.988999999998,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 20199.989999999998,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 20199.990999999998,
+      "baselineMaxAbsoluteError": 4.218847493575595e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 20549.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 20550,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 20550.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 20999.999,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21000,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21000.001,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21059.999000000003,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21060.000000000004,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21060.001000000004,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21119.999000000003,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21120.000000000004,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21120.001000000004,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21179.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21180,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21180.001,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21239.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21240,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21240.001,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21299.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21300,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21300.001,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21359.999000000003,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21360.000000000004,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21360.001000000004,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21419.999000000003,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21420.000000000004,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21420.001000000004,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21479.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21480,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21480.001,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21539.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21540,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21540.001,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21599.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21600,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21600.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21659.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21660,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21660.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21899.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21900,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21900.001,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 21959.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21960,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 21960.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 22019.999000000003,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22020.000000000004,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22020.001000000004,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 22079.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22080,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 22080.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 22139.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22140,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 22140.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 22199.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22200,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22200.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 22259.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22260,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22260.001,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22319.999000000003,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22320.000000000004,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22320.001000000004,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22379.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 22380,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 22380.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22400.009000000002,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22400.010000000002,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22400.011000000002,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 22439.999,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22440,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22440.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22499.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22500,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22500.001,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22559.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22560,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 22560.001,
+      "baselineMaxAbsoluteError": 8.526512829121202e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 23000.009000000002,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 23000.010000000002,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 23000.011000000002,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 23399.999,
+      "baselineMaxAbsoluteError": 2.842170943040401e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 23400,
+      "baselineMaxAbsoluteError": 1.7763568394002505e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 23400.001,
+      "baselineMaxAbsoluteError": 1.4210854715202004e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 23999.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 24000,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 24000.001,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 24449.999,
+      "baselineMaxAbsoluteError": 1.7053025658242404e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 24450,
+      "baselineMaxAbsoluteError": 2.8421709430404007e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 24450.001,
+      "baselineMaxAbsoluteError": 4.263256414560601e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 24800.009000000002,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 24800.010000000002,
+      "baselineMaxAbsoluteError": 8.526512829121202e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 24800.011000000002,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 24999.988999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 24999.989999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 24999.990999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 25000,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 25199.999,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 25200,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 25200.001,
+      "baselineMaxAbsoluteError": 2.2737367544323206e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 25550.009000000002,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 25550.010000000002,
+      "baselineMaxAbsoluteError": 3.410605131648481e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 25550.011000000002,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 26600.009000000002,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 26600.010000000002,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 26600.011000000002,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 26999.999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 27000,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 27000.001,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 27500,
+      "baselineMaxAbsoluteError": 4.547473508864641e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 27999.988999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 27999.989999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 27999.990999999998,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 29049.988999999998,
+      "baselineMaxAbsoluteError": 7.105427357601002e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 29049.989999999998,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 29049.990999999998,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 29399.999,
+      "baselineMaxAbsoluteError": 5.684341886080802e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 29400,
+      "baselineMaxAbsoluteError": 3.552713678800501e-15,
+      "incrementalExact": true
+    },
+    {
+      "t": 29400.001,
+      "baselineMaxAbsoluteError": 1.1368683772161603e-13,
+      "incrementalExact": true
+    },
+    {
+      "t": 29999,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    },
+    {
+      "t": 29999.999,
+      "baselineMaxAbsoluteError": 8.526512829121202e-14,
+      "incrementalExact": true
+    },
+    {
+      "t": 30000,
+      "baselineMaxAbsoluteError": 0,
+      "incrementalExact": true
+    }
+  ],
+  "renders": [
+    {
+      "t": 0,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 1500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 2000,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 3500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 5000,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 7500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 10000,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 12500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 15000,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 17500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 20000,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 22500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 25000,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 27500,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    },
+    {
+      "t": 29999,
+      "baselineChangedChannels": 0,
+      "incrementalChangedChannels": 0,
+      "maxChannelError": 0
+    }
+  ],
+  "captures": [
+    {
+      "name": "circle-500",
+      "png": "verification-circle-500.png"
+    },
+    {
+      "name": "circle-7500",
+      "png": "verification-circle-7500.png"
+    },
+    {
+      "name": "circle-15000",
+      "png": "verification-circle-15000.png"
+    },
+    {
+      "name": "circle-22500",
+      "png": "verification-circle-22500.png"
+    },
+    {
+      "name": "circle-29999",
+      "png": "verification-circle-29999.png"
+    }
+  ]
+}

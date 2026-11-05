@@ -1,0 +1,1372 @@
+scene "MainScene" {
+  version "0.2";
+  viewport (500, 888.89);
+  background #101014;
+  duration 11250ms;
+  requires "easing.cubicBezier";
+  requires "transform.parent";
+  requires "effects.blur";
+  requires "compositing.isolatedOpacity";
+  requires "text.basic";
+  requires "composition.definitions";
+  requires "timing.localScopes";
+  requires "paint.linearGradient";
+};
+timing pre2 {
+  offset 0s;
+  stretch 1;
+};
+timing pre3 {
+  offset 0s;
+  stretch 1;
+};
+timing pre4 {
+  offset 0s;
+  stretch 1;
+};
+timing pre5 {
+  offset 0s;
+  stretch 1;
+};
+timing pre6 {
+  offset 0s;
+  stretch 1;
+};
+timing pre7 {
+  offset 0s;
+  stretch 1;
+};
+timing pre8 {
+  offset 0s;
+  stretch 1;
+};
+timing pre9 {
+  offset 0s;
+  stretch 1;
+};
+timing pre10 {
+  offset 0s;
+  stretch 1;
+};
+timing pre11 {
+  offset 0s;
+  stretch 1;
+};
+timing pre12 {
+  offset 0s;
+  stretch 1;
+};
+timing pre13 {
+  offset 0s;
+  stretch 1;
+};
+timing pre14 {
+  offset 0s;
+  stretch 1;
+};
+timing pre15 {
+  offset 0s;
+  stretch 1;
+};
+timing pre16 {
+  offset 0s;
+  stretch 1;
+};
+timing pre17 {
+  offset 0s;
+  stretch 1;
+};
+timing pre18 {
+  offset 0s;
+  stretch 1;
+};
+timing pre19 {
+  offset 0s;
+  stretch 1;
+};
+timing pre20 {
+  offset 0s;
+  stretch 1;
+};
+timing pre21 {
+  offset 0s;
+  stretch 1;
+};
+timing pre22 {
+  offset 0s;
+  stretch 1;
+};
+timing pre23 {
+  offset 0s;
+  stretch 1;
+};
+timing pre24 {
+  offset 0s;
+  stretch 1;
+};
+timing pre25 {
+  offset 0s;
+  stretch 1;
+};
+timing pre26 {
+  offset 0s;
+  stretch 1;
+};
+timing pre27 {
+  offset 0s;
+  stretch 1;
+};
+timing pre1 {
+  offset 0s;
+  stretch 1;
+};
+composition comp2 {
+};
+composition comp3 {
+};
+composition comp4 {
+};
+composition comp5 {
+};
+composition comp6 {
+};
+composition comp7 {
+};
+composition comp8 {
+};
+composition comp9 {
+};
+composition comp10 {
+};
+composition comp11 {
+};
+composition comp12 {
+};
+composition comp13 {
+};
+composition comp14 {
+};
+composition comp1 {
+};
+instance inst2 of comp2 {
+  start 0s;
+  end 11250ms;
+  timing pre2;
+};
+instance inst3 of comp3 {
+  start 0s;
+  end 11250ms;
+  timing pre3;
+};
+instance inst4 of comp4 {
+  start 0s;
+  end 11250ms;
+  timing pre4;
+};
+instance inst5 of comp5 {
+  start 0s;
+  end 11250ms;
+  timing pre5;
+};
+instance inst6 of comp6 {
+  start 0s;
+  end 11250ms;
+  timing pre6;
+};
+instance inst7 of comp7 {
+  start 0s;
+  end 11250ms;
+  timing pre7;
+};
+instance inst8 of comp8 {
+  start 0s;
+  end 11250ms;
+  timing pre8;
+};
+instance inst9 of comp9 {
+  start 0s;
+  end 11250ms;
+  timing pre9;
+};
+instance inst10 of comp10 {
+  start 0s;
+  end 11250ms;
+  timing pre10;
+};
+instance inst11 of comp11 {
+  start 0s;
+  end 11250ms;
+  timing pre11;
+};
+instance inst12 of comp12 {
+  start 0s;
+  end 11250ms;
+  timing pre12;
+};
+instance inst13 of comp13 {
+  start 0s;
+  end 11250ms;
+  timing pre13;
+};
+instance inst14 of comp14 {
+  start 0s;
+  end 11250ms;
+  timing pre14;
+};
+instance inst15 of comp2 {
+  start 0s;
+  end 11250ms;
+  timing pre15;
+};
+instance inst16 of comp3 {
+  start 0s;
+  end 11250ms;
+  timing pre16;
+};
+instance inst17 of comp4 {
+  start 0s;
+  end 11250ms;
+  timing pre17;
+};
+instance inst18 of comp5 {
+  start 0s;
+  end 11250ms;
+  timing pre18;
+};
+instance inst19 of comp6 {
+  start 0s;
+  end 11250ms;
+  timing pre19;
+};
+instance inst20 of comp7 {
+  start 0s;
+  end 11250ms;
+  timing pre20;
+};
+instance inst21 of comp8 {
+  start 0s;
+  end 11250ms;
+  timing pre21;
+};
+instance inst22 of comp9 {
+  start 0s;
+  end 11250ms;
+  timing pre22;
+};
+instance inst23 of comp10 {
+  start 0s;
+  end 11250ms;
+  timing pre23;
+};
+instance inst24 of comp11 {
+  start 0s;
+  end 11250ms;
+  timing pre24;
+};
+instance inst25 of comp12 {
+  start 0s;
+  end 11250ms;
+  timing pre25;
+};
+instance inst26 of comp13 {
+  start 0s;
+  end 11250ms;
+  timing pre26;
+};
+instance inst27 of comp14 {
+  start 0s;
+  end 11250ms;
+  timing pre27;
+};
+instance inst1 of comp1 {
+  start 0s;
+  end 11250ms;
+  timing pre1;
+};
+camera main {
+  position (250, 444.445);
+  zoom 1;
+  rotation 0deg;
+};
+group layer_3 {
+  position (0, 294.445);
+  pivot (250, 150);
+  scale (1, 3.0897753958);
+  group Group1 {
+    position (250, 150);
+    zIndex 1;
+    path Path1 {
+      zIndex 2;
+      fill #000000;
+      move (-250, 150);
+      cubic (-250, 150) (250, 150) (250, 150);
+      cubic (250, 150) (250, -150) (250, -150);
+      cubic (250, -150) (-250, -150) (-250, -150);
+      cubic (-250, -150) (-250, 150) (-250, 150);
+      close;
+    };
+  };
+};
+group layer_2 {
+  position (-123.48106139, 293.161652);
+  pivot (207, 149);
+  scale (1.8234961349, 1.8234961349);
+  zIndex 10;
+  group Group1 {
+    position (207, 149);
+    zIndex 11;
+    group Group1 {
+      zIndex 12;
+      path Path2 {
+        zIndex 13;
+        fill linear (0, -10) (0, 10) 0 #fdf6c8 0.5 #fea864 1 #ff5900;
+        move (-10, 0);
+        cubic (-10, 5.523) (-5.522, 10) (0, 10);
+        cubic (5.523, 10) (10, 5.523) (10, 0);
+        cubic (10, -5.523) (5.523, -10) (0, -10);
+        cubic (-5.522, -10) (-10, -5.523) (-10, 0);
+        close;
+      };
+    };
+  };
+};
+group layer_1 {
+  position (-88.07072758, -192.02606952);
+  pivot (250, 150);
+  scale (1.6518543565, 1.6518543565);
+  zIndex 20;
+  group layer_27 {
+    position (301.5, 2.771);
+    pivot (-251.5, 47.229);
+    rotation -32deg;
+    transformParent layer_1.layer_1;
+    isolated true;
+    blur 2.4;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (52.17514923, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "WEBSITE";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_26 {
+    position (300.25, 2.771);
+    pivot (-250.25, 47.229);
+    rotation -27deg;
+    transformParent layer_1.layer_1;
+    isolated true;
+    blur 1.8;
+    zIndex 10;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (83.32374833, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "TYPOGRAPHY";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_25 {
+    position (300.75, 2.589);
+    pivot (-250.75, 47.411);
+    rotation -22deg;
+    transformParent layer_1.layer_1;
+    isolated true;
+    blur 1.2;
+    zIndex 20;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (73.18918172, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "CAMPAIGNS";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_24 {
+    position (302.5, 1.133);
+    pivot (-252.5, 48.867);
+    rotation -16deg;
+    transformParent layer_1.layer_1;
+    isolated true;
+    blur 0.9;
+    zIndex 30;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (56.97013039, -10.12829422);
+      text textNode {
+        zIndex 1;
+        content "REBRAND";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_23 {
+    position (302.5, 3.226);
+    pivot (-252.5, 46.774);
+    rotation -11deg;
+    transformParent layer_1.layer_1;
+    zIndex 40;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (68.175108, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "ANIMATION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_22 {
+    position (303.25, 0.951);
+    pivot (-253.25, 49.049);
+    rotation -5deg;
+    transformParent layer_1.layer_1;
+    zIndex 50;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (55.31755336, -10.12829422);
+      text textNode {
+        zIndex 1;
+        content "IDENTITY";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_21 {
+    position (301.5, 2.771);
+    pivot (-251.5, 47.229);
+    transformParent layer_1.layer_1;
+    zIndex 60;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (63.03583663, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "BRANDING";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_20 {
+    position (301.75, 4.227);
+    pivot (-251.75, 45.773);
+    rotation 5deg;
+    transformParent layer_1.layer_1;
+    zIndex 70;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (49.37703535, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "MOTION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_19 {
+    position (301.25, 2.134);
+    pivot (-251.25, 47.866);
+    rotation 11deg;
+    transformParent layer_1.layer_1;
+    zIndex 80;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (71.718145, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "PACKAGING";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_18 {
+    position (300.123, -1.913);
+    pivot (-251, 54.782);
+    rotation 17deg;
+    transformParent layer_1.layer_1;
+    zIndex 90;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (90.59759029, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "ART DIRECTION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_17 {
+    position (299.25, 0.496);
+    pivot (-249.25, 49.504);
+    rotation 22deg;
+    transformParent layer_1.layer_1;
+    zIndex 100;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (97.11401321, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "DESIGN SYSTEM";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_16 {
+    position (298.25, 2.407);
+    pivot (-248.25, 47.593);
+    rotation 27deg;
+    transformParent layer_1.layer_1;
+    zIndex 110;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (85.9340751, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "ILLUSTRATION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_15 {
+    position (299.75, 3.772);
+    pivot (-249.75, 46.228);
+    rotation 32deg;
+    transformParent layer_1.layer_1;
+    zIndex 120;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (33.57738817, -9.16429293);
+      text textNode {
+        zIndex 1;
+        content "UI/UX";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_14 {
+    position (301.5, 2.771);
+    pivot (-251.5, 47.229);
+    rotation 37deg;
+    transformParent layer_1.layer_1;
+    zIndex 130;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (52.17514923, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "WEBSITE";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_13 {
+    position (300.25, 2.771);
+    pivot (-250.25, 47.229);
+    rotation 42deg;
+    transformParent layer_1.layer_1;
+    zIndex 140;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (83.32374833, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "TYPOGRAPHY";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_12 {
+    position (300.75, 2.589);
+    pivot (-250.75, 47.411);
+    rotation 47deg;
+    transformParent layer_1.layer_1;
+    zIndex 150;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (73.18918172, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "CAMPAIGNS";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_11 {
+    position (302.5, 1.133);
+    pivot (-252.5, 48.867);
+    rotation 53deg;
+    transformParent layer_1.layer_1;
+    zIndex 160;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (56.97013039, -10.12829422);
+      text textNode {
+        zIndex 1;
+        content "REBRAND";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_10 {
+    position (302.5, 3.226);
+    pivot (-252.5, 46.774);
+    rotation 58deg;
+    transformParent layer_1.layer_1;
+    zIndex 170;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (68.175108, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "ANIMATION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_9 {
+    position (303.25, 0.951);
+    pivot (-253.25, 49.049);
+    rotation 64deg;
+    transformParent layer_1.layer_1;
+    zIndex 180;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (55.31755336, -10.12829422);
+      text textNode {
+        zIndex 1;
+        content "IDENTITY";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_8 {
+    position (301.5, 2.771);
+    pivot (-251.5, 47.229);
+    rotation 69deg;
+    transformParent layer_1.layer_1;
+    zIndex 190;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (63.03583663, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "BRANDING";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_7 {
+    position (301.75, 4.227);
+    pivot (-251.75, 45.773);
+    rotation 74deg;
+    transformParent layer_1.layer_1;
+    zIndex 200;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (49.37703535, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "MOTION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_6 {
+    position (301.25, 2.134);
+    pivot (-251.25, 47.866);
+    rotation 80deg;
+    transformParent layer_1.layer_1;
+    zIndex 210;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (71.718145, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "PACKAGING";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_5 {
+    position (301, -4.782);
+    pivot (-251, 54.782);
+    rotation 86.5deg;
+    transformParent layer_1.layer_1;
+    zIndex 220;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (90.59759029, -10.12829898);
+      text textNode {
+        zIndex 1;
+        content "ART DIRECTION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_4 {
+    position (299.25, 0.496);
+    pivot (-249.25, 49.504);
+    rotation 91deg;
+    transformParent layer_1.layer_1;
+    zIndex 230;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (97.11401321, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "DESIGN SYSTEM";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_3 {
+    position (298.25, 2.407);
+    pivot (-248.25, 47.593);
+    rotation 96deg;
+    transformParent layer_1.layer_1;
+    zIndex 240;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (85.9340751, -10.10325943);
+      text textNode {
+        zIndex 1;
+        content "ILLUSTRATION";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_2 {
+    position (299.75, 3.772);
+    pivot (-249.75, 46.228);
+    rotation 101deg;
+    transformParent layer_1.layer_1;
+    isolated true;
+    blur 2.4;
+    zIndex 250;
+    group layer_1 {
+      position (28.246, 54.827);
+      pivot (33.57738817, -9.16429293);
+      text textNode {
+        zIndex 1;
+        content "UI/UX";
+        fontFamily "InterTight-Medium";
+        fontSize 25.64;
+        fill #ffffff;
+      };
+    };
+  };
+  group layer_1 {
+    position (-84.389, 395.226);
+    pivot (50, 50);
+    zIndex 260;
+  };
+};
+keyframes layer_1.layer_1.rotation {
+  start 0s;
+  duration 10999.916666666668ms;
+  0% 0deg ease cubic(0.382, 0, 0.272, 1);
+  4.545489% -5deg ease cubic(0.333, 0, 0.272, 1);
+  7.87884757% -5deg ease cubic(0.434, 0, 0.36, 1);
+  12.424185% -11deg ease cubic(0.167, 0, 0.36, 1);
+  15.90906% -11deg ease cubic(0.485, 0, 0.248, 1);
+  20.4545489% -17deg ease cubic(0.167, 0, 0.248, 1);
+  23.93942378% -17deg ease cubic(0.513, 0, 0.234, 1);
+  28.636429% -22deg ease cubic(0.167, 0, 0.234, 1);
+  31.81811983% -22deg ease cubic(0.479, 0, 0.26, 1);
+  36.36360882% -27deg ease cubic(0.167, 0, 0.26, 1);
+  39.6969674% -27deg ease cubic(0.533, 0, 0.35, 1);
+  44.24245638% -32deg ease cubic(0.167, 0, 0.35, 1);
+  47.72717975% -32deg ease cubic(0.451, 0, 0.269, 1);
+  52.27266873% -37deg ease cubic(0.167, 0, 0.269, 1);
+  55.90906% -37deg ease cubic(0.482, 0, 0.291, 1);
+  60.3030326% -42deg ease cubic(0.167, 0, 0.833, 1);
+  63.63639118% -42deg ease cubic(0.494, 0, 0.275, 1);
+  68.18172865% -47deg ease cubic(0.167, 0, 0.833, 1);
+  71.51508724% -47deg ease cubic(0.526, 0, 0.27, 1);
+  76.06057622% -53deg ease cubic(0.167, 0, 0.833, 1);
+  79.5454511% -53deg ease cubic(0.48, 0, 0.134, 1);
+  84.09094% -58deg ease cubic(0.167, 0, 0.833, 1);
+  87.42414715% -58deg ease cubic(0.556, 0, 0.301, 1);
+  91.96963613% -64deg ease cubic(0.167, 0, 0.833, 1);
+  95.454511% -64deg ease cubic(0.532, 0, 0.258, 1);
+  100% -69deg;
+};
+animate layer_1.layer_2.opacity {
+  from 0;
+  to 0.1;
+  start 10499.916666666668ms;
+  duration 500ms;
+  ease cubic(0.333, 0, 0.833, 1);
+};
+keyframes layer_1.layer_3.opacity {
+  start 9616.583333333332ms;
+  duration 1383.3333333333358ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  36.14457831% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  63.85542169% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.2;
+};
+keyframes layer_1.layer_4.opacity {
+  start 8749.933333333332ms;
+  duration 2249.9833333333354ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  22.22238683% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  38.518063% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  60.74045% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  77.77761317% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.3;
+};
+keyframes layer_1.layer_5.opacity {
+  start 7866.6ms;
+  duration 3133.3166666666675ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  15.95753169% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  28.19163932% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  44.149171% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  55.850829% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  71.80836068% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  84.04246831% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.4;
+};
+keyframes layer_1.layer_6.opacity {
+  start 6999.95ms;
+  duration 3999.966666666668ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  12.4996875% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  21.66643055% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  34.16653472% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  43.749948% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  56.250052% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  65.41637847% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  77.91648264% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  87.49989583% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.5;
+};
+keyframes layer_1.layer_7.opacity {
+  start 6149.950000000001ms;
+  duration 4849.966666666667ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  9.96570423% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  17.52589365% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  27.83489921% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  35.39508863% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  45.70443783% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  53.60827222% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  63.91762143% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  71.4774672% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  81.7868164% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  89.69065079% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.7;
+};
+keyframes layer_1.layer_8.opacity {
+  start 5249.95ms;
+  duration 5749.966666666668ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  8.69570258% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  15.65226465% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  24.05811048% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  30.434959% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  39.13037177% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  45.50722033% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  54.202923% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  60.86962823% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  69.56533081% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  75.94188952% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  84.6375921% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  91.30429742% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  100% 1;
+};
+keyframes layer_1.layer_9.opacity {
+  start 4366.633333333333ms;
+  duration 6633.283333333335ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  7.53774526% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  13.316432% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  20.85417729% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  26.8843735% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  34.17086058% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  39.69854044% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  47.23603444% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  52.7637143% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  60.30145956% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  66.08039759% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  73.61814285% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  79.14557145% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  86.68331671% 1 ease cubic(0.167, 0, 0.833, 1);
+  92.46225474% 1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.7;
+};
+keyframes layer_1.layer_10.opacity {
+  start 3499.9666666666662ms;
+  duration 7499.950000000002ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  6.66671111% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  11.55563259% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  18.2223437% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  23.33326667% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  29.99997778% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  35.33334667% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  41.777834% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  46.66675556% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  53.33324444% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  58.222166% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  64.888877% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  70.00002222% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  76.66673333% 1 ease cubic(0.167, 0, 0.833, 1);
+  81.55543259% 1 ease cubic(0.167, 0, 0.833, 1);
+  88.2221437% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  93.33328889% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.5;
+};
+keyframes layer_1.layer_11.opacity {
+  start 2633.3166666666666ms;
+  duration 8366.600000000002ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  6.175348% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  10.358449% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  16.33459231% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  20.71709735% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  26.69324058% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  31.27475119% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  37.25089443% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  42.031809% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  47.80874748% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  52.19125252% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  58.16719655% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  62.54970159% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  68.52584483% 1 ease cubic(0.167, 0, 0.833, 1);
+  73.10755464% 1 ease cubic(0.167, 0, 0.833, 1);
+  79.08369788% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  83.46600371% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  89.442147% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  94.02385676% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.4;
+};
+keyframes layer_1.layer_12.opacity {
+  start 1749.9833333333331ms;
+  duration 9249.933333333334ms;
+  0% 0 ease cubic(0.167, 0, 0.833, 1);
+  5.40544436% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  9.54961838% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  15.13524422% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  18.918875% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  24.32431945% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  28.288312% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  33.69375635% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  37.83775018% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  43.24319455% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  47.56755% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  52.792813% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  56.75680545% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  62.16206964% 1 ease cubic(0.167, 0, 0.833, 1);
+  66.12606217% 1 ease cubic(0.167, 0, 0.833, 1);
+  71.53150653% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  75.67568055% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  81.081125% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  85.04493726% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  90.45038162% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  94.59455564% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.3;
+};
+keyframes layer_1.layer_13.opacity {
+  start 866.6666666666667ms;
+  duration 10133.250000000002ms;
+  0% 0 ease cubic(0.333, 0, 0.833, 1);
+  4.93408663% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  8.71701248% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  13.65126358% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  17.43418943% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  22.53291557% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  25.98672686% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  30.920978% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  34.53942878% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  39.47367988% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  43.25644125% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  48.19069236% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  52.13809324% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  56.90786931% 1 ease cubic(0.167, 0, 0.833, 1);
+  60.52632012% 1 ease cubic(0.167, 0, 0.833, 1);
+  65.46040675% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  69.07885756% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  74.01310866% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  77.79603451% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  82.73028561% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  86.348572% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  91.282823% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  95.0657489% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.2;
+};
+keyframes layer_1.layer_14.opacity {
+  start 0s;
+  duration 10999.916666666668ms;
+  0% 0 ease cubic(0.333, 0, 0.667, 1);
+  4.545489% 0.1 ease cubic(0.333, 0, 0.667, 1);
+  7.87884757% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  12.424185% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  15.90906% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  20.4545489% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  23.93942378% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  28.636429% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  31.81811983% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  36.36360882% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  39.6969674% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  44.24245638% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  47.72717975% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  52.27266873% 1 ease cubic(0.167, 0, 0.833, 1);
+  55.90906% 1 ease cubic(0.167, 0, 0.833, 1);
+  60.3030326% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  63.63639118% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  68.18172865% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  71.51508724% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  76.06057622% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  79.5454511% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  84.09094% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  87.42414715% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  91.96963613% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  95.454511% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  100% 0.1;
+};
+keyframes layer_1.layer_15.opacity {
+  start 0s;
+  duration 10999.916666666668ms;
+  0% 0.1 ease cubic(0.333, 0, 0.833, 1);
+  4.545489% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  7.87884757% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  12.424185% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  15.90906% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  20.4545489% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  23.93942378% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  28.636429% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  31.81811983% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  36.36360882% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  39.6969674% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  44.24245638% 1 ease cubic(0.167, 0, 0.833, 1);
+  47.72717975% 1 ease cubic(0.167, 0, 0.833, 1);
+  52.27266873% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  55.90906% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  60.3030326% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  63.63639118% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  68.18172865% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  71.51508724% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  76.06057622% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  79.5454511% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  84.09094% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  87.42414715% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  91.96963613% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  95.454511% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_16.opacity {
+  start 0s;
+  duration 10116.583333333332ms;
+  0% 0.2 ease cubic(0.333, 0, 0.833, 1);
+  4.94238% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  8.56679215% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  13.50900749% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  17.29816555% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  22.24054564% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  26.0297037% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  31.13682979% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  34.59633111% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  39.53871119% 1 ease cubic(0.167, 0, 0.833, 1);
+  43.16312325% 1 ease cubic(0.167, 0, 0.833, 1);
+  48.10550334% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  51.89449666% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  56.83687675% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  60.79078081% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  65.5684149% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  69.192827% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  74.1350423% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  77.75945436% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  82.70183445% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  86.49099251% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  91.4333726% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  95.05762% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_17.opacity {
+  start 0s;
+  duration 9249.933333333332ms;
+  0% 0.3 ease cubic(0.333, 0, 0.833, 1);
+  5.40544436% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  9.3694369% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  14.774701% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  18.918875% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  24.32431945% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  28.46849347% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  34.05411931% 1 ease cubic(0.167, 0, 0.833, 1);
+  37.83775018% 1 ease cubic(0.167, 0, 0.833, 1);
+  43.24319455% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  47.207187% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  52.61263144% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  56.75662527% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  62.16206964% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  66.48642513% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  71.711688% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  75.67568055% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  81.08094473% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  85.04493726% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  90.45038162% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  94.59455564% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_18.opacity {
+  start 0s;
+  duration 8366.6ms;
+  0% 0.4 ease cubic(0.333, 0, 0.833, 1);
+  5.97614324% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  10.35864828% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  16.33459231% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  20.91630212% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  26.89244536% 1 ease cubic(0.167, 0, 0.833, 1);
+  31.47415517% 1 ease cubic(0.167, 0, 0.833, 1);
+  37.64950318% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  41.83260424% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  47.80874748% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  52.19125252% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  58.16739576% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  62.74890637% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  68.7250496% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  73.50596419% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  79.28290265% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  83.66540769% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  89.64135172% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  94.02385676% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_19.opacity {
+  start 0s;
+  duration 7499.9333333333325ms;
+  0% 0.5 ease cubic(0.333, 0, 0.833, 1);
+  6.666726% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  11.55565827% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  18.222162% 1 ease cubic(0.167, 0, 0.833, 1);
+  23.33331852% 1 ease cubic(0.167, 0, 0.833, 1);
+  30.00004444% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  35.111201% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  42.00015111% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  46.666637% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  53.333363% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  58.22229531% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  64.88902124% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  69.99995556% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  76.66668148% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  82.00006222% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  88.444564% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  93.3334963% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_20.opacity {
+  start 0s;
+  duration 6633.283333333334ms;
+  0% 0.7 ease cubic(0.333, 0, 0.833, 1);
+  7.53774526% 1 ease cubic(0.167, 0, 0.833, 1);
+  13.06542512% 1 ease cubic(0.167, 0, 0.833, 1);
+  20.60291912% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  26.38185715% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  33.91960241% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  39.69854044% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  47.48754388% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  52.7637143% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  60.30145956% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  65.82913942% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  73.36688468% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  79.14557145% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  86.68331671% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  92.713513% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_21.opacity {
+  start 0s;
+  duration 5749.95ms;
+  0% 1 ease cubic(0.333, 0, 0.833, 1);
+  8.69572779% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  15.07259483% 0.7 ease cubic(0.167, 0, 0.833, 1);
+  23.76803277% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  30.4347574% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  39.13048519% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  45.79720983% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  54.78279521% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  60.86951481% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  69.5652426% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  75.94210964% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  84.63783743% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  91.30427221% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_22.opacity {
+  start 0s;
+  duration 4866.633333333333ms;
+  0% 0.7 ease cubic(0.333, 0, 0.833, 1);
+  10.274043% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  17.80834115% 0.5 ease cubic(0.167, 0, 0.833, 1);
+  28.08204166% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  35.958808% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  46.232851% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  54.10961719% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  64.72612826% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  71.91761587% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  82.19165885% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  89.725957% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_23.opacity {
+  start 0s;
+  duration 3999.9666666666662ms;
+  0% 0.5 ease cubic(0.333, 0, 0.833, 1);
+  12.50010417% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  21.66684722% 0.4 ease cubic(0.167, 0, 0.833, 1);
+  34.16653472% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  43.749948% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  56.250052% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  65.83346528% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  78.75023959% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  87.49989583% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_24.opacity {
+  start 0s;
+  duration 3149.983333333333ms;
+  0% 0.4 ease cubic(0.333, 0, 0.833, 1);
+  15.87309986% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  27.513373% 0.3 ease cubic(0.167, 0, 0.833, 1);
+  43.38594384% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  55.5553204% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  71.42842026% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  83.59779681% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_25.opacity {
+  start 0s;
+  duration 2249.983333333333ms;
+  0% 0.3 ease cubic(0.333, 0, 0.833, 1);
+  22.22238683% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  38.51880384% 0.2 ease cubic(0.167, 0, 0.833, 1);
+  60.74045% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  77.77761317% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+keyframes layer_1.layer_26.opacity {
+  start 0s;
+  duration 1366.6499999999999ms;
+  0% 0.2 ease cubic(0.333, 0, 0.833, 1);
+  36.585812% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  63.4154075% 0.1 ease cubic(0.167, 0, 0.833, 1);
+  100% 0;
+};
+animate layer_1.layer_27.opacity {
+  from 0.1;
+  to 0;
+  start 0s;
+  duration 500ms;
+  ease cubic(0.333, 0, 0.833, 1);
+};
+step layer_1.layer_15.visible {
+  at 11s;
+  value false;
+};
+step layer_1.layer_16.visible {
+  at 10116.666666666668ms;
+  value false;
+};
+step layer_1.layer_17.visible {
+  at 9250ms;
+  value false;
+};
+step layer_1.layer_18.visible {
+  at 8366.666666666668ms;
+  value false;
+};
+step layer_1.layer_19.visible {
+  at 7500ms;
+  value false;
+};
+step layer_1.layer_20.visible {
+  at 6633.333333333334ms;
+  value false;
+};
+step layer_1.layer_21.visible {
+  at 5750ms;
+  value false;
+};
+step layer_1.layer_22.visible {
+  at 4866.666666666666ms;
+  value false;
+};
+step layer_1.layer_23.visible {
+  at 4s;
+  value false;
+};
+step layer_1.layer_24.visible {
+  at 3150ms;
+  value false;
+};
+step layer_1.layer_25.visible {
+  at 2250ms;
+  value false;
+};
+step layer_1.layer_26.visible {
+  at 1366.6666666666667ms;
+  value false;
+};
+step layer_1.layer_27.visible {
+  at 500ms;
+  value false;
+};
+complete;

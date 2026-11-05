@@ -1,0 +1,5276 @@
+{
+  "scope": "Original source property key boundaries, segment midpoints and layer visibility boundaries, mapped through precomp st/sr; full integer schedule unchanged",
+  "implementationChange": false,
+  "fixtures": [
+    {
+      "fixture": "LOT-00",
+      "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+      "sourceFrames": [],
+      "samples": []
+    },
+    {
+      "fixture": "LOT-01",
+      "sourcePath": "fixtures/corpus/lottie/LOT-01.json",
+      "sourceFrames": [
+        0.179,
+        7.504,
+        7.9485,
+        8.7395,
+        9.5,
+        9.9755,
+        10.5,
+        10.5935,
+        11.5895,
+        12.447265625,
+        12.5,
+        13.5,
+        13.683,
+        14.077,
+        14.5,
+        15.008,
+        15.44712109375,
+        15.5,
+        15.5365,
+        15.897,
+        16.154296875,
+        16.5,
+        17.2724609375,
+        17.39013671875,
+        17.479,
+        17.47963671875,
+        17.5,
+        18.385,
+        18.5,
+        19.5,
+        19.951,
+        20.5,
+        21.187,
+        21.5,
+        24.5,
+        24.89453125,
+        27.2763671875,
+        27.366,
+        27.5,
+        28.07707421875,
+        28.5,
+        31.073,
+        31.0732421875,
+        32.30859375,
+        34.5,
+        34.53869140625,
+        34.544921875,
+        34.7802734375,
+        34.780499999999996,
+        35.5,
+        39.5,
+        40.0895,
+        42.0771484375,
+        47.9485,
+        48.8984375,
+        49.48779296875,
+        49.5,
+        50.6923828125,
+        51.3984375,
+        51.99169921875,
+        52.08080859375,
+        52.081421875000004,
+        53.5,
+        53.751953125,
+        54.552734375,
+        54.553,
+        55.17079296875,
+        55.4755,
+        57.48779296875,
+        57.81298828125,
+        60.73168359375,
+        66.7765,
+        67.5,
+        68.13818359375,
+        68.6748046875,
+        68.69921875,
+        71.23571875,
+        73.08984375,
+        74.5,
+        75.5,
+        76.5,
+        76.796875,
+        77.5,
+        80.50390625,
+        82.9755859375,
+        86.6826171875,
+        91.6259765625,
+        100.2763671875,
+        103.9833984375,
+        111.3984375
+      ],
+      "samples": [
+        {
+          "id": "source_boundary_00000",
+          "label": "original source key boundary/midpoint 0.179",
+          "lottieFrame": 0.179,
+          "sourceTimeMs": 5.966666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00001",
+          "label": "original source key boundary/midpoint 7.504",
+          "lottieFrame": 7.504,
+          "sourceTimeMs": 250.13333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00002",
+          "label": "original source key boundary/midpoint 7.9485",
+          "lottieFrame": 7.9485,
+          "sourceTimeMs": 264.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00003",
+          "label": "original source key boundary/midpoint 8.7395",
+          "lottieFrame": 8.7395,
+          "sourceTimeMs": 291.31666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00004",
+          "label": "original source key boundary/midpoint 9.5",
+          "lottieFrame": 9.5,
+          "sourceTimeMs": 316.6666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00005",
+          "label": "original source key boundary/midpoint 9.9755",
+          "lottieFrame": 9.9755,
+          "sourceTimeMs": 332.51666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00006",
+          "label": "original source key boundary/midpoint 10.5",
+          "lottieFrame": 10.5,
+          "sourceTimeMs": 350.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00007",
+          "label": "original source key boundary/midpoint 10.5935",
+          "lottieFrame": 10.5935,
+          "sourceTimeMs": 353.1166666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00008",
+          "label": "original source key boundary/midpoint 11.5895",
+          "lottieFrame": 11.5895,
+          "sourceTimeMs": 386.31666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00009",
+          "label": "original source key boundary/midpoint 12.447265625",
+          "lottieFrame": 12.447265625,
+          "sourceTimeMs": 414.9088541666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00010",
+          "label": "original source key boundary/midpoint 12.5",
+          "lottieFrame": 12.5,
+          "sourceTimeMs": 416.6666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00011",
+          "label": "original source key boundary/midpoint 13.5",
+          "lottieFrame": 13.5,
+          "sourceTimeMs": 450.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00012",
+          "label": "original source key boundary/midpoint 13.683",
+          "lottieFrame": 13.683,
+          "sourceTimeMs": 456.1,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00013",
+          "label": "original source key boundary/midpoint 14.077",
+          "lottieFrame": 14.077,
+          "sourceTimeMs": 469.23333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00014",
+          "label": "original source key boundary/midpoint 14.5",
+          "lottieFrame": 14.5,
+          "sourceTimeMs": 483.3333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00015",
+          "label": "original source key boundary/midpoint 15.008",
+          "lottieFrame": 15.008,
+          "sourceTimeMs": 500.26666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00016",
+          "label": "original source key boundary/midpoint 15.44712109375",
+          "lottieFrame": 15.44712109375,
+          "sourceTimeMs": 514.9040364583333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00017",
+          "label": "original source key boundary/midpoint 15.5",
+          "lottieFrame": 15.5,
+          "sourceTimeMs": 516.6666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00018",
+          "label": "original source key boundary/midpoint 15.5365",
+          "lottieFrame": 15.5365,
+          "sourceTimeMs": 517.8833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00019",
+          "label": "original source key boundary/midpoint 15.897",
+          "lottieFrame": 15.897,
+          "sourceTimeMs": 529.9,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00020",
+          "label": "original source key boundary/midpoint 16.154296875",
+          "lottieFrame": 16.154296875,
+          "sourceTimeMs": 538.4765625,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00021",
+          "label": "original source key boundary/midpoint 16.5",
+          "lottieFrame": 16.5,
+          "sourceTimeMs": 550.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00022",
+          "label": "original source key boundary/midpoint 17.2724609375",
+          "lottieFrame": 17.2724609375,
+          "sourceTimeMs": 575.7486979166666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00023",
+          "label": "original source key boundary/midpoint 17.39013671875",
+          "lottieFrame": 17.39013671875,
+          "sourceTimeMs": 579.6712239583334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00024",
+          "label": "original source key boundary/midpoint 17.479",
+          "lottieFrame": 17.479,
+          "sourceTimeMs": 582.6333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00025",
+          "label": "original source key boundary/midpoint 17.47963671875",
+          "lottieFrame": 17.47963671875,
+          "sourceTimeMs": 582.6545572916667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00026",
+          "label": "original source key boundary/midpoint 17.5",
+          "lottieFrame": 17.5,
+          "sourceTimeMs": 583.3333333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00027",
+          "label": "original source key boundary/midpoint 18.385",
+          "lottieFrame": 18.385,
+          "sourceTimeMs": 612.8333333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00028",
+          "label": "original source key boundary/midpoint 18.5",
+          "lottieFrame": 18.5,
+          "sourceTimeMs": 616.6666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00029",
+          "label": "original source key boundary/midpoint 19.5",
+          "lottieFrame": 19.5,
+          "sourceTimeMs": 650.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00030",
+          "label": "original source key boundary/midpoint 19.951",
+          "lottieFrame": 19.951,
+          "sourceTimeMs": 665.0333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00031",
+          "label": "original source key boundary/midpoint 20.5",
+          "lottieFrame": 20.5,
+          "sourceTimeMs": 683.3333333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00032",
+          "label": "original source key boundary/midpoint 21.187",
+          "lottieFrame": 21.187,
+          "sourceTimeMs": 706.2333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00033",
+          "label": "original source key boundary/midpoint 21.5",
+          "lottieFrame": 21.5,
+          "sourceTimeMs": 716.6666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00034",
+          "label": "original source key boundary/midpoint 24.5",
+          "lottieFrame": 24.5,
+          "sourceTimeMs": 816.6666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00035",
+          "label": "original source key boundary/midpoint 24.89453125",
+          "lottieFrame": 24.89453125,
+          "sourceTimeMs": 829.8177083333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00036",
+          "label": "original source key boundary/midpoint 27.2763671875",
+          "lottieFrame": 27.2763671875,
+          "sourceTimeMs": 909.2122395833334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00037",
+          "label": "original source key boundary/midpoint 27.366",
+          "lottieFrame": 27.366,
+          "sourceTimeMs": 912.2,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00038",
+          "label": "original source key boundary/midpoint 27.5",
+          "lottieFrame": 27.5,
+          "sourceTimeMs": 916.6666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00039",
+          "label": "original source key boundary/midpoint 28.07707421875",
+          "lottieFrame": 28.07707421875,
+          "sourceTimeMs": 935.9024739583333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00040",
+          "label": "original source key boundary/midpoint 28.5",
+          "lottieFrame": 28.5,
+          "sourceTimeMs": 950.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00041",
+          "label": "original source key boundary/midpoint 31.073",
+          "lottieFrame": 31.073,
+          "sourceTimeMs": 1035.7666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00042",
+          "label": "original source key boundary/midpoint 31.0732421875",
+          "lottieFrame": 31.0732421875,
+          "sourceTimeMs": 1035.7747395833333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00043",
+          "label": "original source key boundary/midpoint 32.30859375",
+          "lottieFrame": 32.30859375,
+          "sourceTimeMs": 1076.953125,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00044",
+          "label": "original source key boundary/midpoint 34.5",
+          "lottieFrame": 34.5,
+          "sourceTimeMs": 1150.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00045",
+          "label": "original source key boundary/midpoint 34.53869140625",
+          "lottieFrame": 34.53869140625,
+          "sourceTimeMs": 1151.2897135416667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00046",
+          "label": "original source key boundary/midpoint 34.544921875",
+          "lottieFrame": 34.544921875,
+          "sourceTimeMs": 1151.4973958333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00047",
+          "label": "original source key boundary/midpoint 34.7802734375",
+          "lottieFrame": 34.7802734375,
+          "sourceTimeMs": 1159.3424479166667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00048",
+          "label": "original source key boundary/midpoint 34.780499999999996",
+          "lottieFrame": 34.780499999999996,
+          "sourceTimeMs": 1159.35,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00049",
+          "label": "original source key boundary/midpoint 35.5",
+          "lottieFrame": 35.5,
+          "sourceTimeMs": 1183.3333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00050",
+          "label": "original source key boundary/midpoint 39.5",
+          "lottieFrame": 39.5,
+          "sourceTimeMs": 1316.6666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00051",
+          "label": "original source key boundary/midpoint 40.0895",
+          "lottieFrame": 40.0895,
+          "sourceTimeMs": 1336.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00052",
+          "label": "original source key boundary/midpoint 42.0771484375",
+          "lottieFrame": 42.0771484375,
+          "sourceTimeMs": 1402.5716145833333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00053",
+          "label": "original source key boundary/midpoint 47.9485",
+          "lottieFrame": 47.9485,
+          "sourceTimeMs": 1598.2833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00054",
+          "label": "original source key boundary/midpoint 48.8984375",
+          "lottieFrame": 48.8984375,
+          "sourceTimeMs": 1629.9479166666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00055",
+          "label": "original source key boundary/midpoint 49.48779296875",
+          "lottieFrame": 49.48779296875,
+          "sourceTimeMs": 1649.5930989583333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00056",
+          "label": "original source key boundary/midpoint 49.5",
+          "lottieFrame": 49.5,
+          "sourceTimeMs": 1650.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00057",
+          "label": "original source key boundary/midpoint 50.6923828125",
+          "lottieFrame": 50.6923828125,
+          "sourceTimeMs": 1689.74609375,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00058",
+          "label": "original source key boundary/midpoint 51.3984375",
+          "lottieFrame": 51.3984375,
+          "sourceTimeMs": 1713.28125,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00059",
+          "label": "original source key boundary/midpoint 51.99169921875",
+          "lottieFrame": 51.99169921875,
+          "sourceTimeMs": 1733.056640625,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00060",
+          "label": "original source key boundary/midpoint 52.08080859375",
+          "lottieFrame": 52.08080859375,
+          "sourceTimeMs": 1736.026953125,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00061",
+          "label": "original source key boundary/midpoint 52.081421875000004",
+          "lottieFrame": 52.081421875000004,
+          "sourceTimeMs": 1736.0473958333337,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00062",
+          "label": "original source key boundary/midpoint 53.5",
+          "lottieFrame": 53.5,
+          "sourceTimeMs": 1783.3333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00063",
+          "label": "original source key boundary/midpoint 53.751953125",
+          "lottieFrame": 53.751953125,
+          "sourceTimeMs": 1791.7317708333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00064",
+          "label": "original source key boundary/midpoint 54.552734375",
+          "lottieFrame": 54.552734375,
+          "sourceTimeMs": 1818.4244791666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00065",
+          "label": "original source key boundary/midpoint 54.553",
+          "lottieFrame": 54.553,
+          "sourceTimeMs": 1818.4333333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00066",
+          "label": "original source key boundary/midpoint 55.17079296875",
+          "lottieFrame": 55.17079296875,
+          "sourceTimeMs": 1839.0264322916667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00067",
+          "label": "original source key boundary/midpoint 55.4755",
+          "lottieFrame": 55.4755,
+          "sourceTimeMs": 1849.1833333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00068",
+          "label": "original source key boundary/midpoint 57.48779296875",
+          "lottieFrame": 57.48779296875,
+          "sourceTimeMs": 1916.259765625,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00069",
+          "label": "original source key boundary/midpoint 57.81298828125",
+          "lottieFrame": 57.81298828125,
+          "sourceTimeMs": 1927.099609375,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00070",
+          "label": "original source key boundary/midpoint 60.73168359375",
+          "lottieFrame": 60.73168359375,
+          "sourceTimeMs": 2024.389453125,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00071",
+          "label": "original source key boundary/midpoint 66.7765",
+          "lottieFrame": 66.7765,
+          "sourceTimeMs": 2225.883333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00072",
+          "label": "original source key boundary/midpoint 67.5",
+          "lottieFrame": 67.5,
+          "sourceTimeMs": 2250.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00073",
+          "label": "original source key boundary/midpoint 68.13818359375",
+          "lottieFrame": 68.13818359375,
+          "sourceTimeMs": 2271.2727864583335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00074",
+          "label": "original source key boundary/midpoint 68.6748046875",
+          "lottieFrame": 68.6748046875,
+          "sourceTimeMs": 2289.16015625,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00075",
+          "label": "original source key boundary/midpoint 68.69921875",
+          "lottieFrame": 68.69921875,
+          "sourceTimeMs": 2289.9739583333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00076",
+          "label": "original source key boundary/midpoint 71.23571875",
+          "lottieFrame": 71.23571875,
+          "sourceTimeMs": 2374.523958333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00077",
+          "label": "original source key boundary/midpoint 73.08984375",
+          "lottieFrame": 73.08984375,
+          "sourceTimeMs": 2436.328125,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00078",
+          "label": "original source key boundary/midpoint 74.5",
+          "lottieFrame": 74.5,
+          "sourceTimeMs": 2483.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00079",
+          "label": "original source key boundary/midpoint 75.5",
+          "lottieFrame": 75.5,
+          "sourceTimeMs": 2516.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00080",
+          "label": "original source key boundary/midpoint 76.5",
+          "lottieFrame": 76.5,
+          "sourceTimeMs": 2550.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00081",
+          "label": "original source key boundary/midpoint 76.796875",
+          "lottieFrame": 76.796875,
+          "sourceTimeMs": 2559.8958333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00082",
+          "label": "original source key boundary/midpoint 77.5",
+          "lottieFrame": 77.5,
+          "sourceTimeMs": 2583.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00083",
+          "label": "original source key boundary/midpoint 80.50390625",
+          "lottieFrame": 80.50390625,
+          "sourceTimeMs": 2683.4635416666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00084",
+          "label": "original source key boundary/midpoint 82.9755859375",
+          "lottieFrame": 82.9755859375,
+          "sourceTimeMs": 2765.8528645833335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00085",
+          "label": "original source key boundary/midpoint 86.6826171875",
+          "lottieFrame": 86.6826171875,
+          "sourceTimeMs": 2889.4205729166665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00086",
+          "label": "original source key boundary/midpoint 91.6259765625",
+          "lottieFrame": 91.6259765625,
+          "sourceTimeMs": 3054.19921875,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00087",
+          "label": "original source key boundary/midpoint 100.2763671875",
+          "lottieFrame": 100.2763671875,
+          "sourceTimeMs": 3342.5455729166665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00088",
+          "label": "original source key boundary/midpoint 103.9833984375",
+          "lottieFrame": 103.9833984375,
+          "sourceTimeMs": 3466.11328125,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00089",
+          "label": "original source key boundary/midpoint 111.3984375",
+          "lottieFrame": 111.3984375,
+          "sourceTimeMs": 3713.28125,
+          "scheduled": false
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-02",
+      "sourcePath": "fixtures/corpus/lottie/LOT-02.json",
+      "sourceFrames": [
+        28.6485,
+        47.5,
+        56.25,
+        56.297,
+        58.5,
+        59.5,
+        74.5,
+        75.75,
+        79.5,
+        83.25,
+        84.414,
+        87.5,
+        98.5,
+        99.5,
+        112.5,
+        112.531,
+        113.75,
+        114.5,
+        117.5,
+        123.25,
+        124.5,
+        140.17950000000002,
+        161.5,
+        166.5,
+        167.828,
+        168.75,
+        171.5,
+        175.5,
+        180.5,
+        181.5,
+        185.5,
+        187.5,
+        190.5,
+        192.5,
+        196.414
+      ],
+      "samples": [
+        {
+          "id": "source_boundary_00000",
+          "label": "original source key boundary/midpoint 28.6485",
+          "lottieFrame": 28.6485,
+          "sourceTimeMs": 954.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00001",
+          "label": "original source key boundary/midpoint 47.5",
+          "lottieFrame": 47.5,
+          "sourceTimeMs": 1583.3333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00002",
+          "label": "original source key boundary/midpoint 56.25",
+          "lottieFrame": 56.25,
+          "sourceTimeMs": 1875.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00003",
+          "label": "original source key boundary/midpoint 56.297",
+          "lottieFrame": 56.297,
+          "sourceTimeMs": 1876.5666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00004",
+          "label": "original source key boundary/midpoint 58.5",
+          "lottieFrame": 58.5,
+          "sourceTimeMs": 1950.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00005",
+          "label": "original source key boundary/midpoint 59.5",
+          "lottieFrame": 59.5,
+          "sourceTimeMs": 1983.3333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00006",
+          "label": "original source key boundary/midpoint 74.5",
+          "lottieFrame": 74.5,
+          "sourceTimeMs": 2483.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00007",
+          "label": "original source key boundary/midpoint 75.75",
+          "lottieFrame": 75.75,
+          "sourceTimeMs": 2525.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00008",
+          "label": "original source key boundary/midpoint 79.5",
+          "lottieFrame": 79.5,
+          "sourceTimeMs": 2650.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00009",
+          "label": "original source key boundary/midpoint 83.25",
+          "lottieFrame": 83.25,
+          "sourceTimeMs": 2775.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00010",
+          "label": "original source key boundary/midpoint 84.414",
+          "lottieFrame": 84.414,
+          "sourceTimeMs": 2813.8,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00011",
+          "label": "original source key boundary/midpoint 87.5",
+          "lottieFrame": 87.5,
+          "sourceTimeMs": 2916.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00012",
+          "label": "original source key boundary/midpoint 98.5",
+          "lottieFrame": 98.5,
+          "sourceTimeMs": 3283.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00013",
+          "label": "original source key boundary/midpoint 99.5",
+          "lottieFrame": 99.5,
+          "sourceTimeMs": 3316.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00014",
+          "label": "original source key boundary/midpoint 112.5",
+          "lottieFrame": 112.5,
+          "sourceTimeMs": 3750.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00015",
+          "label": "original source key boundary/midpoint 112.531",
+          "lottieFrame": 112.531,
+          "sourceTimeMs": 3751.0333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00016",
+          "label": "original source key boundary/midpoint 113.75",
+          "lottieFrame": 113.75,
+          "sourceTimeMs": 3791.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00017",
+          "label": "original source key boundary/midpoint 114.5",
+          "lottieFrame": 114.5,
+          "sourceTimeMs": 3816.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00018",
+          "label": "original source key boundary/midpoint 117.5",
+          "lottieFrame": 117.5,
+          "sourceTimeMs": 3916.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00019",
+          "label": "original source key boundary/midpoint 123.25",
+          "lottieFrame": 123.25,
+          "sourceTimeMs": 4108.333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00020",
+          "label": "original source key boundary/midpoint 124.5",
+          "lottieFrame": 124.5,
+          "sourceTimeMs": 4150.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00021",
+          "label": "original source key boundary/midpoint 140.17950000000002",
+          "lottieFrame": 140.17950000000002,
+          "sourceTimeMs": 4672.650000000001,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00022",
+          "label": "original source key boundary/midpoint 161.5",
+          "lottieFrame": 161.5,
+          "sourceTimeMs": 5383.333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00023",
+          "label": "original source key boundary/midpoint 166.5",
+          "lottieFrame": 166.5,
+          "sourceTimeMs": 5550.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00024",
+          "label": "original source key boundary/midpoint 167.828",
+          "lottieFrame": 167.828,
+          "sourceTimeMs": 5594.266666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00025",
+          "label": "original source key boundary/midpoint 168.75",
+          "lottieFrame": 168.75,
+          "sourceTimeMs": 5625.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00026",
+          "label": "original source key boundary/midpoint 171.5",
+          "lottieFrame": 171.5,
+          "sourceTimeMs": 5716.666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00027",
+          "label": "original source key boundary/midpoint 175.5",
+          "lottieFrame": 175.5,
+          "sourceTimeMs": 5850.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00028",
+          "label": "original source key boundary/midpoint 180.5",
+          "lottieFrame": 180.5,
+          "sourceTimeMs": 6016.666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00029",
+          "label": "original source key boundary/midpoint 181.5",
+          "lottieFrame": 181.5,
+          "sourceTimeMs": 6050.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00030",
+          "label": "original source key boundary/midpoint 185.5",
+          "lottieFrame": 185.5,
+          "sourceTimeMs": 6183.333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00031",
+          "label": "original source key boundary/midpoint 187.5",
+          "lottieFrame": 187.5,
+          "sourceTimeMs": 6250.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00032",
+          "label": "original source key boundary/midpoint 190.5",
+          "lottieFrame": 190.5,
+          "sourceTimeMs": 6350.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00033",
+          "label": "original source key boundary/midpoint 192.5",
+          "lottieFrame": 192.5,
+          "sourceTimeMs": 6416.666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00034",
+          "label": "original source key boundary/midpoint 196.414",
+          "lottieFrame": 196.414,
+          "sourceTimeMs": 6547.133333333333,
+          "scheduled": false
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-03",
+      "sourcePath": "fixtures/corpus/lottie/LOT-03.json",
+      "sourceFrames": [
+        12.5,
+        65.9995,
+        67.999,
+        69.999,
+        71.999,
+        73.5,
+        73.999,
+        75.999,
+        77.999,
+        79.999,
+        81.999,
+        83.999,
+        85.999,
+        87.999,
+        89.999,
+        91.999,
+        93.999,
+        95.999,
+        97.999,
+        99.999,
+        101.999,
+        103.999,
+        105.999,
+        107.999,
+        109.999,
+        111.999,
+        113.999,
+        115.999,
+        117.999,
+        119.999,
+        121.999,
+        123.999,
+        125.999,
+        126.9995,
+        127.999,
+        128.999,
+        129.999,
+        130.999,
+        131.999,
+        132.999,
+        133.999,
+        134.5,
+        134.999,
+        135.999,
+        136.999,
+        137.999,
+        138.999,
+        139.999,
+        140.999,
+        141.999,
+        142.999,
+        143.999,
+        144.999,
+        145.999,
+        146.999,
+        147.999,
+        148.999,
+        149.999,
+        150.999,
+        151.999,
+        152.999,
+        153.999,
+        154.999,
+        155.999,
+        156.999,
+        157.999,
+        158.999,
+        159.999,
+        160.999,
+        161.999,
+        162.999,
+        163.999,
+        164.999,
+        165.999,
+        166.999,
+        167.999,
+        168.999,
+        169.999,
+        170.999,
+        171.999,
+        172.999,
+        173.999,
+        174.999,
+        175.999,
+        176.999,
+        177.999,
+        178.999,
+        179.999,
+        180.999,
+        181.999,
+        182.999,
+        183.5,
+        183.999,
+        184.5,
+        184.999,
+        185.5,
+        185.999,
+        186.5,
+        186.999,
+        187.5,
+        187.999,
+        187.9995,
+        188.5,
+        188.999,
+        189.5,
+        189.99849999999998,
+        189.999,
+        190.5,
+        190.999,
+        191.5,
+        191.998,
+        191.999,
+        192.5,
+        192.999,
+        193.5,
+        193.998,
+        193.999,
+        194.5,
+        194.999,
+        195.5,
+        195.998,
+        195.999,
+        196.5,
+        196.999,
+        197.5,
+        197.998,
+        197.999,
+        198.5,
+        198.999,
+        199.5,
+        199.998,
+        199.999,
+        200.5,
+        200.999,
+        201.5,
+        201.998,
+        201.999,
+        202.5,
+        202.999,
+        203.5,
+        203.998,
+        203.999,
+        204.5,
+        204.999,
+        205.5,
+        205.998,
+        205.999,
+        206.5,
+        206.999,
+        207.5,
+        207.998,
+        207.999,
+        208.5,
+        208.999,
+        209.5,
+        209.998,
+        209.999,
+        210.5,
+        210.999,
+        211.5,
+        211.998,
+        211.999,
+        212.5,
+        212.999,
+        213.5,
+        213.998,
+        213.999,
+        214.5,
+        214.999,
+        215.5,
+        215.998,
+        215.999,
+        216.5,
+        216.999,
+        217.5,
+        217.998,
+        217.999,
+        218.5,
+        218.999,
+        219.5,
+        219.998,
+        219.999,
+        220.5,
+        220.999,
+        221.5,
+        221.998,
+        221.999,
+        222.5,
+        222.999,
+        223.5,
+        223.998,
+        223.999,
+        224.5,
+        224.999,
+        225.5,
+        225.998,
+        225.999,
+        226.5,
+        226.999,
+        227.5,
+        227.998,
+        227.999,
+        228.5,
+        228.999,
+        229.5,
+        229.998,
+        229.999,
+        230.5,
+        230.999,
+        231.5,
+        231.998,
+        231.999,
+        232.5,
+        232.999,
+        233.5,
+        233.999,
+        234.5,
+        234.999,
+        235.5,
+        235.999,
+        236.5,
+        236.999,
+        237.5,
+        237.999,
+        238.5,
+        238.999,
+        239.5,
+        239.999,
+        240.5,
+        240.999,
+        241.5,
+        241.999,
+        242.5,
+        242.999,
+        243.5,
+        243.999,
+        244.5,
+        244.999,
+        245.5,
+        245.999,
+        246.5,
+        246.999,
+        247.4995,
+        247.999,
+        248.499,
+        248.999,
+        249.499,
+        249.999,
+        250.499,
+        250.99849999999998,
+        250.999,
+        251.499,
+        251.999,
+        252.499,
+        252.998,
+        252.999,
+        253.499,
+        253.999,
+        254.499,
+        254.998,
+        254.999,
+        255.499,
+        255.999,
+        256.499,
+        256.5,
+        256.998,
+        256.999,
+        257.499,
+        257.999,
+        258.499,
+        258.998,
+        258.999,
+        259.499,
+        259.999,
+        260.499,
+        260.998,
+        260.999,
+        261.499,
+        261.999,
+        262.499,
+        262.998,
+        262.999,
+        263.499,
+        263.999,
+        264.499,
+        264.998,
+        264.999,
+        265.499,
+        265.999,
+        266.499,
+        266.998,
+        266.999,
+        267.499,
+        267.999,
+        268.499,
+        268.998,
+        268.999,
+        269.499,
+        269.999,
+        270.499,
+        270.998,
+        270.999,
+        271.499,
+        271.999,
+        272.499,
+        272.998,
+        272.999,
+        273.499,
+        273.999,
+        274.499,
+        274.998,
+        274.999,
+        275.499,
+        275.999,
+        276.499,
+        276.998,
+        276.999,
+        277.499,
+        277.999,
+        278.499,
+        278.998,
+        278.999,
+        279.499,
+        279.999,
+        280.499,
+        280.998,
+        280.999,
+        281.499,
+        281.999,
+        282.499,
+        282.998,
+        282.999,
+        283.499,
+        283.999,
+        284.499,
+        284.998,
+        284.999,
+        285.499,
+        285.999,
+        286.998,
+        287.999,
+        288.998,
+        289.999,
+        290.998,
+        291.999,
+        292.998,
+        293.999,
+        294.998,
+        295.999,
+        296.998,
+        297.999,
+        298.998,
+        300.998,
+        302.998,
+        304.998,
+        306.998,
+        308.998,
+        309.9995,
+        310.998,
+        311.999,
+        312.998,
+        313.999,
+        314.998,
+        315.999,
+        316.998,
+        317.5,
+        317.999,
+        318.998,
+        319.999,
+        320.998,
+        321.999,
+        322.998,
+        323.999,
+        324.998,
+        325.999,
+        326.998,
+        327.999,
+        328.998,
+        329.999,
+        330.998,
+        331.999,
+        332.998,
+        333.999,
+        334.998,
+        335.999,
+        336.998,
+        337.999,
+        338.998,
+        339.999,
+        340.998,
+        341.999,
+        342.998,
+        343.999,
+        344.998,
+        345.999,
+        346.998,
+        347.999,
+        348.998,
+        349.999,
+        351.999,
+        353.999,
+        355.999,
+        357.999,
+        359.999,
+        370.9995,
+        372.999,
+        374.999,
+        376.999,
+        378.5,
+        378.999,
+        380.999,
+        382.999,
+        384.999,
+        386.999,
+        388.999,
+        390.999,
+        392.999,
+        394.999,
+        396.999,
+        398.999,
+        400.999,
+        402.999,
+        404.999,
+        406.999,
+        408.999,
+        410.999,
+        412.999,
+        414.999,
+        416.999,
+        418.999,
+        420.999,
+        422.999,
+        424.999,
+        426.999
+      ],
+      "samples": [
+        {
+          "id": "source_boundary_00000",
+          "label": "original source key boundary/midpoint 12.5",
+          "lottieFrame": 12.5,
+          "sourceTimeMs": 208.33333333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00001",
+          "label": "original source key boundary/midpoint 65.9995",
+          "lottieFrame": 65.9995,
+          "sourceTimeMs": 1099.9916666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00002",
+          "label": "original source key boundary/midpoint 67.999",
+          "lottieFrame": 67.999,
+          "sourceTimeMs": 1133.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00003",
+          "label": "original source key boundary/midpoint 69.999",
+          "lottieFrame": 69.999,
+          "sourceTimeMs": 1166.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00004",
+          "label": "original source key boundary/midpoint 71.999",
+          "lottieFrame": 71.999,
+          "sourceTimeMs": 1199.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00005",
+          "label": "original source key boundary/midpoint 73.5",
+          "lottieFrame": 73.5,
+          "sourceTimeMs": 1225.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00006",
+          "label": "original source key boundary/midpoint 73.999",
+          "lottieFrame": 73.999,
+          "sourceTimeMs": 1233.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00007",
+          "label": "original source key boundary/midpoint 75.999",
+          "lottieFrame": 75.999,
+          "sourceTimeMs": 1266.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00008",
+          "label": "original source key boundary/midpoint 77.999",
+          "lottieFrame": 77.999,
+          "sourceTimeMs": 1299.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00009",
+          "label": "original source key boundary/midpoint 79.999",
+          "lottieFrame": 79.999,
+          "sourceTimeMs": 1333.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00010",
+          "label": "original source key boundary/midpoint 81.999",
+          "lottieFrame": 81.999,
+          "sourceTimeMs": 1366.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00011",
+          "label": "original source key boundary/midpoint 83.999",
+          "lottieFrame": 83.999,
+          "sourceTimeMs": 1399.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00012",
+          "label": "original source key boundary/midpoint 85.999",
+          "lottieFrame": 85.999,
+          "sourceTimeMs": 1433.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00013",
+          "label": "original source key boundary/midpoint 87.999",
+          "lottieFrame": 87.999,
+          "sourceTimeMs": 1466.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00014",
+          "label": "original source key boundary/midpoint 89.999",
+          "lottieFrame": 89.999,
+          "sourceTimeMs": 1499.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00015",
+          "label": "original source key boundary/midpoint 91.999",
+          "lottieFrame": 91.999,
+          "sourceTimeMs": 1533.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00016",
+          "label": "original source key boundary/midpoint 93.999",
+          "lottieFrame": 93.999,
+          "sourceTimeMs": 1566.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00017",
+          "label": "original source key boundary/midpoint 95.999",
+          "lottieFrame": 95.999,
+          "sourceTimeMs": 1599.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00018",
+          "label": "original source key boundary/midpoint 97.999",
+          "lottieFrame": 97.999,
+          "sourceTimeMs": 1633.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00019",
+          "label": "original source key boundary/midpoint 99.999",
+          "lottieFrame": 99.999,
+          "sourceTimeMs": 1666.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00020",
+          "label": "original source key boundary/midpoint 101.999",
+          "lottieFrame": 101.999,
+          "sourceTimeMs": 1699.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00021",
+          "label": "original source key boundary/midpoint 103.999",
+          "lottieFrame": 103.999,
+          "sourceTimeMs": 1733.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00022",
+          "label": "original source key boundary/midpoint 105.999",
+          "lottieFrame": 105.999,
+          "sourceTimeMs": 1766.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00023",
+          "label": "original source key boundary/midpoint 107.999",
+          "lottieFrame": 107.999,
+          "sourceTimeMs": 1799.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00024",
+          "label": "original source key boundary/midpoint 109.999",
+          "lottieFrame": 109.999,
+          "sourceTimeMs": 1833.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00025",
+          "label": "original source key boundary/midpoint 111.999",
+          "lottieFrame": 111.999,
+          "sourceTimeMs": 1866.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00026",
+          "label": "original source key boundary/midpoint 113.999",
+          "lottieFrame": 113.999,
+          "sourceTimeMs": 1899.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00027",
+          "label": "original source key boundary/midpoint 115.999",
+          "lottieFrame": 115.999,
+          "sourceTimeMs": 1933.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00028",
+          "label": "original source key boundary/midpoint 117.999",
+          "lottieFrame": 117.999,
+          "sourceTimeMs": 1966.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00029",
+          "label": "original source key boundary/midpoint 119.999",
+          "lottieFrame": 119.999,
+          "sourceTimeMs": 1999.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00030",
+          "label": "original source key boundary/midpoint 121.999",
+          "lottieFrame": 121.999,
+          "sourceTimeMs": 2033.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00031",
+          "label": "original source key boundary/midpoint 123.999",
+          "lottieFrame": 123.999,
+          "sourceTimeMs": 2066.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00032",
+          "label": "original source key boundary/midpoint 125.999",
+          "lottieFrame": 125.999,
+          "sourceTimeMs": 2099.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00033",
+          "label": "original source key boundary/midpoint 126.9995",
+          "lottieFrame": 126.9995,
+          "sourceTimeMs": 2116.6583333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00034",
+          "label": "original source key boundary/midpoint 127.999",
+          "lottieFrame": 127.999,
+          "sourceTimeMs": 2133.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00035",
+          "label": "original source key boundary/midpoint 128.999",
+          "lottieFrame": 128.999,
+          "sourceTimeMs": 2149.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00036",
+          "label": "original source key boundary/midpoint 129.999",
+          "lottieFrame": 129.999,
+          "sourceTimeMs": 2166.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00037",
+          "label": "original source key boundary/midpoint 130.999",
+          "lottieFrame": 130.999,
+          "sourceTimeMs": 2183.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00038",
+          "label": "original source key boundary/midpoint 131.999",
+          "lottieFrame": 131.999,
+          "sourceTimeMs": 2199.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00039",
+          "label": "original source key boundary/midpoint 132.999",
+          "lottieFrame": 132.999,
+          "sourceTimeMs": 2216.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00040",
+          "label": "original source key boundary/midpoint 133.999",
+          "lottieFrame": 133.999,
+          "sourceTimeMs": 2233.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00041",
+          "label": "original source key boundary/midpoint 134.5",
+          "lottieFrame": 134.5,
+          "sourceTimeMs": 2241.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00042",
+          "label": "original source key boundary/midpoint 134.999",
+          "lottieFrame": 134.999,
+          "sourceTimeMs": 2249.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00043",
+          "label": "original source key boundary/midpoint 135.999",
+          "lottieFrame": 135.999,
+          "sourceTimeMs": 2266.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00044",
+          "label": "original source key boundary/midpoint 136.999",
+          "lottieFrame": 136.999,
+          "sourceTimeMs": 2283.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00045",
+          "label": "original source key boundary/midpoint 137.999",
+          "lottieFrame": 137.999,
+          "sourceTimeMs": 2299.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00046",
+          "label": "original source key boundary/midpoint 138.999",
+          "lottieFrame": 138.999,
+          "sourceTimeMs": 2316.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00047",
+          "label": "original source key boundary/midpoint 139.999",
+          "lottieFrame": 139.999,
+          "sourceTimeMs": 2333.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00048",
+          "label": "original source key boundary/midpoint 140.999",
+          "lottieFrame": 140.999,
+          "sourceTimeMs": 2349.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00049",
+          "label": "original source key boundary/midpoint 141.999",
+          "lottieFrame": 141.999,
+          "sourceTimeMs": 2366.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00050",
+          "label": "original source key boundary/midpoint 142.999",
+          "lottieFrame": 142.999,
+          "sourceTimeMs": 2383.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00051",
+          "label": "original source key boundary/midpoint 143.999",
+          "lottieFrame": 143.999,
+          "sourceTimeMs": 2399.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00052",
+          "label": "original source key boundary/midpoint 144.999",
+          "lottieFrame": 144.999,
+          "sourceTimeMs": 2416.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00053",
+          "label": "original source key boundary/midpoint 145.999",
+          "lottieFrame": 145.999,
+          "sourceTimeMs": 2433.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00054",
+          "label": "original source key boundary/midpoint 146.999",
+          "lottieFrame": 146.999,
+          "sourceTimeMs": 2449.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00055",
+          "label": "original source key boundary/midpoint 147.999",
+          "lottieFrame": 147.999,
+          "sourceTimeMs": 2466.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00056",
+          "label": "original source key boundary/midpoint 148.999",
+          "lottieFrame": 148.999,
+          "sourceTimeMs": 2483.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00057",
+          "label": "original source key boundary/midpoint 149.999",
+          "lottieFrame": 149.999,
+          "sourceTimeMs": 2499.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00058",
+          "label": "original source key boundary/midpoint 150.999",
+          "lottieFrame": 150.999,
+          "sourceTimeMs": 2516.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00059",
+          "label": "original source key boundary/midpoint 151.999",
+          "lottieFrame": 151.999,
+          "sourceTimeMs": 2533.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00060",
+          "label": "original source key boundary/midpoint 152.999",
+          "lottieFrame": 152.999,
+          "sourceTimeMs": 2549.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00061",
+          "label": "original source key boundary/midpoint 153.999",
+          "lottieFrame": 153.999,
+          "sourceTimeMs": 2566.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00062",
+          "label": "original source key boundary/midpoint 154.999",
+          "lottieFrame": 154.999,
+          "sourceTimeMs": 2583.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00063",
+          "label": "original source key boundary/midpoint 155.999",
+          "lottieFrame": 155.999,
+          "sourceTimeMs": 2599.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00064",
+          "label": "original source key boundary/midpoint 156.999",
+          "lottieFrame": 156.999,
+          "sourceTimeMs": 2616.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00065",
+          "label": "original source key boundary/midpoint 157.999",
+          "lottieFrame": 157.999,
+          "sourceTimeMs": 2633.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00066",
+          "label": "original source key boundary/midpoint 158.999",
+          "lottieFrame": 158.999,
+          "sourceTimeMs": 2649.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00067",
+          "label": "original source key boundary/midpoint 159.999",
+          "lottieFrame": 159.999,
+          "sourceTimeMs": 2666.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00068",
+          "label": "original source key boundary/midpoint 160.999",
+          "lottieFrame": 160.999,
+          "sourceTimeMs": 2683.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00069",
+          "label": "original source key boundary/midpoint 161.999",
+          "lottieFrame": 161.999,
+          "sourceTimeMs": 2699.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00070",
+          "label": "original source key boundary/midpoint 162.999",
+          "lottieFrame": 162.999,
+          "sourceTimeMs": 2716.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00071",
+          "label": "original source key boundary/midpoint 163.999",
+          "lottieFrame": 163.999,
+          "sourceTimeMs": 2733.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00072",
+          "label": "original source key boundary/midpoint 164.999",
+          "lottieFrame": 164.999,
+          "sourceTimeMs": 2749.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00073",
+          "label": "original source key boundary/midpoint 165.999",
+          "lottieFrame": 165.999,
+          "sourceTimeMs": 2766.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00074",
+          "label": "original source key boundary/midpoint 166.999",
+          "lottieFrame": 166.999,
+          "sourceTimeMs": 2783.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00075",
+          "label": "original source key boundary/midpoint 167.999",
+          "lottieFrame": 167.999,
+          "sourceTimeMs": 2799.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00076",
+          "label": "original source key boundary/midpoint 168.999",
+          "lottieFrame": 168.999,
+          "sourceTimeMs": 2816.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00077",
+          "label": "original source key boundary/midpoint 169.999",
+          "lottieFrame": 169.999,
+          "sourceTimeMs": 2833.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00078",
+          "label": "original source key boundary/midpoint 170.999",
+          "lottieFrame": 170.999,
+          "sourceTimeMs": 2849.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00079",
+          "label": "original source key boundary/midpoint 171.999",
+          "lottieFrame": 171.999,
+          "sourceTimeMs": 2866.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00080",
+          "label": "original source key boundary/midpoint 172.999",
+          "lottieFrame": 172.999,
+          "sourceTimeMs": 2883.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00081",
+          "label": "original source key boundary/midpoint 173.999",
+          "lottieFrame": 173.999,
+          "sourceTimeMs": 2899.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00082",
+          "label": "original source key boundary/midpoint 174.999",
+          "lottieFrame": 174.999,
+          "sourceTimeMs": 2916.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00083",
+          "label": "original source key boundary/midpoint 175.999",
+          "lottieFrame": 175.999,
+          "sourceTimeMs": 2933.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00084",
+          "label": "original source key boundary/midpoint 176.999",
+          "lottieFrame": 176.999,
+          "sourceTimeMs": 2949.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00085",
+          "label": "original source key boundary/midpoint 177.999",
+          "lottieFrame": 177.999,
+          "sourceTimeMs": 2966.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00086",
+          "label": "original source key boundary/midpoint 178.999",
+          "lottieFrame": 178.999,
+          "sourceTimeMs": 2983.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00087",
+          "label": "original source key boundary/midpoint 179.999",
+          "lottieFrame": 179.999,
+          "sourceTimeMs": 2999.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00088",
+          "label": "original source key boundary/midpoint 180.999",
+          "lottieFrame": 180.999,
+          "sourceTimeMs": 3016.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00089",
+          "label": "original source key boundary/midpoint 181.999",
+          "lottieFrame": 181.999,
+          "sourceTimeMs": 3033.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00090",
+          "label": "original source key boundary/midpoint 182.999",
+          "lottieFrame": 182.999,
+          "sourceTimeMs": 3049.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00091",
+          "label": "original source key boundary/midpoint 183.5",
+          "lottieFrame": 183.5,
+          "sourceTimeMs": 3058.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00092",
+          "label": "original source key boundary/midpoint 183.999",
+          "lottieFrame": 183.999,
+          "sourceTimeMs": 3066.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00093",
+          "label": "original source key boundary/midpoint 184.5",
+          "lottieFrame": 184.5,
+          "sourceTimeMs": 3075.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00094",
+          "label": "original source key boundary/midpoint 184.999",
+          "lottieFrame": 184.999,
+          "sourceTimeMs": 3083.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00095",
+          "label": "original source key boundary/midpoint 185.5",
+          "lottieFrame": 185.5,
+          "sourceTimeMs": 3091.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00096",
+          "label": "original source key boundary/midpoint 185.999",
+          "lottieFrame": 185.999,
+          "sourceTimeMs": 3099.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00097",
+          "label": "original source key boundary/midpoint 186.5",
+          "lottieFrame": 186.5,
+          "sourceTimeMs": 3108.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00098",
+          "label": "original source key boundary/midpoint 186.999",
+          "lottieFrame": 186.999,
+          "sourceTimeMs": 3116.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00099",
+          "label": "original source key boundary/midpoint 187.5",
+          "lottieFrame": 187.5,
+          "sourceTimeMs": 3125.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00100",
+          "label": "original source key boundary/midpoint 187.999",
+          "lottieFrame": 187.999,
+          "sourceTimeMs": 3133.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00101",
+          "label": "original source key boundary/midpoint 187.9995",
+          "lottieFrame": 187.9995,
+          "sourceTimeMs": 3133.325,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00102",
+          "label": "original source key boundary/midpoint 188.5",
+          "lottieFrame": 188.5,
+          "sourceTimeMs": 3141.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00103",
+          "label": "original source key boundary/midpoint 188.999",
+          "lottieFrame": 188.999,
+          "sourceTimeMs": 3149.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00104",
+          "label": "original source key boundary/midpoint 189.5",
+          "lottieFrame": 189.5,
+          "sourceTimeMs": 3158.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00105",
+          "label": "original source key boundary/midpoint 189.99849999999998",
+          "lottieFrame": 189.99849999999998,
+          "sourceTimeMs": 3166.641666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00106",
+          "label": "original source key boundary/midpoint 189.999",
+          "lottieFrame": 189.999,
+          "sourceTimeMs": 3166.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00107",
+          "label": "original source key boundary/midpoint 190.5",
+          "lottieFrame": 190.5,
+          "sourceTimeMs": 3175.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00108",
+          "label": "original source key boundary/midpoint 190.999",
+          "lottieFrame": 190.999,
+          "sourceTimeMs": 3183.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00109",
+          "label": "original source key boundary/midpoint 191.5",
+          "lottieFrame": 191.5,
+          "sourceTimeMs": 3191.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00110",
+          "label": "original source key boundary/midpoint 191.998",
+          "lottieFrame": 191.998,
+          "sourceTimeMs": 3199.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00111",
+          "label": "original source key boundary/midpoint 191.999",
+          "lottieFrame": 191.999,
+          "sourceTimeMs": 3199.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00112",
+          "label": "original source key boundary/midpoint 192.5",
+          "lottieFrame": 192.5,
+          "sourceTimeMs": 3208.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00113",
+          "label": "original source key boundary/midpoint 192.999",
+          "lottieFrame": 192.999,
+          "sourceTimeMs": 3216.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00114",
+          "label": "original source key boundary/midpoint 193.5",
+          "lottieFrame": 193.5,
+          "sourceTimeMs": 3225.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00115",
+          "label": "original source key boundary/midpoint 193.998",
+          "lottieFrame": 193.998,
+          "sourceTimeMs": 3233.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00116",
+          "label": "original source key boundary/midpoint 193.999",
+          "lottieFrame": 193.999,
+          "sourceTimeMs": 3233.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00117",
+          "label": "original source key boundary/midpoint 194.5",
+          "lottieFrame": 194.5,
+          "sourceTimeMs": 3241.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00118",
+          "label": "original source key boundary/midpoint 194.999",
+          "lottieFrame": 194.999,
+          "sourceTimeMs": 3249.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00119",
+          "label": "original source key boundary/midpoint 195.5",
+          "lottieFrame": 195.5,
+          "sourceTimeMs": 3258.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00120",
+          "label": "original source key boundary/midpoint 195.998",
+          "lottieFrame": 195.998,
+          "sourceTimeMs": 3266.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00121",
+          "label": "original source key boundary/midpoint 195.999",
+          "lottieFrame": 195.999,
+          "sourceTimeMs": 3266.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00122",
+          "label": "original source key boundary/midpoint 196.5",
+          "lottieFrame": 196.5,
+          "sourceTimeMs": 3275.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00123",
+          "label": "original source key boundary/midpoint 196.999",
+          "lottieFrame": 196.999,
+          "sourceTimeMs": 3283.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00124",
+          "label": "original source key boundary/midpoint 197.5",
+          "lottieFrame": 197.5,
+          "sourceTimeMs": 3291.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00125",
+          "label": "original source key boundary/midpoint 197.998",
+          "lottieFrame": 197.998,
+          "sourceTimeMs": 3299.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00126",
+          "label": "original source key boundary/midpoint 197.999",
+          "lottieFrame": 197.999,
+          "sourceTimeMs": 3299.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00127",
+          "label": "original source key boundary/midpoint 198.5",
+          "lottieFrame": 198.5,
+          "sourceTimeMs": 3308.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00128",
+          "label": "original source key boundary/midpoint 198.999",
+          "lottieFrame": 198.999,
+          "sourceTimeMs": 3316.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00129",
+          "label": "original source key boundary/midpoint 199.5",
+          "lottieFrame": 199.5,
+          "sourceTimeMs": 3325.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00130",
+          "label": "original source key boundary/midpoint 199.998",
+          "lottieFrame": 199.998,
+          "sourceTimeMs": 3333.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00131",
+          "label": "original source key boundary/midpoint 199.999",
+          "lottieFrame": 199.999,
+          "sourceTimeMs": 3333.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00132",
+          "label": "original source key boundary/midpoint 200.5",
+          "lottieFrame": 200.5,
+          "sourceTimeMs": 3341.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00133",
+          "label": "original source key boundary/midpoint 200.999",
+          "lottieFrame": 200.999,
+          "sourceTimeMs": 3349.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00134",
+          "label": "original source key boundary/midpoint 201.5",
+          "lottieFrame": 201.5,
+          "sourceTimeMs": 3358.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00135",
+          "label": "original source key boundary/midpoint 201.998",
+          "lottieFrame": 201.998,
+          "sourceTimeMs": 3366.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00136",
+          "label": "original source key boundary/midpoint 201.999",
+          "lottieFrame": 201.999,
+          "sourceTimeMs": 3366.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00137",
+          "label": "original source key boundary/midpoint 202.5",
+          "lottieFrame": 202.5,
+          "sourceTimeMs": 3375.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00138",
+          "label": "original source key boundary/midpoint 202.999",
+          "lottieFrame": 202.999,
+          "sourceTimeMs": 3383.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00139",
+          "label": "original source key boundary/midpoint 203.5",
+          "lottieFrame": 203.5,
+          "sourceTimeMs": 3391.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00140",
+          "label": "original source key boundary/midpoint 203.998",
+          "lottieFrame": 203.998,
+          "sourceTimeMs": 3399.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00141",
+          "label": "original source key boundary/midpoint 203.999",
+          "lottieFrame": 203.999,
+          "sourceTimeMs": 3399.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00142",
+          "label": "original source key boundary/midpoint 204.5",
+          "lottieFrame": 204.5,
+          "sourceTimeMs": 3408.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00143",
+          "label": "original source key boundary/midpoint 204.999",
+          "lottieFrame": 204.999,
+          "sourceTimeMs": 3416.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00144",
+          "label": "original source key boundary/midpoint 205.5",
+          "lottieFrame": 205.5,
+          "sourceTimeMs": 3425.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00145",
+          "label": "original source key boundary/midpoint 205.998",
+          "lottieFrame": 205.998,
+          "sourceTimeMs": 3433.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00146",
+          "label": "original source key boundary/midpoint 205.999",
+          "lottieFrame": 205.999,
+          "sourceTimeMs": 3433.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00147",
+          "label": "original source key boundary/midpoint 206.5",
+          "lottieFrame": 206.5,
+          "sourceTimeMs": 3441.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00148",
+          "label": "original source key boundary/midpoint 206.999",
+          "lottieFrame": 206.999,
+          "sourceTimeMs": 3449.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00149",
+          "label": "original source key boundary/midpoint 207.5",
+          "lottieFrame": 207.5,
+          "sourceTimeMs": 3458.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00150",
+          "label": "original source key boundary/midpoint 207.998",
+          "lottieFrame": 207.998,
+          "sourceTimeMs": 3466.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00151",
+          "label": "original source key boundary/midpoint 207.999",
+          "lottieFrame": 207.999,
+          "sourceTimeMs": 3466.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00152",
+          "label": "original source key boundary/midpoint 208.5",
+          "lottieFrame": 208.5,
+          "sourceTimeMs": 3475.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00153",
+          "label": "original source key boundary/midpoint 208.999",
+          "lottieFrame": 208.999,
+          "sourceTimeMs": 3483.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00154",
+          "label": "original source key boundary/midpoint 209.5",
+          "lottieFrame": 209.5,
+          "sourceTimeMs": 3491.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00155",
+          "label": "original source key boundary/midpoint 209.998",
+          "lottieFrame": 209.998,
+          "sourceTimeMs": 3499.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00156",
+          "label": "original source key boundary/midpoint 209.999",
+          "lottieFrame": 209.999,
+          "sourceTimeMs": 3499.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00157",
+          "label": "original source key boundary/midpoint 210.5",
+          "lottieFrame": 210.5,
+          "sourceTimeMs": 3508.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00158",
+          "label": "original source key boundary/midpoint 210.999",
+          "lottieFrame": 210.999,
+          "sourceTimeMs": 3516.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00159",
+          "label": "original source key boundary/midpoint 211.5",
+          "lottieFrame": 211.5,
+          "sourceTimeMs": 3525.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00160",
+          "label": "original source key boundary/midpoint 211.998",
+          "lottieFrame": 211.998,
+          "sourceTimeMs": 3533.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00161",
+          "label": "original source key boundary/midpoint 211.999",
+          "lottieFrame": 211.999,
+          "sourceTimeMs": 3533.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00162",
+          "label": "original source key boundary/midpoint 212.5",
+          "lottieFrame": 212.5,
+          "sourceTimeMs": 3541.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00163",
+          "label": "original source key boundary/midpoint 212.999",
+          "lottieFrame": 212.999,
+          "sourceTimeMs": 3549.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00164",
+          "label": "original source key boundary/midpoint 213.5",
+          "lottieFrame": 213.5,
+          "sourceTimeMs": 3558.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00165",
+          "label": "original source key boundary/midpoint 213.998",
+          "lottieFrame": 213.998,
+          "sourceTimeMs": 3566.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00166",
+          "label": "original source key boundary/midpoint 213.999",
+          "lottieFrame": 213.999,
+          "sourceTimeMs": 3566.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00167",
+          "label": "original source key boundary/midpoint 214.5",
+          "lottieFrame": 214.5,
+          "sourceTimeMs": 3575.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00168",
+          "label": "original source key boundary/midpoint 214.999",
+          "lottieFrame": 214.999,
+          "sourceTimeMs": 3583.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00169",
+          "label": "original source key boundary/midpoint 215.5",
+          "lottieFrame": 215.5,
+          "sourceTimeMs": 3591.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00170",
+          "label": "original source key boundary/midpoint 215.998",
+          "lottieFrame": 215.998,
+          "sourceTimeMs": 3599.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00171",
+          "label": "original source key boundary/midpoint 215.999",
+          "lottieFrame": 215.999,
+          "sourceTimeMs": 3599.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00172",
+          "label": "original source key boundary/midpoint 216.5",
+          "lottieFrame": 216.5,
+          "sourceTimeMs": 3608.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00173",
+          "label": "original source key boundary/midpoint 216.999",
+          "lottieFrame": 216.999,
+          "sourceTimeMs": 3616.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00174",
+          "label": "original source key boundary/midpoint 217.5",
+          "lottieFrame": 217.5,
+          "sourceTimeMs": 3625.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00175",
+          "label": "original source key boundary/midpoint 217.998",
+          "lottieFrame": 217.998,
+          "sourceTimeMs": 3633.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00176",
+          "label": "original source key boundary/midpoint 217.999",
+          "lottieFrame": 217.999,
+          "sourceTimeMs": 3633.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00177",
+          "label": "original source key boundary/midpoint 218.5",
+          "lottieFrame": 218.5,
+          "sourceTimeMs": 3641.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00178",
+          "label": "original source key boundary/midpoint 218.999",
+          "lottieFrame": 218.999,
+          "sourceTimeMs": 3649.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00179",
+          "label": "original source key boundary/midpoint 219.5",
+          "lottieFrame": 219.5,
+          "sourceTimeMs": 3658.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00180",
+          "label": "original source key boundary/midpoint 219.998",
+          "lottieFrame": 219.998,
+          "sourceTimeMs": 3666.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00181",
+          "label": "original source key boundary/midpoint 219.999",
+          "lottieFrame": 219.999,
+          "sourceTimeMs": 3666.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00182",
+          "label": "original source key boundary/midpoint 220.5",
+          "lottieFrame": 220.5,
+          "sourceTimeMs": 3675.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00183",
+          "label": "original source key boundary/midpoint 220.999",
+          "lottieFrame": 220.999,
+          "sourceTimeMs": 3683.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00184",
+          "label": "original source key boundary/midpoint 221.5",
+          "lottieFrame": 221.5,
+          "sourceTimeMs": 3691.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00185",
+          "label": "original source key boundary/midpoint 221.998",
+          "lottieFrame": 221.998,
+          "sourceTimeMs": 3699.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00186",
+          "label": "original source key boundary/midpoint 221.999",
+          "lottieFrame": 221.999,
+          "sourceTimeMs": 3699.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00187",
+          "label": "original source key boundary/midpoint 222.5",
+          "lottieFrame": 222.5,
+          "sourceTimeMs": 3708.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00188",
+          "label": "original source key boundary/midpoint 222.999",
+          "lottieFrame": 222.999,
+          "sourceTimeMs": 3716.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00189",
+          "label": "original source key boundary/midpoint 223.5",
+          "lottieFrame": 223.5,
+          "sourceTimeMs": 3725.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00190",
+          "label": "original source key boundary/midpoint 223.998",
+          "lottieFrame": 223.998,
+          "sourceTimeMs": 3733.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00191",
+          "label": "original source key boundary/midpoint 223.999",
+          "lottieFrame": 223.999,
+          "sourceTimeMs": 3733.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00192",
+          "label": "original source key boundary/midpoint 224.5",
+          "lottieFrame": 224.5,
+          "sourceTimeMs": 3741.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00193",
+          "label": "original source key boundary/midpoint 224.999",
+          "lottieFrame": 224.999,
+          "sourceTimeMs": 3749.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00194",
+          "label": "original source key boundary/midpoint 225.5",
+          "lottieFrame": 225.5,
+          "sourceTimeMs": 3758.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00195",
+          "label": "original source key boundary/midpoint 225.998",
+          "lottieFrame": 225.998,
+          "sourceTimeMs": 3766.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00196",
+          "label": "original source key boundary/midpoint 225.999",
+          "lottieFrame": 225.999,
+          "sourceTimeMs": 3766.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00197",
+          "label": "original source key boundary/midpoint 226.5",
+          "lottieFrame": 226.5,
+          "sourceTimeMs": 3775.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00198",
+          "label": "original source key boundary/midpoint 226.999",
+          "lottieFrame": 226.999,
+          "sourceTimeMs": 3783.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00199",
+          "label": "original source key boundary/midpoint 227.5",
+          "lottieFrame": 227.5,
+          "sourceTimeMs": 3791.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00200",
+          "label": "original source key boundary/midpoint 227.998",
+          "lottieFrame": 227.998,
+          "sourceTimeMs": 3799.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00201",
+          "label": "original source key boundary/midpoint 227.999",
+          "lottieFrame": 227.999,
+          "sourceTimeMs": 3799.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00202",
+          "label": "original source key boundary/midpoint 228.5",
+          "lottieFrame": 228.5,
+          "sourceTimeMs": 3808.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00203",
+          "label": "original source key boundary/midpoint 228.999",
+          "lottieFrame": 228.999,
+          "sourceTimeMs": 3816.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00204",
+          "label": "original source key boundary/midpoint 229.5",
+          "lottieFrame": 229.5,
+          "sourceTimeMs": 3825.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00205",
+          "label": "original source key boundary/midpoint 229.998",
+          "lottieFrame": 229.998,
+          "sourceTimeMs": 3833.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00206",
+          "label": "original source key boundary/midpoint 229.999",
+          "lottieFrame": 229.999,
+          "sourceTimeMs": 3833.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00207",
+          "label": "original source key boundary/midpoint 230.5",
+          "lottieFrame": 230.5,
+          "sourceTimeMs": 3841.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00208",
+          "label": "original source key boundary/midpoint 230.999",
+          "lottieFrame": 230.999,
+          "sourceTimeMs": 3849.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00209",
+          "label": "original source key boundary/midpoint 231.5",
+          "lottieFrame": 231.5,
+          "sourceTimeMs": 3858.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00210",
+          "label": "original source key boundary/midpoint 231.998",
+          "lottieFrame": 231.998,
+          "sourceTimeMs": 3866.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00211",
+          "label": "original source key boundary/midpoint 231.999",
+          "lottieFrame": 231.999,
+          "sourceTimeMs": 3866.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00212",
+          "label": "original source key boundary/midpoint 232.5",
+          "lottieFrame": 232.5,
+          "sourceTimeMs": 3875.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00213",
+          "label": "original source key boundary/midpoint 232.999",
+          "lottieFrame": 232.999,
+          "sourceTimeMs": 3883.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00214",
+          "label": "original source key boundary/midpoint 233.5",
+          "lottieFrame": 233.5,
+          "sourceTimeMs": 3891.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00215",
+          "label": "original source key boundary/midpoint 233.999",
+          "lottieFrame": 233.999,
+          "sourceTimeMs": 3899.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00216",
+          "label": "original source key boundary/midpoint 234.5",
+          "lottieFrame": 234.5,
+          "sourceTimeMs": 3908.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00217",
+          "label": "original source key boundary/midpoint 234.999",
+          "lottieFrame": 234.999,
+          "sourceTimeMs": 3916.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00218",
+          "label": "original source key boundary/midpoint 235.5",
+          "lottieFrame": 235.5,
+          "sourceTimeMs": 3925.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00219",
+          "label": "original source key boundary/midpoint 235.999",
+          "lottieFrame": 235.999,
+          "sourceTimeMs": 3933.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00220",
+          "label": "original source key boundary/midpoint 236.5",
+          "lottieFrame": 236.5,
+          "sourceTimeMs": 3941.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00221",
+          "label": "original source key boundary/midpoint 236.999",
+          "lottieFrame": 236.999,
+          "sourceTimeMs": 3949.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00222",
+          "label": "original source key boundary/midpoint 237.5",
+          "lottieFrame": 237.5,
+          "sourceTimeMs": 3958.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00223",
+          "label": "original source key boundary/midpoint 237.999",
+          "lottieFrame": 237.999,
+          "sourceTimeMs": 3966.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00224",
+          "label": "original source key boundary/midpoint 238.5",
+          "lottieFrame": 238.5,
+          "sourceTimeMs": 3975.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00225",
+          "label": "original source key boundary/midpoint 238.999",
+          "lottieFrame": 238.999,
+          "sourceTimeMs": 3983.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00226",
+          "label": "original source key boundary/midpoint 239.5",
+          "lottieFrame": 239.5,
+          "sourceTimeMs": 3991.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00227",
+          "label": "original source key boundary/midpoint 239.999",
+          "lottieFrame": 239.999,
+          "sourceTimeMs": 3999.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00228",
+          "label": "original source key boundary/midpoint 240.5",
+          "lottieFrame": 240.5,
+          "sourceTimeMs": 4008.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00229",
+          "label": "original source key boundary/midpoint 240.999",
+          "lottieFrame": 240.999,
+          "sourceTimeMs": 4016.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00230",
+          "label": "original source key boundary/midpoint 241.5",
+          "lottieFrame": 241.5,
+          "sourceTimeMs": 4025.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00231",
+          "label": "original source key boundary/midpoint 241.999",
+          "lottieFrame": 241.999,
+          "sourceTimeMs": 4033.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00232",
+          "label": "original source key boundary/midpoint 242.5",
+          "lottieFrame": 242.5,
+          "sourceTimeMs": 4041.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00233",
+          "label": "original source key boundary/midpoint 242.999",
+          "lottieFrame": 242.999,
+          "sourceTimeMs": 4049.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00234",
+          "label": "original source key boundary/midpoint 243.5",
+          "lottieFrame": 243.5,
+          "sourceTimeMs": 4058.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00235",
+          "label": "original source key boundary/midpoint 243.999",
+          "lottieFrame": 243.999,
+          "sourceTimeMs": 4066.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00236",
+          "label": "original source key boundary/midpoint 244.5",
+          "lottieFrame": 244.5,
+          "sourceTimeMs": 4075.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00237",
+          "label": "original source key boundary/midpoint 244.999",
+          "lottieFrame": 244.999,
+          "sourceTimeMs": 4083.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00238",
+          "label": "original source key boundary/midpoint 245.5",
+          "lottieFrame": 245.5,
+          "sourceTimeMs": 4091.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00239",
+          "label": "original source key boundary/midpoint 245.999",
+          "lottieFrame": 245.999,
+          "sourceTimeMs": 4099.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00240",
+          "label": "original source key boundary/midpoint 246.5",
+          "lottieFrame": 246.5,
+          "sourceTimeMs": 4108.333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00241",
+          "label": "original source key boundary/midpoint 246.999",
+          "lottieFrame": 246.999,
+          "sourceTimeMs": 4116.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00242",
+          "label": "original source key boundary/midpoint 247.4995",
+          "lottieFrame": 247.4995,
+          "sourceTimeMs": 4124.991666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00243",
+          "label": "original source key boundary/midpoint 247.999",
+          "lottieFrame": 247.999,
+          "sourceTimeMs": 4133.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00244",
+          "label": "original source key boundary/midpoint 248.499",
+          "lottieFrame": 248.499,
+          "sourceTimeMs": 4141.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00245",
+          "label": "original source key boundary/midpoint 248.999",
+          "lottieFrame": 248.999,
+          "sourceTimeMs": 4149.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00246",
+          "label": "original source key boundary/midpoint 249.499",
+          "lottieFrame": 249.499,
+          "sourceTimeMs": 4158.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00247",
+          "label": "original source key boundary/midpoint 249.999",
+          "lottieFrame": 249.999,
+          "sourceTimeMs": 4166.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00248",
+          "label": "original source key boundary/midpoint 250.499",
+          "lottieFrame": 250.499,
+          "sourceTimeMs": 4174.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00249",
+          "label": "original source key boundary/midpoint 250.99849999999998",
+          "lottieFrame": 250.99849999999998,
+          "sourceTimeMs": 4183.3083333333325,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00250",
+          "label": "original source key boundary/midpoint 250.999",
+          "lottieFrame": 250.999,
+          "sourceTimeMs": 4183.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00251",
+          "label": "original source key boundary/midpoint 251.499",
+          "lottieFrame": 251.499,
+          "sourceTimeMs": 4191.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00252",
+          "label": "original source key boundary/midpoint 251.999",
+          "lottieFrame": 251.999,
+          "sourceTimeMs": 4199.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00253",
+          "label": "original source key boundary/midpoint 252.499",
+          "lottieFrame": 252.499,
+          "sourceTimeMs": 4208.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00254",
+          "label": "original source key boundary/midpoint 252.998",
+          "lottieFrame": 252.998,
+          "sourceTimeMs": 4216.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00255",
+          "label": "original source key boundary/midpoint 252.999",
+          "lottieFrame": 252.999,
+          "sourceTimeMs": 4216.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00256",
+          "label": "original source key boundary/midpoint 253.499",
+          "lottieFrame": 253.499,
+          "sourceTimeMs": 4224.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00257",
+          "label": "original source key boundary/midpoint 253.999",
+          "lottieFrame": 253.999,
+          "sourceTimeMs": 4233.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00258",
+          "label": "original source key boundary/midpoint 254.499",
+          "lottieFrame": 254.499,
+          "sourceTimeMs": 4241.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00259",
+          "label": "original source key boundary/midpoint 254.998",
+          "lottieFrame": 254.998,
+          "sourceTimeMs": 4249.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00260",
+          "label": "original source key boundary/midpoint 254.999",
+          "lottieFrame": 254.999,
+          "sourceTimeMs": 4249.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00261",
+          "label": "original source key boundary/midpoint 255.499",
+          "lottieFrame": 255.499,
+          "sourceTimeMs": 4258.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00262",
+          "label": "original source key boundary/midpoint 255.999",
+          "lottieFrame": 255.999,
+          "sourceTimeMs": 4266.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00263",
+          "label": "original source key boundary/midpoint 256.499",
+          "lottieFrame": 256.499,
+          "sourceTimeMs": 4274.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00264",
+          "label": "original source key boundary/midpoint 256.5",
+          "lottieFrame": 256.5,
+          "sourceTimeMs": 4275.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00265",
+          "label": "original source key boundary/midpoint 256.998",
+          "lottieFrame": 256.998,
+          "sourceTimeMs": 4283.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00266",
+          "label": "original source key boundary/midpoint 256.999",
+          "lottieFrame": 256.999,
+          "sourceTimeMs": 4283.3166666666675,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00267",
+          "label": "original source key boundary/midpoint 257.499",
+          "lottieFrame": 257.499,
+          "sourceTimeMs": 4291.650000000001,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00268",
+          "label": "original source key boundary/midpoint 257.999",
+          "lottieFrame": 257.999,
+          "sourceTimeMs": 4299.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00269",
+          "label": "original source key boundary/midpoint 258.499",
+          "lottieFrame": 258.499,
+          "sourceTimeMs": 4308.3166666666675,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00270",
+          "label": "original source key boundary/midpoint 258.998",
+          "lottieFrame": 258.998,
+          "sourceTimeMs": 4316.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00271",
+          "label": "original source key boundary/midpoint 258.999",
+          "lottieFrame": 258.999,
+          "sourceTimeMs": 4316.650000000001,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00272",
+          "label": "original source key boundary/midpoint 259.499",
+          "lottieFrame": 259.499,
+          "sourceTimeMs": 4324.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00273",
+          "label": "original source key boundary/midpoint 259.999",
+          "lottieFrame": 259.999,
+          "sourceTimeMs": 4333.3166666666675,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00274",
+          "label": "original source key boundary/midpoint 260.499",
+          "lottieFrame": 260.499,
+          "sourceTimeMs": 4341.650000000001,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00275",
+          "label": "original source key boundary/midpoint 260.998",
+          "lottieFrame": 260.998,
+          "sourceTimeMs": 4349.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00276",
+          "label": "original source key boundary/midpoint 260.999",
+          "lottieFrame": 260.999,
+          "sourceTimeMs": 4349.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00277",
+          "label": "original source key boundary/midpoint 261.499",
+          "lottieFrame": 261.499,
+          "sourceTimeMs": 4358.3166666666675,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00278",
+          "label": "original source key boundary/midpoint 261.999",
+          "lottieFrame": 261.999,
+          "sourceTimeMs": 4366.650000000001,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00279",
+          "label": "original source key boundary/midpoint 262.499",
+          "lottieFrame": 262.499,
+          "sourceTimeMs": 4374.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00280",
+          "label": "original source key boundary/midpoint 262.998",
+          "lottieFrame": 262.998,
+          "sourceTimeMs": 4383.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00281",
+          "label": "original source key boundary/midpoint 262.999",
+          "lottieFrame": 262.999,
+          "sourceTimeMs": 4383.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00282",
+          "label": "original source key boundary/midpoint 263.499",
+          "lottieFrame": 263.499,
+          "sourceTimeMs": 4391.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00283",
+          "label": "original source key boundary/midpoint 263.999",
+          "lottieFrame": 263.999,
+          "sourceTimeMs": 4399.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00284",
+          "label": "original source key boundary/midpoint 264.499",
+          "lottieFrame": 264.499,
+          "sourceTimeMs": 4408.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00285",
+          "label": "original source key boundary/midpoint 264.998",
+          "lottieFrame": 264.998,
+          "sourceTimeMs": 4416.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00286",
+          "label": "original source key boundary/midpoint 264.999",
+          "lottieFrame": 264.999,
+          "sourceTimeMs": 4416.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00287",
+          "label": "original source key boundary/midpoint 265.499",
+          "lottieFrame": 265.499,
+          "sourceTimeMs": 4424.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00288",
+          "label": "original source key boundary/midpoint 265.999",
+          "lottieFrame": 265.999,
+          "sourceTimeMs": 4433.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00289",
+          "label": "original source key boundary/midpoint 266.499",
+          "lottieFrame": 266.499,
+          "sourceTimeMs": 4441.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00290",
+          "label": "original source key boundary/midpoint 266.998",
+          "lottieFrame": 266.998,
+          "sourceTimeMs": 4449.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00291",
+          "label": "original source key boundary/midpoint 266.999",
+          "lottieFrame": 266.999,
+          "sourceTimeMs": 4449.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00292",
+          "label": "original source key boundary/midpoint 267.499",
+          "lottieFrame": 267.499,
+          "sourceTimeMs": 4458.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00293",
+          "label": "original source key boundary/midpoint 267.999",
+          "lottieFrame": 267.999,
+          "sourceTimeMs": 4466.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00294",
+          "label": "original source key boundary/midpoint 268.499",
+          "lottieFrame": 268.499,
+          "sourceTimeMs": 4474.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00295",
+          "label": "original source key boundary/midpoint 268.998",
+          "lottieFrame": 268.998,
+          "sourceTimeMs": 4483.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00296",
+          "label": "original source key boundary/midpoint 268.999",
+          "lottieFrame": 268.999,
+          "sourceTimeMs": 4483.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00297",
+          "label": "original source key boundary/midpoint 269.499",
+          "lottieFrame": 269.499,
+          "sourceTimeMs": 4491.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00298",
+          "label": "original source key boundary/midpoint 269.999",
+          "lottieFrame": 269.999,
+          "sourceTimeMs": 4499.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00299",
+          "label": "original source key boundary/midpoint 270.499",
+          "lottieFrame": 270.499,
+          "sourceTimeMs": 4508.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00300",
+          "label": "original source key boundary/midpoint 270.998",
+          "lottieFrame": 270.998,
+          "sourceTimeMs": 4516.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00301",
+          "label": "original source key boundary/midpoint 270.999",
+          "lottieFrame": 270.999,
+          "sourceTimeMs": 4516.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00302",
+          "label": "original source key boundary/midpoint 271.499",
+          "lottieFrame": 271.499,
+          "sourceTimeMs": 4524.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00303",
+          "label": "original source key boundary/midpoint 271.999",
+          "lottieFrame": 271.999,
+          "sourceTimeMs": 4533.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00304",
+          "label": "original source key boundary/midpoint 272.499",
+          "lottieFrame": 272.499,
+          "sourceTimeMs": 4541.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00305",
+          "label": "original source key boundary/midpoint 272.998",
+          "lottieFrame": 272.998,
+          "sourceTimeMs": 4549.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00306",
+          "label": "original source key boundary/midpoint 272.999",
+          "lottieFrame": 272.999,
+          "sourceTimeMs": 4549.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00307",
+          "label": "original source key boundary/midpoint 273.499",
+          "lottieFrame": 273.499,
+          "sourceTimeMs": 4558.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00308",
+          "label": "original source key boundary/midpoint 273.999",
+          "lottieFrame": 273.999,
+          "sourceTimeMs": 4566.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00309",
+          "label": "original source key boundary/midpoint 274.499",
+          "lottieFrame": 274.499,
+          "sourceTimeMs": 4574.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00310",
+          "label": "original source key boundary/midpoint 274.998",
+          "lottieFrame": 274.998,
+          "sourceTimeMs": 4583.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00311",
+          "label": "original source key boundary/midpoint 274.999",
+          "lottieFrame": 274.999,
+          "sourceTimeMs": 4583.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00312",
+          "label": "original source key boundary/midpoint 275.499",
+          "lottieFrame": 275.499,
+          "sourceTimeMs": 4591.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00313",
+          "label": "original source key boundary/midpoint 275.999",
+          "lottieFrame": 275.999,
+          "sourceTimeMs": 4599.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00314",
+          "label": "original source key boundary/midpoint 276.499",
+          "lottieFrame": 276.499,
+          "sourceTimeMs": 4608.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00315",
+          "label": "original source key boundary/midpoint 276.998",
+          "lottieFrame": 276.998,
+          "sourceTimeMs": 4616.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00316",
+          "label": "original source key boundary/midpoint 276.999",
+          "lottieFrame": 276.999,
+          "sourceTimeMs": 4616.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00317",
+          "label": "original source key boundary/midpoint 277.499",
+          "lottieFrame": 277.499,
+          "sourceTimeMs": 4624.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00318",
+          "label": "original source key boundary/midpoint 277.999",
+          "lottieFrame": 277.999,
+          "sourceTimeMs": 4633.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00319",
+          "label": "original source key boundary/midpoint 278.499",
+          "lottieFrame": 278.499,
+          "sourceTimeMs": 4641.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00320",
+          "label": "original source key boundary/midpoint 278.998",
+          "lottieFrame": 278.998,
+          "sourceTimeMs": 4649.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00321",
+          "label": "original source key boundary/midpoint 278.999",
+          "lottieFrame": 278.999,
+          "sourceTimeMs": 4649.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00322",
+          "label": "original source key boundary/midpoint 279.499",
+          "lottieFrame": 279.499,
+          "sourceTimeMs": 4658.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00323",
+          "label": "original source key boundary/midpoint 279.999",
+          "lottieFrame": 279.999,
+          "sourceTimeMs": 4666.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00324",
+          "label": "original source key boundary/midpoint 280.499",
+          "lottieFrame": 280.499,
+          "sourceTimeMs": 4674.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00325",
+          "label": "original source key boundary/midpoint 280.998",
+          "lottieFrame": 280.998,
+          "sourceTimeMs": 4683.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00326",
+          "label": "original source key boundary/midpoint 280.999",
+          "lottieFrame": 280.999,
+          "sourceTimeMs": 4683.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00327",
+          "label": "original source key boundary/midpoint 281.499",
+          "lottieFrame": 281.499,
+          "sourceTimeMs": 4691.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00328",
+          "label": "original source key boundary/midpoint 281.999",
+          "lottieFrame": 281.999,
+          "sourceTimeMs": 4699.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00329",
+          "label": "original source key boundary/midpoint 282.499",
+          "lottieFrame": 282.499,
+          "sourceTimeMs": 4708.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00330",
+          "label": "original source key boundary/midpoint 282.998",
+          "lottieFrame": 282.998,
+          "sourceTimeMs": 4716.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00331",
+          "label": "original source key boundary/midpoint 282.999",
+          "lottieFrame": 282.999,
+          "sourceTimeMs": 4716.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00332",
+          "label": "original source key boundary/midpoint 283.499",
+          "lottieFrame": 283.499,
+          "sourceTimeMs": 4724.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00333",
+          "label": "original source key boundary/midpoint 283.999",
+          "lottieFrame": 283.999,
+          "sourceTimeMs": 4733.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00334",
+          "label": "original source key boundary/midpoint 284.499",
+          "lottieFrame": 284.499,
+          "sourceTimeMs": 4741.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00335",
+          "label": "original source key boundary/midpoint 284.998",
+          "lottieFrame": 284.998,
+          "sourceTimeMs": 4749.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00336",
+          "label": "original source key boundary/midpoint 284.999",
+          "lottieFrame": 284.999,
+          "sourceTimeMs": 4749.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00337",
+          "label": "original source key boundary/midpoint 285.499",
+          "lottieFrame": 285.499,
+          "sourceTimeMs": 4758.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00338",
+          "label": "original source key boundary/midpoint 285.999",
+          "lottieFrame": 285.999,
+          "sourceTimeMs": 4766.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00339",
+          "label": "original source key boundary/midpoint 286.998",
+          "lottieFrame": 286.998,
+          "sourceTimeMs": 4783.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00340",
+          "label": "original source key boundary/midpoint 287.999",
+          "lottieFrame": 287.999,
+          "sourceTimeMs": 4799.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00341",
+          "label": "original source key boundary/midpoint 288.998",
+          "lottieFrame": 288.998,
+          "sourceTimeMs": 4816.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00342",
+          "label": "original source key boundary/midpoint 289.999",
+          "lottieFrame": 289.999,
+          "sourceTimeMs": 4833.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00343",
+          "label": "original source key boundary/midpoint 290.998",
+          "lottieFrame": 290.998,
+          "sourceTimeMs": 4849.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00344",
+          "label": "original source key boundary/midpoint 291.999",
+          "lottieFrame": 291.999,
+          "sourceTimeMs": 4866.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00345",
+          "label": "original source key boundary/midpoint 292.998",
+          "lottieFrame": 292.998,
+          "sourceTimeMs": 4883.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00346",
+          "label": "original source key boundary/midpoint 293.999",
+          "lottieFrame": 293.999,
+          "sourceTimeMs": 4899.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00347",
+          "label": "original source key boundary/midpoint 294.998",
+          "lottieFrame": 294.998,
+          "sourceTimeMs": 4916.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00348",
+          "label": "original source key boundary/midpoint 295.999",
+          "lottieFrame": 295.999,
+          "sourceTimeMs": 4933.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00349",
+          "label": "original source key boundary/midpoint 296.998",
+          "lottieFrame": 296.998,
+          "sourceTimeMs": 4949.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00350",
+          "label": "original source key boundary/midpoint 297.999",
+          "lottieFrame": 297.999,
+          "sourceTimeMs": 4966.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00351",
+          "label": "original source key boundary/midpoint 298.998",
+          "lottieFrame": 298.998,
+          "sourceTimeMs": 4983.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00352",
+          "label": "original source key boundary/midpoint 300.998",
+          "lottieFrame": 300.998,
+          "sourceTimeMs": 5016.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00353",
+          "label": "original source key boundary/midpoint 302.998",
+          "lottieFrame": 302.998,
+          "sourceTimeMs": 5049.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00354",
+          "label": "original source key boundary/midpoint 304.998",
+          "lottieFrame": 304.998,
+          "sourceTimeMs": 5083.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00355",
+          "label": "original source key boundary/midpoint 306.998",
+          "lottieFrame": 306.998,
+          "sourceTimeMs": 5116.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00356",
+          "label": "original source key boundary/midpoint 308.998",
+          "lottieFrame": 308.998,
+          "sourceTimeMs": 5149.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00357",
+          "label": "original source key boundary/midpoint 309.9995",
+          "lottieFrame": 309.9995,
+          "sourceTimeMs": 5166.658333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00358",
+          "label": "original source key boundary/midpoint 310.998",
+          "lottieFrame": 310.998,
+          "sourceTimeMs": 5183.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00359",
+          "label": "original source key boundary/midpoint 311.999",
+          "lottieFrame": 311.999,
+          "sourceTimeMs": 5199.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00360",
+          "label": "original source key boundary/midpoint 312.998",
+          "lottieFrame": 312.998,
+          "sourceTimeMs": 5216.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00361",
+          "label": "original source key boundary/midpoint 313.999",
+          "lottieFrame": 313.999,
+          "sourceTimeMs": 5233.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00362",
+          "label": "original source key boundary/midpoint 314.998",
+          "lottieFrame": 314.998,
+          "sourceTimeMs": 5249.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00363",
+          "label": "original source key boundary/midpoint 315.999",
+          "lottieFrame": 315.999,
+          "sourceTimeMs": 5266.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00364",
+          "label": "original source key boundary/midpoint 316.998",
+          "lottieFrame": 316.998,
+          "sourceTimeMs": 5283.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00365",
+          "label": "original source key boundary/midpoint 317.5",
+          "lottieFrame": 317.5,
+          "sourceTimeMs": 5291.666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00366",
+          "label": "original source key boundary/midpoint 317.999",
+          "lottieFrame": 317.999,
+          "sourceTimeMs": 5299.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00367",
+          "label": "original source key boundary/midpoint 318.998",
+          "lottieFrame": 318.998,
+          "sourceTimeMs": 5316.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00368",
+          "label": "original source key boundary/midpoint 319.999",
+          "lottieFrame": 319.999,
+          "sourceTimeMs": 5333.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00369",
+          "label": "original source key boundary/midpoint 320.998",
+          "lottieFrame": 320.998,
+          "sourceTimeMs": 5349.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00370",
+          "label": "original source key boundary/midpoint 321.999",
+          "lottieFrame": 321.999,
+          "sourceTimeMs": 5366.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00371",
+          "label": "original source key boundary/midpoint 322.998",
+          "lottieFrame": 322.998,
+          "sourceTimeMs": 5383.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00372",
+          "label": "original source key boundary/midpoint 323.999",
+          "lottieFrame": 323.999,
+          "sourceTimeMs": 5399.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00373",
+          "label": "original source key boundary/midpoint 324.998",
+          "lottieFrame": 324.998,
+          "sourceTimeMs": 5416.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00374",
+          "label": "original source key boundary/midpoint 325.999",
+          "lottieFrame": 325.999,
+          "sourceTimeMs": 5433.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00375",
+          "label": "original source key boundary/midpoint 326.998",
+          "lottieFrame": 326.998,
+          "sourceTimeMs": 5449.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00376",
+          "label": "original source key boundary/midpoint 327.999",
+          "lottieFrame": 327.999,
+          "sourceTimeMs": 5466.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00377",
+          "label": "original source key boundary/midpoint 328.998",
+          "lottieFrame": 328.998,
+          "sourceTimeMs": 5483.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00378",
+          "label": "original source key boundary/midpoint 329.999",
+          "lottieFrame": 329.999,
+          "sourceTimeMs": 5499.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00379",
+          "label": "original source key boundary/midpoint 330.998",
+          "lottieFrame": 330.998,
+          "sourceTimeMs": 5516.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00380",
+          "label": "original source key boundary/midpoint 331.999",
+          "lottieFrame": 331.999,
+          "sourceTimeMs": 5533.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00381",
+          "label": "original source key boundary/midpoint 332.998",
+          "lottieFrame": 332.998,
+          "sourceTimeMs": 5549.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00382",
+          "label": "original source key boundary/midpoint 333.999",
+          "lottieFrame": 333.999,
+          "sourceTimeMs": 5566.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00383",
+          "label": "original source key boundary/midpoint 334.998",
+          "lottieFrame": 334.998,
+          "sourceTimeMs": 5583.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00384",
+          "label": "original source key boundary/midpoint 335.999",
+          "lottieFrame": 335.999,
+          "sourceTimeMs": 5599.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00385",
+          "label": "original source key boundary/midpoint 336.998",
+          "lottieFrame": 336.998,
+          "sourceTimeMs": 5616.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00386",
+          "label": "original source key boundary/midpoint 337.999",
+          "lottieFrame": 337.999,
+          "sourceTimeMs": 5633.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00387",
+          "label": "original source key boundary/midpoint 338.998",
+          "lottieFrame": 338.998,
+          "sourceTimeMs": 5649.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00388",
+          "label": "original source key boundary/midpoint 339.999",
+          "lottieFrame": 339.999,
+          "sourceTimeMs": 5666.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00389",
+          "label": "original source key boundary/midpoint 340.998",
+          "lottieFrame": 340.998,
+          "sourceTimeMs": 5683.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00390",
+          "label": "original source key boundary/midpoint 341.999",
+          "lottieFrame": 341.999,
+          "sourceTimeMs": 5699.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00391",
+          "label": "original source key boundary/midpoint 342.998",
+          "lottieFrame": 342.998,
+          "sourceTimeMs": 5716.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00392",
+          "label": "original source key boundary/midpoint 343.999",
+          "lottieFrame": 343.999,
+          "sourceTimeMs": 5733.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00393",
+          "label": "original source key boundary/midpoint 344.998",
+          "lottieFrame": 344.998,
+          "sourceTimeMs": 5749.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00394",
+          "label": "original source key boundary/midpoint 345.999",
+          "lottieFrame": 345.999,
+          "sourceTimeMs": 5766.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00395",
+          "label": "original source key boundary/midpoint 346.998",
+          "lottieFrame": 346.998,
+          "sourceTimeMs": 5783.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00396",
+          "label": "original source key boundary/midpoint 347.999",
+          "lottieFrame": 347.999,
+          "sourceTimeMs": 5799.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00397",
+          "label": "original source key boundary/midpoint 348.998",
+          "lottieFrame": 348.998,
+          "sourceTimeMs": 5816.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00398",
+          "label": "original source key boundary/midpoint 349.999",
+          "lottieFrame": 349.999,
+          "sourceTimeMs": 5833.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00399",
+          "label": "original source key boundary/midpoint 351.999",
+          "lottieFrame": 351.999,
+          "sourceTimeMs": 5866.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00400",
+          "label": "original source key boundary/midpoint 353.999",
+          "lottieFrame": 353.999,
+          "sourceTimeMs": 5899.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00401",
+          "label": "original source key boundary/midpoint 355.999",
+          "lottieFrame": 355.999,
+          "sourceTimeMs": 5933.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00402",
+          "label": "original source key boundary/midpoint 357.999",
+          "lottieFrame": 357.999,
+          "sourceTimeMs": 5966.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00403",
+          "label": "original source key boundary/midpoint 359.999",
+          "lottieFrame": 359.999,
+          "sourceTimeMs": 5999.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00404",
+          "label": "original source key boundary/midpoint 370.9995",
+          "lottieFrame": 370.9995,
+          "sourceTimeMs": 6183.325,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00405",
+          "label": "original source key boundary/midpoint 372.999",
+          "lottieFrame": 372.999,
+          "sourceTimeMs": 6216.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00406",
+          "label": "original source key boundary/midpoint 374.999",
+          "lottieFrame": 374.999,
+          "sourceTimeMs": 6249.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00407",
+          "label": "original source key boundary/midpoint 376.999",
+          "lottieFrame": 376.999,
+          "sourceTimeMs": 6283.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00408",
+          "label": "original source key boundary/midpoint 378.5",
+          "lottieFrame": 378.5,
+          "sourceTimeMs": 6308.333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00409",
+          "label": "original source key boundary/midpoint 378.999",
+          "lottieFrame": 378.999,
+          "sourceTimeMs": 6316.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00410",
+          "label": "original source key boundary/midpoint 380.999",
+          "lottieFrame": 380.999,
+          "sourceTimeMs": 6349.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00411",
+          "label": "original source key boundary/midpoint 382.999",
+          "lottieFrame": 382.999,
+          "sourceTimeMs": 6383.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00412",
+          "label": "original source key boundary/midpoint 384.999",
+          "lottieFrame": 384.999,
+          "sourceTimeMs": 6416.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00413",
+          "label": "original source key boundary/midpoint 386.999",
+          "lottieFrame": 386.999,
+          "sourceTimeMs": 6449.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00414",
+          "label": "original source key boundary/midpoint 388.999",
+          "lottieFrame": 388.999,
+          "sourceTimeMs": 6483.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00415",
+          "label": "original source key boundary/midpoint 390.999",
+          "lottieFrame": 390.999,
+          "sourceTimeMs": 6516.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00416",
+          "label": "original source key boundary/midpoint 392.999",
+          "lottieFrame": 392.999,
+          "sourceTimeMs": 6549.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00417",
+          "label": "original source key boundary/midpoint 394.999",
+          "lottieFrame": 394.999,
+          "sourceTimeMs": 6583.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00418",
+          "label": "original source key boundary/midpoint 396.999",
+          "lottieFrame": 396.999,
+          "sourceTimeMs": 6616.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00419",
+          "label": "original source key boundary/midpoint 398.999",
+          "lottieFrame": 398.999,
+          "sourceTimeMs": 6649.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00420",
+          "label": "original source key boundary/midpoint 400.999",
+          "lottieFrame": 400.999,
+          "sourceTimeMs": 6683.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00421",
+          "label": "original source key boundary/midpoint 402.999",
+          "lottieFrame": 402.999,
+          "sourceTimeMs": 6716.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00422",
+          "label": "original source key boundary/midpoint 404.999",
+          "lottieFrame": 404.999,
+          "sourceTimeMs": 6749.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00423",
+          "label": "original source key boundary/midpoint 406.999",
+          "lottieFrame": 406.999,
+          "sourceTimeMs": 6783.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00424",
+          "label": "original source key boundary/midpoint 408.999",
+          "lottieFrame": 408.999,
+          "sourceTimeMs": 6816.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00425",
+          "label": "original source key boundary/midpoint 410.999",
+          "lottieFrame": 410.999,
+          "sourceTimeMs": 6849.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00426",
+          "label": "original source key boundary/midpoint 412.999",
+          "lottieFrame": 412.999,
+          "sourceTimeMs": 6883.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00427",
+          "label": "original source key boundary/midpoint 414.999",
+          "lottieFrame": 414.999,
+          "sourceTimeMs": 6916.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00428",
+          "label": "original source key boundary/midpoint 416.999",
+          "lottieFrame": 416.999,
+          "sourceTimeMs": 6949.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00429",
+          "label": "original source key boundary/midpoint 418.999",
+          "lottieFrame": 418.999,
+          "sourceTimeMs": 6983.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00430",
+          "label": "original source key boundary/midpoint 420.999",
+          "lottieFrame": 420.999,
+          "sourceTimeMs": 7016.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00431",
+          "label": "original source key boundary/midpoint 422.999",
+          "lottieFrame": 422.999,
+          "sourceTimeMs": 7049.983333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00432",
+          "label": "original source key boundary/midpoint 424.999",
+          "lottieFrame": 424.999,
+          "sourceTimeMs": 7083.316666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00433",
+          "label": "original source key boundary/midpoint 426.999",
+          "lottieFrame": 426.999,
+          "sourceTimeMs": 7116.65,
+          "scheduled": false
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-04",
+      "sourcePath": "fixtures/corpus/lottie/LOT-04.json",
+      "sourceFrames": [
+        66.9995,
+        81.999,
+        93.499,
+        104.999,
+        119.999,
+        134.999,
+        145.999,
+        146.499,
+        157.999,
+        173.499,
+        188.999,
+        199.49849999999998,
+        209.998,
+        224.998,
+        239.998,
+        250.998,
+        261.998,
+        263.498,
+        276.998,
+        291.998,
+        303.4975,
+        304.498,
+        314.997,
+        329.997,
+        344.997,
+        355.99699999999996,
+        356.997,
+        368.997,
+        383.497,
+        397.997,
+        408.49699999999996,
+        408.997,
+        419.997,
+        434.99649999999997,
+        449.996,
+        460.996,
+        471.996,
+        486.996,
+        501.996,
+        513.496,
+        513.996,
+        524.996,
+        539.996,
+        554.996,
+        565.9955,
+        576.995,
+        591.995,
+        606.995,
+        618.495,
+        629.995,
+        644.995,
+        659.995
+      ],
+      "samples": [
+        {
+          "id": "source_boundary_00000",
+          "label": "original source key boundary/midpoint 66.9995",
+          "lottieFrame": 66.9995,
+          "sourceTimeMs": 1116.6583333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00001",
+          "label": "original source key boundary/midpoint 81.999",
+          "lottieFrame": 81.999,
+          "sourceTimeMs": 1366.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00002",
+          "label": "original source key boundary/midpoint 93.499",
+          "lottieFrame": 93.499,
+          "sourceTimeMs": 1558.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00003",
+          "label": "original source key boundary/midpoint 104.999",
+          "lottieFrame": 104.999,
+          "sourceTimeMs": 1749.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00004",
+          "label": "original source key boundary/midpoint 119.999",
+          "lottieFrame": 119.999,
+          "sourceTimeMs": 1999.9833333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00005",
+          "label": "original source key boundary/midpoint 134.999",
+          "lottieFrame": 134.999,
+          "sourceTimeMs": 2249.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00006",
+          "label": "original source key boundary/midpoint 145.999",
+          "lottieFrame": 145.999,
+          "sourceTimeMs": 2433.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00007",
+          "label": "original source key boundary/midpoint 146.499",
+          "lottieFrame": 146.499,
+          "sourceTimeMs": 2441.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00008",
+          "label": "original source key boundary/midpoint 157.999",
+          "lottieFrame": 157.999,
+          "sourceTimeMs": 2633.3166666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00009",
+          "label": "original source key boundary/midpoint 173.499",
+          "lottieFrame": 173.499,
+          "sourceTimeMs": 2891.65,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00010",
+          "label": "original source key boundary/midpoint 188.999",
+          "lottieFrame": 188.999,
+          "sourceTimeMs": 3149.983333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00011",
+          "label": "original source key boundary/midpoint 199.49849999999998",
+          "lottieFrame": 199.49849999999998,
+          "sourceTimeMs": 3324.9749999999995,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00012",
+          "label": "original source key boundary/midpoint 209.998",
+          "lottieFrame": 209.998,
+          "sourceTimeMs": 3499.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00013",
+          "label": "original source key boundary/midpoint 224.998",
+          "lottieFrame": 224.998,
+          "sourceTimeMs": 3749.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00014",
+          "label": "original source key boundary/midpoint 239.998",
+          "lottieFrame": 239.998,
+          "sourceTimeMs": 3999.9666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00015",
+          "label": "original source key boundary/midpoint 250.998",
+          "lottieFrame": 250.998,
+          "sourceTimeMs": 4183.3,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00016",
+          "label": "original source key boundary/midpoint 261.998",
+          "lottieFrame": 261.998,
+          "sourceTimeMs": 4366.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00017",
+          "label": "original source key boundary/midpoint 263.498",
+          "lottieFrame": 263.498,
+          "sourceTimeMs": 4391.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00018",
+          "label": "original source key boundary/midpoint 276.998",
+          "lottieFrame": 276.998,
+          "sourceTimeMs": 4616.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00019",
+          "label": "original source key boundary/midpoint 291.998",
+          "lottieFrame": 291.998,
+          "sourceTimeMs": 4866.633333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00020",
+          "label": "original source key boundary/midpoint 303.4975",
+          "lottieFrame": 303.4975,
+          "sourceTimeMs": 5058.291666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00021",
+          "label": "original source key boundary/midpoint 304.498",
+          "lottieFrame": 304.498,
+          "sourceTimeMs": 5074.966666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00022",
+          "label": "original source key boundary/midpoint 314.997",
+          "lottieFrame": 314.997,
+          "sourceTimeMs": 5249.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00023",
+          "label": "original source key boundary/midpoint 329.997",
+          "lottieFrame": 329.997,
+          "sourceTimeMs": 5499.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00024",
+          "label": "original source key boundary/midpoint 344.997",
+          "lottieFrame": 344.997,
+          "sourceTimeMs": 5749.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00025",
+          "label": "original source key boundary/midpoint 355.99699999999996",
+          "lottieFrame": 355.99699999999996,
+          "sourceTimeMs": 5933.283333333332,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00026",
+          "label": "original source key boundary/midpoint 356.997",
+          "lottieFrame": 356.997,
+          "sourceTimeMs": 5949.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00027",
+          "label": "original source key boundary/midpoint 368.997",
+          "lottieFrame": 368.997,
+          "sourceTimeMs": 6149.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00028",
+          "label": "original source key boundary/midpoint 383.497",
+          "lottieFrame": 383.497,
+          "sourceTimeMs": 6391.616666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00029",
+          "label": "original source key boundary/midpoint 397.997",
+          "lottieFrame": 397.997,
+          "sourceTimeMs": 6633.283333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00030",
+          "label": "original source key boundary/midpoint 408.49699999999996",
+          "lottieFrame": 408.49699999999996,
+          "sourceTimeMs": 6808.283333333332,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00031",
+          "label": "original source key boundary/midpoint 408.997",
+          "lottieFrame": 408.997,
+          "sourceTimeMs": 6816.616666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00032",
+          "label": "original source key boundary/midpoint 419.997",
+          "lottieFrame": 419.997,
+          "sourceTimeMs": 6999.95,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00033",
+          "label": "original source key boundary/midpoint 434.99649999999997",
+          "lottieFrame": 434.99649999999997,
+          "sourceTimeMs": 7249.941666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00034",
+          "label": "original source key boundary/midpoint 449.996",
+          "lottieFrame": 449.996,
+          "sourceTimeMs": 7499.933333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00035",
+          "label": "original source key boundary/midpoint 460.996",
+          "lottieFrame": 460.996,
+          "sourceTimeMs": 7683.266666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00036",
+          "label": "original source key boundary/midpoint 471.996",
+          "lottieFrame": 471.996,
+          "sourceTimeMs": 7866.6,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00037",
+          "label": "original source key boundary/midpoint 486.996",
+          "lottieFrame": 486.996,
+          "sourceTimeMs": 8116.6,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00038",
+          "label": "original source key boundary/midpoint 501.996",
+          "lottieFrame": 501.996,
+          "sourceTimeMs": 8366.6,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00039",
+          "label": "original source key boundary/midpoint 513.496",
+          "lottieFrame": 513.496,
+          "sourceTimeMs": 8558.266666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00040",
+          "label": "original source key boundary/midpoint 513.996",
+          "lottieFrame": 513.996,
+          "sourceTimeMs": 8566.6,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00041",
+          "label": "original source key boundary/midpoint 524.996",
+          "lottieFrame": 524.996,
+          "sourceTimeMs": 8749.933333333332,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00042",
+          "label": "original source key boundary/midpoint 539.996",
+          "lottieFrame": 539.996,
+          "sourceTimeMs": 8999.933333333332,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00043",
+          "label": "original source key boundary/midpoint 554.996",
+          "lottieFrame": 554.996,
+          "sourceTimeMs": 9249.933333333332,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00044",
+          "label": "original source key boundary/midpoint 565.9955",
+          "lottieFrame": 565.9955,
+          "sourceTimeMs": 9433.258333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00045",
+          "label": "original source key boundary/midpoint 576.995",
+          "lottieFrame": 576.995,
+          "sourceTimeMs": 9616.583333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00046",
+          "label": "original source key boundary/midpoint 591.995",
+          "lottieFrame": 591.995,
+          "sourceTimeMs": 9866.583333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00047",
+          "label": "original source key boundary/midpoint 606.995",
+          "lottieFrame": 606.995,
+          "sourceTimeMs": 10116.583333333334,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00048",
+          "label": "original source key boundary/midpoint 618.495",
+          "lottieFrame": 618.495,
+          "sourceTimeMs": 10308.25,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00049",
+          "label": "original source key boundary/midpoint 629.995",
+          "lottieFrame": 629.995,
+          "sourceTimeMs": 10499.916666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00050",
+          "label": "original source key boundary/midpoint 644.995",
+          "lottieFrame": 644.995,
+          "sourceTimeMs": 10749.916666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00051",
+          "label": "original source key boundary/midpoint 659.995",
+          "lottieFrame": 659.995,
+          "sourceTimeMs": 10999.916666666666,
+          "scheduled": false
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-05",
+      "sourcePath": "fixtures/corpus/lottie/LOT-05.json",
+      "sourceFrames": [
+        29.5,
+        89.5,
+        117.5,
+        210.5
+      ],
+      "samples": [
+        {
+          "id": "source_boundary_00000",
+          "label": "original source key boundary/midpoint 29.5",
+          "lottieFrame": 29.5,
+          "sourceTimeMs": 491.6666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00001",
+          "label": "original source key boundary/midpoint 89.5",
+          "lottieFrame": 89.5,
+          "sourceTimeMs": 1491.6666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00002",
+          "label": "original source key boundary/midpoint 117.5",
+          "lottieFrame": 117.5,
+          "sourceTimeMs": 1958.3333333333333,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00003",
+          "label": "original source key boundary/midpoint 210.5",
+          "lottieFrame": 210.5,
+          "sourceTimeMs": 3508.3333333333335,
+          "scheduled": false
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-06",
+      "sourcePath": "fixtures/corpus/lottie/LOT-06.json",
+      "sourceFrames": [
+        1.5,
+        2.5,
+        3.5,
+        4.5,
+        5.5,
+        7.5,
+        8.5,
+        13.5,
+        14.5,
+        16.5,
+        17.5,
+        18.5,
+        19.5,
+        20.5
+      ],
+      "samples": [
+        {
+          "id": "source_boundary_00000",
+          "label": "original source key boundary/midpoint 1.5",
+          "lottieFrame": 1.5,
+          "sourceTimeMs": 60.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00001",
+          "label": "original source key boundary/midpoint 2.5",
+          "lottieFrame": 2.5,
+          "sourceTimeMs": 100.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00002",
+          "label": "original source key boundary/midpoint 3.5",
+          "lottieFrame": 3.5,
+          "sourceTimeMs": 140.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00003",
+          "label": "original source key boundary/midpoint 4.5",
+          "lottieFrame": 4.5,
+          "sourceTimeMs": 180.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00004",
+          "label": "original source key boundary/midpoint 5.5",
+          "lottieFrame": 5.5,
+          "sourceTimeMs": 220.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00005",
+          "label": "original source key boundary/midpoint 7.5",
+          "lottieFrame": 7.5,
+          "sourceTimeMs": 300.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00006",
+          "label": "original source key boundary/midpoint 8.5",
+          "lottieFrame": 8.5,
+          "sourceTimeMs": 340.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00007",
+          "label": "original source key boundary/midpoint 13.5",
+          "lottieFrame": 13.5,
+          "sourceTimeMs": 540.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00008",
+          "label": "original source key boundary/midpoint 14.5",
+          "lottieFrame": 14.5,
+          "sourceTimeMs": 580.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00009",
+          "label": "original source key boundary/midpoint 16.5",
+          "lottieFrame": 16.5,
+          "sourceTimeMs": 660.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00010",
+          "label": "original source key boundary/midpoint 17.5",
+          "lottieFrame": 17.5,
+          "sourceTimeMs": 700.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00011",
+          "label": "original source key boundary/midpoint 18.5",
+          "lottieFrame": 18.5,
+          "sourceTimeMs": 740.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00012",
+          "label": "original source key boundary/midpoint 19.5",
+          "lottieFrame": 19.5,
+          "sourceTimeMs": 780.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00013",
+          "label": "original source key boundary/midpoint 20.5",
+          "lottieFrame": 20.5,
+          "sourceTimeMs": 820.0,
+          "scheduled": false
+        }
+      ]
+    },
+    {
+      "fixture": "LOT-07",
+      "sourcePath": "fixtures/corpus/lottie/LOT-07.json",
+      "sourceFrames": [
+        31.5,
+        37.316,
+        37.5,
+        45.5,
+        54.5,
+        71.5,
+        85.5,
+        96.5,
+        97.5,
+        98.5,
+        101.5,
+        103.5,
+        105.5,
+        112.31640625,
+        112.5,
+        114.5,
+        116.5,
+        120.5,
+        126.5,
+        133.5,
+        142.5,
+        149.6328125
+      ],
+      "samples": [
+        {
+          "id": "source_boundary_00000",
+          "label": "original source key boundary/midpoint 31.5",
+          "lottieFrame": 31.5,
+          "sourceTimeMs": 1050.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00001",
+          "label": "original source key boundary/midpoint 37.316",
+          "lottieFrame": 37.316,
+          "sourceTimeMs": 1243.8666666666666,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00002",
+          "label": "original source key boundary/midpoint 37.5",
+          "lottieFrame": 37.5,
+          "sourceTimeMs": 1250.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00003",
+          "label": "original source key boundary/midpoint 45.5",
+          "lottieFrame": 45.5,
+          "sourceTimeMs": 1516.6666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00004",
+          "label": "original source key boundary/midpoint 54.5",
+          "lottieFrame": 54.5,
+          "sourceTimeMs": 1816.6666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00005",
+          "label": "original source key boundary/midpoint 71.5",
+          "lottieFrame": 71.5,
+          "sourceTimeMs": 2383.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00006",
+          "label": "original source key boundary/midpoint 85.5",
+          "lottieFrame": 85.5,
+          "sourceTimeMs": 2850.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00007",
+          "label": "original source key boundary/midpoint 96.5",
+          "lottieFrame": 96.5,
+          "sourceTimeMs": 3216.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00008",
+          "label": "original source key boundary/midpoint 97.5",
+          "lottieFrame": 97.5,
+          "sourceTimeMs": 3250.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00009",
+          "label": "original source key boundary/midpoint 98.5",
+          "lottieFrame": 98.5,
+          "sourceTimeMs": 3283.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00010",
+          "label": "original source key boundary/midpoint 101.5",
+          "lottieFrame": 101.5,
+          "sourceTimeMs": 3383.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00011",
+          "label": "original source key boundary/midpoint 103.5",
+          "lottieFrame": 103.5,
+          "sourceTimeMs": 3450.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00012",
+          "label": "original source key boundary/midpoint 105.5",
+          "lottieFrame": 105.5,
+          "sourceTimeMs": 3516.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00013",
+          "label": "original source key boundary/midpoint 112.31640625",
+          "lottieFrame": 112.31640625,
+          "sourceTimeMs": 3743.8802083333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00014",
+          "label": "original source key boundary/midpoint 112.5",
+          "lottieFrame": 112.5,
+          "sourceTimeMs": 3750.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00015",
+          "label": "original source key boundary/midpoint 114.5",
+          "lottieFrame": 114.5,
+          "sourceTimeMs": 3816.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00016",
+          "label": "original source key boundary/midpoint 116.5",
+          "lottieFrame": 116.5,
+          "sourceTimeMs": 3883.3333333333335,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00017",
+          "label": "original source key boundary/midpoint 120.5",
+          "lottieFrame": 120.5,
+          "sourceTimeMs": 4016.6666666666665,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00018",
+          "label": "original source key boundary/midpoint 126.5",
+          "lottieFrame": 126.5,
+          "sourceTimeMs": 4216.666666666667,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00019",
+          "label": "original source key boundary/midpoint 133.5",
+          "lottieFrame": 133.5,
+          "sourceTimeMs": 4450.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00020",
+          "label": "original source key boundary/midpoint 142.5",
+          "lottieFrame": 142.5,
+          "sourceTimeMs": 4750.0,
+          "scheduled": false
+        },
+        {
+          "id": "source_boundary_00021",
+          "label": "original source key boundary/midpoint 149.6328125",
+          "lottieFrame": 149.6328125,
+          "sourceTimeMs": 4987.760416666667,
+          "scheduled": false
+        }
+      ]
+    }
+  ]
+}

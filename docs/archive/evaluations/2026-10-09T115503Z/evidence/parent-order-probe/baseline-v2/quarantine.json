@@ -1,0 +1,6 @@
+{
+  "case": "precomp",
+  "status": "QUARANTINED",
+  "reason": "Missing precomp layer w/h caused uniformly blank reference; interleaved case rendered valid red foreground",
+  "replacement": "../baseline-v3"
+}

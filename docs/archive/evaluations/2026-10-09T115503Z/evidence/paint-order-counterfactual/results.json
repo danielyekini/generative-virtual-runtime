@@ -1,0 +1,774 @@
+{
+  "method": "Isolated native-only source global paint-order counterfactual; references are exact saved source frames from active pinned full-window run. Original native raster must match before attributing changes. Source array order replaces hierarchy paint order; geometry/matrices/styles are untouched. No shared implementation changed.",
+  "output": [
+    {
+      "mode": "original",
+      "id": "frame_00003",
+      "originalMatchesCapture": true,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.0034,
+        "maxLocalFractionBeyond": 0.3547486033519553,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 160,
+            "y": 128,
+            "hot": 34,
+            "foreground": 285,
+            "fraction": 0.11929824561403508
+          },
+          {
+            "x": 192,
+            "y": 128,
+            "hot": 68,
+            "foreground": 365,
+            "fraction": 0.1863013698630137
+          },
+          {
+            "x": 160,
+            "y": 160,
+            "hot": 212,
+            "foreground": 752,
+            "fraction": 0.28191489361702127
+          },
+          {
+            "x": 192,
+            "y": 160,
+            "hot": 187,
+            "foreground": 862,
+            "fraction": 0.21693735498839908
+          },
+          {
+            "x": 160,
+            "y": 192,
+            "hot": 23,
+            "foreground": 183,
+            "fraction": 0.12568306010928962
+          },
+          {
+            "x": 176,
+            "y": 144,
+            "hot": 254,
+            "foreground": 716,
+            "fraction": 0.3547486033519553
+          },
+          {
+            "x": 176,
+            "y": 176,
+            "hot": 210,
+            "foreground": 758,
+            "fraction": 0.2770448548812665
+          }
+        ]
+      }
+    },
+    {
+      "mode": "original",
+      "id": "frame_00015",
+      "originalMatchesCapture": true,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.00225625,
+        "maxLocalFractionBeyond": 0.3735632183908046,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 192,
+            "y": 32,
+            "hot": 24,
+            "foreground": 214,
+            "fraction": 0.11214953271028037
+          },
+          {
+            "x": 192,
+            "y": 64,
+            "hot": 20,
+            "foreground": 187,
+            "fraction": 0.10695187165775401
+          },
+          {
+            "x": 64,
+            "y": 64,
+            "hot": 8,
+            "foreground": 67,
+            "fraction": 0.11940298507462686
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "hot": 17,
+            "foreground": 76,
+            "fraction": 0.2236842105263158
+          },
+          {
+            "x": 256,
+            "y": 128,
+            "hot": 7,
+            "foreground": 55,
+            "fraction": 0.109375
+          },
+          {
+            "x": 96,
+            "y": 160,
+            "hot": 27,
+            "foreground": 152,
+            "fraction": 0.17763157894736842
+          },
+          {
+            "x": 128,
+            "y": 160,
+            "hot": 7,
+            "foreground": 63,
+            "fraction": 0.109375
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 9,
+            "foreground": 19,
+            "fraction": 0.140625
+          },
+          {
+            "x": 160,
+            "y": 224,
+            "hot": 16,
+            "foreground": 56,
+            "fraction": 0.25
+          },
+          {
+            "x": 160,
+            "y": 256,
+            "hot": 54,
+            "foreground": 219,
+            "fraction": 0.2465753424657534
+          },
+          {
+            "x": 224,
+            "y": 256,
+            "hot": 18,
+            "foreground": 136,
+            "fraction": 0.1323529411764706
+          },
+          {
+            "x": 208,
+            "y": 16,
+            "hot": 26,
+            "foreground": 140,
+            "fraction": 0.18571428571428572
+          },
+          {
+            "x": 304,
+            "y": 48,
+            "hot": 8,
+            "foreground": 51,
+            "fraction": 0.125
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "hot": 7,
+            "foreground": 62,
+            "fraction": 0.109375
+          },
+          {
+            "x": 272,
+            "y": 144,
+            "hot": 22,
+            "foreground": 154,
+            "fraction": 0.14285714285714285
+          },
+          {
+            "x": 80,
+            "y": 144,
+            "hot": 26,
+            "foreground": 128,
+            "fraction": 0.203125
+          },
+          {
+            "x": 176,
+            "y": 240,
+            "hot": 65,
+            "foreground": 174,
+            "fraction": 0.3735632183908046
+          },
+          {
+            "x": 240,
+            "y": 240,
+            "hot": 19,
+            "foreground": 73,
+            "fraction": 0.2602739726027397
+          },
+          {
+            "x": 208,
+            "y": 272,
+            "hot": 7,
+            "foreground": 49,
+            "fraction": 0.109375
+          }
+        ]
+      }
+    },
+    {
+      "mode": "original",
+      "id": "frame_00026",
+      "originalMatchesCapture": true,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.00126875,
+        "maxLocalFractionBeyond": 0.38144329896907214,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 352,
+            "y": 0,
+            "hot": 8,
+            "foreground": 59,
+            "fraction": 0.125
+          },
+          {
+            "x": 128,
+            "y": 32,
+            "hot": 8,
+            "foreground": 71,
+            "fraction": 0.11267605633802817
+          },
+          {
+            "x": 0,
+            "y": 96,
+            "hot": 7,
+            "foreground": 20,
+            "fraction": 0.109375
+          },
+          {
+            "x": 160,
+            "y": 192,
+            "hot": 19,
+            "foreground": 71,
+            "fraction": 0.2676056338028169
+          },
+          {
+            "x": 128,
+            "y": 224,
+            "hot": 12,
+            "foreground": 40,
+            "fraction": 0.1875
+          },
+          {
+            "x": 160,
+            "y": 224,
+            "hot": 11,
+            "foreground": 34,
+            "fraction": 0.171875
+          },
+          {
+            "x": 384,
+            "y": 224,
+            "hot": 7,
+            "foreground": 38,
+            "fraction": 0.109375
+          },
+          {
+            "x": 192,
+            "y": 320,
+            "hot": 7,
+            "foreground": 50,
+            "fraction": 0.109375
+          },
+          {
+            "x": 336,
+            "y": 16,
+            "hot": 9,
+            "foreground": 57,
+            "fraction": 0.140625
+          },
+          {
+            "x": 176,
+            "y": 16,
+            "hot": 11,
+            "foreground": 98,
+            "fraction": 0.11224489795918367
+          },
+          {
+            "x": 144,
+            "y": 16,
+            "hot": 7,
+            "foreground": 56,
+            "fraction": 0.109375
+          },
+          {
+            "x": 208,
+            "y": 16,
+            "hot": 8,
+            "foreground": 49,
+            "fraction": 0.125
+          },
+          {
+            "x": 272,
+            "y": 80,
+            "hot": 12,
+            "foreground": 90,
+            "fraction": 0.13333333333333333
+          },
+          {
+            "x": -16,
+            "y": 112,
+            "hot": 7,
+            "foreground": 46,
+            "fraction": 0.109375
+          },
+          {
+            "x": 368,
+            "y": 208,
+            "hot": 8,
+            "foreground": 71,
+            "fraction": 0.11267605633802817
+          },
+          {
+            "x": 144,
+            "y": 208,
+            "hot": 37,
+            "foreground": 97,
+            "fraction": 0.38144329896907214
+          }
+        ]
+      }
+    },
+    {
+      "mode": "original",
+      "id": "frame_00030",
+      "originalMatchesCapture": true,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.0009625,
+        "maxLocalFractionBeyond": 0.26666666666666666,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 32,
+            "hot": 8,
+            "foreground": 49,
+            "fraction": 0.125
+          },
+          {
+            "x": 288,
+            "y": 96,
+            "hot": 8,
+            "foreground": 68,
+            "fraction": 0.11764705882352941
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 15,
+            "foreground": 121,
+            "fraction": 0.12396694214876033
+          },
+          {
+            "x": 128,
+            "y": 224,
+            "hot": 26,
+            "foreground": 138,
+            "fraction": 0.18840579710144928
+          },
+          {
+            "x": 288,
+            "y": 288,
+            "hot": 8,
+            "foreground": 19,
+            "fraction": 0.125
+          },
+          {
+            "x": 192,
+            "y": 320,
+            "hot": 7,
+            "foreground": 67,
+            "fraction": 0.1044776119402985
+          },
+          {
+            "x": 336,
+            "y": 48,
+            "hot": 8,
+            "foreground": 49,
+            "fraction": 0.125
+          },
+          {
+            "x": 304,
+            "y": 112,
+            "hot": 7,
+            "foreground": 50,
+            "fraction": 0.109375
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 11,
+            "foreground": 73,
+            "fraction": 0.1506849315068493
+          },
+          {
+            "x": 144,
+            "y": 208,
+            "hot": 24,
+            "foreground": 90,
+            "fraction": 0.26666666666666666
+          },
+          {
+            "x": 304,
+            "y": 272,
+            "hot": 8,
+            "foreground": 19,
+            "fraction": 0.125
+          }
+        ]
+      }
+    },
+    {
+      "mode": "original",
+      "id": "frame_00060",
+      "originalMatchesCapture": true,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.0003,
+        "maxLocalFractionBeyond": 0.125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 208,
+            "y": 176,
+            "hot": 8,
+            "foreground": 44,
+            "fraction": 0.125
+          }
+        ]
+      }
+    },
+    {
+      "mode": "dense",
+      "id": "frame_00003",
+      "originalMatchesCapture": null,
+      "gate": {
+        "comparable": true,
+        "passed": true,
+        "fractionBeyond": 0.00055,
+        "maxLocalFractionBeyond": 0.0546448087431694,
+        "alphaFailures": 0,
+        "failedRegions": []
+      }
+    },
+    {
+      "mode": "dense",
+      "id": "frame_00015",
+      "originalMatchesCapture": null,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.00149375,
+        "maxLocalFractionBeyond": 0.2602739726027397,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 192,
+            "y": 64,
+            "hot": 20,
+            "foreground": 187,
+            "fraction": 0.10695187165775401
+          },
+          {
+            "x": 64,
+            "y": 64,
+            "hot": 8,
+            "foreground": 67,
+            "fraction": 0.11940298507462686
+          },
+          {
+            "x": 96,
+            "y": 128,
+            "hot": 8,
+            "foreground": 76,
+            "fraction": 0.10526315789473684
+          },
+          {
+            "x": 256,
+            "y": 128,
+            "hot": 7,
+            "foreground": 55,
+            "fraction": 0.109375
+          },
+          {
+            "x": 128,
+            "y": 160,
+            "hot": 7,
+            "foreground": 63,
+            "fraction": 0.109375
+          },
+          {
+            "x": 256,
+            "y": 224,
+            "hot": 9,
+            "foreground": 19,
+            "fraction": 0.140625
+          },
+          {
+            "x": 224,
+            "y": 256,
+            "hot": 18,
+            "foreground": 136,
+            "fraction": 0.1323529411764706
+          },
+          {
+            "x": 304,
+            "y": 48,
+            "hot": 8,
+            "foreground": 51,
+            "fraction": 0.125
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "hot": 7,
+            "foreground": 62,
+            "fraction": 0.109375
+          },
+          {
+            "x": 240,
+            "y": 240,
+            "hot": 19,
+            "foreground": 73,
+            "fraction": 0.2602739726027397
+          },
+          {
+            "x": 208,
+            "y": 272,
+            "hot": 7,
+            "foreground": 49,
+            "fraction": 0.109375
+          }
+        ]
+      }
+    },
+    {
+      "mode": "dense",
+      "id": "frame_00026",
+      "originalMatchesCapture": null,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.00118125,
+        "maxLocalFractionBeyond": 0.38144329896907214,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 352,
+            "y": 0,
+            "hot": 8,
+            "foreground": 59,
+            "fraction": 0.125
+          },
+          {
+            "x": 128,
+            "y": 32,
+            "hot": 8,
+            "foreground": 71,
+            "fraction": 0.11267605633802817
+          },
+          {
+            "x": 0,
+            "y": 96,
+            "hot": 7,
+            "foreground": 20,
+            "fraction": 0.109375
+          },
+          {
+            "x": 160,
+            "y": 192,
+            "hot": 19,
+            "foreground": 71,
+            "fraction": 0.2676056338028169
+          },
+          {
+            "x": 128,
+            "y": 224,
+            "hot": 12,
+            "foreground": 40,
+            "fraction": 0.1875
+          },
+          {
+            "x": 160,
+            "y": 224,
+            "hot": 11,
+            "foreground": 34,
+            "fraction": 0.171875
+          },
+          {
+            "x": 192,
+            "y": 320,
+            "hot": 7,
+            "foreground": 50,
+            "fraction": 0.109375
+          },
+          {
+            "x": 336,
+            "y": 16,
+            "hot": 9,
+            "foreground": 57,
+            "fraction": 0.140625
+          },
+          {
+            "x": 144,
+            "y": 16,
+            "hot": 7,
+            "foreground": 56,
+            "fraction": 0.109375
+          },
+          {
+            "x": 208,
+            "y": 16,
+            "hot": 8,
+            "foreground": 49,
+            "fraction": 0.125
+          },
+          {
+            "x": 272,
+            "y": 80,
+            "hot": 12,
+            "foreground": 90,
+            "fraction": 0.13333333333333333
+          },
+          {
+            "x": -16,
+            "y": 112,
+            "hot": 7,
+            "foreground": 46,
+            "fraction": 0.109375
+          },
+          {
+            "x": 144,
+            "y": 208,
+            "hot": 37,
+            "foreground": 97,
+            "fraction": 0.38144329896907214
+          }
+        ]
+      }
+    },
+    {
+      "mode": "dense",
+      "id": "frame_00030",
+      "originalMatchesCapture": null,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.0009625,
+        "maxLocalFractionBeyond": 0.26666666666666666,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 320,
+            "y": 32,
+            "hot": 8,
+            "foreground": 49,
+            "fraction": 0.125
+          },
+          {
+            "x": 288,
+            "y": 96,
+            "hot": 8,
+            "foreground": 68,
+            "fraction": 0.11764705882352941
+          },
+          {
+            "x": 384,
+            "y": 192,
+            "hot": 15,
+            "foreground": 121,
+            "fraction": 0.12396694214876033
+          },
+          {
+            "x": 128,
+            "y": 224,
+            "hot": 26,
+            "foreground": 138,
+            "fraction": 0.18840579710144928
+          },
+          {
+            "x": 288,
+            "y": 288,
+            "hot": 8,
+            "foreground": 19,
+            "fraction": 0.125
+          },
+          {
+            "x": 192,
+            "y": 320,
+            "hot": 7,
+            "foreground": 67,
+            "fraction": 0.1044776119402985
+          },
+          {
+            "x": 336,
+            "y": 48,
+            "hot": 8,
+            "foreground": 49,
+            "fraction": 0.125
+          },
+          {
+            "x": 304,
+            "y": 112,
+            "hot": 7,
+            "foreground": 50,
+            "fraction": 0.109375
+          },
+          {
+            "x": 368,
+            "y": 176,
+            "hot": 11,
+            "foreground": 73,
+            "fraction": 0.1506849315068493
+          },
+          {
+            "x": 144,
+            "y": 208,
+            "hot": 24,
+            "foreground": 90,
+            "fraction": 0.26666666666666666
+          },
+          {
+            "x": 304,
+            "y": 272,
+            "hot": 8,
+            "foreground": 19,
+            "fraction": 0.125
+          }
+        ]
+      }
+    },
+    {
+      "mode": "dense",
+      "id": "frame_00060",
+      "originalMatchesCapture": null,
+      "gate": {
+        "comparable": true,
+        "passed": false,
+        "fractionBeyond": 0.0003,
+        "maxLocalFractionBeyond": 0.125,
+        "alphaFailures": 0,
+        "failedRegions": [
+          {
+            "x": 208,
+            "y": 176,
+            "hot": 8,
+            "foreground": 44,
+            "fraction": 0.125
+          }
+        ]
+      }
+    }
+  ]
+}

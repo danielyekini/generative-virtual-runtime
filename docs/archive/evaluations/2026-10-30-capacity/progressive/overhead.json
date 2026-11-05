@@ -1,0 +1,31 @@
+{
+  "iterationsPerBatch": 100000,
+  "batches": 7,
+  "sink": 1400000,
+  "metrics": {
+    "capacity": 16,
+    "distributions": {
+      "disabled_batch_ms": {
+        "count": 7,
+        "retained": 7,
+        "mean": 0.5714285713953099,
+        "max": 2.199999999953434,
+        "p50": 0.30000000004656613,
+        "p95": 2.199999999953434,
+        "p99": 2.199999999953434
+      },
+      "enabled_batch_ms": {
+        "count": 7,
+        "retained": 7,
+        "mean": 40.557142857162816,
+        "max": 53.10000000009313,
+        "p50": 36.5,
+        "p95": 53.10000000009313,
+        "p99": 53.10000000009313
+      }
+    },
+    "counters": {},
+    "gauges": {},
+    "events": []
+  }
+}

@@ -1,0 +1,422 @@
+{
+  "runId": "2026-10-09T115503Z",
+  "phase": "C",
+  "nextCause": {
+    "id": "verification.finalSnapshotNativeCoverage",
+    "phase": "C",
+    "attempts": 0,
+    "remainingAttempts": 3,
+    "expectedEvidence": "Complete missing LOT04 compiled/native and extras, LOT05 new source-key extras on this final snapshot. Pin an effect-capable reference for LOT02/04 and diagnose LOT05 reference error; retain phase A layer paint-order history 1/3 and LOT01 local contour finding before queued animated fill."
+  },
+  "cycles": 1,
+  "causes": [
+    {
+      "id": "visual.wave.multipleStrokeLoss",
+      "attempts": 2,
+      "remainingAttempts": 1,
+      "status": "ordered stroke correction measured; fixture not yet fidelity-certified"
+    },
+    {
+      "id": "visual.wave.gradientCoordinateSpace",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "status": "DIAGNOSIS_NOT_CAUSAL"
+    },
+    {
+      "id": "timing.compositionClipEasing",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "IMPLEMENTED; LOT-07 full numerical PASS; material review separately recorded"
+    },
+    {
+      "id": "visual.layerPaintOrder",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "IMPLEMENTED_MEASURED_IMPROVEMENT; NOT_FIDELITY_RESOLVED",
+      "affectedFixtures": [
+        "LOT-01"
+      ],
+      "phase": "A",
+      "newEvidence": "evidence/paint-order-counterfactual/results.json; pinned-original raster matches at all five probed frames. Source global order improves frame03 hot .0034\u2192.00055/local .35475\u2192.05464; other residuals remain. No shared implementation edited; attempts remain 0.",
+      "previousScope": "LOT06 structural counterfactual was not causal; history preserved.",
+      "hypothesis": "Separate composition paint/opacity/visibility containment from Lottie transform parenting with published transform.parent.",
+      "ownerBoundary": "format-lottie normalise/placeLayers",
+      "expectedResult": "Global reverse source layer order; unchanged source transforms; only composition containment opacity/visibility inherited.",
+      "attemptStartedAt": "2026-10-09T12:30:06.975074+00:00",
+      "baselineEvidence": "evidence/baseline/render-results.json; evidence/paint-order-counterfactual/results.json",
+      "measurements": {
+        "LOT01Frame3": {
+          "beforeHot": 0.0034,
+          "afterHot": 0.00055,
+          "beforeLocal": 0.3547486033519553,
+          "afterLocal": 0.0546448087431694
+        },
+        "partialFinalWorstHot": 0.00149375,
+        "partialFinalWorstLocal": 0.38144329896907214,
+        "scope": "Actual completed LOT01 captures; whole final corpus capture still in progress. No cause-resolved or fixture-pass claim."
+      }
+    },
+    {
+      "id": "visual.shapeGroupPaintOrder",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "IMPLEMENTED; details restored; LOT-06 still FAIL due omitted animated fills"
+    },
+    {
+      "id": "conversion.silentAnimatedFill",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "INVENTORY_DIAGNOSTIC_CORRECTION; paint capability remains unimplemented"
+    },
+    {
+      "id": "timing.spatialCompositionClip",
+      "attempts": 1,
+      "remainingAttempts": 2,
+      "status": "MEASURED_CORRECTION; fixture fidelity still FAIL; next independent layer paint-order finding retained"
+    },
+    {
+      "id": "paint.animatedSolidFill",
+      "phase": "B",
+      "attempts": 0,
+      "remainingAttempts": 3,
+      "affectedFixtures": [
+        "LOT-06"
+      ],
+      "ownerBoundary": "Scene IR/MotionScript paint channels and format-lottie lowering",
+      "expectedEvidence": "Design solid fill RGBA animation capability in pending language notes; contract, registry, compatibility, release, compiler/emitter/runtime and full original-window gates before exact support. No static or raster fallback."
+    }
+  ],
+  "gateSettings": {
+    "purpose": "Machine-readable comparison and visual gate settings for fidelity runs. Agents must copy these into loop.json / manifest and must not invent looser numbers after seeing results.",
+    "numberTolerance": 0.001,
+    "colorTolerance": "1/255",
+    "pixel": {
+      "metric": "euclidean-rgb",
+      "inspectionThreshold": 24,
+      "role": "inspection",
+      "notes": [
+        "Pixels with Euclidean RGB distance above inspectionThreshold are counted as beyond.",
+        "This alone is not a complete PASS rule for the declared profile."
+      ]
+    },
+    "visualCertification": {
+      "status": "DEFINED",
+      "policyVersion": "1.0",
+      "authority": "Operator delegated gate definition in chat on 2026-10-08; these rules are frozen before new implementation attempts. Approval is of the policy, not existing output.",
+      "document": "docs/evaluations/visual-acceptance-policy.md",
+      "aggregate": {
+        "maxFrameFractionBeyond": 0.005,
+        "maxWindowMeanFractionBeyond": 0.002,
+        "weighting": "Arithmetic mean of equally weighted scheduled full-window frames; extra boundary/subframe samples must pass per-frame rules but do not change the window mean."
+      },
+      "localRegions": {
+        "tileSizePx": 32,
+        "gridOffsetsPx": [
+          0,
+          16
+        ],
+        "maxForegroundFractionBeyond": 0.1,
+        "minForegroundDenominatorPx": 64,
+        "foregroundThreshold": 24,
+        "backgroundRgb": [
+          16,
+          16,
+          20
+        ],
+        "definition": "For each tile on both grids, hot pixels / max(64, pixels whose reference OR native RGB differs from the declared background by more than 24). Count all hot pixels, including unexpected background content."
+      },
+      "materialReview": {
+        "required": true,
+        "reject": [
+          "Missing or extra subject/detail, stroke/fill, clipping or mask contribution",
+          "Wrong paint, geometry, stacking or scope semantics",
+          "Visible pose displacement, timing/visibility error or animated flicker"
+        ],
+        "reviewCoverage": "Review every automatic failure and start, end, key boundaries, segment midpoints, worst frames and a full-window contact sheet/sequence for each fixture and both native routes. Unreviewed fixtures remain VISUAL_UNVERIFIED.",
+        "independentOfMetrics": true
+      },
+      "alpha": {
+        "profile": "opaque-composite",
+        "background": "#101014",
+        "requiredByte": 255,
+        "rule": "Both reference and native PNGs must be opaque after compositing onto the declared background. No standalone transparent-alpha fidelity is claimed; such a profile needs separate rules."
+      },
+      "coverage": {
+        "required": "full-window",
+        "requireBothNativeRoutes": true,
+        "requireMatchedTimestamps": true,
+        "missingCapture": "NOT_RUN or BLOCKED, never zero error or PASS",
+        "numericRoutes": {
+          "numberTolerance": 0.001,
+          "colorTolerance": "1/255"
+        }
+      },
+      "referenceControls": {
+        "requireTimeControlWorks": true,
+        "requireNoReferenceErrors": true,
+        "requireRepeatCaptureIdentity": true,
+        "environment": "Matched viewport, fit, DPR 1, explicitly pinned subframe mode and fonts/assets/effect profile. Incomplete readiness or unreliable control quarantines comparison."
+      },
+      "passRule": "All conversion, round-trip, full-window aggregate/local/alpha, reference-control, material-review and regression/resource gates must pass. No implicit PASS from capture execution labels."
+    },
+    "reference": {
+      "lottieWeb": "5.13.0",
+      "seek": "goToAndStop(frame, true)",
+      "devicePixelRatio": 1,
+      "lottieBackground": "#101014",
+      "svgBackground": "#000000",
+      "browser": "Resolve via evaluation/harness/chrome.ts (GVR_CHROME / CHROME_PATH, then platform defaults). Record the resolved binary and --version in environment.json."
+    },
+    "corpus": {
+      "root": "fixtures/corpus",
+      "checksums": "fixtures/corpus/SHA256SUMS",
+      "readme": "fixtures/corpus/README.md"
+    }
+  },
+  "budgetMinutes": 60,
+  "deadline": "2026-10-09T12:55:03.762999+00:00",
+  "baselineDiagnostics": {
+    "minimalReproduction": "evidence/parent-order-probe/baseline-v3/results.json",
+    "confirmedBoundary": "format-lottie source transform parenting conflated with containment/drawing",
+    "referenceStatus": "NONEMPTY_EXPECTED_SOURCE_COLOURS_ON_BOTH_ROUTES",
+    "notes": "v1 blank reference quarantined; v2 precomp missing w/h quarantined; v3 complete source fields and rAF capture verified red foreground / precomp red-blue blend. Original corpus gate ongoing; no implementation attempt."
+  },
+  "diagnosis": [
+    {
+      "id": "visual.layerPaintOrder",
+      "phase": "A",
+      "status": "CONFIRMED_COUNTERFACTUAL_REPRODUCED",
+      "evidence": "evidence/paint-order-counterfactual/results.json",
+      "frame3": {
+        "initialHot": 0.0034,
+        "counterfactualHot": 0.00055,
+        "initialLocal": 0.3547486033519553,
+        "counterfactualLocal": 0.0546448087431694
+      },
+      "attempts": 0
+    },
+    {
+      "id": "diagnostic.Path2D",
+      "status": "NOT_CAUSAL_NO_PIXEL_METRIC_CHANGE",
+      "evidence": "evidence/raster-counterfactual/results.json"
+    },
+    {
+      "id": "diagnostic.ribbonMatrices",
+      "status": "PASS_RESTRICTED_IDENTITY_SHAPE_GROUPS",
+      "compared": 149,
+      "maxDelta": 9.001354271731543e-05,
+      "evidence": "evidence/source-state/matrix-comparison.json"
+    },
+    {
+      "id": "diagnostic.trimmedPathGeometry",
+      "status": "SUSPECTED_UNCONFIRMED",
+      "evidence": "evidence/shape-state/paired-geometry.json",
+      "reason": "Lottie retains trimmed cubic while native returns coarse polyline; prior density probe was mixed, no causal attribution yet."
+    }
+  ],
+  "referenceQuarantines": [
+    {
+      "fixture": "LOT-02",
+      "effects": [
+        {
+          "location": "root.layer_9.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "root.layer_15.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "root.layer_19.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "root.layer_20.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "root.layer_21.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        }
+      ],
+      "status": "QUARANTINED_REFERENCE_EFFECTS",
+      "reason": "Pinned lottie-web 5.13.0 full player registers only CVTransformEffect (35) for Canvas. Gaussian Blur (29) is registered only in the SVG effect registry. Source canvas captures therefore do not establish faithful effect output. Numeric differences retained but not accepted as quality proof."
+    },
+    {
+      "fixture": "LOT-03",
+      "effects": [
+        {
+          "location": "asset_1_a5967794-43e2-4c90-9a79-8826454e1ffa_03741665-aea9-43ab-9e5c-0fcfcbcf19e5_f2506e68-c75f-412f-b51d-ad8d047dc282.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_3_3d627ace-e6bb-49d8-a14d-4a1e19c6503b_14cd365f-ca0f-4039-861d-6a744b4eab9a_a7ccba1d-fd97-4e7a-8ef3-31aa5afc74be.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_5_25009ace-ed5b-4cf5-bd97-9d5cbb0df208_4b2793a8-13a9-4ea5-891b-b0fa97186a72_94292ade-04e5-48b2-afc9-1dded9a5fead.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_7_70ba6da1-47a0-4590-a16d-cc1ed95eb12c_e5b1e444-3e73-4322-a23c-5013c0946cd2_20b0f0f3-0e36-4682-a3d1-71b53fb476be.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_9_8409119d-cd8a-4514-bdc8-1436437b9e18_d04085d0-b11d-45de-88fc-cb6901cca9b7_23a10df5-c8dd-4020-b7f4-c5c529c02a79.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_11_169c87be-c4f0-437e-bf02-5dd264cfcecc_de78854f-3f2a-401c-ad9b-916ab1c78a43_8a086c25-0f9b-48a5-9612-da8d586030b8.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_13_be4612e9-32ba-4d4d-ad70-df74dbc4b6e6_a6264503-0405-4e16-b8e4-9361dc2bc4c4_602cf019-b34a-4fbe-a8c9-aed6a96a0246.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        }
+      ],
+      "status": "QUARANTINED_REFERENCE_EFFECTS",
+      "reason": "Pinned lottie-web 5.13.0 full player registers only CVTransformEffect (35) for Canvas. Gaussian Blur (29) is registered only in the SVG effect registry. Source canvas captures therefore do not establish faithful effect output. Numeric differences retained but not accepted as quality proof."
+    },
+    {
+      "fixture": "LOT-04",
+      "effects": [
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_2.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_3.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_4.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_5.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_6.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_7.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_8.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_9.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_10.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_11.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_12.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_13.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_14.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_15.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_16.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_17.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_18.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_19.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_24.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_25.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_26.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        },
+        {
+          "location": "asset_2_1_b16fb17c-260b-4ff6-a0c8-f7abea3a688d_3e4c1b6d-cb30-4943-af87-8a03a89c014b_02111eb7-70b9-443d-8361-1932639cad12_5de47b23-1f3f-4de4-b25e-f4c5ac09e60d.layer_27.ef[0]",
+          "effect": "Gaussian Blur",
+          "type": 29
+        }
+      ],
+      "status": "QUARANTINED_REFERENCE_EFFECTS",
+      "reason": "Pinned lottie-web 5.13.0 full player registers only CVTransformEffect (35) for Canvas. Gaussian Blur (29) is registered only in the SVG effect registry. Source canvas captures therefore do not establish faithful effect output. Numeric differences retained but not accepted as quality proof."
+    }
+  ],
+  "verification": {
+    "tests": "202 PASS",
+    "targeted": "48 PASS",
+    "typecheck": "PASS",
+    "roundTrip": "PASS_NON_QUARANTINED; LOT03_QUARANTINED",
+    "sourceProbes": "Both static overlap/precomp cases on direct/compiled have zero hot/local error; reference fields and nonempty colours verified",
+    "oldProgramCompatibility": "Existing migration and 0.1 sampling tests remain passing; no language or wire bump",
+    "initialTestFailure": "New opacity-skip test used reserved identifiers parent/middle; final test uses valid Bridge identifier. Failed logs retained; production correction unchanged."
+  },
+  "budgetOverrun": true,
+  "captureStop": "12:53\u201312:54 UTC; see actual file metadata and recovery logs",
+  "coverageWarning": "Recovered current images only when mtime is at/after final-full-render-jobs.json freeze. Stale baseline cached PNGs outside explicit reuse ledger are not final captures."
+}
