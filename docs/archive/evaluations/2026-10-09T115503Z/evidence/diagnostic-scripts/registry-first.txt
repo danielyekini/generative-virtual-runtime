@@ -1,0 +1,150 @@
+{
+  "capabilities": [
+    {
+      "id": "scene.camera",
+      "summary": "A 2D camera maps a world point through position, clockwise rotation, and zoom.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["Zoom is finite and greater than 0. The only fit is contain."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/schema/src/contract.test.ts#maps the specification camera example to (1040, 360)",
+        "packages/runtime/src/runtime.test.ts#maps the specification camera point and leaves screen space alone"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Lottie camera layers are not covered by a conformance test." },
+        "svg": { "status": "not-applicable", "scope": "SVG has no camera." }
+      }
+    },
+    {
+      "id": "scene.contain",
+      "summary": "The logical viewport is letterboxed and never stretched.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["contain is the only fit."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/schema/src/contract.test.ts#letterboxes instead of stretching",
+        "packages/canvas-renderer/src/renderer.test.ts#letterboxes the logical viewport and clears the bars"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Imported viewports are not asserted against contain letterboxing." },
+        "svg": { "status": "untested", "scope": "preserveAspectRatio none is a separate SVG case and is not this claim." }
+      }
+    },
+    {
+      "id": "geometry.primitives",
+      "summary": "Rectangle, circle, ellipse, line, and polygon use the 0.1 local geometry rules.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["Rectangle origin is the top-left. Ellipse and circle are centred."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#lowers a header, a constant, every primitive, and a nested group",
+        "packages/canvas-renderer/src/renderer.test.ts#starts rectangles at the local top-left and centres ellipses"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "Static shape fixtures whose geometry is a centred rect or ellipse, including rectangle centre mapped to the IR top-left. Nested shape groups retain reverse source-list paint order; per-geometry stroke passes retain their existing style order.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#maps Lottie rectangle centre to Scene IR top-left",
+            "packages/format-lottie/src/lottie.test.ts#paints nested shape groups in reverse source order through round trip"
+          ]
+        },
+        "svg": {
+          "status": "exact",
+          "scope": "Static rect, circle, ellipse, line, and polygon elements in the static primitives fixture.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#imports static primitives into validated Scene IR"
+          ]
+        }
+      }
+    },
+    {
+      "id": "geometry.path",
+      "summary": "Absolute move, line, quadratic, cubic, and close commands.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["Commands are absolute. The first command is move."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "untested" },
+      "conformanceTests": [
+        "packages/runtime/src/streaming.test.ts#keeps the sample on the quadratic the path draws"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Static path lowering has no conformance test that pins commands." },
+        "svg": {
+          "status": "approximate",
+          "scope": "Elliptical arc commands are lowered to cubics. The cubic is not claimed identical to the SVG arc.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#lowers arcs to cubics and round-trips the static scene"
+          ]
+        }
+      }
+    },
+    {
+      "id": "text.basic",
+      "summary": "One line of text with a builtin font, alignment, and baseline.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime", "renderer"],
+      "restrictions": ["One line. No tspan, textPath, or text animators. Glyph advance depends on the font."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "supported" },
+      "conformanceTests": [
+        "packages/compiler/src/compiler.test.ts#lowers a header, a constant, every primitive, and a nested group",
+        "packages/canvas-renderer/src/renderer.test.ts#draws text from its anchor with the requested alignment"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "A text layer with document text can be lowered, but no conformance test pins the string." },
+        "svg": {
+          "status": "approximate",
+          "scope": "A single text element's string is kept. Font metrics are not claimed to match the reference.",
+          "conformanceTests": [
+            "packages/format-svg/src/svg.test.ts#marks simple text as approximated and keeps the string"
+          ]
+        }
+      }
+    },
+    {
+      "id": "easing.named",
+      "summary": "linear, easeIn, easeOut, and easeInOut.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["These four names are the whole 0.1 easing set."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/schema/src/contract.test.ts#matches the four V1 curves at one half",
+        "packages/runtime/src/runtime.test.ts#matches the four curves at a quarter and a half"
+      ],
+      "adapters": {
+        "lottie": { "status": "untested", "scope": "Named Bodymovin shortcuts are stored as these names, without a dedicated curve assertion." },
+        "svg": { "status": "untested", "scope": "SVG calcMode and keySplines are not mapped onto named easing." }
+      }
+    },
+    {
+      "id": "animation.tracks",
+      "summary": "Keyframe tracks sample between boundaries and hold the end fill.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
+      "targets": ["compiler", "runtime"],
+      "restrictions": ["Overlapping writers of one channel are rejected. Samples do not replace the authored base."],
+      "support": { "compiler": "supported", "runtime": "supported", "renderer": "not-applicable" },
+      "conformanceTests": [
+        "packages/runtime/src/runtime.test.ts#hits every keyframe boundary and the segment midpoints",
+        "packages/motionscript-emitter/src/emit.test.ts#preserves fractional timing at the scene boundary"
+      ],
+      "adapters": {
+        "lottie": {
+          "status": "exact",
+          "scope": "Scalar and split position tracks on layer and shape-group transforms, in milliseconds from composition in-point; group position, scale, rotation and opacity retain animation. Animated anchors remain unsupported. Animated solid fill colour is unsupported and inventoried before lowering; current native channels do not represent it.",
+          "conformanceTests": [
+            "packages/format-lottie/src/lottie.test.ts#animates position in milliseconds",
+            "packages/format-lottie/src/lottie.test.ts#preserves animated shape-group transforms and opacity",
+            "packages/format-lottie/src/lottie.test.ts#reports omitted animated fill colour instead of claiming exact conversion"
+          ]
+        },
+        "svg": { "status": "untested", "scope": "SMIL and CSS coverage is recorded on svg.smilTimeBased and svg.cssKeyframes." }
+      }
+    },
+    {
+      "id": "animation.steps",
+      "summary": "A step sets node visibility at a time.",
+      "introducedIn": { "motionscript": "0.1.0", "sceneIr": "0.1.0" },
