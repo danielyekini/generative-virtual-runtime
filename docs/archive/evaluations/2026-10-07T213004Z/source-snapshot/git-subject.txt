@@ -1,1 +1,0 @@
-Sample spatial curves by arc length and record the mid-cycle evaluation.
