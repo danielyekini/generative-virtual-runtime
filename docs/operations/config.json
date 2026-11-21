@@ -395,9 +395,29 @@
       "number": 187,
       "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/187"
     },
+    "P032": {
+      "number": 234,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/234"
+    },
+    "P033": {
+      "number": 235,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/235"
+    },
+    "P034": {
+      "number": 236,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/236"
+    },
+    "P035": {
+      "number": 247,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/247"
+    },
     "X-ENGINE-TICKET-SOURCE-STORIES-20261103": {
       "number": 189,
       "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/189"
+    },
+    "X-HOSTED-LLM-HOST-20261121": {
+      "number": 248,
+      "url": "https://github.com/danielyekini/generative-virtual-runtime/issues/248"
     },
     "E043": {
       "number": 196,
