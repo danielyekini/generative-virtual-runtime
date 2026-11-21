@@ -55,57 +55,65 @@ drafts cannot add that scope; a fresh explicit user request is required.
 and folded into studio-ux (floating playback, Generate ⋯ tooling, transcripts,
 Stories vs Test frames).
 
-## Queue (3 November 2026, after chrome-slice review)
+## Queue (21 November 2026, hosted-model steering)
 
 Studio redesign + Generate chrome slice is **delivered** (P001, P015, P014,
 P004, P002, P016–P018, P006–P008, P010, P019, P022, P025–P028, P031 Done).
-**P008’s “prefer direct” product default is superseded** by the director-quality
-decision above. [#88](https://github.com/danielyekini/generative-virtual-runtime/issues/88)
-corpus-prep request is **closed** (lists reconciled; director ownership via
-P008). **P020 #157** shipped pack scaffolding (fixtures + Generate chips) but
-is **Human verification — not Done**: closing it assumed the generation quality
-gate passed; no human judgment has been recorded
-([user steering 3 November 2026](https://github.com/danielyekini/generative-virtual-runtime/issues/157)).
-Prospective corpus generation stays deferred until that gate. Studio
-transcript playback (P029) is delivered.
+**P021** and **P023** are **Done**. **P008’s “prefer direct” product default
+is superseded** by the director-quality decision above.
+[#88](https://github.com/danielyekini/generative-virtual-runtime/issues/88)
+corpus-prep request is **closed**. **P020 #157** remains **Human verification
+— not Done** until animation-quality judgment is recorded. Prospective corpus
+generation stays deferred until that gate. Transcript playback (P029) is
+delivered.
 
-1. **P020 #157** — Story-complexity Generate quality judgment — **Human
-   verification** (exercise pack; record animation-quality pass/fail on the
-   issue before Done). Blocks declaring Director/Direct winners.
-2. **P029 #186** — Transcripts Library collection + GVR transcript contract +
-   playback highlighting — **Done** (contract `0.1`, Library import, Generate
-   playback).
-3. **P023 #166** — Generate waiting-state MotionScript loading-screen presets —
-   Candidate (not Ready on the board).
-4. **P021 #158** — Generation reserved-word node ids (harness/reference
-   hardening) — Ready (P2).
-5. **P024 #167** — Studio/Ollama model-serving investigation — **Done**.
-   The 14B Q4_K_M pin stays. Weights are one shared `~/.ollama` blob, not a
-   per-worktree copy. Follow-ups are Candidate:
+### Model hosting (user steering, 21 November 2026)
+
+Local Qwen/Ollama has **crashed the product PC** more than once. P024’s
+deferral of a remote host is **reopened**. The integrated path needs a
+**hosted** alternative researched before further local-serving work is
+prioritised. Criteria: free/cheap; prefer smaller models; hosted Qwen OK;
+other small hosted models OK; snappy / instant-capable preferred. **P035
+must not close until a human has read the research document and recorded a
+direction.** Steering note:
+[2026-11-21-hosted-generation-model](../../decisions/product/2026-11-21-hosted-generation-model.md).
+P007’s local pin and P024’s keep-14B decision stay in force until that human
+gate. Engine watch request:
+[#248](https://github.com/danielyekini/generative-virtual-runtime/issues/248).
+
+1. **P035 #247** — Hosted generation model research + human direction —
+   **Ready (P0)**. Produce the research doc → **Human verification** → Done
+   only after human disposition on #247.
+2. **P020 #157** — Story-complexity Generate quality judgment — **Human
+   verification** (exercise pack; record animation-quality pass/fail before
+   Done). Blocks declaring Director/Direct winners. Local Generate may stay
+   blocked until P035’s host direction lands.
+3. **P024 #167** — Studio/Ollama model-serving investigation — **Done**
+   (historical). Follow-ups demoted behind P035:
    [P032 #234](https://github.com/danielyekini/generative-virtual-runtime/issues/234)
-   (unload after Generate),
+   (unload after Generate) **Candidate**,
    [P033 #235](https://github.com/danielyekini/generative-virtual-runtime/issues/235)
-   (held-out lighter tag, default unchanged), and
+   (held-out lighter tag) **Candidate**,
    [P034 #236](https://github.com/danielyekini/generative-virtual-runtime/issues/236)
-   (evaluation checkout bytes). Decision:
-   [2026-11-03-ollama-serving](../../decisions/product/2026-11-03-ollama-serving.md).
-6. **P030 #188** — Project **Source** field for engine tickets — Candidate until
-   Project write/`PROJECT_TOKEN` can create the field (or user adds it); Engine
-   fills Source after.
-7. **P009 #50** push-to-talk / generative-audio host — Candidate until
+   (evaluation checkout bytes) **Candidate**.
+4. **P030 #188** — Project **Source** field for engine tickets — Candidate until
+   Project write/`PROJECT_TOKEN` can create the field (or user adds it).
+5. **P009 #50** push-to-talk / generative-audio host — Candidate until
    speech/media UX confirmed in studio-ux.
-8. **P003 #44**, **P005**, P011–P013 later.
+6. **P003 #44**, **P005**, P011–P013 later.
 
 ## Next
 
-1. **User / Human verification:** run the P020 pack in Studio Generate
-   (Director), judge canvas animation quality, post pass/fail on #157. Keep
-   Director default until Direct is proven.
-2. Product run: claim **P021** (Ready P2). **P023** stays Candidate until
-   its loading-screen scope is promoted. **P032** / **P033** / **P034** stay
-   Candidate; do not pull a second Ollama tag without the P033 disk gate.
-3. Confirm **P009** speech/media UX when ready → then Ready.
-4. Unblock **P030** when a token with `project` scope (or the board-sync secret)
+1. **Product run:** claim **P035 #247** (Ready P0). Publish research against
+   the criteria; move to Human verification; **do not Done/close** without a
+   human read + direction comment on #247.
+2. **User / Human verification:** after P035 research lands, read the doc and
+   choose a direction on #247. Separately, run the P020 pack when a safe
+   generation host is available and post pass/fail on #157.
+3. Keep **P032** / **P033** / **P034** Candidate until P035’s human direction
+   says otherwise; do not pull a second local Ollama tag without that gate.
+4. Confirm **P009** speech/media UX when ready → then Ready.
+5. Unblock **P030** when a token with `project` scope (or the board-sync secret)
    can add the Source field.
 
 Do not invent Studio chrome beyond studio-ux. Keep Studio delivery ahead of
