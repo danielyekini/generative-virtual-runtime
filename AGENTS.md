@@ -19,9 +19,20 @@ Invoke one repository persona, without supplying issue IDs:
 | `$gvr-product-orchestrator` | [.agents/skills/gvr-product-orchestrator/SKILL.md](.agents/skills/gvr-product-orchestrator/SKILL.md) |
 | `$gvr-direction-change` | [.agents/skills/gvr-direction-change/SKILL.md](.agents/skills/gvr-direction-change/SKILL.md) |
 
-If the runtime has not discovered repository skills, read the linked SKILL.md
-explicitly and follow it; do not install personal/global copies. Commands and
-runtime limitations: [operations entry](docs/operations/README.md).
+Each local skill file is a launcher. If the runtime does not discover skills
+automatically, open the launcher from the table. Fetch its linked Notion page
+using the session's authorised Notion reader. Extract the single Markdown code
+block, preserving its content and restoring one final newline. Compare its Git
+blob ID with the expected ID in the launcher (use `git hash-object --stdin`
+on those bytes). Follow the verified instructions.
+
+If the Notion reader is unavailable, access is denied, or the revision check
+fails, report the skill name and blocker and stop before claiming or changing
+work. Use the configured connection for credentials. The
+[Operating handbook and skills](https://app.notion.com/p/41f0c600341a81c29928f8467248f25d)
+contains the canonical skill pages. When publishing a skill revision, update the
+repository's expected blob ID as part of the cutover.
+
 Workers receive only own direction, selected issue/handover, route flags and
 applicable contracts. Switch to own orchestrator for pending intake or the
 independent five-terminal-run review. Never mix raw other-lane requests into

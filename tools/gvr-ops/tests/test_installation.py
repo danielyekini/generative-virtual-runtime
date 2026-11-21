@@ -97,8 +97,12 @@ class InstallationAcceptance(unittest.TestCase):
         for path in paths:
             text = path.read_text()
             self.assertRegex(text, r'^---\nname: ' + re.escape(path.parent.name) + r'\n')
-            self.assertIn('docs/operations/config.json', text)
-            self.assertIn('docs/operations/git.md', text)
+            self.assertRegex(text, r'https://app\.notion\.com/p/[0-9a-f]{32}\)')
+            self.assertRegex(text, r'Expected Git blob: `[0-9a-f]{40}`')
+            self.assertIn('../../../AGENTS.md', text)
+        bootstrap = (ROOT / 'AGENTS.md').read_text()
+        self.assertIn('git hash-object --stdin', bootstrap)
+        self.assertIn('stop before claiming or changing', bootstrap)
 
     def test_real_config_has_unique_issue_and_independent_clock_identities(self):
         config = json.loads((ROOT / 'docs/operations/config.json').read_text())
