@@ -5,7 +5,7 @@ import { DEFAULT_LIMITS, validateSceneIR, type RuntimeOperation, type SceneIRDel
 import { AnimationRuntime } from "./runtime";
 import { StreamingRuntime } from "./streaming";
 
-const source = JSON.parse(readFileSync(new URL("../../../docs/evaluations/2026-10-30-capacity/known-transform-parent-replay.json", import.meta.url), "utf8")).source as string;
+const source = JSON.parse(readFileSync(new URL("../../../fixtures/motionscript/regressions/known-transform-parent-replay.json", import.meta.url), "utf8")).source as string;
 const compiled = compileMotionScript(source);
 const header = compiled.deltas[0]!.operations[0]!;
 const parent = compiled.scene!.nodes.find(node => node.id === "Parent")!;
