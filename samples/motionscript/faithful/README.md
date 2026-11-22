@@ -2,4 +2,4 @@
 
 Source-paired translations; UNVERIFIED until actual source/direct/compiled evidence passes.
 
-This directory describes the class; actual programs belong under `samples/motionscript/<sample-id>/faithful/` as defined in the [storage specification](../../../docs/authoring/sample-registry-spec.md). Installation creates no sample IDs or program revisions. Keep original bytes and manifests immutable; update registry pointers only with rationale and evidence.
+This directory describes the class; actual programs belong under `samples/motionscript/<sample-id>/faithful/` as defined in the [storage specification](https://app.notion.com/p/4200c600341a81698421d5cafad36518). Installation creates no sample IDs or program revisions. Keep original bytes and manifests immutable; update registry pointers only with rationale and evidence.

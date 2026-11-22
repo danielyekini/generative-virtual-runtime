@@ -15,7 +15,7 @@ and words receding into a canyon under a dolly (Echo). Today all three are baked
 The Home story projects every part into keyed 2D paths with 191 `commands`
 tracks, using 83% of the 512 KiB source budget. Its painter order is tuned by
 hand for one orbit, with no back faces
-(`docs/authoring/stories/from-blueprint-to-home/proposal.md`).
+([story proposal at the migration commit](https://github.com/danielyekini/generative-virtual-runtime/blob/fcdc124afeb0147760d054cd0a3e33d28b3b55ac/docs/authoring/stories/from-blueprint-to-home/proposal.md)).
 
 Spatial output must stay deterministic and headless-renderable. It must compose
 with persistent entities (0.6.0+), drawable bindings (0.7.0) and input (0.10.0):

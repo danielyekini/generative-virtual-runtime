@@ -103,7 +103,7 @@ The grammar and schema decide syntax. The registry decides what support is claim
 
 ## Evidence and program preservation
 
-Historical runs under `docs/evaluations/` and `docs/authoring/runs/` are immutable.
+[Archived evaluation and authoring evidence](https://app.notion.com/p/41f0c600341a8103a6dfdae8044930ba) is immutable.
 New compact run summaries use `docs/runs/<lane>/<run-id>/summary.md`; live issue
 comments own latest handovers. Pin clean commit or complete reproducible source
 snapshot for measurements. Reuse prior evidence unless affected, failed or incomplete.
@@ -112,9 +112,9 @@ reference, full required coverage and existing attempt history. Do not widen a
 tolerance to pass. Import `exact` is not full visual certification.
 
 For explicit imported-program refinement or source conversion only, consult the
-[scoped legacy workflow](docs/workflows/authoring-loop.md),
-[fidelity procedure](docs/evaluations/lottie-fidelity-loop-prompt.md),
-[storage rules](docs/authoring/sample-registry-spec.md) and relevant quality policy.
+[imported-source refinement workflow](https://app.notion.com/p/4200c600341a81dea962ed5e273aa0a3),
+[fidelity procedure](https://github.com/danielyekini/generative-virtual-runtime/blob/94436397d251a9c2bcbb5b538dbeb55715c7d20a/docs/archive/evaluations/lottie-fidelity-loop-prompt.md),
+[storage rules](https://app.notion.com/p/4200c600341a81698421d5cafad36518) and relevant quality policy.
 They do not add universal review, round-trip or whole-corpus gates to native work.
 Preserve distinct `faithful/`, `authored/`, `experimental/` programs and immutable
 revisions. Keep recorded/verified/preferred registry pointers separate, with exact

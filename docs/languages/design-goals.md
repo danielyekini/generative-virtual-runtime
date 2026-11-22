@@ -1,6 +1,6 @@
 # MotionScript design goals
 
-Status: living guidance. Revision 1.0, 2026-10-08. Agents may revise this document with evidence and rationale; use docs/authoring/documentation-policy.md.
+Status: living guidance. Revision 1.0, 2026-10-08. Agents may revise this document with evidence and rationale; follow the [authoring documentation policy](https://app.notion.com/p/4200c600341a81dea962ed5e273aa0a3).
 
 ## Purpose and scope
 

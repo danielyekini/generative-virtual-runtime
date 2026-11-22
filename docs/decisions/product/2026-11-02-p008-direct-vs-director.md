@@ -18,7 +18,7 @@ on that small held-out set. Those metrics remain secondary evidence only.
 
 ## Ownership (Product ↔ Engine)
 
-Recorded for [native story cycle](../../workflows/native-story-cycle.md) / #88:
+Recorded for [native story cycle](https://app.notion.com/p/41f0c600341a8167bea8f6d81a144341) / #88:
 
 | Role | Owner |
 | --- | --- |

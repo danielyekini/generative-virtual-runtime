@@ -240,7 +240,7 @@ tracked in GitHub. Capacity improvements remain ongoing, evidence-driven work.
 ## Continual story improvement (prospective direction, 2 November 2026)
 
 Alongside milestone delivery, Engine permanently improves capabilities, performance
-and native authoring through the [native story cycle](../../workflows/native-story-cycle.md):
+and native authoring through the [native story cycle](https://app.notion.com/p/41f0c600341a8167bea8f6d81a144341):
 Generate Stories → Expand System → Reimplement Stories → Select next corpus.
 Current expansion work continues. Future corpus implementations use native
 MotionScript directly; improvements include affected-story reimplementation and

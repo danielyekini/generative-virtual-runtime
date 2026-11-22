@@ -139,7 +139,7 @@ settings may name the funded backend
 Product owns realistic single-turn prompts and multi-turn conversations with
 production expectations, derived from the [established functionality index](functionality.md)
 and [future functionality list](future-functionality.md). Maintain both as capabilities
-evolve. Follow the [native story cycle](../../workflows/native-story-cycle.md).
+evolve. Follow the [native story cycle](https://app.notion.com/p/41f0c600341a8167bea8f6d81a144341).
 Director scripts distill intent; Engine implements native MotionScript.
 Quality expectations track story-complexity programs, not runtime-scene smoke.
 Director streaming remains an experimental hypothesis.

@@ -1,0 +1,379 @@
+{
+  "schemaRevision": "1.0",
+  "samples": [
+    {
+      "sampleId": "LOT-00",
+      "familyId": "panning-landscape",
+      "origin": "imported",
+      "nextRevision": 2,
+      "revisions": [
+        {
+          "revisionId": "r000001",
+          "storageClass": "faithful",
+          "allocationStatus": "RECORDED",
+          "programPath": "samples/motionscript/LOT-00/faithful/r000001/program.ms",
+          "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+          "programBytes": 8880,
+          "parentRevisionId": null,
+          "parentProgramSha256": null,
+          "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+          "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+          "implementationPin": {
+            "kind": "source-snapshot",
+            "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+            "sourceSnapshot": {
+              "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+              "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+            },
+            "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+          },
+          "generationPin": {
+            "kind": "source-snapshot",
+            "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+            "sourceSnapshot": {
+              "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+              "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+            },
+            "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+          },
+          "languages": {
+            "motionscript": {
+              "release": "0.5.0",
+              "wire": "0.2"
+            },
+            "sceneIr": {
+              "release": "0.5.0",
+              "wire": "0.2"
+            }
+          },
+          "requiredCapabilities": [
+            "transform.parent"
+          ],
+          "dependencies": {
+            "packageVersions": {
+              "@gvr/schema": "0.1.0",
+              "@gvr/compiler": "0.1.0",
+              "@gvr/runtime": "0.1.0",
+              "@gvr/canvas-renderer": "0.1.0",
+              "@gvr/format-import-core": "0.1.0",
+              "@gvr/format-lottie": "0.1.1",
+              "@gvr/motionscript-emitter": "0.1.1",
+              "@gvr/round-trip": "0.1.0"
+            },
+            "runtimeVersions": {
+              "importCore": "0.1.0",
+              "lottieAdapter": "0.1.0",
+              "svgAdapter": "0.1.0",
+              "emitter": "0.1.1",
+              "legacyIrDefault": "0.1",
+              "legacyDslDefault": "0.1",
+              "svgStaticDurationMs": 1000
+            },
+            "node": "v24.19.0",
+            "npm": "11.9.0",
+            "referencePlayer": "lottie-web 5.13.0 canvas",
+            "browser": "Chromium 151.0.7922.173",
+            "dependencyHashes": [
+              {
+                "path": "package-lock.json",
+                "atCommit": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sha256": "a74113f2fb795edf18c86a05649602d3c91026cc89621d3cb47087436b14ef73"
+              },
+              {
+                "path": "evaluation/package-lock.json",
+                "sha256": "9b39a5768e693a4969030064d68565ad7c4a71b3d952cf623e9997ca22e1e99b"
+              }
+            ],
+            "resources": []
+          },
+          "transformation": "Promote exactly verified scratch emitted bytes into first immutable faithful revision. No byte change, optimisation or invented lineage.",
+          "scratchProgramPath": "docs/evaluations/2026-10-08T090908Z/evidence/baseline/fixtures/LOT-00/generated.motion",
+          "scratchRevisionId": null,
+          "measurementRunId": "2026-10-08T090908Z",
+          "evidence": [
+            {
+              "kind": "qualification",
+              "runId": "2026-10-08T090908Z",
+              "path": "docs/evaluations/2026-10-08T090908Z/lot00-qualification.json",
+              "sha256": "5d8f7d836571a4b52683e72591b71189d02bcc14c0fb3612cced6e82c53531a2",
+              "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+              "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+              "revisionId": "r000001",
+              "capturedScratchRevisionId": null,
+              "parentRevisionId": null,
+              "parentProgramSha256": null,
+              "implementationPin": {
+                "kind": "source-snapshot",
+                "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sourceSnapshot": {
+                  "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+                  "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+                },
+                "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+              },
+              "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+              "observationCoverage": {
+                "ip": 0,
+                "op": 240,
+                "frameRate": 30,
+                "startMs": 0,
+                "endExclusiveMs": 8000,
+                "scheduledFramesPerRoute": 240,
+                "extraFramesPerRoute": 3
+              },
+              "durability": "LOCAL_ONLY_PENDING_PUBLICATION"
+            },
+            {
+              "kind": "material-review-report",
+              "runId": "2026-10-08T090908Z",
+              "path": "docs/evaluations/2026-10-08T090908Z/lot00-qualification.md",
+              "sha256": "89ec0fcc946728ef8774d46004847ad5a866975908686a00ed4f14542f9076f4",
+              "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+              "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+              "revisionId": "r000001",
+              "capturedScratchRevisionId": null,
+              "parentRevisionId": null,
+              "parentProgramSha256": null,
+              "implementationPin": {
+                "kind": "source-snapshot",
+                "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sourceSnapshot": {
+                  "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+                  "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+                },
+                "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+              },
+              "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+              "observationCoverage": {
+                "ip": 0,
+                "op": 240,
+                "frameRate": 30,
+                "startMs": 0,
+                "endExclusiveMs": 8000,
+                "scheduledFramesPerRoute": 240,
+                "extraFramesPerRoute": 3
+              },
+              "durability": "LOCAL_ONLY_PENDING_PUBLICATION"
+            },
+            {
+              "kind": "source/direct/compiled-visual",
+              "runId": "2026-10-08T090908Z",
+              "path": "docs/evaluations/2026-10-08T090908Z/evidence/baseline/render-results.json",
+              "sha256": "4c92c6452b197b4af539a0f3ee91b3ef4b3099e2b7f8007a0bfc9f57a031dd8d",
+              "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+              "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+              "revisionId": "r000001",
+              "capturedScratchRevisionId": null,
+              "parentRevisionId": null,
+              "parentProgramSha256": null,
+              "implementationPin": {
+                "kind": "source-snapshot",
+                "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sourceSnapshot": {
+                  "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+                  "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+                },
+                "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+              },
+              "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+              "observationCoverage": {
+                "ip": 0,
+                "op": 240,
+                "frameRate": 30,
+                "startMs": 0,
+                "endExclusiveMs": 8000,
+                "scheduledFramesPerRoute": 240,
+                "extraFramesPerRoute": 3
+              },
+              "durability": "LOCAL_ONLY_PENDING_PUBLICATION"
+            },
+            {
+              "kind": "semantic-round-trip",
+              "runId": "2026-10-08T090908Z",
+              "path": "docs/evaluations/2026-10-08T090908Z/evidence/baseline/round-trip-results.json",
+              "sha256": "0b3e0753cb01c26a5f1a0421d4b060f352310b2445eb0262ee95c7ce1ffea554",
+              "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+              "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+              "revisionId": "r000001",
+              "capturedScratchRevisionId": null,
+              "parentRevisionId": null,
+              "parentProgramSha256": null,
+              "implementationPin": {
+                "kind": "source-snapshot",
+                "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sourceSnapshot": {
+                  "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+                  "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+                },
+                "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+              },
+              "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+              "observationCoverage": {
+                "ip": 0,
+                "op": 240,
+                "frameRate": 30,
+                "startMs": 0,
+                "endExclusiveMs": 8000,
+                "scheduledFramesPerRoute": 240,
+                "extraFramesPerRoute": 3
+              },
+              "durability": "LOCAL_ONLY_PENDING_PUBLICATION"
+            },
+            {
+              "kind": "capture-manifest",
+              "runId": "2026-10-08T090908Z",
+              "path": "docs/evaluations/2026-10-08T090908Z/lot00-capture-manifest.json",
+              "sha256": "4e599a61d5297f242e89692df5474c30180ccfcf3e15243e1b4080718852efeb",
+              "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+              "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+              "revisionId": "r000001",
+              "capturedScratchRevisionId": null,
+              "parentRevisionId": null,
+              "parentProgramSha256": null,
+              "implementationPin": {
+                "kind": "source-snapshot",
+                "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sourceSnapshot": {
+                  "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+                  "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+                },
+                "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+              },
+              "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+              "observationCoverage": {
+                "ip": 0,
+                "op": 240,
+                "frameRate": 30,
+                "startMs": 0,
+                "endExclusiveMs": 8000,
+                "scheduledFramesPerRoute": 240,
+                "extraFramesPerRoute": 3
+              },
+              "durability": "LOCAL_ONLY_PENDING_PUBLICATION"
+            }
+          ],
+          "qualityStatus": "PASS",
+          "refinementStatus": "NOT_EVALUATED",
+          "productionEligibility": "PENDING_DURABLE_EVIDENCE",
+          "canonicalEligibility": "PENDING_DURABLE_EVIDENCE",
+          "implementationRefinementEligibility": "ELIGIBLE_LOCAL",
+          "trainingEligibility": "UNREVIEWED",
+          "limitations": [
+            "Only original LOT-00 animation/window and opaque composite profile",
+            "Evidence local; durable remote storage not yet published",
+            "Rights unreviewed; not a training-ready corpus",
+            "One landscape family does not establish abstraction generalisation"
+          ],
+          "manifestPath": "samples/motionscript/LOT-00/faithful/r000001/manifest.json",
+          "manifestSha256": "b616d14b214cb7e6461f6fedbb76948a5d6d049840440688563cd788d86d0961"
+        }
+      ],
+      "latestRecordedRevision": "r000001",
+      "latestVerifiedFaithfulRevision": "r000001",
+      "preferredVerifiedAuthoredRevision": null,
+      "pointerHistory": [
+        {
+          "pointer": "latestRecordedRevision",
+          "old": null,
+          "new": "r000001",
+          "rationale": "First actual per-sample full-window source/direct/compiled verification and completed material review; local publication eligibility separate",
+          "runId": "2026-10-08T090908Z",
+          "evidence": [
+            {
+              "path": "docs/evaluations/2026-10-08T090908Z/lot00-qualification.json",
+              "sha256": "5d8f7d836571a4b52683e72591b71189d02bcc14c0fb3612cced6e82c53531a2",
+              "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+              "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+              "parentRevisionId": null,
+              "parentProgramSha256": null,
+              "implementationPin": {
+                "kind": "source-snapshot",
+                "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sourceSnapshot": {
+                  "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+                  "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+                },
+                "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+              },
+              "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+              "observationCoverage": {
+                "ip": 0,
+                "op": 240,
+                "frameRate": 30,
+                "startMs": 0,
+                "endExclusiveMs": 8000,
+                "scheduledFramesPerRoute": 240,
+                "extraFramesPerRoute": 3
+              }
+            }
+          ]
+        },
+        {
+          "pointer": "latestVerifiedFaithfulRevision",
+          "old": null,
+          "new": "r000001",
+          "rationale": "First actual per-sample full-window source/direct/compiled verification and completed material review; local publication eligibility separate",
+          "runId": "2026-10-08T090908Z",
+          "evidence": [
+            {
+              "path": "docs/evaluations/2026-10-08T090908Z/lot00-qualification.json",
+              "sha256": "5d8f7d836571a4b52683e72591b71189d02bcc14c0fb3612cced6e82c53531a2",
+              "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+              "programSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+              "parentRevisionId": null,
+              "parentProgramSha256": null,
+              "implementationPin": {
+                "kind": "source-snapshot",
+                "head": "11d783e8783b04dfea1b1f3934e240500b4e959a",
+                "sourceSnapshot": {
+                  "path": "docs/evaluations/2026-10-08T090908Z/source-snapshot/tree/initial-source.tar.gz",
+                  "sha256": "afb3248916ac434e89b886a313917f41fffb48a18af312323f55b4346c4d471c"
+                },
+                "testedExecutionSource": "baseline; current Wave attempt retains byte-identical LOT-00 IR/program"
+              },
+              "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+              "observationCoverage": {
+                "ip": 0,
+                "op": 240,
+                "frameRate": 30,
+                "startMs": 0,
+                "endExclusiveMs": 8000,
+                "scheduledFramesPerRoute": 240,
+                "extraFramesPerRoute": 3
+              }
+            }
+          ]
+        }
+      ],
+      "revocations": [],
+      "sourceFormat": "lottie",
+      "sourcePath": "fixtures/corpus/lottie/LOT-00.json",
+      "sourceSha256": "ae37d554cb66d8f1dd16540fca230b0ae21297f89c0e1125bdfaa57f39c53ee9",
+      "taskRequirements": {
+        "requirements": "Preserve original panning landscape geometry, paint, stacking, depth-dependent motion, duration and deterministic seeks",
+        "policySha256": "df9bc5e079d8f8b01bd10dc43f737d1f300a09b0c463f20af3c5883efa067b59",
+        "observationWindow": {
+          "ip": 0,
+          "op": 240,
+          "frameRate": 30,
+          "startMs": 0,
+          "endExclusiveMs": 8000,
+          "scheduledFramesPerRoute": 240,
+          "extraFramesPerRoute": 3
+        }
+      },
+      "provenance": {
+        "origin": "Repository accepted LOT-00 source; verified original bytes unchanged",
+        "rightsStatus": "UNREVIEWED",
+        "registrationAuthorityCommit": "41b76e558bd38e422b6f0133e322c530da26d218"
+      },
+      "faithfulImplementationPath": "samples/motionscript/LOT-00/faithful/r000001/program.ms",
+      "faithfulImplementationSha256": "1b5bee167b1257ec14786a912ca46c1d1d0fd7ace2aec779e9a6872ad7f3a5fd",
+      "baselineVerificationRun": "2026-10-08T090908Z",
+      "refinedVariants": [],
+      "qualityStatus": "PASS",
+      "refinementStatus": "NOT_EVALUATED",
+      "trainingEligibility": "UNREVIEWED"
+    }
+  ]
+}

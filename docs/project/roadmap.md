@@ -59,7 +59,7 @@ the owning orchestrator. Frequency in an audit is evidence, not an automatic pri
 ## Continual engine and story improvement
 
 Adopted prospective process direction, 2 November 2026: milestone delivery runs
-alongside [Generate Stories → Expand System → Reimplement Stories → Select next corpus](../workflows/native-story-cycle.md).
+alongside [Generate Stories → Expand System → Reimplement Stories → Select next corpus](https://app.notion.com/p/41f0c600341a8167bea8f6d81a144341).
 Stories evolve with released engine/language improvements; each iteration combines
 new Product scenarios and more ambitious selected returning stories. Future corpus
 authorship is native MotionScript, with explicit friction evidence and versioned
