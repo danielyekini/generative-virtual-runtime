@@ -31,7 +31,6 @@ General creative/technical outputs remain useful engine capability tests.
 - Investigate deliberate constraints before changing them. Document purpose,
   scope, evidence/trade-offs and revisiting conditions; mark unknown history.
 - Progressive usefulness, correctness, editability and runtime cost are separate measures.
-- Preserve existing useful functions, but keep legacy format comparison unobtrusive.
 - Agents choose bounded designs/experiments and meaningful verification gates.
 - Reuse prior evidence; do not rerun old certification by default.
 - Keep planning/admin concise, searchable and authoritative; do not duplicate active tickets in repo docs.
@@ -55,14 +54,6 @@ General creative/technical outputs remain useful engine capability tests.
 
 ## Explicit strategic boundaries
 
-Lottie/SVG compatibility is maintained legacy utility, not the mission or a
-prerequisite for native expansion. No return to universal format parity without
-an explicit user request. Current direction commissions no proactive Lottie or
-other-format adapter expansion, source-conversion campaign or fidelity backlog.
-Historical proposals, unsupported registry rows and old evaluation failures do
-not create work. Preserve existing supported utilities and relevant regression
-tests; the confirmed Studio Split-mode flow may reuse existing importers without
-expanding their coverage. Native capabilities have native requirements and gates.
 Desktop packaging and a landing page are future
 options, not grounds for an immediate engine rewrite. Do not force a model,
 backend, 3D/physics library or UX tool without a bounded selection experiment.

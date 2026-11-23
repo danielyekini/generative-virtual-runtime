@@ -43,12 +43,7 @@ boundaries unchanged ([authority](../../operations/authority.md),
 a **full redesign** with separate Library and Player pages, not features added
 to the old three-column workbench. If a workflow's experience is undefined
 there, stop and ask the user with options, mockups or a UI-generator prompt
-instead of building a guess. Preserve working compile, playback, streaming and
-import/compare functions while moving them into the new layout.
-
-P004's confirmed Split flow reuses existing supported importers. It does not
-commission Lottie/SVG coverage expansion or a fidelity campaign. Old language
-drafts cannot add that scope; a fresh explicit user request is required.
+instead of building a guess. Preserve working compilation, playback and streaming while moving them into the new layout.
 
 **3 November 2026 player/Generate/transcript steering** is recorded in
 [decision](../../decisions/product/2026-11-03-studio-player-generate-transcripts.md)

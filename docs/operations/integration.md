@@ -12,8 +12,7 @@ dependency assumptions hold. New code still needs appropriate current tests.
 Do not regenerate evidence merely because a new session started; regenerate
 affected evidence for failed/incomplete runs or an invalidated claim. A passing
 old test log is not proof that changed code passes. Don't enlarge tolerances or
-drop visual requirements to pass. Full Lottie certification is conditional on
-making an affected source-fidelity claim, not a tax on all native work.
+drop visual requirements to pass.
 
 Keep code, small reports, reproducible commands and source identities in Git.
 Use configured CI artifacts/releases/evidence storage for heavy screenshots,

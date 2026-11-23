@@ -11,8 +11,7 @@ installation and future work; examples are scenarios, not claims of current supp
 | R04 | General expressive outputs: instruments, articulated action, pixel art, varied graphics | Audit/corpus; capability backlog |
 | R05 | Existing rich stories are representative workloads; improve practical capacity | E003; constraint decisions |
 | R06 | Preserve documented intent of constraints; distinguish admission vs unit/frame/queue control | Decision protocol; no blanket raise/preserve rule |
-| R07 | Cloning means in-memory transactional snapshots, not format round trips | PR #11 decision; P004 |
-| R08 | Round-trip/side-by-side runs are explicit legacy tools; ordinary native runs avoid unnecessary work | P004; Studio brief |
+| R07 | Use in-memory transactional snapshots for cloning | PR #11 decision |
 | R09 | Persistent semantic objects, independent looping behaviours and turn context | E002/E004/E005; roof/pillar scenario |
 | R10 | Hover/click/drag/zoom/scroll/keyboard/focus interactions | E007; P010 |
 | R11 | 2D physics, selected 3D graphics/physics and useful library integration | E010/E011 |
@@ -37,7 +36,6 @@ installation and future work; examples are scenarios, not claims of current supp
 | R30 | Explain fed units/received/accepted/queued/resolved/sealed/playhead | P002 + request X001 |
 | R31 | Source progression grey/orange/white with accurate semantic mapping and accessible labels | P002; no false line->frame mapping |
 | R32 | Timeline shows playable coverage ahead of playhead; repair empty stream-code pane | P002 |
-| R33 | Existing supported formats remain accessible through the confirmed Studio Split flow; no new adapter coverage implied | P004; Studio UX |
 | R34 | Expose performance/diagnostics where relevant, avoid dumping implementation details into customer flow | P003/P011 |
 | R35 | Future live director-script/native-MS generation and prompt experiments | P007/P008 |
 | R36 | User-facing speech input, demo stage expansion, later desktop/landing | P009/P011/P012 |
@@ -46,7 +44,6 @@ installation and future work; examples are scenarios, not claims of current supp
 | R39 | Orchestrators can revise delivery scope/sequence within charter | Review protocol; clarify only material user-only decisions |
 | R40 | Keep admin small and evidence progressive; no repeated encyclopedia read | Four-layer startup; concise handover |
 | R41 | Consolidate old material without deleting historical evidence or breaking links | Migration plan; source/index classification |
-| R42 | No proactive legacy-format expansion or fidelity campaign; old proposals do not commission work, and any restart needs an explicit user request | Charter; native proposal scope decision |
 | R43 | Skills and all session context live in repo/GitHub and can resume after interruption | Repo-local skills; issue handovers; lease/resume |
 | R44 | Initial work continues from latest merged capacity milestone | PR #11 evidence; first engine E001 |
 | R46 | Every run runs full tests before PR submission; inherited failures get fixed, no weakening/skipping | Git standards; all persona skills |

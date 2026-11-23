@@ -1,11 +1,11 @@
 ---
-description: Read the release manifest and version specs before changing language, schema, or importer support.
+description: Read the release manifest and version specs before changing language or schema support.
 alwaysApply: true
 ---
 
 # Versioned support claims
 
-Before changing `packages/schema`, `packages/compiler`, `packages/runtime`, `packages/canvas-renderer`, `packages/motionscript-emitter`, `packages/format-lottie`, `packages/format-svg`, `packages/format-import-core`, `packages/round-trip`, or `docs/languages`:
+Before changing `packages/schema`, `packages/compiler`, `packages/runtime`, `packages/canvas-renderer`, `packages/motionscript-emitter`, or `docs/languages`:
 
 1. Read `packages/schema/capabilities/releases.json`.
 2. Read the current MotionScript and Scene IR version files it names.
@@ -15,6 +15,6 @@ Published version files are immutable. Support claims change only together with 
 
 Wire strings (`0.1`, `0.2`) are coarse family ids. Consumers distinguish additive schema features with the fuller language release id in `releases.json` and with `requiredCapabilities` / `requires`. Completing a capability already published is a package bump only. A pending construct such as `geometry.pathMorph` needs a new version entry. Details: `docs/languages/compatibility-policy.md`.
 
-Evaluation Baselines pin `git rev-parse HEAD` (clean tree) or a complete source snapshot. See `docs/evaluations/implementation-pin.json` and `docs/evaluations/lottie-fidelity-loop-prompt.md`.
+Evaluation Baselines pin `git rev-parse HEAD` (clean tree) or a complete source snapshot. Link the pin and results from the work item.
 
-Follow the current root AGENTS.md, charter and owning workstream direction. Legacy format parity is not the mission or a universal gate. Capability changes need live task justification; consequential alternatives and new execution models need a bounded recorded decision. Preserve valid versioning and scoped conformance requirements.
+Follow the current root AGENTS.md, charter and owning workstream direction. Capability changes need live task justification; consequential alternatives and new execution models need a bounded recorded decision. Preserve valid versioning and scoped conformance requirements.

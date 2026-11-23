@@ -22,19 +22,28 @@ def render(root=ROOT):
         rows.append(f"| {language} | {value['current']} | {value['wireVersion']} |")
     rows += ['', '| Capability | Compiler | Runtime | Renderer | Scope / evidence |',
              '| --- | --- | --- | --- | --- |']
+    native_targets = ('compiler', 'runtime', 'renderer')
     for capability in registry['capabilities']:
+        if capability['id'].startswith(('svg.', 'lottie.')):
+            continue
         support = capability.get('support', {})
+        if all(support.get(target, 'not-applicable') == 'not-applicable'
+               for target in native_targets):
+            continue
         summary = capability.get('summary', '').replace('|', '\\|').replace('\n', ' ')
-        evidence = capability.get('conformanceTests', [])
+        summary = summary.replace(' (After Effects / lottie-web)', '')
+        evidence = [test for test in capability.get('conformanceTests', [])
+                    if not test.startswith(('packages/format-', 'packages/round-trip/',
+                                            'fixtures/import/'))]
         link = f"[registry](../../{registry_path})"
         if evidence:
             file = evidence[0].split('#')[0]
             link += f'; [test](../../{file})'
         rows.append('| ' + ' | '.join([capability['id'],
-                    *[support.get(target, 'not claimed') for target in ('compiler', 'runtime', 'renderer')],
+                    *[support.get(target, 'not claimed') for target in native_targets],
                     summary + ' ' + link]) + ' |')
     rows += ['', 'Statuses are scoped claims, not an end-to-end visual certification. `untested`',
-             'does not mean supported. Adapter `exact`/`approximate` scopes remain in the registry.',
+             'does not mean supported.',
              'Pending entries do not authorise invented syntax. Persistent semantic editing,',
              'general behaviours, input interaction, audible media, physics, 3D and real model',
              'generation are future work, not established by the native animation pipeline.', '',

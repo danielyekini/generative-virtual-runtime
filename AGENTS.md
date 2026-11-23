@@ -55,9 +55,7 @@ and fills the disk. Keep external blockers explicit; never bypass gates.
 ## Aim
 
 Build reliable native progressive visual software toward the adopted charter.
-Lottie/SVG are maintained import/comparison utilities. Scoped fidelity checks
-apply when an issue changes their claims; they are not the universal mission or
-an entry gate for native functionality. Compare consequential alternatives with
+Compare consequential alternatives with
 bounded designs and preserve released semantics/diagnostic truth.
 
 MotionScript / Scene IR changes also weigh **authoring friendliness** (low mental
@@ -71,15 +69,11 @@ evidence warrants (record supersession; user-focused tests allowed); they may
 not redefine vision or bypass platform constraints
 (`docs/operations/authority.md`, `docs/operations/orchestrator.md`).
 
-Current direction commissions no proactive Lottie/other-format adapter expansion
-or fidelity campaign. Historical gaps, draft proposals and unsupported registry
-rows do not authorise that work; require a fresh explicit user request. Keep
-existing supported utilities and regression tests. Native feature acceptance is
-defined by the selected native issue, not an old importer proposal.
+Acceptance follows the selected work item. Preserve existing regression coverage.
 
 ## Technical contracts (read when affected)
 
-Before changing language, schema, importer, compiler, runtime or evaluation support:
+Before changing language, schema, compiler, runtime or evaluation support:
 
 1. Read `packages/schema/capabilities/releases.json`.
 2. Read the current MotionScript and Scene IR version files named there.
@@ -94,7 +88,7 @@ The grammar and schema decide syntax. The registry decides what support is claim
 
 - A semantic change updates code, registry, conformance tests, and the version note in the same change.
 - Published version files are immutable. Correct them in a later version that names the earlier one. Edit only `pending.md` until that release.
-- Bump MotionScript only when its syntax or semantics change. Bump Scene IR only when the validated representation or sampling rules change. An importer fix alone bumps neither.
+- Bump MotionScript only when its syntax or semantics change. Bump Scene IR only when the validated representation or sampling rules change.
 - Below 1.0, a minor bump is the breaking boundary. Patches are compatible. Do not silently reinterpret older programs.
 - `exact`, `approximate`, and `unsupported` each need a stated scope and a passing conformance test. `exact` is that scope only.
 - Drafts and prereleases do not become the current release. The current pointer must stay equal to the greatest released version, compared numerically (`0.10.0` is newer than `0.9.0`).
@@ -107,18 +101,9 @@ The grammar and schema decide syntax. The registry decides what support is claim
 New compact run summaries use `docs/runs/<lane>/<run-id>/summary.md`; live issue
 comments own latest handovers. Pin clean commit or complete reproducible source
 snapshot for measurements. Reuse prior evidence unless affected, failed or incomplete.
-For a source-fidelity claim, use the pinned visual policy, original bytes, correct
-reference, full required coverage and existing attempt history. Do not widen a
-tolerance to pass. Import `exact` is not full visual certification.
-
-For explicit imported-program refinement or source conversion only, consult the
-[imported-source refinement workflow](https://app.notion.com/p/4200c600341a81dea962ed5e273aa0a3),
-[fidelity procedure](https://github.com/danielyekini/generative-virtual-runtime/blob/94436397d251a9c2bcbb5b538dbeb55715c7d20a/docs/archive/evaluations/lottie-fidelity-loop-prompt.md),
-[storage rules](https://app.notion.com/p/4200c600341a81698421d5cafad36518) and relevant quality policy.
-They do not add universal review, round-trip or whole-corpus gates to native work.
-Preserve distinct `faithful/`, `authored/`, `experimental/` programs and immutable
-revisions. Keep recorded/verified/preferred registry pointers separate, with exact
-source/program hashes and evidence. Never silently certify migrated inputs.
+Preserve immutable program revisions, original inputs and exact evidence hashes.
+Follow the [sample registry rules](https://app.notion.com/p/4200c600341a81698421d5cafad36518)
+and keep recorded and verified revisions distinct.
 
 Supporting guidance may evolve with evidence/rationale. Published versions,
 historical criteria/reports and source/program bytes remain immutable. New

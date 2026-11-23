@@ -1,10 +1,10 @@
 # MotionScript design goals
 
-Status: living guidance. Revision 1.0, 2026-10-08. Agents may revise this document with evidence and rationale; follow the [authoring documentation policy](https://app.notion.com/p/4200c600341a81dea962ed5e273aa0a3).
+Status: living guidance. Revision 1.0, 2026-10-08. Agents may revise this document with evidence and rationale.
 
 ## Purpose and scope
 
-Enable models to produce impressive, correct animations efficiently, and provide a language that becomes more reusable as its program corpus grows. Streaming is a delivery concern, not the sole design objective. Fidelity imports produce faithful implementations and capability evidence; authoring improves expression and discovers reusable patterns.
+Enable models to produce impressive, correct animations efficiently, and provide a language that becomes more reusable as its program corpus grows. Streaming is a delivery concern, not the sole design objective. Native story authoring improves expression and exposes reusable patterns.
 
 Current authoring scope is basic and advanced animation, composition and refinement using released capabilities. Still-scene authoring, persistent conversational editing, context retrieval, event-driven applications, windows and OS capabilities are future directions. Do not require their implementation before animation refinement can proceed. Preserve architectural room for them without claiming they exist.
 
@@ -24,18 +24,18 @@ Preserve required visible content, appearance, timing, spatial relationships and
 | Editability | Local changes are understandable and have bounded effects |
 | Temporal precision | Boundaries, midpoints, seeks and overlapping tracks have documented deterministic behaviour |
 | Runtime cost | Compile time, frame time, memory, expanded nodes/tracks and resource loading |
-| Portability | Core meaning does not depend on one importer or renderer |
+| Portability | Core meaning does not depend on one renderer |
 | Diagnostic quality | Errors map to source constructs and permit targeted repair |
 
 Do not collapse these into an unexamined weighted score. Compare qualified candidates on trade-offs and report regressions. Bytes are not model tokens; package calls are not free if package loading or expansion is expensive.
 
 ## Architecture boundaries
 
-MotionScript expresses authored content and behaviour; Scene IR validates representation; runtime evaluates state over time; renderers draw evaluated state; importers translate source formats. Context/edit/host services may later surround this pipeline. Prefer an abstraction at the narrowest responsible layer. An importer inconvenience alone does not justify core syntax.
+MotionScript expresses authored content and behaviour; Scene IR validates representation; runtime evaluates state over time; renderers draw evaluated state. Context/edit/host services may later surround this pipeline. Prefer an abstraction at the narrowest responsible layer.
 
 ## Evidence maturity
 
-Label statements hypothesis, observed, replicated or adopted. A result on one imported animation is observed, not a universal language principle. Promote guidance after diverse examples and held-out evaluation. Record limitations and counterexamples.
+Label statements hypothesis, observed, replicated or adopted. A result on one story is observed, not a universal language principle. Promote guidance after diverse examples and held-out evaluation. Record limitations and counterexamples.
 
 ## Change log
 

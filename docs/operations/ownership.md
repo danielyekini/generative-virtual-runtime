@@ -11,5 +11,3 @@ small fix. Announce justified cross-boundary edits on the affected issue/request
 avoid competing edits to the same contract/file. Product must not duplicate or
 change engine semantics privately; engine must not redesign customer/Studio UX.
 Both may add headless verification tools appropriate to their owned layer.
-Existing importers remain maintained legacy; repair only relevant regressions
-or user-requested use, not broad parity expansion.

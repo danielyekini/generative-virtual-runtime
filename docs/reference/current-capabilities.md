@@ -33,17 +33,15 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | entities.drawableBindings | supported | supported | supported | Immutable shared geometry assets with per-instance binds projected at sample time without expanding private node copies. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/compiler.test.ts) |
 | geometry.animatedTrim | supported | supported | supported | Keyframe tracks may drive trim.start, trim.end, and trim.offset on a path node. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/runtime.test.ts) |
 | geometry.roundedRect | untested | untested | untested | A rectangle may carry a corner radius. [registry](../../packages/schema/capabilities/registry.json) |
-| geometry.spatialCurve | supported | supported | not-applicable | A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic (After Effects / lottie-web), not by the raw bezier parameter. Optional tangent Z participates in length only and is not drawn. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/spatial.test.ts) |
+| geometry.spatialCurve | supported | supported | not-applicable | A vec2 position key may carry spatial in and out tangents. Eased progress advances by arc length along the cubic, not by the raw bezier parameter. Optional tangent Z participates in length only and is not drawn. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/schema/src/spatial.test.ts) |
 | paint.linearGradient | untested | not-applicable | untested | A fill may be a linear gradient with colour stops. [registry](../../packages/schema/capabilities/registry.json) |
 | paint.radialGradient | untested | not-applicable | untested | A fill may be a radial gradient with colour stops. [registry](../../packages/schema/capabilities/registry.json) |
 | resources.image | supported | supported | supported | An image node draws a declared image resource when that resource is ready. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/visual-resources.test.ts) |
 | resources.imageSampling | supported | not-applicable | supported | An image node may choose smooth or pixelated sampling; pixelated keeps hard texel edges when scaled. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/sprite-frames.test.ts) |
 | resources.spriteFrames | supported | supported | supported | An image resource may be an atlas grid; an image node draws one row-major cell named by an integer frame, which may be animated. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/compiler/src/sprite-frames.test.ts) |
-| svg.smilTimeBased | not-applicable | supported | not-applicable | SMIL animate and animateTransform become tracks. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-svg/src/svg.test.ts) |
-| svg.cssKeyframes | not-applicable | supported | not-applicable | An embedded opacity @keyframes rule plus an element animation duration becomes a track. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-svg/src/svg.test.ts) |
 | compositing.isolatedOpacity | untested | untested | untested | A group can isolate opacity in its own render scope. [registry](../../packages/schema/capabilities/registry.json) |
 | compositing.blend | untested | untested | untested | An isolated group may use source-over, multiply, screen, or overlay. [registry](../../packages/schema/capabilities/registry.json) |
-| effects.blur | supported | supported | supported | A render scope can carry a blur effect. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/format-lottie/src/lottie.test.ts) |
+| effects.blur | supported | supported | supported | A render scope can carry a blur effect. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/canvas-renderer/src/renderer.test.ts) |
 | effects.shadow | unsupported | supported | supported | A render scope can carry a shadow effect. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/canvas-renderer/src/renderer.test.ts) |
 | render.tree | not-applicable | supported | untested | The default tree is a non-isolated root of draw-item leaves. Compositing groups nest. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/canvas-renderer/src/renderer.test.ts) |
 | transform.parent | supported | supported | not-applicable | transformParentId selects the transform chain. inheritOpacity false skips one opacity ancestor. [registry](../../packages/schema/capabilities/registry.json); [test](../../packages/runtime/src/streaming-admission.test.ts) |
@@ -70,7 +68,7 @@ Index only: status/scope remain owned by the linked registry and conformance.
 | text.animators | unsupported | unsupported | unsupported | Per-character or range text animation. [registry](../../packages/schema/capabilities/registry.json) |
 
 Statuses are scoped claims, not an end-to-end visual certification. `untested`
-does not mean supported. Adapter `exact`/`approximate` scopes remain in the registry.
+does not mean supported.
 Pending entries do not authorise invented syntax. Persistent semantic editing,
 general behaviours, input interaction, audible media, physics, 3D and real model
 generation are future work, not established by the native animation pipeline.

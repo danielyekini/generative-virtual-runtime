@@ -230,10 +230,7 @@ new engine tickets waits on Product P030 (#188). Holder:
     with `scale.x` flips. Ready is empty after E054. E046 / E042 / E051 / E053 /
     joint #209 stay Candidate.
 
-No Lottie-wide certification gate; legacy regressions checked when relevant.
-Pending language candidates are not a
-queue; old Lottie gaps do not add adapter lowering or source-fidelity acceptance.
-Proactive legacy-format work requires a fresh explicit user request.
+GitHub issues and Project own scheduling.
 Broader audio, interaction, paint/text/path/camera, spatial and physics work is
 tracked in GitHub. Capacity improvements remain ongoing, evidence-driven work.
 

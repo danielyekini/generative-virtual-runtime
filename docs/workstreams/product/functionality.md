@@ -13,7 +13,6 @@ than copying an unchecked capability inventory here.
 | Progressive source arrival | Engine streaming observation contract and current native authoring contracts; simulated source arrival is not real model latency |
 | Persistent entity revisions | Released `entities.durableRevisions` contract; drawable reuse prototype is not released binding support |
 | Human authoring/execution and library | Actual shipped Studio behaviour and tests; studio-ux.md is the confirmed target specification, not proof all redesign work has shipped |
-| Legacy import/compare | Existing supported utilities only; no new adapter coverage is commissioned |
 
 For each generated prompt/thread, pin source revision, capability scope, intended
 user, expected response/canvas changes, unsupported expectations and verification.

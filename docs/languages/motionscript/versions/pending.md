@@ -4,8 +4,7 @@ Editable. Draft. Not the current release.
 
 These are candidate contract ideas, not an execution queue or an instruction to
 implement every listed construct. The charter and selected live native issue own
-scope, priority and acceptance; unsupported adapter coverage creates no work.
-Legacy-format expansion or fidelity work requires a fresh explicit user request.
+scope, priority and acceptance.
 See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md).
 
 Not yet in a published MotionScript version:

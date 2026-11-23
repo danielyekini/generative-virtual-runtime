@@ -29,8 +29,6 @@ engine decisions under `docs/decisions/engine/` — link out, do not dump.
 ## Hard excludes
 
 - Roadmaps, backlog queues, pending.md candidate lists as if released
-- Historical evaluation debates and fidelity corpora
-- Legacy Lottie/SVG adapter expansion guidance
 - Invented loop / function / package syntax
 
 Entity edits in the snapshot may use released MotionScript 0.9.0 declarative

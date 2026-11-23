@@ -23,7 +23,7 @@ them while preserving cancellation and actionable failure.
 Research tickets state: question, goal link, budget (normally one run), evidence,
 success/failure decision, stop rule and held-out check where appropriate. Two
 consecutive non-improving attempts force a new approach, narrow scope or stop.
-No unlimited literature or fidelity loop. Cosmetic renaming does not reset attempts.
+Keep research and implementation attempts within the agreed budget. Cosmetic renaming does not reset attempts.
 
 Put decisions under docs/decisions/<lane>/ with a short index. Keep useful
 existing docs/design records and link them; no forced move. Accepted decisions

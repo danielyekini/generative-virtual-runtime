@@ -31,8 +31,7 @@ Ordinary visual polish inside a defined layout stays with the implementing agent
 4. Streaming is a checkbox unrelated to playback, can stream a different script
    than the one loaded, its "fed" counter has no clear unit, and the undockable
    stream source pane usually shows nothing.
-5. Side-by-side paste-and-run (including Lottie/SVG through the working
-   importers) is still used and must stay wired in.
+5. Side-by-side paste-and-run must stay wired in.
 6. Performance monitoring needs a home, as in other workbenches.
 
 Rejected attempt: PR #65 added a library rail and an active-program bar to the
@@ -124,29 +123,19 @@ any unsaved edits.
   list line, column, code, message and recovery; selecting one jumps to the
   span. Source is never replaced on failure.
 - **Split mode** (paste-and-run side by side): a toggle opens a wide editor
-  beside the canvas with a format selector (MotionScript, Lottie, SVG, fixture
-  importers). Paste, then Run plays the result. A native round-trip comparison
-  can be shown as an optional second canvas. Import fidelity reports go in the
-  bottom panel. This replaces the old Import rail section; no automatic
-  round-trip work happens outside this mode.
+  beside the canvas. Paste MotionScript and select Run to play it.
 
-#### Split details (confirmed 2 November 2026, P004)
+#### Split details
 
-The Split toggle lives in the Settings menu (user steering, 2 November 2026; Settings moved to the status bar by P017).
-The header side-panel toggle is a borderless right-panel outline icon, with an
-accessible name and tooltip for open/close (not “Source”). Split expands the existing Source editor beside the canvas, with
-explicit MotionScript/Lottie/SVG/Fixture format selection, a format-filtered
-Presets selector and Open file. Files and presets load into the selected draft
-and wait for Run. Format selection does not convert source. Each format retains
-its own draft for the current visit; closing Split and visiting Library preserve
-edits. Explicitly loading another program, preset or file replaces that format's
-draft. Drafts are not a persistent save feature.
+The Split toggle lives in Settings. The side-panel toggle has an accessible name
+and tooltip for opening and closing it. Presets and Open file load a MotionScript
+draft and wait for Run. Closing Split and visiting Library preserve edits within
+the visit. Explicit loading replaces the current draft.
 
-The comparison checkbox defaults off. Only requesting comparison emits and
-recompiles MotionScript and opens a second canvas at the same playhead. Report /
-Compare describes this Scene IR round-trip scope; it does not certify an external
-source renderer. Failed Run retains source and the previous successful scene,
-with a visible failure notice and diagnostics. Ordinary Run does no comparison.
+The optional native comparison opens a second canvas at the same playhead. It
+defaults off. Report / Compare identifies the Scene IR round-trip being checked.
+Failed Run retains source and the previous successful scene,
+with a visible failure notice and diagnostics.
 
 ### Library
 
@@ -163,7 +152,7 @@ with a visible failure notice and diagnostics. Ordinary Run does no comparison.
   frame statically (for example a fixed fraction of the duration, or a per-entry
   value in Studio's own catalogue).
 - Organisation: **collections** (Stories, Test frames, Runtime scenes,
-  Interactive, My programs, Imports, **Transcripts**) plus editable **tags**.
+  Interactive, My programs, **Transcripts**) plus editable **tags**.
   **Search** covers title, caption and tags. **Sort** by name, recently opened,
   recently added/modified and duration. **Favourites** and a **Recent** strip.
 - **Collection meanings** (user steering, 3 November 2026):

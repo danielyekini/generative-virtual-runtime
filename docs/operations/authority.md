@@ -35,15 +35,8 @@ implementation/contract discrepancy as a work item; never invent support.
 Technical contracts constrain implementation; user direction can commission a
 versioned change, not silently reinterpret a published program.
 
-Historical fidelity/authoring procedures apply only when the current work item
-requires their particular claim. No whole-corpus certification for every native
-feature. Existing immutable version/evidence rules are retained. Old process
-requirements contradicting this explicitly commissioned operating structure
-are superseded for new work after installation; record the supersession map.
+Preserve immutable versions and evidence. Use current operating rules for new work.
 Current external protections/permissions are never bypassed by a repo rule.
 
 Editable pending language notes list candidate contracts, not an execution queue.
 Only selected live work within the charter commissions a native capability.
-Legacy-format-only proposals and missing adapter coverage are inactive reference
-material unless the user explicitly requests that work again. See the
-[native proposal scope decision](../decisions/2026-11-02-native-proposal-scope.md).
