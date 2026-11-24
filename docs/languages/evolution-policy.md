@@ -13,11 +13,11 @@ Status: living supporting policy, revision 1.0, 2026-10-08. Agents may improve t
 | Syntax sugar | Existing semantics are adequate but their common expression is cumbersome |
 | Core semantic construct | A recurring semantic need cannot be expressed correctly or composition imposes demonstrated substantial cost |
 
-A package is a candidate, not an assumed available facility. Check current language/module support before proposing or using one. Importer-only lowering can be verbose without proving core semantics are insufficient. Compare abstraction at importer, emitter, source language and runtime layers.
+A package is a candidate, not an assumed available facility. Check current language/module support before proposing or using one. Compare abstraction at emitter, source language and runtime layers.
 
 ## Required argument
 
-Use the proposal template. Include several independent examples, strongest existing-language implementations, repeated pattern, intended scope and non-goals, exact semantics, streaming effects, runtime expansion, generation/editability effects, alternatives and counterexamples. Three independent examples are a useful initial minimum, not proof; a fundamental semantic gap may justify a proposal with fewer if the limitation is rigorously demonstrated. Record evidence strength explicitly.
+Use the [official proposal schema and intake process](https://app.notion.com/p/4220c600341a8164b65ac9865ab8ded1). Include several independent examples, strongest existing-language implementations, repeated pattern, intended scope and non-goals, exact semantics, streaming effects, runtime expansion, generation/editability effects, alternatives and counterexamples. Three independent examples are a useful initial minimum, not proof; a fundamental semantic gap may justify a proposal with fewer if the limitation is rigorously demonstrated. Record evidence strength explicitly.
 
 Show gains on development examples and held-out samples. Keep quality and resource limits fixed. Prefer a Pareto improvement; justify any trade-off explicitly. No fixed token-savings percentage establishes sufficient value by itself. Consider conceptual burden, ambiguous interactions, diagnostics, backwards compatibility and implementation maintenance.
 
@@ -27,7 +27,7 @@ Specify parameter types/defaults, binding/scope, evaluation time, ownership of t
 
 ## Release rules
 
-Use AGENTS.md and compatibility-policy.md. Guidance edits require documentation revisions, not language bumps. An importer fix does not change language releases; changed implementation packages follow package version policy. New syntax/semantics can require MotionScript changes; new validated fields or sampling rules can require Scene IR changes. Do not bump both automatically. Update pending drafts, registry, conformance and release records according to actual affected contracts. Published version files and historical evaluations are immutable.
+Use AGENTS.md and compatibility-policy.md. Guidance edits require documentation revisions, not language bumps. Changed implementation packages follow package version policy. New syntax/semantics can require MotionScript changes; new validated fields or sampling rules can require Scene IR changes. Do not bump both automatically. Update pending drafts, registry, conformance and release records according to actual affected contracts. Published version files and historical evaluations are immutable.
 
 ## Change log
 

@@ -25,6 +25,14 @@ experiments. Judge progress against charter/milestone gates, not token counts
 or number of commits. Evaluate Candidate ideas in bounded batches (default top
 ten relevant, not the full historical archive every review).
 
+### Language and system proposals
+
+Engine and Product workers record evidenced capability expansion using the
+[proposal procedure](https://app.notion.com/p/4220c600341a8164b65ac9865ab8ded1). Link the proposal from
+the story, run, issue or handover. Orchestrators review proposals for duplicates,
+current support and next action. Link any selected work in GitHub and record its
+disposition in the proposal tracker.
+
 ### Outcome mining (required on every review)
 
 Ordinary runs are ticket-focused and often omit follow-ups. The orchestrator
@@ -36,7 +44,7 @@ for:
 - failure modes, flaky gates, honest Blocked/partial causes
 - repair patterns, missing prompts/fixtures, weak verification
 - research or design questions opened by the result
-- bounded future experiments or capability expansions suggested by evidence
+- previously unrecorded follow-ups supported by run evidence
 - cross-lane contract impacts (file an inbox request; do not silently rewrite
   the other lane)
 
