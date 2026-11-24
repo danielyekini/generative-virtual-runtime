@@ -6,7 +6,7 @@ Status/date/owner/work item: adopted, 2 November 2026, Product, [P006 #47](https
 
 Ship a generated, versioned model-facing reference under
 `docs/reference/motionscript-authoring/`, produced by `tools/native-reference`
-from the E006 [model-facing reference contract](../../contracts/model-facing-reference.md).
+from the E006 [model-facing reference contract](https://github.com/danielyekini/generative-virtual-runtime/blob/77adc6d7368dfb43338fe5b8389c645dda6293e5/docs/contracts/model-facing-reference.md).
 Immutable snapshots carry authority SHA-256 hashes and a UTF-16÷4 token estimate
 (explicitly not provider tokenization). `current.json` is the only mutable
 pointer; `npm run reference:check` (part of `npm run verify`) refuses stale or

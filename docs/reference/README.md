@@ -15,8 +15,8 @@ claims or label planned work supported. Reuse existing reference docs where vali
 
 The generation-facing native MotionScript reference is a separate versioned
 artifact built by P006 from the E006
-[model-facing reference contract](../contracts/model-facing-reference.md) and
-[streaming authorship rules](../contracts/streaming-authorship.md), using released
+[model-facing reference contract](https://app.notion.com/p/4220c600341a8192a576f5c01620bf2a) and
+[streaming authorship rules](https://app.notion.com/p/4220c600341a81778bd8c2c20e5460ec), using released
 grammar, capabilities and validated streaming fixtures. Include syntax,
 construction/streaming rules, idioms and repair advice; exclude roadmap/backlogs
 and historical design debates. Record source versions/hashes, required profile,

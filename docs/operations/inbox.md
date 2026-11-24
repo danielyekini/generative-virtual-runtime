@@ -13,6 +13,12 @@ creates a normal worker-visible task, asks the source orchestrator for evidence,
 or defers/rejects explicitly. Negotiation remains on the request; publish only
 decided execution requirements to normal issues.
 
+For Native Story Cycle transcript requests, use the same GitHub issue and Project
+Requests view. The receiving stream takes up incoming requests before ordinary
+queue selection. Product stores the delivered transcript packet in the
+[Notion handoff artifacts](https://app.notion.com/p/4220c600341a819b9b08e9786b5a1d22).
+Link the packet from the request and record acceptance or changes on GitHub.
+
 ## Avoid stale intake
 
 Every run entry and exit queries only a count/route flag for open untriaged

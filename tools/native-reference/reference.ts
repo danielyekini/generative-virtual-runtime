@@ -1,6 +1,6 @@
 /**
  * P006: generate a versioned model-facing MotionScript authoring reference
- * from released authorities only (see docs/contracts/model-facing-reference.md).
+ * from released authorities only. The authority paths below are checkout-local.
  */
 
 import { createHash } from "node:crypto";
@@ -112,9 +112,11 @@ export function resolveAuthorityPaths(root = REPO_ROOT): string[] {
     versionFile(releases, "scene-ir", sir),
     "packages/schema/capabilities/registry.json",
     "packages/schema/src/grammar.ts",
-    "docs/contracts/streaming-authorship.md",
-    "docs/contracts/streaming-observation.md",
-    "docs/contracts/model-facing-reference.md",
+    "tools/native-reference/reference.ts",
+    "packages/compiler/src/incremental.ts",
+    "packages/runtime/src/streaming.ts",
+    "packages/runtime/src/observation.ts",
+    "packages/runtime/src/observation.test.ts",
     "packages/compiler/src/stream-lint.ts",
     "packages/compiler/src/stream-lint.test.ts",
     ...STREAMING_FIXTURES,
@@ -410,7 +412,7 @@ export function generateReference(options?: {
       "",
       "- `docs/languages/authoring-guide.md`",
       "- `docs/design/capacity-transactions.md`",
-      "- `docs/contracts/streaming-observation.md`",
+      "- [Streaming execution observation](https://app.notion.com/p/4220c600341a8136a747f683f3a79085)",
       "- Engine decisions under `docs/decisions/engine/` (navigation only)",
       "",
     ].join("\n");

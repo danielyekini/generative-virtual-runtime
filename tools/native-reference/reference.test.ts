@@ -1,6 +1,6 @@
 import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   REPO_ROOT,
@@ -9,6 +9,7 @@ import {
   fingerprintAuthorities,
   generateReference,
   hashAuthorities,
+  resolveAuthorityPaths,
   writeReference,
 } from "./reference.js";
 
@@ -28,8 +29,10 @@ afterEach(() => {
 function scratchRoot(): string {
   const dir = mkdtempSync(join(tmpdir(), "gvr-ref-"));
   scratchDirs.push(dir);
-  for (const rel of ["packages/schema/capabilities", "packages/schema/src", "packages/compiler/src", "docs/contracts", "docs/languages", "fixtures"]) {
-    cpSync(join(REPO_ROOT, rel), join(dir, rel), { recursive: true });
+  for (const rel of resolveAuthorityPaths(REPO_ROOT)) {
+    const target = join(dir, rel);
+    mkdirSync(dirname(target), { recursive: true });
+    cpSync(join(REPO_ROOT, rel), target);
   }
   return dir;
 }

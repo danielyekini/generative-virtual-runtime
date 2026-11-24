@@ -33,14 +33,14 @@ and must not be silently claimed in generation context.
 ### Streaming authorship (released)
 
 Normative rules live in
-[`docs/contracts/streaming-authorship.md`](../../contracts/streaming-authorship.md).
+[`docs/contracts/streaming-authorship.md`](https://github.com/danielyekini/generative-virtual-runtime/blob/77adc6d7368dfb43338fe5b8389c645dda6293e5/docs/contracts/streaming-authorship.md).
 Machine checks: `lintStreamingAuthorship` in `@gvr/compiler`. Validated fixtures
 under `fixtures/motionscript/streaming/`. Offline validity and progressive
 playability are independent booleans.
 
 ### Model-facing generation contract
 
-[`docs/contracts/model-facing-reference.md`](../../contracts/model-facing-reference.md)
+[`docs/contracts/model-facing-reference.md`](https://github.com/danielyekini/generative-virtual-runtime/blob/77adc6d7368dfb43338fe5b8389c645dda6293e5/docs/contracts/model-facing-reference.md)
 names the released authorities, excludes, hash/profile fields and staleness
 guard that P006 must implement. Unimplemented declarative entity syntax is
 **out** of the generation snapshot until a published version claims it.

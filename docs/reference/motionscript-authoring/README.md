@@ -1,7 +1,7 @@
 # Model-facing MotionScript authoring reference
 
 P006 generates a compact, versioned snapshot for model generation from released
-authorities only. See [model-facing reference contract](../../contracts/model-facing-reference.md).
+authorities only. See [model-facing reference contract](https://app.notion.com/p/4220c600341a8192a576f5c01620bf2a).
 
 | Path | Role |
 | --- | --- |
