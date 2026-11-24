@@ -46,7 +46,7 @@ General creative/technical outputs remain useful engine capability tests.
   level. Assess each language decision against generation smoothness,
   expressiveness, authoring errors and seamless streaming — without treating any
   single person as the final optimisation authority
-  ([decision](../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
+  ([decision](https://app.notion.com/p/4220c600341a81cc94afce04ba6d19f8)).
 - **Vendor-neutral hosts:** authorised external backends (e.g. ElevenLabs audio)
   stay behind provider-abstracted packages and host settings. Public package
   names and MotionScript/generation-facing vocabulary must not hard-wire a
@@ -63,10 +63,10 @@ Core syntax must not be invented by generation prompts or draft documents.
 adopted generative audio provider for timed narration and sound effects — GVR's
 first meaningful paid external dependency. Engine designs a provider-abstracted
 integration ([E031](https://github.com/danielyekini/generative-virtual-runtime/issues/119);
-[steering decision](../decisions/engine/generative-audio-elevenlabs.md)). Do not
+[steering decision](https://app.notion.com/p/4220c600341a81ab8f92e4bfd95b0209)). Do not
 treat this as a licence to add other paid services or hard-wire vendor APIs into
 MotionScript / Scene IR. Public package/import names stay vendor-neutral
-([3 November authoring/provider steering](../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
+([3 November authoring/provider steering](https://app.notion.com/p/4220c600341a81cc94afce04ba6d19f8)).
 Eventual in-house audio generation remains a distant aspiration, not current work.
 
 The user delegates roadmap/task/design choices, issue management and creation

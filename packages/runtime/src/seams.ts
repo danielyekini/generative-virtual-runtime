@@ -1,6 +1,6 @@
 /**
  * E016 seam classification and intersection splitting prototype.
- * See docs/decisions/engine/seam-depth-order.md. Superseded for scenes by the
+ * See https://app.notion.com/p/4220c600341a81d5903bcbea796263e8. Superseded for scenes by the
  * released space.planarSeams path in projectSpatialFrame (exact plane-line
  * clipping); kept as a host helper for its existing callers.
  *

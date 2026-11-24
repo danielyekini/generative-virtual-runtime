@@ -1,5 +1,5 @@
 /**
- * E011 planar 2D physics prototype. See docs/decisions/engine/physics-integration.md.
+ * E011 planar 2D physics prototype. See https://app.notion.com/p/4220c600341a81c3b8cfc7fdb4a92eae.
  *
  * Simulation is fixed-step in the E010 world/layer XY plane. Bodies write only
  * physics-owned channels. Checkpoints + event log support seek/replay.

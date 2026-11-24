@@ -938,7 +938,7 @@
       "restrictions": [
         "Wire stays 0.2. Scenes and programs gate with requiredCapabilities / requires containing audio.cues; audio resources or cues without it are rejected.",
         "Resources declare href and decoded durationMs; readiness is host-reported. Cues use root scene time, buses narration/effects/music, offset/duration inside the resource, loops 1..1000, gain 0..4, linear fades; at most 4096 cues.",
-        "Scene time is the master clock (docs/decisions/engine/audible-media-clock.md): audio is silent unless playing at a rate in [0.5, 2]; voices re-seek beyond 40 ms error; narration ducks effects/music by a step gain of 0.35.",
+        "Scene time is the master clock (https://app.notion.com/p/4220c600341a81ff81aae352c6385b30): audio is silent unless playing at a rate in [0.5, 2]; voices re-seek beyond 40 ms error; narration ducks effects/music by a step gain of 0.35.",
         "Narration is required by default: pending required audio holds startup/playback and failed required audio blocks acceptance; optional cues are skipped with AUDIO_OPTIONAL_SKIPPED.",
         "Cues may stream after the first seal (ADD_AUDIO_CUES) only when they start at or after the seal; audio resources are base definitions. No spatial audio, ducking ramps or per-cue rate. Generative prompts are gated separately by audio.generative."
       ],
@@ -1244,7 +1244,7 @@
       "id": "transform.autoOrient",
       "summary": "Rotation follows the position tangent.",
       "targets": [],
-      "restrictions": ["Auto-orient is not a rotation track.", "Stopped by E054 (docs/decisions/engine/standalone-auto-orient.md): face a route with attach … along … { orient true; } (geometry.pathProgress); other facing is an explicit rotation or scale.x writer."],
+      "restrictions": ["Auto-orient is not a rotation track.", "Stopped by E054 (https://app.notion.com/p/4220c600341a8132a5c3c8dd515ea111): face a route with attach … along … { orient true; } (geometry.pathProgress); other facing is an explicit rotation or scale.x writer."],
       "support": { "compiler": "unsupported", "runtime": "unsupported", "renderer": "unsupported" },
       "conformanceTests": ["packages/compiler/src/auto-orient-stop.test.ts#rejects an autoOrient node property and an autoOrient track", "packages/compiler/src/auto-orient-stop.test.ts#rejects a Scene IR track on a transform.autoOrient channel"],
       "adapters": {

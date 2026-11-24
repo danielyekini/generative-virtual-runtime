@@ -1,15 +1,15 @@
 {
   "generatorVersion": "0.1.0",
-  "generatedAt": "2026-11-24T16:05:08.286Z",
+  "generatedAt": "2026-11-24T23:47:34.072Z",
   "motionscript": "0.26.0",
   "sceneIr": "0.25.0",
   "wireVersion": "0.2",
   "packageVersion": "0.1.25",
   "releaseId": "ms-0.26.0_sir-0.25.0",
-  "fingerprint": "e8c66818129aa1bf84540c2fea04a67865abf183f180877cd49dfb45794e25a0",
-  "fingerprint8": "e8c66818",
-  "estimatedTokensUtf16Div4": 4437,
-  "byteLengthUtf8": 17762,
+  "fingerprint": "8037c450ef1216220427630638db0ebb6bc0caee6276afc4ae8b94d29857d4c5",
+  "fingerprint8": "8037c450",
+  "estimatedTokensUtf16Div4": 4447,
+  "byteLengthUtf8": 17799,
   "requiredCapabilities": [
     "scene.camera",
     "scene.contain",
@@ -74,9 +74,9 @@
     "packages/schema/capabilities/releases.json": "bbea1bb2e61caf9626a02de3859a3cb19e10cf92800dc91817ba60753afb8926",
     "docs/languages/motionscript/versions/0.26.0.md": "963d9f151159a497edc77bbcc59e25ac1396ce8e4e31d9be91b878aec24fdd75",
     "docs/languages/scene-ir/versions/0.25.0.md": "d968db910089b184a2be67d154dca6180ff87e7762c2143ef143f2ce453f6d69",
-    "packages/schema/capabilities/registry.json": "d30936bbf0f7deed68da7bfe3a1c3223d577fda48fecc20733c47c0c8abe718c",
+    "packages/schema/capabilities/registry.json": "d524e8540c01a02e13d4d4486a30bda763f66f26c46ad253368e3b1a7743fd26",
     "packages/schema/src/grammar.ts": "281452cafa1da16ee8decbedcf0f1a05753b929b7c7171a8b511ef831a5b7f37",
-    "tools/native-reference/reference.ts": "f26278d73d5dcf838d6787723ba24e58812c3888945c11e27516060cf75a0b58",
+    "tools/native-reference/reference.ts": "7cbda97aa541beccdc4e6a6aca03d2b65cb602bbbf294561a2689073f851c164",
     "packages/compiler/src/incremental.ts": "cafadd47926e62c4335c760359ae062bbe62228c2353ecce10ca0c90b3b7b3f5",
     "packages/runtime/src/streaming.ts": "bc6bd99afde24b8f65c6369d38cc33de1a083093b254f6911c1f96037f96f28d",
     "packages/runtime/src/observation.ts": "e01dc857d7a141d0a88e68e40fca4fa415381de79894aa973c76f608fab58a81",
@@ -88,6 +88,6 @@
     "fixtures/motionscript/streaming/sealed-history-bad.ms": "7e4a4f1b0110f0a8b74a660d32c5d1dbbb3edc73654016a1399174abbf4fbb91",
     "fixtures/motionscript/streaming/early-seal-empty.ms": "125d33eafbbc5393112e37a916a67b50707c5e12eee39fdf1a8a3abbbd616936"
   },
-  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.26.0_sir-0.25.0-e8c66818.md",
-  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.26.0_sir-0.25.0-e8c66818.json"
+  "snapshot": "docs/reference/motionscript-authoring/snapshots/ms-0.26.0_sir-0.25.0-8037c450.md",
+  "metadata": "docs/reference/motionscript-authoring/snapshots/ms-0.26.0_sir-0.25.0-8037c450.json"
 }

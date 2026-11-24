@@ -25,7 +25,7 @@ success/failure decision, stop rule and held-out check where appropriate. Two
 consecutive non-improving attempts force a new approach, narrow scope or stop.
 Keep research and implementation attempts within the agreed budget. Cosmetic renaming does not reset attempts.
 
-Put decisions under docs/decisions/<lane>/ with a short index. Keep useful
+Record consequential decisions in the [Notion decision index](https://app.notion.com/p/4220c600341a81f2aaeac4248ab22dd8). Keep useful
 existing docs/design records and link them; no forced move. Accepted decisions
 link to their work item/PR, requirement and code. Supersede with rationale; don't
 erase the old record. New language semantics follow version/registry/conformance

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "split": "quality-judgment",
   "purpose": "Story-complexity typed prompts for Studio Generate human animation-quality judgment (P020). Not held-out harness regression; not a corpus commission.",
-  "baselineDecision": "docs/decisions/product/2026-11-03-director-quality-gate.md",
+  "baselineDecision": "https://app.notion.com/p/4220c600341a81e68358f49649e26565",
   "studioDefaultApproach": "director",
   "pinnedModel": "qwen2.5-coder:14b",
   "checklist": "fixtures/generation/quality-judgment/CHECKLIST.md",

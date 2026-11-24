@@ -1,7 +1,7 @@
 /**
  * Web Audio backend for the Studio player (E026). Executes AudioSession
  * commands; it never chooses frames. Scene time stays the master clock
- * (docs/decisions/engine/audible-media-clock.md).
+ * (https://app.notion.com/p/4220c600341a81ff81aae352c6385b30).
  */
 import type { AudioBackend, AudioResourceState, AudioStartCommand, DecodedAudio, SceneAudioResource } from "@gvr/runtime";
 

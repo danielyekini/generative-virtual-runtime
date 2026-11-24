@@ -4,7 +4,7 @@ import { compileMotionScript, lintStreamingAuthorship } from "./index";
 
 /**
  * MotionScript 0.24.0 timing.cyclicScopes (E043, decision
- * docs/decisions/engine/time-composition.md): `period` / `repeat` on `timing`
+ * https://app.notion.com/p/4220c600341a817190b3ff256cb5f18a): `period` / `repeat` on `timing`
  * and `timing` on steps.
  */
 

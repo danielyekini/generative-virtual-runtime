@@ -2515,8 +2515,8 @@ function readGenerativeAudioSource(source: Record<string, unknown>, path: string
  * and cues require audio.cues; generative sources also require audio.generative.
  * Cues name declared audio resources, use a known bus and stay inside the
  * resource when duration is known; start times lie in [0, durationMs].
- * Semantics follow docs/decisions/engine/audible-media-clock.md and
- * docs/decisions/engine/generative-audio-contract.md.
+ * Semantics follow https://app.notion.com/p/4220c600341a81ff81aae352c6385b30 and
+ * https://app.notion.com/p/4220c600341a817bad08eccb200d3ade.
  */
 function readAudio(value: unknown, resources: ResourceFacts[], timeline: unknown, required: unknown, diags: Diags): void {
   const audio = new Map(resources.filter((resource) => resource.kind === "audio").map((resource) => [resource.id, resource]));

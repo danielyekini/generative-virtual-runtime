@@ -5,7 +5,7 @@ Editable. Draft. Not the current release.
 These are candidate contract ideas, not an execution queue or an instruction to
 implement every listed construct. The charter and selected live native issue own
 scope, priority and acceptance.
-See the [scope decision](../../../decisions/2026-11-02-native-proposal-scope.md).
+See the [scope decision](https://app.notion.com/p/4220c600341a814fa487ff149e740961).
 
 Not yet in a published MotionScript version:
 
@@ -62,4 +62,4 @@ Transform-parent emission uses existing atomic batches to preserve declaration
 order with forward references; compiler contextual validation occurs at the outer
 batch boundary. No syntax, representation or sampling rule changes; released
 language/wire pointers remain unchanged. See
-[decision](../../../decisions/engine/assembled-delta-validation.md) and its tests.
+[decision](https://app.notion.com/p/4220c600341a81619f68c7454f32b489) and its tests.

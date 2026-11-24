@@ -11,7 +11,7 @@ the owning run verifies its own work, including the full repository test suite.
   that another agent may also mutate. User steering 3 November 2026: concurrent
   agents lose work when they share one checkout; every run that edits the repo
   must use its own worktree/branch pair before coding
-  ([decision](../decisions/2026-11-03-isolated-worktrees.md)).
+  ([decision](https://app.notion.com/p/4220c600341a8154a2fbfb510c301c9b)).
 - One coherent issue outcome per branch/PR. Use engine/<issue>-<short-slug>,
   product/<issue>-<short-slug>, or ops/<issue>-<short-slug>. Include run ID when
   needed to avoid collisions. Never develop directly on main.

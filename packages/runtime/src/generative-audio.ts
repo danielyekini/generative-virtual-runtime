@@ -1,6 +1,6 @@
 /**
  * Generative audio provider boundary (E031/E032/E033).
- * See docs/decisions/engine/generative-audio-contract.md.
+ * See https://app.notion.com/p/4220c600341a817bad08eccb200d3ade.
  *
  * Host-facing synthesize contract, deterministic fixture provider, and a helper
  * that materialises Scene IR generative resources into an AudioSession via

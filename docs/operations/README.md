@@ -38,7 +38,7 @@ session and at implementation checkpoints, independently of five-run reviews.
 `npm run verify` is the mandatory complete submission/final integration gate.
 [Command coverage](checks.md), [Git lifecycle](git.md),
 [installation receipt](installation-receipt.md), [supersession map](migration-map.md),
-and [decision](../decisions/2026-10-30-operating-structure.md) explain scope.
+and [decision](https://app.notion.com/p/4220c600341a81a99601eaee8ff31f46) explain scope.
 The [reference generator](../../tools/gvr-ops/current_capabilities.py) keeps the
 capability index grounded in current authorities. It is not the future model
 syntax reference.

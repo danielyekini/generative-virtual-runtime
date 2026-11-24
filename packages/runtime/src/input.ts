@@ -22,7 +22,7 @@ import { projectSpatialFrame, surfaceDragDelta } from "./spatial";
 import { layersFromScene } from "./spatial-scene";
 
 /**
- * E007 native input prototype. See docs/decisions/engine/native-input.md.
+ * E007 native input prototype. See https://app.notion.com/p/4220c600341a812c9db6c2128f37a0a3.
  *
  * Hit space: authored logical viewport coordinates (the space draw-item
  * `logicalMatrix` maps into). Hosts convert CSS/device pixels by undoing their

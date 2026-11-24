@@ -22,27 +22,27 @@ required-resource hold, deterministic `mixAudio` export), E026 `audio.cues`
 (`audio` / `cue` declarations, MotionScript / Scene IR 0.11.0, `ADD_AUDIO_CUES`,
 Studio Web Audio backend and bridge WAV export),
 E010 bounded spatial graphics decision/prototype (planar 2.5D layers,
-`projectSpatialFrame`, `docs/decisions/engine/spatial-graphics.md`),
+`projectSpatialFrame`, [Bounded spatial graphics: planar 2.5D layers (E010)](https://app.notion.com/p/4220c600341a81a79008d920d669d8c0)),
 E028 versioned `space.planar25d` (Scene IR / MotionScript 0.12.0),
 E011 physics integration decision/prototype (planar fixed-step 2D session,
-`docs/decisions/engine/physics-integration.md`),
+[2D and scoped 3D physics integration (E011)](https://app.notion.com/p/4220c600341a81c3b8cfc7fdb4a92eae)),
 E029 versioned `physics.planar2d` (Scene IR / MotionScript 0.13.0),
 E016 seam depth/paint-order decision/prototype
-(`docs/decisions/engine/seam-depth-order.md`),
+([Dynamic depth/paint order and seam-free surfaces (E016)](https://app.notion.com/p/4220c600341a81d5903bcbea796263e8)),
 E030 versioned `space.planarSeams` (Scene IR / MotionScript 0.15.0: exact
 plane-line intersection splitting and declared seam checks in `projectSpatialFrame`),
 and E003 immutable path/keyframe validation-fact reuse are merged
-(`docs/decisions/engine/assembled-delta-validation.md`,
-`docs/decisions/engine/streaming-observation-contract.md`,
-`docs/decisions/engine/persistent-entities.md`,
-`docs/decisions/engine/drawable-reuse-bindings.md`,
-`docs/decisions/engine/streaming-authorship-and-declarative-entities.md`,
-`docs/decisions/engine/animated-paint-channels.md`,
-`docs/decisions/engine/immutable-validation-facts.md`,
-`docs/decisions/engine/native-input.md`,
-`docs/decisions/engine/audible-media-clock.md`,
-`docs/decisions/engine/physics-integration.md`,
-`docs/decisions/engine/seam-depth-order.md`,
+([Assembled delta admission (E001)](https://app.notion.com/p/4220c600341a81619f68c7454f32b489),
+[Host streaming/execution observation contract (E018)](https://app.notion.com/p/4220c600341a8133baf7eff1ca01f158),
+[Persistent entities, revisions and independent behaviours (E002)](https://app.notion.com/p/4220c600341a810cbaaacd5e3752fc80),
+[Drawable reuse, channel bindings and behaviour ownership (E005)](https://app.notion.com/p/4220c600341a811097d6ef7e42bf772a),
+[Streaming authorship rules and declarative entity statements (E006)](https://app.notion.com/p/4220c600341a81cb9f27cd2a051890ea),
+[Animated solid paint and stroke channels (E009)](https://app.notion.com/p/4220c600341a812b9e79f3712a21f214),
+[Immutable path/keyframe validation-fact reuse (E003)](https://app.notion.com/p/4220c600341a81cd97f0cffd20932dc5),
+[Native input, hit-testing, focus and bounded state actions (E007)](https://app.notion.com/p/4220c600341a812c9db6c2128f37a0a3),
+[Audible media clock, narration and effect resources (E008)](https://app.notion.com/p/4220c600341a81ff81aae352c6385b30),
+[2D and scoped 3D physics integration (E011)](https://app.notion.com/p/4220c600341a81c3b8cfc7fdb4a92eae),
+[Dynamic depth/paint order and seam-free surfaces (E016)](https://app.notion.com/p/4220c600341a81d5903bcbea796263e8),
 `observeStreamingExecution` / `EntityRevisionStore` / `APPLY_ENTITY_PATCH` /
 `REGISTER_GEOMETRY` / `BIND_GEOMETRY` / `projectScene` projection /
 `PhysicsSession` / `createScenePhysicsSession` / `resolveSeams` in
@@ -59,13 +59,13 @@ dependency. Scene-time `audio.cues` (E008/E026) stays the playback foundation.
 E031 chose capability `audio.generative`: portable generative resources,
 unchanged cues, host `GenerativeAudioProvider`, duration revision, fixture
 tests, ElevenLabs with-timestamps TTS + SFX v3 behind the adapter
-([generative-audio-contract.md](../../decisions/engine/generative-audio-contract.md);
-steering [generative-audio-elevenlabs.md](../../decisions/engine/generative-audio-elevenlabs.md)).
+([generative-audio-contract.md](https://app.notion.com/p/4220c600341a817bad08eccb200d3ade);
+steering [generative-audio-elevenlabs.md](https://app.notion.com/p/4220c600341a81ab8f92e4bfd95b0209)).
 E033 versions the language surface (MotionScript / Scene IR 0.14.0). E032–E035
 implementation is Done. Public package id is `@gvr/audio-provider` (ElevenLabs
 remains the default backend); brand stays out of MotionScript and
 generation-model vocabulary
-([authoring/provider steering](../../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
+([authoring/provider steering](https://app.notion.com/p/4220c600341a81cc94afce04ba6d19f8)).
 Studio credentials remain Product (#120 / P009).
 
 ## Isolated git worktrees (user steering, 3 November 2026)
@@ -73,7 +73,7 @@ Studio credentials remain Product (#120 / P009).
 Every mutating engine run uses its **own git worktree** bound to the issue
 branch before any edits. Do not share a working tree with a concurrent product
 or ops agent. Authority: [git.md](../../operations/git.md),
-[decision](../../decisions/2026-11-03-isolated-worktrees.md).
+[decision](https://app.notion.com/p/4220c600341a8154a2fbfb510c301c9b).
 
 ## Language change gate (user steering, 3 November 2026)
 
@@ -119,7 +119,7 @@ new engine tickets waits on Product P030 (#188). Holder:
 
 1. E014 ([#33](https://github.com/danielyekini/generative-virtual-runtime/issues/33))
    decided local/named time and cycles
-   ([decision](../../decisions/engine/time-composition.md)). Cyclic timing
+   ([decision](https://app.notion.com/p/4220c600341a817190b3ff256cb5f18a)). Cyclic timing
    scopes separate an unbounded loop with a phase from a finite `repeat`.
    Timed keys and named beats replace percentage arithmetic. The gap/hold
    rule is now pinned, rotation stays unwrapped degrees, cyclic chains own
@@ -142,7 +142,7 @@ new engine tickets waits on Product P030 (#188). Holder:
    `text.animators` stays pending (not the E013 content/format slice).
 3. E019 ([#38](https://github.com/danielyekini/generative-virtual-runtime/issues/38))
    decided the image resource lifecycle
-   ([decision](../../decisions/engine/resource-lifecycle.md)). It covers host
+   ([decision](https://app.notion.com/p/4220c600341a8190a71bcd795503f82b)). It covers host
    loader states, a required-image startup hold, a scene-scoped renderer cache
    with eviction and a decoded-bytes gauge, and a `pixelated` sampling recipe.
    `resources.image` (0.2.0) is now supported for that scope. Next: E045
@@ -170,17 +170,17 @@ new engine tickets waits on Product P030 (#188). Holder:
    `6df61122-7db7-4332-be0d-286a31fb2864`): promoted executable M2/M5 Candidates
    whose dependencies are completed — E020 (#39), E021 (#40), E022 (#41) — to
    Ready. E020 measured midpoint chord-error adaptive plots against uniform
-   samples ([decision](../../decisions/engine/computed-curves-adaptive-geometry.md)):
+   samples ([decision](https://app.notion.com/p/4220c600341a81c99b47ca693b6e0fcd)):
    design Bezier improves, held-out spiral fails error and eval-cost gates →
    **stop** (host `plotUniform` / `plotAdaptive` only; no language bump).
 6. E021 ([#40](https://github.com/danielyekini/generative-virtual-runtime/issues/40))
    pinned static `effects.shadow` renderer/runtime conformance and confirmed
-   `effects.blur` ([decision](../../decisions/engine/bounded-effects.md)). No
+   `effects.blur` ([decision](https://app.notion.com/p/4220c600341a81ac9b52f1f06e1e88a1)). No
    version bump; MotionScript shadow sugar, animated blur and reflections stay
    deferred.
 7. E022 ([#41](https://github.com/danielyekini/generative-virtual-runtime/issues/41))
    rejected a procedural/module language and declined to commission compile-time
-   repeaters ([decision](../../decisions/engine/procedural-vs-bounded-expansion.md)).
+   repeaters ([decision](https://app.notion.com/p/4220c600341a8185b875fe64b6abb474)).
    Drawable bindings, cyclic scopes and behaviours are the M2 expansion path;
    `geometry.repeater` stays pending/unsupported. No version bump.
 8. Replenish after E022 (run `00790532-1a03-42a1-9059-3e48527f1b6a`): Ready was
@@ -189,7 +189,7 @@ new engine tickets waits on Product P030 (#188). Holder:
    Ready — width-profile decide-or-stop. E046 / E042 stay Candidate.
 9. E048 ([#208](https://github.com/danielyekini/generative-virtual-runtime/issues/208))
    **rejected** applying instance timing; the field is an inert no-op on non-drawing
-   composition records ([decision](../../decisions/engine/composition-instance-timing.md)).
+   composition records ([decision](https://app.notion.com/p/4220c600341a817aa683d046ae72f836)).
    Child E050 shipped MotionScript 0.26.0 / Scene IR 0.25.0 forbid + migrate strip.
    Next Ready: E049.
 10. Engine review (3 November 2026, late evening, session
@@ -198,7 +198,7 @@ new engine tickets waits on Product P030 (#188). Holder:
     (E048). All five complete. **Continue.** That session also shipped E050
     (MotionScript 0.26.0 / Scene IR 0.25.0 forbid instance timing) and E049
     **stop** on variable stroke width profiles
-    ([decision](../../decisions/engine/variable-stroke-width-profiles.md)).
+    ([decision](https://app.notion.com/p/4220c600341a81e79b3acadfceb8efba)).
     Outcome-mined Candidates: E051
     ([#224](https://github.com/danielyekini/generative-virtual-runtime/issues/224))
     MotionScript shadow sugar; E052
@@ -216,14 +216,14 @@ new engine tickets waits on Product P030 (#188). Holder:
     E046 / E042 / E051 / E053 / joint #209 stay Candidate.
 12. E055 ([#239](https://github.com/danielyekini/generative-virtual-runtime/issues/239))
     **stop** on multi-line text wrapping
-    ([decision](../../decisions/engine/multi-line-text-wrapping.md)). `text.basic`
+    ([decision](https://app.notion.com/p/4220c600341a81a2a2c8e08238c6ceaa)). `text.basic`
     stays one line. No language bump. The stacked story lines need per-line timing
     and style. Builtin advances differ from drawn `sans-serif` glyphs by −13 % to
     +24 %. Revisit with an explicit line list once same-style paragraphs or a
     bundled font appear. E054 (#238) remains Ready.
 13. E054 ([#238](https://github.com/danielyekini/generative-virtual-runtime/issues/238))
     **stop** on standalone `transform.autoOrient`
-    ([decision](../../decisions/engine/standalone-auto-orient.md)). There is no
+    ([decision](https://app.notion.com/p/4220c600341a8132a5c3c8dd515ea111)). There is no
     language bump, and the item is removed from the pending lists. Only 2 of 263
     keyed 2-D story movers face their velocity, and one of those is
     generator-sampled. Routes use `attach … { orient true; }`. City faces travel

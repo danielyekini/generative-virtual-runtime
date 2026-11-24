@@ -1,8 +1,8 @@
 # @gvr/audio-provider
 
 Vendor-neutral host package for generative audio (`GenerativeAudioProvider` from
-`@gvr/runtime`). Read `docs/decisions/engine/generative-audio-contract.md` and
-`docs/decisions/engine/2026-11-03-authoring-and-provider-abstraction.md` before
+`@gvr/runtime`). Read [Generative audio contract (E031)](https://app.notion.com/p/4220c600341a817bad08eccb200d3ade) and
+[Authoring friendliness and provider-brand abstraction](https://app.notion.com/p/4220c600341a81cc94afce04ba6d19f8) before
 changing backends or portable fields.
 
 - **Public entry:** `createGenerativeAudioProvider` (default backend ElevenLabs).

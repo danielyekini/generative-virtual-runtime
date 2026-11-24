@@ -413,7 +413,7 @@ export function generateReference(options?: {
       "- `docs/languages/authoring-guide.md`",
       "- `docs/design/capacity-transactions.md`",
       "- [Streaming execution observation](https://app.notion.com/p/4220c600341a8136a747f683f3a79085)",
-      "- Engine decisions under `docs/decisions/engine/` (navigation only)",
+      "- [Engine design decisions](https://app.notion.com/p/4220c600341a81f2aaeac4248ab22dd8) (navigation only)",
       "",
     ].join("\n");
 

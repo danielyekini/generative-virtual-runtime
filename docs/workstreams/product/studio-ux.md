@@ -4,7 +4,7 @@ Status: user-confirmed, 2–3 November 2026. Owner: Product orchestrator. This i
 the authority for Studio workflows; implementation items cite the sections they
 deliver. Change it only after the user confirms (see "Open questions").
 3 November player/Generate/transcript steering:
-[decision](../../decisions/product/2026-11-03-studio-player-generate-transcripts.md).
+[decision](https://app.notion.com/p/4220c600341a81928e9dd792c26c1a25).
 
 Studio's motto is **reduce friction between functionality and testing**. It is
 not a video editor. Every capability that reaches the engine should be exposed
@@ -36,7 +36,7 @@ Ordinary visual polish inside a defined layout stays with the implementing agent
 
 Rejected attempt: PR #65 added a library rail and an active-program bar to the
 old three-column layout. It did not address 2 to 4 and was paused unmerged
-(see [decision](../../decisions/product/2026-11-02-studio-ux-redesign.md)).
+(see [decision](https://app.notion.com/p/4220c600341a81829e2bdab71628b13c)).
 
 ## Pages
 
@@ -271,7 +271,7 @@ Stream), not as a Diagnostics-style bottom tab. Purpose: exercise pinned native
 generation (Ollama `qwen2.5-coder:14b`) with typed prompts **before** push-to-talk.
 Human judges **animation quality** on the canvas. Approach offers **Director** and
 **Direct**; Studio defaults to Director until Direct is customer-proven equivalent
-for the director’s intended roles ([decision](../../decisions/product/2026-11-03-director-quality-gate.md)).
+for the director’s intended roles ([decision](https://app.notion.com/p/4220c600341a81e68358f49649e26565)).
 
 ### Header
 

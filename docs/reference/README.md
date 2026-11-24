@@ -5,7 +5,8 @@ This folder is an entry index, not a second grammar or capability registry.
 - Native syntax/IR: release pointers -> published contracts + grammar/schema.
 - Support: packages/schema/capabilities/registry.json, scoped tests and evidence.
 - Constraints/implementation choices: docs/design/capacity-transactions.md and
-  docs/decisions index. Don't assume stale summary numbers are authoritative.
+  the [Notion decision index](https://app.notion.com/p/4220c600341a81f2aaeac4248ab22dd8). Historical release notes, run reports
+  and snapshots use paths from the [pinned decision tree](https://github.com/danielyekini/generative-virtual-runtime/tree/773d35bbd4fc4f41ebf86cc8d9bd5d87405956cf/docs/decisions).
 - Performance: latest measured report/handover, not a universal throughput promise.
 - Agent operations: docs/operations. Product intention: docs/project.
 

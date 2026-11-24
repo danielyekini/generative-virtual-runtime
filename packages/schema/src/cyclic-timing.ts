@@ -7,7 +7,7 @@ function issue(code: DiagnosticCode, path: string, message: string): Diagnostic 
 
 /**
  * Cyclic timing scopes, named beats and keyframes written in seconds
- * (decision docs/decisions/engine/time-composition.md, E014).
+ * (decision https://app.notion.com/p/4220c600341a817190b3ff256cb5f18a, E014).
  *
  * `timing.cyclicScopes` (Scene IR / MotionScript 0.23.0 / 0.24.0, E043) puts
  * `periodMs` / `repeat` on `TimingScope` and lets steps name a cyclic scope.

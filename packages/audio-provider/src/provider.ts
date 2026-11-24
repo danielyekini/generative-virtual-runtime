@@ -2,7 +2,7 @@
  * Host generative-audio provider package (public id `@gvr/audio-provider`).
  * Default backend is ElevenLabs (authorised first provider); REST mapping stays
  * an internal factory option. Portable fields:
- * docs/decisions/engine/generative-audio-contract.md.
+ * https://app.notion.com/p/4220c600341a817bad08eccb200d3ade.
  *
  * Secrets stay with the host. Pass `apiKey` (or a getter) from Studio / env —
  * never from MotionScript, Scene IR, or the repository. Optional local probe:

@@ -42,7 +42,7 @@ worker context. No background LLM wake is configured.
 
 Follow [git.md](docs/operations/git.md). Use an **isolated git worktree** plus
 issue branch from current main — never edit a checkout another agent may also
-be using ([decision](docs/decisions/2026-11-03-isolated-worktrees.md)). Run
+be using ([decision](https://app.notion.com/p/4220c600341a8154a2fbfb510c301c9b)). Run
 `npm run verify` (full tests, all existing typechecks, Studio build, operations
 acceptance and reference freshness) before PR submission and after final
 code/main integration. Repair inherited failures without weakening tests.
@@ -61,7 +61,7 @@ bounded designs and preserve released semantics/diagnostic truth.
 MotionScript / Scene IR changes also weigh **authoring friendliness** (low mental
 arithmetic, low error rate), **generation creativity**, and **streaming safety**
 — see charter principles and
-`docs/decisions/engine/2026-11-03-authoring-and-provider-abstraction.md`.
+[Authoring friendliness and provider-brand abstraction](https://app.notion.com/p/4220c600341a81cc94afce04ba6d19f8).
 Vendor backends stay behind provider-abstracted host packages; major
 capabilities need Studio testing surfaces before dependent work advances.
 **Orchestrators may revise any of these operating principles/processes** when

@@ -5,7 +5,7 @@ import { validateSceneIR } from "./validate";
 
 /**
  * timing.cyclicScopes validation (Scene IR 0.23.0, E043). Decision:
- * docs/decisions/engine/time-composition.md.
+ * https://app.notion.com/p/4220c600341a817190b3ff256cb5f18a.
  */
 
 function track(id: string, startMs: number, durationMs: number, timingScopeId?: string, channel = "transform.position.x"): TrackDefinition {

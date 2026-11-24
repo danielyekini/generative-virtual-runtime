@@ -3,7 +3,7 @@
 Use Studio **Generate** with local Ollama (`qwen2.5-coder:14b`). Leave **Approach** on
 **Director** for the first pass; optionally repeat a prompt with **Direct** for
 comparison. Do **not** declare a product default from harness pass-rate or latency alone
-([director quality gate](../../../docs/decisions/product/2026-11-03-director-quality-gate.md)).
+([director quality gate](https://app.notion.com/p/4220c600341a81e68358f49649e26565)).
 
 ## How to run
 

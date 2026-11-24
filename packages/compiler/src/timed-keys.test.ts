@@ -6,7 +6,7 @@ import { compileIncrementally, compileMotionScript, fragmentSource } from "./ind
 
 /**
  * MotionScript 0.23.0 timing.timedKeys (E044, decision
- * docs/decisions/engine/time-composition.md). Timed keys and named beats are
+ * https://app.notion.com/p/4220c600341a817190b3ff256cb5f18a). Timed keys and named beats are
  * MotionScript-only lowerings onto the existing Scene IR track offsets.
  */
 

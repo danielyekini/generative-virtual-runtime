@@ -452,7 +452,7 @@ export type AudioBusName = "narration" | "effects" | "music";
 
 /**
  * Audio cue on root scene time (Scene IR 0.11.0 audio.cues). Semantics follow
- * docs/decisions/engine/audible-media-clock.md: span = play length x loops,
+ * https://app.notion.com/p/4220c600341a81ff81aae352c6385b30: span = play length x loops,
  * linear fades, narration required by default.
  */
 export interface AudioCueDefinition {

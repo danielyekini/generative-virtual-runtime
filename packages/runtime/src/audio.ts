@@ -7,7 +7,7 @@ import {
 import type { PlaybackClock, PlaybackState } from "./playback";
 
 /**
- * E008 audible media clock prototype. See docs/decisions/engine/audible-media-clock.md.
+ * E008 audible media clock prototype. See https://app.notion.com/p/4220c600341a81ff81aae352c6385b30.
  *
  * Scene time is the master clock. Audio is a pure schedule over scene time:
  * which cue is audible at t, at which resource offset and gain. A host backend

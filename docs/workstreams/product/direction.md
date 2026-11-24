@@ -21,12 +21,12 @@ applicable technical contracts. Do not read every engine run or engine inbox.
 4. **Animation quality gate for generation.** Intent distillation remains
    central (director path until Direct is *proven* equivalent for those roles);
    story-complexity programs are the quality baseline — see
-   [director quality decision](../../decisions/product/2026-11-03-director-quality-gate.md).
+   [director quality decision](https://app.notion.com/p/4220c600341a81e68358f49649e26565).
    Secondary metrics: failures, latency, streaming tape downtime. Director is
    not an automatic permanent preference over a proven Direct path.
 5. **Isolated git worktrees.** Every mutating product run uses its own worktree
    / issue branch before edits — never a shared checkout with another agent
-   ([decision](../../decisions/2026-11-03-isolated-worktrees.md),
+   ([decision](https://app.notion.com/p/4220c600341a8154a2fbfb510c301c9b),
    [git.md](../../operations/git.md)). After the PR merges, **same-session
    cleanup** of that remote/local branch **and** the worktree is mandatory —
    undeleted trees fill the disk and block later runs.
@@ -46,7 +46,7 @@ there, stop and ask the user with options, mockups or a UI-generator prompt
 instead of building a guess. Preserve working compilation, playback and streaming while moving them into the new layout.
 
 **3 November 2026 player/Generate/transcript steering** is recorded in
-[decision](../../decisions/product/2026-11-03-studio-player-generate-transcripts.md)
+[decision](https://app.notion.com/p/4220c600341a81928e9dd792c26c1a25)
 and folded into studio-ux (floating playback, Generate ⋯ tooling, transcripts,
 Stories vs Test frames).
 
@@ -71,7 +71,7 @@ prioritised. Criteria: free/cheap; prefer smaller models; hosted Qwen OK;
 other small hosted models OK; snappy / instant-capable preferred. **P035
 must not close until a human has read the research document and recorded a
 direction.** Steering note:
-[2026-11-21-hosted-generation-model](../../decisions/product/2026-11-21-hosted-generation-model.md).
+[2026-11-21-hosted-generation-model](https://app.notion.com/p/4220c600341a812e8569e15b0815e82d).
 P007’s local pin and P024’s keep-14B decision stay in force until that human
 gate. Engine watch request:
 [#248](https://github.com/danielyekini/generative-virtual-runtime/issues/248).
@@ -127,7 +127,7 @@ ships. P019 does not require live generative audio. **User steering 3 November
 2026:** keep vendor brand out of Studio/generation-facing vocabulary where a
 neutral “audio provider” / “generative audio” label suffices; credential
 settings may name the funded backend
-([decision](../../decisions/engine/2026-11-03-authoring-and-provider-abstraction.md)).
+([decision](https://app.notion.com/p/4220c600341a81cc94afce04ba6d19f8)).
 
 ## Corpus inputs (prospective direction, 2–3 November 2026)
 
