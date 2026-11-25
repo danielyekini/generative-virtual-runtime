@@ -16,6 +16,8 @@ remain merely 'seen'. Create/update worker-visible tasks and dependencies with
 the decision distilled; keep raw negotiations out of worker startup. A blocker
 to current Ready work is handled before unrelated task dispatch, without waiting
 for five runs. Routine accepted tools/adapter requests can be queued autonomously.
+At intake or review, use [Human Actions](https://app.notion.com/p/4230c600341a8160a1cfd16eb8553899)
+for your lane’s operator ideas and answered human requests.
 
 ## Periodic review
 
