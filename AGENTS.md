@@ -9,6 +9,22 @@ status; repository documents own goals, contracts, decisions and immutable evide
 The user explicitly adopted this structure on 30 October 2026; the
 [migration map](docs/operations/migration-map.md) supersedes conflicting old routing.
 
+## Operator ideas and human input
+
+When the operator drops a GVR idea or asks to track a suggestion, capture it in
+[Human Actions](https://app.notion.com/p/4230c600341a8160a1cfd16eb8553899).
+A rough thought in ordinary language is enough. Reuse a matching record or
+create an Idea and return its link.
+If Notion write access is unavailable, report the unsaved entry explicitly.
+
+At existing lane intake or review, the owning orchestrator checks its ideas and
+answered human requests, compares them with current evidence and decisions, and
+records the disposition and destination. During a run, surface actionable
+assessments or clarifications there. The page defines the intake procedure and
+links to the canonical sources. Product uses the
+[research tree](https://app.notion.com/p/4230c600341a815db1b1c142fb22b29f)
+for research selection after cross-stream requests and ready Studio changes.
+
 Invoke one repository persona, without supplying issue IDs:
 
 | Invocation | Canonical instructions |
