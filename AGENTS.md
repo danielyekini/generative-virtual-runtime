@@ -11,7 +11,8 @@ The user explicitly adopted this structure on 30 October 2026; the
 
 ## Operator ideas and human input
 
-When the operator drops a GVR idea or asks to track a suggestion, capture it in
+When the operator drops a GVR idea or asks to track a suggestion, invoke
+`$gvr-idea-proposal` to capture it in
 [Human Actions](https://app.notion.com/p/4230c600341a8160a1cfd16eb8553899).
 A rough thought in ordinary language is enough. Reuse a matching record or
 create an Idea and return its link.
@@ -33,6 +34,7 @@ Invoke one repository persona, without supplying issue IDs:
 | `$gvr-product-run` | [.agents/skills/gvr-product-run/SKILL.md](.agents/skills/gvr-product-run/SKILL.md) |
 | `$gvr-engine-orchestrator` | [.agents/skills/gvr-engine-orchestrator/SKILL.md](.agents/skills/gvr-engine-orchestrator/SKILL.md) |
 | `$gvr-product-orchestrator` | [.agents/skills/gvr-product-orchestrator/SKILL.md](.agents/skills/gvr-product-orchestrator/SKILL.md) |
+| `$gvr-idea-proposal` | [.agents/skills/gvr-idea-proposal/SKILL.md](.agents/skills/gvr-idea-proposal/SKILL.md) |
 | `$gvr-direction-change` | [.agents/skills/gvr-direction-change/SKILL.md](.agents/skills/gvr-direction-change/SKILL.md) |
 
 Each local skill file is a launcher. If the runtime does not discover skills
