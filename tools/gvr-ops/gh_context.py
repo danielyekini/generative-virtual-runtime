@@ -52,6 +52,9 @@ def normalize(item):
  if isinstance(fields.get('Status'),str):fields['Status']=next((v for v in ('Candidate','Ready','In progress','Blocked','Human verification','Done','Deferred') if v.casefold()==fields['Status'].casefold()),fields['Status'])
  key=re.search(r'<!-- gvr-key: ([A-Z0-9]+) -->',c.get('body',''))
  return {**c,'isArchived':item.get('isArchived',False),'key':key[1] if key else None,'fields':fields,'labels':[l['name'] for l in c.get('labels',{}).get('nodes',[])]}
+class QueueOrderConflict(ValueError):
+ pass
+
 def select(items,lane):
  keys=[i['key'] for i in items if i and i.get('key')]
  if len(keys)!=len(set(keys)):raise ValueError('Duplicate stable issue keys; reconcile through owning orchestrator.')
@@ -67,8 +70,21 @@ def select(items,lane):
   deps=[s.strip() for s in d[1].split(',') if s.strip()]
   if any(not bykey.get(k) or bykey[k]['state']!='CLOSED' or bykey[k].get('stateReason')!='COMPLETED' for k in deps):continue
   eligible.append(i)
- eligible.sort(key=lambda i:(i['fields'].get('Priority','P3'),i['fields'].get('Queue order',999999),i['number']))
- return eligible[0] if eligible else None
+ if not eligible:
+  return None
+ if lane != 'product':
+  return min(eligible, key=lambda i: (i['fields'].get('Priority','P3'), i['fields'].get('Queue order',999999), i['number']))
+ if any(i['fields'].get('Priority') not in ('P0', 'P1', 'P2') for i in eligible):
+  raise QueueOrderConflict('Assign a Product intake priority to each eligible Ready ticket.')
+ priority = min(i['fields']['Priority'] for i in eligible)
+ competing = [i for i in eligible if i['fields']['Priority'] == priority]
+ if len(competing) == 1:
+  return competing[0]
+ orders = [i['fields'].get('Queue order') for i in competing]
+ if None in orders or len(set(orders)) != len(orders):
+  numbers = ', '.join('#' + str(i['number']) for i in competing)
+  raise QueueOrderConflict(f'Product orchestrator must assign distinct Queue order positions in {priority}: {numbers}')
+ return min(competing, key=lambda i: i['fields']['Queue order'])
 def comments(config,number):
  pages=gh(['api','--paginate','--slurp',f"repos/{config['repository']}/issues/{number}/comments?per_page=100"])
  return [x for p in pages for x in p]
@@ -126,17 +142,28 @@ def main():
  mail=unacknowledged(mail,receipt,a.lane,a.session_id)
  number=c['clocks'][a.lane]['issue_number']
  state=clock(read_comments(number),a.lane,c['clocks'][a.lane]['review_every'])
+ queue_conflict=None
+ selected=None
+ if a.lane=='product':
+  try:
+   selected=select(items,a.lane)
+  except QueueOrderConflict as error:
+   queue_conflict=str(error)
  if a.mode=='inbox':
   if a.persona!=a.lane+'-orchestrator':raise SystemExit('Use owning orchestrator persona for inbox mode. This is routing, not security isolation.')
-  print(json.dumps({'clock':state,'requests':all_mail},indent=2));return
- if a.mode=='route':print(json.dumps({'lane':a.lane,'intake_required':bool(mail),'review_due':state['review_due'],'unreviewed_count':state['unreviewed_count']},indent=2));return
+  print(json.dumps({'clock':state,'requests':all_mail,'queue_order_conflict':queue_conflict},indent=2));return
+ if a.mode=='route':print(json.dumps({'lane':a.lane,'intake_required':bool(mail or queue_conflict),'queue_order_review_required':bool(queue_conflict),'review_due':state['review_due'],'unreviewed_count':state['unreviewed_count']},indent=2));return
+ if queue_conflict:raise SystemExit(queue_conflict)
  if mail or state['review_due']:raise SystemExit('Route to owning orchestrator intake/review first; raw requests are excluded from worker context.')
  recovery=[]
  for i in items:
   if i and not i.get('isArchived') and i['state']=='OPEN' and i['fields'].get('Status')=='In progress' and i['fields'].get('Workstream','').lower()==a.lane and 'audience:orchestrator' not in i['labels']:
    detail=claims_and_handover(read_comments(i['number']),agent_id=a.agent_id)
    if detail['recoverable'] or not detail['claim']:recovery.append({'issue':i,**detail})
- selected=None if recovery else select(items,a.lane)
+ if recovery:
+  selected=None
+ elif a.lane!='product':
+  selected=select(items,a.lane)
  detail=claims_and_handover(read_comments(selected['number']),agent_id=a.agent_id) if selected else None
  print(json.dumps({'lane':a.lane,'recoverable_candidates':recovery,'reconcile_recovery_before_new_claim':bool(recovery),'selected_issue':selected,'selected_issue_context':detail,'dependency_and_claim_readback_required':True,'context_paths':[c['paths']['charter'],c['paths'][a.lane+'_direction']]},indent=2))
 if __name__=='__main__':main()

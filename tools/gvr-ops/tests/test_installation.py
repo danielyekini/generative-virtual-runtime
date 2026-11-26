@@ -91,14 +91,18 @@ class InstallationAcceptance(unittest.TestCase):
         issue['state_reason'] = 'not_planned'
         self.assertEqual(desired(issue)['Status'], 'Deferred')
 
-    def test_five_canonical_personas_and_navigation(self):
+    def test_canonical_personas_and_idea_capture_navigation(self):
         paths = list((ROOT / '.agents/skills').glob('gvr-*/SKILL.md'))
-        self.assertEqual(len(paths), 5)
+        self.assertEqual({p.parent.name for p in paths}, {'gvr-engine-run', 'gvr-product-run', 'gvr-engine-orchestrator', 'gvr-product-orchestrator', 'gvr-direction-change', 'gvr-idea-proposal'})
         for path in paths:
             text = path.read_text()
             self.assertRegex(text, r'^---\nname: ' + re.escape(path.parent.name) + r'\n')
             self.assertRegex(text, r'https://app\.notion\.com/p/[0-9a-f]{32}\)')
-            self.assertRegex(text, r'Expected Git blob: `[0-9a-f]{40}`')
+            if path.parent.name == 'gvr-idea-proposal':
+                self.assertIn('https://app.notion.com/p/4230c600341a810d84b5de0192b99604', text)
+                self.assertNotIn('Expected Git blob:', text)
+            else:
+                self.assertRegex(text, r'Expected Git blob: `[0-9a-f]{40}`')
             self.assertIn('../../../AGENTS.md', text)
         bootstrap = (ROOT / 'AGENTS.md').read_text()
         self.assertIn('git hash-object --stdin', bootstrap)

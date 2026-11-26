@@ -63,7 +63,7 @@ def desired(issue):
     dependency = re.search(r'<!-- gvr-dependencies: ([^>]*) -->', issue.get('body') or '')
     return {'Status': status, 'Workstream': label('lane', 'joint').title(),
             'Kind': label('kind', 'task').title(), 'Priority': label('priority', 'p2').upper(),
-            'Queue order': issue['number'],
+            **({} if label('lane', 'joint') == 'product' else {'Queue order': issue['number']}),
             'dependencies': [s.strip() for s in dependency[1].split(',') if s.strip()] if dependency else None}
 
 
