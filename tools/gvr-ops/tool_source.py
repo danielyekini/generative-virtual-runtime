@@ -74,7 +74,7 @@ def load(path, config, now=None):
         item = actual.get(key)
         if not item or item['number'] != expected['number']:
             raise ValueError('Missing or conflicting live membership: ' + key)
-        if any(item['fields'].get(f) is None for f in ('Status', 'Workstream', 'Kind', 'Priority', 'Queue order')):
+        if any(item['fields'].get(f) is None for f in ('Status', 'Workstream', 'Kind', 'Priority')):
             raise ValueError('Incomplete live routing fields: ' + key)
     for lane in config['clocks'].values():
         if str(lane['issue_number']) not in value['comments']:

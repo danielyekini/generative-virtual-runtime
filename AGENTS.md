@@ -2,12 +2,11 @@
 
 ## Start here
 
-Read [charter](docs/project/charter.md), [authority map](docs/operations/authority.md),
-[own workstream direction](docs/project/roadmap.md) and
-[routing config](docs/operations/config.json). Live GitHub issues/Project own work
-status; repository documents own goals, contracts, decisions and immutable evidence.
-The user explicitly adopted this structure on 30 October 2026; the
-[migration map](docs/operations/migration-map.md) supersedes conflicting old routing.
+Read the [operating handbook](https://app.notion.com/p/41f0c600341a81c29928f8467248f25d)
+and the selected ticket’s linked Notion context. GitHub Project 3 owns execution
+intake. Use the repository routing config and released technical contracts.
+Keep operating documents, supporting files, research evidence and run reports in
+Notion. Link the exact record from the GitHub ticket and run handover.
 
 ## Invocation
 
@@ -25,17 +24,19 @@ A rough GVR idea in ordinary language is enough to invoke `$gvr-idea-proposal`.
 
 Each local skill file is a launcher. If the runtime does not discover skills
 automatically, open the launcher from the table. Fetch its linked Notion page
-using the session's authorised Notion reader. Extract the single Markdown code
+using the session's authorised Notion reader. Idea capture reads the current
+procedure at the fixed Notion page in its launcher. For a launcher with an
+expected blob ID, extract the single Markdown code
 block, preserving its content and restoring one final newline. Compare its Git
 blob ID with the expected ID in the launcher (use `git hash-object --stdin`
-on those bytes). Follow the verified instructions.
+on those bytes). Follow the verified instructions and the current operating guidance on that page and in the linked handbook.
 
 If the Notion reader is unavailable, access is denied, or the revision check
 fails, report the skill name and blocker and stop before claiming or changing
 work. Use the configured connection for credentials. The
 [Operating handbook and skills](https://app.notion.com/p/41f0c600341a81c29928f8467248f25d)
 contains the canonical skill pages. When publishing a skill revision, update the
-repository's expected blob ID as part of the cutover.
+repository's expected blob ID only for launchers that declare a pin.
 
 Workers receive only own direction, selected issue/handover, route flags and
 applicable contracts. Switch to own orchestrator for pending intake or the
@@ -102,8 +103,8 @@ The grammar and schema decide syntax. The registry decides what support is claim
 ## Evidence and program preservation
 
 [Archived evaluation and authoring evidence](https://app.notion.com/p/41f0c600341a8103a6dfdae8044930ba) is immutable.
-New compact run summaries use `docs/runs/<lane>/<run-id>/summary.md`; live issue
-comments own latest handovers. Pin clean commit or complete reproducible source
+Save new run summaries on the selected ticket’s linked Notion record. Live issue
+comments link to that record and own latest handovers. Pin clean commit or complete reproducible source
 snapshot for measurements. Reuse prior evidence unless affected, failed or incomplete.
 Preserve immutable program revisions, original inputs and exact evidence hashes.
 Follow the [sample registry rules](https://app.notion.com/p/4200c600341a81698421d5cafad36518)

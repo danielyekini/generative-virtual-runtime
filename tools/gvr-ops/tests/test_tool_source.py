@@ -65,6 +65,22 @@ class ToolSourceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build(self.config, self.rows, self.issues[1:], self.comments, [], self.now.isoformat())
 
+    def test_competing_product_tickets_route_to_orchestrator_until_ordered(self):
+        original = self.value['items'][1]
+        newer = copy.deepcopy(original)
+        newer.update(number=80, key='P002')
+        self.value['items'].append(newer)
+        from gh_context import select, QueueOrderConflict
+        for order in (None, original['fields']['Queue order']):
+            newer['fields']['Queue order'] = order
+            with self.assertRaises(QueueOrderConflict):
+                select(self.value['items'], 'product')
+        newer['fields']['Queue order'] = 1
+        self.assertEqual(select(self.value['items'], 'product')['number'], 80)
+        newer['fields'].update(Priority='P2')
+        newer['fields'].pop('Queue order')
+        self.assertEqual(select(self.value['items'], 'product')['number'], 42)
+
     def test_full_cli_dispatch_and_session_intake_use_same_rules_without_credentials(self):
         request = {'number': 99, 'state': 'open', 'labels': ['audience:orchestrator', 'request-to:engine', 'priority:p0'],
                    'body': '<!-- gvr-request -->\n```json\n{"blocks_active":true}\n```\nRAW_ORCHESTRATOR_MAIL', 'updated_at': '2026-11-02T00:00:00Z'}
